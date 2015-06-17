@@ -54,8 +54,10 @@
         "blockchain_id": ,
         "dependencies": "independent",
         "source": "cyberFund",
-        "short_description": "A decentralized cryptocurrency designed for online microtransactions",
-        "summary": "NeuCoin has partnered with major music and video content providers to develop micro-payment solutions for tipping, pay-per-view, ad-free and micro-subscriptions, with user acquisition fueled by freemium distribution of NeuCoin.",
+        "descriptions": {
+            "short_description": "A decentralized cryptocurrency designed for online microtransactions",
+            "summary": "NeuCoin has partnered with major music and video content providers to develop micro-payment solutions for tipping, pay-per-view, ad-free and micro-subscriptions, with user acquisition fueled by freemium distribution of NeuCoin.",
+        },
         "links": [
             {
                 "name": "web site",
@@ -97,25 +99,52 @@
     },
     {
         "name": "Synereo",
+        "blockchain_id": ,
+        "dependencies": "independent",
         "symbol": "AMP",
         "source": "cyberFund",
+        "descriptions": {
+            "short_description": "Synereo is a fully decentralized and distributed social platform owned by the people who use it.",
+            "summary": "Synereo is designed as a framework for managing the economy of attention. We create a social brain that optimizes your experience on the network, social or otherwise, by shaping the stream of information in ways that reflect what you and your social circle consider to be interesting and valuable.",
+        },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://http://www.synereo.com/",
+                "icon": "website.png",
+                "tags": ["Main", "Apps"],
+            },
+            {
+                "name": "Documentation",
+                "url": "http://www.synereo.com/whitepapers/synereo.pdf",
+                "icon": "whitepaper.png",
+                "tags": ["Main", "Apps"],
+            },
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 3,
-            "consensus": "Bitcoin",
-            "dependencies": "independent",
+            "consensus": "PoSC",
             "cap": {
                 "usd": 143588,
                 "btc": 635
             },
             "supply": 45439378,
             "timestamp": 1431342962,
-            "links": []
         },
         "aliases": {
             "CoinMarketCap": "Synereo",
             "CurrencyName": "Synereo"
-        }
+        },
+        "crowdsales": {
+            "start_date": "23/03/2015",
+            "end_date": "29/04/2015",
+            "genesis_address": "3BNGSfyKdTLvZwZAiUHdhgdENA9dJqgVq9",
+            "funding_tems": "http://blog.synereo.com/2015/03/18/crowdsale/",
+            "funding_operator": ,
+            "funding_url": "https://crowdsale.synereo.com/",
+            "tokens_sold": 45439378
+        },         
     },
     {
         "name": "Factom",
