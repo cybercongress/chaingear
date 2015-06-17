@@ -950,11 +950,11 @@
         "name": "MaidSafeCoin",
         "symbol": "MAID",
         "dependencies": "Bitcoin, Omni",
+        "source": "cyberFund",
         "descriptions": {
             "short_description": "A fully distributed data management service",
             "summary": "MaidSafe is a fully decentralized platform on which application developers can build decentralized applications. The network is made up by individual users who contribute storage, computing power and bandwidth to form a world-wide autonomous system.",
         },
-        "source": "cyberFund",
         "links": [
             {
                 "name": "Documentation",
@@ -1025,7 +1025,58 @@
     {
         "name": "Stellar",
         "symbol": "STR",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "https://www.stellar.org/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"],
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/starcoinproject/starcoin",
+                "icon": "github.png",
+                "tags": ["Main","Code"],
+            },
+            {
+                "name": "Documentation",
+                "url": "https://www.stellar.org/papers/stellar-consensus-protocol.pdf",
+                "icon": "whitepaper.png",
+                "tags": ["Main","Science"],
+            },
+            {
+                "name": "explorer",
+                "url": "http://stellarchain.io/",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"],
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/stellarorg",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"],
+            },
+            {
+                "name": "forum",
+                "url": "https://stellartalk.org/",
+                "icon": "forum.png",
+                "tags": ["Apps"],
+            },
+            {
+                "name": "blog",
+                "url": "https://www.stellar.org/blog/",
+                "icon": "blog.png",
+                "tags": ["Apps"],
+            },
+            {
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/stellar",
+                "icon": "reddit.png",
+                "tags": ["Apps"],
+            }
+        ],
         "metrics": {
             "announce": "19/07/2013",
             "genesis": "19/07/2013",
@@ -1042,90 +1093,9 @@
             "mintConfirm": 70,
             "ann": "https://bitcointalk.org/index.php?topic=259012.0",
             "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": null,
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/starcoinproject/starcoin",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Science"
-                    ],
-                    "name": "Documentation",
-                    "url": "https://www.stellar.org/papers/stellar-consensus-protocol.pdf",
-                    "icon": "whitepaper.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "https://www.stellar.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "http://stellarchain.io/",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/stellarorg",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://stellartalk.org/",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "blog",
-                    "url": "https://www.stellar.org/blog/",
-                    "icon": "blog.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "https://www.reddit.com/r/stellar",
-                    "icon": "reddit.png"
-                }
-            ],
             "type": "DAO",
             "rating": 3,
             "consensus": "Federated Consensus",
-            "dependencies": "independent",
             "hashtag": "#stellar"
         },
         "aliases": {
