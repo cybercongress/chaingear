@@ -306,7 +306,7 @@
         "blockchain_id": ,
         "dependencies": "independent",
         "source": "cyberFund",
-       "descriptions": {
+        "descriptions": {
             "short_description": "Blockchain based game platfrom",
             "summary": "BitShares PLAY leverages the block chain technology, in an attempts to establish a decentralized autonomous gaming platform. Any third party can develop provably fair games, both traditional as well as types that has never been seen before. These games can be both entertaining and provably fair, all at the same time.",
         },
@@ -381,8 +381,13 @@
         "name": "Bitcoin",
         "symbol": "BTC",
         "blockchain_id": "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+        "dependencies": "independent",
         "source": "cyberFund",
         "metrics": {
+            "type": "DAO",
+            "rating": 5,
+            "consensus": "Bitcoin Proof-of-Work",
+            "hashtag": "#bitcoin",
             "announce": "31/10/2008",
             "genesis": "03/01/2009",
             "status": "Running",
@@ -398,83 +403,57 @@
             "mintConfirm": 120,
             "ann": "http://article.gmane.org/gmane.comp.encryption.general/12588/",
             "algo": "SHA-256d",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://bitcoin.org/en/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/bitcoin/bitcoin",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Science"
-                    ],
-                    "name": "Documentation",
-                    "url": "https://bitcoin.org/bitcoin.pdf",
-                    "icon": "whitepaper.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "https://blockchain.info/",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/Bitcoin",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://bitcointalk.org/",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "blog",
-                    "url": "https://blog.bitcoinfoundation.org/",
-                    "icon": "blog.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "http://www.reddit.com/r/Bitcoin/",
-                    "icon": "reddit.png"
-                }
-            ],
-            "type": "DAO",
-            "rating": 5,
-            "consensus": "Bitcoin Proof-of-Work",
-            "dependencies": "independent",
-            "hashtag": "#bitcoin"
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://bitcoin.org/en/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"],
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/bitcoin/bitcoin",
+                "icon": "github.png",
+                "tags": ["Main","Code"],
+            },
+            {
+                "name": "Documentation",
+                "url": "https://bitcoin.org/bitcoin.pdf",
+                "icon": "whitepaper.png",
+                "tags": ["Main","Science"],
+            },
+            {
+                "name": "explorer",
+                "url": "https://blockchain.info/",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"],
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/Bitcoin",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"],
+            },
+            {
+                "name": "forum",
+                "url": "https://bitcointalk.org/",
+                "icon": "forum.png",
+                "tags": ["Apps"],
+            },
+            {
+                "name": "blog",
+                "url": "https://blog.bitcoinfoundation.org/",
+                "icon": "blog.png",
+                "tags": ["Apps"],
+            },
+            {
+                "name": "reddit",
+                "url": "http://www.reddit.com/r/Bitcoin/",
+                "icon": "reddit.png",
+                "tags": ["Apps"],
+            },
+        ],
         "aliases": {
             "CoinMarketCap": "Bitcoin",
             "CurrencyName": "Bitcoin"
@@ -484,6 +463,56 @@
         "name": "Ripple",
         "symbol": "XRP",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "www.ripple.com",
+                "icon": "website.png",
+                "tags": ["Main","Apps"],
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/ripple",
+                "icon": "github.png",
+                "tags": ["Main","Code"],
+            },
+            {
+                "name": "Documentation",
+                "url": "https://ripple.com/consensus-whitepaper/",
+                "icon": "whitepaper.png",
+                "tags": ["Main","Science"],
+            },
+            {
+                "name": "explorer",
+                "url": "https://www.ripplecharts.com/",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"],
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/Ripple",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"],
+            },
+            {
+                "name": "forum",
+                "url": "https://forum.ripple.com/",
+                "icon": "forum.png",
+                "tags": ["Main"],
+            },
+            {
+                "name": "blog",
+                "url": "https://ripple.com/blog/",
+                "icon": "blog.png",
+                "tags": ["Main"],
+            },
+            {
+                "name": "reddit",
+                "url": "www.reddit.com/r/Ripple/",
+                "icon": "reddit.png",
+                "tags": ["Main",],
+            }
+        ],
         "metrics": {
             "announce": "26/09/2013",
             "genesis": null,
@@ -499,77 +528,6 @@
             "txsConfirm": null,
             "mintConfirm": null,
             "ann": "https://bitcointalk.org/index.php?topic=301635.0",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "www.ripple.com",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/ripple",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Science"
-                    ],
-                    "name": "Documentation",
-                    "url": "https://ripple.com/consensus-whitepaper/",
-                    "icon": "whitepaper.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "https://www.ripplecharts.com/",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/Ripple",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://forum.ripple.com/",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "blog",
-                    "url": "https://ripple.com/blog/",
-                    "icon": "blog.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "www.reddit.com/r/Ripple/",
-                    "icon": "reddit.png"
-                }
-            ],
             "type": "DAO",
             "rating": 5,
             "consensus": "Federated Consensus",
