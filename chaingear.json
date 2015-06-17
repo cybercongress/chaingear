@@ -150,6 +150,7 @@
         "name": "Factom",
         "symbol": "FID",
         "blockchain_id": ,
+        "dependencies": "Bitcoin",
         "source": "cyberFund",
         "descriptions": {
             "short_description": "A Data Layer For The Blockchain",
@@ -185,7 +186,6 @@
             "type": "DAO",
             "rating": 3,
             "consensus": "Bitcoin",
-            "dependencies": "Bitcoin",
             "cap": {
                 "usd": 658442,
                 "btc": 2920
@@ -205,7 +205,7 @@
             "funding_operator": "koinify",
             "funding_url": "https://koinify.com/#/project/FACTOM",
             "tokens_sold": 4379973
-        },         
+        },
     },
     {
         "name": "cyberFund",
@@ -254,46 +254,106 @@
     {
         "name": "BitShares Music",
         "symbol": "NOTE",
+        "blockchain_id": ,
+        "dependencies": "independent",
         "source": "cyberFund",
+        "descriptions": {
+            "short_description": "The Ultimate One Stop Music Platform",
+            "summary": "Notes at present are a User Issued Asset (UIA) on the BitShares network. They are a liquid and tradable crypto-token that each represent 1 unit of the upcoming fan engagement and intellectual property management blockchain currently referred to as BitShares Music.",
+        },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://whatarenotes.info/",
+                "icon": "website.png",
+                "tags": ["Main", "Apps"],
+            },
+            {
+                "name": "forum",
+                "url": "https://bitsharestalk.org/index.php/board,54.0.html",
+                "icon": "forum.png",
+                "tags": ["Apps"],
+            },
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 3,
             "consensus": "DPOS",
-            "dependencies": "independent",
             "cap": {
                 "usd": 1796656,
                 "btc": 7963
             },
             "supply": 1274224570,
             "timestamp": 1431342962,
-            "links": []
         },
         "aliases": {
             "CoinMarketCap": "NOTE",
             "CurrencyName": "BitShares Music"
-        }
+        },
+        "crowdsales": {
+            "start_date": "06/10/2014",
+            "end_date": "4/12/2014",
+            "genesis_address": "37X8DHpfiimB7PU5y35rfBcg5Vxj2R6umL",
+            "funding_tems": "http://www.bitsharesmusicfoundation.org/assets/files/legal/Notes-Sale-Agreement.pdf",
+            "funding_operator": "ags",
+            "funding_url": "http://www1.agsexplorer.com/",
+            "tokens_sold": 300000000
+        },
     },
     {
         "name": "BitShares Play",
         "symbol": "PLS",
+        "blockchain_id": ,
+        "dependencies": "independent",
         "source": "cyberFund",
+       "descriptions": {
+            "short_description": "Blockchain based game platfrom",
+            "summary": "BitShares PLAY leverages the block chain technology, in an attempts to establish a decentralized autonomous gaming platform. Any third party can develop provably fair games, both traditional as well as types that has never been seen before. These games can be both entertaining and provably fair, all at the same time.",
+        },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://dacplay.org/en/",
+                "icon": "website.png",
+                "tags": ["Main", "Apps"],
+            },
+            {
+                "name": "Documentation",
+                "url": "http://dacplay.org/en/#whitepaper",
+                "icon": "whitepaper.png",
+                "tags": ["Main", "Apps"],
+            },
+            {
+                "name": "forum",
+                "url": "http://playtalk.org/",
+                "icon": "forum.png",
+                "tags": ["Apps"],
+            },
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 3,
             "consensus": "DPOS",
-            "dependencies": "independent",
             "cap": {
                 "usd": 4520000,
                 "btc": 20000
             },
             "supply": 1999999910,
             "timestamp": 1431342962,
-            "links": []
         },
         "aliases": {
             "CoinMarketCap": "BitShares Play",
             "CurrencyName": "BitShares Play"
-        }
+        },
+        "crowdsales": {
+            "start_date": "5/1/2015",
+            "end_date": "2/2/2015",
+            "genesis_address": "3DPD7z66T7DXULvFZUsc4xNcVS2q68TM3u",
+            "funding_tems": "https://dacx.com/play/index_en.html",
+            "funding_operator": "ags",
+            "funding_url": "http://www1.agsexplorer.com/",
+            "tokens_sold": 1999999886
+        },
     },
     {
         "name": "Moonstone",
