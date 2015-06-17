@@ -3,6 +3,22 @@
         "name": "Ethereum",
         "symbol": "ETH",
         "source": "cyberFund",
+        "short_description": "A Next-Generation Smart Contract and Decentralized Application Platform",
+        "summary": "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority.",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://ethereum.org/",
+                "icon": "website.png",
+                "tags": ["Main", "Apps"],
+            },
+            {
+                "name": "Documentation",
+                "url": "https://https://github.com/ethereum/wiki/wiki/White-Paper",
+                "icon": "whitepaper.png",
+                "tags": ["Main", "Apps"],                
+            },
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 5,
@@ -13,22 +29,46 @@
                 "btc": 31529
             },
             "supply": 60102216,
-            "timestamp": 1431342962,
-            "links": []
+            "timestamp": 1431342962, 
         },
         "aliases": {
             "CoinMarketCap": "Ethereum",
             "CurrencyName": "Ethereum"
-        }
-    },
+        },
+        "crowdsales": {
+            "start_date": "22/7/2014",
+            "end_date": "2/9/2014",
+            "genesis_address": "36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2",
+            "funding_tems": "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf",
+            "funding_operator": ,
+            "funding_url": "https://www.ethereum.org/ether",
+            "tokens_sold": 60102216
+        } 
+    },         
     {
         "name": "Neucoin",
         "symbol": "NEU",
         "source": "cyberFund",
+        "short_description": "A decentralized cryptocurrency designed for online microtransactions",
+        "summary": "NeuCoin has partnered with major music and video content providers to develop micro-payment solutions for tipping, pay-per-view, ad-free and micro-subscriptions, with user acquisition fueled by freemium distribution of NeuCoin.",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.neucoin.org/",
+                "icon": "website.png",
+                "tags": ["Main", "Apps"],
+            },
+            {
+                "name": "Documentation",
+                "url": "http://www.neucoin.org/en/whitepaper/",
+                "icon": "whitepaper.png",
+                "tags": ["Main", "Apps"],
+            },
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 3,
-            "consensus": "Ethereum",
+            "consensus": "POS",
             "dependencies": "independent",
             "cap": {
                 "usd": 911000,
@@ -36,12 +76,20 @@
             },
             "supply": 100000000,
             "timestamp": 1431342962,
-            "links": []
         },
         "aliases": {
             "CoinMarketCap": "Neucoin",
             "CurrencyName": "Neucoin"
-        }
+        },
+        "crowdsales": {
+            "start_date": "28/4/2015",
+            "end_date": "1/5/2015",
+            "genesis_address": "3MrNuksZ1VePU3dGiSQFiouWerJUJgDkfH",
+            "funding_tems": "http://www.neucoin.org/en/wiki/#funding-amp-presale",
+            "funding_operator": ,
+            "funding_url": "http://www.neucoin.org/",
+            "tokens_sold": 100000000
+        },         
     },
     {
         "name": "Synereo",
