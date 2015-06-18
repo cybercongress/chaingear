@@ -2673,13 +2673,38 @@
     {
         "name": "Blocknet",
         "symbol": "BLOCK",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+        	{
+                "name": "web site",
+                "url": "http://blocknet.co/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "explorer",
+                "url": "http://block.blockexplorer.cc/chain/Blocknet",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]	
+        	},
+        	{
+                "name": "twitter",
+                "url": "https://twitter.com/The_Blocknet",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "blog",
+                "url": "http://blocknet.co/blog/",
+                "icon": "blog.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 2,
-            "consensus": "Proof-of-Stake",
-            "dependencies": "independent",
-            "links": []
+            "consensus": "Proof-of-Stake"
         },
         "aliases": {
             "CoinMarketCap": "Blocknet",
@@ -2689,7 +2714,52 @@
     {
         "name": "ReddCoin",
         "symbol": "RDD",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.reddcoin.com/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/reddcoin/reddcoin",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "explorer",
+                "url": "http://live.reddcoin.com/",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/reddcoin",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "forum",
+                "url": "https://www.reddcointalk.org/",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "blog",
+                "url": "https://www.reddcoin.com/blog/",
+                "icon": "blog.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/reddCoin/",
+                "icon": "reddit.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "announce": "20/01/2014",
             "genesis": null,
@@ -2706,72 +2776,9 @@
             "mintConfirm": null,
             "ann": "https://bitcointalk.org/index.php?topic=423597.0",
             "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.reddcoin.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/reddcoin/reddcoin",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "http://live.reddcoin.com/",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/reddcoin",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://www.reddcointalk.org/",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "blog",
-                    "url": "https://www.reddcoin.com/blog/",
-                    "icon": "blog.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "https://www.reddit.com/r/reddCoin/",
-                    "icon": "reddit.png"
-                }
-            ],
             "type": "DAO",
             "rating": 3,
             "consensus": "Proof-of-Stake Velocity",
-            "dependencies": "independent",
             "hashtag": "#Reddcoin"
         },
         "aliases": {
