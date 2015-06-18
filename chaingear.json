@@ -2789,7 +2789,22 @@
     {
         "name": "Infinitecoin",
         "symbol": "IFC",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+                {
+                    "name": "web site",
+                    "url": "http://infinitecoin.org/",
+                    "icon": "website.png",
+                    "tags": ["Main","Apps"]
+                },
+                {
+                    "name": "github",
+                    "url": "https://github.com/infinitecoin/infinitecoin",
+                    "icon": "github.png",
+                    "tags": ["Main","Code"]
+                }
+            ],
         "metrics": {
             "announce": "05/06/2013",
             "genesis": "05/06/2013",
@@ -2806,30 +2821,9 @@
             "mintConfirm": null,
             "ann": "https://bitcointalk.org/index.php?topic=225891.0",
             "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://infinitecoin.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/infinitecoin/infinitecoin",
-                    "icon": "github.png"
-                }
-            ],
             "type": "DAO",
             "rating": 1,
-            "consensus": "Proof-of-Work",
-            "dependencies": "independent"
+            "consensus": "Proof-of-Work"
         },
         "aliases": {
             "CoinMarketCap": "Infinitecoin",
@@ -2839,7 +2833,22 @@
     {
         "name": "Quark",
         "symbol": "QRK",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.quarkcoin.com/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/MaxGuevara/quark",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            }
+        ],
         "metrics": {
             "announce": "21/07/2013",
             "genesis": "21/07/2013",
@@ -2856,30 +2865,9 @@
             "mintConfirm": null,
             "ann": "https://bitcointalk.org/index.php?topic=260031.0",
             "algo": "Quark",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.quarkcoin.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/MaxGuevara/quark",
-                    "icon": "github.png"
-                }
-            ],
             "type": "DAO",
             "rating": 1,
-            "consensus": "Proof-of-Work",
-            "dependencies": "independent"
+            "consensus": "Proof-of-Work"
         },
         "aliases": {
             "CoinMarketCap": "Quark",
