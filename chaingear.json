@@ -1605,58 +1605,45 @@
     {
         "name": "MonaCoin",
         "symbol": "MONA",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://monacoin.org/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "explorer",
+                "url": "https://mona.chainsight.info/",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/monacoinproject/monacoin",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "forum",
+                "url": "https://bitcointalk.org/index.php?topic=392436.0",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "reddit",
+                "url": "http://www.reddit.com/r/monacoin",
+                "icon": "reddit.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 1,
             "consensus": "Proof-of-Work",
-            "dependencies": "independent",
-            "hashtag": "#monacoin",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://monacoin.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "https://mona.chainsight.info/",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/monacoinproject/monacoin",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://bitcointalk.org/index.php?topic=392436.0",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "http://www.reddit.com/r/monacoin",
-                    "icon": "reddit.png"
-                }
-            ]
+            "hashtag": "#monacoin"
         },
         "aliases": {
             "CoinMarketCap": "MonaCoin",
@@ -1666,7 +1653,58 @@
     {
         "name": "Bytecoin",
         "symbol": "BCN",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "https://bytecoin.org",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/amjuarez/bytecoin",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "Documentation",
+                "url": "https://cryptonote.org/whitepaper.pdf",
+                "icon": "whitepaper.png",
+                "tags": ["Main","Science"]
+            },
+            {
+                "name": "explorer",
+                "url": "http://chainradar.com/bcn/blocks",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/Bytecoin_BCN",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "forum",
+                "url": "https://bitcointalk.org/index.php?topic=512747.0",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "blog",
+                "url": "http://bytecoin.org/blog",
+                "icon": "blog.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "reddit",
+                "url": "http://www.reddit.com/r/BytecoinBCN/",
+                "icon": "reddit.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "announce": "30/06/2012",
             "genesis": "4/07/2012",
@@ -1681,81 +1719,9 @@
             "txsConfirm": null,
             "mintConfirm": null,
             "algo": "CryptoNight",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "https://bytecoin.org",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/amjuarez/bytecoin",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Science"
-                    ],
-                    "name": "Documentation",
-                    "url": "https://cryptonote.org/whitepaper.pdf",
-                    "icon": "whitepaper.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "http://chainradar.com/bcn/blocks",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/Bytecoin_BCN",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://bitcointalk.org/index.php?topic=512747.0",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "blog",
-                    "url": "http://bytecoin.org/blog",
-                    "icon": "blog.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "http://www.reddit.com/r/BytecoinBCN/",
-                    "icon": "reddit.png"
-                }
-            ],
             "type": "DAO",
             "rating": 3,
             "consensus": "Proof-of-Work",
-            "dependencies": "independent",
             "hashtag": "#bytecoin"
         },
         "aliases": {
