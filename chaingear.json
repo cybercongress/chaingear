@@ -2176,7 +2176,22 @@
     {
         "name": "BitcoinDark",
         "symbol": "BTCD",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.bitcoindark.org/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/laowais/bitcoindark",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            }
+        ],
         "metrics": {
             "announce": "09/07/2014",
             "genesis": null,
@@ -2193,30 +2208,9 @@
             "mintConfirm": null,
             "ann": "https://bitcointalk.org/index.php?topic=684090.0",
             "algo": "SHA-256d",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.bitcoindark.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/laowais/bitcoindark",
-                    "icon": "github.png"
-                }
-            ],
             "type": "DAO",
             "rating": 1,
-            "consensus": "Proof-of-Stake",
-            "dependencies": "independent"
+            "consensus": "Proof-of-Stake"
         },
         "aliases": {
             "CoinMarketCap": "BitcoinDark",
@@ -2226,23 +2220,20 @@
     {
         "name": "CoinoUSD",
         "symbol": "COINO",
+        "dependencies": "NXT",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "https://coinomat.com",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            }
+        ],
         "metrics": {
             "type": "DApp",
             "rating": 2,
-            "consensus": "NXT",
-            "dependencies": "NXT",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "https://coinomat.com",
-                    "icon": "website.png"
-                }
-            ]
+            "consensus": "NXT"
         },
         "aliases": {
             "CoinMarketCap": "CoinoUSD",
