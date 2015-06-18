@@ -2313,23 +2313,20 @@
     {
         "name": "ARCHcoin",
         "symbol": "ARCH",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.archcoin.co/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            }
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 1,
-            "consensus": "Proof-of-Stake",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.archcoin.co/",
-                    "icon": "website.png"
-                }
-            ]
+            "consensus": "Proof-of-Stake"
         },
         "aliases": {
             "CoinMarketCap": "ARCHcoin",
@@ -2339,13 +2336,20 @@
     {
         "name": "NXTventure",
         "symbol": "NXTV",
+        "dependencies": "NXT",
         "source": "cyberFund",
+        "links": [
+        	{
+        		"name": "forum",
+                "url": "https://nxtforum.org/nxtventures/nxtventure-the-way-for-the-most-promising-enterprises-to-get-ae-listing/",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+        	}
+        ],
         "metrics": {
             "type": "DApp",
             "rating": 1,
-            "consensus": "NXT",
-            "dependencies": "NXT",
-            "links": []
+            "consensus": "NXT"
         },
         "aliases": {
             "CoinMarketCap": "NXTventure",
@@ -2355,23 +2359,20 @@
     {
         "name": "SolarFarm",
         "symbol": "CELL",
+        "dependencies": "NXT",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "https://asset.cryptomining.farm/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            }
+        ],
         "metrics": {
             "type": "DApp",
             "rating": 1,
-            "consensus": "NXT",
-            "dependencies": "NXT",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "https://asset.cryptomining.farm/",
-                    "icon": "website.png"
-                }
-            ]
+            "consensus": "NXT"
         },
         "aliases": {
             "CoinMarketCap": "SolarFarm",
