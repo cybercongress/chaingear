@@ -1509,23 +1509,20 @@
     {
         "name": "SuperNET",
         "symbol": "UNITY",
+       	"dependencies": "NXT",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://thesupernet.org/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            }
+        ],
         "metrics": {
             "type": "DApp",
             "rating": 2,
-            "consensus": "NXT",
-            "dependencies": "NXT",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://thesupernet.org/",
-                    "icon": "website.png"
-                }
-            ]
+            "consensus": "NXT"
         },
         "aliases": {
             "CoinMarketCap": "SuperNET",
@@ -1535,7 +1532,52 @@
     {
         "name": "NuBits",
         "symbol": "NBT",
+        "dependencies": "Peercoin, NuShares",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "https://www.nubits.com/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": null,
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "Documentation",
+                "url": "https://nubits.com/about/white-paper",
+                "icon": "whitepaper.png",
+                "tags": ["Main","Science"]
+            },
+            {
+                "name": "explorer",
+                "url": "https://blockexplorer.nu/",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/OfficialNuBits",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "forum",
+                "url": "https://discuss.nubits.com/",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "reddit",
+                "url": "http://www.reddit.com/r/NuBits",
+                "icon": "reddit.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "announce": "20/09/2014",
             "genesis": null,
@@ -1550,73 +1592,9 @@
             "txsConfirm": null,
             "mintConfirm": null,
             "ann": "https://bitcointalk.org/index.php?topic=789964.0",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "https://www.nubits.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": null,
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Science"
-                    ],
-                    "name": "Documentation",
-                    "url": "https://nubits.com/about/white-paper",
-                    "icon": "whitepaper.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "https://blockexplorer.nu/",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/OfficialNuBits",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://discuss.nubits.com/",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "http://www.reddit.com/r/NuBits",
-                    "icon": "reddit.png"
-                }
-            ],
             "type": "DApp",
             "rating": 3,
             "consensus": "Peercoin",
-            "dependencies": "Peercoin, NuShares",
             "hashtag": "#nubits"
         },
         "aliases": {
