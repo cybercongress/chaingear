@@ -1732,14 +1732,45 @@
     {
         "name": "Mastercoin (Omni)",
         "symbol": "MSC",
+        "dependencies": "Bitcoin",
         "source": "cyberFund",
         "icon": "omnilayer",
+        "links": [
+        	{
+        		"name": "web site",
+                "url": "http://www.omni.foundation/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+        	},
+        	{
+                "name": "github",
+                "url": "https://github.com/mastercoin-MSC",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+        	{
+                "name": "explorer",
+                "url": "http://omnichest.info/",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "blog",
+                "url": "http://blog.omni.foundation/",
+                "icon": "blog.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/omni/",
+                "icon": "reddit.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "type": "DApp",
             "rating": 3,
-            "consensus": "Bitcoin",
-            "dependencies": "Bitcoin",
-            "links": []
+            "consensus": "Bitcoin"
         },
         "aliases": {
             "CoinMarketCap": "Mastercoin (Omni)",
@@ -1749,58 +1780,47 @@
     {
         "name": "FuelCoin",
         "symbol": "FC2",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://fuelcrypto.com/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "explorer",
+                "url": "http://blockexperts.com/fc2",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/FuelCoinDev/FC2-Source",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/FuelTeam1",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "section": [
+                    "Apps"
+                ],
+                "name": "forum",
+                "url": "https://bitcointalk.org/index.php?topic=589879.0",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 1,
-            "consensus": "Proof-of-Stake",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://fuelcrypto.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "http://blockexperts.com/fc2",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/FuelCoinDev/FC2-Source",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/FuelTeam1",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://bitcointalk.org/index.php?topic=589879.0",
-                    "icon": "forum.png"
-                }
-            ]
+            "consensus": "Proof-of-Stake"
         },
         "aliases": {
             "CoinMarketCap": "FuelCoin",
