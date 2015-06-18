@@ -2088,31 +2088,26 @@
     {
         "name": "TileCoin",
         "symbol": "XTC",
+        "dependencies": "Bitcoin, Counterparty",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "https://www.tilepay.org/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "forum",
+                "url": "https://bitcointalk.org/index.php?topic=761852.0",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "type": "DApp",
             "rating": 2,
-            "consensus": "Counterparty",
-            "dependencies": "Bitcoin, Counterparty",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "https://www.tilepay.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://bitcointalk.org/index.php?topic=761852.0",
-                    "icon": "forum.png"
-                }
-            ]
+            "consensus": "Counterparty"
         },
         "aliases": {
             "CoinMarketCap": "TileCoin",
@@ -2122,75 +2117,56 @@
     {
         "name": "BlackCoin",
         "symbol": "BLK",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "Documentation",
+                "url": "http://blackcoin.co/blackcoin-pos-protocol-v2-whitepaper.pdf",
+                "icon": "whitepaper.png",
+                "tags": ["Main","Science"]
+            },
+            {
+                "name": "web site",
+                "url": "http://blackcoin.co/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "explorer",
+                "url": "https://bitinfocharts.com/blackcoin/explorer/",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/rat4/blackcoin",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/coinblack",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "forum",
+                "url": "http://blkfeed.com/",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "reddit",
+                "url": "http://www.reddit.com/r/blackcoin/",
+                "icon": "reddit.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 2,
-            "consensus": "Proof-of-Stake",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Science"
-                    ],
-                    "name": "Documentation",
-                    "url": "http://blackcoin.co/blackcoin-pos-protocol-v2-whitepaper.pdf",
-                    "icon": "whitepaper.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://blackcoin.co/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "https://bitinfocharts.com/blackcoin/explorer/",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/rat4/blackcoin",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/coinblack",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "http://blkfeed.com/",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "http://www.reddit.com/r/blackcoin/",
-                    "icon": "reddit.png"
-                }
-            ]
+            "consensus": "Proof-of-Stake"
         },
         "aliases": {
             "CoinMarketCap": "BlackCoin",
