@@ -1996,7 +1996,46 @@
     {
         "name": "DarkNote",
         "symbol": "XDN",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://darknote.cc/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/ducknote/ducknote",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "explorer",
+                "url": "http://chainradar.com/xdn/blocks",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/DarkNote_XDN",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "forum",
+                "url": "https://bitcointalk.org/index.php?topic=788916.0",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "reddit",
+                "url": "reddit.com/r/darknote",
+                "icon": "reddit.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "announce": "31/05/2014",
             "genesis": null,
@@ -2013,64 +2052,9 @@
             "mintConfirm": null,
             "ann": "https://bitcointalk.org/index.php?topic=788916.0",
             "algo": "CryptoNight",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://darknote.cc/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/ducknote/ducknote",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "http://chainradar.com/xdn/blocks",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/DarkNote_XDN",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://bitcointalk.org/index.php?topic=788916.0",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "reddit.com/r/darknote",
-                    "icon": "reddit.png"
-                }
-            ],
             "type": "DAO",
             "rating": 1,
             "consensus": "Proof-of-Work",
-            "dependencies": "independent",
             "hashtag": "#DarkNote"
         },
         "aliases": {
@@ -2081,23 +2065,20 @@
     {
         "name": "InstantDEX",
         "symbol": "DEX",
+        "dependencies": "NXT",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://instantdex.org/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            }
+        ],
         "metrics": {
             "type": "DApp",
             "rating": 2,
-            "consensus": "NXT",
-            "dependencies": "NXT",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://instantdex.org/",
-                    "icon": "website.png"
-                }
-            ]
+            "consensus": "NXT"
         },
         "aliases": {
             "CoinMarketCap": "InstantDEX",
