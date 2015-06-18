@@ -1181,23 +1181,20 @@
     {
         "name": "PayCoin",
         "symbol": "XPY",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.paycoin.com/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            }
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 1,
-            "consensus": "Proof-of-Stake",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.paycoin.com/",
-                    "icon": "website.png"
-                }
-            ]
+            "consensus": "Proof-of-Stake"
         },
         "aliases": {
             "CoinMarketCap": "PayCoin",
@@ -1207,7 +1204,58 @@
     {
         "name": "Namecoin",
         "symbol": "NMC",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://namecoin.info/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/namecoin-qt/namecoin-qt",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "Documentation",
+                "url": "https://wiki.namecoin.info/index.php?title=Welcome",
+                "icon": "whitepaper.png",
+                "tags": ["Main","Science"]
+            },
+            {
+                "name": "explorer",
+                "url": "https://explorer.namecoin.info/",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/namecoin",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "forum",
+                "url": "https://forum.namecoin.info/",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "blog",
+                "url": "http://blog.namecoin.org/",
+                "icon": "blog.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/namecoin",
+                "icon": "reddit.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "announce": "15/04/2011",
             "genesis": "19/04/2011",
@@ -1224,81 +1272,9 @@
             "mintConfirm": 120,
             "ann": null,
             "algo": "SHA-256d",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://namecoin.info/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/namecoin-qt/namecoin-qt",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Science"
-                    ],
-                    "name": "Documentation",
-                    "url": "https://wiki.namecoin.info/index.php?title=Welcome",
-                    "icon": "whitepaper.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "https://explorer.namecoin.info/",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/namecoin",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://forum.namecoin.info/",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "blog",
-                    "url": "http://blog.namecoin.org/",
-                    "icon": "blog.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "https://www.reddit.com/r/namecoin",
-                    "icon": "reddit.png"
-                }
-            ],
             "type": "DAO",
             "rating": 3,
             "consensus": "Proof-of-Work",
-            "dependencies": "independent",
             "hashtag": "#namecoin"
         },
         "aliases": {
