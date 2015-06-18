@@ -13,17 +13,6 @@ _.each(filenames, function(filename){
   }
 
 });
-console.log(result.length);
-fs.writeFileSync(path.join(__dirname,"..","chaingear.json"), JSON.stringify(result, null, 4));
 
-/*
-var idx = 0;
-_.each(chaingear, function(system){
-  idx++;
-  if (!system.name) {
-    throw new Error("system must have name")
-  }
-  var filename = idx+"-" + system.name + ".json";
-  fs.writeFileSync(filename,  JSON.stringify(system, null, 4));
-});
-*/
+fs.writeFileSync(path.join(__dirname,"..","chaingear.json"), JSON.stringify(result, null, 4));
+console.log("combined "+ result.length + " entries into chaingear.json");
