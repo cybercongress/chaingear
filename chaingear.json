@@ -2478,7 +2478,46 @@
     {
         "name": "Novacoin",
         "symbol": "NVC",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": null,
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/CryptoManiac/novacoin/",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "web site",
+                "url": "http://novacoin.org/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "explorer",
+                "url": "https://explorer.novaco.in/",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "forum",
+                "url": "https://bitcointalk.org/index.php?board=67.0",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "reddit",
+                "url": "http://www.reddit.com/r/novacoin",
+                "icon": "reddit.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "announce": "02/11/2012",
             "genesis": "06/02/2013",
@@ -2495,64 +2534,9 @@
             "mintConfirm": null,
             "ann": "https://bitcointalk.org/index.php?topic=143221.0",
             "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": null,
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/CryptoManiac/novacoin/",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://novacoin.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "https://explorer.novaco.in/",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://bitcointalk.org/index.php?board=67.0",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "http://www.reddit.com/r/novacoin",
-                    "icon": "reddit.png"
-                }
-            ],
             "type": "DAO",
             "rating": 1,
-            "consensus": "Hybrid POW-POS",
-            "dependencies": "independent"
+            "consensus": "Hybrid POW-POS"
         },
         "aliases": {
             "CoinMarketCap": "Novacoin",
@@ -2562,75 +2546,56 @@
     {
         "name": "Navajo",
         "symbol": "NAV",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "Documentation",
+                "url": "http://navajocoin.org/pdf/navajocoin.pdf",
+                "icon": "whitepaper.png",
+                "tags": ["Main","Science"]
+            },
+            {
+                "name": "web site",
+                "url": "http://navajocoin.org/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "explorer",
+                "url": "http://navajocoin.org/block-explorer",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/sherlockcoin/navajocoin",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/NavajoCoin",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "forum",
+                "url": "http://forum.navajocointalk.org/",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "reddit",
+                "url": "http://www.reddit.com/r/navajocoin",
+                "icon": "reddit.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 1,
-            "consensus": "Proof-of-Stake",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Science"
-                    ],
-                    "name": "Documentation",
-                    "url": "http://navajocoin.org/pdf/navajocoin.pdf",
-                    "icon": "whitepaper.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://navajocoin.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "http://navajocoin.org/block-explorer",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/sherlockcoin/navajocoin",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/NavajoCoin",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "http://forum.navajocointalk.org/",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "http://www.reddit.com/r/navajocoin",
-                    "icon": "reddit.png"
-                }
-            ]
+            "consensus": "Proof-of-Stake"
         },
         "aliases": {
             "CoinMarketCap": "Navajo",
@@ -2640,7 +2605,46 @@
     {
         "name": "Unobtanium",
         "symbol": "UNO",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "github",
+                "url": "https://github.com/thegreatoldone/Unobtanium",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "web site",
+                "url": "http://unobtanium.uno/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "explorer",
+                "url": "https://chainz.cryptoid.info/uno/",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/unobtanium_uno",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "forum",
+                "url": "https://bitcointalk.org/index.php?topic=527500.0",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "reddit",
+                "url": "http://www.reddit.com/r/unobtanium",
+                "icon": "reddit.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "announce": "17/10/2013",
             "genesis": "18/10/2013",
@@ -2657,73 +2661,9 @@
             "mintConfirm": null,
             "ann": "https://bitcointalk.org/index.php?topic=313126.0",
             "algo": "SHA-256d",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": null,
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/thegreatoldone/Unobtanium",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://unobtanium.uno/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "https://chainz.cryptoid.info/uno/",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/unobtanium_uno",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://bitcointalk.org/index.php?topic=527500.0",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "http://www.reddit.com/r/unobtanium",
-                    "icon": "reddit.png"
-                }
-            ],
             "type": "DAO",
             "rating": 1,
-            "consensus": "Proof-of-Work",
-            "dependencies": "independent"
+            "consensus": "Proof-of-Work"
         },
         "aliases": {
             "CoinMarketCap": "Unobtanium",
