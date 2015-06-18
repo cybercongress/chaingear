@@ -2877,13 +2877,20 @@
     {
         "name": "Pangea Poker",
         "symbol": "PANGEA",
+        "dependencies": "NXT",
         "source": "cyberFund",
+        "links": [
+        	{
+        		"name": "web site",
+                "url": "http://www.pangeapoker.net/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]	
+        	}
+        ],
         "metrics": {
             "type": "DApp",
             "rating": 2,
-            "consensus": "NXT",
-            "dependencies": "NXT",
-            "links": []
+            "consensus": "NXT"
         },
         "aliases": {
             "CoinMarketCap": "Pangea Poker",
@@ -2894,6 +2901,21 @@
         "name": "Node",
         "symbol": "NODE",
         "source": "cyberFund",
+        "dependencies": "independent",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://nodecoin.com/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            }
+        ],
         "metrics": {
             "announce": "30/04/2014",
             "genesis": null,
@@ -2908,30 +2930,9 @@
             "txsConfirm": null,
             "mintConfirm": null,
             "ann": "https://bitcointalk.org/index.php?topic=590421.0",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://nodecoin.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "",
-                    "icon": "github.png"
-                }
-            ],
             "type": "DAO",
             "rating": 2,
-            "consensus": "Other",
-            "dependencies": "independent"
+            "consensus": "Other"
         },
         "aliases": {
             "CoinMarketCap": "Node",
@@ -2941,13 +2942,32 @@
     {
         "name": "VeriCoin",
         "symbol": "VRC",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+        	{
+        		"name": "web site",
+                "url": "http://www.vericoin.info/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/vericoin/vericoin",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "explorer",
+                "url": "https://chainz.cryptoid.info/vrc/",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            }
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 2,
-            "consensus": "Proof-of-Stake",
-            "dependencies": "independent",
-            "links": []
+            "consensus": "Proof-of-Stake"
         },
         "aliases": {
             "CoinMarketCap": "VeriCoin",
