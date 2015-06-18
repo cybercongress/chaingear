@@ -1830,7 +1830,46 @@
     {
         "name": "DNotes",
         "symbol": "NOTE",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://dnotescoin.com/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/DNotesCoin/DNotes/",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "explorer",
+                "url": "http://explorer.cryptoblox.com/chain/DNotes",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/DNotesCoin",
+                "icon": "twitter.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "forum",
+                "url": "https://bitcointalk.org/index.php?topic=470155.0",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            },
+            {
+                "name": "reddit",
+                "url": "http://www.reddit.com/r/DNotes/",
+                "icon": "reddit.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "announce": "16/02/2014",
             "genesis": null,
@@ -1847,64 +1886,9 @@
             "mintConfirm": null,
             "ann": "https://bitcointalk.org/index.php?topic=470155.0",
             "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://dnotescoin.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/DNotesCoin/DNotes/",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "http://explorer.cryptoblox.com/chain/DNotes",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "twitter",
-                    "url": "https://twitter.com/DNotesCoin",
-                    "icon": "twitter.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://bitcointalk.org/index.php?topic=470155.0",
-                    "icon": "forum.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "reddit",
-                    "url": "http://www.reddit.com/r/DNotes/",
-                    "icon": "reddit.png"
-                }
-            ],
             "type": "DAO",
             "rating": 2,
-            "consensus": "Proof-of-Work",
-            "dependencies": "independent"
+            "consensus": "Proof-of-Work"
         },
         "aliases": {
             "CoinMarketCap": "DNotes",
