@@ -2243,49 +2243,38 @@
     {
         "name": "Ethercoin",
         "symbol": "ETC",
+        "dependencies": "Bitcoin, Counterparty",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.ethercoin.cc/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "explorer",
+                "url": "http://explorer.ethercoin.cc/chain/Ethercoin",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "http://github.com/ethercoin/ethercoin",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "forum",
+                "url": "https://bitcointalk.org/index.php?topic=798031.0",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "type": "DApp",
             "rating": 2,
-            "consensus": "Counterparty",
-            "dependencies": "Bitcoin, Counterparty",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.ethercoin.cc/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "http://explorer.ethercoin.cc/chain/Ethercoin",
-                    "icon": "explorer.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "http://github.com/ethercoin/ethercoin",
-                    "icon": "github.png"
-                },
-                {
-                    "section": [
-                        "Apps"
-                    ],
-                    "name": "forum",
-                    "url": "https://bitcointalk.org/index.php?topic=798031.0",
-                    "icon": "forum.png"
-                }
-            ]
+            "consensus": "Counterparty"
         },
         "aliases": {
             "CoinMarketCap": "Ethercoin",
@@ -2295,32 +2284,26 @@
     {
         "name": "Clams",
         "symbol": "CLAM",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.clamcoin.org/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "explorer",
+                "url": "http://khashier.com/chain/Clam",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            }
+        ],
         "metrics": {
             "type": "DAO",
             "rating": 1,
-            "consensus": "Proof-of-Stake",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.clamcoin.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "explorer",
-                    "url": "http://khashier.com/chain/Clam",
-                    "icon": "explorer.png"
-                }
-            ]
+            "consensus": "Proof-of-Stake"
         },
         "aliases": {
             "CoinMarketCap": "Clams",
