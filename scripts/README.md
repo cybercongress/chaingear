@@ -1,10 +1,10 @@
 #### expectations
-i expect "/sources.json" to be filled with source data.
-thus, files can be modified separately.
+both scripts expect `sources.json/` directory to exist, 
+none of them checks its presence or tries to create
 
 #### installation
+run following command from `scripts/` folder
 ```
-$ cd scripts
 $ npm install
 ```
 
