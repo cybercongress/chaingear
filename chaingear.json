@@ -2977,7 +2977,22 @@
     {
         "name": "iXcoin",
         "symbol": "IXC",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://ixcoin.org/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/ixcoin/ixcoin/tree/Branch_v0.3.24",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            }
+        ],
         "metrics": {
             "announce": "10/08/2011",
             "genesis": null,
@@ -2994,30 +3009,9 @@
             "mintConfirm": 120,
             "ann": "https://bitcointalk.org/index.php?topic=36218.0",
             "algo": "SHA-256d",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://ixcoin.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/ixcoin/ixcoin/tree/Branch_v0.3.24",
-                    "icon": "github.png"
-                }
-            ],
             "type": "DAO",
             "rating": 1,
-            "consensus": "Proof-of-Work",
-            "dependencies": "independent"
+            "consensus": "Proof-of-Work"
         },
         "aliases": {
             "CoinMarketCap": "iXcoin",
@@ -3027,13 +3021,32 @@
     {
         "name": "Jinn",
         "symbol": "JINN",
+        "dependencies": "NXT",
         "source": "cyberFund",
+        "links": [
+        	{
+                "name": "github",
+                "url": "https://github.com/Come-from-Beyond/Jiniri",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            },
+            {
+                "name": "explorer",
+                "url": "http://nxtreporting.com/?as=3061160746493230502",
+                "icon": "explorer.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "forum",
+                "url": "https://nxtforum.org/jinn/",
+                "icon": "forum.png",
+                "tags": ["Apps"]
+            }
+        ],
         "metrics": {
             "type": "DApp",
             "rating": 2,
-            "consensus": "NXT",
-            "dependencies": "NXT",
-            "links": []
+            "consensus": "NXT"
         },
         "aliases": {
             "CoinMarketCap": "Jinn",
@@ -3043,13 +3056,26 @@
     {
         "name": "bitUSD",
         "symbol": "BITUSD",
+        "dependencies": "BitShares",
         "source": "cyberFund",
+        "links": [
+        	{
+        		"name": "web site",
+        		"url": "http://whatisbitusd.com/",
+        		"icon": "website.png",
+        		"tags": ["Main","Apps"]
+        	},
+        	{
+                "name": "Documentation",
+                "url": "http://whatisbitusd.com/whitepaper/",
+                "icon": "whitepaper.png",
+                "tags": ["Main","Code"]
+            }
+        ],
         "metrics": {
             "type": "DApp",
             "rating": 3,
-            "consensus": "BitShares",
-            "dependencies": "BitShares",
-            "links": []
+            "consensus": "BitShares"
         },
         "aliases": {
             "CoinMarketCap": "BitUSD",
@@ -3059,7 +3085,22 @@
     {
         "name": "Mintcoin",
         "symbol": "MINT",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://mintcoin.biz/",
+                "icon": "website.png",
+                "tags": ["Main","Apps"]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/mintcoinproject/mintcoin",
+                "icon": "github.png",
+                "tags": ["Main","Code"]
+            }
+        ],
         "metrics": {
             "announce": "05/02/2014",
             "genesis": null,
@@ -3075,30 +3116,9 @@
             "mintConfirm": 50,
             "ann": "https://bitcointalk.org/index.php?topic=450381.0",
             "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://mintcoin.biz/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/mintcoinproject/mintcoin",
-                    "icon": "github.png"
-                }
-            ],
             "type": "DAO",
             "rating": 1,
-            "consensus": "Proof-of-Stake",
-            "dependencies": "independent"
+            "consensus": "Proof-of-Stake"
         },
         "aliases": {
             "CoinMarketCap": "Mintcoin",
@@ -3108,13 +3128,13 @@
     {
         "name": "Gridcoin Classic",
         "symbol": "GRCX",
+        "dependencies": "independent",
         "source": "cyberFund",
+        "links": [],
         "metrics": {
             "type": "DAO",
             "rating": 3,
-            "consensus": "Proof-of-Research",
-            "dependencies": "independent",
-            "links": []
+            "consensus": "Proof-of-Research"
         },
         "aliases": {
             "CoinMarketCap": "Gridcoin Classic",
@@ -3124,13 +3144,13 @@
     {
         "name": "SkyNET",
         "symbol": "SKYNET",
+        "dependencies": "NXT",
         "source": "cyberFund",
+        "links": [],
         "metrics": {
             "type": "DApp",
             "rating": 2,
-            "consensus": "NXT",
-            "dependencies": "NXT",
-            "links": []
+            "consensus": "NXT"
         },
         "aliases": {
             "CoinMarketCap": "SkyNET",
