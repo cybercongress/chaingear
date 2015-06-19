@@ -28,8 +28,8 @@ You can add blockchain related projects in blockchain metadata.
 ```toml
 # This is a TOML document.
 name = "Ethereum"
-blockchain_id = null
-dependencies = independent
+blockchain_id = "null"
+dependencies = "independent"
 
 [descriptions]
 symbol = "ETH"
@@ -40,10 +40,10 @@ type = "DAO"
 consensus = "Ethereum"
 
 [links]
-name: "web site"
-url: "http://ethereum.org/"
-type: "website"
-tags: [ "Main", "Apps" ]
+name = "web site"
+url = "http://ethereum.org/"
+type = "website"
+tags = [ "Main", "Apps" ]
 
 [metrics]
 cyber_rating = 5
@@ -62,7 +62,7 @@ start_date = "22/7/2014"
 end_date = "2/9/2014"
 genesis_address = "36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2"
 funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf"
-funding_operator = null
+funding_operator = "null"
 funding_url = "https://www.ethereum.org/ether"
 tokens_sold = 60102216
 ```
