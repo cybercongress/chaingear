@@ -1,50 +1,26 @@
 {
-    "name": "Paycoin",
-    "symbol": "PYC",
+    "name": "PayCoin",
+    "symbol": "XPY",
+    "dependencies": "independent",
     "source": "cyberFund",
+    "links": [
+        {
+            "name": "web site",
+            "url": "http://www.paycoin.com/",
+            "icon": "website.png",
+            "tags": [
+                "Main",
+                "Apps"
+            ]
+        }
+    ],
     "metrics": {
-        "announce": "06/08/2013",
-        "genesis": null,
-        "status": "Running",
-        "p2p": 9288,
-        "rpc": 9289,
-        "blockTime": "60",
-        "reward": 5,
-        "halfingCycle": null,
-        "total": 3000000,
-        "premine": null,
-        "difficultyCycle": "every block",
-        "txsConfirm": 5,
-        "mintConfirm": 60,
-        "ann": "https://bitcointalk.org/index.php?topic=268941.0",
-        "algo": "Scrypt",
-        "links": [
-            {
-                "section": [
-                    "Main",
-                    "Apps"
-                ],
-                "name": "web site",
-                "url": null,
-                "icon": "website.png"
-            },
-            {
-                "section": [
-                    "Main",
-                    "Code"
-                ],
-                "name": "github",
-                "url": "https://github.com/paycoin/paycoin",
-                "icon": "github.png"
-            }
-        ],
         "type": "DAO",
-        "rating": 0,
-        "consensus": "Proof-of-Stake",
-        "dependencies": "independent"
+        "rating": 1,
+        "consensus": "Proof-of-Stake"
     },
     "aliases": {
-        "CoinMarketCap": "Paycoin",
-        "CurrencyName": "Paycoin"
+        "CoinMarketCap": "PayCoin",
+        "CurrencyName": "PayCoin"
     }
 }
