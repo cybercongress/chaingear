@@ -34,24 +34,24 @@ dependencies = independent
 [descriptions]
 symbol = "ETH"
 currency = "ether"
-short_description = "A Next-Generation Smart Contract and Decentralized Application Platform",
-"summary": "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority."
+short_description = "A Next-Generation Smart Contract and Decentralized Application Platform"
+"summary" = "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority."
 type = "DAO"
-consensus: "Ethereum"
+consensus = "Ethereum"
 
 [links]
-name: "web site",
-url: "http://ethereum.org/",
-type: "website",
+name: "web site"
+url: "http://ethereum.org/"
+type: "website"
 tags: [ "Main", "Apps" ]
 
 [metrics]
 cyber_rating = 5
-supply = 60102216,
+supply = 60102216
 timestamp = 1431342962
 
   [metrics.cap]
-  usd = 18439000,
+  usd = 18439000
   btc = 31529
 
 [aliases"]
@@ -60,9 +60,9 @@ CoinMarketCap = "Ethereum"
 [crowdsales]
 start_date = "22/7/2014"
 end_date = "2/9/2014"
-genesis_address = "36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2",
-funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf",
-funding_operator = null,
-funding_url = "https://www.ethereum.org/ether",
+genesis_address = "36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2"
+funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf"
+funding_operator = null
+funding_url = "https://www.ethereum.org/ether"
 tokens_sold = 60102216
 ```
