@@ -27,42 +27,54 @@ You can add blockchain related projects in blockchain metadata.
 ## Target example
 ```toml
 # This is a TOML document.
-name = "Ethereum"
-blockchain_id = "null"
-dependencies = "independent"
+
+[document]
+timestamp = 1431342962 # type: date
+source = CoinMarketCap # _type
+id = # _id
+system = id
+name = "Ethereum" # type: string
+blockchain_id = "null" # type: string
 
 [descriptions]
-symbol = "ETH"
-currency = "ether"
-short_description = "A Next-Generation Smart Contract and Decentralized Application Platform"
-"summary" = "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority."
-type = "DAO"
-consensus = "Ethereum"
-
-[links]
-name = "web site"
-url = "http://ethereum.org/"
-type = "website"
-tags = [ "Main", "Apps" ]
-
-[metrics]
-cyber_rating = 5
-supply = 60102216
-timestamp = 1431342962
-
-  [metrics.cap]
-  usd = 18439000
-  btc = 31529
+dependencies = "independent" # type: string
+symbol = "ETH" # type: string
+currency = "ether" # type: string
+short_description = "A Next-Generation Smart Contract and Decentralized Application Platform" # type: string
+"summary" = "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority." # type: string
+type = "DAO" # type: string
+consensus = "Ethereum" # type: string
 
 [aliases"]
-CoinMarketCap = "Ethereum"
+CoinMarketCap = "Ethereum" # type: string
+
+[links]
+name = "web site" # type: string
+url = "http://ethereum.org/" # type: string
+type = "website" # type: string
+tags = [ "Main", "Apps" ] # type: string
+
+[metrics.supply]
+current_supply = 60102216 # type: number
+max_supply = 45000000 # type: number
+
+[metrics.cap]
+cap_usd = 18439000 # type: number
+cap_btc = 31529 # type: number
+
+[metrics.price]
+price_usd = 1.34 # type: number
+price_btc = 0.05 # type: number
+
+[metrics.ratings]
+cyber_rating = 5 # type: number
 
 [crowdsales]
-start_date = "22/7/2014"
-end_date = "2/9/2014"
-genesis_address = "36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2"
-funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf"
-funding_operator = "null"
-funding_url = "https://www.ethereum.org/ether"
-tokens_sold = 60102216
+start_date = "22/7/2014" # type: date
+end_date = "2/9/2014" # type: date
+genesis_address = "36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2" # type: string
+funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf" # type: string
+funding_operator = "null" # type: string
+funding_url = "https://www.ethereum.org/ether" # type: string
+tokens_sold = 60102216 # type: number
 ```
