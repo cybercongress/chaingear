@@ -30,10 +30,9 @@ You can add blockchain related projects in blockchain metadata.
 
 [document]
 timestamp = 1431342962 # type: date
-source = CoinMarketCap # _type
-id = # _id
-system = id
-name = "Ethereum" # type: string
+source = "CoinMarketCap" # _type: string
+id = "_id" # _type: string
+system = "Ethereum" # type: string
 blockchain_id = "null" # type: string
 
 [descriptions]
