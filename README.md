@@ -35,14 +35,18 @@ id = "_id" # _type: string
 system = "Ethereum" # type: string
 blockchain_id = "null" # type: string
 
+# Descriptive data
 [descriptions]
-dependencies = "independent" # type: string
 symbol = "ETH" # type: string
 currency = "ether" # type: string
 short_description = "A Next-Generation Smart Contract and Decentralized Application Platform" # type: string
 "summary" = "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority." # type: string
+
 type = "DAO" # type: string
 consensus = "Ethereum" # type: string
+
+# Discrete Data
+[dependencies] # type: string. Independent if empty.
 
 [aliases"]
 CoinMarketCap = "Ethereum" # type: string
@@ -53,9 +57,19 @@ url = "http://ethereum.org/" # type: string
 type = "website" # type: string
 tags = [ "Main", "Apps" ] # type: string
 
+[crowdsales]
+start_date = "22/7/2014" # type: date
+end_date = "2/9/2014" # type: date
+genesis_address = "36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2" # type: string
+funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf" # type: string
+funding_operator = "null" # type: string
+funding_url = "https://www.ethereum.org/ether" # type: string
+tokens_sold = 60102216 # type: number
+
+# Continious data
 [supply]
-current_supply = 60102216 # type: number
-max_supply = 45000000 # type: number
+supply_current = 60102216 # type: number
+supply_max = 45000000 # type: number
 
 [cap]
 cap_usd = 18439000 # type: number
@@ -65,15 +79,10 @@ cap_btc = 31529 # type: number
 price_usd = 1.34 # type: number
 price_btc = 0.05 # type: number
 
-[ratings]
-cyber_rating = 5 # type: number
+[rating]
+rating_cyber = 5 # type: number
+ranking_cyber = 25 # type: number
+ranking_coinmarketcap = "NaN" # type: number
+rating_coingecko = "NaN" # type: number
 
-[crowdsales]
-start_date = "22/7/2014" # type: date
-end_date = "2/9/2014" # type: date
-genesis_address = "36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2" # type: string
-funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf" # type: string
-funding_operator = "null" # type: string
-funding_url = "https://www.ethereum.org/ether" # type: string
-tokens_sold = 60102216 # type: number
 ```
