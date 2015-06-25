@@ -1,31 +1,71 @@
 name = "Bytecoin"
-symbol = "BTE"
+symbol = "BCN"
+dependencies = "independent"
 source = "cyberFund"
 
 [metrics]
 announce = "28/03/2013"
 genesis = "01/04/2013"
 status = "Running"
-blockTime = "600"
-reward = 50.0
-total = 21000000.0
 difficultyCycle = "2016"
 txsConfirm = 6.0
-ann = "https://bitcointalk.org/index.php?topic=169559.0"
-algo = "SHA-256d"
-rating = 0.0
+blockTime = 120.0
+reward = "Block reward decreases each block according to the formula: BaseReward = (MSupply - A)/2^18,  where MSupply = (2^64 - 1) atomic units and 'A' is amount of already generated coins"
+total = 174060241025
+difficultyCycle = "each block"
+algo = "CryptoNight"
+type = "DAO"
+rating = 3.0
+consensus = "Proof-of-Work"
+hashtag = "#bytecoin"
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.bytecoin.biz/"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "https://bytecoin.org"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/bryan-mills/bytecoin"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/amjuarez/bytecoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+name = "Documentation"
+url = "https://cryptonote.org/whitepaper.pdf"
+icon = "whitepaper.png"
+tags = ["Main", "Science"]
+
+[[links]]
+name = "explorer"
+url = "http://chainradar.com/bcn/blocks"
+icon = "explorer.png"
+tags = ["Main", "Apps"]
+
+[[links]]
+name = "twitter"
+url = "https://twitter.com/Bytecoin_BCN"
+icon = "twitter.png"
+tags = ["Main", "Apps"]
+
+[[links]]
+name = "forum"
+url = "https://bitcointalk.org/index.php?topic=512747.0"
+icon = "forum.png"
+tags = ["Apps"]
+
+[[links]]
+name = "blog"
+url = "http://bytecoin.org/blog"
+icon = "blog.png"
+tags = ["Apps"]
+
+[[links]]
+{name = "reddit"
+url = "http://www.reddit.com/r/BytecoinBCN/"
+icon = "reddit.png"
+tags = ["Apps"]
 
 [aliases]
 CoinMarketCap = "Bytecoin"
