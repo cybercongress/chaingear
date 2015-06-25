@@ -15,21 +15,12 @@ mintConfirm = "50 Confirmations"
 ann = "https://bitcointalk.org/index.php?topic=801895.0"
 algo = "X11"
 type = "DAO"
-rating = 1.0
+rating = 0.0
 consensus = "Proof-of-Work"
 dependencies = "independent"
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
-
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/MetalDevel/metalcoin."
-  icon = "github.png"
-
-[aliases]
-CoinMarketCap = "MetalCoin"
-CurrencyName = "MetalCoin"
+[[links]]
+name = "github"
+url = "https://github.com/MetalDevel/metalcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
