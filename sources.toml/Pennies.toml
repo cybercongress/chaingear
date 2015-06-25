@@ -1,0 +1,28 @@
+name = "Pennies"
+symbol = "CENT"
+source = "cyberFund"
+
+[metrics]
+announce = "06/08/2013"
+status = "Running"
+reward = 1.0
+total = 1000000000.0
+premine = 25000.0
+ann = "https://bitcointalk.org/index.php?topic=269145.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/geocoin/pennies"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Pennies"
+CurrencyName = "Pennies"

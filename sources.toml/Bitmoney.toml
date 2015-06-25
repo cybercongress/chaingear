@@ -1,0 +1,32 @@
+name = "Bitmoney"
+symbol = "BMY"
+source = "cyberFund"
+
+[metrics]
+announce = "13/07/2014"
+status = "Dead"
+p2p = 51323.0
+rpc = 51322.0
+blockTime = 300.0
+reward = "32 coins"
+total = 14000000.0
+premine = "No"
+txsConfirm = 5.0
+ann = "https://bitcointalk.org/index.php?topic=689881.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.bitmoneycoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/bitmoneycoin/bitmoneycoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Bitmoney"
+CurrencyName = "Bitmoney"

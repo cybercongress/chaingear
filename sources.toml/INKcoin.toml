@@ -1,0 +1,31 @@
+name = "INKcoin"
+symbol = "INK"
+source = "cyberFund"
+
+[metrics]
+announce = "22/02/2014"
+genesis = "22/02/2014"
+status = "Dead"
+p2p = 1216.0
+rpc = 1217.0
+reward = 50.0
+halfingCycle = 110000.0
+total = 11000000.0
+ann = "https://bitcointalk.org/index.php?topic=481516.0"
+algo = "Others"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.inkcoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/inkcoin/inkcoin-project"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "INKcoin"
+CurrencyName = "INKcoin"

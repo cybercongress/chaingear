@@ -1,0 +1,32 @@
+name = "Seedcoin"
+symbol = "SEED"
+source = "cyberFund"
+
+[metrics]
+announce = "04/10/2014"
+status = "Running"
+p2p = 8723.0
+rpc = 8722.0
+blockTime = "150"
+reward = "0,1 seeds"
+total = "2000000"
+difficultyCycle = "Every Block"
+ann = "https://bitcointalk.org/index.php?topic=795954"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.seedcoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://www.seedcoin.org/downloads/"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Seedcoin"
+CurrencyName = "Seedcoin"

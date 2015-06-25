@@ -1,0 +1,70 @@
+name = "Monero"
+symbol = "XMR"
+dependencies = "independent"
+source = "cyberFund"
+
+[metrics]
+announce = "09/04/2014"
+status = "Running"
+blockTime = 60.0
+reward = "Block reward = (M-A)*2^(-20)*10^(-12), where A = current circulation"
+total = 18400000.0
+difficultyCycle = "every block"
+ann = "https://bitcointalk.org/index.php?topic=563821"
+algo = "CryptoNight"
+type = "DAO"
+rating = 2.0
+consensus = "Proof-of-Work"
+hashtag = "#monero"
+
+[aliases]
+CoinMarketCap = "Monero"
+CurrencyName = "Monero"
+
+[[links]]
+name = "web site"
+url = "http://monero.org"
+icon = "website.png"
+tags = ["Main", "Apps"]
+
+[[links]]
+name = "github"
+url = "https://github.com/bitmonero-project/bitmonero"
+icon = "github.png"
+tags = ["Main", "Apps"]
+
+[[links]]
+name = "Documentation"
+url = "https://downloads.getmonero.org/whitepaper_review.pdf"
+icon = "whitepaper.png"
+tags = ["Main", "Science"]
+
+[[links]]
+name = "explorer"
+url = "http://chainradar.com/xmr/blocks"
+icon = "explorer.png"
+tags = ["Main", "Apps"]
+
+[[links]]
+name = "twitter"
+url = "https://twitter.com/monerocurrency"
+icon = "twitter.png"
+tags = ["Main", "Apps"]
+
+[[links]]
+name = "forum"
+url = "https://forum.getmonero.org/"
+icon = "forum.png"
+tags = ["Apps"]
+
+[[links]]
+name = "blog"
+url = "https://getmonero.org/blog/"
+icon = "blog.png"
+tags = ["Apps"]
+
+[[links]]
+name = "reddit"
+url = "https://www.reddit.com/r/monero/"
+icon = "reddit.png"
+tags = ["Apps"]

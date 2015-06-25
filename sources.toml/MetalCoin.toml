@@ -1,0 +1,35 @@
+name = "MetalCoin"
+symbol = "MTC"
+source = "cyberFund"
+
+[metrics]
+announce = "01/10/2014"
+status = "Dead"
+rpc = 38881.0
+blockTime = "120"
+reward = "24 coins"
+total = "5000000"
+premine = "no"
+difficultyCycle = "Safe Gravity Well"
+mintConfirm = "50 Confirmations"
+ann = "https://bitcointalk.org/index.php?topic=801895.0"
+algo = "X11"
+type = "DAO"
+rating = 1.0
+consensus = "Proof-of-Work"
+dependencies = "independent"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/MetalDevel/metalcoin."
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "MetalCoin"
+CurrencyName = "MetalCoin"

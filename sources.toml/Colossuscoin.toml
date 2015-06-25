@@ -1,0 +1,36 @@
+name = "Colossuscoin"
+symbol = "COL"
+source = "cyberFund"
+
+[metrics]
+announce = "22/08/2013"
+genesis = "21/08/2013"
+status = "Running"
+p2p = 12454.0
+rpc = 12543.0
+blockTime = "25"
+reward = 5000000.0
+halfingCycle = 50000.0
+total = 550000000000.0
+premine = 105000000.0
+difficultyCycle = "every block"
+txsConfirm = 6.0
+mintConfirm = 70.0
+ann = "https://bitcointalk.org/index.php?topic=280114.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/scificoin/FederationCredits"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Colossuscoin"
+CurrencyName = "Colossuscoin"

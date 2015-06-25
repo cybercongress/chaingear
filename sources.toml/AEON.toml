@@ -1,0 +1,31 @@
+name = "AEON"
+symbol = "AEON"
+source = "cyberFund"
+
+[metrics]
+announce = "06/06/2014"
+genesis = "06/06/2014"
+status = "Dead"
+blockTime = 60.0
+reward = "Smoothly varying using the formula (M-A) / (220) / (1012) where M = 264 -1 and A = supply mined to date."
+total = 18400000.0
+premine = "No"
+difficultyCycle = "Retargets at every block"
+ann = "https://bitcointalk.org/index.php?topic=641696.0"
+algo = "CryptoNight"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.aeoncoin.net/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/aeonix/aeon"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "AEON"
+CurrencyName = "AEON"

@@ -1,0 +1,30 @@
+name = "Corecoin"
+symbol = "CORE"
+source = "cyberFund"
+
+[metrics]
+announce = "30/06/2014"
+status = "Dead"
+p2p = 16256.0
+rpc = 16255.0
+blockTime = 60.0
+reward = "Blocks 1-220: 10 CORE; Blocks 221-1440: 100 CORE;  Blocks 1441-5760: 50 coins; Blocks 5760-10080: 25 cpoins"
+total = 1000000.0
+premine = "10000 (1%)"
+ann = "https://bitcointalk.org/index.php?topic=671450.0"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/corescoin/core"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Corecoin"
+CurrencyName = "Corecoin"

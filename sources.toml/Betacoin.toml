@@ -1,0 +1,27 @@
+name = "Betacoin"
+symbol = "BET"
+source = "cyberFund"
+
+[metrics]
+announce = "30/10/2013"
+genesis = "24/10/2013"
+status = "Running"
+blockTime = "240"
+reward = 128.0
+halfingCycle = 126000.0
+total = 32000000.0
+premine = 537600.0
+difficultyCycle = "6"
+ann = "https://bitcointalk.org/index.php?topic=321266.0"
+algo = "SHA-256d"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/betacoindev/betacoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Betacoin"
+CurrencyName = "Betacoin"

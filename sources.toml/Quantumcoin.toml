@@ -1,0 +1,28 @@
+name = "Quantumcoin"
+symbol = "QTC"
+source = "cyberFund"
+
+[metrics]
+announce = "03/06/2013"
+status = "Dead"
+halfingCycle = 256000.0
+total = 256000000.0
+mintConfirm = 50.0
+ann = "https://bitcointalk.org/index.php?topic=224198.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.quantumcoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/quantumcoin/quantumcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Quantumcoin"
+CurrencyName = "Quantumcoin"

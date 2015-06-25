@@ -1,0 +1,33 @@
+name = "Batcoin"
+symbol = "BAT"
+source = "cyberFund"
+
+[metrics]
+announce = "06/01/2014"
+status = "Running"
+blockTime = 90.0
+reward = 60000.0
+total = 91000000000.0
+premine = 1820000000.0
+difficultyCycle = 40.0
+txsConfirm = 6.0
+mintConfirm = 70.0
+ann = "https://bitcointalk.org/index.php?topic=400753.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://batcoin.info/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/OriginalBatCoin/BatCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Batcoin"
+CurrencyName = "Batcoin"

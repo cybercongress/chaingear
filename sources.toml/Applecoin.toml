@@ -1,0 +1,31 @@
+name = "Applecoin"
+symbol = "APC"
+source = "cyberFund"
+
+[metrics]
+announce = "18/11/2013"
+status = "Running"
+blockTime = "120"
+total = 50000000.0
+mintConfirm = 100.0
+ann = "https://bitcointalk.org/index.php?topic=337782.0"
+algo = "Scrypt"
+type = "DAO"
+rating = 1.0
+consensus = "Hybrid POW-POS"
+dependencies = "independent"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Applecoin/Applecoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Applecoin"
+CurrencyName = "Applecoin"

@@ -1,0 +1,31 @@
+name = "Cryptobits"
+symbol = "CYB"
+source = "cyberFund"
+
+[metrics]
+announce = "18/07/2013"
+status = "Dead"
+blockTime = "120"
+reward = 2.0
+halfingCycle = 1051200.0
+total = 4000000.0
+premine = 20000.0
+difficultyCycle = "5"
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=261194.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Cryptomaker/Cryptobits"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Cryptobits"
+CurrencyName = "Cryptobits"

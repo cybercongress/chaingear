@@ -1,0 +1,32 @@
+name = "Friendshipcoin"
+symbol = "FSC"
+source = "cyberFund"
+
+[metrics]
+announce = "12/02/2014"
+status = "Running"
+p2p = 37636.0
+rpc = 37637.0
+blockTime = 150.0
+reward = "0-376370 coins per block"
+halfingCycle = 200000.0
+total = 37436374470.0
+difficultyCycle = "24 (once per hour)"
+ann = "https://bitcointalk.org/index.php?topic=461358.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://friendshipcoins.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/friendshipCoin/friendshipcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Friendshipcoin"
+CurrencyName = "Friendshipcoin"

@@ -1,0 +1,34 @@
+name = "Tagcoin"
+symbol = "TAG"
+source = "cyberFund"
+
+[metrics]
+announce = "24/10/2013"
+genesis = "20/10/2013"
+status = "Running"
+p2p = 15660.0
+rpc = 15661.0
+blockTime = "240"
+reward = 30.0
+halfingCycle = 32400.0
+total = 100000000.0
+premine = 9000.0
+difficultyCycle = "30"
+ann = "https://bitcointalk.org/index.php?topic=317408.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/tagcoin/tagcoin.git"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Tagcoin"
+CurrencyName = "Tagcoin"

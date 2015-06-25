@@ -1,0 +1,30 @@
+name = "JebigaCoin"
+symbol = "JBG"
+source = "cyberFund"
+
+[metrics]
+announce = "25/03/2014"
+status = "Dead"
+p2p = 6970.0
+rpc = 6996.0
+blockTime = 60.0
+halfingCycle = "Initially 69 coins per block, halves every 2 years (1,036,800 blocks)"
+total = 188000000.0
+difficultyCycle = "Difficulty retargets every 240 min or 240 blocks"
+ann = "https://bitcointalk.org/index.php?topic=530408.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/jebigacoin/jebigacoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "JebigaCoin"
+CurrencyName = "JebigaCoin"

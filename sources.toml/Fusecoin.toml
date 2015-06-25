@@ -1,0 +1,30 @@
+name = "Fusecoin"
+symbol = "FUSE"
+source = "cyberFund"
+
+[metrics]
+announce = "24/07/2014"
+status = "Dead"
+p2p = 22012.0
+rpc = 22011.0
+blockTime = 60.0
+reward = "PoW reward 68.75; 100000 coins for PoW"
+total = 100000.0
+premine = "1000 (1%)"
+ann = "https://bitcointalk.org/index.php?topic=708717.0"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://fusecoin.pw"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Fusecoin"
+CurrencyName = "Fusecoin"

@@ -1,0 +1,33 @@
+name = "Mazacoin"
+symbol = "MZC"
+source = "cyberFund"
+
+[metrics]
+announce = "22/02/2014"
+status = "Running"
+p2p = 12835.0
+rpc = 12832.0
+blockTime = 120.0
+reward = 5000.0
+halfingCycle = "241920 blocks (about 12 month)"
+total = 2419200000.0
+difficultyCycle = "4 blocks (8 minutes) based on last 90 blocks"
+txsConfirm = 5.0
+algo = "SHA-256d"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.mazacoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/MazaCoin/MazaCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Mazacoin"
+CurrencyName = "Mazacoin"

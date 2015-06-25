@@ -1,0 +1,33 @@
+name = "Lucky7Coin"
+symbol = "LK7"
+source = "cyberFund"
+
+[metrics]
+announce = "16/09/2013"
+status = "Dead"
+p2p = 17777.0
+rpc = 17778.0
+blockTime = "60"
+reward = 77.0
+halfingCycle = 259200.0
+total = 500000000.0
+difficultyCycle = "every block"
+txsConfirm = 7.0
+mintConfirm = 77.0
+ann = "https://bitcointalk.org/index.php?topic=295157.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/lucky7coin/lucky7coin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Lucky7Coin"
+CurrencyName = "Lucky7Coin"

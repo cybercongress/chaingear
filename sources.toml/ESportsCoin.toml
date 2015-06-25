@@ -1,0 +1,30 @@
+name = "ESportsCoin"
+symbol = "ESC"
+source = "cyberFund"
+
+[metrics]
+announce = "13/07/2014"
+status = "Dead"
+p2p = 14528.0
+rpc = 14529.0
+blockTime = 30.0
+reward = "84 initially, halving at block 6720, 13440, the first 150 blocks will be 1 reward"
+total = 1500000.0
+ann = "https://bitcointalk.org/index.php?topic=689852"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://esportscoin.info/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/EsportscoinTeam/ESportscoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "ESportsCoin"
+CurrencyName = "ESportsCoin"

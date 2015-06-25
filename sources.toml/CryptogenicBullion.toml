@@ -1,0 +1,33 @@
+name = "CryptogenicBullion"
+symbol = "CGB"
+source = "cyberFund"
+
+[metrics]
+announce = "28/06/2013"
+genesis = "28/06/2013"
+status = "Running"
+blockTime = "60"
+reward = 10.0
+halfingCycle = 50000.0
+total = 1000000.0
+premine = 9400.0
+difficultyCycle = "2"
+txsConfirm = 5.0
+ann = "https://bitcointalk.org/index.php?topic=245086.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "https://cryptogenicbullion.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/cryptogenicbonds/CGB"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "CryptogenicBullion"
+CurrencyName = "CryptogenicBullion"

@@ -1,0 +1,30 @@
+name = "Lemoncoin"
+symbol = "LMC"
+source = "cyberFund"
+
+[metrics]
+announce = "09/02/2014"
+status = "Dead"
+rpc = 3338.0
+blockTime = 60.0
+reward = 10000.0
+total = 1000000000.0
+difficultyCycle = "every block (Kimoto Gravity Well)"
+ann = "https://bitcointalk.org/index.php?topic=456597.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://lemoncoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/lemoncoin/lemoncoin/"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Lemoncoin"
+CurrencyName = "Lemoncoin"

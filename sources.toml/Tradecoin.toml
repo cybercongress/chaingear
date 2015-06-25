@@ -1,0 +1,28 @@
+name = "Tradecoin"
+symbol = "TDC"
+source = "cyberFund"
+
+[metrics]
+announce = "25/06/2013"
+genesis = "26/06/2013"
+status = "Running"
+blockTime = "5"
+reward = 147000000.0
+total = 147000000.0
+ann = "https://bitcointalk.org/index.php?topic=242857.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/tradecoin/tradecoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Tradecoin"
+CurrencyName = "Tradecoin"

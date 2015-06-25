@@ -1,0 +1,31 @@
+name = "Pwnycoin"
+symbol = "PWNY"
+source = "cyberFund"
+
+[metrics]
+announce = "14/02/2014"
+p2p = 26668.0
+rpc = 26667.0
+blockTime = 30.0
+reward = "First 33 blocks with 3 coins, then triple reward for 3 days, then 2048 coins per block"
+halfingCycle = "172800 (~ 2 months)"
+total = 1000000000.0
+difficultyCycle = "60 blocks (~30 min).After first week Kimoto Gravity Well implementation "
+ann = "https://bitcointalk.org/index.php?topic=464274.0"
+algo = "SHA-256d"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.pwnycoin.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/pwnycoin/pwnycoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Pwnycoin"
+CurrencyName = "Pwnycoin"

@@ -1,0 +1,32 @@
+name = "PureCoin"
+symbol = "PURE"
+source = "cyberFund"
+
+[metrics]
+announce = "27/05/2014"
+status = "Dead"
+p2p = 25552.0
+rpc = 25551.0
+blockTime = 45.0
+total = 10000000.0
+premine = "250000 (2.5%)"
+txsConfirm = 3.0
+mintConfirm = 60.0
+ann = "https://bitcointalk.org/index.php?topic=627749.0"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "PureCoin.us"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/laanwj/Purecoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "PureCoin"
+CurrencyName = "PureCoin"

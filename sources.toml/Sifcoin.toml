@@ -1,0 +1,27 @@
+name = "Sifcoin"
+symbol = "SIC"
+source = "cyberFund"
+
+[metrics]
+announce = "22/06/2013"
+genesis = "23/06/2013"
+status = "Running"
+blockTime = "300"
+difficultyCycle = "every block"
+ann = "https://bitcointalk.org/index.php?topic=240894.0"
+algo = "Quark"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/sifcoin/sifcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Sifcoin"
+CurrencyName = "Sifcoin"

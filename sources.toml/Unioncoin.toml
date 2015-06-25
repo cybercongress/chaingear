@@ -1,0 +1,34 @@
+name = "Unioncoin"
+symbol = "UNC"
+source = "cyberFund"
+
+[metrics]
+announce = "10/12/2013"
+genesis = "08/12/2013"
+status = "Dead"
+p2p = 40017.0
+rpc = 41700.0
+blockTime = 10.0
+reward = 512.0
+halfingCycle = 8192.0
+total = 73000000.0
+difficultyCycle = "every 20 blocks (maximum 10% up or 50% down)"
+ann = "https://bitcointalk.org/index.php?topic=365399.0"
+algo = "Quark"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.unioncoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/unioncoin/Unioncoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Unioncoin"
+CurrencyName = "Unioncoin"

@@ -1,0 +1,32 @@
+name = "Linearcoin"
+symbol = "LIN"
+source = "cyberFund"
+
+[metrics]
+announce = "31/05/2014"
+status = "Dead"
+p2p = 9553.0
+rpc = 9552.0
+blockTime = 300.0
+reward = "Block reward decreases in value in a linear fashion after each block. With block 0 starting at 50 Coins, the reward will gradually decrease linearly by 0.00005"
+halfingCycle = "decreases 0.00005 Coins every block"
+total = 25025025.0
+premine = "No"
+difficultyCycle = "every block (KimotoGravityWell)"
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=634063"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Linearcoin"
+CurrencyName = "Linearcoin"

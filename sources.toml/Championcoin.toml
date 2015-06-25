@@ -1,0 +1,34 @@
+name = "Championcoin"
+symbol = "CHAM"
+source = "cyberFund"
+
+[metrics]
+announce = "24/01/2014"
+status = "Dead"
+p2p = 21260.0
+rpc = 11261.0
+blockTime = 20.0
+reward = "60 per block + random superblocks  (1/100 chance, a random 100-500 coins block and  1/2000 chance (~ twice a day), a random 1000-5000 coins block)"
+halfingCycle = "30240 (1 week)"
+total = 240000000.0
+difficultyCycle = 60.0
+txsConfirm = 3.0
+mintConfirm = 30.0
+ann = "https://bitcointalk.org/index.php?topic=429836.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.championcoin.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://www.github.com/championcoin/championcoin/"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Championcoin"
+CurrencyName = "Championcoin"

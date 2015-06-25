@@ -1,0 +1,34 @@
+name = "MaxCoin"
+symbol = "MAX"
+source = "cyberFund"
+
+[metrics]
+announce = "29/01/2014"
+status = "Running"
+blockTime = 30.0
+reward = 96.0
+halfingCycle = "1051200 (once per 12 months)"
+total = 250000000.0
+difficultyCycle = "according to Kimoto Gravity Well"
+ann = "https://bitcointalk.org/index.php?topic=438150.0"
+algo = "SHA-3"
+type = "DAO"
+rating = 1.0
+consensus = "Proof-of-Work"
+dependencies = "independent"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.maxcoin.co.uk/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Max-Coin/MaxCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "MaxCoin"
+CurrencyName = "MaxCoin"

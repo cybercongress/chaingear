@@ -1,0 +1,36 @@
+name = "AsicCoin"
+symbol = "ASC"
+source = "cyberFund"
+
+[metrics]
+announce = "11/09/2013"
+genesis = "11/09/2013"
+status = "Running"
+p2p = 13434.0
+rpc = 13435.0
+blockTime = "30"
+reward = 1024.0
+halfingCycle = 259200.0
+total = 675925530.0
+difficultyCycle = "60"
+txsConfirm = 4.0
+mintConfirm = 70.0
+ann = "https://bitcointalk.org/index.php?topic=292501.0"
+algo = "SHA-256d"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://asiccoin.biz/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/asiccoin/asiccoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "AsicCoin"
+CurrencyName = "AsicCoin"

@@ -1,0 +1,34 @@
+name = "Lottocoin"
+symbol = "LOTTO"
+source = "cyberFund"
+
+[metrics]
+announce = "12/12/2013"
+status = "Running"
+p2p = 16383.0
+rpc = 16384.0
+blockTime = 30.0
+halfingCycle = 259200.0
+total = 18406979840.0
+premine = 368139596.0
+difficultyCycle = 1.0
+txsConfirm = 4.0
+mintConfirm = 60.0
+ann = "https://bitcointalk.org/index.php?topic=368153.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.lottocoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/lottocoin/lottocoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Lottocoin"
+CurrencyName = "Lottocoin"

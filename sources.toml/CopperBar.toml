@@ -1,0 +1,30 @@
+name = "CopperBar"
+symbol = "CPR"
+source = "cyberFund"
+
+[metrics]
+announce = "12/08/2013"
+genesis = "13/08/2013"
+status = "Dead"
+p2p = 7874.0
+rpc = 7873.0
+blockTime = "16"
+reward = 0.0064
+total = 512000000.0
+ann = "https://bitcointalk.org/index.php?topic=272170.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/copperbars/copperbars"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "CopperBar"
+CurrencyName = "CopperBar"

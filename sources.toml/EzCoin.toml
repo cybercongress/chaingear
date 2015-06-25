@@ -1,0 +1,33 @@
+name = "EzCoin"
+symbol = "EZC"
+source = "cyberFund"
+
+[metrics]
+announce = "30/05/2013"
+genesis = "29/05/2013"
+status = "Dead"
+p2p = 7955.0
+rpc = 8888.0
+blockTime = "60"
+reward = 50.0
+halfingCycle = 844000.0
+total = 84000000.0
+difficultyCycle = "12"
+ann = "https://bitcointalk.org/index.php?topic=220103.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://github.com/ezcoin/ezcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "EzCoin"
+CurrencyName = "EzCoin"

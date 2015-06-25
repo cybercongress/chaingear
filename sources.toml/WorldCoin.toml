@@ -1,0 +1,36 @@
+name = "WorldCoin"
+symbol = "WDC"
+source = "cyberFund"
+
+[metrics]
+announce = "14/05/2013"
+genesis = "14/05/2013"
+status = "Running"
+blockTime = "30"
+reward = 64.0
+halfingCycle = 20160.0
+total = 265420800.0
+difficultyCycle = "120"
+txsConfirm = 2.0
+ann = "https://bitcointalk.org/index.php?topic=204894.0"
+algo = "Scrypt"
+type = "DAO"
+rating = 1.0
+consensus = "Proof-of-Work"
+dependencies = "independent"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.worldcoin.in/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/worldcoinproject/Worldcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "WorldCoin"
+CurrencyName = "WorldCoin"

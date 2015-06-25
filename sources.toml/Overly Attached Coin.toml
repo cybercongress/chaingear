@@ -1,0 +1,30 @@
+name = "Overly Attached Coin"
+symbol = "OAC"
+source = "cyberFund"
+
+[metrics]
+announce = "31/03/2014"
+status = "Dead"
+blockTime = 150.0
+reward = "Starting on Block 100, rewards will be 1250 with guaranteed payout if block found"
+total = 1000000000.0
+premine = "maybe"
+difficultyCycle = "2 Blocks"
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=552057.0"
+algo = "SHA-3"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Westerveld/OverlyAttachedCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Overly Attached Coin"
+CurrencyName = "Overly Attached Coin"

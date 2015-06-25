@@ -1,0 +1,32 @@
+name = "Verncoin"
+symbol = "VNC"
+source = "cyberFund"
+
+[metrics]
+announce = "14/02/2014"
+status = "Dead"
+p2p = 65000.0
+rpc = 64999.0
+blockTime = 60.0
+reward = "First 100000 blocksare awarded with 500 VNC"
+total = 100000000000.0
+premine = "500000000 coins(0.5%) for development costs"
+difficultyCycle = "240 blocks (4 hours)"
+ann = "https://bitcointalk.org/index.php?topic=465274.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.verncoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://www.verncoin.org/verncoin_source.zip"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Verncoin"
+CurrencyName = "Verncoin"

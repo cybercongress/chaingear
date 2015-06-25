@@ -1,0 +1,34 @@
+name = "Fastcoin"
+symbol = "FST"
+source = "cyberFund"
+
+[metrics]
+announce = "29/05/2013"
+genesis = "28/05/2013"
+status = "Running"
+p2p = 9526.0
+rpc = 9527.0
+blockTime = "12"
+reward = 32.0
+halfingCycle = 2592000.0
+total = 165888000.0
+difficultyCycle = "300"
+txsConfirm = 4.0
+ann = "https://bitcointalk.org/index.php?topic=218852.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/fastcoinproject/fastcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Fastcoin"
+CurrencyName = "Fastcoin"

@@ -1,0 +1,33 @@
+name = "Stablecoin"
+symbol = "SBC"
+source = "cyberFund"
+
+[metrics]
+announce = "07/06/2013"
+genesis = "07/06/2013"
+status = "Dead"
+blockTime = "40"
+reward = 25.0
+halfingCycle = 2917080.0
+total = 250000000.0
+premine = 1200000.0
+difficultyCycle = "90"
+mintConfirm = 35.0
+ann = "https://bitcointalk.org/index.php?topic=227766.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/stablecoin/StableCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Stablecoin"
+CurrencyName = "Stablecoin"

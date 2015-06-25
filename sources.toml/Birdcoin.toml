@@ -1,0 +1,32 @@
+name = "Birdcoin"
+symbol = "BRD"
+source = "cyberFund"
+
+[metrics]
+announce = "02/03/2014"
+genesis = "02/03/2014"
+status = "Running"
+p2p = 16050.0
+rpc = 16051.0
+blockTime = 60.0
+reward = "initial 65536 per block and decreases exponentially in the reverse every 50000 blocks"
+total = 7000000000.0
+premine = "140000000 (2%) for bounties, giveaways and development"
+difficultyCycle = "every block (Kimoto Gravity Well)"
+ann = "https://bitcointalk.org/index.php?topic=496363.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/KungFuCoin/Birdcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Birdcoin"
+CurrencyName = "Birdcoin"

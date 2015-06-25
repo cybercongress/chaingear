@@ -1,0 +1,32 @@
+name = "FujiCoin-2.0"
+symbol = "FJC"
+source = "cyberFund"
+
+[metrics]
+announce = "08/06/2014"
+status = "Running"
+p2p = 3777.0
+rpc = 3776.0
+blockTime = 60.0
+reward = "Block reward curve: the S-curve theory (Gonpertz curve)"
+total = 10000000000.0
+premine = "160000000 (1.6%)"
+difficultyCycle = "Every block (using Kimotos Gravity Well)"
+ann = "https://bitcointalk.org/index.php?topic=644601"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.fujicoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/fujicoin/fujicoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "FujiCoin-2.0"
+CurrencyName = "FujiCoin-2.0"

@@ -1,0 +1,35 @@
+name = "Cloudcoin"
+symbol = "CDC"
+source = "cyberFund"
+
+[metrics]
+announce = "14/07/2013"
+genesis = "24/07/2013"
+status = "Dead"
+p2p = 12344.0
+rpc = 12345.0
+blockTime = "60"
+reward = 50.0
+halfingCycle = 1036800.0
+total = 100000000.0
+premine = 1000000.0
+difficultyCycle = "every block"
+txsConfirm = 3.0
+mintConfirm = 30.0
+ann = "https://bitcointalk.org/index.php?topic=256120.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://sdrv.ms/13cvmmd"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Cloudcoin"
+CurrencyName = "Cloudcoin"

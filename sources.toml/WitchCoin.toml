@@ -1,0 +1,31 @@
+name = "WitchCoin"
+symbol = "WITCH"
+source = "cyberFund"
+
+[metrics]
+announce = "28/07/2014"
+status = "Dead"
+p2p = 21245.0
+rpc = 21346.0
+blockTime = 60.0
+reward = "Block 1-4000: 250 coins (about 3 days PoW); PoS will start after 4000 block"
+total = 1000000.0
+difficultyCycle = "every block"
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=713636.0"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/WitchCoin/WitchCoin-master"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "WitchCoin"
+CurrencyName = "WitchCoin"

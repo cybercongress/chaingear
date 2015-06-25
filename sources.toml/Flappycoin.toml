@@ -1,0 +1,31 @@
+name = "Flappycoin"
+symbol = "FLAP"
+source = "cyberFund"
+
+[metrics]
+announce = "14/02/2014"
+status = "Running"
+rpc = 11555.0
+blockTime = "60"
+reward = "Random reward till block 600000. After it - fixed 10000 coin per block"
+total = "100000000000 FLAP in circulation after 1.5 years"
+difficultyCycle = "240 blocks(4 hours)"
+ann = "https://bitcointalk.org/index.php?topic=464743"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://flappycoin.info/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/flappycoin-project/flappycoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Flappycoin"
+CurrencyName = "Flappycoin"

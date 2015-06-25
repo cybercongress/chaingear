@@ -1,0 +1,32 @@
+name = "Mediacoin"
+symbol = "MDC"
+source = "cyberFund"
+
+[metrics]
+announce = "04/01/2014"
+genesis = "01/04/2014"
+status = "Dead"
+p2p = 11810.0
+rpc = 11811.0
+reward = 32.0
+halfingCycle = 129600.0
+total = 51200000.0
+premine = 512000.0
+ann = "https://bitcointalk.org/index.php?topic=398936.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://mediacoin.net"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://mediacoin.net/file/mediacoin-source.7z"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Mediacoin"
+CurrencyName = "Mediacoin"

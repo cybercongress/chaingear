@@ -1,0 +1,30 @@
+name = "ZipCoin"
+symbol = "ZIPC"
+source = "cyberFund"
+
+[metrics]
+announce = "02/08/2014"
+status = "Dead"
+p2p = 26941.0
+rpc = 26942.0
+blockTime = "60"
+reward = "1000 ZIP"
+total = "10000000"
+mintConfirm = "50 blocks"
+ann = "https://bitcointalk.org/index.php?topic=721306"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/zipcoinproject/zip"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "ZipCoin"
+CurrencyName = "ZipCoin"

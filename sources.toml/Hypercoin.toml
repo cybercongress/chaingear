@@ -1,0 +1,29 @@
+name = "Hypercoin"
+symbol = "HYC"
+source = "cyberFund"
+
+[metrics]
+announce = "28/05/2013"
+genesis = "28/05/2013"
+status = "Dead"
+blockTime = "45"
+reward = 25.0
+total = 75000000.0
+premine = 8000.0
+ann = "https://bitcointalk.org/index.php?topic=218737.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/hypercoin/hypercoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Hypercoin"
+CurrencyName = "Hypercoin"

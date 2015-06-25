@@ -1,0 +1,31 @@
+name = "Fractalcoin"
+symbol = "FRAC"
+source = "cyberFund"
+
+[metrics]
+announce = "12/06/2014"
+status = "Running"
+p2p = 33112.0
+rpc = 33111.0
+blockTime = 60.0
+total = 1000000.0
+premine = "5000 (0.5%) premine to aid development."
+ann = "https://bitcointalk.org/index.php?topic=650173.new"
+algo = "X11"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "fractalco.in"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/fractalcoin/fractalcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Fractalcoin"
+CurrencyName = "Fractalcoin"

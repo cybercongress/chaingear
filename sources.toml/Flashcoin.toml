@@ -1,0 +1,29 @@
+name = "Flashcoin"
+symbol = "FLS"
+source = "cyberFund"
+
+[metrics]
+announce = "01/06/2013"
+status = "Dead"
+p2p = 18900.0
+rpc = 189001.0
+blockTime = "600"
+reward = 1.0
+total = 10000000.0
+ann = "https://bitcointalk.org/index.php?topic=222450.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://www.mediafire.com/?iorrsqrn64sz30s"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Flashcoin"
+CurrencyName = "Flashcoin"

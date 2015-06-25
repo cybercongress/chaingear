@@ -1,0 +1,32 @@
+name = "Jupitercoin"
+symbol = "JPC"
+source = "cyberFund"
+
+[metrics]
+announce = "21/07/2013"
+status = "Dead"
+p2p = 8568.0
+rpc = 1234.0
+blockTime = "510"
+reward = 10.0
+total = 37000000.0
+premine = 99900.0
+difficultyCycle = "every block"
+ann = "https://bitcointalk.org/index.php?topic=259918.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/jupitercoin/jupitercoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Jupitercoin"
+CurrencyName = "Jupitercoin"

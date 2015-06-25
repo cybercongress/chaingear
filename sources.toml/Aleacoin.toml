@@ -1,0 +1,27 @@
+name = "Aleacoin"
+symbol = "ALEA"
+source = "cyberFund"
+
+[metrics]
+announce = "09/06/2014"
+status = "Dead"
+blockTime = 60.0
+reward = "random block reward, 1 to 500"
+total = "random number of total coins"
+premine = "the 10 first blocks will be premined for bounties but those will be random rewards also"
+ann = "https://bitcointalk.org/index.php?topic=645938.0"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Aleacoin"
+CurrencyName = "Aleacoin"

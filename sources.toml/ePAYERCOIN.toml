@@ -1,0 +1,31 @@
+name = "ePAYERCOIN"
+symbol = "PAYER"
+source = "cyberFund"
+
+[metrics]
+announce = "13/02/2015"
+status = "Running"
+p2p = "21075"
+rpc = "11075"
+blockTime = "60 seconds "
+reward = "25 coins"
+total = "9500000 coins"
+premine = "0,074 %"
+mintConfirm = "2 blocks"
+ann = "https://bitcointalk.org/index.php?topic=952259.0"
+algo = "SHA-256d"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/ePAYERCOIN/ePAYERCOIN_SHA256"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "ePAYERCOIN"
+CurrencyName = "ePAYERCOIN"

@@ -1,0 +1,33 @@
+name = "RupayaCoin"
+symbol = "RUP"
+source = "cyberFund"
+
+[metrics]
+announce = "18/03/2014"
+status = "Dead"
+p2p = 6799.0
+rpc = 6771.0
+blockTime = 60.0
+reward = "50 RUP halving to 25 RUP after block 7860"
+total = 400000000.0
+premine = "4000000 (1%) for future development, support and maintenance, marketing, rewards and services,bounties: 5% of the 1% premine"
+difficultyCycle = "Retargeting using Kimoto Gravity Well algorithm"
+txsConfirm = 4.0
+ann = "https://www.altcoincalendar.info/coins/266-RUP"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "www.rupayacoin.org"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/rupayacoin-project/rupayacoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "RupayaCoin"
+CurrencyName = "RupayaCoin"

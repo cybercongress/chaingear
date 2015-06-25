@@ -1,0 +1,33 @@
+name = "Mobcoin"
+symbol = "MOB"
+source = "cyberFund"
+
+[metrics]
+announce = "26/11/2014"
+status = "Dead"
+p2p = 12151.0
+rpc = 12153.0
+blockTime = "60 Seconds"
+reward = "750 MOB/block flat"
+total = "15000000 MOB"
+premine = "75000 MOB(0.5%)"
+difficultyCycle = "every block"
+mintConfirm = "60 blocks"
+ann = "https://bitcointalk.org/index.php?topic=873867.0"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "www.mobcoin.biz"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/MobCoinz/MobCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Mobcoin"
+CurrencyName = "Mobcoin"

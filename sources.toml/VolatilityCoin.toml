@@ -1,0 +1,30 @@
+name = "VolatilityCoin"
+symbol = "VLT"
+source = "cyberFund"
+
+[metrics]
+announce = "15/09/2014"
+status = "Dead"
+p2p = 18104.0
+rpc = 18102.0
+blockTime = "60 Seconds"
+reward = "6-200:0,200-100000:15,100000-500000:10,500000-1200000:5, 1200000-2000000:2.5, 2000000-10000000: 1"
+total = "35000000"
+ann = "https://bitcointalk.org/index.php?topic=776463.msg8752179#msg8752179"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://volatilitycoin.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/limikael/volatilitycoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "VolatilityCoin"
+CurrencyName = "VolatilityCoin"

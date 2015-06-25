@@ -1,0 +1,34 @@
+name = "Sexcoin"
+symbol = "SXC"
+source = "cyberFund"
+
+[metrics]
+announce = "28/05/2013"
+genesis = "28/05/2013"
+status = "Running"
+rpc = 9560.0
+blockTime = "60"
+reward = 100.0
+halfingCycle = 600000.0
+total = 250000000.0
+premine = 200.0
+difficultyCycle = "480"
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=218158.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://docs.google.com/file/d/0By1jx2LvWnjoX3lnNjF2YnVUTTA/edit?usp=sharing"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Sexcoin"
+CurrencyName = "Sexcoin"

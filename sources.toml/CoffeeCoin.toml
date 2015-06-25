@@ -1,0 +1,30 @@
+name = "CoffeeCoin"
+symbol = "COF"
+source = "cyberFund"
+
+[metrics]
+announce = "10/07/2014"
+status = "Dead"
+p2p = 9155.0
+rpc = 9156.0
+blockTime = 60.0
+reward = "Block 1-7200: 1 000 block rewards  (5 days PoW). After 7200 block  PoS will start."
+total = 7200000.0
+difficultyCycle = "every block"
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=684675.0"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "CoffeeCoin"
+CurrencyName = "CoffeeCoin"

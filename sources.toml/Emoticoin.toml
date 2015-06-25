@@ -1,0 +1,30 @@
+name = "Emoticoin"
+symbol = "EMO"
+source = "cyberFund"
+
+[metrics]
+announce = "02/03/2014"
+genesis = "01/03/2014"
+status = "Dead"
+blockTime = 60.0
+halfingCycle = "every 50000 blocks"
+total = 100000000000.0
+difficultyCycle = "every day"
+ann = "https://bitcointalk.org/index.php?topic=496129.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://emoticoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "EmotiCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Emoticoin"
+CurrencyName = "Emoticoin"

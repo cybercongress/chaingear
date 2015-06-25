@@ -1,0 +1,31 @@
+name = "ASDCoin"
+symbol = "ASD"
+source = "cyberFund"
+
+[metrics]
+announce = "14/08/2014"
+status = "Dead"
+p2p = 21090.0
+rpc = 11090.0
+reward = "40"
+total = "64000000"
+premine = "Less the 0.1%"
+mintConfirm = "10 blocks"
+ann = "http://asdcoin.com/forum"
+algo = "SHA-256d"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://asdcoin.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://dl.dropboxusercontent.com/u/16693637/asdcoin-source.gz"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "ASDCoin"
+CurrencyName = "ASDCoin"

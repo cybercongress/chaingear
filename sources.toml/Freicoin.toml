@@ -1,0 +1,31 @@
+name = "Freicoin"
+symbol = "FRC"
+source = "cyberFund"
+
+[metrics]
+announce = "25/06/2012"
+genesis = "21/12/2012"
+status = "Running"
+blockTime = "600"
+reward = 500.0
+total = 100000000.0
+difficultyCycle = "2016"
+ann = "https://bitcointalk.org/index.php?topic=89843.0"
+algo = "SHA-256d"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://freico.in/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/freicoin/freicoin/archive/v0.8.3-1.zip"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Freicoin"
+CurrencyName = "Freicoin"

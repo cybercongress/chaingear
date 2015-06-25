@@ -1,0 +1,31 @@
+name = "AzzaCoin"
+symbol = "AZC"
+source = "cyberFund"
+
+[metrics]
+announce = "17/08/2014"
+status = "Dead"
+p2p = 23531.0
+rpc = 23532.0
+blockTime = "60"
+reward = "200"
+total = "50000000"
+difficultyCycle = "20 blocks"
+mintConfirm = "50 blocks"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "azzacoin.com"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://mega.co.nz/#!LVpHSQ4A!6Kqvb6m7YHuCVv5yViWp5xSpIxFl17FfNknI8gc907o"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "AzzaCoin"
+CurrencyName = "AzzaCoin"

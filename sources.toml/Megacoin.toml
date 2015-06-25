@@ -1,0 +1,36 @@
+name = "Megacoin"
+symbol = "MEC"
+source = "cyberFund"
+
+[metrics]
+announce = "29/05/2013"
+genesis = "01/06/2013"
+status = "Running"
+p2p = 7951.0
+rpc = 7950.0
+blockTime = "150"
+reward = 25.0
+halfingCycle = 420000.0
+total = 32500000.0
+ann = "https://bitcointalk.org/index.php?topic=218851.0"
+algo = "Scrypt"
+type = "DAO"
+rating = 1.0
+consensus = "Proof-of-Work"
+dependencies = "independent"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "Megacoin.co.nz"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/megacoin/megacoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Megacoin"
+CurrencyName = "Megacoin"

@@ -1,0 +1,33 @@
+name = "MadCowCoin"
+symbol = "MCC"
+source = "cyberFund"
+
+[metrics]
+announce = "12/03/2014"
+status = "Dead"
+blockTime = 30.0
+reward = "100,000 - 1,000,000 / block"
+halfingCycle = "Every week for 6 weeks. After 6 weeks the payout will be fixed at 10 coin per block"
+total = 102000000000.0
+premine = "2346000000 (2.3%) for IPO-shares and 714000000 (0.7%) for bounties"
+difficultyCycle = "every block so no need of Kimoto Gravity Well"
+txsConfirm = 5.0
+mintConfirm = 40.0
+ann = "https://bitcointalk.org/index.php?topic=511988.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://madcowcoin.info"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/MadCowCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "MadCowCoin"
+CurrencyName = "MadCowCoin"

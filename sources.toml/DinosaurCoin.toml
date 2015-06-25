@@ -1,0 +1,32 @@
+name = "DinosaurCoin"
+symbol = "Dino"
+source = "cyberFund"
+
+[metrics]
+announce = "05/07/2014"
+status = "Dead"
+p2p = 9355.0
+rpc = 9356.0
+blockTime = 60.0
+reward = "POW block reward 1000 coins"
+total = 8640000.0
+premine = "86400 (1%) for development, bounties, etc"
+difficultyCycle = "every block"
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=678073.0"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/DinosaurCoin/DinosaurCoin-master"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "DinosaurCoin"
+CurrencyName = "DinosaurCoin"

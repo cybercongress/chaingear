@@ -1,0 +1,31 @@
+name = "QuazarCoin"
+symbol = "QCN"
+source = "cyberFund"
+
+[metrics]
+announce = "19/05/2014"
+status = "Running"
+blockTime = 120.0
+reward = "block reward decreases according to the formula (2^64 - 1 - A)*2^(-21)*10^(-12), where A = supply mined to date"
+total = 18446744.0
+difficultyCycle = "every block"
+txsConfirm = 60.0
+ann = "https://bitcointalk.org/index.php?topic=615732"
+algo = "CryptoNight"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "www.quazarcoin.org"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/quazarcoin/quazarcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "QuazarCoin"
+CurrencyName = "QuazarCoin"

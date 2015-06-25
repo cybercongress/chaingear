@@ -1,0 +1,28 @@
+name = "Zurcoin"
+symbol = "ZUR"
+source = "cyberFund"
+
+[metrics]
+announce = "30/12/2013"
+status = "Running"
+blockTime = 42.0
+reward = 42.0
+total = 50000000000.0
+premine = 21000.0
+ann = "https://bitcointalk.org/index.php?topic=391806.0"
+algo = "Quark"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://bitbucket.org/zurcoin/zurcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Zurcoin"
+CurrencyName = "Zurcoin"

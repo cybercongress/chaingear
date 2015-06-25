@@ -1,0 +1,31 @@
+name = "Isiscoin"
+symbol = "ISIS"
+source = "cyberFund"
+
+[metrics]
+announce = "03/07/2014"
+status = "Dead"
+p2p = 9695.0
+rpc = 9696.0
+blockTime = 60.0
+reward = "block reward algorithm: (5x300 blocks) + (150x1700 blocks) + (315x4000 blocks) + (150x2000 blocks) = ~1816500 ISIS"
+total = 1816500.0
+premine = "less than 18165 (1%) premine for bounties & future development"
+ann = "https://bitcointalk.org/index.php?topic=675509.0"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.isiscoin.info"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/isiscoin/Isiscoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Isiscoin"
+CurrencyName = "Isiscoin"

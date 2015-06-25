@@ -1,0 +1,36 @@
+name = "Redcoin"
+symbol = "RED"
+source = "cyberFund"
+
+[metrics]
+announce = "30/06/2013"
+genesis = "29/06/2013"
+status = "Dead"
+p2p = 11361.0
+rpc = 11362.0
+blockTime = "60"
+halfingCycle = 1576800.0
+total = 329000000.0
+premine = 1000000.0
+difficultyCycle = "20"
+txsConfirm = 6.0
+mintConfirm = 50.0
+ann = "https://bitcointalk.org/index.php?topic=246693.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://redcoin.pw/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/redcoinproject/redcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Redcoin"
+CurrencyName = "Redcoin"

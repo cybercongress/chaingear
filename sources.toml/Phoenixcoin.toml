@@ -1,0 +1,34 @@
+name = "Phoenixcoin"
+symbol = "PXC"
+source = "cyberFund"
+
+[metrics]
+announce = "20/05/2013"
+genesis = "08/05/2013"
+status = "Running"
+p2p = 9555.0
+rpc = 9554.0
+blockTime = "90"
+reward = 50.0
+halfingCycle = 1000000.0
+total = 98000000.0
+difficultyCycle = "20"
+ann = "https://bitcointalk.org/index.php?topic=330956.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://phoenixcoin.org"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/ghostlander/Phoenixcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Phoenixcoin"
+CurrencyName = "Phoenixcoin"

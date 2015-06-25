@@ -1,0 +1,29 @@
+name = "Memorycoin"
+symbol = "MEG"
+source = "cyberFund"
+
+[metrics]
+announce = "03/08/2013"
+status = "Running"
+blockTime = "3600"
+reward = 24.0
+total = 1020000.0
+premine = 960.0
+ann = "https://bitcointalk.org/index.php?topic=267522.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://memorycoin.org/manifesto/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/memorycoin/memorycoin/"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Memorycoin"
+CurrencyName = "Memorycoin"

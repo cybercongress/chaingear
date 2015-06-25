@@ -1,0 +1,29 @@
+name = "StarbucksCoin"
+symbol = "suc"
+source = "cyberFund"
+
+[metrics]
+announce = "26/05/2014"
+status = "Dead"
+p2p = 9179.0
+rpc = 9178.0
+blockTime = 60.0
+total = 26687912.0
+ann = "https://bitcointalk.org/index.php?topic=625364.0"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.StarbucksCoin.pw/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/sndnvaps/StarbucksCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "StarbucksCoin"
+CurrencyName = "StarbucksCoin"

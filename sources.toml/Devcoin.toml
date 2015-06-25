@@ -1,0 +1,32 @@
+name = "Devcoin"
+symbol = "DVC"
+source = "cyberFund"
+
+[metrics]
+announce = "15/02/2012"
+status = "Running"
+blockTime = "86400"
+reward = 50000.0
+total = 21000000.0
+difficultyCycle = "every block"
+algo = "SHA-256d"
+type = "DAO"
+rating = 1.0
+consensus = "Proof-of-Work"
+dependencies = "independent"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://devcoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://gitorious.org/devcoin/devcoin/source/4e23c180945785c49bbab682b7f6c6e1eda29b05: "
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Devcoin"
+CurrencyName = "Devcoin"

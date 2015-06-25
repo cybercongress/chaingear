@@ -1,0 +1,27 @@
+name = "Onecoin"
+symbol = "ONC"
+source = "cyberFund"
+
+[metrics]
+announce = "09/05/2013"
+genesis = "13/06/2013"
+status = "Running"
+p2p = 8555.0
+rpc = 8554.0
+blockTime = "120"
+reward = 5e-7
+halfingCycle = 1000000.0
+total = 1.0
+difficultyCycle = "everyblock"
+ann = "https://bitcointalk.org/index.php?topic=200177.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/onecoin/onecoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Onecoin"
+CurrencyName = "Onecoin"

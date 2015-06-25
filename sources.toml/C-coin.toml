@@ -1,0 +1,31 @@
+name = "C-coin"
+symbol = "CCN"
+source = "cyberFund"
+
+[metrics]
+announce = "19/02/2014"
+p2p = 10464.0
+rpc = 10465.0
+reward = "initial 1000 coins per block. At block 210001 coin reward reduces to 500 per block."
+halfingCycle = "every 210000 blocks"
+total = 4200000000.0
+difficultyCycle = "every block (Kimoto Gravity Well)"
+ann = "https://bitcointalk.org/index.php?topic=474570.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://c-coin.biz/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/c-coin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "C-coin"
+CurrencyName = "C-coin"

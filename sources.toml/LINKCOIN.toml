@@ -1,0 +1,28 @@
+name = "LINKCOIN"
+symbol = "LNKC"
+source = "cyberFund"
+
+[metrics]
+announce = "05/08/2014"
+status = "Dead"
+blockTime = "240"
+reward = "80 coins"
+total = "84000000"
+difficultyCycle = "1 block"
+ann = "https://bitcointalk.org/index.php?topic=724057"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/linkproject/linkcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "LINKCOIN"
+CurrencyName = "LINKCOIN"

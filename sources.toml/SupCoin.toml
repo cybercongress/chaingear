@@ -1,0 +1,25 @@
+name = "SupCoin"
+symbol = "SUP"
+source = "cyberFund"
+
+[metrics]
+announce = "09/02/2015"
+status = "Running"
+blockTime = "300 seconds"
+ann = "https://bitcointalk.org/index.php?topic=950084.0"
+algo = "SHA-256d"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/supcoin/supcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "SupCoin"
+CurrencyName = "SupCoin"

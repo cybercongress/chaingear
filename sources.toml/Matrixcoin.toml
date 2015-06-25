@@ -1,0 +1,31 @@
+name = "Matrixcoin"
+symbol = "MTX"
+source = "cyberFund"
+
+[metrics]
+announce = "02/04/2014"
+status = "Dead"
+p2p = 11072.0
+rpc = 21072.0
+blockTime = 60.0
+halfingCycle = "every 100,000 blocks "
+total = 800000000.0
+difficultyCycle = "null"
+ann = "https://bitcointalk.org/index.php?topic=553703.0"
+algo = "SHA-256d"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.mtxcoin.com"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/matrixcoin/matrixcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Matrixcoin"
+CurrencyName = "Matrixcoin"

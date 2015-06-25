@@ -1,0 +1,28 @@
+name = "Godcoin"
+symbol = "GOD"
+source = "cyberFund"
+
+[metrics]
+announce = "12/06/2014"
+status = "Dead"
+blockTime = 600.0
+total = 21000000.0
+premine = "10080 GODs (0.04%)"
+difficultyCycle = "every 7 days"
+ann = "https://bitcointalk.org/index.php?topic=649099.0"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://godcoin.info"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Godcoin"
+CurrencyName = "Godcoin"

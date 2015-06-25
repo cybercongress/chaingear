@@ -1,0 +1,31 @@
+name = "Zenithcoin"
+symbol = "ZTC"
+source = "cyberFund"
+
+[metrics]
+announce = "30/05/2013"
+genesis = "09/06/2013"
+status = "Running"
+reward = 24.0
+halfingCycle = 420000.0
+total = 42000000.0
+difficultyCycle = "4032"
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=219644.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.zenithcoin.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/eagleeyee/ZenithCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Zenithcoin"
+CurrencyName = "Zenithcoin"

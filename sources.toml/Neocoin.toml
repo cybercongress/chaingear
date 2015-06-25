@@ -1,0 +1,29 @@
+name = "Neocoin"
+symbol = "NEC"
+source = "cyberFund"
+
+[metrics]
+announce = "26/07/2013"
+status = "Dead"
+rpc = 8000.0
+blockTime = "100"
+total = 80000000.0
+ann = "https://bitcointalk.org/index.php?topic=313506.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://neocoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://github.com/neocoin-project/neocoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Neocoin"
+CurrencyName = "Neocoin"

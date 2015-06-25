@@ -1,0 +1,30 @@
+name = "Vanillacoin"
+symbol = "VLD"
+source = "cyberFund"
+
+[metrics]
+announce = "12/01/2014"
+status = "Dead"
+blockTime = 60.0
+reward = 50.0
+halfingCycle = 510000.0
+total = 51000000.0
+difficultyCycle = 10.0
+mintConfirm = 140.0
+ann = "https://bitcointalk.org/index.php?topic=412311.0"
+algo = "Quark"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/vanillasaya/vanillacoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Vanillacoin"
+CurrencyName = "Vanillacoin"

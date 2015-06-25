@@ -1,0 +1,30 @@
+name = "EquestrianBit"
+symbol = "EQB"
+source = "cyberFund"
+
+[metrics]
+announce = "17/02/2014"
+status = "Dead"
+blockTime = 60.0
+reward = 5000.0
+halfingCycle = "132000 (~3 month)"
+total = 1320000000.0
+difficultyCycle = "240 (every 4 hours)"
+ann = "https://bitcointalk.org/index.php?topic=471712.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://equestrianbit.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/EquestrianBit/equestrianbit"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "EquestrianBit"
+CurrencyName = "EquestrianBit"

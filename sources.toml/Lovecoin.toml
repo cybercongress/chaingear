@@ -1,0 +1,32 @@
+name = "Lovecoin"
+symbol = "LOVE"
+source = "cyberFund"
+
+[metrics]
+announce = "12/12/2013"
+status = "Dead"
+p2p = 8863.0
+rpc = 8862.0
+blockTime = "150"
+reward = 50.0
+halfingCycle = 840000.0
+total = 84000000.0
+difficultyCycle = "2016"
+ann = "https://bitcointalk.org/index.php?topic=367898.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://lovecoin.info"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/lovecoin/lovecoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Lovecoin"
+CurrencyName = "Lovecoin"

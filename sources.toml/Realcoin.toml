@@ -1,0 +1,32 @@
+name = "Realcoin"
+symbol = "REC"
+source = "cyberFund"
+
+[metrics]
+announce = "06/06/2013"
+status = "Dead"
+p2p = 20001.0
+rpc = 20002.0
+blockTime = "30"
+total = 1900000000.0
+premine = 1079000.0
+difficultyCycle = "720"
+txsConfirm = 3.0
+ann = "https://bitcointalk.org/index.php?topic=227149.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.realcoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/realcoin/realcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Realcoin"
+CurrencyName = "Realcoin"

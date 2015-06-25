@@ -1,0 +1,32 @@
+name = "SecureCoin"
+symbol = "SRC"
+source = "cyberFund"
+
+[metrics]
+announce = "09/08/2013"
+status = "Running"
+p2p = "12567"
+rpc = "12568"
+blockTime = "60 seconds"
+reward = "5 coins"
+total = "21000000 coins"
+premine = "no"
+ann = "https://bitcointalk.org/index.php?topic=270852.0"
+algo = "Quark"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://securecoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/baritus/securecoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "SecureCoin"
+CurrencyName = "SecureCoin"

@@ -1,0 +1,32 @@
+name = "pNUT"
+symbol = "FTW"
+source = "cyberFund"
+
+[metrics]
+announce = "27/01/2014"
+status = "Dead"
+p2p = 25884.0
+rpc = 25884.0
+blockTime = "30"
+total = "no limit"
+premine = 1000.0
+difficultyCycle = "every block"
+txsConfirm = "24 blocks (about 12 minutes)"
+mintConfirm = "500 (about 4 hours)"
+ann = "https://bitcointalk.org/index.php?topic=435232.0"
+algo = "Others"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/pnut-coin/pnut"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "pNUT"
+CurrencyName = "pNUT"

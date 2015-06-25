@@ -1,0 +1,31 @@
+name = "Primecoin"
+symbol = "XPM"
+source = "cyberFund"
+
+[metrics]
+announce = "07/07/2013"
+genesis = "07/07/2013"
+status = "Running"
+blockTime = "60"
+ann = "https://bitcointalk.org/index.php?topic=251850.0"
+algo = "Others"
+type = "DAO"
+rating = 2.0
+consensus = "Proof-of-Work"
+dependencies = "independent"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://primecoin.org"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/primecoin/primecoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Primecoin"
+CurrencyName = "Primecoin"

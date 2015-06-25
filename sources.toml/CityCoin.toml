@@ -1,0 +1,30 @@
+name = "CityCoin"
+symbol = "City"
+source = "cyberFund"
+
+[metrics]
+announce = "22/07/2014"
+status = "Dead"
+p2p = 20115.0
+rpc = 30116.0
+reward = "1: (0.5 million for IPO 50%); Block 2-3000: 166 block rewards  (about 2 days). After 3000 block POS will starting"
+total = 1000000.0
+difficultyCycle = "every block"
+txsConfirm = 8.0
+ann = "https://bitcointalk.org/index.php?topic=704271.0"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/CityCoinTeam/CityCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "CityCoin"
+CurrencyName = "CityCoin"

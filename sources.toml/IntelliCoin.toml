@@ -1,0 +1,31 @@
+name = "IntelliCoin"
+symbol = "INT"
+source = "cyberFund"
+
+[metrics]
+announce = "17/08/2014"
+status = "Dead"
+p2p = 21255.0
+rpc = 20255.0
+blockTime = "60"
+reward = " 1 - 810: 20 coins,811 - 26270:400 coins"
+total = "12000000"
+premine = "1800000 for IPO"
+ann = "https://bitcointalk.org/index.php?topic=720292.0"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.intellicoin.me"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/bluew1nter/intellicoin-mirror"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "IntelliCoin"
+CurrencyName = "IntelliCoin"

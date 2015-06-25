@@ -1,0 +1,32 @@
+name = "Nyancoin"
+symbol = "NYAN"
+source = "cyberFund"
+
+[metrics]
+announce = "21/12/2013"
+status = "Running"
+rpc = 33700.0
+blockTime = 60.0
+reward = 337.0
+halfingCycle = 337000.0
+total = 337000000.0
+premine = 3370000.0
+difficultyCycle = 240.0
+ann = "https://bitcointalk.org/index.php?topic=380223.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/nyancoin-release/nyancoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Nyancoin"
+CurrencyName = "Nyancoin"

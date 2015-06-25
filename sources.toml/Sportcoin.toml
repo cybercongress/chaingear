@@ -1,0 +1,30 @@
+name = "Sportcoin"
+symbol = "SPCC"
+source = "cyberFund"
+
+[metrics]
+announce = "20/06/2014"
+status = "Dead"
+p2p = 56896.0
+rpc = 56895.0
+blockTime = 60.0
+reward = 60.0
+total = 618000.0
+premine = "123600 (20%)"
+ann = "https://bitcointalk.org/index.php?topic=659470"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/SportCoinDev/SportCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Sportcoin"
+CurrencyName = "Sportcoin"

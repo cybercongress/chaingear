@@ -1,0 +1,32 @@
+name = "SummerCoin 2.0"
+symbol = "SUM2"
+source = "cyberFund"
+
+[metrics]
+announce = "26/05/2014"
+status = "Running"
+p2p = 33330.0
+rpc = 33333.0
+blockTime = 30.0
+reward = 1500.0
+total = 50000000.0
+premine = "amount of coins on the SUMv1 Chain (swapped at 1:1 ratio)"
+difficultyCycle = "difficulty will adjust dach 25 blocks, and at block 250, adjust dach block"
+txsConfirm = 3.0
+ann = "https://bitcointalk.org/index.php?topic=679791.0"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/sherlockcoin/x13-CPUminer"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "SummerCoin 2.0"
+CurrencyName = "SummerCoin 2.0"

@@ -1,0 +1,31 @@
+name = "Somacoin"
+symbol = "SOMA"
+source = "cyberFund"
+
+[metrics]
+announce = "01/02/2014"
+status = "Dead"
+p2p = 12533.0
+rpc = 12633.0
+blockTime = 60.0
+reward = 50.0
+halfingCycle = 200000.0
+total = 50000000.0
+ann = "https://bitcointalk.org/index.php?topic=444273.0"
+algo = "Quark"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.somacoin.info/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/somacoin/somacoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Somacoin"
+CurrencyName = "Somacoin"

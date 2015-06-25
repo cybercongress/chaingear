@@ -1,0 +1,29 @@
+name = "FIMKrypto"
+symbol = "FIMK"
+source = "cyberFund"
+
+[metrics]
+announce = "23/07/2014"
+status = "Running"
+blockTime = "30 seconds"
+reward = "200 FIM"
+total = "1000000000"
+ann = "http://gry.io/2014/07/23/fimkrypto-fimk/"
+type = "DAO"
+rating = 1.0
+consensus = "Proof-of-Stake"
+dependencies = "independent"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "FIMKrypto"
+CurrencyName = "FIMKrypto"

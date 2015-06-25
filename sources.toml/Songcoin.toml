@@ -1,0 +1,32 @@
+name = "Songcoin"
+symbol = "SNG"
+source = "cyberFund"
+
+[metrics]
+announce = "01/10/2014"
+status = "Running"
+p2p = 8335.0
+rpc = 8334.0
+blockTime = "120"
+reward = "100 coins"
+total = "210240000 coins"
+premine = "4000000 coins(2%)"
+difficultyCycle = "3.5 days"
+ann = "https://bitcointalk.org/index.php?topic=804527.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.songcoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Songcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Songcoin"
+CurrencyName = "Songcoin"

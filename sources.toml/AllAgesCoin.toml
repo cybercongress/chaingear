@@ -1,0 +1,26 @@
+name = "AllAgesCoin"
+symbol = "AAC"
+source = "cyberFund"
+
+[metrics]
+announce = "27/12/2013"
+status = "Dead"
+blockTime = 300.0
+difficultyCycle = 10.0
+ann = "https://bitcointalk.org/index.php?topic=386973.0"
+algo = "SHA-256d"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "Source code is not open until coin is widely accepted."
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "AllAgesCoin"
+CurrencyName = "AllAgesCoin"

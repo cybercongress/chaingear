@@ -1,0 +1,33 @@
+name = "Gamecoin"
+symbol = "GME"
+source = "cyberFund"
+
+[metrics]
+announce = "12/05/2013"
+genesis = "16/04/2013"
+status = "Running"
+p2p = 9776.0
+rpc = 9777.0
+blockTime = "150"
+reward = 1000.0
+halfingCycle = 840000.0
+total = 3360000000.0
+difficultyCycle = "2016"
+ann = "https://bitcointalk.org/index.php?topic=202764.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/gamecoin/gamecoin.git"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Gamecoin"
+CurrencyName = "Gamecoin"

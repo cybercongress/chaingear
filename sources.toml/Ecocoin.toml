@@ -1,0 +1,32 @@
+name = "Ecocoin"
+symbol = "ECO"
+source = "cyberFund"
+
+[metrics]
+announce = "07/08/2013"
+status = "Dead"
+blockTime = "45"
+reward = 7.0
+total = 10200000.0
+premine = 102000.0
+difficultyCycle = "691"
+txsConfirm = 5.0
+mintConfirm = 20.0
+ann = "https://bitcointalk.org/index.php?topic=269312.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.ecocoin.info/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/ecogroup/ecocoin.git"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Ecocoin"
+CurrencyName = "Ecocoin"

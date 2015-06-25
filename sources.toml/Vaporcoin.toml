@@ -1,0 +1,29 @@
+name = "Vaporcoin"
+symbol = "VWC"
+source = "cyberFund"
+
+[metrics]
+announce = "29/12/2013"
+status = "Dead"
+p2p = 28657.0
+rpc = 46368.0
+blockTime = 144.0
+txsConfirm = 5.0
+mintConfirm = 55.0
+ann = "https://bitcointalk.org/index.php?topic=390735.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/RenegadeMinds/VaporwareCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Vaporcoin"
+CurrencyName = "Vaporcoin"

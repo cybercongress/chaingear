@@ -1,0 +1,30 @@
+name = "Metiscoin"
+symbol = "MTS"
+source = "cyberFund"
+
+[metrics]
+announce = "20/01/2014"
+status = "Dead"
+p2p = 1198.0
+rpc = 1098.0
+reward = 50.0
+halfingCycle = 810000.0
+total = 81000000.0
+ann = "https://bitcointalk.org/index.php?topic=424517.0"
+algo = "Quark"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.metiscoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/metiscoin/metiscoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Metiscoin"
+CurrencyName = "Metiscoin"

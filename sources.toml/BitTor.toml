@@ -1,0 +1,27 @@
+name = "BitTor"
+symbol = "BT"
+source = "cyberFund"
+
+[metrics]
+announce = "26/07/2014"
+status = "Dead"
+blockTime = 120.0
+total = 1000000.0
+premine = "3000 (0.3%)"
+difficultyCycle = "every block"
+ann = "https://bitcointalk.org/index.php?topic=711590"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "BitTor"
+CurrencyName = "BitTor"

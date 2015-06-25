@@ -1,0 +1,32 @@
+name = "Bosscoin"
+symbol = "BOS"
+source = "cyberFund"
+
+[metrics]
+announce = "03/12/2013"
+status = "Dead"
+p2p = 18200.0
+rpc = 18199.0
+blockTime = "60"
+reward = 40.0
+total = 40000000.0
+premine = 40000.0
+difficultyCycle = "1440"
+ann = "https://bitcointalk.org/index.php?topic=355729.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://bosscoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://drive.google.com/file/d/0B6ozLnqqdIhHM2FKM2l4OUkwR0k/edit?usp=sharing"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Bosscoin"
+CurrencyName = "Bosscoin"

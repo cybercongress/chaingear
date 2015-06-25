@@ -1,0 +1,30 @@
+name = "Minerals"
+symbol = "MIN"
+source = "cyberFund"
+
+[metrics]
+announce = "05/06/2014"
+status = "Running"
+blockTime = 30.0
+total = 30000000.0
+difficultyCycle = "every block"
+txsConfirm = 4.0
+ann = "https://bitcointalk.org/index.php?topic=641057.0"
+algo = "X11"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://minerals.pro"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Minerals-dev/Minerals"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Minerals"
+CurrencyName = "Minerals"

@@ -1,0 +1,32 @@
+name = "Czechcoin"
+symbol = "CZC"
+source = "cyberFund"
+
+[metrics]
+announce = "05/05/2014"
+status = "Dead"
+blockTime = 210.0
+reward = "512 CZC"
+halfingCycle = "every 12342 blocks (month)"
+total = 12242272.0
+premine = "No"
+ann = "https://bitcointalk.org/index.php?topic=596649.msg6555975#msg6555975"
+algo = "Multi-algo"
+type = "DAO"
+rating = 1.0
+consensus = "Proof-of-Work"
+dependencies = "independent"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Czechcoin"
+CurrencyName = "Czechcoin"

@@ -1,0 +1,31 @@
+name = "Rubycoin"
+symbol = "RBC"
+source = "cyberFund"
+
+[metrics]
+announce = "11/02/2014"
+status = "Running"
+blockTime = 150.0
+reward = 500.0
+halfingCycle = "1 month"
+total = 60000000.0
+premine = "1200000 coins(2%)"
+difficultyCycle = 1.0
+ann = "https://bitcointalk.org/index.php?topic=459622.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.rubycoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://www.dropbox.com/s/xmnboj5k5elrvo2/rubycoin-source.zip"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Rubycoin"
+CurrencyName = "Rubycoin"

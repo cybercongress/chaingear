@@ -1,0 +1,31 @@
+name = "Texas Coin"
+symbol = "TEX"
+source = "cyberFund"
+
+[metrics]
+announce = "24/07/2014"
+status = "Dead"
+p2p = 11034.0
+rpc = 21034.0
+blockTime = 60.0
+reward = "Blocks 1-10: premine; Blocks 11-10000: 30 TEX. Then 15 coins till block 110000,  4 TEX till block 1110000 and 2 TEX after that"
+halfingCycle = "First block reward halving occurs at approximately 1 week. After that, rate of reward reduction slows dramatically"
+total = 26300000.0
+premine = "499700 (1.9%)"
+ann = "https://bitcointalk.org/index.php?topic=708747.0"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/texascoin/TexasCoin/releases"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Texas Coin"
+CurrencyName = "Texas Coin"

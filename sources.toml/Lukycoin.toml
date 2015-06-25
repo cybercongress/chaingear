@@ -1,0 +1,35 @@
+name = "Lukycoin"
+symbol = "LKY"
+source = "cyberFund"
+
+[metrics]
+announce = "24/05/2013"
+genesis = "22/05/2013"
+status = "Running"
+p2p = 9917.0
+rpc = 9918.0
+blockTime = "60"
+reward = 88.0
+halfingCycle = 1036800.0
+total = 200000000.0
+difficultyCycle = "240"
+txsConfirm = 3.0
+ann = "https://bitcointalk.org/index.php?topic=214614.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://luckycoin.ca/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/LuckyCoinProject/Luckycoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Lukycoin"
+CurrencyName = "Lukycoin"

@@ -1,0 +1,32 @@
+name = "Omegacoin"
+symbol = "OMA"
+source = "cyberFund"
+
+[metrics]
+announce = "27/01/2015"
+status = "Running"
+p2p = "54544"
+rpc = "54545"
+blockTime = "60 seconds"
+reward = "4 OMA"
+total = "2000000 coins"
+premine = "no"
+mintConfirm = "110 confirmations"
+ann = "https://bitcointalk.org/index.php?topic=936629.0"
+algo = "X-n"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/omegadevteam/omegacoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Omegacoin"
+CurrencyName = "Omegacoin"

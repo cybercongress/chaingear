@@ -1,0 +1,28 @@
+name = "Apecoin"
+symbol = "APE"
+source = "cyberFund"
+
+[metrics]
+announce = "18/12/2013"
+genesis = "12/15/2013"
+status = "Running"
+p2p = 55883.0
+total = 6839998399.0
+premine = 262550000.0
+ann = "https://bitcointalk.org/index.php?topic=375938.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/apecoin/build"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Apecoin"
+CurrencyName = "Apecoin"

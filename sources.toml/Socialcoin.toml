@@ -1,0 +1,35 @@
+name = "Socialcoin"
+symbol = "SOC"
+source = "cyberFund"
+
+[metrics]
+announce = "12/01/2014"
+genesis = "01/13/2013"
+status = "Dead"
+p2p = 8945.0
+rpc = 8946.0
+blockTime = 120.0
+reward = 10000.0
+halfingCycle = 50000.0
+total = 900000000.0
+premine = 12000000.0
+txsConfirm = 6.0
+mintConfirm = 120.0
+ann = "https://bitcointalk.org/index.php?topic=412331"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.soccoin.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://bitbucket.org/SocialCoin/socialcoin/src"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Socialcoin"
+CurrencyName = "Socialcoin"

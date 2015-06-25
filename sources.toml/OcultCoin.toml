@@ -1,0 +1,31 @@
+name = "OcultCoin"
+symbol = "OCC"
+source = "cyberFund"
+
+[metrics]
+announce = "17/10/2014"
+status = "Dead"
+p2p = 14973.0
+rpc = 24973.0
+blockTime = "60 Seconds"
+reward = "200 OCC"
+total = "10000000"
+premine = "150000 (1.5% for bounties and promotions)"
+mintConfirm = "10 blocks"
+ann = "https://bitcointalk.org/index.php?topic=825517.0"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/ocultcoin/ocultcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "OcultCoin"
+CurrencyName = "OcultCoin"

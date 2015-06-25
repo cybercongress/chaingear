@@ -1,0 +1,31 @@
+name = "Spots"
+symbol = "SPT"
+source = "cyberFund"
+
+[metrics]
+announce = "01/06/2014"
+genesis = "21/07/2013"
+status = "Running"
+blockTime = 70.0
+reward = "48 spots per block"
+total = 440000000.0
+difficultyCycle = "KGW Difficulty Adjustments"
+ann = "https://bitcointalk.org/index.php?topic=615513"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.theSPT.com"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/theSPT/spots2"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Spots"
+CurrencyName = "Spots"

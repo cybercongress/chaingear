@@ -1,0 +1,28 @@
+name = "Kittehcoin"
+symbol = "MEOW"
+source = "cyberFund"
+
+[metrics]
+announce = "24/12/2013"
+status = "Running"
+blockTime = 30.0
+total = 50000000000.0
+difficultyCycle = 120.0
+ann = "https://bitcointalk.org/index.php?topic=383068.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/kittehcoin/kittehcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Kittehcoin"
+CurrencyName = "Kittehcoin"

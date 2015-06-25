@@ -1,0 +1,33 @@
+name = "Swansoncoin"
+symbol = "RON"
+source = "cyberFund"
+
+[metrics]
+announce = "21/02/2014"
+status = "Running"
+p2p = 22641.0
+rpc = 22640.0
+blockTime = 60.0
+reward = "Random between 0.05 and 0.5"
+halfingCycle = "262800 blocks (~6 month)"
+total = 741776.0
+premine = "(2%) for bounties and future development"
+difficultyCycle = "every block (Kimoto Gravity well)"
+ann = "https://bitcointalk.org/index.php?topic=478244.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://swansoncoin.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://github.com/swansoncoin/swansoncoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Swansoncoin"
+CurrencyName = "Swansoncoin"

@@ -1,0 +1,33 @@
+name = "Auroracoin"
+symbol = "AUR"
+source = "cyberFund"
+
+[metrics]
+announce = "02/02/2014"
+status = "Running"
+p2p = 12340.0
+rpc = 12341.0
+reward = 25.0
+total = 21000000.0
+premine = "10500000(50%). The premined coins will be distributed to the entire population of Iceland, commencing on midnight 25th of March 2014.  Auroracoin is designed to break the shackles of the fiat currency financial system in Iceland."
+difficultyCycle = "8 blocks"
+mintConfirm = 100.0
+ann = "https://bitcointalk.org/index.php?topic=446062.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.auroracoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/baldurodinsson/auroracoin-project/"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Auroracoin"
+CurrencyName = "Auroracoin"

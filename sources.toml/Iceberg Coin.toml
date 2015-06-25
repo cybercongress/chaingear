@@ -1,0 +1,30 @@
+name = "Iceberg Coin"
+symbol = "ICB"
+source = "cyberFund"
+
+[metrics]
+announce = "01/07/2014"
+status = "Dead"
+p2p = 20701.0
+rpc = 20703.0
+reward = "Block 1: ICO + Bounties + Fair distribution reserves; Blocks 2-5000: 0 reward; Blocks 5001-5101: 10 reward; Blocks 5102-15098: 500 reward; Block 15099: 0 reward (end POW)"
+total = 6250000.0
+ann = "https://bitcointalk.org/index.php?topic=673524"
+algo = "Others"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.icebergcoin.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Icebergcoin/icebergcoin/archive/master.zip"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Iceberg Coin"
+CurrencyName = "Iceberg Coin"

@@ -1,0 +1,31 @@
+name = "Coin2"
+symbol = "C2"
+source = "cyberFund"
+
+[metrics]
+announce = "19/10/2014"
+status = "Running"
+blockTime = "60 Seconds"
+total = "60000000"
+premine = "1500000 coins (2.5% will be used for marketing and future projects)"
+difficultyCycle = "each block"
+mintConfirm = "50 blocks"
+ann = "http://www.coin2talk.org/"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.coin2-project.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/coin2-project/Coin2.0"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Coin2"
+CurrencyName = "Coin2"

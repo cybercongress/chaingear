@@ -1,0 +1,33 @@
+name = "SecuritysysCoin"
+symbol = "SCSY"
+source = "cyberFund"
+
+[metrics]
+announce = "22/10/2014"
+status = "Running"
+p2p = 23118.0
+rpc = 23119.0
+blockTime = "60 Seconds"
+reward = "1-1440: 878, 1441-11520:412, 11521-43200:164, 43201-until end:62 (~4 years)"
+total = "160000000"
+premine = "no"
+difficultyCycle = "every 5 blocks"
+ann = "https://bitcointalk.org/index.php?topic=802430.0"
+algo = "Others"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.i-m.mx/francis85/securitysyscoin/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/SecuritySystemTeam/securitysyscoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "SecuritysysCoin"
+CurrencyName = "SecuritysysCoin"

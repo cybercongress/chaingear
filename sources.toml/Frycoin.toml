@@ -1,0 +1,32 @@
+name = "Frycoin"
+symbol = "FRY"
+source = "cyberFund"
+
+[metrics]
+announce = "05/02/2014"
+status = "Running"
+p2p = 55901.0
+rpc = 55900.0
+blockTime = 30.0
+reward = 150.0
+halfingCycle = 16666.0
+total = "500000000 (1666666.666666667 blocks)"
+premine = "2500000 coins (0.5%) premine for giveaway purposes and promoting"
+difficultyCycle = "every block (Kimoto Gravity Well)"
+ann = "https://bitcointalk.org/index.php?topic=449648.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/frycoin/frycoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Frycoin"
+CurrencyName = "Frycoin"

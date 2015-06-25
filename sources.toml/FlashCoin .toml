@@ -1,0 +1,28 @@
+name = "FlashCoin "
+symbol = "FLASH"
+source = "cyberFund"
+
+[metrics]
+announce = "01/06/2014"
+status = "Dead"
+p2p = 35686.0
+rpc = 35685.0
+blockTime = 60.0
+total = 12000000.0
+ann = "https://bitcointalk.org/index.php?topic=635403"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "flashcoin.info"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "FlashCoin "
+CurrencyName = "FlashCoin "

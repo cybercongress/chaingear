@@ -1,0 +1,29 @@
+name = "PayCon"
+symbol = "CON"
+source = "cyberFund"
+
+[metrics]
+announce = "02/01/2015"
+status = "Running"
+blockTime = "60 Seconds"
+reward = "0-5000: 250 Coins; 5001-15000: 150 Coins; 15001-30000: 75 Coins; 30001- 60480: 50 Coins"
+total = "20000000"
+premine = "Premine 50,000"
+ann = "https://paycon.pw/forum/index.php?topic=11.0"
+algo = "X-n"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/muddafudda/PayCon"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "PayCon"
+CurrencyName = "PayCon"

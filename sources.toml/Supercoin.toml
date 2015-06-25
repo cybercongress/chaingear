@@ -1,0 +1,29 @@
+name = "Supercoin"
+symbol = "SPC"
+source = "cyberFund"
+
+[metrics]
+announce = "15/05/2013"
+status = "Running"
+blockTime = "60"
+reward = 50.0
+halfingCycle = 600000.0
+total = 30000000.0
+difficultyCycle = "480"
+ann = "https://bitcointalk.org/index.php?topic=206164.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://docs.google.com/file/d/0B4e33Rx_9t5uYmowcWVGVlNsM00/edit?usp=sharing"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Supercoin"
+CurrencyName = "Supercoin"

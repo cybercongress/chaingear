@@ -1,0 +1,30 @@
+name = "AngelCoin"
+symbol = "ANG"
+source = "cyberFund"
+
+[metrics]
+announce = "07/07/2014"
+status = "Dead"
+p2p = 7778.0
+rpc = 7777.0
+blockTime = 60.0
+reward = "Block 1 ~ 10000: 10.1 ANG"
+total = 150000.0
+premine = "No"
+ann = "https://bitcointalk.org/index.php?topic=681111.0"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/angelcoin/angelcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "AngelCoin"
+CurrencyName = "AngelCoin"

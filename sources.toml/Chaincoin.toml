@@ -1,0 +1,31 @@
+name = "Chaincoin"
+symbol = "CHC"
+source = "cyberFund"
+
+[metrics]
+announce = "19/01/2014"
+status = "Dead"
+p2p = 11994.0
+rpc = 11995.0
+blockTime = 90.0
+reward = 16.0
+halfingCycle = " 700800 blocks (2 years)"
+total = 23000000.0
+ann = "https://bitcointalk.org/index.php?topic=422149.0"
+algo = "Multi-algo"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://chaincoin.cryptotycoons.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/chaincoin/chaincoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Chaincoin"
+CurrencyName = "Chaincoin"

@@ -1,0 +1,32 @@
+name = "Fluttercoin"
+symbol = "FLT"
+source = "cyberFund"
+
+[metrics]
+announce = "04/03/2014"
+genesis = "03/03/2014"
+status = "Running"
+p2p = 7408.0
+rpc = 7474.0
+blockTime = 120.0
+reward = "initial 500-5000 coins per block"
+halfingCycle = "every 262800 blocks"
+ann = "https://bitcointalk.org/index.php?topic=509499.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.fluttercoin.us/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/thekidcoin/fluttercoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Fluttercoin"
+CurrencyName = "Fluttercoin"

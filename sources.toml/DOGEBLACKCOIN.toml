@@ -1,0 +1,31 @@
+name = "DOGEBLACKCOIN"
+symbol = "DOGEBC"
+source = "cyberFund"
+
+[metrics]
+announce = "14/10/2014"
+status = "Running"
+p2p = 11090.0
+rpc = 21090.0
+blockTime = "60 seconds"
+reward = "10000 DOGEBC"
+total = "400000000"
+premine = "14000000 coins (3.5 %)"
+ann = "https://bitcointalk.org/index.php?topic=819211.0"
+algo = "SHA-256d"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "www.DogeBlackCoin.info"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/DOGEBC/DOGEBC_DOGEBLACKCOIN"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "DOGEBLACKCOIN"
+CurrencyName = "DOGEBLACKCOIN"

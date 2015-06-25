@@ -1,0 +1,32 @@
+name = "PeercoinDark"
+symbol = "PPCD"
+source = "cyberFund"
+
+[metrics]
+announce = "26/10/2014"
+status = "Running"
+p2p = 10989.0
+rpc = 10789.0
+blockTime = "60 Seconds"
+total = "201000000"
+premine = "3537600 coins(1,76%)"
+difficultyCycle = "5 hours"
+mintConfirm = "2 blocks"
+ann = "https://bitcointalk.org/index.php?topic=832845.0"
+algo = "SHA-256d"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.peercoindark.net/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/DOGEBC/PeercoinDark_v2_PPCD"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "PeercoinDark"
+CurrencyName = "PeercoinDark"

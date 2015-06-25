@@ -1,0 +1,29 @@
+name = "Networkcoin"
+symbol = "NWC"
+source = "cyberFund"
+
+[metrics]
+announce = "27/12/2013"
+status = "Dead"
+p2p = 7177.0
+rpc = 7178.0
+blockTime = 60.0
+reward = 0.2
+total = 30000000.0
+ann = "https://bitcointalk.org/index.php?topic=387657.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/davedavy/NetworkCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Networkcoin"
+CurrencyName = "Networkcoin"

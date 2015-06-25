@@ -1,0 +1,26 @@
+name = "eCoin"
+symbol = "ECN"
+source = "cyberFund"
+
+[metrics]
+announce = "05/01/2014"
+status = "Dead"
+blockTime = 60.0
+reward = 700.0
+total = 7000000000.0
+ann = "https://bitcointalk.org/index.php?topic=400323.0"
+algo = "SHA-3"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "eCoin"
+CurrencyName = "eCoin"

@@ -1,0 +1,31 @@
+name = "Yolocoin"
+symbol = "YOLO"
+source = "cyberFund"
+
+[metrics]
+announce = "09/05/2014"
+status = "Dead"
+p2p = 14316.0
+rpc = 14315.0
+blockTime = 120.0
+reward = "Blocks 1-7500 - 1000 YOLO; Blocks 7500 - 10000 - 100 YOLO; Blocks 10000 - 12500 - 10 YOLO;   After block 12500 - 1 YOLO"
+total = "unlimited"
+difficultyCycle = "every 5 blocks"
+ann = "https://bitcointalk.org/index.php?topic=602042"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://yolocoin.co"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/yolocoin-project/yolocoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Yolocoin"
+CurrencyName = "Yolocoin"

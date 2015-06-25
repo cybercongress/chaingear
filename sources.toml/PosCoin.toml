@@ -1,0 +1,32 @@
+name = "PosCoin"
+symbol = "POS"
+source = "cyberFund"
+
+[metrics]
+announce = "07/07/2014"
+status = "Dead"
+p2p = 9055.0
+rpc = 9056.0
+blockTime = 60.0
+reward = "PoW block reward - 200"
+total = 10000000.0
+premine = "No"
+difficultyCycle = "each block"
+txsConfirm = 60.0
+ann = "https://bitcointalk.org/index.php?topic=680769.0"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/PosCoinDev/PosCoin-master"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "PosCoin"
+CurrencyName = "PosCoin"

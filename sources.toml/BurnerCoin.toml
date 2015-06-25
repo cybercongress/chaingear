@@ -1,0 +1,30 @@
+name = "BurnerCoin"
+symbol = "BURN"
+source = "cyberFund"
+
+[metrics]
+announce = "09/06/2014"
+status = "Dead"
+p2p = 9657.0
+rpc = 9658.0
+blockTime = 60.0
+total = 2200000.0
+premine = "No"
+ann = "https://bitcointalk.org/index.php?topic=645753"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://burnercoin.biz/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/BurnerCoin/BurnerCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "BurnerCoin"
+CurrencyName = "BurnerCoin"

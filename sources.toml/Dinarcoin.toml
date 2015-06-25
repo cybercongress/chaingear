@@ -1,0 +1,34 @@
+name = "Dinarcoin"
+symbol = "IQD"
+source = "cyberFund"
+
+[metrics]
+announce = "01/03/2014"
+genesis = "23/02/2014"
+status = "Dead"
+p2p = 9336.0
+rpc = 9335.0
+blockTime = 300.0
+reward = "TX fees"
+total = 20000000.0
+premine = "20000000 (100%) for humanitarian projects, community management, the pre-miners pool and the network infrastructures for the next 50 years"
+difficultyCycle = "every block"
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=494685.0"
+algo = "SHA-256d"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.dinarcoin.info"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Dinarcoin/dinarcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Dinarcoin"
+CurrencyName = "Dinarcoin"

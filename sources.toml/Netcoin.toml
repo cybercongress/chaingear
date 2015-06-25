@@ -1,0 +1,37 @@
+name = "Netcoin"
+symbol = "NET"
+source = "cyberFund"
+
+[metrics]
+announce = "16/09/2013"
+genesis = "02/09/2013"
+status = "Running"
+blockTime = "60"
+reward = 1024.0
+halfingCycle = 129600.0
+total = 320636160.0
+difficultyCycle = "60"
+txsConfirm = 6.0
+mintConfirm = 50.0
+ann = "https://bitcointalk.org/index.php?topic=201402.0"
+algo = "Scrypt"
+type = "DAO"
+rating = 1.0
+consensus = "Proof-of-Stake"
+dependencies = "independent"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://netcoinfoundation.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://bitcointalk.org/index.php?topic=201402.0"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Netcoin"
+CurrencyName = "Netcoin"

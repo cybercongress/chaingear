@@ -1,0 +1,29 @@
+name = "FreebiesCoin"
+symbol = "FREEB"
+source = "cyberFund"
+
+[metrics]
+announce = "06/05/2014"
+status = "Dead"
+blockTime = 60.0
+total = 500000000.0
+premine = "500000000 (100%)"
+difficultyCycle = "every block "
+ann = "https://bitcointalk.org/index.php?topic=597273"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.freebiescoin.com"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Freebies/freebiescoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "FreebiesCoin"
+CurrencyName = "FreebiesCoin"

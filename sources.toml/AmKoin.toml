@@ -1,0 +1,31 @@
+name = "AmKoin"
+symbol = "AMK"
+source = "cyberFund"
+
+[metrics]
+announce = "07/02/2014"
+status = "Dead"
+p2p = 23032.0
+rpc = 32023.0
+reward = "fixed 0.000023"
+total = 23.0
+txsConfirm = 6.0
+mintConfirm = 20.0
+ann = "https://bitcointalk.org/index.php?topic=454106.0"
+algo = "SHA-256d"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.amkon.net/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://github.com/bryceweiner/amkoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "AmKoin"
+CurrencyName = "AmKoin"

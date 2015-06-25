@@ -1,0 +1,31 @@
+name = "OnyxCoinV2"
+symbol = "ONYX"
+source = "cyberFund"
+
+[metrics]
+announce = "05/08/2014"
+status = "Dead"
+p2p = 50990.0
+rpc = 51990.0
+blockTime = "60"
+reward = "Block 2-250 are 1 ONYX #low reward to prevent an instamine , Block 251-1500000 are 10 ONYX"
+total = "15000248"
+difficultyCycle = "1 block"
+mintConfirm = ""
+ann = "https://bitcointalk.org/index.php?topic=724186.0"
+algo = "X-n"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/onyxcoin/Onyxcoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "OnyxCoinV2"
+CurrencyName = "OnyxCoinV2"

@@ -1,0 +1,31 @@
+name = "Koolio Coin"
+symbol = "Kool"
+source = "cyberFund"
+
+[metrics]
+announce = "11/07/2014"
+status = "Dead"
+p2p = 22212.0
+rpc = 22213.0
+blockTime = 60.0
+reward = "50 coins per PoW block first 30 days; 10 coins per PoW block after 30 days"
+total = 23200000.0
+difficultyCycle = "2 minute difficulty retarget"
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=686727"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/tyrstephansen/kooliocoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Koolio Coin"
+CurrencyName = "Koolio Coin"

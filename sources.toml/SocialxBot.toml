@@ -1,0 +1,34 @@
+name = "SocialxBot"
+symbol = "XBOT"
+source = "cyberFund"
+
+[metrics]
+announce = "07/09/2014"
+status = "Dead"
+p2p = 43622.0
+rpc = 43621.0
+blockTime = "60"
+reward = "0-200:0,201-43200:10,43201-86400:8,86401-123733:6"
+total = "2000000"
+premine = "1000000 for ICO"
+difficultyCycle = "20 blocks"
+mintConfirm = "50 blocks"
+ann = "https://bitcointalk.org/index.php?topic=760803"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "https://socialxbot.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Socialxbot/Socialxbot"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "SocialxBot"
+CurrencyName = "SocialxBot"

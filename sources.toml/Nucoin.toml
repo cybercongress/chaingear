@@ -1,0 +1,31 @@
+name = "Nucoin"
+symbol = "NC"
+source = "cyberFund"
+
+[metrics]
+announce = "23/06/2013"
+status = "Dead"
+p2p = 57798.0
+rpc = 57797.0
+blockTime = "120"
+reward = 300.0
+total = 7000000000.0
+premine = 93300.0
+difficultyCycle = "720"
+ann = "https://bitcointalk.org/index.php?topic=241128.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://www.github.com/nucoin/nucoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Nucoin"
+CurrencyName = "Nucoin"

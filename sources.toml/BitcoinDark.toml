@@ -1,0 +1,35 @@
+name = "BitcoinDark"
+symbol = "BTCD"
+dependencies = "independent"
+source = "cyberFund"
+
+[metrics]
+announce = "09/07/2014"
+status = "Running"
+p2p = 14631.0
+rpc = 14632.0
+blockTime = 60.0
+reward = "Proof of Stake Reward: 5% per year"
+total = 22000000.0
+txsConfirm = 110.0
+ann = "https://bitcointalk.org/index.php?topic=684090.0"
+algo = "SHA-256d"
+type = "DAO"
+rating = 1.0
+consensus = "Proof-of-Stake"
+
+[aliases]
+CoinMarketCap = "BitcoinDark"
+CurrencyName = "BitcoinDark"
+
+[[links]]
+name = "web site"
+url = "http://www.bitcoindark.org/"
+icon = "website.png"
+tags = ["Main", "Apps"]
+
+[[links]]
+name = "github"
+url = "https://github.com/laowais/bitcoindark"
+icon = "github.png"
+tags = ["Main", "Code"]

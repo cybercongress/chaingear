@@ -1,0 +1,28 @@
+name = "MultiCoin"
+symbol = "MC"
+source = "cyberFund"
+
+[metrics]
+announce = "21/07/2014"
+status = "Dead"
+blockTime = 120.0
+reward = "400 MC"
+total = 2000000.0
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=703723"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "multisigcoin.org"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "MultiCoin"
+CurrencyName = "MultiCoin"

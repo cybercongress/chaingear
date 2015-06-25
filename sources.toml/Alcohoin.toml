@@ -1,0 +1,32 @@
+name = "Alcohoin"
+symbol = "ALC"
+source = "cyberFund"
+
+[metrics]
+announce = "21/01/2014"
+genesis = "22/01/2014"
+status = "Dead"
+rpc = 55555.0
+blockTime = "60"
+total = 30000000.0
+premine = " 300000 coins(1%) for promotion"
+difficultyCycle = "5 minutes"
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=426299.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://alcohoin.info/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Alcohoin/Alcohoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Alcohoin"
+CurrencyName = "Alcohoin"

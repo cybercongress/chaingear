@@ -1,0 +1,29 @@
+name = "RIGHTCOIN"
+symbol = "RTC"
+source = "cyberFund"
+
+[metrics]
+announce = "13/05/2014"
+status = "Dead"
+blockTime = 30.0
+reward = "1000 coins per block"
+total = 30000000.0
+premine = "450000 (3%)"
+difficultyCycle = "every blocks"
+ann = "https://bitcointalk.org/index.php?topic=607076.0"
+algo = "X11"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/MiltonAndreas/source"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "RIGHTCOIN"
+CurrencyName = "RIGHTCOIN"

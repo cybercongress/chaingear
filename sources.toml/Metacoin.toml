@@ -1,0 +1,30 @@
+name = "Metacoin"
+symbol = "MET"
+source = "cyberFund"
+
+[metrics]
+announce = "08/02/2014"
+status = "Dead"
+p2p = 8485.0
+rpc = 8484.0
+reward = "Block reward decreses  every 144000 blocks from 100 at the begining to 80,64,51,40,32,25 and 20 afte 100800 blocks respectively"
+total = 140000000.0
+premine = "300 coins (~0.00021%) for testing"
+ann = "https://bitcointalk.org/index.php?topic=454848.0"
+algo = "Quark"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.krono.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://www.krono.org/files/metacoinV1.tar"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Metacoin"
+CurrencyName = "Metacoin"

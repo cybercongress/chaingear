@@ -1,0 +1,32 @@
+name = "Macrocoin"
+symbol = "MCR"
+source = "cyberFund"
+
+[metrics]
+announce = "08/02/2014"
+status = "Running"
+rpc = 9597.0
+blockTime = 120.0
+reward = 0.75
+halfingCycle = 50000.0
+total = 200000.0
+premine = "3000 coins(1.5%) for promotions, giveaways, investment opportunities, developments, development team and bounties"
+difficultyCycle = " 720(24 hours)"
+ann = "https://bitcointalk.org/index.php?topic=455269.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.macrocoinproject.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/macrocoin/macrocoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Macrocoin"
+CurrencyName = "Macrocoin"

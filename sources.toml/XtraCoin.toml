@@ -1,0 +1,26 @@
+name = "XtraCoin"
+symbol = "CX"
+source = "cyberFund"
+
+[metrics]
+announce = "05/05/2014"
+status = "Dead"
+blockTime = 120.0
+total = 50000000.0
+ann = "https://bitcointalk.org/index.php?topic=596545"
+algo = "SHA-256d"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/xtracoin/xtracoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "XtraCoin"
+CurrencyName = "XtraCoin"

@@ -1,0 +1,28 @@
+name = "Infinium-8"
+symbol = "INF8"
+source = "cyberFund"
+
+[metrics]
+announce = "17/07/2014"
+status = "Dead"
+blockTime = 90.0
+reward = "Block_reward = log2(difficulty) * 2^40"
+total = "infinite"
+difficultyCycle = "retargets at every block"
+ann = "https://bitcointalk.org/index.php?topic=698727"
+algo = "CryptoNight"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/converging/infinium"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Infinium-8"
+CurrencyName = "Infinium-8"

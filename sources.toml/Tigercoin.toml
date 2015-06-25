@@ -1,0 +1,31 @@
+name = "Tigercoin"
+symbol = "TGC"
+source = "cyberFund"
+
+[metrics]
+announce = "06/09/2013"
+status = "Running"
+blockTime = "45"
+reward = 128.0
+halfingCycle = 172800.0
+total = 47011968.0
+difficultyCycle = "20"
+mintConfirm = 50.0
+ann = "https://bitcointalk.org/index.php?topic=289312.0"
+algo = "SHA-256d"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/tigercoin/tigercoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Tigercoin"
+CurrencyName = "Tigercoin"

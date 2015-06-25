@@ -1,0 +1,28 @@
+name = "Memecoin"
+symbol = "MEM"
+source = "cyberFund"
+
+[metrics]
+announce = "15/05/2013"
+status = "Dead"
+blockTime = "600"
+total = 200000000.0
+premine = 200.0
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.memecoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/muddafudda/Memecoin-v2.0.0.0-Beta-Release"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Memecoin"
+CurrencyName = "Memecoin"

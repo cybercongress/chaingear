@@ -1,0 +1,32 @@
+name = "Xencoin"
+symbol = "XNC"
+source = "cyberFund"
+
+[metrics]
+announce = "19/06/2013"
+genesis = "18/06/2013"
+status = "Running"
+reward = 200.0
+halfingCycle = 4665600.0
+total = 21000000000.0
+premine = 1050000000.0
+txsConfirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=237998.0"
+algo = "Scrypt"
+rating = 0.0
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.xencoin.com/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/xencoin/Xencoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Xencoin"
+CurrencyName = "Xencoin"

@@ -1,0 +1,31 @@
+name = "Pangucoin"
+symbol = "PGC"
+source = "cyberFund"
+
+[metrics]
+announce = "17/09/2013"
+genesis = "17/09/2013"
+status = "Dead"
+blockTime = "60"
+reward = 10.0
+halfingCycle = 1051200.0
+total = 30000000.0
+premine = 1280.0
+difficultyCycle = "every24hours"
+ann = "https://bitcointalk.org/index.php?topic=295918.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "codeisn'tpublished"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Pangucoin"
+CurrencyName = "Pangucoin"

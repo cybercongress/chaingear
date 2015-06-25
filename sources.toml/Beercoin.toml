@@ -1,0 +1,34 @@
+name = "Beercoin"
+symbol = "BEER"
+source = "cyberFund"
+
+[metrics]
+announce = "02/02/2014"
+status = "Dead"
+p2p = 49555.0
+rpc = 49556.0
+blockTime = "20"
+reward = "Random block reward: default - 50 BEER per block. 1/100 - 100-500 BEER, 1/2000 - 1000-5000 BEER, 1/30000 - 10000-20000 BEER"
+total = 500000000.0
+premine = " 25000000 coins(5%) for CCP project sponsorship and mantaining, dev, domain, node, bounties, giveaways, etc"
+difficultyCycle = "60"
+txsConfirm = 3.0
+mintConfirm = 30.0
+ann = "https://bitcointalk.org/index.php?topic=445553.0"
+algo = "Scrypt"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.beercoin.info/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/CCPorg/BEER-BeerCoin-Ver-631-Original"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "Beercoin"
+CurrencyName = "Beercoin"

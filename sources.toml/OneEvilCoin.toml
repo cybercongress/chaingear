@@ -1,0 +1,31 @@
+name = "OneEvilCoin"
+symbol = "OEC"
+source = "cyberFund"
+
+[metrics]
+announce = "14/07/2014"
+status = "Dead"
+p2p = 7666.0
+rpc = 8666.0
+blockTime = 60.0
+reward = "block reward decreases according to the formula (8265395001600000000 -1 - A) * 2-21 * 10-12, where A = supply mined to date"
+total = 8270000.0
+difficultyCycle = "each block"
+ann = "https://bitcointalk.org/index.php?topic=693540"
+algo = "CryptoNight"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.oneevilcoin.org/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/oneevil/OneEvilCoin"
+  icon = "github.png"
+
+[aliases]
+CoinMarketCap = "OneEvilCoin"
+CurrencyName = "OneEvilCoin"
