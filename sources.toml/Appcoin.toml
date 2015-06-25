@@ -16,18 +16,19 @@ premine = " 129600000 coins(0.9%) premine for development expenses, bounties & g
 difficultyCycle = 120.0
 ann = "https://bitcointalk.org/index.php?topic=475160.0"
 algo = "Scrypt"
+rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.appcoin.info/"
-  icon = "website.png"
+[[links]]
+tags = ["Main", "Apps"]
+name = "web site"
+url = "http://www.appcoin.info/"
+icon = "website.png"
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/appcoin-project/appcoin"
-  icon = "github.png"
+[[links]]
+tags = ["Main", "Code"]
+name = "github"
+url = "https://github.com/appcoin-project/appcoin"
+icon = "github.png"
 
 [aliases]
 CoinMarketCap = "Appcoin"

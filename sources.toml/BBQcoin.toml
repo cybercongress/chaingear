@@ -15,17 +15,17 @@ ann = "https://bitcointalk.org/index.php?topic=307923.0"
 algo = "Scrypt"
 rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://bbqcoinfoundation.org/"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "http://bbqcoinfoundation.org/"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/overware/BBQCoin"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/overware/BBQCoin"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "BBQcoin"

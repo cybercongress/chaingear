@@ -15,16 +15,11 @@ mintConfirm = 200.0
 ann = "https://bitcointalk.org/index.php?topic=608482.0"
 algo = "SHA-256d"
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
-
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/ARSCoin/arkenstone.git"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/ARSCoin/arkenstone.git"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Arkenstone"

@@ -1,13 +1,18 @@
 name = "BilShares"
 symbol = "BILS"
+dependencies = "independent"
 source = "cyberFund"
 
 [metrics]
 type = "DAO"
-rating = 1.0
 consensus = "Proof-of-Stake"
-dependencies = "independent"
-links = []
+rating = 1.0
+
+[[links]]
+name = "web site"
+url = "http://www.bilshares.com/"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
 [aliases]
 CoinMarketCap = "BilShares"

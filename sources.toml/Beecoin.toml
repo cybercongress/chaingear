@@ -14,18 +14,19 @@ difficultyCycle = "every block"
 txsConfirm = 3.0
 ann = "https://bitcointalk.org/index.php?topic=461550.0"
 algo = "Scrypt"
+rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://beecoin.co/"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "http://beecoin.co/"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/beecoin/beecoin-project"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/beecoin/beecoin-project"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Beecoin"

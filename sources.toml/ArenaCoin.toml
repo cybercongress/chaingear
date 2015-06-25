@@ -9,16 +9,11 @@ blockTime = "30 seconds"
 total = "1000000"
 ann = "https://bitcointalk.org/index.php?topic=852050.0"
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
-
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/zerocoindev/ArenaCoin"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/zerocoindev/ArenaCoin"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "ArenaCoin"

@@ -15,17 +15,13 @@ txsConfirm = 4.0
 mintConfirm = 50.0
 ann = "https://bitcointalk.org/index.php?topic=289946.0"
 algo = "Scrypt"
+rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
-
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/basecoin/basecoin"
-  icon = "github.png"
+[[links]]
+tags = ["Main", "Code"]
+name = "github"
+url = "https://github.com/basecoin/basecoin"
+icon = "github.png"
 
 [aliases]
 CoinMarketCap = "Basecoin"

@@ -1,13 +1,25 @@
 name = "BanxShares"
 symbol = "BANX"
 source = "cyberFund"
+dependencies = "independent"
 
 [metrics]
 type = "DAO"
+ann = "https://bitcointalk.org/index.php?topic=813191.0"
 rating = 1.0
 consensus = "Proof-of-Work"
-dependencies = "independent"
-links = []
+
+[[links]]
+name = "web site"
+url = "http://banxcapital.com/"
+icon = "website.png"
+tags = ["Main", "Apps"]
+
+[[links]]
+name = "reddit"
+url = "http://www.reddit.com/r/Banx/"
+icon = "reddit.png"
+tags = ["Apps"]
 
 [aliases]
 CoinMarketCap = "BanxShares"

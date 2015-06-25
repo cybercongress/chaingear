@@ -12,16 +12,11 @@ total = 42000000.0
 ann = "https://bitcointalk.org/index.php?topic=278166.0"
 algo = "Scrypt"
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
-
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "http://www.argcoin.com/files/argcoin-0.7-linux.tar.gz"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "http://www.argcoin.com/files/argcoin-0.7-linux.tar.gz"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Argcoin"

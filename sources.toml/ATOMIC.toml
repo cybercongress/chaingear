@@ -1,13 +1,19 @@
 name = "ATOMIC"
 symbol = "ATOMIC"
+dependencies = "NXT"
 source = "cyberFund"
 
 [metrics]
 type = "DApp"
+ann = "https://bitcointalk.org/index.php?topic=780833"
 rating = 2.0
 consensus = "NXT"
-dependencies = "NXT"
-links = []
+
+[[links]]
+name = "web site"
+url = "http://atomicdac.org/"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
 [aliases]
 CoinMarketCap = "ATOMIC"
