@@ -13,6 +13,7 @@ var toml = require('toml');
     throw(e);
   }
 }*/
+var result = [];
 
 function loadToml(filename) {
   try {
@@ -30,7 +31,6 @@ function loadToml(filename) {
 
 function act() {
   var filenames_toml = fs.readdirSync(path.join(__dirname, "..", "sources.toml"));
-  var result = [];
 
   for (var idx = 0; idx < filenames_toml.length; idx++) {
     //loadSystem(filenames[idx])
@@ -40,5 +40,6 @@ function act() {
   fs.writeFileSync(path.join(__dirname, "..", "chaingear.json"), JSON.stringify(result, null, 4));
   console.log("combined " + result.length + " entries into chaingear.json");
 }
+
 act();
 
