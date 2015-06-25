@@ -5,20 +5,39 @@ var tomlify = require('tomlify-j0.4');
 var chaingear = require("../chaingear.json");
 console.log("detected " +  chaingear.length + " entries in chaingear.json");
 
-function saveSystem(system){
+/*function saveSystem(system){
   if (!system.name) {
     throw new Error("system must have name")
   }
   var filename = path.join(__dirname,"..","sources.json",system.name + ".json");
   fs.writeFileSync(filename,  JSON.stringify(system, null, 4));
-}
+}*/
+/*
+var names = ["BitBar",
+  "GoldReserv",
+  "MetalCoin",
+  "Bytecoin",
+  "Copperlark",
+  "Vanillacoin",
+  "Rubycoin",
+  "Pandacoin",
+  "Altcoin",
+  "Sync",
+  "VootCoin",
+  "Guerillacoin",
+  "CoffeeCoin",
+  "CrackCoin",
+  "Stellar" ];
 
-// var names = [];
-
-function saveToml(system,id){
+var others = []
+*/
+function saveToml(system){
   if (!system.name) {
     throw new Error("system must have name")
   }
+  /*if (names.indexOf(system.name)>=0){
+    others.push(system);
+  }*/
  /* display duplicate names..
   if (names.indexOf(system.name)>=0) {
 
@@ -28,9 +47,9 @@ function saveToml(system,id){
   }*/
   var filename = path.join(__dirname,"..","sources.toml",system.name + ".toml");
   fs.writeFileSync(filename,  tomlify(system, null, 2));
+ // fs.writeFileSync(path.join(__dirname,"..","others.json"),  JSON.stringify(others, null, 2));
 }
 
 for (idx=0;idx<chaingear.length; idx++){
-  saveSystem(chaingear[idx]);
-  saveToml(chaingear[idx], idx+1);
+  saveToml(chaingear[idx]);
 }

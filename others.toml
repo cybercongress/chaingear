@@ -1,0 +1,102 @@
+[
+  {name = "Stellar", symbol = "STR", dependencies = "independent", source = "cyberFund", descriptions = {short_description = "A public infrastructure for money"}, links = [
+    {name = "web site", url = "https://www.stellar.org/", icon = "website.png", tags = ["Main", "Apps"]},
+    {name = "github", url = "https://github.com/starcoinproject/starcoin", icon = "github.png", tags = ["Main", "Code"]},
+    {name = "Documentation", url = "https://www.stellar.org/papers/stellar-consensus-protocol.pdf", icon = "whitepaper.png", tags = ["Main", "Science"]},
+    {name = "explorer", url = "http://stellarchain.io/", icon = "explorer.png", tags = ["Main", "Apps"]},
+    {name = "twitter", url = "https://twitter.com/stellarorg", icon = "twitter.png", tags = ["Main", "Apps"]},
+    {name = "forum", url = "https://stellartalk.org/", icon = "forum.png", tags = ["Apps"]},
+    {name = "blog", url = "https://www.stellar.org/blog/", icon = "blog.png", tags = ["Apps"]},
+    {name = "reddit", url = "https://www.reddit.com/r/stellar", icon = "reddit.png", tags = ["Apps"]}
+  ], metrics = {announce = "19/07/2013", genesis = "19/07/2013", status = "Running", p2p = 18216.0, rpc = 18217.0, blockTime = "30", reward = 100.0, halfingCycle = 1051200.0, total = 227334008.0, difficultyCycle = "every block", txsConfirm = 4.0, mintConfirm = 70.0, ann = "https://bitcointalk.org/index.php?topic=259012.0", algo = "Scrypt", type = "DAO", rating = 3.0, consensus = "Federated Consensus", hashtag = "#stellar"}, aliases = {CoinMarketCap = "Stellar", CurrencyName = "Stellar"}},
+  {name = "Bytecoin", symbol = "BCN", dependencies = "independent", source = "cyberFund", links = [
+    {name = "web site", url = "https://bytecoin.org", icon = "website.png", tags = ["Main", "Apps"]},
+    {name = "github", url = "https://github.com/amjuarez/bytecoin", icon = "github.png", tags = ["Main", "Code"]},
+    {name = "Documentation", url = "https://cryptonote.org/whitepaper.pdf", icon = "whitepaper.png", tags = ["Main", "Science"]},
+    {name = "explorer", url = "http://chainradar.com/bcn/blocks", icon = "explorer.png", tags = ["Main", "Apps"]},
+    {name = "twitter", url = "https://twitter.com/Bytecoin_BCN", icon = "twitter.png", tags = ["Main", "Apps"]},
+    {name = "forum", url = "https://bitcointalk.org/index.php?topic=512747.0", icon = "forum.png", tags = ["Apps"]},
+    {name = "blog", url = "http://bytecoin.org/blog", icon = "blog.png", tags = ["Apps"]},
+    {name = "reddit", url = "http://www.reddit.com/r/BytecoinBCN/", icon = "reddit.png", tags = ["Apps"]}
+  ], metrics = {announce = "30/06/2012", genesis = "4/07/2012", status = "Running", p2p = 8080.0, rpc = 8081.0, blockTime = 120.0, reward = "Block reward decreases each block according to the formula: BaseReward = (MSupply - A)/2^18,  where MSupply = (2^64 - 1) atomic units and 'A' is amount of already generated coins", total = 18446744073709998080.0, difficultyCycle = "each block", algo = "CryptoNight", type = "DAO", rating = 3.0, consensus = "Proof-of-Work", hashtag = "#bytecoin"}, aliases = {CoinMarketCap = "Bytecoin", CurrencyName = "Bytecoin"}},
+  {name = "Pandacoin", symbol = "PND", source = "cyberFund", metrics = {announce = "14/02/2014", status = "Running", p2p = 22445.0, rpc = 22444.0, blockTime = 60.0, reward = "Random block reward", halfingCycle = "maximum possible coins in random reward are halved every 50000 blocks", total = 100000000000.0, difficultyCycle = "every block ", ann = "https://bitcointalk.org/index.php?topic=464476.0", algo = "Scrypt", links = [
+    {section = ["Main", "Apps"], name = "web site", url = "http://thepandacoin.co/", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://github.com/pandacoin-official/binaries", icon = "github.png"}
+  ], rating = 0.0}, aliases = {CoinMarketCap = "Pandacoin", CurrencyName = "Pandacoin"}},
+  {name = "Rubycoin", symbol = "RBY", source = "cyberFund", metrics = {rating = 0.0, links = []}, aliases = {CoinMarketCap = "Rubycoin", CurrencyName = "Rubycoin"}},
+  {name = "Sync", symbol = "SYNC", source = "cyberFund", metrics = {rating = 0.0, links = []}, aliases = {CoinMarketCap = "Sync", CurrencyName = "Sync"}},
+  {name = "Vanillacoin", symbol = "VNL", source = "cyberFund", metrics = {announce = "15/12/2014", status = "Running", blockTime = "200 seconds", total = "30700000 coins", difficultyCycle = "every block", ann = "http://vanillacoin.net/forums/", algo = "Others", links = [
+    {section = ["Main", "Apps"], name = "web site", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://github.com/john-connor/vanillacoin", icon = "github.png"}
+  ], rating = 0.0}, aliases = {CoinMarketCap = "Vanillacoin", CurrencyName = "Vanillacoin"}},
+  {name = "BitBar", symbol = "BITB", source = "cyberFund", metrics = {announce = "03/05/2013", genesis = "01/05/2013", status = "Running", blockTime = "600", reward = 1.0, ann = "https://bitcointalk.org/index.php?topic=193974.0", algo = "Scrypt", links = [
+    {section = ["Main", "Apps"], name = "web site", url = "http://bitbar.biz", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://github.com/aLQ/bitbar", icon = "github.png"}
+  ], rating = 0.0}, aliases = {CoinMarketCap = "BitBar", CurrencyName = "BitBar"}},
+  {name = "VootCoin", symbol = "VOOT", source = "cyberFund", metrics = {rating = 0.0, links = []}, aliases = {CoinMarketCap = "VootCoin", CurrencyName = "VootCoin"}},
+  {name = "BitBar", symbol = "BTB", source = "cyberFund", metrics = {rating = 0.0, links = []}, aliases = {CoinMarketCap = "BitBar", CurrencyName = "BitBar"}},
+  {name = "Copperlark", symbol = "CLR", source = "cyberFund", metrics = {rating = 0.0, links = []}, aliases = {CoinMarketCap = "Copperlark", CurrencyName = "Copperlark"}},
+  {name = "MetalCoin", symbol = "METAL", source = "cyberFund", metrics = {announce = "27/11/2014", status = "Running", blockTime = "90 seconds", reward = "Block 2-100:0 METAL, Block 101-2500:5000 METAL, Block 2501-5000:4500 METAL, Block 5001-7500:4000 METAL, Block 7501-10000:3500 METAL, Block 10001-12500:3000 METAL, Block 12501-15000:2500 METAL, Block 15001-17500:2000 METAL, Block 17501-20000:1500 METAL, Block 20001-22500:1000 METAL, Block 22501-50000:666 METAL", total = "91315000 Metal", premine = "1000000 METAL", difficultyCycle = "every block", ann = "https://bitcointalk.org/index.php?topic=886655", algo = "X11", links = [
+    {section = ["Main", "Apps"], name = "web site", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://github.com/MetalCoinTeam/MetalCoin", icon = "github.png"}
+  ], rating = 0.0}, aliases = {CoinMarketCap = "MetalCoin", CurrencyName = "MetalCoin"}},
+  {name = "MetalCoin", symbol = "MTC", source = "cyberFund", metrics = {announce = "01/10/2014", status = "Dead", rpc = 38881.0, blockTime = "120", reward = "24 coins", total = "5000000", premine = "no", difficultyCycle = "Safe Gravity Well", mintConfirm = "50 Confirmations", ann = "https://bitcointalk.org/index.php?topic=801895.0", algo = "X11", links = [
+    {section = ["Main", "Apps"], name = "web site", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://github.com/MetalDevel/metalcoin.", icon = "github.png"}
+  ], type = "DAO", rating = 1.0, consensus = "Proof-of-Work", dependencies = "independent"}, aliases = {CoinMarketCap = "MetalCoin", CurrencyName = "MetalCoin"}},
+  {name = "CrackCoin", symbol = "CRACK", source = "cyberFund", metrics = {rating = 0.0, links = []}, aliases = {CoinMarketCap = "CrackCoin", CurrencyName = "CrackCoin"}},
+  {name = "Guerillacoin", symbol = "GUE", source = "cyberFund", metrics = {rating = 0.0, links = []}, aliases = {CoinMarketCap = "Guerillacoin", CurrencyName = "Guerillacoin"}},
+  {name = "CoffeeCoin", symbol = "CFC2", source = "cyberFund", metrics = {rating = 0.0, links = []}, aliases = {CoinMarketCap = "CoffeeCoin", CurrencyName = "CoffeeCoin"}},
+  {name = "Bytecoin", symbol = "BTE", source = "cyberFund", metrics = {announce = "28/03/2013", genesis = "01/04/2013", status = "Running", blockTime = "600", reward = 50.0, total = 21000000.0, difficultyCycle = "2016", txsConfirm = 6.0, ann = "https://bitcointalk.org/index.php?topic=169559.0", algo = "SHA-256d", links = [
+    {section = ["Main", "Apps"], name = "web site", url = "http://www.bytecoin.biz/", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://github.com/bryan-mills/bytecoin", icon = "github.png"}
+  ], rating = 0.0}, aliases = {CoinMarketCap = "Bytecoin", CurrencyName = "Bytecoin"}},
+  {name = "Copperlark", symbol = "CL", source = "cyberFund", metrics = {announce = "06/06/2013", status = "Dead", blockTime = "240", reward = 50.0, total = 27300000.0, premine = 2100000.0, difficultyCycle = "360", ann = "https://bitcointalk.org/index.php?topic=227252.0", algo = "SHA-3", links = [
+    {section = ["Main", "Apps"], name = "web site", url = "https://copperlark.com", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://copperlark.com/wp-download.php?file=CopperLarkSrc.zip", icon = "github.png"}
+  ]}, aliases = {CoinMarketCap = "Copperlark", CurrencyName = "Copperlark"}},
+  {name = "Vanillacoin", symbol = "VLD", source = "cyberFund", metrics = {announce = "12/01/2014", status = "Dead", blockTime = 60.0, reward = 50.0, halfingCycle = 510000.0, total = 51000000.0, difficultyCycle = 10.0, mintConfirm = 140.0, ann = "https://bitcointalk.org/index.php?topic=412311.0", algo = "Quark", links = [
+    {section = ["Main", "Apps"], name = "web site", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://github.com/vanillasaya/vanillacoin", icon = "github.png"}
+  ]}, aliases = {CoinMarketCap = "Vanillacoin", CurrencyName = "Vanillacoin"}},
+  {name = "Altcoin", symbol = "ALT", source = "cyberFund", metrics = {announce = "10/02/2014", status = "Dead", p2p = 32767.0, rpc = 32768.0, halfingCycle = "131072 blocks (~3 moths)", total = "4294967296 (2^32) ", premine = "First 128 blocks for checkpoints (total premine is 14878 ALTs, 0.00034640543162822723388671875% of the total number)", ann = "https://bitcointalk.org/index.php?topic=459028.0", algo = "Scrypt", links = [
+    {section = ["Main", "Apps"], name = "web site", url = "http://altcoin.ws/", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://github.com/altcoinproject/altcoin", icon = "github.png"}
+  ]}, aliases = {CoinMarketCap = "Altcoin", CurrencyName = "Altcoin"}},
+  {name = "Rubycoin", symbol = "RBC", source = "cyberFund", metrics = {announce = "11/02/2014", status = "Running", blockTime = 150.0, reward = 500.0, halfingCycle = "1 month", total = 60000000.0, premine = "1200000 coins(2%)", difficultyCycle = 1.0, ann = "https://bitcointalk.org/index.php?topic=459622.0", algo = "Scrypt", links = [
+    {section = ["Main", "Apps"], name = "web site", url = "http://www.rubycoin.org/", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://www.dropbox.com/s/xmnboj5k5elrvo2/rubycoin-source.zip", icon = "github.png"}
+  ]}, aliases = {CoinMarketCap = "Rubycoin", CurrencyName = "Rubycoin"}},
+  {name = "Pandacoin", symbol = "PAND", source = "cyberFund", metrics = {announce = "04/01/2014", status = "Dead", p2p = 34103.0, rpc = 34102.0, blockTime = 150.0, reward = "91.146", halfingCycle = "720 blocks (24 hours)", total = 21000000.0, premine = "420000 coins(2%) for bounties, promotion etc.", difficultyCycle = "according to Kimoto Gravity Well", ann = "https://bitcointalk.org/index.php?topic=399127.0", algo = "Scrypt", links = [
+    {section = ["Main", "Apps"], name = "web site", url = "http://www.digitalpandacoins.com/", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://github.com/pandacoindev/panda_release", icon = "github.png"}
+  ]}, aliases = {CoinMarketCap = "Pandacoin", CurrencyName = "Pandacoin"}},
+  {name = "Altcoin", symbol = "ATC", source = "cyberFund", metrics = {announce = "01/02/2014", status = "Dead", p2p = 9336.0, rpc = 9335.0, blockTime = 512.0, reward = 512.0, halfingCycle = 262144.0, total = 268435456.0, algo = "SHA-256d", links = [
+    {section = ["Main", "Apps"], name = "web site", url = "http://therealaltcoin.org/", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://github.com/therealaltcoin/altcoin", icon = "github.png"}
+  ]}, aliases = {CoinMarketCap = "Altcoin", CurrencyName = "Altcoin"}},
+  {name = "Sync", symbol = "Sync", source = "cyberFund", metrics = {announce = "13/05/2014", status = "Running", blockTime = 60.0, reward = "0.14 SYNC", total = 1000.0, premine = "5 (0.5%)", ann = "https://bitcointalk.org/index.php?topic=607919", algo = "X11", links = [
+    {section = ["Main", "Apps"], name = "web site", url = "http://www.synclub.net/", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", icon = "github.png"}
+  ]}, aliases = {CoinMarketCap = "Sync", CurrencyName = "Sync"}},
+  {name = "VootCoin", symbol = "Voot", source = "cyberFund", metrics = {announce = "04/06/2014", status = "Dead", blockTime = 60.0, total = 100800000.0, premine = "10 BTC (development fund)", difficultyCycle = "each block", ann = "https://bitcointalk.org/index.php?topic=639371.0", algo = "X11", links = [
+    {section = ["Main", "Apps"], name = "web site", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", icon = "github.png"}
+  ]}, aliases = {CoinMarketCap = "VootCoin", CurrencyName = "VootCoin"}},
+  {name = "Guerillacoin", symbol = "gue", source = "cyberFund", metrics = {announce = "17/06/2014", status = "Running", blockTime = 60.0, reward = "750 gue", total = 15000000.0, premine = "No", ann = "https://bitcointalk.org/index.php?topic=656167.msg7711495#msg7711495", algo = "X11", links = [
+    {section = ["Main", "Apps"], name = "web site", url = "http://guerillacoin.com/", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", icon = "github.png"}
+  ]}, aliases = {CoinMarketCap = "Guerillacoin", CurrencyName = "Guerillacoin"}},
+  {name = "CoffeeCoin", symbol = "COF", source = "cyberFund", metrics = {announce = "10/07/2014", status = "Dead", p2p = 9155.0, rpc = 9156.0, blockTime = 60.0, reward = "Block 1-7200: 1 000 block rewards  (5 days PoW). After 7200 block  PoS will start.", total = 7200000.0, difficultyCycle = "every block", txsConfirm = 6.0, ann = "https://bitcointalk.org/index.php?topic=684675.0", algo = "X-n", links = [
+    {section = ["Main", "Apps"], name = "web site", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", icon = "github.png"}
+  ]}, aliases = {CoinMarketCap = "CoffeeCoin", CurrencyName = "CoffeeCoin"}},
+  {name = "CrackCoin", symbol = "CRCK", source = "cyberFund", metrics = {announce = "09/09/2014", status = "Dead", p2p = 41600.0, rpc = 41601.0, blockTime = "60", reward = "5000 Crackcoins", total = "6000000", ann = "https://bitcointalk.org/index.php?topic=768678", algo = "X11", links = [
+    {section = ["Main", "Apps"], name = "web site", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://github.com/officialcrackcoin/crackcoin", icon = "github.png"}
+  ]}, aliases = {CoinMarketCap = "CrackCoin", CurrencyName = "CrackCoin"}},
+  {name = "Stellar", symbol = "Stellar", source = "cyberFund", metrics = {announce = "01/08/2014", status = "Running", total = "100000000000 coins", ann = "https: //bitcointalk.org/index.php?topic=720096.0", links = [
+    {section = ["Main", "Apps"], name = "web site", url = "https: //www.stellar.org/", icon = "website.png"},
+    {section = ["Main", "Code"], name = "github", url = "https://github.com/stellar/", icon = "github.png"}
+  ]}, aliases = {CoinMarketCap = "Stellar", CurrencyName = "Stellar"}}
+]

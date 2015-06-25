@@ -3,17 +3,16 @@ var path = require('path');
 var toml = require('toml');
 
 //var filenames = fs.readdirSync(path.join(__dirname, "..", "sources.json"));
-var filenames_toml = fs.readdirSync(path.join(__dirname, "..", "sources.toml"));
-var result = [];
 
-function loadSystem(filename) {
+
+/*function loadSystem(filename) {
   try {
     var val = require(path.join(__dirname, "..", "sources.json", filename));
     result.push(val);
   } catch (e) {
     throw(e);
   }
-}
+}*/
 
 function loadToml(filename) {
   try {
@@ -29,10 +28,17 @@ function loadToml(filename) {
   }
 }
 
-for (var idx = 0; idx < filenames_toml.length; idx++) {
-  //loadSystem(filenames[idx])
-  loadToml(filenames_toml[idx])
-}
+function act() {
+  var filenames_toml = fs.readdirSync(path.join(__dirname, "..", "sources.toml"));
+  var result = [];
 
-fs.writeFileSync(path.join(__dirname, "..", "chaingear.json"), JSON.stringify(result, null, 4));
-console.log("combined " + result.length + " entries into chaingear.json");
+  for (var idx = 0; idx < filenames_toml.length; idx++) {
+    //loadSystem(filenames[idx])
+    loadToml(filenames_toml[idx])
+  }
+
+  fs.writeFileSync(path.join(__dirname, "..", "chaingear.json"), JSON.stringify(result, null, 4));
+  console.log("combined " + result.length + " entries into chaingear.json");
+}
+act();
+
