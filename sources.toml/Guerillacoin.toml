@@ -1,5 +1,5 @@
 name = "Guerillacoin"
-symbol = "gue"
+symbol = "GUE"
 source = "cyberFund"
 
 [metrics]
@@ -11,17 +11,13 @@ total = 15000000.0
 premine = "No"
 ann = "https://bitcointalk.org/index.php?topic=656167.msg7711495#msg7711495"
 algo = "X11"
+rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://guerillacoin.com/"
-  icon = "website.png"
-
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  icon = "github.png"
+[[links]]
+name = "web site"
+url = "http://guerillacoin.com/"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
 [aliases]
 CoinMarketCap = "Guerillacoin"
