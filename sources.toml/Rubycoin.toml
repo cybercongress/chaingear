@@ -1,5 +1,5 @@
 name = "Rubycoin"
-symbol = "RBC"
+symbol = "RBY"
 source = "cyberFund"
 
 [metrics]
@@ -14,17 +14,17 @@ difficultyCycle = 1.0
 ann = "https://bitcointalk.org/index.php?topic=459622.0"
 algo = "Scrypt"
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.rubycoin.org/"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "http://www.rubycoin.org/"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://www.dropbox.com/s/xmnboj5k5elrvo2/rubycoin-source.zip"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://www.dropbox.com/s/xmnboj5k5elrvo2/rubycoin-source.zip"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Rubycoin"
