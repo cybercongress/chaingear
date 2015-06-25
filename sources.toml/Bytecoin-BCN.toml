@@ -7,12 +7,11 @@ source = "cyberFund"
 announce = "28/03/2013"
 genesis = "01/04/2013"
 status = "Running"
-difficultyCycle = "2016"
+difficultyCycle = ["2016", "each block"]
 txsConfirm = 6.0
 blockTime = 120.0
 reward = "Block reward decreases each block according to the formula: BaseReward = (MSupply - A)/2^18,  where MSupply = (2^64 - 1) atomic units and 'A' is amount of already generated coins"
 total = 174060241025
-difficultyCycle = "each block"
 algo = "CryptoNight"
 type = "DAO"
 rating = 3.0
