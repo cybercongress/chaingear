@@ -8,6 +8,7 @@ status = "Running"
 total = "100000000000 coins"
 ann = "https: //bitcointalk.org/index.php?topic=720096.0"
 
+
   [[metrics.links]]
   section = ["Main", "Apps"]
   name = "web site"
@@ -23,3 +24,107 @@ ann = "https: //bitcointalk.org/index.php?topic=720096.0"
 [aliases]
 CoinMarketCap = "Stellar"
 CurrencyName = "Stellar"
+
+{
+  "name": "Stellar",
+  "symbol": "STR",
+  "dependencies": "independent",
+  "source": "cyberFund",
+  "descriptions": {
+    "short_description": "A public infrastructure for money"
+  },
+  "links": [
+    {
+      "name": "web site",
+      "url": "https://www.stellar.org/",
+      "icon": "website.png",
+      "tags": [
+        "Main",
+        "Apps"
+      ]
+    },
+    {
+      "name": "github",
+      "url": "https://github.com/starcoinproject/starcoin",
+      "icon": "github.png",
+      "tags": [
+        "Main",
+        "Code"
+      ]
+    },
+    {
+      "name": "Documentation",
+      "url": "https://www.stellar.org/papers/stellar-consensus-protocol.pdf",
+      "icon": "whitepaper.png",
+      "tags": [
+        "Main",
+        "Science"
+      ]
+    },
+    {
+      "name": "explorer",
+      "url": "http://stellarchain.io/",
+      "icon": "explorer.png",
+      "tags": [
+        "Main",
+        "Apps"
+      ]
+    },
+    {
+      "name": "twitter",
+      "url": "https://twitter.com/stellarorg",
+      "icon": "twitter.png",
+      "tags": [
+        "Main",
+        "Apps"
+      ]
+    },
+    {
+      "name": "forum",
+      "url": "https://stellartalk.org/",
+      "icon": "forum.png",
+      "tags": [
+        "Apps"
+      ]
+    },
+    {
+      "name": "blog",
+      "url": "https://www.stellar.org/blog/",
+      "icon": "blog.png",
+      "tags": [
+        "Apps"
+      ]
+    },
+    {
+      "name": "reddit",
+      "url": "https://www.reddit.com/r/stellar",
+      "icon": "reddit.png",
+      "tags": [
+        "Apps"
+      ]
+    }
+  ],
+  "metrics": {
+    "announce": "19/07/2013",
+    "genesis": "19/07/2013",
+    "status": "Running",
+    "p2p": 18216,
+    "rpc": 18217,
+    "blockTime": "30",
+    "reward": 100,
+    "halfingCycle": 1051200,
+    "total": 227334008,
+    "premine": null,
+    "difficultyCycle": "every block",
+    "txsConfirm": 4,
+    "mintConfirm": 70,
+    "ann": "https://bitcointalk.org/index.php?topic=259012.0",
+    "algo": "Scrypt",
+    "type": "DAO",
+    "rating": 3,
+    "consensus": "Federated Consensus",
+    "hashtag": "#stellar"
+  },
+  "aliases": {
+    "CoinMarketCap": "Stellar",
+    "CurrencyName": "Stellar"

@@ -1,11 +1,34 @@
-name = "ImperialCoin"
-symbol = "IPC"
+name = "Imperialcoin"
+symbol = "IMP"
 source = "cyberFund"
 
 [metrics]
-rating = 0.0
-links = []
+announce = "01/03/2014"
+genesis = "01/03/2014"
+status = "Dead"
+p2p = 10240.0
+rpc = 10241.0
+blockTime = 60.0
+reward = "initial 1024 per block"
+halfingCycle = "every 120400 blocks"
+total = 1024000000.0
+premine = "69632 (0.0068%)"
+difficultyCycle = ""
+ann = "https://bitcointalk.org/index.php?topic=493737.0"
+algo = "SHA-256d"
+
+  [[metrics.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://imperialcoin.pw/"
+  icon = "website.png"
+
+  [[metrics.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/ImperialCoin/ImperialCoin"
+  icon = "github.png"
 
 [aliases]
-CoinMarketCap = "ImperialCoin"
-CurrencyName = "ImperialCoin"
+CoinMarketCap = "Imperialcoin"
+CurrencyName = "Imperialcoin"
