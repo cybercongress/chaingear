@@ -1,5 +1,5 @@
 name = "Copperlark"
-symbol = "CL"
+symbol = "CLR"
 source = "cyberFund"
 
 [metrics]
@@ -12,18 +12,19 @@ premine = 2100000.0
 difficultyCycle = "360"
 ann = "https://bitcointalk.org/index.php?topic=227252.0"
 algo = "SHA-3"
+rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "https://copperlark.com"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "https://copperlark.com"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://copperlark.com/wp-download.php?file=CopperLarkSrc.zip"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://copperlark.com/wp-download.php?file=CopperLarkSrc.zip"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Copperlark"
