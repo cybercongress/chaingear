@@ -12,17 +12,17 @@ ann = "https://bitcointalk.org/index.php?topic=932375"
 algo = "Scrypt"
 rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://amccoin.com/"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "http://amccoin.com/"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/AMCcoin/AmericanCoin"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/AMCcoin/AmericanCoin"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Americancoin"

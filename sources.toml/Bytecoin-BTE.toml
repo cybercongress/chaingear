@@ -1,5 +1,6 @@
 name = "Bytecoin"
 symbol = "BTE"
+dependencies = "independent"
 source = "cyberFund"
 
 [metrics]
@@ -15,17 +16,17 @@ ann = "https://bitcointalk.org/index.php?topic=169559.0"
 algo = "SHA-256d"
 rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.bytecoin.biz/"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "http://www.bytecoin.biz/"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/bryan-mills/bytecoin"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/bryan-mills/bytecoin"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Bytecoin"

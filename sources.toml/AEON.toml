@@ -13,18 +13,19 @@ premine = "No"
 difficultyCycle = "Retargets at every block"
 ann = "https://bitcointalk.org/index.php?topic=641696.0"
 algo = "CryptoNight"
+rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.aeoncoin.net/"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "http://www.aeoncoin.net/"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/aeonix/aeon"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/aeonix/aeon"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "AEON"

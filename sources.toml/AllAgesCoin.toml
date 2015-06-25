@@ -9,17 +9,13 @@ blockTime = 300.0
 difficultyCycle = 10.0
 ann = "https://bitcointalk.org/index.php?topic=386973.0"
 algo = "SHA-256d"
+rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
-
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "Source code is not open until coin is widely accepted."
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "Source code is not open until coin is widely accepted."
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "AllAgesCoin"

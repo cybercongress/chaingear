@@ -12,16 +12,11 @@ premine = 262550000.0
 ann = "https://bitcointalk.org/index.php?topic=375938.0"
 algo = "Scrypt"
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
-
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/apecoin/build"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/apecoin/build"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Apecoin"

@@ -1,24 +1,79 @@
 name = "Stellar"
-symbol = "Stellar"
+symbol = "STR"
 source = "cyberFund"
+dependencies = "independent"
+
+[descriptions] 
+short_description = "A public infrastructure for money"
 
 [metrics]
 announce = "01/08/2014"
 status = "Running"
-total = "100000000000 coins"
-ann = "https: //bitcointalk.org/index.php?topic=720096.0"
+total = 100000000000
+ann = "https://bitcointalk.org/index.php?topic=720096.0"
+genesis = "01/08/2014"
+status = "Running"
+p2p = 18216
+rpc = 18217
+blockTime = 30
+reward = 100
+halfingCycle = 1051200
+difficultyCycle = "every block"
+txsConfirm = 4
+mintConfirm = 70
+algo = "Scrypt"
+type = "DAO"
+rating = 3
+consensus = "Federated Consensus",
+hashtag = "#stellar"
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "https: //www.stellar.org/"
-  icon = "website.png"
+[[Links]]
+name = "web site"
+url = "https://www.stellar.org/"
+icon = "website.png"
+tags = ["Main", "Apps"]},
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/stellar/"
-  icon = "github.png"
+[[Links]]
+
+name = "github"
+url = "https://github.com/starcoinproject/starcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[Links]]
+name = "Documentation"
+url = "https://www.stellar.org/papers/stellar-consensus-protocol.pdf"
+icon = "whitepaper.png"
+tags = ["Main", "Science"]
+
+[[Links]]
+name = "explorer"
+url = "http://stellarchain.io/"
+icon = "explorer.png"
+tags = ["Main", "Apps"]
+
+[[Links]]
+name = "twitter"
+url = "https://twitter.com/stellarorg"
+icon = "twitter.png"
+tags = ["Main", "Apps"]
+
+[[Links]]
+name = "forum"
+url = "https://stellartalk.org/"
+icon = "forum.png", tags = ["Apps"]
+
+[[Links]]
+name = "blog"
+url = "https://www.stellar.org/blog/"
+icon = "blog.png"
+tags = ["Apps"]
+
+[[Links]]
+name = "reddit"
+url = "https://www.reddit.com/r/stellar"
+icon = "reddit.png"
+tags = ["Apps"]
 
 [aliases]
 CoinMarketCap = "Stellar"
