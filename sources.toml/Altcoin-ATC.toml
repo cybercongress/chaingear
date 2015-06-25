@@ -13,17 +13,17 @@ halfingCycle = 262144.0
 total = 268435456.0
 algo = "SHA-256d"
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://therealaltcoin.org/"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "http://therealaltcoin.org/"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/therealaltcoin/altcoin"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/therealaltcoin/altcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Altcoin"
