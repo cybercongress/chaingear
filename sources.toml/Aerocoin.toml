@@ -10,16 +10,17 @@ total = 7080000.0
 ann = "https://bitcointalk.org/index.php?topic=955204.0;all"
 algo = "X-n"
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.aerocoin.org"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "http://www.aerocoin.org"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/aegisproject/aegis"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Aerocoin"

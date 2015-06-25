@@ -11,17 +11,17 @@ premine = "7200000 (6%)"
 ann = "https://bitcointalk.org/index.php?topic=610049.0"
 algo = "X11"
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "www.acccoin.com"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "www.acccoin.com"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/AccCoin/Antarcticcoin"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/AccCoin/Antarcticcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Antarcticcoin"

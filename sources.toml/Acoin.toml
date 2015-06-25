@@ -12,17 +12,17 @@ ann = "https://bitcointalk.org/index.php?topic=761818.0"
 algo = "SHA-256d"
 rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://a-coin.info/"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "http://a-coin.info/"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/acoin-project/acoin"
-  icon = "github.png"
+[[links]]
+name = "github"
+url = "https://github.com/acoin-project/acoin"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Acoin"

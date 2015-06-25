@@ -12,18 +12,19 @@ total = 1000000.0
 premine = "10000 coins(1%)"
 ann = "https://bitcointalk.org/index.php?topic=460112.0"
 algo = "Scrypt"
+rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://antimatter.cc/"
-  icon = "website.png"
+[[links]]
+tags = ["Main", "Apps"]
+name = "web site"
+url = "http://antimatter.cc/"
+icon = "website.png"
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/staycrypto/antimatter"
-  icon = "github.png"
+[[links]]
+tags = ["Main", "Code"]
+name = "github"
+url = "https://github.com/staycrypto/antimatter"
+icon = "github.png"
 
 [aliases]
 CoinMarketCap = "Antimatter"
