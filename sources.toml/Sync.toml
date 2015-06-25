@@ -1,5 +1,5 @@
 name = "Sync"
-symbol = "Sync"
+symbol = "SYNC"
 source = "cyberFund"
 
 [metrics]
@@ -11,17 +11,19 @@ total = 1000.0
 premine = "5 (0.5%)"
 ann = "https://bitcointalk.org/index.php?topic=607919"
 algo = "X11"
+rating = 0.0
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.synclub.net/"
-  icon = "website.png"
+[[links]]
+name = "web site"
+url = "http://www.synclub.net/"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  icon = "github.png"
+[[metrics.links]]
+name = "github"
+url = "https://github.com/MsCollec/Sync2"
+icon = "github.png"
+tags = ["Main", "Code"]
 
 [aliases]
 CoinMarketCap = "Sync"
