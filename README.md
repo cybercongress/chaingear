@@ -86,3 +86,9 @@ ranking_coinmarketcap = "NaN" # type: number
 rating_coingecko = "NaN" # type: number
 
 ```
+Link type:
+ - web site
+ - github
+ - documentation
+ - explorer
+ - social

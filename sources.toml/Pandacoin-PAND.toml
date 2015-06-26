@@ -1,4 +1,4 @@
-name = "Pandacoin"
+name = "Pandacoin-PAND"
 symbol = "PAND"
 source = "cyberFund"
 
@@ -16,18 +16,14 @@ difficultyCycle = "according to Kimoto Gravity Well"
 ann = "https://bitcointalk.org/index.php?topic=399127.0"
 algo = "Scrypt"
 
-  [[metrics.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.digitalpandacoins.com/"
-  icon = "website.png"
+[[links]]
+tags = ["Main", "Apps"]
+name = "web site"
+url = "http://www.digitalpandacoins.com/"
+icon = "website.png"
 
-  [[metrics.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/pandacoindev/panda_release"
-  icon = "github.png"
-
-[aliases]
-CoinMarketCap = "Pandacoin"
-CurrencyName = "Pandacoin"
+[[links]]
+tags = ["Main", "Code"]
+name = "github"
+url = "https://github.com/pandacoindev/panda_release"
+icon = "github.png"

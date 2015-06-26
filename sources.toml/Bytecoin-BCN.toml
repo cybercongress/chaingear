@@ -4,14 +4,15 @@ dependencies = "independent"
 source = "cyberFund"
 
 [metrics]
-announce = "28/03/2013"
-genesis = "01/04/2013"
+announce = "30/06/2012"
+genesis = "4/07/2012"
 status = "Running"
-difficultyCycle = ["2016", "each block"]
-txsConfirm = 6.0
+p2p = 8080.0
+rpc = 8081.0
 blockTime = 120.0
-reward = "Block reward decreases each block according to the formula: BaseReward = (MSupply - A)/2^18,  where MSupply = (2^64 - 1) atomic units and 'A' is amount of already generated coins"
-total = 174060241025
+reward = "Block reward decreases each block according to the formula: BaseReward = (MSupply - A)/2^18,  where MSupply = (2^64 - 1) atomic units and 'A' is amount of already generated coins" 
+total = 18446744073709998080.0"
+difficultyCycle = "each block"
 algo = "CryptoNight"
 type = "DAO"
 rating = 3.0

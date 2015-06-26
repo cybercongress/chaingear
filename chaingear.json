@@ -263,9 +263,37 @@
         "symbol": "XAP",
         "source": "cyberFund",
         "metrics": {
-            "rating": 0,
-            "links": []
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.apinetwork.co/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/APINetwork",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "name": "twitter",
+                "url": "https://twitter.com/APIengineco",
+                "icon": "twitter.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "APICoin",
             "CurrencyName": "APICoin"
@@ -278,8 +306,9 @@
         "source": "cyberFund",
         "metrics": {
             "type": "DAO",
-            "rating": 1,
-            "consensus": "Proof-of-Stake"
+            "ann": "https://bitcointalk.org/index.php?topic=831777.0",
+            "consensus": "Proof-of-Stake",
+            "rating": 1
         },
         "aliases": {
             "CoinMarketCap": "ARCHcoin",
@@ -309,26 +338,11 @@
             "total": 18400000,
             "txsConfirm": 12,
             "ann": "https://bitcointalk.org/index.php?topic=705494",
-            "algo": "CryptoNight",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "CryptoNight"
         },
+        "links": [
+            {}
+        ],
         "aliases": {
             "CoinMarketCap": "ASAPcoin",
             "CurrencyName": "ASAPcoin"
@@ -348,28 +362,28 @@
             "premine": "Less the 0.1%",
             "mintConfirm": "10 blocks",
             "ann": "http://asdcoin.com/forum",
-            "algo": "SHA-256d",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://asdcoin.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://dl.dropboxusercontent.com/u/16693637/asdcoin-source.gz",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "SHA-256d"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://asdcoin.com/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://dl.dropboxusercontent.com/u/16693637/asdcoin-source.gz",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "ASDCoin",
             "CurrencyName": "ASDCoin"
@@ -378,14 +392,25 @@
     {
         "name": "ATOMIC",
         "symbol": "ATOMIC",
+        "dependencies": "NXT",
         "source": "cyberFund",
         "metrics": {
             "type": "DApp",
+            "ann": "https://bitcointalk.org/index.php?topic=780833",
             "rating": 2,
-            "consensus": "NXT",
-            "dependencies": "NXT",
-            "links": []
+            "consensus": "NXT"
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://atomicdac.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "ATOMIC",
             "CurrencyName": "Atomic"
@@ -402,28 +427,28 @@
             "total": 12000000,
             "premine": "120000 (1%)",
             "ann": "https://bitcointalk.org/index.php?topic=632818.0",
-            "algo": "X-n",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.projectaxis.net/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/CallMeMike/Axis",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "X-n"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://www.projectaxis.net/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/CallMeMike/Axis",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "AXIS coin",
             "CurrencyName": "AXIS coin"
@@ -1362,27 +1387,28 @@
             "difficultyCycle": 120,
             "ann": "https://bitcointalk.org/index.php?topic=475160.0",
             "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.appcoin.info/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/appcoin-project/appcoin",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://www.appcoin.info/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/appcoin-project/appcoin",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Appcoin",
             "CurrencyName": "Appcoin"
@@ -1393,9 +1419,23 @@
         "symbol": "ABY",
         "source": "cyberFund",
         "metrics": {
-            "rating": 0,
-            "links": []
+            "ann": "https://bitcointalk.org/index.php?topic=503131.0",
+            "algo": "Scrypt",
+            "consensus": "POW",
+            "type": "DAO",
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.applebyte.me/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "AppleByte",
             "CurrencyName": "AppleByte"
@@ -1416,27 +1456,19 @@
             "type": "DAO",
             "rating": 1,
             "consensus": "Hybrid POW-POS",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/Applecoin/Applecoin",
-                    "icon": "github.png"
-                }
-            ]
+            "dependencies": "independent"
         },
+        "links": [
+            {
+                "name": "github",
+                "url": "https://github.com/Applecoin/Applecoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Applecoin",
             "CurrencyName": "Applecoin"
@@ -1451,27 +1483,19 @@
             "status": "Dead",
             "blockTime": "30 seconds",
             "total": "1000000",
-            "ann": "https://bitcointalk.org/index.php?topic=852050.0",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/zerocoindev/ArenaCoin",
-                    "icon": "github.png"
-                }
-            ]
+            "ann": "https://bitcointalk.org/index.php?topic=852050.0"
         },
+        "links": [
+            {
+                "name": "github",
+                "url": "https://github.com/zerocoindev/ArenaCoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "ArenaCoin",
             "CurrencyName": "ArenaCoin"
@@ -1489,27 +1513,19 @@
             "halfingCycle": 8460,
             "total": 42000000,
             "ann": "https://bitcointalk.org/index.php?topic=278166.0",
-            "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "http://www.argcoin.com/files/argcoin-0.7-linux.tar.gz",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "Scrypt"
         },
+        "links": [
+            {
+                "name": "github",
+                "url": "http://www.argcoin.com/files/argcoin-0.7-linux.tar.gz",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Argcoin",
             "CurrencyName": "Argcoin"
@@ -1533,25 +1549,27 @@
             "rating": 0,
             "links": [
                 {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.argcurrency.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
                     "name": "github",
                     "url": "https://github.com/AlphaC4/Argentum",
-                    "icon": "github.png"
+                    "icon": "github.png",
+                    "tags": [
+                        "Main",
+                        "Code"
+                    ]
                 }
             ]
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.argcurrency.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Argentum",
             "CurrencyName": "Argentum"
@@ -1562,9 +1580,20 @@
         "symbol": "ARI",
         "source": "cyberFund",
         "metrics": {
-            "rating": 0,
-            "links": []
+            "ann": "https://bitcointalk.org/index.php?topic=909186.0",
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "https://aricoin.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Aricoin",
             "CurrencyName": "Aricoin"
@@ -1585,27 +1614,19 @@
             "txsConfirm": 4,
             "mintConfirm": 200,
             "ann": "https://bitcointalk.org/index.php?topic=608482.0",
-            "algo": "SHA-256d",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/ARSCoin/arkenstone.git",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "SHA-256d"
         },
+        "links": [
+            {
+                "name": "github",
+                "url": "https://github.com/ARSCoin/arkenstone.git",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Arkenstone",
             "CurrencyName": "Arkenstone"
@@ -1616,9 +1637,20 @@
         "symbol": "AC",
         "source": "cyberFund",
         "metrics": {
-            "rating": 0,
-            "links": []
+            "ann": "https://bitcointalk.org/index.php?topic=595999.0",
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.thecoin.asia/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "AsiaCoin",
             "CurrencyName": "AsiaCoin"
@@ -1643,28 +1675,28 @@
             "mintConfirm": 70,
             "ann": "https://bitcointalk.org/index.php?topic=292501.0",
             "algo": "SHA-256d",
-            "rating": 0,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://asiccoin.biz/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/asiccoin/asiccoin",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://asiccoin.biz/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/asiccoin/asiccoin",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "AsicCoin",
             "CurrencyName": "AsicCoin"
@@ -1683,27 +1715,19 @@
             "total": 10000000,
             "difficultyCycle": 20,
             "ann": "https://bitcointalk.org/index.php?topic=371775.0",
-            "algo": "Quark",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.atocoin.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "Quark"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://www.atocoin.com/",
+                "icon": "website.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Atomcoin",
             "CurrencyName": "Atomcoin"
@@ -1725,28 +1749,28 @@
             "mintConfirm": 100,
             "ann": "https://bitcointalk.org/index.php?topic=446062.0",
             "algo": "Scrypt",
-            "rating": 0,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.auroracoin.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/baldurodinsson/auroracoin-project/",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.auroracoin.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/baldurodinsson/auroracoin-project/",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Auroracoin",
             "CurrencyName": "Auroracoin"
@@ -1768,28 +1792,19 @@
             "mintConfirm": "2 blocks",
             "ann": "https://bitcointalk.org/index.php?topic=793502.0",
             "algo": "SHA-256d",
-            "rating": 0,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://aurumcoin.eu/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "null",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://aurumcoin.eu/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Aurumcoin",
             "CurrencyName": "Aurumcoin"
@@ -1810,28 +1825,28 @@
             "premine": 1000,
             "ann": "https://bitcointalk.org/index.php?topic=738534.0",
             "algo": "Others",
-            "rating": 0,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://axron.pw/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/projectaxron/Axron",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://axron.pw/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/projectaxron/Axron",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Axron",
             "CurrencyName": "Axron"
@@ -1851,28 +1866,28 @@
             "total": "50000000",
             "difficultyCycle": "20 blocks",
             "mintConfirm": "50 blocks",
-            "algo": "X11",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "azzacoin.com",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://mega.co.nz/#!LVpHSQ4A!6Kqvb6m7YHuCVv5yViWp5xSpIxFl17FfNknI8gc907o",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "X11"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "azzacoin.com",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://mega.co.nz/#!LVpHSQ4A!6Kqvb6m7YHuCVv5yViWp5xSpIxFl17FfNknI8gc907o",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "AzzaCoin",
             "CurrencyName": "AzzaCoin"
@@ -1894,28 +1909,28 @@
             "difficultyCycle": "every block",
             "mintConfirm": "20 blocks",
             "ann": "https://bitcointalk.org/index.php?topic=827734.0",
-            "algo": "X-n",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://b1bl3.com/b1bl3coin/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/B1bl3Coin/b1bl3coinsource",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "X-n"
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://b1bl3.com/b1bl3coin/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/B1bl3Coin/b1bl3coinsource",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "B1bl3Coin",
             "CurrencyName": "B1bl3Coin"
@@ -1936,28 +1951,28 @@
             "difficultyCycle": "60",
             "ann": "https://bitcointalk.org/index.php?topic=307923.0",
             "algo": "Scrypt",
-            "rating": 0,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://bbqcoinfoundation.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/overware/BBQCoin",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://bbqcoinfoundation.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/overware/BBQCoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "BBQcoin",
             "CurrencyName": "BBQcoin"
@@ -1968,9 +1983,12 @@
         "symbol": "BDSM",
         "source": "cyberFund",
         "metrics": {
-            "rating": 0,
-            "links": []
+            "ann": "https://bitcointalk.org/index.php?topic=801366.0",
+            "rating": 0
         },
+        "links": [
+            {}
+        ],
         "aliases": {
             "CoinMarketCap": "BDSM",
             "CurrencyName": "BDSM"
@@ -1992,28 +2010,28 @@
             "difficultyCycle": "",
             "mintConfirm": "15",
             "ann": "https://bitcointalk.org/index.php?topic=715904.new#new",
-            "algo": "SHA-256d",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://bigbullion.co/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/BIGBullion/bigbullion",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "SHA-256d"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://bigbullion.co/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/BIGBullion/bigbullion",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "BIGBullion",
             "CurrencyName": "BIGBullion"
@@ -2033,27 +2051,19 @@
             "total": 420000,
             "premine": "2100 (0.5%)  for development, promotion,bounty",
             "ann": "https://bitcointalk.org/index.php?topic=693973.0",
-            "algo": "X-n",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/sndnvaps/admins",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "X-n"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/sndnvaps/admins",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Backpacker",
             "CurrencyName": "Backpacker"
@@ -2064,9 +2074,11 @@
         "symbol": "BNCR",
         "source": "cyberFund",
         "metrics": {
-            "rating": 0,
-            "links": []
+            "rating": 0
         },
+        "links": [
+            {}
+        ],
         "aliases": {
             "CoinMarketCap": "Bancorcoin",
             "CurrencyName": "Bancorcoin"
@@ -2076,13 +2088,32 @@
         "name": "BanxShares",
         "symbol": "BANX",
         "source": "cyberFund",
+        "dependencies": "independent",
         "metrics": {
             "type": "DAO",
+            "ann": "https://bitcointalk.org/index.php?topic=813191.0",
             "rating": 1,
-            "consensus": "Proof-of-Work",
-            "dependencies": "independent",
-            "links": []
+            "consensus": "Proof-of-Work"
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://banxcapital.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            },
+            {
+                "name": "reddit",
+                "url": "http://www.reddit.com/r/Banx/",
+                "icon": "reddit.png",
+                "tags": [
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "BanxShares",
             "CurrencyName": "BanxShares"
@@ -2105,26 +2136,19 @@
             "mintConfirm": 50,
             "ann": "https://bitcointalk.org/index.php?topic=289946.0",
             "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/basecoin/basecoin",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/basecoin/basecoin",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Basecoin",
             "CurrencyName": "Basecoin"
@@ -2146,28 +2170,28 @@
             "mintConfirm": 70,
             "ann": "https://bitcointalk.org/index.php?topic=400753.0",
             "algo": "Scrypt",
-            "rating": 0,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://batcoin.info/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/OriginalBatCoin/BatCoin",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://batcoin.info/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/OriginalBatCoin/BatCoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Batcoin",
             "CurrencyName": "Batcoin"
@@ -2178,9 +2202,20 @@
         "symbol": "BCX",
         "source": "cyberFund",
         "metrics": {
-            "rating": 0,
-            "links": []
+            "ann": "https://bitcointalk.org/index.php?topic=354612.0",
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://battlecoinxchange.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "BattleCoin",
             "CurrencyName": "BattleCoin"
@@ -2201,28 +2236,28 @@
             "difficultyCycle": 10,
             "mintConfirm": 30,
             "ann": "https://bitcointalk.org/index.php?topic=327516.0",
-            "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.beaocoin.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "http://pan.baidu.com/share/link?shareid=738555483&uk=3676261802",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "Scrypt"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://www.beaocoin.com/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "http://pan.baidu.com/share/link?shareid=738555483&uk=3676261802",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Beaocoin",
             "CurrencyName": "Beaocoin"
@@ -2231,11 +2266,15 @@
     {
         "name": "BearMining",
         "symbol": "BEAR",
+        "dependencies": "NXT",
         "source": "cyberFund",
         "metrics": {
-            "rating": 0,
-            "links": []
+            "ann": "https://nxtforum.org/kongzi-news-service/(ann)-bearmining/",
+            "rating": 0
         },
+        "links": [
+            {}
+        ],
         "aliases": {
             "CoinMarketCap": "BearMining",
             "CurrencyName": "BearMining"
@@ -2246,9 +2285,20 @@
         "symbol": "BVC",
         "source": "cyberFund",
         "metrics": {
-            "rating": 0,
-            "links": []
+            "ann": "https://bitcointalk.org/index.php?topic=761269.0",
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://beavercoin.org/en/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "BeaverCoin",
             "CurrencyName": "BeaverCoin"
@@ -2270,27 +2320,28 @@
             "txsConfirm": 3,
             "ann": "https://bitcointalk.org/index.php?topic=461550.0",
             "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://beecoin.co/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/beecoin/beecoin-project",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://beecoin.co/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/beecoin/beecoin-project",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Beecoin",
             "CurrencyName": "Beecoin"
@@ -2313,28 +2364,28 @@
             "txsConfirm": 3,
             "mintConfirm": 30,
             "ann": "https://bitcointalk.org/index.php?topic=445553.0",
-            "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.beercoin.info/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/CCPorg/BEER-BeerCoin-Ver-631-Original",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "Scrypt"
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.beercoin.info/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            },
+            {
+                "name": "github",
+                "url": "https://github.com/CCPorg/BEER-BeerCoin-Ver-631-Original",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Beercoin",
             "CurrencyName": "Beercoin"
@@ -2354,28 +2405,28 @@
             "total": 900000000000,
             "premine": "7200000000 coins (0.8%) for expenses, bounties, giveaways, development, support and maintenance, marketing etc.",
             "ann": "https://bitcointalk.org/index.php?topic=460810.0",
-            "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.belicoin.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "http://www.belicoin.com/assets/belicoin-src-(2).zip",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "Scrypt"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://www.belicoin.com/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "http://www.belicoin.com/assets/belicoin-src-(2).zip",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Beli",
             "CurrencyName": "Beli"
@@ -2396,28 +2447,28 @@
             "difficultyCycle": "Kimoto Gravity Well diff adjustment",
             "ann": "https://cryptocointalk.com/topic/3845-ann-bellacoin-bela-scrypt-coin-announcement/",
             "algo": "Scrypt",
-            "rating": 0,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.bellacoin.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/bellacoin/bellacoin.git",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://www.bellacoin.com/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/bellacoin/bellacoin.git",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Bellacoin",
             "CurrencyName": "Bellacoin"
@@ -2435,27 +2486,27 @@
             "difficultyCycle": "240",
             "ann": "https://bitcointalk.org/index.php?topic=349695.0",
             "algo": "Scrypt",
-            "rating": 0,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/bellscoin/bellscoin",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/bellscoin/bellscoin",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Bells",
             "CurrencyName": "Bells"
@@ -2475,28 +2526,28 @@
             "total": 12800000,
             "ann": "https://bitcointalk.org/index.php?topic=444543.0",
             "algo": "SHA-256d",
-            "rating": 0,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://benjaminsbaby.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://drive.google.com/file/d/0BxGp--rLnwKscG03enkxMk8xMjQ/edit?usp=sharing",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://benjaminsbaby.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            },
+            {
+                "name": "github",
+                "url": "https://drive.google.com/file/d/0BxGp--rLnwKscG03enkxMk8xMjQ/edit?usp=sharing",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Benjamins",
             "CurrencyName": "Benjamins"
@@ -2519,28 +2570,28 @@
             "txsConfirm": 6,
             "mintConfirm": 30,
             "ann": "https://bitcointalk.org/index.php?topic=266439.0",
-            "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.bestcoin.tk/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/BestCoin/BestCoin/",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "Scrypt"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://www.bestcoin.tk/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/BestCoin/BestCoin/",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Bestcoin",
             "CurrencyName": "Bestcoin"
@@ -2562,19 +2613,19 @@
             "difficultyCycle": "6",
             "ann": "https://bitcointalk.org/index.php?topic=321266.0",
             "algo": "SHA-256d",
-            "rating": 0,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/betacoindev/betacoin",
-                    "icon": "github.png"
-                }
-            ]
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "github",
+                "url": "https://github.com/betacoindev/betacoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Betacoin",
             "CurrencyName": "Betacoin"
@@ -2595,28 +2646,28 @@
             "premine": "69 000 BBC",
             "mintConfirm": " 150 blocks",
             "ann": "https://bitcointalk.org/index.php?topic=716901.msg8098799#msg8098799",
-            "algo": "X-n",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.bigbangcoin.info/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/lefter1s/BigBang",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "X-n"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://www.bigbangcoin.info/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/lefter1s/BigBang",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "BigBangCoin",
             "CurrencyName": "BigBangCoin"
@@ -2625,14 +2676,24 @@
     {
         "name": "BilShares",
         "symbol": "BILS",
+        "dependencies": "independent",
         "source": "cyberFund",
         "metrics": {
             "type": "DAO",
-            "rating": 1,
             "consensus": "Proof-of-Stake",
-            "dependencies": "independent",
-            "links": []
+            "rating": 1
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://www.bilshares.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "BilShares",
             "CurrencyName": "BilShares"
@@ -2652,28 +2713,28 @@
             "total": 20000000000,
             "difficultyCycle": "480 blocks (8 hours)",
             "ann": "https://bitcointalk.org/index.php?topic=448528.0",
-            "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.billaume.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/benoitbillaume/billaume/",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "Scrypt"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://www.billaume.com/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/benoitbillaume/billaume/",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Billaume",
             "CurrencyName": "Billaume"
@@ -2695,27 +2756,19 @@
             "premine": "140000000 (2%) for bounties, giveaways and development",
             "difficultyCycle": "every block (Kimoto Gravity Well)",
             "ann": "https://bitcointalk.org/index.php?topic=496363.0",
-            "algo": "Scrypt",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/KungFuCoin/Birdcoin",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "Scrypt"
         },
+        "links": [
+            {
+                "name": "github",
+                "url": "https://github.com/KungFuCoin/Birdcoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "Birdcoin",
             "CurrencyName": "Birdcoin"
@@ -2724,11 +2777,22 @@
     {
         "name": "BitBTC",
         "symbol": "BITBTC",
+        "dependencies": "BitShares",
         "source": "cyberFund",
         "metrics": {
-            "rating": 0,
-            "links": []
+            "rating": 0
         },
+        "links": [
+            {
+                "name": "explorer",
+                "url": "http://www.bitsharesblocks.com/asset/orderbook?asset=BTC",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "BitBTC",
             "CurrencyName": "BitBTC"
@@ -2776,14 +2840,25 @@
     {
         "name": "BitBay",
         "symbol": "BAY",
+        "dependencies": "independent",
         "source": "cyberFund",
         "metrics": {
             "type": "DAO",
+            "ann": "https://bitcointalk.org/index.php?topic=890531",
             "rating": 1,
-            "consensus": "Proof-of-Stake",
-            "dependencies": "independent",
-            "links": []
+            "consensus": "Proof-of-Stake"
         },
+        "links": [
+            {
+                "name": "web site",
+                "url": "http://bitbaymarket.net/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "BitBay",
             "CurrencyName": "BitBay"
@@ -2802,28 +2877,28 @@
             "total": 84000000,
             "difficultyCycle": "diff adjustment reward changed from 25 to 75",
             "ann": "https://bitcointalk.org/index.php?topic=665159.0",
-            "algo": "X-n",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.bitblock.ml/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/bitblockproject/bitblock",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "X-n"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "name": "web site",
+                "url": "http://www.bitblock.ml/",
+                "icon": "website.png"
+            },
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/bitblockproject/bitblock",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "BitBlock",
             "CurrencyName": "BitBlock"
@@ -2856,27 +2931,19 @@
             "total": "5000000",
             "mintConfirm": "120",
             "ann": "https://bitcointalk.org/index.php?topic=737857.0",
-            "algo": "X-n",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/cryptoskills/bitcash",
-                    "icon": "github.png"
-                }
-            ]
+            "algo": "X-n"
         },
+        "links": [
+            {
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "name": "github",
+                "url": "https://github.com/cryptoskills/bitcash",
+                "icon": "github.png"
+            }
+        ],
         "aliases": {
             "CoinMarketCap": "BitCash",
             "CurrencyName": "BitCash"
@@ -2887,9 +2954,11 @@
         "symbol": "BCENT",
         "source": "cyberFund",
         "metrics": {
-            "rating": 0,
-            "links": []
+            "rating": 0
         },
+        "links": [
+            {}
+        ],
         "aliases": {
             "CoinMarketCap": "BitCent",
             "CurrencyName": "BitCent"
@@ -3190,7 +3259,7 @@
     {
         "name": "BitShares",
         "symbol": "BTS",
-        "blockchain_id": "????????",
+        "blockchain_id": "null",
         "dependencies": "independent",
         "source": "cyberFund",
         "descriptions": {
