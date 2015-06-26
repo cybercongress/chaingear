@@ -85,7 +85,11 @@ consensus_name = "Bitcoin Proof-of-Work"
 # If epmty - "independent"
 
 [descriptions]
+state = "Running"
+type = "DAO"
+hashtag = "#bitcoin"
 headline = "Bitcoin is an innovative payment network and a new kind of money" # type: string
+tags = ["Cool", "Bro"]
 description = "Bitcoin is an innovative payment network and a new kind of money." # type: string
 
 [specs]
@@ -98,14 +102,9 @@ difficultyCycle = "2016"
 txsConfirm = "6"
 algo = "SHA-256d"
 
-[other}
-ann = "http://article.gmane.org/gmane.comp.encryption.general/12588/"
-status = "Running"
+[events]
+announcement = "31/10/2008
 genesis = "03/01/2009"
-announce = "31/10/2008"
-type = "DAO"
-rating = 5.0
-hashtag = "#bitcoin"
 
 [aliases]
 coinmarketcap = "Bitcoin"
@@ -160,6 +159,8 @@ name = "reddit"
 url = "http://www.reddit.com/r/Bitcoin/"
 icon = "reddit.png"
 tags = ["Apps"]
+
+ann = "http://article.gmane.org/gmane.comp.encryption.general/12588/"
 ```
 
 
