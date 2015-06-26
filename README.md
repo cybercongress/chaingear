@@ -56,7 +56,7 @@ name = "web site" # type: string
 url = "http://ethereum.org/" # type: string
 type = "website" # type: string
 tags = [ "Main", "Apps" ] # type: string
-icon = [ "Main", "Apps" ] # optional. If empty default picture for a type
+icon = "ethereum.png" # optional. If empty default picture for a type
 
 [crowdsales]
 start_date = "22/7/2014" # type: date
@@ -66,19 +66,6 @@ funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGene
 funding_operator = "null" # type: string
 funding_url = "https://www.ethereum.org/ether" # type: string
 tokens_sold = 60102216 # type: number
-
-# Continious data
-[supply]
-supply_current = 60102216 # type: number
-supply_max = 45000000 # type: number
-
-[cap]
-cap_usd = 18439000 # type: number
-cap_btc = 31529 # type: number
-
-[price]
-price_usd = 1.34 # type: number
-price_btc = 0.05 # type: number
 
 [rating]
 rating_cyber = 5 # type: number
