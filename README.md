@@ -37,15 +37,13 @@ blockchain_id = "null" # type: string
 symbol = "ETH" # type: string
 currency = "ether" # type: string
 short_description = "A Next-Generation Smart Contract and Decentralized Application Platform" # type: string
-"summary" = "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority." # type: string
+summary = "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority." # type: string
+coinmarketcap = "Ethereum" # type: string
 
 type = "DAO" # type: string
 consensus = "Ethereum" # type: string
 
 [dependencies] # type: string. Independent if empty.
-
-[aliases"]
-CoinMarketCap = "Ethereum" # type: string
 
 [links]
 name = "web site" # type: string
@@ -70,12 +68,12 @@ rating_cyber = 5 # temporary. type: number
 
 ## Bitcoin Case
 ```
-blockchain_id = "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
+genesis_id = "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
 system = "Bitcoin"
 
 [token]
-name="bitcoin"
-symbol = "BTC"
+token_name="bitcoin"
+token_symbol = "BTC"
 
 [consensus]
 consensus_type = "Proof-of-Work"
@@ -85,16 +83,19 @@ hashing = "SHA-256d"
 [dependencies]
 # If epmty - "independent"
 
-[descriptions]
+[descriptions] # mapped as strings
 state = "Running"
 type = "DAO"
 hashtag = "#bitcoin"
 headline = "Bitcoin is an innovative payment network and a new kind of money" # type: string
-tags = ["Cool", "Bro"]
+tags = ["whale"]
 description = "Bitcoin is an innovative payment network and a new kind of money." # type: string
 
-[specs]
-rpc = 8332.0
+[aliases] # used for matching
+coinmarketcap = "Bitcoin"
+
+[specs] # mapped as number
+rpc = "8332"
 blockTime = "600"
 reward = "50"
 halfingCycle = "210240"
@@ -102,12 +103,9 @@ total = "21000000"
 difficultyCycle = "2016"
 txsConfirm = "6"
 
-[events]
-announcement = "31/10/2008
+[events] # mapped as dates
+announcement = "31/10/2008"
 genesis = "03/01/2009"
-
-[aliases]
-coinmarketcap = "Bitcoin"
 
 [ratings]
 rating_cyber = 5 # temporary. type: number
