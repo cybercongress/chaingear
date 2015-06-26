@@ -56,6 +56,7 @@ name = "web site" # type: string
 url = "http://ethereum.org/" # type: string
 type = "website" # type: string
 tags = [ "Main", "Apps" ] # type: string
+icon = [ "Main", "Apps" ] # optional. If empty default picture for a type
 
 [crowdsales]
 start_date = "22/7/2014" # type: date
