@@ -77,14 +77,11 @@ rating_coingecko = "NaN" # type: number
 
 ## Bitcoin Case
 ```
-name = "Bitcoin"
-symbol = "BTC"
 blockchain_id = "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
-dependencies = "independent"
-source = "cyberFund"
+name = "Bitcoin"
 
 [specs]
-
+dependencies = "independent"
 consensusType = "Proof-of-Work"
 consensusName = "Bitcoin Proof-of-Work"
 rpc = 8332.0
@@ -106,8 +103,9 @@ rating = 5.0
 hashtag = "#bitcoin"
 
 [aliases]
-CoinMarketCap = "Bitcoin"
-CurrencyName = "Bitcoin"
+coinMarketCap = "Bitcoin"
+currencyName = "Bitcoin"
+symbol = "BTC"
 
 [[links]]
 name = "web site"
