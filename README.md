@@ -29,9 +29,6 @@ You can add blockchain related projects in blockchain metadata.
 # This is a TOML document.
 
 [document]
-timestamp = 1431342962 # type: date
-source = "CoinMarketCap" # _type: string
-id = "_id" # _type: string
 system = "Ethereum" # type: string
 blockchain_id = "null" # type: string
 
@@ -45,7 +42,6 @@ short_description = "A Next-Generation Smart Contract and Decentralized Applicat
 type = "DAO" # type: string
 consensus = "Ethereum" # type: string
 
-# Discrete Data
 [dependencies] # type: string. Independent if empty.
 
 [aliases"]
@@ -67,23 +63,32 @@ funding_operator = "null" # type: string
 funding_url = "https://www.ethereum.org/ether" # type: string
 tokens_sold = 60102216 # type: number
 
-[rating]
-rating_cyber = 5 # type: number
-ranking_cyber = 25 # type: number
-ranking_coinmarketcap = "NaN" # type: number
-rating_coingecko = "NaN" # type: number
+[ratings]
+rating_cyber = 5 # temporary. type: number
 
 ```
 
 ## Bitcoin Case
 ```
 blockchain_id = "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
-name = "Bitcoin"
+system = "Bitcoin"
+
+[token]
+name="bitcoin"
+symbol = "BTC"
+
+[consensus]
+consensus_type = "Proof-of-Work"
+consensus_name = "Bitcoin Proof-of-Work"
+
+[dependencies]
+# If epmty - "independent"
+
+[descriptions]
+headline = "Bitcoin is an innovative payment network and a new kind of money" # type: string
+description = "Bitcoin is an innovative payment network and a new kind of money." # type: string
 
 [specs]
-dependencies = "independent"
-consensusType = "Proof-of-Work"
-consensusName = "Bitcoin Proof-of-Work"
 rpc = 8332.0
 blockTime = "600"
 reward = "50"
@@ -103,9 +108,10 @@ rating = 5.0
 hashtag = "#bitcoin"
 
 [aliases]
-coinMarketCap = "Bitcoin"
-currencyName = "Bitcoin"
-symbol = "BTC"
+coinmarketcap = "Bitcoin"
+
+[ratings]
+rating_cyber = 5 # temporary. type: number
 
 [[links]]
 name = "web site"
