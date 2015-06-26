@@ -80,6 +80,7 @@ symbol = "BTC"
 [consensus]
 consensus_type = "Proof-of-Work"
 consensus_name = "Bitcoin Proof-of-Work"
+hashing = "SHA-256d"
 
 [dependencies]
 # If epmty - "independent"
@@ -100,7 +101,6 @@ halfingCycle = "210240"
 total = "21000000"
 difficultyCycle = "2016"
 txsConfirm = "6"
-algo = "SHA-256d"
 
 [events]
 announcement = "31/10/2008
