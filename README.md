@@ -24,7 +24,7 @@ Why I need to add the blockchain?
 ## Improve metadata
 You can add blockchain related projects in blockchain metadata.
 
-## Target example
+## Ethereum case
 ```toml
 # This is a TOML document.
 
@@ -74,6 +74,91 @@ ranking_coinmarketcap = "NaN" # type: number
 rating_coingecko = "NaN" # type: number
 
 ```
+
+## Bitcoin Case
+```
+name = "Bitcoin"
+symbol = "BTC"
+blockchain_id = "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
+dependencies = "independent"
+source = "cyberFund"
+
+[specs]
+
+consensusType = "Proof-of-Work"
+consensusName = "Bitcoin Proof-of-Work"
+rpc = 8332.0
+blockTime = "600"
+reward = "50"
+halfingCycle = "210240"
+total = "21000000"
+difficultyCycle = "2016"
+txsConfirm = "6"
+algo = "SHA-256d"
+
+[other}
+ann = "http://article.gmane.org/gmane.comp.encryption.general/12588/"
+status = "Running"
+genesis = "03/01/2009"
+announce = "31/10/2008"
+type = "DAO"
+rating = 5.0
+hashtag = "#bitcoin"
+
+[aliases]
+CoinMarketCap = "Bitcoin"
+CurrencyName = "Bitcoin"
+
+[[links]]
+name = "web site"
+url = "http://bitcoin.org/en/"
+icon = "website.png"
+tags = ["Main", "Apps"]
+
+[[links]]
+name = "github"
+url = "https://github.com/bitcoin/bitcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+name = "Documentation"
+url = "https://bitcoin.org/bitcoin.pdf"
+icon = "whitepaper.png"
+tags = ["Main", "Science"]
+
+[[links]]
+name = "explorer"
+url = "https://blockchain.info/"
+icon = "explorer.png"
+tags = ["Main", "Apps"]
+
+[[links]]
+name = "twitter"
+url = "https://twitter.com/Bitcoin"
+icon = "twitter.png"
+tags = ["Main", "Apps"]
+
+[[links]]
+name = "forum"
+url = "https://bitcointalk.org/"
+icon = "forum.png"
+tags = ["Apps"]
+
+[[links]]
+name = "blog"
+url = "https://blog.bitcoinfoundation.org/"
+icon = "blog.png"
+tags = ["Apps"]
+
+[[links]]
+name = "reddit"
+url = "http://www.reddit.com/r/Bitcoin/"
+icon = "reddit.png"
+tags = ["Apps"]
+```
+
+
 Link types:
  - website
  - github
