@@ -84,11 +84,11 @@ hashing = "SHA-256d"
 # If epmty - "independent"
 
 [descriptions] # mapped as strings
-state = "Running"
-type = "DAO"
+state = "live"
+type = "blockchain"
 hashtag = "#bitcoin"
 headline = "Bitcoin is an innovative payment network and a new kind of money" # type: string
-tags = ["whale"]
+tags = ["whale", "dao"]
 description = "Bitcoin is an innovative payment network and a new kind of money." # type: string
 
 [aliases] # used for matching
@@ -110,59 +110,15 @@ genesis = "03/01/2009"
 [ratings]
 rating_cyber = 5 # temporary. type: number
 
-[[links]]
-name = "web site"
-url = "http://bitcoin.org/en/"
-icon = "website.png"
-tags = ["Main", "Apps"]
+# Standard links. Automatic icons
 
-[[links]]
-name = "github"
-url = "https://github.com/bitcoin/bitcoin"
-icon = "github.png"
-tags = ["Main", "Code"]
+[links]
+name = "web site" # type: string
+url = "http://ethereum.org/" # type: string
+type = "website" # type: string
+tags = [ "Main", "Apps" ] # type: string
 
-[[links]]
-name = "Documentation"
-url = "https://bitcoin.org/bitcoin.pdf"
-icon = "whitepaper.png"
-tags = ["Main", "Science"]
-
-[[links]]
-name = "explorer"
-url = "https://blockchain.info/"
-icon = "explorer.png"
-tags = ["Main", "Apps"]
-
-[[links]]
-name = "twitter"
-url = "https://twitter.com/Bitcoin"
-icon = "twitter.png"
-tags = ["Main", "Apps"]
-
-[[links]]
-name = "forum"
-url = "https://bitcointalk.org/"
-icon = "forum.png"
-tags = ["Apps"]
-
-[[links]]
-name = "blog"
-url = "https://blog.bitcoinfoundation.org/"
-icon = "blog.png"
-tags = ["Apps"]
-
-[[links]]
-name = "reddit"
-url = "http://www.reddit.com/r/Bitcoin/"
-icon = "reddit.png"
-tags = ["Apps"]
-
-ann = "http://article.gmane.org/gmane.comp.encryption.general/12588/"
-```
-
-
-Link types:
+Supported fo link types:
  - website
  - github
  - paper
@@ -173,3 +129,13 @@ Link types:
  - blog
  - forum
  - wallet
+
+# Custom links
+[links]
+name = "web site" # type: string
+url = "http://ethereum.org/" # type: string
+type = "website" # type: string
+tags = [ "Main", "Apps" ] # type: string
+icon = "bitcoin.png" # optional. If empty default picture for a type
+
+```
