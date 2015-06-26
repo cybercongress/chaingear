@@ -113,23 +113,23 @@ rating_cyber = 5 # temporary. type: number
 # Standard links. Automatic icons
 
 [links]
-name = "web site" # type: string
 url = "http://ethereum.org/" # type: string
 type = "website" # type: string
-tags = [ "Main", "Apps" ] # type: string
+tags = [ "Main", "Apps" ] # optional. If empty - standardtype. type: string
+name = "website" # optional. If empty - name of type. type: string
 
 Supported fo link types:
- - website
- - github
- - paper
- - wiki
- - explorer
- - twitter
- - reddit
- - blog
- - forum
- - wallet
-
+ - website [ "Main", "Apps" ]
+ - paper [ "Main", "Apps" ]
+ - wallet [ "Main", "Apps" ]
+ - explorer [ "Main", "Apps" ]
+ - wiki [ "Apps" ]
+ - github [ "Apps" ]
+ - twitter [ "Apps" ] 
+ - reddit [ "Apps" ]
+ - blog [ "Apps" ]
+ - forum [ "Apps" ]
+ 
 # Custom links
 [links]
 name = "web site" # type: string
