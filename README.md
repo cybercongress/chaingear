@@ -134,7 +134,7 @@ Supported fo link types:
 [links]
 name = "web site" # type: string
 url = "http://ethereum.org/" # type: string
-type = "website" # type: string
+type = "custom" # type: string
 tags = [ "Main", "Apps" ] # type: string
 icon = "bitcoin.png" # optional. If empty default picture for a type
 
