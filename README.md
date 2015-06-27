@@ -84,12 +84,13 @@ hashing = "SHA-256d"
 # If epmty - "independent"
 
 [descriptions] # mapped as strings
-state = "live"
-type = "blockchain"
-hashtag = "#bitcoin"
 headline = "Bitcoin is an innovative payment network and a new kind of money" # type: string
-tags = ["whale", "dao"]
 description = "Bitcoin is an innovative payment network and a new kind of money." # type: string
+system_type = "blockchain"
+state = "live"
+hashtag = "#bitcoin"
+tags = ["whale", "dao"]
+
 
 [aliases] # used for matching
 coinmarketcap = "Bitcoin"
