@@ -95,13 +95,13 @@ description = "Bitcoin is an innovative payment network and a new kind of money.
 coinmarketcap = "Bitcoin"
 
 [specs] # mapped as number
-rpc = "8332"
-blockTime = "600"
-reward = "50"
-halfingCycle = "210240"
-total = "21000000"
-difficultyCycle = "2016"
-txsConfirm = "6"
+rpc = 8332
+block_time = 600
+block_reward = 50
+halfing_cycle = 210240
+total = 21000000
+difficulty_cycle = 2016
+txs_confirm = 6
 
 [events] # mapped as dates
 announcement = "31/10/2008"
