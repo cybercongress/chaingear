@@ -2,22 +2,9 @@ var fs = require("fs");
 var path = require('path');
 var toml = require('toml');
 
-//var filenames = fs.readdirSync(path.join(__dirname, "..", "sources.json"));
-
-
-/*function loadSystem(filename) {
+function loadToml(filename, result) {
   try {
-    var val = require(path.join(__dirname, "..", "sources.json", filename));
-    result.push(val);
-  } catch (e) {
-    throw(e);
-  }
-}*/
-var result = [];
-
-function loadToml(filename) {
-  try {
-    var fullname = path.join(__dirname, "..", "sources.toml", filename);
+    var fullname = path.join(filename);
     var data = fs.readFileSync(fullname);
     var parsed = toml.parse(data);
     result.push(parsed);
@@ -29,12 +16,33 @@ function loadToml(filename) {
   }
 }
 
+var walk = function (dir) {
+  var results = [];
+
+  var list = fs.readdirSync(dir);
+
+  list.forEach(function (_file) {
+    var file = path.join(dir, _file);
+    var stat = fs.statSync(file);
+    if (stat && stat.isDirectory()) {
+      results = results.concat(walk(file));
+    } else {
+      if (file.split(".").pop() != "toml") {
+        console.log("found non-toml file^" + dir + "/" + file);
+        return;
+      }
+      results.push(file)
+    }
+  });
+  return results
+};
+
 function act() {
-  var filenames_toml = fs.readdirSync(path.join(__dirname, "..", "sources.toml"));
+  var result = [];
+  var filenames_toml = walk( path.join(__dirname, "..", "sources.toml") );
 
   for (var idx = 0; idx < filenames_toml.length; idx++) {
-    //loadSystem(filenames[idx])
-    loadToml(filenames_toml[idx])
+    loadToml(filenames_toml[idx], result);
   }
 
   fs.writeFileSync(path.join(__dirname, "..", "chaingear.json"), JSON.stringify(result, null, 4));
