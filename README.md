@@ -115,7 +115,7 @@ rating_cyber = 5 # temporary. type: number
 [links]
 url = "http://ethereum.org/" # type: string
 type = "website" # type: string
-tags = [ "Main", "Apps" ] # optional. If empty - standardtype. type: string
+tags = [ "Main", "Apps" ] # type: string
 name = "website" # optional. If empty - name of type. type: string
 
 Supported fo link types:
