@@ -95,13 +95,16 @@ consensus_name = "Bitcoin Proof-of-Work"
 hashing = "SHA-256d"
 
 [specs] # mapped as number
-rpc = 8332
+rpc = 8332 # RPC port
+p2p = null # p2p port
 block_time = 600 # the number of seconds required for generating a block
 block_reward = 50 # the number of tokens received as a reward for the found block
 halfing_cycle = 210240
-total_tokens = 21000000 # the number of tokens that will ever be generated
 difficulty_cycle = 2016
 txs_confirm = 6 # the number of confirmations required to record transactions in the block
+mint_confirm = 120
+total_tokens = 21000000 # the number of tokens that will ever be generated
+premine_tokens = 0 # the number of premined tokens 
 
 [events] # mapped as dates
 announcement = "31/10/2008"
