@@ -44,22 +44,10 @@ function saveToml(system){
       if ( e.code != 'EEXIST' ) throw e;
     }
   };
-
-  //first letter, capitalized, or '1' is string starts from digit
-  var indexDirName = function(str){
-    var first = str.slice(0,1).toUpperCase();
-    if (! isNaN (parseInt (first) ) ) return '1';
-    return first;
-  };
   var nom = system.system;
+  mkdirSync( path.join(__dirname,"..","sources", nom));
 
-  var directories = '1ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  for (var j=0; j<directories.length; j++){
-    mkdirSync( path.join(__dirname,"..","sources.toml", directories[j]));
-  }
-  mkdirSync( path.join(__dirname,"..","sources.toml",indexDirName(nom), nom));
-
-  var filename = path.join(__dirname,"..","sources.toml",indexDirName(nom),nom,nom + ".toml"); //om nom nom
+  var filename = path.join(__dirname,"..","sources",nom,nom + ".toml"); //om nom nom
   fs.writeFileSync(filename,  tomlify(system, null, 2));
  // fs.writeFileSync(path.join(__dirname,"..","others.json"),  JSON.stringify(others, null, 2));
 }
