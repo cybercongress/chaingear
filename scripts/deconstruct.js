@@ -32,8 +32,8 @@ var names = ["BitBar",
 var others = []
 */
 function saveToml(system){
-  if (!system.name) {
-    throw new Error("system must have name")
+  if (!system.system) {
+    throw new Error("system must have 'system' field, corresponding to its unique name in chaingear")
   }
   /*if (names.indexOf(system.name)>=0){
     others.push(system);
@@ -45,7 +45,16 @@ function saveToml(system){
   } else {
     names.push(system.name)
   }*/
-  var filename = path.join(__dirname,"..","sources.toml",system.name + ".toml");
+  var mkdirSync = function (path) {
+    try {
+      fs.mkdirSync(path);
+    } catch(e) {
+      if ( e.code != 'EEXIST' ) throw e;
+    }
+  };
+  mkdirSync( path.join(__dirname,"..","sources.toml",system.system ));
+
+  var filename = path.join(__dirname,"..","sources.toml",system.system,system.system + ".toml");
   fs.writeFileSync(filename,  tomlify(system, null, 2));
  // fs.writeFileSync(path.join(__dirname,"..","others.json"),  JSON.stringify(others, null, 2));
 }
