@@ -35,16 +35,8 @@ function saveToml(system){
   if (!system.system) {
     throw new Error("system must have 'system' field, corresponding to its unique name in chaingear")
   }
-  /*if (names.indexOf(system.name)>=0){
-    others.push(system);
-  }*/
- /* display duplicate names..
-  if (names.indexOf(system.name)>=0) {
 
-    console.log(system.name);
-  } else {
-    names.push(system.name)
-  }*/
+  // create directory or throw exception if exists
   var mkdirSync = function (path) {
     try {
       fs.mkdirSync(path);
@@ -52,9 +44,22 @@ function saveToml(system){
       if ( e.code != 'EEXIST' ) throw e;
     }
   };
-  mkdirSync( path.join(__dirname,"..","sources.toml",system.system ));
 
-  var filename = path.join(__dirname,"..","sources.toml",system.system,system.system + ".toml");
+  //first letter, capitalized, or '1' is string starts from digit
+  var indexDirName = function(str){
+    var first = str.slice(0,1).toUpperCase();
+    if (! isNaN (parseInt (first) ) ) return '1';
+    return first;
+  };
+  var nom = system.system;
+
+  var directories = '1ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  for (var j=0; j<directories.length; j++){
+    mkdirSync( path.join(__dirname,"..","sources.toml", directories[j]));
+  }
+  mkdirSync( path.join(__dirname,"..","sources.toml",indexDirName(nom), nom));
+
+  var filename = path.join(__dirname,"..","sources.toml",indexDirName(nom),nom,nom + ".toml"); //om nom nom
   fs.writeFileSync(filename,  tomlify(system, null, 2));
  // fs.writeFileSync(path.join(__dirname,"..","others.json"),  JSON.stringify(others, null, 2));
 }
