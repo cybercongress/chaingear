@@ -1,0 +1,40 @@
+source = "cyberFund"
+system = "Firecoin"
+
+[aliases]
+coinmarketcap = "Firecoin"
+CurrencyName = "Firecoin"
+
+[consensus]
+hashing = "X-n"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "29/06/2014"
+
+[token]
+token_name = ""
+token_symbol = "FIRE"
+
+[specs]
+p2p = 49697.0
+rpc = 49698.0
+block_time = 60.0
+block_reward = "2 FIRE per block for 200 blocks then 17 FIRE per block for the next 800 blocks, then 50 FIRE per block for the next 1500 blocks, then 5 FIRE per block for the next 2500 blocks."
+total_tokens = 100000.0
+ann = "https://bitcointalk.org/index.php?topic=702951.new#new"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/firecoinx/Firecoin"
+  icon = "github.png"

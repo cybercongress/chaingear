@@ -1,0 +1,49 @@
+source = "cyberFund"
+system = "HertzCoin"
+
+[aliases]
+coinmarketcap = "HertzCoin"
+CurrencyName = "HertzCoin"
+
+[ratings]
+rating = 1.0
+
+[consensus]
+consensus_name = "Proof-of-Stake"
+hashing = "X-n"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+tags = "DAO"
+system_type = ""
+
+[events]
+announcement = "13/08/2014"
+
+[token]
+token_name = ""
+token_symbol = "HZ"
+
+[specs]
+p2p = 34412.0
+rpc = 34411.0
+block_time = "90"
+block_reward = "8888 HZ"
+total_tokens = "19 749 136 HZ"
+premine_tokens = "0.1% (19749 HZ)"
+mint_confirm = "50 blocks"
+ann = "https://bitcointalk.org/index.php?topic=736313"
+dependencies = "independent"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://hertzcoin.de/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/HertzCoin/HertzCoin"
+  icon = "github.png"

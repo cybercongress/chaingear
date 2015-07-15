@@ -1,0 +1,42 @@
+source = "cyberFund"
+system = "WitchCoin"
+
+[aliases]
+coinmarketcap = "WitchCoin"
+CurrencyName = "WitchCoin"
+
+[consensus]
+hashing = "X11"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "28/07/2014"
+
+[token]
+token_name = ""
+token_symbol = "WITCH"
+
+[specs]
+p2p = 21245.0
+rpc = 21346.0
+block_time = 60.0
+block_reward = "Block 1-4000: 250 coins (about 3 days PoW); PoS will start after 4000 block"
+total_tokens = 1000000.0
+difficulty_cycle = "every block"
+txs_confirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=713636.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/WitchCoin/WitchCoin-master"
+  icon = "github.png"

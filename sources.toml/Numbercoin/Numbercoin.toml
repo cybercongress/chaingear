@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "Numbercoin"
+
+[aliases]
+coinmarketcap = "Numbercoin"
+CurrencyName = "Numbercoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "30/05/2014"
+
+[token]
+token_name = ""
+token_symbol = "numc"
+
+[specs]
+p2p = 9441.0
+rpc = 9442.0
+block_time = 20.0
+total_tokens = 100000000.0
+premine_tokens = "500000 NUMC (0.5%)"
+difficulty_cycle = "every block"
+txs_confirm = 3.0
+ann = "https://bitcointalk.org/index.php?topic=631948.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.numbercoin.net"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/numbercoin/numbercoin1.0.0.2"
+  icon = "github.png"

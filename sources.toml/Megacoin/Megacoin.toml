@@ -1,0 +1,49 @@
+source = "cyberFund"
+system = "Megacoin"
+
+[aliases]
+coinmarketcap = "Megacoin"
+CurrencyName = "Megacoin"
+
+[ratings]
+rating = 1.0
+
+[consensus]
+consensus_name = "Proof-of-Work"
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+tags = "DAO"
+system_type = ""
+
+[events]
+announcement = "29/05/2013"
+genesis = "01/06/2013"
+
+[token]
+token_name = ""
+token_symbol = "MEC"
+
+[specs]
+p2p = 7951.0
+rpc = 7950.0
+block_time = "150"
+block_reward = 25.0
+halfing_cycle = 420000.0
+total_tokens = 32500000.0
+ann = "https://bitcointalk.org/index.php?topic=218851.0"
+dependencies = "independent"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "Megacoin.co.nz"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/megacoin/megacoin"
+  icon = "github.png"

@@ -1,0 +1,44 @@
+source = "cyberFund"
+system = "Bullcoin"
+
+[aliases]
+coinmarketcap = "Bullcoin"
+CurrencyName = "Bullcoin"
+
+[consensus]
+hashing = "Quark"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "11/01/2014"
+
+[token]
+token_name = ""
+token_symbol = "TBC"
+
+[specs]
+p2p = 38801.0
+rpc = 38800.0
+block_time = 30.0
+block_reward = 1000.0
+halfing_cycle = 1000.0
+total_tokens = 500000000.0
+premine_tokens = "5000000(1%) for devs, support, bounty, and giveaway etc"
+difficulty_cycle = "1000"
+mint_confirm = 70.0
+ann = "https://bitcointalk.org/index.php?topic=409903.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/bullcoin/bullcoin"
+  icon = "github.png"

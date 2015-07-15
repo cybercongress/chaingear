@@ -1,0 +1,42 @@
+source = "cyberFund"
+system = "Mincoin"
+
+[aliases]
+coinmarketcap = "Mincoin"
+CurrencyName = "Mincoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "03/04/2013"
+genesis = "03/04/2013"
+
+[token]
+token_name = ""
+token_symbol = "MNC"
+
+[specs]
+block_time = "60"
+block_reward = 2.0
+total_tokens = 10000000.0
+difficulty_cycle = "60"
+ann = "https://bitcointalk.org/index.php?topic=165397.0"
+rating = 0.0
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://mincoin.us"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/SandyCohen/mincoin"
+  icon = "github.png"

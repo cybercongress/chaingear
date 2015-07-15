@@ -1,0 +1,41 @@
+source = "cyberFund"
+system = "Quickcoin"
+
+[aliases]
+coinmarketcap = "Quickcoin"
+CurrencyName = "Quickcoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "05/06/2013"
+
+[token]
+token_name = ""
+token_symbol = "QWC"
+
+[specs]
+block_time = "5"
+block_reward = 8.0
+total_tokens = 500000000.0
+premine_tokens = 500800.0
+difficulty_cycle = "4320"
+txs_confirm = 4.0
+ann = "https://bitcointalk.org/index.php?topic=226342.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/quickcoin2013/quickcoin"
+  icon = "github.png"

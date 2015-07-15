@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "FairByte Coin"
+
+[aliases]
+coinmarketcap = "FairByte Coin"
+CurrencyName = "FairByte Coin"
+
+[consensus]
+hashing = "X-n"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "19/07/2014"
+
+[token]
+token_name = ""
+token_symbol = "FBC"
+
+[specs]
+p2p = 22741.0
+rpc = 22740.0
+block_time = 120.0
+block_reward = "200 coins per block"
+halfing_cycle = "Block payout will be halved every 10 days"
+total_tokens = 135000000.0
+premine_tokens = "600000"
+difficulty_cycle = "each block for PoW"
+txs_confirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=700920.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://fairbyte.ninja"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://bitbucket.org/fairbyte/fairbyte"
+  icon = "github.png"

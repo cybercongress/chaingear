@@ -1,0 +1,50 @@
+source = "cyberFund"
+system = "Netcoin"
+
+[aliases]
+coinmarketcap = "Netcoin"
+CurrencyName = "Netcoin"
+
+[ratings]
+rating = 1.0
+
+[consensus]
+consensus_name = "Proof-of-Stake"
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+tags = "DAO"
+system_type = ""
+
+[events]
+announcement = "16/09/2013"
+genesis = "02/09/2013"
+
+[token]
+token_name = ""
+token_symbol = "NET"
+
+[specs]
+block_time = "60"
+block_reward = 1024.0
+halfing_cycle = 129600.0
+total_tokens = 320636160.0
+difficulty_cycle = "60"
+txs_confirm = 6.0
+mint_confirm = 50.0
+ann = "https://bitcointalk.org/index.php?topic=201402.0"
+dependencies = "independent"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://netcoinfoundation.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://bitcointalk.org/index.php?topic=201402.0"
+  icon = "github.png"

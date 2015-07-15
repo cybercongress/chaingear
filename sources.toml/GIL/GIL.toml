@@ -1,0 +1,40 @@
+source = "cyberFund"
+system = "GIL"
+
+[aliases]
+coinmarketcap = "GIL"
+CurrencyName = "GIL"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "14/07/2013"
+
+[token]
+token_name = ""
+token_symbol = "GIL"
+
+[specs]
+block_time = "45"
+total_tokens = 180000000.0
+premine_tokens = 300000.0
+difficulty_cycle = "150"
+txs_confirm = 3.0
+ann = "https://bitcointalk.org/index.php?topic=255844.msg2725549#msg2725549"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/hydroponica/gil"
+  icon = "github.png"

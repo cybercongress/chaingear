@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "Dokdocoin"
+
+[aliases]
+coinmarketcap = "Dokdocoin"
+CurrencyName = "Dokdocoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "01/03/2014"
+genesis = "14/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "DDC"
+
+[specs]
+p2p = 9383.0
+rpc = 9382.0
+block_time = 60.0
+block_reward = "100 coins per block"
+halfing_cycle = "every 250000 blocks"
+total_tokens = 50000000.0
+premine_tokens = "1700000 (3.4%) for promotion"
+difficulty_cycle = "every block (Kimoto Gravity Well)"
+ann = "https://bitcointalk.org/index.php?topic=493712.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.dokdocoin.or.kr/en/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/dokdocoin/dokdocoin"
+  icon = "github.png"

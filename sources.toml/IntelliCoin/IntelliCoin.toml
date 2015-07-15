@@ -1,0 +1,42 @@
+source = "cyberFund"
+system = "IntelliCoin"
+
+[aliases]
+coinmarketcap = "IntelliCoin"
+CurrencyName = "IntelliCoin"
+
+[consensus]
+hashing = "X-n"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "17/08/2014"
+
+[token]
+token_name = ""
+token_symbol = "INT"
+
+[specs]
+p2p = 21255.0
+rpc = 20255.0
+block_time = "60"
+block_reward = " 1 - 810: 20 coins,811 - 26270:400 coins"
+total_tokens = "12000000"
+premine_tokens = "1800000 for IPO"
+ann = "https://bitcointalk.org/index.php?topic=720292.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.intellicoin.me"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/bluew1nter/intellicoin-mirror"
+  icon = "github.png"

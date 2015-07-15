@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "QQcoin"
+
+[aliases]
+coinmarketcap = "QQcoin"
+CurrencyName = "QQcoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "28/12/2013"
+
+[token]
+token_name = ""
+token_symbol = "QQC"
+
+[specs]
+p2p = 20112.0
+rpc = 20111.0
+block_time = 20.0
+block_reward = "For first 100 blocks there was no reward. Then it is random depending on block number. After block 2400000 reward is fixed (1 coin)"
+total_tokens = 30000000.0
+txs_confirm = 5.0
+mint_confirm = 50.0
+ann = "https://bitcointalk.org/index.php?topic=389238.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://qqco.in/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://mega.co.nz/#!nRdj0YhT!MXgMjw_PSMlYzFtsjLYBxBMtV4pfCDDcS2cZkotpS2w"
+  icon = "github.png"

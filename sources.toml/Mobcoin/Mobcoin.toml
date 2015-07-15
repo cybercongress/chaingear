@@ -1,0 +1,44 @@
+source = "cyberFund"
+system = "Mobcoin"
+
+[aliases]
+coinmarketcap = "Mobcoin"
+CurrencyName = "Mobcoin"
+
+[consensus]
+hashing = "X11"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "26/11/2014"
+
+[token]
+token_name = ""
+token_symbol = "MOB"
+
+[specs]
+p2p = 12151.0
+rpc = 12153.0
+block_time = "60 Seconds"
+block_reward = "750 MOB/block flat"
+total_tokens = "15000000 MOB"
+premine_tokens = "75000 MOB(0.5%)"
+difficulty_cycle = "every block"
+mint_confirm = "60 blocks"
+ann = "https://bitcointalk.org/index.php?topic=873867.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "www.mobcoin.biz"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/MobCoinz/MobCoin"
+  icon = "github.png"

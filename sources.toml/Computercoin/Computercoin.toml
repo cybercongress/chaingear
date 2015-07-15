@@ -1,0 +1,40 @@
+source = "cyberFund"
+system = "Computercoin"
+
+[aliases]
+coinmarketcap = "Computercoin"
+CurrencyName = "Computercoin"
+
+[consensus]
+hashing = "X-n"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "10/07/2014"
+
+[token]
+token_name = ""
+token_symbol = "CMPT"
+
+[specs]
+p2p = 9461.0
+rpc = 9462.0
+block_reward = "Block 1-200: 0.1 block rewards; After 201 block there will be 2000 rewards, until 7 days later (8200 block)"
+total_tokens = 14580000.0
+difficulty_cycle = "every block"
+txs_confirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=684562.msg7768286#msg7768286"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"

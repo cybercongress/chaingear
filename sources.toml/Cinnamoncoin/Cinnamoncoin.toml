@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "Cinnamoncoin"
+
+[aliases]
+coinmarketcap = "Cinnamoncoin"
+CurrencyName = "Cinnamoncoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "22/09/2013"
+genesis = "22/09/2013"
+
+[token]
+token_name = ""
+token_symbol = "CIN"
+
+[specs]
+block_time = "300"
+block_reward = 64.0
+halfing_cycle = 210240.0
+total_tokens = 27000000000000.0
+difficulty_cycle = "everyblock"
+txs_confirm = 3.0
+mint_confirm = 40.0
+ann = "https://bitcointalk.org/index.php?topic=299221.0"
+rating = 0.0
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "www.cinnamoncoin.org"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/cinnamoncoin/cinnamoncoin"
+  icon = "github.png"

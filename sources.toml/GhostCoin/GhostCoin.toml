@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "GhostCoin"
+
+[aliases]
+coinmarketcap = "GhostCoin"
+CurrencyName = "GhostCoin"
+
+[consensus]
+hashing = "X11"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "04/10/2014"
+
+[token]
+token_name = ""
+token_symbol = "GHOST"
+
+[specs]
+p2p = 44676.0
+rpc = 44678.0
+block_time = "60"
+block_reward = "4000 Ghost"
+total_tokens = "27000000"
+premine_tokens = "no"
+difficulty_cycle = "every minute"
+mint_confirm = "100 blocks"
+ann = "https://bitcointalk.org/index.php?topic=803667.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/GhostCoinOfficial/ghostcoin"
+  icon = "github.png"

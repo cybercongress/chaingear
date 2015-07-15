@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "Devcoin"
+
+[aliases]
+coinmarketcap = "Devcoin"
+CurrencyName = "Devcoin"
+
+[ratings]
+rating = 1.0
+
+[consensus]
+consensus_name = "Proof-of-Work"
+hashing = "SHA-256d"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+tags = "DAO"
+system_type = ""
+
+[events]
+announcement = "15/02/2012"
+
+[token]
+token_name = ""
+token_symbol = "DVC"
+
+[specs]
+block_time = "86400"
+block_reward = 50000.0
+total_tokens = 21000000.0
+difficulty_cycle = "every block"
+dependencies = "independent"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://devcoin.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://gitorious.org/devcoin/devcoin/source/4e23c180945785c49bbab682b7f6c6e1eda29b05: "
+  icon = "github.png"

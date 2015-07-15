@@ -1,0 +1,46 @@
+source = "cyberFund"
+system = "Olimpiccoin"
+
+[aliases]
+coinmarketcap = "Olimpiccoin"
+CurrencyName = "Olimpiccoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "07/02/2014"
+genesis = "07/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "OLY"
+
+[specs]
+p2p = 16567.0
+rpc = 16568.0
+block_time = "180"
+block_reward = "First two days payout is 1.5 times bigger. Also during the first month 1894 - 2014 coins per block randomly and specials:every hour there will be a random Bronze Medal Block that has 5000 coins. Every 6 hours there will be a Silver Medal Block with 7000 coins, and every 12 hours there will be a Gold Medal Block with 10000 coins. After the first month, the coin payout block will decrease gradually from 1000 coins per block to 1 coin per block after block 3000001."
+total_tokens = 322649400.0
+premine_tokens = "32264940 coins (1%) were premined for bounties"
+difficulty_cycle = "1"
+txs_confirm = 3.0
+mint_confirm = 50.0
+ann = "https://bitcointalk.org/index.php?topic=453085.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://olympiccoin.pw/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/olympiccoin/olympiccoin"
+  icon = "github.png"

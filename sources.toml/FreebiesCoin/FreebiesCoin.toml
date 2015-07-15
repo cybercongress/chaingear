@@ -1,0 +1,40 @@
+source = "cyberFund"
+system = "FreebiesCoin"
+
+[aliases]
+coinmarketcap = "FreebiesCoin"
+CurrencyName = "FreebiesCoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "06/05/2014"
+
+[token]
+token_name = ""
+token_symbol = "FREEB"
+
+[specs]
+block_time = 60.0
+total_tokens = 500000000.0
+premine_tokens = "500000000 (100%)"
+difficulty_cycle = "every block "
+ann = "https://bitcointalk.org/index.php?topic=597273"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.freebiescoin.com"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Freebies/freebiescoin"
+  icon = "github.png"

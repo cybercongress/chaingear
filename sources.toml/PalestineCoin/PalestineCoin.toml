@@ -1,0 +1,39 @@
+source = "cyberFund"
+system = "PalestineCoin"
+
+[aliases]
+coinmarketcap = "PalestineCoin"
+CurrencyName = "PalestineCoin"
+
+[consensus]
+hashing = "X11"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "04/08/2014"
+
+[token]
+token_name = ""
+token_symbol = "Pal"
+
+[specs]
+block_time = "60"
+block_reward = "lock 2-60:1 pal,block 61-11520:150 pal"
+total_tokens = "3000000"
+premine_tokens = "block 1"
+ann = "https://bitcointalk.org/index.php?topic=712124"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.palestinecoin.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"

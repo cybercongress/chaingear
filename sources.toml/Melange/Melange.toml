@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "Melange"
+
+[aliases]
+coinmarketcap = "Melange"
+CurrencyName = "Melange"
+
+[consensus]
+hashing = "Multi-algo"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "24/01/2014"
+
+[token]
+token_name = ""
+token_symbol = "SPICE"
+
+[specs]
+p2p = 1986.0
+rpc = 1987.0
+block_time = 240.0
+block_reward = 18.0
+halfing_cycle = 20000.0
+total_tokens = 1000000.0
+premine_tokens = "18000 coins(1.8%)"
+difficulty_cycle = 8.0
+ann = "https://bitcointalk.org/index.php?topic=430816.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/thegreatoldone/Melange"
+  icon = "github.png"

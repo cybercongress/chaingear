@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "Phonecoin"
+
+[aliases]
+coinmarketcap = "Phonecoin"
+CurrencyName = "Phonecoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "15/01/2014"
+genesis = "25/01/2014"
+
+[token]
+token_name = ""
+token_symbol = "TEL"
+
+[specs]
+p2p = 53556.0
+rpc = 53555.0
+block_time = 20.0
+block_reward = "50 + random reward"
+total_tokens = 500000000.0
+premine_tokens = "25000000(5%)"
+difficulty_cycle = 60.0
+txs_confirm = 3.0
+mint_confirm = 30.0
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://phonecoin.info/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/CCPorg/TEL-PhoneCoin-Ver-631-Original"
+  icon = "github.png"

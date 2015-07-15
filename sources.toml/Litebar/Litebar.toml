@@ -1,0 +1,44 @@
+source = "cyberFund"
+system = "Litebar"
+
+[aliases]
+coinmarketcap = "Litebar"
+CurrencyName = "Litebar"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "12/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "LTB"
+
+[specs]
+p2p = 9065.0
+rpc = 9055.0
+block_time = 180.0
+block_reward = "Starting blocks (7200 blocks over 15 days) = 5 units per block. Block 7200 - 438000 = 2 units per block (halves once). Block 438000 - 876000 = 1 unit per block"
+total_tokens = 13500000.0
+difficulty_cycle = "every block (Kimoto Gravity Well)"
+txs_confirm = 4.0
+ann = "https://bitcointalk.org/index.php?topic=461108.0"
+rating = 0.0
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://litebar.biz/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/rspublishing/litebar"
+  icon = "github.png"

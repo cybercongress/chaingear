@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "Trader Coin"
+
+[aliases]
+coinmarketcap = "Trader Coin"
+CurrencyName = "Trader Coin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "24/08/2014"
+
+[token]
+token_name = ""
+token_symbol = "TRDR"
+
+[specs]
+p2p = 37001.0
+rpc = 37000.0
+block_time = "60"
+block_reward = "2coins/block"
+total_tokens = "10000000"
+premine_tokens = "5% of first year or .05% of total coins- Used to pay for getting it ready ie: block explorers and bounties for wallets"
+difficulty_cycle = ""
+ann = "https://bitcointalk.org/index.php?topic=750763.msg8473308#msg8473308"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://tradercoin.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/TraderCoin/tradercoin"
+  icon = "github.png"

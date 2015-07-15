@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "Imperialcoin"
+
+[aliases]
+coinmarketcap = "Imperialcoin"
+CurrencyName = "Imperialcoin"
+
+[consensus]
+hashing = "SHA-256d"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "01/03/2014"
+genesis = "01/03/2014"
+
+[token]
+token_name = ""
+token_symbol = "IMP"
+
+[specs]
+p2p = 10240.0
+rpc = 10241.0
+block_time = 60.0
+block_reward = "initial 1024 per block"
+halfing_cycle = "every 120400 blocks"
+total_tokens = 1024000000.0
+premine_tokens = "69632 (0.0068%)"
+difficulty_cycle = ""
+ann = "https://bitcointalk.org/index.php?topic=493737.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://imperialcoin.pw/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/ImperialCoin/ImperialCoin"
+  icon = "github.png"

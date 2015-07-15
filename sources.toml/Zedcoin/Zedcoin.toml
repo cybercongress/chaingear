@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "Zedcoin"
+
+[aliases]
+coinmarketcap = "Zedcoin"
+CurrencyName = "Zedcoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "25/01/2014"
+
+[token]
+token_name = ""
+token_symbol = "ZED"
+
+[specs]
+p2p = 17732.0
+rpc = 17733.0
+block_time = 60.0
+block_reward = "88+ random reward bonus blocks"
+halfing_cycle = "358363 blocks(1 year)"
+total_tokens = 120000000.0
+premine_tokens = "1200000 coins(1%) for bounties, promotion etc."
+difficulty_cycle = 30.0
+ann = "https://bitcointalk.org/index.php?topic=432261.0"
+rating = 0.0
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.zedcoins.com/downloads/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/zcoin/ZedCoin/"
+  icon = "github.png"

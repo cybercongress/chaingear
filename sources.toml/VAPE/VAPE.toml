@@ -1,0 +1,40 @@
+source = "cyberFund"
+system = "VAPE"
+
+[aliases]
+coinmarketcap = "VAPE"
+CurrencyName = "VAPE"
+
+[consensus]
+hashing = "X-n"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "21/12/2014"
+
+[token]
+token_name = ""
+token_symbol = "VAPE"
+
+[specs]
+p2p = 9350.0
+rpc = 9351.0
+block_time = "60 seconds"
+block_reward = "11-10000:400 VAPE, 10001-20000:200 VAPE, 20001-30000:150 VAPE, 30001-40000:100 VAPE,40001-100000:50 VAPE"
+total_tokens = "50000000 coins"
+ann = "https://www.altcoincalendar.info/coins/1171-VAPE"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/VapeDigital/Vape"
+  icon = "github.png"

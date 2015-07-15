@@ -1,0 +1,41 @@
+source = "cyberFund"
+system = "ESportsCoin"
+
+[aliases]
+coinmarketcap = "ESportsCoin"
+CurrencyName = "ESportsCoin"
+
+[consensus]
+hashing = "X11"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "13/07/2014"
+
+[token]
+token_name = ""
+token_symbol = "ESC"
+
+[specs]
+p2p = 14528.0
+rpc = 14529.0
+block_time = 30.0
+block_reward = "84 initially, halving at block 6720, 13440, the first 150 blocks will be 1 reward"
+total_tokens = 1500000.0
+ann = "https://bitcointalk.org/index.php?topic=689852"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://esportscoin.info/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/EsportscoinTeam/ESportscoin"
+  icon = "github.png"

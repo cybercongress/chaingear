@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "CzechCrownCoin"
+
+[aliases]
+coinmarketcap = "CzechCrownCoin"
+CurrencyName = "CzechCrownCoin"
+
+[ratings]
+rating = 1.0
+
+[consensus]
+consensus_name = "Proof-of-Work"
+hashing = "Multi-algo"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+tags = "DAO"
+system_type = ""
+
+[events]
+announcement = "05/05/2014"
+
+[token]
+token_name = ""
+token_symbol = "CZC"
+
+[specs]
+block_time = 210.0
+block_reward = "512 CZC"
+halfing_cycle = "every 12342 blocks (month)"
+total_tokens = 12242272.0
+premine_tokens = "No"
+ann = "https://bitcointalk.org/index.php?topic=596649.msg6555975#msg6555975"
+dependencies = "independent"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"

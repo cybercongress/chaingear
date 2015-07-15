@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "Valuecoin"
+
+[aliases]
+coinmarketcap = "Valuecoin"
+CurrencyName = "Valuecoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "21/06/2013"
+
+[token]
+token_name = ""
+token_symbol = "VLC"
+
+[specs]
+p2p = 11108.0
+rpc = 11109.0
+block_time = "30"
+block_reward = 16.0
+total_tokens = 133000000.0
+premine_tokens = 1000000.0
+txs_confirm = 3.0
+ann = "https://bitcointalk.org/index.php?topic=239666.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.valuecoin.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/valuecoin/valuecoin"
+  icon = "github.png"

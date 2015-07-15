@@ -1,0 +1,47 @@
+source = "cyberFund"
+system = "Zeitcoin"
+
+[aliases]
+coinmarketcap = "Zeitcoin"
+CurrencyName = "Zeitcoin"
+
+[ratings]
+rating = 1.0
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "26/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "ZEIT"
+
+[specs]
+block_time = 30.0
+block_reward = "initial 250000-1000000 coins"
+halfing_cycle = "every week for the first 6 weeks, after the PoW payout will be fixed at 1 coin per block"
+total_tokens = 99000000000.0
+premine_tokens = "990000000 (1%) for ongoing development support, maintenance and distribution to community"
+difficulty_cycle = "every block"
+txs_confirm = 4.0
+mint_confirm = 50.0
+ann = "https://bitcointalk.org/index.php?topic=487814.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.zeit-coin.com/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/zeitcoinmovement/zeitcoin"
+  icon = "github.png"

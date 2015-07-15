@@ -1,0 +1,42 @@
+source = "cyberFund"
+system = "G8Coin"
+
+[aliases]
+coinmarketcap = "G8Coin"
+CurrencyName = "G8Coin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "26/06/2014"
+
+[token]
+token_name = ""
+token_symbol = "G8"
+
+[specs]
+p2p = 9333.0
+rpc = 9332.0
+block_time = 60.0
+block_reward = "0.0001 rewards"
+total_tokens = 101000000.0
+difficulty_cycle = "progressive difficulty retargeting"
+ann = "https://bitcointalk.org/index.php?topic=667329.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.g8coin.com/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/G8CoinProject/G8-Qt"
+  icon = "github.png"
