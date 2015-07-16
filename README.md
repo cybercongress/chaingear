@@ -121,7 +121,7 @@ type = "website" # type: string
 tags = [ "Main", "Apps" ] # type: string
 name = "website" # optional. If empty - name of type. type: string
 
-Supported fo link types:
+Supported for link types:
  - website [ "Main", "Apps" ]
  - paper [ "Main", "Apps" ]
  - wallet [ "Main", "Apps" ]
