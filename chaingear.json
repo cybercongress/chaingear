@@ -1,6 +1,115 @@
 [
     {
         "source": "cyberFund",
+        "system": "007Coin",
+        "aliases": {
+            "coinmarketcap": "007Coin",
+            "CurrencyName": "007Coin"
+        },
+        "consensus": {
+            "hashing": "Scrypt",
+            "consensus_type": "Proof-of-Stake"
+        },
+        "descriptions": {
+            "state": "Running",
+            "system_type": "Blockchain"
+        },
+        "events": {
+            "announcement": ""
+        },
+        "token": {
+            "token_name": "007Coin",
+            "token_symbol": "007"
+        },
+        "specs": {
+            "p2p": 0,
+            "rpc": 0,
+            "block_time": 0,
+            "total_tokens": 0,
+            "premine_tokens": 0,
+            "difficulty_cycle": 0,
+            "mint_confirm": 0,
+            "ann": "https://bitcointalk.org/index.php?topic=1033996",
+            "rating": 0
+        },
+        "links": [
+            {
+                "url": "",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "type": "website"
+            },
+            {
+                "url": "",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "type": "github"
+            }
+        ]
+    },
+    {
+        "source": "cyberFund",
+        "system": "16bit",
+        "aliases": {
+            "coinmarketcap": "16bit",
+            "CurrencyName": "16bit"
+        },
+        "consensus": {
+            "hashing": "NIST5",
+            "consensus_name": "NIST5",
+            "consensus_type": "Hybrid POS+POW"
+        },
+        "descriptions": {
+            "state": "Running",
+            "system_type": "Blockchain"
+        },
+        "events": {
+            "announcement": "04/05/2015"
+        },
+        "token": {
+            "token_name": "16bit",
+            "token_symbol": "16BIT"
+        },
+        "specs": {
+            "p2p": 0,
+            "rpc": 0,
+            "block_time": 0,
+            "total_tokens": 16000000,
+            "premine_tokens": 0,
+            "difficulty_cycle": 0,
+            "mint_confirm": 0,
+            "ann": "https://bitcointalk.org/index.php?topic=1049139.0",
+            "rating": 0
+        },
+        "links": [
+            {
+                "url": "",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "type": "website"
+            },
+            {
+                "url": "https://github.com/dragons78/liar16",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "type": "github"
+            }
+        ]
+    },
+    {
+        "source": "cyberFund",
         "system": "1Coin",
         "aliases": {
             "coinmarketcap": "1Coin",
@@ -111,9 +220,9 @@
     },
     {
         "source": "cyberFund",
-        "system": "42coin",
+        "system": "42 Coin",
         "aliases": {
-            "coinmarketcap": "42coin",
+            "coinmarketcap": "42 Coin",
             "CurrencyName": "42coin"
         },
         "consensus": {
@@ -128,7 +237,7 @@
             "announcement": "01/01/2014"
         },
         "token": {
-            "token_name": "",
+            "token_name": "42coin",
             "token_symbol": "42"
         },
         "specs": {
@@ -3755,42 +3864,6 @@
         ]
     },
     {
-        "dependencies": [
-            "BitShares"
-        ],
-        "source": "cyberFund",
-        "system": "BitBTC",
-        "aliases": {
-            "coinmarketcap": "BitBTC",
-            "CurrencyName": "BitBTC"
-        },
-        "descriptions": {
-            "system_type": ""
-        },
-        "consensus": {
-            "consensus_type": ""
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "BITBTC"
-        },
-        "specs": {
-            "rating": 0
-        },
-        "links": [
-            {
-                "name": "explorer",
-                "url": "http://www.bitsharesblocks.com/asset/orderbook?asset=BTC",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
-            }
-        ]
-    },
-    {
         "source": "cyberFund",
         "system": "BitBar",
         "aliases": {
@@ -3938,30 +4011,6 @@
     },
     {
         "source": "cyberFund",
-        "system": "BitCNY",
-        "aliases": {
-            "coinmarketcap": "BitCNY",
-            "CurrencyName": "BitCNY"
-        },
-        "ratings": {
-            "rating": 3
-        },
-        "descriptions": {
-            "system_type": ""
-        },
-        "consensus": {
-            "consensus_type": ""
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "BITCNY"
-        },
-        "specs": {
-            "links": []
-        }
-    },
-    {
-        "source": "cyberFund",
         "system": "BitCash",
         "aliases": {
             "coinmarketcap": "BitCash",
@@ -4046,28 +4095,6 @@
         "token": {
             "token_name": "",
             "token_symbol": "NBE"
-        },
-        "specs": {
-            "rating": 0,
-            "links": []
-        }
-    },
-    {
-        "source": "cyberFund",
-        "system": "BitGold",
-        "aliases": {
-            "coinmarketcap": "BitGold",
-            "CurrencyName": "BitGold"
-        },
-        "descriptions": {
-            "system_type": ""
-        },
-        "consensus": {
-            "consensus_type": ""
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "BITGOLD"
         },
         "specs": {
             "rating": 0,
@@ -4529,28 +4556,6 @@
                 "type": ""
             }
         ]
-    },
-    {
-        "source": "cyberFund",
-        "system": "BitSilver",
-        "aliases": {
-            "coinmarketcap": "BitSilver",
-            "CurrencyName": "BitSilver"
-        },
-        "descriptions": {
-            "system_type": ""
-        },
-        "consensus": {
-            "consensus_type": ""
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "BITSILVER"
-        },
-        "specs": {
-            "rating": 0,
-            "links": []
-        }
     },
     {
         "source": "cyberFund",
@@ -5278,14 +5283,14 @@
     },
     {
         "source": "cyberFund",
-        "system": "Blackcoin",
+        "system": "BlackCoin",
         "aliases": {
-            "coinmarketcap": "Blackcoin",
-            "CurrencyName": "Blackcoin"
+            "coinmarketcap": "BlackCoin",
+            "CurrencyName": "BlackCoin"
         },
         "consensus": {
             "hashing": "Scrypt",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "state": "Running",
@@ -5296,8 +5301,8 @@
             "genesis": "24/02/2014"
         },
         "token": {
-            "token_name": "",
-            "token_symbol": "BC"
+            "token_name": "BlackCoin",
+            "token_symbol": "BLK"
         },
         "specs": {
             "p2p": 15715,
@@ -6359,7 +6364,7 @@
             "genesis": "01/04/2013"
         },
         "token": {
-            "token_name": "",
+            "token_name": "Bytecoin",
             "token_symbol": "BTE"
         },
         "specs": {
@@ -6370,6 +6375,10 @@
             "txs_confirm": 6,
             "ann": "https://bitcointalk.org/index.php?topic=169559.0",
             "rating": 0
+        },
+        "aliases": {
+            "coinmarketcap": "Bytecoin",
+            "CurrencyName": "Bytecoin"
         },
         "links": [
             {
@@ -10236,10 +10245,10 @@
     },
     {
         "source": "cyberFund",
-        "system": "Curecoin",
+        "system": "CureCoin",
         "aliases": {
-            "coinmarketcap": "Curecoin",
-            "CurrencyName": "Curecoin"
+            "coinmarketcap": "CureCoin",
+            "CurrencyName": "CureCoin"
         },
         "ratings": {
             "rating": 1
@@ -10257,8 +10266,8 @@
             "genesis": "notstarted"
         },
         "token": {
-            "token_name": "",
-            "token_symbol": "Curecoin"
+            "token_name": "CureCoin",
+            "token_symbol": "CURE"
         },
         "specs": {
             "ann": "https://bitcointalk.org/index.php?topic=197773.0",
@@ -15346,10 +15355,10 @@
     },
     {
         "source": "cyberFund",
-        "system": "Fedoracoin",
+        "system": "FedoraCoin",
         "aliases": {
-            "coinmarketcap": "Fedoracoin",
-            "CurrencyName": "Fedoracoin"
+            "coinmarketcap": "FedoraCoin",
+            "CurrencyName": "FedoraCoin"
         },
         "ratings": {
             "rating": 1
@@ -15367,7 +15376,7 @@
             "genesis": "12/22/2013"
         },
         "token": {
-            "token_name": "",
+            "token_name": "FedoraCoin",
             "token_symbol": "TIPS"
         },
         "specs": {
@@ -15677,10 +15686,10 @@
     },
     {
         "source": "cyberFund",
-        "system": "Flappycoin",
+        "system": "FlappyCoin",
         "aliases": {
-            "coinmarketcap": "Flappycoin",
-            "CurrencyName": "Flappycoin"
+            "coinmarketcap": "FlappyCoin",
+            "CurrencyName": "FlappyCoin"
         },
         "ratings": {
             "rating": 1
@@ -15697,7 +15706,7 @@
             "announcement": "14/02/2014"
         },
         "token": {
-            "token_name": "",
+            "token_name": "FlappyCoin",
             "token_symbol": "FLAP"
         },
         "specs": {
@@ -15880,10 +15889,10 @@
     },
     {
         "source": "cyberFund",
-        "system": "Florincoin",
+        "system": "FlorinCoin",
         "aliases": {
-            "coinmarketcap": "Florincoin",
-            "CurrencyName": "Florincoin"
+            "coinmarketcap": "FlorinCoin",
+            "CurrencyName": "FlorinCoin"
         },
         "ratings": {
             "rating": 1
@@ -15901,7 +15910,7 @@
             "genesis": "17/06/2013"
         },
         "token": {
-            "token_name": "",
+            "token_name": "FlorinCoin",
             "token_symbol": "FLO"
         },
         "specs": {
@@ -18367,10 +18376,10 @@
     },
     {
         "source": "cyberFund",
-        "system": "Goldcoin",
+        "system": "GoldCoin",
         "aliases": {
-            "coinmarketcap": "Goldcoin",
-            "CurrencyName": "Goldcoin"
+            "coinmarketcap": "GoldCoin",
+            "CurrencyName": "GoldCoin"
         },
         "ratings": {
             "rating": 1
@@ -18390,7 +18399,7 @@
             "genesis": "14/05/2013"
         },
         "token": {
-            "token_name": "",
+            "token_name": "GoldCoin",
             "token_symbol": "GLD"
         },
         "specs": {
@@ -18710,10 +18719,10 @@
     },
     {
         "source": "cyberFund",
-        "system": "Gridcoin",
+        "system": "GridCoin",
         "aliases": {
-            "coinmarketcap": "Gridcoin",
-            "CurrencyName": "Gridcoin"
+            "coinmarketcap": "GridCoin",
+            "CurrencyName": "GridCoin"
         },
         "ratings": {
             "rating": 3
@@ -18732,8 +18741,8 @@
             "announcement": "29/10/2013"
         },
         "token": {
-            "token_name": "",
-            "token_symbol": "GRD"
+            "token_name": "GridCoin",
+            "token_symbol": "GRC"
         },
         "specs": {
             "rpc": 9778,
@@ -19646,7 +19655,7 @@
             "announcement": "13/08/2014"
         },
         "token": {
-            "token_name": "",
+            "token_name": "HertzCoin",
             "token_symbol": "HZ"
         },
         "specs": {
@@ -19925,7 +19934,7 @@
         },
         "token": {
             "token_name": "",
-            "token_symbol": "NZ"
+            "token_symbol": "HZ"
         },
         "specs": {
             "block_time": "600",
@@ -20188,10 +20197,10 @@
     },
     {
         "source": "cyberFund",
-        "system": "Hyperstake",
+        "system": "HyperStake",
         "aliases": {
-            "coinmarketcap": "Hyperstake",
-            "CurrencyName": "Hyperstake"
+            "coinmarketcap": "HyperStake",
+            "CurrencyName": "HyperStake"
         },
         "ratings": {
             "rating": 1
@@ -20208,7 +20217,7 @@
             "announcement": "06/07/2014"
         },
         "token": {
-            "token_name": "",
+            "token_name": "HyperStake",
             "token_symbol": "HYP"
         },
         "specs": {
@@ -25014,7 +25023,7 @@
         "icon": "omnilayer",
         "system": "Mastercoin (Omni)",
         "aliases": {
-            "coinmarketcap": "Mastercoin (Omni)",
+            "coinmarketcap": "Mastercoin (Omn...",
             "CurrencyName": "Omni Layer"
         },
         "ratings": {
@@ -45304,10 +45313,195 @@
             "BitShares"
         ],
         "source": "cyberFund",
+        "system": "bitBTC",
+        "aliases": {
+            "coinmarketcap": "bitBTC",
+            "CurrencyName": "BitBTC"
+        },
+        "descriptions": {
+            "system_type": ""
+        },
+        "consensus": {
+            "consensus_type": ""
+        },
+        "token": {
+            "token_name": "bitBTC",
+            "token_symbol": "BITBTC"
+        },
+        "specs": {
+            "rating": 0
+        },
+        "links": [
+            {
+                "name": "explorer",
+                "url": "http://www.bitsharesblocks.com/asset/orderbook?asset=BTC",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "type": "explorer"
+            }
+        ]
+    },
+    {
+        "source": "cyberFund",
+        "system": "bitCNY",
+        "dependencies": [
+            "BitShares"
+        ],
+        "aliases": {
+            "coinmarketcap": "bitCNY",
+            "CurrencyName": "bitCNY"
+        },
+        "ratings": {
+            "rating": 3
+        },
+        "descriptions": {
+            "system_type": "Pegget Asset"
+        },
+        "consensus": {
+            "consensus_type": ""
+        },
+        "token": {
+            "token_name": "bitCNY",
+            "token_symbol": "BITCNY"
+        },
+        "specs": {},
+        "links": [
+            {
+                "name": "explorer",
+                "url": "http://www.bitsharesblocks.com/asset/orderbook?asset=CNY",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "type": "explorer"
+            }
+        ]
+    },
+    {
+        "source": "cyberFund",
+        "system": "bitEUR",
+        "dependencies": [
+            "BitShares"
+        ],
+        "aliases": {
+            "coinmarketcap": "bitEUR",
+            "CurrencyName": "bitEUR"
+        },
+        "ratings": {
+            "rating": 3
+        },
+        "descriptions": {
+            "system_type": "Pegget Asset"
+        },
+        "consensus": {
+            "consensus_name": "BitShares",
+            "consensus_type": ""
+        },
+        "token": {
+            "token_name": "bitEUR",
+            "token_symbol": "BITEUR"
+        },
+        "specs": {},
+        "links": [
+            {
+                "name": "explorer",
+                "url": "http://www.bitsharesblocks.com/asset/orderbook?asset=EUR",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "type": "explorer"
+            }
+        ]
+    },
+    {
+        "source": "cyberFund",
+        "system": "bitGold",
+        "dependencies": [
+            "BitShares"
+        ],
+        "aliases": {
+            "coinmarketcap": "bitGold",
+            "CurrencyName": "bitGold"
+        },
+        "descriptions": {
+            "system_type": "Pegget Asset"
+        },
+        "consensus": {
+            "consensus_type": ""
+        },
+        "token": {
+            "token_name": "bitGold",
+            "token_symbol": "BITGOLD"
+        },
+        "specs": {
+            "rating": 0
+        },
+        "links": [
+            {
+                "name": "explorer",
+                "url": "http://www.bitsharesblocks.com/asset/orderbook?asset=GOLD",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "type": "explorer"
+            }
+        ]
+    },
+    {
+        "source": "cyberFund",
+        "system": "bitSilver",
+        "dependencies": [
+            "BitShares"
+        ],
+        "aliases": {
+            "coinmarketcap": "bitSilver",
+            "CurrencyName": "bitSilver"
+        },
+        "ratings": {
+            "rating": 3
+        },
+        "descriptions": {
+            "system_type": "Pegget Asset"
+        },
+        "consensus": {
+            "consensus_name": "BitShares",
+            "consensus_type": ""
+        },
+        "token": {
+            "token_name": "bitSilver",
+            "token_symbol": "BITSILVER"
+        },
+        "specs": {},
+        "links": [
+            {
+                "name": "explorer",
+                "url": "http://www.bitsharesblocks.com/asset/orderbook?asset=SILVER",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "type": "explorer"
+            }
+        ]
+    },
+    {
+        "dependencies": [
+            "BitShares"
+        ],
+        "source": "cyberFund",
         "system": "bitUSD",
         "aliases": {
-            "coinmarketcap": "BitUSD",
-            "CurrencyName": "BitUSD"
+            "coinmarketcap": "bitUSD",
+            "CurrencyName": "bitUSD"
         },
         "ratings": {
             "rating": 3
@@ -45321,7 +45515,7 @@
             "system_type": ""
         },
         "token": {
-            "token_name": "",
+            "token_name": "bitUSD",
             "token_symbol": "BITUSD"
         },
         "specs": {},
