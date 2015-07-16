@@ -1,0 +1,41 @@
+source = "cyberFund"
+system = "Suncoin"
+
+[aliases]
+coinmarketcap = "Suncoin"
+CurrencyName = "Suncoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "07/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "SUN"
+
+[specs]
+rpc = 9295.0
+block_time = 60.0
+block_reward = 10.0
+total_tokens = 92955807.0
+premine_tokens = "929560 coins(1%)"
+difficulty_cycle = "every block with Kimoto Gravity Well"
+ann = "https://bitcointalk.org/index.php?topic=485677.msg5350097"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/suncoin/suncoin"
+  icon = "github.png"

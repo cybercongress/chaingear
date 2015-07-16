@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "Neoscoin"
+
+[aliases]
+coinmarketcap = "Neoscoin"
+CurrencyName = "Neoscoin"
+
+[consensus]
+hashing = "Multi-algo"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "26/08/2014"
+
+[token]
+token_name = ""
+token_symbol = "Neos"
+
+[specs]
+p2p = 8333.0
+rpc = 8332.0
+block_time = "300"
+block_reward = "Block 1 = 1,050,000.00 ICO, Block 2 - 1001 the block reward is 0.1, Block 1002+ normal block reward"
+total_tokens = "21000000"
+premine_tokens = 1050000.0
+difficulty_cycle = "per block (25% up, or down)"
+ann = "https://bitcointalk.org/index.php?topic=744291.msg8413771#msg8413771"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = " http://www.neoscoin.com "
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/bellacoin/neoscoin"
+  icon = "github.png"

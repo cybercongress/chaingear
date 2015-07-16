@@ -1,0 +1,39 @@
+source = "cyberFund"
+system = "Snowcoin"
+
+[aliases]
+coinmarketcap = "Snowcoin"
+CurrencyName = "Snowcoin"
+
+[consensus]
+hashing = "SHA-256d"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "06/12/2013"
+
+[token]
+token_name = ""
+token_symbol = "SNC"
+
+[specs]
+p2p = 24351.0
+rpc = 24352.0
+block_time = "120"
+total_tokens = 10000000000.0
+ann = "https://bitcointalk.org/index.php?topic=359948.0;all"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/snowcoin/snowcoin"
+  icon = "github.png"

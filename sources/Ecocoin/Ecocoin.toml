@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "Ecocoin"
+
+[aliases]
+coinmarketcap = "Ecocoin"
+CurrencyName = "Ecocoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "07/08/2013"
+
+[token]
+token_name = ""
+token_symbol = "ECO"
+
+[specs]
+block_time = "45"
+block_reward = 7.0
+total_tokens = 10200000.0
+premine_tokens = 102000.0
+difficulty_cycle = "691"
+txs_confirm = 5.0
+mint_confirm = 20.0
+ann = "https://bitcointalk.org/index.php?topic=269312.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.ecocoin.info/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/ecogroup/ecocoin.git"
+  icon = "github.png"

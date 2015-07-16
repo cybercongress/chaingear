@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "Corgicoin"
+
+[aliases]
+coinmarketcap = "Corgicoin"
+CurrencyName = "Corgicoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "02/02/2014"
+genesis = "29/01/2014"
+
+[token]
+token_name = ""
+token_symbol = "CORG"
+
+[specs]
+rpc = 62555.0
+block_time = "60"
+block_reward = "For blocks 1-100000 there are 1-1000,000 CorgiCoin per block, than till block 200000 -  1-500000 coins, blocks 200001-300000 have 1-250000 CorgiCoins, blocks 300001-400000 reward is 1-125000 coins, till block 500000 there are 1-62500 CorgiCoin500001-600000 -  1-31250 CorgiCoins. After block 600000 reward is fixed - 10000 CorgiCoin per block"
+total_tokens = 100000000000.0
+difficulty_cycle = "240"
+ann = "https://bitcointalk.org/index.php?topic=444700.0"
+rating = 0.0
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://corgicoin.com/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://bitbucket.org/corgicoin"
+  icon = "github.png"

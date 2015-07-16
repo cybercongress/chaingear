@@ -1,0 +1,41 @@
+source = "cyberFund"
+system = "OverTime"
+
+[aliases]
+coinmarketcap = "OverTime"
+CurrencyName = "OverTime"
+
+[consensus]
+hashing = "X-n"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "14/08/2014"
+
+[token]
+token_name = ""
+token_symbol = "OT"
+
+[specs]
+p2p = 31201.0
+rpc = 31203.0
+block_time = "60"
+block_reward = "500"
+total_tokens = "2000000"
+premine_tokens = "10000 coins (0,5%)"
+difficulty_cycle = "every block "
+ann = "https://bitcointalk.org/index.php?topic=736588.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"

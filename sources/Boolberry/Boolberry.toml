@@ -1,0 +1,49 @@
+source = "cyberFund"
+system = "Boolberry"
+
+[aliases]
+coinmarketcap = "Boolberry"
+CurrencyName = "Boolberry"
+
+[ratings]
+rating = 1.0
+
+[consensus]
+consensus_name = "Proof-of-Work"
+hashing = "Wild Keccak"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+tags = "DAO"
+system_type = ""
+
+[events]
+announcement = "20/04/2014"
+genesis = "17/05/2014"
+
+[token]
+token_name = ""
+token_symbol = "BBR"
+
+[specs]
+p2p = 10101.0
+rpc = 10102.0
+block_time = 120.0
+block_reward = "Block reward is calulated according to those rules http://boolberry.com/index.html#reward"
+total_tokens = 18450000.0
+difficulty_cycle = "every block"
+ann = "https://bitcointalk.org/index.php?topic=577267.0"
+dependencies = "independent"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://boolberry.com/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/cryptozoidberg/Boolberry"
+  icon = "github.png"

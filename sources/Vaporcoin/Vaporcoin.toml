@@ -1,0 +1,40 @@
+source = "cyberFund"
+system = "Vaporcoin"
+
+[aliases]
+coinmarketcap = "Vaporcoin"
+CurrencyName = "Vaporcoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "29/12/2013"
+
+[token]
+token_name = ""
+token_symbol = "VWC"
+
+[specs]
+p2p = 28657.0
+rpc = 46368.0
+block_time = 144.0
+txs_confirm = 5.0
+mint_confirm = 55.0
+ann = "https://bitcointalk.org/index.php?topic=390735.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/RenegadeMinds/VaporwareCoin"
+  icon = "github.png"

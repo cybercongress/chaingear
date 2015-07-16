@@ -1,0 +1,42 @@
+source = "cyberFund"
+system = "Chaincoin"
+
+[aliases]
+coinmarketcap = "Chaincoin"
+CurrencyName = "Chaincoin"
+
+[consensus]
+hashing = "Multi-algo"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "19/01/2014"
+
+[token]
+token_name = ""
+token_symbol = "CHC"
+
+[specs]
+p2p = 11994.0
+rpc = 11995.0
+block_time = 90.0
+block_reward = 16.0
+halfing_cycle = " 700800 blocks (2 years)"
+total_tokens = 23000000.0
+ann = "https://bitcointalk.org/index.php?topic=422149.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://chaincoin.cryptotycoons.com/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/chaincoin/chaincoin"
+  icon = "github.png"

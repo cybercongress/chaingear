@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "Dinarcoin"
+
+[aliases]
+coinmarketcap = "Dinarcoin"
+CurrencyName = "Dinarcoin"
+
+[consensus]
+hashing = "SHA-256d"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "01/03/2014"
+genesis = "23/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "IQD"
+
+[specs]
+p2p = 9336.0
+rpc = 9335.0
+block_time = 300.0
+block_reward = "TX fees"
+total_tokens = 20000000.0
+premine_tokens = "20000000 (100%) for humanitarian projects, community management, the pre-miners pool and the network infrastructures for the next 50 years"
+difficulty_cycle = "every block"
+txs_confirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=494685.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.dinarcoin.info"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Dinarcoin/dinarcoin"
+  icon = "github.png"

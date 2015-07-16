@@ -1,0 +1,47 @@
+source = "cyberFund"
+system = "Unioncoin"
+
+[aliases]
+coinmarketcap = "Unioncoin"
+CurrencyName = "Unioncoin"
+
+[ratings]
+rating = 1.0
+
+[consensus]
+hashing = "Quark"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "10/12/2013"
+genesis = "08/12/2013"
+
+[token]
+token_name = ""
+token_symbol = "UNC"
+
+[specs]
+p2p = 40017.0
+rpc = 41700.0
+block_time = 10.0
+block_reward = 512.0
+halfing_cycle = 8192.0
+total_tokens = 73000000.0
+difficulty_cycle = "every 20 blocks (maximum 10% up or 50% down)"
+ann = "https://bitcointalk.org/index.php?topic=365399.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.unioncoin.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/unioncoin/Unioncoin"
+  icon = "github.png"

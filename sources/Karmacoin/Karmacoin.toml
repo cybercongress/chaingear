@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "Karmacoin"
+
+[aliases]
+coinmarketcap = "Karmacoin"
+CurrencyName = "Karmacoin"
+
+[ratings]
+rating = 1.0
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "03/02/2014"
+genesis = "04/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "KARM"
+
+[specs]
+p2p = 9432.0
+block_time = "60"
+block_reward = "10000 coins per block with an additional bonus payout based on the block number being mined"
+total_tokens = "Approximately 92000000000"
+difficulty_cycle = "240"
+ann = "https://bitcointalk.org/index.php?topic=447657.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://karmacoin.info/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/karmacoin-team/karmacoin"
+  icon = "github.png"

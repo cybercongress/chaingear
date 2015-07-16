@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "Polishcoin"
+
+[aliases]
+coinmarketcap = "Polishcoin"
+CurrencyName = "Polishcoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "12/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "PCC"
+
+[specs]
+p2p = 4822.0
+rpc = 4823.0
+block_time = 60.0
+block_reward = 100.0
+halfing_cycle = 750000.0
+total_tokens = 150000000.0
+difficulty_cycle = "240 blocks(4 hours)"
+ann = "https://bitcointalk.org/index.php?topic=461130.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.polish-coin.org/index_en.php"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/polishcoin/polishcoin"
+  icon = "github.png"

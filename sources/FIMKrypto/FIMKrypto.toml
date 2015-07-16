@@ -1,0 +1,42 @@
+source = "cyberFund"
+system = "FIMKrypto"
+
+[aliases]
+coinmarketcap = "FIMKrypto"
+CurrencyName = "FIMKrypto"
+
+[ratings]
+rating = 1.0
+
+[consensus]
+consensus_name = "Proof-of-Stake"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+tags = "DAO"
+system_type = ""
+
+[events]
+announcement = "23/07/2014"
+
+[token]
+token_name = ""
+token_symbol = "FIMK"
+
+[specs]
+block_time = "30 seconds"
+block_reward = "200 FIM"
+total_tokens = "1000000000"
+ann = "http://gry.io/2014/07/23/fimkrypto-fimk/"
+dependencies = "independent"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"

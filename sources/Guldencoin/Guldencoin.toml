@@ -1,0 +1,47 @@
+source = "cyberFund"
+system = "Guldencoin"
+
+[aliases]
+coinmarketcap = "Guldencoin"
+CurrencyName = "Guldencoin"
+
+[ratings]
+rating = 1.0
+
+[consensus]
+consensus_name = "Proof-of-Work"
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+tags = "DAO"
+system_type = ""
+
+[events]
+announcement = "02/04/2014"
+
+[token]
+token_name = ""
+token_symbol = "NLG"
+
+[specs]
+block_time = 150.0
+block_reward = "1000 NLG"
+total_tokens = 1680000000.0
+premine_tokens = "170000000 (10%) total_tokens, 150000000 (9%) reserved for Dutch citizens,20000000 (1%)  for development, marketing, bounties)"
+txs_confirm = 6.0
+ann = "https://bitcointalk.org/index.php?topic=554412.0"
+dependencies = "independent"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "https://guldencoin.com"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/nlgcoin/guldencoin"
+  icon = "github.png"

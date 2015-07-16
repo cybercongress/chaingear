@@ -1,0 +1,41 @@
+source = "cyberFund"
+system = "CoCoCoin"
+
+[aliases]
+coinmarketcap = "CoCoCoin"
+CurrencyName = "CoCoCoin"
+
+[consensus]
+hashing = "X-n"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "10/06/2014"
+
+[token]
+token_name = ""
+token_symbol = "CoCo"
+
+[specs]
+p2p = 8222.0
+rpc = 8221.0
+block_time = 150.0
+block_reward = "block reward is controlled by: 2222222/(((Difficulty+2600)/9)^2)"
+total_tokens = 22000000.0
+difficulty_cycle = "difficulty retargets using dark gravity wave"
+ann = "https://bitcointalk.org/index.php?topic=646781.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/CoCoCoinx/CoCoCoin"
+  icon = "github.png"

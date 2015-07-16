@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "Catcoin"
+
+[aliases]
+coinmarketcap = "Catcoin"
+CurrencyName = "Catcoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "21/12/2013"
+
+[token]
+token_name = ""
+token_symbol = "CAT"
+
+[specs]
+p2p = 9933.0
+rpc = 9332.0
+block_time = 600.0
+block_reward = 50.0
+halfing_cycle = 210000.0
+total_tokens = 21000000.0
+difficulty_cycle = 2016.0
+ann = "https://bitcointalk.org/index.php?topic=441402.new#new"
+rating = 0.0
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/kR105/catcoin"
+  icon = "github.png"

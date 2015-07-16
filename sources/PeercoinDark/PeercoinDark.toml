@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "PeercoinDark"
+
+[aliases]
+coinmarketcap = "PeercoinDark"
+CurrencyName = "PeercoinDark"
+
+[consensus]
+hashing = "SHA-256d"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "26/10/2014"
+
+[token]
+token_name = ""
+token_symbol = "PPCD"
+
+[specs]
+p2p = 10989.0
+rpc = 10789.0
+block_time = "60 Seconds"
+total_tokens = "201000000"
+premine_tokens = "3537600 coins(1,76%)"
+difficulty_cycle = "5 hours"
+mint_confirm = "2 blocks"
+ann = "https://bitcointalk.org/index.php?topic=832845.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.peercoindark.net/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/DOGEBC/PeercoinDark_v2_PPCD"
+  icon = "github.png"

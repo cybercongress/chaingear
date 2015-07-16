@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "Phicoin"
+
+[aliases]
+coinmarketcap = "Phicoin"
+CurrencyName = "Phicoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "04/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "PHI"
+
+[specs]
+rpc = 1741.0
+block_time = 150.0
+block_reward = 1.6
+halfing_cycle = 70000.0
+total_tokens = 569581.0
+premine_tokens = "45567 (~0.8%)"
+difficulty_cycle = "25"
+ann = "https://bitcointalk.org/index.php?topic=449104.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://phicoin.cc/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Project-Phi/phi"
+  icon = "github.png"

@@ -1,0 +1,44 @@
+source = "cyberFund"
+system = "QuarkBar"
+
+[aliases]
+coinmarketcap = "QuarkBar"
+CurrencyName = "QuarkBar"
+
+[consensus]
+hashing = "Quark"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "26/02/2014"
+genesis = "02/03/2014"
+
+[token]
+token_name = ""
+token_symbol = "QB"
+
+[specs]
+p2p = 31616.0
+rpc = 31515.0
+block_time = 30.0
+block_reward = "initial 256 coins per block"
+halfing_cycle = "every 40320 blocks"
+total_tokens = 15482880.0
+difficulty_cycle = "every block (Kimoto Gravity Well)"
+ann = "https://bitcointalk.org/index.php?topic=488455.0"
+rating = 0.0
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/QuarkBar/newQuarkBar"
+  icon = "github.png"

@@ -1,0 +1,40 @@
+source = "cyberFund"
+system = "Crimecoin=Communitycoin"
+
+[aliases]
+coinmarketcap = "Crimecoin=Communitycoin"
+CurrencyName = "Crimecoin=Communitycoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "01/08/2013"
+
+[token]
+token_name = ""
+token_symbol = "CTC"
+
+[specs]
+block_time = "300"
+block_reward = 25.0
+total_tokens = 100000000.0
+premine_tokens = 300000.0
+ann = "https://bitcointalk.org/index.php?topic=280451.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://communitycoin.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/CaptChadd/Communitycoin"
+  icon = "github.png"

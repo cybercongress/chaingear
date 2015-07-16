@@ -1,0 +1,44 @@
+source = "cyberFund"
+system = "BizCoin"
+
+[aliases]
+coinmarketcap = "BizCoin"
+CurrencyName = "BizCoin"
+
+[consensus]
+hashing = "X11"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "04/08/2014"
+
+[token]
+token_name = ""
+token_symbol = "BIZ"
+
+[specs]
+p2p = 33482.0
+rpc = 33481.0
+block_time = "360"
+block_reward = "FIRST 5 DAYS BLOCK REWARD:40,BLOCK REWARD AFTER 5 DAYS:400"
+total_tokens = "20000000"
+premine_tokens = "10000000 (9900000 Presale / 100000 Bounties)"
+difficulty_cycle = "each block"
+mint_confirm = "100 blocks"
+ann = "https://bitcointalk.org/index.php?topic=725670.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://bizcoin.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/ChristianSommer/BIZ"
+  icon = "github.png"

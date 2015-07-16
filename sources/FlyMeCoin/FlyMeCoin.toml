@@ -1,0 +1,40 @@
+source = "cyberFund"
+system = "FlyMeCoin"
+
+[aliases]
+coinmarketcap = "FlyMeCoin"
+CurrencyName = "FlyMeCoin"
+
+[consensus]
+hashing = "X-n"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "23/06/2014"
+
+[token]
+token_name = ""
+token_symbol = "FlyMe"
+
+[specs]
+block_time = 60.0
+block_reward = "Block 1: Premined 2.55Million FlyMe; Blocks 2 - 100: 0.1 FlyMe - To conquer instamine; Blocks 101 - 1000: 10 FlyMe; Blocks 1000 to the end of mining: 100 coins"
+total_tokens = 5000000.0
+premine_tokens = "9000 FlyMe (0.18)"
+difficulty_cycle = "updated KGW"
+txs_confirm = 3.0
+ann = "https://bitcointalk.org/index.php?topic=663221.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  icon = "github.png"

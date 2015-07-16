@@ -1,0 +1,44 @@
+source = "cyberFund"
+system = "Zombiecoin"
+
+[aliases]
+coinmarketcap = "Zombiecoin"
+CurrencyName = "Zombiecoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "08/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "ZMB"
+
+[specs]
+p2p = 58871.0
+rpc = 58872.0
+block_time = 150.0
+block_reward = 102.0
+total_tokens = 10000000.0
+difficulty_cycle = "48 blocks(2 hours)"
+txs_confirm = 6.0
+mint_confirm = 30.0
+ann = "https://bitcointalk.org/index.php?topic=455703.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://zmbcoin.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://www.github.com/zombiecoin/zombiecoin-release"
+  icon = "github.png"

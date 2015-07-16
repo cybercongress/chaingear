@@ -1,0 +1,42 @@
+source = "cyberFund"
+system = "Kimcoin"
+
+[aliases]
+coinmarketcap = "Kimcoin"
+CurrencyName = "Kimcoin"
+
+[consensus]
+hashing = "Multi-algo"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "23/09/2013"
+
+[token]
+token_name = ""
+token_symbol = "KMC"
+
+[specs]
+block_time = "90"
+block_reward = 100.0
+halfing_cycle = 1000000.0
+total_tokens = 210000000.0
+difficulty_cycle = "500"
+txs_confirm = 1.0
+mint_confirm = 40.0
+ann = "https://bitcointalk.org/index.php?topic=299906.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://rghost.net/48969212"
+  icon = "github.png"

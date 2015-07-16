@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "CSCoin"
+
+[aliases]
+coinmarketcap = "CSCoin"
+CurrencyName = "CSCoin"
+
+[consensus]
+hashing = "X11"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "24/06/2014"
+
+[token]
+token_name = ""
+token_symbol = "CSO"
+
+[specs]
+p2p = 17526.0
+rpc = 17527.0
+block_time = 30.0
+block_reward = "280 CSO"
+halfing_cycle = "no halving"
+total_tokens = 10000000.0
+difficulty_cycle = "20 blocks"
+ann = "https://bitcointalk.org/index.php?topic=664262"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://cscoin.info"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/CSCoinTeam/CS"
+  icon = "github.png"

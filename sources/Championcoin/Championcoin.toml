@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "Championcoin"
+
+[aliases]
+coinmarketcap = "Championcoin"
+CurrencyName = "Championcoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "24/01/2014"
+
+[token]
+token_name = ""
+token_symbol = "CHAM"
+
+[specs]
+p2p = 21260.0
+rpc = 11261.0
+block_time = 20.0
+block_reward = "60 per block + random superblocks  (1/100 chance, a random 100-500 coins block and  1/2000 chance (~ twice a day), a random 1000-5000 coins block)"
+halfing_cycle = "30240 (1 week)"
+total_tokens = 240000000.0
+difficulty_cycle = 60.0
+txs_confirm = 3.0
+mint_confirm = 30.0
+ann = "https://bitcointalk.org/index.php?topic=429836.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.championcoin.com/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://www.github.com/championcoin/championcoin/"
+  icon = "github.png"

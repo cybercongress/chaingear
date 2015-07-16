@@ -1,0 +1,41 @@
+source = "cyberFund"
+system = "WhistleCoin"
+
+[aliases]
+coinmarketcap = "WhistleCoin"
+CurrencyName = "WhistleCoin"
+
+[consensus]
+hashing = "X11"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "06/10/2014"
+
+[token]
+token_name = ""
+token_symbol = "WSTL"
+
+[specs]
+p2p = 78678.0
+rpc = 78677.0
+block_time = "60 seconds"
+block_reward = "Block Rewards 2-7199:2764, Block Rewards 7200: 4728"
+total_tokens = "20000000"
+premine_tokens = "100000 coins (0.5%)"
+ann = "https://bitcointalk.org/index.php?topic=813878.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "github.com/whistlecoin/whistlecoin"
+  icon = "github.png"

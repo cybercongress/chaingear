@@ -1,0 +1,42 @@
+source = "cyberFund"
+system = "Ferretcoin"
+
+[aliases]
+coinmarketcap = "Ferretcoin"
+CurrencyName = "Ferretcoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "15/07/2013"
+
+[token]
+token_name = ""
+token_symbol = "FEC"
+
+[specs]
+p2p = 33033.0
+rpc = 33032.0
+block_time = "150"
+block_reward = 23.0
+halfing_cycle = 1752000.0
+total_tokens = 123456789.0
+difficulty_cycle = "960"
+ann = "https://bitcointalk.org/index.php?topic=247208.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/ferretcoin/ferretcoin"
+  icon = "github.png"

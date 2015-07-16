@@ -1,0 +1,41 @@
+source = "cyberFund"
+system = "Moviecoin"
+
+[aliases]
+coinmarketcap = "Moviecoin"
+CurrencyName = "Moviecoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "15/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "MVC"
+
+[specs]
+block_time = 60.0
+block_reward = "Randow block reward depending on block number"
+total_tokens = 10000000000.0
+premine_tokens = "200000000 (2%)"
+difficulty_cycle = "60 blocks (1 hour)"
+ann = "https://bitcointalk.org/index.php?topic=466953.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.moviecoin.biz/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/moviecoin/moviecoin.git"
+  icon = "github.png"

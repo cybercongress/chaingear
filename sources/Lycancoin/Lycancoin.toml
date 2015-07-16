@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "Lycancoin"
+
+[aliases]
+coinmarketcap = "Lycancoin"
+CurrencyName = "Lycancoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "08/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "LYC"
+
+[specs]
+p2p = 58861.0
+rpc = 58862.0
+block_time = 150.0
+block_reward = 2970.0
+total_tokens = 10000000.0
+difficulty_cycle = "48 blocks(2 hours)"
+txs_confirm = 6.0
+mint_confirm = 30.0
+ann = "https://bitcointalk.org/index.php?topic=455770.0"
+rating = 0.0
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.lyccoin.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://github.com/lycancoin/lycancoin-release"
+  icon = "github.png"

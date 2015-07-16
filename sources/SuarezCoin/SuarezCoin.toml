@@ -1,0 +1,42 @@
+source = "cyberFund"
+system = "SuarezCoin"
+
+[aliases]
+coinmarketcap = "SuarezCoin"
+CurrencyName = "SuarezCoin"
+
+[consensus]
+hashing = "X11"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "01/07/2014"
+
+[token]
+token_name = ""
+token_symbol = "SRZ"
+
+[specs]
+p2p = 21693.0
+rpc = 21692.0
+block_time = 60.0
+block_reward = "Block 1: 100000 SRZ; Block 2 - 2601: 500 SRZ; Block 2602 - 22601: 300 SRZ; Block 22602 - 33101: 200 SRZ; Block 33101 - 34101: 500 SRZ"
+total_tokens = 10000000.0
+premine_tokens = "100000 SRZ (1%)"
+difficulty_cycle = "every block"
+ann = "https://bitcointalk.org/index.php?topic=672109.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/suarezcoin/suarezcoin"
+  icon = "github.png"

@@ -1,0 +1,41 @@
+source = "cyberFund"
+system = "BitcoinNEW"
+
+[aliases]
+coinmarketcap = "BitcoinNEW"
+CurrencyName = "BitcoinNEW"
+
+[consensus]
+hashing = "SHA-256d"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "15/05/2014"
+
+[token]
+token_name = ""
+token_symbol = "BTN"
+
+[specs]
+block_reward = "500 BTN, halving every 210000 blocks (4 years)"
+total_tokens = 210000000.0
+difficulty_cycle = "every 2016 blocks (14 days)"
+txs_confirm = 6.0
+mint_confirm = 120.0
+ann = "https://bitcointalk.org/index.php?topic=610673.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://BitcoinNEW.org"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/BitcoinNew/BitcoinNEW"
+  icon = "github.png"

@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "Mediacoin"
+
+[aliases]
+coinmarketcap = "Mediacoin"
+CurrencyName = "Mediacoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "04/01/2014"
+genesis = "01/04/2014"
+
+[token]
+token_name = ""
+token_symbol = "MDC"
+
+[specs]
+p2p = 11810.0
+rpc = 11811.0
+block_reward = 32.0
+halfing_cycle = 129600.0
+total_tokens = 51200000.0
+premine_tokens = 512000.0
+ann = "https://bitcointalk.org/index.php?topic=398936.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://mediacoin.net"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://mediacoin.net/file/mediacoin-source.7z"
+  icon = "github.png"

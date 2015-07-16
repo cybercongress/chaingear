@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "Isracoin"
+
+[aliases]
+coinmarketcap = "Isracoin"
+CurrencyName = "Isracoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "24/03/2014"
+
+[token]
+token_name = ""
+token_symbol = "ISR"
+
+[specs]
+p2p = 21948.0
+rpc = 21947.0
+block_time = 60.0
+block_reward = "50 Isracoins"
+halfing_cycle = "3 years"
+total_tokens = 4800000000.0
+premine_tokens = "480000000 (10%) - Airdrop distribution"
+difficulty_cycle = "1 minute + DigiShield"
+ann = "https://bitcointalk.org/index.php?topic=529409.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/israelcoin/Isracoin"
+  icon = "github.png"

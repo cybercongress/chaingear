@@ -1,0 +1,44 @@
+source = "cyberFund"
+system = "Junkcoin"
+
+[aliases]
+coinmarketcap = "Junkcoin"
+CurrencyName = "Junkcoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "15/05/2013"
+genesis = "03/05/2013"
+
+[token]
+token_name = ""
+token_symbol = "JKC"
+
+[specs]
+p2p = 9771.0
+rpc = 9772.0
+block_time = "60"
+block_reward = 50.0
+halfing_cycle = 10368000.0
+total_tokens = 107000000.0
+difficulty_cycle = "1440"
+rating = 0.0
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://jkcoin.com/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Hartland/JKC"
+  icon = "github.png"

@@ -1,0 +1,44 @@
+source = "cyberFund"
+system = "Cosmoscoin"
+
+[aliases]
+coinmarketcap = "Cosmoscoin"
+CurrencyName = "Cosmoscoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "28/06/2013"
+
+[token]
+token_name = ""
+token_symbol = "CMC"
+
+[specs]
+p2p = 19990.0
+rpc = 19991.0
+block_time = "60"
+block_reward = 3.5
+total_tokens = 100000000.0
+difficulty_cycle = "every block"
+txs_confirm = 3.0
+mint_confirm = 30.0
+ann = "https://bitcointalk.org/index.php?topic=245938.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.cosmoscoin.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "http://github.com/cosmoscoin/cosmoscoin"
+  icon = "github.png"

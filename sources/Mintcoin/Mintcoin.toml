@@ -1,0 +1,53 @@
+dependencies = ["independent"]
+source = "cyberFund"
+system = "Mintcoin"
+
+[aliases]
+coinmarketcap = "Mintcoin"
+CurrencyName = "Mintcoin"
+
+[ratings]
+rating = 1.0
+
+[consensus]
+consensus_name = "Proof-of-Stake"
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+tags = "DAO"
+system_type = ""
+
+[events]
+announcement = "05/02/2014"
+
+[token]
+token_name = ""
+token_symbol = "MINT"
+
+[specs]
+p2p = 12789.0
+rpc = 12788.0
+block_time = 30.0
+halfing_cycle = "payout is halved every week during first 5 weeks"
+total_tokens = 70000000000.0
+premine_tokens = "700000000 coins (1%) for bounties, giveaways and so on"
+difficulty_cycle = "every block"
+txs_confirm = 4.0
+mint_confirm = 50.0
+ann = "https://bitcointalk.org/index.php?topic=450381.0"
+
+[[links]]
+name = "web site"
+url = "http://mintcoin.biz/"
+icon = "website.png"
+tags = ["Main", "Apps"]
+type = ""
+
+[[links]]
+name = "github"
+url = "https://github.com/mintcoinproject/mintcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+type = ""
