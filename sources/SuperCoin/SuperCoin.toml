@@ -1,0 +1,42 @@
+source = "cyberFund"
+system = "SuperCoin"
+
+[aliases]
+coinmarketcap = "SuperCoin"
+CurrencyName = "SuperCoin"
+
+[consensus]
+hashing = "X11"
+consensus_type = "Independet POS+POW"
+
+[descriptions]
+state = "Running"
+system_type = ""
+tags = ["DAO"]
+
+[events]
+announcement = "27/11/2014"
+
+[token]
+token_name = "SuperCoin"
+token_symbol = "SUPER"
+
+[specs]
+block_time = 90
+block_reward = 512
+halfing_cycle = 0
+total_tokens = 0
+difficulty_cycle = 0
+ann = "https://bitcointalk.org/index.php?topic=875651.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  url = "http://www.trustedcryptos.com/"
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Greg-Griffith/SuperCoin"
+  icon = "github.png"
