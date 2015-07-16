@@ -39,7 +39,7 @@ var walk = function (dir) {
 
 function act() {
   var result = [];
-  var filenames_toml = walk( path.join(__dirname, "..", "sources.toml") );
+  var filenames_toml = walk( path.join(__dirname, "..", "sources") );
 
   for (var idx = 0; idx < filenames_toml.length; idx++) {
     loadToml(filenames_toml[idx], result);
@@ -50,4 +50,3 @@ function act() {
 }
 
 act();
-
