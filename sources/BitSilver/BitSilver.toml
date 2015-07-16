@@ -1,20 +1,30 @@
 source = "cyberFund"
-system = "BitSilver"
+system = "bitSilver"
+dependencies = ["BitShares"]
 
 [aliases]
-coinmarketcap = "BitSilver"
-CurrencyName = "BitSilver"
+coinmarketcap = "bitSilver"
+CurrencyName = "bitSilver"
+
+[ratings]
+rating = 3.0
 
 [descriptions]
-system_type = ""
+system_type = "Pegget Asset"
 
 [consensus]
+consensus_name = "BitShares"
 consensus_type = ""
 
 [token]
-token_name = ""
+token_name = "bitSilver"
 token_symbol = "BITSILVER"
 
 [specs]
-rating = 0.0
-links = []
+
+[[links]]
+name = "explorer"
+url = "http://www.bitsharesblocks.com/asset/orderbook?asset=SILVER"
+icon = "explorer.png"
+tags = ["Main", "Apps"]
+type = "explorer"

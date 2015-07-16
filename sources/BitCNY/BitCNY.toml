@@ -1,22 +1,29 @@
 source = "cyberFund"
-system = "BitCNY"
+system = "bitCNY"
+dependencies = ["BitShares"]
 
 [aliases]
-coinmarketcap = "BitCNY"
-CurrencyName = "BitCNY"
+coinmarketcap = "bitCNY"
+CurrencyName = "bitCNY"
 
 [ratings]
 rating = 3.0
 
 [descriptions]
-system_type = ""
+system_type = "Pegget Asset"
 
 [consensus]
 consensus_type = ""
 
 [token]
-token_name = ""
+token_name = "bitCNY"
 token_symbol = "BITCNY"
 
 [specs]
-links = []
+
+[[links]]
+name = "explorer"
+url = "http://www.bitsharesblocks.com/asset/orderbook?asset=CNY"
+icon = "explorer.png"
+tags = ["Main", "Apps"]
+type = "explorer"

@@ -1,27 +1,30 @@
 source = "cyberFund"
-system = "bitGold"
+system = "bitEUR"
 dependencies = ["BitShares"]
 
 [aliases]
-coinmarketcap = "bitGold"
-CurrencyName = "bitGold"
+coinmarketcap = "bitEUR"
+CurrencyName = "bitEUR"
+
+[ratings]
+rating = 3.0
 
 [descriptions]
 system_type = "Pegget Asset"
 
 [consensus]
+consensus_name = "BitShares"
 consensus_type = ""
 
 [token]
-token_name = "bitGold"
-token_symbol = "BITGOLD"
+token_name = "bitEUR"
+token_symbol = "BITEUR"
 
 [specs]
-rating = 0.0
 
 [[links]]
 name = "explorer"
-url = "http://www.bitsharesblocks.com/asset/orderbook?asset=GOLD"
+url = "http://www.bitsharesblocks.com/asset/orderbook?asset=EUR"
 icon = "explorer.png"
 tags = ["Main", "Apps"]
 type = "explorer"
