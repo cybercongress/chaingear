@@ -6,7 +6,7 @@ coinmarketcap = "Pandacoin"
 CurrencyName = "Pandacoin"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 hashing = "Scrypt"
@@ -31,7 +31,6 @@ block_reward = "Random block reward"
 halfing_cycle = "maximum possible coins in random reward are halved every 50000 blocks"
 total_tokens = 100000000000.0
 difficulty_cycle = "every block"
-ann = "https://bitcointalk.org/index.php?topic=464476.0"
 
 [[links]]
 name = "web site"
@@ -46,3 +45,9 @@ url = "https://github.com/pandacoin-official/binaries"
 icon = "github.png"
 tags = ["Main", "Code"]
 type = ""
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=464476.0"
+type = "custom"
+tags = ["publications"]

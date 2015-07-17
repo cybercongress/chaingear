@@ -6,7 +6,7 @@ coinmarketcap = "Zetacoin"
 CurrencyName = "Zetacoin"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Work"
@@ -33,7 +33,6 @@ block_reward = 1000.0
 halfing_cycle = 80640.0
 total_tokens = 160000000.0
 difficulty_cycle = "4"
-ann = "https://bitcointalk.org/index.php?topic=267545.0"
 dependencies = "independent"
 
   [[specs.links]]
@@ -47,3 +46,9 @@ dependencies = "independent"
   name = "github"
   url = "http://github.com/zetacoin/zetacoin"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=267545.0"
+type = "custom"
+tags = ["publications"]

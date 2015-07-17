@@ -6,7 +6,7 @@ coinmarketcap = "Primecoin"
 CurrencyName = "Primecoin"
 
 [ratings]
-rating = 2.0
+rating_cyber = 2.0
 
 [consensus]
 consensus_name = "Proof-of-Work"
@@ -28,7 +28,6 @@ token_symbol = "XPM"
 
 [specs]
 block_time = "60"
-ann = "https://bitcointalk.org/index.php?topic=251850.0"
 dependencies = "independent"
 
   [[specs.links]]
@@ -42,3 +41,9 @@ dependencies = "independent"
   name = "github"
   url = "https://github.com/primecoin/primecoin"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=251850.0"
+type = "custom"
+tags = ["publications"]

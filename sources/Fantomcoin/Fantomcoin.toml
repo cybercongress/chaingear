@@ -25,8 +25,6 @@ block_time = 60.0
 block_reward = "Block reward decreases according to the formula (2^64 - 1 - A)*2^(-22)*10^(-12) where A = supply mined to date"
 total_tokens = 18400000.0
 difficulty_cycle = "every block"
-ann = "https://bitcointalk.org/index.php?topic=598823.0"
-rating = 0.0
 
   [[specs.links]]
   section = ["Main", "Apps"]
@@ -39,3 +37,9 @@ rating = 0.0
   name = "github"
   url = "https://github.com/amphibia/fantomcoin"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=598823.0"
+type = "custom"
+tags = ["publications"]

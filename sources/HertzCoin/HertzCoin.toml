@@ -6,7 +6,7 @@ coinmarketcap = "HertzCoin"
 CurrencyName = "HertzCoin"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Stake"
@@ -33,7 +33,6 @@ block_reward = "8888 HZ"
 total_tokens = "19 749 136 HZ"
 premine_tokens = "0.1% (19749 HZ)"
 mint_confirm = "50 blocks"
-ann = "https://bitcointalk.org/index.php?topic=736313"
 dependencies = "independent"
 
   [[specs.links]]
@@ -47,3 +46,9 @@ dependencies = "independent"
   name = "github"
   url = "https://github.com/HertzCoin/HertzCoin"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=736313"
+type = "custom"
+tags = ["publications"]

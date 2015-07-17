@@ -6,7 +6,7 @@ coinmarketcap = "WorldCoin"
 CurrencyName = "WorldCoin"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Work"
@@ -33,7 +33,6 @@ halfing_cycle = 20160.0
 total_tokens = 265420800.0
 difficulty_cycle = "120"
 txs_confirm = 2.0
-ann = "https://bitcointalk.org/index.php?topic=204894.0"
 dependencies = "independent"
 
   [[specs.links]]
@@ -47,3 +46,9 @@ dependencies = "independent"
   name = "github"
   url = "https://github.com/worldcoinproject/Worldcoin"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=204894.0"
+type = "custom"
+tags = ["publications"]

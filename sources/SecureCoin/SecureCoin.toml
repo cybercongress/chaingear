@@ -6,7 +6,7 @@ coinmarketcap = "SecureCoin"
 CurrencyName = "SecureCoin"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 hashing = "Quark"
@@ -30,7 +30,6 @@ block_time = "60 seconds"
 block_reward = "5 coins"
 total_tokens = "21000000 coins"
 premine_tokens = "no"
-ann = "https://bitcointalk.org/index.php?topic=270852.0"
 
   [[specs.links]]
   section = ["Main", "Apps"]
@@ -43,3 +42,9 @@ ann = "https://bitcointalk.org/index.php?topic=270852.0"
   name = "github"
   url = "https://github.com/baritus/securecoin"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=270852.0"
+type = "custom"
+tags = ["publications"]

@@ -6,7 +6,7 @@ coinmarketcap = "FIMKrypto"
 CurrencyName = "FIMKrypto"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Stake"
@@ -28,7 +28,6 @@ token_symbol = "FIMK"
 block_time = "30 seconds"
 block_reward = "200 FIM"
 total_tokens = "1000000000"
-ann = "http://gry.io/2014/07/23/fimkrypto-fimk/"
 dependencies = "independent"
 
   [[specs.links]]
@@ -40,3 +39,9 @@ dependencies = "independent"
   section = ["Main", "Code"]
   name = "github"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "http://gry.io/2014/07/23/fimkrypto-fimk/"
+type = "custom"
+tags = ["publications"]

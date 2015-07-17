@@ -25,8 +25,6 @@ block_time = 30.0
 block_reward = "Block reward decreases each block according to the formula: BaseReward = (MSupply - A)/2^20,  where MSupply = (2^64 - 1) atomic units and 'A' is amount of already generated coins"
 total_tokens = 18400000.0
 difficulty_cycle = "each block"
-ann = "https://bitcointalk.org/index.php?topic=686485"
-rating = 0.0
 
   [[specs.links]]
   section = ["Main", "Apps"]
@@ -39,3 +37,9 @@ rating = 0.0
   name = "github"
   url = "https://github.com/AlbertWerner/cryptonotecoin"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=686485"
+type = "custom"
+tags = ["publications"]

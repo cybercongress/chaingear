@@ -26,8 +26,6 @@ block_time = 300.0
 block_reward = "The first 20 blocks will provide 1000 coins per block. Between block 20 and block 105120 the reward is 1.5 anti-particles, thereafter: nSubsidy = 1.5 * ((nHeight / 105,120) - 1)^0.9 then 1.5 ANT per block thereafter"
 total_tokens = 1000000.0
 premine_tokens = "10000 coins(1%)"
-ann = "https://bitcointalk.org/index.php?topic=460112.0"
-rating = 0.0
 
 [[links]]
 tags = ["Main", "Apps"]
@@ -42,3 +40,9 @@ name = "github"
 url = "https://github.com/staycrypto/antimatter"
 icon = "github.png"
 type = ""
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=460112.0"
+type = "custom"
+tags = ["publications"]

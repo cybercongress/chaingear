@@ -6,7 +6,7 @@ coinmarketcap = "Diamond"
 CurrencyName = "Diamond"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Hybrid POW-POS"
@@ -34,7 +34,6 @@ total_tokens = 4380000.0
 difficulty_cycle = "everyblock"
 txs_confirm = 3.0
 mint_confirm = 50.0
-ann = "https://bitcointalk.org/index.php?topic=255806.0"
 dependencies = "independent"
 
   [[specs.links]]
@@ -46,3 +45,9 @@ dependencies = "independent"
   section = ["Main", "Code"]
   name = "github"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=255806.0"
+type = "custom"
+tags = ["publications"]

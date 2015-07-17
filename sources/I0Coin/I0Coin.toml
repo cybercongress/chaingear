@@ -6,7 +6,7 @@ coinmarketcap = "I0Coin"
 CurrencyName = "I0Coin"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Work"
@@ -33,7 +33,6 @@ total_tokens = 21000000.0
 difficulty_cycle = "2016"
 txs_confirm = 6.0
 mint_confirm = 120.0
-ann = "https://bitcointalk.org/index.php?topic=36425.msg448463#msg448463"
 dependencies = "independent"
 
   [[specs.links]]
@@ -47,3 +46,9 @@ dependencies = "independent"
   name = "github"
   url = "https://github.com/doublec/i0coin"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=36425.msg448463#msg448463"
+type = "custom"
+tags = ["publications"]

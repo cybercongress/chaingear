@@ -6,7 +6,7 @@ coinmarketcap = "MaxCoin"
 CurrencyName = "MaxCoin"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Work"
@@ -31,7 +31,6 @@ block_reward = 96.0
 halfing_cycle = "1051200 (once per 12 months)"
 total_tokens = 250000000.0
 difficulty_cycle = "according to Kimoto Gravity Well"
-ann = "https://bitcointalk.org/index.php?topic=438150.0"
 dependencies = "independent"
 
   [[specs.links]]
@@ -45,3 +44,9 @@ dependencies = "independent"
   name = "github"
   url = "https://github.com/Max-Coin/MaxCoin"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=438150.0"
+type = "custom"
+tags = ["publications"]

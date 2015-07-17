@@ -6,7 +6,7 @@ coinmarketcap = "Opal"
 CurrencyName = "Opal"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Stake"
@@ -31,7 +31,6 @@ rpc = 51990.0
 block_time = "90"
 block_reward = "Block 0-50:15,Block 50-15,000:1000"
 total_tokens = "15000000"
-ann = "https://bitcointalk.org/index.php?topic=778720.00"
 dependencies = "independent"
 
   [[specs.links]]
@@ -45,3 +44,9 @@ dependencies = "independent"
   name = "github"
   url = "https://github.com/OpalCoin/OpalCoin"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=778720.00"
+type = "custom"
+tags = ["publications"]

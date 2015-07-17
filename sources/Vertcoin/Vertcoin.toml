@@ -6,7 +6,7 @@ coinmarketcap = "Vertcoin"
 CurrencyName = "Vertcoin"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Work"
@@ -32,7 +32,6 @@ halfing_cycle = "840000 blocks (~4 years)"
 total_tokens = 84000000.0
 premine_tokens = "3 blocks"
 difficulty_cycle = "2016(3.5 days)"
-ann = "https://bitcointalk.org/index.php?topic=404364.0"
 dependencies = "independent"
 
   [[specs.links]]
@@ -45,3 +44,9 @@ dependencies = "independent"
   section = ["Main", "Code"]
   name = "github"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=404364.0"
+type = "custom"
+tags = ["publications"]

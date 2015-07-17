@@ -6,7 +6,7 @@ coinmarketcap = "Mooncoin"
 CurrencyName = "Mooncoin"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 hashing = "Scrypt"
@@ -28,7 +28,6 @@ p2p = 44664.0
 rpc = 44663.0
 block_time = 90.0
 total_tokens = 384400000000.0
-ann = "https://bitcointalk.org/index.php?topic=389403.0"
 
   [[specs.links]]
   section = ["Main", "Apps"]
@@ -40,3 +39,9 @@ ann = "https://bitcointalk.org/index.php?topic=389403.0"
   name = "github"
   url = "https://github.com/realmooncoin/mooncoin"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=389403.0"
+type = "custom"
+tags = ["publications"]

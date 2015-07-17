@@ -6,7 +6,7 @@ coinmarketcap = "Megacoin"
 CurrencyName = "Megacoin"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Work"
@@ -33,7 +33,6 @@ block_time = "150"
 block_reward = 25.0
 halfing_cycle = 420000.0
 total_tokens = 32500000.0
-ann = "https://bitcointalk.org/index.php?topic=218851.0"
 dependencies = "independent"
 
   [[specs.links]]
@@ -47,3 +46,9 @@ dependencies = "independent"
   name = "github"
   url = "https://github.com/megacoin/megacoin"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=218851.0"
+type = "custom"
+tags = ["publications"]

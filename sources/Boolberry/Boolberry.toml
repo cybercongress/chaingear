@@ -6,7 +6,7 @@ coinmarketcap = "Boolberry"
 CurrencyName = "Boolberry"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Work"
@@ -33,7 +33,6 @@ block_time = 120.0
 block_reward = "Block reward is calulated according to those rules http://boolberry.com/index.html#reward"
 total_tokens = 18450000.0
 difficulty_cycle = "every block"
-ann = "https://bitcointalk.org/index.php?topic=577267.0"
 dependencies = "independent"
 
   [[specs.links]]
@@ -47,3 +46,9 @@ dependencies = "independent"
   name = "github"
   url = "https://github.com/cryptozoidberg/Boolberry"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=577267.0"
+type = "custom"
+tags = ["publications"]

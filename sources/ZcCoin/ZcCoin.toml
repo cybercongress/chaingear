@@ -6,7 +6,7 @@ coinmarketcap = "ZcCoin"
 CurrencyName = "ZcCoin"
 
 [ratings]
-rating = 1.0
+rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Stake"
@@ -33,7 +33,6 @@ block_time = "60"
 block_reward = 50.0
 total_tokens = 1000000000.0
 mint_confirm = 520.0
-ann = "https://bitcointalk.org/index.php?topic=268575.0"
 dependencies = "independent"
 
   [[specs.links]]
@@ -45,3 +44,9 @@ dependencies = "independent"
   section = ["Main", "Code"]
   name = "github"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=268575.0"
+type = "custom"
+tags = ["publications"]

@@ -6,7 +6,7 @@ coinmarketcap = "Crypti"
 CurrencyName = "Crypti"
 
 [ratings]
-rating = 2.0
+rating_cyber = 2.0
 
 [consensus]
 consensus_name = "Delegated Proof-of-Stake"
@@ -27,7 +27,6 @@ token_symbol = "XCR"
 
 [specs]
 total_tokens = "52000000"
-ann = "https://bitcointalk.org/index.php?topic=654463.0"
 dependencies = "independent"
 
   [[specs.links]]
@@ -39,3 +38,9 @@ dependencies = "independent"
   section = ["Main", "Code"]
   name = "github"
   icon = "github.png"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=654463.0"
+type = "custom"
+tags = ["publications"]
