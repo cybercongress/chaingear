@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "FreshCoin"
+
+[aliases]
+coinmarketcap = "FreshCoin"
+CurrencyName = "FreshCoin"
+
+[consensus]
+hashing = "Others"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "30/06/2014"
+
+[token]
+token_name = "Fresh"
+token_symbol = "FRSH"
+
+[specs]
+rpc = 22111.0
+block_time = 60.0
+block_reward = "Block 1-30: zero FRSH (to ensure a fair launch and setup time for pools);  block 31-1440: 1000 FRSH (1 day) (boost the first day of POW); block 1441 - 4320: 500 FRSH (2 days); block 4321 - 8640: 250 FRSH (3 days); block 8641 - 10080: 1000 FRSH + FEES (1 day) (boost day 7 of POW); block 10081 - 442080: 10 FRSH + FEES (300 days) > expected total_tokens reward 50 to 500 FRSH and from block 442080: zero FRSH + FEES > expected total block 50 to 500 FRSH"
+total_tokens = 10000000.0
+premine_tokens = "50000 FRSH (0,2% for further development, 0,3% for bounties)"
+difficulty_cycle = "Sustainable difficulty adjustment tailored to the coins timeline"
+ann = "https://bitcointalk.org/index.php?topic=670939.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.freshcoin.net"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/savale/freshcoin/"
+  icon = "github.png"
+
+[ratings]
+rating_cyber = 0.0

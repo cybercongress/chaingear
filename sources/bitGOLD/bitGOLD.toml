@@ -1,13 +1,11 @@
 source = "cyberFund"
-system = "bitCNY"
+system = "bitGOLD"
 dependencies = ["BitShares"]
+icon = "bitGold"
 
 [aliases]
-coinmarketcap = "bitCNY"
-CurrencyName = "bitCNY"
-
-[ratings]
-rating_cyber = 3.0
+coinmarketcap = "bitGold"
+CurrencyName = "bitGOLD"
 
 [descriptions]
 system_type = "Pegget Asset"
@@ -16,14 +14,17 @@ system_type = "Pegget Asset"
 consensus_type = ""
 
 [token]
-token_name = "bitCNY"
-token_symbol = "BITCNY"
+token_name = "bitGOLD"
+token_symbol = "BITGOLD"
 
 [specs]
 
+[ratings]
+rating_cyber = 3.0
+
 [[links]]
 name = "explorer"
-url = "http://www.bitsharesblocks.com/asset/orderbook?asset=CNY"
+url = "http://www.bitsharesblocks.com/asset/orderbook?asset=GOLD"
 icon = "explorer.png"
 tags = ["Main", "Apps"]
 type = "explorer"

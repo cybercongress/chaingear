@@ -1,0 +1,46 @@
+source = "cyberFund"
+system = "CarbonCoin"
+
+[aliases]
+coinmarketcap = "CarbonCoin"
+CurrencyName = "CarbonCoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Dead"
+system_type = ""
+
+[events]
+announcement = "14/02/2014"
+
+[token]
+token_name = "CarbonCoin"
+token_symbol = "CARB"
+
+[specs]
+p2p = 9350.0
+rpc = 9351.0
+block_time = 100.0
+block_reward = "random 1-300000 + 0.1% chance for superblock with double payout"
+halfing_cycle = "48384 blocks (56 days)"
+total_tokens = 16000000000.0
+premine_tokens = " 9600000000 coins(0.6%) for bounties and giveaways"
+ann = "https://bitcointalk.org/index.php?topic=465364.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://carboncoin.net/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/carboncoin/Carboncoin"
+  icon = "github.png"
+
+[ratings]
+rating_cyber = 0.0

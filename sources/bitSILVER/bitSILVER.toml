@@ -1,10 +1,11 @@
 source = "cyberFund"
-system = "bitCNY"
+system = "bitSILVER"
 dependencies = ["BitShares"]
+icon = "bitSILVER"
 
 [aliases]
-coinmarketcap = "bitCNY"
-CurrencyName = "bitCNY"
+coinmarketcap = "bitSilver"
+CurrencyName = "bitSILVER"
 
 [ratings]
 rating_cyber = 3.0
@@ -13,17 +14,18 @@ rating_cyber = 3.0
 system_type = "Pegget Asset"
 
 [consensus]
+consensus_name = "BitShares"
 consensus_type = ""
 
 [token]
-token_name = "bitCNY"
-token_symbol = "BITCNY"
+token_name = "bitSILVER"
+token_symbol = "BITSILVER"
 
 [specs]
 
 [[links]]
 name = "explorer"
-url = "http://www.bitsharesblocks.com/asset/orderbook?asset=CNY"
+url = "http://www.bitsharesblocks.com/asset/orderbook?asset=SILVER"
 icon = "explorer.png"
 tags = ["Main", "Apps"]
 type = "explorer"

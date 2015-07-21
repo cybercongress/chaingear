@@ -1,0 +1,48 @@
+source = "cyberFund"
+system = "Luckycoin"
+
+[aliases]
+coinmarketcap = "Luckycoin"
+CurrencyName = "Luckycoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "24/05/2013"
+genesis = "22/05/2013"
+
+[token]
+token_name = "Luckycoin"
+token_symbol = "LKY"
+
+[specs]
+p2p = 9917.0
+rpc = 9918.0
+block_time = "60"
+block_reward = 88.0
+halfing_cycle = 1036800.0
+total_tokens = 200000000.0
+difficulty_cycle = "240"
+txs_confirm = 3.0
+ann = "https://bitcointalk.org/index.php?topic=214614.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://luckycoin.ca/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/LuckyCoinProject/Luckycoin"
+  icon = "github.png"
+
+[ratings]
+rating_cyber = 0.0

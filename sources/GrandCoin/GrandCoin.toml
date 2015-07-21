@@ -1,0 +1,47 @@
+source = "cyberFund"
+system = "GrandCoin"
+
+[aliases]
+coinmarketcap = "GrandCoin"
+CurrencyName = "GrandCoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "15/07/2013"
+
+[token]
+token_name = "GrandCoin"
+token_symbol = "GDC"
+
+[specs]
+p2p = 12377.0
+rpc = 12378.0
+block_time = "45"
+block_reward = 100.0
+halfing_cycle = 700800.0
+total_tokens = 1420609614.0
+difficulty_cycle = "30"
+txs_confirm = 6.0
+mint_confirm = 50.0
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://grandcoin.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/grandcoin/grandcoin"
+  icon = "github.png"
+
+[ratings]
+rating_cyber = 0.0

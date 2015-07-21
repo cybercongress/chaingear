@@ -1,0 +1,45 @@
+source = "cyberFund"
+system = "VegasCoin"
+
+[aliases]
+coinmarketcap = "VegasCoin"
+CurrencyName = "VegasCoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "15/02/2014"
+
+[token]
+token_name = "VegasCoin"
+token_symbol = "VGC"
+
+[specs]
+p2p = 52400.0
+rpc = 52401.0
+block_time = 120.0
+block_reward = 30.0
+total_tokens = 100000000.0
+difficulty_cycle = "720 (every day)"
+ann = "https://bitcointalk.org/index.php?topic=466312.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://vegascoin.co/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/VegasCoin/vegascoin"
+  icon = "github.png"
+
+[ratings]
+rating_cyber = 0.0

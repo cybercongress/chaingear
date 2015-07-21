@@ -1,0 +1,47 @@
+source = "cyberFund"
+system = "TagCoin"
+
+[aliases]
+coinmarketcap = "TagCoin"
+CurrencyName = "TagCoin"
+
+[ratings]
+rating_cyber = 1.0
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "24/10/2013"
+genesis = "20/10/2013"
+
+[token]
+token_name = "TagCoin"
+token_symbol = "TAG"
+
+[specs]
+p2p = 15660.0
+rpc = 15661.0
+block_time = "240"
+block_reward = 30.0
+halfing_cycle = 32400.0
+total_tokens = 100000000.0
+premine_tokens = 9000.0
+difficulty_cycle = "30"
+ann = "https://bitcointalk.org/index.php?topic=317408.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/tagcoin/tagcoin.git"
+  icon = "github.png"

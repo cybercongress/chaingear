@@ -1,0 +1,43 @@
+source = "cyberFund"
+system = "SongCoin"
+
+[aliases]
+coinmarketcap = "SongCoin"
+CurrencyName = "SongCoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = ""
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "01/10/2014"
+
+[token]
+token_name = "SongCoin"
+token_symbol = "SONG"
+
+[specs]
+p2p = 8335.0
+rpc = 8334.0
+block_time = "120"
+block_reward = "100 coins"
+total_tokens = "210240000 coins"
+premine_tokens = "4000000 coins(2%)"
+difficulty_cycle = "3.5 days"
+ann = "https://bitcointalk.org/index.php?topic=804527.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  url = "http://www.songcoin.org/"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/Songcoin"
+  icon = "github.png"

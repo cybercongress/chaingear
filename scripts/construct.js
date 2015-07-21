@@ -7,6 +7,23 @@ function loadToml(filename, result) {
     var fullname = path.join(filename);
     var data = fs.readFileSync(fullname);
     var parsed = toml.parse(data);
+
+    //this is a pathc. remove later.
+    if (parsed && parsed.specs && !isNaN(parsed.specs.rating)){
+      if (parsed.ratings) {
+        parsed.ratings.rating_cyber = parsed.ratings.rating_cyber || parsed.specs.rating;
+      } else {
+        parsed.ratings = {rating_cyber: parsed.specs.rating};
+      }
+      delete parsed.specs.rating;
+    }
+
+    if (parsed.ratings && !isNaN(parsed.ratings.rating)) {
+      parsed.ratings.rating_cyber = parsed.ratings.rating;
+      delete parsed.ratings.rating;
+    }
+
+
     result.push(parsed);
   } catch (e) {
     console.error("Parsing error on line " + e.line + ", column " + e.column +

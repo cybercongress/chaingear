@@ -1,0 +1,47 @@
+source = "cyberFund"
+system = "BlackCoin"
+
+[aliases]
+coinmarketcap = "BlackCoin"
+CurrencyName = "BlackCoin"
+
+[consensus]
+hashing = "Scrypt"
+consensus_type = "Proof-of-Stake"
+
+[descriptions]
+state = "Running"
+system_type = ""
+
+[events]
+announcement = "16/02/2014"
+genesis = "24/02/2014"
+
+[token]
+token_name = "BlackCoin"
+token_symbol = "BLK"
+
+[specs]
+p2p = 15715.0
+rpc = 15714.0
+block_time = 60.0
+block_reward = 10000.0
+halfing_cycle = "no halving"
+difficulty_cycle = 1.0
+txs_confirm = 10.0
+mint_confirm = 500.0
+ann = "https://bitcointalk.org/index.php?topic=469640.0"
+
+  [[specs.links]]
+  section = ["Main", "Apps"]
+  name = "web site"
+  icon = "website.png"
+
+  [[specs.links]]
+  section = ["Main", "Code"]
+  name = "github"
+  url = "https://github.com/rat4/blackcoin"
+  icon = "github.png"
+
+[ratings]
+rating_cyber = 2.0
