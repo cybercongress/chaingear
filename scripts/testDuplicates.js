@@ -1,6 +1,7 @@
 var fs = require("fs");
 var path = require('path');
 var toml = require('toml');
+var _ = require("lodash");
 
 function loadToml(filename, result) {
   try {
@@ -9,9 +10,7 @@ function loadToml(filename, result) {
     var parsed = toml.parse(data);
 
 
-
-
-    result.push(parsed);
+    result.push(parsed.system);
   } catch (e) {
     console.error("Parsing error on line " + e.line + ", column " + e.column +
       ": " + e.message);
@@ -49,8 +48,14 @@ function act() {
     loadToml(filenames_toml[idx], result);
   }
 
-  fs.writeFileSync(path.join(__dirname, "..", "chaingear.json"), JSON.stringify(result, null, 4));
-  console.log("combined " + result.length + " entries into chaingear.json");
+  var counts =_.countBy(result);
+  _.each(counts, function(v,k){
+    if (v==1) delete counts[k]
+  });
+  console.log(counts);
+
 }
 
-act();
+act();/**
+ * Created by angelo on 7/21/15.
+ */
