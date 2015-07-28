@@ -5241,7 +5241,7 @@
         "system": "Bitcoin",
         "aliases": {
             "coinmarketcap": "Bitcoin",
-            "CurrencyName": "Bitcoin"
+            "CurrencyName": "bitcoin"
         },
         "ratings": {
             "rating_cyber": 5
@@ -33826,60 +33826,6 @@
     },
     {
         "source": "cyberFund",
-        "system": "Onecoin",
-        "aliases": {
-            "coinmarketcap": "Onecoin",
-            "CurrencyName": "Onecoin"
-        },
-        "consensus": {
-            "hashing": "Scrypt",
-            "consensus_type": ""
-        },
-        "descriptions": {
-            "state": "Running",
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "09/05/2013",
-            "genesis": "13/06/2013"
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "ONC"
-        },
-        "specs": {
-            "p2p": 8555,
-            "rpc": 8554,
-            "block_time": "120",
-            "block_reward": 5e-7,
-            "halfing_cycle": 1000000,
-            "total_tokens": 1,
-            "difficulty_cycle": "everyblock",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/onecoin/onecoin",
-                    "icon": "github.png"
-                }
-            ]
-        },
-        "links": [
-            {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=200177.0",
-                "type": "custom",
-                "tags": [
-                    "publications"
-                ]
-            }
-        ]
-    },
-    {
-        "source": "cyberFund",
         "system": "Onioncoin",
         "aliases": {
             "coinmarketcap": "Onioncoin",
@@ -34136,7 +34082,14 @@
                     "Wallet"
                 ]
             }
-        ]
+        ],
+        "specs": {
+            "supply": 0,
+            "cap": {
+                "usd": 0,
+                "btc": 0
+            }
+        }
     },
     {
         "source": "cyberFund",
