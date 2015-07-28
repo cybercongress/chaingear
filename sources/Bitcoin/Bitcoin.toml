@@ -1,6 +1,5 @@
 genesis_id = "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
 dependencies = ["independent"]
-source = "cyberFund"
 system = "Bitcoin"
 
 [aliases]
@@ -17,6 +16,7 @@ consensus_type = ""
 
 [descriptions]
 state = "Running"
+headline = "A Peer-to-Peer Electronic Cash System"
 tags = ["DAO"]
 hashtag = "#bitcoin"
 system_type = ""
@@ -30,48 +30,61 @@ token_name = "bitcoin"
 token_symbol = "BTC"
 
 [specs]
-rpc = 8332.0
+rpc = 8332
 block_time = "600"
 block_reward = "50"
 halfing_cycle = "210240"
 total_tokens = "21000000"
 difficulty_cycle = "2016"
-txs_confirm = 6.0
-mint_confirm = 120.0
+txs_confirm = 6
 
 [[links]]
-name = "web site"
+name = "Bitcoin.org"
 url = "http://bitcoin.org/en/"
 icon = "website.png"
 tags = ["Main", "Apps"]
 type = "website"
 
 [[links]]
+name = "Blockchain.info"
+url = "https://blockchain.info/"
+icon = "explorer.png"
+tags = ["Main", "Apps"]
+type = "explorer"
+
+[[links]]
+name = "Coinbase"
+url = "https://www.coinbase.com/join/5354c035f1184f977100000c"
+type = "custom"
+icon = "coinbase.png"
+tags = ["Main", "Apps", "Wallet"]
+
+[[links]]
+name = "LocalBitcoins"
+url = "https://localbitcoins.com/?ch=3qnx"
+type = "custom"
+icon = "localbitcoins.png"
+tags = ["Main", "Apps", "Exchange"]
+
+[[links]]
 name = "github"
 url = "https://github.com/bitcoin/bitcoin"
 icon = "github.png"
-tags = ["Main", "Code"]
+tags = ["Code"]
 type = "github"
 
 [[links]]
 name = "Documentation"
 url = "https://bitcoin.org/bitcoin.pdf"
 icon = "whitepaper.png"
-tags = ["Main", "Science"]
-type = ""
-
-[[links]]
-name = "explorer"
-url = "https://blockchain.info/"
-icon = "explorer.png"
-tags = ["Main", "Apps"]
+tags = ["Science"]
 type = ""
 
 [[links]]
 name = "twitter"
 url = "https://twitter.com/Bitcoin"
 icon = "twitter.png"
-tags = ["Main", "Apps"]
+tags = ["Apps"]
 type = ""
 
 [[links]]
@@ -100,13 +113,6 @@ name = "Announcement"
 url = "http://article.gmane.org/gmane.comp.encryption.general/12588/"
 type = "custom"
 tags = ["publications"]
-
-[[links]]
-name = "Coinbase"
-url = "https://www.coinbase.com/join/5354c035f1184f977100000c"
-type = "custom"
-icon = "coinbase.png"
-tags = ["Apps","Wallet"]
 
 [[links]]
 name = "Blockchain"
@@ -190,13 +196,6 @@ name = "itBit"
 url = "https://www.itbit.com/"
 type = "custom"
 icon = "itbit.png"
-tags = ["Apps","Exchange"]
-
-[[links]]
-name = "LocalBitcoins"
-url = "https://localbitcoins.com/?ch=3qnx"
-type = "custom"
-icon = "localbitcoins.png"
 tags = ["Apps","Exchange"]
 
 [[links]]
