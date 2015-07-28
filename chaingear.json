@@ -5614,6 +5614,7 @@
             {
                 "name": "Bitcoin: A Peer-to-Peer Electronic Cash System. Satoshi Nakamoto",
                 "url": "https://bitcoin.org/bitcoin.pdf",
+                "icon": "whitepaper.png",
                 "type": "whitepaper",
                 "tags": [
                     "Science"
@@ -5622,6 +5623,7 @@
             {
                 "name": "Enabling Blockchain Innovations with Pegged Sidechains. Adam Back, Matt Corallo, Luke Dashjr, Mark Friedenbach, Gregory Maxwell, Andrew Miller, Andrew Poelstra, Jorge Timón and Pieter Wuille.",
                 "url": "https://www.blockstream.com/sidechains.pdf",
+                "icon": "whitepaper.png",
                 "type": "whitepaper",
                 "tags": [
                     "Science"
@@ -5630,6 +5632,7 @@
             {
                 "name": "The Bitcoin Lightning Network:\nScalable Off-Chain Instant Payments, Joseph Poon, Thaddeus Dryja.",
                 "url": "https://lightning.network/lightning-network-paper.pdf",
+                "icon": "whitepaper.png",
                 "type": "whitepaper",
                 "tags": [
                     "Science"
@@ -34085,6 +34088,55 @@
         "specs": {
             "links": []
         }
+    },
+    {
+        "system": "Open Assets",
+        "dependencies": [
+            "Bitcoin"
+        ],
+        "descriptions": {
+            "state": "Running",
+            "headline": "Bitcoin based colored coins implementation",
+            "tags": [
+                "Dapp"
+            ],
+            "hashtag": "#bitcoin",
+            "system_type": "Blockchain Markup"
+        },
+        "links": [
+            {
+                "name": "Specification",
+                "url": "https://github.com/OpenAssets/open-assets-protocol",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ],
+                "type": "protocol"
+            },
+            {
+                "name": "Open Assets Explorer",
+                "url": "https://www.coinprism.info/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ],
+                "type": "explorer"
+            },
+            {
+                "name": "Coinprism",
+                "url": "https://www.coinprism.com/",
+                "type": "custom",
+                "icon": "coinprism.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            }
+        ]
     },
     {
         "source": "cyberFund",
