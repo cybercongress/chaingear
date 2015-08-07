@@ -10,7 +10,7 @@ system_type = "independent"
 
 [aliases]
 coinmarketcap = "Ethereum"
-CurrencyName = "Ethereum"
+CurrencyName = "ether"
 
 [crowdsales]
 start_date = "22/7/2014"
@@ -18,10 +18,10 @@ end_date = "2/9/2014"
 genesis_address = "36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2"
 funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf"
 funding_url = "https://www.ethereum.org/ether"
-tokens_sold = 60102216.0
+tokens_sold = 60102216
 
 [ratings]
-rating_cyber = 5.0
+rating_cyber = 5
 
 [consensus]
 consensus_name = "Ethereum"
@@ -36,15 +36,29 @@ supply = 74452454.768
 timestamp = 1438966754
 
 [[links]]
-name = "web site"
+name = "Ethereum.org"
 url = "http://ethereum.org/"
 icon = "website.png"
 tags = ["Main", "Apps"]
-type = ""
+type = "website"
 
 [[links]]
-name = "Documentation"
-url = "https://https://github.com/ethereum/wiki/wiki/White-Paper"
+name = "Etherechain.org"
+url = "http://etherchain.org/"
+icon = "website.png"
+tags = ["Main", "Apps", "Analytics"]
+type = "explorer"
+
+[[links]]
+name = "Network monitoring"
+url = "http://stats.ethdev.org/"
+icon = "website.png"
+tags = ["Main", "Apps", "Analytics"]
+type = "website"
+
+[[links]]
+name = "Frontier Guide"
+url = "http://guide.ethereum.org"
 icon = "whitepaper.png"
 tags = ["Main", "Apps"]
 type = ""
