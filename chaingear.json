@@ -14763,7 +14763,7 @@
                 "type": "custom"
             },
             {
-                "name": "GitHub",
+                "name": "Ethereum organization on GitHub",
                 "url": "https://github.com/ethereum/",
                 "tags": [
                     "Code"
@@ -14857,7 +14857,7 @@
                 "type": "github"
             },
             {
-                "name": "Vitali Buterin's Python implementation",
+                "name": "Vitalik Buterin's Python implementation",
                 "url": "https://github.com/ethereum/pyethereum",
                 "icon": "github.png",
                 "tags": [
@@ -47246,8 +47246,10 @@
         }
     },
     {
-        "source": "cyberFund",
         "system": "cyberFund",
+        "dependencies": [
+            "Bitcoin, Ethereum"
+        ],
         "aliases": {
             "coinmarketcap": "cyber•Fund",
             "CurrencyName": "cyber•Fund",
@@ -47264,11 +47266,11 @@
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "dapp"
         },
         "token": {
             "token_name": "",
-            "token_symbol": "CFS"
+            "token_symbol": "CFUND"
         },
         "specs": {
             "dependencies": "independent",
