@@ -6,11 +6,11 @@ system = "Ethereum"
 headline = "A Next-Generation Smart Contract and Decentralized Application Platform"
 summary = "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority."
 tags = ["DAO"]
-system_type = ""
+system_type = "independent"
 
 [aliases]
 coinmarketcap = "Ethereum"
-CurrencyName = "Ethereum"
+CurrencyName = "ether"
 
 [crowdsales]
 start_date = "22/7/2014"
@@ -18,10 +18,10 @@ end_date = "2/9/2014"
 genesis_address = "36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2"
 funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf"
 funding_url = "https://www.ethereum.org/ether"
-tokens_sold = 60102216.0
+tokens_sold = 60102216
 
 [ratings]
-rating_cyber = 5.0
+rating_cyber = 5
 
 [consensus]
 consensus_name = "Ethereum"
@@ -32,12 +32,8 @@ token_name = "Ether"
 token_symbol = "ETH"
 
 [specs]
-supply = 60102216.0
-timestamp = 1431342962.0
-
-  [specs.cap]
-  usd = 18439086.0
-  btc = 31529.0
+supply = 74452454.768
+timestamp = 1438966754
 
 [[links]]
 name = "Ethereum.org"
@@ -111,4 +107,25 @@ name = "GitHub"
 url = "https://github.com/ethereum/"
 tags = ["Main","Code"]
 type = "github"
+
+[[links]]
+name = "Etherechain.org"
+url = "http://etherchain.org/"
+icon = "website.png"
+tags = ["Main", "Apps", "Analytics"]
+type = "explorer"
+
+[[links]]
+name = "Network monitoring"
+url = "http://stats.ethdev.org/"
+icon = "website.png"
+tags = ["Main", "Apps", "Analytics"]
+type = "website"
+
+[[links]]
+name = "Frontier Guide"
+url = "http://guide.ethereum.org"
+icon = "whitepaper.png"
+tags = ["Main", "Apps"]
+type = ""
 
