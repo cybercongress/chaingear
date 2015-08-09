@@ -1279,6 +1279,14 @@
             "token_name": "Reputation",
             "token_symbol": "REP"
         },
+        "crowdsales": {
+            "start_date": "17/8/2015",
+            "end_date": "1/10/2015",
+            "genesis_address": "3N6S9PLVizPuf8nZkhVzp11PKhTiuTVE6R",
+            "funding_tems": "http://www.augur.net/blog/the-augur-crowdsale",
+            "funding_url": "http://sale.augur.net/",
+            "tokens_sold": 8000000
+        },
         "links": [
             {
                 "name": "Augur.net",
@@ -1299,11 +1307,29 @@
                 ]
             },
             {
+                "name": "Augur Demo",
+                "url": "http://demo.augur.net/",
+                "icon": "augur.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "Augur Apha",
+                "url": "http://www.augur.net/blog/the-augur-alpha-is-now-available-to-download",
+                "icon": "augur.png",
+                "tags": [
+                    "Apps"
+                ],
+                "type": "custom"
+            },
+            {
                 "name": "Blog",
                 "url": "http://www.augur.net/blog",
                 "icon": "blog.png",
                 "tags": [
-                    "Main",
                     "News"
                 ],
                 "type": "blog"
@@ -1340,8 +1366,16 @@
                 "url": "https://github.com/AugurProject",
                 "type": "github",
                 "tags": [
-                    "Main",
                     "Code"
+                ]
+            },
+            {
+                "name": "Augur Whitepaper",
+                "url": "http://www.augur.link/augur.pdf",
+                "type": "paper",
+                "tags": [
+                    "Main",
+                    "Science"
                 ]
             }
         ]
@@ -9181,11 +9215,40 @@
             "system_type": "dapp"
         },
         "token": {
-            "token_name": "",
+            "token_name": "XCP",
             "token_symbol": "XCP"
         },
         "specs": {},
         "links": [
+            {
+                "name": "counterparty.io",
+                "url": "http://counterparty.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ],
+                "type": "website"
+            },
+            {
+                "name": "Explorer",
+                "url": "http://blockscan.com/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ],
+                "type": "explorer"
+            },
+            {
+                "name": "GitHub",
+                "url": "https://github.com/CounterpartyXCP",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ],
+                "type": "github"
+            },
             {
                 "name": "Documentation",
                 "url": "http://counterparty.io/docs/",
@@ -9194,74 +9257,144 @@
                     "Main",
                     "Science"
                 ],
-                "type": ""
+                "type": "papaer"
             },
             {
-                "name": "web site",
-                "url": "http://counterparty.io/",
-                "icon": "website.png",
+                "name": "Official Wallet",
+                "url": "https://counterwallet.io/",
+                "icon": "counterparty.png",
                 "tags": [
                     "Main",
-                    "Apps"
+                    "Wallet"
                 ],
-                "type": ""
+                "type": "wallet"
             },
             {
-                "name": "explorer",
-                "url": "http://blockscan.com/",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
-            },
-            {
-                "name": "github",
-                "url": "http://blockscan.com/",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ],
-                "type": ""
-            },
-            {
-                "name": "twitter",
+                "name": "Twitter",
                 "url": "https://twitter.com/CounterpartyXCP",
                 "icon": "twitter.png",
                 "tags": [
-                    "Main",
-                    "Apps"
+                    "News"
                 ],
-                "type": ""
+                "type": "twitter"
             },
             {
-                "name": "forum",
+                "name": "Forum",
                 "url": "https://forums.counterparty.io/",
                 "icon": "forum.png",
                 "tags": [
-                    "Apps"
+                    "News"
                 ],
-                "type": ""
+                "type": "forum"
             },
             {
-                "name": "blog",
+                "name": "Blog",
                 "url": "http://counterparty.io/news/",
                 "icon": "blog.png",
                 "tags": [
-                    "Apps"
+                    "News"
                 ],
-                "type": ""
+                "type": "blog"
             },
             {
                 "name": "reddit",
                 "url": "http://www.reddit.com/r/counterparty_xcp",
                 "icon": "reddit.png",
                 "tags": [
-                    "Apps"
+                    "News"
                 ],
-                "type": ""
+                "type": "reddit"
+            },
+            {
+                "name": "Google+",
+                "url": "https://plus.google.com/u/0/+CounterpartyIoXCP/posts",
+                "icon": "googleplus.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/CounterpartyXCP",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "counterblock API",
+                "url": "http://counterparty.io/docs/counterblock_api/",
+                "icon": "link.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "Counterparty Dev Library",
+                "url": "http://counterparty.io/docs/counterblock_api/",
+                "icon": "link.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "Poloniex",
+                "headline": "nein",
+                "url": "https://www.poloniex.com",
+                "type": "custom",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Bittrex",
+                "headline": "nein",
+                "url": "https://bittrex.com/",
+                "type": "custom",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTER",
+                "headline": "nein",
+                "url": "https://bter.com/",
+                "type": "custom",
+                "icon": "bter.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "MasterXchange",
+                "headline": "nein",
+                "url": "http://masterxchange.com/",
+                "type": "custom",
+                "icon": "masterxchange.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Counterparty DEX",
+                "headline": "nein",
+                "url": "https://counterwallet.io/",
+                "type": "custom",
+                "icon": "counterparty.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
             }
         ]
     },

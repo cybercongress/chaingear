@@ -31,6 +31,13 @@ genesis = ""
 token_name = "Reputation"
 token_symbol = "REP"
 
+[crowdsales]
+start_date = "17/8/2015"
+end_date = "1/10/2015"
+genesis_address = "3N6S9PLVizPuf8nZkhVzp11PKhTiuTVE6R"
+funding_tems = "http://www.augur.net/blog/the-augur-crowdsale"
+funding_url = "http://sale.augur.net/"
+tokens_sold = 8000000
 
 [[links]]
 name = "Augur.net"
@@ -47,10 +54,24 @@ type = "custom"
 tags = ["Main"]
 
 [[links]]
+name = "Augur Demo"
+url = "http://demo.augur.net/"
+icon = "augur.png"
+tags = ["Main","Apps"]
+type = "custom"
+
+[[links]]
+name = "Augur Apha"
+url = "http://www.augur.net/blog/the-augur-alpha-is-now-available-to-download"
+icon = "augur.png"
+tags = ["Apps"]
+type = "custom"
+
+[[links]]
 name = "Blog"
 url = "http://www.augur.net/blog"
 icon = "blog.png"
-tags = ["Main","News"]
+tags = ["News"]
 type = "blog"
 
 [[links]]
@@ -78,5 +99,11 @@ type = "reddit"
 name = "Augur GitHub"
 url = "https://github.com/AugurProject"
 type = "github"
-tags = ["Main","Code"]
+tags = ["Code"]
+
+[[links]]
+name = "Augur Whitepaper"
+url = "http://www.augur.link/augur.pdf"
+type = "paper"
+tags = ["Main","Science"]
 
