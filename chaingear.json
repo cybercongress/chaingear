@@ -3166,7 +3166,7 @@
             {
                 "name": "BTS Block Explorer",
                 "url": "https://bitsharesblocks.com/",
-                "icon": "bitsharesblocks.png.png",
+                "icon": "bitsharesblocks.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -38558,14 +38558,14 @@
         },
         "links": [
             {
-                "name": "web site",
+                "name": "ripple.com",
                 "url": "www.ripple.com",
                 "icon": "website.png",
                 "tags": [
                     "Main",
                     "Apps"
                 ],
-                "type": ""
+                "type": "website"
             },
             {
                 "name": "github",
@@ -38575,64 +38575,122 @@
                     "Main",
                     "Code"
                 ],
-                "type": ""
+                "type": "github"
             },
             {
-                "name": "Documentation",
+                "name": "Consensus Whitepaper",
                 "url": "https://ripple.com/consensus-whitepaper/",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Main",
                     "Science"
                 ],
-                "type": ""
+                "type": "paper"
             },
             {
-                "name": "explorer",
+                "name": "Ripple Charts",
                 "url": "https://www.ripplecharts.com/",
-                "icon": "explorer.png",
+                "headline": "Data from the Ripple Network",
+                "icon": "ripple.png",
                 "tags": [
                     "Main",
-                    "Apps"
+                    "Apps",
+                    "Analytics"
                 ],
-                "type": ""
+                "type": "custom"
             },
             {
-                "name": "twitter",
-                "url": "https://twitter.com/Ripple",
-                "icon": "twitter.png",
+                "name": "Ripple Graph",
+                "url": "https://www.ripplecharts.com/#/graph",
+                "headline": "Data from the Ripple Network",
+                "icon": "ripple.png",
                 "tags": [
                     "Main",
-                    "Apps"
+                    "Apps",
+                    "Analytics"
                 ],
-                "type": ""
+                "type": "custom"
             },
             {
-                "name": "forum",
-                "url": "https://forum.ripple.com/",
-                "icon": "forum.png",
+                "name": "Ripple Press Releases",
+                "url": "https://ripple.com/press-releases/",
+                "icon": "ripple.png",
                 "tags": [
-                    "Main"
+                    "News"
                 ],
-                "type": ""
+                "type": "custom"
             },
             {
-                "name": "blog",
+                "name": "Blog",
                 "url": "https://ripple.com/blog/",
                 "icon": "blog.png",
                 "tags": [
-                    "Main"
+                    "News"
                 ],
-                "type": ""
+                "type": "blog"
+            },
+            {
+                "name": "CoinDesk",
+                "url": "http://www.coindesk.com/tag/ripple/",
+                "type": "custom",
+                "icon": "coindesk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CoinTelegraph",
+                "url": "http://cointelegraph.com/tags/ripple/",
+                "type": "custom",
+                "icon": "cointelegraph.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/Ripple",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "twitter"
+            },
+            {
+                "name": "Forum",
+                "url": "https://forum.ripple.com/",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "forum"
             },
             {
                 "name": "reddit",
                 "url": "www.reddit.com/r/Ripple/",
                 "icon": "reddit.png",
                 "tags": [
-                    "Main"
+                    "News"
                 ],
-                "type": ""
+                "type": "reddit"
+            },
+            {
+                "name": "YouTube",
+                "url": "http://www.youtube.com/user/ripplevideo1",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "Google+",
+                "url": "https://plus.google.com/+Ripplepay/posts",
+                "icon": "googleplus.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "custom"
             },
             {
                 "name": "Announcement",
@@ -38641,6 +38699,98 @@
                 "tags": [
                     "publications"
                 ]
+            },
+            {
+                "name": "Ripple Labs",
+                "url": "https://www.ripplelabs.com",
+                "icon": "ripple.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "paper"
+            },
+            {
+                "name": "Codius",
+                "url": "https://codius.org/",
+                "headline": "There Smart Programs Live",
+                "icon": "codius.png",
+                "tags": [
+                    "Code",
+                    "Apps"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "REST API Tool",
+                "url": "https://ripple.com/build/rest-tool/",
+                "icon": "ripple.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "WebSocket API Tool",
+                "url": "https://ripple.com/build/websocket-tool/",
+                "icon": "ripple.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "RPC Tool",
+                "url": "https://ripple.com/build/ripple-info-tool/",
+                "icon": "ripple.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "rippled documentation",
+                "url": "https://ripple.com/build/rippled-apis/",
+                "icon": "ripple.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "wiki"
+            },
+            {
+                "name": "Rippled Wiki",
+                "url": "https://ripple.com/build/rippled-apis/",
+                "icon": "ripple.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "wiki"
+            },
+            {
+                "name": "Executive Summary for Financial Institutions",
+                "url": "https://ripple.com/integrate/executive-summary-for-financial-institutions/",
+                "icon": "ripple.png",
+                "tags": [
+                    "code"
+                ],
+                "type": "paper"
+            },
+            {
+                "name": "Ripple Developers portal",
+                "url": "https://ripple.com/build/",
+                "icon": "ripple.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "International Ripple Business Association",
+                "url": "http://www.ripplebusiness.org/",
+                "icon": "ripple.png",
+                "tags": [
+                    "code"
+                ],
+                "type": "paper"
             }
         ]
     },
