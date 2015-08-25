@@ -6,8 +6,8 @@ If you are blockchain developer you can easily enrich metadata of your blockchai
 It will make significantly easier to deal with your token for any wallet, exchange, bridge and any web app which want to work with your blockchain or token.
 
 This repository accumulate the following blockchains metadata:
-- Parameters
-- Dependancies
+- Dependencies
+- Specs
 - Logos
 - Icons
 - Links
@@ -24,13 +24,35 @@ Why I need to add the blockchain?
 ## Improve metadata
 You can add blockchain related projects in blockchain metadata.
 
-## Ethereum case
+
+## How to add?
+Any system that follow basic digital property requirements could be added.
+This is closed list of such requirements:
+For every class of a system there are different requirements and mandatory data structure.
+
+### Independent System
+
+
+If the independent system don't meet this criteria underlying token should not be treated as digital property and could not be included in Chaingear as Independent System.
+
+
+
+For every system you need to create a folder with exact name of a system. A name should be unique. If there exist system with name in respect to communities please invent another name. In case of historical collisions (Bytecoin for instance) priority will have a system with older genesis date. Newer system will be excluded until renamed.
+
+Inside this folder you should put a logo. Logo is mandatory. Logo requirements:
+- file should be .png
+- background should be transparent
+- file name should be exact of system name
+- image should be square
+- image should have resolution between 256x256 and 1024x1024
+
+## Independent system
 ```toml
 # This is a TOML document.
 
 [document]
 system = "Ethereum" # type: string
-blockchain_id = "null" # type: string
+genesis_id = "null" # type: string
 
 # Descriptive data
 [descriptions]
@@ -104,7 +126,7 @@ difficulty_cycle = 2016
 txs_confirm = 6 # the number of confirmations required to record transactions in the block
 mint_confirm = 120
 total_tokens = 21000000 # the number of tokens that will ever be generated
-premine_tokens = 0 # the number of premined tokens 
+premine_tokens = 0 # the number of premined tokens
 
 [events] # mapped as dates
 announcement = "31/10/2008"
@@ -128,11 +150,11 @@ Supported for link types:
  - explorer [ "Main", "Apps" ]
  - wiki [ "Apps" ]
  - github [ "Apps" ]
- - twitter [ "Apps" ] 
+ - twitter [ "Apps" ]
  - reddit [ "Apps" ]
  - blog [ "Apps" ]
  - forum [ "Apps" ]
- 
+
 # Custom links
 [links]
 name = "web site" # type: string

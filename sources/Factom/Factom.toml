@@ -1,16 +1,16 @@
-dependencies = ["Bitcoin"]
-source = "cyberFund"
+dependencies = ["Bitcoin", "Mastercoin (Omni)"]
 system = "Factom"
 
 [descriptions]
 headline = "A Data Layer For The Blockchain"
 summary = "Factom is a simple extension of the Bitcoin blockchain that lets you build faster, cost effective applications. Factom takes lots of hashes and turns them into a single periodic hash on the blockchain – this fixes the bloat problem."
-tags = ["DAO"]
-system_type = ""
+tags = ["dapp"]
+system_type = "dapp"
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "Factom"
-CurrencyName = "Factom"
+CurrencyName = "factoid"
 
 [crowdsales]
 start_date = "31/03/2015"
@@ -19,10 +19,10 @@ genesis_address = "35gLt5EgB367enjSjyEDahhWWcy6p1MGf6"
 funding_tems = "http://blog.factom.org/post/115139137794/the-factoid-software-sale-is-live"
 funding_operator = "koinify"
 funding_url = "https://koinify.com/#/project/FACTOM"
-tokens_sold = 4379973.0
+tokens_sold = 4379973
 
 [ratings]
-rating_cyber = 4.0
+rating_cyber = 4
 
 [consensus]
 consensus_name = "Bitcoin"
@@ -62,11 +62,39 @@ tags = ["Main"]
 type = "explorer"
 
 [[links]]
-name = "Factom GitHub"
-url = "https://github.com/FactomProject"
-icon = "github.png"
-tags = ["Main","Code"]
+name = "Factom: Ledger by Consensus. ​Paul Snow, Brian Deery, Peter Kirby, David Johnston."
+url = "https://github.com/FactomProject/FactomDocs/blob/master/Factom_Whitepaper.pdf"
+icon = "whitepaper.png"
+tags = ["Science"]
+type = "whitepaper"
+
+[[links]]
+name = "Factom: Business Processes Secured by Immutable Audit Trails on the Blockchain. Paul Snow, Brian Deery, Jack Lu, David Johnston, Peter Kirby."
+url = "https://github.com/FactomProject/FactomDocs/raw/master/FactomLedgerbyConsensus.pdf"
+icon = "whitepaper.png"
+tags = ["Science"]
+type = "whitepaper"
+
+[[links]]
+name = "Explorer"
+url = "http://explorer.factom.org/"
+icon = "website.png"
+tags = ["Main", "Apps"]
+type = "explorer"
+
+[[links]]
+name = "Organization on GitHub"
+url = "https://github.com/FactomProject/"
+icon = "twitter.png"
+tags = ["Main", "Code"]
 type = "github"
+
+[[links]]
+name = "@factomproject"
+url = "https://twitter.com/factomproject"
+icon = "twitter.png"
+tags = ["Main", "News"]
+type = "twitter"
 
 [[links]]
 name = "Blog"
@@ -74,13 +102,6 @@ url = "http://blog.factom.org/"
 icon = "blog.png"
 tags = ["News"]
 type = "blog"
-
-[[links]]
-name = "Twitter"
-url = "https://twitter.com/factomproject"
-icon = "twitter.png"
-tags = ["News"]
-type = "twitter"
 
 [[links]]
 name = "reddit"
@@ -102,10 +123,3 @@ url = "https://plus.google.com/u/0/+FactomProjectLive/"
 icon = "googleplus.png"
 tags = ["News"]
 type = "custom"
-
-[[links]]
-name = "Factom Consensus Mechanism Paper"
-url = "https://github.com/FactomProject/FactomDocs/raw/master/FactomLedgerbyConsensus.pdf"
-icon = "whitepaper.png"
-tags = [Science"]
-type = "whitepaper"
