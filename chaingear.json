@@ -9971,6 +9971,7 @@
     {
         "source": "cyberFund",
         "system": "Crypti",
+        "dependencies": "independent",
         "aliases": {
             "coinmarketcap": "Crypti",
             "CurrencyName": "Crypti"
@@ -9984,6 +9985,7 @@
             "consensus_type": ""
         },
         "descriptions": {
+            "headline": "A platform for the development and distribution of JavaScript based DApps",
             "state": "Running",
             "tags": [
                 "DAO"
@@ -9994,38 +9996,193 @@
             "announcement": "10/08/2014"
         },
         "token": {
-            "token_name": "",
+            "token_name": "Crypti",
             "token_symbol": "XCR"
         },
-        "specs": {
-            "total_tokens": "52000000",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "icon": "github.png"
-                }
-            ]
-        },
+        "specs": {},
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=654463.0",
-                "type": "custom",
+                "name": "crypti.me",
+                "url": "https://crypti.me/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ],
+                "type": "website"
+            },
+            {
+                "name": "Whitepaper",
+                "url": "https://crypti.me/crypti.pdf",
+                "icon": "whitepaper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ],
+                "type": "paper"
+            },
+            {
+                "name": "Crypti GitHub",
+                "url": "https://github.com/crypti",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "github"
+            },
+            {
+                "name": "Web Wallet",
+                "url": "https://wallet.cryptichain.me/",
+                "type": "custom",
+                "icon": "wallet.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "Crypti Explorer",
+                "url": "https://cryptichain.me/",
+                "type": "custom",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Account Validator",
+                "url": "http://validator.crypti.me/",
+                "type": "custom",
+                "icon": "crypti.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "Blog",
+                "url": "https://blog.crypti.me/",
+                "icon": "blog.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "blog"
+            },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/CryptiTeam",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "twitter"
+            },
+            {
+                "name": "Forum",
+                "url": "https://forum.crypti.me/",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "forum"
+            },
+            {
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/crypti",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "reddit"
+            },
+            {
+                "name": "Slack",
+                "url": "http://slack.crypti.me/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/pages/Crypti/1468497296767839",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "Google+",
+                "url": "https://plus.google.com/u/0/112818205922585372230/about",
+                "icon": "googleplus.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "LinkedIn",
+                "url": "https://www.linkedin.com/grp/home?gid=8329030",
+                "icon": "linkedin.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=654463.0",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "Markets CMC",
+                "headline": "nein",
+                "url": "http://coinmarketcap.com/currencies/crypti/#markets",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Poloniex",
+                "headline": "nein",
+                "url": "https://www.poloniex.com",
+                "type": "custom",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Cryptsy",
+                "headline": "nein",
+                "url": "https://www.cryptsy.com/users/register?refid=243274",
+                "type": "custom",
+                "icon": "cryptsy.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTER",
+                "headline": "nein",
+                "url": "https://bter.com/",
+                "type": "custom",
+                "icon": "bter.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
                 ]
             }
         ]
@@ -16987,7 +17144,8 @@
                 "url": "http://explorer.factom.org/",
                 "icon": "explorer.png",
                 "tags": [
-                    "Main"
+                    "Main",
+                    "Apps"
                 ],
                 "type": "explorer"
             },
@@ -17010,21 +17168,10 @@
                 "type": "whitepaper"
             },
             {
-                "name": "Explorer",
-                "url": "http://explorer.factom.org/",
-                "icon": "website.png",
-                "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": "explorer"
-            },
-            {
                 "name": "Organization on GitHub",
                 "url": "https://github.com/FactomProject/",
                 "icon": "twitter.png",
                 "tags": [
-                    "Main",
                     "Code"
                 ],
                 "type": "github"
@@ -17034,7 +17181,6 @@
                 "url": "https://twitter.com/factomproject",
                 "icon": "twitter.png",
                 "tags": [
-                    "Main",
                     "News"
                 ],
                 "type": "twitter"
@@ -17044,6 +17190,7 @@
                 "url": "http://blog.factom.org/",
                 "icon": "blog.png",
                 "tags": [
+                    "Main",
                     "News"
                 ],
                 "type": "blog"
