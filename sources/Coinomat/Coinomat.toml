@@ -1,5 +1,6 @@
-source = "cyberFund"
+genesis_id = "7474435909229872610"
 system = "Coinomat"
+dependencies = "NXT"
 
 [aliases]
 coinmarketcap = "Coinomat"
@@ -17,9 +18,80 @@ tags = ["DApp"]
 system_type = ""
 
 [token]
-token_name = ""
+token_name = "coinomat1"
 token_symbol = "CNMT"
 
 [specs]
-dependencies = "NXT"
-links = []
+
+
+[[links]]
+name = "coinomat.com"
+url = "https://coinomat.com"
+icon = "website.png"
+tags = ["Main"]
+type = "website"
+
+[[links]]
+name = "Coinomat Asset"
+url = "http://nxtreporting.com/?as=7474435909229872610"
+icon = "nxt.png"
+tags = ["Main", "Apps","Analytics"]
+type = "explorer"
+
+[[links]]
+name = "Transactions Stats"
+url = "https://coinomat.com/globalstat.php"
+icon = "link.png"
+tags = ["Main", "Apps","Analytics"]
+type = "custom"
+
+[[links]]
+name = "Blog"
+url = "http://blog.coinomat.com/"
+icon = "blog.png"
+tags = ["News"]
+type = "blog"
+
+[[links]]
+name = "Coinomat API"
+url = "https://coinomat.com/api.php"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "Twitter"
+url = "https://twitter.com/coinomat"
+icon = "twitter.png"
+tags = ["News"]
+type = "twitter"
+
+[[links]]
+name = "Facebook"
+url = "https://www.facebook.com/Coinomat"
+icon = "facebook.png"
+tags = ["News"]
+type = "custom"
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/assets/coinomat/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "NXT AE"
+url = "http://nxtreporting.com/?as=7474435909229872610"
+icon = "nxt.png"
+tags = ["Apps","Exchange"]
+type = "custom"
