@@ -31,43 +31,46 @@ This is closed list of such requirements:
 For every class of a system there are different requirements and mandatory data structure.
 
 
-## How to add crowdsale details?
+## How to add crowdsale?
 Crowdsale consist of 2 steps:
 - Before the start. We recommend to add this information at least a month before ETA.
 - After the finish. We recommend to add this information in an hour after finish.
 
+### Basic Due Diligence
+We don't accept crowdfunding if certain condition didn't met:
+
+- At least one genesis address exist. We don't accept crowdfunding if investors could not transparently track funds.
+- Fund management is under 2 of 3 multisig. Fund managers could be anonymous, but some reputation inside community is highly recommended. Otherwise, well written paper or POC code eliminates any questions.
+- Funding terms are defined and cryptographically signed by fund managers.
 To add crowdfunding put this data to toml file of your system.
+
 ### Before
 ```toml
 [crowdsale_start]
 start_date = "2015-03-31T00:00:00"
 end_date = "2015-05-15T00:00:00"
 genesis_address = "35gLt5EgB367enjSjyEDahhWWcy6p1MGf6"
-funding_tems = "http://blog.factom.org/post/115139137794/the-factoid-software-sale-is-live"
-funding_operator = "Koinify"
 funding_url = "https://koinify.com/#/project/FACTOM"
+funding_tems = "http://blog.factom.org/post/115139137794/the-factoid-software-sale-is-live"
 min_investment = 0.01
+funding_operator = "Koinify" #Could be `nein`.
+crowsale_feed = "http://example.com/feed" # For multicurrency or non bitcoin crowdsale
+```
+Note that all fields are mandatory.
+
+### After
+Then crowdsale is finished two liner report is needed.
+```toml
+[crowdsale_closed]
+tokens_sold = 4379973
 tokens_issued = 8759946
 ```
-### After
-[crowdsale_closed]
-```toml
-tokens_sold = 4379973
-```
-### Basic Due Diligence
-Note that all fields are mandatory. We don't accept crowdfunding if certain condition didn't met:
 
-- At least one genesis address exist. We don' accept crowdfunding if it's impossible transparently  track funds to investors.
-- Fund management is under 2 of 3 multisig. Fund managers could be anonymous, but some reputation inside community is highly recommended.
-- Funding terms are defined and signed by fund managers
+### Cap Calculation
+After end of crowdsale your cap will be calculated automatically based on two fields: `min_invesment` and `genesis_address`. Thus your project will become visible in [Rating](https://cyber.fund).
+You can provide multiple addresses as array: `["address1", "address2"]`.
+At this point of time we support only Bitcoin addresses for crowdsale calculations. For multi currency crowdsale or non bitcoin crowdsale you will need to provide pre calculated feed:
 
-### Cap calculation
-Cap will be calculated automatically based two fields: `min_invesment` and `genesis_address`.
-You can provide multiple addresses as array: `["address1", "address2"]`. At this point of time we support only Bitcoin addresses for crowdsale.
-For multi currency crowdsale you will need to provide pre calculated feed:
-```toml
-crowsale_feed = "http://example.com/feed"
-```
 
 ### Independent System
 
