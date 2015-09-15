@@ -1,25 +1,24 @@
 # Chaingear
 
-This repository try to solve the problem of blockchains and tokens metadata.
+This project try to solve the problem of cryptocurrencies and cryptoassets metadata.
 If you are blockchain developer you can easily enrich metadata of your blockchain or token.
 
-It will make significantly easier to deal with your token for any wallet, exchange, bridge and any web app which want to work with your blockchain or token.
+# API
+[chaingear.cyber.fund/v1.json](chaingear.cyber.fund/v1.json)
 
 This repository accumulate the following blockchains metadata:
 - Dependencies
 - Specs
 - Logos
-- Icons
 - Links
-- Events
+- Crowdsales
 
-## Add new
-
-Why I need to add the blockchain?
+## Why do I need to add my cryptocurrency or cryptoasset?
 
 1. Describe what it is for in understandable format.
 2. Your chain on cyber•Fund for free.
 3. Make your chain accessible for other developers.
+4. It will make significantly easier to deal with your token for any wallet, exchange, bridge and any web app which want to work with your cryptocurrency or cryptoasset.
 
 ## Improve metadata
 You can add blockchain related projects in blockchain metadata.

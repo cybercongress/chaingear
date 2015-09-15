@@ -50,6 +50,7 @@ function act() {
   }
 
   fs.writeFileSync(path.join(__dirname, "..", "chaingear.json"), JSON.stringify(result, null, 4));
+  fs.writeFileSync(path.join(__dirname, "..", "v1.json"), JSON.stringify(result, null, 4));
   console.log("combined " + result.length + " entries into chaingear.json");
 }
 
