@@ -4,7 +4,7 @@ This project try to solve the problem of cryptocurrencies and cryptoassets metad
 If you are blockchain developer you can easily enrich metadata of your blockchain or token.
 
 # API
-[chaingear.cyber.fund/v1.json](chaingear.cyber.fund/v1.json)
+[chaingear.cyber.fund/v1.json](http://chaingear.cyber.fund/v1.json)
 
 This repository accumulate the following blockchains metadata:
 - Dependencies
@@ -13,22 +13,18 @@ This repository accumulate the following blockchains metadata:
 - Links
 - Crowdsales
 
-## Why do I need to add my cryptocurrency or cryptoasset?
+# Why do I need to add my cryptocurrency or cryptoasset?
 
-1. Describe what it is for in understandable format.
-2. Your chain on cyber•Fund for free.
-3. Make your chain accessible for other developers.
-4. It will make significantly easier to deal with your token for any wallet, exchange, bridge and any web app which want to work with your cryptocurrency or cryptoasset.
+1. Your cryptocurrency or cryptoasset on cyber•Fund for free. Evaluated systems are listed in Rating. Non evaluated systems are listed in Radar.
+2. cyber•Fund provide you free landing page, market data stats and Reporting API (comming soon).
+2. Make your cryptocurrency or cryptoasset accessible for other developers. It will make significantly easier to deal with your token for any wallet, exchange, bridge or any web app which want to work with your cryptocurrency or cryptoasset.
 
-## Improve metadata
-You can add blockchain related projects in blockchain metadata.
-
-
-## How to add?
+# How to add cryptocurrency?
 Any system that follow basic digital property requirements could be added.
 This is closed list of such requirements:
 For every class of a system there are different requirements and mandatory data structure.
 
+# How to add cryptoasset?
 
 # How to add crowdsale?
 Crowdsale consist of 2 steps:
@@ -82,48 +78,6 @@ Inside this folder you should put a logo. Logo is mandatory. Logo requirements:
 - file name should be exact of system name
 - image should be square
 - image should have resolution between 256x256 and 1024x1024
-
-## Independent system
-```toml
-# This is a TOML document.
-
-[document]
-system = "Ethereum" # type: string
-genesis_id = "null" # type: string
-
-# Descriptive data
-[descriptions]
-symbol = "ETH" # type: string
-currency = "ether" # type: string
-short_description = "A Next-Generation Smart Contract and Decentralized Application Platform" # type: string
-summary = "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority." # type: string
-coinmarketcap = "Ethereum" # type: string
-
-type = "DAO" # type: string
-consensus = "Ethereum" # type: string
-
-[dependencies] # type: string. Independent if empty.
-
-[links]
-name = "web site" # type: string
-url = "http://ethereum.org/" # type: string
-type = "website" # type: string
-tags = [ "Main", "Apps" ] # type: string
-icon = "ethereum.png" # optional. If empty default picture for a type
-
-[crowdsales]
-start_date = "22/7/2014" # type: date
-end_date = "2/9/2014" # type: date
-genesis_address = "36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2" # type: string
-funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf" # type: string
-funding_operator = "null" # type: string
-funding_url = "https://www.ethereum.org/ether" # type: string
-tokens_sold = 60102216 # type: number
-
-[ratings]
-rating_cyber = 5 # temporary. type: number
-
-```
 
 ## Bitcoin Case
 ```
