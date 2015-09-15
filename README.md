@@ -31,27 +31,43 @@ This is closed list of such requirements:
 For every class of a system there are different requirements and mandatory data structure.
 
 
-## How to add crowdfunding details?
-Crowdfunding consist of 2 steps:
+## How to add crowdsale details?
+Crowdsale consist of 2 steps:
 - Before the start. We recommend to add this information at least a month before ETA.
-- After finish. We recomend to add this information in an hour after finish
+- After the finish. We recommend to add this information in an hour after finish.
+
+To add crowdfunding put this data to toml file of your system.
 ### Before
 ```toml
-start_date = "31/03/2015"
-end_date = "15/05/2015"
+[crowdsale_start]
+start_date = "2015-03-31T00:00:00"
+end_date = "2015-05-15T00:00:00"
 genesis_address = "35gLt5EgB367enjSjyEDahhWWcy6p1MGf6"
 funding_tems = "http://blog.factom.org/post/115139137794/the-factoid-software-sale-is-live"
-funding_operator = "koinify"
+funding_operator = "Koinify"
 funding_url = "https://koinify.com/#/project/FACTOM"
-```
-### After
-```toml
-tokens_sold = 4379973
+min_investment = 0.01
 tokens_issued = 8759946
 ```
+### After
+[crowdsale_closed]
+```toml
+tokens_sold = 4379973
+```
+### Basic Due Diligence
+Note that all fields are mandatory. We don't accept crowdfunding if certain condition didn't met:
 
-Note that all fields are mandatory
+- At least one genesis address exist. We don' accept crowdfunding if it's impossible transparently  track funds to investors.
+- Fund management is under 2 of 3 multisig. Fund managers could be anonymous, but some reputation inside community is highly recommended.
+- Funding terms are defined and signed by fund managers
 
+### Cap calculation
+Cap will be calculated automatically based two fields: `min_invesment` and `genesis_address`.
+You can provide multiple addresses as array: `["address1", "address2"]`. At this point of time we support only Bitcoin addresses for crowdsale.
+For multi currency crowdsale you will need to provide pre calculated feed:
+```toml
+crowsale_feed = "http://example.com/feed"
+```
 
 ### Independent System
 
