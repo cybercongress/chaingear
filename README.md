@@ -30,6 +30,29 @@ Any system that follow basic digital property requirements could be added.
 This is closed list of such requirements:
 For every class of a system there are different requirements and mandatory data structure.
 
+
+## How to add crowdfunding details?
+Crowdfunding consist of 2 steps:
+- Before the start. We recommend to add this information at least a month before ETA.
+- After finish. We recomend to add this information in an hour after finish
+### Before
+```toml
+start_date = "31/03/2015"
+end_date = "15/05/2015"
+genesis_address = "35gLt5EgB367enjSjyEDahhWWcy6p1MGf6"
+funding_tems = "http://blog.factom.org/post/115139137794/the-factoid-software-sale-is-live"
+funding_operator = "koinify"
+funding_url = "https://koinify.com/#/project/FACTOM"
+```
+### After
+```toml
+tokens_sold = 4379973
+tokens_issued = 8759946
+```
+
+Note that all fields are mandatory
+
+
 ### Independent System
 
 
