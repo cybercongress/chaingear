@@ -63,12 +63,12 @@ tokens_sold = 4379973
 tokens_issued = 8759946
 ```
 
-## Cap Calculation
-After end of crowdsale your cap will be calculated automatically based on two fields: `min_invesment` and `genesis_address`. Thus your project will become visible in [Rating](https://cyber.fund) with fixed cap until tokens (1) won't be distributed and (2) at least one public market will be established.
+## Fixed Cap Calculation
+After end of crowdsale your cap will be calculated automatically based on 4 fields: `start_date`, `end_date`, `min_invesment` and `genesis_address`. Thus your project will become visible in [Rating](https://cyber.fund) with fixed cap until tokens (1) won't be distributed and (2) at least one public market will be established.
 
 ## Multi Currency Crowdsale
 You can provide multiple addresses as array: `["address1", "address2"]`.
-At this point of time we support only Bitcoin addresses for crowdsale calculations. For multi currency crowdsale or non bitcoin crowdsale you will need to provide pre calculated feed:
+At this point of time we support only Bitcoin addresses for crowdsale calculations. For multi currency crowdsale or non bitcoin crowdsale you will need to provide pre calculated feed.
 
 
 # Independent System
