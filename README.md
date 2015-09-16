@@ -29,7 +29,6 @@ Any system that follow basic digital property requirements could be added.
 This is closed list of such requirements:
 For every class of a system there are different requirements and mandatory data structure.
 
-
 # How to add crowdsale?
 Crowdsale consist of 2 steps:
 - Before the start. We recommend to add this information at least a month before ETA.
