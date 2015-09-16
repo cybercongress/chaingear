@@ -44,10 +44,10 @@ To add crowdfunding put this data to toml file of your system.
 
 ## Before
 ```toml
-[crowdsale_start]
+[crowdsale]
 start_date = "2015-03-31T00:00:00"
 end_date = "2015-05-15T00:00:00"
-genesis_address = "35gLt5EgB367enjSjyEDahhWWcy6p1MGf6"
+genesis_address = "35gLt5EgB367enjSjyEDahhWWcy6p1MGf6" # Could be array. See multu currency crowdsale
 funding_url = "https://koinify.com/#/project/FACTOM"
 funding_tems = "http://blog.factom.org/post/115139137794/the-factoid-software-sale-is-live"
 min_investment = 0.01
@@ -59,13 +59,14 @@ Note that all fields are mandatory.
 ## After
 Then crowdsale is finished two liner report is needed.
 ```toml
-[crowdsale_closed]
 tokens_sold = 4379973
 tokens_issued = 8759946
 ```
 
 ## Cap Calculation
 After end of crowdsale your cap will be calculated automatically based on two fields: `min_invesment` and `genesis_address`. Thus your project will become visible in [Rating](https://cyber.fund) with fixed cap until tokens (1) won't be distributed and (2) at least one public market will be established.
+
+## Multi Currency Crowdsale
 You can provide multiple addresses as array: `["address1", "address2"]`.
 At this point of time we support only Bitcoin addresses for crowdsale calculations. For multi currency crowdsale or non bitcoin crowdsale you will need to provide pre calculated feed:
 
