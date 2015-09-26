@@ -1,4 +1,3 @@
-source = "cyberFund"
 system = "Horizon"
 
 [aliases]
@@ -6,43 +5,137 @@ coinmarketcap = "Horizon"
 CurrencyName = "Horizon"
 
 [ratings]
-rating_cyber = 1.0
+rating_cyber = 1
 
 [descriptions]
 state = "Running"
-system_type = ""
+headline = "Decentrilized Business Platform"
+system_type = "Independent"
 
 [events]
-announcement = "31/03/2014"
+name = "Horizon Announcement"
+start_date = "2014-10-14T08:25:00"
+url = "https://bitcointalk.org/index.php?topic=551666.msg6003371#msg6003371"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [token]
-token_name = ""
+token_name = "Horizon"
 token_symbol = "HZ"
 
 [specs]
-block_time = "600"
-block_reward = "50"
-halfing_cycle = "210240"
-total_tokens = 1000000000.0
+block_time = 600
+block_reward = 50
+halfing_cycle = 210240
+total_tokens = 1000000000
 difficulty_cycle = "2016"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://nhzcrypto.org/"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/NeXTHorizon/nhz-source"
-  icon = "github.png"
+[[links]]
+name = "nhzcrypto.org"
+url = "https://horizonplatform.io/"
+type = "site"
+icon = "site.png"
+links = ["Main"]
 
 [[links]]
-name = "Announcement"
-url = "https://bitcointalk.org/index.php?topic=551666.msg6003371#msg6003371"
+name = "Horizon Explorer"
+url = "https://blockchain.info/"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Main","Apps","Analytics"]
+
+[[links]]
+name = "Web Wallet"
+url = "http://nexthorizon.github.io/hz-source/"
+type = "wallet"
+icon = "wallet.png"
+tags = ["Main","Apps","Wallet"]
+
+[[links]]
+name = "Horison News"
+url = "https://horizonplatform.io/category/news/"
+rss = "https://horizonplatform.io/feed/"
 type = "custom"
-tags = ["publications"]
+icon = "horizon.png"
+tags = ["News"]
+
+[[links]]
+name = "Horizon Forum"
+url = "https://horizonplatform.io/community/"
+type = "forum"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+name = "Twitter"
+url = "https://twitter.com/Horizon_HZ"
+type = "twitter"
+icon = "twitter.png"
+tags = ["Main","News"]
+
+[[links]]
+name = "Facebook"
+url = "https://www.facebook.com/groups/NHZOfficial/"
+type = "facebook"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+name = "BTT Forum Thread"
+url = "https://bitcointalk.org/index.php?topic=823785.0"
+type = "forum"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+name = "Horizon Tutorials"
+url = "https://horizonplatform.io/category/horizon-tutorials/"
+type = "paper"
+icon = "paper.png"
+tags = ["Publications"]
+
+[[links]]
+name = "Horizon Development Roadmap"
+url = "https://horizonplatform.io/about/development-roadmap/"
+type = "paper"
+icon = "paper.png"
+tags = ["Publications"]
+
+[[links]]
+name = "Horizon Faucet"
+url = "https://faucet.horizonplatform.io/"
+type = "wallet"
+icon = "horizon.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Rich List"
+url = "https://explorer.horizonplatform.io/?page=accounts"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Horizon Exchange"
+url = "http://hzxchange.net/"
+type = "wallet"
+icon = "horizon.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Bittrex"
+headline = "nein"
+url = "https://bittrex.com"
+type = "custom"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
