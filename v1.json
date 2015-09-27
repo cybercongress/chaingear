@@ -23309,7 +23309,6 @@
         ]
     },
     {
-        "source": "cyberFund",
         "system": "Horizon",
         "aliases": {
             "coinmarketcap": "Horizon",
@@ -23320,52 +23319,171 @@
         },
         "descriptions": {
             "state": "Running",
-            "system_type": ""
+            "headline": "Decentrilized Business Platform",
+            "system_type": "Independent"
         },
         "events": {
-            "announcement": "31/03/2014"
+            "name": "Horizon Announcement",
+            "start_date": "2014-10-14T08:25:00",
+            "url": "https://bitcointalk.org/index.php?topic=551666.msg6003371#msg6003371"
         },
         "consensus": {
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "token": {
-            "token_name": "",
+            "token_name": "Horizon",
             "token_symbol": "HZ"
         },
         "specs": {
-            "block_time": "600",
-            "block_reward": "50",
-            "halfing_cycle": "210240",
-            "total_tokens": 1000000000,
-            "difficulty_cycle": "2016",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://nhzcrypto.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/NeXTHorizon/nhz-source",
-                    "icon": "github.png"
-                }
-            ]
+            "block_time": 600,
+            "total_tokens": 1000000000
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=551666.msg6003371#msg6003371",
-                "type": "custom",
+                "name": "nhzcrypto.org",
+                "url": "https://horizonplatform.io/",
+                "type": "website",
+                "icon": "website.png",
+                "links": [
+                    "Main"
+                ]
+            },
+            {
+                "name": "Horizon Explorer",
+                "url": "https://blockchain.info/",
+                "type": "explorer",
+                "icon": "explorer.png",
                 "tags": [
-                    "publications"
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Web Wallet",
+                "url": "http://nexthorizon.github.io/hz-source/",
+                "type": "wallet",
+                "icon": "wallet.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "Horison News",
+                "url": "https://horizonplatform.io/category/news/",
+                "rss": "https://horizonplatform.io/feed/",
+                "type": "custom",
+                "icon": "horizon.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Horizon Forum",
+                "url": "https://horizonplatform.io/community/",
+                "type": "forum",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/Horizon_HZ",
+                "type": "twitter",
+                "icon": "twitter.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/groups/NHZOfficial/",
+                "type": "facebook",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "BTT Forum Thread",
+                "url": "https://bitcointalk.org/index.php?topic=823785.0",
+                "type": "forum",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Horizon Tutorials",
+                "url": "https://horizonplatform.io/category/horizon-tutorials/",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Publications"
+                ]
+            },
+            {
+                "name": "Horizon Development Roadmap",
+                "url": "https://horizonplatform.io/about/development-roadmap/",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Publications"
+                ]
+            },
+            {
+                "name": "Horizon Faucet",
+                "url": "https://faucet.horizonplatform.io/",
+                "type": "custom",
+                "icon": "horizon.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "Rich List",
+                "url": "https://explorer.horizonplatform.io/?page=accounts",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Horizon Exchange",
+                "url": "http://hzxchange.net/",
+                "type": "custom",
+                "icon": "horizon.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Poloniex",
+                "headline": "nein",
+                "url": "https://www.poloniex.com",
+                "type": "custom",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Bittrex",
+                "headline": "nein",
+                "url": "https://bittrex.com",
+                "type": "custom",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
                 ]
             }
         ]
@@ -33186,22 +33304,21 @@
         ]
     },
     {
+        "system": "Neucoin",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "Neucoin",
         "descriptions": {
             "headline": "A decentralized cryptocurrency designed for online microtransactions",
             "summary": "NeuCoin has partnered with major music and video content providers to develop micro-payment solutions for tipping, pay-per-view, ad-free and micro-subscriptions, with user acquisition fueled by freemium distribution of NeuCoin.",
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "Independent System"
         },
         "aliases": {
-            "coinmarketcap": "Neucoin",
-            "CurrencyName": "Neucoin"
+            "coinmarketcap": "NeuCoin",
+            "CurrencyName": "NeuCoin"
         },
         "crowdsales": {
             "start_date": "28/4/2015",
@@ -33215,15 +33332,15 @@
             "rating_cyber": 3
         },
         "consensus": {
-            "consensus_name": "POS",
-            "consensus_type": ""
+            "consensus_name": "Proof-of-Stake",
+            "consensus_type": "Proof-of-Stake"
         },
         "token": {
-            "token_name": "",
+            "token_name": "NeuCoin",
             "token_symbol": "NEU"
         },
         "specs": {
-            "supply": 100000000,
+            "supply": 3000000000,
             "timestamp": 1431342962,
             "cap": {
                 "usd": 911000,
@@ -33251,9 +33368,9 @@
                 "type": "whitepaper"
             },
             {
-                "name": "Beta Wallet",
+                "name": "NeuCoin Wallet",
                 "headline": "nein",
-                "url": "https://beta.myneucoin.com/en/",
+                "url": "https://myneucoin.com/en/",
                 "type": "custom",
                 "icon": "wallet.png",
                 "tags": [
@@ -33317,6 +33434,49 @@
                     "Main"
                 ],
                 "type": "wiki"
+            },
+            {
+                "name": "Bittrex",
+                "headline": "nein",
+                "url": "https://bittrex.com",
+                "type": "custom",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Cryptsy",
+                "headline": "nein",
+                "url": "https://www.cryptsy.com/users/register?refid=243274",
+                "type": "custom",
+                "icon": "cryptsy.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Markets CMC",
+                "headline": "nein",
+                "url": "http://coinmarketcap.com/currencies/neucoin/#markets",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Get Free NeuCoins",
+                "headline": "nein",
+                "url": "http://www.getneucoin.com/",
+                "type": "custom",
+                "icon": "neucoin.png",
+                "tags": [
+                    "Apps"
+                ]
             }
         ]
     },
@@ -38053,6 +38213,52 @@
                 "type": "custom",
                 "tags": [
                     "publications"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Pokereum",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "descriptions": {
+            "state": "Project",
+            "headline": "Fair and Decentralized Global Poker",
+            "system_type": "Dapp",
+            "page_state": "draft"
+        },
+        "token": {
+            "token_name": "pokerium",
+            "token_symbol": "POKER"
+        },
+        "links": [
+            {
+                "name": "Pokereum.io",
+                "url": "http://www.pokereum.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ],
+                "type": "website"
+            },
+            {
+                "name": "Whitepaper draft",
+                "url": "https://docs.google.com/document/d/1vxjxE-7QMAvo95UzhWftWJ3Ke_gAoNLTQQEudNeUQeY/edit",
+                "icon": "whitepaper.png",
+                "type": "whitepaper",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "Pokereum on GitHub",
+                "url": "https://github.com/Pokereum",
+                "type": "github",
+                "tags": [
+                    "Main",
+                    "Code"
                 ]
             }
         ]
@@ -45324,7 +45530,7 @@
                 ]
             },
             {
-                "name": "Documentation",
+                "name": "The Stellar Consensus Protocol: A Federated Model for Internet-level Consensus. by DAVID MAZIERES, Stellar Development Foundation",
                 "url": "https://www.stellar.org/papers/stellar-consensus-protocol.pdf",
                 "icon": "whitepaper.png",
                 "type": "whitepaper",
