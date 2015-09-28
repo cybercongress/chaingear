@@ -2,6 +2,13 @@ genesis_id = "8abcfb93c52f999e3ef5288c4f837f4f15af5521"
 system = "BitShares"
 dependencies = ["independent"]
 
+[token]
+token_name = "BitShare"
+token_symbol = "BTS"
+
+[consensus]
+consensus_name = "Delegated Proof-of-Stake"
+consensus_type = ""
 
 [descriptions]
 headline = "An industrial-grade financial smart contract platform"
@@ -17,13 +24,15 @@ CurrencyName = "BitShares"
 [ratings]
 rating_cyber = 5
 
-[consensus]
-consensus_name = "Delegated Proof-of-Stake"
-consensus_type = ""
-
-[token]
-token_name = "BitShare"
-token_symbol = "BTS"
+[crowdsale]
+start_date = "2014-01-01T00:00:00"
+end_date = "2014-07-19T00:00:00"
+genesis_address = ["1ANGELwQwWxMmbdaSWhWLqBEtPTkWb8uDc"]
+funding_url = "http://www1.agsexplorer.com/"
+funding_tems = ""
+min_investment = 0.00
+funding_operator = "AGS"
+btc_raised = 5904
 
 [specs]
 
@@ -110,7 +119,7 @@ name = "reddit"
 url = "http://www.reddit.com/r/BitShares"
 icon = "reddit.png"
 tags = ["News"]
-type = "News"
+type = "reddit"
 
 [[links]]
 name = "AboutBitshares"

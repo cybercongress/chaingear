@@ -3154,6 +3154,14 @@
         "dependencies": [
             "independent"
         ],
+        "token": {
+            "token_name": "BitShare",
+            "token_symbol": "BTS"
+        },
+        "consensus": {
+            "consensus_name": "Delegated Proof-of-Stake",
+            "consensus_type": ""
+        },
         "descriptions": {
             "headline": "An industrial-grade financial smart contract platform",
             "summary": "The BitShares platform itself is run and maintained by the BitShares community–an open consortium of individuals and organizations committed to providing universal access to the power of smart contracts.",
@@ -3170,13 +3178,17 @@
         "ratings": {
             "rating_cyber": 5
         },
-        "consensus": {
-            "consensus_name": "Delegated Proof-of-Stake",
-            "consensus_type": ""
-        },
-        "token": {
-            "token_name": "BitShare",
-            "token_symbol": "BTS"
+        "crowdsale": {
+            "start_date": "2014-01-01T00:00:00",
+            "end_date": "2014-07-19T00:00:00",
+            "genesis_address": [
+                "1ANGELwQwWxMmbdaSWhWLqBEtPTkWb8uDc"
+            ],
+            "funding_url": "http://www1.agsexplorer.com/",
+            "funding_tems": "",
+            "min_investment": 0,
+            "funding_operator": "AGS",
+            "btc_raised": 5904
         },
         "specs": {},
         "links": [
@@ -3291,7 +3303,7 @@
                 "tags": [
                     "News"
                 ],
-                "type": "News"
+                "type": "reddit"
             },
             {
                 "name": "AboutBitshares",
@@ -46543,11 +46555,11 @@
         ]
     },
     {
+        "genesis_id": "12071612744977229797",
+        "system": "SuperNET",
         "dependencies": [
             "NXT"
         ],
-        "source": "cyberFund",
-        "system": "SuperNET",
         "aliases": {
             "coinmarketcap": "SuperNET",
             "CurrencyName": "SuperNET"
@@ -46557,7 +46569,7 @@
         },
         "consensus": {
             "consensus_name": "NXT",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "tags": [
@@ -46569,17 +46581,140 @@
             "token_name": "",
             "token_symbol": "UNITY"
         },
+        "crowdsale": {
+            "start_date": "2014-04-30T00:00:00",
+            "end_date": "2014-09-23T00:00:00",
+            "genesis_address": [
+                "NXT-MRBN-8DFH-PFMK-A4DBM"
+            ],
+            "funding_url": "http://www.nxtreporting.com/?as=12071612744977229797",
+            "funding_tems": "https://bitcointalk.org/index.php?topic=762346.0",
+            "min_investment": 0,
+            "funding_operator": "nein",
+            "tokens_sold": 571243.1402,
+            "tokens_issued": 816061,
+            "btc_raised": 5737.1589
+        },
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "name": "thesupernet.org",
                 "url": "http://thesupernet.org/",
+                "type": "website",
                 "icon": "website.png",
                 "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "name": "Wallet",
+                "url": "http://www.supernet.org/download.php",
+                "type": "wallet",
+                "icon": "wallet.png",
+                "tags": [
                     "Main",
-                    "Apps"
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "SuperNET Blog",
+                "url": "http://www.supernet.org/blog/",
+                "rss": "http://www.supernet.org/blog/feed/",
+                "type": "blog",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/SuperNETorg",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
                 ],
-                "type": ""
+                "type": "twitter"
+            },
+            {
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/supernet",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "News"
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/SuperNETorg",
+                "type": "custom",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Wiki",
+                "url": "http://wiki.supernet.org/wiki/Main_Page",
+                "type": "wiki",
+                "icon": "wiki.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "name": "SuperNET API",
+                "url": "http://wiki.supernet.org/wiki/API",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "name": "Markets CMC",
+                "headline": "nein",
+                "url": "http://coinmarketcap.com/assets/supernet-unity/#markets",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Poloniex",
+                "headline": "nein",
+                "url": "https://www.poloniex.com",
+                "type": "custom",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTER",
+                "headline": "nein",
+                "url": "https://bter.com/",
+                "type": "custom",
+                "icon": "bter.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "NXT AE",
+                "url": "http://nxtreporting.com",
+                "icon": "nxt.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ],
+                "type": "custom"
             }
         ]
     },

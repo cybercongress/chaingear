@@ -1,6 +1,6 @@
-dependencies = ["NXT"]
-source = "cyberFund"
+genesis_id = "12071612744977229797"
 system = "SuperNET"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "SuperNET"
@@ -11,7 +11,7 @@ rating_cyber = 2.0
 
 [consensus]
 consensus_name = "NXT"
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [descriptions]
 tags = ["DApp"]
@@ -21,11 +21,104 @@ system_type = ""
 token_name = ""
 token_symbol = "UNITY"
 
+[crowdsale]
+start_date = "2014-04-30T00:00:00"
+end_date = "2014-09-23T00:00:00"
+genesis_address = ["NXT-MRBN-8DFH-PFMK-A4DBM"]
+funding_url = "http://www.nxtreporting.com/?as=12071612744977229797"
+funding_tems = "https://bitcointalk.org/index.php?topic=762346.0"
+min_investment = 0.00
+funding_operator = "nein"
+tokens_sold = 571243.1402
+tokens_issued = 816061
+btc_raised = 5737.1589
+
 [specs]
 
 [[links]]
-name = "web site"
+name = "thesupernet.org"
 url = "http://thesupernet.org/"
+type = "website"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
+
+[[links]]
+name = "Wallet"
+url = "http://www.supernet.org/download.php"
+type = "wallet"
+icon = "wallet.png"
+tags = ["Main","Apps","Wallet"]
+
+[[links]]
+name = "SuperNET Blog"
+url = "http://www.supernet.org/blog/"
+rss = "http://www.supernet.org/blog/feed/"
+type = "blog"
+icon = "blog.png"
+tags = ["Main","News"]
+
+[[links]]
+name = "Twitter"
+url = "https://twitter.com/SuperNETorg"
+icon = "twitter.png"
+tags = ["News"]
+type = "twitter"
+
+[[links]]
+name = "reddit"
+url = "https://www.reddit.com/r/supernet"
+icon = "reddit.png"
+tags = ["News"]
+type = "News"
+
+[[links]]
+name = "Facebook"
+url = "https://www.facebook.com/SuperNETorg"
+type = "custom"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+name = "Wiki"
+url = "http://wiki.supernet.org/wiki/Main_Page"
+type = "wiki"
+icon = "wiki.png"
+tags = ["Code"]
+
+[[links]]
+name = "SuperNET API"
+url = "http://wiki.supernet.org/wiki/API"
+type = "custom"
+icon = "link.png"
+tags = ["Code"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/assets/supernet-unity/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTER"
+headline = "nein"
+url = "https://bter.com/"
+type = "custom"
+icon = "bter.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "NXT AE"
+url = "http://nxtreporting.com"
+icon = "nxt.png"
+tags = ["Apps","Exchange"]
+type = "custom"
