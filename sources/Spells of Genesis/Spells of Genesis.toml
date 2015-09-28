@@ -1,18 +1,20 @@
-genesis_id = ""
+genesis_id = "188592448213512"
 dependencies = ["Counterparty"]
 system = "Spells of Genesis"
 icon ="spellsofgenesis"
+
 [aliases]
-coinmarketcap = ""
-CurrencyName = ""
+coinmarketcap = "Bitcrystals"
+CurrencyName = "Spells of Genesis"
 nickname = "Spells of Genesis"
 
 [ratings]
 
 [consensus]
-consensus_name = ""
+consensus_type = "Proof-of-Stake"
+consensus_name = "Counterparty"
 hashing = ""
-consensus_type = ""
+
 
 [descriptions]
 state = "building"
@@ -32,13 +34,14 @@ token_name = "BitCrystal"
 token_symbol = "BCY"
 
 [crowdsales]
-start_date = "4/8/2015"
-end_date = "2/9/2015"
-genesis_address = ""
+start_date = "2015-08-04T00:00:00"
+end_date = "2015-09-02T00:00:00"
+genesis_address = "nein"
 funding_tems = "http://bitcrystals.github.io/"
 funding_url = "http://bitcrystals.github.io/"
 tokens_sold = 13438000
-funds_raised = "932 BTC"
+tokens_issued = 100000000
+btc_raised = 932
 
 [specs]
 supply = 43438000
@@ -59,7 +62,7 @@ name = "Tokens Crowdsale"
 url = "http://bitcrystals.github.io/"
 icon = "spellsofgenesis.png"
 type = "custom"
-tags = ["Main"]
+tags = ["Publications"]
 
 [[links]]
 name = "Blog"
@@ -87,4 +90,35 @@ name = "YouTube"
 url = "https://www.youtube.com/user/Everdreamsoft"
 icon = "youtube.png"
 tags = ["News"]
+type = "custom"
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/assets/bitcrystals/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Bittrex"
+headline = "nein"
+url = "https://bittrex.com"
+type = "custom"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Counterparty AE"
+url = "http://blockscan.com/order?f=0"
+icon = "counterparty.png"
+tags = ["Apps","Exchange"]
 type = "custom"

@@ -26793,33 +26793,31 @@
         }
     },
     {
+        "system": "La'Zooz",
+        "icon": "lazooz",
         "dependencies": [
             "Mastercoin (Omni)"
         ],
-        "source": "cyberFund",
-        "nickname": "Lazooz",
-        "system": "La'Zooz",
-        "icon": "lazooz",
         "aliases": {
             "coinmarketcap": "Lazooz",
             "CurrencyName": "LaZooz"
         },
         "crowdsales": {
-            "start_date": "1/06/2015",
-            "end_date": "30/06/2015",
-            "genesis_address": "?",
+            "start_date": "2015-06-01T00:00:00",
+            "end_date": "2015-06-30T00:00:00",
+            "genesis_address": "nein",
             "funding_tems": "http://lazooz.org/whitepaper.html#page_9",
-            "funding_operator": "null",
+            "funding_operator": "nein",
             "funding_url": "http://lazooz.org/",
             "tokens_sold": 3102769,
-            "btc_rised": 100
+            "btc_rised": 98.6
         },
         "ratings": {
             "rating_cyber": 2
         },
         "consensus": {
-            "consensus_name": "null",
-            "consensus_type": ""
+            "consensus_name": "Omni",
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "tags": [
@@ -26829,7 +26827,7 @@
             "headline": "Decentralized Ridesharing"
         },
         "token": {
-            "token_name": "",
+            "token_name": "ZOOZ",
             "token_symbol": "ZOOZ"
         },
         "specs": {
@@ -26842,44 +26840,42 @@
         },
         "links": [
             {
-                "name": "web site",
+                "name": "lazooz.org",
                 "url": "http://lazooz.org/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
+                    "Main"
                 ],
-                "type": ""
+                "type": "website"
             },
             {
                 "name": "Documentation",
                 "url": "http://lazooz.org/whitepaper.html",
                 "icon": "whitepaper.png",
                 "tags": [
-                    "Main",
-                    "Apps"
+                    "Main"
                 ],
-                "type": ""
+                "type": "paper"
             },
             {
-                "name": "twitter",
+                "name": "Twitter",
                 "url": "https://twitter.com/lazoozorg",
                 "icon": "twitter.png",
                 "tags": [
                     "Main",
-                    "Apps"
+                    "News"
                 ],
-                "type": ""
+                "type": "twitter"
             },
             {
-                "name": "GitHub",
+                "name": "Lazooz GitHub",
                 "url": "https://github.com/lazooz/",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
                 ],
-                "type": ""
+                "type": "github"
             }
         ]
     },
@@ -45116,22 +45112,22 @@
         ]
     },
     {
-        "genesis_id": "",
+        "genesis_id": "188592448213512",
         "dependencies": [
             "Counterparty"
         ],
         "system": "Spells of Genesis",
         "icon": "spellsofgenesis",
         "aliases": {
-            "coinmarketcap": "",
-            "CurrencyName": "",
+            "coinmarketcap": "Bitcrystals",
+            "CurrencyName": "Spells of Genesis",
             "nickname": "Spells of Genesis"
         },
         "ratings": {},
         "consensus": {
-            "consensus_name": "",
-            "hashing": "",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake",
+            "consensus_name": "Counterparty",
+            "hashing": ""
         },
         "descriptions": {
             "state": "building",
@@ -45153,13 +45149,14 @@
             "token_symbol": "BCY"
         },
         "crowdsales": {
-            "start_date": "4/8/2015",
-            "end_date": "2/9/2015",
-            "genesis_address": "",
+            "start_date": "2015-08-04T00:00:00",
+            "end_date": "2015-09-02T00:00:00",
+            "genesis_address": "nein",
             "funding_tems": "http://bitcrystals.github.io/",
             "funding_url": "http://bitcrystals.github.io/",
             "tokens_sold": 13438000,
-            "funds_raised": "932 BTC"
+            "tokens_issued": 100000000,
+            "btc_raised": 932
         },
         "specs": {
             "supply": 43438000,
@@ -45185,7 +45182,7 @@
                 "icon": "spellsofgenesis.png",
                 "type": "custom",
                 "tags": [
-                    "Main"
+                    "Publications"
                 ]
             },
             {
@@ -45223,6 +45220,49 @@
                 "icon": "youtube.png",
                 "tags": [
                     "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "Markets CMC",
+                "headline": "nein",
+                "url": "http://coinmarketcap.com/assets/bitcrystals/#markets",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Poloniex",
+                "headline": "nein",
+                "url": "https://www.poloniex.com",
+                "type": "custom",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Bittrex",
+                "headline": "nein",
+                "url": "https://bittrex.com",
+                "type": "custom",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Counterparty AE",
+                "url": "http://blockscan.com/order?f=0",
+                "icon": "counterparty.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
                 ],
                 "type": "custom"
             }
@@ -46892,30 +46932,34 @@
         ]
     },
     {
+        "genesis_id": "8612694",
+        "system": "Swarm",
         "dependencies": [
             "Bitcoin",
             "Counterparty"
         ],
-        "source": "cyberFund",
-        "system": "Swarm",
         "aliases": {
             "coinmarketcap": "Swarm",
             "CurrencyName": "Swarm"
         },
         "crowdsales": {
-            "start_date": "17/7/2014",
-            "end_date": "20/7/2014",
-            "genesis_address": "12GZL7shupvmHapCmhw81GDa5GmaTqaZdk",
+            "start_date": "2014-07-17T00:00:00",
+            "end_date": "2014-07-20T00:00:00",
+            "genesis_address": [
+                "12GZL7shupvmHapCmhw81GDa5GmaTqaZdk"
+            ],
             "funding_tems": "https://bitcointalk.org/index.php?topic=664071.msg7487836#msg7487836",
             "funding_url": "https://swarm.fund/",
-            "tokens_sold": 100000000
+            "funding_operator": "nein",
+            "tokens_sold": 100000000,
+            "btc_raised": 1270
         },
         "ratings": {
             "rating_cyber": 3
         },
         "consensus": {
             "consensus_name": "Counterparty",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
             "tags": [
@@ -46925,48 +46969,47 @@
             "headline": " Decentralized Collaboration Platform"
         },
         "token": {
-            "token_name": "",
+            "token_name": "SWARM",
             "token_symbol": "SWARM"
         },
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "name": "swarm.fund",
                 "url": "https://swarm.fund/",
+                "type": "website",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "twitter",
+                "name": "Twitter",
                 "url": "https://twitter.com/SwarmCorp",
+                "type": "twitter",
                 "icon": "twitter.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
-                "name": "forum",
+                "name": "Forum",
                 "url": "https://discourse.swarm.fund/",
+                "type": "forum",
                 "icon": "forum.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
-                "name": "blog",
+                "name": "Blog",
                 "url": "https://medium.com/@Swarm",
+                "type": "blog",
                 "icon": "blog.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             }
         ]
     },
