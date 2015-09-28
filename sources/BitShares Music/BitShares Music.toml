@@ -1,6 +1,6 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "358"
 system = "BitShares Music"
+dependencies = ["independent"]
 
 [descriptions]
 headline = "The Ultimate One Stop Music Platform"
@@ -13,23 +13,25 @@ coinmarketcap = "NOTE"
 CurrencyName = "BitShares Music"
 
 [crowdsales]
-start_date = "06/10/2014"
-end_date = "4/12/2014"
-genesis_address = "37X8DHpfiimB7PU5y35rfBcg5Vxj2R6umL"
+start_date = "2014-06-10T00:00:00"
+end_date = "2014-12-04T00:00:00"
+genesis_address = ["37X8DHpfiimB7PU5y35rfBcg5Vxj2R6umL"]
 funding_tems = "http://www.bitsharesmusicfoundation.org/assets/files/legal/Notes-Sale-Agreement.pdf"
 funding_operator = "ags"
 funding_url = "http://www1.agsexplorer.com/"
-tokens_sold = 300000000.0
+tokens_sold = 300000000
+tokens_issued = 1274224570
+btc_raised = 1438.12098051
 
 [ratings]
 rating_cyber = 3.0
 
 [consensus]
 consensus_name = "DPOS"
-consensus_type = ""
+consensus_type = "Delegated-Proof-of-Stake"
 
 [token]
-token_name = ""
+token_name = "NOTE"
 token_symbol = "NOTE"
 
 [specs]

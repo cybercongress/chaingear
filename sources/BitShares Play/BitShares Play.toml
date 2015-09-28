@@ -1,6 +1,6 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "840a014b88a7aa7a981aa455dd86de85a6eb6548"
 system = "BitShares Play"
+dependencies = ["independent"]
 
 [descriptions]
 headline = "Blockchain Based Game Platfrom"
@@ -14,20 +14,22 @@ CurrencyName = "DacPlay"
 nickname = "DacPlay"
 
 [crowdsales]
-start_date = "5/1/2015"
-end_date = "2/2/2015"
-genesis_address = "3DPD7z66T7DXULvFZUsc4xNcVS2q68TM3u"
+start_date = "2015-01-05T00:00:00"
+end_date = "2015-02-22T00:00:00"
+genesis_address = ["3DPD7z66T7DXULvFZUsc4xNcVS2q68TM3u"]
 funding_tems = "https://dacx.com/play/index_en.html"
 funding_operator = "ags"
 funding_url = "http://www1.agsexplorer.com/"
-tokens_sold = 1999999886.0
+tokens_sold = 1999999886
+tokens_issued = 1999999886
+btc_raised = 2397.11393696
 
 [ratings]
 rating_cyber = 3
 
 [consensus]
 consensus_name = "DPOS"
-consensus_type = ""
+consensus_type = "Delegated-Proof-of-Stake"
 
 [token]
 token_name = ""
