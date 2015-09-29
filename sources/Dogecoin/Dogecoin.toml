@@ -1,13 +1,23 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691"
 system = "Dogecoin"
+dependencies = ["independent"]
+
+[token]
+token_name = "Doge"
+token_symbol = "DOGE"
+
+[consensus]
+consensus_type = "Proof-of-Work"
+consensus_name = "Scrypt with AuxPoW"
+hashing = "SHA-256d"
 
 [descriptions]
-headline = "An open source peer-to-peer digital currency, favored by Shiba Inus worldwide"
 state = "Running"
+system_type = "Independent System"
+headline = "An open source peer-to-peer digital currency, favored by Shiba Inus worldwide"
 tags = ["DAO"]
 hashtag = "#dogecoin"
-system_type = ""
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "Dogecoin"
@@ -16,23 +26,20 @@ CurrencyName = "Dogecoin"
 [ratings]
 rating_cyber = 3.0
 
-[consensus]
-consensus_name = "Proof-of-Work"
-hashing = "Scrypt"
-consensus_type = ""
-
-[events]
-announcement = "08/12/2013"
-
-[token]
-token_name = ""
-token_symbol = "DOGE"
+[[events]]
+name = "Announcement"
+start_date = "2013-08-12T03:55:25"
+url = "https://bitcointalk.org/index.php?topic=361813.0"
 
 [specs]
-rpc = 22555.0
-block_time = "60"
-total_tokens = 100000000000.0
-difficulty_cycle = "240"
+rpc = 22555
+block_time = 60
+total_tokens = 100000000000
+difficulty_cycle = 240
+
+[[events]]
+name = "Genesis"
+start_date = "2013-12-06T02:25:40"
 
 [[links]]
 name = "dogecoin.com"
@@ -42,13 +49,6 @@ tags = ["Main"]
 type = "website"
 
 [[links]]
-name = "GitHub"
-url = "https://github.com/dogecoin/dogecoin"
-icon = "github.png"
-tags = ["Main", "Code"]
-type = "github"
-
-[[links]]
 name = "Explorer"
 url = "https://dogechain.info/"
 icon = "explorer.png"
@@ -56,11 +56,25 @@ tags = ["Main", "Apps","Analytics"]
 type = "explorer"
 
 [[links]]
+name = "Doge Wallet"
+url = "https://github.com/dogecoin/dogecoin/releases/"
+icon = "wallet.png"
+tags = ["Main", "Apps","Wallet"]
+type = "wallet"
+
+[[links]]
 name = "Twitter"
 url = "https://twitter.com/dogecoin"
 icon = "twitter.png"
 tags = ["Main", "News"]
 type = "twitter"
+
+[[links]]
+name = "DogeCoin GitHub"
+url = "https://github.com/dogecoin/dogecoin"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
 
 [[links]]
 name = "Forum"
@@ -80,14 +94,15 @@ type = "blog"
 name = "reddit"
 url = "http://www.reddit.com/r/dogecoin"
 icon = "reddit.png"
-tags = ["Apps"]
+tags = ["News"]
 type = "reddit"
 
 [[links]]
-name = "Announcement"
+name = "BTT Thred"
 url = "https://bitcointalk.org/index.php?topic=361813.0"
-type = "custom"
-tags = ["publications"]
+type = "forum"
+icon = "forum.png"
+tags = ["News"]
 
 [[links]]
 name = "Cryptsy"
