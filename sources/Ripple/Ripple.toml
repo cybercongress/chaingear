@@ -2,34 +2,38 @@ genesis_id = "4109c6f2045fc7eff4cde8f9905d19c28820d86304080ff886b299f0206e42b5"
 system = "Ripple"
 dependencies = ["independent"]
 
+[token]
+token_name = "Ripple"
+token_symbol = "XRP"
+
+[consensus]
+consensus_type = "Federated Consensus"
+consensus_name = "Ripple Federated Consensus"
+
+[descriptions]
+state = "Running"
+headline = "Open Real-Time Gross Settlement System"
+tags = ["DAO"]
+hashtag = "#ripple"
+system_type = "Independent System"
+page_state = "ready"
+
 [aliases]
 coinmarketcap = "Ripple"
 CurrencyName = "Ripple"
 
+[specs]
+total_tokens = 100000000000
+premine_tokens = "100B (100%). 20B XRP were retained by the creators, seeders, venture capital companies and other founders. 80B XRP were given to Ripple Labs. Ripple Labs intends to distribute 55B XRP to charitable organizations, users and strategic partners and will retain the remaining 25B XRP."
+premine_tokens = 100000000000
+
 [ratings]
 rating_cyber = 5
 
-[consensus]
-consensus_name = "Federated Consensus"
-consensus_type = ""
-
-[descriptions]
-state = "Running"
-headline = "Open Real-time Gross Settlement System"
-tags = ["DAO"]
-hashtag = "#ripple"
-system_type = ""
-
-[events]
-announcement = "26/09/2013"
-
-[token]
-token_name = ""
-token_symbol = "XRP"
-
-[specs]
-total_tokens = 100000000000.0
-premine_tokens = "100B (100%). 20B XRP were retained by the creators, seeders, venture capital companies and other founders. 80B XRP were given to Ripple Labs. Ripple Labs intends to distribute 55B XRP to charitable organizations, users and strategic partners and will retain the remaining 25B XRP."
+[[events]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=301635.0"
+start_date = "2013-09-26T01:06:21"
 
 [[links]]
 name = "ripple.com"
