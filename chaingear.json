@@ -1702,11 +1702,28 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "a8d0c41f0b4c45f6046e1df5b87e9f5be22a0445847ee315f4d9900bcc1326e9",
+        "system": "BanxShares",
         "dependencies": [
             "independent"
         ],
-        "system": "BanxShares",
+        "token": {
+            "token_name": "BanxShare",
+            "token_symbol": "BANX"
+        },
+        "consensus": {
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "Proof-of-Work"
+        },
+        "descriptions": {
+            "state": "Running",
+            "system_type": "Blockchain Share",
+            "headline": "A Deversified Cryptocurrency Group",
+            "tags": [
+                "DAO"
+            ],
+            "page_state": "ready"
+        },
         "aliases": {
             "coinmarketcap": "BanxShares",
             "CurrencyName": "BanxShares"
@@ -1714,47 +1731,104 @@
         "ratings": {
             "rating_cyber": 1
         },
-        "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "consensus_type": ""
-        },
-        "descriptions": {
-            "tags": [
-                "DAO"
-            ],
-            "system_type": ""
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "BANX"
-        },
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "name": "banxcapital.com",
                 "url": "http://banxcapital.com/",
                 "icon": "website.png",
                 "tags": [
                     "Main",
                     "Apps"
                 ],
-                "type": ""
+                "type": "website"
+            },
+            {
+                "name": "Explorer",
+                "url": "http://block.banxcapital.com/chain/BANX",
+                "type": "explorer",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "BANX Wallet",
+                "url": "https://github.com/Banx-Capital/BANX-qt/releases",
+                "type": "wallet",
+                "icon": "wallet.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/BanxCapital",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "twitter"
+            },
+            {
+                "name": "Blog",
+                "url": "http://banxcapital.com/category/news/",
+                "rss": "http://banxcapital.com/category/news/feed/",
+                "icon": "twitter.png",
+                "tags": [
+                    "News",
+                    "News"
+                ],
+                "type": "twitter"
+            },
+            {
+                "name": "Forum",
+                "url": "http://www.reddit.com/r/Banx/",
+                "type": "forum",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
             },
             {
                 "name": "reddit",
                 "url": "http://www.reddit.com/r/Banx/",
+                "type": "reddit",
                 "icon": "reddit.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
-                "name": "Announcement",
+                "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=813191.0",
-                "type": "custom",
+                "type": "forum",
                 "tags": [
-                    "publications"
+                    "News"
+                ]
+            },
+            {
+                "name": "Overview Paper",
+                "url": "http://banxcapital.s3.amazonaws.com/Banx_Capital_Prospectus.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "name": "BANX Exchange",
+                "url": "https://www.banx.io/",
+                "type": "custom",
+                "icon": "banxshares.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
                 ]
             }
         ]
@@ -3163,8 +3237,8 @@
             "token_symbol": "BTS"
         },
         "consensus": {
-            "consensus_name": "Delegated Proof-of-Stake",
-            "consensus_type": ""
+            "consensus_type": "Delegated Proof-of-Stake",
+            "consensus_name": "BitShares DPOS"
         },
         "descriptions": {
             "headline": "An industrial-grade financial smart contract platform",
@@ -3173,7 +3247,8 @@
                 "DAO"
             ],
             "hashtag": "#bitshares",
-            "system_type": ""
+            "system_type": "Independent System",
+            "page_state": "ready"
         },
         "aliases": {
             "coinmarketcap": "BitShares",
@@ -3182,6 +3257,7 @@
         "ratings": {
             "rating_cyber": 5
         },
+        "specs": {},
         "crowdsale": {
             "start_date": "2014-01-01T00:00:00",
             "end_date": "2014-07-19T00:00:00",
@@ -3194,7 +3270,12 @@
             "funding_operator": "AGS",
             "btc_raised": 5904
         },
-        "specs": {},
+        "events": [
+            {
+                "name": "BitShares 2.0 Release",
+                "start_date": "2015-10-13T00:00:00"
+            }
+        ],
         "links": [
             {
                 "name": "bitshares.org",
@@ -12438,32 +12519,31 @@
         "dependencies": [
             "independent"
         ],
+        "token": {
+            "token_name": "Dash",
+            "token_symbol": "DASH"
+        },
+        "consensus": {
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "Proof-of-Work",
+            "hashing": "X11"
+        },
+        "descriptions": {
+            "state": "Running",
+            "headline": "An open sourced, privacy-centric digital currency with instant transactions",
+            "tags": [
+                "DAO"
+            ],
+            "hashtag": "#darkcoin",
+            "system_type": "Independent System",
+            "page_state": "ready"
+        },
         "aliases": {
             "coinmarketcap": "Dash",
             "CurrencyName": "dash"
         },
         "ratings": {
             "rating_cyber": 4
-        },
-        "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "hashing": "X11",
-            "consensus_type": ""
-        },
-        "descriptions": {
-            "state": "Running",
-            "tags": [
-                "DAO"
-            ],
-            "hashtag": "#darkcoin",
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "25/12/2013"
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "DASH"
         },
         "specs": {
             "block_time": 40,
@@ -12472,6 +12552,13 @@
             "total_tokens": 100000000000000000,
             "difficulty_cycle": 20
         },
+        "events": [
+            {
+                "name": "Announcement",
+                "url": "https://bitcointalk.org/index.php?topic=384582.0",
+                "start_date": "25/12/2013"
+            }
+        ],
         "links": [
             {
                 "name": "Dashpay.io",
@@ -12582,7 +12669,7 @@
                 "url": "https://bitcointalk.org/index.php?topic=384582.0",
                 "type": "custom",
                 "tags": [
-                    "publications"
+                    "Science"
                 ]
             },
             {
@@ -16544,13 +16631,21 @@
         "dependencies": [
             "independent"
         ],
+        "token": {
+            "token_name": "Ether",
+            "token_symbol": "ETH"
+        },
+        "consensus": {
+            "consensus_name": "Ethereum",
+            "consensus_type": "Proof-of-Work"
+        },
         "descriptions": {
             "headline": "Smart Contract and Decentralized Application Platform",
             "summary": "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority.",
             "tags": [
                 "DAO"
             ],
-            "system_type": "independent",
+            "system_type": "Independent System",
             "state": "Running",
             "page_state": "ready"
         },
@@ -16558,6 +16653,10 @@
             "coinmarketcap": "Ethereum",
             "CurrencyName": "ether"
         },
+        "ratings": {
+            "rating_cyber": 5
+        },
+        "specs": {},
         "crowdsales": {
             "start_date": "2014-07-22T00:00:00",
             "end_date": "2014-09-02T00:00:00",
@@ -16569,18 +16668,6 @@
             "tokens_sold": 60102216,
             "btc_raised": 31531
         },
-        "ratings": {
-            "rating_cyber": 5
-        },
-        "consensus": {
-            "consensus_name": "Ethereum",
-            "consensus_type": "Proof-of-Work"
-        },
-        "token": {
-            "token_name": "Ether",
-            "token_symbol": "ETH"
-        },
-        "specs": {},
         "links": [
             {
                 "name": "Ethereum.org",
@@ -41913,37 +42000,42 @@
         "dependencies": [
             "independent"
         ],
-        "aliases": {
-            "coinmarketcap": "Ripple",
-            "CurrencyName": "Ripple"
-        },
-        "ratings": {
-            "rating_cyber": 5
+        "token": {
+            "token_name": "Ripple",
+            "token_symbol": "XRP"
         },
         "consensus": {
-            "consensus_name": "Federated Consensus",
-            "consensus_type": ""
+            "consensus_type": "Federated Consensus",
+            "consensus_name": "Ripple Federated Consensus"
         },
         "descriptions": {
             "state": "Running",
-            "headline": "Open Real-time Gross Settlement System",
+            "headline": "Open Real-Time Gross Settlement System",
             "tags": [
                 "DAO"
             ],
             "hashtag": "#ripple",
-            "system_type": ""
+            "system_type": "Independent System",
+            "page_state": "ready"
         },
-        "events": {
-            "announcement": "26/09/2013"
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "XRP"
+        "aliases": {
+            "coinmarketcap": "Ripple",
+            "CurrencyName": "Ripple"
         },
         "specs": {
             "total_tokens": 100000000000,
             "premine_tokens": "100B (100%). 20B XRP were retained by the creators, seeders, venture capital companies and other founders. 80B XRP were given to Ripple Labs. Ripple Labs intends to distribute 55B XRP to charitable organizations, users and strategic partners and will retain the remaining 25B XRP."
         },
+        "ratings": {
+            "rating_cyber": 5
+        },
+        "events": [
+            {
+                "name": "Announcement",
+                "url": "https://bitcointalk.org/index.php?topic=301635.0",
+                "start_date": "2013-09-26T01:06:21"
+            }
+        ],
         "links": [
             {
                 "name": "ripple.com",
