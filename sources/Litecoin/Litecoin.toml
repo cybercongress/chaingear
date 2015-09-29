@@ -1,91 +1,359 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2"
 system = "Litecoin"
+dependencies = ["independent"]
+
+[token]
+token_name = "Litecoin"
+token_symbol = "LTC"
+
+[consensus]
+consensus_type = "Proof-of-Work"
+consensus_name = "Scrypt"
+hashing = "SHA-256"
+
+[descriptions]
+state = "Running"
+headline = "A peer-to-peer Internet currency"
+tags = ["DAO"]
+hashtag = "#litecoin"
+system_type = ""
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "Litecoin"
 CurrencyName = "Litecoin"
 
-[ratings]
-rating_cyber = 2.0
-
-[consensus]
-consensus_name = "Proof-of-Work"
-hashing = "Scrypt"
-consensus_type = ""
-
-[descriptions]
-state = "Running"
-tags = ["DAO"]
-hashtag = "#litecoin"
-system_type = ""
-
-[events]
-announcement = "09/10/2011"
-genesis = "12/10/2011"
-
-[token]
-token_name = ""
-token_symbol = "LTC"
-
 [specs]
-block_time = "150"
-block_reward = 50.0
-total_tokens = 84000000.0
-premine_tokens = 150.0
-difficulty_cycle = "2016"
+block_time = 150
+block_reward = 50
+total_tokens = 84000000
+premine_tokens = 150
+difficulty_cycle = 2016
+
+[ratings]
+rating_cyber = 2
+
+[[events]]
+name = "Announcement"
+start_date = "2011-10-09T00:00:00"
+url = "https://bitcointalk.org/index.php?topic=47417.0"
+
+[[events]]
+name = "Genesis"
+start_date = "2011-10-07T07:31:05"
 
 [[links]]
-name = "web site"
+name = "litecoin.org"
 url = "https://litecoin.org/"
+type = "website"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "github"
+name = "Explorer"
+url = "http://ltc.block-explorer.com/"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Main", "Apps","Analytics"]
+
+[[links]]
+name = "Electrum LTC"
+url = "https://electrum-ltc.org/"
+type = "wallet"
+icon = "wallet.png"
+tags = ["Main", "Apps","wallet"]
+
+[[links]]
+name = "GitHub"
 url = "https://github.com/litecoin-project/litecoin"
+type = "github"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "explorer"
-url = "http://ltc.block-explorer.com/charts"
-icon = "explorer.png"
-tags = ["Main", "Apps"]
-type = ""
-
-[[links]]
-name = "twitter"
+name = "Twitter"
 url = "https://twitter.com/litecoin"
+type = "twitter"
 icon = "twitter.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "forum"
+name = "LitecoinTalk"
 url = "https://litecointalk.org/"
+type = "forum"
 icon = "forum.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "blog"
+name = "Blog"
 url = "http://blog.litecoin.org/"
+rss = "http://blog.litecoin.org/feeds/posts/default?alt=rss"
+type = "blog"
 icon = "blog.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
 name = "reddit"
 url = "http://www.reddit.com/r/litecoin"
+type = "reddit"
 icon = "reddit.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "Announcement"
-url = "https://bitcointalk.org/index.php?topic=47417.0"
+name = "CoinDesk"
+url = "http://www.coindesk.com/tag/litecoin/"
 type = "custom"
-tags = ["publications"]
+icon = "coindesk.png"
+tags = ["News"]
+
+[[links]]
+name = "CoinTelegraph"
+url = "http://cointelegraph.com/tags/litecoin"
+type = "custom"
+icon = "cointelegraph.png"
+tags = ["News"]
+
+[[links]]
+name = "CryptocoinNews"
+url = "https://www.cryptocoinsnews.com/tag/litecoin/"
+type = "custom"
+icon = "cryptocoinnews.jpg"
+tags = ["News"]
+
+[[links]]
+name = "Google+"
+url = "https://plus.google.com/+LitecoinOrg"
+type = "custom"
+icon = "googleplus.png"
+tags = ["News"]
+
+[[links]]
+name = "blockr.io"
+url = "http://ltc.blockr.io/"
+type = "explorer"
+icon = "blockr.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Explorer"
+url = "http://explorer.litecoin.net/"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "SoChain"
+url = "https://chain.so/ltc"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Blockchains"
+url = "http://blockchains.io/ltct/blocks/"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "https://www.litecoinpool.org/pools"
+url = "https://www.litecoinpool.org/pools"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Litecoin BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=47417.0"
+type = "forum"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+name = "Litecoin Wiki"
+url = "https://litecoin.info/"
+type = "wiki"
+icon = "wiki.png"
+tags = ["Code"]
+
+[[links]]
+name = "F2Pool"
+url = "https://www.f2pool.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "LTC1BTC"
+url = "http://ltc1btc.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "LitecoinPool"
+url = "https://www.litecoinpool.org/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "GHASH.IO"
+url = "https://ghash.io/"
+type = "custom"
+icon = "ghashio.png"
+tags = ["Apps"]
+
+[[links]]
+name = "8baochi"
+url = "http://www.8baochi.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "CoinoTron"
+url = "https://coinotron.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "WeMineLTC"
+url = "https://www.wemineltc.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "CleverMining"
+url = "http://clevermining.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "P2Pool"
+url = "http://p2pool.litecointools.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "MultiPool"
+url = "https://www.multipool.us/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/currencies/litecoin/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "ShapeShift"
+headline = "nein"
+url = "https://shapeshift.io"
+type = "custom"
+icon = "shapeshift.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTC-e"
+headline = "nein"
+url = "https://btc-e.com/"
+type = "custom"
+icon = "btc-e.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Bittrex"
+headline = "nein"
+url = "https://bittrex.com"
+type = "custom"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "CCEDK"
+headline = "Your place for safe and secure crypto currency exchange"
+url = "https://www.ccedk.com/"
+type = "custom"
+icon = "ccedk.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTC38"
+headline = "Cryptocurrensy Exchange"
+url = "http://www.btc38.com/trade_en.html"
+type = "custom"
+icon = "btc38.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "OKCoin"
+headline = "The Bitcoin Exchange With Margin and Futures"
+url = "https://www.okcoin.com/"
+type = "custom"
+icon = "okcoin.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Cryptsy"
+headline = "nein"
+url = "https://www.cryptsy.com/users/register?refid=243274"
+type = "custom"
+icon = "cryptsy.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "HitBTC"
+headline = "nein"
+url = "https://hitbtc.com/"
+type = "custom"
+icon = "hitbtc.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Kraken"
+headline = "nein"
+type = "custom"
+icon = "kraken.png"
+url = "https://www.kraken.com"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTER"
+headline = "nein"
+url = "https://bter.com/"
+type = "custom"
+icon = "bter.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "CEX"
+headline = "Global Bitcoin Exchange"
+url = "https://cex.io/"
+type = "custom"
+icon = "cex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BlockTrades"
+headline = "Your Gateway to the BitShares Trading Network"
+url = "https://blocktrades.us/"
+type = "custom"
+icon = "blocktrades.png"
+tags = ["Apps","Exchange"]
