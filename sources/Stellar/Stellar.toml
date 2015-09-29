@@ -1,13 +1,23 @@
-source = "cyberFund"
-dependencies = ["independent"]
+genesis_id = "nein"
 system = "Stellar"
+dependencies = ["independent"]
+
+[token]
+token_name = "Stellar"
+token_symbol = "STR"
+
+[consensus]
+consensus_type = "Federated Consensus"
+consensus_name = "Stellar Consensus Protocol"
+hashing = ""
 
 [descriptions]
-headline = "A public infrastructure for money"
 state = "Running"
+system_type = "Independent System"
+headline = "A public infrastructure for money"
 tags = ["DAO"]
 hashtag = "#stellar"
-system_type = ""
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "Stellar"
@@ -16,18 +26,9 @@ CurrencyName = "Stellar"
 [ratings]
 rating_cyber = 3.0
 
-[consensus]
-consensus_name = "Federated Consensus"
-hashing = "Scrypt"
-consensus_type = ""
-
 [events]
 announcement = "01/08/2014"
 genesis = "01/08/2014"
-
-[token]
-token_name = ""
-token_symbol = "STR"
 
 [specs]
 total_tokens = 100000000000.0
