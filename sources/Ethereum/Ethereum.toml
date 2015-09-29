@@ -2,17 +2,30 @@ genesis_id = "0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3
 system = "Ethereum"
 dependencies = ["independent"]
 
+[token]
+token_name = "Ether"
+token_symbol = "ETH"
+
+[consensus]
+consensus_name = "Ethereum"
+consensus_type = "Proof-of-Work"
+
 [descriptions]
 headline = "Smart Contract and Decentralized Application Platform"
 summary = "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority."
 tags = ["DAO"]
-system_type = "independent"
+system_type = "Independent System"
 state = "Running"
 page_state = "ready"
 
 [aliases]
 coinmarketcap = "Ethereum"
 CurrencyName = "ether"
+
+[ratings]
+rating_cyber = 5
+
+[specs]
 
 [crowdsales]
 start_date = "2014-07-22T00:00:00"
@@ -22,20 +35,6 @@ funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGene
 funding_url = "https://www.ethereum.org/ether"
 tokens_sold = 60102216
 btc_raised = 31531
-
-[ratings]
-rating_cyber = 5
-
-[consensus]
-consensus_name = "Ethereum"
-consensus_type = "Proof-of-Work"
-
-[token]
-token_name = "Ether"
-token_symbol = "ETH"
-
-[specs]
-
 
 [[links]]
 name = "Ethereum.org"
