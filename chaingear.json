@@ -35387,15 +35387,25 @@
         "dependencies": [
             "independent"
         ],
+        "token": {
+            "token_name": "NXT",
+            "token_symbol": "NXT"
+        },
+        "consensus": {
+            "consensus_type": "Proof-of-Stake",
+            "consensus_name": "Proof-of-Stake",
+            "hashing": "SHA-256"
+        },
         "descriptions": {
+            "state": "Running",
+            "system_type": "Independent System",
             "headline": "Trustless Financial Ecosystem",
             "summary": "Nxt is a radically enhanced cryptocurrency built from scratch, delivering a unique and decentralized financial platform. Not only does it open up new possibilities – from digital money to transfer of shares – but it addresses all of the most serious deficiencies in existing cryptocurrencies.",
-            "state": "Running",
             "tags": [
                 "DAO"
             ],
             "hashtag": "#nxt",
-            "system_type": ""
+            "page_state": "ready"
         },
         "aliases": {
             "coinmarketcap": "Nxt",
@@ -35416,19 +35426,14 @@
         "ratings": {
             "rating_cyber": 4
         },
-        "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": "Proof-of-Stake"
-        },
-        "events": {
-            "announcement": "28/09/2013"
-        },
-        "token": {
-            "token_name": "NXT",
-            "token_symbol": "NXT"
-        },
+        "events": [
+            {
+                "name": "Announcement",
+                "start_date": "2013-09-28T07:29:09",
+                "url": "https://bitcointalk.org/index.php?topic=303898.0"
+            }
+        ],
         "specs": {
-            "genesis": "",
             "block_time": "90",
             "block_reward": "",
             "halfing_cycle": "",
@@ -35513,11 +35518,39 @@
                 "type": "reddit"
             },
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=303898.0",
-                "type": "custom",
+                "name": "CoinTelegraph",
+                "url": "http://cointelegraph.com/tags/nxt",
+                "icon": "cointelegraph.png",
                 "tags": [
-                    "publications"
+                    "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "CoinDesk",
+                "url": "http://www.coindesk.com/tag/nxt/",
+                "icon": "coindesk.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=303898.0",
+                "type": "forum",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "NXT Wiki",
+                "url": "http://wiki.nxtcrypto.org/wiki/Main_Page",
+                "type": "wiki",
+                "icon": "wiki.png",
+                "tags": [
+                    "Science"
                 ]
             },
             {
@@ -35537,6 +35570,17 @@
                 "url": "https://www.cryptsy.com/users/register?refid=243274",
                 "type": "custom",
                 "icon": "cryptsy.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "ShapeShift",
+                "headline": "nein",
+                "url": "https://shapeshift.io",
+                "type": "custom",
+                "icon": "shapeshift.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -35581,6 +35625,17 @@
                 "url": "http://www.btc38.com/trade_en.html",
                 "type": "custom",
                 "icon": "btc38.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "CCEDK",
+                "headline": "Your place for safe and secure crypto currency exchange",
+                "url": "https://www.ccedk.com/",
+                "type": "custom",
+                "icon": "ccedk.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -37620,117 +37675,293 @@
         ]
     },
     {
+        "genesis_id": "00000000000be4e024af5071ba515c7510767f42ec9e40c5fba56775ff296658",
+        "system": "Peercoin",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "Peercoin",
-        "aliases": {
-            "coinmarketcap": "Peercoin",
-            "CurrencyName": "Peercoin"
-        },
-        "ratings": {
-            "rating_cyber": 2
+        "token": {
+            "token_name": "Peercoin",
+            "token_symbol": "PPC"
         },
         "consensus": {
+            "consensus_type": "Hybrid POW-POS",
             "consensus_name": "Hybrid POW-POS",
-            "hashing": "SHA-256d",
-            "consensus_type": ""
+            "hashing": "SHA-256d"
         },
         "descriptions": {
             "state": "Running",
+            "system_type": "Independent System",
+            "headline": "The Secure and Sustanable Cryptocoin",
             "tags": [
                 "DAO"
             ],
             "hashtag": "#peercoin",
-            "system_type": ""
+            "page_state": "ready"
         },
-        "events": {
-            "announcement": "15/08/2012",
-            "genesis": "16/08/2012"
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "PPC"
+        "aliases": {
+            "coinmarketcap": "Peercoin",
+            "CurrencyName": "Peercoin"
         },
         "specs": {
             "total_tokens": 20500000
         },
+        "ratings": {
+            "rating_cyber": 2
+        },
+        "events": [
+            {
+                "name": "Announcement",
+                "url": "https://bitcointalk.org/index.php?topic=99735.0",
+                "start_date": "2012-08-10T02:18:31"
+            },
+            {
+                "name": "Genesis",
+                "start_date": "2012-08-19T21:19:16"
+            }
+        ],
         "links": [
             {
-                "name": "web site",
+                "name": "peercoin.net",
                 "url": "http://www.peercoin.net/",
+                "type": "website",
                 "icon": "website.png",
                 "tags": [
                     "Main",
                     "Apps"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "github",
-                "url": "https://github.com/ppcoin/ppcoin",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ],
-                "type": ""
-            },
-            {
-                "name": "Documentation",
+                "name": "Whitepaper",
                 "url": "http://peercoin.net/whitepaper",
-                "icon": "whitepaper.png",
+                "type": "paper",
+                "icon": "paper.png",
                 "tags": [
                     "Main",
                     "Science"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "explorer",
+                "name": "Explorer",
                 "url": "http://ppc.blockr.io/",
-                "icon": "explorer.png",
+                "type": "explorer",
+                "icon": "blockr.png",
                 "tags": [
                     "Main",
                     "Apps"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "twitter",
+                "name": "Peercoin Wallets",
+                "url": "http://www.peercoin.net/wallet",
+                "type": "wallet",
+                "icon": "wallet.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "PeerCoin GitHub",
+                "url": "https://github.com/ppcoin/ppcoin",
+                "type": "github",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "name": "Twitter",
                 "url": "https://twitter.com/PeercoinPPC",
+                "type": "twitter",
                 "icon": "twitter.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
-                "name": "forum",
+                "name": "Forum",
                 "url": "https://www.peercointalk.org/",
+                "type": "forum",
                 "icon": "forum.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
                 "name": "reddit",
                 "url": "https://www.reddit.com/r/peercoin",
+                "type": "reddit",
                 "icon": "reddit.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Peercoin",
+                "type": "custom",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Google+",
+                "url": "https://plus.google.com/+PeercoinNet/posts",
+                "type": "custom",
+                "icon": "googleplus.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "YouTube",
+                "url": "https://www.youtube.com/user/peercoin",
+                "type": "custom",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
             },
             {
                 "name": "Announcement",
                 "url": "https://bitcointalk.org/index.php?topic=99735.0",
                 "type": "custom",
+                "icon": "link.png",
                 "tags": [
-                    "publications"
+                    "science"
+                ]
+            },
+            {
+                "name": "Peer4commit",
+                "url": "http://peer4commit.com/",
+                "headline": "A website where people raise funds for any kind of project",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "PeerBox",
+                "url": "https://peerbox.me/",
+                "headline": "Dedicated, secure-by-design Operating System",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "Markets CMC",
+                "headline": "nein",
+                "url": "http://coinmarketcap.com/currencies/peercoin/#markets",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Poloniex",
+                "headline": "nein",
+                "url": "https://www.poloniex.com",
+                "type": "custom",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "ShapeShift",
+                "headline": "nein",
+                "url": "https://shapeshift.io",
+                "type": "custom",
+                "icon": "shapeshift.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Cryptsy",
+                "headline": "nein",
+                "url": "https://www.cryptsy.com/users/register?refid=243274",
+                "type": "custom",
+                "icon": "cryptsy.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTC-e",
+                "headline": "nein",
+                "url": "https://btc-e.com/",
+                "type": "custom",
+                "icon": "btc-e.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTC38",
+                "headline": "Cryptocurrensy Exchange",
+                "url": "http://www.btc38.com/trade_en.html",
+                "type": "custom",
+                "icon": "btc38.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "CCEDK",
+                "headline": "Your place for safe and secure crypto currency exchange",
+                "url": "https://www.ccedk.com/",
+                "type": "custom",
+                "icon": "ccedk.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTER",
+                "headline": "nein",
+                "url": "https://bter.com/",
+                "type": "custom",
+                "icon": "bter.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Bittrex",
+                "headline": "nein",
+                "url": "https://bittrex.com",
+                "type": "custom",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BlueTrade",
+                "headline": "nein",
+                "url": "https://bleutrade.com",
+                "type": "custom",
+                "icon": "bluetrade.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
                 ]
             }
         ]
