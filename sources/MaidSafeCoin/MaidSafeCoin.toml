@@ -2,12 +2,22 @@ geneis_id = "86f214055a7f4f5057922fd1647e00ef31ab0a3ff15217f8b90e295f051873a7"
 system = "MaidSafeCoin"
 dependencies = ["Bitcoin", "Mastercoin (Omni)"]
 
+[token]
+token_name = "MaidSafeCoin"
+token_symbol = "MAID"
+
+[consensus]
+consensus_type = "Proof-of-Work"
+consensus_name = "Omni"
+
 [descriptions]
+state = "Development"
+system_type = "Ownership Title"
 headline = "Distributed Data Management Service"
 summary = "MaidSafe is a fully decentralized platform on which application developers can build decentralized applications. The network is made up by individual users who contribute storage, computing power and bandwidth to form a world-wide autonomous system."
 tags = ["DApp"]
 hashtag = "#maidsafe"
-system_type = ""
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "MaidSafeCoin"
@@ -26,14 +36,6 @@ btc_raised = 12200
 [ratings]
 rating_cyber = 5.0
 
-[consensus]
-consensus_name = "Omni"
-consensus_type = ""
-
-[token]
-token_name = "MaidSafeCoin"
-token_symbol = "MAID"
-
 [specs]
 
 [[links]]
@@ -44,7 +46,7 @@ tags = ["Main"]
 type = "website"
 
 [[links]]
-name = "forum"
+name = "Forum"
 url = "https://www.maidsafe.org/"
 icon = "forum.png"
 tags = ["Main","News"]
@@ -65,7 +67,7 @@ tags = ["Main", "Science"]
 type = "custom"
 
 [[links]]
-name = "github"
+name = "MaidSafe GitHub"
 url = "https://github.com/maidsafe"
 icon = "github.png"
 tags = ["Code"]
@@ -79,8 +81,9 @@ tags = ["News"]
 type = "Twitter"
 
 [[links]]
-name = "blog"
+name = "Blog"
 url = "http://blog.maidsafe.net/"
+rss = "http://blog.maidsafe.net/feed/"
 icon = "blog.png"
 tags = ["News"]
 type = "blog"
@@ -108,6 +111,14 @@ icon = "poloniex.png"
 tags = ["Apps","Exchange"]
 
 [[links]]
+name = "ShapeShift"
+headline = "nein"
+url = "https://shapeshift.io"
+type = "custom"
+icon = "shapeshift.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
 name = "MasterXchange"
 headline = "nein"
 url = "http://masterxchange.com/"
@@ -120,13 +131,13 @@ name = "Markets CMC"
 headline = "nein"
 url = "http://coinmarketcap.com/assets/maidsafecoin/#markets"
 type = "custom"
-icon = "cmc.png"
+icon = "link.png"
 tags = ["Apps","Analytics"]
 
 [[links]]
 name = "Wiki"
 headline = "nein"
 url = "https://safenetwork.wiki/"
-icon = "whitepaper.png"
+icon = "wiki.png"
 tags = ["Main", "Science"]
-type = "paper"
+type = "wiki"

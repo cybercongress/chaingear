@@ -14069,19 +14069,29 @@
         }
     },
     {
+        "genesis_id": "1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691",
+        "system": "Dogecoin",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "Dogecoin",
+        "token": {
+            "token_name": "Doge",
+            "token_symbol": "DOGE"
+        },
+        "consensus": {
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "Scrypt with AuxPoW",
+            "hashing": "SHA-256d"
+        },
         "descriptions": {
-            "headline": "An open source peer-to-peer digital currency, favored by Shiba Inus worldwide",
             "state": "Running",
+            "system_type": "Independent System",
+            "headline": "An open source peer-to-peer digital currency, favored by Shiba Inus worldwide",
             "tags": [
                 "DAO"
             ],
             "hashtag": "#dogecoin",
-            "system_type": ""
+            "page_state": "ready"
         },
         "aliases": {
             "coinmarketcap": "Dogecoin",
@@ -14090,23 +14100,22 @@
         "ratings": {
             "rating_cyber": 3
         },
-        "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Scrypt",
-            "consensus_type": ""
-        },
-        "events": {
-            "announcement": "08/12/2013"
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "DOGE"
-        },
+        "events": [
+            {
+                "name": "Announcement",
+                "start_date": "2013-08-12T03:55:25",
+                "url": "https://bitcointalk.org/index.php?topic=361813.0"
+            },
+            {
+                "name": "Genesis",
+                "start_date": "2013-12-06T02:25:40"
+            }
+        ],
         "specs": {
             "rpc": 22555,
-            "block_time": "60",
+            "block_time": 60,
             "total_tokens": 100000000000,
-            "difficulty_cycle": "240"
+            "difficulty_cycle": 240
         },
         "links": [
             {
@@ -14117,16 +14126,6 @@
                     "Main"
                 ],
                 "type": "website"
-            },
-            {
-                "name": "GitHub",
-                "url": "https://github.com/dogecoin/dogecoin",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ],
-                "type": "github"
             },
             {
                 "name": "Explorer",
@@ -14140,6 +14139,17 @@
                 "type": "explorer"
             },
             {
+                "name": "Doge Wallet",
+                "url": "https://github.com/dogecoin/dogecoin/releases/",
+                "icon": "wallet.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ],
+                "type": "wallet"
+            },
+            {
                 "name": "Twitter",
                 "url": "https://twitter.com/dogecoin",
                 "icon": "twitter.png",
@@ -14148,6 +14158,15 @@
                     "News"
                 ],
                 "type": "twitter"
+            },
+            {
+                "name": "DogeCoin GitHub",
+                "url": "https://github.com/dogecoin/dogecoin",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "github"
             },
             {
                 "name": "Forum",
@@ -14172,16 +14191,17 @@
                 "url": "http://www.reddit.com/r/dogecoin",
                 "icon": "reddit.png",
                 "tags": [
-                    "Apps"
+                    "News"
                 ],
                 "type": "reddit"
             },
             {
-                "name": "Announcement",
+                "name": "BTT Thred",
                 "url": "https://bitcointalk.org/index.php?topic=361813.0",
-                "type": "custom",
+                "type": "forum",
+                "icon": "forum.png",
                 "tags": [
-                    "publications"
+                    "News"
                 ]
             },
             {
@@ -29607,14 +29627,24 @@
             "Bitcoin",
             "Mastercoin (Omni)"
         ],
+        "token": {
+            "token_name": "MaidSafeCoin",
+            "token_symbol": "MAID"
+        },
+        "consensus": {
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "Omni"
+        },
         "descriptions": {
+            "state": "Development",
+            "system_type": "Ownership Title",
             "headline": "Distributed Data Management Service",
             "summary": "MaidSafe is a fully decentralized platform on which application developers can build decentralized applications. The network is made up by individual users who contribute storage, computing power and bandwidth to form a world-wide autonomous system.",
             "tags": [
                 "DApp"
             ],
             "hashtag": "#maidsafe",
-            "system_type": ""
+            "page_state": "ready"
         },
         "aliases": {
             "coinmarketcap": "MaidSafeCoin",
@@ -29635,14 +29665,6 @@
         "ratings": {
             "rating_cyber": 5
         },
-        "consensus": {
-            "consensus_name": "Omni",
-            "consensus_type": ""
-        },
-        "token": {
-            "token_name": "MaidSafeCoin",
-            "token_symbol": "MAID"
-        },
         "specs": {},
         "links": [
             {
@@ -29655,7 +29677,7 @@
                 "type": "website"
             },
             {
-                "name": "forum",
+                "name": "Forum",
                 "url": "https://www.maidsafe.org/",
                 "icon": "forum.png",
                 "tags": [
@@ -29684,7 +29706,7 @@
                 "type": "custom"
             },
             {
-                "name": "github",
+                "name": "MaidSafe GitHub",
                 "url": "https://github.com/maidsafe",
                 "icon": "github.png",
                 "tags": [
@@ -29702,8 +29724,9 @@
                 "type": "Twitter"
             },
             {
-                "name": "blog",
+                "name": "Blog",
                 "url": "http://blog.maidsafe.net/",
+                "rss": "http://blog.maidsafe.net/feed/",
                 "icon": "blog.png",
                 "tags": [
                     "News"
@@ -29740,6 +29763,17 @@
                 ]
             },
             {
+                "name": "ShapeShift",
+                "headline": "nein",
+                "url": "https://shapeshift.io",
+                "type": "custom",
+                "icon": "shapeshift.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
                 "name": "MasterXchange",
                 "headline": "nein",
                 "url": "http://masterxchange.com/",
@@ -29755,7 +29789,7 @@
                 "headline": "nein",
                 "url": "http://coinmarketcap.com/assets/maidsafecoin/#markets",
                 "type": "custom",
-                "icon": "cmc.png",
+                "icon": "link.png",
                 "tags": [
                     "Apps",
                     "Analytics"
@@ -29765,12 +29799,12 @@
                 "name": "Wiki",
                 "headline": "nein",
                 "url": "https://safenetwork.wiki/",
-                "icon": "whitepaper.png",
+                "icon": "wiki.png",
                 "tags": [
                     "Main",
                     "Science"
                 ],
-                "type": "paper"
+                "type": "wiki"
             }
         ]
     },
@@ -46360,19 +46394,29 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "nein",
+        "system": "Stellar",
         "dependencies": [
             "independent"
         ],
-        "system": "Stellar",
+        "token": {
+            "token_name": "Stellar",
+            "token_symbol": "STR"
+        },
+        "consensus": {
+            "consensus_type": "Federated Consensus",
+            "consensus_name": "Stellar Consensus Protocol",
+            "hashing": ""
+        },
         "descriptions": {
-            "headline": "A public infrastructure for money",
             "state": "Running",
+            "system_type": "Independent System",
+            "headline": "A public infrastructure for money",
             "tags": [
                 "DAO"
             ],
             "hashtag": "#stellar",
-            "system_type": ""
+            "page_state": "ready"
         },
         "aliases": {
             "coinmarketcap": "Stellar",
@@ -46381,18 +46425,9 @@
         "ratings": {
             "rating_cyber": 3
         },
-        "consensus": {
-            "consensus_name": "Federated Consensus",
-            "hashing": "Scrypt",
-            "consensus_type": ""
-        },
         "events": {
             "announcement": "01/08/2014",
             "genesis": "01/08/2014"
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "STR"
         },
         "specs": {
             "total_tokens": 100000000000,
