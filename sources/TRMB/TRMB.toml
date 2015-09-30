@@ -1,5 +1,18 @@
-source = "cyberFund"
+genesis_id = "nein"
 system = "TRMB"
+
+[token]
+token_name = "TRMB"
+token_symbol = "TRMB"
+
+[consensus]
+consensus_type = "unknown"
+
+[descriptions]
+state = "Running"
+system_type = ""
+headline = "Personal Bank System of the Future"
+tags = ["DAO"]
 
 [aliases]
 coinmarketcap = "TRMB"
@@ -8,22 +21,56 @@ CurrencyName = "TRMB"
 [ratings]
 rating_cyber = 1.0
 
-[descriptions]
-state = "Running"
-tags = ["DAO"]
-system_type = ""
-
-[consensus]
-consensus_type = ""
-
-[token]
-token_name = ""
-token_symbol = "TRMB"
-
 [specs]
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.taiyilabs.com/"
-  icon = "website.png"
+[[links]]
+name = "taiyilabs.com"
+url = "http://www.taiyilabs.com/"
+type = "website"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+name = "Whitepaper CNY"
+url = "http://taiyilabs.com/download/TaiYi_Whitepaper_cn.pdf"
+type = "paper"
+icon = "paper.png"
+tags = ["Main", "Science"]
+
+[[links]]
+name = "Explorer"
+url = "http://explorer.taiyilabs.com/chains?asty=TRMB"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Main", "Apps","Analytics"]
+
+[[links]]
+name = "Download Wallet"
+url = "http://www.taiyilabs.com/download.html"
+type = "wallet"
+icon = "wallet.png"
+tags = ["Main", "Apps","Wallet"]
+
+
+[[links]]
+name = "TRMB API"
+url = "http://www.taiyilabs.com/api.html"
+type = "custom"
+icon = "link.png"
+tags = ["Code"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/assets/trmb/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "YuanBaoHui"
+headline = "nein"
+url = "https://yuanbaohui.com/"
+type = "custom"
+icon = "yuanbaohui.png"
+tags = ["Apps","Exchange"]
