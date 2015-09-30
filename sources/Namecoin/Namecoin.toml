@@ -1,40 +1,45 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "000000000062b72c5e2ceb45fbc8587e807c155b0da735e6483dfba2f0a9c770"
 system = "Namecoin"
+dependencies = ["independent"]
+
+[token]
+token_name = "Namecoin"
+token_symbol = "NMC"
+
+[consensus]
+consensus_type = "Proof-of-Work"
+consensus_name = "Proof-of-Work"
+hashing = "SHA-256"
+
+[descriptions]
+state = "Running"
+system_type = "Independent System"
+headline = "A decentralized open source information registration and transfer system based on the Bitcoin"
+tags = ["DAO"]
+hashtag = "#namecoin"
 
 [aliases]
 coinmarketcap = "Namecoin"
 CurrencyName = "Namecoin"
 
+[specs]
+block_time = 600
+block_reward = 50
+total_tokens = 21000000
+difficulty_cycle = 2016
+txs_confirm = 6
+mint_confirm = 120
+
 [ratings]
 rating_cyber = 3.0
 
-[consensus]
-consensus_name = "Proof-of-Work"
-hashing = "SHA-256d"
-consensus_type = ""
+[[events]]
+name = "Announcement"
+start_date = "2011-04-18T12:52:59"
 
-[descriptions]
-state = "Running"
-tags = ["DAO"]
-hashtag = "#namecoin"
-system_type = ""
-
-[events]
-announcement = "15/04/2011"
-genesis = "19/04/2011"
-
-[token]
-token_name = ""
-token_symbol = "NMC"
-
-[specs]
-block_time = "600"
-block_reward = "50"
-total_tokens = "21000000"
-difficulty_cycle = "2016"
-txs_confirm = 6.0
-mint_confirm = 120.0
+[[events]]
+name = "Genesis" 
+start_date = "2011-04-17T02:26:00"
 
 [[links]]
 name = "namecoin.info"
@@ -58,17 +63,17 @@ tags = ["Main", "Science"]
 type = "wiki"
 
 [[links]]
-name = "explorer"
+name = "NMC Explorer"
 url = "https://explorer.namecoin.info/"
 icon = "explorer.png"
 tags = ["Main", "Apps"]
 type = "explorer"
 
 [[links]]
-name = "twitter"
+name = "Twitter"
 url = "https://twitter.com/namecoin"
 icon = "twitter.png"
-tags = ["Main", "News"]
+tags = ["News"]
 type = "twitter"
 
 [[links]]
@@ -91,6 +96,34 @@ url = "https://www.reddit.com/r/namecoin"
 icon = "reddit.png"
 tags = ["News"]
 type = "reddit"
+
+[[links]]
+name = "CoinDesk"
+url = "http://www.coindesk.com/tag/namecoin/"
+type = "custom"
+icon = "coindesk.png"
+tags = ["News"]
+
+[[links]]
+name = "CoinTelegraph"
+url = "http://cointelegraph.com/tags/namecoin"
+type = "custom"
+icon = "cointelegraph.png"
+tags = ["News"]
+
+[[links]]
+name = "CryptocoinNews"
+url = "https://www.cryptocoinsnews.com/tag/namecoin-2/"
+type = "custom"
+icon = "cryptocoinnews.jpg"
+tags = ["News"]
+
+[[links]]
+name = "BTT Thread"
+url = "https://bitcointalk.org/?topic=6017.0"
+icon = "forum.png"
+tags = ["News"]
+type = "forum"
 
 [[links]]
 name = "Wallet"
@@ -124,6 +157,14 @@ icon = "cryptsy.png"
 tags = ["Apps","Exchange"]
 
 [[links]]
+name = "ShapeShift"
+headline = "nein"
+url = "https://shapeshift.io"
+type = "custom"
+icon = "shapeshift.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
 name = "BTC-e"
 headline = "nein"
 url = "https://btc-e.com/"
@@ -139,3 +180,40 @@ type = "custom"
 icon = "bter.png"
 tags = ["Apps","Exchange"]
 
+[[links]]
+name = "CEX"
+headline = "Global Bitcoin Exchange"
+url = "https://cex.io/"
+type = "custom"
+icon = "cex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Kraken"
+headline = "nein"
+type = "custom"
+icon = "kraken.png"
+url = "https://www.kraken.com"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BlueTrade"
+headline = "nein"
+url = "https://bleutrade.com"
+type = "custom"
+icon = "bluetrade.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "GHASH.IO"
+url = "https://ghash.io/"
+type = "custom"
+icon = "ghashio.png"
+tags = ["Apps"]
+
+[[links]]
+name = "mmpool"
+url = "http://mmpool.org/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
