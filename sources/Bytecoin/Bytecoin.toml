@@ -1,6 +1,23 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "13a537627c969dfda1bf6a2688694aa139f66d643073d49afc5cdd75d3c1e400"
 system = "Bytecoin"
+dependencies = ["independent"]
+
+[token]
+token_name = "Bytecoin"
+token_symbol = "BCN"
+
+[consensus]
+consensus_type = "Proof-of-Work"
+consensus_name = "CryptoNight"
+hashing = "CryptoNight"
+
+[descriptions]
+state = "Running"
+system_type = "Independent System"
+headline = "The private untraceable cryptocurrency"
+tags = ["DAO"]
+hashtag = "#bytecoin"
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "Bytecoin"
@@ -9,31 +26,16 @@ CurrencyName = "Bytecoin"
 [ratings]
 rating_cyber = 3.0
 
-[consensus]
-consensus_name = "Proof-of-Work"
-hashing = "CryptoNight"
-consensus_type = ""
-
-[descriptions]
-state = "Running"
-tags = ["DAO"]
-hashtag = "#bytecoin"
-system_type = ""
-
-[events]
+[[events]]
 announcement = "30/06/2012"
 genesis = "4/07/2012"
 
-[token]
-token_name = ""
-token_symbol = "BCN"
-
 [specs]
-p2p = 8080.0
-rpc = 8081.0
-block_time = 120.0
+p2p = 8080
+rpc = 8081
+block_time = 120
 block_reward = "Block reward decreases each block according to the formula: BaseReward = (MSupply - A)/2^18,  where MSupply = (2^64 - 1) atomic units and 'A' is amount of already generated coins"
-total_tokens = 18446744073709998080.0
+total_tokens = 18446744073709998080
 difficulty_cycle = "each block"
 
 [[links]]
@@ -44,21 +46,21 @@ tags = ["Main"]
 type = "site"
 
 [[links]]
-name = "github"
+name = "Bytecoin GitHub"
 url = "https://github.com/amjuarez/bytecoin"
 icon = "github.png"
 tags = ["Code"]
 type = "github"
 
 [[links]]
-name = "Bytecoin whitepaper"
+name = "Bytecoin Whitepaper"
 url = "https://cryptonote.org/whitepaper.pdf"
 icon = "whitepaper.png"
-tags = ["Main", "Science"]
+tags = ["Science"]
 type = "whitepaper"
 
 [[links]]
-name = "explorer"
+name = "ChainRadar"
 url = "http://chainradar.com/bcn/blocks"
 icon = "explorer.png"
 tags = ["Main", "Apps","Analytics"]
@@ -111,8 +113,15 @@ name = "Bytecoin Wiki"
 headline = "nein"
 url = "https://wiki.bytecoin.org/wiki/Main_Page"
 icon = "wiki.png"
-tags = ["Science"]
+tags = ["Main","Science"]
 type = "wiki"
+
+[[links]]
+name = "MinerGate Explorer"
+url = "https://minergate.com/"
+type = "explorer"
+icon = "minergate.png"
+tags = ["Apps","Analytics"]
 
 [[links]]
 name = "Markets CMC"
@@ -121,6 +130,20 @@ url = "http://coinmarketcap.com/currencies/bytecoin-bcn/#markets"
 type = "custom"
 icon = "link.png"
 tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Bytecoiner Faucet"
+url = "http://bytecoiner.org/giveaway/"
+type = "custom"
+icon = "link.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Bytecoin Faucet"
+url = "https://freebytecoin.cf/"
+type = "custom"
+icon = "link.png"
+tags = ["Apps"]
 
 [[links]]
 name = "HitBTC"
@@ -146,3 +169,129 @@ type = "custom"
 icon = "btcmarket.png"
 tags = ["Apps","Exchange"]
 
+[[links]]
+name = "Changer"
+headline = "nein"
+url = "https://www.changer.com/"
+type = "custom"
+icon = "changer.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Aggregate Addresses in CryptoNote: Towards Efficient Privacy"
+url = "https://bytecoin.org/static/files/docs/aggregate-addresses.pdf"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "CryptoNote v 2.0"
+url = "https://cryptonote.org/whitepaper.pdf"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "CryptoNote Difficulty Adjustment"
+url = "https://cryptonote.org/cns/cns010.txt"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "CryptoNote Technology"
+url = "https://cryptonote.org/cns/cns009.txt"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "CryptoNight Hash Function"
+url = "https://cryptonote.org/cns/cns008.txt"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "CryptoNote Keys and Addresses"
+url = "https://cryptonote.org/cns/cns007.txt"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "CryptoNote One-Time Keys"
+url = "https://cryptonote.org/cns/cns006.txt"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "CryptoNote Transaction Extra Field"
+url = "https://cryptonote.org/cns/cns005.txt"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "CryptoNote Transactions"
+url = "https://cryptonote.org/cns/cns004.txt"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "CryptoNote Blockchain"
+url = "https://cryptonote.org/cns/cns003.txt"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "CryptoNote Signatures"
+url = "https://cryptonote.org/cns/cns002.txt"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "MinerGate"
+url = "https://minergate.com/"
+type = "custom"
+icon = "minergate.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Miner.Center"
+url = "http://miner.center/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "shscrypto"
+url = "http://bcn.shscrypto.net/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "cryptonight.net"
+url = "http://cryptonight.net/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "DemoCats"
+url = "http://bcn.democats.org/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "CryptMonero"
+url = "http://cryptmonero.com/bytecoin/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]

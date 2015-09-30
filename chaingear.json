@@ -3688,13 +3688,23 @@
         "dependencies": [
             "independent"
         ],
+        "token": {
+            "token_name": "PlayShare",
+            "token_symbol": "PLS"
+        },
+        "consensus": {
+            "consensus_type": "Delegated Proof-of-Stake",
+            "consensus_name": "DPOS"
+        },
         "descriptions": {
+            "state": "Development",
+            "system_type": "Independent System",
             "headline": "Blockchain Based Game Platfrom",
             "summary": "BitShares PLAY leverages the block chain technology, in an attempts to establish a decentralized autonomous gaming platform. Any third party can develop provably fair games, both traditional as well as types that has never been seen before. These games can be both entertaining and provably fair, all at the same time.",
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "page_state": "ready"
         },
         "aliases": {
             "coinmarketcap": "BitShares Play",
@@ -3716,14 +3726,6 @@
         },
         "ratings": {
             "rating_cyber": 3
-        },
-        "consensus": {
-            "consensus_name": "DPOS",
-            "consensus_type": "Delegated-Proof-of-Stake"
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "PLS"
         },
         "specs": {
             "supply": 1999999910,
@@ -3747,12 +3749,12 @@
             {
                 "name": "DAC Play Whitepaper",
                 "url": "http://dacplay.org/en/#whitepaper",
-                "icon": "whitepaper.png",
+                "icon": "paper.png",
                 "tags": [
                     "Main",
-                    "Apps"
+                    "Science"
                 ],
-                "type": "whitepaper"
+                "type": "paper"
             },
             {
                 "name": "Forum",
@@ -3764,22 +3766,52 @@
                 "type": "forum"
             },
             {
-                "name": "PLS explorer",
-                "url": "http://play.bitsharesblocks.com/",
-                "icon": "explorer.png",
+                "name": "BitShares Forum",
+                "url": "https://bitsharestalk.org/index.php/board,52.0.html",
+                "icon": "bitshares.png",
                 "tags": [
-                    "Main"
+                    "News"
                 ],
-                "type": "explorer"
+                "type": "forum"
             },
             {
-                "name": "PLS Wallet",
-                "url": "http://playshare.io/",
-                "type": "custom",
+                "name": "PLS explorer",
+                "url": "http://play.bitsharesblocks.com/",
+                "type": "explorer",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "DAC Play Client",
+                "url": "https://dacplay.org/en/",
+                "type": "wallet",
                 "icon": "wallet.png",
                 "tags": [
+                    "Main",
                     "Apps",
                     "Wallet"
+                ]
+            },
+            {
+                "name": "DAC Play Non-technical Whitepaper",
+                "url": "https://dacplay.org/pdf/BitSharesPLAYNoneTechnical_EN.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "DAC Play Wiki",
+                "url": "https://dacplay.org/pdf/BitSharesPLAYNoneTechnical_EN.pdf",
+                "type": "wiki",
+                "icon": "wiki.png",
+                "tags": [
+                    "Science"
                 ]
             }
         ]
@@ -6461,11 +6493,30 @@
         }
     },
     {
+        "genesis_id": "13a537627c969dfda1bf6a2688694aa139f66d643073d49afc5cdd75d3c1e400",
+        "system": "Bytecoin",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "Bytecoin",
+        "token": {
+            "token_name": "Bytecoin",
+            "token_symbol": "BCN"
+        },
+        "consensus": {
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "CryptoNight",
+            "hashing": "CryptoNight"
+        },
+        "descriptions": {
+            "state": "Running",
+            "system_type": "Independent System",
+            "headline": "The private untraceable cryptocurrency",
+            "tags": [
+                "DAO"
+            ],
+            "hashtag": "#bytecoin",
+            "page_state": "ready"
+        },
         "aliases": {
             "coinmarketcap": "Bytecoin",
             "CurrencyName": "Bytecoin"
@@ -6473,27 +6524,12 @@
         "ratings": {
             "rating_cyber": 3
         },
-        "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "hashing": "CryptoNight",
-            "consensus_type": ""
-        },
-        "descriptions": {
-            "state": "Running",
-            "tags": [
-                "DAO"
-            ],
-            "hashtag": "#bytecoin",
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "30/06/2012",
-            "genesis": "4/07/2012"
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "BCN"
-        },
+        "events": [
+            {
+                "announcement": "30/06/2012",
+                "genesis": "4/07/2012"
+            }
+        ],
         "specs": {
             "p2p": 8080,
             "rpc": 8081,
@@ -6513,7 +6549,7 @@
                 "type": "site"
             },
             {
-                "name": "github",
+                "name": "Bytecoin GitHub",
                 "url": "https://github.com/amjuarez/bytecoin",
                 "icon": "github.png",
                 "tags": [
@@ -6522,17 +6558,16 @@
                 "type": "github"
             },
             {
-                "name": "Bytecoin whitepaper",
+                "name": "Bytecoin Whitepaper",
                 "url": "https://cryptonote.org/whitepaper.pdf",
                 "icon": "whitepaper.png",
                 "tags": [
-                    "Main",
                     "Science"
                 ],
                 "type": "whitepaper"
             },
             {
-                "name": "explorer",
+                "name": "ChainRadar",
                 "url": "http://chainradar.com/bcn/blocks",
                 "icon": "explorer.png",
                 "tags": [
@@ -6604,9 +6639,20 @@
                 "url": "https://wiki.bytecoin.org/wiki/Main_Page",
                 "icon": "wiki.png",
                 "tags": [
+                    "Main",
                     "Science"
                 ],
                 "type": "wiki"
+            },
+            {
+                "name": "MinerGate Explorer",
+                "url": "https://minergate.com/",
+                "type": "explorer",
+                "icon": "minergate.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
             },
             {
                 "name": "Markets CMC",
@@ -6617,6 +6663,24 @@
                 "tags": [
                     "Apps",
                     "Analytics"
+                ]
+            },
+            {
+                "name": "Bytecoiner Faucet",
+                "url": "http://bytecoiner.org/giveaway/",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "Bytecoin Faucet",
+                "url": "https://freebytecoin.cf/",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps"
                 ]
             },
             {
@@ -6650,6 +6714,170 @@
                 "tags": [
                     "Apps",
                     "Exchange"
+                ]
+            },
+            {
+                "name": "Changer",
+                "headline": "nein",
+                "url": "https://www.changer.com/",
+                "type": "custom",
+                "icon": "changer.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Aggregate Addresses in CryptoNote: Towards Efficient Privacy",
+                "url": "https://bytecoin.org/static/files/docs/aggregate-addresses.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "CryptoNote v 2.0",
+                "url": "https://cryptonote.org/whitepaper.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "CryptoNote Difficulty Adjustment",
+                "url": "https://cryptonote.org/cns/cns010.txt",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "CryptoNote Technology",
+                "url": "https://cryptonote.org/cns/cns009.txt",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "CryptoNight Hash Function",
+                "url": "https://cryptonote.org/cns/cns008.txt",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "CryptoNote Keys and Addresses",
+                "url": "https://cryptonote.org/cns/cns007.txt",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "CryptoNote One-Time Keys",
+                "url": "https://cryptonote.org/cns/cns006.txt",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "CryptoNote Transaction Extra Field",
+                "url": "https://cryptonote.org/cns/cns005.txt",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "CryptoNote Transactions",
+                "url": "https://cryptonote.org/cns/cns004.txt",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "CryptoNote Blockchain",
+                "url": "https://cryptonote.org/cns/cns003.txt",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "CryptoNote Signatures",
+                "url": "https://cryptonote.org/cns/cns002.txt",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "MinerGate",
+                "url": "https://minergate.com/",
+                "type": "custom",
+                "icon": "minergate.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "Miner.Center",
+                "url": "http://miner.center/",
+                "type": "custom",
+                "icon": "mining.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "shscrypto",
+                "url": "http://bcn.shscrypto.net/",
+                "type": "custom",
+                "icon": "mining.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "cryptonight.net",
+                "url": "http://cryptonight.net/",
+                "type": "custom",
+                "icon": "mining.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "DemoCats",
+                "url": "http://bcn.democats.org/",
+                "type": "custom",
+                "icon": "mining.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "CryptMonero",
+                "url": "http://cryptmonero.com/bytecoin/",
+                "type": "custom",
+                "icon": "mining.png",
+                "tags": [
+                    "Apps"
                 ]
             }
         ]
@@ -33226,47 +33454,54 @@
         ]
     },
     {
+        "genesis_id": "000000000062b72c5e2ceb45fbc8587e807c155b0da735e6483dfba2f0a9c770",
+        "system": "Namecoin",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "Namecoin",
+        "token": {
+            "token_name": "Namecoin",
+            "token_symbol": "NMC"
+        },
+        "consensus": {
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "Proof-of-Work",
+            "hashing": "SHA-256"
+        },
+        "descriptions": {
+            "state": "Running",
+            "system_type": "Independent System",
+            "headline": "A decentralized open source information registration and transfer system based on the Bitcoin",
+            "tags": [
+                "DAO"
+            ],
+            "hashtag": "#namecoin"
+        },
         "aliases": {
             "coinmarketcap": "Namecoin",
             "CurrencyName": "Namecoin"
         },
-        "ratings": {
-            "rating_cyber": 3
-        },
-        "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "hashing": "SHA-256d",
-            "consensus_type": ""
-        },
-        "descriptions": {
-            "state": "Running",
-            "tags": [
-                "DAO"
-            ],
-            "hashtag": "#namecoin",
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "15/04/2011",
-            "genesis": "19/04/2011"
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "NMC"
-        },
         "specs": {
-            "block_time": "600",
-            "block_reward": "50",
-            "total_tokens": "21000000",
-            "difficulty_cycle": "2016",
+            "block_time": 600,
+            "block_reward": 50,
+            "total_tokens": 21000000,
+            "difficulty_cycle": 2016,
             "txs_confirm": 6,
             "mint_confirm": 120
         },
+        "ratings": {
+            "rating_cyber": 3
+        },
+        "events": [
+            {
+                "name": "Announcement",
+                "start_date": "2011-04-18T12:52:59"
+            },
+            {
+                "name": "Genesis",
+                "start_date": "2011-04-17T02:26:00"
+            }
+        ],
         "links": [
             {
                 "name": "namecoin.info",
@@ -33298,7 +33533,7 @@
                 "type": "wiki"
             },
             {
-                "name": "explorer",
+                "name": "NMC Explorer",
                 "url": "https://explorer.namecoin.info/",
                 "icon": "explorer.png",
                 "tags": [
@@ -33308,11 +33543,10 @@
                 "type": "explorer"
             },
             {
-                "name": "twitter",
+                "name": "Twitter",
                 "url": "https://twitter.com/namecoin",
                 "icon": "twitter.png",
                 "tags": [
-                    "Main",
                     "News"
                 ],
                 "type": "twitter"
@@ -33343,6 +33577,42 @@
                     "News"
                 ],
                 "type": "reddit"
+            },
+            {
+                "name": "CoinDesk",
+                "url": "http://www.coindesk.com/tag/namecoin/",
+                "type": "custom",
+                "icon": "coindesk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CoinTelegraph",
+                "url": "http://cointelegraph.com/tags/namecoin",
+                "type": "custom",
+                "icon": "cointelegraph.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CryptocoinNews",
+                "url": "https://www.cryptocoinsnews.com/tag/namecoin-2/",
+                "type": "custom",
+                "icon": "cryptocoinnews.jpg",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/?topic=6017.0",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "forum"
             },
             {
                 "name": "Wallet",
@@ -33388,6 +33658,17 @@
                 ]
             },
             {
+                "name": "ShapeShift",
+                "headline": "nein",
+                "url": "https://shapeshift.io",
+                "type": "custom",
+                "icon": "shapeshift.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
                 "name": "BTC-e",
                 "headline": "nein",
                 "url": "https://btc-e.com/",
@@ -33407,6 +33688,57 @@
                 "tags": [
                     "Apps",
                     "Exchange"
+                ]
+            },
+            {
+                "name": "CEX",
+                "headline": "Global Bitcoin Exchange",
+                "url": "https://cex.io/",
+                "type": "custom",
+                "icon": "cex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Kraken",
+                "headline": "nein",
+                "type": "custom",
+                "icon": "kraken.png",
+                "url": "https://www.kraken.com",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BlueTrade",
+                "headline": "nein",
+                "url": "https://bleutrade.com",
+                "type": "custom",
+                "icon": "bluetrade.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "GHASH.IO",
+                "url": "https://ghash.io/",
+                "type": "custom",
+                "icon": "ghashio.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "mmpool",
+                "url": "http://mmpool.org/",
+                "type": "custom",
+                "icon": "mining.png",
+                "tags": [
+                    "Apps"
                 ]
             }
         ]
@@ -37727,8 +38059,7 @@
                 "type": "website",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
+                    "Main"
                 ]
             },
             {
@@ -37748,7 +38079,8 @@
                 "icon": "blockr.png",
                 "tags": [
                     "Main",
-                    "Apps"
+                    "Apps",
+                    "Analytics"
                 ]
             },
             {
@@ -37799,6 +38131,24 @@
                 ]
             },
             {
+                "name": "CoinTelegraph",
+                "url": "http://cointelegraph.com/tags/peercoin",
+                "type": "custom",
+                "icon": "cointelegraph.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CoinDesk",
+                "url": "http://www.coindesk.com/tag/peercoin/",
+                "type": "custom",
+                "icon": "coindesk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
                 "name": "Facebook",
                 "url": "https://www.facebook.com/Peercoin",
                 "type": "custom",
@@ -37826,12 +38176,22 @@
                 ]
             },
             {
-                "name": "Announcement",
+                "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=99735.0",
-                "type": "custom",
-                "icon": "link.png",
+                "type": "forum",
+                "icon": "forum.png",
                 "tags": [
-                    "science"
+                    "News"
+                ]
+            },
+            {
+                "name": "bkchain",
+                "url": "https://bkchain.org/ppc",
+                "type": "explorer",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
                 ]
             },
             {
