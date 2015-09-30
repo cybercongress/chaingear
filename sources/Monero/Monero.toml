@@ -1,96 +1,243 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "771fbcd656ec1464d3a02ead5e18644030007a0fc664c0a964d30922821a8148"
 system = "Monero"
+dependencies = ["independent"]
+
+[token]
+token_name = "Monero"
+token_symbol = "XMR"
+
+[consensus]
+consensus_type = "Proof-of-Work"
+consensus_name = "CryptoNight"
+hashing = ""
+
+[descriptions]
+state = "Running"
+system_type = "Independent System"
+headline = "A brand new uprising cryptocurrency which originates from Bitmonero"
+tags = ["DAO"]
+hashtag = "#monero"
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "Monero"
 CurrencyName = "Monero"
 
+[specs]
+block_time = 60
+block_reward = "(M-A)*2^(-20)*10^(-12), where A = current circulation"
+total_tokens = 18400000
+difficulty_cycle = "every block"
+
 [ratings]
 rating_cyber = 2.0
 
-[consensus]
-consensus_name = "Proof-of-Work"
-hashing = "CryptoNight"
-consensus_type = ""
-
-[descriptions]
-state = "Running"
-tags = ["DAO"]
-hashtag = "#monero"
-system_type = ""
-
-[events]
-announcement = "09/04/2014"
-
-[token]
-token_name = ""
-token_symbol = "XMR"
-
-[specs]
-block_time = 60.0
-block_reward = "Block block_reward = (M-A)*2^(-20)*10^(-12), where A = current circulation"
-total_tokens = 18400000.0
-difficulty_cycle = "every block"
+[[events]]
+name = "Announcement"
+start_date = "2014-04-09T08:50:04"
+url = "https://bitcointalk.org/index.php?topic=563821"
 
 [[links]]
-name = "web site"
+name = "monero.org"
 url = "http://monero.org"
+type = "website"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
+
+[[links]]
+name = "ChainRadar"
+url = "http://chainradar.com/xmr/blocks"
+type = "explorer"
+icon = "chainradar.png"
+tags = ["Main", "Apps","Analytics"]
+
+[[links]]
+name = "Monero Wallets"
+url = "http://monero.org/monero-clients/"
+type = "wallet"
+icon = "wallet.png"
+tags = ["Main","Apps","Wallet"]
 
 [[links]]
 name = "github"
 url = "https://github.com/bitmonero-project/bitmonero"
+type = "github"
 icon = "github.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main", "Code"]
 
 [[links]]
 name = "Documentation"
 url = "https://downloads.getmonero.org/whitepaper_review.pdf"
-icon = "whitepaper.png"
+type = "paper"
+icon = "paper.png"
 tags = ["Main", "Science"]
-type = ""
 
 [[links]]
-name = "explorer"
-url = "http://chainradar.com/xmr/blocks"
-icon = "explorer.png"
-tags = ["Main", "Apps"]
-type = ""
-
-[[links]]
-name = "twitter"
+name = "Twitter"
 url = "https://twitter.com/monerocurrency"
+type = "twitter"
 icon = "twitter.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "forum"
-url = "https://forum.getmonero.org/"
+name = "NewsFeed"
+url = "http://monero.org/news/"
+rss = "http://monero.org/feed/"
+type = "forum"
 icon = "forum.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "blog"
+name = "Forum"
+url = "https://forum.getmonero.org/"
+type = "forum"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+name = "Blog"
 url = "https://getmonero.org/blog/"
+type = "blog"
 icon = "blog.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
 name = "reddit"
 url = "https://www.reddit.com/r/monero/"
+type = "reddit"
 icon = "reddit.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "Announcement"
-url = "https://bitcointalk.org/index.php?topic=563821"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=583449.0"
+type = "forum"
+icon = "blog.png"
+tags = ["News"]
+
+[[links]]
+name = "CoinTelegraph"
+url = "http://cointelegraph.com/tags/monero"
 type = "custom"
-tags = ["publications"]
+icon = "cointelegraph.png"
+tags = ["News"]
+
+[[links]]
+name = "CryptocoinNews"
+url = "https://www.cryptocoinsnews.com/tag/monero/"
+type = "custom"
+icon = "cryptocoinnews.jpg"
+tags = ["News"]
+
+[[links]]
+name = "MinerGate"
+url = "https://minergate.com/blockchain/mro/blocks"
+type = "explorer"
+icon = "minergate.png"
+tags = ["Main", "Apps","Analytics"]
+
+[[links]]
+name = "MoneroBlocks"
+url = "http://moneroblocks.eu/"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Main", "Apps","Analytics"]
+
+[[links]]
+name = "MinerGate"
+url = "https://minergate.com/"
+type = "custom"
+icon = "minergate.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Miner.Center"
+url = "http://miner.center/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "CryptoNotePoolUK"
+url = "http://cryptonotepool.org.uk/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Monero Crypto-Pool"
+url = "http://monero.crypto-pool.fr/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "XMR.ProHash"
+url = "http://xmr.prohash.net/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/currencies/monero/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "ShapeShift"
+headline = "nein"
+url = "https://shapeshift.io"
+type = "custom"
+icon = "shapeshift.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Cryptsy"
+headline = "nein"
+url = "https://www.cryptsy.com/users/register?refid=243274"
+type = "custom"
+icon = "cryptsy.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTER"
+headline = "nein"
+url = "https://bter.com/"
+type = "custom"
+icon = "bter.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Bittrex"
+headline = "nein"
+url = "https://bittrex.com"
+type = "custom"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "HitBTC"
+headline = "nein"
+url = "https://hitbtc.com/"
+type = "custom"
+icon = "hitbtc.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTC38"
+headline = "Cryptocurrensy Exchange"
+url = "http://www.btc38.com/trade_en.html"
+type = "custom"
+icon = "btc38.png"
+tags = ["Apps","Exchange"]
