@@ -2,11 +2,21 @@ genesis_id = "840a014b88a7aa7a981aa455dd86de85a6eb6548"
 system = "BitShares Play"
 dependencies = ["independent"]
 
+[token]
+token_name = "PlayShare"
+token_symbol = "PLS"
+
+[consensus]
+consensus_type = "Delegated Proof-of-Stake"
+consensus_name = "DPOS"
+
 [descriptions]
+state = "Development"
+system_type = "Independent System"
 headline = "Blockchain Based Game Platfrom"
 summary = "BitShares PLAY leverages the block chain technology, in an attempts to establish a decentralized autonomous gaming platform. Any third party can develop provably fair games, both traditional as well as types that has never been seen before. These games can be both entertaining and provably fair, all at the same time."
 tags = ["DAO"]
-system_type = ""
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "BitShares Play"
@@ -27,14 +37,6 @@ btc_raised = 2397.11393696
 [ratings]
 rating_cyber = 3
 
-[consensus]
-consensus_name = "DPOS"
-consensus_type = "Delegated-Proof-of-Stake"
-
-[token]
-token_name = ""
-token_symbol = "PLS"
-
 [specs]
 supply = 1999999910.0
 timestamp = 1431342962.0
@@ -53,9 +55,9 @@ type = "site"
 [[links]]
 name = "DAC Play Whitepaper"
 url = "http://dacplay.org/en/#whitepaper"
-icon = "whitepaper.png"
-tags = ["Main", "Apps"]
-type = "whitepaper"
+icon = "paper.png"
+tags = ["Main", "Science"]
+type = "paper"
 
 [[links]]
 name = "Forum"
@@ -65,15 +67,36 @@ tags = ["News"]
 type = "forum"
 
 [[links]]
-name = "PLS explorer"
-url = "http://play.bitsharesblocks.com/"
-icon = "explorer.png"
-tags = ["Main"]
-type = "explorer"
+name = "BitShares Forum"
+url = "https://bitsharestalk.org/index.php/board,52.0.html"
+icon = "bitshares.png"
+tags = ["News"]
+type = "forum"
 
 [[links]]
-name = "PLS Wallet"
-url = "http://playshare.io/"
-type = "custom"
+name = "PLS explorer"
+url = "http://play.bitsharesblocks.com/"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Main","Apps","Analytics"]
+
+[[links]]
+name = "DAC Play Client"
+url = "https://dacplay.org/en/"
+type = "wallet"
 icon = "wallet.png"
-tags = ["Apps","Wallet"]
+tags = ["Main","Apps","Wallet"]
+
+[[links]]
+name = "DAC Play Non-technical Whitepaper"
+url = "https://dacplay.org/pdf/BitSharesPLAYNoneTechnical_EN.pdf"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "DAC Play Wiki"
+url = "https://dacplay.org/pdf/BitSharesPLAYNoneTechnical_EN.pdf"
+type = "wiki"
+icon = "wiki.png"
+tags = ["Science"]
