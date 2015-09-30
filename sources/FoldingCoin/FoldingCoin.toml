@@ -1,5 +1,20 @@
-source = "cyberFund"
+genesis_id = "95396"
 system = "FoldingCoin"
+dependencies = ["Counterparty"]
+
+[token]
+token_name = "Foldingcoin"
+token_symbol = "FLDC"
+
+[consensus]
+consensus_type = "Blockchain Ledger"
+consensus_name = "Counterparty"
+
+[descriptions]
+state = "Running"
+system_type = "Blockchain Share"
+headline = "Mine Medicine, Not Hashes"
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "FoldingCoin"
@@ -8,15 +23,167 @@ CurrencyName = "FoldingCoin"
 [ratings]
 rating_cyber = 2.0
 
-[descriptions]
-system_type = ""
-
-[consensus]
-consensus_type = ""
-
-[token]
-token_name = ""
-token_symbol = "FLDC"
-
 [specs]
-links = []
+total_tokens = 1000000000
+
+[crowdsale]
+start_date = "2014-09-29T00:00:00"
+end_date = "2014-10-29T00:00:00"
+genesis_address = ["12m9e3TqVTC8ndUagCPn6TXy1PPdw7kyGt"]
+funding_url = "http://foldingcoin.net/fundraising/"
+funding_tems = "https://bitcointalk.org/index.php?topic=781352.0"
+min_investment = 0.00
+funding_operator = "nein"
+tokens_sold = 695051.082
+tokens_issued = 1000000000
+btc_raised = 3.04948918
+
+[[events]]
+name = "Annoucement"
+start_date = "2014-09-13T06:52:32"
+url = "https://bitcointalk.org/index.php?topic=781352.0"
+
+[[links]] 
+name = "foldingcoin.net"
+url = "http://foldingcoin.net/"
+type = "website"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]] 
+name = "Whitepaper"
+url = "http://foldingcoin.net/wp/wp-content/uploads/2015/02/FoldingCoin-White-Paper-v1.0.pdf"
+type = "paper"
+icon = "paper.png"
+tags = ["Main","Science"]
+
+[[links]] 
+name = "Explorer"
+url = "http://blockscan.com/assetInfo/FLDC"
+type = "explorer"
+icon = "counterparty.png"
+tags = ["Main","Apps","Analytics"]
+
+[[links]]
+name = "Counterwallet"
+url = "https://counterwallet.io/"
+type = "wallet"
+icon = "counterparty.png"
+tags = ["Main", "Wallet"]
+
+[[links]]
+name = "FLDC News"
+url = "http://foldingcoin.net/news/"
+rss = "http://foldingcoin.net/feed/"
+type = "custom"
+icon = "blog.png"
+tags = ["News"]
+
+[[links]]
+name = "Twitter"
+url = "https://twitter.com/FoldingCoin"
+type = "twitter"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+name = "reddit"
+url = "https://www.reddit.com/r/FoldingCoin/"
+type = "reddit"
+icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+name = "Facebook"
+url = "https://www.facebook.com/FoldingCoin"
+type = "custom"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+name = "YouTube"
+url = "https://www.youtube.com/channel/UCc1YlgCEN3kMT6nI5suM76Q"
+type = "custom"
+icon = "youtube.png"
+tags = ["News"]
+
+[[links]]
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=781352.0"
+type = "forum"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+name = "CryptocoinNews"
+url = "https://www.cryptocoinsnews.com/tag/foldingcoin/"
+type = "custom"
+icon = "cryptocoinnews.jpg"
+tags = ["News"]
+
+[[links]] 
+name = "CoinDaddy"
+url = "https://coindaddy.io/search?network=xcp&q=FLDC"
+type = "explorer"
+icon = "coindaddy.png"
+tags = ["Apps","Analytics"]
+
+[[links]] 
+name = "Folding Client"
+url = "https://folding.stanford.edu/"
+type = "wallet"
+icon = "wallet.png"
+tags = ["Apps"]
+
+[[links]] 
+name = "FoldingCoin Tutorials"
+url = "http://foldingcoin.net/video-tutorials/"
+type = "custom"
+icon = "paper.png"
+tags = ["Code"]
+
+[[links]] 
+name = "FoldingCoin Bounties"
+url = "http://foldingcoin.net/earn-fldc/"
+type = "custom"
+icon = "paper.png"
+tags = ["Code"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/assets/foldingcoin/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Bittrex"
+headline = "nein"
+url = "https://bittrex.com"
+type = "custom"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Counterparty AE"
+url = "http://blockscan.com/order?f=0"
+icon = "counterparty.png"
+tags = ["Apps","Exchange"]
+type = "custom"
+
+[[links]]
+name = "MasterXchange"
+headline = "nein"
+url = "http://masterxchange.com/"
+type = "custom"
+icon = "masterxchange.png"
+tags = ["Apps","Exchange"]
