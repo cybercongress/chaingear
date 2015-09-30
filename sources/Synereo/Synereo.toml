@@ -1,6 +1,6 @@
-dependencies = ["Mastercoin (Omni)"]
-source = "cyberFund"
+genesis_id = "00e7dab4291d8a4f5e7186981ac8b127e47fa65b2efbb0f3eee6b3ee2f1b1059"
 system = "Synereo"
+dependencies = ["Mastercoin (Omni)"]
 
 [descriptions]
 headline = "Social Platform Owned by the People Who Use It"
@@ -18,7 +18,8 @@ end_date = "2015-04-29T00:00:00"
 genesis_address = ["3BNGSfyKdTLvZwZAiUHdhgdENA9dJqgVq9"]
 funding_tems = "http://blog.synereo.com/2015/03/18/crowdsale/"
 funding_url = "https://crowdsale.synereo.com/"
-tokens_sold = 45439378.0
+tokens_sold = 45439378
+tokens_issued = 1680400000
 btc_raised = 342
 
 [ratings]
@@ -29,12 +30,11 @@ consensus_name = "PoSC"
 consensus_type = ""
 
 [token]
-token_name = ""
+token_name = "AMP"
 token_symbol = "AMP"
 
 [specs]
-supply = 45439378.0
-timestamp = 1431342962.0
+supply = 1680400000
 
   [specs.cap]
   usd = 143588.0
@@ -50,7 +50,7 @@ type = "website"
 [[links]]
 name = "Documentation"
 url = "http://www.synereo.com/whitepapers/synereo.pdf"
-icon = "whitepaper.png"
+icon = "paper.png"
 tags = ["Main", "Apps"]
 type = "paper"
 
@@ -71,25 +71,25 @@ type = "forum"
 [[links]]
 name = "Attention Economy Model"
 url = "http://www.synereo.com/learn-more/#attention-economy"
-tags = ["science"]
+tags = ["Science"]
 type = "paper"
 
 [[links]]
 name = "Synereo Network Dynamics - Basics - Chapter 1"
 url = "https://docs.google.com/presentation/d/12wZfRyF9XBMrc1ripXGfyNXCnO_MD7f2-Gc8AIa-v8o/pub?start=false&loop=false&slide=id.g4ecec4c43_37"
-tags = ["science"]
+tags = ["Science"]
 type = "paper"
 
 [[links]]
 name = "Synereo Network Dynamics - Synereos - Chapter 2"
 url = "https://docs.google.com/presentation/d/1DimMeRZx1qp0-m0DzyEZxc3IbYDfzovummDfRdeWT9U/present?slide=id.g5d99680d4_026"
-tags = ["science"]
+tags = ["Science"]
 type = "paper"
 
 [[links]]
 name = "Synereo Network Dynamics - Amplifying - Chapter 3"
 url = "https://docs.google.com/presentation/d/1MQ57q-ZraCBvx-pPFA-J-MpKN6v8AkUXtCaM79vU3L8/present?slide=id.g6d072a333_118"
-tags = ["science"]
+tags = ["Science"]
 type = "paper"
 
 [[links]]
@@ -99,3 +99,11 @@ url = "http://masterxchange.com/"
 type = "custom"
 icon = "masterxchange.png"
 tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Asset Page"
+headline = "nein"
+url = "http://omnichest.info/lookupsp.aspx?sp=39"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Apps","Analytics"]
