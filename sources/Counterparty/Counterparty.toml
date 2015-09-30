@@ -2,6 +2,22 @@ genesis_id = "685623401c3f5e9d2eaaf0657a50454e56a270ee7630d409e98d3bc257560098"
 system = "Counterparty"
 dependencies = ["Bitcoin"]
 
+[token]
+token_name = "XCP"
+token_symbol = "XCP"
+
+[consensus]
+consensus_type = "Proof-of-Work"
+consensus_name = "Counterparty"
+
+[descriptions]
+state = "Running"
+system_type = "Decentralized Application"
+headline = "A Platform for Free and Open Financial Tools on the Bitcoin Network"
+tags = ["DApp"]
+hashtag = "#counterparty"
+page_state = "ready"
+
 [aliases]
 coinmarketcap = "Counterparty"
 CurrencyName = "Counterparty"
@@ -9,20 +25,24 @@ CurrencyName = "Counterparty"
 [ratings]
 rating_cyber = 4
 
-[consensus]
-consensus_name = "Bitcoin"
-consensus_type = ""
-
-[descriptions]
-tags = ["DApp"]
-hashtag = "#counterparty"
-system_type = "dapp"
-
-[token]
-token_name = "XCP"
-token_symbol = "XCP"
-
 [specs]
+
+[crowdsale]
+start_date = "2014-01-02T02:40:50"
+end_date = "2014-02-02T00:00:00"
+genesis_address = ["1CounterpartyXXXXXXXXXXXXXXXUWLpVr"]
+funding_url = "https://bitcointalk.org/index.php?topic=395761.0"
+funding_tems = "https://bitcointalk.org/index.php?topic=395761.0"
+min_investment = 0.00
+funding_operator = "nein"
+tokens_sold = 2639127.58
+tokens_issued = 2639127.58
+btc_raised = 2125.63
+
+[[events]]
+name = "Genesis"
+start_date = "2014-01-02T22:19:37"
+url = "https://blockchain.info/tx/685623401c3f5e9d2eaaf0657a50454e56a270ee7630d409e98d3bc257560098"
 
 [[links]]
 name = "counterparty.io"
@@ -42,22 +62,22 @@ type = "explorer"
 name = "GitHub"
 url = "https://github.com/CounterpartyXCP"
 icon = "github.png"
-tags = ["Main", "Code"]
+tags = ["Code"]
 type = "github"
 
 [[links]]
-name = "Documentation"
+name = "Counterparty Documentation"
 url = "http://counterparty.io/docs/"
 icon = "whitepaper.png"
 tags = ["Main", "Science"]
-type = "papaer"
+type = "paper"
 
 [[links]]
 name = "Official Wallet"
 url = "https://counterwallet.io/"
+type = "wallet"
 icon = "counterparty.png"
 tags = ["Main", "Wallet"]
-type = "wallet"
 
 [[links]]
 name = "Twitter"
@@ -86,6 +106,34 @@ url = "http://www.reddit.com/r/counterparty_xcp"
 icon = "reddit.png"
 tags = ["News"]
 type = "reddit"
+
+[[links]]
+name = "CoinTelegraph"
+url = "http://cointelegraph.com/tags/counterparty"
+type = "custom"
+icon = "cointelegraph.png"
+tags = ["News"]
+
+[[links]]
+name = "CryptocoinNews"
+url = "https://www.cryptocoinsnews.com/tag/counterparty/"
+type = "custom"
+icon = "cryptocoinnews.jpg"
+tags = ["News"]
+
+[[links]]
+name = "CoinDesk"
+url = "http://www.coindesk.com/tag/counterparty/"
+type = "custom"
+icon = "coindesk.png"
+tags = ["News"]
+
+[[links]]
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=395761.0"
+icon = "forum.png"
+tags = ["News"]
+type = "forum"
 
 [[links]]
 name = "Google+"
@@ -121,6 +169,14 @@ headline = "nein"
 url = "https://www.poloniex.com"
 type = "custom"
 icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "ShapeShift"
+headline = "nein"
+url = "https://shapeshift.io"
+type = "custom"
+icon = "shapeshift.png"
 tags = ["Apps","Exchange"]
 
 [[links]]
