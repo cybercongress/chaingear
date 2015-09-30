@@ -1,47 +1,262 @@
-source = "cyberFund"
+genesis_id = "000001faef25dec4fbcf906e6242621df2c183bf232f263d0ba5b101911e4563"
 system = "BlackCoin"
-
-[aliases]
-coinmarketcap = "BlackCoin"
-CurrencyName = "BlackCoin"
-
-[consensus]
-hashing = "Scrypt"
-consensus_type = "Proof-of-Stake"
-
-[descriptions]
-state = "Running"
-system_type = ""
-
-[events]
-announcement = "16/02/2014"
-genesis = "24/02/2014"
 
 [token]
 token_name = "BlackCoin"
 token_symbol = "BLK"
 
+[consensus]
+consensus_type = "Hybrid POW+POS"
+consensus_name = "Scrypt" 
+hashing = "SHA-256"
+
+[descriptions]
+state = "Running"
+system_type = "Independent System"
+headline = "A peer-to-peer digital currency with a distributed, decentralized public ledger"
+page_state = "ready"
+
+[aliases]
+coinmarketcap = "BlackCoin"
+CurrencyName = "BlackCoin"
+
 [specs]
-p2p = 15715.0
-rpc = 15714.0
-block_time = 60.0
-block_reward = 10000.0
+p2p = 15715
+rpc = 15714
+block_time = 60
+block_reward = 10000
 halfing_cycle = "no halving"
-difficulty_cycle = 1.0
-txs_confirm = 10.0
-mint_confirm = 500.0
-ann = "https://bitcointalk.org/index.php?topic=469640.0"
-
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/rat4/blackcoin"
-  icon = "github.png"
+difficulty_cycle = 1
+txs_confirm = 10
+mint_confirm = 500
 
 [ratings]
 rating_cyber = 2.0
+
+[[events]]
+name = "Announcement" 
+start_date = "2014-02-16T06:06:19"
+url = "https://bitcointalk.org/index.php?topic=469640.0"
+
+[[events]]
+name = "Genesis"
+start_date = "2014-02-24T6:00:00"
+
+[[links]]
+name = "blackcoin.co"
+url = "http://blackcoin.co/"
+type = "website"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+name = "GitHub"
+url = "https://github.com/rat4/blackcoin"
+type = "github"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+name = "Wallet"
+url = "https://github.com/rat4/blackcoin/releases"
+type = "wallet"
+icon = "wallet.png"
+tags = ["Main", "Apps", "Wallet"]
+
+[[links]]
+name = "blog"
+url = "https://blog.bitcoinfoundation.org/"
+icon = "blog.png"
+tags = ["News"]
+type = "blog"
+
+[[links]]
+name = "Twitter"
+url = "https://twitter.com/coinblack"
+type = "twitter"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+name = "Facebook"
+url = "https://www.facebook.com/coinblack"
+type = "custom"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+name = "reddit"
+url = "https://www.reddit.com/r/blackcoin/"
+type = "reddit"
+icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+name = "CoinTelegraph"
+url = "http://cointelegraph.com/tags/blackcoin"
+type = "custom"
+icon = "cointelegraph.png"
+tags = ["News"]
+
+[[links]]
+name = "CryptocoinNews"
+url = "https://www.cryptocoinsnews.com/tag/blackcoin/"
+type = "custom"
+icon = "cryptocoinnews.jpg"
+tags = ["News"]
+
+[[links]]
+name = "Coinplorer"
+url = "https://coinplorer.com/BC"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Main", "Apps", "Analytics"]
+
+[[links]]
+name = "Bchain"
+url = "https://bchain.info/BC/"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+name = "cryptoID"
+url = "https://chainz.cryptoid.info/blk/"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+name = "Coinkite"
+url = "https://coinkite.com/"
+type = "wallet"
+icon = "coinkite.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+name = "HolyTransaction"
+url = "https://holytransaction.com/"
+type = "wallet"
+icon = "holytransaction.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+name = "Cointopay"
+url = "https://cointopay.com/"
+type = "wallet"
+icon = "holytransaction.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+name = "BitInfoCharts"
+url = "https://bitinfocharts.com/blackcoin/explorer/"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=599299.0"
+type = "forum"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+name = "Whitepaper"
+url = "http://blackcoin.co/blackcoin-pos-protocol-v2-whitepaper.pdf"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "Blackcoin Obsidian Stealth Wallet Tutorial"
+url = "http://blackcoin.co/files/Blackcoin_Obsidian_Tutorial_0.3.0.pdf"
+type = "paper"
+icon = "paper.png"
+section = ["Code"]
+
+[[links]]
+name = "Two Party double deposit trustless escrow in cryptographic networks and Bitcoin. by David Zimbeck "
+url = "http://blackcoin.co/files/Blackcoin_Obsidian_Tutorial_0.3.0.pdf"
+type = "paper"
+icon = "paper.png"
+section = ["Science"]
+
+[[links]]
+name = "BlackHalo"
+url = "http://blackhalo.info/"
+type = "custom"
+icon = "link.png"
+section = ["Apps"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/currencies/blackcoin/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "ShapeShift"
+headline = "nein"
+url = "https://shapeshift.io"
+type = "custom"
+icon = "shapeshift.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Cryptsy"
+headline = "nein"
+url = "https://www.cryptsy.com/users/register?refid=243274"
+type = "custom"
+icon = "cryptsy.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTC38"
+headline = "Cryptocurrensy Exchange"
+url = "http://www.btc38.com/trade_en.html"
+type = "custom"
+icon = "btc38.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "CCEDK"
+headline = "Your place for safe and secure crypto currency exchange"
+url = "https://www.ccedk.com/"
+type = "custom"
+icon = "ccedk.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTER"
+headline = "nein"
+url = "https://bter.com/"
+type = "custom"
+icon = "bter.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Bittrex"
+headline = "nein"
+url = "https://bittrex.com"
+type = "custom"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BlueTrade"
+headline = "nein"
+url = "https://bleutrade.com"
+type = "custom"
+icon = "bluetrade.png"
+tags = ["Apps","Exchange"]

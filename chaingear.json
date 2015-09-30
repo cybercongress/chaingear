@@ -5260,27 +5260,26 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "000001faef25dec4fbcf906e6242621df2c183bf232f263d0ba5b101911e4563",
         "system": "BlackCoin",
-        "aliases": {
-            "coinmarketcap": "BlackCoin",
-            "CurrencyName": "BlackCoin"
-        },
-        "consensus": {
-            "hashing": "Scrypt",
-            "consensus_type": "Proof-of-Stake"
-        },
-        "descriptions": {
-            "state": "Running",
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "16/02/2014",
-            "genesis": "24/02/2014"
-        },
         "token": {
             "token_name": "BlackCoin",
             "token_symbol": "BLK"
+        },
+        "consensus": {
+            "consensus_type": "Hybrid POW+POS",
+            "consensus_name": "Scrypt",
+            "hashing": "SHA-256"
+        },
+        "descriptions": {
+            "state": "Running",
+            "system_type": "Independent System",
+            "headline": "A peer-to-peer digital currency with a distributed, decentralized public ledger",
+            "page_state": "ready"
+        },
+        "aliases": {
+            "coinmarketcap": "BlackCoin",
+            "CurrencyName": "BlackCoin"
         },
         "specs": {
             "p2p": 15715,
@@ -5290,31 +5289,323 @@
             "halfing_cycle": "no halving",
             "difficulty_cycle": 1,
             "txs_confirm": 10,
-            "mint_confirm": 500,
-            "ann": "https://bitcointalk.org/index.php?topic=469640.0",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/rat4/blackcoin",
-                    "icon": "github.png"
-                }
-            ]
+            "mint_confirm": 500
         },
         "ratings": {
             "rating_cyber": 2
-        }
+        },
+        "events": [
+            {
+                "name": "Announcement",
+                "start_date": "2014-02-16T06:06:19",
+                "url": "https://bitcointalk.org/index.php?topic=469640.0"
+            },
+            {
+                "name": "Genesis",
+                "start_date": "2014-02-24T6:00:00"
+            }
+        ],
+        "links": [
+            {
+                "name": "blackcoin.co",
+                "url": "http://blackcoin.co/",
+                "type": "website",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "name": "GitHub",
+                "url": "https://github.com/rat4/blackcoin",
+                "type": "github",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "name": "Wallet",
+                "url": "https://github.com/rat4/blackcoin/releases",
+                "type": "wallet",
+                "icon": "wallet.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "blog",
+                "url": "https://blog.bitcoinfoundation.org/",
+                "icon": "blog.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "blog"
+            },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/coinblack",
+                "type": "twitter",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/coinblack",
+                "type": "custom",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/blackcoin/",
+                "type": "reddit",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CoinTelegraph",
+                "url": "http://cointelegraph.com/tags/blackcoin",
+                "type": "custom",
+                "icon": "cointelegraph.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CryptocoinNews",
+                "url": "https://www.cryptocoinsnews.com/tag/blackcoin/",
+                "type": "custom",
+                "icon": "cryptocoinnews.jpg",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Coinplorer",
+                "url": "https://coinplorer.com/BC",
+                "type": "explorer",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Bchain",
+                "url": "https://bchain.info/BC/",
+                "type": "explorer",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "cryptoID",
+                "url": "https://chainz.cryptoid.info/blk/",
+                "type": "explorer",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Coinkite",
+                "url": "https://coinkite.com/",
+                "type": "wallet",
+                "icon": "coinkite.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "HolyTransaction",
+                "url": "https://holytransaction.com/",
+                "type": "wallet",
+                "icon": "holytransaction.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "Cointopay",
+                "url": "https://cointopay.com/",
+                "type": "wallet",
+                "icon": "holytransaction.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "BitInfoCharts",
+                "url": "https://bitinfocharts.com/blackcoin/explorer/",
+                "type": "explorer",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=599299.0",
+                "type": "forum",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Whitepaper",
+                "url": "http://blackcoin.co/blackcoin-pos-protocol-v2-whitepaper.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "Blackcoin Obsidian Stealth Wallet Tutorial",
+                "url": "http://blackcoin.co/files/Blackcoin_Obsidian_Tutorial_0.3.0.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "section": [
+                    "Code"
+                ]
+            },
+            {
+                "name": "Two Party double deposit trustless escrow in cryptographic networks and Bitcoin. by David Zimbeck ",
+                "url": "http://blackcoin.co/files/Blackcoin_Obsidian_Tutorial_0.3.0.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "section": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "BlackHalo",
+                "url": "http://blackhalo.info/",
+                "type": "custom",
+                "icon": "link.png",
+                "section": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "Markets CMC",
+                "headline": "nein",
+                "url": "http://coinmarketcap.com/currencies/blackcoin/#markets",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Poloniex",
+                "headline": "nein",
+                "url": "https://www.poloniex.com",
+                "type": "custom",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "ShapeShift",
+                "headline": "nein",
+                "url": "https://shapeshift.io",
+                "type": "custom",
+                "icon": "shapeshift.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Cryptsy",
+                "headline": "nein",
+                "url": "https://www.cryptsy.com/users/register?refid=243274",
+                "type": "custom",
+                "icon": "cryptsy.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTC38",
+                "headline": "Cryptocurrensy Exchange",
+                "url": "http://www.btc38.com/trade_en.html",
+                "type": "custom",
+                "icon": "btc38.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "CCEDK",
+                "headline": "Your place for safe and secure crypto currency exchange",
+                "url": "https://www.ccedk.com/",
+                "type": "custom",
+                "icon": "ccedk.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTER",
+                "headline": "nein",
+                "url": "https://bter.com/",
+                "type": "custom",
+                "icon": "bter.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Bittrex",
+                "headline": "nein",
+                "url": "https://bittrex.com",
+                "type": "custom",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BlueTrade",
+                "headline": "nein",
+                "url": "https://bleutrade.com",
+                "type": "custom",
+                "icon": "bluetrade.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            }
+        ]
     },
     {
         "source": "cyberFund",
@@ -10282,7 +10573,8 @@
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
-                    "Apps"
+                    "Apps",
+                    "Analytics"
                 ],
                 "type": "explorer"
             },
@@ -10306,7 +10598,7 @@
                 "type": "paper"
             },
             {
-                "name": "Official Wallet",
+                "name": "Counterwallet",
                 "url": "https://counterwallet.io/",
                 "type": "wallet",
                 "icon": "counterparty.png",
@@ -10386,6 +10678,16 @@
                     "News"
                 ],
                 "type": "forum"
+            },
+            {
+                "name": "CoinDaddy",
+                "url": "https://coindaddy.io",
+                "type": "explorer",
+                "icon": "coindaddy.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
             },
             {
                 "name": "Google+",
@@ -19654,8 +19956,25 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "95396",
         "system": "FoldingCoin",
+        "dependencies": [
+            "Counterparty"
+        ],
+        "token": {
+            "token_name": "Foldingcoin",
+            "token_symbol": "FLDC"
+        },
+        "consensus": {
+            "consensus_type": "Blockchain Ledger",
+            "consensus_name": "Counterparty"
+        },
+        "descriptions": {
+            "state": "Running",
+            "system_type": "Blockchain Share",
+            "headline": "Mine Medicine, Not Hashes",
+            "page_state": "ready"
+        },
         "aliases": {
             "coinmarketcap": "FoldingCoin",
             "CurrencyName": "FoldingCoin"
@@ -19663,19 +19982,227 @@
         "ratings": {
             "rating_cyber": 2
         },
-        "descriptions": {
-            "system_type": ""
-        },
-        "consensus": {
-            "consensus_type": ""
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "FLDC"
-        },
         "specs": {
-            "links": []
-        }
+            "total_tokens": 1000000000
+        },
+        "crowdsale": {
+            "start_date": "2014-09-29T00:00:00",
+            "end_date": "2014-10-29T00:00:00",
+            "genesis_address": [
+                "12m9e3TqVTC8ndUagCPn6TXy1PPdw7kyGt"
+            ],
+            "funding_url": "http://foldingcoin.net/fundraising/",
+            "funding_tems": "https://bitcointalk.org/index.php?topic=781352.0",
+            "min_investment": 0,
+            "funding_operator": "nein",
+            "tokens_sold": 695051.082,
+            "tokens_issued": 1000000000,
+            "btc_raised": 3.04948918
+        },
+        "events": [
+            {
+                "name": "Annoucement",
+                "start_date": "2014-09-13T06:52:32",
+                "url": "https://bitcointalk.org/index.php?topic=781352.0"
+            }
+        ],
+        "links": [
+            {
+                "name": "foldingcoin.net",
+                "url": "http://foldingcoin.net/",
+                "type": "website",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "name": "Whitepaper",
+                "url": "http://foldingcoin.net/wp/wp-content/uploads/2015/02/FoldingCoin-White-Paper-v1.0.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "name": "Explorer",
+                "url": "http://blockscan.com/assetInfo/FLDC",
+                "type": "explorer",
+                "icon": "counterparty.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Counterwallet",
+                "url": "https://counterwallet.io/",
+                "type": "wallet",
+                "icon": "counterparty.png",
+                "tags": [
+                    "Main",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "FLDC News",
+                "url": "http://foldingcoin.net/news/",
+                "rss": "http://foldingcoin.net/feed/",
+                "type": "custom",
+                "icon": "blog.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/FoldingCoin",
+                "type": "twitter",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/FoldingCoin/",
+                "type": "reddit",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/FoldingCoin",
+                "type": "custom",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCc1YlgCEN3kMT6nI5suM76Q",
+                "type": "custom",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=781352.0",
+                "type": "forum",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CryptocoinNews",
+                "url": "https://www.cryptocoinsnews.com/tag/foldingcoin/",
+                "type": "custom",
+                "icon": "cryptocoinnews.jpg",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CoinDaddy",
+                "url": "https://coindaddy.io/search?network=xcp&q=FLDC",
+                "type": "explorer",
+                "icon": "coindaddy.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Folding Client",
+                "url": "https://folding.stanford.edu/",
+                "type": "wallet",
+                "icon": "wallet.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "FoldingCoin Tutorials",
+                "url": "http://foldingcoin.net/video-tutorials/",
+                "type": "custom",
+                "icon": "paper.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "name": "FoldingCoin Bounties",
+                "url": "http://foldingcoin.net/earn-fldc/",
+                "type": "custom",
+                "icon": "paper.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "name": "Markets CMC",
+                "headline": "nein",
+                "url": "http://coinmarketcap.com/assets/foldingcoin/#markets",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Poloniex",
+                "headline": "nein",
+                "url": "https://www.poloniex.com",
+                "type": "custom",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Bittrex",
+                "headline": "nein",
+                "url": "https://bittrex.com",
+                "type": "custom",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Counterparty AE",
+                "url": "http://blockscan.com/order?f=0",
+                "icon": "counterparty.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "MasterXchange",
+                "headline": "nein",
+                "url": "http://masterxchange.com/",
+                "type": "custom",
+                "icon": "masterxchange.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            }
+        ]
     },
     {
         "source": "cyberFund",
@@ -27324,6 +27851,9 @@
     {
         "source": "cyberFund",
         "system": "LTBcoin",
+        "dependencies": [
+            "Conterparty"
+        ],
         "aliases": {
             "coinmarketcap": "LTBcoin",
             "CurrencyName": "LTBcoin"
