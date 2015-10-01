@@ -1,50 +1,117 @@
-source = "cyberFund"
+genesis_id = "8a6061f3eb6592c9d4291aa1d3b89d736323eb5be8af92ee0dfaa5b10711d6ed"
 system = "Rubycoin"
+
+[token]
+token_name = "Rubycoin"
+token_symbol = "RBY"
+
+[consensus]
+consensus_type = "Proof-of-Stake"
+
+[descriptions]
+state = "Running"
+headline = "A Precious Gem for the Digital Age"
+system_type = "Independent System"
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "Rubycoin"
 CurrencyName = "Rubycoin"
 
-[consensus]
-hashing = "Scrypt"
-consensus_type = ""
-
-[descriptions]
-state = "Running"
-system_type = ""
-
-[events]
-announcement = "11/02/2014"
-
-[token]
-token_name = ""
-token_symbol = "RBY"
-
 [specs]
-block_time = 150.0
-block_reward = 500.0
-halfing_cycle = "1 month"
-total_tokens = 60000000.0
-premine_tokens = "1200000 coins(2%)"
-difficulty_cycle = 1.0
-raiting = 0.0
+block_time = 90
+
+[ratings]
+rating_cyber = 0.0
+
+[[events]]
+name = "Announcement" 
+start_date = "2014-02-11T00:00:00"
 
 [[links]]
-name = "web site"
+name = "rubycoin.org"
 url = "http://www.rubycoin.org/"
+type = "website"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "github"
-url = "https://www.dropbox.com/s/xmnboj5k5elrvo2/rubycoin-source.zip"
+name = "GitHub"
+url = "https://github.com/rubycoinorg"
+type = "github"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "Announcement"
-url = "https://bitcointalk.org/index.php?topic=459622.0"
+name = "Wallets"
+url = "https://github.com/rubycoinorg/rubycoin/releases/"
+type = "wallet"
+icon = "wallet.png"
+tags = ["Main", "Apps","Wallet"]
+
+[[links]]
+name = "cryptoID Explorer"
+url = "https://chainz.cryptoid.info/rby/"
+type = "explorer"
+icon = "explorer.png"
+tags = ["Main", "Apps","Wallet"]
+
+[[links]]
+name = "Twitter"
+url = "http://twitter.com/rubycoinorg"
+type = "twitter"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+name = "Twitter"
+url = "http://twitter.com/rubycoinorg"
+type = "twitter"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+name = "reddit"
+url = "http://www.reddit.com/r/rubycoin"
+type = "reddit"
+icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/currencies/bitcoin/#markets"
 type = "custom"
-tags = ["publications"]
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Cryptsy"
+headline = "nein"
+url = "https://www.cryptsy.com/users/register?refid=243274"
+type = "custom"
+icon = "cryptsy.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Bittrex"
+headline = "nein"
+url = "https://bittrex.com"
+type = "custom"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Cryptopia"
+url = "https://www.cryptopia.co.nz/"
+type = "custom"
+icon = "cryptopia.png"
+tags = ["Apps","Exchange"]
