@@ -1,60 +1,157 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "ff9f1c0116d19de7c9963845e129f9ed1bfc0b376eb54fd7afa42e0d418c8bb6"
 system = "MonaCoin"
+dependencies = ["independent"]
+
+[token]
+token_name = "Mona"
+token_symbol = "MONA"
+
+[consensus]
+consensus_type = "Proof-of-Work"
+consensus_name = "Dark Gravity Wave"
+hashing = "Lyra2REv2"
+
+[descriptions]
+state = "Running"
+system_type = "Independent System"
+headline = "A peer-to-peer payment network and digital currency based on an open source protocol"
+tags = ["DAO"]
+hashtag = "#monacoin"
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "MonaCoin"
 CurrencyName = "MonaCoin"
 
+[specs]
+rpc = 8332
+block_time = 90
+block_reward = 50
+halfing_cycle = 1051000
+total_tokens = 105120000
+
 [ratings]
 rating_cyber = 1.0
 
-[consensus]
-consensus_name = "Proof-of-Work"
-consensus_type = ""
-
-[descriptions]
-tags = ["DAO"]
-hashtag = "#monacoin"
-system_type = ""
-
-[token]
-token_name = ""
-token_symbol = "MONA"
-
-[specs]
-
 [[links]]
-name = "web site"
+name = "monacoin.org"
 url = "http://monacoin.org/"
+type = "website"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "explorer"
+name = "Explorer"
 url = "https://mona.chainsight.info/"
+type = "explorer"
 icon = "explorer.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main", "Apps","Analytics"]
 
 [[links]]
-name = "github"
+name = "GitHub"
 url = "https://github.com/monacoinproject/monacoin"
+type = "github"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "forum"
+name = "Wallets"
+url = "http://monacoin.org/en/download.html"
+type = "wallet"
+icon = "monacoin.png"
+tags = ["Main", "Apps","Wallet"]
+
+[[links]]
+name = "MultiMona Wallet"
+url = "http://monapu.github.io/multimona-site/index.en.html"
+type = "wallet"
+icon = "wallet.png"
+tags = ["Apps","Wallet"]
+
+[[links]]
+name = "Coinomi"
+url = "https://coinomi.com/"
+type = "wallet"
+icon = "coinomi.jpg"
+tags = ["Apps","Wallet"]
+
+[[links]]
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=392436.0"
+type = "forum"
 icon = "forum.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
 name = "reddit"
 url = "http://www.reddit.com/r/monacoin"
+type = "reddit"
 icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+name = "LA Pool"
+url = "http://multi.xau.jp/monacoin/"
+type = "custom"
+icon = "mining.png"
 tags = ["Apps"]
-type = ""
+
+[[links]]
+name = "VIP Pool"
+url = "http://vippool.net/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "ASICpool"
+url = "https://asicpool.info/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "MonaCoinPool"
+url = "http://monacoinpool.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Ani-Pool"
+url = "http://anipool.net/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+[[links]]
+
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/currencies/monacoin/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Cryptsy"
+headline = "nein"
+url = "https://www.cryptsy.com/users/register?refid=243274"
+type = "custom"
+icon = "cryptsy.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Bittrex"
+headline = "nein"
+url = "https://bittrex.com"
+type = "custom"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BlueTrade"
+headline = "nein"
+url = "https://bleutrade.com"
+type = "custom"
+icon = "bluetrade.png"
+tags = ["Apps","Exchange"]
