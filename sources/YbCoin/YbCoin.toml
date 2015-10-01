@@ -1,6 +1,21 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "000005aef7f601a0e5b5f17619735819d4250af7f0282954333e634335b35c9e"
 system = "YbCoin"
+dependencies = ["independent"]
+
+[token]
+token_name = "YBcoin"
+token_symbol = "YBC"
+
+[consensus]
+consensus_type = "Virtual Proof-of-Work"
+consensus_name = "Virtual Proof-of-Work"
+
+
+[descriptions]
+status = "running"
+system_type = "Independent System"
+tags = ["DAO"]
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "YbCoin"
@@ -9,23 +24,93 @@ CurrencyName = "YbCoin"
 [ratings]
 rating_cyber = 1.0
 
-[consensus]
-consensus_name = "Proof-of-Stake"
-consensus_type = ""
-
-[descriptions]
-tags = ["DAO"]
-system_type = ""
-
-[token]
-token_name = ""
-token_symbol = "YBC"
-
 [specs]
+total_tokens = 3000000
 
 [[links]]
-name = "web site"
-url = "http://www.ybcoin.com/"
+name = "ybcoin.com"
+url = "http://www.ybcoin.com/en/"
+type = "website"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
+
+[[links]]
+name = "Explorer"
+url = "http://explorer_ybc.taiyilabs.com/"
+type = "explorer"
+tags = ["Main","Apps","Analytics"]
+
+[[links]]
+name = "Wallet"
+url = "http://www.ybcoin.com/download"
+type = "wallet"
+tags = ["Main","Apps","Wallet"]
+
+[[links]]
+name = "BTT Thread"
+url = "http://www.ybcoin.com/download"
+type = "forum"
+tags = ["News"]
+
+[[links]]
+name = "Whitepaper"
+url = "http://www.ybcoin.com/wp-content/files/New_YBCoin_Whitepaper_V2.72_en.pdf"
+type = "paper"
+tags = ["Main","Science"]
+
+[[links]]
+name = "reddit"
+url = "http://www.reddit.com/r/ybcoin"
+type = "reddit"
+tags = ["News"]
+
+[[links]]
+name = "Twitter"
+url = "https://twitter.com/YBcoin"
+type = "twitter"
+tags = ["News"]
+
+[[links]]
+name = "GitHub"
+url = "https://github.com/ybc2/ybc2"
+type = "github"
+tags = ["Code"]
+
+[[links]]
+name = "8baochi"
+url = "http://www.8baochi.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/currencies/ybcoin/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Cryptsy"
+headline = "nein"
+url = "https://www.cryptsy.com/users/register?refid=243274"
+type = "custom"
+icon = "cryptsy.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "YuanBaoHui"
+headline = "nein"
+url = "https://yuanbaohui.com/"
+type = "custom"
+icon = "yuanbaohui.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTC38"
+headline = "Cryptocurrensy Exchange"
+url = "http://www.btc38.com/trade_en.html"
+type = "custom"
+icon = "btc38.png"
+tags = ["Apps","Exchange"]
