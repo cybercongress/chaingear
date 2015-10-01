@@ -1,27 +1,37 @@
 genesis_id = "438cf6375dab5a0d32f9b7bf151d4539e00a590f7c022d5572c7d41815a24be4"
 system = "NEM"
 
-[aliases]
-coinmarketcap = "NEM"
-CurrencyName = "xem"
-
-[descriptions]
-headline = "New Economy Movement"
-system_type = "DAO"
-state = "Running"
-page_state = "ready"
+[token]
+token_name = "NEM"
+token_symbol = "XEM"
 
 [consensus]
 consensus_type = "Proof-of-Importance"
 
-[token]
-token_name = "NEM"
-token_symbol = "XEM"
+[descriptions]
+state = "Running"
+system_type = "Independent System"
+headline = "New Economy Movement"
+page_state = "ready"
+
+[aliases]
+coinmarketcap = "NEM"
+CurrencyName = "xem"
 
 [specs]
 
 [ratings]
 rating_cyber = 3.0
+
+[crowdsale]
+start_date = "2014-01-19T00:00:00"
+end_date = "2014-04-10T00:00:00"
+genesis_address = ["1Lk5Paws9T1YpoSeLeZT7ZeSQKW7UNq4TJ", "NXT-Q9PM-KGDC-SNXJ-EXE5G"]
+funding_url = "https://bitcointalk.org/index.php?topic=440185.0"
+funding_tems = "https://bitcointalk.org/index.php?topic=422129.0"
+min_investment = 0.00
+funding_operator = "nein"
+btc_raised = 81.962205
 
 [[links]]
 name = "nem.io"
@@ -88,6 +98,26 @@ tags = ["News"]
 type = "custom"
 
 [[links]]
+name = "YouTube"
+url = "https://www.youtube.com/channel/UCkcbZePkFpr9UFQzhYX9Tfg"
+type = "custom"
+icon = "youtube.png"
+tags = ["News"]
+
+[[links]]
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=426303.0"
+type = "forum"
+tags = ["News"]
+
+[[links]]
+name = "CoinTelegraph"
+url = "http://cointelegraph.com/tags/nem"
+type = "custom"
+icon = "cointelegraph.png"
+tags = ["News"]
+
+[[links]]
 name = "NEM GitHub"
 url = "https://github.com/NewEconomyMovement"
 icon = "github.png"
@@ -148,9 +178,17 @@ icon = "bittrex.png"
 tags = ["Apps","Exchange"]
 
 [[links]]
-name = "Markets CMC"
+name = "BTER"
+headline = "nein"
+url = "https://bter.com/"
+type = "custom"
+icon = "bter.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "NEM NodeExplorer"
 headline = "nein"
 url = "http://www.nodeexplorer.com/"
-type = "custom"
+type = "explorer"
 tags = ["Apps","Analytics"]
-icon = "link.png"
+

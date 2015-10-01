@@ -24215,12 +24215,20 @@
             "consensus_type": ""
         },
         "token": {
-            "token_name": "",
+            "token_name": "Hellas",
             "token_symbol": "HLC"
         },
-        "specs": {
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=1107788.0",
+                "type": "forum",
+                "tags": [
+                    "Main"
+                ]
+            }
+        ]
     },
     {
         "source": "cyberFund",
@@ -33886,26 +33894,39 @@
     {
         "genesis_id": "438cf6375dab5a0d32f9b7bf151d4539e00a590f7c022d5572c7d41815a24be4",
         "system": "NEM",
-        "aliases": {
-            "coinmarketcap": "NEM",
-            "CurrencyName": "xem"
-        },
-        "descriptions": {
-            "headline": "New Economy Movement",
-            "system_type": "DAO",
-            "state": "Running",
-            "page_state": "ready"
-        },
-        "consensus": {
-            "consensus_type": "Proof-of-Importance"
-        },
         "token": {
             "token_name": "NEM",
             "token_symbol": "XEM"
         },
+        "consensus": {
+            "consensus_type": "Proof-of-Importance"
+        },
+        "descriptions": {
+            "state": "Running",
+            "system_type": "Independent System",
+            "headline": "New Economy Movement",
+            "page_state": "ready"
+        },
+        "aliases": {
+            "coinmarketcap": "NEM",
+            "CurrencyName": "xem"
+        },
         "specs": {},
         "ratings": {
             "rating_cyber": 3
+        },
+        "crowdsale": {
+            "start_date": "2014-01-19T00:00:00",
+            "end_date": "2014-04-10T00:00:00",
+            "genesis_address": [
+                "1Lk5Paws9T1YpoSeLeZT7ZeSQKW7UNq4TJ",
+                "NXT-Q9PM-KGDC-SNXJ-EXE5G"
+            ],
+            "funding_url": "https://bitcointalk.org/index.php?topic=440185.0",
+            "funding_tems": "https://bitcointalk.org/index.php?topic=422129.0",
+            "min_investment": 0,
+            "funding_operator": "nein",
+            "btc_raised": 81.962205
         },
         "links": [
             {
@@ -33994,6 +34015,32 @@
                 "type": "custom"
             },
             {
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCkcbZePkFpr9UFQzhYX9Tfg",
+                "type": "custom",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=426303.0",
+                "type": "forum",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CoinTelegraph",
+                "url": "http://cointelegraph.com/tags/nem",
+                "type": "custom",
+                "icon": "cointelegraph.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
                 "name": "NEM GitHub",
                 "url": "https://github.com/NewEconomyMovement",
                 "icon": "github.png",
@@ -34074,15 +34121,25 @@
                 ]
             },
             {
-                "name": "Markets CMC",
+                "name": "BTER",
+                "headline": "nein",
+                "url": "https://bter.com/",
+                "type": "custom",
+                "icon": "bter.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "NEM NodeExplorer",
                 "headline": "nein",
                 "url": "http://www.nodeexplorer.com/",
-                "type": "custom",
+                "type": "explorer",
                 "tags": [
                     "Apps",
                     "Analytics"
-                ],
-                "icon": "link.png"
+                ]
             }
         ]
     },
@@ -53120,11 +53177,27 @@
         ]
     },
     {
+        "genesis_id": "000005aef7f601a0e5b5f17619735819d4250af7f0282954333e634335b35c9e",
+        "system": "YbCoin",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "YbCoin",
+        "token": {
+            "token_name": "YBcoin",
+            "token_symbol": "YBC"
+        },
+        "consensus": {
+            "consensus_type": "Virtual Proof-of-Work",
+            "consensus_name": "Virtual Proof-of-Work"
+        },
+        "descriptions": {
+            "status": "running",
+            "system_type": "Independent System",
+            "tags": [
+                "DAO"
+            ],
+            "page_state": "ready"
+        },
         "aliases": {
             "coinmarketcap": "YbCoin",
             "CurrencyName": "YbCoin"
@@ -53132,31 +53205,132 @@
         "ratings": {
             "rating_cyber": 1
         },
-        "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": ""
+        "specs": {
+            "total_tokens": 3000000
         },
-        "descriptions": {
-            "tags": [
-                "DAO"
-            ],
-            "system_type": ""
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "YBC"
-        },
-        "specs": {},
         "links": [
             {
-                "name": "web site",
-                "url": "http://www.ybcoin.com/",
+                "name": "ybcoin.com",
+                "url": "http://www.ybcoin.com/en/",
+                "type": "website",
                 "icon": "website.png",
                 "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "name": "Explorer",
+                "url": "http://explorer_ybc.taiyilabs.com/",
+                "type": "explorer",
+                "tags": [
                     "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Wallet",
+                "url": "http://www.ybcoin.com/download",
+                "type": "wallet",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "BTT Thread",
+                "url": "http://www.ybcoin.com/download",
+                "type": "forum",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Whitepaper",
+                "url": "http://www.ybcoin.com/wp-content/files/New_YBCoin_Whitepaper_V2.72_en.pdf",
+                "type": "paper",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "name": "reddit",
+                "url": "http://www.reddit.com/r/ybcoin",
+                "type": "reddit",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/YBcoin",
+                "type": "twitter",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "GitHub",
+                "url": "https://github.com/ybc2/ybc2",
+                "type": "github",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "name": "8baochi",
+                "url": "http://www.8baochi.com/",
+                "type": "custom",
+                "icon": "mining.png",
+                "tags": [
                     "Apps"
-                ],
-                "type": ""
+                ]
+            },
+            {
+                "name": "Markets CMC",
+                "headline": "nein",
+                "url": "http://coinmarketcap.com/currencies/ybcoin/#markets",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Cryptsy",
+                "headline": "nein",
+                "url": "https://www.cryptsy.com/users/register?refid=243274",
+                "type": "custom",
+                "icon": "cryptsy.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "YuanBaoHui",
+                "headline": "nein",
+                "url": "https://yuanbaohui.com/",
+                "type": "custom",
+                "icon": "yuanbaohui.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTC38",
+                "headline": "Cryptocurrensy Exchange",
+                "url": "http://www.btc38.com/trade_en.html",
+                "type": "custom",
+                "icon": "btc38.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
             }
         ]
     },
