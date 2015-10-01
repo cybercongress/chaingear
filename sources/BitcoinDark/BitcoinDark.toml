@@ -1,6 +1,6 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "nein"
 system = "BitcoinDark"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "BitcoinDark"
@@ -10,14 +10,14 @@ CurrencyName = "BitcoinDark"
 rating_cyber = 1.0
 
 [consensus]
+consensus_type = "Proof-of-Stake"
 consensus_name = "Proof-of-Stake"
 hashing = "SHA-256d"
-consensus_type = ""
 
 [descriptions]
 state = "Running"
 tags = ["DAO"]
-system_type = ""
+system_type = "Independent System"
 
 [events]
 announcement = "09/07/2014"
@@ -27,29 +27,99 @@ token_name = ""
 token_symbol = "BTCD"
 
 [specs]
-p2p = 14631.0
-rpc = 14632.0
-block_time = 60.0
+p2p = 14631
+rpc = 14632
+block_time = 60
 block_reward = "Proof of Stake Reward: 5% per year"
-total_tokens = 22000000.0
-txs_confirm = 110.0
+total_tokens = 22000000
+txs_confirm = 110
 
 [[links]]
-name = "web site"
-url = "http://www.bitcoindark.org/"
+name = "bitcoindark.pw"
+url = "http://bitcoindark.pw/
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
+type = "website"
 
 [[links]]
-name = "github"
+name = "GitHub"
 url = "https://github.com/laowais/bitcoindark"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
+type = "github"
 
 [[links]]
-name = "Announcement"
+name = "Blog"
+url = "http://bitcoindark.pw/blog/"
+type = "blog"
+icon = "blog.png"
+tags = ["Main","News"]
+
+[[links]]
+name = "Wallets"
+url = "http://bitcoindark.pw/download/"
+type = "wallet"
+icon = "blog.png"
+tags = ["Main","Apps","Wallet"]
+
+[[links]]
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=684090.0"
+type = "forum"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+name = "Slack"
+url = "http://bitcoindark.pw/slack/"
 type = "custom"
-tags = ["publications"]
+icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/currencies/bitcoindark/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "ShapeShift"
+headline = "nein"
+url = "https://shapeshift.io"
+type = "custom"
+icon = "shapeshift.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Cryptsy"
+headline = "nein"
+url = "https://www.cryptsy.com/users/register?refid=243274"
+type = "custom"
+icon = "cryptsy.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTER"
+headline = "nein"
+url = "https://bter.com/"
+type = "custom"
+icon = "bter.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BlueTrade"
+headline = "nein"
+url = "https://bleutrade.com"
+type = "custom"
+icon = "bluetrade.png"
+tags = ["Apps","Exchange"]
