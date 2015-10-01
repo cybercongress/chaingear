@@ -43,34 +43,40 @@ tags = ["Main"]
 type = "website"
 
 [[links]]
-name = "Emercoin-blockchain.info"
-url = "https://emercoin-blockchain.info/"
+name = "Emercoin Explorer"
+url = "https://emercoin.mintr.org/"
 icon = "explorer.png"
-tags = ["Main", "Analytics"]
+tags = ["Main", "Apps", "Analytics"]
 type = "explorer"
 
 [[links]]
-name = "Exchange Analytics"
+name = "Markets CMC"
 headline = "nein"
 url = "http://coinmarketcap.com/currencies/emercoin/#markets"
 type = "custom"
-icon = "localbitcoins.png"
+icon = "link.png"
 tags = ["Analytics", "Apps"]
 
 [[links]]
 name = "Faucet"
 url = "http://emerfor.org/"
+type = "custom"
+icon = "link.png"
 tags = ["Main", "Apps"]
 
 [[links]]
 name = "Emergate POW Pool"
 url = "https://emergate.net/"
+type = "custom"
+icon = "mining.png"
 tags = ["Apps"]
 
 [[links]]
 name = "Mintr POS Pool"
 headline = "nein"
 url = "https://emercoin.mintr.org/wallet"
+type = "custom"
+icon = "mining.png"
 tags = ["Apps"]
 
 [[links]]
@@ -102,6 +108,14 @@ tags = ["News"]
 type = "forum"
 
 [[links]]
+name = "Bitcoinist"
+url = "http://bitcoinist.net/tag/emercoin/"
+rss = "http://bitcoinist.net/tag/emercoin/feed/"
+type = "custom"
+icon = "bitcoinist.png"
+tags = ["News"]
+
+[[links]]
 name = "Paper Wallet"
 url = "https://walletgenerator.net/?currency=EmerCoin"
 icon = "forum.png"
@@ -128,10 +142,13 @@ tags = ["Apps","Exchange"]
 name = "Bitex"
 headline = "nein"
 url = "https://bitex.club/markets/emcbtc"
+type = "custom"
+icon = "link.png"
 tags = ["Apps","Exchange"]
 
 [[links]]
 name = "Documentation"
 url = "http://emercoin.com/EMCDNS_and_NVS"
-icon = "whitepaper.png"
+type = "paper"
+icon = "paper.png"
 tags = ["Main","Code"]
