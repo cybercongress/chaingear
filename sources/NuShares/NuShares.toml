@@ -1,6 +1,22 @@
-dependencies = ["Peercoin", "Nubits"]
-source = "cyberFund"
+genesis_id = "nein"
 system = "NuShares"
+dependencies = ["Peercoin", "Nubits"]
+
+[token]
+token_name = "NuShare"
+token_symbol = "NSR"
+
+[consensus]
+consensus_type = "Proof-of-Stake"
+consensus_name = "NuBits"
+
+[descriptions]
+state = "running"
+system_type = ""
+headline = "Units held by individuals who wish to help support and maintain the Nu network"
+tags = ["DApp"]
+hashtag = "#nushares"
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "NuShares"
@@ -9,66 +25,129 @@ CurrencyName = "NuShares"
 [ratings]
 rating_cyber = 3.0
 
-[consensus]
-consensus_name = "NuBits"
-consensus_type = ""
-
-[descriptions]
-tags = ["DApp"]
-hashtag = "#nushares"
-system_type = ""
-
-[token]
-token_name = ""
-token_symbol = "NSR"
-
 [specs]
+total_tokens = 835000000
+
+[[links]]
+name = "NuShares Introduction"
+url = "https://nubits.com/nushares/introduction"
+type = "website"
+icon = "website.png"
+tags = ["Main", "Apps"]
 
 [[links]]
 name = "Documentation"
 url = "https://docs.nubits.com"
-icon = "whitepaper.png"
-tags = ["Main", "Apps"]
-type = ""
+type = "paper"
+icon = "paper.png"
+tags = ["Main", "Science"]
 
 [[links]]
-name = "bitbucket"
+name = "BitBucket"
 url = "https://bitbucket.org/JordanLeePeershares/nubit"
+type = "github"
 icon = "bitbucket.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "web site"
-url = "https://nubits.com"
-icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
-
-[[links]]
-name = "explorer"
+name = "Explorer"
 url = "https://blockexplorer.nu/"
+type = "explorer"
 icon = "explorer.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main", "Apps","Analytics"]
 
 [[links]]
-name = "twitter"
+name = "Twitter"
 url = "https://twitter.com/OfficialNuBits"
+type = "twitter"
 icon = "twitter.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main", "News"]
 
 [[links]]
-name = "forum"
+name = "Forum"
 url = "https://discuss.nubits.com/"
+type = "forum"
 icon = "forum.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
 name = "reddit"
 url = "http://www.reddit.com/r/NuBits"
+type = "reddit"
 icon = "reddit.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
+
+[[links]]
+name = "Nu Wallets"
+url = "https://nubits.com/download"
+type = "wallet"
+icon = "nubits.png"
+tags = ["Main", "Apps","Wallet"]
+
+[[links]]
+name = "Nu Droid"
+url = "https://nubits.com/resources/nudroid-mobile-wallet"
+type = "wallet"
+icon = "nubits.png"
+tags = ["Apps","Wallet"]
+
+[[links]]
+name = "Coinomi"
+url = "https://coinomi.com/"
+type = "wallet"
+icon = "coinomi.jpg"
+tags = ["Apps","Wallet"]
+
+[[links]]
+name = "NuShares Voting Mechanics"
+url = "https://nubits.com/nushares/voting-mechanics"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "NuShares Dividends"
+url = "https://nubits.com/nushares/dividends"
+type = "paper"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/assets/nushares/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Cryptsy"
+headline = "nein"
+url = "https://www.cryptsy.com/users/register?refid=243274"
+type = "custom"
+icon = "cryptsy.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTER"
+headline = "nein"
+url = "https://bter.com/"
+type = "custom"
+icon = "bter.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "CCEDK"
+headline = "Your place for safe and secure crypto currency exchange"
+url = "https://www.ccedk.com/"
+type = "custom"
+icon = "ccedk.png"
+tags = ["Apps","Exchange"]

@@ -3557,17 +3557,33 @@
         "dependencies": [
             "independent"
         ],
+        "token": {
+            "token_name": "NOTE",
+            "token_symbol": "NOTE"
+        },
+        "consensus": {
+            "consensus_name": "DPOS",
+            "consensus_type": "Delegated-Proof-of-Stake"
+        },
         "descriptions": {
+            "state": "development",
+            "system_type": "Blockchain Share",
             "headline": "The Ultimate One Stop Music Platform",
             "summary": "Notes at present are a User Issued Asset (UIA) on the BitShares network. They are a liquid and tradable crypto-token that each represent 1 unit of the upcoming fan engagement and intellectual property management blockchain currently referred to as BitShares Music.",
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "page_state": "ready"
         },
         "aliases": {
             "coinmarketcap": "NOTE",
             "CurrencyName": "BitShares Music"
+        },
+        "specs": {
+            "supply": 1274224570
+        },
+        "ratings": {
+            "rating_cyber": 3
         },
         "crowdsales": {
             "start_date": "2014-06-10T00:00:00",
@@ -3582,41 +3598,27 @@
             "tokens_issued": 1274224570,
             "btc_raised": 1438.12098051
         },
-        "ratings": {
-            "rating_cyber": 3
-        },
-        "consensus": {
-            "consensus_name": "DPOS",
-            "consensus_type": "Delegated-Proof-of-Stake"
-        },
-        "token": {
-            "token_name": "NOTE",
-            "token_symbol": "NOTE"
-        },
-        "specs": {
-            "supply": 1274224570
-        },
         "links": [
             {
                 "name": "whatarenotes.info",
                 "url": "http://whatarenotes.info/",
+                "type": "website",
                 "icon": "website.png",
                 "tags": [
                     "Main"
-                ],
-                "type": "site"
+                ]
             },
             {
                 "name": "peertracks.com",
                 "url": "http://peertracks.com/",
+                "type": "website",
                 "icon": "website.png",
                 "tags": [
                     "Main"
-                ],
-                "type": "site"
+                ]
             },
             {
-                "name": "Forum",
+                "name": "Bitshares Forum",
                 "url": "https://bitsharestalk.org/index.php/board,54.0.html",
                 "icon": "forum.png",
                 "tags": [
@@ -3629,6 +3631,7 @@
                 "url": "https://twitter.com/peertracks",
                 "icon": "twitter.png",
                 "tags": [
+                    "Main",
                     "News"
                 ],
                 "type": "twitter"
@@ -3645,11 +3648,65 @@
             {
                 "name": "Explorer",
                 "url": "http://www.bitsharesblocks.com/asset/info?asset=NOTE",
+                "type": "explorer",
                 "icon": "explorer.png",
                 "tags": [
-                    "Main"
-                ],
-                "type": "explorer"
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "BitShares Wallet",
+                "url": "https://bitshares.org/download/",
+                "type": "wallet",
+                "icon": "bitshares.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "Moonstone",
+                "url": "http://www.moonstone.io/",
+                "type": "wallet",
+                "icon": "moonstone.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "Markets CMC",
+                "headline": "nein",
+                "url": "http://coinmarketcap.com/assets/bitshares-music/#markets",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "BitShares AE",
+                "url": "http://www.bitsharesblocks.com/asset/info?asset=NOTE",
+                "type": "custom",
+                "icon": "bitshares.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Yunbi",
+                "headline": "nein",
+                "url": "https://yunbi.com/?lang=en",
+                "type": "custom",
+                "icon": "yunbi.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
             }
         ]
     },
@@ -32492,82 +32549,212 @@
         ]
     },
     {
+        "genesis_id": "ff9f1c0116d19de7c9963845e129f9ed1bfc0b376eb54fd7afa42e0d418c8bb6",
+        "system": "MonaCoin",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "MonaCoin",
-        "aliases": {
-            "coinmarketcap": "MonaCoin",
-            "CurrencyName": "MonaCoin"
-        },
-        "ratings": {
-            "rating_cyber": 1
+        "token": {
+            "token_name": "Mona",
+            "token_symbol": "MONA"
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "Dark Gravity Wave",
+            "hashing": "Lyra2REv2"
         },
         "descriptions": {
+            "state": "Running",
+            "system_type": "Independent System",
+            "headline": "A peer-to-peer payment network and digital currency based on an open source protocol",
             "tags": [
                 "DAO"
             ],
             "hashtag": "#monacoin",
-            "system_type": ""
+            "page_state": "ready"
         },
-        "token": {
-            "token_name": "",
-            "token_symbol": "MONA"
+        "aliases": {
+            "coinmarketcap": "MonaCoin",
+            "CurrencyName": "MonaCoin"
         },
-        "specs": {},
+        "specs": {
+            "rpc": 8332,
+            "block_time": 90,
+            "block_reward": 50,
+            "halfing_cycle": 1051000,
+            "total_tokens": 105120000
+        },
+        "ratings": {
+            "rating_cyber": 1
+        },
         "links": [
             {
-                "name": "web site",
+                "name": "monacoin.org",
                 "url": "http://monacoin.org/",
+                "type": "website",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "explorer",
+                "name": "Explorer",
                 "url": "https://mona.chainsight.info/",
+                "type": "explorer",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Apps",
+                    "Analytics"
+                ]
             },
             {
-                "name": "github",
+                "name": "GitHub",
                 "url": "https://github.com/monacoinproject/monacoin",
+                "type": "github",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "forum",
+                "name": "Wallets",
+                "url": "http://monacoin.org/en/download.html",
+                "type": "wallet",
+                "icon": "monacoin.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "MultiMona Wallet",
+                "url": "http://monapu.github.io/multimona-site/index.en.html",
+                "type": "wallet",
+                "icon": "wallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "Coinomi",
+                "url": "https://coinomi.com/",
+                "type": "wallet",
+                "icon": "coinomi.jpg",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=392436.0",
+                "type": "forum",
                 "icon": "forum.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
                 "name": "reddit",
                 "url": "http://www.reddit.com/r/monacoin",
+                "type": "reddit",
                 "icon": "reddit.png",
                 "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "LA Pool",
+                "url": "http://multi.xau.jp/monacoin/",
+                "type": "custom",
+                "icon": "mining.png",
+                "tags": [
                     "Apps"
-                ],
-                "type": ""
+                ]
+            },
+            {
+                "name": "VIP Pool",
+                "url": "http://vippool.net/",
+                "type": "custom",
+                "icon": "mining.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "ASICpool",
+                "url": "https://asicpool.info/",
+                "type": "custom",
+                "icon": "mining.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "MonaCoinPool",
+                "url": "http://monacoinpool.com/",
+                "type": "custom",
+                "icon": "mining.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "Ani-Pool",
+                "url": "http://anipool.net/",
+                "type": "custom",
+                "icon": "mining.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "Markets CMC",
+                "headline": "nein",
+                "url": "http://coinmarketcap.com/currencies/monacoin/#markets",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Cryptsy",
+                "headline": "nein",
+                "url": "https://www.cryptsy.com/users/register?refid=243274",
+                "type": "custom",
+                "icon": "cryptsy.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Bittrex",
+                "headline": "nein",
+                "url": "https://bittrex.com",
+                "type": "custom",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BlueTrade",
+                "headline": "nein",
+                "url": "https://bleutrade.com",
+                "type": "custom",
+                "icon": "bluetrade.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
             }
         ]
     },
@@ -36292,12 +36479,30 @@
         ]
     },
     {
+        "genesis_id": "nein",
+        "system": "NuShares",
         "dependencies": [
             "Peercoin",
             "Nubits"
         ],
-        "source": "cyberFund",
-        "system": "NuShares",
+        "token": {
+            "token_name": "NuShare",
+            "token_symbol": "NSR"
+        },
+        "consensus": {
+            "consensus_type": "Proof-of-Stake",
+            "consensus_name": "NuBits"
+        },
+        "descriptions": {
+            "state": "running",
+            "system_type": "",
+            "headline": "Units held by individuals who wish to help support and maintain the Nu network",
+            "tags": [
+                "DApp"
+            ],
+            "hashtag": "#nushares",
+            "page_state": "ready"
+        },
         "aliases": {
             "coinmarketcap": "NuShares",
             "CurrencyName": "NuShares"
@@ -36305,90 +36510,182 @@
         "ratings": {
             "rating_cyber": 3
         },
-        "consensus": {
-            "consensus_name": "NuBits",
-            "consensus_type": ""
+        "specs": {
+            "total_tokens": 835000000
         },
-        "descriptions": {
-            "tags": [
-                "DApp"
-            ],
-            "hashtag": "#nushares",
-            "system_type": ""
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "NSR"
-        },
-        "specs": {},
         "links": [
             {
-                "name": "Documentation",
-                "url": "https://docs.nubits.com",
-                "icon": "whitepaper.png",
-                "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
-            },
-            {
-                "name": "bitbucket",
-                "url": "https://bitbucket.org/JordanLeePeershares/nubit",
-                "icon": "bitbucket.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ],
-                "type": ""
-            },
-            {
-                "name": "web site",
-                "url": "https://nubits.com",
+                "name": "NuShares Introduction",
+                "url": "https://nubits.com/nushares/introduction",
+                "type": "website",
                 "icon": "website.png",
                 "tags": [
                     "Main",
                     "Apps"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "explorer",
+                "name": "Documentation",
+                "url": "https://docs.nubits.com",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "name": "BitBucket",
+                "url": "https://bitbucket.org/JordanLeePeershares/nubit",
+                "type": "github",
+                "icon": "bitbucket.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "name": "Explorer",
                 "url": "https://blockexplorer.nu/",
+                "type": "explorer",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Apps",
+                    "Analytics"
+                ]
             },
             {
-                "name": "twitter",
+                "name": "Twitter",
                 "url": "https://twitter.com/OfficialNuBits",
+                "type": "twitter",
                 "icon": "twitter.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
-                "name": "forum",
+                "name": "Forum",
                 "url": "https://discuss.nubits.com/",
+                "type": "forum",
                 "icon": "forum.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
                 "name": "reddit",
                 "url": "http://www.reddit.com/r/NuBits",
+                "type": "reddit",
                 "icon": "reddit.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
+            },
+            {
+                "name": "Nu Wallets",
+                "url": "https://nubits.com/download",
+                "type": "wallet",
+                "icon": "nubits.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "Nu Droid",
+                "url": "https://nubits.com/resources/nudroid-mobile-wallet",
+                "type": "wallet",
+                "icon": "nubits.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "Coinomi",
+                "url": "https://coinomi.com/",
+                "type": "wallet",
+                "icon": "coinomi.jpg",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "NuShares Voting Mechanics",
+                "url": "https://nubits.com/nushares/voting-mechanics",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "NuShares Dividends",
+                "url": "https://nubits.com/nushares/dividends",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "Markets CMC",
+                "headline": "nein",
+                "url": "http://coinmarketcap.com/assets/nushares/#markets",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Poloniex",
+                "headline": "nein",
+                "url": "https://www.poloniex.com",
+                "type": "custom",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "Cryptsy",
+                "headline": "nein",
+                "url": "https://www.cryptsy.com/users/register?refid=243274",
+                "type": "custom",
+                "icon": "cryptsy.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTER",
+                "headline": "nein",
+                "url": "https://bter.com/",
+                "type": "custom",
+                "icon": "bter.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "CCEDK",
+                "headline": "Your place for safe and secure crypto currency exchange",
+                "url": "https://www.ccedk.com/",
+                "type": "custom",
+                "icon": "ccedk.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
             }
         ]
     },
