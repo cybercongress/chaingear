@@ -1,15 +1,31 @@
+genesis_id = "108497"
 system = "GetGems"
 dependencies = ["Bitcoin", "Counterparty"]
 
+[token]
+token_name = "GEMZ"
+token_symbol = "GEMZ"
+
+[consensus]
+consensus_name = "Counterparty"
+consensus_type = "Blockchain Ledger"
+
 [descriptions]
+state = "Running"
+system_type = "Decentralized Application"
 headline = "Messaging that Pays"
 summary = "GetGems is a fully decentralized social messaging app, run by all GetGem users. You are no longer the product being sold, but have full control over your privacy and can turn your own data to rewards if you wish. Gems also make it a breeze to send each other cryptocurrency as simple as messaging."
 tags = ["DApp"]
-system_type = ""
 
 [aliases]
 coinmarketcap = "GetGems"
 CurrencyName = "GetGems"
+
+[specs]
+total_tokens = 100000000
+
+[ratings]
+rating_cyber = 4.0
 
 [crowdsales]
 start_date = "2014-01-12T00:00:00"
@@ -21,19 +37,6 @@ funding_url = "https://koinify.com/#/project/GEMZ"
 tokens_sold = 38135367
 btc_raised = 2633
 
-[ratings]
-rating_cyber = 4.0
-
-[consensus]
-consensus_name = "Counterparty"
-consensus_type = "Proof-of-Work"
-
-[token]
-token_name = "GEMZ"
-token_symbol = "GEMZ"
-
-[specs]
-
 [[links]]
 name = "getgems.org"
 url = "http://getgems.org/"
@@ -43,7 +46,7 @@ type = "website"
 
 [[links]]
 name = "BlockScan"
-url = "http://blockscan.com/assetInfo.aspx?q=GEMZ"
+url = "http://blockscan.com/assetInfo/GEMZ"
 icon = "explorer.png"
 tags = ["Main", "Apps","Analytics"]
 type = "explorer"
@@ -63,18 +66,53 @@ tags = ["News"]
 type = "blog"
 
 [[links]]
+name = "CoinDesk"
+url = "http://www.coindesk.com/tag/gems/"
+type = "custom"
+icon = "coindesk.png"
+tags = ["News"]
+
+[[links]]
+name = "CoinTelegraph"
+url = "http://cointelegraph.com/search?query=getgems"
+type = "custom"
+icon = "cointelegraph.png"
+tags = ["News"]
+
+[[links]]
+name = "CryptocoinNews"
+url = "https://www.cryptocoinsnews.com/tag/gems/"
+type = "custom"
+icon = "cryptocoinnews.jpg"
+tags = ["News"]
+
+[[links]]
+name = "Bitcoinist"
+url = "http://bitcoinist.net/?s=getgems"
+type = "custom"
+icon = "bitcoinist.jpg"
+tags = ["News"]
+
+[[links]]
 name = "GetGems Android"
 url = "https://play.google.com/store/apps/details?id=org.getgemsmessenger.app"
 icon = "getgems-android.png"
-tags = ["Main", "Apps"]
+tags = ["Main", "Apps","Wallet"]
 type = "custom"
 
 [[links]]
 name = "GetGems IOS"
 url = "https://itunes.apple.com/app/id942306232"
 icon = "getgems-ios.png"
-tags = ["Main", "Apps"]
+tags = ["Main", "Apps","Wallet"]
 type = "custom"
+
+[[links]]
+name = "CoinDaddy"
+url = "https://coindaddy.io/search?network=xcp&q=gemz"
+icon = "coindaddy.png"
+tags = ["Apps","Analytics"]
+type = "explorer"
 
 [[links]]
 name = "Counterparty DEX"
@@ -93,11 +131,11 @@ icon = "poloniex.png"
 tags = ["Apps","Exchange"]
 
 [[links]]
-name = "BTC38"
-headline = "Cryptocurrensy Exchange"
-url = "http://www.btc38.com/trade_en.html"
+name = "ShapeShift"
+headline = "nein"
+url = "https://shapeshift.io"
 type = "custom"
-icon = "btc38.png"
+icon = "shapeshift.png"
 tags = ["Apps","Exchange"]
 
 [[links]]
@@ -106,6 +144,14 @@ headline = "nein"
 url = "https://bittrex.com/"
 type = "custom"
 icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTER"
+headline = "nein"
+url = "https://bter.com/"
+type = "custom"
+icon = "bter.png"
 tags = ["Apps","Exchange"]
 
 [[links]]
