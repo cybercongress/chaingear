@@ -2,15 +2,31 @@ genesis_id = "358"
 system = "BitShares Music"
 dependencies = ["independent"]
 
+[token]
+token_name = "NOTE"
+token_symbol = "NOTE"
+
+[consensus]
+consensus_name = "DPOS"
+consensus_type = "Delegated-Proof-of-Stake"
+
 [descriptions]
+state = "development"
+system_type = "Blockchain Share"
 headline = "The Ultimate One Stop Music Platform"
 summary = "Notes at present are a User Issued Asset (UIA) on the BitShares network. They are a liquid and tradable crypto-token that each represent 1 unit of the upcoming fan engagement and intellectual property management blockchain currently referred to as BitShares Music."
 tags = ["DAO"]
-system_type = ""
+page_state = "ready"
 
 [aliases]
 coinmarketcap = "NOTE"
 CurrencyName = "BitShares Music"
+
+[specs]
+supply = 1274224570
+
+[ratings]
+rating_cyber = 3.0
 
 [crowdsales]
 start_date = "2014-06-10T00:00:00"
@@ -23,36 +39,22 @@ tokens_sold = 300000000
 tokens_issued = 1274224570
 btc_raised = 1438.12098051
 
-[ratings]
-rating_cyber = 3.0
-
-[consensus]
-consensus_name = "DPOS"
-consensus_type = "Delegated-Proof-of-Stake"
-
-[token]
-token_name = "NOTE"
-token_symbol = "NOTE"
-
-[specs]
-supply = 1274224570
-
 [[links]]
 name = "whatarenotes.info"
 url = "http://whatarenotes.info/"
+type = "website"
 icon = "website.png"
 tags = ["Main"]
-type = "site"
 
 [[links]]
 name = "peertracks.com"
 url = "http://peertracks.com/"
+type = "website"
 icon = "website.png"
 tags = ["Main"]
-type = "site"
 
 [[links]]
-name = "Forum"
+name = "Bitshares Forum"
 url = "https://bitsharestalk.org/index.php/board,54.0.html"
 icon = "forum.png"
 tags = ["News"]
@@ -62,7 +64,7 @@ type = "forum"
 name = "@peertracks"
 url = "https://twitter.com/peertracks"
 icon = "twitter.png"
-tags = ["News"]
+tags = ["Main","News"]
 type = "twitter"
 
 [[links]]
@@ -75,6 +77,43 @@ type = "custom"
 [[links]]
 name = "Explorer"
 url = "http://www.bitsharesblocks.com/asset/info?asset=NOTE"
-icon = "explorer.png"
-tags = ["Main"]
 type = "explorer"
+icon = "explorer.png"
+tags = ["Main","Apps","Analytics"]
+
+[[links]]
+name = "BitShares Wallet"
+url = "https://bitshares.org/download/"
+type = "wallet"
+icon = "bitshares.png"
+tags = ["Apps","Wallet"]
+
+[[links]]
+name = "Moonstone"
+url = "http://www.moonstone.io/"
+type = "wallet"
+icon = "moonstone.png"
+tags = ["Apps","Wallet"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/assets/bitshares-music/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "BitShares AE"
+url = "http://www.bitsharesblocks.com/asset/info?asset=NOTE"
+type = "custom"
+icon = "bitshares.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Yunbi"
+headline = "nein"
+url = "https://yunbi.com/?lang=en"
+type = "custom"
+icon = "yunbi.png"
+tags = ["Apps","Exchange"] 
