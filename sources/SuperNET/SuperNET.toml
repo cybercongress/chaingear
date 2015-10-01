@@ -2,6 +2,14 @@ genesis_id = "12071612744977229797"
 system = "SuperNET"
 dependencies = ["NXT"]
 
+[token]
+token_name = "Unity"
+token_symbol = "UNITY"
+
+[consensus]
+consensus_name = "NXT"
+consensus_type = "Proof-of-Stake"
+
 [aliases]
 coinmarketcap = "SuperNET"
 CurrencyName = "SuperNET"
@@ -9,19 +17,14 @@ CurrencyName = "SuperNET"
 [ratings]
 rating_cyber = 2.0
 
-[consensus]
-consensus_name = "NXT"
-consensus_type = "Proof-of-Stake"
-
 [descriptions]
+state = "Running"
+headline = "An association of the most reliable blockchain technologies giving you access to all their innovation from one place"
 tags = ["DApp"]
-system_type = ""
+system_type = "Blockchain Share"
+page_state = "ready"
 
-[token]
-token_name = ""
-token_symbol = "UNITY"
-
-[crowdsale]
+[crowdsales]
 start_date = "2014-04-30T00:00:00"
 end_date = "2014-09-23T00:00:00"
 genesis_address = ["NXT-MRBN-8DFH-PFMK-A4DBM"]
@@ -83,7 +86,7 @@ name = "Wiki"
 url = "http://wiki.supernet.org/wiki/Main_Page"
 type = "wiki"
 icon = "wiki.png"
-tags = ["Code"]
+tags = ["Main","Code"]
 
 [[links]]
 name = "SuperNET API"
@@ -122,3 +125,10 @@ url = "http://nxtreporting.com"
 icon = "nxt.png"
 tags = ["Apps","Exchange"]
 type = "custom"
+
+[[links]]
+name = "Slack"
+url = "http://slackinvite.supernet.org/"
+type = "custom"
+icon = "slack.png"
+tags = ["News"]

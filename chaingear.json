@@ -16624,21 +16624,22 @@
                 "type": "website"
             },
             {
-                "name": "Emercoin-blockchain.info",
-                "url": "https://emercoin-blockchain.info/",
+                "name": "Emercoin Explorer",
+                "url": "https://emercoin.mintr.org/",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
+                    "Apps",
                     "Analytics"
                 ],
                 "type": "explorer"
             },
             {
-                "name": "Exchange Analytics",
+                "name": "Markets CMC",
                 "headline": "nein",
                 "url": "http://coinmarketcap.com/currencies/emercoin/#markets",
                 "type": "custom",
-                "icon": "localbitcoins.png",
+                "icon": "link.png",
                 "tags": [
                     "Analytics",
                     "Apps"
@@ -16647,6 +16648,8 @@
             {
                 "name": "Faucet",
                 "url": "http://emerfor.org/",
+                "type": "custom",
+                "icon": "link.png",
                 "tags": [
                     "Main",
                     "Apps"
@@ -16655,6 +16658,8 @@
             {
                 "name": "Emergate POW Pool",
                 "url": "https://emergate.net/",
+                "type": "custom",
+                "icon": "mining.png",
                 "tags": [
                     "Apps"
                 ]
@@ -16663,6 +16668,8 @@
                 "name": "Mintr POS Pool",
                 "headline": "nein",
                 "url": "https://emercoin.mintr.org/wallet",
+                "type": "custom",
+                "icon": "mining.png",
                 "tags": [
                     "Apps"
                 ]
@@ -16704,6 +16711,16 @@
                 "type": "forum"
             },
             {
+                "name": "Bitcoinist",
+                "url": "http://bitcoinist.net/tag/emercoin/",
+                "rss": "http://bitcoinist.net/tag/emercoin/feed/",
+                "type": "custom",
+                "icon": "bitcoinist.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
                 "name": "Paper Wallet",
                 "url": "https://walletgenerator.net/?currency=EmerCoin",
                 "icon": "forum.png",
@@ -16739,6 +16756,8 @@
                 "name": "Bitex",
                 "headline": "nein",
                 "url": "https://bitex.club/markets/emcbtc",
+                "type": "custom",
+                "icon": "link.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -16747,7 +16766,8 @@
             {
                 "name": "Documentation",
                 "url": "http://emercoin.com/EMCDNS_and_NVS",
-                "icon": "whitepaper.png",
+                "type": "paper",
+                "icon": "paper.png",
                 "tags": [
                     "Main",
                     "Code"
@@ -20031,7 +20051,7 @@
         "specs": {
             "total_tokens": 1000000000
         },
-        "crowdsale": {
+        "crowdsales": {
             "start_date": "2014-09-29T00:00:00",
             "end_date": "2014-10-29T00:00:00",
             "genesis_address": [
@@ -33915,7 +33935,7 @@
         "ratings": {
             "rating_cyber": 3
         },
-        "crowdsale": {
+        "crowdsales": {
             "start_date": "2014-01-19T00:00:00",
             "end_date": "2014-04-10T00:00:00",
             "genesis_address": [
@@ -34027,6 +34047,7 @@
                 "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=426303.0",
                 "type": "forum",
+                "icon": "forum.png",
                 "tags": [
                     "News"
                 ]
@@ -34136,6 +34157,7 @@
                 "headline": "nein",
                 "url": "http://www.nodeexplorer.com/",
                 "type": "explorer",
+                "icon": "explorer.png",
                 "tags": [
                     "Apps",
                     "Analytics"
@@ -48964,6 +48986,14 @@
         "dependencies": [
             "NXT"
         ],
+        "token": {
+            "token_name": "Unity",
+            "token_symbol": "UNITY"
+        },
+        "consensus": {
+            "consensus_name": "NXT",
+            "consensus_type": "Proof-of-Stake"
+        },
         "aliases": {
             "coinmarketcap": "SuperNET",
             "CurrencyName": "SuperNET"
@@ -48971,21 +49001,16 @@
         "ratings": {
             "rating_cyber": 2
         },
-        "consensus": {
-            "consensus_name": "NXT",
-            "consensus_type": "Proof-of-Stake"
-        },
         "descriptions": {
+            "state": "Running",
+            "headline": "An association of the most reliable blockchain technologies giving you access to all their innovation from one place",
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "Blockchain Share",
+            "page_state": "ready"
         },
-        "token": {
-            "token_name": "",
-            "token_symbol": "UNITY"
-        },
-        "crowdsale": {
+        "crowdsales": {
             "start_date": "2014-04-30T00:00:00",
             "end_date": "2014-09-23T00:00:00",
             "genesis_address": [
@@ -49065,6 +49090,7 @@
                 "type": "wiki",
                 "icon": "wiki.png",
                 "tags": [
+                    "Main",
                     "Code"
                 ]
             },
@@ -49119,6 +49145,15 @@
                     "Exchange"
                 ],
                 "type": "custom"
+            },
+            {
+                "name": "Slack",
+                "url": "http://slackinvite.supernet.org/",
+                "type": "custom",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
             }
         ]
     },
