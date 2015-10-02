@@ -3,8 +3,8 @@ dependencies = ["Ethereum"]
 system = "Augur"
 
 [aliases]
-coinmarketcap = ""
-CurrencyName = ""
+coinmarketcap = "Augur"
+CurrencyName = "Augur"
 nickname = "Augur"
 
 [ratings]
@@ -34,6 +34,10 @@ token_symbol = "REP"
 [specs]
 total_tokens = 11000000
 
+[specs.cap]
+usd = 5234505
+btc = 22036
+
 [crowdsales]
 start_date = "2015-08-17T00:00:00"
 end_date = "2015-10-01T00:00:00"
@@ -41,7 +45,7 @@ genesis_address = ["3N6S9PLVizPuf8nZkhVzp11PKhTiuTVE6R","0xe28e72fcf78647adce1f1
 funding_tems = "http://www.augur.net/blog/the-augur-crowdsale"
 funding_url = "http://sale.augur.net/"
 tokens_sold = 8000000
-btc_raised = 18785
+btc_raised = 22036
 
 [[links]]
 name = "Augur.net"
@@ -98,6 +102,34 @@ url = "http://reddit.com/r/augur"
 icon = "reddit.png"
 tags = ["News"]
 type = "reddit"
+
+[[links]]
+name = "CoinDesk"
+url = "http://www.coindesk.com/?s=augur"
+type = "custom"
+icon = "coindesk.png"
+tags = ["News"]
+
+[[links]]
+name = "CoinTelegraph"
+url = "http://cointelegraph.com/search?query=augur"
+type = "custom"
+icon = "cointelegraph.png"
+tags = ["News"]
+
+[[links]]
+name = "CryptocoinNews"
+url = "https://www.cryptocoinsnews.com/tag/augur/"
+type = "custom"
+icon = "cryptocoinnews.jpg"
+tags = ["News"]
+
+[[links]]
+name = "Bitcoinist"
+url = "http://bitcoinist.net/tag/augur/"
+type = "custom"
+icon = "bitcoinist.jpg"
+tags = ["News"]
 
 [[links]]
 name = "Augur GitHub"

@@ -1250,8 +1250,8 @@
         ],
         "system": "Augur",
         "aliases": {
-            "coinmarketcap": "",
-            "CurrencyName": "",
+            "coinmarketcap": "Augur",
+            "CurrencyName": "Augur",
             "nickname": "Augur"
         },
         "ratings": {},
@@ -1280,7 +1280,11 @@
             "token_symbol": "REP"
         },
         "specs": {
-            "total_tokens": 11000000
+            "total_tokens": 11000000,
+            "cap": {
+                "usd": 5234505,
+                "btc": 22036
+            }
         },
         "crowdsales": {
             "start_date": "2015-08-17T00:00:00",
@@ -1292,7 +1296,7 @@
             "funding_tems": "http://www.augur.net/blog/the-augur-crowdsale",
             "funding_url": "http://sale.augur.net/",
             "tokens_sold": 8000000,
-            "btc_raised": 18785
+            "btc_raised": 22036
         },
         "links": [
             {
@@ -1367,6 +1371,42 @@
                     "News"
                 ],
                 "type": "reddit"
+            },
+            {
+                "name": "CoinDesk",
+                "url": "http://www.coindesk.com/?s=augur",
+                "type": "custom",
+                "icon": "coindesk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CoinTelegraph",
+                "url": "http://cointelegraph.com/search?query=augur",
+                "type": "custom",
+                "icon": "cointelegraph.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CryptocoinNews",
+                "url": "https://www.cryptocoinsnews.com/tag/augur/",
+                "type": "custom",
+                "icon": "cryptocoinnews.jpg",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Bitcoinist",
+                "url": "http://bitcoinist.net/tag/augur/",
+                "type": "custom",
+                "icon": "bitcoinist.jpg",
+                "tags": [
+                    "News"
+                ]
             },
             {
                 "name": "Augur GitHub",
@@ -12746,11 +12786,27 @@
         ]
     },
     {
+        "genesis_id": "20bbf1cb1115ccda06c0cce115f5b72a78055a163892575988d1c8ee085f5e86",
+        "system": "DNotes",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "DNotes",
+        "token": {
+            "token_name": "DNote",
+            "token_symbol": "NOTE"
+        },
+        "consensus": {
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "Scrypt",
+            "hashing": "SHA-256"
+        },
+        "descriptions": {
+            "state": "Running",
+            "system_type": "Independent System",
+            "tags": [
+                "DAO"
+            ]
+        },
         "aliases": {
             "coinmarketcap": "DNotes",
             "CurrencyName": "DNotes"
@@ -12758,24 +12814,8 @@
         "ratings": {
             "rating_cyber": 1
         },
-        "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Scrypt",
-            "consensus_type": ""
-        },
-        "descriptions": {
-            "state": "Running",
-            "tags": [
-                "DAO"
-            ],
-            "system_type": ""
-        },
         "events": {
             "announcement": "16/02/2014"
-        },
-        "token": {
-            "token_name": "",
-            "token_symbol": "NOTE"
         },
         "specs": {
             "p2p": 11224,
@@ -12788,7 +12828,7 @@
         },
         "links": [
             {
-                "name": "web site",
+                "name": "dnotescoin.com",
                 "url": "http://dnotescoin.com/",
                 "icon": "website.png",
                 "tags": [
@@ -12798,59 +12838,99 @@
                 "type": ""
             },
             {
-                "name": "github",
+                "name": "GitHub",
                 "url": "https://github.com/DNotesCoin/DNotes/",
+                "type": "github",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "explorer",
-                "url": "http://explorer.cryptoblox.com/chain/DNotes",
+                "name": "E-Waluty Explorer",
+                "url": "http://explorer.e-waluty.net.pl/NOTE/",
+                "type": "explorer",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Apps",
+                    "Analytics"
+                ]
             },
             {
-                "name": "twitter",
-                "url": "https://twitter.com/DNotesCoin",
-                "icon": "twitter.png",
+                "name": "Wallets",
+                "url": "http://dnotescoin.com/download.php",
+                "type": "wallet",
+                "icon": "wallet.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Apps",
+                    "Wallet"
+                ]
             },
             {
-                "name": "forum",
-                "url": "https://bitcointalk.org/index.php?topic=470155.0",
-                "icon": "forum.png",
+                "name": "DNotes Vault",
+                "url": "https://dnotesvault.com/",
+                "type": "wallet",
+                "icon": "dnote.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/DNotesCoin",
+                "type": "twitter",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Dnotescoin-777105165651768/timeline/",
+                "type": "custom",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "YouTube",
+                "url": "https://www.youtube.com/user/dnotescoin",
+                "type": "custom",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
             },
             {
                 "name": "reddit",
                 "url": "http://www.reddit.com/r/DNotes/",
+                "type": "reddit",
                 "icon": "reddit.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
-                "name": "Announcement",
+                "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=470155.0",
-                "type": "custom",
+                "type": "forum",
+                "icon": "forum.png",
                 "tags": [
-                    "publications"
+                    "News"
+                ]
+            },
+            {
+                "name": "Bitcoinist",
+                "url": "http://bitcoinist.net/?s=dnotes",
+                "type": "custom",
+                "icon": "bitcoinist.jpg",
+                "tags": [
+                    "News"
                 ]
             }
         ]
@@ -22231,22 +22311,38 @@
         ]
     },
     {
+        "genesis_id": "108497",
         "system": "GetGems",
         "dependencies": [
             "Bitcoin",
             "Counterparty"
         ],
+        "token": {
+            "token_name": "GEMZ",
+            "token_symbol": "GEMZ"
+        },
+        "consensus": {
+            "consensus_name": "Counterparty",
+            "consensus_type": "Blockchain Ledger"
+        },
         "descriptions": {
+            "state": "Running",
+            "system_type": "Decentralized Application",
             "headline": "Messaging that Pays",
             "summary": "GetGems is a fully decentralized social messaging app, run by all GetGem users. You are no longer the product being sold, but have full control over your privacy and can turn your own data to rewards if you wish. Gems also make it a breeze to send each other cryptocurrency as simple as messaging.",
             "tags": [
                 "DApp"
-            ],
-            "system_type": ""
+            ]
         },
         "aliases": {
             "coinmarketcap": "GetGems",
             "CurrencyName": "GetGems"
+        },
+        "specs": {
+            "total_tokens": 100000000
+        },
+        "ratings": {
+            "rating_cyber": 4
         },
         "crowdsales": {
             "start_date": "2014-01-12T00:00:00",
@@ -22260,18 +22356,6 @@
             "tokens_sold": 38135367,
             "btc_raised": 2633
         },
-        "ratings": {
-            "rating_cyber": 4
-        },
-        "consensus": {
-            "consensus_name": "Counterparty",
-            "consensus_type": "Proof-of-Work"
-        },
-        "token": {
-            "token_name": "GEMZ",
-            "token_symbol": "GEMZ"
-        },
-        "specs": {},
         "links": [
             {
                 "name": "getgems.org",
@@ -22285,7 +22369,7 @@
             },
             {
                 "name": "BlockScan",
-                "url": "http://blockscan.com/assetInfo.aspx?q=GEMZ",
+                "url": "http://blockscan.com/assetInfo/GEMZ",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
@@ -22313,12 +22397,49 @@
                 "type": "blog"
             },
             {
+                "name": "CoinDesk",
+                "url": "http://www.coindesk.com/tag/gems/",
+                "type": "custom",
+                "icon": "coindesk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CoinTelegraph",
+                "url": "http://cointelegraph.com/search?query=getgems",
+                "type": "custom",
+                "icon": "cointelegraph.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "CryptocoinNews",
+                "url": "https://www.cryptocoinsnews.com/tag/gems/",
+                "type": "custom",
+                "icon": "cryptocoinnews.jpg",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Bitcoinist",
+                "url": "http://bitcoinist.net/?s=getgems",
+                "type": "custom",
+                "icon": "bitcoinist.jpg",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
                 "name": "GetGems Android",
                 "url": "https://play.google.com/store/apps/details?id=org.getgemsmessenger.app",
                 "icon": "getgems-android.png",
                 "tags": [
                     "Main",
-                    "Apps"
+                    "Apps",
+                    "Wallet"
                 ],
                 "type": "custom"
             },
@@ -22328,9 +22449,20 @@
                 "icon": "getgems-ios.png",
                 "tags": [
                     "Main",
-                    "Apps"
+                    "Apps",
+                    "Wallet"
                 ],
                 "type": "custom"
+            },
+            {
+                "name": "CoinDaddy",
+                "url": "https://coindaddy.io/search?network=xcp&q=gemz",
+                "icon": "coindaddy.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ],
+                "type": "explorer"
             },
             {
                 "name": "Counterparty DEX",
@@ -22355,11 +22487,11 @@
                 ]
             },
             {
-                "name": "BTC38",
-                "headline": "Cryptocurrensy Exchange",
-                "url": "http://www.btc38.com/trade_en.html",
+                "name": "ShapeShift",
+                "headline": "nein",
+                "url": "https://shapeshift.io",
                 "type": "custom",
-                "icon": "btc38.png",
+                "icon": "shapeshift.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -22371,6 +22503,17 @@
                 "url": "https://bittrex.com/",
                 "type": "custom",
                 "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTER",
+                "headline": "nein",
+                "url": "https://bter.com/",
+                "type": "custom",
+                "icon": "bter.png",
                 "tags": [
                     "Apps",
                     "Exchange"
