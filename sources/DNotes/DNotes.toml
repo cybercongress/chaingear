@@ -1,30 +1,30 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "20bbf1cb1115ccda06c0cce115f5b72a78055a163892575988d1c8ee085f5e86"
 system = "DNotes"
+dependencies = ["independent"]
+
+[token]
+token_name = "DNote"
+token_symbol = "NOTE"
+
+[consensus]
+consensus_type = "Proof-of-Work"
+consensus_name = "Scrypt"
+hashing = "SHA-256"
+
+[descriptions]
+state = "Running"
+system_type = "Independent System"
+tags = ["DAO"]
 
 [aliases]
 coinmarketcap = "DNotes"
 CurrencyName = "DNotes"
 
 [ratings]
-rating_cyber = 1.0
-
-[consensus]
-consensus_name = "Proof-of-Work"
-hashing = "Scrypt"
-consensus_type = ""
-
-[descriptions]
-state = "Running"
-tags = ["DAO"]
-system_type = ""
+rating_cyber = 1
 
 [events]
 announcement = "16/02/2014"
-
-[token]
-token_name = ""
-token_symbol = "NOTE"
 
 [specs]
 p2p = 11224.0
@@ -36,49 +36,144 @@ total_tokens = 500000000.0
 difficulty_cycle = "every block (Kimoto Gravity Well"
 
 [[links]]
-name = "web site"
+name = "dnotescoin.com"
 url = "http://dnotescoin.com/"
 icon = "website.png"
 tags = ["Main", "Apps"]
 type = ""
 
 [[links]]
-name = "github"
+name = "GitHub"
 url = "https://github.com/DNotesCoin/DNotes/"
+type = "github"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "explorer"
-url = "http://explorer.cryptoblox.com/chain/DNotes"
+name = "E-Waluty Explorer"
+url = "http://explorer.e-waluty.net.pl/NOTE/"
+type = "explorer"
 icon = "explorer.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main", "Apps","Analytics"]
 
 [[links]]
-name = "twitter"
+name = "Wallets"
+url = "http://dnotescoin.com/download.php"
+type = "wallet"
+icon = "wallet.png"
+tags = ["Main", "Apps","Wallet"]
+
+[[links]]
+name = "DNotes Vault"
+url = "https://dnotesvault.com/"
+type = "wallet"
+icon = "dnote.png"
+tags = ["Apps","Wallet"]
+
+[[links]]
+name = "Twitter"
 url = "https://twitter.com/DNotesCoin"
+type = "twitter"
 icon = "twitter.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "forum"
-url = "https://bitcointalk.org/index.php?topic=470155.0"
-icon = "forum.png"
-tags = ["Apps"]
-type = ""
+name = "Facebook"
+url = "https://www.facebook.com/Dnotescoin-777105165651768/timeline/"
+type = "custom"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+name = "YouTube"
+url = "https://www.youtube.com/user/dnotescoin"
+type = "custom"
+icon = "youtube.png"
+tags = ["News"]
 
 [[links]]
 name = "reddit"
 url = "http://www.reddit.com/r/DNotes/"
+type = "reddit"
 icon = "reddit.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "Announcement"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=470155.0"
+type = "forum"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+name = "Bitcoinist"
+url = "http://bitcoinist.net/?s=dnotes"
 type = "custom"
-tags = ["publications"]
+icon = "bitcoinist.jpg"
+tags = ["News"]
+
+[[links]]
+name = "DNotesPool"
+url = "https://dnotespool.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "CryptoBlox"
+url = "http://mine.cryptoblox.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "E-Pool"
+url = "http://p2pool.e-pool.net"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Hash-to-Coins"
+url = "https://hash-to-coins.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "E-Waluty"
+url = "http://pool.e-waluty.net.pl/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "BTCPool Club"
+url = "http://btcpool.club/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/currencies/dnotes/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Cryptsy"
+headline = "nein"
+url = "https://www.cryptsy.com/users/register?refid=243274"
+type = "custom"
+icon = "cryptsy.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
