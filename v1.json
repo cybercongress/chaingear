@@ -1289,6 +1289,11 @@
                 "btc": 27545
             }
         },
+        "cap": {
+            "supply_from": "chaingear",
+            "supply": 11000000,
+            "token_price_btc": 0.00250413
+        },
         "crowdsales": {
             "start_date": "2015-08-17T00:00:00",
             "end_date": "2015-10-01T00:00:00",
@@ -1298,7 +1303,7 @@
             ],
             "funding_tems": "http://www.augur.net/blog/the-augur-crowdsale",
             "funding_url": "http://sale.augur.net/",
-            "tokens_sold": 8000000,
+            "tokens_sold": 8800000,
             "btc_raised": 22036
         },
         "links": [
@@ -35912,7 +35917,7 @@
                 "type": "site"
             },
             {
-                "name": "Documentation",
+                "name": "White Paper",
                 "url": "http://www.neucoin.org/en/whitepaper/",
                 "icon": "whitepaper.png",
                 "tags": [
@@ -35963,12 +35968,13 @@
                 "type": "forum"
             },
             {
-                "name": "CoinTelegraph",
-                "url": "http://cointelegraph.com/tags/neucoin",
-                "type": "custom",
+                "name": "Explorer",
+                "url": "http://www.neucoin.io/",
+                "type": "explorer",
                 "icon": "cointelegraph.png",
                 "tags": [
-                    "News"
+                    "Main",
+                    "Analytics"
                 ]
             },
             {
@@ -35995,8 +36001,7 @@
                 "icon": "wiki.png",
                 "tags": [
                     "Publications",
-                    "Science",
-                    "Main"
+                    "Science"
                 ],
                 "type": "wiki"
             },
@@ -49423,7 +49428,7 @@
         },
         "descriptions": {
             "state": "Running",
-            "headline": "An association of the most reliable blockchain technologies giving you access to all their innovation from one place",
+            "headline": "An Association of Blockchain Technologies",
             "tags": [
                 "DApp"
             ],
@@ -50694,6 +50699,117 @@
         }
     },
     {
+        "genesis_id": "",
+        "system": "Tendermint",
+        "dependencies": [
+            "independent"
+        ],
+        "token": {
+            "token_name": "",
+            "token_symbol": ""
+        },
+        "consensus": {
+            "consensus_type": "Proof-of-Stake",
+            "consensus_name": "Byzantine Consensus Algorithm",
+            "hashing": ""
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "Independent System",
+            "headline": "Byzantine Consensus Blockchain Stack",
+            "tags": [
+                "DAO"
+            ],
+            "hashtag": "",
+            "twwidid": "",
+            "page_state": "draft"
+        },
+        "aliases": {
+            "coinmarketcap": "Tendermint",
+            "nickname": "Tendermint"
+        },
+        "ratings": {
+            "rating_cyber": 0
+        },
+        "links": [
+            {
+                "name": "tendermint.com",
+                "url": "http://tendermint.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ],
+                "type": "website"
+            },
+            {
+                "name": "Tendermint Wiki",
+                "url": "https://github.com/tendermint/tendermint/wiki",
+                "type": "wiki",
+                "icon": "wiki.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "name": "Tendermint Blog",
+                "url": "http://tendermint.com/posts/",
+                "type": "blog",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "name": "Tendermint GitHub",
+                "url": "https://github.com/tendermint",
+                "type": "github",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "name": "Tendermint Forum",
+                "url": "http://forum.tendermint.com/",
+                "type": "forum",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Byzantine Consensus Algorithm",
+                "url": "https://github.com/tendermint/tendermint/wiki/Byzantine-Consensus-Algorithm",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "Byzantine Fault Tolerance Algorithm",
+                "url": "https://en.wikipedia.org/wiki/Byzantine_fault_tolerance",
+                "type": "wiki",
+                "icon": "wiki.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "Consensus in the presence of partial synchrony",
+                "url": "http://dl.acm.org/citation.cfm?doid=42282.42283",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            }
+        ]
+    },
+    {
         "source": "cyberFund",
         "system": "Tenebrix",
         "aliases": {
@@ -51671,6 +51787,214 @@
         "specs": {
             "links": []
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Truthcoin",
+        "dependencies": [
+            "Bitcoin"
+        ],
+        "token": {
+            "token_name": "VoteCoin",
+            "token_symbol": "VoteCoin"
+        },
+        "consensus": {
+            "consensus_type": "Blockchain Record",
+            "consensus_name": "Bitcoin",
+            "hashing": ""
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "Decentralized Application",
+            "headline": "Sidechain for Prediction Markets on Bitcoin Blockchain",
+            "tags": [
+                "DApp"
+            ],
+            "hashtag": "#truthcoin",
+            "twwidid": "",
+            "page_state": "ready"
+        },
+        "aliases": {
+            "coinmarketcap": "Truthcoin",
+            "nickname": "Truthcoin"
+        },
+        "links": [
+            {
+                "name": "truthcoin.info",
+                "url": "http://www.truthcoin.info/",
+                "type": "website",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "name": "Github Organization",
+                "url": "https://github.com/truthcoin",
+                "type": "github",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "name": "Truthcoin Whitepaper",
+                "url": "http://www.truthcoin.info/papers/truthcoin-whitepaper.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "name": "@truthcoin",
+                "url": "https://twitter.com/truthcoin",
+                "type": "twitter",
+                "icon": "twitter.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "name": "Truthcoin Blog",
+                "url": "http://www.truthcoin.info/archive/",
+                "rss": "http://www.truthcoin.info/feed",
+                "type": "blog",
+                "icon": "blog.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "TruthcoinTalk",
+                "url": "http://forum.truthcoin.info/",
+                "type": "forum",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Dev Center",
+                "url": "https://dev.truthcoin.info/",
+                "type": "custom",
+                "icon": "truthcoin.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "Voting Demo",
+                "url": "https://lyoshenka.ocpu.io/truthcoindemo/www/",
+                "type": "custom",
+                "icon": "truthcoin.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "name": "The Prediction Markets Sequence - 1. Statement of Purpose",
+                "url": "http://www.truthcoin.info/papers/1_Purpose.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "The Prediction Markets Sequence - 2. The Power of Prediction Markets",
+                "url": "http://www.truthcoin.info/papers/2_PM_Types.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "The Prediction Markets Sequence - 3. Applications of PMs",
+                "url": "http://www.truthcoin.info/papers/3_PM_Applications.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "The Prediction Markets Sequence - 4. PM Myths",
+                "url": "http://www.truthcoin.info/papers/4_PM_Myths.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "The Prediction Markets Sequence - 5. PM Manipulation",
+                "url": "http://www.truthcoin.info/papers/5_PM_Manipulation.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "Presentation - What is Truthcoin?",
+                "url": "http://www.truthcoin.info/presentations/what-is-truthcoin.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "Presentation - Outcome Resolution",
+                "url": "http://www.truthcoin.info/presentations/truthcoin-outcomes.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "Presentation - The Age of Bullshit",
+                "url": "http://www.truthcoin.info/presentations/info-problems.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "Presentation - Value of a Truthcoin",
+                "url": "http://www.truthcoin.info/presentations/truthcoin-valuable.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "Presentation - In Six Slides",
+                "url": "http://www.truthcoin.info/presentations/six-slide-sprint.pdf",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "name": "Truthcoin FAQ",
+                "url": "http://www.truthcoin.info/faq/",
+                "type": "paper",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            }
+        ]
     },
     {
         "source": "cyberFund",
