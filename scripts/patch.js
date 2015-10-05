@@ -5,7 +5,13 @@ var chaingear = require("../chaingear.json");
 
 for (var i = 0; i < chaingear.length; i++) {
   var item = chaingear[i];
-  if (item.ratings && item.ratings.rating) {
+  var token = item.token;
+  if (!token) item.token = {};
+  var token_name= item.token.token_name;
+  var curname = item.aliases && item.aliases.CurrencyName;
+  if (!token_name && curname) item.token.token_name = curname;
+
+  /*if (item.ratings && item.ratings.rating) {
     item.ratings.rating_cyber = item.ratings.rating;
     delete item.ratings.rating;
   }
@@ -28,7 +34,7 @@ for (var i = 0; i < chaingear.length; i++) {
       }
       delete item.specs.ann;
     }
-  }
+  }*/
 }
 
 fs.writeFileSync(path.join(__dirname, "..", "chaingear.json"), JSON.stringify(chaingear, null, 4));

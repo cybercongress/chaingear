@@ -26,7 +26,16 @@ CurrencyName = "bitcoin"
 nickname = "Bitcoin"
 
 [ratings]
-rating_cyber = 5
+rating_cyber = 5.0
+
+[specs]
+rpc = 8332.0
+block_time = 600.0
+block_reward = 50.0
+halfing_cycle = 210240.0
+total_tokens = 21000000.0
+difficulty_cycle = 2016.0
+txs_confirm = 6.0
 
 [[events]]
 name = "Announcement"
@@ -36,15 +45,6 @@ url = "http://article.gmane.org/gmane.comp.encryption.general/12588/"
 [[events]]
 name = "Genesis"
 start_date = "2009-01-03T18:15:05"
-
-[specs]
-rpc = 8332
-block_time = 600
-block_reward = 50
-halfing_cycle = 210240
-total_tokens = 21000000
-difficulty_cycle = 2016
-txs_confirm = 6
 
 [[links]]
 name = "Bitcoin.org"
@@ -193,7 +193,7 @@ name = "Blockchain"
 url = "https://blockchain.info/wallet"
 type = "custom"
 icon = "blockchain.info.png"
-tags = ["Apps","Wallet"]
+tags = ["Apps", "Wallet"]
 
 [[links]]
 name = "Copay"
@@ -201,7 +201,7 @@ url = "https://copay.io/"
 headline = "Trustless multisig wallet"
 type = "custom"
 icon = "copay.png"
-tags = ["Apps","Wallet"]
+tags = ["Apps", "Wallet"]
 
 [[links]]
 name = "Blocktrail"
@@ -209,14 +209,14 @@ url = "https://www.blocktrail.com/"
 headline = "A Powerful Bitcoin Wallet"
 type = "custom"
 icon = "blocktrail.png"
-tags = ["Apps","Wallet"]
+tags = ["Apps", "Wallet"]
 
 [[links]]
 name = "Bitcoin Core"
 url = "https://bitcoin.org/en/download"
 type = "custom"
 icon = "bitcoin-core.png"
-tags = ["Apps","Wallet"]
+tags = ["Apps", "Wallet"]
 
 [[links]]
 name = "Armory"
@@ -224,7 +224,7 @@ headline = "nein"
 url = "https://bitcoinarmory.com/"
 type = "custom"
 icon = "armory.png"
-tags = ["Apps","Wallet"]
+tags = ["Apps", "Wallet"]
 
 [[links]]
 name = "Xapo"
@@ -232,7 +232,7 @@ headline = "nein"
 url = "https://xapo.com/"
 type = "custom"
 icon = "xapo.png"
-tags = ["Apps","Wallet"]
+tags = ["Apps", "Wallet"]
 
 [[links]]
 name = "Circle"
@@ -240,7 +240,7 @@ headline = "nein"
 url = "https://www.circle.com/"
 type = "custom"
 icon = "circle.png"
-tags = ["Apps","Wallet"]
+tags = ["Apps", "Wallet"]
 
 [[links]]
 name = "Coinprism"
@@ -248,7 +248,7 @@ headline = "nein"
 url = "https://www.coinprism.com/"
 type = "custom"
 icon = "coinprism.png"
-tags = ["Apps","Wallet"]
+tags = ["Apps", "Wallet"]
 
 [[links]]
 name = "Poloniex"
@@ -256,7 +256,7 @@ headline = "nein"
 url = "https://www.poloniex.com"
 type = "custom"
 icon = "poloniex.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "ShapeShift"
@@ -264,7 +264,7 @@ headline = "nein"
 url = "https://shapeshift.io"
 type = "custom"
 icon = "shapeshift.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "Bitfinex"
@@ -272,7 +272,7 @@ headline = "nein"
 url = "https://www.bitfinex.com/"
 type = "custom"
 icon = "bitfinex.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "Cryptsy"
@@ -280,7 +280,7 @@ headline = "nein"
 url = "https://www.cryptsy.com/users/register?refid=243274"
 type = "custom"
 icon = "cryptsy.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "Kraken"
@@ -288,7 +288,7 @@ headline = "nein"
 type = "custom"
 icon = "kraken.png"
 url = "https://www.kraken.com"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "BitStamp"
@@ -296,7 +296,7 @@ headline = "nein"
 url = "https://www.bitstamp.net/"
 type = "custom"
 icon = "bitstamp.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "BTC-e"
@@ -304,7 +304,7 @@ headline = "nein"
 url = "https://btc-e.com/"
 type = "custom"
 icon = "btc-e.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "itBit"
@@ -312,7 +312,7 @@ headline = "nein"
 url = "https://www.itbit.com/"
 type = "custom"
 icon = "itbit.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "BTC38"
@@ -320,7 +320,7 @@ headline = "Cryptocurrensy Exchange"
 url = "http://www.btc38.com/trade_en.html"
 type = "custom"
 icon = "btc38.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "CCEDK"
@@ -328,7 +328,7 @@ headline = "Your place for safe and secure crypto currency exchange"
 url = "https://www.ccedk.com/"
 type = "custom"
 icon = "ccedk.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "OKCoin"
@@ -336,7 +336,7 @@ headline = "The Bitcoin Exchange With Margin and Futures"
 url = "https://www.okcoin.com/"
 type = "custom"
 icon = "okcoin.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "bit-x"
@@ -344,7 +344,7 @@ headline = "The Bitcoin Exchange With Margin and Futures"
 url = "https://bit-x.com/"
 type = "custom"
 icon = "bit-x.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "CEX"
@@ -352,7 +352,7 @@ headline = "Global Bitcoin Exchange"
 url = "https://cex.io/"
 type = "custom"
 icon = "cex.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "BTER"
@@ -360,7 +360,7 @@ headline = "nein"
 url = "https://bter.com/"
 type = "custom"
 icon = "bter.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "Blockchain"
@@ -368,7 +368,7 @@ headline = "nein"
 url = "https://blockchain.info"
 type = "custom"
 icon = "blockchain.info.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "Blocktrail"
@@ -376,7 +376,7 @@ headline = "nein"
 url = "https://www.blocktrail.com/BTC"
 type = "custom"
 icon = "blocktrail.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "Blockr"
@@ -384,21 +384,21 @@ headline = "nein"
 url = "https://btc.blockr.io/"
 type = "custom"
 icon = "blockr.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "BitcoinChain"
 url = "https://bitcoinchain.com/"
 type = "custom"
 icon = "bitcoinchain.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "Insight"
 url = "https://insight.bitpay.com/"
 type = "custom"
 icon = "insight.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "TradeBlock"
@@ -406,7 +406,7 @@ headline = "nein"
 url = "https://tradeblock.com/blockchain/"
 type = "custom"
 icon = "tradeblock.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "Bitnodes"
@@ -414,7 +414,7 @@ headline = "Bitcoin nodes stats"
 url = "https://getaddr.bitnodes.io/"
 type = "custom"
 icon = "bitnodes.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "Statoshi"
@@ -422,7 +422,7 @@ headline = "nein"
 url = "http://statoshi.info"
 type = "Realtime Bitcoin Node Stats"
 icon = "statoshi.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "Bitcoinity"
@@ -430,7 +430,7 @@ headline = "nein"
 url = "https://bitcoinity.org/markets"
 type = "custom"
 icon = "bitcoinity.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "ChangeTip"
@@ -444,7 +444,7 @@ name = "Gem: Bitcoin API"
 url = "https://gem.co/"
 type = "custom"
 icon = "gem.png"
-tags = ["Code","API"]
+tags = ["Code", "API"]
 
 [[links]]
 name = "CoinDesk"
@@ -519,16 +519,14 @@ type = "paper"
 tags = ["Science"]
 
 [[links]]
-name = "The Bitcoin Lightning Network:
-Scalable Off-Chain Instant Payments, Joseph Poon, Thaddeus Dryja."
+name = "The Bitcoin Lightning Network:\nScalable Off-Chain Instant Payments, Joseph Poon, Thaddeus Dryja."
 url = "https://lightning.network/lightning-network-paper.pdf"
 icon = "paper.png"
 type = "paper"
 tags = ["Science"]
 
 [[links]]
-name = "Analysis of Bitcoin Pooled Mining Reward
-Systems, Meni Rosenfeld."
+name = "Analysis of Bitcoin Pooled Mining Reward\nSystems, Meni Rosenfeld."
 url = "https://bitcoil.co.il/pool_analysis.pdf"
 icon = "paper.png"
 type = "paper"
@@ -540,7 +538,7 @@ headline = "nein"
 url = "http://coinmarketcap.com/currencies/bitcoin/#markets"
 type = "custom"
 icon = "link.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "Bithub"

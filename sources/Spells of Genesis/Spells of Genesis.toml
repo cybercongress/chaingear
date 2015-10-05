@@ -1,7 +1,7 @@
 genesis_id = "188592448213512"
 dependencies = ["Counterparty"]
 system = "Spells of Genesis"
-icon ="spellsofgenesis"
+icon = "spellsofgenesis"
 
 [aliases]
 coinmarketcap = "Bitcrystals"
@@ -14,7 +14,6 @@ nickname = "Spells of Genesis"
 consensus_type = "Proof-of-Stake"
 consensus_name = "Counterparty"
 hashing = ""
-
 
 [descriptions]
 state = "building"
@@ -39,16 +38,17 @@ end_date = "2015-09-02T00:00:00"
 genesis_address = "nein"
 funding_tems = "http://bitcrystals.github.io/"
 funding_url = "http://bitcrystals.github.io/"
-tokens_sold = 13438000
-tokens_issued = 100000000
-btc_raised = 932
+tokens_sold = 13438000.0
+tokens_issued = 100000000.0
+btc_raised = 932.0
 
 [specs]
-supply = 43438000
+supply = 43438000.0
 timestamp = 1431342962.0
-[specs.cap]
-usd = 214360.0
-btc = 932.0
+
+  [specs.cap]
+  usd = 214360.0
+  btc = 932.0
 
 [[links]]
 name = "SoG Official Site"
@@ -68,14 +68,14 @@ tags = ["Publications"]
 name = "Blog"
 url = "https://medium.com/@SpellsofGenesis"
 icon = "blog.png"
-tags = ["Main","News"]
+tags = ["Main", "News"]
 type = "blog"
 
 [[links]]
 name = "Twitter"
 url = "https://twitter.com/spellsofgenesis"
 icon = "twitter.png"
-tags = ["Main","News"]
+tags = ["Main", "News"]
 type = "twitter"
 
 [[links]]
@@ -98,7 +98,7 @@ headline = "nein"
 url = "http://coinmarketcap.com/assets/bitcrystals/#markets"
 type = "custom"
 icon = "link.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "Poloniex"
@@ -106,7 +106,7 @@ headline = "nein"
 url = "https://www.poloniex.com"
 type = "custom"
 icon = "poloniex.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "Bittrex"
@@ -114,11 +114,11 @@ headline = "nein"
 url = "https://bittrex.com"
 type = "custom"
 icon = "bittrex.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "Counterparty AE"
 url = "http://blockscan.com/order?f=0"
 icon = "counterparty.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 type = "custom"

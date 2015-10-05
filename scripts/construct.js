@@ -7,10 +7,6 @@ function loadToml(filename, result) {
     var fullname = path.join(filename);
     var data = fs.readFileSync(fullname);
     var parsed = toml.parse(data);
-
-
-
-
     result.push(parsed);
   } catch (e) {
     console.error("Parsing error on line " + e.line + ", column " + e.column +

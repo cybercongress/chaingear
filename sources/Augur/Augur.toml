@@ -8,7 +8,7 @@ CurrencyName = "Reputation"
 nickname = "Augur"
 
 [ratings]
-rating_cyber = 3
+rating_cyber = 3.0
 
 [consensus]
 consensus_name = ""
@@ -33,26 +33,26 @@ token_name = "Reputation"
 token_symbol = "REP"
 
 [specs]
-supply = 11000000
-total_tokens = 11000000
+supply = 11000000.0
+total_tokens = 11000000.0
 
-[specs.cap]
-usd = 6543039
-btc = 27545
+  [specs.cap]
+  usd = 6543039.0
+  btc = 27545.0
 
 [cap]
 supply_from = "chaingear"
-supply = 11000000
+supply = 11000000.0
 token_price_btc = 0.00250413
 
 [crowdsales]
 start_date = "2015-08-17T00:00:00"
 end_date = "2015-10-01T00:00:00"
-genesis_address = ["3N6S9PLVizPuf8nZkhVzp11PKhTiuTVE6R","0xe28e72fcf78647adce1f1252f240bbfaebd63bcc"]
+genesis_address = ["3N6S9PLVizPuf8nZkhVzp11PKhTiuTVE6R", "0xe28e72fcf78647adce1f1252f240bbfaebd63bcc"]
 funding_tems = "http://www.augur.net/blog/the-augur-crowdsale"
 funding_url = "http://sale.augur.net/"
-tokens_sold = 8800000
-btc_raised = 22036
+tokens_sold = 8800000.0
+btc_raised = 22036.0
 
 [[links]]
 name = "Augur.net"
@@ -72,7 +72,7 @@ tags = ["Main"]
 name = "Augur Demo"
 url = "http://demo.augur.net/"
 icon = "augur.png"
-tags = ["Main","Apps"]
+tags = ["Main", "Apps"]
 type = "custom"
 
 [[links]]
@@ -148,4 +148,4 @@ tags = ["Code"]
 name = "Augur Whitepaper"
 url = "http://www.augur.link/augur.pdf"
 type = "paper"
-tags = ["Main","Science"]
+tags = ["Main", "Science"]

@@ -26,17 +26,17 @@ CurrencyName = "Bytecoin"
 [ratings]
 rating_cyber = 3.0
 
+[specs]
+p2p = 8080.0
+rpc = 8081.0
+block_time = 120.0
+block_reward = "Block reward decreases each block according to the formula: BaseReward = (MSupply - A)/2^18,  where MSupply = (2^64 - 1) atomic units and 'A' is amount of already generated coins"
+total_tokens = 18446744073709998080.0
+difficulty_cycle = "each block"
+
 [[events]]
 announcement = "30/06/2012"
 genesis = "4/07/2012"
-
-[specs]
-p2p = 8080
-rpc = 8081
-block_time = 120
-block_reward = "Block reward decreases each block according to the formula: BaseReward = (MSupply - A)/2^18,  where MSupply = (2^64 - 1) atomic units and 'A' is amount of already generated coins"
-total_tokens = 18446744073709998080
-difficulty_cycle = "each block"
 
 [[links]]
 name = "bytecoin.org"
@@ -63,14 +63,14 @@ type = "whitepaper"
 name = "ChainRadar"
 url = "http://chainradar.com/bcn/blocks"
 icon = "explorer.png"
-tags = ["Main", "Apps","Analytics"]
+tags = ["Main", "Apps", "Analytics"]
 type = "explorer"
 
 [[links]]
 name = "Bytecoin Wallets"
 url = "https://bytecoin.org/downloads/"
 icon = "wallet.png"
-tags = ["Main","Apps","Wallet"]
+tags = ["Main", "Apps", "Wallet"]
 type = "walllet"
 
 [[links]]
@@ -127,7 +127,7 @@ name = "Bytecoin Wiki"
 headline = "nein"
 url = "https://wiki.bytecoin.org/wiki/Main_Page"
 icon = "wiki.png"
-tags = ["Main","Science"]
+tags = ["Main", "Science"]
 type = "wiki"
 
 [[links]]
@@ -135,7 +135,7 @@ name = "MinerGate Explorer"
 url = "https://minergate.com/"
 type = "explorer"
 icon = "minergate.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "Markets CMC"
@@ -143,7 +143,7 @@ headline = "nein"
 url = "http://coinmarketcap.com/currencies/bytecoin-bcn/#markets"
 type = "custom"
 icon = "link.png"
-tags = ["Apps","Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "Bytecoiner Faucet"
@@ -165,7 +165,7 @@ headline = "nein"
 url = "https://hitbtc.com/"
 type = "custom"
 icon = "hitbtc.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "Poloniex"
@@ -173,7 +173,7 @@ headline = "nein"
 url = "https://www.poloniex.com"
 type = "custom"
 icon = "poloniex.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "BTC Market"
@@ -181,7 +181,7 @@ headline = "nein"
 url = "https://btc-market.org"
 type = "custom"
 icon = "btcmarket.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "Changer"
@@ -189,7 +189,7 @@ headline = "nein"
 url = "https://www.changer.com/"
 type = "custom"
 icon = "changer.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
 name = "Aggregate Addresses in CryptoNote: Towards Efficient Privacy"
