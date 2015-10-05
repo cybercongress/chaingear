@@ -38,7 +38,7 @@ function loadToml(filename, result, statistics) {
           var links = parsed.links || [];
           if (!hasLinkOfType(links, 'code')) statistics.currencies.no_code_link.push(name);
           if (!hasLinkOfType(links, 'paper')) statistics.currencies.no_paper_link.push(name);
-          if (!hasLinkOfType(links, 'wallet')) statistics.currencies.no_wallet_link++;//.push(name);
+          if (!hasLinkOfType(links, 'wallet')) statistics.currencies.no_wallet_link.push(name);
           if (!hasLinkOfType(links, 'explorer')) statistics.currencies.no_explorer_link.push(name);
           if (!hasLinkOfType(links, 'exchange')) statistics.currencies.no_exchange_link.push(name);
         }
@@ -94,7 +94,7 @@ function act() {
       no_ticker: [],
       no_code_link: [],
       no_explorer_link: [],
-      no_wallet_link: 0,
+      no_wallet_link: [],
       no_paper_link: [],
       no_exchange_link: []
     },
@@ -113,30 +113,19 @@ function act() {
 
   fs.writeFileSync(path.join(__dirname, "..", "chaingear.json"), JSON.stringify(result, null, 4));
   fs.writeFileSync(path.join(__dirname, "..", "v1.json"), JSON.stringify(result, null, 4));
+  fs.writeFileSync(path.join(__dirname, "..", "statistics.json"), JSON.stringify(statistics, null, 4));
+
   console.log("");
   console.log("Combined " + result.length + " entries into v1.json");
-  console.log("");
-  console.log("Without logo:");
-  console.log("Without headline: ");
-  console.log("");
-  console.log("Cryptocurrencies");
-  console.log("No Genesis ID:");
-  console.log("No Token name:");
-  console.log("No Ticker:");
-  console.log("No Code link:");
-  console.log("No Explorer link:");
-  console.log("No Wallet link:");
-  console.log("No Paper link:");
-  console.log("No Exchange link:");
-  console.log("");
-  console.log("Cryptoassets");
-  console.log("No Genesis ID:");
-  console.log("No Token name:");
-  console.log("No Ticker:");
-  console.log("");
-  console.log("Projects count:");
-  console.log("");
-  fs.writeFileSync(path.join(__dirname, "..", "statistics.json"), JSON.stringify(statistics, null, 4));
+  _.each(statistics.currencies, function(item, key){
+    if (_.isArray(statistics.currencies[key])) statistics.currencies[key] = statistics.currencies[key].length;
+  })
+  _.each(statistics.assets, function(item, key){
+    if (_.isArray(statistics.assets[key])) statistics.assets[key] = statistics.assets[key].length;
+  })
+  _.each(statistics, function(item, key){
+    if (_.isArray(statistics[key])) statistics[key] = statistics[key].length;
+  })
   console.log(statistics);
 }
 
