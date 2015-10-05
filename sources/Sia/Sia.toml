@@ -1,35 +1,44 @@
 genesis_id = "25f6e3b9295a61f69fcb956aca9f0076234ecf2e02d399db5448b6e22f26e81c"
-dependencies = ["independent"]
 system = "Sia"
-
-[aliases]
-coinmarketcap = "Siacoin"
-CurrencyName = "siacoin"
-
-[ratings]
-rating_cyber = 2.0
-
-[consensus]
-consensus_name = "Proof-of-Work"
-hashing = "Blake2b"
-consensus_type = ""
-
-[descriptions]
-state = "Running"
-tags = ["DAO"]
-hashtag = "#siacoin"
-system_type = "DAO"
-
-[events]
-announcement = "01/05/2014"
+dependencies = ["independent"]
+icon = "sia"
 
 [token]
 token_name = "siacoin"
 token_symbol = "SC"
 
+[consensus]
+consensus_type = "Proof-of-Work"
+consensus_name = "Proof-of-Work"
+hashing = "Blake2b"
+
+[descriptions]
+state = "Running"
+system_type = "Independent System"
+headline = "A Decentralized Cloud Storage Platform"
+tags = ["DAO"]
+hashtag = "#siacoin"
+page_state = "ready"
+
+[aliases]
+coinmarketcap = "Siacoin"
+
+[ratings]
+rating_cyber = 2.0
+
 [specs]
+supply = 5369875000
 block_time = 600.0
 block_reward = "300000. Reward reduced by 1 every block intil reach 30000. After reamains constant"
+
+[cap]
+supply_from = "chaingear"
+supply = 5369875000
+
+[[events]]
+name = "Announcement" 
+start_date = "2014-05-01T07:40:43"
+url = "https://bitcointalk.org/index.php?topic=1060294.0"
 
 [[links]]
 name = "Siacoin.com"
@@ -42,14 +51,14 @@ type = "website"
 name = "Nebulous organization on Github"
 url = "https://github.com/NebulousLabs"
 icon = "github.png"
-tags = ["Main", "Code"]
+tags = ["Main","Code"]
 type = "github"
 
 [[links]]
 name = "Sia Whitepaper"
 url = "http://siacoin.com/sia.pdf"
 icon = "whitepaper.png"
-tags = ["Main", "Science"]
+tags = ["Science"]
 type = "paper"
 
 [[links]]
@@ -58,6 +67,13 @@ url = "http://explore.siacoin.com/"
 icon = "explorer.png"
 tags = ["Main", "Apps", "Analytics"]
 type = "explorer"
+
+[[links]]
+type = "wallet"
+name = "Sia Client"
+url = "https://github.com/NebulousLabs/Sia-UI/releases/"
+icon = "sia.png"
+tags = ["Main", "Apps", "Wallet"]
 
 [[links]]
 name = "Twitter"
@@ -72,6 +88,13 @@ url = "https://forum.siacoin.com/"
 icon = "forum.png"
 tags = ["News"]
 type = "forum"
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=1060294.0"
+icon = "forum.png"
+tags = ["News"]
 
 [[links]]
 name = "Facebook"
