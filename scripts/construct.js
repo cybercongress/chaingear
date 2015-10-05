@@ -25,7 +25,7 @@ function loadToml(filename, result, statistics) {
         isCurrency = tags.indexOf('DAO') > -1;
         isAsset =  tags.indexOf('DApp');
         isProject = parsed.descriptions && parsed.descriptions.state == 'Project';
-      if (!parsed.icon) statistics.no_logo.push(name);
+      //if (!parsed.icon) statistics.no_logo.push(name);
       if (!parsed.descriptions || !parsed.descriptions.headline) statistics.no_headline.push(name);
       if (isProject) {
         statistics.projects.push(name);
