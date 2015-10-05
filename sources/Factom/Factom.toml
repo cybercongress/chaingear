@@ -1,16 +1,26 @@
-dependencies = ["Bitcoin"]
+genesis_id = "2fb170f73c3961d4218ff806dd75e6e348ca1798a5fc7a99d443fbe2ff939d99"
 system = "Factom"
+icon = "factom"
+dependencies = ["Bitcoin"]
+
+[token]
+token_name = "factoid"
+token_symbol = "FCT"
+
+[consensus]
+consensus_type = "Blockchain record"
+consensus_name = "Bitcoin"
 
 [descriptions]
+state = "Running"
+system_type = "Decentralized Application"
 headline = "A Data Layer For The Blockchain"
 summary = "Factom is a simple extension of the Bitcoin blockchain that lets you build faster, cost effective applications. Factom takes lots of hashes and turns them into a single periodic hash on the blockchain – this fixes the bloat problem."
 tags = ["dapp"]
-system_type = "dapp"
 page_state = "ready"
 
 [aliases]
 coinmarketcap = "Factom"
-CurrencyName = "factoid"
 
 [crowdsales]
 start_date = "2015-03-31T00:00:00"
@@ -26,20 +36,15 @@ btc_raised = 2278.0
 [ratings]
 rating_cyber = 4.0
 
-[consensus]
-consensus_name = "Bitcoin"
-consensus_type = ""
-
-[token]
-token_name = "factoid"
-token_symbol = "FID"
-
 [specs]
 supply = 8759820.085713
 
   [specs.cap]
   usd = 658442.0
   btc = 2920.0
+
+[cap]
+token_price_btc = 0.0005
 
 [[links]]
 name = "factom.org"
@@ -52,7 +57,7 @@ type = "website"
 name = "Factom Whitepaper"
 url = "https://github.com/FactomProject/FactomDocs/blob/master/Factom_Whitepaper.pdf"
 icon = "whitepaper.png"
-tags = ["Main", "Science"]
+tags = ["Science"]
 type = "whitepaper"
 
 [[links]]
@@ -61,6 +66,13 @@ url = "http://explorer.factom.org/"
 icon = "explorer.png"
 tags = ["Main", "Apps"]
 type = "explorer"
+
+[[links]]
+type = "wallet"
+name = "Factom Client"
+url = "http://factom.org/howto"
+icon = "factom.png"
+tags = ["Main","Apps","Wallet"]
 
 [[links]]
 name = "Factom: Ledger by Consensus. ​Paul Snow, Brian Deery, Peter Kirby, David Johnston."
@@ -117,3 +129,10 @@ url = "https://plus.google.com/u/0/+FactomProjectLive/"
 icon = "googleplus.png"
 tags = ["News"]
 type = "custom"
+
+[[links]]
+type = "exchange"
+name = "Poloniex"
+url = "https://www.poloniex.com"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
