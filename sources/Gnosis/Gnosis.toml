@@ -1,19 +1,62 @@
-source = "cyberFund"
 system = "Gnosis"
-
-[aliases]
-coinmarketcap = "Gnosis"
-CurrencyName = "Gnosis"
-
-[descriptions]
-system_type = ""
-
-[consensus]
-consensus_type = ""
+dependencies = ["Ethereum"]
+icon = "gnosis"
 
 [token]
 token_name = "Gnosis"
 token_symbol = "GNS"
 
+[consensus]
+consensus_type = ""
+consensus_name = "Ethereum"
+
+[descriptions]
+state = "Project"
+system_type = "decentralized Application"
+headline = "Prediction Market App based on Ethereum"
+
+[aliases]
+coinmarketcap = "Gnosis"
+
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "groupgnosis.com"
+url = "http://groupgnosis.com/"
+tags = ["Main"]
+
+[[links]]
+type = "code"
+name = "Gnosis GitHub"
+url = "https://www.github.com/ConsenSys/"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
+type = "forum"
+name = "Forum"
+url = "http://forum.groupgnosis.com/"
+icon = "forum.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/GroupGnosis"
+icon = "twitter.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/GroupGnosis"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "YouTube"
+url = "https://www.youtube.com/channel/UC4LyWVTGOLAcuiDnSbZfp3g"
+icon = "youtube.png"
+tags = ["News"]

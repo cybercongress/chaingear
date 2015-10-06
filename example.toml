@@ -1,4 +1,4 @@
-genesis_id = ""
+genesis_id = "0 block hash"
 system = "system_name"
 dependencies = ["independent"]
 icon = "icon_name"
@@ -8,35 +8,35 @@ token_name = "token_name"
 token_symbol = "token_ticker"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Consensus Type"
 consensus_name = "Consensus Name"
 hashing = "Encryption type name"
 
 [descriptions]
 state = "Running"
 system_type = "independent"
-headline = "Peer-to-Peer Electronic Cash System"
+headline = "64 symbols headline"
 tags = ["DAO"]
 hashtag = "#system_hashtag"
-twwidid = "624460720084774912"
+twwidid = "twwidid"
 page_state = "draft"
 
 [aliases]
-coinmarketcap = "Bitcoin"
+coinmarketcap = "System name at CoinMarketCap"
 nickname = "Bitcoin"
 
 [specs]
-rpc = "8332"
-block_time = 600
-block_reward = 50
-halfing_cycle = 210240
-total_tokens = 21000000
-premine_tokens = 0
-difficulty_cycle = "2016"
-txs_confirm = 6
+rpc = 
+block_time = 1
+block_reward = 1
+halfing_cycle = 1
+total_tokens = 1
+premine_tokens = 1
+difficulty_cycle = 1
+txs_confirm = 1
 
 [ratings]
-rating_cyber = 5
+rating_cyber = 1
 
 [events]
 name = "Event Name"
@@ -57,26 +57,32 @@ tokens_sold = 4379973
 tokens_issued = 8759946
 
 [[links]]
+type = "website"
 name = "Bitcoin.org"
 url = "http://bitcoin.org/en/"
 icon = "website.png"
 tags = ["Main"]
-type = "website"
 
 [[links]]
+type = "explorer"
 name = "Blockchain.info"
 url = "https://blockchain.info/"
 icon = "explorer.png"
 tags = ["Main"]
-type = "explorer"
 
 [[links]]
+type = "wallet"
 name = "Coinbase"
-headline = "nein"
 url = "https://www.coinbase.com/join/5354c035f1184f977100000c"
-type = "custom"
 icon = "coinbase.png"
-tags = ["Main", "Apps", "Wallet", "Exchange"]
+tags = ["Main", "Apps", "Wallet"]
+
+[[links]]
+type = "paper"
+name = "Protocol Documentation"
+url = "https://en.bitcoin.it/wiki/Protocol_documentation"
+icon = "paper.png"
+tags = ["Main","Science"]
 
 [[links]]
 name = "LocalBitcoins"
@@ -85,13 +91,6 @@ url = "https://localbitcoins.com/?ch=3qnx"
 type = "custom"
 icon = "localbitcoins.png"
 tags = ["Main", "Apps", "Exchange"]
-
-[[links]]
-name = "Protocol Documentation"
-url = "https://en.bitcoin.it/wiki/Protocol_documentation"
-icon = "whitepaper.png"
-tags = ["Code"]
-type = "github"
 
 [[links]]
 name = "Github Organization"
