@@ -1,60 +1,171 @@
+genesis_id = ""
+system = "Mastercoin (Omni)"
 dependencies = ["Bitcoin"]
 icon = "omnilayer"
-system = "Mastercoin (Omni)"
-
-[aliases]
-coinmarketcap = "Mastercoin (Omn..."
-CurrencyName = "Omni Layer"
-nickname = "Omni Layer"
-
-[ratings]
-rating_cyber = 3.0
-
-[consensus]
-consensus_name = "Bitcoin"
-consensus_type = ""
-
-[descriptions]
-tags = ["DApp"]
-system_type = ""
 
 [token]
 token_name = "Omni Layer"
 token_symbol = "MSC"
 
+[consensus]
+consensus_type = "Blockchain Ledger"
+consensus_name = "Bitcoin"
+
+[descriptions]
+tags = ["DApp"]
+system_type = "Decentralized Application"
+
+[aliases]
+coinmarketcap = "Mastercoin (Omn..."
+nickname = "Omni Layer"
+
+[ratings]
+rating_cyber = 3.0
+
 [specs]
 
 [[links]]
-name = "web site"
+type = "website"
+name = "www.omni.foundation"
 url = "http://www.omni.foundation/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "github"
+type = "GitHub Organization"
+name = "GitHub"
 url = "https://github.com/mastercoin-MSC"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "explorer"
+type = "explorer"
+name = "OmniChest"
 url = "http://omnichest.info/"
-icon = "explorer.png"
-tags = ["Main", "Apps"]
-type = ""
+icon = "mastercoin (omni).png"
+tags = ["Main", "Apps","Analytics"]
 
 [[links]]
-name = "blog"
+type = "wallet"
+name = "Omni Wallet"
+url = "https://www.omniwallet.org/"
+icon = "omniwallet.png"
+tags = ["Main","Apps", "Wallet"]
+
+[[links]]
+type = "blog"
+name = "Blog"
 url = "http://blog.omni.foundation/"
+rss = "http://blog.omni.foundation/feed/"
 icon = "blog.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
+type = "reddit"
 name = "reddit"
 url = "https://www.reddit.com/r/omni/"
 icon = "reddit.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=558012.0"
+icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/MSCProtocol"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/groups/mastercoin/?ref=br_tf"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+name = "CoinDesk"
+url = "http://www.coindesk.com/tag/mastercoin/"
+type = "custom"
+icon = "coindesk.png"
+tags = ["News"]
+
+[[links]]
+name = "CryptocoinNews"
+url = "https://www.cryptocoinsnews.com/tag/mastercoin/"
+type = "custom"
+icon = "cryptocoinnews.jpg"
+tags = ["News"]
+
+[[links]]
+name = "Bitcoinist"
+url = "http://bitcoinist.net/tag/mastercoin/"
+type = "custom"
+icon = "bitcoinist.png"
+tags = ["News"]
+
+[[links]]
+type = "paper"
+name = "Omni Layer Documentation"
+url = "http://mastercoin.readthedocs.org/en/latest/index.html"
+icon = "paper.png"
+tags = ["Code"]
+
+[[links]]
+type = "paper"
+name = "Omni Protocol Specification"
+url = "https://github.com/OmniLayer/spec"
+icon = "paper.png"
+tags = ["Code"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/currencies/mastercoin/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "ShapeShift"
+headline = "nein"
+url = "https://shapeshift.io"
+type = "custom"
+icon = "shapeshift.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTER"
+headline = "nein"
+url = "https://bter.com/"
+type = "custom"
+icon = "bter.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "MasterXchange"
+headline = "nein"
+url = "http://masterxchange.com/"
+type = "custom"
+icon = "masterxchange.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "wallet"
+name = "HolyTransaction"
+url = "https://holytransaction.com/"
+icon = "holytransaction.png"
+tags = ["Apps", "Wallet"]
