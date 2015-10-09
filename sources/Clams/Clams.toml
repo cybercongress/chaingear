@@ -1,38 +1,144 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "00000c3ce6b3d823a35224a39798eca9ad889966aeb5a9da7b960ffb9869db35"
 system = "Clams"
+dependencies = ["independent"]
+icon = "clams"
+
+[token]
+token_name = "Clamcoin"
+token_symbol = "CLAM"
+
+[consensus]
+consensus_type = "Proof-of-Stake"
+consensus_name = "Proof-of-Stake"
+
+[descriptions]
+state = "Running"
+system_type = "Independent System"
+tags = ["DAO"]
+
 
 [aliases]
 coinmarketcap = "Clams"
-CurrencyName = "Clams"
 
 [ratings]
-rating_cyber = 1.0
-
-[consensus]
-consensus_name = "Proof-of-Stake"
-consensus_type = ""
-
-[descriptions]
-tags = ["DAO"]
-system_type = ""
-
-[token]
-token_name = "Clams"
-token_symbol = "CLAM"
+rating_cyber = 1
 
 [specs]
 
 [[links]]
-name = "web site"
+type = "website"
+name = "clamcoin.org"
 url = "http://www.clamcoin.org/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "explorer"
+type = "explorer"
+name = "Explorer"
 url = "http://khashier.com/chain/Clam"
 icon = "explorer.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main", "Apps","Analytics"]
+
+[[links]]
+type = "code"
+name = "Clams GitHub"
+url = "github.com/nochowderforyou/clams"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/ClamClient"
+icon = "twitter.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "reddit"
+name = "reddit"
+url = "http://www.reddit.com/r/clamcoin/"
+icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=623147"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+type = "wallet"
+name = "Clams Wallets"
+url = "https://github.com/nochowderforyou/clams/releases/"
+icon = "clams.png"
+tags = ["Apps","Wallet"]
+
+[[links]]
+type = "wallet"
+name = "Clams Paper Wallet"
+url = "https://clamaddress.org/"
+icon = "wallet.png"
+tags = ["Apps","Wallet"]
+
+[[links]]
+type = "custom"
+name = "Clams Checker"
+url = "https://www.clamchecker.com/"
+icon = "clam.png"
+tags = ["Apps"]
+
+[[links]]
+type = "custom"
+name = "Free Clamcoin"
+url = "http://www.freeclam.com/"
+icon = "clam.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/currencies/clams/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+type = "custom"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "ShapeShift"
+headline = "nein"
+url = "https://shapeshift.io"
+type = "custom"
+icon = "shapeshift.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Cryptsy"
+headline = "nein"
+url = "https://www.cryptsy.com/users/register?refid=243274"
+type = "custom"
+icon = "cryptsy.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "Bittrex"
+headline = "nein"
+url = "https://bittrex.com"
+type = "custom"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BlueTrade"
+headline = "nein"
+url = "https://bleutrade.com"
+type = "custom"
+icon = "bluetrade.png"
+tags = ["Apps","Exchange"]
