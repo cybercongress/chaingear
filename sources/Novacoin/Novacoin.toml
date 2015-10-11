@@ -1,78 +1,124 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "00000a060336cbb72fe969666d337b87198b1add2abaa59cca226820b32933a4"
 system = "Novacoin"
-
-[aliases]
-coinmarketcap = "Novacoin"
-CurrencyName = "Novacoin"
-
-[ratings]
-rating_cyber = 1.0
-
-[consensus]
-consensus_name = "Hybrid POW-POS"
-hashing = "Scrypt"
-consensus_type = ""
-
-[descriptions]
-state = "Running"
-tags = ["DAO"]
-system_type = ""
-
-[events]
-announcement = "02/11/2012"
-genesis = "06/02/2013"
+dependencies = ["independent"]
+icon = "novacoin"
 
 [token]
 token_name = "Novacoin"
 token_symbol = "NVC"
 
+[consensus]
+consensus_type = "Hybrid POW-POS"
+consensus_name = "Scrypt"
+hashing = "SHA256"
+
+[descriptions]
+state = "Running"
+system_type = "Independent System"
+headline = "Hybrid POW-POS Cryptocyrrency"
+tags = ["DAO"]
+page_state = "ready"
+
+[aliases]
+coinmarketcap = "Novacoin"
+
+[ratings]
+rating_cyber = 1.0
+
 [specs]
-block_time = "600"
+block_time = 600
 
 [[links]]
-name = "web site"
-icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
-
-[[links]]
-name = "github"
-url = "https://github.com/CryptoManiac/novacoin/"
-icon = "github.png"
-tags = ["Main", "Code"]
-type = ""
-
-[[links]]
-name = "web site"
+type = "website"
+name = "novacoin.org"
 url = "http://novacoin.org/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
+type = "explorer"
+name = "explorer"
+url = "http://explorer.coinpayments.net/index.php?chain=14"
+icon = "explorer.png"
+tags = ["Main", "Apps","Analytics"]
+
+[[links]]
+type = "wallet"
+name = "Wallets"
+url = "http://sourceforge.net/projects/novacoin/files/"
+icon = "novacoin.png"
+tags = ["Main", "Apps","Wallet"]
+
+[[links]]
+type = "wiki"
+name = "NovaCoin Wiki"
+url = "https://github.com/novacoin-project/novacoin/wiki"
+icon = "wiki.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "explorer"
 name = "explorer"
 url = "https://explorer.novaco.in/"
 icon = "explorer.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Apps","Analytics"]
 
 [[links]]
-name = "forum"
-url = "https://bitcointalk.org/index.php?board=67.0"
+type = "github"
+name = "GitHub"
+url = "https://github.com/novacoin-project"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=143221.0"
 icon = "forum.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
+type = "reddit"
 name = "reddit"
 url = "http://www.reddit.com/r/novacoin"
 icon = "reddit.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "Announcement"
-url = "https://bitcointalk.org/index.php?topic=143221.0"
 type = "custom"
-tags = ["publications"]
+name = "NovaCoin FAQ"
+url = "http://novacoin.org/faq.html"
+icon = "link.png"
+tags = ["Science"]
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/currencies/novacoin/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+name = "Cryptsy"
+headline = "nein"
+url = "https://www.cryptsy.com/users/register?refid=243274"
+type = "custom"
+icon = "cryptsy.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BTC-e"
+headline = "nein"
+url = "https://btc-e.com/"
+type = "custom"
+icon = "btc-e.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+name = "BlueTrade"
+headline = "nein"
+url = "https://bleutrade.com"
+type = "custom"
+icon = "bluetrade.png"
+tags = ["Apps","Exchange"]
