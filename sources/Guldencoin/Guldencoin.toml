@@ -2,8 +2,8 @@ source = "cyberFund"
 system = "Guldencoin"
 
 [aliases]
-coinmarketcap = "Guldencoin"
-CurrencyName = "Guldencoin"
+coinmarketcap = "Gulden"
+nickname = "Gulden"
 
 [ratings]
 rating_cyber = 1.0
@@ -22,7 +22,7 @@ system_type = ""
 announcement = "02/04/2014"
 
 [token]
-token_name = "Guldencoin"
+token_name = "Gulden"
 token_symbol = "NLG"
 
 [specs]
@@ -33,20 +33,23 @@ premine_tokens = "170000000 (10%) total_tokens, 150000000 (9%) reserved for Dutc
 txs_confirm = 6.0
 dependencies = "independent"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "https://guldencoin.com"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/nlgcoin/guldencoin"
-  icon = "github.png"
+[[links]]
+type = "website"
+tags = ["Main"]
+name = "web site"
+url = "https://guldencoin.com"
+icon = "website.png"
 
 [[links]]
-name = "Announcement"
+type = "github"
+tags = ["Main", "Code"]
+name = "github"
+url = "https://github.com/nlgcoin/guldencoin"
+icon = "github.png"
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=554412.0"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["News"]
