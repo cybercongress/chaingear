@@ -3503,8 +3503,18 @@
             },
             {
                 "type": "wallet",
-                "name": "Bitshares Wallets",
-                "url": "https://bitshares.org/download/",
+                "name": "Bitshares 2.0 Web Wallet",
+                "url": "https://wallet.bitshares.org",
+                "icon": "bitshares.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Bitshares 2.0 Wallets",
+                "url": "https://github.com/bitshares/bitshares-2/releases",
                 "icon": "bitshares.png",
                 "tags": [
                     "Main",
@@ -3514,11 +3524,10 @@
             },
             {
                 "type": "wallet",
-                "name": "Bitshares Web Wallet",
-                "url": "https://wallet.bitshares.org",
+                "name": "Bitshares 0.x Wallets",
+                "url": "https://bitshares.org/download/",
                 "icon": "bitshares.png",
                 "tags": [
-                    "Main",
                     "Apps",
                     "Wallet"
                 ]
@@ -24822,9 +24831,9 @@
         },
         "specs": {
             "block_time": 150,
-            "block_reward": "1000 NLG",
+            "block_reward": "100 NLG",
             "total_tokens": 1680000000,
-            "premine_tokens": "170000000 (10%) total_tokens, 150000000 (9%) reserved for Dutch citizens,20000000 (1%)  for development, marketing, bounties)",
+            "premine_tokens": "170000000 (10%) for development, marketing and funding of community projects",
             "txs_confirm": 6,
             "dependencies": "independent"
         },
@@ -24835,7 +24844,7 @@
                     "Main"
                 ],
                 "name": "web site",
-                "url": "https://guldencoin.com",
+                "url": "https://gulden.com",
                 "icon": "website.png"
             },
             {
