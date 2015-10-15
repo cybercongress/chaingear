@@ -6,14 +6,74 @@ coinmarketcap = "Techcoin"
 CurrencyName = "Techcoin"
 
 [descriptions]
+state = "Running"
+tags = [""]
 system_type = ""
 
 [consensus]
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
+consensus_name = "X13 Proof-of-Stake"
+hashing = "X13"
 
 [token]
 token_name = "Techcoin"
 token_symbol = "TECH"
 
+[events]
+announcement = "06/24/2014"
+
 [specs]
-links = []
+p2p = 57698.0
+rpc = 57697.0
+block_time = 600.0
+total_tokens = 300000.0
+hashGenesisBlock = "0x000004da14ea2148352ec3b52b369de4ae408623751f5ab6ecc10ad5848a0e33"
+lastPoWBlock = "00000000008d6244515d82633a136dba8d2147da5e8fe3612511e6a2803d8342"
+firstPoSBlock = "95dec164a8b442acc43a421c0bda53f2c5ba46f2a483034aaa6ddb3db44b3c56"
+Genesis_Block = "2014-06-24"
+Last_PoW_Block = "2014-06-28"
+First_PoS_Block = "2014-06-29"
+PoS_Annual_Interest = "4%"
+PoS_Minimum_Stake_Age = "1 Hour - 12 Blocks"
+MAX_MONEY = 300000
+
+[[links]]
+name = "github"
+url = "https://github.com/techcoincommunity/techcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+type = "github"
+
+[[links]]
+name = "Announcement"
+url = "https://bitcointalk.org/index.php?topic=794069.msg8943371#msg8943371"
+type = "custom"
+tags = ["publications"]
+
+[[links]]
+name = "Tech-Commons"
+url = "http://tech-commons.wix.com/tech-coin-community"
+icon = "website.png"
+tags = ["Main"]
+type = "website"
+
+[[links]]
+name = "Blockchain.info"
+url = "https://chainz.cryptoid.info/tech/"
+icon = "explorer.png"
+tags = ["Main"]
+type = "explorer"
+
+[[links]]
+name = "Twitter"
+url = "https://twitter.com/TechcoinGroup"
+icon = "twitter.png"
+tags = ["News"]
+type = "twitter"
+
+[[links]]
+name = "Facebook"
+url = "https://www.facebook.com/TechCoin-738472479557133/"
+icon = "facebook.png"
+tags = ["News"]
+type = "facebook"
