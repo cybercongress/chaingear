@@ -1,32 +1,66 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chaingear](#chaingear)
+  - [What benefits of adding my cryptocurrency or cryptoasset?](#what-benefits-of-adding-my-cryptocurrency-or-cryptoasset)
+  - [How to add?](#how-to-add)
+    - [What is cryptoproperty compliance?](#what-is-cryptoproperty-compliance)
+    - [Cryptocurrency Listing:](#cryptocurrency-listing)
+    - [Cryptoasset Listing:](#cryptoasset-listing)
+    - [What if I have a private cryptocurrency or cryptoasset?](#what-if-i-have-a-private-cryptocurrency-or-cryptoasset)
+    - [Steps to add System in chaingear](#steps-to-add-system-in-chaingear)
+  - [Specification of the .toml file](#specification-of-the-toml-file)
+    - [Basic info](#basic-info)
+    - [Token](#token)
+    - [Consensus](#consensus)
+    - [Descriptions](#descriptions)
+    - [Ratings](#ratings)
+    - [Events](#events)
+    - [Links](#links)
+- [How to add crowdsale?](#how-to-add-crowdsale)
+  - [Basic Due Diligence](#basic-due-diligence)
+  - [Before](#before)
+  - [After](#after)
+  - [Fixed Cap Calculation](#fixed-cap-calculation)
+  - [Multi Currency Crowdsale](#multi-currency-crowdsale)
+  - [Independent system](#independent-system)
+  - [Bitcoin Case](#bitcoin-case)
+  - [Ethereum Case](#ethereum-case)
+- [API](#api)
+  - [What benefits of adding my cryptocurrency or cryptoasset?](#what-benefits-of-adding-my-cryptocurrency-or-cryptoasset-1)
+  - [Improve metadata](#improve-metadata)
+  - [How to add?](#how-to-add-1)
+    - [What is cryptoproperty compliance?](#what-is-cryptoproperty-compliance-1)
+    - [Cryptocurrency Listing:](#cryptocurrency-listing-1)
+    - [Cryptoasset Listing:](#cryptoasset-listing-1)
+    - [What if I have a private cryptocurrency or cryptoasset?](#what-if-i-have-a-private-cryptocurrency-or-cryptoasset-1)
+    - [Steps to add System in chaingear](#steps-to-add-system-in-chaingear-1)
+  - [Specification of the .toml file](#specification-of-the-toml-file-1)
+    - [Basic info](#basic-info-1)
+    - [Token](#token-1)
+    - [Consensus](#consensus-1)
+    - [Descriptions](#descriptions-1)
+    - [Aliases](#aliases)
+    - [Specs](#specs)
+    - [Ratings](#ratings-1)
+    - [Events](#events-1)
+    - [Links](#links-1)
+- [How to add crowdsale?](#how-to-add-crowdsale-1)
+  - [Basic Due Diligence](#basic-due-diligence-1)
+  - [Before](#before-1)
+  - [After](#after-1)
+  - [Fixed Cap Calculation](#fixed-cap-calculation-1)
+  - [Multi Currency Crowdsale](#multi-currency-crowdsale-1)
+  - [Independent system](#independent-system-1)
+  - [Bitcoin Case](#bitcoin-case-1)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chaingear
 
 This project try to solve the problem of cryptocurrencies and cryptoassets metadata.
 If you are blockchain developer you can easily enrich metadata of your blockchain or token.
-
-## What benefits of adding my cryptocurrency or cryptoasset?
-## How to add?
-### What is cryptoproperty compliance?
-### Cryptocurrency Listing:
-### Cryptoasset Listing:
-### What if I have a private cryptocurrency or cryptoasset?
-### Steps to add System in chaingear
-## Specification of the .toml file
-### Basic info
-### Token
-### Consensus
-### Descriptions
-### Ratings
-### Events
-### Links
-# How to add crowdsale?
-## Basic Due Diligence
-## Before
-## After
-## Fixed Cap Calculation
-## Multi Currency Crowdsale
-## Independent system
-## Bitcoin Case
-## Ethereum Case
 
 # API
 [chaingear.cyber.fund/v1.json](chaingear.cyber.fund/v1.json)
@@ -65,7 +99,7 @@ We are going to publish a paper soon that explain a lot of stuff. But now the fo
 
 ### Cryptoasset Listing:
 - Should be registered using listed cryptocurrency and uniquely identifiable via Genesis ID.
-- Registration protocol should be defined by a code (Counterparty, Omni, NXT AE, NXT Monetary System etc.) and/or natural language (protocol specification such as Open Assets protocol, AGS, etc.) 
+- Registration protocol should be defined by a code (Counterparty, Omni, NXT AE, NXT Monetary System etc.) and/or natural language (protocol specification such as Open Assets protocol, AGS, etc.)
 - Purpose of registration should be described by a code (e.g. smart contracts), and/or natural language (e.g. Ricardian contract or signed Shareholders agreement)
 
 ### What if I have a private cryptocurrency or cryptoasset?
@@ -75,7 +109,7 @@ You can discuss or ask a question at [cyber•Talk Thread](http://cybertalks.org
 
 ### Steps to add System in chaingear
 - Clone `chaingear` repository
-- Create a folder at `/chaingear/sourses`. Name of the folder should be same as a `system` name 
+- Create a folder at `/chaingear/sourses`. Name of the folder should be same as a `system` name
 - Copy `example.toml` from `/chaingear/` into a folder you created
 - Rename `example.toml` to a `system` name
 - Fill .toml file guided by the following section
@@ -96,7 +130,7 @@ icon = "system_name"
 
 `system` -  The unique name of a system. If there exist system with name in respect to communities please invent another name. In case of historical collisions (Bytecoin for instance) priority will have a system with older genesis date. Newer system will be excluded until renamed. Go to a `/chaingear/sourses` to explore systems names or type in a Search at [cyber.fund](https://cyber.fund/)
 
-`dependencies` - Specify dependencies on other systems. 
+`dependencies` - Specify dependencies on other systems.
 - For Independent Systems which runs on their own blockchain should be `independent`
 - For Systems wich use blockchains of other systems you should specify names of that systems. Names of the systems you can find in `/chaingear/sourses`
 
@@ -125,7 +159,7 @@ token_symbol = "token_ticker"
 ```toml
 [consensus]
 consensus_type = "Consensus Type" # `Proof-of-Work`, `Proof-of-Stake`, `Delegated Proof-of-Stake`, `Hybrid POS-POW`, `Federated Consensus`, `Blockchain Ledger`
-consensus_name = "Consensus Name" 
+consensus_name = "Consensus Name"
 hashing = "Encryption Name"
 
 ```
@@ -154,7 +188,7 @@ If none of these types do not correspond with a nature of your System, choose ou
 
 `state` - choose existing state of a system:
 - *Project* - for systems that are in development or on idea stage. Systems with this state will be displayed at [cyber•Fund Radar](https://cyber.fund/radar) section
-- *Running* - for systems that already works. 
+- *Running* - for systems that already works.
 
 `headline` - describe the system in a few words, not more than 140 symbols
 
@@ -162,7 +196,7 @@ If none of these types do not correspond with a nature of your System, choose ou
 
 `tags` - you can specify any number of tags related to a system
 
-`page_state` - 
+`page_state` -
 - *draft* - for systems that require additional information and links
 - *ready* - for systems that already have full information
 
@@ -197,7 +231,7 @@ rpc = "8332"
 
 `premine_tokens` - The number of premined tokens
 
-`halfing_cycle` - The number of blocks required to increase 
+`halfing_cycle` - The number of blocks required to increase
 
 `difficulty_cycle` - The number of blocks required to increase difficulty of calculation
 
@@ -231,7 +265,7 @@ icon = "website.png"
 tags = ["Main","Apps"]
 ```
 
-`type` - 
+`type` -
 For the standart types of links listed below, provides automatic detection of the `icons` and `tags`, so you do not need to fill out these properties.
 Standard links types:
 - *website* - tags: ["Main"], icon: fa-home
@@ -260,10 +294,10 @@ For other links types use:
 
 `icon` - If not defined - default icon for a `type`. To customize icon for the link fill image name and put image file in to a `/chaingear/logos` folder. Image requirements are the same as for the system logo
 
-`tags` - Tags define in which section of the cyber•Fund System's Profile Page  will be plaeced: 
+`tags` - Tags define in which section of the cyber•Fund System's Profile Page  will be plaeced:
 - *Main* - section below Logotype, Name of the System and Raiting. Can contain only 4 links
 - *News* - this tag places link Section: News
-- *Apps* - by default this tag places link in the Section: Apps/Other 
+- *Apps* - by default this tag places link in the Section: Apps/Other
 - *Wallet* - in combination with *Apps* tag places link in the Section: Apps/Wallets, use for wallets and clients
 - *Exchange* - in combination with *Apps* tag places link in the Section: Apps/Exchanges, use for exchanges
 - *Analytics* - in combination with *Apps* tag places link in the Section: Apps/Analytics, use for any analytics resources
