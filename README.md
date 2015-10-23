@@ -1,76 +1,51 @@
+# Chaingear
+
+This project try to solve the problem of cryptocurrencies and cryptoassets metadata.
+If you are blockchain developer you can easily enrich metadata of your blockchain or token.
+
+This repository accumulate the following blockchains metadata such as dependencies, specs, logos, links and other sensitive metadata. Rationale behind Chaingear you can find in a paper: cyber•Rating: Cryptoproperty Evaluation (Link soon to be added).
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+## Table of Contents
 
-- [Chaingear](#chaingear)
-  - [What benefits of adding my cryptocurrency or cryptoasset?](#what-benefits-of-adding-my-cryptocurrency-or-cryptoasset)
-  - [How to add?](#how-to-add)
-    - [What is cryptoproperty compliance?](#what-is-cryptoproperty-compliance)
-    - [Cryptocurrency Listing:](#cryptocurrency-listing)
-    - [Cryptoasset Listing:](#cryptoasset-listing)
-    - [What if I have a private cryptocurrency or cryptoasset?](#what-if-i-have-a-private-cryptocurrency-or-cryptoasset)
-    - [Steps to add System in chaingear](#steps-to-add-system-in-chaingear)
-  - [Specification of the .toml file](#specification-of-the-toml-file)
-    - [Basic info](#basic-info)
-    - [Token](#token)
-    - [Consensus](#consensus)
-    - [Descriptions](#descriptions)
-    - [Ratings](#ratings)
-    - [Events](#events)
-    - [Links](#links)
+- [API](#api)
+- [What benefits of adding my cryptocurrency or cryptoasset?](#what-benefits-of-adding-my-cryptocurrency-or-cryptoasset)
+- [Improve metadata](#improve-metadata)
+- [How to add?](#how-to-add)
+  - [What is cryptoproperty compliance?](#what-is-cryptoproperty-compliance)
+  - [Cryptocurrency Listing:](#cryptocurrency-listing)
+  - [Cryptoasset Listing:](#cryptoasset-listing)
+  - [What if I have a private cryptocurrency or cryptoasset?](#what-if-i-have-a-private-cryptocurrency-or-cryptoasset)
+  - [Steps to add System in chaingear](#steps-to-add-system-in-chaingear)
+- [Specification of the .toml file](#specification-of-the-toml-file)
+  - [Basic info](#basic-info)
+  - [Token](#token)
+  - [Consensus](#consensus)
+  - [Descriptions](#descriptions)
+  - [Aliases](#aliases)
+  - [Specs](#specs)
+  - [Ratings](#ratings)
+  - [Events](#events)
+  - [Links](#links)
 - [How to add crowdsale?](#how-to-add-crowdsale)
   - [Basic Due Diligence](#basic-due-diligence)
   - [Before](#before)
   - [After](#after)
   - [Fixed Cap Calculation](#fixed-cap-calculation)
   - [Multi Currency Crowdsale](#multi-currency-crowdsale)
+- [Samples](#samples)
   - [Independent system](#independent-system)
   - [Bitcoin Case](#bitcoin-case)
-  - [Ethereum Case](#ethereum-case)
-- [API](#api)
-  - [What benefits of adding my cryptocurrency or cryptoasset?](#what-benefits-of-adding-my-cryptocurrency-or-cryptoasset-1)
-  - [Improve metadata](#improve-metadata)
-  - [How to add?](#how-to-add-1)
-    - [What is cryptoproperty compliance?](#what-is-cryptoproperty-compliance-1)
-    - [Cryptocurrency Listing:](#cryptocurrency-listing-1)
-    - [Cryptoasset Listing:](#cryptoasset-listing-1)
-    - [What if I have a private cryptocurrency or cryptoasset?](#what-if-i-have-a-private-cryptocurrency-or-cryptoasset-1)
-    - [Steps to add System in chaingear](#steps-to-add-system-in-chaingear-1)
-  - [Specification of the .toml file](#specification-of-the-toml-file-1)
-    - [Basic info](#basic-info-1)
-    - [Token](#token-1)
-    - [Consensus](#consensus-1)
-    - [Descriptions](#descriptions-1)
-    - [Aliases](#aliases)
-    - [Specs](#specs)
-    - [Ratings](#ratings-1)
-    - [Events](#events-1)
-    - [Links](#links-1)
-- [How to add crowdsale?](#how-to-add-crowdsale-1)
-  - [Basic Due Diligence](#basic-due-diligence-1)
-  - [Before](#before-1)
-  - [After](#after-1)
-  - [Fixed Cap Calculation](#fixed-cap-calculation-1)
-  - [Multi Currency Crowdsale](#multi-currency-crowdsale-1)
-  - [Independent system](#independent-system-1)
-  - [Bitcoin Case](#bitcoin-case-1)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Chaingear
-
-This project try to solve the problem of cryptocurrencies and cryptoassets metadata.
-If you are blockchain developer you can easily enrich metadata of your blockchain or token.
-
-# API
+## API
+Link to stable version is not published yet:
 [chaingear.cyber.fund/v1.json](chaingear.cyber.fund/v1.json)
 
-This repository accumulate the following blockchains metadata:
-- Dependencies
-- Specs
-- Logos
-- Links
-- Crowdsales
+Unstable version could be found here:
+[chaingear.cyber.fund/chaingear.json](chaingear.cyber.fund/chaingear.json)
 
 ## What benefits of adding my cryptocurrency or cryptoasset?
 
@@ -305,12 +280,12 @@ For other links types use:
 - *Science* - Section: Scientific Roots
 - Also you can add any other tag
 
-# How to add crowdsale?
+## How to add crowdsale?
 Crowdsale consist of 2 steps:
 - Before the start. We recommend to add this information at least a month before ETA.
 - After the finish. We recommend to add this information in an hour after finish.
 
-## Basic Due Diligence
+### Basic Due Diligence
 We don't accept crowdfunding if certain condition didn't met:
 
 - At least one genesis address exist. We don't accept crowdfunding if investors could not transparently track funds.
@@ -318,7 +293,7 @@ We don't accept crowdfunding if certain condition didn't met:
 - Funding terms are defined and cryptographically signed by fund managers.
 To add crowdfunding put this data to toml file of your system.
 
-## Before
+### Before
 ```toml
 [crowdsales]
 start_date = "2015-03-31T00:00:00"
@@ -332,7 +307,7 @@ crowsale_feed = "http://example.com/feed" # For multi currency or non bitcoin cr
 ```
 Note that all fields are mandatory.
 
-## After
+### After
 Then crowdsale is finished two liner report is needed.
 ```toml
 tokens_sold = 4379973
@@ -340,15 +315,15 @@ tokens_issued = 8759946
 btc_raised = 3500
 ```
 
-## Fixed Cap Calculation
+### Fixed Cap Calculation
 After end of crowdsale your cap will be calculated automatically based on 4 fields: `start_date`, `end_date`, `min_invesment` and `genesis_address`. Thus your project will become visible in [Rating](https://cyber.fund) with fixed cap until tokens (1) won't be distributed and (2) at least one public market will be established.
 
-## Multi Currency Crowdsale
+### Multi Currency Crowdsale
 You can provide multiple addresses as array: `["address1", "address2"]`.
 At this point of time we support only Bitcoin addresses for crowdsale calculations. For multi currency crowdsale or non bitcoin crowdsale you will need to provide pre calculated feed.
 
-
-## Independent system
+## Samples
+### Independent system
 ```toml
 # This is a TOML document.
 
@@ -390,7 +365,7 @@ rating_cyber = 5 # temporary. type: number
 
 ```
 
-## Bitcoin Case
+### Bitcoin Case
 ```
 genesis_id = "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
 system = "Bitcoin"
