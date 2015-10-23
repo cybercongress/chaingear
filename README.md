@@ -1,7 +1,9 @@
 # Chaingear
 
+Verified and Machine readable blockchain metadata.
 This project try to solve the problem of cryptocurrencies and cryptoassets metadata.
 If you are blockchain developer you can easily enrich metadata of your blockchain or token.
+
 
 This repository accumulate the following blockchains metadata such as dependencies, specs, logos, links and other sensitive metadata. Rationale behind Chaingear you can find in a paper: cyber•Rating: Cryptoproperty Evaluation (Link soon to be added).
 
@@ -10,8 +12,7 @@ This repository accumulate the following blockchains metadata such as dependenci
 ## Table of Contents
 
 - [API](#api)
-- [What benefits of adding my cryptocurrency or cryptoasset?](#what-benefits-of-adding-my-cryptocurrency-or-cryptoasset)
-- [Improve metadata](#improve-metadata)
+- [What benefits of adding to Chaingear?](#what-benefits-of-adding-to-chaingear)
 - [How to add?](#how-to-add)
   - [What is cryptoproperty compliance?](#what-is-cryptoproperty-compliance)
   - [Cryptocurrency Listing:](#cryptocurrency-listing)
@@ -45,17 +46,15 @@ Link to stable version is not published yet:
 [chaingear.cyber.fund/v1.json](chaingear.cyber.fund/v1.json)
 
 Unstable version could be found here:
-[chaingear.cyber.fund/chaingear.json](chaingear.cyber.fund/chaingear.json)
+[chaingear.cyber.fund/chaingear.json](http://chaingear.cyber.fund/chaingear.json)
 
-## What benefits of adding my cryptocurrency or cryptoasset?
+## What benefits of adding to Chaingear?
 
-1. Describe what it is for in understandable format.
-2. Your chain on cyber•Fund for free.
-3. Make your chain accessible for other developers.
-4. It will make significantly easier to deal with your token for any wallet, exchange, bridge and any web app which want to work with your cryptocurrency or cryptoasset.
-
-## Improve metadata
-You can add blockchain related projects in blockchain metadata.
+1. Make you system understandable for people.
+All meaningful information about system you develop should be gathered in one place in order to gain more adaption.
+2. Make your system accessible for other developers. It will make significantly easier to deal with your token for any wallet, exchange, bridge and any web app which want to work with your cryptocurrency or cryptoasset.
+2. Your system on cyber•Fund for free.
+We are continuously working on attraction of investors to blockchain based projects.
 
 ## How to add?
 Any system that follow basic digital property requirements could be added.
