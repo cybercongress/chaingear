@@ -7,8 +7,6 @@ If you are blockchain developer you can easily enrich metadata of your blockchai
 
 This repository accumulate the following blockchains metadata such as dependencies, specs, logos, links and other sensitive metadata. Rationale behind Chaingear you can find in a paper: cyber•Rating: Cryptoproperty Evaluation (Link soon to be added).
 
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Table of Contents
 
 - [API](#api)
@@ -39,14 +37,20 @@ This repository accumulate the following blockchains metadata such as dependenci
   - [Independent system](#independent-system)
   - [Bitcoin Case](#bitcoin-case)
 
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 ## API
 Link to stable version is not published yet:
 [chaingear.cyber.fund/v1.json](chaingear.cyber.fund/v1.json)
 
 Unstable version could be found here:
 [chaingear.cyber.fund/chaingear.json](http://chaingear.cyber.fund/chaingear.json)
+
+This repository accumulate the following blockchains metadata:
+- Dependencies
+- Specs
+- Logos
+- Links
+- Events
+- Crowdsales
 
 ## What benefits of adding to Chaingear?
 
@@ -119,35 +123,41 @@ Image requirements:
 - image should be square
 - image should have resolution between 256x256 and 1024x1024
 
-### Token
+### Aliases
 ```toml
-[token]
-token_name = "token_name"
-token_symbol = "token_ticker"
+coinmarketcap = "Bitcoin"
+nickname = "Bitcoin"
 ```
 
-`token_name` - The token name. Sometimes the system name and the name of the token is not the same, for example `SAFE Network` token has name `MaidSafeCoin`
-`token_symbol` - Market ticker of the system (Bitcoin - `BTC`)
+### Specs
+This section contains information about tecnical specification of the system.
 
-### Consensus
 ```toml
-[consensus]
+[specs]
+token_name = "token_name"
+token_symbol = "token_ticker"
 consensus_type = "Consensus Type" # `Proof-of-Work`, `Proof-of-Stake`, `Delegated Proof-of-Stake`, `Hybrid POS-POW`, `Federated Consensus`, `Blockchain Ledger`
 consensus_name = "Consensus Name"
 hashing = "Encryption Name"
-
-```
-
-### Descriptions
-```toml
-[descriptions]
 system_type = "Independent System"
 state = "Running"
 headline = "A brief description of not more than 140 symbols or tagline"
 hashtag = "#example"
 tags = ["DAO"]
 page_state = "draft" # can be "draft" or "ready"
+block_time = 600
+block_reward = 50
+halfing_cycle = 210240
+total_tokens = 21000000
+premine_tokens = 0
+difficulty_cycle = "2016"
+txs_confirm = 6
+rpc = "8332"
 ```
+
+`token_name` - The token name. Sometimes the system name and the name of the token is not the same, for example `SAFE Network` token has name `MaidSafeCoin`
+
+`token_symbol` - Market ticker of the system (Bitcoin - `BTC`)
 
 `system_type` - Choose a system type from a classification below:
 - *Independent System* - Secured by decentralized consensus protocols. Examples: Bitcoin, Ripple, Ethereum, BitShares.
@@ -156,7 +166,7 @@ page_state = "draft" # can be "draft" or "ready"
 - *Ownership Title* - To this class belong systems where transaction (e.g. a transfer of money) by itself proves your ownership rights for what you expect to receive.. Examples: AGS, Neucoin or Ethereum before launch.
 - *Blockchain Share* - These are blockchain securities, e.g. shares, that give you rights to receive dividends: Coinomat. That could be shares that promise you tokens in the future: SAFE Network or Synereo. Tokens don’t have internal value without counterparty. It is a reason why blockchain shares usually bear a counterparty risk.
 
-For better understanding this classification read cyber•Fund blog post [Do Your Own Reserch](https://blog.cyber.fund/do-your-own-research-with-cyber-fund-d751d65925e0)
+For better understanding this classification read cyber•Fund blog post ["Do Your Own Reserch"](https://blog.cyber.fund/do-your-own-research-with-cyber-fund-d751d65925e0)
 
 If none of these types do not correspond with a nature of your System, choose our own and leave description at [cyber•Talks Thread](http://cybertalks.org/t/do-your-own-research-with-cyber-fund/347/4)
 
@@ -173,27 +183,6 @@ If none of these types do not correspond with a nature of your System, choose ou
 `page_state` -
 - *draft* - for systems that require additional information and links
 - *ready* - for systems that already have full information
-
-### Aliases
-```toml
-coinmarketcap = "Bitcoin"
-nickname = "Bitcoin"
-```
-
-### Specs
-This section contains information about tecnical specification of the system.
-
-```toml
-[specs]
-block_time = 600
-block_reward = 50
-halfing_cycle = 210240
-total_tokens = 21000000
-premine_tokens = 0
-difficulty_cycle = "2016"
-txs_confirm = 6
-rpc = "8332"
-```
 
 `block_time` - The number of seconds required for generating a block
 
