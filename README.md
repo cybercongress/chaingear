@@ -3,6 +3,31 @@
 This project try to solve the problem of cryptocurrencies and cryptoassets metadata.
 If you are blockchain developer you can easily enrich metadata of your blockchain or token.
 
+## What benefits of adding my cryptocurrency or cryptoasset?
+## How to add?
+### What is cryptoproperty compliance?
+### Cryptocurrency Listing:
+### Cryptoasset Listing:
+### What if I have a private cryptocurrency or cryptoasset?
+### Steps to add System in chaingear
+## Specification of the .toml file
+### Basic info
+### Token
+### Consensus
+### Descriptions
+### Ratings
+### Events
+### Links
+# How to add crowdsale?
+## Basic Due Diligence
+## Before
+## After
+## Fixed Cap Calculation
+## Multi Currency Crowdsale
+## Independent system
+## Bitcoin Case
+## Ethereum Case
+
 # API
 [chaingear.cyber.fund/v1.json](chaingear.cyber.fund/v1.json)
 
@@ -13,7 +38,7 @@ This repository accumulate the following blockchains metadata:
 - Links
 - Crowdsales
 
-## Why do I need to add my cryptocurrency or cryptoasset?
+## What benefits of adding my cryptocurrency or cryptoasset?
 
 1. Describe what it is for in understandable format.
 2. Your chain on cyber•Fund for free.
@@ -33,22 +58,22 @@ This is closed list of such requirements:
 ### What is cryptoproperty compliance?
 We are going to publish a paper soon that explain a lot of stuff. But now the following requirements exist:
 
-###Cryptocurrency Listing:
+### Cryptocurrency Listing:
 - Should be established and uniquely identifiable via Genesis ID.
 - Should have underlying internal capital - a cryptocurrency responsible for resilience of network consensus.
 - Core code responsible for network consensus should be open source, buildable and executable for at least one open source operating system.
 
-###Cryptoasset Listing:
+### Cryptoasset Listing:
 - Should be registered using listed cryptocurrency and uniquely identifiable via Genesis ID.
 - Registration protocol should be defined by a code (Counterparty, Omni, NXT AE, NXT Monetary System etc.) and/or natural language (protocol specification such as Open Assets protocol, AGS, etc.) 
 - Purpose of registration should be described by a code (e.g. smart contracts), and/or natural language (e.g. Ricardian contract or signed Shareholders agreement)
 
-###What if I have a private cryptocurrency or cryptoasset?
+### What if I have a private cryptocurrency or cryptoasset?
 No problem. It could be registered using Chaingear library and will be listed in Radar. So when your brainchild will be ready to be publicly traded it will be included in Rating automagicaly. Follow [cyber•Fund Radar](https://cyber.fund/radar) listing section.
 
 You can discuss or ask a question at [cyber•Talk Thread](http://cybertalks.org/t/rating-listing-of-cryptocurrencies-and-cryptoassets/353)
 
-###Steps to add System in chaingear
+### Steps to add System in chaingear
 - Clone `chaingear` repository
 - Create a folder at `/chaingear/sourses`. Name of the folder should be same as a `system` name 
 - Copy `example.toml` from `/chaingear/` into a folder you created
