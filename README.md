@@ -1,3 +1,36 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Chaingear](#chaingear)
+  - [Table of Contents](#table-of-contents)
+  - [API](#api)
+  - [What benefits of adding to Chaingear?](#what-benefits-of-adding-to-chaingear)
+  - [How to add?](#how-to-add)
+    - [What is cryptoproperty compliance?](#what-is-cryptoproperty-compliance)
+    - [Cryptocurrency Listing:](#cryptocurrency-listing)
+    - [Cryptoasset Listing:](#cryptoasset-listing)
+    - [What if I have a private cryptocurrency or cryptoasset?](#what-if-i-have-a-private-cryptocurrency-or-cryptoasset)
+    - [Steps to add System in chaingear](#steps-to-add-system-in-chaingear)
+  - [Specification of the .toml file](#specification-of-the-toml-file)
+    - [Basic info](#basic-info)
+    - [Aliases](#aliases)
+    - [Specs](#specs)
+    - [Ratings](#ratings)
+    - [Events](#events)
+    - [Links](#links)
+  - [How to add crowdsale?](#how-to-add-crowdsale)
+    - [Basic Due Diligence](#basic-due-diligence)
+    - [Before](#before)
+    - [After](#after)
+    - [Fixed Cap Calculation](#fixed-cap-calculation)
+    - [Multi Currency Crowdsale](#multi-currency-crowdsale)
+  - [Samples](#samples)
+    - [Independent system](#independent-system)
+    - [Bitcoin Case](#bitcoin-case)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Chaingear
 
 Verified and Machine readable blockchain metadata.
