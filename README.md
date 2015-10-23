@@ -1,25 +1,30 @@
 # Chaingear
 
-Verified and Machine readable blockchain metadata.
+Verified and machine readable blockchain metadata.
 This project try to solve the problem of cryptocurrencies and cryptoassets metadata.
-If you are blockchain developer you can easily enrich metadata of your blockchain or token.
+If you are blockchain developer you can easily enrich metadata of system you are building.
 
+This repository accumulate dependencies, specs, logos, links and other sensitive metadata. Rationale behind Chaingear you can find in a paper: cyber•Rating: Cryptoproperty Evaluation (Link soon to be added).
 
-This repository accumulate the following blockchains metadata such as dependencies, specs, logos, links and other sensitive metadata. Rationale behind Chaingear you can find in a paper: cyber•Rating: Cryptoproperty Evaluation (Link soon to be added).
-
-## Table of Contents
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
 - [Chaingear](#chaingear)
   - [Table of Contents](#table-of-contents)
   - [API](#api)
   - [What benefits of adding to Chaingear?](#what-benefits-of-adding-to-chaingear)
-  - [How to add?](#how-to-add)
+  - [How to add a system?](#how-to-add-a-system)
+    - [Steps to add system in Chaingear](#steps-to-add-system-in-chaingear)
+    - [Requirements](#requirements)
     - [What is cryptoproperty compliance?](#what-is-cryptoproperty-compliance)
     - [Cryptocurrency Listing:](#cryptocurrency-listing)
     - [Cryptoasset Listing:](#cryptoasset-listing)
+    - [Cryptoproject Listing](#cryptoproject-listing)
+    - [Cryptoservice Listing](#cryptoservice-listing)
     - [What if I have a private cryptocurrency or cryptoasset?](#what-if-i-have-a-private-cryptocurrency-or-cryptoasset)
-    - [Steps to add System in chaingear](#steps-to-add-system-in-chaingear)
-  - [Specification of the .toml file](#specification-of-the-toml-file)
+    - [What if I don't have a token yet?](#what-if-i-dont-have-a-token-yet)
+  - [Specification of .toml file](#specification-of-toml-file)
     - [Basic info](#basic-info)
     - [Aliases](#aliases)
     - [Specs](#specs)
@@ -36,6 +41,8 @@ This repository accumulate the following blockchains metadata such as dependenci
     - [Independent system](#independent-system)
     - [Bitcoin Case](#bitcoin-case)
 
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## API
 Link to stable version is not published yet:
 [chaingear.cyber.fund/v1.json](chaingear.cyber.fund/v1.json)
@@ -43,23 +50,49 @@ Link to stable version is not published yet:
 Unstable version could be found here:
 [chaingear.cyber.fund/chaingear.json](http://chaingear.cyber.fund/chaingear.json)
 
-This repository accumulate the following blockchains metadata:
-- Dependencies
-- Specs
-- Logos
-- Links
-- Events
-- Crowdsales
-
 ## What benefits of adding to Chaingear?
 
 1. Make you system understandable for people.
 All meaningful information about system you develop should be gathered in one place in order to gain more adaption.
 2. Make your system accessible for other developers. It will make significantly easier to deal with your token for any wallet, exchange, bridge and any web app which want to work with your cryptocurrency or cryptoasset.
-2. Your system on cyber•Fund for free.
+2. Your system is listed in cyber•Fund's Radar or Rating for free.
 We are continuously working on attraction of investors to blockchain based projects.
 
-## How to add?
+## How to add a system?
+We support 4 types of a systems:
+- `cryptocurrency`
+- `cryptoasset`
+- `cryptoservice`
+- `cyptoproject`
+
+For every type data structure is quite similar, but requirements are differs.
+
+Meta description is a simple text file in [`toml`](https://github.com/toml-lang/toml) format.
+```toml
+system = "Bitcoin"
+icon = "bitcoin.png"
+type = "cryptocurrency"
+```
+
+### Steps to add system in Chaingear
+- Clone `chaingear` repository
+- Run `npm install`
+- Run `cg add {system type}`
+
+```
+ Now the process is not automated, so:
+- Create a folder at `/chaingear/sourses`. Name of the folder should be same as a `system` name
+- Copy desired type of a system from `/templates` into a folder you created
+- Rename `example.toml` to a `system` name
+```
+
+- Fill out `.toml` file in accordance with [specs](#specification-of-.toml-file).
+- Pull request
+
+cyber•Fund's Team in short time will review your work and commit changes
+
+### Requirements
+
 Any system that follow basic digital property requirements could be added.
 This is closed list of such requirements:
 - We allow listing of cryptocurrencies and cryptoassets that are **cryptoproperty compliant**.
@@ -79,22 +112,22 @@ We are going to publish a paper soon that explain a lot of stuff. But now the fo
 - Registration protocol should be defined by a code (Counterparty, Omni, NXT AE, NXT Monetary System etc.) and/or natural language (protocol specification such as Open Assets protocol, AGS, etc.)
 - Purpose of registration should be described by a code (e.g. smart contracts), and/or natural language (e.g. Ricardian contract or signed Shareholders agreement)
 
+### Cryptoproject Listing
+
+### Cryptoservice Listing
+
+
+
 ### What if I have a private cryptocurrency or cryptoasset?
 No problem. It could be registered using Chaingear library and will be listed in Radar. So when your brainchild will be ready to be publicly traded it will be included in Rating automagicaly. Follow [cyber•Fund Radar](https://cyber.fund/radar) listing section.
 
+### What if I don't have a token yet?
+If you are not going to issue a token or create an independent system we could not add your
+
 You can discuss or ask a question at [cyber•Talk Thread](http://cybertalks.org/t/rating-listing-of-cryptocurrencies-and-cryptoassets/353)
 
-### Steps to add System in chaingear
-- Clone `chaingear` repository
-- Create a folder at `/chaingear/sourses`. Name of the folder should be same as a `system` name
-- Copy `example.toml` from `/chaingear/` into a folder you created
-- Rename `example.toml` to a `system` name
-- Fill .toml file guided by the following section
-- Pull request
+## Specification of .toml file
 
-cyber•Fund's Team in short time will review your work and commit changes
-
-## Specification of the .toml file
 ### Basic info
 ```toml
 genesis_id = "hash_of_the_first_block"
@@ -129,10 +162,12 @@ nickname = "Bitcoin"
 ```
 
 ### Specs
-This section contains information about tecnical specification of the system.
+This section contains information about technical specification of the system.
 
 ```toml
 [specs]
+genesis_id = "hash_of_the_first_block"
+dependencies = ["independent"]
 token_name = "token_name"
 token_symbol = "token_ticker"
 consensus_type = "Consensus Type" # `Proof-of-Work`, `Proof-of-Stake`, `Delegated Proof-of-Stake`, `Hybrid POS-POW`, `Federated Consensus`, `Blockchain Ledger`
@@ -309,93 +344,4 @@ After end of crowdsale your cap will be calculated automatically based on 4 fiel
 You can provide multiple addresses as array: `["address1", "address2"]`.
 At this point of time we support only Bitcoin addresses for crowdsale calculations. For multi currency crowdsale or non bitcoin crowdsale you will need to provide pre calculated feed.
 
-## Samples
-### Independent system
-```toml
-# This is a TOML document.
-
-[document]
-system = "Ethereum" # type: string
-genesis_id = "null" # type: string
-
-# Descriptive data
-[descriptions]
-symbol = "ETH" # type: string
-currency = "ether" # type: string
-short_description = "A Next-Generation Smart Contract and Decentralized Application Platform" # type: string
-summary = "Ethereum is a community-driven project aiming to decentralize the internet and return it to its democratic roots. It is a platform for building and running applications which do not need to rely on trust and cannot be controlled by any central authority." # type: string
-coinmarketcap = "Ethereum" # type: string
-
-type = "DAO" # type: string
-consensus = "Ethereum" # type: string
-
-[dependencies] # type: string. Independent if empty.
-
-[links]
-name = "web site" # type: string
-url = "http://ethereum.org/" # type: string
-type = "website" # type: string
-tags = [ "Main", "Apps" ] # type: string
-icon = "ethereum.png" # optional. If empty default picture for a type
-
-[crowdsales]
-start_date = "22/7/2014" # type: date
-end_date = "2/9/2014" # type: date
-genesis_address = "36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2" # type: string
-funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf" # type: string
-funding_operator = "null" # type: string
-funding_url = "https://www.ethereum.org/ether" # type: string
-tokens_sold = 60102216 # type: number
-
-[ratings]
-rating_cyber = 5 # temporary. type: number
-
-```
-
-### Bitcoin Case
-```
-genesis_id = "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"
-system = "Bitcoin"
-
-[token]
-token_name="bitcoin"
-token_symbol = "BTC"
-
-[dependencies]
-# If epmty - "independent"
-
-[descriptions] # mapped as strings
-headline = "Bitcoin is an innovative payment network and a new kind of money" # type: string
-description = "Bitcoin is an innovative payment network and a new kind of money." # type: string
-system_type = "blockchain"
-state = "live"
-hashtag = "#bitcoin"
-tags = ["whale", "dao"]
-
-[aliases] # used for matching
-coinmarketcap = "Bitcoin"
-
-[consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "Bitcoin Proof-of-Work"
-hashing = "SHA-256d"
-
-[specs] # mapped as number
-rpc = 8332 # RPC port
-p2p = null # p2p port
-block_time = 600 # the number of seconds required for generating a block
-block_reward = 50 # the number of tokens received as a reward for the found block
-halfing_cycle = 210240
-difficulty_cycle = 2016
-txs_confirm = 6 # the number of confirmations required to record transactions in the block
-mint_confirm = 120
-total_tokens = 21000000 # the number of tokens that will ever be generated
-premine_tokens = 0 # the number of premined tokens
-
-[events] # mapped as dates
-announcement = "31/10/2008"
-genesis = "03/01/2009"
-
-[ratings]
-rating_cyber = 5 # temporary. type: number
-```
+## Templates
