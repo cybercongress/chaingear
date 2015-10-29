@@ -1,45 +1,43 @@
 # Chaingear
 
 Verified and machine readable blockchain metadata.
-This project try to solve the problem of cryptocurrencies and cryptoassets metadata.
+![chaingear](http://cybertalks.org/uploads/default/original/1X/7513bd73105f7748b8e582a07a7441d28f584070.jpg)
 If you are blockchain developer you can easily enrich metadata of system you are building.
 
-This repository accumulate dependencies, specs, logos, links and other sensitive metadata. Rationale behind Chaingear you can find in a paper: cyber•Rating: Cryptoproperty Evaluation (Link soon to be added).
+Trying to solve the problem of cryptocurrencies and cryptoassets metadata, this repository accumulate dependencies, specs, logos, links and other sensitive metadata.
+
+Rationale behind Chaingear you can find in a paper: [cyber•Rating: Cryptoproperty Evaluation](https://github.com/cyberFund/cyberrating.org/blob/master/paper.md#8-cryptoproperty-identification).
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+## Table of Contents
 
-- [Chaingear](#chaingear)
-  - [Table of Contents](#table-of-contents)
-  - [API](#api)
-  - [What benefits of adding to Chaingear?](#what-benefits-of-adding-to-chaingear)
-  - [How to add a system?](#how-to-add-a-system)
-    - [Steps to add system in Chaingear](#steps-to-add-system-in-chaingear)
-    - [Requirements](#requirements)
-    - [What is cryptoproperty compliance?](#what-is-cryptoproperty-compliance)
-    - [Cryptocurrency Listing:](#cryptocurrency-listing)
-    - [Cryptoasset Listing:](#cryptoasset-listing)
-    - [Cryptoproject Listing](#cryptoproject-listing)
-    - [Cryptoservice Listing](#cryptoservice-listing)
-    - [What if I have a private cryptocurrency or cryptoasset?](#what-if-i-have-a-private-cryptocurrency-or-cryptoasset)
-    - [What if I don't have a token yet?](#what-if-i-dont-have-a-token-yet)
-  - [Specification of .toml file](#specification-of-toml-file)
-    - [Basic info](#basic-info)
-    - [Aliases](#aliases)
-    - [Specs](#specs)
-    - [Ratings](#ratings)
-    - [Events](#events)
-    - [Links](#links)
-  - [How to add crowdsale?](#how-to-add-crowdsale)
-    - [Basic Due Diligence](#basic-due-diligence)
-    - [Before](#before)
-    - [After](#after)
-    - [Fixed Cap Calculation](#fixed-cap-calculation)
-    - [Multi Currency Crowdsale](#multi-currency-crowdsale)
-  - [Samples](#samples)
-    - [Independent system](#independent-system)
-    - [Bitcoin Case](#bitcoin-case)
+- [API](#api)
+- [What benefits of adding to Chaingear?](#what-benefits-of-adding-to-chaingear)
+- [How to add a system?](#how-to-add-a-system)
+  - [Steps to add system in Chaingear](#steps-to-add-system-in-chaingear)
+  - [Requirements](#requirements)
+  - [What is cryptoproperty compliance?](#what-is-cryptoproperty-compliance)
+  - [Cryptocurrency Listing:](#cryptocurrency-listing)
+  - [Cryptoasset Listing:](#cryptoasset-listing)
+  - [Cryptoproject Listing](#cryptoproject-listing)
+  - [Cryptoservice Listing](#cryptoservice-listing)
+  - [What if I have a private cryptocurrency or cryptoasset?](#what-if-i-have-a-private-cryptocurrency-or-cryptoasset)
+  - [What if I don't have a token yet?](#what-if-i-dont-have-a-token-yet)
+- [How to add a crowdsale?](#how-to-add-a-crowdsale)
+  - [Basic Due Diligence](#basic-due-diligence)
+  - [Before](#before)
+  - [After](#after)
+  - [Fixed Cap Calculation](#fixed-cap-calculation)
+  - [Multi Currency Crowdsale](#multi-currency-crowdsale)
+- [How to add my site?](#how-to-add-my-site)
+- [Specification of .toml file](#specification-of-toml-file)
+  - [Basic info](#basic-info)
+  - [Specs](#specs)
+  - [Events](#events)
+  - [Links](#links)
+  - [Aliases](#aliases)
+  - [Ratings](#ratings)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -89,7 +87,7 @@ type = "cryptocurrency"
 - Fill out `.toml` file in accordance with [specs](#specification-of-.toml-file).
 - Pull request
 
-cyber•Fund's Team in short time will review your work and commit changes
+cyber•Fund's Team in short time will review and merge it.
 
 ### Requirements
 
@@ -116,8 +114,6 @@ We are going to publish a paper soon that explain a lot of stuff. But now the fo
 
 ### Cryptoservice Listing
 
-
-
 ### What if I have a private cryptocurrency or cryptoasset?
 No problem. It could be registered using Chaingear library and will be listed in Radar. So when your brainchild will be ready to be publicly traded it will be included in Rating automagicaly. Follow [cyber•Fund Radar](https://cyber.fund/radar) listing section.
 
@@ -126,14 +122,61 @@ If you are not going to issue a token or create an independent system we could n
 
 You can discuss or ask a question at [cyber•Talk Thread](http://cybertalks.org/t/rating-listing-of-cryptocurrencies-and-cryptoassets/353)
 
+## How to add a crowdsale?
+Crowdsale consist of 2 steps:
+- Before the start. We recommend to add this information at least a month before ETA.
+- After the finish. We recommend to add this information in an hour after finish.
+
+### Basic Due Diligence
+We don't accept crowdfunding if certain condition didn't met:
+
+- At least one genesis address exist. We don't accept crowdfunding if investors could not transparently track funds.
+- Fund management is at least under 2 of 3 multisig. Fund managers could be anonymous, but some reputation inside community is highly recommended. Otherwise, well written paper or POC code eliminates any questions.
+- Funding terms are defined and cryptographically signed by fund managers.
+To add crowdfunding put this data to toml file of your system.
+
+### Before
+```toml
+[crowdsales]
+start_date = "2015-03-31T00:00:00"
+end_date = "2015-05-15T00:00:00"
+genesis_address = ["35gLt5EgB367enjSjyEDahhWWcy6p1MGf6"] # Could be array. See multu currency crowdsale
+funding_url = "https://koinify.com/#/project/FACTOM"
+funding_tems = "http://blog.factom.org/post/115139137794/the-factoid-software-sale-is-live"
+min_investment = 0.01
+funding_operator = "Koinify" # Could be `nein`.
+crowsale_feed = "http://example.com/feed" # For multi currency or non bitcoin crowdsale
+```
+Note that all fields are mandatory.
+
+### After
+Then crowdsale is finished two liner report is needed.
+```toml
+tokens_sold = 4379973
+tokens_issued = 8759946
+btc_raised = 3500
+```
+
+### Fixed Cap Calculation
+After end of crowdsale your cap will be calculated automatically based on 4 fields: `start_date`, `end_date`, `min_invesment` and `genesis_address`. Thus your project will become visible in [Rating](https://cyber.fund) with fixed cap until tokens (1) won't be distributed and (2) at least one public market will be established.
+
+### Multi Currency Crowdsale
+You can provide multiple addresses as array: `["address1", "address2"]`.
+
+> At this point of time we support only Bitcoin addresses for crowdsale calculations. For multi currency crowdsale or non bitcoin crowdsale you will need to provide pre calculated feed.
+
+## How to add my site?
+It is easy!
+Follow [links](#links) section.
+
 ## Specification of .toml file
 
 ### Basic info
 ```toml
 genesis_id = "hash_of_the_first_block"
 system = "System Name"
-dependencies = ["independent"]
 icon = "system_name"
+Should never be changed.
 ```
 
 `genesis_id` - Hash of the first block generated by system
@@ -141,27 +184,24 @@ icon = "system_name"
 `system` -  The unique name of a system. If there exist system with name in respect to communities please invent another name. In case of historical collisions (Bytecoin for instance) priority will have a system with older genesis date. Newer system will be excluded until renamed. Go to a `/chaingear/sourses` to explore systems names or type in a Search at [cyber.fund](https://cyber.fund/)
 
 `dependencies` - Specify dependencies on other systems.
-- For Independent Systems which runs on their own blockchain should be `independent`
-- For Systems wich use blockchains of other systems you should specify names of that systems. Names of the systems you can find in `/chaingear/sourses`
+Names of the systems you can find in `/chaingear/sourses`
+```
+example
+```
 
-`icon` - The name of image of a system logotype without extension (for example `icon` = `"bitcoin"`)
+`icon` - The name of image of a system logotype (for example `icon` = `"bitcoin"`)
 
 Put image file in to a `/chaingear/logos` folder.
 
 Image requirements:
 - file should be .png
 - background should be transparent
-- file name should be exact of system name
+- file name should be exact of system name ???
 - image should be square
 - image should have resolution between 256x256 and 1024x1024
 
-### Aliases
-```toml
-coinmarketcap = "Bitcoin"
-nickname = "Bitcoin"
-```
-
 ### Specs
+
 This section contains information about technical specification of the system.
 
 ```toml
@@ -236,12 +276,6 @@ If none of these types do not correspond with a nature of your System, choose ou
 
 You can add any property that not defined in this specification.
 
-### Ratings
-```toml
-[ratings]
-rating_cyber = 0
-```
-
 ### Events
 ```toml
 [[events]]
@@ -302,46 +336,17 @@ For other links types use:
 - *Science* - Section: Scientific Roots
 - Also you can add any other tag
 
-## How to add crowdsale?
-Crowdsale consist of 2 steps:
-- Before the start. We recommend to add this information at least a month before ETA.
-- After the finish. We recommend to add this information in an hour after finish.
+### Aliases
+Serve as a way to resolve different name from different data sources or
 
-### Basic Due Diligence
-We don't accept crowdfunding if certain condition didn't met:
-
-- At least one genesis address exist. We don't accept crowdfunding if investors could not transparently track funds.
-- Fund management is at least under 2 of 3 multisig. Fund managers could be anonymous, but some reputation inside community is highly recommended. Otherwise, well written paper or POC code eliminates any questions.
-- Funding terms are defined and cryptographically signed by fund managers.
-To add crowdfunding put this data to toml file of your system.
-
-### Before
 ```toml
-[crowdsales]
-start_date = "2015-03-31T00:00:00"
-end_date = "2015-05-15T00:00:00"
-genesis_address = ["35gLt5EgB367enjSjyEDahhWWcy6p1MGf6"] # Could be array. See multu currency crowdsale
-funding_url = "https://koinify.com/#/project/FACTOM"
-funding_tems = "http://blog.factom.org/post/115139137794/the-factoid-software-sale-is-live"
-min_investment = 0.01
-funding_operator = "Koinify" # Could be `nein`.
-crowsale_feed = "http://example.com/feed" # For multi currency or non bitcoin crowdsale
-```
-Note that all fields are mandatory.
-
-### After
-Then crowdsale is finished two liner report is needed.
-```toml
-tokens_sold = 4379973
-tokens_issued = 8759946
-btc_raised = 3500
+coinmarketcap = "Bitcoin"
+nickname = "Bitcoin"
 ```
 
-### Fixed Cap Calculation
-After end of crowdsale your cap will be calculated automatically based on 4 fields: `start_date`, `end_date`, `min_invesment` and `genesis_address`. Thus your project will become visible in [Rating](https://cyber.fund) with fixed cap until tokens (1) won't be distributed and (2) at least one public market will be established.
-
-### Multi Currency Crowdsale
-You can provide multiple addresses as array: `["address1", "address2"]`.
-At this point of time we support only Bitcoin addresses for crowdsale calculations. For multi currency crowdsale or non bitcoin crowdsale you will need to provide pre calculated feed.
-
-## Templates
+### Ratings
+Obsolete. Will be eventually moved to [cyberfund/cybertaing](https://github.com/cyberFund/cyberrating)
+```toml
+[ratings]
+rating_cyber = 0
+```
