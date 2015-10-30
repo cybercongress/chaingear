@@ -344,9 +344,12 @@ coinmarketcap = "Bitcoin"
 nickname = "Bitcoin"
 ```
 
-### Ratings
+### Сrutches
 Obsolete. Will be eventually moved to [cyberfund/cybertaing](https://github.com/cyberFund/cyberrating)
 ```toml
 [ratings]
 rating_cyber = 0
+[flags]
+suplly_from_here = true
+rating_display = true
 ```
