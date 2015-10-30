@@ -351,5 +351,5 @@ Obsolete. Will be eventually moved to [cyberfund/cybertaing](https://github.com/
 rating_cyber = 0
 [flags]
 suplly_from_here = true
-rating_display = true
+rating_display = false
 ```
