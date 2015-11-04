@@ -10,7 +10,6 @@ system_type = ""
 
 [aliases]
 coinmarketcap = "Synereo"
-CurrencyName = "Synereo"
 quantum = "MSC/SP39"
 
 [crowdsales]
@@ -36,6 +35,7 @@ token_symbol = "AMP"
 
 [specs]
 supply = 1680400000.0
+price_btc = 0.00000753
 
   [specs.cap]
   usd = 143588.0
@@ -115,3 +115,6 @@ url = "https://github.com/synereo/"
 type = "github"
 icon = "github.png"
 tags = ["Code"]
+
+[flags]
+suply_from_here = true
