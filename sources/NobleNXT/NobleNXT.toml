@@ -1,12 +1,13 @@
-source = "cyberFund"
+genesis_id = "cyberFund"
 system = "NobleNXT"
+icon = "noblenxt"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "NobleNXT"
-CurrencyName = "NobleNXT"
 
 [descriptions]
-system_type = ""
+system_type = "cryptoasset"
 
 [consensus]
 consensus_type = ""
@@ -16,4 +17,45 @@ token_name = "NobleNXT"
 token_symbol = "NOXT"
 
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "noblemovement.com"
+url = "https://www.noblemovement.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "NOXT Asset"
+url = "http://nxtreporting.com/?a=6780060819348751348"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "paper"
+name = "NobleNXT FAQ"
+url = "https://www.noblemovement.com/noxt/0-FAQ-v3.pdf"
+icon = "paper.png"
+tags = ["Main", "Science"]
+
+[[links]]
+type = "paper"
+name = "NobleNXT Whitepaper"
+url = "https://www.noblemovement.com/noxt-abstract-introduction/"
+icon = "paper.png"
+tags = ["Main", "Science"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=923995"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+name = "NXT AE"
+url = "http://nxtreporting.com/?a=6780060819348751348"
+icon = "nxt.png"
+tags = ["Apps", "Exchange"]
+type = "custom"

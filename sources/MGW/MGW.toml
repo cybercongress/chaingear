@@ -1,12 +1,13 @@
-source = "cyberFund"
+genesis_id = "10524562908394749924"
 system = "MGW"
+icon = "mgw"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "MGW"
-CurrencyName = "MGW"
 
 [descriptions]
-system_type = ""
+system_type = "cryptoasset"
 
 [consensus]
 consensus_type = ""
@@ -16,4 +17,31 @@ token_name = "MGW"
 token_symbol = "MGW"
 
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "multigateway.org"
+url = "http://multigateway.org/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+name = "MGW Asset"
+url = "http://www.nxtreporting.com/?as=10524562908394749924"
+icon = "nxt.png"
+tags = ["Main", "Apps", "Analytics"]
+type = "explorer"
+
+[[links]]
+name = "NXT Forum"
+url = "https://nxtforum.org/nxtservices-releases/multigateway-user-support-thread/"
+icon = "forum.png"
+tags = ["Main", "News"]
+type = "forum"
+
+[[links]]
+name = "NXT AE"
+url = "http://www.nxtreporting.com/?as=10524562908394749924"
+icon = "nxt.png"
+tags = ["Apps", "Exchange"]
+type = "custom"

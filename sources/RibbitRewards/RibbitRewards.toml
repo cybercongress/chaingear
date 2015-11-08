@@ -1,5 +1,7 @@
-source = "cyberFund"
+genesis_id = "0000035cc3899836f94b588d61b0af526e7977e7fd18cae631eacf02bfdfcf0e"
 system = "RibbitRewards"
+icon = "ribbitrewards"
+dependencies = "independent"
 
 [aliases]
 coinmarketcap = "RibbitRewards"
@@ -21,5 +23,31 @@ token_name = "RibbitRewards"
 token_symbol = "RBR"
 
 [specs]
-dependencies = "independent"
-links = []
+
+[[links]]
+type = "website"
+name = "ribbit.me"
+url = "https://ribbit.me"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "https://ribbitchain.info/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Ribbit GitHub"
+url = "https://github.com/RibbitFROG"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=857452.0"
+icon = "forum.png"
+tags = ["Main","News"]

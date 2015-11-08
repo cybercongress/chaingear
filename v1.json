@@ -7555,14 +7555,14 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "00000b17e3a241903ee4b5be429ce0d3f5097312a7b9ab093cc172aece0943a5",
         "system": "Fibre",
+        "icon": "fibre",
         "aliases": {
-            "coinmarketcap": "Fibre",
-            "CurrencyName": "Fibre"
+            "coinmarketcap": "Fibre"
         },
         "descriptions": {
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "consensus": {
             "consensus_type": ""
@@ -7571,9 +7571,50 @@
             "token_name": "Fibre",
             "token_symbol": "FIBRE"
         },
-        "specs": {
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "fibrecoin.com",
+                "url": "http://www.fibrecoin.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "http://cryptobe.com/chain/FibreCoin",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Fibre GitHub",
+                "url": "https://github.com/fibre-team/fibre-public",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=577267.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "",
@@ -7968,19 +8009,19 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "000000005b1e3d23ecfd2dd4a6e1a35238aa0392c0a8528c40df52376d7efe2c",
         "system": "Freicoin",
+        "icon": "freicoin",
         "aliases": {
-            "coinmarketcap": "Freicoin",
-            "CurrencyName": "Freicoin"
+            "coinmarketcap": "Freicoin"
         },
         "consensus": {
             "hashing": "SHA-256d",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
             "state": "Running",
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "events": {
             "announcement": "25/06/2012",
@@ -7994,35 +8035,48 @@
             "block_time": "600",
             "block_reward": 500,
             "total_tokens": 100000000,
-            "difficulty_cycle": "2016",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://freico.in/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/freicoin/freicoin/archive/v0.8.3-1.zip",
-                    "icon": "github.png"
-                }
-            ]
+            "difficulty_cycle": "2016"
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=89843.0",
-                "type": "custom",
+                "type": "website",
+                "name": "freico.in",
+                "url": "http://freico.in/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "https://coinplorer.com/FRC",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Freicoin GitHub",
+                "url": "https://github.com/freicoin/freicoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=89843.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -10095,14 +10149,17 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "10524562908394749924",
         "system": "MGW",
+        "icon": "mgw",
+        "dependencies": [
+            "NXT"
+        ],
         "aliases": {
-            "coinmarketcap": "MGW",
-            "CurrencyName": "MGW"
+            "coinmarketcap": "MGW"
         },
         "descriptions": {
-            "system_type": ""
+            "system_type": "cryptoasset"
         },
         "consensus": {
             "consensus_type": ""
@@ -10111,13 +10168,54 @@
             "token_name": "MGW",
             "token_symbol": "MGW"
         },
-        "specs": {
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "multigateway.org",
+                "url": "http://multigateway.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "name": "MGW Asset",
+                "url": "http://www.nxtreporting.com/?as=10524562908394749924",
+                "icon": "nxt.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ],
+                "type": "explorer"
+            },
+            {
+                "name": "NXT Forum",
+                "url": "https://nxtforum.org/nxtservices-releases/multigateway-user-support-thread/",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ],
+                "type": "forum"
+            },
+            {
+                "name": "NXT AE",
+                "url": "http://www.nxtreporting.com/?as=10524562908394749924",
+                "icon": "nxt.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ],
+                "type": "custom"
+            }
+        ]
     },
     {
         "genesis_id": "8122396658538927693",
         "system": "MMBTCD",
+        "icon": "mmbtcd",
         "dependencies": "NXT",
         "aliases": {
             "coinmarketcap": "MMBTCD",
@@ -10132,7 +10230,7 @@
             "tags": [
                 "DApp"
             ],
-            "system_type": "DApp"
+            "system_type": "cryptoasset"
         },
         "token": {
             "token_name": "MMBTCD",
@@ -10153,7 +10251,7 @@
             },
             {
                 "name": "NXT Forum",
-                "url": "http://blog.coinomat.com/",
+                "url": "https://nxtforum.org/cryptoasset-fund-projects/btcd-market-maker-asset/",
                 "icon": "forum.png",
                 "tags": [
                     "Main",
@@ -10166,6 +10264,7 @@
                 "url": "https://nxtforum.org/cryptoasset-fund-projects/btcd-market-maker-asset/",
                 "icon": "paper.png",
                 "tags": [
+                    "Main",
                     "Science"
                 ],
                 "type": "paper"
@@ -12394,14 +12493,17 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "cyberFund",
         "system": "NobleNXT",
+        "icon": "noblenxt",
+        "dependencies": [
+            "NXT"
+        ],
         "aliases": {
-            "coinmarketcap": "NobleNXT",
-            "CurrencyName": "NobleNXT"
+            "coinmarketcap": "NobleNXT"
         },
         "descriptions": {
-            "system_type": ""
+            "system_type": "cryptoasset"
         },
         "consensus": {
             "consensus_type": ""
@@ -12410,9 +12512,69 @@
             "token_name": "NobleNXT",
             "token_symbol": "NOXT"
         },
-        "specs": {
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "noblemovement.com",
+                "url": "https://www.noblemovement.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "NOXT Asset",
+                "url": "http://nxtreporting.com/?a=6780060819348751348",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "NobleNXT FAQ",
+                "url": "https://www.noblemovement.com/noxt/0-FAQ-v3.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "NobleNXT Whitepaper",
+                "url": "https://www.noblemovement.com/noxt-abstract-introduction/",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=923995",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "NXT AE",
+                "url": "http://nxtreporting.com/?a=6780060819348751348",
+                "icon": "nxt.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ],
+                "type": "custom"
+            }
+        ]
     },
     {
         "source": "cyberFund",
@@ -13337,6 +13499,7 @@
     },
     {
         "system": "Open Assets",
+        "icon": "openasset",
         "dependencies": [
             "Bitcoin"
         ],
@@ -14392,8 +14555,10 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "0000035cc3899836f94b588d61b0af526e7977e7fd18cae631eacf02bfdfcf0e",
         "system": "RibbitRewards",
+        "icon": "ribbitrewards",
+        "dependencies": "independent",
         "aliases": {
             "coinmarketcap": "RibbitRewards",
             "CurrencyName": "RibbitRewards"
@@ -14415,10 +14580,50 @@
             "token_name": "RibbitRewards",
             "token_symbol": "RBR"
         },
-        "specs": {
-            "dependencies": "independent",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "ribbit.me",
+                "url": "https://ribbit.me",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "https://ribbitchain.info/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Ribbit GitHub",
+                "url": "https://github.com/RibbitFROG",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=857452.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "78ae9b6ffc008e988a9b052bb331ab49dab0d627c145e3c96ab4b71b2e86a8b5",

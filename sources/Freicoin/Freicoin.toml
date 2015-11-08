@@ -1,17 +1,17 @@
-source = "cyberFund"
+genesis_id = "000000005b1e3d23ecfd2dd4a6e1a35238aa0392c0a8528c40df52376d7efe2c"
 system = "Freicoin"
+icon = "freicoin"
 
 [aliases]
 coinmarketcap = "Freicoin"
-CurrencyName = "Freicoin"
 
 [consensus]
 hashing = "SHA-256d"
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [descriptions]
 state = "Running"
-system_type = ""
+system_type = "cryptocurrency"
 
 [events]
 announcement = "25/06/2012"
@@ -27,20 +27,30 @@ block_reward = 500.0
 total_tokens = 100000000.0
 difficulty_cycle = "2016"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://freico.in/"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/freicoin/freicoin/archive/v0.8.3-1.zip"
-  icon = "github.png"
+[[links]]
+type = "website"
+name = "freico.in"
+url = "http://freico.in/"
+icon = "website.png"
+tags = ["Main"]
 
 [[links]]
-name = "Announcement"
+type = "explorer"
+name = "Explorer"
+url = "https://coinplorer.com/FRC"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Freicoin GitHub"
+url = "https://github.com/freicoin/freicoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=89843.0"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["Main","News"]
