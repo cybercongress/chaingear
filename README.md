@@ -50,7 +50,7 @@ Unstable version could be found here:
 
 ## What benefits of adding to Chaingear?
 
-1. Make you system understandable for people.
+1. Make your system understandable for people.
 All meaningful information about system you develop should be gathered in one place in order to gain more adaption.
 2. Make your system accessible for other developers. It will make significantly easier to deal with your token for any wallet, exchange, bridge and any web app which want to work with your cryptocurrency or cryptoasset.
 2. Your system is listed in cyber•Fund's Radar or Rating for free.
