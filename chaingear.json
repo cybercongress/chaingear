@@ -10952,22 +10952,22 @@
         ]
     },
     {
+        "genesis_id": "00000dd1b1e4472dde86b27f6775efdafc421017fc9ffdb0b863603608b9353e",
+        "system": "Mintcoin",
+        "icon": "mintcoin",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "Mintcoin",
         "aliases": {
-            "coinmarketcap": "Mintcoin",
-            "CurrencyName": "Mintcoin"
+            "coinmarketcap": "Mintcoin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
+            "consensus_type": "Proof-of-Stake",
             "consensus_name": "Proof-of-Stake",
-            "hashing": "Scrypt",
-            "consensus_type": ""
+            "hashing": "Scrypt"
         },
         "descriptions": {
             "state": "Running",
@@ -10996,31 +10996,44 @@
         },
         "links": [
             {
-                "name": "web site",
-                "url": "http://mintcoin.biz/",
+                "type": "website",
+                "name": "mintcoinofficial.com",
+                "url": "http://www.mintcoinofficial.com/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "github",
-                "url": "https://github.com/mintcoinproject/mintcoin",
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "https://coinplorer.com/XPM",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Mintcoin GitHub",
+                "url": "https://github.com/MintcoinCommunity",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "Announcement",
+                "type": "forum",
+                "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=450381.0",
-                "type": "custom",
+                "icon": "forum.png",
                 "tags": [
-                    "publications"
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -14068,11 +14081,12 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "963d17ba4dc753138078a2f56afb3af9674e2546822badff26837db9a0152106",
         "system": "Primecoin",
+        "icon": "primecoin",
+        "dependencies": "independent",
         "aliases": {
-            "coinmarketcap": "Primecoin",
-            "CurrencyName": "Primecoin"
+            "coinmarketcap": "Primecoin"
         },
         "ratings": {
             "rating_cyber": 2
@@ -14080,7 +14094,7 @@
         "consensus": {
             "consensus_name": "Proof-of-Work",
             "hashing": "Others",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
             "state": "Running",
@@ -14098,28 +14112,7 @@
             "token_symbol": "XPM"
         },
         "specs": {
-            "block_time": "60",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://primecoin.org",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/primecoin/primecoin",
-                    "icon": "github.png"
-                }
-            ]
+            "block_time": 60
         },
         "links": [
             {
@@ -14128,6 +14121,47 @@
                 "type": "custom",
                 "tags": [
                     "publications"
+                ]
+            },
+            {
+                "type": "website",
+                "name": "primecoin.io",
+                "url": "http://primecoin.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "https://coinplorer.com/XPM",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Primecoin GitHub",
+                "url": "https://github.com/primecoin/primecoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=251850.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -14715,8 +14749,9 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "3cdd9c2facce405f5cc220fb21a10e493041451c463a22e1ff6fe903fc5769fc",
         "system": "Rimbit",
+        "dependencies": "independent",
         "aliases": {
             "coinmarketcap": "Rimbit",
             "CurrencyName": "Rimbit"
@@ -14732,16 +14767,56 @@
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "Rimbit",
             "token_symbol": "RBT"
         },
-        "specs": {
-            "dependencies": "independent",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "rimbit.com",
+                "url": "http://rimbit.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "https://rimbitexplorer.com/chain/Rimbit",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Rimbit GitHub",
+                "url": "https://github.com/Rimbit",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=1105448.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "4109c6f2045fc7eff4cde8f9905d19c28820d86304080ff886b299f0206e42b5",

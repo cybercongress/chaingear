@@ -1,9 +1,10 @@
-source = "cyberFund"
+genesis_id = "963d17ba4dc753138078a2f56afb3af9674e2546822badff26837db9a0152106"
 system = "Primecoin"
+icon = "primecoin"
+dependencies = "independent"
 
 [aliases]
 coinmarketcap = "Primecoin"
-CurrencyName = "Primecoin"
 
 [ratings]
 rating_cyber = 2.0
@@ -11,7 +12,7 @@ rating_cyber = 2.0
 [consensus]
 consensus_name = "Proof-of-Work"
 hashing = "Others"
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [descriptions]
 state = "Running"
@@ -27,23 +28,38 @@ token_name = "Primecoin"
 token_symbol = "XPM"
 
 [specs]
-block_time = "60"
-dependencies = "independent"
-
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://primecoin.org"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/primecoin/primecoin"
-  icon = "github.png"
+block_time = 60
 
 [[links]]
 name = "Announcement"
 url = "https://bitcointalk.org/index.php?topic=251850.0"
 type = "custom"
 tags = ["publications"]
+
+[[links]]
+type = "website"
+name = "primecoin.io"
+url = "http://primecoin.io/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "https://coinplorer.com/XPM"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Primecoin GitHub"
+url = "https://github.com/primecoin/primecoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=251850.0"
+icon = "forum.png"
+tags = ["Main","News"]

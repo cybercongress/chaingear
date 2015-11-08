@@ -1,18 +1,18 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "00000dd1b1e4472dde86b27f6775efdafc421017fc9ffdb0b863603608b9353e"
 system = "Mintcoin"
+icon = "mintcoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "Mintcoin"
-CurrencyName = "Mintcoin"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
+consensus_type = "Proof-of-Stake"
 consensus_name = "Proof-of-Stake"
 hashing = "Scrypt"
-consensus_type = ""
 
 [descriptions]
 state = "Running"
@@ -38,21 +38,29 @@ txs_confirm = 4.0
 mint_confirm = 50.0
 
 [[links]]
-name = "web site"
-url = "http://mintcoin.biz/"
+type = "website"
+name = "mintcoinofficial.com"
+url = "http://www.mintcoinofficial.com/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "github"
-url = "https://github.com/mintcoinproject/mintcoin"
+type = "explorer"
+name = "Explorer"
+url = "https://coinplorer.com/XPM"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Mintcoin GitHub"
+url = "https://github.com/MintcoinCommunity"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "Announcement"
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=450381.0"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["Main","News"]
