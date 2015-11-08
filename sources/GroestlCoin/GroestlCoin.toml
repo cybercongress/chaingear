@@ -1,12 +1,13 @@
-source = "cyberFund"
+genesis_id = "00000973d52019a3fdda1b1f346e1d76cbf12f8fdd9fbf0ade33bc1da89cb2e9"
 system = "GroestlCoin"
+icon = "groestlcoin"
 
 [aliases]
 coinmarketcap = "GroestlCoin"
 CurrencyName = "GroestlCoin"
 
 [descriptions]
-system_type = ""
+system_type = "cryptocurrency"
 
 [consensus]
 consensus_type = ""
@@ -16,4 +17,31 @@ token_name = "GroestlCoin"
 token_symbol = "GRS"
 
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "www.groestlcoin.org"
+url = "http://www.groestlcoin.org/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "CryptoID"
+url = "https://chainz.cryptoid.info/grs/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "GroestlCoin GitHub"
+url = "https://github.com/GroestlCoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=525926.0"
+icon = "forum.png"
+tags = ["Main","News"]

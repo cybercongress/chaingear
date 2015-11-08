@@ -2980,11 +2980,12 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "0d6f94ae7e565c6d90ee0087d2feaad4617cd3038c4f8853f26756a6b6d535f3",
         "system": "Boolberry",
+        "icon": "boolberry",
+        "dependencies": "independent",
         "aliases": {
-            "coinmarketcap": "Boolberry",
-            "CurrencyName": "Boolberry"
+            "coinmarketcap": "Boolberry"
         },
         "ratings": {
             "rating_cyber": 1
@@ -3015,36 +3016,48 @@
             "block_time": 120,
             "block_reward": "Block reward is calulated according to those rules http://boolberry.com/index.html#reward",
             "total_tokens": 18450000,
-            "difficulty_cycle": "every block",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://boolberry.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/cryptozoidberg/Boolberry",
-                    "icon": "github.png"
-                }
-            ]
+            "difficulty_cycle": "every block"
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=577267.0",
-                "type": "custom",
+                "type": "website",
+                "name": "boolberry.com",
+                "url": "http://boolberry.com/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "ChainRadar",
+                "url": "http://chainradar.com/bbr/blocks",
+                "icon": "chainradar.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Boolberry GitHub",
+                "url": "https://github.com/cryptozoidberg/Boolberry",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=577267.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -5367,25 +5380,66 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "00000ac7a13fffb72c10f6fd9a773dcf3e8388b8ffc359cee2483b1236ebcda1",
         "system": "Deutsche eMark",
+        "icon": "deutscheemark",
         "aliases": {
-            "coinmarketcap": "Deutsche eMark",
-            "CurrencyName": "Deutsche eMark"
+            "coinmarketcap": "Deutsche eMark"
         },
         "descriptions": {
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "token": {
             "token_name": "Deutsche eMark",
             "token_symbol": "DEM"
         },
-        "specs": {
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "deutsche-emark.org",
+                "url": "http://www.deutsche-emark.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "http://blockexplorer.deutsche-emark.org/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "GitHub",
+                "url": "https://github.com/emarkproject/DEM",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=310939.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "source": "cyberFund",
@@ -7158,11 +7212,12 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "?",
         "system": "FIMKrypto",
+        "icon": "fimkrypto",
+        "dependencies": "independent",
         "aliases": {
-            "coinmarketcap": "FIMKrypto",
-            "CurrencyName": "FIMKrypto"
+            "coinmarketcap": "FIMKrypto"
         },
         "ratings": {
             "rating_cyber": 1
@@ -7176,7 +7231,7 @@
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "events": {
             "announcement": "23/07/2014"
@@ -7188,34 +7243,48 @@
         "specs": {
             "block_time": "30 seconds",
             "block_reward": "200 FIM",
-            "total_tokens": "1000000000",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "icon": "github.png"
-                }
-            ]
+            "total_tokens": "1000000000"
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "http://gry.io/2014/07/23/fimkrypto-fimk/",
-                "type": "custom",
+                "type": "website",
+                "name": "fimk.fi",
+                "url": "http://fimk.fi/en/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "https://www.mofowallet.com/launch.html#/activity/fim/blockchain/latest",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "FIMKrypto GitHub",
+                "url": "https://github.com/fimkrypto/",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=633304.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -8063,8 +8132,9 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "0000002bdf4ca3a0b3fec305724006871ec5e683da5d70d9fe7a22f1f967e7f3",
         "system": "GeoCoin",
+        "icon": "geocoin",
         "aliases": {
             "coinmarketcap": "GeoCoin",
             "CurrencyName": "GeoCoin"
@@ -8074,8 +8144,8 @@
             "consensus_type": ""
         },
         "descriptions": {
-            "state": "Dead",
-            "system_type": ""
+            "state": "Running",
+            "system_type": "cryptocurrency"
         },
         "events": {
             "announcement": "18/08/2013",
@@ -8092,34 +8162,48 @@
             "total_tokens": 1000000000,
             "premine_tokens": 25000000,
             "difficulty_cycle": "20",
-            "mint_confirm": 25,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/geocoin/geocoin",
-                    "icon": "github.png"
-                }
-            ]
+            "mint_confirm": 25
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=277091.0",
-                "type": "custom",
+                "type": "website",
+                "name": "geo.money",
+                "url": "http://geo.money/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "http://104.236.52.122:3006/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "GeoCoin GitHub",
+                "url": "https://github.com/onetimer/onetimer",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=923995",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -8766,14 +8850,15 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "00000973d52019a3fdda1b1f346e1d76cbf12f8fdd9fbf0ade33bc1da89cb2e9",
         "system": "GroestlCoin",
+        "icon": "groestlcoin",
         "aliases": {
             "coinmarketcap": "GroestlCoin",
             "CurrencyName": "GroestlCoin"
         },
         "descriptions": {
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "consensus": {
             "consensus_type": ""
@@ -8782,9 +8867,50 @@
             "token_name": "GroestlCoin",
             "token_symbol": "GRS"
         },
-        "specs": {
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "www.groestlcoin.org",
+                "url": "http://www.groestlcoin.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "CryptoID",
+                "url": "https://chainz.cryptoid.info/grs/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "GroestlCoin GitHub",
+                "url": "https://github.com/GroestlCoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=525926.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "source": "cyberFund",
@@ -10578,11 +10704,11 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "00000c7c73d8ce604178dae13f0fc6ec0be3275614366d44b1b4b5c6e238c60c",
         "system": "MazaCoin",
+        "icon": "mazacoin",
         "aliases": {
-            "coinmarketcap": "MazaCoin",
-            "CurrencyName": "MazaCoin"
+            "coinmarketcap": "MazaCoin"
         },
         "ratings": {
             "rating_cyber": 1
@@ -10593,7 +10719,7 @@
         },
         "descriptions": {
             "state": "Running",
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "events": {
             "announcement": "22/02/2014"
@@ -10610,28 +10736,51 @@
             "halfing_cycle": "241920 blocks (about 12 month)",
             "total_tokens": 2419200000,
             "difficulty_cycle": "4 blocks (8 minutes) based on last 90 blocks",
-            "txs_confirm": 5,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.mazacoin.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/MazaCoin/MazaCoin",
-                    "icon": "github.png"
-                }
-            ]
-        }
+            "txs_confirm": 5
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "mazacoin.org",
+                "url": "https://mazacoin.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "https://mazacha.in/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "MazaCoin GitHub",
+                "url": "https://github.com/MazaCoin/MazaCoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=508849.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "source": "cyberFund",
@@ -13819,35 +13968,6 @@
                 ]
             }
         ]
-    },
-    {
-        "source": "cyberFund",
-        "system": "Privatebet",
-        "aliases": {
-            "coinmarketcap": "Privatebet",
-            "CurrencyName": "Privatebet"
-        },
-        "ratings": {
-            "rating_cyber": 1
-        },
-        "consensus": {
-            "consensus_name": "NXT",
-            "consensus_type": ""
-        },
-        "descriptions": {
-            "tags": [
-                "DApp"
-            ],
-            "system_type": ""
-        },
-        "token": {
-            "token_name": "Privatebet",
-            "token_symbol": "Privatebet"
-        },
-        "specs": {
-            "dependencies": "NXT",
-            "links": []
-        }
     },
     {
         "system": "Qora",

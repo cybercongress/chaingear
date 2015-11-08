@@ -1,9 +1,10 @@
-source = "cyberFund"
+genesis_id = "0d6f94ae7e565c6d90ee0087d2feaad4617cd3038c4f8853f26756a6b6d535f3"
 system = "Boolberry"
+icon = "boolberry"
+dependencies = "independent"
 
 [aliases]
 coinmarketcap = "Boolberry"
-CurrencyName = "Boolberry"
 
 [ratings]
 rating_cyber = 1.0
@@ -33,22 +34,31 @@ block_time = 120.0
 block_reward = "Block reward is calulated according to those rules http://boolberry.com/index.html#reward"
 total_tokens = 18450000.0
 difficulty_cycle = "every block"
-dependencies = "independent"
-
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://boolberry.com/"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/cryptozoidberg/Boolberry"
-  icon = "github.png"
 
 [[links]]
-name = "Announcement"
+type = "website"
+name = "boolberry.com"
+url = "http://boolberry.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "ChainRadar"
+url = "http://chainradar.com/bbr/blocks"
+icon = "chainradar.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Boolberry GitHub"
+url = "https://github.com/cryptozoidberg/Boolberry"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=577267.0"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["Main","News"]

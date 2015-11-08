@@ -1,19 +1,46 @@
-source = "cyberFund"
+genesis_id = "00000ac7a13fffb72c10f6fd9a773dcf3e8388b8ffc359cee2483b1236ebcda1"
 system = "Deutsche eMark"
+icon = "deutscheemark"
 
 [aliases]
 coinmarketcap = "Deutsche eMark"
-CurrencyName = "Deutsche eMark"
 
 [descriptions]
-system_type = ""
+system_type = "cryptocurrency"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [token]
 token_name = "Deutsche eMark"
 token_symbol = "DEM"
 
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "deutsche-emark.org"
+url = "http://www.deutsche-emark.org/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "http://blockexplorer.deutsche-emark.org/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "GitHub"
+url = "https://github.com/emarkproject/DEM"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=310939.0"
+icon = "forum.png"
+tags = ["Main","News"]

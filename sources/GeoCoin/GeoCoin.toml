@@ -1,5 +1,6 @@
-source = "cyberFund"
+genesis_id = "0000002bdf4ca3a0b3fec305724006871ec5e683da5d70d9fe7a22f1f967e7f3"
 system = "GeoCoin"
+icon = "geocoin"
 
 [aliases]
 coinmarketcap = "GeoCoin"
@@ -10,8 +11,8 @@ hashing = "Scrypt"
 consensus_type = ""
 
 [descriptions]
-state = "Dead"
-system_type = ""
+state = "Running"
+system_type = "cryptocurrency"
 
 [events]
 announcement = "18/08/2013"
@@ -30,19 +31,30 @@ premine_tokens = 25000000.0
 difficulty_cycle = "20"
 mint_confirm = 25.0
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/geocoin/geocoin"
-  icon = "github.png"
+[[links]]
+type = "website"
+name = "geo.money"
+url = "http://geo.money/"
+icon = "website.png"
+tags = ["Main"]
 
 [[links]]
-name = "Announcement"
-url = "https://bitcointalk.org/index.php?topic=277091.0"
-type = "custom"
-tags = ["publications"]
+type = "explorer"
+name = "Explorer"
+url = "http://104.236.52.122:3006/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "GeoCoin GitHub"
+url = "https://github.com/onetimer/onetimer"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=923995"
+icon = "forum.png"
+tags = ["Main","News"]

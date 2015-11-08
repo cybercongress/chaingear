@@ -1,9 +1,9 @@
-source = "cyberFund"
+genesis_id = "00000c7c73d8ce604178dae13f0fc6ec0be3275614366d44b1b4b5c6e238c60c"
 system = "MazaCoin"
+icon = "mazacoin"
 
 [aliases]
 coinmarketcap = "MazaCoin"
-CurrencyName = "MazaCoin"
 
 [ratings]
 rating_cyber = 1.0
@@ -14,7 +14,7 @@ consensus_type = ""
 
 [descriptions]
 state = "Running"
-system_type = ""
+system_type = "cryptocurrency"
 
 [events]
 announcement = "22/02/2014"
@@ -33,14 +33,30 @@ total_tokens = 2419200000.0
 difficulty_cycle = "4 blocks (8 minutes) based on last 90 blocks"
 txs_confirm = 5.0
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.mazacoin.org/"
-  icon = "website.png"
+[[links]]
+type = "website"
+name = "mazacoin.org"
+url = "https://mazacoin.org/"
+icon = "website.png"
+tags = ["Main"]
 
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/MazaCoin/MazaCoin"
-  icon = "github.png"
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "https://mazacha.in/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "MazaCoin GitHub"
+url = "https://github.com/MazaCoin/MazaCoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=508849.0"
+icon = "forum.png"
+tags = ["Main","News"]
