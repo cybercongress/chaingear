@@ -1,21 +1,21 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "7497ea1b465eb39f1c8f507bc877078fe016d6fcb6dfad3a64c98dcc6e1e8496"
 system = "DigiByte"
+icon = "digibyte"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "DigiByte"
-CurrencyName = "DigiByte"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Work"
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [descriptions]
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [token]
 token_name = "DigiByte"
@@ -24,8 +24,29 @@ token_symbol = "DGB"
 [specs]
 
 [[links]]
-name = "web site"
+type = "website"
+name = "digibyte.co"
 url = "http://www.digibyte.co/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "DigiByte Explorer"
+url = "http://digiexplorer.info/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "DigiByte GitHub"
+url = "hhttps://github.com/digibyte/digibyte"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=408268.0"
+icon = "forum.png"
+tags = ["Main","News"]

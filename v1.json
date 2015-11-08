@@ -3680,19 +3680,19 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "4f46c9af6d88a14114b7dc53a37d81ba4064cda5ae2ede1213ca28fea9b86e9c",
         "system": "Casinocoin",
+        "icon": "casinocoin",
         "aliases": {
-            "coinmarketcap": "CasinoCoin",
-            "CurrencyName": "Casinocoin"
+            "coinmarketcap": "CasinoCoin"
         },
         "consensus": {
             "hashing": "Scrypt",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
-            "state": "Dead",
-            "system_type": ""
+            "state": "Running",
+            "system_type": "cryptocurrency"
         },
         "events": {
             "announcement": "18/07/2013"
@@ -3708,34 +3708,48 @@
             "block_reward": 50,
             "halfing_cycle": 3153600,
             "total_tokens": 36000000,
-            "difficulty_cycle": "720",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/transcoder/CasinoCoin",
-                    "icon": "github.png"
-                }
-            ]
+            "difficulty_cycle": "720"
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=258090.0",
-                "type": "custom",
+                "type": "website",
+                "name": "casinocoin.org",
+                "url": "http://casinocoin.org/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "http://csc.blockexp.info/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Casinocoin GitHub",
+                "url": "https://github.com/transcoder/CasinoCoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=258090.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -3959,14 +3973,14 @@
         }
     },
     {
+        "genesis_id": "12982485703607823902",
+        "system": "CoinoUSD",
+        "icon": "coinousd",
         "dependencies": [
             "NXT"
         ],
-        "source": "cyberFund",
-        "system": "CoinoUSD",
         "aliases": {
-            "coinmarketcap": "CoinoUSD",
-            "CurrencyName": "CoinoUSD"
+            "coinmarketcap": "CoinoUSD"
         },
         "ratings": {
             "rating_cyber": 2
@@ -3979,7 +3993,7 @@
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoasset"
         },
         "token": {
             "token_name": "CoinoUSD",
@@ -3988,14 +4002,35 @@
         "specs": {},
         "links": [
             {
-                "name": "web site",
-                "url": "https://coinomat.com",
+                "type": "website",
+                "name": "coinomat.com",
+                "url": "https://coinomat.com/coinousd.php",
                 "icon": "website.png",
                 "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "CoinoUSD Asset",
+                "url": "http://nxtreporting.com/?as=12982485703607823902",
+                "icon": "explorer.png",
+                "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=1000725.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
             }
         ]
     },
@@ -5511,27 +5546,27 @@
         ]
     },
     {
+        "genesis_id": "7497ea1b465eb39f1c8f507bc877078fe016d6fcb6dfad3a64c98dcc6e1e8496",
+        "system": "DigiByte",
+        "icon": "digibyte",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "DigiByte",
         "aliases": {
-            "coinmarketcap": "DigiByte",
-            "CurrencyName": "DigiByte"
+            "coinmarketcap": "DigiByte"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "Proof-of-Work",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "DigiByte",
@@ -5540,14 +5575,45 @@
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "digibyte.co",
                 "url": "http://www.digibyte.co/",
                 "icon": "website.png",
                 "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "DigiByte Explorer",
+                "url": "http://digiexplorer.info/",
+                "icon": "explorer.png",
+                "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "DigiByte GitHub",
+                "url": "hhttps://github.com/digibyte/digibyte",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=408268.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
             }
         ]
     },

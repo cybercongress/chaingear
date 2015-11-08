@@ -1,10 +1,10 @@
-dependencies = ["NXT"]
-source = "cyberFund"
+genesis_id = "12982485703607823902"
 system = "CoinoUSD"
+icon = "coinousd"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "CoinoUSD"
-CurrencyName = "CoinoUSD"
 
 [ratings]
 rating_cyber = 2.0
@@ -15,7 +15,7 @@ consensus_type = ""
 
 [descriptions]
 tags = ["DApp"]
-system_type = ""
+system_type = "cryptoasset"
 
 [token]
 token_name = "CoinoUSD"
@@ -24,8 +24,22 @@ token_symbol = "COINO"
 [specs]
 
 [[links]]
-name = "web site"
-url = "https://coinomat.com"
+type = "website"
+name = "coinomat.com"
+url = "https://coinomat.com/coinousd.php"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "CoinoUSD Asset"
+url = "http://nxtreporting.com/?as=12982485703607823902"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=1000725.0"
+icon = "forum.png"
+tags = ["Main","News"]

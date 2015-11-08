@@ -1,17 +1,17 @@
-source = "cyberFund"
+genesis_id = "4f46c9af6d88a14114b7dc53a37d81ba4064cda5ae2ede1213ca28fea9b86e9c"
 system = "Casinocoin"
+icon = "casinocoin"
 
 [aliases]
 coinmarketcap = "CasinoCoin"
-CurrencyName = "Casinocoin"
 
 [consensus]
 hashing = "Scrypt"
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [descriptions]
-state = "Dead"
-system_type = ""
+state = "Running"
+system_type = "cryptocurrency"
 
 [events]
 announcement = "18/07/2013"
@@ -29,19 +29,30 @@ halfing_cycle = 3153600.0
 total_tokens = 36000000.0
 difficulty_cycle = "720"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/transcoder/CasinoCoin"
-  icon = "github.png"
+[[links]]
+type = "website"
+name = "casinocoin.org"
+url = "http://casinocoin.org/"
+icon = "website.png"
+tags = ["Main"]
 
 [[links]]
-name = "Announcement"
+type = "explorer"
+name = "Explorer"
+url = "http://csc.blockexp.info/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Casinocoin GitHub"
+url = "https://github.com/transcoder/CasinoCoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=258090.0"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["Main","News"]
