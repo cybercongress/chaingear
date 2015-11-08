@@ -1,12 +1,13 @@
-source = "cyberFund"
+genesis_id = "00000fc63692467faeb20cdb3b53200dc601d75bdfa1001463304cc790d77278"
 system = "DogeCoinDark"
+icon = "dogecoindark"
 
 [aliases]
 coinmarketcap = "DogeCoinDark"
-CurrencyName = "DogeCoinDark"
+
 
 [descriptions]
-system_type = ""
+system_type = "cryptocurrency"
 
 [consensus]
 consensus_type = ""
@@ -16,4 +17,32 @@ token_name = "DogeCoinDark"
 token_symbol = "DOGED"
 
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "dogecoindark.net"
+url = "http://www.dogecoindark.net/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "https://www.blockexperts.com/doged"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "DogeCoinDark GitHub"
+url = "https://github.com/doged/dogedsource"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=1053864"
+icon = "forum.png"
+tags = ["News"]
+

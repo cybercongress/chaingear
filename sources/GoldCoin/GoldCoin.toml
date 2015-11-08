@@ -1,9 +1,9 @@
-source = "cyberFund"
+genesis_id = "dced3542896ed537cb06f9cb064319adb0da615f64dd8c5e5bad974398f44b24"
 system = "GoldCoin"
+icon = "goldcoin"
 
 [aliases]
 coinmarketcap = "GoldCoin"
-CurrencyName = "GoldCoin"
 
 [ratings]
 rating_cyber = 1.0
@@ -14,9 +14,9 @@ hashing = "Scrypt"
 consensus_type = ""
 
 [descriptions]
-state = "Dead"
+state = "Running"
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [events]
 announcement = "27/07/2013"
@@ -31,14 +31,37 @@ block_time = "150 up till block 44999 and 120 after"
 ann = "https://bitcointalk.org/index.php?topic=263459.0"
 dependencies = "independent"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://gldcoin.com/"
-  icon = "website.png"
+[[links]]
+type = "website"
+name = "gldcoin.com"
+url = "http://gldcoin.com/"
+icon = "website.png"
+tags = ["Main"]
 
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/gldcoin/gldcoin"
-  icon = "github.png"
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "http://gld.cryptocoinexplorer.com/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "GoldCoin GitHub"
+url = "https://github.com/gldcoin/gldcoin"
+icon = "github.png"
+section = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=317568.0"
+icon = "forum.png"
+section = ["News"]
+
+[[links]]
+type = "forum"
+name = "GoldCoinTalk"
+url = "https://www.gldtalk.org/"
+icon = "forum.png"
+section = ["Main", "News"]

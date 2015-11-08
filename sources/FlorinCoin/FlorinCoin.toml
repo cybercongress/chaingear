@@ -1,9 +1,9 @@
-source = "cyberFund"
+genesis_id = "09c7781c9df90708e278c35d38ea5c9041d7ecfcdd1c56ba67274b7cff3e1cea"
 system = "FlorinCoin"
+icon = "florincoin"
 
 [aliases]
 coinmarketcap = "FlorinCoin"
-CurrencyName = "FlorinCoin"
 
 [ratings]
 rating_cyber = 1.0
@@ -14,7 +14,7 @@ consensus_type = ""
 
 [descriptions]
 state = "Running"
-system_type = ""
+system_type = "cryptocurrency"
 
 [events]
 announcement = "17/06/2013"
@@ -34,14 +34,30 @@ total_tokens = 160000000.0
 difficulty_cycle = "90"
 ann = "https://bitcointalk.org/index.php?topic=236742.0"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.florincoin.org"
-  icon = "website.png"
+[[links]]
+type = "website"
+name = "florincoin.org"
+url = "http://florincoin.org/"
+icon = "website.png"
+tags = ["Main"]
 
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/pascalguru/florincoin"
-  icon = "github.png"
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "http://florincoin.info/explorer/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "FlorinCoin GitHub"
+url = "https://github.com/pascalguru/florincoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=236742"
+icon = "forum.png"
+tags = ["Main","News"]
