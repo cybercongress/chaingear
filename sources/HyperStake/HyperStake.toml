@@ -1,9 +1,9 @@
-source = "cyberFund"
+genesis_id = "000005fe04e512585c3611369c7ce23f130958038c18a462577d002680dab4fc"
 system = "HyperStake"
+icon = "hyperstake"
 
 [aliases]
 coinmarketcap = "HyperStake"
-CurrencyName = "HyperStake"
 
 [ratings]
 rating_cyber = 1.0
@@ -25,15 +25,31 @@ token_symbol = "HYP"
 
 [specs]
 block_time = 90.0
-ann = "https://bitcointalk.org/index.php?topic=678849"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
+[[links]]
+type = "website"
+name = "hyperstake.com"
+url = "http://hyperstake.com/"
+icon = "website.png"
+tags = ["Main"]
 
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/presstab/HyperStake"
-  icon = "github.png"
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "http://hyp.cryptocoinexplorer.com/"
+icon = "explorer.png"
+tags = ["Main","Apps","Analytics"]
+
+[[links]]
+type = "github"
+name = "HyperStake GitHub"
+url = "https://github.com/hyperstake/HyperStake"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=678849"
+icon = "forum.png"
+tags = ["Main", "News"]

@@ -1,9 +1,9 @@
-source = "cyberFund"
+genesis_id = "0000003f068a10c2446d021072691bb0b1ce833aa7b40a712365ac933a0d1f33"
 system = "Zeitcoin"
+icon = "zeitcoin"
 
 [aliases]
 coinmarketcap = "Zeitcoin"
-CurrencyName = "Zeitcoin"
 
 [ratings]
 rating_cyber = 1.0
@@ -33,20 +33,30 @@ difficulty_cycle = "every block"
 txs_confirm = 4.0
 mint_confirm = 50.0
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.zeit-coin.com/"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/zeitcoinmovement/zeitcoin"
-  icon = "github.png"
+[[links]]
+type = "website"
+name = "zeit-coin.com"
+url = "http://www.zeit-coin.com/"
+icon = "website.png"
+tags = ["Main"]
 
 [[links]]
-name = "Announcement"
+type = "github"
+name = "Zeitcoin GitHub"
+url = "https://github.com/zeitcoinmovement/zeitcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "explorer"
+name = "CryptoID"
+url = "hhttps://chainz.cryptoid.info/zeit/"
+icon = "cryptoid.png"
+tags = ["Main","Explorer","Analytics"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=487814.0"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["Main","News"]

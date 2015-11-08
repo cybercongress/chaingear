@@ -1,9 +1,9 @@
-source = "cyberFund"
+genesis_id = "ed12971d0cc2ac2db282eb0a834b83dd2ef7aa32c0eacae93d93cdaccbcf8c19"
 system = "SysCoin"
+icon = "syscoin"
 
 [aliases]
 coinmarketcap = "SysCoin"
-CurrencyName = "SysCoin"
 
 [ratings]
 rating_cyber = 1.0
@@ -36,14 +36,30 @@ difficulty_cycle = "KGW"
 ann = "https://bitcointalk.org/index.php?topic=587080.0"
 dependencies = "independent"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://syscoin.org/"
-  icon = "website.png"
+[[links]]
+type = "website"
+name = "syscoin.org"
+url = "http://syscoin.org/"
+icon = "website.png"
+tags = ["Main"]
 
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/syscoin/syscoin"
-  icon = "github.png"
+[[links]]
+type = "explorer"
+name = "CryptoID"
+url = "https://chainz.cryptoid.info/sys/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "SysCoin GitHub"
+url = "https://github.com/syscoin/syscoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=757255"
+icon = "forum.png"
+tags = ["Main", "News"]

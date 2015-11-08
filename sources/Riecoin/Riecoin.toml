@@ -1,5 +1,6 @@
-source = "cyberFund"
+genesis_id = "78ae9b6ffc008e988a9b052bb331ab49dab0d627c145e3c96ab4b71b2e86a8b5"
 system = "Riecoin"
+icon = "riecoin"
 
 [aliases]
 coinmarketcap = "Riecoin"
@@ -13,7 +14,7 @@ hashing = "Others"
 consensus_type = ""
 
 [descriptions]
-state = "Dead"
+state = "Running"
 system_type = ""
 
 [events]
@@ -33,20 +34,37 @@ halfing_cycle = 8400000.0
 total_tokens = 84000000.0
 difficulty_cycle = "288 blocks (~12hours)"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://riecoin.org/"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/riecoin/riecoin"
-  icon = "github.png"
+[[links]]
+type = "website"
+name = "riecoin.org"
+url = "http://riecoin.org/"
+icon = "website.png"
+tags = ["Main"]
 
 [[links]]
-name = "Announcement"
-url = "https://cryptocointalk.com/topic/4250-annric-riecoin-new-prime-numbers-pow-coin-launches-feb-11-2014/"
+type = "explorer"
+name = "CryptoID"
+url = "https://chainz.cryptoid.info/ric/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Riecoin GitHub"
+url = "https://github.com/riecoin/riecoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=446703.0"
+icon = "forum.png"
+tags = ["Main","News"]
+
+[[links]]
 type = "custom"
-tags = ["publications"]
+name = "Cryptocoin Talk"
+url = "https://cryptocointalk.com/topic/4250-annric-riecoin-new-prime-numbers-pow-coin-launches-feb-11-2014/"
+icon = "forum.png"
+tags = ["News"]

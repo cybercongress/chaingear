@@ -511,8 +511,9 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "f54c0f8ed0b8ba85f99525d37e7cc9a5107bd752a54d8778d6cfb4f36cb51131",
         "system": "Auroracoin",
+        "icon": "auroracoin",
         "aliases": {
             "coinmarketcap": "Auroracoin",
             "CurrencyName": "Auroracoin"
@@ -546,31 +547,45 @@
         },
         "links": [
             {
-                "name": "web site",
-                "url": "http://www.auroracoin.org/",
-                "icon": "website.png",
+                "type": "forum",
+                "name": "Auroracoin Forum",
+                "url": "http://auroraspjall.is/",
+                "icon": "forum.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
+                "type": "explorer",
+                "name": "CryptoID",
+                "url": "https://chainz.cryptoid.info/aur/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
                 "name": "github",
                 "url": "https://github.com/baldurodinsson/auroracoin-project/",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "Announcement",
+                "type": "forum",
+                "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=446062.0",
-                "type": "custom",
+                "icon": "forum.png",
                 "tags": [
-                    "publications"
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -9016,11 +9031,11 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "000005fe04e512585c3611369c7ce23f130958038c18a462577d002680dab4fc",
         "system": "HyperStake",
+        "icon": "hyperstake",
         "aliases": {
-            "coinmarketcap": "HyperStake",
-            "CurrencyName": "HyperStake"
+            "coinmarketcap": "HyperStake"
         },
         "ratings": {
             "rating_cyber": 1
@@ -9041,28 +9056,50 @@
             "token_symbol": "HYP"
         },
         "specs": {
-            "block_time": 90,
-            "ann": "https://bitcointalk.org/index.php?topic=678849",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/presstab/HyperStake",
-                    "icon": "github.png"
-                }
-            ]
-        }
+            "block_time": 90
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "hyperstake.com",
+                "url": "http://hyperstake.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "http://hyp.cryptocoinexplorer.com/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "HyperStake GitHub",
+                "url": "https://github.com/hyperstake/HyperStake",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=678849",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "source": "cyberFund",
@@ -14108,8 +14145,9 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "78ae9b6ffc008e988a9b052bb331ab49dab0d627c145e3c96ab4b71b2e86a8b5",
         "system": "Riecoin",
+        "icon": "riecoin",
         "aliases": {
             "coinmarketcap": "Riecoin",
             "CurrencyName": "Riecoin"
@@ -14122,7 +14160,7 @@
             "consensus_type": ""
         },
         "descriptions": {
-            "state": "Dead",
+            "state": "Running",
             "system_type": ""
         },
         "events": {
@@ -14140,35 +14178,57 @@
             "block_reward": 50,
             "halfing_cycle": 8400000,
             "total_tokens": 84000000,
-            "difficulty_cycle": "288 blocks (~12hours)",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://riecoin.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/riecoin/riecoin",
-                    "icon": "github.png"
-                }
-            ]
+            "difficulty_cycle": "288 blocks (~12hours)"
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://cryptocointalk.com/topic/4250-annric-riecoin-new-prime-numbers-pow-coin-launches-feb-11-2014/",
-                "type": "custom",
+                "type": "website",
+                "name": "riecoin.org",
+                "url": "http://riecoin.org/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "CryptoID",
+                "url": "https://chainz.cryptoid.info/ric/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Riecoin GitHub",
+                "url": "https://github.com/riecoin/riecoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=446703.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Cryptocoin Talk",
+                "url": "https://cryptocointalk.com/topic/4250-annric-riecoin-new-prime-numbers-pow-coin-launches-feb-11-2014/",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
                 ]
             }
         ]
@@ -16423,11 +16483,11 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "ed12971d0cc2ac2db282eb0a834b83dd2ef7aa32c0eacae93d93cdaccbcf8c19",
         "system": "SysCoin",
+        "icon": "syscoin",
         "aliases": {
-            "coinmarketcap": "SysCoin",
-            "CurrencyName": "SysCoin"
+            "coinmarketcap": "SysCoin"
         },
         "ratings": {
             "rating_cyber": 1
@@ -16460,28 +16520,51 @@
             "premine_tokens": "18% [ up to 15% Based on Presale (SOLD OUT), 2% Devs (wallets will be publicized for transparency), 1% Bounties and Rewards]",
             "difficulty_cycle": "KGW",
             "ann": "https://bitcointalk.org/index.php?topic=587080.0",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://syscoin.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/syscoin/syscoin",
-                    "icon": "github.png"
-                }
-            ]
-        }
+            "dependencies": "independent"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "syscoin.org",
+                "url": "http://syscoin.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "CryptoID",
+                "url": "https://chainz.cryptoid.info/sys/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "SysCoin GitHub",
+                "url": "https://github.com/syscoin/syscoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=757255",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "source": "cyberFund",
@@ -17732,11 +17815,11 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "0000003f068a10c2446d021072691bb0b1ce833aa7b40a712365ac933a0d1f33",
         "system": "Zeitcoin",
+        "icon": "zeitcoin",
         "aliases": {
-            "coinmarketcap": "Zeitcoin",
-            "CurrencyName": "Zeitcoin"
+            "coinmarketcap": "Zeitcoin"
         },
         "ratings": {
             "rating_cyber": 1
@@ -17764,35 +17847,47 @@
             "premine_tokens": "990000000 (1%) for ongoing development support, maintenance and distribution to community",
             "difficulty_cycle": "every block",
             "txs_confirm": 4,
-            "mint_confirm": 50,
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.zeit-coin.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/zeitcoinmovement/zeitcoin",
-                    "icon": "github.png"
-                }
-            ]
+            "mint_confirm": 50
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=487814.0",
-                "type": "custom",
+                "type": "website",
+                "name": "zeit-coin.com",
+                "url": "http://www.zeit-coin.com/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Zeitcoin GitHub",
+                "url": "https://github.com/zeitcoinmovement/zeitcoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "CryptoID",
+                "url": "hhttps://chainz.cryptoid.info/zeit/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=487814.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]

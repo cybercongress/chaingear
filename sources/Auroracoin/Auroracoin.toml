@@ -1,5 +1,6 @@
-source = "cyberFund"
+genesis_id = "f54c0f8ed0b8ba85f99525d37e7cc9a5107bd752a54d8778d6cfb4f36cb51131"
 system = "Auroracoin"
+icon = "auroracoin"
 
 [aliases]
 coinmarketcap = "Auroracoin"
@@ -33,21 +34,29 @@ difficulty_cycle = "8 blocks"
 mint_confirm = 100.0
 
 [[links]]
-name = "web site"
-url = "http://www.auroracoin.org/"
-icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+type = "forum"
+name = "Auroracoin Forum"
+url = "http://auroraspjall.is/"
+icon = "forum.png"
+tags = ["Main", "News"]
 
 [[links]]
+type = "explorer"
+name = "CryptoID"
+url = "https://chainz.cryptoid.info/aur/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
 name = "github"
 url = "https://github.com/baldurodinsson/auroracoin-project/"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "Announcement"
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=446062.0"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["Main","News"]
