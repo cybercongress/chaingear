@@ -7465,33 +7465,74 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "f1ae188b0c08e296e45980f9913f6ad2304ff02d5293538275bacdbcb05ef275",
         "system": "FairCoin",
+        "icon": "faircoin",
+        "dependencies": "independent",
         "aliases": {
-            "coinmarketcap": "FairCoin",
-            "CurrencyName": "FairCoin"
+            "coinmarketcap": "FairCoin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "Hybrid POW-POS",
-            "consensus_type": ""
+            "consensus_type": "Hybrid POW-POS"
         },
         "descriptions": {
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "FairCoin",
             "token_symbol": "FAIR"
         },
-        "specs": {
-            "dependencies": "independent",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "fair-coin.org",
+                "url": "https://fair-coin.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "https://chain.fair-coin.org/chain/FairCoin",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "FairCoin GitHub",
+                "url": "https://github.com/FairCoinTeam/fair-coin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=702675.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "source": "cyberFund",
@@ -8165,25 +8206,67 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "91ec5f25ee9a0ffa1af7d4da4db9a552228dd2dc77cdb15b738be4e1f55f30ee",
         "system": "GameCredits",
+        "icon": "gamecredits",
         "aliases": {
-            "coinmarketcap": "GameCredits",
-            "CurrencyName": "GameCredits"
+            "coinmarketcap": "GameCredits"
         },
         "descriptions": {
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "Scrypt"
         },
         "token": {
             "token_name": "GameCredits",
             "token_symbol": "GMC"
         },
-        "specs": {
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "gamecredits.net",
+                "url": "http://gamecredits.net/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "http://gmc.cryptocloudhosting.org:3001/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Gamecredits GitHub",
+                "url": "https://github.com/gamecredits-project",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=1010745",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "0000002bdf4ca3a0b3fec305724006871ec5e683da5d70d9fe7a22f1f967e7f3",
@@ -10882,30 +10965,27 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "607d0c078ddc9480888275d59fc364031fb5451afe85c1464432e8a2c5cc77af",
         "system": "Megacoin",
+        "icon": "megacoin",
+        "dependencies": "independent",
         "aliases": {
-            "coinmarketcap": "Megacoin",
-            "CurrencyName": "Megacoin"
+            "coinmarketcap": "Megacoin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
+            "consensus_type": "Proof-of-Work",
             "consensus_name": "Proof-of-Work",
-            "hashing": "Scrypt",
-            "consensus_type": ""
+            "hashing": "Scrypt"
         },
         "descriptions": {
             "state": "Running",
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "29/05/2013",
-            "genesis": "01/06/2013"
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "Megacoin",
@@ -10917,36 +10997,55 @@
             "block_time": "150",
             "block_reward": 25,
             "halfing_cycle": 420000,
-            "total_tokens": 32500000,
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "Megacoin.co.nz",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/megacoin/megacoin",
-                    "icon": "github.png"
-                }
-            ]
+            "total_tokens": 32500000
         },
-        "links": [
+        "events": [
             {
                 "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=218851.0",
-                "type": "custom",
+                "start_date": "2013-05-29T02:51:40",
+                "url": "https://bitcointalk.org/index.php?topic=218851.0"
+            }
+        ],
+        "links": [
+            {
+                "type": "website",
+                "name": "www.megacoin.co.nz",
+                "url": "http://www.megacoin.co.nz/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Blockr",
+                "url": "http://mec.blockr.io/",
+                "icon": "blockr.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Megacoin GitHub",
+                "url": "https://github.com/megacoin/megacoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=240861.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -10974,7 +11073,7 @@
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "events": {
             "announcement": "05/02/2014"
@@ -15451,8 +15550,10 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "00000eca234f07edc98aaf3f2a7b7478dc58992a9cd439323d099c6a590ca2bb",
         "system": "ShadowCash",
+        "icon": "shadowcash",
+        "dependencies": "independent",
         "aliases": {
             "coinmarketcap": "ShadowCash",
             "CurrencyName": "ShadowCash"
@@ -15462,22 +15563,62 @@
         },
         "consensus": {
             "consensus_name": "Proof-of-Stake",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "ShadowCash",
             "token_symbol": "SDC"
         },
-        "specs": {
-            "dependencies": "independent",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "aboutshadow.com",
+                "url": "http://aboutshadow.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "http://shadow.blockexplorer.cc/chain/ShadowCash",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "ShadowCash GitHub",
+                "url": "https://github.com/SDCDev/shadowcoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=745352.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "25f6e3b9295a61f69fcb956aca9f0076234ecf2e02d399db5448b6e22f26e81c",
@@ -17905,8 +18046,10 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "4d96a915f49d40b1e5c2844d1ee2dccb90013a990ccea12c492d22110489f0c4",
         "system": "Vertcoin",
+        "icon": "vertcoin",
+        "dependencies": "independent",
         "aliases": {
             "coinmarketcap": "Vertcoin",
             "CurrencyName": "Vertcoin"
@@ -17915,9 +18058,9 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Scrypt",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "Scrypt N",
+            "hashing": "Scrypt"
         },
         "descriptions": {
             "state": "Running",
@@ -17939,35 +18082,48 @@
             "halfing_cycle": "840000 blocks (~4 years)",
             "total_tokens": 84000000,
             "premine_tokens": "3 blocks",
-            "difficulty_cycle": "2016(3.5 days)",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://vertcoin.org/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "icon": "github.png"
-                }
-            ]
+            "difficulty_cycle": "2016(3.5 days)"
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=404364.0",
-                "type": "custom",
+                "type": "website",
+                "name": "vertcoin.org",
+                "url": "http://vertcoin.org/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "https://explorer.thisisvtc.com/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Vertcoin GitHub",
+                "url": "https://github.com/vertcoin/vertcoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=404364.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -18184,26 +18340,27 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "7231b064d3e620c55960abce2963ea19e1c3ffb6f5ff70e975114835a7024107",
         "system": "WorldCoin",
+        "icon": "worldcoin",
+        "dependencies": "independent",
         "aliases": {
-            "coinmarketcap": "WorldCoin",
-            "CurrencyName": "WorldCoin"
+            "coinmarketcap": "WorldCoin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
+            "consensus_type": "Proof-of-Work",
             "consensus_name": "Proof-of-Work",
-            "hashing": "Scrypt",
-            "consensus_type": ""
+            "hashing": "Scrypt"
         },
         "descriptions": {
             "state": "Running",
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "events": {
             "announcement": "14/05/2013",
@@ -18219,36 +18376,48 @@
             "halfing_cycle": 20160,
             "total_tokens": 265420800,
             "difficulty_cycle": "120",
-            "txs_confirm": 2,
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://www.worldcoin.in/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/worldcoinproject/Worldcoin",
-                    "icon": "github.png"
-                }
-            ]
+            "txs_confirm": 2
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=204894.0",
-                "type": "custom",
+                "type": "website",
+                "name": "worldcoin.global",
+                "url": "http://worldcoin.global/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "https://www.wdcexplorer.com/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "WorldCoin GitHub",
+                "url": "https://github.com/worldcoinproject",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=204894.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]

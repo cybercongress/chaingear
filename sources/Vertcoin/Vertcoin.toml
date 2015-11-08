@@ -1,5 +1,7 @@
-source = "cyberFund"
+genesis_id = "4d96a915f49d40b1e5c2844d1ee2dccb90013a990ccea12c492d22110489f0c4"
 system = "Vertcoin"
+icon = "vertcoin"
+dependencies = "independent"
 
 [aliases]
 coinmarketcap = "Vertcoin"
@@ -9,9 +11,10 @@ CurrencyName = "Vertcoin"
 rating_cyber = 1.0
 
 [consensus]
-consensus_name = "Proof-of-Work"
+consensus_type = "Proof-of-Work"
+consensus_name = "Scrypt N"
 hashing = "Scrypt"
-consensus_type = ""
+
 
 [descriptions]
 state = "Running"
@@ -32,21 +35,31 @@ halfing_cycle = "840000 blocks (~4 years)"
 total_tokens = 84000000.0
 premine_tokens = "3 blocks"
 difficulty_cycle = "2016(3.5 days)"
-dependencies = "independent"
-
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://vertcoin.org/"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  icon = "github.png"
 
 [[links]]
-name = "Announcement"
+type = "website"
+name = "vertcoin.org"
+url = "http://vertcoin.org/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "https://explorer.thisisvtc.com/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Vertcoin GitHub"
+url = "https://github.com/vertcoin/vertcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=404364.0"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["Main","News"]

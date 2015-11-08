@@ -1,25 +1,53 @@
-source = "cyberFund"
+genesis_id = "f1ae188b0c08e296e45980f9913f6ad2304ff02d5293538275bacdbcb05ef275"
 system = "FairCoin"
+icon = "faircoin"
+dependencies = "independent"
 
 [aliases]
 coinmarketcap = "FairCoin"
-CurrencyName = "FairCoin"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Hybrid POW-POS"
-consensus_type = ""
+consensus_type = "Hybrid POW-POS"
 
 [descriptions]
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [token]
 token_name = "FairCoin"
 token_symbol = "FAIR"
 
 [specs]
-dependencies = "independent"
-links = []
+
+
+[[links]]
+type = "website"
+name = "fair-coin.org"
+url = "https://fair-coin.org/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "https://chain.fair-coin.org/chain/FairCoin"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "FairCoin GitHub"
+url = "https://github.com/FairCoinTeam/fair-coin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=702675.0"
+icon = "forum.png"
+tags = ["Main","News"]

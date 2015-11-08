@@ -1,5 +1,7 @@
-source = "cyberFund"
+genesis_id = "00000eca234f07edc98aaf3f2a7b7478dc58992a9cd439323d099c6a590ca2bb"
 system = "ShadowCash"
+icon = "shadowcash"
+dependencies = "independent"
 
 [aliases]
 coinmarketcap = "ShadowCash"
@@ -10,16 +12,42 @@ rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Stake"
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [descriptions]
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [token]
 token_name = "ShadowCash"
 token_symbol = "SDC"
 
 [specs]
-dependencies = "independent"
-links = []
+
+[[links]]
+type = "website"
+name = "aboutshadow.com"
+url = "http://aboutshadow.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "http://shadow.blockexplorer.cc/chain/ShadowCash"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "ShadowCash GitHub"
+url = "https://github.com/SDCDev/shadowcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=745352.0"
+icon = "forum.png"
+tags = ["Main","News"]

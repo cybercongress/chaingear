@@ -1,26 +1,23 @@
-source = "cyberFund"
+genesis_id = "607d0c078ddc9480888275d59fc364031fb5451afe85c1464432e8a2c5cc77af"
 system = "Megacoin"
+icon = "megacoin"
+dependencies = "independent"
 
 [aliases]
 coinmarketcap = "Megacoin"
-CurrencyName = "Megacoin"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
+consensus_type = "Proof-of-Work"
 consensus_name = "Proof-of-Work"
 hashing = "Scrypt"
-consensus_type = ""
 
 [descriptions]
 state = "Running"
 tags = ["DAO"]
-system_type = ""
-
-[events]
-announcement = "29/05/2013"
-genesis = "01/06/2013"
+system_type = "cryptocurrency"
 
 [token]
 token_name = "Megacoin"
@@ -33,22 +30,36 @@ block_time = "150"
 block_reward = 25.0
 halfing_cycle = 420000.0
 total_tokens = 32500000.0
-dependencies = "independent"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "Megacoin.co.nz"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/megacoin/megacoin"
-  icon = "github.png"
+[[events]]
+name = "Announcement"
+start_date = "2013-05-29T02:51:40"
+url = "https://bitcointalk.org/index.php?topic=218851.0"
 
 [[links]]
-name = "Announcement"
-url = "https://bitcointalk.org/index.php?topic=218851.0"
-type = "custom"
-tags = ["publications"]
+type = "website"
+name = "www.megacoin.co.nz"
+url = "http://www.megacoin.co.nz/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Blockr"
+url = "http://mec.blockr.io/"
+icon = "blockr.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Megacoin GitHub"
+url = "https://github.com/megacoin/megacoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=240861.0"
+icon = "forum.png"
+tags = ["Main","News"]

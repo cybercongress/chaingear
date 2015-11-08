@@ -1,22 +1,23 @@
-source = "cyberFund"
+genesis_id = "7231b064d3e620c55960abce2963ea19e1c3ffb6f5ff70e975114835a7024107"
 system = "WorldCoin"
+icon = "worldcoin"
+dependencies = "independent"
 
 [aliases]
 coinmarketcap = "WorldCoin"
-CurrencyName = "WorldCoin"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
+consensus_type = "Proof-of-Work"
 consensus_name = "Proof-of-Work"
 hashing = "Scrypt"
-consensus_type = ""
 
 [descriptions]
 state = "Running"
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [events]
 announcement = "14/05/2013"
@@ -33,22 +34,31 @@ halfing_cycle = 20160.0
 total_tokens = 265420800.0
 difficulty_cycle = "120"
 txs_confirm = 2.0
-dependencies = "independent"
-
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://www.worldcoin.in/"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/worldcoinproject/Worldcoin"
-  icon = "github.png"
 
 [[links]]
-name = "Announcement"
+type = "website"
+name = "worldcoin.global"
+url = "http://worldcoin.global/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "https://www.wdcexplorer.com/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "WorldCoin GitHub"
+url = "https://github.com/worldcoinproject"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=204894.0"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["Main","News"]

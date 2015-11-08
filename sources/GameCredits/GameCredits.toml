@@ -1,19 +1,47 @@
-source = "cyberFund"
+genesis_id = "91ec5f25ee9a0ffa1af7d4da4db9a552228dd2dc77cdb15b738be4e1f55f30ee"
 system = "GameCredits"
+icon = "gamecredits"
 
 [aliases]
 coinmarketcap = "GameCredits"
-CurrencyName = "GameCredits"
 
 [descriptions]
-system_type = ""
+system_type = "cryptocurrency"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Proof-of-Work"
+consensus_name = "Scrypt"
 
 [token]
 token_name = "GameCredits"
 token_symbol = "GMC"
 
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "gamecredits.net"
+url = "http://gamecredits.net/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "http://gmc.cryptocloudhosting.org:3001/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Gamecredits GitHub"
+url = "https://github.com/gamecredits-project"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=1010745"
+icon = "forum.png"
+tags = ["Main","News"]
