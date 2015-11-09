@@ -1,5 +1,6 @@
-source = "cyberFund"
+genesis_id = "0000005944f0d20d7ee82ac4dc65cd8796dd37f6d6e0b3af05af966d6c8b63c0"
 system = "Vanillacoin"
+icon = "vanillacoin"
 
 [aliases]
 coinmarketcap = "Vanillacoin"
@@ -10,14 +11,16 @@ rating_cyber = 2.0
 
 [consensus]
 hashing = "Others"
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [descriptions]
 state = "Running"
-system_type = ""
+system_type = "cryptocurrency"
 
-[events]
-announcement = "15/12/2014"
+[[events]]
+name = "Announcement"
+start_date = "2015-05-18T08:19:20"
+url = "https://bitcointalk.org/index.php?topic=1064326.0"
 
 [token]
 token_name = "Vanillacoin"
@@ -29,21 +32,29 @@ total_tokens = 30700000.0
 difficulty_cycle = "every block"
 
 [[links]]
-name = "web site"
+type = "website"
+name = "vanillacoin.net"
 url = "http://www.vanillacoin.net/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "github"
+type = "explorer"
+name = "Vanillacoin Explorer"
+url = "http://vnlbex.lbtcoin.org/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Vanillacoin GitHub"
 url = "https://github.com/john-connor/vanillacoin"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "Announcement"
-url = "http://vanillacoin.net/forums/"
-type = "custom"
-tags = ["publications"]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=977245.0"
+icon = "forum.png"
+tags = ["Main","News"]

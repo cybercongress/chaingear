@@ -9570,14 +9570,14 @@
         }
     },
     {
+        "genesis_id": "15344649963748848799",
+        "system": "InstantDEX",
+        "icon": "instantdex",
         "dependencies": [
             "NXT"
         ],
-        "source": "cyberFund",
-        "system": "InstantDEX",
         "aliases": {
-            "coinmarketcap": "InstantDEX",
-            "CurrencyName": "InstantDEX"
+            "coinmarketcap": "InstantDEX"
         },
         "ratings": {
             "rating_cyber": 2
@@ -9590,7 +9590,7 @@
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoservice"
         },
         "token": {
             "token_name": "InstantDEX",
@@ -9599,14 +9599,54 @@
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "instantdex.org",
                 "url": "http://instantdex.org/",
                 "icon": "website.png",
                 "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "NXT Asset",
+                "url": "http://nxtreporting.com/?as=15344649963748848799",
+                "icon": "explorer.png",
+                "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "InstantDEX BitBucket",
+                "url": "https://bitbucket.org/BitcoinDark/repository/downloads/BitcoinDark-x64-InstantDEX-Beta-9-12-2015.rar",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=1094381.0",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "NXT Forum",
+                "url": "https://nxtforum.org/nxtventures/instantdex-realtime-trading-of-nxt-nxt-assets-btc-and-btc-clones/",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
             }
         ]
     },
@@ -11741,11 +11781,14 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "?",
         "system": "Moonstone",
+        "icon": "moonstone",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
-            "coinmarketcap": "Moonstone",
-            "CurrencyName": "Moonstone"
+            "coinmarketcap": "Moonstone"
         },
         "ratings": {
             "rating_cyber": 3
@@ -11755,24 +11798,104 @@
             "consensus_type": ""
         },
         "descriptions": {
+            "state": "Project",
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoservice"
         },
         "token": {
             "token_name": "Moonstone",
             "token_symbol": "MOONFUND"
         },
         "specs": {
-            "dependencies": "independent",
             "supply": 53045810.879,
-            "timestamp": 1431342962,
-            "links": [],
             "cap": {
                 "usd": 323048,
                 "btc": 1404
             }
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "moonstone.io",
+                "url": "https://moonstone.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "@MoonstoneWallet",
+                "url": "https://twitter.com/MoonstoneWallet",
+                "icon": "twitter.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BitsharesTalk",
+                "url": "https://bitsharestalk.org/index.php/topic,15138.0.html",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "OpenLedger Explorer",
+                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/MOONFUND",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "CryptoFresh Explorer",
+                "url": "http://cryptofresh.com/a/MOONFUND",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "facebook",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/moonstone.io",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "google+",
+                "name": "Google+",
+                "url": "https://plus.google.com/+MoonstoneIoWallet/",
+                "icon": "googleplus.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "youtube",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCf1rySa3Zk4gCYlI-5PYYog",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ],
+        "flags": {
+            "rating_do_not_display": true
         }
     },
     {
@@ -14464,14 +14587,14 @@
         ]
     },
     {
+        "genesis_id": "00000c257b93a36e9a4318a64398d661866341331a984e2b486414fc5bb16ccd",
+        "system": "Quark",
+        "icon": "quark",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "Quark",
         "aliases": {
-            "coinmarketcap": "Quark",
-            "CurrencyName": "Quark"
+            "coinmarketcap": "Quark"
         },
         "ratings": {
             "rating_cyber": 1
@@ -14479,18 +14602,14 @@
         "consensus": {
             "consensus_name": "Proof-of-Work",
             "hashing": "Quark",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
             "state": "Running",
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "21/07/2013",
-            "genesis": "21/07/2013"
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "Quark",
@@ -14505,31 +14624,44 @@
         },
         "links": [
             {
-                "name": "web site",
-                "url": "http://www.quarkcoin.com/",
+                "type": "website",
+                "name": "quarktalk.org",
+                "url": "http://quarktalk.org/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "github",
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "https://coinplorer.com/QRK/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Quark GitHub",
                 "url": "https://github.com/MaxGuevara/quark",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "Announcement",
+                "type": "forum",
+                "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=260031.0",
-                "type": "custom",
+                "icon": "forum.png",
                 "tags": [
-                    "publications"
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -17927,8 +18059,9 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "0000005944f0d20d7ee82ac4dc65cd8796dd37f6d6e0b3af05af966d6c8b63c0",
         "system": "Vanillacoin",
+        "icon": "vanillacoin",
         "aliases": {
             "coinmarketcap": "Vanillacoin",
             "CurrencyName": "Vanillacoin"
@@ -17938,15 +18071,19 @@
         },
         "consensus": {
             "hashing": "Others",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "state": "Running",
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
-        "events": {
-            "announcement": "15/12/2014"
-        },
+        "events": [
+            {
+                "name": "Announcement",
+                "start_date": "2015-05-18T08:19:20",
+                "url": "https://bitcointalk.org/index.php?topic=1064326.0"
+            }
+        ],
         "token": {
             "token_name": "Vanillacoin",
             "token_symbol": "VNL"
@@ -17958,57 +18095,70 @@
         },
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "vanillacoin.net",
                 "url": "http://www.vanillacoin.net/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "github",
+                "type": "explorer",
+                "name": "Vanillacoin Explorer",
+                "url": "http://vnlbex.lbtcoin.org/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Vanillacoin GitHub",
                 "url": "https://github.com/john-connor/vanillacoin",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "Announcement",
-                "url": "http://vanillacoin.net/forums/",
-                "type": "custom",
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=977245.0",
+                "icon": "forum.png",
                 "tags": [
-                    "publications"
+                    "Main",
+                    "News"
                 ]
             }
         ]
     },
     {
+        "genesis_id": "000009ebb29a8f5d236b56409fe30a5b1f546ec3756ed7839e1298358d990881",
+        "system": "VeriCoin",
+        "icon": "veriCoin",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "VeriCoin",
         "aliases": {
-            "coinmarketcap": "VeriCoin",
-            "CurrencyName": "VeriCoin"
+            "coinmarketcap": "VeriCoin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "Proof-of-Stake",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "VeriCoin",
@@ -18017,34 +18167,45 @@
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "vericoin.info",
                 "url": "http://www.vericoin.info/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "github",
+                "type": "explorer",
+                "name": "cryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/vrc/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "VeriCoin GitHub",
                 "url": "https://github.com/vericoin/vericoin",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "explorer",
-                "url": "https://chainz.cryptoid.info/vrc/",
-                "icon": "explorer.png",
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=602041.0",
+                "icon": "forum.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             }
         ]
     },

@@ -1,10 +1,10 @@
-dependencies = ["NXT"]
-source = "cyberFund"
+genesis_id = "15344649963748848799"
 system = "InstantDEX"
+icon = "instantdex"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "InstantDEX"
-CurrencyName = "InstantDEX"
 
 [ratings]
 rating_cyber = 2.0
@@ -15,7 +15,7 @@ consensus_type = ""
 
 [descriptions]
 tags = ["DApp"]
-system_type = ""
+system_type = "cryptoservice"
 
 [token]
 token_name = "InstantDEX"
@@ -24,8 +24,36 @@ token_symbol = "DEX"
 [specs]
 
 [[links]]
-name = "web site"
+type = "website"
+name = "instantdex.org"
 url = "http://instantdex.org/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "NXT Asset"
+url = "http://nxtreporting.com/?as=15344649963748848799"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "InstantDEX BitBucket"
+url = "https://bitbucket.org/BitcoinDark/repository/downloads/BitcoinDark-x64-InstantDEX-Beta-9-12-2015.rar"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=1094381.0"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+type = "forum"
+name = "NXT Forum"
+url = "https://nxtforum.org/nxtventures/instantdex-realtime-trading-of-nxt-nxt-assets-btc-and-btc-clones/"
+icon = "forum.png"
+tags = ["Main","News"]

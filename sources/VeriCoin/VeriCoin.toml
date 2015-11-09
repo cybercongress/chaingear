@@ -1,21 +1,21 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "000009ebb29a8f5d236b56409fe30a5b1f546ec3756ed7839e1298358d990881"
 system = "VeriCoin"
+icon = "veriCoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "VeriCoin"
-CurrencyName = "VeriCoin"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Stake"
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [descriptions]
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [token]
 token_name = "VeriCoin"
@@ -24,22 +24,29 @@ token_symbol = "VRC"
 [specs]
 
 [[links]]
-name = "web site"
+type = "website"
+name = "vericoin.info"
 url = "http://www.vericoin.info/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "github"
+type = "explorer"
+name = "cryptoID Explorer"
+url = "https://chainz.cryptoid.info/vrc/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "VeriCoin GitHub"
 url = "https://github.com/vericoin/vericoin"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "explorer"
-url = "https://chainz.cryptoid.info/vrc/"
-icon = "explorer.png"
-tags = ["Main", "Apps"]
-type = ""
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=602041.0"
+icon = "forum.png"
+tags = ["Main","News"]

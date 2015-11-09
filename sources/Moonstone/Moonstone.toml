@@ -1,9 +1,10 @@
-source = "cyberFund"
+genesis_id = "?"
 system = "Moonstone"
+icon = "moonstone"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "Moonstone"
-CurrencyName = "Moonstone"
 
 [ratings]
 rating_cyber = 3.0
@@ -13,19 +14,76 @@ consensus_name = "DPOS"
 consensus_type = ""
 
 [descriptions]
+state = "Project"
 tags = ["DApp"]
-system_type = ""
+system_type = "cryptoservice"
 
 [token]
 token_name = "Moonstone"
 token_symbol = "MOONFUND"
 
 [specs]
-dependencies = "independent"
 supply = 53045810.879
-timestamp = 1431342962.0
-links = []
 
   [specs.cap]
   usd = 323048.0
   btc = 1404.0
+
+[[links]]
+type = "website"
+name = "moonstone.io"
+url = "https://moonstone.io/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "twitter"
+name = "@MoonstoneWallet"
+url = "https://twitter.com/MoonstoneWallet"
+icon = "twitter.png"
+tags = ["Main", "News"]
+
+[[links]]
+type = "forum"
+name = "BitsharesTalk"
+url = "https://bitsharestalk.org/index.php/topic,15138.0.html"
+icon = "forum.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "explorer"
+name = "OpenLedger Explorer"
+url = "https://bitshares.openledger.info/?r=cryptofresh#/asset/MOONFUND"
+icon = "explorer.png"
+tags = ["Main","Apps","Analytics"]
+
+[[links]]
+type = "explorer"
+name = "CryptoFresh Explorer"
+url = "http://cryptofresh.com/a/MOONFUND"
+icon = "explorer.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+type = "facebook"
+name = "Facebook"
+url = "https://www.facebook.com/moonstone.io"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+type = "google+"
+name = "Google+"
+url = "https://plus.google.com/+MoonstoneIoWallet/"
+icon = "googleplus.png"
+tags = ["News"]
+
+[[links]]
+type = "youtube"
+name = "YouTube"
+url = "https://www.youtube.com/channel/UCf1rySa3Zk4gCYlI-5PYYog"
+icon = "youtube.png"
+tags = ["News"]
+
+[flags]
+rating_do_not_display = true

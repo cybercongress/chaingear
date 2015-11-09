@@ -1,10 +1,10 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "00000c257b93a36e9a4318a64398d661866341331a984e2b486414fc5bb16ccd"
 system = "Quark"
+icon = "quark"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "Quark"
-CurrencyName = "Quark"
 
 [ratings]
 rating_cyber = 1.0
@@ -12,16 +12,12 @@ rating_cyber = 1.0
 [consensus]
 consensus_name = "Proof-of-Work"
 hashing = "Quark"
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [descriptions]
 state = "Running"
 tags = ["DAO"]
-system_type = ""
-
-[events]
-announcement = "21/07/2013"
-genesis = "21/07/2013"
+system_type = "cryptocurrency"
 
 [token]
 token_name = "Quark"
@@ -35,21 +31,29 @@ total_tokens = 247000000.0
 difficulty_cycle = "20"
 
 [[links]]
-name = "web site"
-url = "http://www.quarkcoin.com/"
+type = "website"
+name = "quarktalk.org"
+url = "http://quarktalk.org/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "github"
+type = "explorer"
+name = "Explorer"
+url = "https://coinplorer.com/QRK/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Quark GitHub"
 url = "https://github.com/MaxGuevara/quark"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "Announcement"
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=260031.0"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["Main","News"]
