@@ -1,22 +1,50 @@
-source = "cyberFund"
+genesis_id = "000000ecd77baa224eebc9960e5a1632ad07858be83ae9b96d1e6fea4d675a68"
 system = "IOCoin"
+icon = "iocoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "I/O Coin"
-CurrencyName = "I/O Coin"
 
 [ratings]
 rating_cyber = 1.0
 
 [descriptions]
-system_type = ""
+system_type = "cryptocurrency"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [token]
 token_name = "IOCoin"
 token_symbol = "IOC"
 
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "iocoin.io"
+url = "http://iocoin.io/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "cryptoID Explorer"
+url = "http://chainz.cryptoid.info/ioc/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "IOCoin GitHub"
+url = "https://github.com/IOCoin/iocoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=695855.0"
+icon = "forum.png"
+tags = ["Main","News"]

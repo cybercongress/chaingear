@@ -1,26 +1,26 @@
 [
     {
+        "genesis_id": "c596ef5febcee2fb1eed7501447e42aa990e07b17b2850cd20091a2c5dc4f3b9",
+        "system": "ARCHcoin",
+        "icon": "archcoin",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "ARCHcoin",
         "aliases": {
-            "coinmarketcap": "ARCHcoin",
-            "CurrencyName": "ARCHcoin"
+            "coinmarketcap": "ARCHcoin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "Proof-of-Stake",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_symbol": "ARCH",
@@ -29,21 +29,44 @@
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "archcoin.co",
                 "url": "http://www.archcoin.co/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=831777.0",
-                "type": "custom",
+                "type": "explorer",
+                "name": "cryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/arch/",
+                "icon": "cryptoid.png",
                 "tags": [
-                    "publications"
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "ARCHcoin GitHub",
+                "url": "https://github.com/EdgarSoares/ARCH/",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=831777.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -9762,28 +9785,72 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "000000ecd77baa224eebc9960e5a1632ad07858be83ae9b96d1e6fea4d675a68",
         "system": "IOCoin",
+        "icon": "iocoin",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
-            "coinmarketcap": "I/O Coin",
-            "CurrencyName": "I/O Coin"
+            "coinmarketcap": "I/O Coin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "descriptions": {
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "token": {
             "token_name": "IOCoin",
             "token_symbol": "IOC"
         },
-        "specs": {
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "iocoin.io",
+                "url": "http://iocoin.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "cryptoID Explorer",
+                "url": "http://chainz.cryptoid.info/ioc/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "IOCoin GitHub",
+                "url": "https://github.com/IOCoin/iocoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=695855.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "15344649963748848799",
@@ -12369,14 +12436,13 @@
         ]
     },
     {
+        "genesis_id": "16212446818542881180",
+        "system": "NXTventure",
         "dependencies": [
             "NXT"
         ],
-        "source": "cyberFund",
-        "system": "NXTventure",
         "aliases": {
-            "coinmarketcap": "NXTventure",
-            "CurrencyName": "NXTventure"
+            "coinmarketcap": "NXTventure"
         },
         "ratings": {
             "rating_cyber": 1
@@ -12389,7 +12455,7 @@
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoasset"
         },
         "token": {
             "token_name": "NXTventure",
@@ -12398,13 +12464,26 @@
         "specs": {},
         "links": [
             {
-                "name": "forum",
+                "type": "explorer",
+                "name": "NXT Asset",
+                "url": "http://nxtreporting.com/?as=16212446818542881180",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "NXT Forum",
                 "url": "https://nxtforum.org/nxtventures/nxtventure-the-way-for-the-most-promising-enterprises-to-get-ae-listing/",
                 "icon": "forum.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "Main",
+                    "News"
+                ]
             }
         ]
     },
@@ -14130,28 +14209,27 @@
         ]
     },
     {
+        "genesis_id": "6883271355794806507",
+        "system": "Pangea Poker",
+        "icon": "pangea_poker",
         "dependencies": [
             "NXT"
         ],
-        "source": "cyberFund",
-        "icon": "pangea_poker",
-        "system": "Pangea Poker",
         "aliases": {
-            "coinmarketcap": "Pangea Poker",
-            "CurrencyName": "Pangea Poker"
+            "coinmarketcap": "Pangea Poker"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "NXT",
-            "consensus_type": ""
+            "consensus_type": "Blockchain Ledger"
         },
         "descriptions": {
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoasset"
         },
         "token": {
             "token_name": "Pangea Poker",
@@ -14160,14 +14238,35 @@
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "pangeapoker.net",
                 "url": "http://www.pangeapoker.net/",
                 "icon": "website.png",
                 "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "NXT Asset",
+                "url": "http://nxtreporting.com/?a=6883271355794806507",
+                "icon": "explorer.png",
+                "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "NXT Forum",
+                "url": "https://nxtforum.org/nxtventures/pangea-poker/",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
             }
         ]
     },
@@ -16165,36 +16264,6 @@
         ]
     },
     {
-        "dependencies": [
-            "NXT"
-        ],
-        "source": "cyberFund",
-        "links": [],
-        "system": "SkyNET",
-        "aliases": {
-            "coinmarketcap": "SkyNET",
-            "CurrencyName": "SkyNET"
-        },
-        "ratings": {
-            "rating_cyber": 1
-        },
-        "consensus": {
-            "consensus_name": "NXT",
-            "consensus_type": ""
-        },
-        "descriptions": {
-            "tags": [
-                "DApp"
-            ],
-            "system_type": ""
-        },
-        "token": {
-            "token_name": "SkyNET",
-            "token_symbol": "SKYNET"
-        },
-        "specs": {}
-    },
-    {
         "genesis_id": "",
         "system": "Skycoin",
         "aliases": {
@@ -17241,6 +17310,183 @@
         ]
     },
     {
+        "genesis_id": "12071612744977229797",
+        "system": "SuperNET",
+        "dependencies": [
+            "NXT"
+        ],
+        "token": {
+            "token_name": "Unity",
+            "token_symbol": "UNITY"
+        },
+        "consensus": {
+            "consensus_name": "NXT",
+            "consensus_type": "Proof-of-Stake"
+        },
+        "aliases": {
+            "coinmarketcap": "SuperNET",
+            "CurrencyName": "SuperNET"
+        },
+        "ratings": {
+            "rating_cyber": 2
+        },
+        "descriptions": {
+            "state": "Running",
+            "headline": "An Association of Blockchain Technologies",
+            "tags": [
+                "DApp"
+            ],
+            "system_type": "Blockchain Share",
+            "page_state": "ready"
+        },
+        "crowdsales": {
+            "start_date": "2014-04-30T00:00:00",
+            "end_date": "2014-09-23T00:00:00",
+            "genesis_address": [
+                "NXT-MRBN-8DFH-PFMK-A4DBM"
+            ],
+            "funding_url": "http://www.nxtreporting.com/?as=12071612744977229797",
+            "funding_tems": "https://bitcointalk.org/index.php?topic=762346.0",
+            "min_investment": 0,
+            "funding_operator": "nein",
+            "tokens_sold": 571243.1402,
+            "tokens_issued": 816061,
+            "btc_raised": 5737.1589
+        },
+        "specs": {},
+        "links": [
+            {
+                "name": "thesupernet.org",
+                "url": "http://thesupernet.org/",
+                "type": "website",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "name": "Wallet",
+                "url": "http://www.supernet.org/download.php",
+                "type": "wallet",
+                "icon": "wallet.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "name": "SuperNET Blog",
+                "url": "http://www.supernet.org/blog/",
+                "rss": "http://www.supernet.org/blog/feed/",
+                "type": "blog",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/SuperNETorg",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "twitter"
+            },
+            {
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/supernet",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "News"
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/SuperNETorg",
+                "type": "custom",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "Wiki",
+                "url": "http://wiki.supernet.org/wiki/Main_Page",
+                "type": "wiki",
+                "icon": "wiki.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "name": "SuperNET API",
+                "url": "http://wiki.supernet.org/wiki/API",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "name": "Markets CMC",
+                "headline": "nein",
+                "url": "http://coinmarketcap.com/assets/supernet-unity/#markets",
+                "type": "custom",
+                "icon": "link.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "name": "Poloniex",
+                "headline": "nein",
+                "url": "https://www.poloniex.com",
+                "type": "custom",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTER",
+                "headline": "nein",
+                "url": "https://bter.com/",
+                "type": "custom",
+                "icon": "bter.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "NXT AE",
+                "url": "http://nxtreporting.com",
+                "icon": "nxt.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "Slack",
+                "url": "http://slackinvite.supernet.org/",
+                "type": "custom",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "8612694",
         "system": "Swarm",
         "dependencies": [
@@ -17565,25 +17811,25 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "00000eaa8dd7e902871c444aeb415673b8244c6b7b1742ca398cefa60d87c4c1",
         "system": "TEKcoin",
+        "icon": "tekcoin",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
-            "coinmarketcap": "TEKcoin",
-            "CurrencyName": "TEKcoin"
+            "coinmarketcap": "TEKcoin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "hashing": "SHA-256d",
-            "consensus_type": ""
+            "consensus_type": "Hybryd POW-POS"
         },
         "descriptions": {
             "state": "Running",
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "07/09/2013"
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "TEKcoin",
@@ -17594,28 +17840,58 @@
             "rpc": 18514,
             "block_time": "60",
             "block_reward": 1,
-            "total_tokens": 100000000,
-            "ann": "https://bitcointalk.org/index.php?topic=289490.0",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/maxxine/Tekcoin",
-                    "icon": "github.png"
-                }
-            ]
-        }
+            "total_tokens": 100000000
+        },
+        "events": [
+            {
+                "name": "Annoucement",
+                "start_date": "2013-09-07T05:45:40",
+                "url": "https://bitcointalk.org/index.php?topic=289490.0"
+            }
+        ],
+        "links": [
+            {
+                "type": "website",
+                "name": "tekcoin.org",
+                "url": "http://tekcoin.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "https://www.blockexperts.com/tek",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "TEKcoin GitHub",
+                "url": "https://github.com/maxxine/TEK",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=320404",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "",
@@ -17812,28 +18088,28 @@
         ]
     },
     {
+        "genesis_id": "4035415473177",
+        "system": "TileCoin",
+        "icon": "tilecoin",
         "dependencies": [
             "Bitcoin",
             "Counterparty"
         ],
-        "source": "cyberFund",
-        "system": "TileCoin",
         "aliases": {
-            "coinmarketcap": "TileCoin",
-            "CurrencyName": "TileCoin"
+            "coinmarketcap": "TileCoin"
         },
         "ratings": {
             "rating_cyber": 2
         },
         "consensus": {
             "consensus_name": "Counterparty",
-            "consensus_type": ""
+            "consensus_type": "Blockchain Ledger"
         },
         "descriptions": {
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoservice"
         },
         "token": {
             "token_name": "TileCoin",
@@ -17842,23 +18118,35 @@
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "tilepay.org",
                 "url": "https://www.tilepay.org/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "forum",
+                "type": "explorer",
+                "name": "Counterparty Asset",
+                "url": "https://www.blockscan.com/assetInfo/TILECOINX",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=761852.0",
                 "icon": "forum.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "Main",
+                    "News"
+                ]
             }
         ]
     },

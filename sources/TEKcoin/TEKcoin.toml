@@ -1,23 +1,21 @@
-source = "cyberFund"
+genesis_id = "00000eaa8dd7e902871c444aeb415673b8244c6b7b1742ca398cefa60d87c4c1"
 system = "TEKcoin"
+icon = "tekcoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "TEKcoin"
-CurrencyName = "TEKcoin"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 hashing = "SHA-256d"
-consensus_type = ""
+consensus_type = "Hybryd POW-POS"
 
 [descriptions]
 state = "Running"
-system_type = ""
-
-[events]
-announcement = "07/09/2013"
+system_type = "cryptocurrency"
 
 [token]
 token_name = "TEKcoin"
@@ -29,15 +27,36 @@ rpc = 18514.0
 block_time = "60"
 block_reward = 1.0
 total_tokens = 100000000.0
-ann = "https://bitcointalk.org/index.php?topic=289490.0"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
+[[events]]
+name = "Annoucement"
+start_date = "2013-09-07T05:45:40"
+url = "https://bitcointalk.org/index.php?topic=289490.0"
 
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/maxxine/Tekcoin"
-  icon = "github.png"
+[[links]]
+type = "website"
+name = "tekcoin.org"
+url = "http://tekcoin.org/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "https://www.blockexperts.com/tek"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "TEKcoin GitHub"
+url = "https://github.com/maxxine/TEK"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=320404"
+icon = "forum.png"
+tags = ["Main","News"]

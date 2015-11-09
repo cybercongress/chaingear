@@ -1,22 +1,21 @@
-dependencies = ["NXT"]
-source = "cyberFund"
-icon = "pangea_poker"
+genesis_id = "6883271355794806507"
 system = "Pangea Poker"
+icon = "pangea_poker"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "Pangea Poker"
-CurrencyName = "Pangea Poker"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 consensus_name = "NXT"
-consensus_type = ""
+consensus_type = "Blockchain Ledger"
 
 [descriptions]
 tags = ["DApp"]
-system_type = ""
+system_type = "cryptoasset"
 
 [token]
 token_name = "Pangea Poker"
@@ -25,8 +24,22 @@ token_symbol = "PANGEA"
 [specs]
 
 [[links]]
-name = "web site"
+type = "website"
+name = "pangeapoker.net"
 url = "http://www.pangeapoker.net/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "NXT Asset"
+url = "http://nxtreporting.com/?a=6883271355794806507"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "forum"
+name = "NXT Forum"
+url = "https://nxtforum.org/nxtventures/pangea-poker/"
+icon = "forum.png"
+tags = ["Main","News"]

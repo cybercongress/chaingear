@@ -1,21 +1,21 @@
-dependencies = ["Bitcoin", "Counterparty"]
-source = "cyberFund"
+genesis_id = "4035415473177"
 system = "TileCoin"
+icon = "tilecoin"
+dependencies = ["Bitcoin", "Counterparty"]
 
 [aliases]
 coinmarketcap = "TileCoin"
-CurrencyName = "TileCoin"
 
 [ratings]
 rating_cyber = 2.0
 
 [consensus]
 consensus_name = "Counterparty"
-consensus_type = ""
+consensus_type = "Blockchain Ledger"
 
 [descriptions]
 tags = ["DApp"]
-system_type = ""
+system_type = "cryptoservice"
 
 [token]
 token_name = "TileCoin"
@@ -24,15 +24,22 @@ token_symbol = "XTC"
 [specs]
 
 [[links]]
-name = "web site"
+type = "website"
+name = "tilepay.org"
 url = "https://www.tilepay.org/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "forum"
+type = "explorer"
+name = "Counterparty Asset"
+url = "https://www.blockscan.com/assetInfo/TILECOINX"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=761852.0"
 icon = "forum.png"
-tags = ["Apps"]
-type = ""
+tags = ["Main","News"]

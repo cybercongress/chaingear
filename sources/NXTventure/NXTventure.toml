@@ -1,10 +1,9 @@
-dependencies = ["NXT"]
-source = "cyberFund"
+genesis_id = "16212446818542881180"
 system = "NXTventure"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "NXTventure"
-CurrencyName = "NXTventure"
 
 [ratings]
 rating_cyber = 1.0
@@ -15,7 +14,7 @@ consensus_type = ""
 
 [descriptions]
 tags = ["DApp"]
-system_type = ""
+system_type = "cryptoasset"
 
 [token]
 token_name = "NXTventure"
@@ -24,8 +23,15 @@ token_symbol = "NXTV"
 [specs]
 
 [[links]]
-name = "forum"
+type = "explorer"
+name = "NXT Asset"
+url = "http://nxtreporting.com/?as=16212446818542881180"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "forum"
+name = "NXT Forum"
 url = "https://nxtforum.org/nxtventures/nxtventure-the-way-for-the-most-promising-enterprises-to-get-ae-listing/"
 icon = "forum.png"
-tags = ["Apps"]
-type = ""
+tags = ["Main","News"]
