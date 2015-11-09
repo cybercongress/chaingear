@@ -196,11 +196,14 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "2c85519db50a40c033ccb3d4cb729414016afa537c66537f7d3d52dcd1d484a3",
         "system": "Anoncoin",
+        "icon": "anoncoin",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
-            "coinmarketcap": "Anoncoin",
-            "CurrencyName": "Anoncoin"
+            "coinmarketcap": "Anoncoin"
         },
         "ratings": {
             "rating_cyber": 1
@@ -208,18 +211,14 @@
         "consensus": {
             "consensus_name": "Proof-of-Work",
             "hashing": "Scrypt",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
             "state": "Running",
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "06/06/2012",
-            "genesis": "02/06/2012"
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "Anoncoin",
@@ -229,36 +228,55 @@
             "block_time": "180",
             "block_reward": 5,
             "halfing_cycle": 306600,
-            "total_tokens": 4200000,
-            "dependencies": "independent"
+            "total_tokens": 4200000
         },
+        "events": [
+            {
+                "name": "Announcement",
+                "start_date": "2013-11-12T12:16:57",
+                "url": "https://bitcointalk.org/index.php?topic=309716.msg3324932#msg3324932"
+            }
+        ],
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "anoncoin.net",
                 "url": "http://anoncoin.net",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "github",
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "http://abe.darkgamex.ch:2751/chain/Anoncoin",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Anoncoin GitHub",
                 "url": "https://github.com/Anoncoin/anoncoin",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=309716.msg3324932#msg3324932",
-                "type": "custom",
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=227287",
+                "icon": "forum.png",
                 "tags": [
-                    "publications"
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -591,27 +609,27 @@
         ]
     },
     {
+        "genesis_id": "00000d95b0fd9c2b9744b2f1234dcd0eb838692189cb8172540a7e6ac067c100",
+        "system": "BitBay",
+        "icon": "bitbay",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "BitBay",
         "aliases": {
-            "coinmarketcap": "BitBay",
-            "CurrencyName": "BitBay"
+            "coinmarketcap": "BitBay"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "Proof-of-Stake",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "BitBay",
@@ -620,21 +638,44 @@
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "bitbaymarket.net",
                 "url": "http://bitbaymarket.net/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=890531",
-                "type": "custom",
+                "type": "explorer",
+                "name": "cryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/bay/",
+                "icon": "cryptoid.png",
                 "tags": [
-                    "publications"
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "BitBay GitHub",
+                "url": "https://github.com/bitbayteam/bitbay",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=890531",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -3651,33 +3692,74 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "000008f971bd331b204f4c96b32205103ac5790a93bd06a362b9650d478d1f51",
         "system": "CannabisCoin",
+        "icon": "cannabiscoin",
+        "dependencies": "independent",
         "aliases": {
-            "coinmarketcap": "CannabisCoin",
-            "CurrencyName": "CannabisCoin"
+            "coinmarketcap": "CannabisCoin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "Proof-of-Work",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrensy"
         },
         "token": {
             "token_name": "CannabisCoin",
             "token_symbol": "CANN"
         },
-        "specs": {
-            "dependencies": "independent",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "cannabiscoin.net",
+                "url": "http://cannabiscoin.net/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "cryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/cann/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "CannabisCoin GitHub",
+                "url": "https://github.com/cannabiscoindev/cannabiscoin420",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=827998.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "4f46c9af6d88a14114b7dc53a37d81ba4064cda5ae2ede1213ca28fea9b86e9c",
@@ -5803,11 +5885,14 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "45b2559dbe5e5772498e4170f3f1561448179fa90dd349e60e891766878dea2e",
         "system": "Digitalcoin",
+        "icon": "digitalcoin",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
-            "coinmarketcap": "Digitalcoin",
-            "CurrencyName": "Digitalcoin"
+            "coinmarketcap": "Digitalcoin"
         },
         "ratings": {
             "rating_cyber": 1
@@ -5815,17 +5900,14 @@
         "consensus": {
             "consensus_name": "Proof-of-Work",
             "hashing": "Multi-algo",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
             "state": "Running",
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "17/09/2014"
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "Digitalcoin",
@@ -5836,35 +5918,48 @@
             "block_reward": 5,
             "halfing_cycle": 4730400,
             "total_tokens": 48166000,
-            "difficulty_cycle": "108",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/DGCFoundation/digitalcoin/releases",
-                    "icon": "github.png"
-                }
-            ]
+            "difficulty_cycle": "108"
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=785601",
-                "type": "custom",
+                "type": "website",
+                "name": "digitalcoin.org",
+                "url": "http://digitalcoin.org/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Blockr Explorer",
+                "url": "http://dgc.blockr.io/",
+                "icon": "blockr.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Digitalcoin GitHub",
+                "url": "https://github.com/DGCDev/digitalcoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=785601.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -9341,10 +9436,11 @@
         ]
     },
     {
+        "genesis_id": "Horizon",
         "system": "Horizon",
+        "icon": "horizon",
         "aliases": {
-            "coinmarketcap": "Horizon",
-            "CurrencyName": "Horizon"
+            "coinmarketcap": "Horizon"
         },
         "ratings": {
             "rating_cyber": 1
@@ -9354,11 +9450,13 @@
             "headline": "Decentrilized Business Platform",
             "system_type": "Independent"
         },
-        "events": {
-            "name": "Horizon Announcement",
-            "start_date": "2014-10-14T08:25:00",
-            "url": "https://bitcointalk.org/index.php?topic=551666.msg6003371#msg6003371"
-        },
+        "events": [
+            {
+                "name": "Horizon Announcement",
+                "start_date": "2014-10-14T08:25:00",
+                "url": "https://bitcointalk.org/index.php?topic=551666.msg6003371#msg6003371"
+            }
+        ],
         "consensus": {
             "consensus_type": "Proof-of-Stake"
         },
@@ -9372,9 +9470,9 @@
         },
         "links": [
             {
-                "name": "nhzcrypto.org",
-                "url": "https://horizonplatform.io/",
                 "type": "website",
+                "name": "horizonplatform.io",
+                "url": "https://horizonplatform.io/",
                 "icon": "website.png",
                 "links": [
                     "Main"
@@ -9455,7 +9553,7 @@
                 "type": "paper",
                 "icon": "paper.png",
                 "tags": [
-                    "Publications"
+                    "Science"
                 ]
             },
             {
@@ -9464,7 +9562,7 @@
                 "type": "paper",
                 "icon": "paper.png",
                 "tags": [
-                    "Publications"
+                    "Science"
                 ]
             },
             {

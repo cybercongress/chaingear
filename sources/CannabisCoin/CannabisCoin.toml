@@ -1,25 +1,52 @@
-source = "cyberFund"
+genesis_id = "000008f971bd331b204f4c96b32205103ac5790a93bd06a362b9650d478d1f51"
 system = "CannabisCoin"
+icon = "cannabiscoin"
+dependencies = "independent"
 
 [aliases]
 coinmarketcap = "CannabisCoin"
-CurrencyName = "CannabisCoin"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Work"
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [descriptions]
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrensy"
 
 [token]
 token_name = "CannabisCoin"
 token_symbol = "CANN"
 
 [specs]
-dependencies = "independent"
-links = []
+
+[[links]]
+type = "website"
+name = "cannabiscoin.net"
+url = "http://cannabiscoin.net/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "cryptoID Explorer"
+url = "https://chainz.cryptoid.info/cann/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "CannabisCoin GitHub"
+url = "https://github.com/cannabiscoindev/cannabiscoin420"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=827998.0"
+icon = "forum.png"
+tags = ["Main","News"]
