@@ -1,38 +1,51 @@
-source = "cyberFund"
+genesis_id = "000000002f4984003de245a1666d8a8271ddf4236cf190bb9a2595dc4e7d4696"
 system = "CureCoin"
+icon = "cureCoin"
 
 [aliases]
 coinmarketcap = "CureCoin"
-CurrencyName = "CureCoin"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 hashing = "SHA-256d"
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [descriptions]
-state = "Dead"
-system_type = ""
-
-[events]
-announcement = "15/05/2013"
-genesis = "notstarted"
+state = "Running"
+system_type = "cryptocurrency"
 
 [token]
 token_name = "CureCoin"
 token_symbol = "CURE"
 
 [specs]
-ann = "https://bitcointalk.org/index.php?topic=197773.0"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
+[[links]]
+type = "website"
+name = "curecoin.net"
+url = "https://www.curecoin.net/"
+icon = "website.png"
+tags = ["Main"]
 
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  icon = "github.png"
+[[links]]
+type = "explorer"
+name = "cryptoID Explorer"
+url = "https://chainz.cryptoid.info/cure/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "CureCoin GitHub"
+url = "https://github.com/cygnusxi/CurecoinSource"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=603757.0"
+icon = "forum.png"
+tags = ["Main","News"]

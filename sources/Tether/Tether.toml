@@ -1,9 +1,10 @@
-source = "cyberFund"
+genesis_id = "31"
 system = "Tether"
+icon = "tether"
+dependencies = ["Mastercoin (Omni)"]
 
 [aliases]
 coinmarketcap = "Tether"
-CurrencyName = "Tether"
 quantum ="SC/SP31"
 
 [ratings]
@@ -15,12 +16,46 @@ consensus_type = ""
 
 [descriptions]
 tags = ["DApp"]
-system_type = ""
+system_type = "cryptoasset"
+headline = "Price-Stable Digital Currency 100% backed by USD"
 
 [token]
 token_name = "Tether"
 token_symbol = "USDT"
 
 [specs]
-dependencies = "Bitcoin"
-links = []
+
+[[links]]
+type = "website"
+name = "tether.to"
+url = "https://tether.to/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Omni Asset"
+url = "http://omnichest.info/lookupsp.aspx?sp=31"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "paper"
+name = "Tether Whitepaper"
+url = "https://tether.to/wp-content/uploads/2015/04/Tether-White-Paper.pdf"
+icon = "paper.png"
+tags = ["Main", "Science"]
+
+[[links]]
+type = "custom"
+name = "Tether FAQ"
+url = "https://tether.to/faqs/"
+icon = "forum.png"
+tags = ["Science"]
+
+[[links]]
+type = "twitter"
+name = "@Tether_to"
+url = "https://twitter.com/Tether_to/"
+icon = "twitter.png"
+tags = ["Main","News"]

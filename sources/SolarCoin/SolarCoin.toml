@@ -1,25 +1,52 @@
-source = "cyberFund"
+genesis_id = "e8666c8715fafbfb095132deb1dd2af63fe14d3d7163715341d48feffab458cc"
 system = "SolarCoin"
+icon = "solarcoin"
+dependencies = "independent"
 
 [aliases]
 coinmarketcap = "SolarCoin"
-CurrencyName = "SolarCoin"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Stake"
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [descriptions]
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [token]
 token_name = "SolarCoin"
 token_symbol = "SLR"
 
 [specs]
-dependencies = "independent"
-links = []
+
+[[links]]
+type = "website"
+name = "solarcoin.org"
+url = "http://solarcoin.org/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "cryptoID Explorer"
+url = "https://chainz.cryptoid.info/slr/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "SolarCoin GitHub"
+url = "https://github.com/solarcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=785257.0"
+icon = "forum.png"
+tags = ["Main","News"]

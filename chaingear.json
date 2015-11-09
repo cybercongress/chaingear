@@ -4806,52 +4806,71 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "000000002f4984003de245a1666d8a8271ddf4236cf190bb9a2595dc4e7d4696",
         "system": "CureCoin",
+        "icon": "cureCoin",
         "aliases": {
-            "coinmarketcap": "CureCoin",
-            "CurrencyName": "CureCoin"
+            "coinmarketcap": "CureCoin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "hashing": "SHA-256d",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
-            "state": "Dead",
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "15/05/2013",
-            "genesis": "notstarted"
+            "state": "Running",
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "CureCoin",
             "token_symbol": "CURE"
         },
-        "specs": {
-            "ann": "https://bitcointalk.org/index.php?topic=197773.0",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "icon": "github.png"
-                }
-            ]
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "curecoin.net",
+                "url": "https://www.curecoin.net/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "cryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/cure/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "CureCoin GitHub",
+                "url": "https://github.com/cygnusxi/CurecoinSource",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=603757.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "20bbf1cb1115ccda06c0cce115f5b72a78055a163892575988d1c8ee085f5e86",
@@ -5477,11 +5496,14 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "000002e9686a879460eb5497d51a99fa6d5cad4a9edabb5112bd915b7d2302fc",
         "system": "Diamond",
+        "icon": "diamond",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
-            "coinmarketcap": "Diamond",
-            "CurrencyName": "Diamond"
+            "coinmarketcap": "Diamond"
         },
         "ratings": {
             "rating_cyber": 1
@@ -5489,17 +5511,14 @@
         "consensus": {
             "consensus_name": "Hybrid POW-POS",
             "hashing": "Scrypt",
-            "consensus_type": ""
+            "consensus_type": "Hybrid POW-POS"
         },
         "descriptions": {
             "state": "Running",
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "15/06/2013"
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "Diamond",
@@ -5513,34 +5532,48 @@
             "total_tokens": 4380000,
             "difficulty_cycle": "everyblock",
             "txs_confirm": 3,
-            "mint_confirm": 50,
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "icon": "github.png"
-                }
-            ]
+            "mint_confirm": 50
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=255806.0",
-                "type": "custom",
+                "type": "website",
+                "name": "bit.diamonds",
+                "url": "http://bit.diamonds/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "cryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/dmd/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Diamond GitHub",
+                "url": "https://github.com/DMDcoin/Diamond",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=580725.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -7601,11 +7634,14 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2",
         "system": "Feathercoin",
+        "icon": "feathercoin",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
-            "coinmarketcap": "Feathercoin",
-            "CurrencyName": "Feathercoin"
+            "coinmarketcap": "Feathercoin"
         },
         "ratings": {
             "rating_cyber": 1
@@ -7613,14 +7649,14 @@
         "consensus": {
             "consensus_name": "Proof-of-Work",
             "hashing": "Scrypt",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
             "state": "Running",
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "events": {
             "announcement": "15/04/2013",
@@ -7637,29 +7673,51 @@
             "block_reward": 200,
             "halfing_cycle": 840000,
             "total_tokens": 336000000,
-            "difficulty_cycle": "126",
-            "dependencies": "independent",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://feathercoin.com/",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": "https://github.com/FeatherCoin/FeatherCoin",
-                    "icon": "github.png"
-                }
-            ]
-        }
+            "difficulty_cycle": "126"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "feathercoin.com",
+                "url": "https://www.feathercoin.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Explorer",
+                "url": "http://explorer.feathercoin.com/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Feathercoin GitHub",
+                "url": "https://github.com/FeatherCoin/",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=178286.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "00000b17e3a241903ee4b5be429ce0d3f5097312a7b9ab093cc172aece0943a5",
@@ -9446,33 +9504,76 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "000004be2b5eabb96d2932f0ba78bf4d07f89049f9b3150cc2d744c12009546f",
         "system": "Hyper",
+        "icon": "Hyper",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
-            "coinmarketcap": "Hyper",
-            "CurrencyName": "Hyper"
+            "coinmarketcap": "Hyper"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "Proof-of-Stake",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "Hyper",
             "token_symbol": "HYPER"
         },
-        "specs": {
-            "dependencies": "independent",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "hypercrypto.com",
+                "url": "http://hypercrypto.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "cryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/hyper/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Hyper GitHub",
+                "url": "https://github.com/palmd/Hyper",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=624651.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "000005fe04e512585c3611369c7ce23f130958038c18a462577d002680dab4fc",
@@ -16058,33 +16159,74 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "e8666c8715fafbfb095132deb1dd2af63fe14d3d7163715341d48feffab458cc",
         "system": "SolarCoin",
+        "icon": "solarcoin",
+        "dependencies": "independent",
         "aliases": {
-            "coinmarketcap": "SolarCoin",
-            "CurrencyName": "SolarCoin"
+            "coinmarketcap": "SolarCoin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "Proof-of-Stake",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "SolarCoin",
             "token_symbol": "SLR"
         },
-        "specs": {
-            "dependencies": "independent",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "solarcoin.org",
+                "url": "http://solarcoin.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "cryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/slr/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "SolarCoin GitHub",
+                "url": "https://github.com/solarcoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=785257.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "dependencies": [
@@ -17604,11 +17746,14 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "31",
         "system": "Tether",
+        "icon": "tether",
+        "dependencies": [
+            "Mastercoin (Omni)"
+        ],
         "aliases": {
             "coinmarketcap": "Tether",
-            "CurrencyName": "Tether",
             "quantum": "SC/SP31"
         },
         "ratings": {
@@ -17622,16 +17767,66 @@
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoasset",
+            "headline": "Price-Stable Digital Currency 100% backed by USD"
         },
         "token": {
             "token_name": "Tether",
             "token_symbol": "USDT"
         },
-        "specs": {
-            "dependencies": "Bitcoin",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "tether.to",
+                "url": "https://tether.to/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Omni Asset",
+                "url": "http://omnichest.info/lookupsp.aspx?sp=31",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Tether Whitepaper",
+                "url": "https://tether.to/wp-content/uploads/2015/04/Tether-White-Paper.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Tether FAQ",
+                "url": "https://tether.to/faqs/",
+                "icon": "forum.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "@Tether_to",
+                "url": "https://twitter.com/Tether_to/",
+                "icon": "twitter.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "dependencies": [

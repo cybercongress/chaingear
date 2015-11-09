@@ -1,25 +1,52 @@
-source = "cyberFund"
+genesis_id = "000004be2b5eabb96d2932f0ba78bf4d07f89049f9b3150cc2d744c12009546f"
 system = "Hyper"
+icon = "Hyper"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "Hyper"
-CurrencyName = "Hyper"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Stake"
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [descriptions]
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [token]
 token_name = "Hyper"
 token_symbol = "HYPER"
 
 [specs]
-dependencies = "independent"
-links = []
+
+[[links]]
+type = "website"
+name = "hypercrypto.com"
+url = "http://hypercrypto.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "cryptoID Explorer"
+url = "https://chainz.cryptoid.info/hyper/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Hyper GitHub"
+url = "https://github.com/palmd/Hyper"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=624651.0"
+icon = "forum.png"
+tags = ["Main","News"]

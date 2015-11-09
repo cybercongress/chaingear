@@ -1,9 +1,10 @@
-source = "cyberFund"
+genesis_id = "12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2"
 system = "Feathercoin"
+icon = "feathercoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "Feathercoin"
-CurrencyName = "Feathercoin"
 
 [ratings]
 rating_cyber = 1.0
@@ -11,12 +12,12 @@ rating_cyber = 1.0
 [consensus]
 consensus_name = "Proof-of-Work"
 hashing = "Scrypt"
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [descriptions]
 state = "Running"
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [events]
 announcement = "15/04/2013"
@@ -34,16 +35,31 @@ block_reward = 200.0
 halfing_cycle = 840000.0
 total_tokens = 336000000.0
 difficulty_cycle = "126"
-dependencies = "independent"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  url = "http://feathercoin.com/"
-  icon = "website.png"
+[[links]]
+type = "website"
+name = "feathercoin.com"
+url = "https://www.feathercoin.com/"
+icon = "website.png"
+tags = ["Main"]
 
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/FeatherCoin/FeatherCoin"
-  icon = "github.png"
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "http://explorer.feathercoin.com/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Feathercoin GitHub"
+url = "https://github.com/FeatherCoin/"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=178286.0"
+icon = "forum.png"
+tags = ["Main","News"]

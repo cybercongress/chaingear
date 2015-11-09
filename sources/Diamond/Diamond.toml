@@ -1,9 +1,10 @@
-source = "cyberFund"
+genesis_id = "000002e9686a879460eb5497d51a99fa6d5cad4a9edabb5112bd915b7d2302fc"
 system = "Diamond"
+icon = "diamond"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "Diamond"
-CurrencyName = "Diamond"
 
 [ratings]
 rating_cyber = 1.0
@@ -11,15 +12,12 @@ rating_cyber = 1.0
 [consensus]
 consensus_name = "Hybrid POW-POS"
 hashing = "Scrypt"
-consensus_type = ""
+consensus_type = "Hybrid POW-POS"
 
 [descriptions]
 state = "Running"
 tags = ["DAO"]
-system_type = ""
-
-[events]
-announcement = "15/06/2013"
+system_type = "cryptocurrency"
 
 [token]
 token_name = "Diamond"
@@ -34,20 +32,32 @@ total_tokens = 4380000.0
 difficulty_cycle = "everyblock"
 txs_confirm = 3.0
 mint_confirm = 50.0
-dependencies = "independent"
 
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  icon = "github.png"
 
 [[links]]
-name = "Announcement"
-url = "https://bitcointalk.org/index.php?topic=255806.0"
-type = "custom"
-tags = ["publications"]
+type = "website"
+name = "bit.diamonds"
+url = "http://bit.diamonds/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "cryptoID Explorer"
+url = "https://chainz.cryptoid.info/dmd/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Diamond GitHub"
+url = "https://github.com/DMDcoin/Diamond"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=580725.0"
+icon = "forum.png"
+tags = ["Main","News"]
