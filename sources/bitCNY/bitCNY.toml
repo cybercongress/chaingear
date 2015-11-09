@@ -1,16 +1,17 @@
-source = "cyberFund"
+genesis_id = "?"
 system = "bitCNY"
+icon = "bitcny"
 dependencies = ["BitShares"]
 
 [aliases]
 coinmarketcap = "bitCNY"
-CurrencyName = "bitCNY"
 
 [ratings]
 rating_cyber = 3.0
 
 [descriptions]
-system_type = "Pegget Asset"
+system_type = "cryptoasset"
+headline = "Market-Pegget Asset"
 
 [consensus]
 consensus_type = ""
@@ -21,10 +22,30 @@ token_name = "bitCNY"
 token_symbol = "BITCNY"
 
 [specs]
+[[links]]
+type = "website"
+name = "Introducing SmartCoins"
+url = "https://bitshares.org/technology/price-stable-cryptocurrencies/"
+icon = "website.png"
+tags = ["Main","Science"]
 
 [[links]]
-name = "explorer"
-url = "http://www.bitsharesblocks.com/asset/orderbook?asset=CNY"
-icon = "explorer.png"
-tags = ["Main", "Apps"]
+type = "wiki"
+name = "BitShares Wiki"
+url = "http://wiki.bitshares.org/index.php/BitShares/bitAssets"
+icon = "wiki.png"
+tags = ["Main","Science"]
+
+[[links]]
 type = "explorer"
+name = "OpenLedger Explorer"
+url = "https://bitshares.openledger.info/?r=cryptofresh#/asset/CNY"
+icon = "explorer.png"
+tags = ["Main", "Apps","Analytics"]
+
+[[links]]
+type = "explorer"
+name = "CryptoFresh Explorer"
+url = "http://cryptofresh.com/a/CNY"
+icon = "explorer.png"
+tags = ["Main", "Apps","Analytics"]

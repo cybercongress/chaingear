@@ -1,17 +1,17 @@
-source = "cyberFund"
+genesis_id = "?"
 system = "bitEUR"
+icon = "biteur"
 dependencies = ["BitShares"]
-icon = "bitEUR"
 
 [aliases]
 coinmarketcap = "bitEUR"
-CurrencyName = "bitEUR"
 
 [ratings]
 rating_cyber = 3.0
 
 [descriptions]
-system_type = "Pegget Asset"
+system_type = "cryptoasset"
+headline = "Market-Pegget Asset"
 
 [consensus]
 consensus_name = "BitShares"
@@ -24,8 +24,29 @@ token_symbol = "BITEUR"
 [specs]
 
 [[links]]
-name = "explorer"
-url = "http://www.bitsharesblocks.com/asset/orderbook?asset=EUR"
-icon = "explorer.png"
-tags = ["Main", "Apps"]
+type = "website"
+name = "Introducing SmartCoins"
+url = "https://bitshares.org/technology/price-stable-cryptocurrencies/"
+icon = "website.png"
+tags = ["Science"]
+
+[[links]]
+type = "wiki"
+name = "BitShares Wiki"
+url = "http://wiki.bitshares.org/index.php/BitShares/bitAssets"
+icon = "wiki.png"
+tags = ["Main","Science"]
+
+[[links]]
 type = "explorer"
+name = "OpenLedger Explorer"
+url = "https://bitshares.openledger.info/?r=cryptofresh#/asset/EUR"
+icon = "explorer.png"
+tags = ["Main","Apps","Analytics"]
+
+[[links]]
+type = "explorer"
+name = "CryptoFresh Explorer"
+url = "http://cryptofresh.com/a/EUR"
+icon = "explorer.png"
+tags = ["Main","Apps","Analytics"]

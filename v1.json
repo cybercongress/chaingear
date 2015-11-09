@@ -709,8 +709,8 @@
                 "type": "paper"
             },
             {
-                "name": "BTS Block Explorer",
-                "url": "https://bitsharesblocks.com/",
+                "name": "OpenLedger Explorer",
+                "url": "https://bitshares.openledger.info/?r=cryptofresh#/explorer",
                 "icon": "bitsharesblocks.png",
                 "tags": [
                     "Main",
@@ -777,6 +777,17 @@
                     "News"
                 ],
                 "type": "forum"
+            },
+            {
+                "name": "CryptoFresh Explorer",
+                "url": "http://cryptofresh.com/",
+                "icon": "bitsharesblocks.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ],
+                "type": "explorer"
             },
             {
                 "name": "Graphene Stats",
@@ -894,17 +905,6 @@
                 "url": "https://www.poloniex.com/exchange#btc_bts",
                 "type": "custom",
                 "icon": "poloniex.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
-                "name": "BTS Asset Exchange",
-                "headline": "Nattive Asset Exchange",
-                "url": "http://www.bitsharesblocks.com/assets/market",
-                "type": "custom",
-                "icon": "bitsharesblocks.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -18749,20 +18749,22 @@
         }
     },
     {
+        "genesis_id": "?",
+        "system": "bitBTC",
+        "icon": "bitbtc",
         "dependencies": [
             "BitShares"
         ],
-        "source": "cyberFund",
-        "system": "bitBTC",
         "aliases": {
-            "coinmarketcap": "bitBTC",
-            "CurrencyName": "BitBTC"
+            "coinmarketcap": "bitBTC"
         },
         "descriptions": {
-            "system_type": ""
+            "system_type": "cryptoasset",
+            "headline": "Market-Pegget Asset"
         },
         "consensus": {
-            "consensus_type": ""
+            "consensus_type": "",
+            "consensus_name": "BTS"
         },
         "token": {
             "token_name": "bitBTC",
@@ -18774,32 +18776,65 @@
         },
         "links": [
             {
-                "name": "explorer",
-                "url": "http://www.bitsharesblocks.com/asset/orderbook?asset=BTC",
+                "type": "website",
+                "name": "Introducing SmartCoins",
+                "url": "https://bitshares.org/technology/price-stable-cryptocurrencies/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "wiki",
+                "name": "BitShares Wiki",
+                "url": "http://wiki.bitshares.org/index.php/BitShares/bitAssets",
+                "icon": "wiki.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "CryptoFresh Explorer",
+                "url": "http://cryptofresh.com/a/BTC",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": "explorer"
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "OpenLedger Explorer",
+                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/BTC",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
             }
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "?",
         "system": "bitCNY",
+        "icon": "bitcny",
         "dependencies": [
             "BitShares"
         ],
         "aliases": {
-            "coinmarketcap": "bitCNY",
-            "CurrencyName": "bitCNY"
+            "coinmarketcap": "bitCNY"
         },
         "ratings": {
             "rating_cyber": 3
         },
         "descriptions": {
-            "system_type": "Pegget Asset"
+            "system_type": "cryptoasset",
+            "headline": "Market-Pegget Asset"
         },
         "consensus": {
             "consensus_type": "",
@@ -18812,33 +18847,65 @@
         "specs": {},
         "links": [
             {
-                "name": "explorer",
-                "url": "http://www.bitsharesblocks.com/asset/orderbook?asset=CNY",
+                "type": "website",
+                "name": "Introducing SmartCoins",
+                "url": "https://bitshares.org/technology/price-stable-cryptocurrencies/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "wiki",
+                "name": "BitShares Wiki",
+                "url": "http://wiki.bitshares.org/index.php/BitShares/bitAssets",
+                "icon": "wiki.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "OpenLedger Explorer",
+                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/CNY",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": "explorer"
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "CryptoFresh Explorer",
+                "url": "http://cryptofresh.com/a/CNY",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
             }
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "?",
         "system": "bitEUR",
+        "icon": "biteur",
         "dependencies": [
             "BitShares"
         ],
-        "icon": "bitEUR",
         "aliases": {
-            "coinmarketcap": "bitEUR",
-            "CurrencyName": "bitEUR"
+            "coinmarketcap": "bitEUR"
         },
         "ratings": {
             "rating_cyber": 3
         },
         "descriptions": {
-            "system_type": "Pegget Asset"
+            "system_type": "cryptoasset",
+            "headline": "Market-Pegget Asset"
         },
         "consensus": {
             "consensus_name": "BitShares",
@@ -18851,14 +18918,45 @@
         "specs": {},
         "links": [
             {
-                "name": "explorer",
-                "url": "http://www.bitsharesblocks.com/asset/orderbook?asset=EUR",
+                "type": "website",
+                "name": "Introducing SmartCoins",
+                "url": "https://bitshares.org/technology/price-stable-cryptocurrencies/",
+                "icon": "website.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "type": "wiki",
+                "name": "BitShares Wiki",
+                "url": "http://wiki.bitshares.org/index.php/BitShares/bitAssets",
+                "icon": "wiki.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "OpenLedger Explorer",
+                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/EUR",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": "explorer"
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "CryptoFresh Explorer",
+                "url": "http://cryptofresh.com/a/EUR",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
             }
         ]
     },
@@ -18940,14 +19038,14 @@
         ]
     },
     {
+        "genesis_id": "?",
+        "system": "bitUSD",
+        "icon": "bitusd",
         "dependencies": [
             "BitShares"
         ],
-        "source": "cyberFund",
-        "system": "bitUSD",
         "aliases": {
-            "coinmarketcap": "bitUSD",
-            "CurrencyName": "bitUSD"
+            "coinmarketcap": "bitUSD"
         },
         "ratings": {
             "rating_cyber": 3
@@ -18960,7 +19058,8 @@
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoasset",
+            "headline": "Market-Pegget Asset"
         },
         "token": {
             "token_name": "bitUSD",
@@ -18969,24 +19068,63 @@
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "whatisbitusd.com",
                 "url": "http://whatisbitusd.com/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
+                "type": "paper",
                 "name": "Documentation",
                 "url": "http://whatisbitusd.com/whitepaper/",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": ""
+                ]
+            },
+            {
+                "type": "wiki",
+                "name": "BitShares Wiki",
+                "url": "http://wiki.bitshares.org/index.php/BitShares/bitAssets",
+                "icon": "wiki.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "OpenLedger Explorer",
+                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/USD",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "CryptoFresh Explorer",
+                "url": "http://cryptofresh.com/a/USD",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "website",
+                "name": "Introducing SmartCoins",
+                "url": "https://bitshares.org/technology/price-stable-cryptocurrencies/",
+                "icon": "website.png",
+                "tags": [
+                    "Science"
+                ]
             }
         ]
     },
