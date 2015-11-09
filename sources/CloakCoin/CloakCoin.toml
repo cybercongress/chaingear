@@ -1,22 +1,49 @@
-source = "cyberFund"
+genesis_id = "2d8251121940abce6e28df134c6432e8c5a00d59989a2451806c2778c3a06112"
 system = "CloakCoin"
+icon = "cloakcoin"
 
 [aliases]
 coinmarketcap = "CloakCoin"
-CurrencyName = "CloakCoin"
 
 [ratings]
 rating_cyber = 1.0
 
 [descriptions]
-system_type = ""
+system_type = "cryptocurrency"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [token]
 token_name = "CloakCoin"
 token_symbol = "CLOAK"
 
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "cloakcoin.com"
+url = "http://www.cloakcoin.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "http://explorer.cloakcoin.com/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "CloakCoin GitHub"
+url = "https://github.com/cashmen/CloakCoinRelaunch"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=823143.0"
+icon = "forum.png"
+tags = ["Main","News"]

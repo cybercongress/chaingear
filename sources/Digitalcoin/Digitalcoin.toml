@@ -1,9 +1,10 @@
-source = "cyberFund"
+genesis_id = "45b2559dbe5e5772498e4170f3f1561448179fa90dd349e60e891766878dea2e"
 system = "Digitalcoin"
+icon = "digitalcoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "Digitalcoin"
-CurrencyName = "Digitalcoin"
 
 [ratings]
 rating_cyber = 1.0
@@ -11,15 +12,12 @@ rating_cyber = 1.0
 [consensus]
 consensus_name = "Proof-of-Work"
 hashing = "Multi-algo"
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [descriptions]
 state = "Running"
 tags = ["DAO"]
-system_type = ""
-
-[events]
-announcement = "17/09/2014"
+system_type = "cryptocurrency"
 
 [token]
 token_name = "Digitalcoin"
@@ -31,21 +29,31 @@ block_reward = 5.0
 halfing_cycle = 4730400.0
 total_tokens = 48166000.0
 difficulty_cycle = "108"
-dependencies = "independent"
-
-  [[specs.links]]
-  section = ["Main", "Apps"]
-  name = "web site"
-  icon = "website.png"
-
-  [[specs.links]]
-  section = ["Main", "Code"]
-  name = "github"
-  url = "https://github.com/DGCFoundation/digitalcoin/releases"
-  icon = "github.png"
 
 [[links]]
-name = "Announcement"
-url = "https://bitcointalk.org/index.php?topic=785601"
-type = "custom"
-tags = ["publications"]
+type = "website"
+name = "digitalcoin.org"
+url = "http://digitalcoin.org/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Blockr Explorer"
+url = "http://dgc.blockr.io/"
+icon = "blockr.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Digitalcoin GitHub"
+url = "https://github.com/DGCDev/digitalcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=785601.0"
+icon = "forum.png"
+tags = ["Main","News"]

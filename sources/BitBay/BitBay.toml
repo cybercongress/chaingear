@@ -1,21 +1,21 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "00000d95b0fd9c2b9744b2f1234dcd0eb838692189cb8172540a7e6ac067c100"
 system = "BitBay"
+icon = "bitbay"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "BitBay"
-CurrencyName = "BitBay"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Stake"
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [descriptions]
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [token]
 token_name = "BitBay"
@@ -24,14 +24,29 @@ token_symbol = "BAY"
 [specs]
 
 [[links]]
-name = "web site"
+type = "website"
+name = "bitbaymarket.net"
 url = "http://bitbaymarket.net/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "Announcement"
+type = "explorer"
+name = "cryptoID Explorer"
+url = "https://chainz.cryptoid.info/bay/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "BitBay GitHub"
+url = "https://github.com/bitbayteam/bitbay"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=890531"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["Main","News"]

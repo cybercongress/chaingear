@@ -1,9 +1,10 @@
-source = "cyberFund"
+genesis_id = "2c85519db50a40c033ccb3d4cb729414016afa537c66537f7d3d52dcd1d484a3"
 system = "Anoncoin"
+icon = "anoncoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "Anoncoin"
-CurrencyName = "Anoncoin"
 
 [ratings]
 rating_cyber = 1.0
@@ -11,12 +12,12 @@ rating_cyber = 1.0
 [consensus]
 consensus_name = "Proof-of-Work"
 hashing = "Scrypt"
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [descriptions]
 state = "Running"
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [events]
 announcement = "06/06/2012"
@@ -31,24 +32,37 @@ block_time = "180"
 block_reward = 5.0
 halfing_cycle = 306600.0
 total_tokens = 4200000.0
-dependencies = "independent"
+
+
+[[events]]
+name = "Announcement"
+start_date = "2013-11-12T12:16:57"
+url = "https://bitcointalk.org/index.php?topic=309716.msg3324932#msg3324932"
 
 [[links]]
-name = "web site"
+type = "website"
+name = "anoncoin.net"
 url = "http://anoncoin.net"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "github"
+type = "explorer"
+name = "Explorer"
+url = "http://abe.darkgamex.ch:2751/chain/Anoncoin"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Anoncoin GitHub"
 url = "https://github.com/Anoncoin/anoncoin"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "Announcement"
-url = "https://bitcointalk.org/index.php?topic=309716.msg3324932#msg3324932"
-type = "custom"
-tags = ["publications"]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=227287"
+icon = "forum.png"
+tags = ["Main","News"]

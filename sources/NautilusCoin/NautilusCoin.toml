@@ -1,19 +1,48 @@
-source = "cyberFund"
+genesis_id = "18154834130337484019"
 system = "NautilusCoin"
+icon = "nautiluscoin"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "NautilusCoin"
 CurrencyName = "NautilusCoin"
 
 [descriptions]
-system_type = ""
+system_type = "cryptocurrency"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [token]
 token_name = "NautilusCoin"
 token_symbol = "NAUT"
 
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "nautiluscoin.com"
+url = "http://www.nautiluscoin.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "https://nxtportal.org/currencies/18154834130337484019"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "NautilusCoin GitHub"
+url = "https://github.com/nautiluscoin/nautiluscoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=591114.0"
+icon = "forum.png"
+tags = ["Main","News"]
