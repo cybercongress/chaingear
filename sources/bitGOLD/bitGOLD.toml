@@ -1,14 +1,14 @@
-source = "cyberFund"
+genesis_id = "?"
 system = "bitGOLD"
-dependencies = ["BitShares"]
 icon = "bitGold"
+dependencies = ["BitShares"]
 
 [aliases]
 coinmarketcap = "bitGold"
-CurrencyName = "bitGOLD"
 
 [descriptions]
-system_type = "Pegget Asset"
+system_type = "cryptoasset"
+headline = "Market-Pegget Asset"
 
 [consensus]
 consensus_type = ""
@@ -23,8 +23,29 @@ token_symbol = "BITGOLD"
 rating_cyber = 3.0
 
 [[links]]
-name = "explorer"
-url = "http://www.bitsharesblocks.com/asset/orderbook?asset=GOLD"
-icon = "explorer.png"
-tags = ["Main", "Apps"]
+type = "website"
+name = "Introducing SmartCoins"
+url = "https://bitshares.org/technology/price-stable-cryptocurrencies/"
+icon = "website.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "wiki"
+name = "BitShares Wiki"
+url = "http://wiki.bitshares.org/index.php/BitShares/bitAssets"
+icon = "wiki.png"
+tags = ["Main","Science"]
+
+[[links]]
 type = "explorer"
+name = "CryptoFresh Explorer"
+url = "http://cryptofresh.com/a/GOLD"
+icon = "explorer.png"
+tags = ["Main","Apps","Analytics"]
+
+[[links]]
+type = "explorer"
+name = "OpenLedger Explorer"
+url = "https://bitshares.openledger.info/?r=cryptofresh#/asset/GOLD"
+icon = "explorer.png"
+tags = ["Main","Apps","Analytics"]

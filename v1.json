@@ -18961,18 +18961,18 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "?",
         "system": "bitGOLD",
+        "icon": "bitGold",
         "dependencies": [
             "BitShares"
         ],
-        "icon": "bitGold",
         "aliases": {
-            "coinmarketcap": "bitGold",
-            "CurrencyName": "bitGOLD"
+            "coinmarketcap": "bitGold"
         },
         "descriptions": {
-            "system_type": "Pegget Asset"
+            "system_type": "cryptoasset",
+            "headline": "Market-Pegget Asset"
         },
         "consensus": {
             "consensus_type": ""
@@ -18987,33 +18987,65 @@
         },
         "links": [
             {
-                "name": "explorer",
-                "url": "http://www.bitsharesblocks.com/asset/orderbook?asset=GOLD",
+                "type": "website",
+                "name": "Introducing SmartCoins",
+                "url": "https://bitshares.org/technology/price-stable-cryptocurrencies/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "wiki",
+                "name": "BitShares Wiki",
+                "url": "http://wiki.bitshares.org/index.php/BitShares/bitAssets",
+                "icon": "wiki.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "CryptoFresh Explorer",
+                "url": "http://cryptofresh.com/a/GOLD",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": "explorer"
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "OpenLedger Explorer",
+                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/GOLD",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
             }
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "?",
         "system": "bitSILVER",
+        "icon": "bitsilver",
         "dependencies": [
             "BitShares"
         ],
-        "icon": "bitSILVER",
         "aliases": {
-            "coinmarketcap": "bitSilver",
-            "CurrencyName": "bitSILVER"
+            "coinmarketcap": "bitSilver"
         },
         "ratings": {
             "rating_cyber": 3
         },
         "descriptions": {
-            "system_type": "Pegget Asset"
+            "system_type": "cryptoasset",
+            "headline": "Market-Pegget Asset"
         },
         "consensus": {
             "consensus_name": "BitShares",
@@ -19026,14 +19058,46 @@
         "specs": {},
         "links": [
             {
-                "name": "explorer",
-                "url": "http://www.bitsharesblocks.com/asset/orderbook?asset=SILVER",
+                "type": "website",
+                "name": "Introducing SmartCoins",
+                "url": "https://bitshares.org/technology/price-stable-cryptocurrencies/",
+                "icon": "website.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "wiki",
+                "name": "BitShares Wiki",
+                "url": "http://wiki.bitshares.org/index.php/BitShares/bitAssets",
+                "icon": "wiki.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "CryptoFresh Explorer",
+                "url": "http://cryptofresh.com/a/SILVER",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": "explorer"
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "OpenLedger Explorer",
+                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/SILVER",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
             }
         ]
     },
