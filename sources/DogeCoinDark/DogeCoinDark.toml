@@ -1,6 +1,7 @@
 genesis_id = "00000fc63692467faeb20cdb3b53200dc601d75bdfa1001463304cc790d77278"
 system = "DogeCoinDark"
 icon = "dogecoindark"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "DogeCoinDark"
@@ -10,7 +11,7 @@ coinmarketcap = "DogeCoinDark"
 system_type = "cryptocurrency"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [token]
 token_name = "DogeCoinDark"
@@ -44,5 +45,5 @@ type = "forum"
 name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=1053864"
 icon = "forum.png"
-tags = ["News"]
+tags = ["Main", "News"]
 

@@ -1,5 +1,7 @@
-source = "cyberFund"
+genesis_id = "134138275353332190"
 system = "FreeMarket"
+icon = "freemarket"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "FreeMarket"
@@ -14,12 +16,32 @@ consensus_type = ""
 
 [descriptions]
 tags = ["DApp"]
-system_type = ""
+system_type = "cryptoasset"
 
 [token]
 token_name = "FreeMarket"
 token_symbol = "MRKT"
 
 [specs]
-dependencies = "NXT"
-links = []
+
+
+[[links]]
+type = "website"
+name = "nxtfreemarket.com"
+url = "http://nxtfreemarket.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "NXT Asset"
+url = "http://nxtreporting.com/?a=134138275353332190"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "forum"
+name = "NXT Forum"
+url = "https://nxtforum.org/nxtventures/freemarket-official-thread/"
+icon = "forum.png"
+tags = ["Main","News"]

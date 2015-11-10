@@ -1,18 +1,19 @@
-source = "cyberFund"
+genesis_id = "00000045eeaee1dd4b64a67ed47a3b8abaacb02559487e6ef61ce6fb7481ae67"
 system = "AsiaCoin"
+icon = "asiacoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "AsiaCoin"
-CurrencyName = "AsiaCoin"
 
 [ratings]
 rating_cyber = 1.0
 
 [descriptions]
-system_type = ""
+system_type = "cryptocurrency"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [token]
 token_name = "AsiaCoin"
@@ -21,14 +22,29 @@ token_symbol = "AC"
 [specs]
 
 [[links]]
-name = "web site"
+type = "website"
+name = "thecoin.asia"
 url = "http://www.thecoin.asia/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "Announcement"
+type = "explorer"
+name = "cryptoID Explorer"
+url = "https://chainz.cryptoid.info/ac/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "AsiaCoin GitHub"
+url = "https://github.com/micryon/asiacoin-bc"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=595999.0"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["Main","News"]

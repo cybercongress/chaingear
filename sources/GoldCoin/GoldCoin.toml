@@ -1,6 +1,7 @@
 genesis_id = "dced3542896ed537cb06f9cb064319adb0da615f64dd8c5e5bad974398f44b24"
 system = "GoldCoin"
 icon = "goldcoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "GoldCoin"
@@ -11,16 +12,12 @@ rating_cyber = 1.0
 [consensus]
 consensus_name = "Proof-of-Work"
 hashing = "Scrypt"
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [descriptions]
 state = "Running"
 tags = ["DAO"]
 system_type = "cryptocurrency"
-
-[events]
-announcement = "27/07/2013"
-genesis = "14/05/2013"
 
 [token]
 token_name = "GoldCoin"
@@ -28,8 +25,6 @@ token_symbol = "GLD"
 
 [specs]
 block_time = "150 up till block 44999 and 120 after"
-ann = "https://bitcointalk.org/index.php?topic=263459.0"
-dependencies = "independent"
 
 [[links]]
 type = "website"
@@ -50,18 +45,18 @@ type = "github"
 name = "GoldCoin GitHub"
 url = "https://github.com/gldcoin/gldcoin"
 icon = "github.png"
-section = ["Main", "Code"]
+tags = ["Main","Code"]
 
 [[links]]
 type = "forum"
 name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=317568.0"
 icon = "forum.png"
-section = ["News"]
+tags = ["Main","News"]
 
 [[links]]
 type = "forum"
 name = "GoldCoinTalk"
 url = "https://www.gldtalk.org/"
 icon = "forum.png"
-section = ["Main", "News"]
+tags = ["News"]

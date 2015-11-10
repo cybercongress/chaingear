@@ -1,5 +1,7 @@
-source = "cyberFund"
+genesis_id = "5ca83af67146e286610e118cc8f8e6a183c319fbb4a8fdb9e99daa2b8a29b3e3"
 system = "Viacoin"
+icon = "viacoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "Viacoin"
@@ -9,17 +11,44 @@ CurrencyName = "Viacoin"
 rating_cyber = 1.0
 
 [consensus]
-consensus_name = "Proof-of-Work"
-consensus_type = ""
+consensus_name = "Scrypt"
+consensus_type = "Proof-of-Work"
 
 [descriptions]
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [token]
 token_name = "Viacoin"
 token_symbol = "VIA"
 
 [specs]
-dependencies = "independent"
-links = []
+
+
+[[links]]
+type = "website"
+name = "viacoin.org"
+url = "http://viacoin.org/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "cryptoID Explorer"
+url = "https://chainz.cryptoid.info/via/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "VeriCoin GitHub"
+url = "https://www.github.com/viacoin/viacoin/"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=699278.0"
+icon = "forum.png"
+tags = ["Main","News"]

@@ -305,20 +305,23 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "00000045eeaee1dd4b64a67ed47a3b8abaacb02559487e6ef61ce6fb7481ae67",
         "system": "AsiaCoin",
+        "icon": "asiacoin",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
-            "coinmarketcap": "AsiaCoin",
-            "CurrencyName": "AsiaCoin"
+            "coinmarketcap": "AsiaCoin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "descriptions": {
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "token": {
             "token_name": "AsiaCoin",
@@ -327,21 +330,44 @@
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "thecoin.asia",
                 "url": "http://www.thecoin.asia/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=595999.0",
-                "type": "custom",
+                "type": "explorer",
+                "name": "cryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/ac/",
+                "icon": "cryptoid.png",
                 "tags": [
-                    "publications"
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "AsiaCoin GitHub",
+                "url": "https://github.com/micryon/asiacoin-bc",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=595999.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -1253,33 +1279,64 @@
         }
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "BitSharesPTS",
         "system": "BitShares PTS",
+        "icon": "bitshares pts",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
-            "coinmarketcap": "BitShares PTS",
-            "CurrencyName": "BitShares PTS"
+            "coinmarketcap": "BitShares PTS"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "Delegated Proof-of-Stake",
-            "consensus_type": ""
+            "consensus_type": "Delegated Proof-of-Stake"
         },
         "descriptions": {
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptoasset"
         },
         "token": {
             "token_name": "BitShares PTS",
             "token_symbol": "PTS"
         },
-        "specs": {
-            "dependencies": "independent",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "ptscrypto.com",
+                "url": "http://ptscrypto.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "BitShares PTS GitHub",
+                "url": "https://github.com/PTS-DPOS/PTS/",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BitSharesTalk Thread",
+                "url": "https://bitsharestalk.org/index.php?board=1.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "840a014b88a7aa7a981aa455dd86de85a6eb6548",
@@ -6066,6 +6123,9 @@
         "genesis_id": "00000fc63692467faeb20cdb3b53200dc601d75bdfa1001463304cc790d77278",
         "system": "DogeCoinDark",
         "icon": "dogecoindark",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
             "coinmarketcap": "DogeCoinDark"
         },
@@ -6073,7 +6133,7 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "token": {
             "token_name": "DogeCoinDark",
@@ -6118,6 +6178,7 @@
                 "url": "https://bitcointalk.org/index.php?topic=1053864",
                 "icon": "forum.png",
                 "tags": [
+                    "Main",
                     "News"
                 ]
             }
@@ -8280,8 +8341,12 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "134138275353332190",
         "system": "FreeMarket",
+        "icon": "freemarket",
+        "dependencies": [
+            "NXT"
+        ],
         "aliases": {
             "coinmarketcap": "FreeMarket",
             "CurrencyName": "FreeMarket"
@@ -8297,16 +8362,46 @@
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoasset"
         },
         "token": {
             "token_name": "FreeMarket",
             "token_symbol": "MRKT"
         },
-        "specs": {
-            "dependencies": "NXT",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "nxtfreemarket.com",
+                "url": "http://nxtfreemarket.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "NXT Asset",
+                "url": "http://nxtreporting.com/?a=134138275353332190",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "NXT Forum",
+                "url": "https://nxtforum.org/nxtventures/freemarket-official-thread/",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "000000005b1e3d23ecfd2dd4a6e1a35238aa0392c0a8528c40df52376d7efe2c",
@@ -8912,6 +9007,9 @@
         "genesis_id": "dced3542896ed537cb06f9cb064319adb0da615f64dd8c5e5bad974398f44b24",
         "system": "GoldCoin",
         "icon": "goldcoin",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
             "coinmarketcap": "GoldCoin"
         },
@@ -8921,7 +9019,7 @@
         "consensus": {
             "consensus_name": "Proof-of-Work",
             "hashing": "Scrypt",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
             "state": "Running",
@@ -8930,18 +9028,12 @@
             ],
             "system_type": "cryptocurrency"
         },
-        "events": {
-            "announcement": "27/07/2013",
-            "genesis": "14/05/2013"
-        },
         "token": {
             "token_name": "GoldCoin",
             "token_symbol": "GLD"
         },
         "specs": {
-            "block_time": "150 up till block 44999 and 120 after",
-            "ann": "https://bitcointalk.org/index.php?topic=263459.0",
-            "dependencies": "independent"
+            "block_time": "150 up till block 44999 and 120 after"
         },
         "links": [
             {
@@ -8970,7 +9062,7 @@
                 "name": "GoldCoin GitHub",
                 "url": "https://github.com/gldcoin/gldcoin",
                 "icon": "github.png",
-                "section": [
+                "tags": [
                     "Main",
                     "Code"
                 ]
@@ -8980,7 +9072,8 @@
                 "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=317568.0",
                 "icon": "forum.png",
-                "section": [
+                "tags": [
+                    "Main",
                     "News"
                 ]
             },
@@ -8989,8 +9082,7 @@
                 "name": "GoldCoinTalk",
                 "url": "https://www.gldtalk.org/",
                 "icon": "forum.png",
-                "section": [
-                    "Main",
+                "tags": [
                     "News"
                 ]
             }
@@ -14637,8 +14729,12 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "5c894fbcb3b4043cb3140473207a9691d05d20163c3d5ff9228217fd776e7637",
         "system": "PotCoin",
+        "icon": "potcoin",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
             "coinmarketcap": "PotCoin",
             "CurrencyName": "PotCoin"
@@ -14647,23 +14743,63 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "consensus_type": ""
+            "consensus_name": "Proof-of-Stake",
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "PotCoin",
             "token_symbol": "POT"
         },
-        "specs": {
-            "dependencies": "independent",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "potcoin.com",
+                "url": "http://www.potcoin.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "cryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/pot/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "PotCoin GitHub",
+                "url": "https://github.com/potcoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=426324.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "963d17ba4dc753138078a2f56afb3af9674e2546822badff26837db9a0152106",
@@ -18701,8 +18837,12 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "5ca83af67146e286610e118cc8f8e6a183c319fbb4a8fdb9e99daa2b8a29b3e3",
         "system": "Viacoin",
+        "icon": "viacoin",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
             "coinmarketcap": "Viacoin",
             "CurrencyName": "Viacoin"
@@ -18711,23 +18851,63 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "consensus_type": ""
+            "consensus_name": "Scrypt",
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "Viacoin",
             "token_symbol": "VIA"
         },
-        "specs": {
-            "dependencies": "independent",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "viacoin.org",
+                "url": "http://viacoin.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "cryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/via/",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "VeriCoin GitHub",
+                "url": "https://www.github.com/viacoin/viacoin/",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=699278.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "?",

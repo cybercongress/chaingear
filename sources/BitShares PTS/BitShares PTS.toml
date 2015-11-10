@@ -1,25 +1,46 @@
-source = "cyberFund"
+genesis_id = "BitSharesPTS"
 system = "BitShares PTS"
+icon = "bitshares pts"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "BitShares PTS"
-CurrencyName = "BitShares PTS"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Delegated Proof-of-Stake"
-consensus_type = ""
+consensus_type = "Delegated Proof-of-Stake"
 
 [descriptions]
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptoasset"
 
 [token]
 token_name = "BitShares PTS"
 token_symbol = "PTS"
 
 [specs]
-dependencies = "independent"
-links = []
+
+
+[[links]]
+type = "website"
+name = "ptscrypto.com"
+url = "http://ptscrypto.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "github"
+name = "BitShares PTS GitHub"
+url = "https://github.com/PTS-DPOS/PTS/"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BitSharesTalk Thread"
+url = "https://bitsharestalk.org/index.php?board=1.0"
+icon = "forum.png"
+tags = ["Main","News"]

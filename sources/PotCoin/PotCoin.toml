@@ -1,5 +1,7 @@
-source = "cyberFund"
+genesis_id = "5c894fbcb3b4043cb3140473207a9691d05d20163c3d5ff9228217fd776e7637"
 system = "PotCoin"
+icon = "potcoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "PotCoin"
@@ -9,17 +11,43 @@ CurrencyName = "PotCoin"
 rating_cyber = 1.0
 
 [consensus]
-consensus_name = "Proof-of-Work"
-consensus_type = ""
+consensus_name = "Proof-of-Stake"
+consensus_type = "Proof-of-Stake"
 
 [descriptions]
 tags = ["DAO"]
-system_type = ""
+system_type = "cryptocurrency"
 
 [token]
 token_name = "PotCoin"
 token_symbol = "POT"
 
 [specs]
-dependencies = "independent"
-links = []
+
+[[links]]
+type = "website"
+name = "potcoin.com"
+url = "http://www.potcoin.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "cryptoID Explorer"
+url = "https://chainz.cryptoid.info/pot/"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "PotCoin GitHub"
+url = "https://github.com/potcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=426324.0"
+icon = "forum.png"
+tags = ["Main","News"]
