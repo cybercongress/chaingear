@@ -1,23 +1,51 @@
-source = "cyberFund"
+genesis_id = "17750387231635486778"
 system = "LIQUID"
+icon = "liquid"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "LIQUID"
-CurrencyName = "Liquid"
 nickname = "Liquid"
 
 [consensus]
 consensus_name = "NXT"
-consensus_type = ""
+consensus_type = "Blockchain Ledger"
 
 [descriptions]
 tags = ["DApp"]
-system_type = ""
+system_type = "cryptoasset"
 
 [token]
 token_name = "Liquid"
 token_symbol = "LIQUID"
 
 [specs]
-dependencies = "NXT"
-links = []
+
+
+[[links]]
+type = "website"
+name = "liquidtech.info"
+url = "http://www.liquidtech.info/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "NXT Asset"
+url = "http://nxtreporting.com/?as=17750387231635486778"
+icon = "cryptoid.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "custom"
+name = "LIQUID Balances"
+url = "http://www.liquidtech.info/balances"
+icon = "link.png"
+tags = ["Main"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://nxtforum.org/liquid/(ann)-liquid-bot-asset-with-unprecedented-transparency/"
+icon = "forum.png"
+tags = ["Main","News"]

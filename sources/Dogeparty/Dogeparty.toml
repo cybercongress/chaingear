@@ -1,25 +1,53 @@
-source = "cyberFund"
+genesis_id = "Dogeparty"
 system = "Dogeparty"
+icon = "dogeparty"
+dependencies = ["Dogecoin"]
 
 [aliases]
 coinmarketcap = "Dogeparty"
-CurrencyName = "Dogeparty"
 
 [ratings]
 rating_cyber = 2.0
 
 [consensus]
 consensus_name = "Dogecoin"
-consensus_type = ""
+consensus_type = "Blockchain Ledger"
 
 [descriptions]
 tags = ["DApp"]
-system_type = ""
+system_type = "cryptoservice"
 
 [token]
 token_name = "Dogeparty"
 token_symbol = "XDP"
 
 [specs]
-dependencies = "Dogecoin"
-links = []
+
+
+[[links]]
+type = "website"
+name = "dogeparty.io"
+url = "http://www.dogeparty.io/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Dogeparty Explorer"
+url = "https://dogepartychain.io/"
+icon = "dogeparty.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "Dogeparty GitHub"
+url = "https://github.com/Dogeparty"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=737231.0"
+icon = "forum.png"
+tags = ["Main","News"]

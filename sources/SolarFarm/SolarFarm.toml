@@ -1,21 +1,21 @@
-dependencies = ["NXT"]
-source = "cyberFund"
+genesis_id = "18212211773827322818"
 system = "SolarFarm"
+icon = "solarfarm"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "SolarFarm"
-CurrencyName = "SolarFarm"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 consensus_name = "NXT"
-consensus_type = ""
+consensus_type = "Blockchain Ledger"
 
 [descriptions]
 tags = ["DApp"]
-system_type = ""
+system_type = "cryptoasset"
 
 [token]
 token_name = "SolarFarm"
@@ -24,8 +24,29 @@ token_symbol = "CELL"
 [specs]
 
 [[links]]
-name = "web site"
+type = "website"
+name = "asset.cryptomining.farm"
 url = "https://asset.cryptomining.farm/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "NXT Asset"
+url = "http://nxtreporting.com/?as=18212211773827322818"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "twitter"
+name = "@miningfarm"
+url = "https://twitter.com/miningfarm"
+icon = "twitter.png"
+tags = ["Main", "News"]
+
+[[links]]
+type = "forum"
+name = "NXT Forum"
+url = "https://nxtforum.org/assets-board/(ann)-(cell)-solarfarm-asset-photovoltaic-power-station-in-thailand-18mw/"
+icon = "forum.png"
+tags = ["Main","News"]

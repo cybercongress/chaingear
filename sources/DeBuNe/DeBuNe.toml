@@ -1,5 +1,7 @@
-source = "cyberFund"
+genesis_id = "6926770479287491943"
 system = "DeBuNe"
+icon = "debune"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "DeBuNe"
@@ -9,14 +11,42 @@ CurrencyName = "DeBuNe"
 rating_cyber = 3.0
 
 [descriptions]
-system_type = ""
+system_type = "cryptoasset"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Blockchain Ledger"
 
 [token]
 token_name = "DeBuNe"
 token_symbol = "DEBUNE"
 
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "debune.org"
+url = "http://debune.org/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "NXT Asset"
+url = "http://nxtreporting.com/?as=6926770479287491943"
+icon = "nxt.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "paper"
+name = "DeBuNe Whitepaper"
+url = "http://debune.org/DeBuNe.pdf"
+icon = "paper.png"
+tags = ["Main", "Science"]
+
+[[links]]
+type = "blog"
+name = "DeBuNe News"
+url = "http://debune.org/debunes-news/"
+rss = "http://debune.org/feed/"
+icon = "blog.png"
+tags = ["Main","News"]

@@ -3184,66 +3184,78 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "3444294670862540038",
         "system": "Burst",
+        "icon": "burst",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
-            "coinmarketcap": "Burst",
-            "CurrencyName": "Burst"
+            "coinmarketcap": "Burst"
         },
         "ratings": {
             "rating_cyber": 2
         },
         "consensus": {
             "consensus_name": "Proof-of-Capacity",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Capacity"
         },
         "descriptions": {
             "state": "Running",
             "tags": [
                 "DAO"
             ],
-            "system_type": ""
-        },
-        "events": {
-            "announcement": "11/08/2014"
+            "system_type": "cryptocurrency"
         },
         "token": {
             "token_name": "Burst",
             "token_symbol": "BURST"
         },
         "specs": {
-            "dependencies": "independent",
             "block_time": "240",
             "block_reward": "Block reward starts at 10,000/block, then decreases 5% each month (similar to halving every 14 months, but much smoother)",
-            "total_tokens": "2 160 000 000",
-            "links": [
-                {
-                    "section": [
-                        "Main",
-                        "Apps"
-                    ],
-                    "name": "web site",
-                    "url": "http://burstcoin.info",
-                    "icon": "website.png"
-                },
-                {
-                    "section": [
-                        "Main",
-                        "Code"
-                    ],
-                    "name": "github",
-                    "url": " https://github.com/BurstProject/burstcoin",
-                    "icon": "github.png"
-                }
-            ]
+            "total_tokens": "2 160 000 000"
         },
         "links": [
             {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=731923.0",
-                "type": "custom",
+                "type": "website",
+                "name": "burstcoin.info",
+                "url": "http://burstcoin.info/",
+                "icon": "website.png",
                 "tags": [
-                    "publications"
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Burst Explorer",
+                "url": "http://burstcoin.biz/stats/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Burst GitHub",
+                "url": "https://github.com/BurstProject/burstcoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=731923.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             }
         ]
@@ -5613,8 +5625,12 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "6926770479287491943",
         "system": "DeBuNe",
+        "icon": "debune",
+        "dependencies": [
+            "NXT"
+        ],
         "aliases": {
             "coinmarketcap": "DeBuNe",
             "CurrencyName": "DeBuNe"
@@ -5623,18 +5639,60 @@
             "rating_cyber": 3
         },
         "descriptions": {
-            "system_type": ""
+            "system_type": "cryptoasset"
         },
         "consensus": {
-            "consensus_type": ""
+            "consensus_type": "Blockchain Ledger"
         },
         "token": {
             "token_name": "DeBuNe",
             "token_symbol": "DEBUNE"
         },
-        "specs": {
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "debune.org",
+                "url": "http://debune.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "NXT Asset",
+                "url": "http://nxtreporting.com/?as=6926770479287491943",
+                "icon": "nxt.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "DeBuNe Whitepaper",
+                "url": "http://debune.org/DeBuNe.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "DeBuNe News",
+                "url": "http://debune.org/debunes-news/",
+                "rss": "http://debune.org/feed/",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "00000ac7a13fffb72c10f6fd9a773dcf3e8388b8ffc359cee2483b1236ebcda1",
@@ -6411,33 +6469,76 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "Dogeparty",
         "system": "Dogeparty",
+        "icon": "dogeparty",
+        "dependencies": [
+            "Dogecoin"
+        ],
         "aliases": {
-            "coinmarketcap": "Dogeparty",
-            "CurrencyName": "Dogeparty"
+            "coinmarketcap": "Dogeparty"
         },
         "ratings": {
             "rating_cyber": 2
         },
         "consensus": {
             "consensus_name": "Dogecoin",
-            "consensus_type": ""
+            "consensus_type": "Blockchain Ledger"
         },
         "descriptions": {
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoservice"
         },
         "token": {
             "token_name": "Dogeparty",
             "token_symbol": "XDP"
         },
-        "specs": {
-            "dependencies": "Dogecoin",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "dogeparty.io",
+                "url": "http://www.dogeparty.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Dogeparty Explorer",
+                "url": "https://dogepartychain.io/",
+                "icon": "dogeparty.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Dogeparty GitHub",
+                "url": "https://github.com/Dogeparty",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=737231.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "",
@@ -10091,58 +10192,141 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "17750387231635486778",
         "system": "LIQUID",
+        "icon": "liquid",
+        "dependencies": [
+            "NXT"
+        ],
         "aliases": {
             "coinmarketcap": "LIQUID",
-            "CurrencyName": "Liquid",
             "nickname": "Liquid"
         },
         "consensus": {
             "consensus_name": "NXT",
-            "consensus_type": ""
+            "consensus_type": "Blockchain Ledger"
         },
         "descriptions": {
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoasset"
         },
         "token": {
             "token_name": "Liquid",
             "token_symbol": "LIQUID"
         },
-        "specs": {
-            "dependencies": "NXT",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "liquidtech.info",
+                "url": "http://www.liquidtech.info/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "NXT Asset",
+                "url": "http://nxtreporting.com/?as=17750387231635486778",
+                "icon": "cryptoid.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "LIQUID Balances",
+                "url": "http://www.liquidtech.info/balances",
+                "icon": "link.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://nxtforum.org/liquid/(ann)-liquid-bot-asset-with-unprecedented-transparency/",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "3624321493",
         "system": "LTBcoin",
+        "icon": "ltbcoin",
         "dependencies": [
             "Conterparty"
         ],
         "aliases": {
-            "coinmarketcap": "LTBcoin",
-            "CurrencyName": "LTBcoin"
+            "coinmarketcap": "LTBcoin"
         },
         "ratings": {
             "rating_cyber": 3
         },
         "descriptions": {
-            "system_type": ""
+            "system_type": "cryptoproject"
         },
         "consensus": {
-            "consensus_type": ""
+            "consensus_type": "Blockchain Ledger"
         },
         "token": {
             "token_name": "LTBcoin",
             "token_symbol": "LTBC"
         },
-        "specs": {
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "ltbcoin.com/",
+                "url": "http://ltbcoin.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Counterparty Asset",
+                "url": "http://blockscan.com/assetInfo.aspx?q=LTBCOIN",
+                "icon": "counterparty.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "@ltbcoin",
+                "url": "https://twitter.com/ltbcoin",
+                "icon": "twitter.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=712944.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "system": "La'Zooz",
@@ -14136,11 +14320,14 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "18128686802152832026",
         "system": "Nxttycoin",
+        "icon": "nxttycoin",
+        "dependencies": [
+            "NXT"
+        ],
         "aliases": {
-            "coinmarketcap": "Nxttycoin",
-            "CurrencyName": "Nxttycoin"
+            "coinmarketcap": "Nxttycoin"
         },
         "ratings": {
             "rating_cyber": 1
@@ -14153,16 +14340,56 @@
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoasset"
         },
         "token": {
             "token_name": "Nxttycoin",
             "token_symbol": "NXTTY"
         },
-        "specs": {
-            "dependencies": "NXT",
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "nxtty.com",
+                "url": "http://nxtty.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "NXT Asset",
+                "url": "http://nxtreporting.com/?as=18128686802152832026",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=735878.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Nxtty Android App",
+                "url": "https://play.google.com/store/apps/details?id=com.nxtty.main",
+                "icon": "nxttycoin.png",
+                "tags": [
+                    "Main",
+                    "App"
+                ]
+            }
+        ]
     },
     {
         "system": "Open Assets",
@@ -16594,27 +16821,27 @@
         ]
     },
     {
+        "genesis_id": "18212211773827322818",
+        "system": "SolarFarm",
+        "icon": "solarfarm",
         "dependencies": [
             "NXT"
         ],
-        "source": "cyberFund",
-        "system": "SolarFarm",
         "aliases": {
-            "coinmarketcap": "SolarFarm",
-            "CurrencyName": "SolarFarm"
+            "coinmarketcap": "SolarFarm"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "NXT",
-            "consensus_type": ""
+            "consensus_type": "Blockchain Ledger"
         },
         "descriptions": {
             "tags": [
                 "DApp"
             ],
-            "system_type": ""
+            "system_type": "cryptoasset"
         },
         "token": {
             "token_name": "SolarFarm",
@@ -16623,14 +16850,45 @@
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "asset.cryptomining.farm",
                 "url": "https://asset.cryptomining.farm/",
                 "icon": "website.png",
                 "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "NXT Asset",
+                "url": "http://nxtreporting.com/?as=18212211773827322818",
+                "icon": "explorer.png",
+                "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "@miningfarm",
+                "url": "https://twitter.com/miningfarm",
+                "icon": "twitter.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "NXT Forum",
+                "url": "https://nxtforum.org/assets-board/(ann)-(cell)-solarfarm-asset-photovoltaic-power-station-in-thailand-18mw/",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
             }
         ]
     },
@@ -19411,28 +19669,72 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "0000002844ad8197e16ea8d53173da248e0ac23dd0436c90a15c22bc09d976b2",
         "system": "ZiftrCOIN",
+        "icon": "ziftrcoin",
+        "dependencies": [
+            "independent"
+        ],
         "aliases": {
-            "coinmarketcap": "ZiftrCOIN",
-            "CurrencyName": "ZiftrCOIN"
+            "coinmarketcap": "ZiftrCOIN"
         },
         "ratings": {
             "rating_cyber": 2
         },
         "descriptions": {
-            "system_type": ""
+            "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "token": {
             "token_name": "ZiftrCOIN",
             "token_symbol": "ZRC"
         },
-        "specs": {
-            "links": []
-        }
+        "specs": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "ziftrcoin.com",
+                "url": "https://www.ziftrcoin.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "ZiftrCOIN Explorer",
+                "url": "http://explorer.myziftr.com/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "ZiftrCOIN GitHub",
+                "url": "https://github.com/ZiftrCOIN/ziftrcoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=970363",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "?",

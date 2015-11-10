@@ -1,23 +1,50 @@
-source = "cyberFund"
+genesis_id = "3624321493"
 system = "LTBcoin"
+icon = "ltbcoin"
 dependencies = ["Conterparty"]
 
 [aliases]
 coinmarketcap = "LTBcoin"
-CurrencyName = "LTBcoin"
 
 [ratings]
 rating_cyber = 3.0
 
 [descriptions]
-system_type = ""
+system_type = "cryptoproject"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Blockchain Ledger"
 
 [token]
 token_name = "LTBcoin"
 token_symbol = "LTBC"
 
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "ltbcoin.com/"
+url = "http://ltbcoin.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Counterparty Asset"
+url = "http://blockscan.com/assetInfo.aspx?q=LTBCOIN"
+icon = "counterparty.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "twitter"
+name = "@ltbcoin"
+url = "https://twitter.com/ltbcoin"
+icon = "twitter.png"
+tags = ["Main", "News"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=712944.0"
+icon = "forum.png"
+tags = ["Main","News"]

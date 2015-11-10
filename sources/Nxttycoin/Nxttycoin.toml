@@ -1,9 +1,10 @@
-source = "cyberFund"
+genesis_id = "18128686802152832026"
 system = "Nxttycoin"
+icon = "nxttycoin"
+dependencies = ["NXT"]
 
 [aliases]
 coinmarketcap = "Nxttycoin"
-CurrencyName = "Nxttycoin"
 
 [ratings]
 rating_cyber = 1.0
@@ -14,12 +15,39 @@ consensus_type = ""
 
 [descriptions]
 tags = ["DApp"]
-system_type = ""
+system_type = "cryptoasset"
 
 [token]
 token_name = "Nxttycoin"
 token_symbol = "NXTTY"
 
 [specs]
-dependencies = "NXT"
-links = []
+
+
+[[links]]
+type = "website"
+name = "nxtty.com"
+url = "http://nxtty.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "NXT Asset"
+url = "http://nxtreporting.com/?as=18128686802152832026"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=735878.0"
+icon = "forum.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "custom"
+name = "Nxtty Android App"
+url = "https://play.google.com/store/apps/details?id=com.nxtty.main"
+icon = "nxttycoin.png"
+tags = ["Main", "App"]

@@ -1,22 +1,50 @@
-source = "cyberFund"
+genesis_id = "0000002844ad8197e16ea8d53173da248e0ac23dd0436c90a15c22bc09d976b2"
 system = "ZiftrCOIN"
+icon = "ziftrcoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "ZiftrCOIN"
-CurrencyName = "ZiftrCOIN"
 
 [ratings]
 rating_cyber = 2.0
 
 [descriptions]
-system_type = ""
+system_type = "cryptocurrency"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [token]
 token_name = "ZiftrCOIN"
 token_symbol = "ZRC"
 
 [specs]
-links = []
+
+[[links]]
+type = "website"
+name = "ziftrcoin.com"
+url = "https://www.ziftrcoin.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "ZiftrCOIN Explorer"
+url = "http://explorer.myziftr.com/"
+icon = "explorer.png"
+tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "github"
+name = "ZiftrCOIN GitHub"
+url = "https://github.com/ZiftrCOIN/ziftrcoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=970363"
+icon = "forum.png"
+tags = ["Main","News"]
