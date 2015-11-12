@@ -20196,13 +20196,15 @@
         }
     },
     {
+        "genesis_id": "AbhBFwWFpZzFMsBakZbDzUTYv67t9rThaK",
         "system": "cyberFund",
+        "icon": "cyberfund",
         "dependencies": [
             "Bitcoin",
-            "Ethereum"
+            "Ethereum",
+            "Open Assets"
         ],
         "aliases": {
-            "CurrencyName": "cyfund",
             "nickname": "cyber•Fund"
         },
         "ratings": {
@@ -20217,102 +20219,118 @@
             "tags": [
                 "DApp"
             ],
-            "system_type": "dapp"
+            "system_type": "cryptoasset",
+            "page_state": "ready"
         },
         "token": {
             "token_name": "cyfund",
             "token_symbol": "CFUND"
         },
         "specs": {
-            "supply": 1000000,
-            "cap": {
-                "usd": 87520,
-                "btc": 380
-            }
+            "supply": 1000000
         },
         "cap": {
             "supply_from": "chaingear",
             "supply": 1000000,
             "token_price_btc": 0.00038051
         },
+        "crowdsales": {
+            "start_date": "2015-11-20T00:00:00",
+            "end_date": "2015-12-31T23:59:59",
+            "genesis_address": [
+                "3​FvBgYaZV9347L863L4sQx75R6FQDReZKR​"
+            ],
+            "funding_tems": "http://cyber.fund/cyberFund_Placement.pdf",
+            "funding_url": "https:/cyber.fund/invest"
+        },
         "flags": {
             "rating_do_not_display": true
         },
         "links": [
             {
+                "type": "website",
+                "name": "cyber•Fund Funding",
+                "url": "https://cyber.fund/invest",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "website",
                 "name": "cyber.fund",
                 "url": "https://cyber.fund",
                 "icon": "website.png",
                 "tags": [
-                    "Main"
-                ],
-                "type": "website"
+                    "Apps"
+                ]
             },
             {
+                "type": "blog",
                 "name": "Blog",
                 "url": "https://blog.cyber.fund",
                 "icon": "blog.png",
                 "tags": [
                     "Main",
                     "News"
-                ],
-                "type": "blog"
+                ]
             },
             {
+                "type": "twitter",
                 "name": "Twitter",
                 "url": "https://twitter.com/cyberfundio",
                 "icon": "twitter.png",
                 "tags": [
                     "News"
-                ],
-                "type": "twitter"
+                ]
             },
             {
+                "type": "forum",
                 "name": "Forum",
                 "url": "http://cybertalks.org/",
                 "icon": "forum.png",
                 "tags": [
                     "News"
-                ],
-                "type": "forum"
+                ]
             },
             {
+                "type": "custom",
                 "name": "AngelList",
                 "url": "https://angel.co/cyber-fund",
                 "icon": "angellist.png",
                 "tags": [
                     "News"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "custom",
                 "name": "Facebook",
                 "url": "https://www.facebook.com/cyberfund",
                 "icon": "facebook.png",
                 "tags": [
                     "News"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "custom",
                 "name": "Google+",
                 "url": "https://plus.google.com/+CyberfundIo/posts",
                 "icon": "googleplus.png",
                 "tags": [
                     "News"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "custom",
                 "name": "LinkedIn",
                 "url": "https://www.linkedin.com/company/5006854",
                 "icon": "linkedin.png",
                 "tags": [
                     "News"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "explorer",
                 "name": "CFUND Asset",
                 "url": "https://www.coinprism.info/asset/AbhBFwWFpZzFMsBakZbDzUTYv67t9rThaK",
                 "icon": "explorer.png",
@@ -20320,27 +20338,26 @@
                     "Main",
                     "Apps",
                     "Analytics"
-                ],
-                "type": "explorer"
+                ]
             },
             {
+                "type": "github",
                 "name": "cyber•Fund GitHub",
                 "url": "https://github.com/cyberFund",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "cyber•Fund Roadmap",
-                "url": "https://github.com/cyberFund/cyber.fund/milestones",
+                "url": "https://waffle.io/cyberFund/cyber.fund?label=milestone",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             }
         ]
     }
