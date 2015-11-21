@@ -1,96 +1,72 @@
-genesis_id = "0 block hash"
-system = "system_name"
-dependencies = ["independent"]
-icon = "icon_name"
+genesis_id = "34fe597b82a11c13af579a21c85d5089600ecb02821cc24084976265dd12c0b"
+system = "Agoras"
+dependencies = ["Mastercoin (Omni)"]
 
 [token]
-token_name = "token_name"
-token_symbol = "token_ticker"
+token_name = "TauAgoras"
+token_symbol = "TAU"
 
 [consensus]
-consensus_type = "Consensus Type"
-consensus_name = "Consensus Name"
-hashing = "Encryption type name"
+consensus_type = "Blockchain records"
+consensus_name = "Omni Layer"
 
 [descriptions]
-state = "Running"
+state = "Project"
 system_type = "independent"
-headline = "64 symbols headline"
+headline = "Decentralized markets over TauChain"
 tags = ["DAO"]
-hashtag = "#system_hashtag"
-twwidid = "twwidid"
 page_state = "draft"
 
 [aliases]
-coinmarketcap = "System name at CoinMarketCap"
-nickname = "Bitcoin"
+coinmarketcap = "Agoras"
+nickname = "Agoras"
 
 [specs]
-rpc = 1111
-block_time = 1
-block_reward = 1
-halfing_cycle = 1
-total_tokens = 1
-premine_tokens = 1
-difficulty_cycle = 1
-txs_confirm = 1
+total_tokens = 42000000
+premine_tokens = 42000000
 
 [ratings]
 rating_cyber = 1
 
 [events]
-name = "Event Name"
-start_date = 2015-03-31T00:00:00
-end_date = 2015-03-31T00:00:00
-url = "http://event_link.com"
-
-[crowdsale]
-start_date = "2015-03-31T00:00:00"
-end_date = "2015-05-15T00:00:00"
-genesis_address = ["35gLt5EgB367enjSjyEDahhWWcy6p1MGf6"] # Could be array. See multu currency crowdsale
-funding_url = "https://koinify.com/#/project/FACTOM"
-funding_tems = "http://blog.factom.org/post/115139137794/the-factoid-software-sale-is-live"
-min_investment = 0.01
-funding_operator = "Koinify" # Could be `nein`.
-crowsale_feed = "http://example.com/feed" # For multi currency or non bitcoin crowdsale
-tokens_sold = 4379973
-tokens_issued = 8759946
+name = "Tokens issued through Omni Layer"
+start_date = "2015-03-02T05:52:16"
+url = "http://omnichest.info/lookuptx.aspx?txid=d34fe597b82a11c13af579a21c85d5089600ecb02821cc24084976265dd12c0b"
 
 [[links]]
 type = "website"
-name = "Bitcoin.org"
-url = "http://bitcoin.org/en/"
+name = "www.idni.org"
+url = "http://www.idni.org/"
 icon = "website.png"
 tags = ["Main"]
 
 [[links]]
 type = "explorer"
-name = "Blockchain.info"
-url = "https://blockchain.info/"
+name = "Agoras Token"
+url = "http://omnichest.info/lookupsp.aspx?sp=35"
 icon = "explorer.png"
-tags = ["Main"]
+tags = ["Main","Apps","Analytics"]
 
 [[links]]
 type = "wallet"
-name = "Coinbase"
-url = "https://www.coinbase.com/join/5354c035f1184f977100000c"
-icon = "coinbase.png"
-tags = ["Main", "Apps", "Wallet"]
+name = "OmniWallet"
+url = "https://www.omniwallet.org/"
+icon = "omniwallet.png"
+tags = ["Apps", "Wallet"]
 
 [[links]]
 type = "paper"
 name = "Protocol Documentation"
-url = "https://en.bitcoin.it/wiki/Protocol_documentation"
+url = "http://tauchain.org/tauchain.pdf"
 icon = "paper.png"
 tags = ["Main","Science"]
 
 [[links]]
 type = "github"
-name = "Github Organization"
-url = "https://github.com/bitcoin"
+name = "GitHub"
+url = "http://github.com/naturalog/tauchain"
 icon = "github.png"
-tags = ["Code"]
-
+tags = ["Main","Code"]
 
 [[links]]
 type = "exchange"

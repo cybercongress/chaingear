@@ -800,12 +800,13 @@
             },
             {
                 "name": "OpenLedger Explorer",
-                "url": "https://bitshares.openledger.info/?r=cryptofresh#/explorer",
-                "icon": "bitsharesblocks.png",
+                "url": "https://bitshares.openledger.info/?r=cyberfund#/explorer",
+                "icon": "openledger.png",
                 "tags": [
                     "Main",
                     "Apps",
-                    "Analytics"
+                    "Analytics",
+                    "Exchange"
                 ],
                 "type": "explorer"
             },
@@ -870,8 +871,8 @@
             },
             {
                 "name": "CryptoFresh Explorer",
-                "url": "http://cryptofresh.com/",
-                "icon": "bitsharesblocks.png",
+                "url": "http://cryptofresh.com/?r=cyberfund",
+                "icon": "cryptofresh.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -10956,6 +10957,97 @@
         ]
     },
     {
+        "genesis_id": "METAFEES",
+        "system": "METAFEES",
+        "icon": "metaexchange",
+        "dependencies": [
+            "BitShares"
+        ],
+        "aliases": {
+            "coinmarketcap": "METAFEES"
+        },
+        "descriptions": {
+            "system_type": "cryptoasset",
+            "headline": "MetaExchange fee sharing asset"
+        },
+        "consensus": {
+            "consensus_type": "Blockchain Record",
+            "consensus_name": "BTS"
+        },
+        "token": {
+            "token_name": "METAFEES",
+            "token_symbol": "METAFEES"
+        },
+        "crowdsales": {
+            "start_date": "2015-10-27T00:00:00",
+            "end_date": "2015-12-06T23:59:59",
+            "genesis_address": [
+                "metaexchangebtc"
+            ],
+            "funding_tems": "https://metaexchange.info/invest",
+            "funding_url": "https://metaexchange.info/invest",
+            "btc_raised": 60,
+            "tokens_issued": 10000
+        },
+        "specs": {},
+        "ratings": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "metaexchange.info",
+                "url": "https://metaexchange.info",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "website",
+                "name": "METAFEES Crowdsale",
+                "url": "https://metaexchange.info/invest",
+                "icon": "wiki.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "METAFEES Asset",
+                "url": "https://bitshares.openledger.info/?r=cyberfund/#/asset/METAFEES",
+                "icon": "openledger.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "METAFEES Asset",
+                "url": "https://bitshares.openledger.info/?r=cyberfund/#/market/BTS_METAFEES",
+                "icon": "openledger.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BitsharesTalk Thread",
+                "url": "https://bitsharestalk.org/index.php/topic,19523.0.html",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ],
+        "flags": {
+            "rating_do_not_display": true
+        }
+    },
+    {
         "genesis_id": "10524562908394749924",
         "system": "MGW",
         "icon": "mgw",
@@ -12466,8 +12558,8 @@
             {
                 "type": "explorer",
                 "name": "OpenLedger Explorer",
-                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/MOONFUND",
-                "icon": "explorer.png",
+                "url": "https://bitshares.openledger.info/?r=cyberfund#/asset/MOONFUND",
+                "icon": "openledger.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -12477,8 +12569,8 @@
             {
                 "type": "explorer",
                 "name": "CryptoFresh Explorer",
-                "url": "http://cryptofresh.com/a/MOONFUND",
-                "icon": "explorer.png",
+                "url": "http://cryptofresh.com/?r=cyberfund/a/MOONFUND",
+                "icon": "cryptofresh.png",
                 "tags": [
                     "Apps",
                     "Analytics"
@@ -14449,6 +14541,99 @@
                 ]
             }
         ]
+    },
+    {
+        "genesis_id": "OBITS",
+        "system": "OBITS",
+        "icon": "obits",
+        "dependencies": [
+            "BitShares"
+        ],
+        "aliases": {
+            "coinmarketcap": "OBITS"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "OpenLedger Exhcange Fee Sharing Asset"
+        },
+        "consensus": {
+            "consensus_type": "Blockchain Record",
+            "consensus_name": "BTS"
+        },
+        "token": {
+            "token_name": "OBIT",
+            "token_symbol": "OBITS"
+        },
+        "crowdsales": {
+            "start_date": "2015-12-01T00:00:00",
+            "end_date": "2016-01-30T23:59:59",
+            "genesis_address": [
+                "obits"
+            ],
+            "funding_tems": "http://www.obits.io/",
+            "funding_url": "http://www.obits.io/",
+            "tokens_issued": 18276898
+        },
+        "specs": {
+            "total_tockens": 18276898
+        },
+        "ratings": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "obits.io",
+                "url": "http://www.obits.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "website",
+                "name": "Profit Distribution",
+                "url": "http://www.obits.io/#profit",
+                "icon": "wiki.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Open Ledger",
+                "url": "https://bitshares.openledger.info/?r=cyberfund#/market/OBITS_BTS",
+                "icon": "openledger.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "OBITS Asset",
+                "url": "https://bitshares.openledger.info/?r=cyberfund/#/asset/OBITS",
+                "icon": "openledger.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BitsharesTalk Thread",
+                "url": "https://bitsharestalk.org/index.php?topic=19964.0",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            }
+        ],
+        "flags": {
+            "rating_do_not_display": true
+        }
     },
     {
         "system": "Open Assets",
@@ -19852,7 +20037,7 @@
         ]
     },
     {
-        "genesis_id": "?",
+        "genesis_id": "bitBTC",
         "system": "bitBTC",
         "icon": "bitbtc",
         "dependencies": [
@@ -19901,8 +20086,8 @@
             {
                 "type": "explorer",
                 "name": "CryptoFresh Explorer",
-                "url": "http://cryptofresh.com/a/BTC",
-                "icon": "explorer.png",
+                "url": "http://cryptofresh.com/?r=cyberfund/a/BTC",
+                "icon": "cryptofresh.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -19912,8 +20097,8 @@
             {
                 "type": "explorer",
                 "name": "OpenLedger Explorer",
-                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/BTC",
-                "icon": "explorer.png",
+                "url": "https://bitshares.openledger.info/?r=cyberfund#/asset/BTC",
+                "icon": "openledger.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -19975,8 +20160,8 @@
             {
                 "type": "explorer",
                 "name": "OpenLedger Explorer",
-                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/CNY",
-                "icon": "explorer.png",
+                "url": "https://bitshares.openledger.info/?r=cyberfund#/asset/CNY",
+                "icon": "openledger.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -19986,8 +20171,8 @@
             {
                 "type": "explorer",
                 "name": "CryptoFresh Explorer",
-                "url": "http://cryptofresh.com/a/CNY",
-                "icon": "explorer.png",
+                "url": "http://cryptofresh.com/?r=cyberfund/a/CNY",
+                "icon": "cryptofresh.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -20045,8 +20230,8 @@
             {
                 "type": "explorer",
                 "name": "OpenLedger Explorer",
-                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/EUR",
-                "icon": "explorer.png",
+                "url": "https://bitshares.openledger.info/?r=cyberfund#/asset/EUR",
+                "icon": "openledger.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -20056,8 +20241,8 @@
             {
                 "type": "explorer",
                 "name": "CryptoFresh Explorer",
-                "url": "http://cryptofresh.com/a/EUR",
-                "icon": "explorer.png",
+                "url": "http://cryptofresh.com/?r=cyberfund/a/EUR",
+                "icon": "cryptofresh.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -20118,8 +20303,8 @@
             {
                 "type": "explorer",
                 "name": "CryptoFresh Explorer",
-                "url": "http://cryptofresh.com/a/GOLD",
-                "icon": "explorer.png",
+                "url": "http://cryptofresh.com/?r=cyberfund/a/GOLD",
+                "icon": "cryptofresh.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -20129,8 +20314,8 @@
             {
                 "type": "explorer",
                 "name": "OpenLedger Explorer",
-                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/GOLD",
-                "icon": "explorer.png",
+                "url": "https://bitshares.openledger.info/?r=cyberfund#/asset/GOLD",
+                "icon": "openledger.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -20192,8 +20377,8 @@
             {
                 "type": "explorer",
                 "name": "CryptoFresh Explorer",
-                "url": "http://cryptofresh.com/a/SILVER",
-                "icon": "explorer.png",
+                "url": "http://cryptofresh.com/?r=cyberfund/a/SILVER",
+                "icon": "cryptofresh.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -20203,8 +20388,8 @@
             {
                 "type": "explorer",
                 "name": "OpenLedger Explorer",
-                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/SILVER",
-                "icon": "explorer.png",
+                "url": "https://bitshares.openledger.info/?r=cyberfund#/asset/SILVER",
+                "icon": "openledger.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -20278,8 +20463,8 @@
             {
                 "type": "explorer",
                 "name": "OpenLedger Explorer",
-                "url": "https://bitshares.openledger.info/?r=cryptofresh#/asset/USD",
-                "icon": "explorer.png",
+                "url": "https://bitshares.openledger.info/?r=cyberfund#/asset/USD",
+                "icon": "openledger.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -20289,8 +20474,8 @@
             {
                 "type": "explorer",
                 "name": "CryptoFresh Explorer",
-                "url": "http://cryptofresh.com/a/USD",
-                "icon": "explorer.png",
+                "url": "http://cryptofresh.com/?r=cyberfund/a/USD",
+                "icon": "cryptofresh.png",
                 "tags": [
                     "Apps",
                     "Analytics"
