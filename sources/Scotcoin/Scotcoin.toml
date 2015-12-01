@@ -1,12 +1,13 @@
-source = "cyberFund"
+genesis_id = "145365481365"
 system = "Scotcoin"
+dependencies = ["Counterparty"]
 
 [aliases]
 coinmarketcap = "Scotcoin"
-CurrencyName = "Scotcoin"
 
 [descriptions]
-system_type = ""
+state = "Public"
+system_type = "cryptoasset"
 
 [consensus]
 consensus_type = ""
@@ -16,7 +17,12 @@ token_name = "Scotcoin"
 token_symbol = "XCPSCO"
 
 [specs]
-links = []
+
+[links] 
+type = "website"
+name = "scotcoin.org"
+url = "http://scotcoin.org/"
+tags = ["Main"]
 
 [flags]
 rating_do_not_display = true
