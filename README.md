@@ -102,8 +102,8 @@ We are going to publish a paper soon that explain a lot of stuff. But now the fo
 
 All systems regardless of the type should have:
 - Website
-- Community forum / Thread on specialized forum (like [Bitcointalk](https://bitcointalk.org)
-- Public communication channel: Blog/Twitter/Reddit etc.  
+- Community forum / Thread on specialized forum (like [Bitcointalk](https://bitcointalk.org))
+- Public communication channel: Blog/Twitter/Reddit/Slack etc.  
 
 ### Cryptocurrency Listing:
 - Should be established and uniquely identifiable via Genesis ID.
@@ -117,6 +117,7 @@ All systems regardless of the type should have:
 - Purpose of registration should be described by a code (e.g. smart contracts), and/or natural language (e.g. Ricardian contract or signed Shareholders agreement)
 
 ### Cryptoproject Listing
+- 
 
 ### Cryptoservice Listing
 
@@ -249,7 +250,9 @@ rpc = "8332"
 
 `state` - choose existing state of a system:
 - *Project* - for systems that are in development or on idea stage. Systems with this state will be displayed at [cyber•Fund Radar](https://cyber.fund/radar) section
-- *Running* - for systems that already works.
+- *Private* - 
+- *Pre-Public* - 
+- *Public* - 
 
 `headline` - describe the system in a few words, not more than 140 symbols
 
@@ -316,6 +319,7 @@ Standard links types:
 - *facebook* - tags: ["News"], icon: fa-facebook-official
 - *google+* - tags: ["News"], icon: fa-google-plus-square
 - *youtube* - tags: ["News"], icon: fa-youtube-square
+- *Slack* - tags: ["News"], icon: fa-slack
 
 For other links types use:
 - *custom* - all properties you should define manualy
