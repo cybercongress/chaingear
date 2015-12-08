@@ -1,18 +1,18 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "e74391477f4dcfd8356afd9373f1693138fb7dd450210bae61025a74e3c243be"
 system = "DigitalNote"
+icon = "digitalnote"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "DigitalNote"
-CurrencyName = "DigitalNote"
 
 [ratings]
 rating_cyber = 2.0
 
 [consensus]
-consensus_name = "Proof-of-Work"
+consensus_name = "CryptoNight"
 hashing = "CryptoNight"
-consensus_type = ""
+consensus_type = "Proof-of-Work"
 
 [descriptions]
 state = "Public"
@@ -20,8 +20,10 @@ system_type = "cryptocurrency"
 tags = ["DAO"]
 hashtag = "#DarkNote"
 
-[events]
-announcement = "31/05/2014"
+[[events]]
+name = "Announcement" 
+date = "2014-05-31T00:00:00"
+url = "https://bitcointalk.org/index.php?topic=788916.0"
 
 [token]
 token_name = "DigitalNote"
@@ -37,49 +39,48 @@ total_tokens = 8589869056.0
 difficulty_cycle = "every block"
 
 [[links]]
-name = "web site"
-url = "http://darknote.cc/"
+type = "website"
+name = "digitalnote.org"
+url = "http://digitalnote.org/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "github"
-url = "https://github.com/ducknote/ducknote"
+type = "github"
+name = "DigitalNote GitHub"
+url = "https://github.com/xdn-project/digitalnote"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
+type = "explorer"
 name = "explorer"
 url = "http://chainradar.com/xdn/blocks"
 icon = "explorer.png"
 tags = ["Main", "Apps"]
-type = ""
 
 [[links]]
-name = "twitter"
+type = "twitter"
+name = "Twitter"
 url = "https://twitter.com/DarkNote_XDN"
 icon = "twitter.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "forum"
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=788916.0"
 icon = "forum.png"
-tags = ["Apps"]
-type = ""
+tags = ["Main", "News"]
 
 [[links]]
+type = "reddit"
 name = "reddit"
 url = "reddit.com/r/darknote"
 icon = "reddit.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
-[[links]]
-name = "Announcement"
-url = "https://bitcointalk.org/index.php?topic=788916.0"
-type = "custom"
-tags = ["publications"]
+[first_price] 
+btc = 0.00000004
+usd = 0.00002578
+date = "2014-06-23T00:00:00"

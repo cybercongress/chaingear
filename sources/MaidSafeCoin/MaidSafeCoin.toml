@@ -1,5 +1,6 @@
 geneis_id = "86f214055a7f4f5057922fd1647e00ef31ab0a3ff15217f8b90e295f051873a7"
 system = "MaidSafeCoin"
+icon = "maidsafecoin"
 dependencies = ["Bitcoin", "Mastercoin (Omni)"]
 
 [token]
@@ -7,7 +8,7 @@ token_name = "MaidSafeCoin"
 token_symbol = "MAID"
 
 [consensus]
-consensus_type = "Proof-of-Work"
+consensus_type = "Blockchain Ledger"
 consensus_name = "Omni"
 
 [descriptions]
@@ -39,61 +40,61 @@ rating_cyber = 5.0
 [specs]
 
 [[links]]
+type = "website"
 name = "maidsafe.net"
 url = "http://maidsafe.net/"
 icon = "website.png"
 tags = ["Main"]
-type = "website"
 
 [[links]]
+type = "forum"
 name = "Forum"
 url = "https://www.maidsafe.org/"
 icon = "forum.png"
 tags = ["Main", "News"]
-type = "forum"
 
 [[links]]
+type = "paper"
 name = "Documentation"
 url = "https://github.com/maidsafe/Whitepapers/blob/master/Project-Safe.md"
 icon = "whitepaper.png"
 tags = ["Science"]
-type = "paper"
 
 [[links]]
+type = "custom"
 name = "Roadmap"
 url = "http://maidsafe.net/roadmap"
 icon = "whitepaper.png"
-tags = ["Main", "Science"]
-type = "custom"
+tags = ["Main", "Code"]
 
 [[links]]
+type = "github"
 name = "MaidSafe GitHub"
 url = "https://github.com/maidsafe"
 icon = "github.png"
 tags = ["Code"]
-type = "github"
 
 [[links]]
+type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/maidsafe"
 icon = "twitter.png"
 tags = ["News"]
-type = "Twitter"
 
 [[links]]
+type = "blog"
 name = "Blog"
 url = "http://blog.maidsafe.net/"
 rss = "http://blog.maidsafe.net/feed/"
 icon = "blog.png"
 tags = ["News"]
-type = "blog"
 
 [[links]]
+type = "reddit"
 name = "reddit"
 url = "http://www.reddit.com/r/maidsafe"
 icon = "reddit.png"
 tags = ["News"]
-type = "reddit"
 
 [[links]]
 name = "On scalable, decentralised applications"
@@ -135,9 +136,14 @@ icon = "link.png"
 tags = ["Apps", "Analytics"]
 
 [[links]]
-name = "Wiki"
+type = "wiki"
+name = "SAFE Network Wiki"
 headline = "nein"
 url = "https://safenetwork.wiki/"
 icon = "wiki.png"
 tags = ["Main", "Science"]
-type = "wiki"
+
+[first_price] 
+btc = 0.00002696
+usd = 0.01418256
+date = "2014-05-22T00:00:00"

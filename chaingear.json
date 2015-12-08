@@ -303,7 +303,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00026974,
+            "usd": 0.02373913,
+            "date": "2013-07-15T00:00:00"
+        }
     },
     {
         "genesis_id": "00000045eeaee1dd4b64a67ed47a3b8abaacb02559487e6ef61ce6fb7481ae67",
@@ -580,7 +585,8 @@
         },
         "first_price": {
             "btc": 0.00250409,
-            "usd": 0.594896
+            "usd": 0.5948961605,
+            "date": "2015-10-01T00:00:00"
         }
     },
     {
@@ -739,6 +745,7 @@
     {
         "genesis_id": "8abcfb93c52f999e3ef5288c4f837f4f15af5521",
         "system": "BitShares",
+        "icon": "bitshares",
         "dependencies": [
             "independent"
         ],
@@ -789,24 +796,25 @@
         ],
         "links": [
             {
+                "type": "website",
                 "name": "bitshares.org",
                 "url": "https://bitshares.org/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
-                ],
-                "type": "website"
+                ]
             },
             {
+                "type": "paper",
                 "name": "Documentation",
                 "url": "http://docs.bitshares.org/",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Science"
-                ],
-                "type": "paper"
+                ]
             },
             {
+                "type": "explorer",
                 "name": "OpenLedger Explorer",
                 "url": "https://bitshares.openledger.info/?r=cyberfund#/explorer",
                 "icon": "openledger.png",
@@ -815,8 +823,7 @@
                     "Apps",
                     "Analytics",
                     "Exchange"
-                ],
-                "type": "explorer"
+                ]
             },
             {
                 "type": "wallet",
@@ -840,44 +847,35 @@
                 ]
             },
             {
-                "type": "wallet",
-                "name": "Bitshares 0.x Wallets",
-                "url": "https://bitshares.org/download/",
-                "icon": "bitshares.png",
-                "tags": [
-                    "Apps",
-                    "Wallet"
-                ]
-            },
-            {
+                "type": "github",
                 "name": "Bitshares GitHub",
                 "url": "https://github.com/BitShares/",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "blog",
                 "name": "BitShares Blog",
                 "url": "https://bitshares.org/blog/",
                 "icon": "blog.png",
                 "tags": [
                     "News"
-                ],
-                "type": "blog"
+                ]
             },
             {
+                "type": "forum",
                 "name": "Forum",
                 "url": "https://bitsharestalk.org/",
                 "icon": "forum.png",
                 "tags": [
                     "News"
-                ],
-                "type": "forum"
+                ]
             },
             {
+                "type": "explorer",
                 "name": "CryptoFresh Explorer",
                 "url": "http://cryptofresh.com/?r=cyberfund",
                 "icon": "cryptofresh.png",
@@ -885,76 +883,76 @@
                     "Main",
                     "Apps",
                     "Analytics"
-                ],
-                "type": "explorer"
+                ]
             },
             {
+                "type": "explorer",
                 "name": "Graphene Stats",
                 "url": "http://stats.bitshares.eu/",
                 "icon": "bitshares.png",
                 "tags": [
                     "Apps",
                     "Analytics"
-                ],
-                "type": "explorer"
+                ]
             },
             {
+                "type": "custom",
                 "name": "CoinTelegraph",
                 "url": "http://cointelegraph.com/tags/bitshares",
-                "type": "custom",
                 "icon": "cointelegraph.png",
                 "tags": [
                     "News"
                 ]
             },
             {
+                "type": "custom",
                 "name": "CoinDesk",
                 "url": "http://www.coindesk.com/tag/bitshares/",
-                "type": "custom",
                 "icon": "coindesk.png",
                 "tags": [
                     "News"
                 ]
             },
             {
+                "type": "custom",
                 "name": "CryptoCoinsNews",
                 "url": "https://www.cryptocoinsnews.com/tag/bitshares/",
                 "rss": "https://www.cryptocoinsnews.com/tag/bitshares/feed/",
-                "type": "custom",
                 "icon": "cryptocoinnews.png",
                 "tags": [
                     "News"
                 ]
             },
             {
+                "type": "twitter",
                 "name": "Twitter",
                 "url": "https://twitter.com/_bitshares",
                 "icon": "twitter.png",
                 "tags": [
                     "News"
-                ],
-                "type": "twitter"
+                ]
             },
             {
+                "type": "reddit",
                 "name": "reddit",
                 "url": "http://www.reddit.com/r/BitShares",
                 "icon": "reddit.png",
                 "tags": [
                     "News"
-                ],
-                "type": "reddit"
+                ]
             },
             {
+                "type": "custom",
                 "name": "AboutBitshares",
                 "headline": "Great site for news about Bitshares as well as video tutorials",
                 "url": "http://www.aboutbts.com/",
                 "icon": "link.png",
                 "tags": [
                     "News"
-                ],
-                "type": "News"
+                ]
             },
             {
+                "type": "custom",
                 "name": "Beyondbitcoin",
                 "headline": "Beyondbitcoin",
                 "url": "https://beyondbitcoin.org/",
@@ -962,14 +960,24 @@
                 "icon": "beyondbitcoin.png",
                 "tags": [
                     "News"
-                ],
-                "type": "News"
+                ]
             },
             {
+                "type": "exchange",
+                "name": "Open Ledger",
+                "headline": "Transparent Decentrilized Exchange",
+                "url": "https://openledger.info/?r=cyberfund#",
+                "icon": "openledger.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
                 "name": "ShapeShift",
                 "headline": "Instant Exchange",
                 "url": "https://shapeshift.io",
-                "type": "custom",
                 "icon": "shapeshift.png",
                 "tags": [
                     "Apps",
@@ -977,10 +985,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "MetaExchange",
                 "headline": "The future of the instant exchange",
                 "url": "https://metaexchange.info/",
-                "type": "custom",
                 "icon": "metaexchange.png",
                 "tags": [
                     "Apps",
@@ -988,10 +996,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "CCEDK",
                 "headline": "Your place for safe and secure crypto currency exchange",
                 "url": "https://www.ccedk.com/",
-                "type": "custom",
                 "icon": "ccedk.png",
                 "tags": [
                     "Apps",
@@ -999,10 +1007,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "Poloniex",
                 "headline": "Cryptocurrensy Exchange",
                 "url": "https://www.poloniex.com/exchange#btc_bts",
-                "type": "custom",
                 "icon": "poloniex.png",
                 "tags": [
                     "Apps",
@@ -1010,10 +1018,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "BlockTrades",
                 "headline": "Your Gateway to the BitShares Trading Network",
                 "url": "https://blocktrades.us/",
-                "type": "custom",
                 "icon": "blocktrades.png",
                 "tags": [
                     "Apps",
@@ -1021,22 +1029,11 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "BTC38",
                 "headline": "Cryptocurrensy Exchange",
                 "url": "http://www.btc38.com/trade_en.html",
-                "type": "custom",
                 "icon": "btc38.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
-                "name": "Open Ledger",
-                "headline": "Transparent Decentrilized Exchange",
-                "url": "https://openledger.info/",
-                "type": "custom",
-                "icon": "openledger.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -1132,8 +1129,9 @@
             }
         ],
         "first_price": {
-            "btc": 0.00147592,
-            "usd": 0.923632
+            "btc": 0.00000295,
+            "usd": 0.00184611,
+            "date": "2014-07-19T00:00:00"
         }
     },
     {
@@ -1525,6 +1523,7 @@
         "dependencies": [
             "independent"
         ],
+        "icon": "bitcoin",
         "system": "Bitcoin",
         "token": {
             "token_name": "bitcoin",
@@ -2306,7 +2305,8 @@
         ],
         "first_price": {
             "btc": 1,
-            "usd": 0.0858
+            "usd": 0.0858,
+            "date": "2010-07-18T00:00:00"
         }
     },
     {
@@ -2477,7 +2477,8 @@
         ],
         "first_price": {
             "btc": 0.00076717,
-            "usd": 0.458233
+            "usd": 0.45823272,
+            "date": "2014-06-16T00:00:00"
         }
     },
     {
@@ -2624,6 +2625,10 @@
     {
         "genesis_id": "000001faef25dec4fbcf906e6242621df2c183bf232f263d0ba5b101911e4563",
         "system": "BlackCoin",
+        "icon": "blackcoin",
+        "dependencies": [
+            "independent"
+        ],
         "token": {
             "token_name": "BlackCoin",
             "token_symbol": "BLK"
@@ -2669,9 +2674,9 @@
         ],
         "links": [
             {
+                "type": "website",
                 "name": "blackcoin.co",
                 "url": "http://blackcoin.co/",
-                "type": "website",
                 "icon": "website.png",
                 "tags": [
                     "Main"
@@ -2880,10 +2885,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "Poloniex",
                 "headline": "nein",
                 "url": "https://www.poloniex.com",
-                "type": "custom",
                 "icon": "poloniex.png",
                 "tags": [
                     "Apps",
@@ -2891,10 +2896,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "ShapeShift",
                 "headline": "nein",
                 "url": "https://shapeshift.io",
-                "type": "custom",
                 "icon": "shapeshift.png",
                 "tags": [
                     "Apps",
@@ -2902,10 +2907,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "Cryptsy",
                 "headline": "nein",
                 "url": "https://www.cryptsy.com/users/register?refid=243274",
-                "type": "custom",
                 "icon": "cryptsy.png",
                 "tags": [
                     "Apps",
@@ -2913,10 +2918,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "BTC38",
                 "headline": "Cryptocurrensy Exchange",
                 "url": "http://www.btc38.com/trade_en.html",
-                "type": "custom",
                 "icon": "btc38.png",
                 "tags": [
                     "Apps",
@@ -2924,10 +2929,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "CCEDK",
                 "headline": "Your place for safe and secure crypto currency exchange",
                 "url": "https://www.ccedk.com/",
-                "type": "custom",
                 "icon": "ccedk.png",
                 "tags": [
                     "Apps",
@@ -2935,10 +2940,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "BTER",
                 "headline": "nein",
                 "url": "https://bter.com/",
-                "type": "custom",
                 "icon": "bter.png",
                 "tags": [
                     "Apps",
@@ -2946,10 +2951,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "Bittrex",
                 "headline": "nein",
                 "url": "https://bittrex.com",
-                "type": "custom",
                 "icon": "bittrex.png",
                 "tags": [
                     "Apps",
@@ -2957,10 +2962,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "BlueTrade",
                 "headline": "nein",
                 "url": "https://bleutrade.com",
-                "type": "custom",
                 "icon": "bluetrade.png",
                 "tags": [
                     "Apps",
@@ -2970,7 +2975,8 @@
         ],
         "first_price": {
             "btc": 0.00001169,
-            "usd": 0.00699405
+            "usd": 0.00699405,
+            "date": "2014-02-28T00:00:00"
         }
     },
     {
@@ -3087,8 +3093,9 @@
             }
         ],
         "first_price": {
-            "btc": 0.0075475,
-            "usd": 1.73605571
+            "btc": 0.007547500604,
+            "usd": 1.736055711,
+            "date": "2015-08-31T00:00:00"
         }
     },
     {
@@ -3838,7 +3845,12 @@
                     "Analytics"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 7.3e-7,
+            "usd": 0.00032362,
+            "date": "2014-05-11T00:00:00"
+        }
     },
     {
         "genesis_id": "000008f971bd331b204f4c96b32205103ac5790a93bd06a362b9650d478d1f51",
@@ -3909,7 +3921,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00000189,
+            "usd": 0.00110493,
+            "date": "2014-08-02T00:00:00"
+        }
     },
     {
         "genesis_id": "4f46c9af6d88a14114b7dc53a37d81ba4064cda5ae2ede1213ca28fea9b86e9c",
@@ -4128,10 +4145,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "Poloniex",
                 "headline": "nein",
                 "url": "https://www.poloniex.com",
-                "type": "custom",
                 "icon": "poloniex.png",
                 "tags": [
                     "Apps",
@@ -4139,10 +4156,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "ShapeShift",
                 "headline": "nein",
                 "url": "https://shapeshift.io",
-                "type": "custom",
                 "icon": "shapeshift.png",
                 "tags": [
                     "Apps",
@@ -4150,10 +4167,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "Cryptsy",
                 "headline": "nein",
                 "url": "https://www.cryptsy.com/users/register?refid=243274",
-                "type": "custom",
                 "icon": "cryptsy.png",
                 "tags": [
                     "Apps",
@@ -4161,10 +4178,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "Bittrex",
                 "headline": "nein",
                 "url": "https://bittrex.com",
-                "type": "custom",
                 "icon": "bittrex.png",
                 "tags": [
                     "Apps",
@@ -4172,10 +4189,10 @@
                 ]
             },
             {
+                "type": "exchange",
                 "name": "BlueTrade",
                 "headline": "nein",
                 "url": "https://bleutrade.com",
-                "type": "custom",
                 "icon": "bluetrade.png",
                 "tags": [
                     "Apps",
@@ -4185,7 +4202,8 @@
         ],
         "first_price": {
             "btc": 0.00097185,
-            "usd": 0.48370958
+            "usd": 0.48370958,
+            "date": "2014-08-26T00:00:00"
         }
     },
     {
@@ -4763,7 +4781,8 @@
         ],
         "first_price": {
             "btc": 0.00080543,
-            "usd": 0.68813926
+            "usd": 0.68813926,
+            "date": "2014-02-02T00:00:00"
         }
     },
     {
@@ -5399,7 +5418,8 @@
         ],
         "first_price": {
             "btc": 0.00000128,
-            "usd": 0.00080293
+            "usd": 0.00080293,
+            "date": "2014-03-08T00:00:00"
         }
     },
     {
@@ -5707,7 +5727,8 @@
         ],
         "first_price": {
             "btc": 0.00033188,
-            "usd": 0.21837893
+            "usd": 0.21837893,
+            "date": "2014-02-07T00:00:00"
         }
     },
     {
@@ -5925,7 +5946,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00052462,
+            "usd": 0.3664201,
+            "date": "2013-12-19T00:00:00"
+        }
     },
     {
         "genesis_id": "7497ea1b465eb39f1c8f507bc877078fe016d6fcb6dfad3a64c98dcc6e1e8496",
@@ -6005,22 +6031,22 @@
         }
     },
     {
+        "genesis_id": "e74391477f4dcfd8356afd9373f1693138fb7dd450210bae61025a74e3c243be",
+        "system": "DigitalNote",
+        "icon": "digitalnote",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "DigitalNote",
         "aliases": {
-            "coinmarketcap": "DigitalNote",
-            "CurrencyName": "DigitalNote"
+            "coinmarketcap": "DigitalNote"
         },
         "ratings": {
             "rating_cyber": 2
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
+            "consensus_name": "CryptoNight",
             "hashing": "CryptoNight",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work"
         },
         "descriptions": {
             "state": "Public",
@@ -6030,9 +6056,13 @@
             ],
             "hashtag": "#DarkNote"
         },
-        "events": {
-            "announcement": "31/05/2014"
-        },
+        "events": [
+            {
+                "name": "Announcement",
+                "date": "2014-05-31T00:00:00",
+                "url": "https://bitcointalk.org/index.php?topic=788916.0"
+            }
+        ],
         "token": {
             "token_name": "DigitalNote",
             "token_symbol": "XDN"
@@ -6048,72 +6078,68 @@
         },
         "links": [
             {
-                "name": "web site",
-                "url": "http://darknote.cc/",
+                "type": "website",
+                "name": "digitalnote.org",
+                "url": "http://digitalnote.org/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "github",
-                "url": "https://github.com/ducknote/ducknote",
+                "type": "github",
+                "name": "DigitalNote GitHub",
+                "url": "https://github.com/xdn-project/digitalnote",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": ""
+                ]
             },
             {
+                "type": "explorer",
                 "name": "explorer",
                 "url": "http://chainradar.com/xdn/blocks",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
                     "Apps"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "twitter",
+                "type": "twitter",
+                "name": "Twitter",
                 "url": "https://twitter.com/DarkNote_XDN",
                 "icon": "twitter.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
-                "name": "forum",
+                "type": "forum",
+                "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=788916.0",
                 "icon": "forum.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "Main",
+                    "News"
+                ]
             },
             {
+                "type": "reddit",
                 "name": "reddit",
                 "url": "reddit.com/r/darknote",
                 "icon": "reddit.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
-            },
-            {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=788916.0",
-                "type": "custom",
-                "tags": [
-                    "publications"
+                    "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 4e-8,
+            "usd": 0.00002578,
+            "date": "2014-06-23T00:00:00"
+        }
     },
     {
         "genesis_id": "45b2559dbe5e5772498e4170f3f1561448179fa90dd349e60e891766878dea2e",
@@ -6334,7 +6360,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 2e-8,
+            "usd": 0.0000074,
+            "date": "2014-10-25T00:00:00"
+        }
     },
     {
         "genesis_id": "1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691",
@@ -6962,7 +6993,8 @@
         ],
         "first_price": {
             "btc": 0.0000035,
-            "usd": 0.001775
+            "usd": 0.001775,
+            "date": "2014-08-23T00:00:00"
         }
     },
     {
@@ -7708,7 +7740,8 @@
         ],
         "first_price": {
             "btc": 0.00052462,
-            "usd": 0.24936138
+            "usd": 0.24936138,
+            "date": "2014-09-02T00:00:00"
         }
     },
     {
@@ -7962,6 +7995,10 @@
         ],
         "flags": {
             "suplly_from_here": true
+        },
+        "first_price": {
+            "btc": 0.00026005,
+            "usd": 0.06171249
         }
     },
     {
@@ -8033,7 +8070,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00000602,
+            "usd": 0.00331564,
+            "date": "2014-05-22T00:00:00"
+        }
     },
     {
         "genesis_id": "12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2",
@@ -8685,21 +8727,21 @@
         ]
     },
     {
+        "genesis_id": "000006a45a347f63094a5fe57c88e7f67d16348789eab0fe8b3a694c911f793d",
+        "system": "FuelCoin",
+        "icon": "fuelcoin",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "FuelCoin",
         "aliases": {
-            "coinmarketcap": "FuelCoin",
-            "CurrencyName": "FuelCoin"
+            "coinmarketcap": "FuelCoin"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "Proof-of-Stake",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "state": "Public",
@@ -8715,58 +8757,59 @@
         "specs": {},
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "fuelcrypto.com",
                 "url": "http://fuelcrypto.com/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "explorer",
+                "type": "explorer",
+                "name": "Explorer",
                 "url": "http://blockexperts.com/fc2",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
                     "Apps"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "github",
+                "type": "github",
+                "name": "FuelCoin GitHub",
                 "url": "https://github.com/FuelCoinDev/FC2-Source",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "twitter",
+                "type": "twitter",
+                "name": "Twitter",
                 "url": "https://twitter.com/FuelTeam1",
                 "icon": "twitter.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
-                "section": [
-                    "Apps"
-                ],
-                "name": "forum",
+                "type": "forum",
+                "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=589879.0",
                 "icon": "forum.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 2.3e-7,
+            "usd": 0.00013839,
+            "date": "2014-06-12T00:00:00"
+        }
     },
     {
         "genesis_id": "91ec5f25ee9a0ffa1af7d4da4db9a552228dd2dc77cdb15b738be4e1f55f30ee",
@@ -8830,7 +8873,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 7e-8,
+            "usd": 0.00003271,
+            "date": "2014-01-09T00:00:00"
+        }
     },
     {
         "genesis_id": "0000002bdf4ca3a0b3fec305724006871ec5e683da5d70d9fe7a22f1f967e7f3",
@@ -9545,7 +9593,12 @@
                     "Exchange"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00000712,
+            "usd": 0.00190594,
+            "date": "2015-02-28T00:00:00"
+        }
     },
     {
         "genesis_id": "00000973d52019a3fdda1b1f346e1d76cbf12f8fdd9fbf0ade33bc1da89cb2e9",
@@ -9612,8 +9665,9 @@
         ]
     },
     {
-        "source": "cyberFund",
+        "genesis_id": "6c5d71a461b5bff6742bb62e5be53978b8dec5103ce52d1aaab8c6a251582f92",
         "system": "Guldencoin",
+        "icon": "guldencoin",
         "aliases": {
             "coinmarketcap": "Gulden",
             "nickname": "Gulden"
@@ -9622,9 +9676,9 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Scrypt",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "Scrypt PoW DELTA",
+            "hashing": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -9651,22 +9705,31 @@
         "links": [
             {
                 "type": "website",
+                "name": "gulden.com",
+                "url": "https://gulden.com",
+                "icon": "website.png",
                 "tags": [
                     "Main"
-                ],
-                "name": "web site",
-                "url": "https://gulden.com",
-                "icon": "website.png"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Gulden Explorer",
+                "url": "https://explorer.gulden.com",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
             },
             {
                 "type": "github",
+                "name": "GitHub",
+                "url": "https://github.com/nlgcoin/guldencoin",
+                "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "name": "github",
-                "url": "https://github.com/nlgcoin/guldencoin",
-                "icon": "github.png"
+                ]
             },
             {
                 "type": "forum",
@@ -9677,7 +9740,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00000184,
+            "usd": 0.00077126,
+            "date": "2014-04-08T00:00:00"
+        }
     },
     {
         "genesis_id": "000009ea5ef5019446b315e7e581fc2ea184315ed46c9ddeadc8aa9442deedc9",
@@ -10015,7 +10083,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00002027,
+            "usd": 0.01301139,
+            "date": "2014-05-31T00:00:00"
+        }
     },
     {
         "genesis_id": "000005fe04e512585c3611369c7ce23f130958038c18a462577d002680dab4fc",
@@ -11407,6 +11480,7 @@
     {
         "geneis_id": "86f214055a7f4f5057922fd1647e00ef31ab0a3ff15217f8b90e295f051873a7",
         "system": "MaidSafeCoin",
+        "icon": "maidsafecoin",
         "dependencies": [
             "Bitcoin",
             "Mastercoin (Omni)"
@@ -11416,7 +11490,7 @@
             "token_symbol": "MAID"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
+            "consensus_type": "Blockchain Ledger",
             "consensus_name": "Omni"
         },
         "descriptions": {
@@ -11452,79 +11526,79 @@
         "specs": {},
         "links": [
             {
+                "type": "website",
                 "name": "maidsafe.net",
                 "url": "http://maidsafe.net/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
-                ],
-                "type": "website"
+                ]
             },
             {
+                "type": "forum",
                 "name": "Forum",
                 "url": "https://www.maidsafe.org/",
                 "icon": "forum.png",
                 "tags": [
                     "Main",
                     "News"
-                ],
-                "type": "forum"
+                ]
             },
             {
+                "type": "paper",
                 "name": "Documentation",
                 "url": "https://github.com/maidsafe/Whitepapers/blob/master/Project-Safe.md",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Science"
-                ],
-                "type": "paper"
+                ]
             },
             {
+                "type": "custom",
                 "name": "Roadmap",
                 "url": "http://maidsafe.net/roadmap",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Main",
-                    "Science"
-                ],
-                "type": "custom"
+                    "Code"
+                ]
             },
             {
+                "type": "github",
                 "name": "MaidSafe GitHub",
                 "url": "https://github.com/maidsafe",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "twitter",
                 "name": "Twitter",
                 "url": "https://twitter.com/maidsafe",
                 "icon": "twitter.png",
                 "tags": [
                     "News"
-                ],
-                "type": "Twitter"
+                ]
             },
             {
+                "type": "blog",
                 "name": "Blog",
                 "url": "http://blog.maidsafe.net/",
                 "rss": "http://blog.maidsafe.net/feed/",
                 "icon": "blog.png",
                 "tags": [
                     "News"
-                ],
-                "type": "blog"
+                ]
             },
             {
+                "type": "reddit",
                 "name": "reddit",
                 "url": "http://www.reddit.com/r/maidsafe",
                 "icon": "reddit.png",
                 "tags": [
                     "News"
-                ],
-                "type": "reddit"
+                ]
             },
             {
                 "name": "On scalable, decentralised applications",
@@ -11580,17 +11654,22 @@
                 ]
             },
             {
-                "name": "Wiki",
+                "type": "wiki",
+                "name": "SAFE Network Wiki",
                 "headline": "nein",
                 "url": "https://safenetwork.wiki/",
                 "icon": "wiki.png",
                 "tags": [
                     "Main",
                     "Science"
-                ],
-                "type": "wiki"
+                ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00002696,
+            "usd": 0.01418256,
+            "date": "2014-05-22T00:00:00"
+        }
     },
     {
         "genesis_id": "",
@@ -12293,7 +12372,12 @@
                     "Exchange"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00014824,
+            "usd": 0.08524875,
+            "date": "2014-03-20T00:00:00"
+        }
     },
     {
         "genesis_id": "771fbcd656ec1464d3a02ead5e18644030007a0fc664c0a964d30922821a8148",
@@ -12994,7 +13078,12 @@
                     "Analytics"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 2e-8,
+            "usd": 0.000007216814,
+            "date": "2014-04-10T00:00:00"
+        }
     },
     {
         "genesis_id": "16212446818542881180",
@@ -13953,7 +14042,7 @@
         ]
     },
     {
-        "genesis_id": "",
+        "genesis_id": "000003cc2da5a0a289ad0a590c20a8b975219ddc1204efd169e947dd4cbad73f",
         "system": "NuBits",
         "icon": "nubits",
         "dependencies": [
@@ -13989,93 +14078,99 @@
         "specs": {},
         "links": [
             {
+                "type": "website",
                 "name": "nubits.com",
                 "url": "https://www.nubits.com/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
-                ],
-                "type": "website"
+                ]
             },
             {
+                "type": "bitbucket",
                 "name": "bitbucket",
                 "url": "https://bitbucket.org/JordanLeePeershares/nubit",
                 "icon": "bitbucket.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "paper",
                 "name": "Documentation",
                 "url": "https://docs.nubits.com",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Main",
                     "Science"
-                ],
-                "type": "paper"
+                ]
             },
             {
+                "type": "explorer",
                 "name": "Explorer",
                 "url": "https://blockexplorer.nu/",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
                     "Apps"
-                ],
-                "type": "explorer"
+                ]
             },
             {
+                "type": "twitter",
                 "name": "Twitter",
                 "url": "https://twitter.com/OfficialNuBits",
                 "icon": "twitter.png",
                 "tags": [
                     "News"
-                ],
-                "type": "twitter"
+                ]
             },
             {
+                "type": "forum",
                 "name": "Forum",
                 "url": "https://discuss.nubits.com/",
                 "icon": "forum.png",
                 "tags": [
                     "News"
-                ],
-                "type": "forum"
+                ]
             },
             {
+                "type": "reddit",
                 "name": "reddit",
                 "url": "http://www.reddit.com/r/NuBits",
                 "icon": "reddit.png",
                 "tags": [
                     "News"
-                ],
-                "type": "reddit"
-            },
-            {
-                "name": "Announcement",
-                "url": "https://bitcointalk.org/index.php?topic=789964.0",
-                "type": "custom",
-                "tags": [
-                    "publications"
                 ]
             },
             {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=789964.0",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "wallet",
                 "name": "Wallet",
                 "url": "https://nubits.com/download",
-                "type": "custom",
                 "icon": "wallet.png",
                 "tags": [
                     "Apps",
                     "Wallet"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00245668,
+            "usd": 0.96997335,
+            "date": "2014-09-24T00:00:00"
+        }
     },
     {
-        "genesis_id": "nein",
+        "genesis_id": "NuShares",
         "system": "NuShares",
         "dependencies": [
             "Peercoin",
@@ -14283,7 +14378,12 @@
                     "Exchange"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00001339,
+            "usd": 0.00463662,
+            "date": "2014-10-25T00:00:00"
+        }
     },
     {
         "genesis_id": "2680262203532249785",
@@ -14608,7 +14708,12 @@
                     "Analytics"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 2e-8,
+            "usd": 0.000013487536,
+            "date": "2013-11-18T00:00:00"
+        }
     },
     {
         "genesis_id": "18128686802152832026",
@@ -15710,9 +15815,9 @@
             "rating_cyber": 1
         },
         "consensus": {
+            "consensus_type": "Proof-of-Work",
             "consensus_name": "Proof-of-Work",
-            "hashing": "Quark",
-            "consensus_type": "Proof-of-Work"
+            "hashing": "Quark"
         },
         "descriptions": {
             "state": "Public",
@@ -15774,14 +15879,20 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00000257,
+            "usd": 0.0003016,
+            "date": "2013-08-25T00:00:00"
+        }
     },
     {
+        "genesis_id": "b868e0d95a3c3c0e0dadc67ee587aaf9dc8acbf99e3b4b3110fad4eb74c1decc",
+        "system": "ReddCoin",
+        "icon": "reddcoin",
         "dependencies": [
             "independent"
         ],
-        "source": "cyberFund",
-        "system": "ReddCoin",
         "aliases": {
             "coinmarketcap": "ReddCoin",
             "CurrencyName": "ReddCoin"
@@ -15790,9 +15901,9 @@
             "rating_cyber": 1
         },
         "consensus": {
+            "consensus_type": "Proof-of-Stake",
             "consensus_name": "Proof-of-Stake Velocity",
-            "hashing": "Scrypt",
-            "consensus_type": ""
+            "hashing": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -15802,9 +15913,13 @@
             ],
             "hashtag": "#Reddcoin"
         },
-        "events": {
-            "announcement": "20/01/2014"
-        },
+        "events": [
+            {
+                "name": "Announcement",
+                "start_date": "2014-01-20T00:00:00",
+                "url": "https://bitcointalk.org/index.php?topic=423597.0"
+            }
+        ],
         "token": {
             "token_name": "ReddCoin",
             "token_symbol": "RDD"
@@ -15819,81 +15934,86 @@
         },
         "links": [
             {
-                "name": "web site",
+                "type": "website",
+                "name": "reddcoin.com",
                 "url": "http://www.reddcoin.com/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Main"
+                ]
             },
             {
-                "name": "github",
+                "type": "github",
+                "name": "ReddCoin GitHub",
                 "url": "https://github.com/reddcoin/reddcoin",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": ""
+                ]
             },
             {
-                "name": "explorer",
+                "type": "explorer",
+                "name": "Explorer",
                 "url": "http://live.reddcoin.com/",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "Apps",
+                    "Analytics"
+                ]
             },
             {
-                "name": "twitter",
+                "type": "twitter",
+                "name": "Twitter",
                 "url": "https://twitter.com/reddcoin",
                 "icon": "twitter.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
-                "name": "forum",
+                "type": "forum",
+                "name": "ReddCoin Forum",
                 "url": "https://www.reddcointalk.org/",
                 "icon": "forum.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
-                "name": "blog",
+                "type": "blog",
+                "name": "ReddCoin Blog",
                 "url": "https://www.reddcoin.com/blog/",
                 "icon": "blog.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
+                "type": "reddit",
                 "name": "reddit",
                 "url": "https://www.reddit.com/r/reddCoin/",
                 "icon": "reddit.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": ""
+                    "News"
+                ]
             },
             {
-                "name": "Announcement",
+                "type": "forum",
+                "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=423597.0",
-                "type": "custom",
                 "tags": [
-                    "publications"
+                    "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 4e-8,
+            "usd": 0.00002852,
+            "date": "2014-02-10T00:00:00"
+        }
     },
     {
         "genesis_id": "",
@@ -16096,17 +16216,17 @@
     {
         "genesis_id": "3cdd9c2facce405f5cc220fb21a10e493041451c463a22e1ff6fe903fc5769fc",
         "system": "Rimbit",
+        "icon": "rimbit",
         "dependencies": "independent",
         "aliases": {
-            "coinmarketcap": "Rimbit",
-            "CurrencyName": "Rimbit"
+            "coinmarketcap": "Rimbit"
         },
         "ratings": {
             "rating_cyber": 1
         },
         "consensus": {
             "consensus_name": "Proof-of-Stake",
-            "consensus_type": ""
+            "consensus_type": "Proof-of-Stake"
         },
         "descriptions": {
             "tags": [
@@ -16162,7 +16282,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00002354,
+            "usd": 0.00798797,
+            "date": "2014-10-26T00:00:00"
+        }
     },
     {
         "genesis_id": "4109c6f2045fc7eff4cde8f9905d19c28820d86304080ff886b299f0206e42b5",
@@ -16733,7 +16858,12 @@
                     "Exchange"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00000202,
+            "usd": 0.00116433,
+            "date": "2014-03-20T00:00:00"
+        }
     },
     {
         "genesis_id": "0b61c14741228a50565769ab665998d96f2da0de6b1f19ec59fc11101092cbc5",
@@ -16927,6 +17057,11 @@
         },
         "flags": {
             "rating_do_not_display": true
+        },
+        "first_price": {
+            "btc": 2.1e-7,
+            "usd": 0.00004853,
+            "date": "2015-05-26T00:00:00"
         }
     },
     {
@@ -17400,7 +17535,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00000479,
+            "usd": 0.00236233,
+            "date": "2014-09-02T00:00:00"
+        }
     },
     {
         "genesis_id": "18212211773827322818",
@@ -18130,7 +18270,7 @@
         }
     },
     {
-        "id": "322527",
+        "genesis_id": "322527",
         "dependencies": [
             "Bitcoin",
             "Counterparty"
@@ -18174,16 +18314,16 @@
         "specs": {},
         "links": [
             {
+                "type": "website",
                 "name": "storj.io",
                 "url": "http://storj.io/",
                 "icon": "website.png",
                 "tags": [
-                    "Main",
-                    "Apps"
-                ],
-                "type": "website"
+                    "Main"
+                ]
             },
             {
+                "type": "explorer",
                 "name": "Explorer",
                 "url": "http://blockscan.com/assetInfo.aspx?q=SJCX",
                 "icon": "explorer.png",
@@ -18191,55 +18331,54 @@
                     "Main",
                     "Apps",
                     "Analytics"
-                ],
-                "type": "explorer"
+                ]
             },
             {
+                "type": "github",
                 "name": "Storj GitHub",
                 "url": "https://github.com/Storj/",
                 "icon": "github.png",
                 "tags": [
                     "Main",
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "twitter",
                 "name": "Twitter",
                 "url": "https://twitter.com/storjproject",
                 "icon": "twitter.png",
                 "tags": [
                     "Main",
-                    "Apps"
-                ],
-                "type": "twitter"
+                    "News"
+                ]
             },
             {
+                "type": "forum",
                 "name": "Forum",
                 "url": "http://storjtalk.org/",
                 "icon": "forum.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": "forum"
+                    "News"
+                ]
             },
             {
+                "type": "blog",
                 "name": "Blog",
                 "url": "http://blog.storj.io/",
                 "icon": "blog.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": "blog"
+                    "News"
+                ]
             },
             {
+                "type": "reddit",
                 "name": "reddit",
                 "url": "http://www.reddit.com/r/storj",
                 "icon": "reddit.png",
                 "tags": [
-                    "Apps"
-                ],
-                "type": "reddit"
+                    "News"
+                ]
             },
             {
                 "name": "Counterparty DEX",
@@ -18285,7 +18424,12 @@
                     "Analytics"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00002597,
+            "usd": 0.01196365,
+            "date": "2014-08-18T00:00:00"
+        }
     },
     {
         "genesis_id": "12071612744977229797",
@@ -18704,6 +18848,11 @@
         ],
         "flags": {
             "suply_from_here": true
+        },
+        "first_price": {
+            "btc": 0.00000753,
+            "usd": 0.0017016,
+            "date": "2015-04-29T00:00:00"
         }
     },
     {
@@ -19525,7 +19674,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00004602,
+            "usd": 0.01297074,
+            "date": "2015-03-05T00:00:00"
+        }
     },
     {
         "genesis_id": "000009ebb29a8f5d236b56409fe30a5b1f546ec3756ed7839e1298358d990881",
@@ -19598,7 +19752,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00001526,
+            "usd": 0.00704841,
+            "date": "2014-05-12T00:00:00"
+        }
     },
     {
         "genesis_id": "4d96a915f49d40b1e5c2844d1ee2dccb90013a990ccea12c492d22110489f0c4",
@@ -20400,6 +20559,11 @@
         ],
         "flags": {
             "rating_do_not_display": true
+        },
+        "first_price": {
+            "btc": 1,
+            "usd": 435.3779,
+            "date": "2014-09-23T00:00:00"
         }
     },
     {

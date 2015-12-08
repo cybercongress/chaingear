@@ -1,5 +1,6 @@
-source = "cyberFund"
+genesis_id = "6c5d71a461b5bff6742bb62e5be53978b8dec5103ce52d1aaab8c6a251582f92"
 system = "Guldencoin"
+icon = "guldencoin"
 
 [aliases]
 coinmarketcap = "Gulden"
@@ -9,9 +10,9 @@ nickname = "Gulden"
 rating_cyber = 1.0
 
 [consensus]
-consensus_name = "Proof-of-Work"
+consensus_type = "Proof-of-Work"
+consensus_name = "Scrypt PoW DELTA"
 hashing = "Scrypt"
-consensus_type = ""
 
 [descriptions]
 state = "Public"
@@ -35,17 +36,24 @@ dependencies = "independent"
 
 [[links]]
 type = "website"
-tags = ["Main"]
-name = "web site"
+name = "gulden.com"
 url = "https://gulden.com"
 icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Gulden Explorer"
+url = "https://explorer.gulden.com"
+icon = "website.png"
+tags = ["Main"]
 
 [[links]]
 type = "github"
-tags = ["Main", "Code"]
-name = "github"
+name = "GitHub"
 url = "https://github.com/nlgcoin/guldencoin"
 icon = "github.png"
+tags = ["Main", "Code"]
 
 [[links]]
 type = "forum"
@@ -53,3 +61,8 @@ name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=554412.0"
 icon = "forum.png"
 tags = ["News"]
+
+[first_price] 
+btc = 0.00000184
+usd = 0.00077126
+date = "2014-04-08T00:00:00"

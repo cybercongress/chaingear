@@ -1,4 +1,4 @@
-genesis_id = ""
+genesis_id = "000003cc2da5a0a289ad0a590c20a8b975219ddc1204efd169e947dd4cbad73f"
 system = "NuBits"
 icon = "nubits"
 dependencies = ["Peercoin", "NuShares"]
@@ -30,63 +30,69 @@ token_symbol = "NBT"
 [specs]
 
 [[links]]
+type = "website"
 name = "nubits.com"
 url = "https://www.nubits.com/"
 icon = "website.png"
 tags = ["Main"]
-type = "website"
 
 [[links]]
+type = "bitbucket"
 name = "bitbucket"
 url = "https://bitbucket.org/JordanLeePeershares/nubit"
 icon = "bitbucket.png"
 tags = ["Main", "Code"]
-type = "custom"
 
 [[links]]
+type = "paper"
 name = "Documentation"
 url = "https://docs.nubits.com"
 icon = "whitepaper.png"
 tags = ["Main", "Science"]
-type = "paper"
 
 [[links]]
+type = "explorer"
 name = "Explorer"
 url = "https://blockexplorer.nu/"
 icon = "explorer.png"
 tags = ["Main", "Apps"]
-type = "explorer"
 
 [[links]]
+type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/OfficialNuBits"
 icon = "twitter.png"
 tags = ["News"]
-type = "twitter"
 
 [[links]]
+type = "forum"
 name = "Forum"
 url = "https://discuss.nubits.com/"
 icon = "forum.png"
 tags = ["News"]
-type = "forum"
 
 [[links]]
+type = "reddit"
 name = "reddit"
 url = "http://www.reddit.com/r/NuBits"
 icon = "reddit.png"
 tags = ["News"]
-type = "reddit"
 
 [[links]]
-name = "Announcement"
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=789964.0"
-type = "custom"
-tags = ["publications"]
+icon = "forum.png"
+tags = ["News"]
 
 [[links]]
+type = "wallet"
 name = "Wallet"
 url = "https://nubits.com/download"
-type = "custom"
 icon = "wallet.png"
 tags = ["Apps", "Wallet"]
+
+[first_price] 
+btc = 0.00245668
+usd = 0.96997335
+date = "2014-09-24T00:00:00"

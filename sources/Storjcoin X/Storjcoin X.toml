@@ -1,4 +1,4 @@
-id = "322527"
+genesis_id = "322527"
 dependencies = ["Bitcoin", "Counterparty"]
 system = "Storjcoin X"
 
@@ -36,53 +36,53 @@ token_symbol = "SJCX"
 [specs]
 
 [[links]]
+type = "website"
 name = "storj.io"
 url = "http://storj.io/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = "website"
+tags = ["Main"]
 
 [[links]]
+type = "explorer"
 name = "Explorer"
 url = "http://blockscan.com/assetInfo.aspx?q=SJCX"
 icon = "explorer.png"
 tags = ["Main", "Apps", "Analytics"]
-type = "explorer"
 
 [[links]]
+type = "github"
 name = "Storj GitHub"
 url = "https://github.com/Storj/"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = "github"
 
 [[links]]
+type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/storjproject"
 icon = "twitter.png"
-tags = ["Main", "Apps"]
-type = "twitter"
+tags = ["Main", "News"]
 
 [[links]]
+type = "forum"
 name = "Forum"
 url = "http://storjtalk.org/"
 icon = "forum.png"
-tags = ["Apps"]
-type = "forum"
+tags = ["News"]
 
 [[links]]
+type = "blog"
 name = "Blog"
 url = "http://blog.storj.io/"
 icon = "blog.png"
-tags = ["Apps"]
-type = "blog"
+tags = ["News"]
 
 [[links]]
+type = "reddit"
 name = "reddit"
 url = "http://www.reddit.com/r/storj"
 icon = "reddit.png"
-tags = ["Apps"]
-type = "reddit"
+tags = ["News"]
 
 [[links]]
 name = "Counterparty DEX"
@@ -115,3 +115,8 @@ url = "http://coinmarketcap.com/assets/storjcoin-x/#markets"
 type = "custom"
 icon = "link.png"
 tags = ["Apps", "Analytics"]
+
+[first_price] 
+btc = 0.00002597
+usd = 0.01196365
+date = "2014-08-18T00:00:00"

@@ -1,5 +1,7 @@
 genesis_id = "000001faef25dec4fbcf906e6242621df2c183bf232f263d0ba5b101911e4563"
 system = "BlackCoin"
+icon = "blackcoin"
+dependencies = ["independent"]
 
 [token]
 token_name = "BlackCoin"
@@ -43,9 +45,9 @@ name = "Genesis"
 start_date = "2014-02-24T6:00:00"
 
 [[links]]
+type = "website"
 name = "blackcoin.co"
 url = "http://blackcoin.co/"
-type = "website"
 icon = "website.png"
 tags = ["Main"]
 
@@ -198,69 +200,70 @@ icon = "link.png"
 tags = ["Apps", "Analytics"]
 
 [[links]]
+type = "exchange"
 name = "Poloniex"
 headline = "nein"
 url = "https://www.poloniex.com"
-type = "custom"
 icon = "poloniex.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
+type = "exchange"
 name = "ShapeShift"
 headline = "nein"
 url = "https://shapeshift.io"
-type = "custom"
 icon = "shapeshift.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
+type = "exchange"
 name = "Cryptsy"
 headline = "nein"
 url = "https://www.cryptsy.com/users/register?refid=243274"
-type = "custom"
 icon = "cryptsy.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
+type = "exchange"
 name = "BTC38"
 headline = "Cryptocurrensy Exchange"
 url = "http://www.btc38.com/trade_en.html"
-type = "custom"
 icon = "btc38.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
+type = "exchange"
 name = "CCEDK"
 headline = "Your place for safe and secure crypto currency exchange"
 url = "https://www.ccedk.com/"
-type = "custom"
 icon = "ccedk.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
+type = "exchange"
 name = "BTER"
 headline = "nein"
 url = "https://bter.com/"
-type = "custom"
 icon = "bter.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
+type = "exchange"
 name = "Bittrex"
 headline = "nein"
 url = "https://bittrex.com"
-type = "custom"
 icon = "bittrex.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
+type = "exchange"
 name = "BlueTrade"
 headline = "nein"
 url = "https://bleutrade.com"
-type = "custom"
 icon = "bluetrade.png"
 tags = ["Apps", "Exchange"]
 
-[first_price]
+[first_price] 
 btc = 0.00001169
 usd = 0.00699405
+date = "2014-02-28T00:00:00"

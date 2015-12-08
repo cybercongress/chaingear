@@ -1,5 +1,6 @@
 genesis_id = "8abcfb93c52f999e3ef5288c4f837f4f15af5521"
 system = "BitShares"
+icon = "bitshares"
 dependencies = ["independent"]
 
 [token]
@@ -43,25 +44,25 @@ name = "BitShares 2.0 Release"
 start_date = "2015-10-13T00:00:00"
 
 [[links]]
+type = "website"
 name = "bitshares.org"
 url = "https://bitshares.org/"
 icon = "website.png"
 tags = ["Main"]
-type = "website"
 
 [[links]]
+type = "paper"
 name = "Documentation"
 url = "http://docs.bitshares.org/"
 icon = "whitepaper.png"
 tags = ["Science"]
-type = "paper"
 
 [[links]]
+type = "explorer"
 name = "OpenLedger Explorer"
 url = "https://bitshares.openledger.info/?r=cyberfund#/explorer"
 icon = "openledger.png"
 tags = ["Main", "Apps", "Analytics","Exchange"]
-type = "explorer"
 
 [[links]]
 type = "wallet"
@@ -78,154 +79,148 @@ icon = "bitshares.png"
 tags = ["Main", "Apps", "Wallet"]
 
 [[links]]
-type = "wallet"
-name = "Bitshares 0.x Wallets"
-url = "https://bitshares.org/download/"
-icon = "bitshares.png"
-tags = ["Apps", "Wallet"]
-
-[[links]]
+type = "github"
 name = "Bitshares GitHub"
 url = "https://github.com/BitShares/"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = "github"
 
 [[links]]
+type = "blog"
 name = "BitShares Blog"
 url = "https://bitshares.org/blog/"
 icon = "blog.png"
 tags = ["News"]
-type = "blog"
 
 [[links]]
+type = "forum"
 name = "Forum"
 url = "https://bitsharestalk.org/"
 icon = "forum.png"
 tags = ["News"]
-type = "forum"
 
 [[links]]
+type = "explorer"
 name = "CryptoFresh Explorer"
 url = "http://cryptofresh.com/?r=cyberfund"
 icon = "cryptofresh.png"
 tags = ["Main", "Apps", "Analytics"]
-type = "explorer"
 
 [[links]]
+type = "explorer"
 name = "Graphene Stats"
 url = "http://stats.bitshares.eu/"
 icon = "bitshares.png"
 tags = ["Apps", "Analytics"]
-type = "explorer"
 
 [[links]]
+type = "custom"
 name = "CoinTelegraph"
 url = "http://cointelegraph.com/tags/bitshares"
-type = "custom"
 icon = "cointelegraph.png"
 tags = ["News"]
 
 [[links]]
+type = "custom"
 name = "CoinDesk"
 url = "http://www.coindesk.com/tag/bitshares/"
-type = "custom"
 icon = "coindesk.png"
 tags = ["News"]
 
 [[links]]
+type = "custom"
 name = "CryptoCoinsNews"
 url = "https://www.cryptocoinsnews.com/tag/bitshares/"
 rss = "https://www.cryptocoinsnews.com/tag/bitshares/feed/"
-type = "custom"
 icon = "cryptocoinnews.png"
 tags = ["News"]
 
 [[links]]
+type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/_bitshares"
 icon = "twitter.png"
 tags = ["News"]
-type = "twitter"
 
 [[links]]
+type = "reddit"
 name = "reddit"
 url = "http://www.reddit.com/r/BitShares"
 icon = "reddit.png"
 tags = ["News"]
-type = "reddit"
 
 [[links]]
+type = "custom"
 name = "AboutBitshares"
 headline = "Great site for news about Bitshares as well as video tutorials"
 url = "http://www.aboutbts.com/"
 icon = "link.png"
 tags = ["News"]
-type = "News"
 
 [[links]]
+type = "custom"
 name = "Beyondbitcoin"
 headline = "Beyondbitcoin"
 url = "https://beyondbitcoin.org/"
 rss = "https://beyondbitcoin.org/feed/"
 icon = "beyondbitcoin.png"
 tags = ["News"]
-type = "News"
+
 
 [[links]]
+type = "exchange"
+name = "Open Ledger"
+headline = "Transparent Decentrilized Exchange"
+url = "https://openledger.info/?r=cyberfund#"
+icon = "openledger.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+type = "exchange"
 name = "ShapeShift"
 headline = "Instant Exchange"
 url = "https://shapeshift.io"
-type = "custom"
 icon = "shapeshift.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
+type = "exchange"
 name = "MetaExchange"
 headline = "The future of the instant exchange"
 url = "https://metaexchange.info/"
-type = "custom"
 icon = "metaexchange.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
+type = "exchange"
 name = "CCEDK"
 headline = "Your place for safe and secure crypto currency exchange"
 url = "https://www.ccedk.com/"
-type = "custom"
 icon = "ccedk.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
+type = "exchange"
 name = "Poloniex"
 headline = "Cryptocurrensy Exchange"
 url = "https://www.poloniex.com/exchange#btc_bts"
-type = "custom"
 icon = "poloniex.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
+type = "exchange"
 name = "BlockTrades"
 headline = "Your Gateway to the BitShares Trading Network"
 url = "https://blocktrades.us/"
-type = "custom"
 icon = "blocktrades.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
+type = "exchange"
 name = "BTC38"
 headline = "Cryptocurrensy Exchange"
 url = "http://www.btc38.com/trade_en.html"
-type = "custom"
 icon = "btc38.png"
-tags = ["Apps", "Exchange"]
-
-[[links]]
-name = "Open Ledger"
-headline = "Transparent Decentrilized Exchange"
-url = "https://openledger.info/"
-type = "custom"
-icon = "openledger.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
@@ -294,6 +289,7 @@ type = "custom"
 icon = "link.png"
 tags = ["Apps", "Analytics"]
 
-[first_price]
-btc = 0.00147592
-usd = 0.923632
+[first_price] 
+btc = 0.00000295
+usd = 0.00184611
+date = "2014-07-19T00:00:00"

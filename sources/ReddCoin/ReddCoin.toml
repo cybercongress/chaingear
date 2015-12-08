@@ -1,6 +1,7 @@
-dependencies = ["independent"]
-source = "cyberFund"
+genesis_id = "b868e0d95a3c3c0e0dadc67ee587aaf9dc8acbf99e3b4b3110fad4eb74c1decc"
 system = "ReddCoin"
+icon = "reddcoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "ReddCoin"
@@ -10,9 +11,10 @@ CurrencyName = "ReddCoin"
 rating_cyber = 1.0
 
 [consensus]
+consensus_type = "Proof-of-Stake"
 consensus_name = "Proof-of-Stake Velocity"
 hashing = "Scrypt"
-consensus_type = ""
+
 
 [descriptions]
 state = "Public"
@@ -20,8 +22,10 @@ system_type = "cryptocurrency"
 tags = ["DAO"]
 hashtag = "#Reddcoin"
 
-[events]
-announcement = "20/01/2014"
+[[events]]
+name = "Announcement" 
+start_date = "2014-01-20T00:00:00"
+url = "https://bitcointalk.org/index.php?topic=423597.0"
 
 [token]
 token_name = "ReddCoin"
@@ -36,56 +40,61 @@ total_tokens = 109000000000.0
 difficulty_cycle = "every block (Kimoto Gravity Well)"
 
 [[links]]
-name = "web site"
+type = "website"
+name = "reddcoin.com"
 url = "http://www.reddcoin.com/"
 icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main"]
 
 [[links]]
-name = "github"
+type = "github"
+name = "ReddCoin GitHub"
 url = "https://github.com/reddcoin/reddcoin"
 icon = "github.png"
 tags = ["Main", "Code"]
-type = ""
 
 [[links]]
-name = "explorer"
+type = "explorer"
+name = "Explorer"
 url = "http://live.reddcoin.com/"
 icon = "explorer.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main", "Apps","Analytics"]
 
 [[links]]
-name = "twitter"
+type = "twitter"
+name = "Twitter"
 url = "https://twitter.com/reddcoin"
 icon = "twitter.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["Main", "News"]
 
 [[links]]
-name = "forum"
+type = "forum"
+name = "ReddCoin Forum"
 url = "https://www.reddcointalk.org/"
 icon = "forum.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "blog"
+type = "blog"
+name = "ReddCoin Blog"
 url = "https://www.reddcoin.com/blog/"
 icon = "blog.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
+type = "reddit"
 name = "reddit"
 url = "https://www.reddit.com/r/reddCoin/"
 icon = "reddit.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "Announcement"
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=423597.0"
-type = "custom"
-tags = ["publications"]
+tags = ["News"]
+
+[first_price] 
+btc = 0.00000004
+usd = 0.00002852
+date = "2014-02-10T00:00:00"
