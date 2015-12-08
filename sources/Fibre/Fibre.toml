@@ -10,13 +10,15 @@ state = "Public"
 system_type = "cryptocurrency"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Hybrid POW+POS"
 
 [token]
 token_name = "Fibre"
 token_symbol = "FIBRE"
 
 [specs]
+total_tokens = 625000
+premine_tokens = 12500
 
 [[links]]
 type = "website"
@@ -42,6 +44,11 @@ tags = ["Main", "Code"]
 [[links]]
 type = "forum"
 name = "BTT Thread"
-url = "https://bitcointalk.org/index.php?topic=577267.0"
+url = "https://bitcointalk.org/index.php?topic=737771.0"
 icon = "forum.png"
 tags = ["Main","News"]
+
+[first_price] 
+btc = 0.00023831
+usd = 0.11531354
+date = "2014-08-30T00:00:00"

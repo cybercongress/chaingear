@@ -1,6 +1,7 @@
 genesis_id = "0000003f068a10c2446d021072691bb0b1ce833aa7b40a712365ac933a0d1f33"
 system = "Zeitcoin"
 icon = "zeitcoin"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "Zeitcoin"
@@ -9,8 +10,8 @@ coinmarketcap = "Zeitcoin"
 rating_cyber = 1.0
 
 [consensus]
-hashing = "Scrypt"
-consensus_type = ""
+consensus_type = "Hybrid POW+POS"
+consensus_name = "Scrypt"
 
 [descriptions]
 state = "Public"
@@ -60,3 +61,8 @@ name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=487814.0"
 icon = "forum.png"
 tags = ["Main","News"]
+
+[first_price] 
+btc = 0.00000002
+usd = 0.00001114
+date = "2014-03-20T00:00:00"

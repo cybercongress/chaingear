@@ -1,17 +1,17 @@
 genesis_id = "00000729be7c186c90758ebeb55f9f947ee3f1d856b5d136d5796b4a5a704a59"
-dependencies = ["independent"]
 system = "Navajo"
+icon = "navajo"
+dependencies = ["independent"]
 
 [aliases]
 coinmarketcap = "Navajo"
-CurrencyName = "Navajo"
 
 [ratings]
 rating_cyber = 1.0
 
 [consensus]
 consensus_name = "Proof-of-Stake"
-consensus_type = ""
+consensus_type = "Proof-of-Stake"
 
 [descriptions]
 tags = ["DAO"]
@@ -25,50 +25,57 @@ token_symbol = "NAV"
 [specs]
 
 [[links]]
+type = "website"
+name = "navajocoin.org"
+url = "http://navajocoin.org/"
+icon = "website.png"
+tags = ["Main"]
+
+
+[[links]]
+type = "explorer"
+name = "Explorer"
+url = "http://navajocoin.org/block-explorer"
+icon = "explorer.png"
+tags = ["Main", "Apps","Analytics"]
+
+[[links]]
+type = "github"
+name = "Navajo GitHub"
+url = "https://github.com/sherlockcoin/navajocoin"
+icon = "github.png"
+tags = ["Main", "Code"]
+
+
+[[links]]
+type = "paper"
 name = "Documentation"
 url = "http://navajocoin.org/pdf/navajocoin.pdf"
 icon = "whitepaper.png"
 tags = ["Main", "Science"]
-type = ""
 
 [[links]]
-name = "web site"
-url = "http://navajocoin.org/"
-icon = "website.png"
-tags = ["Main", "Apps"]
-type = ""
-
-[[links]]
-name = "explorer"
-url = "http://navajocoin.org/block-explorer"
-icon = "explorer.png"
-tags = ["Main", "Apps"]
-type = ""
-
-[[links]]
-name = "github"
-url = "https://github.com/sherlockcoin/navajocoin"
-icon = "github.png"
-tags = ["Main", "Code"]
-type = ""
-
-[[links]]
-name = "twitter"
+type = "twitter"
+name = "Twitter"
 url = "https://twitter.com/NavajoCoin"
 icon = "twitter.png"
-tags = ["Main", "Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
-name = "forum"
+type = "forum"
+name = "Forum"
 url = "http://forum.navajocointalk.org/"
 icon = "forum.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
 
 [[links]]
+type = "reddit"
 name = "reddit"
 url = "http://www.reddit.com/r/navajocoin"
 icon = "reddit.png"
-tags = ["Apps"]
-type = ""
+tags = ["News"]
+
+[first_price] 
+btc = 0.00000618
+usd = 0.00367082
+date = "2014-06-12T00:00:00"

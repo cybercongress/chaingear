@@ -11,7 +11,7 @@ state = "Public"
 system_type = "cryptoasset"
 
 [consensus]
-consensus_type = ""
+consensus_type = "Blockchain Ledger"
 
 [token]
 token_name = "NobleNXT"
@@ -55,8 +55,13 @@ icon = "forum.png"
 tags = ["News"]
 
 [[links]]
+type = "exchange"
 name = "NXT AE"
 url = "http://nxtreporting.com/?a=6780060819348751348"
 icon = "nxt.png"
 tags = ["Apps", "Exchange"]
-type = "custom"
+
+[first_price] 
+btc = 0.00041755
+usd = 0.14773793
+date = "2014-12-07T00:00:00"
