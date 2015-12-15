@@ -9,9 +9,8 @@ coinmarketcap = "SysCoin"
 rating_cyber = 1.0
 
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "Proof-of-Work"
-hashing = "Scrypt"
+type = "PoW"
+algorithm = "Scrypt"
 
 [descriptions]
 state = "Public"
@@ -64,7 +63,7 @@ url = "https://bitcointalk.org/index.php?topic=757255"
 icon = "forum.png"
 tags = ["Main", "News"]
 
-[first_price] 
+[first_price]
 btc = 0.00000421
 usd = 0.00214359
 date = "2014-08-20T00:00:00"

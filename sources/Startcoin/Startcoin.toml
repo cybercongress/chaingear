@@ -7,8 +7,8 @@ token_name = "Startcoin"
 token_symbol = "START"
 
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "X11"
+type = "PoW"
+algorithm = "X11"
 
 [descriptions]
 state = "Public"
@@ -205,7 +205,7 @@ type = "custom"
 icon = "bluetrade.png"
 tags = ["Apps", "Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.00032682
 usd = 0.1943357
 date = "2014-06-15T00:00:00"

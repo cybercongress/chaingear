@@ -8,9 +8,8 @@ token_name = "Namecoin"
 token_symbol = "NMC"
 
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "Proof-of-Work"
-hashing = "SHA-256"
+type = "PoW"
+algorithm = "SHA-256"
 
 [descriptions]
 state = "Public"
@@ -219,7 +218,7 @@ type = "custom"
 icon = "mining.png"
 tags = ["Apps"]
 
-[first_price] 
+[first_price]
 btc = 0.00946308
 usd = 1.14538187
 date = "2013-04-28T00:00:00"

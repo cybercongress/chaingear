@@ -11,9 +11,8 @@ CurrencyName = "ReddCoin"
 rating_cyber = 1.0
 
 [consensus]
-consensus_type = "Proof-of-Stake"
-consensus_name = "Proof-of-Stake Velocity"
-hashing = "Scrypt"
+type = "PoS"
+algorithm = "Velocity"
 
 
 [descriptions]
@@ -23,7 +22,7 @@ tags = ["DAO"]
 hashtag = "#Reddcoin"
 
 [[events]]
-name = "Announcement" 
+name = "Announcement"
 start_date = "2014-01-20T00:00:00"
 url = "https://bitcointalk.org/index.php?topic=423597.0"
 
@@ -94,7 +93,7 @@ name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=423597.0"
 tags = ["News"]
 
-[first_price] 
+[first_price]
 btc = 0.00000004
 usd = 0.00002852
 date = "2014-02-10T00:00:00"

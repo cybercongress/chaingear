@@ -6,7 +6,8 @@ token_name = "NEM"
 token_symbol = "XEM"
 
 [consensus]
-consensus_type = "Proof-of-Importance"
+type = "PoS"
+algorithm = "Proof-of-Importance"
 
 [descriptions]
 state = "Public"
@@ -195,7 +196,7 @@ type = "explorer"
 icon = "explorer.png"
 tags = ["Apps", "Analytics"]
 
-[first_price] 
+[first_price]
 btc = 0.00000002
 usd = 0.000007216814
 date = "2014-04-10T00:00:00"

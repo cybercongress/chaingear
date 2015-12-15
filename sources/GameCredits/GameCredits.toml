@@ -10,8 +10,8 @@ state = "Public"
 system_type = "cryptocurrency"
 
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "Scrypt"
+type = "PoW"
+algorithm = "Scrypt"
 
 [token]
 token_name = "GameCredits"
@@ -47,7 +47,7 @@ url = "https://bitcointalk.org/index.php?topic=1010745"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00000007
 usd = 0.00003271
 date = "2014-01-09T00:00:00"

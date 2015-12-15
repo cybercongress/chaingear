@@ -6,8 +6,8 @@ icon = "freicoin"
 coinmarketcap = "Freicoin"
 
 [consensus]
-hashing = "SHA-256d"
-consensus_type = "Proof-of-Work"
+type = "PoW"
+algorithm = "SHA-256"
 
 [descriptions]
 state = "Public"
@@ -55,7 +55,7 @@ url = "https://bitcointalk.org/index.php?topic=89843.0"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00067395
 usd = 0.07537172
 date = "2013-05-03T00:00:00"

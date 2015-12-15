@@ -6,19 +6,22 @@ dependencies = ["independent"]
 [aliases]
 coinmarketcap = "AsiaCoin"
 
-[ratings]
-rating_cyber = 1.0
-
 [descriptions]
 system_type = "cryptocurrency"
 state = "Public"
 
 [consensus]
-consensus_type = "Proof-of-Stake"
+type = "PoS"
+algorithm = "Naive"
 
 [token]
 token_name = "AsiaCoin"
 token_symbol = "AC"
+
+[first_price]
+btc = 0.00000993
+usd = 0.00480666
+date = "2014-04-20T00:00:00"
 
 [specs]
 
@@ -49,8 +52,3 @@ name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=595999.0"
 icon = "forum.png"
 tags = ["Main","News"]
-
-[first_price] 
-btc = 0.00000993
-usd = 0.00480666
-date = "2014-04-20T00:00:00"

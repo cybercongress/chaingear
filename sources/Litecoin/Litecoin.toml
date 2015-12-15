@@ -8,9 +8,8 @@ token_name = "Litecoin"
 token_symbol = "LTC"
 
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "Scrypt"
-hashing = "SHA-256"
+type = "PoW"
+algorithm = "Scrypt"
 
 [descriptions]
 state = "Public"
@@ -359,7 +358,7 @@ type = "custom"
 icon = "blocktrades.png"
 tags = ["Apps", "Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.0314437
 usd = 3.82096807
 date = "2013-04-28T00:00:00"

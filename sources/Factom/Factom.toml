@@ -8,8 +8,8 @@ token_name = "factoid"
 token_symbol = "FCT"
 
 [consensus]
-consensus_type = "Blockchain record"
-consensus_name = "Bitcoin"
+type = "Ancored Federation"
+algorithm = "Factom"
 
 [descriptions]
 state = "Public"
@@ -133,7 +133,7 @@ tags = ["Apps","Exchange"]
 [flags]
 suplly_from_here = true
 
-[first_price] 
+[first_price]
 btc = 0.00026005
 usd = 0.06171249
 date = "2015-05-15T00:00:00"

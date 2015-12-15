@@ -9,8 +9,8 @@ coinmarketcap = "MazaCoin"
 rating_cyber = 1.0
 
 [consensus]
-hashing = "SHA-256d"
-consensus_type = ""
+type = "PoW"
+algorithm = "SHA-256"
 
 [descriptions]
 state = "Public"
@@ -61,7 +61,7 @@ url = "https://bitcointalk.org/index.php?topic=508849.0"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00003196
 usd = 0.02066282
 date = "2014-02-27T00:00:00"

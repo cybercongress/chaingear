@@ -10,8 +10,8 @@ CurrencyName = "Auroracoin"
 rating_cyber = 1.0
 
 [consensus]
-hashing = "Scrypt"
-consensus_type = ""
+type = "PoW"
+algorithm = "Scrypt"
 
 [descriptions]
 state = "Public"
@@ -61,7 +61,7 @@ url = "https://bitcointalk.org/index.php?topic=446062.0"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.05305546
 usd = 33.64702857
 date = "2014-02-27T00:00:00"

@@ -14,9 +14,8 @@ coinmarketcap = "GridCoin"
 rating_cyber = 3.0
 
 [consensus]
-consensus_type = "Proof-of-Research"
-consensus_name = "Proof-of-Research"
-hashing = "Scrypt"
+type = "PoS"
+algorithm = "Proof-of-Research"
 
 [descriptions]
 state = "Public"
@@ -185,7 +184,7 @@ type = "custom"
 icon = "c-cex.png"
 tags = ["Apps","Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.00000712
 usd = 0.00190594
 date = "2015-02-28T00:00:00"

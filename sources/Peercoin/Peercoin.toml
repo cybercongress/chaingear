@@ -8,9 +8,8 @@ token_name = "Peercoin"
 token_symbol = "PPC"
 
 [consensus]
-consensus_type = "Hybrid POW-POS"
-consensus_name = "Hybrid POW-POS"
-hashing = "SHA-256d"
+type = "Hybrid"
+algorithm = "SHA-256+Naive"
 
 [descriptions]
 state = "Public"
@@ -239,7 +238,7 @@ type = "custom"
 icon = "bluetrade.png"
 tags = ["Apps", "Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.00260387
 usd = 0.29885232
 date = "2013-04-30T00:00:00"

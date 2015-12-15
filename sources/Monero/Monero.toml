@@ -7,9 +7,8 @@ token_name = "Monero"
 token_symbol = "XMR"
 
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "CryptoNight"
-hashing = ""
+type = "PoW"
+algorithm = "CryptoNight"
 
 [descriptions]
 state = "Public"
@@ -242,7 +241,7 @@ type = "custom"
 icon = "btc38.png"
 tags = ["Apps", "Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.00488921
 usd = 2.51376883
 date = "2014-05-19T00:00:00"

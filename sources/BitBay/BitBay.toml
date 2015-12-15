@@ -10,8 +10,8 @@ coinmarketcap = "BitBay"
 rating_cyber = 1.0
 
 [consensus]
-consensus_name = "Proof-of-Stake"
-consensus_type = "Proof-of-Stake"
+type = "PoS"
+algorithm = "Naive"
 
 [descriptions]
 system_type = "cryptocurrency"
@@ -52,7 +52,7 @@ url = "https://bitcointalk.org/index.php?topic=890531"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00000267
 usd = 0.00098223
 date = "2014-11-16T00:00:00"

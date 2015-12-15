@@ -10,9 +10,8 @@ coinmarketcap = "Primecoin"
 rating_cyber = 2.0
 
 [consensus]
-consensus_name = "Proof-of-Work"
-hashing = "Others"
-consensus_type = "Proof-of-Work"
+type = "PoW"
+algorithm = "Prime"
 
 [descriptions]
 state = "Public"
@@ -64,7 +63,7 @@ url = "https://bitcointalk.org/index.php?topic=251850.0"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00425984
 usd = 0.3865391
 date = "2013-07-11T00:00:00"

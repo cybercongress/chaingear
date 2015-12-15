@@ -10,9 +10,8 @@ CurrencyName = "Crypti"
 rating_cyber = 2.0
 
 [consensus]
-consensus_name = "Delegated Proof-of-Stake"
-hashing = "X11"
-consensus_type = ""
+type = "PoS"
+algorithm = "Delegated"
 
 [descriptions]
 state = "Public"
@@ -166,7 +165,7 @@ type = "custom"
 icon = "bter.png"
 tags = ["Apps", "Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.0000169
 usd = 0.00972686
 date = "2014-08-07T00:00:00"
