@@ -10,10 +10,8 @@ coinmarketcap = "GoldCoin"
 rating_cyber = 1.0
 
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "Scrypt"
-hashing = "Scrypt"
-
+type = "PoW"
+algorithm = "Scrypt"
 
 [descriptions]
 state = "Public"
@@ -62,7 +60,7 @@ url = "https://www.gldtalk.org/"
 icon = "forum.png"
 tags = ["News"]
 
-[first_price] 
+[first_price]
 btc = 0.00001409
 usd = 0.00146028
 date = "2013-06-14T00:00:00"

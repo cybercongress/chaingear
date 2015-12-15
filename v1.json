@@ -13,8 +13,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": "3%-20%"
         },
         "descriptions": {
             "tags": [
@@ -25,7 +25,7 @@
         },
         "token": {
             "token_symbol": "ARCH",
-            "token_name": "ARCHcoin"
+            "token_name": "archcoin"
         },
         "specs": {},
         "links": [
@@ -234,30 +234,30 @@
         "aliases": {
             "coinmarketcap": "Anoncoin"
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Scrypt"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
+            "headline": "Privacy Centric Cryptocuurency",
             "state": "Public",
             "system_type": "cryptocurrency",
             "tags": [
-                "DAO"
+                "anonimity"
             ]
         },
         "token": {
-            "token_name": "Anoncoin",
+            "token_name": "anoncoin",
             "token_symbol": "ANC"
         },
         "specs": {
-            "block_time": "180",
-            "block_reward": 5,
-            "halfing_cycle": 306600,
-            "total_tokens": 4200000
+            "block_time": "180 seconds",
+            "total_tokens": 3103954
+        },
+        "first_price": {
+            "btc": 0.00026974,
+            "usd": 0.02373913,
+            "date": "2013-07-15T00:00:00"
         },
         "events": [
             {
@@ -308,12 +308,7 @@
                     "News"
                 ]
             }
-        ],
-        "first_price": {
-            "btc": 0.00026974,
-            "usd": 0.02373913,
-            "date": "2013-07-15T00:00:00"
-        }
+        ]
     },
     {
         "genesis_id": "00000045eeaee1dd4b64a67ed47a3b8abaacb02559487e6ef61ce6fb7481ae67",
@@ -330,7 +325,8 @@
             "state": "Public"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": "Naive"
         },
         "token": {
             "token_name": "AsiaCoin",
@@ -607,8 +603,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "hashing": "Scrypt",
-            "consensus_type": ""
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -694,8 +690,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": "Naive"
         },
         "descriptions": {
             "system_type": "cryptocurrency",
@@ -770,8 +766,8 @@
             "token_symbol": "BTS"
         },
         "consensus": {
-            "consensus_type": "Delegated Proof-of-Stake",
-            "consensus_name": "BitShares DPOS"
+            "type": "PoS",
+            "algorithm": "Delegated"
         },
         "descriptions": {
             "state": "Public",
@@ -1161,8 +1157,8 @@
             "token_symbol": "NOTE"
         },
         "consensus": {
-            "consensus_name": "DPOS",
-            "consensus_type": "Delegated-Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": "Delegated"
         },
         "descriptions": {
             "state": "Public",
@@ -1342,8 +1338,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Delegated Proof-of-Stake",
-            "consensus_type": "Delegated Proof-of-Stake"
+            "type": "POS",
+            "algorithm": "Graphene"
         },
         "descriptions": {
             "tags": [
@@ -1405,8 +1401,8 @@
             "token_symbol": "PLS"
         },
         "consensus": {
-            "consensus_type": "Delegated Proof-of-Stake",
-            "consensus_name": "DPOS"
+            "type": "POS",
+            "algorithm": "Delegated"
         },
         "descriptions": {
             "state": "Pre-Public",
@@ -2345,9 +2341,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_type": "Proof-of-Stake",
-            "consensus_name": "Proof-of-Stake",
-            "hashing": "SHA-256d"
+            "type": "PoW",
+            "algorithm": "SHA-256"
         },
         "descriptions": {
             "state": "Public",
@@ -2656,9 +2651,8 @@
             "token_symbol": "BLK"
         },
         "consensus": {
-            "consensus_type": "Hybrid POW+POS",
-            "consensus_name": "Scrypt",
-            "hashing": "SHA-256"
+            "type": "PoS",
+            "algorithm": "Naive"
         },
         "descriptions": {
             "state": "Public",
@@ -3024,8 +3018,8 @@
             "rating_cyber": 2
         },
         "consensus": {
-            "consensus_name": "",
-            "consensus_type": ""
+            "type": "PoS",
+            "algorithm": ""
         },
         "token": {
             "token_name": "BlockShare",
@@ -3193,9 +3187,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Wild Keccak",
-            "consensus_type": ""
+            "type": "PoW",
+            "algorithm": "Keccak"
         },
         "descriptions": {
             "state": "Public",
@@ -3283,8 +3276,8 @@
             "rating_cyber": 2
         },
         "consensus": {
-            "consensus_name": "Proof-of-Capacity",
-            "consensus_type": "Proof-of-Capacity"
+            "type": "PoS",
+            "algorithm": "Proof-of-Capacity"
         },
         "descriptions": {
             "state": "Public",
@@ -3362,9 +3355,8 @@
             "token_symbol": "BCN"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "CryptoNight",
-            "hashing": "CryptoNight"
+            "type": "PoW",
+            "algorithm": "CryptoNight"
         },
         "descriptions": {
             "state": "Public",
@@ -3785,8 +3777,8 @@
         },
         "ratings": {},
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Scrypt"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "token": {
             "token_name": "canadaecoin",
@@ -3897,8 +3889,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -3969,8 +3961,8 @@
             "coinmarketcap": "CasinoCoin"
         },
         "consensus": {
-            "hashing": "Scrypt",
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -4053,8 +4045,8 @@
             "token_symbol": "CLAM"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Stake",
-            "consensus_name": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -4255,7 +4247,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "token": {
             "token_name": "CloakCoin",
@@ -4842,9 +4835,8 @@
             "rating_cyber": 2
         },
         "consensus": {
-            "consensus_name": "Delegated Proof-of-Stake",
-            "hashing": "X11",
-            "consensus_type": ""
+            "type": "PoS",
+            "algorithm": "Delegated"
         },
         "descriptions": {
             "state": "Public",
@@ -5183,8 +5175,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "hashing": "SHA-256d",
-            "consensus_type": "Proof-of-Stake"
+            "type": "",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -5255,9 +5247,8 @@
             "token_symbol": "NOTE"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Scrypt",
-            "hashing": "SHA-256"
+            "type": "PoW",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -5540,9 +5531,8 @@
             "token_symbol": "DASH"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Proof-of-Work",
-            "hashing": "X11"
+            "type": "PoW",
+            "algorithm": "X11"
         },
         "descriptions": {
             "state": "Public",
@@ -5879,7 +5869,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": ""
         },
         "token": {
             "token_name": "Deutsche eMark",
@@ -5949,9 +5940,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Hybrid POW-POS",
-            "hashing": "Scrypt",
-            "consensus_type": "Hybrid POW-POS"
+            "type": "",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -6037,8 +6027,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -6115,9 +6105,8 @@
             "rating_cyber": 2
         },
         "consensus": {
-            "consensus_name": "CryptoNight",
-            "hashing": "CryptoNight",
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": "CryptoNight"
         },
         "descriptions": {
             "state": "Public",
@@ -6226,9 +6215,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Multi-algo",
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -6310,9 +6298,8 @@
         },
         "ratings": {},
         "consensus": {
-            "consensus_name": "",
-            "hashing": "",
-            "consensus_type": ""
+            "type": "",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Project",
@@ -6387,7 +6374,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": ""
         },
         "token": {
             "token_name": "DogeCoinDark",
@@ -6455,9 +6443,8 @@
             "token_symbol": "DOGE"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Scrypt with AuxPoW",
-            "hashing": "SHA-256d"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -6864,8 +6851,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consetsus_type": "Proof-of-Work",
-            "consetsus_name": "Scrypt"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "token": {
             "token_name": "Electronic Gulden",
@@ -6937,7 +6924,8 @@
             "rating_cyber": 2
         },
         "consensus": {
-            "consensus_name": "Hybryd"
+            "type": "Hybrid",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -7298,8 +7286,8 @@
             "token_symbol": "ETH"
         },
         "consensus": {
-            "consensus_name": "Ethereum",
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": "Ethash"
         },
         "descriptions": {
             "state": "Public",
@@ -7891,8 +7879,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": ""
+            "type": "PoS",
+            "algorithm": "Naive NXT"
         },
         "descriptions": {
             "state": "Public",
@@ -7974,8 +7962,8 @@
             "token_symbol": "FCT"
         },
         "consensus": {
-            "consensus_type": "Blockchain record",
-            "consensus_name": "Bitcoin"
+            "type": "Ancored Federation",
+            "algorithm": "Factom"
         },
         "descriptions": {
             "state": "Public",
@@ -8154,8 +8142,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Hybrid POW-POS",
-            "consensus_type": "Hybrid POW-POS"
+            "type": "Hybrid",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -8232,9 +8220,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Scrypt",
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -8321,7 +8308,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": "Hybrid POW+POS"
+            "type": "Hybrid",
+            "algorithm": ""
         },
         "token": {
             "token_name": "Fibre",
@@ -8425,8 +8413,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "hashing": "Scrypt",
-            "consensus_type": ""
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -8830,8 +8818,8 @@
             "coinmarketcap": "Freicoin"
         },
         "consensus": {
-            "hashing": "SHA-256d",
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": "SHA-256"
         },
         "descriptions": {
             "state": "Public",
@@ -8914,8 +8902,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -8997,8 +8985,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Scrypt"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "token": {
             "token_name": "GameCredits",
@@ -9063,8 +9051,8 @@
             "CurrencyName": "GeoCoin"
         },
         "consensus": {
-            "hashing": "Scrypt",
-            "consensus_type": ""
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -9459,9 +9447,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Scrypt",
-            "hashing": "Scrypt"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -9553,9 +9540,8 @@
             "rating_cyber": 3
         },
         "consensus": {
-            "consensus_type": "Proof-of-Research",
-            "consensus_name": "Proof-of-Research",
-            "hashing": "Scrypt"
+            "type": "PoS",
+            "algorithm": "Proof-of-Research"
         },
         "descriptions": {
             "state": "Public",
@@ -9802,7 +9788,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": "Groestl"
         },
         "token": {
             "token_name": "GroestlCoin",
@@ -9870,9 +9857,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Scrypt PoW DELTA",
-            "hashing": "Scrypt"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -9952,8 +9938,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "hashing": "Scrypt",
-            "consensus_type": ""
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -10051,7 +10037,8 @@
             }
         ],
         "consensus": {
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": "Naive NXT"
         },
         "token": {
             "token_name": "Horizon",
@@ -10230,8 +10217,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -10305,8 +10292,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "hashing": "X11",
-            "consensus_type": ""
+            "type": "PoW",
+            "algorithm": "X11"
         },
         "descriptions": {
             "state": "Public",
@@ -10388,7 +10375,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "token": {
             "token_name": "IOCoin",
@@ -10455,7 +10443,10 @@
             "coinmarketcap": "Identabit"
         },
         "ratings": {},
-        "consensus": {},
+        "consensus": {
+            "type": "PoS",
+            "algorithm": "Graphene"
+        },
         "descriptions": {
             "state": "Project",
             "headline": "Decentralized Regulatory Compliance",
@@ -10606,7 +10597,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": ""
+            "type": "",
+            "algorithm": ""
         },
         "token": {
             "token_name": "Jumbucks",
@@ -10916,9 +10908,8 @@
             "token_symbol": "LTC"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Scrypt",
-            "hashing": "SHA-256"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -12187,8 +12178,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "hashing": "SHA-256d",
-            "consensus_type": ""
+            "type": "PoW",
+            "algorithm": "SHA-256"
         },
         "descriptions": {
             "state": "Public",
@@ -12272,9 +12263,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Scrypt"
+            "type": "PoW",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -12365,9 +12355,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_type": "Proof-of-Stake",
-            "consensus_name": "Proof-of-Stake",
-            "hashing": "Scrypt"
+            "type": "PoW",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -12454,9 +12443,8 @@
             "token_symbol": "MONA"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Dark Gravity Wave",
-            "hashing": "Lyra2REv2"
+            "type": "PoW",
+            "algorithm": "Lyra2RE"
         },
         "descriptions": {
             "state": "Public",
@@ -12669,9 +12657,8 @@
             "token_symbol": "XMR"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "CryptoNight",
-            "hashing": ""
+            "type": "PoW",
+            "algorithm": "CryptoNight"
         },
         "descriptions": {
             "state": "Public",
@@ -13117,7 +13104,8 @@
             "token_symbol": "XEM"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Importance"
+            "type": "PoS",
+            "algorithm": "Proof-of-Importance"
         },
         "descriptions": {
             "state": "Public",
@@ -13439,9 +13427,8 @@
             "token_symbol": "NMC"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Proof-of-Work",
-            "hashing": "SHA-256"
+            "type": "PoW",
+            "algorithm": "SHA-256"
         },
         "descriptions": {
             "state": "Public",
@@ -13739,7 +13726,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "token": {
             "token_name": "NautilusCoin",
@@ -13809,8 +13797,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": "SHA-256"
         },
         "descriptions": {
             "tags": [
@@ -13933,8 +13921,8 @@
             "rating_cyber": 3
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "token": {
             "token_name": "NeuCoin",
@@ -14198,9 +14186,8 @@
             "token_symbol": "NVC"
         },
         "consensus": {
-            "consensus_type": "Hybrid POW-POS",
-            "consensus_name": "Scrypt",
-            "hashing": "SHA256"
+            "type": "Hybrid",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -14376,8 +14363,8 @@
             "rating_cyber": 3
         },
         "consensus": {
-            "consensus_name": "Peercoin",
-            "consensus_type": ""
+            "type": "PoS",
+            "algorithm": "Peershares"
         },
         "descriptions": {
             "state": "Public",
@@ -14500,8 +14487,8 @@
             "token_symbol": "NSR"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Stake",
-            "consensus_name": "NuBits"
+            "type": "PoS",
+            "algorithm": "Peershares"
         },
         "descriptions": {
             "state": "Public",
@@ -14715,9 +14702,8 @@
             "token_symbol": "NXT"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Stake",
-            "consensus_name": "Proof-of-Stake",
-            "hashing": "SHA-256"
+            "type": "PoS",
+            "algorithm": "Naive NXT"
         },
         "descriptions": {
             "state": "Public",
@@ -15421,9 +15407,8 @@
             "token_symbol": "PPC"
         },
         "consensus": {
-            "consensus_type": "Hybrid POW-POS",
-            "consensus_name": "Hybrid POW-POS",
-            "hashing": "SHA-256d"
+            "type": "Hybrid",
+            "algorithm": "SHA-256+Naive"
         },
         "descriptions": {
             "state": "Public",
@@ -15795,8 +15780,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -15871,9 +15856,8 @@
             "rating_cyber": 2
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Others",
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": "Prime"
         },
         "descriptions": {
             "state": "Public",
@@ -15962,8 +15946,8 @@
             "rating_cyber": 2
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": ""
+            "type": "PoW",
+            "algorithm": "Naive Qora"
         },
         "descriptions": {
             "tags": [
@@ -16250,9 +16234,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_type": "Proof-of-Stake",
-            "consensus_name": "Proof-of-Stake Velocity",
-            "hashing": "Scrypt"
+            "type": "PoS",
+            "algorithm": "Velocity"
         },
         "descriptions": {
             "state": "Public",
@@ -16414,8 +16397,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": ""
+            "type": "",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -16490,8 +16473,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "hashing": "Others",
-            "consensus_type": ""
+            "type": "",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -16584,8 +16567,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "descriptions": {
             "tags": [
@@ -16660,8 +16643,8 @@
             "token_symbol": "XRP"
         },
         "consensus": {
-            "consensus_type": "Federated Consensus",
-            "consensus_name": "Ripple Federated Consensus"
+            "type": "TL",
+            "algorithm": "Naive Ripple"
         },
         "descriptions": {
             "state": "Public",
@@ -17076,7 +17059,8 @@
             "token_symbol": "RBY"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -17442,8 +17426,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "descriptions": {
             "tags": [
@@ -17518,9 +17502,8 @@
             "token_symbol": "SC"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Blake2b"
+            "type": "PoW",
+            "algorithm": "Blake2b"
         },
         "descriptions": {
             "state": "Public",
@@ -17667,7 +17650,8 @@
             "CurrencyName": "skycoin"
         },
         "consensus": {
-            "consensus_name": "SkyHash"
+            "type": "PoS",
+            "algorithm": "SkyHash"
         },
         "descriptions": {
             "state": "Project",
@@ -17790,7 +17774,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": ""
+            "type": "",
+            "algorithm": ""
         },
         "token": {
             "token_name": "SmileyCoin",
@@ -17858,8 +17843,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "descriptions": {
             "tags": [
@@ -18169,8 +18154,8 @@
             "token_symbol": "START"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "X11"
+            "type": "PoW",
+            "algorithm": "X11"
         },
         "descriptions": {
             "state": "Public",
@@ -18451,9 +18436,8 @@
             "token_symbol": "STR"
         },
         "consensus": {
-            "consensus_type": "Federated Consensus",
-            "consensus_name": "Stellar Consensus Protocol",
-            "hashing": ""
+            "type": "TL",
+            "algorithm": "Naive Ripple"
         },
         "descriptions": {
             "state": "Public",
@@ -19272,9 +19256,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Scrypt"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -19364,8 +19347,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "hashing": "SHA-256d",
-            "consensus_type": "Hybryd POW-POS"
+            "type": "Hybryd",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -19929,9 +19912,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Work",
-            "hashing": "SHA-256d",
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": "SHA-256"
         },
         "descriptions": {
             "state": "Public",
@@ -20041,8 +20023,8 @@
             "rating_cyber": 2
         },
         "consensus": {
-            "hashing": "Others",
-            "consensus_type": "Proof-of-Stake"
+            "type": "",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -20127,8 +20109,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Proof-of-Stake",
-            "consensus_type": "Proof-of-Stake"
+            "type": "PoS",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -20204,9 +20186,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Scrypt N",
-            "hashing": "Scrypt"
+            "type": "PoW",
+            "algorithm": "Scrypt N"
         },
         "descriptions": {
             "state": "Public",
@@ -20294,8 +20275,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_name": "Scrypt",
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "tags": [
@@ -20369,7 +20350,10 @@
             "token_name": "Voxel",
             "token_symbol": "Voxel"
         },
-        "consensus": {},
+        "consensus": {
+            "type": "PoW",
+            "algorithm": "Scrypt"
+        },
         "descriptions": {
             "state": "Project",
             "system_type": "cryptocurrency",
@@ -20552,9 +20536,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Scrypt"
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -20639,8 +20622,8 @@
             "token_symbol": "YBC"
         },
         "consensus": {
-            "consensus_type": "Virtual Proof-of-Work",
-            "consensus_name": "Virtual Proof-of-Work"
+            "type": "PoW",
+            "algorithm": "Virtual WTF!"
         },
         "descriptions": {
             "state": "Public",
@@ -20805,8 +20788,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_type": "Hybrid POW+POS",
-            "consensus_name": "Scrypt"
+            "type": "Hybrid",
+            "algorithm": "Scrypt + "
         },
         "descriptions": {
             "state": "Public",
@@ -20895,7 +20878,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work"
+            "type": "PoW",
+            "algorithm": ""
         },
         "token": {
             "token_name": "ZiftrCOIN",

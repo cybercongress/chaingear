@@ -19,7 +19,8 @@ start_date = "2014-10-14T08:25:00"
 url = "https://bitcointalk.org/index.php?topic=551666.msg6003371#msg6003371"
 
 [consensus]
-consensus_type = "Proof-of-Stake"
+type = "PoS"
+algorithm = "Naive NXT"
 
 [token]
 token_name = "Horizon"
@@ -137,7 +138,7 @@ type = "custom"
 icon = "bittrex.png"
 tags = ["Apps", "Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.00000085
 usd = 0.00055546
 date = "2014-06-02T00:00:00"

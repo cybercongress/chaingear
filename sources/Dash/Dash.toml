@@ -7,9 +7,8 @@ token_name = "Dash"
 token_symbol = "DASH"
 
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "Proof-of-Work"
-hashing = "X11"
+type = "PoW"
+algorithm = "X11"
 
 [descriptions]
 state = "Public"
@@ -191,7 +190,7 @@ type = "custom"
 icon = "dashwhale.png"
 tags = ["Apps", "Analytics"]
 
-[first_price] 
+[first_price]
 btc = 0.00033188
 usd = 0.21837893
 date = "2014-02-07T00:00:00"

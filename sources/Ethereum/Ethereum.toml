@@ -7,8 +7,8 @@ token_name = "Ether"
 token_symbol = "ETH"
 
 [consensus]
-consensus_name = "Ethereum"
-consensus_type = "Proof-of-Work"
+type = "PoW"
+algorithm = "Ethash"
 
 [descriptions]
 state = "Public"
@@ -440,7 +440,7 @@ url = "http://blockapps.net/"
 icon = "blockapps.png"
 tags = ["Apps","Code"]
 
-[first_price] 
+[first_price]
 btc = 0.00052462
 usd = 0.24936138
 date = "2014-09-02T00:00:00"

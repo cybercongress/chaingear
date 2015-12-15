@@ -9,8 +9,8 @@ coinmarketcap = "FlorinCoin"
 rating_cyber = 1.0
 
 [consensus]
-hashing = "Scrypt"
-consensus_type = ""
+type = "PoW"
+algorithm = "Scrypt"
 
 [descriptions]
 state = "Public"
@@ -62,7 +62,7 @@ url = "https://bitcointalk.org/index.php?topic=236742"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00001579
 usd = 0.01640419
 date = "2013-11-27T00:00:00"

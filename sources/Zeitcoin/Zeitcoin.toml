@@ -10,8 +10,8 @@ coinmarketcap = "Zeitcoin"
 rating_cyber = 1.0
 
 [consensus]
-consensus_type = "Hybrid POW+POS"
-consensus_name = "Scrypt"
+type = "Hybrid"
+algorithm = "Scrypt + "
 
 [descriptions]
 state = "Public"
@@ -62,7 +62,7 @@ url = "https://bitcointalk.org/index.php?topic=487814.0"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00000002
 usd = 0.00001114
 date = "2014-03-20T00:00:00"

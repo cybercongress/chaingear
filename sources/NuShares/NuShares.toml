@@ -7,8 +7,8 @@ token_name = "NuShare"
 token_symbol = "NSR"
 
 [consensus]
-consensus_type = "Proof-of-Stake"
-consensus_name = "NuBits"
+type = "PoS"
+algorithm = "Peershares"
 
 [descriptions]
 state = "Public"
@@ -152,7 +152,7 @@ type = "custom"
 icon = "ccedk.png"
 tags = ["Apps", "Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.00001339
 usd = 0.00463662
 date = "2014-10-25T00:00:00"

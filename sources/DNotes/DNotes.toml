@@ -7,9 +7,8 @@ token_name = "DNote"
 token_symbol = "NOTE"
 
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "Scrypt"
-hashing = "SHA-256"
+type = "PoW"
+algorithm = ""
 
 [descriptions]
 state = "Public"
@@ -175,7 +174,7 @@ type = "custom"
 icon = "poloniex.png"
 tags = ["Apps", "Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.00000128
 usd = 0.00080293
 date = "2014-03-08T00:00:00"

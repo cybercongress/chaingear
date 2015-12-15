@@ -7,9 +7,8 @@ token_name = "Mona"
 token_symbol = "MONA"
 
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "Dark Gravity Wave"
-hashing = "Lyra2REv2"
+type = "PoW"
+algorithm = "Lyra2RE"
 
 [descriptions]
 state = "Public"
@@ -156,7 +155,7 @@ type = "custom"
 icon = "bluetrade.png"
 tags = ["Apps", "Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.00014824
 usd = 0.08524875
 date = "2014-03-20T00:00:00"

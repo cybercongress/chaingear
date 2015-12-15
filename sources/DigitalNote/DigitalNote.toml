@@ -10,9 +10,8 @@ coinmarketcap = "DigitalNote"
 rating_cyber = 2.0
 
 [consensus]
-consensus_name = "CryptoNight"
-hashing = "CryptoNight"
-consensus_type = "Proof-of-Work"
+type = "PoW"
+algorithm = "CryptoNight"
 
 [descriptions]
 state = "Public"
@@ -21,7 +20,7 @@ tags = ["DAO"]
 hashtag = "#DarkNote"
 
 [[events]]
-name = "Announcement" 
+name = "Announcement"
 date = "2014-05-31T00:00:00"
 url = "https://bitcointalk.org/index.php?topic=788916.0"
 
@@ -80,7 +79,7 @@ url = "reddit.com/r/darknote"
 icon = "reddit.png"
 tags = ["News"]
 
-[first_price] 
+[first_price]
 btc = 0.00000004
 usd = 0.00002578
 date = "2014-06-23T00:00:00"

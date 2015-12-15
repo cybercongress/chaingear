@@ -10,8 +10,8 @@ coinmarketcap = "ARCHcoin"
 rating_cyber = 1.0
 
 [consensus]
-consensus_name = "Proof-of-Stake"
-consensus_type = "Proof-of-Stake"
+type = "PoS"
+algorithm = "3%-20%"
 
 [descriptions]
 tags = ["DAO"]
@@ -20,7 +20,7 @@ state = "Public"
 
 [token]
 token_symbol = "ARCH"
-token_name = "ARCHcoin"
+token_name = "archcoin"
 
 [specs]
 
@@ -52,7 +52,7 @@ url = "https://bitcointalk.org/index.php?topic=831777.0"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00009752
 usd = 0.03419939
 date = "2014-10-06T00:00:00"

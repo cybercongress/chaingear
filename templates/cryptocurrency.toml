@@ -1,137 +1,563 @@
-genesis_id = "0 block hash"
-system = "system_name"
-dependencies = ["independent"]
-icon = "icon_name"
+name = "Bitcoin"
+stage = "public"
+type = "cryptocurrency"
 
 [token]
-token_name = "token_name"
-token_symbol = "token_ticker"
+base = "satoshi"
+main = "bitcoin"
+10in2 = "bit"
+10in5 = "milibit"
+10in8 = "bitcoin"
+symbol = "BTC"
 
-[consensus]
-consensus_type = "Consensus Type"
-consensus_name = "Consensus Name"
-hashing = "Encryption type name"
-
-[descriptions]
-state = "Running"
-system_type = "independent"
-headline = "64 symbols headline"
-tags = ["DAO"]
-hashtag = "#system_hashtag"
-page_state = "draft"
-
-[aliases]
-coinmarketcap = "System name at CoinMarketCap"
-nickname = "Bitcoin"
+[[consensus]]
+type = "PoW"
+algorithm = "SHA-256"
 
 [specs]
-rpc = 1111
-block_time = 1
-block_reward = 1
-halfing_cycle = 1
-total_tokens = 1
-premine_tokens = 1
-difficulty_cycle = 1
-txs_confirm = 1
+headline = "Peer-to-Peer Electronic Cash System"
+block_time = "600 seconds"
+block_reward = "50 bitcoins"
+halfing_cycle = "210240 blocks"
+total_tokens = "21000000 bitcoins"
+difficulty_cycle = "2016 blocks"
+txs_confirm = "6 blocks"
+tags = ["DAO"]
 
-[events]
-name = "Event Name"
-start_date = 2015-03-31T00:00:00
-end_date = 2015-03-31T00:00:00
-url = "http://event_link.com"
+[[events]]
+type = "announcement"
+date = "1970-01-01T00:00:00"
+url = ""
 
-[crowdsale]
-start_date = "2015-03-31T00:00:00"
-end_date = "2015-05-15T00:00:00"
-genesis_address = ["35gLt5EgB367enjSjyEDahhWWcy6p1MGf6"] # Could be array. See multu currency crowdsale
-funding_url = "https://koinify.com/#/project/FACTOM"
-funding_tems = "http://blog.factom.org/post/115139137794/the-factoid-software-sale-is-live"
-min_investment = 0.01
-funding_operator = "Koinify" # Could be `nein`.
-crowsale_feed = "http://example.com/feed" # For multi currency or non bitcoin crowdsale
-tokens_sold = 4379973
-tokens_issued = 8759946
+[[events]]
+type = "genesis"
+date = "1970-01-01T00:00:00"
+id = ""
 
-[first_price]
-btc = 0.00000993
-usd = 0.00480666
-date = "2014-04-20T00:00:00"
+[[events]]
+type = "first_price"
+date = "1970-01-01T00:00:00"
+btc = 0
+usd = 0
+
+[[events]]
+type = "crowdsale_start"
+date = "1970-01-01T00:00:00"
+genesis_address = ["36PrZ1KHYMpqSyAQXSG8VwbUiq2EogxLo2"]
+funding_tems = "https://www.ethereum.org/pdf/TermsAndConditionsOfTheEthereumGenesisSale.pdf"
+funding_url = "https://www.ethereum.org/ether"
+
+[[events]]
+type = "crowdsale_finish"
+date = "1970-01-01T00:00:00"
+
+[[events]]
+type = "crowdsale_report"
+date = "1970-01-01T00:00:00"
+tokens_sold = 60102216
+btc_raised = 31531
 
 [[links]]
-type = "website"
+type = "dependency"
 name = "Bitcoin.org"
 url = "http://bitcoin.org/en/"
 icon = "website.png"
 tags = ["Main"]
 
 [[links]]
-type = "explorer"
+name = "Bitcoin.org"
+url = "http://bitcoin.org/en/"
+icon = "website.png"
+tags = ["Main"]
+type = "website"
+
+[[links]]
 name = "Blockchain.info"
 url = "https://blockchain.info/"
 icon = "explorer.png"
 tags = ["Main"]
+type = "explorer"
 
 [[links]]
-type = "wallet"
 name = "Coinbase"
+headline = "nein"
 url = "https://www.coinbase.com/join/5354c035f1184f977100000c"
+type = "custom"
 icon = "coinbase.png"
-tags = ["Main", "Apps", "Wallet"]
+tags = ["Main", "Apps", "Wallet", "Exchange"]
 
 [[links]]
-type = "paper"
+name = "LocalBitcoins"
+headline = "nein"
+url = "https://localbitcoins.com/?ch=3qnx"
+type = "custom"
+icon = "localbitcoins.png"
+tags = ["Main", "Apps", "Exchange"]
+
+[[links]]
 name = "Protocol Documentation"
 url = "https://en.bitcoin.it/wiki/Protocol_documentation"
 icon = "paper.png"
-tags = ["Main","Science"]
+tags = ["Code"]
+type = "github"
 
 [[links]]
-type = "github"
 name = "Github Organization"
 url = "https://github.com/bitcoin"
 icon = "github.png"
 tags = ["Code"]
-
+type = "github"
 
 [[links]]
-type = "exchange"
+name = "Bitcoin Improvement Proposals"
+url = "https://en.bitcoin.it/wiki/Bitcoin_Improvement_Proposals"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "Elements Project"
+url = "https://github.com/ElementsProject"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "GitTorrent: decentralization of GitHub using BitTorrent and Bitcoin"
+url = "https://github.com/cjb/GitTorrent"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "BitCore: A pure and powerful JavaScript Bitcoin library"
+url = "https://github.com/bitpay/bitcore"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "ZeroNet: Decentralized websites using Bitcoin crypto and BitTorrent network"
+url = "https://github.com/HelloZeroNet/ZeroNet"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "Toshi: An open source Bitcoin node built to power large scale web applications"
+url = "https://github.com/coinbase/toshi"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "Buttercoin: Opensource Bitcoin Exchange Software"
+url = "https://github.com/buttercoin/buttercoin"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "P2Pool: Peer-to-peer Bitcoin mining pool"
+url = "https://github.com/forrestv/p2pool"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "BitcoinJ: A library for working with Bitcoin"
+url = "https://github.com/bitcoinj/bitcoinj"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "XChange: Consistent interface for trading and accessing market data"
+url = "https://github.com/timmolter/XChange"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "Abe: Block browser"
+url = "https://github.com/bitcoin-abe/bitcoin-abe"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "Insight: A bitcoin blockchain API for web wallets"
+url = "https://github.com/bitpay/insight"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "BitAuth: Authenticate with web services utilizing the same strategy as Bitcoin"
+url = "https://github.com/bitpay/bitauth"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "Bitcoin Announcement"
+url = "http://article.gmane.org/gmane.comp.encryption.general/12588/"
+type = "custom"
+icon = "paper.png"
+tags = ["paper"]
+
+[[links]]
+name = "Blockchain"
+url = "https://blockchain.info/wallet"
+type = "custom"
+icon = "blockchain.info.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+name = "Copay"
+url = "https://copay.io/"
+headline = "Trustless multisig wallet"
+type = "custom"
+icon = "copay.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+name = "Blocktrail"
+url = "https://www.blocktrail.com/"
+headline = "A Powerful Bitcoin Wallet"
+type = "custom"
+icon = "blocktrail.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+name = "Bitcoin Core"
+url = "https://bitcoin.org/en/download"
+type = "custom"
+icon = "bitcoin-core.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+name = "Armory"
+headline = "nein"
+url = "https://bitcoinarmory.com/"
+type = "custom"
+icon = "armory.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+name = "Xapo"
+headline = "nein"
+url = "https://xapo.com/"
+type = "custom"
+icon = "xapo.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+name = "Circle"
+headline = "nein"
+url = "https://www.circle.com/"
+type = "custom"
+icon = "circle.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+name = "Coinprism"
+headline = "nein"
+url = "https://www.coinprism.com/"
+type = "custom"
+icon = "coinprism.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
 name = "Poloniex"
 headline = "nein"
 url = "https://www.poloniex.com"
+type = "custom"
 icon = "poloniex.png"
-tags = ["Apps","Exchange"]
+tags = ["Apps", "Exchange"]
 
 [[links]]
-tags = ["News"]
+name = "ShapeShift"
+headline = "nein"
+url = "https://shapeshift.io"
+type = "custom"
+icon = "shapeshift.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "Bitfinex"
+headline = "nein"
+url = "https://www.bitfinex.com/"
+type = "custom"
+icon = "bitfinex.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "Cryptsy"
+headline = "nein"
+url = "https://www.cryptsy.com/users/register?refid=243274"
+type = "custom"
+icon = "cryptsy.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "Kraken"
+headline = "nein"
+type = "custom"
+icon = "kraken.png"
+url = "https://www.kraken.com"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "BitStamp"
+headline = "nein"
+url = "https://www.bitstamp.net/"
+type = "custom"
+icon = "bitstamp.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "BTC-e"
+headline = "nein"
+url = "https://btc-e.com/"
+type = "custom"
+icon = "btc-e.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "itBit"
+headline = "nein"
+url = "https://www.itbit.com/"
+type = "custom"
+icon = "itbit.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "BTC38"
+headline = "Cryptocurrensy Exchange"
+url = "http://www.btc38.com/trade_en.html"
+type = "custom"
+icon = "btc38.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "CCEDK"
+headline = "Your place for safe and secure crypto currency exchange"
+url = "https://www.ccedk.com/"
+type = "custom"
+icon = "ccedk.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "OKCoin"
+headline = "The Bitcoin Exchange With Margin and Futures"
+url = "https://www.okcoin.com/"
+type = "custom"
+icon = "okcoin.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "bit-x"
+headline = "The Bitcoin Exchange With Margin and Futures"
+url = "https://bit-x.com/"
+type = "custom"
+icon = "bit-x.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "CEX"
+headline = "Global Bitcoin Exchange"
+url = "https://cex.io/"
+type = "custom"
+icon = "cex.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "BTER"
+headline = "nein"
+url = "https://bter.com/"
+type = "custom"
+icon = "bter.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "Blockchain"
+headline = "nein"
+url = "https://blockchain.info"
+type = "custom"
+icon = "blockchain.info.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+name = "Blocktrail"
+headline = "nein"
+url = "https://www.blocktrail.com/BTC"
+type = "custom"
+icon = "blocktrail.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+name = "Blockr"
+headline = "nein"
+url = "https://btc.blockr.io/"
+type = "custom"
+icon = "blockr.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+name = "BitcoinChain"
+url = "https://bitcoinchain.com/"
+type = "custom"
+icon = "bitcoinchain.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+name = "Insight"
+url = "https://insight.bitpay.com/"
+type = "custom"
+icon = "insight.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+name = "TradeBlock"
+headline = "nein"
+url = "https://tradeblock.com/blockchain/"
+type = "custom"
+icon = "tradeblock.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+name = "Bitnodes"
+headline = "Bitcoin nodes stats"
+url = "https://getaddr.bitnodes.io/"
+type = "custom"
+icon = "bitnodes.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+name = "Statoshi"
+headline = "nein"
+url = "http://statoshi.info"
+type = "Realtime Bitcoin Node Stats"
+icon = "statoshi.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+name = "Bitcoinity"
+headline = "nein"
+url = "https://bitcoinity.org/markets"
+type = "custom"
+icon = "bitcoinity.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+name = "ChangeTip"
+url = "https://www.changetip.com/"
+type = "custom"
+icon = "changetip.png"
+tags = ["Apps"]
+
+[[links]]
+name = "Gem: Bitcoin API"
+url = "https://gem.co/"
+type = "custom"
+icon = "gem.png"
+tags = ["Code", "API"]
+
+[[links]]
 name = "CoinDesk"
 url = "http://www.coindesk.com/"
 type = "custom"
 icon = "coindesk.png"
+tags = ["News"]
 
 [[links]]
-type = "blog"
-name = "Blog"
+name = "CoinTelegraph"
+url = "http://cointelegraph.com/tags/bitcoin"
+type = "custom"
+icon = "cointelegraph.png"
+tags = ["News"]
+
+[[links]]
+name = "BitcoinMagazine"
+headline = "nein"
+url = "https://bitcoinmagazine.com/"
+type = "custom"
+icon = "bitcoinmagazine.png"
+tags = ["News"]
+
+[[links]]
+name = "Bitcoinist"
+headline = "nein"
+url = "http://bitcoinist.net/"
+type = "custom"
+icon = "bitcoinist.png"
+tags = ["News"]
+
+[[links]]
+name = "blog"
 url = "https://blog.bitcoinfoundation.org/"
 icon = "blog.png"
 tags = ["News"]
+type = "blog"
 
 [[links]]
-type = "twitter"
-name = "Twitter"
+name = "twitter"
 url = "https://twitter.com/Bitcoin"
 icon = "twitter.png"
 tags = ["News"]
+type = "twitter"
 
 [[links]]
-type = "forum"
-name = "Forum"
+name = "forum"
 url = "https://bitcointalk.org/"
 icon = "forum.png"
 tags = ["News"]
+type = "forum"
 
 [[links]]
-type = "reddit"
 name = "reddit"
 url = "http://www.reddit.com/r/Bitcoin/"
 icon = "reddit.png"
 tags = ["News"]
+type = "reddit"
+
+[[links]]
+name = "Bitcoin: A Peer-to-Peer Electronic Cash System. Satoshi Nakamoto"
+url = "https://bitcoin.org/bitcoin.pdf"
+icon = "paper.png"
+type = "paper"
+tags = ["Science"]
+
+[[links]]
+name = "Enabling Blockchain Innovations with Pegged Sidechains. Adam Back, Matt Corallo, Luke Dashjr, Mark Friedenbach, Gregory Maxwell, Andrew Miller, Andrew Poelstra, Jorge Timón and Pieter Wuille."
+url = "https://www.blockstream.com/sidechains.pdf"
+icon = "paper.png"
+type = "paper"
+tags = ["Science"]
+
+[[links]]
+name = "The Bitcoin Lightning Network:\nScalable Off-Chain Instant Payments, Joseph Poon, Thaddeus Dryja."
+url = "https://lightning.network/lightning-network-paper.pdf"
+icon = "paper.png"
+type = "paper"
+tags = ["Science"]
+
+[[links]]
+name = "Analysis of Bitcoin Pooled Mining Reward\nSystems, Meni Rosenfeld."
+url = "https://bitcoil.co.il/pool_analysis.pdf"
+icon = "paper.png"
+type = "paper"
+tags = ["Science"]
+
+[[links]]
+name = "F2Pool"
+url = "https://www.f2pool.com/"
+type = "custom"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[flags]]
+coinmarketcap = "Bitcoin"
+nickname = "Bitcoin"
+page_state = "ready"

@@ -8,9 +8,8 @@ token_name = "Novacoin"
 token_symbol = "NVC"
 
 [consensus]
-consensus_type = "Hybrid POW-POS"
-consensus_name = "Scrypt"
-hashing = "SHA256"
+type = "Hybrid"
+algorithm = ""
 
 [descriptions]
 state = "Public"
@@ -123,7 +122,7 @@ type = "custom"
 icon = "bluetrade.png"
 tags = ["Apps","Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.03123383
 usd = 3.80044798
 date = "2013-04-28T00:00:00"

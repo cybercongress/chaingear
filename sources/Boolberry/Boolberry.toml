@@ -10,9 +10,8 @@ coinmarketcap = "Boolberry"
 rating_cyber = 1.0
 
 [consensus]
-consensus_name = "Proof-of-Work"
-hashing = "Wild Keccak"
-consensus_type = ""
+type = "PoW"
+algorithm = "Keccak"
 
 [descriptions]
 state = "Public"
@@ -63,7 +62,7 @@ url = "https://bitcointalk.org/index.php?topic=577267.0"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00092
 usd = 0.60091897
 date = "2014-06-02T00:00:00"

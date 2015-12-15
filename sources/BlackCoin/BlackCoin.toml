@@ -8,9 +8,8 @@ token_name = "BlackCoin"
 token_symbol = "BLK"
 
 [consensus]
-consensus_type = "Hybrid POW+POS"
-consensus_name = "Scrypt"
-hashing = "SHA-256"
+type = "PoS"
+algorithm = "Naive"
 
 [descriptions]
 state = "Public"
@@ -263,7 +262,7 @@ url = "https://bleutrade.com"
 icon = "bluetrade.png"
 tags = ["Apps", "Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.00001169
 usd = 0.00699405
 date = "2014-02-28T00:00:00"

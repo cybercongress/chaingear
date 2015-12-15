@@ -1,6 +1,6 @@
 genesis_id = "1b0122efc2c3fc3cb314468ab8e157146827ea55d0535d2c342e2bbd82fb467c"
 system = "Electronic Gulden"
-icon = "electronicgulden" 
+icon = "electronicgulden"
 dependencies = ["independent"]
 
 [aliases]
@@ -11,8 +11,8 @@ state = "Public"
 system_type = "cryptocurrency"
 
 [consensus]
-consetsus_type = "Proof-of-Work"
-consetsus_name = "Scrypt"
+type = "PoW"
+algorithm = "Scrypt"
 
 [token]
 token_name = "Electronic Gulden"
@@ -52,7 +52,7 @@ url = "https://bitcointalk.org/index.php?topic=843017"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00009428
 usd = 0.04521254
 date = "2014-03-26T00:00:00"

@@ -10,9 +10,8 @@ CurrencyName = "BitcoinDark"
 rating_cyber = 1.0
 
 [consensus]
-consensus_type = "Proof-of-Stake"
-consensus_name = "Proof-of-Stake"
-hashing = "SHA-256d"
+type = "PoW"
+algorithm = "SHA-256"
 
 [descriptions]
 state = "Public"
@@ -125,7 +124,7 @@ type = "custom"
 icon = "bluetrade.png"
 tags = ["Apps", "Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.00076717
 usd = 0.45823272
 date = "2014-06-16T00:00:00"

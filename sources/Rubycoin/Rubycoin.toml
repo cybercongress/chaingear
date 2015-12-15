@@ -6,7 +6,8 @@ token_name = "Rubycoin"
 token_symbol = "RBY"
 
 [consensus]
-consensus_type = "Proof-of-Stake"
+type = "PoS"
+algorithm = ""
 
 [descriptions]
 state = "Public"
@@ -116,7 +117,7 @@ type = "custom"
 icon = "cryptopia.png"
 tags = ["Apps", "Exchange"]
 
-[first_price] 
+[first_price]
 btc = 0.00000202
 usd = 0.00116433
 date = "2014-03-20T00:00:00"

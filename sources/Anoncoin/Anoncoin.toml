@@ -6,29 +6,28 @@ dependencies = ["independent"]
 [aliases]
 coinmarketcap = "Anoncoin"
 
-[ratings]
-rating_cyber = 1.0
-
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "Proof-of-Work"
-hashing = "Scrypt"
+type = "PoW"
+algorithm = "Scrypt"
 
 [descriptions]
+headline = "Privacy Centric Cryptocuurency"
 state = "Public"
 system_type = "cryptocurrency"
-tags = ["DAO"]
+tags = ["anonimity"]
 
 [token]
-token_name = "Anoncoin"
+token_name = "anoncoin"
 token_symbol = "ANC"
 
 [specs]
-block_time = "180"
-block_reward = 5.0
-halfing_cycle = 306600.0
-total_tokens = 4200000.0
+block_time = "180 seconds"
+total_tokens = 3103954
 
+[first_price]
+btc = 0.00026974
+usd = 0.02373913
+date = "2013-07-15T00:00:00"
 
 [[events]]
 name = "Announcement"
@@ -62,8 +61,3 @@ name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=227287"
 icon = "forum.png"
 tags = ["Main","News"]
-
-[first_price] 
-btc = 0.00026974
-usd = 0.02373913
-date = "2013-07-15T00:00:00"
