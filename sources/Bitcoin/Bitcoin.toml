@@ -8,9 +8,8 @@ token_name = "bitcoin"
 token_symbol = "BTC"
 
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "Bitcoin Proof-of-Work"
-hashing = "SHA-256d"
+type = "PoW"
+algorithm = "SHA-256"
 
 [descriptions]
 state = "Public"
@@ -591,7 +590,7 @@ type = "custom"
 icon = "ghashio.png"
 tags = ["Apps"]
 
-[first_price] 
+[first_price]
 btc = 1
 usd = 0.0858
 date = "2010-07-18T00:00:00"
