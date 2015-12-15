@@ -18,7 +18,6 @@ system_type = "independent"
 headline = "64 symbols headline"
 tags = ["DAO"]
 hashtag = "#system_hashtag"
-twwidid = "twwidid"
 page_state = "draft"
 
 [aliases]
@@ -34,9 +33,6 @@ total_tokens = 1
 premine_tokens = 1
 difficulty_cycle = 1
 txs_confirm = 1
-
-[ratings]
-rating_cyber = 1
 
 [events]
 name = "Event Name"
@@ -55,6 +51,11 @@ funding_operator = "Koinify" # Could be `nein`.
 crowsale_feed = "http://example.com/feed" # For multi currency or non bitcoin crowdsale
 tokens_sold = 4379973
 tokens_issued = 8759946
+
+[first_price]
+btc = 0.00000993
+usd = 0.00480666
+date = "2014-04-20T00:00:00"
 
 [[links]]
 type = "website"

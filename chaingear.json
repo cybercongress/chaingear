@@ -325,9 +325,6 @@
         "aliases": {
             "coinmarketcap": "AsiaCoin"
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "descriptions": {
             "system_type": "cryptocurrency",
             "state": "Public"
@@ -338,6 +335,11 @@
         "token": {
             "token_name": "AsiaCoin",
             "token_symbol": "AC"
+        },
+        "first_price": {
+            "btc": 0.00000993,
+            "usd": 0.00480666,
+            "date": "2014-04-20T00:00:00"
         },
         "specs": {},
         "links": [
@@ -382,12 +384,7 @@
                     "News"
                 ]
             }
-        ],
-        "first_price": {
-            "btc": 0.00000993,
-            "usd": 0.00480666,
-            "date": "2014-04-20T00:00:00"
-        }
+        ]
     },
     {
         "genesis_id": "",
@@ -416,7 +413,6 @@
                 "DApp"
             ],
             "hashtag": "#augur",
-            "twwidid": "",
             "page_state": "draft"
         },
         "events": {
@@ -1557,9 +1553,8 @@
             "token_symbol": "BTC"
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Bitcoin Proof-of-Work",
-            "hashing": "SHA-256d"
+            "type": "PoW",
+            "algorithm": "SHA-256"
         },
         "descriptions": {
             "state": "Public",
@@ -3790,8 +3785,8 @@
         },
         "ratings": {},
         "consensus": {
-            "consensus_name": "Scrypt",
-            "consensus_type": "Proof-of-Work"
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "Scrypt"
         },
         "token": {
             "token_name": "canadaecoin",
@@ -3801,6 +3796,11 @@
             "block_time": 30,
             "block_reward": "blocks 0-500:25 eCoins, 501-1000: 50 eCoins, 1001-2000:75 eCoins, 2001+:100 eCoins (resuming normal halving schedule after reaching 100 eCoin block rewards",
             "total_tokens": 100000000
+        },
+        "first_price": {
+            "btc": 7.3e-7,
+            "usd": 0.00032362,
+            "date": "2014-05-11T00:00:00"
         },
         "links": [
             {
@@ -3883,12 +3883,7 @@
                     "Analytics"
                 ]
             }
-        ],
-        "first_price": {
-            "btc": 7.3e-7,
-            "usd": 0.00032362,
-            "date": "2014-05-11T00:00:00"
-        }
+        ]
     },
     {
         "genesis_id": "000008f971bd331b204f4c96b32205103ac5790a93bd06a362b9650d478d1f51",
