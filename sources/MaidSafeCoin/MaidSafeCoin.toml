@@ -8,8 +8,8 @@ token_name = "MaidSafeCoin"
 token_symbol = "MAID"
 
 [consensus]
-consensus_type = "Blockchain Ledger"
-consensus_name = "Omni"
+type = "Locked Token"
+algorithm = "Omni"
 
 [descriptions]
 state = "Public"
@@ -143,7 +143,7 @@ url = "https://safenetwork.wiki/"
 icon = "wiki.png"
 tags = ["Main", "Science"]
 
-[first_price] 
+[first_price]
 btc = 0.00002696
 usd = 0.01418256
 date = "2014-05-22T00:00:00"

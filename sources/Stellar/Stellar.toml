@@ -3,12 +3,12 @@ system = "Stellar"
 dependencies = ["independent"]
 
 [token]
-token_name = "Lumen"
+token_name = "lumen"
 token_symbol = "STR"
 
 [consensus]
-type = "TL"
-algorithm = "Naive Ripple"
+type = "Trusted Ledger"
+algorithm = "SCP"
 
 [descriptions]
 state = "Public"
