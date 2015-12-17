@@ -397,8 +397,8 @@
             "rating_cyber": 4
         },
         "consensus": {
-            "type": "Dapp",
-            "algorithm": "Augur"
+            "type": "Ethereum",
+            "algorithm": "Dapp"
         },
         "descriptions": {
             "state": "Pre-Public",
@@ -6920,7 +6920,7 @@
         },
         "consensus": {
             "type": "Hybrid",
-            "algorithm": ""
+            "algorithm": "SHA-256 + Peercoin"
         },
         "descriptions": {
             "state": "Public",
@@ -7957,7 +7957,7 @@
             "token_symbol": "FCT"
         },
         "consensus": {
-            "type": "Ancored Federation",
+            "type": "Trusted Ledger",
             "algorithm": "Factom"
         },
         "descriptions": {
@@ -9131,8 +9131,8 @@
             "token_symbol": "GEMZ"
         },
         "consensus": {
-            "consensus_name": "Counterparty",
-            "consensus_type": "Locked Token"
+            "type": "Counterparty",
+            "algorithm": "Locked Token"
         },
         "descriptions": {
             "state": "Public",
@@ -13917,7 +13917,7 @@
         },
         "consensus": {
             "type": "PoS",
-            "algorithm": ""
+            "algorithm": "Peercoin"
         },
         "token": {
             "token_name": "NeuCoin",
@@ -14182,7 +14182,7 @@
         },
         "consensus": {
             "type": "Hybrid",
-            "algorithm": "Scrypt+Peercoin"
+            "algorithm": "Scrypt + Peercoin"
         },
         "descriptions": {
             "state": "Public",
@@ -16143,9 +16143,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "consensus_type": "Proof-of-Work",
-            "consensus_name": "Proof-of-Work",
-            "hashing": "Quark"
+            "type": "Proof-of-Work",
+            "algorithm": "Quark"
         },
         "descriptions": {
             "state": "Public",
