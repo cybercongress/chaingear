@@ -8,8 +8,8 @@ token_name = "Omni Layer"
 token_symbol = "MSC"
 
 [consensus]
-consensus_type = "Blockchain Ledger"
-consensus_name = "Bitcoin"
+type = "Bitcoin"
+algorithm = "OP_Return"
 
 [descriptions]
 state = "Public"
@@ -180,7 +180,7 @@ url = "https://holytransaction.com/"
 icon = "holytransaction.png"
 tags = ["Apps", "Wallet"]
 
-[first_price] 
+[first_price]
 btc = 0.00841676
 usd = 1.08963375
 date = "2013-08-31T00:00:00"
