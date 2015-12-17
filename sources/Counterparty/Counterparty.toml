@@ -7,12 +7,12 @@ token_name = "XCP"
 token_symbol = "XCP"
 
 [consensus]
-consensus_type = "Proof-of-Work"
-consensus_name = "Counterparty"
+type = "Dapp"
+algorithm = "OP_Return"
 
 [descriptions]
 state = "Public"
-system_type = "cryptocurrency"
+system_type = "cryptoasset"
 headline = "A Platform for Free and Open Financial Tools on the Bitcoin Network"
 tags = ["DApp"]
 hashtag = "#counterparty"
@@ -233,7 +233,7 @@ type = "custom"
 icon = "link.png"
 tags = ["Apps", "Analytics"]
 
-[first_price] 
+[first_price]
 btc = 0.00080543
 usd = 0.68813926
 date = "2014-02-02T00:00:00"
