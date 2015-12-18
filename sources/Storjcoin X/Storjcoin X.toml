@@ -26,14 +26,20 @@ btc_raised = 910.0
 rating_cyber = 4.0
 
 [consensus]
-consensus_name = "Counterparty"
-consensus_type = "Proof-of-Work"
+type = "Counterparty"
+algorithm = "Locked Token"
 
 [token]
 token_name = "Storj"
 token_symbol = "SJCX"
 
 [specs]
+
+[[links]]
+type = "risk"
+name = "Minimum Viable Product has not been launched yet"
+url = ""
+icon = ""
 
 [[links]]
 type = "website"
@@ -116,7 +122,7 @@ type = "custom"
 icon = "link.png"
 tags = ["Apps", "Analytics"]
 
-[first_price] 
+[first_price]
 btc = 0.00002597
 usd = 0.01196365
 date = "2014-08-18T00:00:00"
