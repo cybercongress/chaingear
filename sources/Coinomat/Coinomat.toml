@@ -10,8 +10,8 @@ CurrencyName = "Coinomat"
 rating_cyber = 2.0
 
 [consensus]
-consensus_name = "NXT"
-consensus_type = ""
+type = "NXT"
+algorithm = "AE"
 
 [descriptions]
 state = "Public"
@@ -23,6 +23,12 @@ token_name = "coinomat1"
 token_symbol = "CNMT"
 
 [specs]
+
+[[links]]
+type = "risk"
+name = "Asset requre trust to an issuer"
+url = ""
+icon = ""
 
 [[links]]
 name = "coinomat.com"
@@ -96,7 +102,7 @@ icon = "nxt.png"
 tags = ["Apps", "Exchange"]
 type = "custom"
 
-[first_price] 
+[first_price]
 btc = 0.00042034
 usd = 0.20045159
 date = "2014-09-05T00:00:00"

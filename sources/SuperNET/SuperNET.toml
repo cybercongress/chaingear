@@ -7,8 +7,8 @@ token_name = "Unity"
 token_symbol = "UNITY"
 
 [consensus]
-consensus_name = "NXT"
-consensus_type = "Proof-of-Stake"
+type = "NXT"
+algorithm = "AE"
 
 [aliases]
 coinmarketcap = "SuperNET"
@@ -37,6 +37,12 @@ tokens_issued = 816061.0
 btc_raised = 5737.1589
 
 [specs]
+
+[[links]]
+type = "risk"
+name = "Asset holding are under control of one person"
+url = ""
+icon = ""
 
 [[links]]
 name = "thesupernet.org"
@@ -133,7 +139,7 @@ type = "custom"
 icon = "slack.png"
 tags = ["News"]
 
-[first_price] 
+[first_price]
 btc = 0.01004329
 usd = 4.37262651
 date = "2014-09-23T00:00:00"

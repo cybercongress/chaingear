@@ -10,8 +10,8 @@ coinmarketcap = "Dogeparty"
 rating_cyber = 2.0
 
 [consensus]
-consensus_name = "Dogecoin"
-consensus_type = "Blockchain Ledger"
+type = "Dogecoin"
+algorithm = "OP_Return"
 
 [descriptions]
 state = "Public"
@@ -53,7 +53,7 @@ url = "https://bitcointalk.org/index.php?topic=737231.0"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.0001852
 usd = 0.09135455
 date = "2014-08-27T00:00:00"

@@ -10,8 +10,8 @@ coinmarketcap = "TileCoin"
 rating_cyber = 2.0
 
 [consensus]
-consensus_name = "Counterparty"
-consensus_type = "Blockchain Ledger"
+type = "Counterparty"
+algorithm = "Locked Token"
 
 [descriptions]
 tags = ["DApp"]
@@ -23,6 +23,12 @@ token_name = "TileCoin"
 token_symbol = "XTC"
 
 [specs]
+
+[[links]]
+type = "risk"
+name = "Minimum viable product has not been launched yet"
+url = ""
+icon = ""
 
 [[links]]
 type = "website"
@@ -45,7 +51,7 @@ url = "https://bitcointalk.org/index.php?topic=761852.0"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00001
 usd = 0.0034341
 date = "2014-10-25-T00:00:00"

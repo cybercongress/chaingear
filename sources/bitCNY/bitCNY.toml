@@ -15,8 +15,8 @@ system_type = "cryptoasset"
 headline = "Market-Pegget Asset"
 
 [consensus]
-consensus_type = "Blockchain Ledger"
-consensus_name = "BitShares"
+type = "BitShares"
+algorithm = "MPA"
 
 [token]
 token_name = "bitCNY"
@@ -51,7 +51,7 @@ url = "http://cryptofresh.com/?r=cyberfund/a/CNY"
 icon = "cryptofresh.png"
 tags = ["Main", "Apps","Analytics"]
 
-[first_price] 
+[first_price]
 btc = 0.00040568
 usd = 0.16312342
 date = "2014-09-23T00:00:00"

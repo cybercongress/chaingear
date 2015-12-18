@@ -11,8 +11,8 @@ quantum ="SC/SP31"
 rating_cyber = 3.0
 
 [consensus]
-consensus_name = "Bitcoin"
-consensus_type = ""
+type = "Omni"
+algorithm = "Locked Token"
 
 [descriptions]
 tags = ["DApp"]
@@ -25,6 +25,12 @@ token_name = "Tether"
 token_symbol = "USDT"
 
 [specs]
+
+[[links]]
+type = "risk"
+name = "Asset represent debt of issuer"
+url = ""
+icon = ""
 
 [[links]]
 type = "website"
@@ -61,7 +67,7 @@ url = "https://twitter.com/Tether_to/"
 icon = "twitter.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00417078
 usd = 1
 date = "2015-02-19T00:00:00"

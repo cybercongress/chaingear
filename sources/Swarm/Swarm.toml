@@ -16,12 +16,9 @@ funding_operator = "nein"
 tokens_sold = 100000000.0
 btc_raised = 1270.0
 
-[ratings]
-rating_cyber = 1
-
 [consensus]
-consensus_name = "Counterparty"
-consensus_type = "Proof-of-Work"
+type = "Counterparty"
+algorithm = "Locked Token"
 
 [descriptions]
 state = "Public"
@@ -34,6 +31,12 @@ token_name = "SWARM"
 token_symbol = "SWARM"
 
 [specs]
+
+[[links]]
+type = "risk"
+name = "Minimu viable product has not been launched yet"
+url = ""
+icon = ""
 
 [[links]]
 name = "swarm.fund"
@@ -63,7 +66,7 @@ type = "blog"
 icon = "blog.png"
 tags = ["News"]
 
-[first_price] 
+[first_price]
 btc = 0.0000127
 usd = 0.00789143075
 date = "2014-07-20T00:00:00"

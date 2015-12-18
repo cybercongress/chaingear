@@ -6,12 +6,9 @@ dependencies = ["NXT"]
 [aliases]
 coinmarketcap = "Pangea Poker"
 
-[ratings]
-rating_cyber = 1.0
-
 [consensus]
-consensus_name = "NXT"
-consensus_type = "Blockchain Ledger"
+type = "NXT"
+algorithm = "AE"
 
 [descriptions]
 tags = ["DApp"]
@@ -23,6 +20,12 @@ token_name = "Pangea Poker"
 token_symbol = "PANGEA"
 
 [specs]
+
+[[links]]
+type = "risk"
+name = "Minimum viable product has not been launched yet"
+url = ""
+icon = ""
 
 [[links]]
 type = "website"
@@ -45,7 +48,7 @@ url = "https://nxtforum.org/nxtventures/pangea-poker/"
 icon = "forum.png"
 tags = ["Main","News"]
 
-[first_price] 
+[first_price]
 btc = 0.00222167
 usd = 0.7275709
 date = "2014-12-14T00:00:00"

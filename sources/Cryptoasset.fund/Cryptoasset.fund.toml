@@ -17,8 +17,8 @@ CurrencyName = "Cryptoasset.fund"
 [ratings]
 
 [consensus]
-consensus_name = "NXT"
-consensus_type = ""
+type = "NXT"
+algorithm = "AE"
 
 [token]
 token_name = "cryptofund"
@@ -36,6 +36,12 @@ btc_raised = 310.95
 
 [specs]
 total_tokens = 1000000.0
+
+[[links]]
+type = "risk"
+name = "Asset requre trust to issuer"
+url = ""
+icon = ""
 
 [[links]]
 name = "cryptoasset.fund"
@@ -86,7 +92,7 @@ icon = "nxt.png"
 tags = ["Apps", "Exchange"]
 type = "custom"
 
-[first_price] 
+[first_price]
 btc = 0.0003455
 usd = 0.08202243
 date = "2015-10-02T07:22:05"
