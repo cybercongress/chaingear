@@ -19426,6 +19426,7 @@
     {
         "genesis_id": "00e7dab4291d8a4f5e7186981ac8b127e47fa65b2efbb0f3eee6b3ee2f1b1059",
         "system": "Synereo",
+        "icon": "synereo",
         "dependencies": [
             "Mastercoin (Omni)"
         ],
@@ -19473,101 +19474,91 @@
                 "btc": 12653
             }
         },
+        "risks": [
+            {
+                "name": "Network has not been launched",
+                "url": ""
+            }
+        ],
         "links": [
             {
-                "type": "risk",
-                "name": "Network has not been launched",
-                "url": "",
-                "icon": ""
-            },
-            {
+                "type": "website",
                 "name": "synereo.com",
                 "url": "http://http://www.synereo.com/",
                 "icon": "website.png",
                 "tags": [
                     "Main",
                     "Apps"
-                ],
-                "type": "website"
+                ]
             },
             {
+                "type": "paper",
                 "name": "Documentation",
                 "url": "http://www.synereo.com/whitepapers/synereo.pdf",
                 "icon": "paper.png",
                 "tags": [
                     "Main",
                     "Apps"
-                ],
-                "type": "paper"
+                ]
             },
             {
+                "type": "blog",
                 "name": "Synereo Blog",
                 "url": "http://blog.synereo.com/",
+                "rss": "http://blog.synereo.com/feed.xml",
                 "icon": "blog.png",
                 "tags": [
                     "News",
                     "Main"
-                ],
-                "type": "blog"
+                ]
             },
             {
+                "type": "forum",
                 "name": "Synereo Discuss",
                 "url": "https://discuss.synereo.com/",
                 "icon": "forum.png",
                 "tags": [
                     "News",
                     "Main"
-                ],
-                "type": "forum"
+                ]
             },
             {
+                "type": "paper",
                 "name": "Attention Economy Model",
                 "url": "http://www.synereo.com/learn-more/#attention-economy",
                 "tags": [
                     "Science"
-                ],
-                "type": "paper"
+                ]
             },
             {
+                "type": "paper",
                 "name": "Synereo Network Dynamics - Basics - Chapter 1",
                 "url": "https://docs.google.com/presentation/d/12wZfRyF9XBMrc1ripXGfyNXCnO_MD7f2-Gc8AIa-v8o/pub?start=false&loop=false&slide=id.g4ecec4c43_37",
                 "tags": [
                     "Science"
-                ],
-                "type": "paper"
+                ]
             },
             {
+                "type": "paper",
                 "name": "Synereo Network Dynamics - Synereos - Chapter 2",
                 "url": "https://docs.google.com/presentation/d/1DimMeRZx1qp0-m0DzyEZxc3IbYDfzovummDfRdeWT9U/present?slide=id.g5d99680d4_026",
                 "tags": [
                     "Science"
-                ],
-                "type": "paper"
+                ]
             },
             {
+                "type": "paper",
                 "name": "Synereo Network Dynamics - Amplifying - Chapter 3",
                 "url": "https://docs.google.com/presentation/d/1MQ57q-ZraCBvx-pPFA-J-MpKN6v8AkUXtCaM79vU3L8/present?slide=id.g6d072a333_118",
                 "tags": [
                     "Science"
-                ],
-                "type": "paper"
-            },
-            {
-                "name": "MasterXchange",
-                "headline": "nein",
-                "url": "http://masterxchange.com/",
-                "type": "custom",
-                "icon": "masterxchange.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
                 ]
             },
             {
-                "name": "Asset Page",
+                "type": "explorer",
+                "name": "AMP Asset Page",
                 "headline": "nein",
                 "url": "http://omnichest.info/lookupsp.aspx?sp=39",
-                "type": "explorer",
                 "icon": "explorer.png",
                 "tags": [
                     "Apps",
@@ -19575,9 +19566,9 @@
                 ]
             },
             {
+                "type": "github",
                 "name": "Synereo GitHub",
                 "url": "https://github.com/synereo/",
-                "type": "github",
                 "icon": "github.png",
                 "tags": [
                     "Code"
