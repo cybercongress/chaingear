@@ -1,5 +1,7 @@
 # Chaingear
 
+[![Join the chat at https://gitter.im/cyberFund/chaingear](https://badges.gitter.im/cyberFund/chaingear.svg)](https://gitter.im/cyberFund/chaingear?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Verified and machine readable blockchain metadata.
 ![chaingear](http://cybertalks.org/uploads/default/original/1X/7513bd73105f7748b8e582a07a7441d28f584070.jpg)
 If you are blockchain developer you can easily enrich metadata of system you are building.
