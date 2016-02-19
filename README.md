@@ -359,6 +359,6 @@ Obsolete. Will be eventually moved to [cyberfund/cybertaing](https://github.com/
 [ratings]
 rating_cyber = 0
 [flags]
-suplly_from_here = true
+supply_from_here = true
 rating_do_not_display = true
 ```
