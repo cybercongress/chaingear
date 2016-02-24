@@ -14,7 +14,7 @@
         },
         "consensus": {
             "type": "PoS",
-            "algorithm": ""
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "tags": [
@@ -143,8 +143,8 @@
             "token_symbol": "TAU"
         },
         "consensus": {
-            "consensus_type": "Blockchain records",
-            "consensus_name": "Omni Layer"
+            "type": "Omni",
+            "algorithm": "Locked Token"
         },
         "descriptions": {
             "state": "Pre-Public",
@@ -861,7 +861,7 @@
         },
         "consensus": {
             "type": "PoS",
-            "algorithm": ""
+            "algorithm": "PoS2.0"
         },
         "descriptions": {
             "system_type": "cryptocurrency",
@@ -4123,7 +4123,7 @@
         },
         "consensus": {
             "type": "PoW",
-            "algorithm": ""
+            "algorithm": "X11"
         },
         "descriptions": {
             "state": "Public",
@@ -4481,7 +4481,7 @@
         },
         "consensus": {
             "type": "PoS",
-            "algorithm": ""
+            "algorithm": "X13"
         },
         "token": {
             "token_name": "CloakCoin",
@@ -5420,8 +5420,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "type": "",
-            "algorithm": ""
+            "type": "Hybrid",
+            "algorithm": "SHA-256"
         },
         "descriptions": {
             "state": "Public",
@@ -6462,7 +6462,7 @@
         },
         "consensus": {
             "type": "PoW",
-            "algorithm": ""
+            "algorithm": "SHA256+Scrypt+X11"
         },
         "descriptions": {
             "state": "Public",
@@ -8598,7 +8598,7 @@
         },
         "consensus": {
             "type": "Hybrid",
-            "algorithm": ""
+            "algorithm": "Groestl"
         },
         "descriptions": {
             "state": "Public",
@@ -9358,7 +9358,7 @@
         },
         "consensus": {
             "type": "PoS",
-            "algorithm": ""
+            "algorithm": "X11"
         },
         "descriptions": {
             "state": "Public",
@@ -10318,7 +10318,7 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "type": "PoW",
+            "type": "Hybrid",
             "algorithm": "Scrypt"
         },
         "descriptions": {
@@ -10679,7 +10679,7 @@
         },
         "consensus": {
             "type": "PoS",
-            "algorithm": ""
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -10753,7 +10753,7 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "type": "PoW",
+            "type": "PoS",
             "algorithm": "X11"
         },
         "descriptions": {
@@ -10837,7 +10837,7 @@
         },
         "consensus": {
             "type": "PoS",
-            "algorithm": ""
+            "algorithm": "X11"
         },
         "token": {
             "token_name": "IOCoin",
@@ -11357,6 +11357,164 @@
             "usd": 0.00834175,
             "date": "2015-06-30T00:00:00"
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Lisk",
+        "icon": "lisk",
+        "dependencies": [
+            "independent"
+        ],
+        "token": {
+            "token_name": "Lisk",
+            "token_symbol": "LISK"
+        },
+        "consensus": {
+            "type": "PoS",
+            "algorithm": "Delegated"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptocurrency",
+            "headline": "Decentralized Application Platform",
+            "summary": "",
+            "tags": [
+                "DAO"
+            ],
+            "page_state": "drsft"
+        },
+        "aliases": {
+            "coinmarketcap": "Lisk",
+            "CurrencyName": "LISK"
+        },
+        "ratings": {},
+        "specs": {},
+        "crowdsales": {
+            "start_date": "2016-02-22T00:00:00",
+            "end_date": "2016-03-21T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_tems": "https://ico.lisk.io/presale.pdf",
+            "funding_url": "https://ico.lisk.io",
+            "tokens_sold": "",
+            "btc_raised": ""
+        },
+        "links": [
+            {
+                "name": "lisk.io",
+                "url": "https://lisk.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ],
+                "type": "site"
+            },
+            {
+                "name": "Lisk Explorer",
+                "url": "https://explorer.lisk.io/",
+                "icon": "etherscan.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ],
+                "type": "explorer"
+            },
+            {
+                "name": "Blog",
+                "url": "https://blog.lisk.io/",
+                "rss": "https://blog.lisk.io/feed",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "Twitter",
+                "url": "https://twitter.com/LiskHQ",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "twitter"
+            },
+            {
+                "name": "Forum",
+                "url": "https://forum.lisk.io/",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "forum"
+            },
+            {
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=1346646",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "forum"
+            },
+            {
+                "name": "Reddit",
+                "url": "https://reddit.com/r/Lisk",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "reddit"
+            },
+            {
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Lisk-1118720888180640/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ],
+                "type": "custom"
+            },
+            {
+                "name": "Lisk GitHub",
+                "url": "https://github.com/LiskHQ",
+                "tags": [
+                    "Code"
+                ],
+                "type": "github"
+            },
+            {
+                "name": "Lisk Whitepaper",
+                "url": "https://lisk.io/documentation?i=lisk-whitepaper/README",
+                "icon": "whitepaper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ],
+                "type": "paper"
+            },
+            {
+                "name": "Lisk Documentation",
+                "url": "https://lisk.io/documentation?i=lisk-dapps-docs/README",
+                "icon": "whitepaper.png",
+                "type": "whitepaper",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "name": "Lisk Wallet",
+                "url": "https://lisk.io/download",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ],
+                "type": "wallet"
+            }
+        ]
     },
     {
         "genesis_id": "12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2",
@@ -12843,8 +13001,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "type": "PoW",
-            "algorithm": ""
+            "type": "PoS",
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -14215,7 +14373,7 @@
         },
         "consensus": {
             "type": "PoS",
-            "algorithm": ""
+            "algorithm": "Scrypt"
         },
         "token": {
             "token_name": "NautilusCoin",
@@ -16285,7 +16443,7 @@
         },
         "consensus": {
             "type": "PoS",
-            "algorithm": ""
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "state": "Public",
@@ -17958,7 +18116,7 @@
         },
         "consensus": {
             "type": "PoS",
-            "algorithm": "Peercoin"
+            "algorithm": "SHA-256"
         },
         "descriptions": {
             "tags": [
@@ -18305,8 +18463,8 @@
             "system_type": "cryptocurrency"
         },
         "consensus": {
-            "type": "",
-            "algorithm": ""
+            "type": "PoW",
+            "algorithm": "Scrypt"
         },
         "token": {
             "token_name": "SmileyCoin",
@@ -18375,7 +18533,7 @@
         },
         "consensus": {
             "type": "PoS",
-            "algorithm": ""
+            "algorithm": "Scrypt"
         },
         "descriptions": {
             "tags": [
@@ -21348,8 +21506,8 @@
             "rating_cyber": 1
         },
         "consensus": {
-            "type": "Hybrid",
-            "algorithm": "Scrypt + "
+            "type": "PoS",
+            "algorithm": "Scrypt +"
         },
         "descriptions": {
             "state": "Public",
