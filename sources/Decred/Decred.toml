@@ -1,5 +1,6 @@
 genesis_id = "298e5cc3d985bfe7f81dc135f360abe089edd4396b86d2de66b0cef42b21d980"
 system = "Decred"
+icon = "decred"
 dependencies = ["independed"]
 
 [token]
@@ -7,7 +8,7 @@ token_name = "Decred"
 token_symbol = "DCR"
 
 [consensus]
-type = ""
+type = "Hybrid"
 algorithm = ""
 
 [descriptions]
@@ -23,6 +24,11 @@ coinmarketcap = "Decred"
 [specs]
 
 [ratings]
+
+[first_price]
+btc = 0.00250207
+usd = 0.95068652
+date = "2016-02-10T19:30:00"
 
 [[links]]
 type = "website"
@@ -51,3 +57,62 @@ name = "Web Wallet"
 url = "https://wallet.decred.org"
 icon = "omniwallet.png"
 tags = ["Main","Apps", "Wallet"]
+
+[[links]]
+type = "github"
+name = "GitHub"
+url = "https://github.com/decred"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
+type = "forum"
+name = "Decred Forum"
+url = "https://forum.decred.org/"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+type = "reddit"
+name = "reddit"
+url = "https://www.reddit.com/r/decred"
+rss = "https://www.reddit.com/r/decred/.rss"
+icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/decredproject"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "paper"
+name = "Decred Technical Brief v0.1"
+url = "https://decred.org/dtb001.pdf"
+icon = "paper.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "custom"
+name = "IRC Channel"
+url = "https://webchat.freenode.net/?channels=decred"
+icon = "irc.png"
+tags = ["News"]
+
+[[links]]
+type = "exchange"
+name = "Bittrex"
+headline = "nein"
+url = "https://bittrex.com"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
+name = "BlueTrade"
+headline = "nein"
+url = "https://bleutrade.com"
+icon = "bluetrade.png"
+tags = ["Apps","Exchange"]
