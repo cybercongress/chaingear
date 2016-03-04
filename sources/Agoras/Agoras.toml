@@ -28,6 +28,11 @@ premine_tokens = 42000000
 [ratings]
 rating_cyber = 1
 
+[first_price]
+btc = 0.00067233
+usd = 0.1406059
+date = "2015-08-24T02:00:00"
+
 [[events]]
 name = "Tokens issued through Omni Layer"
 start_date = "2015-03-02T05:52:16"
@@ -74,14 +79,6 @@ icon = "github.png"
 tags = ["Main","Code"]
 
 [[links]]
-type = "exchange"
-name = "MasterXchange"
-headline = "nein"
-url = "https://masterxchange.com/market.php?currency=msctau"
-icon = "masterxchange.png"
-tags = ["Apps","Exchange"]
-
-[[links]]
 type = "blog"
 name = "Blog"
 rss = "https://sites.google.com/a/idni.org/idni/blog/posts"
@@ -97,8 +94,8 @@ icon = "twitter.png"
 tags = ["News"]
 
 [[links]]
-type = "BTT Thread"
-name = "Forum"
+type = "forum"
+name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=950309"
 icon = "forum.png"
 tags = ["News"]
@@ -109,3 +106,11 @@ name = "reddit"
 url = "https://www.reddit.com/r/tauchain"
 icon = "reddit.png"
 tags = ["News"]
+
+[[links]]
+type = "exchange"
+name = "Bittrex"
+headline = "nein"
+url = "https://bittrex.com"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
