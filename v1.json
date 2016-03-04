@@ -166,6 +166,11 @@
         "ratings": {
             "rating_cyber": 1
         },
+        "first_price": {
+            "btc": 0.00067233,
+            "usd": 0.1406059,
+            "date": "2015-08-24T02:00:00"
+        },
         "events": [
             {
                 "name": "Tokens issued through Omni Layer",
@@ -230,17 +235,6 @@
                 ]
             },
             {
-                "type": "exchange",
-                "name": "MasterXchange",
-                "headline": "nein",
-                "url": "https://masterxchange.com/market.php?currency=msctau",
-                "icon": "masterxchange.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
                 "type": "blog",
                 "name": "Blog",
                 "rss": "https://sites.google.com/a/idni.org/idni/blog/posts",
@@ -260,8 +254,8 @@
                 ]
             },
             {
-                "type": "BTT Thread",
-                "name": "Forum",
+                "type": "forum",
+                "name": "BTT Thread",
                 "url": "https://bitcointalk.org/index.php?topic=950309",
                 "icon": "forum.png",
                 "tags": [
@@ -275,6 +269,17 @@
                 "icon": "reddit.png",
                 "tags": [
                     "News"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Bittrex",
+                "headline": "nein",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
                 ]
             }
         ]
@@ -2753,7 +2758,7 @@
                 "type": "custom",
                 "name": "IRC Channel",
                 "url": "https://webchat.freenode.net/?channels=bitsquare",
-                "icon": "reddit.png",
+                "icon": "irc.png",
                 "tags": [
                     "News"
                 ]
@@ -6051,6 +6056,7 @@
     {
         "genesis_id": "298e5cc3d985bfe7f81dc135f360abe089edd4396b86d2de66b0cef42b21d980",
         "system": "Decred",
+        "icon": "decred",
         "dependencies": [
             "independed"
         ],
@@ -6059,7 +6065,7 @@
             "token_symbol": "DCR"
         },
         "consensus": {
-            "type": "",
+            "type": "Hybrid",
             "algorithm": ""
         },
         "descriptions": {
@@ -6076,6 +6082,11 @@
         },
         "specs": {},
         "ratings": {},
+        "first_price": {
+            "btc": 0.00250207,
+            "usd": 0.95068652,
+            "date": "2016-02-10T19:30:00"
+        },
         "links": [
             {
                 "type": "website",
@@ -6116,6 +6127,85 @@
                     "Main",
                     "Apps",
                     "Wallet"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "GitHub",
+                "url": "https://github.com/decred",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Decred Forum",
+                "url": "https://forum.decred.org/",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/decred",
+                "rss": "https://www.reddit.com/r/decred/.rss",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/decredproject",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Decred Technical Brief v0.1",
+                "url": "https://decred.org/dtb001.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "IRC Channel",
+                "url": "https://webchat.freenode.net/?channels=decred",
+                "icon": "irc.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Bittrex",
+                "headline": "nein",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "BlueTrade",
+                "headline": "nein",
+                "url": "https://bleutrade.com",
+                "icon": "bluetrade.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
                 ]
             }
         ]
