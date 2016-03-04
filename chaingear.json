@@ -1006,7 +1006,7 @@
             "rating_cyber": 5
         },
         "specs": {},
-        "crowdsale": {
+        "crowdsales": {
             "start_date": "2014-01-01T00:00:00",
             "end_date": "2014-07-19T00:00:00",
             "genesis_address": [
@@ -4727,7 +4727,7 @@
             "rating_cyber": 4
         },
         "specs": {},
-        "crowdsale": {
+        "crowdsales": {
             "start_date": "2014-01-02T02:40:50",
             "end_date": "2014-02-02T00:00:00",
             "genesis_address": [
@@ -5669,8 +5669,9 @@
         }
     },
     {
-        "genesis_id": "DAI",
+        "genesis_id": "",
         "system": "Dai",
+        "icon": "makerdao",
         "dependencies": [
             "Ethereum"
         ],
@@ -5695,13 +5696,23 @@
                 "type": "website"
             },
             {
+                "type": "paper",
                 "name": "Whitepaper",
-                "url": "https://makerdao.com/dai01.pdf",
-                "icon": "whitepaper.png",
-                "type": "whitepaper",
+                "url": "http://makerdao.github.io/docs/",
+                "icon": "paper.png",
                 "tags": [
                     "Main",
                     "Science"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Slack",
+                "url": "http://makerdao.github.io/docs/",
+                "icon": "slack.png",
+                "tags": [
+                    "Main",
+                    "News"
                 ]
             },
             {
@@ -6650,6 +6661,17 @@
             "nickname": "DigixGlobal"
         },
         "ratings": {},
+        "crowdsales": {
+            "start_date": "2016-03-30T00:00:00",
+            "end_date": "2016-04-28T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_tems": "https://sale.digix.io/docs/digixdao_crowdsale_info.pdf",
+            "funding_url": "https://sale.digix.io/",
+            "tokens_sold": "",
+            "btc_raised": ""
+        },
         "consensus": {
             "type": "",
             "algorithm": ""
@@ -12672,7 +12694,7 @@
         "ratings": {
             "rating_cyber": 3
         },
-        "crowdsale": {
+        "crowdsales": {
             "start_date": "2013-07-31T00:00:00",
             "end_date": "2013-08-31T00:00:00",
             "genesis_address": [
@@ -18627,7 +18649,7 @@
                 "url": "https://slock.it/presale.html",
                 "icon": "link.png",
                 "tags": [
-                    "Code"
+                    "Main"
                 ]
             }
         ],

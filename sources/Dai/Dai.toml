@@ -1,5 +1,6 @@
-genesis_id = "DAI"
+genesis_id = ""
 system = "Dai"
+icon = "makerdao"
 dependencies = ["Ethereum"]
 
 [descriptions]
@@ -20,11 +21,18 @@ tags = ["Main"]
 type = "website"
 
 [[links]]
+type = "paper"
 name = "Whitepaper"
-url = "https://makerdao.com/dai01.pdf"
-icon = "whitepaper.png"
-type = "whitepaper"
+url = "http://makerdao.github.io/docs/"
+icon = "paper.png"
 tags = ["Main", "Science"]
+
+[[links]]
+type = "custom"
+name = "Slack"
+url = "http://makerdao.github.io/docs/"
+icon = "slack.png"
+tags = ["Main", "News"]
 
 [[links]]
 name = "MakerDAO on Github"
