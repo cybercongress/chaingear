@@ -27,7 +27,7 @@ announcement = ""
 genesis = ""
 
 [token]
-token_name = "Reputation"
+token_name = "reputation"
 token_symbol = "REP"
 
 [specs]
@@ -73,27 +73,20 @@ tags = ["Apps"]
 [[links]]
 type = "custom"
 name = "Augur Demo"
-url = "http://demo.augur.net/"
+url = "http://app.augur.net/"
 icon = "augur.png"
 tags = ["Main", "Apps"]
 
 [[links]]
-type = "custom"
-name = "Augur Apha"
-url = "http://www.augur.net/blog/the-augur-alpha-is-now-available-to-download"
-icon = "augur.png"
-tags = ["Apps"]
-
-[[links]]
 type = "blog"
-name = "Blog"
+name = "Augue Blogger"
 url = "http://www.augur.net/blog"
 icon = "blog.png"
 tags = ["Main","News"]
 
 [[links]]
 type = "twitter"
-name = "Twitter"
+name = "@AugurProject"
 url = "https://twitter.com/AugurProject"
 icon = "twitter.png"
 tags = ["News"]
@@ -106,7 +99,7 @@ icon = "facebook.png"
 tags = ["News"]
 
 [[links]]
-type = "reddit"
+type = "r/augur"
 name = "reddit"
 url = "http://reddit.com/r/augur"
 rss = "https://www.reddit.com/r/Augur/.rss"
@@ -143,14 +136,44 @@ tags = ["News"]
 
 [[links]]
 type = "github"
-name = "Augur GitHub"
+name = "GitHub Organisation"
 url = "https://github.com/AugurProject"
 tags = ["Code"]
 
 [[links]]
+type = "github"
+name = "Augur Front-end"
+url = "https://github.com/AugurProject/augur"
+tags = ["Code"]
+
+[[links]]
+type = "github"
+name = "Augur Docs"
+url = "http://docs.augur.net/"
+tags = ["Code"]
+
+[[links]]
+type = "github"
+name = "Augur Core"
+url = "https://github.com/AugurProject/augur-core"
+tags = ["Code"]
+
+[[links]]
+type = "github"
+name = "Javascript API"
+url = "https://github.com/AugurProject/augur.js"
+tags = ["Code"]
+
+[[links]]
+type = "github"
+name = "Consensus Simulator"
+url = "https://github.com/AugurProject/Augur.jl"
+tags = ["Code"]
+
+[[links]]
+type = "paper"
 name = "Augur Whitepaper"
 url = "http://www.augur.link/augur.pdf"
-type = "paper"
 tags = ["Main", "Science"]
 
 [[links]]
