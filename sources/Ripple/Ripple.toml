@@ -60,18 +60,26 @@ tags = ["Main"]
 type = "website"
 
 [[links]]
+name = "Ripple Trade"
+url = "https://rippletrade.com/"
+icon = "ripple.png"
+tags = ["Apps", "Wallet"]
+type = "wallet"
+
+[[links]]
+name = "Gatehub"
+url = "https://gatehub.net"
+icon = "ripple.png"
+tags = ["Main", "Apps", "Wallet"]
+type = "wallet"
+
+
+[[links]]
 name = "Validators"
 url = "https://validators.ripple.com"
 icon = "website.png"
 tags = ["Analytics"]
 type = "custom"
-
-[[links]]
-name = "Ripple GitHub"
-url = "https://github.com/ripple"
-icon = "github.png"
-tags = ["Code"]
-type = "github"
 
 [[links]]
 name = "Ripple Charts"
@@ -82,26 +90,28 @@ tags = ["Main", "Apps", "Analytics"]
 type = "custom"
 
 [[links]]
-name = "Ripple Trade"
-url = "https://rippletrade.com/"
-icon = "ripple.png"
-tags = ["Main", "Apps", "Wallet"]
-type = "wallet"
-
-[[links]]
-name = "Consensus Whitepaper"
-url = "https://ripple.com/consensus-whitepaper/"
-icon = "whitepaper.png"
-tags = ["Main", "Science"]
-type = "paper"
-
-[[links]]
-name = "Ripple Graph"
-url = "https://www.ripplecharts.com/#/graph"
+name = "Key Network Metrics"
+url = "https://www.ripplecharts.com/#/metrics"
 headline = "Data from the Ripple Network"
 icon = "ripple.png"
-tags = ["Main", "Apps", "Analytics"]
+tags = ["Apps", "Analytics"]
 type = "custom"
+
+[[links]]
+name = "XRP held by Ripple Labs"
+url = "https://ripple.com/xrp-portal/"
+headline = "Data from the Ripple Network"
+icon = "ripple.png"
+tags = ["Apps", "Analytics"]
+type = "custom"
+
+[[links]]
+name = "Markets CMC"
+headline = "nein"
+url = "http://coinmarketcap.com/currencies/ripple/#markets"
+type = "custom"
+icon = "link.png"
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "Press Releases"
@@ -146,7 +156,7 @@ tags = ["News"]
 type = "forum"
 
 [[links]]
-name = "reddit"
+name = "r/ripple"
 url = "www.reddit.com/r/Ripple/"
 icon = "reddit.png"
 tags = ["News"]
@@ -173,22 +183,36 @@ type = "custom"
 tags = ["publications"]
 
 [[links]]
-name = "Ripple Labs"
-url = "https://www.ripplelabs.com"
-icon = "ripple.png"
+name = "GitHub Organization"
+url = "https://github.com/ripple"
+icon = "github.png"
 tags = ["Code"]
-type = "paper"
+type = "github"
 
 [[links]]
-name = "Codius: There Smart Programs Live"
-url = "https://codius.org/"
-icon = "codius.png"
+name = "Rippled: Peer-to-peer Network Daemon"
+url = "https://github.com/ripple/rippled"
+icon = "ripple.png"
 tags = ["Code"]
 type = "custom"
 
 [[links]]
-name = "REST API Tool"
-url = "https://ripple.com/build/rest-tool/"
+name = "JavaScript API for interacting with Ripple in Node.js"
+url = "https://github.com/ripple/ripple-lib"
+icon = "ripple.png"
+tags = ["Code"]
+type = "custom"
+
+[[links]]
+name = "Ripple Client: UI for the Ripple payment network"
+url = "https://github.com/ripple/ripple-client"
+icon = "ripple.png"
+tags = ["Code"]
+type = "custom"
+
+[[links]]
+name = "Data API Tool"
+url = "https://ripple.com/build/data-api-tool/"
 icon = "ripple.png"
 tags = ["Code"]
 type = "custom"
@@ -208,39 +232,67 @@ tags = ["Code"]
 type = "custom"
 
 [[links]]
-name = "rippled documentation"
-url = "https://ripple.com/build/rippled-apis/"
+name = "Ripple Developer Portal"
+url = "https://ripple.com/build/"
 icon = "ripple.png"
 tags = ["Code"]
 type = "wiki"
 
 [[links]]
-name = "Rippled Wiki"
-url = "https://ripple.com/build/rippled-apis/"
-icon = "ripple.png"
-tags = ["Code"]
-type = "wiki"
+name = "Ripple Consensus Whitepaper by David Schwartz, Noah Youngs, Arthur Britto"
+url = "https://ripple.com/files/ripple_consensus_whitepaper.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
 
 [[links]]
-name = "Executive Summary for Financial Institutions"
-url = "https://ripple.com/integrate/executive-summary-for-financial-institutions/"
-icon = "ripple.png"
-tags = ["code"]
-type = "paper"
+name = "Ripple Deep Dive for Financial Professionals"
+url = "https://ripple.com/files/ripple_deep_dive_for_financial_professionals.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
 
 [[links]]
-name = "Ripple Developers portal"
+name = "Building Network Effects on Ripple"
+url = "https://ripple.com/files/ripple_vision.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "The Cost-Cutting Case for Banks"
+url = "https://ripple.com/files/xrp_cost_model_paper.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "Ripple Stream Product Sheet"
+url = "https://ripple.com/files/ripple_stream_product_sheet.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "Ripple Connect Product Sheet"
+url = "https://ripple.com/files/ripple_connect_product_sheet.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "Knowledge Center"
+url = "https://ripple.com/learn/"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "Ripple Developers Portal"
 url = "https://ripple.com/build/"
 icon = "ripple.png"
 tags = ["Code"]
 type = "custom"
-
-[[links]]
-name = "International Ripple Business Association"
-url = "http://www.ripplebusiness.org/"
-icon = "ripple.png"
-tags = ["code"]
-type = "paper"
 
 [[links]]
 name = "Poloniex"
@@ -248,14 +300,6 @@ headline = "Cryptocurrensy Exchange"
 url = "https://www.poloniex.com/exchange#btc_bts"
 type = "custom"
 icon = "poloniex.png"
-tags = ["Apps", "Exchange"]
-
-[[links]]
-name = "Cryptsy"
-headline = "nein"
-url = "https://www.cryptsy.com/users/register?refid=243274"
-type = "custom"
-icon = "cryptsy.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
@@ -283,12 +327,28 @@ icon = "bittrex.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
-name = "Markets CMC"
+name = "Jubi"
 headline = "nein"
-url = "http://coinmarketcap.com/currencies/ripple/#markets"
+url = "http://www.jubi.com/coin/xrp/"
 type = "custom"
-icon = "cmc.png"
-tags = ["Apps", "Analytics"]
+icon = "link.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "Justcoin"
+headline = "nein"
+url = "https://justcoin.com/"
+type = "custom"
+icon = "link.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "Rock Trading"
+headline = "nein"
+url = "https://therocktrading.com/en/offers/BTCXRP"
+type = "custom"
+icon = "link.png"
+tags = ["Apps", "Exchange"]
 
 [flags]
 supply_from_here = true
