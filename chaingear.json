@@ -18325,6 +18325,7 @@
         ]
     },
     {
+        "genesis_id": "AGW9p6XZTFkth4bbGRJjkYEjgrdmx2PAKD",
         "source": "cyberFund",
         "system": "SatoshiFund",
         "aliases": {
@@ -18336,11 +18337,12 @@
         },
         "consensus": {
             "consensus_name": "Bitcoin",
-            "consensus_type": ""
+            "consensus_type": "OP_Return"
         },
         "descriptions": {
-            "state": "Public",
+            "state": "Private",
             "system_type": "cryptoasset",
+            "headline": "Closed-End Investment Fund",
             "tags": [
                 "DApp"
             ]
@@ -18351,13 +18353,36 @@
         },
         "specs": {
             "dependencies": "Bitcoin",
-            "supply": 921713,
-            "links": [],
+            "supply": 888217,
             "cap": {
-                "usd": 46000,
-                "btc": 119
+                "usd": 52741,
+                "btc": 128.25
             }
         },
+        "links": [
+            {
+                "type": "explorer",
+                "name": "Satoshi•Fund Asset",
+                "url": "https://www.coinprism.info/asset/AGW9p6XZTFkth4bbGRJjkYEjgrdmx2PAKD",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Full Portfolio Details",
+                "url": "https://docs.google.com/spreadsheets/d/1bMrLliQXlv8a5IZPDdjZUif_5eflsO7T6rax3QL1K-A/pubhtml",
+                "icon": "link.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            }
+        ],
         "flags": {
             "rating_do_not_display": true
         }
