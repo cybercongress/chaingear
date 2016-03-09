@@ -18304,18 +18304,11 @@
     },
     {
         "genesis_id": "AGW9p6XZTFkth4bbGRJjkYEjgrdmx2PAKD",
-        "source": "cyberFund",
         "system": "SatoshiFund",
-        "aliases": {
-            "coinmarketcap": "Satoshi•Fund",
-            "CurrencyName": "Satoshi•Fund"
-        },
-        "ratings": {
-            "rating_cyber": 2
-        },
-        "consensus": {
-            "consensus_name": "Bitcoin",
-            "consensus_type": "OP_Return"
+        "dependencies": "Bitcoin",
+        "token": {
+            "token_name": "Satoshi•Fund",
+            "token_symbol": "CFPE2013"
         },
         "descriptions": {
             "state": "Private",
@@ -18325,12 +18318,17 @@
                 "DApp"
             ]
         },
-        "token": {
-            "token_name": "Satoshi•Fund",
-            "token_symbol": "CFPE2013"
+        "consensus": {
+            "consensus_name": "Bitcoin",
+            "consensus_type": "OP_Return"
+        },
+        "aliases": {
+            "nickname": "Satoshi•Fund"
+        },
+        "ratings": {
+            "rating_cyber": 2
         },
         "specs": {
-            "dependencies": "Bitcoin",
             "supply": 888217,
             "cap": {
                 "usd": 52741,
