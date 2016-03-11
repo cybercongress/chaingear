@@ -1,14 +1,6 @@
 genesis_id = "AGW9p6XZTFkth4bbGRJjkYEjgrdmx2PAKD"
-source = "cyberFund"
 system = "SatoshiFund"
-
-[aliases]
-coinmarketcap = "Satoshi•Fund"
-CurrencyName = "Satoshi•Fund"
-
-[consensus]
-consensus_name = "Bitcoin"
-consensus_type = "OP_Return"
+dependencies = "Bitcoin"
 
 [descriptions]
 state = "Private"
@@ -20,27 +12,28 @@ tags = ["DApp"]
 token_name = "pie"
 token_symbol = "CFPE2013"
 
+[consensus]
+consensus_name = "Bitcoin"
+consensus_type = "OP_Return"
+
+[aliases]
+nickname = "Satoshi•Fund"
+
+[ratings]
+rating_cyber = 2.0
+
 [specs]
-dependencies = "Bitcoin"
 supply = 888217
 
-  [specs.cap]
-  usd = 47200
-  btc = 116.50
+[specs.cap]
+usd = 52741
+btc = 128.25
 
 [[links]]
 type = "explorer"
 name = "Satoshi•Fund Asset"
 url = "https://www.coinprism.info/asset/AGW9p6XZTFkth4bbGRJjkYEjgrdmx2PAKD"
 icon = "explorer.png"
-tags = ["Main","Apps","Analytics"]
-
-
-[[links]]
-type = "custom"
-name = "Full Portfolio Details"
-url = "https://docs.google.com/spreadsheets/d/1bMrLliQXlv8a5IZPDdjZUif_5eflsO7T6rax3QL1K-A/pubhtml"
-icon = "link.png"
 tags = ["Main","Apps","Analytics"]
 
 [flags]
