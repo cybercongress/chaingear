@@ -21236,14 +21236,12 @@
         "icon": "vanillacoin",
         "aliases": {
             "coinmarketcap": "Vanillacoin",
-            "CurrencyName": "Vanillacoin"
-        },
-        "ratings": {
-            "rating_cyber": 2
+            "CurrencyName": "Vanillacoin",
+            "nickname": "Vcash"
         },
         "consensus": {
             "type": "Hybrid",
-            "algorithm": "WhirlpoolX+Vanila"
+            "algorithm": "Blake225+Vanila"
         },
         "descriptions": {
             "state": "Public",
@@ -21257,7 +21255,7 @@
             }
         ],
         "token": {
-            "token_name": "Vanillacoin",
+            "token_name": "vcash",
             "token_symbol": "VNL"
         },
         "specs": {
@@ -21268,8 +21266,8 @@
         "links": [
             {
                 "type": "website",
-                "name": "vanillacoin.net",
-                "url": "http://www.vanillacoin.net/",
+                "name": "v.cash",
+                "url": "https://v.cash/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
@@ -21288,6 +21286,16 @@
                 ]
             },
             {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://v.cash/forums/",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
                 "type": "github",
                 "name": "Vanillacoin GitHub",
                 "url": "https://github.com/john-connor/vanillacoin",
@@ -21303,7 +21311,6 @@
                 "url": "https://bitcointalk.org/index.php?topic=977245.0",
                 "icon": "forum.png",
                 "tags": [
-                    "Main",
                     "News"
                 ]
             }

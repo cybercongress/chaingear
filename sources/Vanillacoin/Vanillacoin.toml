@@ -5,13 +5,11 @@ icon = "vanillacoin"
 [aliases]
 coinmarketcap = "Vanillacoin"
 CurrencyName = "Vanillacoin"
-
-[ratings]
-rating_cyber = 2.0
+nickname = "Vcash"
 
 [consensus]
 type = "Hybrid"
-algorithm = "WhirlpoolX+Vanila"
+algorithm = "Blake225+Vanila"
 
 [descriptions]
 state = "Public"
@@ -23,18 +21,18 @@ start_date = "2015-05-18T08:19:20"
 url = "https://bitcointalk.org/index.php?topic=1064326.0"
 
 [token]
-token_name = "Vanillacoin"
+token_name = "vcash"
 token_symbol = "VNL"
 
 [specs]
 block_time = "200 seconds"
-total_tokens = 30700000.0
+total_tokens = 30700000
 difficulty_cycle = "every block"
 
 [[links]]
 type = "website"
-name = "vanillacoin.net"
-url = "http://www.vanillacoin.net/"
+name = "v.cash"
+url = "https://v.cash/"
 icon = "website.png"
 tags = ["Main"]
 
@@ -44,6 +42,13 @@ name = "Vanillacoin Explorer"
 url = "http://vnlbex.lbtcoin.org/"
 icon = "explorer.png"
 tags = ["Main","Apps","Explorer","Analytics"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://v.cash/forums/"
+icon = "forum.png"
+tags = ["Main","News"]
 
 [[links]]
 type = "github"
@@ -57,7 +62,7 @@ type = "forum"
 name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=977245.0"
 icon = "forum.png"
-tags = ["Main","News"]
+tags = ["News"]
 
 [first_price]
 btc = 0.00004602
