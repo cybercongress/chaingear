@@ -19,7 +19,6 @@ page_state = "ready"
 
 [aliases]
 coinmarketcap = "BlackCoin"
-CurrencyName = "BlackCoin"
 
 [specs]
 p2p = 15715.0
@@ -30,9 +29,6 @@ halfing_cycle = "no halving"
 difficulty_cycle = 1.0
 txs_confirm = 10.0
 mint_confirm = 500.0
-
-[ratings]
-rating_cyber = 2.0
 
 [[events]]
 name = "Announcement"
@@ -266,3 +262,6 @@ tags = ["Apps", "Exchange"]
 btc = 0.00001169
 usd = 0.00699405
 date = "2014-02-28T00:00:00"
+
+[flags]
+quantum = true

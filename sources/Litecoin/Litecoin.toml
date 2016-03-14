@@ -21,7 +21,6 @@ page_state = "ready"
 
 [aliases]
 coinmarketcap = "Litecoin"
-quantum = "LTC"
 
 [specs]
 block_time = 150.0
@@ -29,9 +28,6 @@ block_reward = 50.0
 total_tokens = 84000000.0
 premine_tokens = 150.0
 difficulty_cycle = 2016.0
-
-[ratings]
-rating_cyber = 2.0
 
 [[events]]
 name = "Announcement"
@@ -362,3 +358,6 @@ tags = ["Apps", "Exchange"]
 btc = 0.0314437
 usd = 3.82096807
 date = "2013-04-28T00:00:00"
+
+[flags]
+quantum = true
