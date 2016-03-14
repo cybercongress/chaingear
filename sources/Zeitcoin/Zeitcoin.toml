@@ -6,12 +6,9 @@ dependencies = ["independent"]
 [aliases]
 coinmarketcap = "Zeitcoin"
 
-[ratings]
-rating_cyber = 1.0
-
 [consensus]
 type = "PoS"
-algorithm = "Scrypt +"
+algorithm = "Scrypt+Peercoin"
 
 [descriptions]
 state = "Public"
@@ -35,13 +32,6 @@ txs_confirm = 4.0
 mint_confirm = 50.0
 
 [[links]]
-type = "website"
-name = "zeit-coin.com"
-url = "http://www.zeit-coin.com/"
-icon = "website.png"
-tags = ["Main"]
-
-[[links]]
 type = "github"
 name = "Zeitcoin GitHub"
 url = "https://github.com/zeitcoinmovement/zeitcoin"
@@ -51,7 +41,7 @@ tags = ["Main", "Code"]
 [[links]]
 type = "explorer"
 name = "CryptoID"
-url = "hhttps://chainz.cryptoid.info/zeit/"
+url = "https://chainz.cryptoid.info/zeit/"
 icon = "cryptoid.png"
 tags = ["Main","Explorer","Analytics"]
 
