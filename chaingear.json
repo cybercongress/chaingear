@@ -623,11 +623,7 @@
         "system": "Auroracoin",
         "icon": "auroracoin",
         "aliases": {
-            "coinmarketcap": "Auroracoin",
-            "CurrencyName": "Auroracoin"
-        },
-        "ratings": {
-            "rating_cyber": 1
+            "coinmarketcap": "Auroracoin"
         },
         "consensus": {
             "type": "PoW",
@@ -756,12 +752,9 @@
         "aliases": {
             "coinmarketcap": "BitBay"
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "consensus": {
             "type": "PoS",
-            "algorithm": "PoS2.0"
+            "algorithm": "Peercoin"
         },
         "descriptions": {
             "system_type": "cryptocurrency",
@@ -3177,9 +3170,6 @@
         "aliases": {
             "coinmarketcap": "Burst"
         },
-        "ratings": {
-            "rating_cyber": 2
-        },
         "consensus": {
             "type": "PoS",
             "algorithm": "Proof-of-Capacity"
@@ -4198,11 +4188,7 @@
         "system": "Coinomat",
         "dependencies": "NXT",
         "aliases": {
-            "coinmarketcap": "Coinomat",
-            "CurrencyName": "Coinomat"
-        },
-        "ratings": {
-            "rating_cyber": 2
+            "coinmarketcap": "Coinomat"
         },
         "consensus": {
             "type": "NXT",
@@ -4331,6 +4317,9 @@
             "btc": 0.00042034,
             "usd": 0.20045159,
             "date": "2014-09-05T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -4650,15 +4639,10 @@
         }
     },
     {
-        "source": "cyberFund",
         "system": "Crypti",
         "dependencies": "independent",
         "aliases": {
-            "coinmarketcap": "Crypti",
-            "CurrencyName": "Crypti"
-        },
-        "ratings": {
-            "rating_cyber": 2
+            "coinmarketcap": "Crypti"
         },
         "consensus": {
             "type": "PoS",
@@ -4889,10 +4873,8 @@
             "hashtag": "#bitshares"
         },
         "aliases": {
-            "coinmarketcap": "Cryptofund",
-            "CurrencyName": "Cryptoasset.fund"
+            "coinmarketcap": "Cryptofund"
         },
-        "ratings": {},
         "consensus": {
             "type": "NXT",
             "algorithm": "AE"
@@ -4994,6 +4976,9 @@
             "btc": 0.0003455,
             "usd": 0.08202243,
             "date": "2015-10-02T07:22:05"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -5003,12 +4988,9 @@
         "aliases": {
             "coinmarketcap": "CureCoin"
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "consensus": {
-            "type": "Hybrid",
-            "algorithm": "SHA-256"
+            "type": "",
+            "algorithm": ""
         },
         "descriptions": {
             "state": "Public",
@@ -6130,9 +6112,6 @@
         "aliases": {
             "coinmarketcap": "Digitalcoin"
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "consensus": {
             "type": "PoW",
             "algorithm": "SHA256+Scrypt+X11"
@@ -6612,9 +6591,6 @@
         ],
         "aliases": {
             "coinmarketcap": "Dogeparty"
-        },
-        "ratings": {
-            "rating_cyber": 2
         },
         "consensus": {
             "type": "Dogecoin",
@@ -7818,9 +7794,6 @@
         "aliases": {
             "coinmarketcap": "FIMKrypto"
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "consensus": {
             "type": "PoS",
             "algorithm": "NXT"
@@ -8241,9 +8214,6 @@
         "aliases": {
             "coinmarketcap": "Feathercoin"
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "consensus": {
             "type": "PoW",
             "algorithm": "Scrypt"
@@ -8322,78 +8292,6 @@
         }
     },
     {
-        "genesis_id": "00000b17e3a241903ee4b5be429ce0d3f5097312a7b9ab093cc172aece0943a5",
-        "system": "Fibre",
-        "icon": "fibre",
-        "aliases": {
-            "coinmarketcap": "Fibre"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptocurrency"
-        },
-        "consensus": {
-            "type": "Hybrid",
-            "algorithm": ""
-        },
-        "token": {
-            "token_name": "Fibre",
-            "token_symbol": "FIBRE"
-        },
-        "specs": {
-            "total_tokens": 625000,
-            "premine_tokens": 12500
-        },
-        "links": [
-            {
-                "type": "website",
-                "name": "fibrecoin.com",
-                "url": "http://www.fibrecoin.com/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "Explorer",
-                "url": "http://cryptobe.com/chain/FibreCoin",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Explorer",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "Fibre GitHub",
-                "url": "https://github.com/fibre-team/fibre-public",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "BTT Thread",
-                "url": "https://bitcointalk.org/index.php?topic=737771.0",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            }
-        ],
-        "first_price": {
-            "btc": 0.00023831,
-            "usd": 0.11531354,
-            "date": "2014-08-30T00:00:00"
-        }
-    },
-    {
         "genesis_id": "",
         "system": "Filecoin",
         "descriptions": {
@@ -8433,9 +8331,6 @@
         "icon": "florincoin",
         "aliases": {
             "coinmarketcap": "FlorinCoin"
-        },
-        "ratings": {
-            "rating_cyber": 1
         },
         "consensus": {
             "type": "PoW",
@@ -8533,11 +8428,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "FoldingCoin",
-            "CurrencyName": "FoldingCoin"
-        },
-        "ratings": {
-            "rating_cyber": 2
+            "coinmarketcap": "FoldingCoin"
         },
         "specs": {
             "total_tokens": 1000000000
@@ -8764,6 +8655,9 @@
             "btc": 0.00000439,
             "usd": 0.00146353,
             "date": "2014-10-29T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -9000,8 +8894,7 @@
         "system": "GeoCoin",
         "icon": "geocoin",
         "aliases": {
-            "coinmarketcap": "GeoCoin",
-            "CurrencyName": "GeoCoin"
+            "coinmarketcap": "GeoCoin"
         },
         "consensus": {
             "type": "PoW",
@@ -9096,7 +8989,6 @@
             "state": "Public",
             "system_type": "cryptoasset",
             "headline": "Messaging that Pays",
-            "summary": "GetGems is a fully decentralized social messaging app, run by all GetGem users. You are no longer the product being sold, but have full control over your privacy and can turn your own data to rewards if you wish. Gems also make it a breeze to send each other cryptocurrency as simple as messaging.",
             "tags": [
                 "DApp"
             ]
@@ -9107,9 +8999,6 @@
         },
         "specs": {
             "total_tokens": 100000000
-        },
-        "ratings": {
-            "rating_cyber": 4
         },
         "crowdsales": {
             "start_date": "2014-01-12T00:00:00",
@@ -9308,6 +9197,9 @@
             "btc": 0.00006904,
             "usd": 0.0149659,
             "date": "2015-02-05T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -9736,8 +9628,7 @@
         "system": "GroestlCoin",
         "icon": "groestlcoin",
         "aliases": {
-            "coinmarketcap": "GroestlCoin",
-            "CurrencyName": "GroestlCoin"
+            "coinmarketcap": "GroestlCoin"
         },
         "descriptions": {
             "state": "Public",
@@ -9890,9 +9781,6 @@
         "aliases": {
             "coinmarketcap": "HoboNickels"
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "consensus": {
             "type": "Hybrid",
             "algorithm": "Scrypt"
@@ -9976,9 +9864,6 @@
         "icon": "horizon",
         "aliases": {
             "coinmarketcap": "Horizon"
-        },
-        "ratings": {
-            "rating_cyber": 1
         },
         "descriptions": {
             "state": "Public",
@@ -10244,9 +10129,6 @@
         "aliases": {
             "coinmarketcap": "HyperStake"
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "consensus": {
             "type": "PoS",
             "algorithm": "X11"
@@ -10461,9 +10343,6 @@
         "aliases": {
             "coinmarketcap": "InstantDEX"
         },
-        "ratings": {
-            "rating_cyber": 2
-        },
         "consensus": {
             "type": "NXT",
             "algorithm": "AE"
@@ -10536,6 +10415,9 @@
             "btc": 0.0039071,
             "usd": 1.7213794,
             "date": "2014-09-14T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -10617,9 +10499,6 @@
         "aliases": {
             "coinmarketcap": "LTBcoin"
         },
-        "ratings": {
-            "rating_cyber": 3
-        },
         "descriptions": {
             "state": "Public",
             "system_type": "cryptoasset"
@@ -10629,7 +10508,7 @@
             "algorithm": "Locked Token"
         },
         "token": {
-            "token_name": "LTBcoin",
+            "token_name": "ltbcoin",
             "token_symbol": "LTBC"
         },
         "specs": {},
@@ -10680,6 +10559,9 @@
             "btc": 0.00000158,
             "usd": 0.00078485,
             "date": "2014-08-18T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -11489,6 +11371,9 @@
             "btc": 0.00055376,
             "usd": 0.26544373,
             "date": "2014-08-31T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -11497,10 +11382,8 @@
         "icon": "mmbtcd",
         "dependencies": "NXT",
         "aliases": {
-            "coinmarketcap": "MMBTCD",
-            "CurrencyName": "MMBTCD"
+            "coinmarketcap": "MMBTCD"
         },
-        "ratings": {},
         "consensus": {
             "type": "NXT",
             "algorithm": "AE"
@@ -11574,6 +11457,9 @@
             "btc": 0.00046246,
             "usd": 0.13057263,
             "date": "2015-07-07T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -11581,8 +11467,7 @@
         "system": "MMNXT",
         "dependencies": "NXT",
         "aliases": {
-            "coinmarketcap": "MMNXT",
-            "CurrencyName": "MMNXT"
+            "coinmarketcap": "MMNXT"
         },
         "descriptions": {
             "state": "Public",
@@ -11675,6 +11560,9 @@
             "btc": 0.00006098,
             "usd": 0.02475329,
             "date": "2014-09-22T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -12316,9 +12204,6 @@
         "aliases": {
             "coinmarketcap": "MazaCoin"
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "consensus": {
             "type": "PoW",
             "algorithm": "SHA-256"
@@ -12492,9 +12377,6 @@
         ],
         "aliases": {
             "coinmarketcap": "Mintcoin"
-        },
-        "ratings": {
-            "rating_cyber": 1
         },
         "consensus": {
             "type": "PoS",
@@ -13789,8 +13671,7 @@
             "NXT"
         ],
         "aliases": {
-            "coinmarketcap": "NautilusCoin",
-            "CurrencyName": "NautilusCoin"
+            "coinmarketcap": "NautilusCoin"
         },
         "descriptions": {
             "state": "Public",
@@ -14246,6 +14127,9 @@
             "btc": 0.00041755,
             "usd": 0.14773793,
             "date": "2014-12-07T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -15096,9 +14980,6 @@
         "aliases": {
             "coinmarketcap": "Nxttycoin"
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "consensus": {
             "type": "NXT",
             "algorithm": "AE"
@@ -15162,6 +15043,9 @@
             "btc": 0.00000191,
             "usd": 0.00096451,
             "date": "2014-08-12T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -15715,11 +15599,7 @@
             "independent"
         ],
         "aliases": {
-            "coinmarketcap": "PotCoin",
-            "CurrencyName": "PotCoin"
-        },
-        "ratings": {
-            "rating_cyber": 1
+            "coinmarketcap": "PotCoin"
         },
         "consensus": {
             "type": "PoS",
@@ -15796,7 +15676,7 @@
         },
         "consensus": {
             "type": "PoW",
-            "algorithm": "Prime"
+            "algorithm": "Cunningham Chains"
         },
         "descriptions": {
             "state": "Public",
@@ -15878,11 +15758,7 @@
         "genesis_id": "6pHMBFif7jXFG654joT8GPaymau1fMtaxacRyqSrnAwQMQDvqRuLpHpfFyqX4gWVvj4pF1mwQhFgqWAvjVvPJUjmBZQvL751dM9cEcQBTaUcxtNLuWZCVUAtbnWN9f7FsLppHhkPbxwpoodL3UJYRGt3EZrG17mhv1RJbmq8j6rr7Mk",
         "dependencies": "independent",
         "aliases": {
-            "coinmarketcap": "Qora",
-            "CurrencyName": "Qora"
-        },
-        "ratings": {
-            "rating_cyber": 2
+            "coinmarketcap": "Qora"
         },
         "consensus": {
             "type": "PoW",
@@ -16399,15 +16275,11 @@
         "system": "Riecoin",
         "icon": "riecoin",
         "aliases": {
-            "coinmarketcap": "Riecoin",
-            "CurrencyName": "Riecoin"
-        },
-        "ratings": {
-            "rating_cyber": 1
+            "coinmarketcap": "Riecoin"
         },
         "consensus": {
-            "type": "",
-            "algorithm": ""
+            "type": "PoW",
+            "algorithm": "Prime Numbers"
         },
         "descriptions": {
             "state": "Public",
@@ -19011,11 +18883,7 @@
             "algorithm": "AE"
         },
         "aliases": {
-            "coinmarketcap": "SuperNET",
-            "CurrencyName": "SuperNET"
-        },
-        "ratings": {
-            "rating_cyber": 2
+            "coinmarketcap": "SuperNET"
         },
         "descriptions": {
             "state": "Public",
@@ -19182,6 +19050,9 @@
             "btc": 0.01004329,
             "usd": 4.37262651,
             "date": "2014-09-23T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -20026,9 +19897,6 @@
         "aliases": {
             "coinmarketcap": "Unobtanium"
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "consensus": {
             "type": "PoW",
             "algorithm": "SHA-256"
@@ -20304,11 +20172,7 @@
         "icon": "vertcoin",
         "dependencies": "independent",
         "aliases": {
-            "coinmarketcap": "Vertcoin",
-            "CurrencyName": "Vertcoin"
-        },
-        "ratings": {
-            "rating_cyber": 1
+            "coinmarketcap": "Vertcoin"
         },
         "consensus": {
             "type": "PoW",
@@ -20393,11 +20257,7 @@
             "independent"
         ],
         "aliases": {
-            "coinmarketcap": "Viacoin",
-            "CurrencyName": "Viacoin"
-        },
-        "ratings": {
-            "rating_cyber": 1
+            "coinmarketcap": "Viacoin"
         },
         "consensus": {
             "type": "PoW",
