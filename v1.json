@@ -164,9 +164,6 @@
             "total_tokens": 42000000,
             "premine_tokens": 42000000
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "first_price": {
             "btc": 0.00067233,
             "usd": 0.1406059,
@@ -283,7 +280,10 @@
                     "Exchange"
                 ]
             }
-        ]
+        ],
+        "flags": {
+            "quantum": true
+        }
     },
     {
         "genesis_id": "2c85519db50a40c033ccb3d4cb729414016afa537c66537f7d3d52dcd1d484a3",
@@ -516,11 +516,7 @@
         ],
         "aliases": {
             "coinmarketcap": "Augur",
-            "CurrencyName": "Reputation",
             "nickname": "Augur"
-        },
-        "ratings": {
-            "rating_cyber": 4
         },
         "consensus": {
             "type": "Ethereum",
@@ -1031,11 +1027,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "BitShares",
-            "CurrencyName": "BitShares"
-        },
-        "ratings": {
-            "rating_cyber": 5
+            "coinmarketcap": "BitShares"
         },
         "specs": {},
         "crowdsales": {
@@ -1394,6 +1386,9 @@
             "btc": 0.00000295,
             "usd": 0.00184611,
             "date": "2014-07-19T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -1502,9 +1497,6 @@
             "tokens_sold": 400000000,
             "tokens_issued": 1999999886,
             "btc_raised": 2397.11393696
-        },
-        "ratings": {
-            "rating_cyber": 2
         },
         "specs": {
             "supply": 1999999910,
@@ -1644,16 +1636,11 @@
                 "DAO"
             ],
             "hashtag": "#bitcoin",
-            "twwidid": "624460720084774912",
             "page_state": "ready"
         },
         "aliases": {
             "coinmarketcap": "Bitcoin",
-            "CurrencyName": "bitcoin",
             "nickname": "Bitcoin"
-        },
-        "ratings": {
-            "rating_cyber": 5
         },
         "specs": {
             "rpc": 8332,
@@ -2405,6 +2392,9 @@
             "btc": 1,
             "usd": 0.0858,
             "date": "2010-07-18T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -2864,8 +2854,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "BlackCoin",
-            "CurrencyName": "BlackCoin"
+            "coinmarketcap": "BlackCoin"
         },
         "specs": {
             "p2p": 15715,
@@ -2876,9 +2865,6 @@
             "difficulty_cycle": 1,
             "txs_confirm": 10,
             "mint_confirm": 500
-        },
-        "ratings": {
-            "rating_cyber": 2
         },
         "events": [
             {
@@ -3196,6 +3182,9 @@
             "btc": 0.00001169,
             "usd": 0.00699405,
             "date": "2014-02-28T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -4498,74 +4487,6 @@
         }
     },
     {
-        "genesis_id": "12982485703607823902",
-        "system": "CoinoUSD",
-        "icon": "coinousd",
-        "dependencies": [
-            "NXT"
-        ],
-        "aliases": {
-            "coinmarketcap": "CoinoUSD"
-        },
-        "ratings": {
-            "rating_cyber": 2
-        },
-        "consensus": {
-            "type": "NXT",
-            "algorithm": "AE"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptoasset",
-            "tags": [
-                "DApp"
-            ]
-        },
-        "token": {
-            "token_name": "CoinoUSD",
-            "token_symbol": "COINO"
-        },
-        "specs": {},
-        "links": [
-            {
-                "type": "website",
-                "name": "coinomat.com",
-                "url": "https://coinomat.com/coinousd.php",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "CoinoUSD Asset",
-                "url": "http://nxtreporting.com/?as=12982485703607823902",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Explorer",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "BTT Thread",
-                "url": "https://bitcointalk.org/index.php?topic=1000725.0",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            }
-        ],
-        "first_price": {
-            "btc": 0.00295636,
-            "usd": 0.93723084,
-            "date": "2014-12-25T00:00:00"
-        }
-    },
-    {
         "genesis_id": "7474435909229872610",
         "system": "Coinomat",
         "dependencies": "NXT",
@@ -4730,11 +4651,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "Counterparty",
-            "CurrencyName": "Counterparty"
-        },
-        "ratings": {
-            "rating_cyber": 4
+            "coinmarketcap": "Counterparty"
         },
         "specs": {},
         "crowdsales": {
@@ -5020,6 +4937,9 @@
             "btc": 0.00080543,
             "usd": 0.68813926,
             "date": "2014-02-02T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -5761,11 +5681,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "Dash",
-            "CurrencyName": "dash"
-        },
-        "ratings": {
-            "rating_cyber": 4
+            "coinmarketcap": "Dash"
         },
         "specs": {
             "block_time": 150,
@@ -5995,6 +5911,9 @@
             "btc": 0.00033188,
             "usd": 0.21837893,
             "date": "2014-02-07T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -6087,7 +6006,7 @@
         },
         "consensus": {
             "type": "Hybrid",
-            "algorithm": ""
+            "algorithm": "Blake256+Decred"
         },
         "descriptions": {
             "state": "Public",
@@ -6102,7 +6021,6 @@
             "coinmarketcap": "Decred"
         },
         "specs": {},
-        "ratings": {},
         "first_price": {
             "btc": 0.00250207,
             "usd": 0.95068652,
@@ -6842,11 +6760,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "Dogecoin",
-            "CurrencyName": "Dogecoin"
-        },
-        "ratings": {
-            "rating_cyber": 3
+            "coinmarketcap": "Dogecoin"
         },
         "specs": {
             "rpc": 22555,
@@ -7045,6 +6959,9 @@
             "btc": 8.3e-7,
             "usd": 0.00054374,
             "date": "2013-12-19T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -7304,9 +7221,6 @@
         "system": "Emercoin",
         "aliases": {
             "coinmarketcap": "Emercoin"
-        },
-        "ratings": {
-            "rating_cyber": 2
         },
         "consensus": {
             "type": "Hybrid",
@@ -7685,12 +7599,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "Ethereum",
-            "CurrencyName": "ether",
-            "quantum": "ETH"
-        },
-        "ratings": {
-            "rating_cyber": 5
+            "coinmarketcap": "Ethereum"
         },
         "specs": {},
         "crowdsales": {
@@ -8257,6 +8166,9 @@
             "btc": 0.00052462,
             "usd": 0.24936138,
             "date": "2014-09-02T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -8385,9 +8297,6 @@
             "tokens_sold": 4379973,
             "tokens_issued": 8759968.586338,
             "btc_raised": 2278
-        },
-        "ratings": {
-            "rating_cyber": 4
         },
         "links": [
             {
@@ -8598,7 +8507,8 @@
             }
         ],
         "flags": {
-            "supply_from_here": true
+            "supply_from_here": true,
+            "quantum": true
         },
         "first_price": {
             "btc": 0.00026005,
@@ -10017,9 +9927,6 @@
         },
         "aliases": {
             "coinmarketcap": "GridCoin"
-        },
-        "ratings": {
-            "rating_cyber": 3
         },
         "consensus": {
             "type": "PoS",
@@ -11565,8 +11472,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "Litecoin",
-            "quantum": "LTC"
+            "coinmarketcap": "Litecoin"
         },
         "specs": {
             "block_time": 150,
@@ -11574,9 +11480,6 @@
             "total_tokens": 84000000,
             "premine_tokens": 150,
             "difficulty_cycle": 2016
-        },
-        "ratings": {
-            "rating_cyber": 2
         },
         "events": [
             {
@@ -12021,6 +11924,9 @@
             "btc": 0.0314437,
             "usd": 3.82096807,
             "date": "2013-04-28T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -12405,14 +12311,10 @@
         },
         "aliases": {
             "coinmarketcap": "MUSE",
-            "CurrencyName": "MUSE",
             "nickname": "Muse"
         },
         "specs": {
             "supply": 1510000000
-        },
-        "ratings": {
-            "rating_cyber": 3
         },
         "crowdsales": {
             "start_date": "2014-06-10T00:00:00",
@@ -12586,8 +12488,7 @@
         },
         "aliases": {
             "coinmarketcap": "MaidSafeCoin",
-            "nickname": "Safe Network",
-            "quantum": "MSC/SP3"
+            "nickname": "Safe Network"
         },
         "crowdsales": {
             "start_date": "2014-04-22T00:00:00",
@@ -12599,9 +12500,6 @@
             "funding_url": "http://maidsafe.net/",
             "tokens_sold": 452552412,
             "btc_raised": 12200
-        },
-        "ratings": {
-            "rating_cyber": 5
         },
         "specs": {},
         "links": [
@@ -12761,6 +12659,9 @@
             "btc": 0.00002696,
             "usd": 0.01418256,
             "date": "2014-05-22T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -13315,9 +13216,6 @@
             "halfing_cycle": 1051000,
             "total_tokens": 105120000
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "links": [
             {
                 "name": "monacoin.org",
@@ -13519,17 +13417,13 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "Monero",
-            "CurrencyName": "Monero"
+            "coinmarketcap": "Monero"
         },
         "specs": {
             "block_time": 60,
             "block_reward": "(M-A)*2^(-20)*10^(-12), where A = current circulation",
             "total_tokens": 18400000,
             "difficulty_cycle": "every block"
-        },
-        "ratings": {
-            "rating_cyber": 3
         },
         "events": [
             {
@@ -13962,13 +13856,9 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "NEM",
-            "CurrencyName": "xem"
+            "coinmarketcap": "NEM"
         },
         "specs": {},
-        "ratings": {
-            "rating_cyber": 3
-        },
         "crowdsales": {
             "start_date": "2014-01-19T00:00:00",
             "end_date": "2014-04-10T00:00:00",
@@ -14203,6 +14093,9 @@
             "btc": 2e-8,
             "usd": 0.000007216814,
             "date": "2014-04-10T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -14288,8 +14181,7 @@
             "hashtag": "#namecoin"
         },
         "aliases": {
-            "coinmarketcap": "Namecoin",
-            "CurrencyName": "Namecoin"
+            "coinmarketcap": "Namecoin"
         },
         "specs": {
             "block_time": 600,
@@ -14298,9 +14190,6 @@
             "difficulty_cycle": 2016,
             "txs_confirm": 6,
             "mint_confirm": 120
-        },
-        "ratings": {
-            "rating_cyber": 3
         },
         "events": [
             {
@@ -14751,8 +14640,7 @@
             ]
         },
         "aliases": {
-            "coinmarketcap": "NeuCoin",
-            "CurrencyName": "NeuCoin"
+            "coinmarketcap": "NeuCoin"
         },
         "crowdsales": {
             "start_date": "2015-04-28T00:00:00",
@@ -14764,9 +14652,6 @@
             "funding_url": "http://www.neucoin.org/",
             "tokens_sold": 100000000,
             "btc_raised": 3637
-        },
-        "ratings": {
-            "rating_cyber": 3
         },
         "consensus": {
             "type": "PoS",
@@ -15356,11 +15241,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "NuShares",
-            "CurrencyName": "NuShares"
-        },
-        "ratings": {
-            "rating_cyber": 3
+            "coinmarketcap": "NuShares"
         },
         "specs": {
             "total_tokens": 835000000
@@ -15573,7 +15454,6 @@
         },
         "aliases": {
             "coinmarketcap": "Nxt",
-            "CurrencyName": "NXT",
             "nickname": "NXT"
         },
         "crowdsales": {
@@ -15586,9 +15466,6 @@
             "funding_url": "https://bitcointalk.org/index.php?topic=303898.0",
             "tokens_sold": 1000000000,
             "btc_raised": 22
-        },
-        "ratings": {
-            "rating_cyber": 4
         },
         "specs": {
             "block_time": "90",
@@ -15873,6 +15750,9 @@
             "btc": 2e-8,
             "usd": 0.000013487536,
             "date": "2013-11-18T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -16284,9 +16164,6 @@
         "specs": {
             "total_tokens": 20500000
         },
-        "ratings": {
-            "rating_cyber": 2
-        },
         "events": [
             {
                 "name": "Announcement",
@@ -16581,6 +16458,9 @@
             "btc": 0.00260387,
             "usd": 0.29885232,
             "date": "2013-04-30T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -17518,20 +17398,12 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "Ripple",
-            "CurrencyName": "ripple"
+            "coinmarketcap": "Ripple"
         },
         "specs": {
             "total_tokens": 100000000000,
             "supply": 100000000000,
             "premine_tokens": "100B (100%). 20B XRP were retained by the creators, seeders, venture capital companies and other founders. 80B XRP were given to Ripple Labs. Ripple Labs intends to distribute 55B XRP to charitable organizations, users and strategic partners and will retain the remaining 25B XRP."
-        },
-        "cap": {
-            "supply_from": "chaingear",
-            "supply": 100000000000
-        },
-        "ratings": {
-            "rating_cyber": 4
         },
         "events": [
             {
@@ -17940,7 +17812,8 @@
             }
         ],
         "flags": {
-            "supply_from_here": true
+            "supply_from_here": true,
+            "quantum": true
         },
         "first_price": {
             "btc": 0.00004573,
@@ -18984,84 +18857,6 @@
         }
     },
     {
-        "genesis_id": "18212211773827322818",
-        "system": "SolarFarm",
-        "icon": "solarfarm",
-        "dependencies": [
-            "NXT"
-        ],
-        "aliases": {
-            "coinmarketcap": "SolarFarm"
-        },
-        "ratings": {
-            "rating_cyber": 1
-        },
-        "consensus": {
-            "type": "NXT",
-            "algorithm": "AE"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptoasset",
-            "tags": [
-                "DApp"
-            ]
-        },
-        "token": {
-            "token_name": "SolarFarm",
-            "token_symbol": "CELL"
-        },
-        "specs": {},
-        "links": [
-            {
-                "type": "website",
-                "name": "asset.cryptomining.farm",
-                "url": "https://asset.cryptomining.farm/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "NXT Asset",
-                "url": "http://nxtreporting.com/?as=18212211773827322818",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Explorer",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "twitter",
-                "name": "@miningfarm",
-                "url": "https://twitter.com/miningfarm",
-                "icon": "twitter.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "NXT Forum",
-                "url": "https://nxtforum.org/assets-board/(ann)-(cell)-solarfarm-asset-photovoltaic-power-station-in-thailand-18mw/",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            }
-        ],
-        "first_price": {
-            "btc": 0.00001622,
-            "usd": 0.003938,
-            "date": "2015-01-25T00:00:00"
-        }
-    },
-    {
         "genesis_id": "188592448213512",
         "dependencies": [
             "Counterparty"
@@ -19216,6 +19011,9 @@
             "btc": 0.00006936,
             "usd": 0.01587339,
             "date": "2015-09-02T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -19525,8 +19323,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "Stellar",
-            "CurrencyName": "Stellar"
+            "coinmarketcap": "Stellar"
         },
         "events": {
             "announcement": "01/08/2014",
@@ -19873,9 +19670,6 @@
             "tokens_sold": 35039704,
             "btc_raised": 910
         },
-        "ratings": {
-            "rating_cyber": 4
-        },
         "consensus": {
             "type": "Counterparty",
             "algorithm": "Locked Token"
@@ -20012,7 +19806,8 @@
             "date": "2014-08-18T00:00:00"
         },
         "flags": {
-            "supply_from_here": true
+            "supply_from_here": true,
+            "quantum": true
         }
     },
     {
@@ -20311,8 +20106,7 @@
             ]
         },
         "aliases": {
-            "coinmarketcap": "Synereo",
-            "quantum": "MSC/SP39"
+            "coinmarketcap": "Synereo"
         },
         "crowdsales": {
             "start_date": "2015-03-23T00:00:00",
@@ -20325,9 +20119,6 @@
             "tokens_sold": 45439378,
             "tokens_issued": 1680400000,
             "btc_raised": 342
-        },
-        "ratings": {
-            "rating_cyber": 4
         },
         "consensus": {
             "type": "Omni",
@@ -20447,7 +20238,8 @@
             }
         ],
         "flags": {
-            "supply_from_here": true
+            "supply_from_here": true,
+            "quantum": true
         },
         "first_price": {
             "btc": 0.00000753,
@@ -21860,11 +21652,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "YbCoin",
-            "CurrencyName": "YbCoin"
-        },
-        "ratings": {
-            "rating_cyber": 1
+            "coinmarketcap": "YbCoin"
         },
         "specs": {
             "total_tokens": 3000000

@@ -1498,9 +1498,6 @@
             "tokens_issued": 1999999886,
             "btc_raised": 2397.11393696
         },
-        "ratings": {
-            "rating_cyber": 2
-        },
         "specs": {
             "supply": 1999999910,
             "timestamp": 1431342962
@@ -2857,8 +2854,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "BlackCoin",
-            "CurrencyName": "BlackCoin"
+            "coinmarketcap": "BlackCoin"
         },
         "specs": {
             "p2p": 15715,
@@ -2869,9 +2865,6 @@
             "difficulty_cycle": 1,
             "txs_confirm": 10,
             "mint_confirm": 500
-        },
-        "ratings": {
-            "rating_cyber": 2
         },
         "events": [
             {
@@ -3189,6 +3182,9 @@
             "btc": 0.00001169,
             "usd": 0.00699405,
             "date": "2014-02-28T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -4655,11 +4651,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "Counterparty",
-            "CurrencyName": "Counterparty"
-        },
-        "ratings": {
-            "rating_cyber": 4
+            "coinmarketcap": "Counterparty"
         },
         "specs": {},
         "crowdsales": {
@@ -4945,6 +4937,9 @@
             "btc": 0.00080543,
             "usd": 0.68813926,
             "date": "2014-02-02T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
@@ -6011,7 +6006,7 @@
         },
         "consensus": {
             "type": "Hybrid",
-            "algorithm": ""
+            "algorithm": "Blake256+Decred"
         },
         "descriptions": {
             "state": "Public",
@@ -6026,7 +6021,6 @@
             "coinmarketcap": "Decred"
         },
         "specs": {},
-        "ratings": {},
         "first_price": {
             "btc": 0.00250207,
             "usd": 0.95068652,
@@ -9934,9 +9928,6 @@
         "aliases": {
             "coinmarketcap": "GridCoin"
         },
-        "ratings": {
-            "rating_cyber": 3
-        },
         "consensus": {
             "type": "PoS",
             "algorithm": "Proof-of-Research"
@@ -13225,9 +13216,6 @@
             "halfing_cycle": 1051000,
             "total_tokens": 105120000
         },
-        "ratings": {
-            "rating_cyber": 1
-        },
         "links": [
             {
                 "name": "monacoin.org",
@@ -15253,11 +15241,7 @@
             "page_state": "ready"
         },
         "aliases": {
-            "coinmarketcap": "NuShares",
-            "CurrencyName": "NuShares"
-        },
-        "ratings": {
-            "rating_cyber": 3
+            "coinmarketcap": "NuShares"
         },
         "specs": {
             "total_tokens": 835000000
@@ -18873,84 +18857,6 @@
         }
     },
     {
-        "genesis_id": "18212211773827322818",
-        "system": "SolarFarm",
-        "icon": "solarfarm",
-        "dependencies": [
-            "NXT"
-        ],
-        "aliases": {
-            "coinmarketcap": "SolarFarm"
-        },
-        "ratings": {
-            "rating_cyber": 1
-        },
-        "consensus": {
-            "type": "NXT",
-            "algorithm": "AE"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptoasset",
-            "tags": [
-                "DApp"
-            ]
-        },
-        "token": {
-            "token_name": "SolarFarm",
-            "token_symbol": "CELL"
-        },
-        "specs": {},
-        "links": [
-            {
-                "type": "website",
-                "name": "asset.cryptomining.farm",
-                "url": "https://asset.cryptomining.farm/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "NXT Asset",
-                "url": "http://nxtreporting.com/?as=18212211773827322818",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Explorer",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "twitter",
-                "name": "@miningfarm",
-                "url": "https://twitter.com/miningfarm",
-                "icon": "twitter.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "NXT Forum",
-                "url": "https://nxtforum.org/assets-board/(ann)-(cell)-solarfarm-asset-photovoltaic-power-station-in-thailand-18mw/",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            }
-        ],
-        "first_price": {
-            "btc": 0.00001622,
-            "usd": 0.003938,
-            "date": "2015-01-25T00:00:00"
-        }
-    },
-    {
         "genesis_id": "188592448213512",
         "dependencies": [
             "Counterparty"
@@ -19105,6 +19011,9 @@
             "btc": 0.00006936,
             "usd": 0.01587339,
             "date": "2015-09-02T00:00:00"
+        },
+        "flags": {
+            "quantum": true
         }
     },
     {
