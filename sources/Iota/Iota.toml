@@ -1,0 +1,97 @@
+genesis_id = ""
+system = "Iota"
+icon = "iota"
+dependencies = ["independent"]
+
+[token]
+token_name = "iota"
+token_symbol = "IOTA"
+
+[consensus]
+type = ""
+algorithm = ""
+
+[descriptions]
+state = "Pre-Public"
+system_type = "cryptocurrency"
+headline = "Cryptocurrency for Internet-of-Things "
+tags = ["DAO"]
+page_state = "draft"
+
+[aliases]
+coinmarketcap = "IOTA"
+
+[crowdsales]
+start_date = "2015-11-25T00:00:00"
+end_date = "2015-12-21T00:00:00"
+genesis_address = ["1G8hh3bHMMhZSATwisBVbGFSYBKK3Suib8", "NXT-Q4N3-V2QJ-S3GT-FW4Z9"]
+funding_tems = "http://188.138.57.93/tos.pdf"
+funding_url = "http://www.iotatoken.com/"
+tokens_sold = 999999999
+tokens_issued = 999999999
+btc_raised = 1191.1311
+
+[specs]
+supply = 999999999
+
+[specs.cap]
+btc = 1191.1311
+usd = 521431
+
+[first_price]
+btc = 0.00000119
+usd = 0.00052143
+date = "2015-12-21T00:00:00"
+
+[flags]
+supply_from_here = true
+
+[[links]]
+name = "iotatoken.com"
+url = "http://www.iotatoken.com/"
+icon = "etherscan.png"
+tags = ["Main"]
+type = "explorer"
+
+[[links]]
+name = "tangle.ninja"
+url = "https://www.tangle.ninja"
+icon = "website.png"
+tags = ["Main"]
+type = "site"
+
+[[links]]
+name = "Twitter"
+url = "https://twitter.com/iotatoken"
+icon = "twitter.png"
+tags = ["Main","News"]
+type = "twitter"
+
+[[links]]
+name = "CoinTelegraph"
+headline = "nein"
+url = "http://cointelegraph.com/tags/iota"
+type = "custom"
+icon = "cointelegraph.png"
+tags = ["News"]
+
+[[links]]
+name = "Bitcoinist"
+url = "http://bitcoinist.net/tag/iota/"
+type = "custom"
+icon = "bitcoinist.png"
+tags = ["News"]
+
+[[links]]
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=1216479.0"
+icon = "forum.png"
+tags = ["News"]
+type = "forum"
+
+[[links]]
+name = "The tangle by Serguei Popov"
+url = "http://188.138.57.93/tangle.pdf"
+icon = "paper.png"
+type = "paper"
+tags = ["Main","Science"]
