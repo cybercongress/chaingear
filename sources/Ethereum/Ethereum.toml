@@ -31,11 +31,13 @@ funding_url = "https://www.ethereum.org/ether"
 tokens_sold = 60102216.0
 btc_raised = 31531.0
 
-[[links]]
-type = "risk"
-name = "Canary contracts are enabled until Homestead release"
-url = ""
-icon = ""
+[first_price]
+btc = 0.00052462
+usd = 0.24936138
+date = "2014-09-02T00:00:00"
+
+[flags]
+quantum = true
 
 [[links]]
 name = "Ethereum.org"
@@ -440,11 +442,3 @@ name = "BlockApps"
 url = "http://blockapps.net/"
 icon = "blockapps.png"
 tags = ["Apps","Code"]
-
-[first_price]
-btc = 0.00052462
-usd = 0.24936138
-date = "2014-09-02T00:00:00"
-
-[flags]
-quantum = true
