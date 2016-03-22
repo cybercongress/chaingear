@@ -17173,20 +17173,22 @@
         },
         "consensus": {
             "consensus_name": "Bitcoin",
-            "consensus_type": "OP_Return"
+            "consensus_type": "Open Assets"
         },
         "aliases": {
             "nickname": "Satoshi•Fund"
         },
-        "ratings": {
-            "rating_cyber": 2
-        },
         "specs": {
+            "total_tokens": 888217,
             "supply": 888217,
             "cap": {
                 "usd": 52741,
                 "btc": 128.25
             }
+        },
+        "flags": {
+            "supply_from_here": true,
+            "rating_do_not_display": true
         },
         "links": [
             {
@@ -17200,11 +17202,7 @@
                     "Analytics"
                 ]
             }
-        ],
-        "flags": {
-            "supply_from_here": true,
-            "rating_do_not_display": true
-        }
+        ]
     },
     {
         "genesis_id": "145365481365",

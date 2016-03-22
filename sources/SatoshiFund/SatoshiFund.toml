@@ -14,20 +14,22 @@ token_symbol = "CFPE2013"
 
 [consensus]
 consensus_name = "Bitcoin"
-consensus_type = "OP_Return"
+consensus_type = "Open Assets"
 
 [aliases]
 nickname = "Satoshi•Fund"
 
-[ratings]
-rating_cyber = 2.0
-
 [specs]
+total_tokens = 888217
 supply = 888217
 
 [specs.cap]
 usd = 52741
 btc = 128.25
+
+[flags]
+supply_from_here = true
+rating_do_not_display = true
 
 [[links]]
 type = "explorer"
@@ -35,7 +37,3 @@ name = "Satoshi•Fund Asset"
 url = "https://www.coinprism.info/asset/AGW9p6XZTFkth4bbGRJjkYEjgrdmx2PAKD"
 icon = "explorer.png"
 tags = ["Main","Apps","Analytics"]
-
-[flags]
-supply_from_here = true
-rating_do_not_display = true
