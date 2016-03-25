@@ -13,7 +13,7 @@ algorithm = "CryptoNight"
 [descriptions]
 state = "Public"
 system_type = "cryptocurrency"
-headline = "A brand new uprising cryptocurrency which originates from Bitmonero"
+headline = "Secure, Private, Untraceable Cryptocurrency"
 tags = ["DAO"]
 hashtag = "#monero"
 page_state = "ready"
@@ -27,14 +27,19 @@ block_reward = "(M-A)*2^(-20)*10^(-12), where A = current circulation"
 total_tokens = 18400000.0
 difficulty_cycle = "every block"
 
+[first_price]
+btc = 0.00488921
+usd = 2.51376883
+date = "2014-05-19T00:00:00"
+
 [[events]]
 name = "Announcement"
 start_date = "2014-04-09T08:50:04"
 url = "https://bitcointalk.org/index.php?topic=563821"
 
 [[links]]
-name = "monero.org"
-url = "http://monero.org"
+name = "Monero Official"
+url = "https://getmonero.org"
 type = "website"
 icon = "website.png"
 tags = ["Main"]
@@ -54,11 +59,32 @@ icon = "wallet.png"
 tags = ["Main", "Apps", "Wallet"]
 
 [[links]]
-name = "github"
+name = "MyMonero"
+url = "https://mymonero.com/#/"
+type = "wallet"
+icon = "wallet.png"
+tags = ["Main", "Apps", "Wallet"]
+
+[[links]]
+name = "Monero Core"
 url = "https://github.com/bitmonero-project/bitmonero"
 type = "github"
 icon = "github.png"
-tags = ["Main", "Code"]
+tags = ["Code"]
+
+[[links]]
+type = "wiki"
+name = "Moneropedia"
+url = "https://getmonero.org/knowledge-base/moneropedia/"
+icon = "paper.png"
+tags = ["Code"]
+
+[[links]]
+type = "wiki"
+name = "Development Guide"
+url = "https://getmonero.org/knowledge-base/developer-guides/"
+icon = "paper.png"
+tags = ["Code"]
 
 [[links]]
 name = "Documentation"
@@ -97,7 +123,7 @@ icon = "blog.png"
 tags = ["News"]
 
 [[links]]
-name = "reddit"
+name = "r/monero"
 url = "https://www.reddit.com/r/monero/"
 type = "reddit"
 icon = "reddit.png"
@@ -198,14 +224,6 @@ icon = "shapeshift.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
-name = "Cryptsy"
-headline = "nein"
-url = "https://www.cryptsy.com/users/register?refid=243274"
-type = "custom"
-icon = "cryptsy.png"
-tags = ["Apps", "Exchange"]
-
-[[links]]
 name = "BTER"
 headline = "nein"
 url = "https://bter.com/"
@@ -237,7 +255,65 @@ type = "custom"
 icon = "btc38.png"
 tags = ["Apps", "Exchange"]
 
-[first_price]
-btc = 0.00488921
-usd = 2.51376883
-date = "2014-05-19T00:00:00"
+[[links]]
+name = "CryptoNote v 2.0 by Nicolas van Saberhagen"
+url = "https://cryptonote.org/whitepaper.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "CryptoNote v 2.0 annotated by the MRL"
+url = "https://downloads.getmonero.org/whitepaper_annotated.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "Review of Cryptonote Whitepaper by Surae Noether"
+url = "https://downloads.getmonero.org/whitepaper_review.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "Cryptnote Standards"
+url = "https://cryptonote.org/standards/"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "A Note on Chain Reactions in Traceability in CryptoNote 2.0 by Surae Noether, Sarang Noether and Adam Mackenzie"
+url = "https://lab.getmonero.org/pubs/MRL-0001.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "Counterfeiting via Merkle Tree Exploits within Virtual Currencies Employing the CryptoNote Protocol by Jan Macheta, Sarang Noether, Surae Noether and Javier Smooth."
+url = "https://lab.getmonero.org/pubs/MRL-0002.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "Monero is Not That Mysterious by Shen Noether and Sarang Noether"
+url = "https://lab.getmonero.org/pubs/MRL-0003.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "Improving Obfuscation in the CryptoNote Protocol by Adam Mackenzie, Surae Noether and Monero Core Team"
+url = "https://lab.getmonero.org/pubs/MRL-0004.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
+
+[[links]]
+name = "Ring Confidential Transactions by Shen Noether, Adam Mackenzie and Monero Core Team"
+url = "https://lab.getmonero.org/pubs/MRL-0005.pdf"
+icon = "whitepaper.png"
+type = "whitepaper"
+tags = ["Science"]
