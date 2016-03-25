@@ -22,7 +22,7 @@ page_state = "ready"
 coinmarketcap = "Monero"
 
 [specs]
-block_time = 60.0
+block_time = 120
 block_reward = "(M-A)*2^(-20)*10^(-12), where A = current circulation"
 total_tokens = 18400000.0
 difficulty_cycle = "every block"
@@ -45,15 +45,15 @@ icon = "website.png"
 tags = ["Main"]
 
 [[links]]
-name = "ChainRadar"
-url = "http://chainradar.com/xmr/blocks"
+name = "moneroblocks.info"
+url = "http://moneroblocks.info/"
 type = "explorer"
-icon = "chainradar.png"
+icon = "explorer.png"
 tags = ["Main", "Apps", "Analytics"]
 
 [[links]]
 name = "Monero Wallets"
-url = "http://monero.org/monero-clients/"
+url = "https://getmonero.org/getting-started/choose"
 type = "wallet"
 icon = "wallet.png"
 tags = ["Main", "Apps", "Wallet"]
@@ -66,8 +66,15 @@ icon = "wallet.png"
 tags = ["Main", "Apps", "Wallet"]
 
 [[links]]
+name = "ChainRadar"
+url = "http://chainradar.com/xmr/blocks"
+type = "explorer"
+icon = "chainradar.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
 name = "Monero Core"
-url = "https://github.com/bitmonero-project/bitmonero"
+url = "https://github.com/monero-project/bitmonero/"
 type = "github"
 icon = "github.png"
 tags = ["Code"]
@@ -87,16 +94,23 @@ icon = "paper.png"
 tags = ["Code"]
 
 [[links]]
-name = "Twitter"
+type = "wiki"
+name = "Wikipedia"
+url = "https://en.wikipedia.org/wiki/Monero_(cryptocurrency)"
+icon = "paper.png"
+tags = ["Code"]
+
+[[links]]
+name = "@monerocurrency"
 url = "https://twitter.com/monerocurrency"
 type = "twitter"
 icon = "twitter.png"
 tags = ["News"]
 
 [[links]]
-name = "NewsFeed"
-url = "http://monero.org/news/"
-rss = "http://monero.org/feed/"
+name = "Hello Monero"
+url = "https://hellomonero.com/"
+rss = "https://hellomonero.com/rss.xml"
 type = "forum"
 icon = "forum.png"
 tags = ["News"]
@@ -148,14 +162,7 @@ name = "MinerGate"
 url = "https://minergate.com/blockchain/mro/blocks"
 type = "explorer"
 icon = "minergate.png"
-tags = ["Main", "Apps", "Analytics"]
-
-[[links]]
-name = "MoneroBlocks"
-url = "http://moneroblocks.eu/"
-type = "explorer"
-icon = "explorer.png"
-tags = ["Main", "Apps", "Analytics"]
+tags = ["Apps", "Analytics"]
 
 [[links]]
 name = "MinerGate"

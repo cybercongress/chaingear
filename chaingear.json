@@ -12853,7 +12853,7 @@
             "coinmarketcap": "Monero"
         },
         "specs": {
-            "block_time": 60,
+            "block_time": 120,
             "block_reward": "(M-A)*2^(-20)*10^(-12), where A = current circulation",
             "total_tokens": 18400000,
             "difficulty_cycle": "every block"
@@ -12881,10 +12881,10 @@
                 ]
             },
             {
-                "name": "ChainRadar",
-                "url": "http://chainradar.com/xmr/blocks",
+                "name": "moneroblocks.info",
+                "url": "http://moneroblocks.info/",
                 "type": "explorer",
-                "icon": "chainradar.png",
+                "icon": "explorer.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -12893,7 +12893,7 @@
             },
             {
                 "name": "Monero Wallets",
-                "url": "http://monero.org/monero-clients/",
+                "url": "https://getmonero.org/getting-started/choose",
                 "type": "wallet",
                 "icon": "wallet.png",
                 "tags": [
@@ -12914,8 +12914,18 @@
                 ]
             },
             {
+                "name": "ChainRadar",
+                "url": "http://chainradar.com/xmr/blocks",
+                "type": "explorer",
+                "icon": "chainradar.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
                 "name": "Monero Core",
-                "url": "https://github.com/bitmonero-project/bitmonero",
+                "url": "https://github.com/monero-project/bitmonero/",
                 "type": "github",
                 "icon": "github.png",
                 "tags": [
@@ -12941,7 +12951,16 @@
                 ]
             },
             {
-                "name": "Twitter",
+                "type": "wiki",
+                "name": "Wikipedia",
+                "url": "https://en.wikipedia.org/wiki/Monero_(cryptocurrency)",
+                "icon": "paper.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "name": "@monerocurrency",
                 "url": "https://twitter.com/monerocurrency",
                 "type": "twitter",
                 "icon": "twitter.png",
@@ -12950,9 +12969,9 @@
                 ]
             },
             {
-                "name": "NewsFeed",
-                "url": "http://monero.org/news/",
-                "rss": "http://monero.org/feed/",
+                "name": "Hello Monero",
+                "url": "https://hellomonero.com/",
+                "rss": "https://hellomonero.com/rss.xml",
                 "type": "forum",
                 "icon": "forum.png",
                 "tags": [
@@ -13019,18 +13038,6 @@
                 "type": "explorer",
                 "icon": "minergate.png",
                 "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "name": "MoneroBlocks",
-                "url": "http://moneroblocks.eu/",
-                "type": "explorer",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
                     "Apps",
                     "Analytics"
                 ]
