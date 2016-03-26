@@ -6200,16 +6200,15 @@
     },
     {
         "genesis_id": "",
+        "system": "DigixGlobal",
+        "icon": "digixglobal",
         "dependencies": [
             "Ethereum"
         ],
-        "system": "DigixGlobal",
         "aliases": {
-            "coinmarketcap": "",
-            "CurrencyName": "",
+            "coinmarketcap": "DigixGlobal",
             "nickname": "DigixGlobal"
         },
-        "ratings": {},
         "crowdsales": {
             "start_date": "2016-03-30T00:00:00",
             "end_date": "2016-04-28T00:00:00",
@@ -6219,16 +6218,17 @@
             "funding_tems": "https://sale.digix.io/docs/digixdao_crowdsale_info.pdf",
             "funding_url": "https://sale.digix.io/",
             "tokens_sold": "",
+            "tokens_issued": 2000000,
             "btc_raised": ""
         },
         "consensus": {
-            "type": "",
-            "algorithm": ""
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
         },
         "descriptions": {
             "state": "Project",
             "system_type": "cryptoasset",
-            "headline": "Smart Assets Company",
+            "headline": "Gold standard digital payments system on the Ethereum network",
             "tags": [
                 "DApp"
             ],
@@ -6241,44 +6241,106 @@
             "genesis": ""
         },
         "token": {
-            "token_name": "",
-            "token_symbol": ""
+            "token_name": "digixdao",
+            "token_symbol": "DGD"
+        },
+        "specs": {
+            "supply": 2000000
         },
         "links": [
             {
+                "type": "website",
                 "name": "dgx.io",
                 "url": "https://dgx.io/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
-                ],
-                "type": "website"
+                ]
             },
             {
+                "type": "website",
+                "name": "DigixDAO Crowdsale",
+                "url": "https://sale.digix.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://medium.com/@digix",
+                "rss": "https://medium.com/feed/@Digix",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
                 "name": "Twitter",
                 "url": "https://twitter.com/DigixGlobal",
                 "icon": "twitter.png",
                 "tags": [
                     "News"
-                ],
-                "type": "twitter"
+                ]
             },
             {
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/digix",
+                "rss": "https://www.reddit.com/r/digix/.rss",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
                 "name": "Facebook",
                 "url": "https://www.facebook.com/digixglobal",
                 "icon": "facebook.png",
                 "tags": [
                     "News"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "custom",
                 "name": "Google+",
                 "url": "https://plus.google.com/u/0/106875817743100179053",
                 "icon": "googleplus.png",
-                "type": "custom",
                 "tags": [
-                    "Main"
+                    "News"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Digix GitHub",
+                "url": "https://github.com/DigixGlobal",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Digix WebClient",
+                "url": "https://app.digix.io",
+                "icon": "wallet.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "DigixGlobal Whitepaper",
+                "url": "https://dgx.io/whitepaper.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
                 ]
             }
         ]
