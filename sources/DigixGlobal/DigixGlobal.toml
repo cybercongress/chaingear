@@ -3,23 +3,17 @@ system = "DigixGlobal"
 icon = "digixglobal"
 dependencies = ["Ethereum"]
 
-[aliases]
-coinmarketcap = "DigixGlobal"
-nickname = "DigixGlobal"
-
-[crowdsales]
-start_date = "2016-03-30T00:00:00"
-end_date = "2016-04-28T00:00:00"
-genesis_address = [""]
-funding_tems = "https://sale.digix.io/docs/digixdao_crowdsale_info.pdf"
-funding_url = "https://sale.digix.io/"
-tokens_sold = ""
-tokens_issued = 2000000
-btc_raised = ""
+[token]
+token_name = "digixdao"
+token_symbol = "DGD"
 
 [consensus]
 type = "Ethereum"
 algorithm = "Transferable Fungible"
+
+[aliases]
+coinmarketcap = "DigixGlobal"
+nickname = "DigixGlobal"
 
 [descriptions]
 state = "Project"
@@ -30,16 +24,22 @@ hashtag = "#dgx"
 twwidid = ""
 page_state = "draft"
 
-[events]
-announcement = ""
-genesis = ""
-
-[token]
-token_name = "digixdao"
-token_symbol = "DGD"
+[crowdsales]
+start_date = "2016-03-30T00:00:00"
+end_date = "2016-03-30T14:30:00"
+genesis_address = ["0xf0160428a8552ac9bb7e050d90eeade4ddd52843"]
+funding_tems = "https://sale.digix.io/docs/digixdao_crowdsale_info.pdf"
+funding_url = "https://sale.digix.io/"
+tokens_sold = 1700000
+tokens_issued = 2000000
+btc_raised = 13290
 
 [specs]
 supply = 2000000
+
+[specs.cap]
+btc = 13290
+usd = 5500000
 
 [[links]]
 type = "website"
