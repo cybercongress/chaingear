@@ -12241,7 +12241,7 @@
             "btc_raised": 12200
         },
         "specs": {},
-        "links": [
+        "risks": [
             {
                 "type": "risk",
                 "name": "Network has not been launched",
@@ -12253,7 +12253,9 @@
                 "name": "Product release is depend on MaidSafe team",
                 "url": "",
                 "icon": ""
-            },
+            }
+        ],
+        "links": [
             {
                 "type": "website",
                 "name": "maidsafe.net",
@@ -12265,7 +12267,7 @@
             },
             {
                 "type": "forum",
-                "name": "Forum",
+                "name": "SAFE Forum",
                 "url": "https://www.maidsafe.org/",
                 "icon": "forum.png",
                 "tags": [
@@ -12274,8 +12276,56 @@
                 ]
             },
             {
+                "type": "custom",
+                "name": "SAFE Documentation",
+                "url": "https://maidsafe.readme.io/docs",
+                "icon": "maidsafecoin.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Omniwallet",
+                "url": "https://www.omniwallet.org/",
+                "icon": "wallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Omni Explorer",
+                "url": "http://omnichest.info/lookupsp.aspx?sp=3",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "SAFE Launcher",
+                "url": "https://github.com/maidsafe/safe_launcher/releases/tag/0.4.1",
+                "icon": "maidsafecoin.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "SAFE Demo App",
+                "url": "https://github.com/maidsafe/safe_examples/releases/tag/0.2.1",
+                "icon": "maidsafecoin.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
                 "type": "paper",
-                "name": "Documentation",
+                "name": "SAFE Whitepaper",
                 "url": "https://github.com/maidsafe/Whitepapers/blob/master/Project-Safe.md",
                 "icon": "whitepaper.png",
                 "tags": [
@@ -12288,7 +12338,6 @@
                 "url": "http://maidsafe.net/roadmap",
                 "icon": "whitepaper.png",
                 "tags": [
-                    "Main",
                     "Code"
                 ]
             },
@@ -12350,22 +12399,22 @@
                 ]
             },
             {
-                "name": "ShapeShift",
+                "type": "exchange",
+                "name": "Bittrex",
                 "headline": "nein",
-                "url": "https://shapeshift.io",
-                "type": "custom",
-                "icon": "shapeshift.png",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
                 "tags": [
                     "Apps",
                     "Exchange"
                 ]
             },
             {
-                "name": "MasterXchange",
+                "name": "ShapeShift",
                 "headline": "nein",
-                "url": "http://masterxchange.com/",
+                "url": "https://shapeshift.io",
                 "type": "custom",
-                "icon": "masterxchange.png",
+                "icon": "shapeshift.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -16339,8 +16388,8 @@
         "system": "Project Decorum",
         "icon": "decorum",
         "dependencies": [
-            "Bitcoin",
-            "Mastercoin (Omni)"
+            "Mastercoin (Omni)",
+            "MaidSafeCoin"
         ],
         "token": {
             "token_name": "decorumcoin",
