@@ -469,8 +469,9 @@
             },
             {
                 "type": "blog",
-                "name": "Augue Blogger",
-                "url": "http://www.augur.net/blog",
+                "name": "Augur Blog",
+                "url": "http://blog.augur.net",
+                "rss": "http://blog.augur.net/feed/",
                 "icon": "blog.png",
                 "tags": [
                     "Main",
@@ -6831,6 +6832,107 @@
         ]
     },
     {
+        "genesis_id": "",
+        "system": "Elastic",
+        "icon": "elastic",
+        "dependencies": [
+            "independent"
+        ],
+        "token": {
+            "token_name": "elastic coin",
+            "token_symbol": "ELC"
+        },
+        "consensus": {
+            "type": "PoW",
+            "algorithm": ""
+        },
+        "aliases": {
+            "nickname": "Elastic Project"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptocurrency",
+            "headline": "A Decentralised Cloud Computing",
+            "tags": [
+                "DAO"
+            ],
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2016-02-29T00:00:00",
+            "end_date": "2016-08-12T00:00:00",
+            "genesis_address": [
+                "3Q2aKEGFTKDw3hghsBifXp39CZVMtZukxn",
+                "3AVhok6gvrgSbTXfGEksYKEWBdxS9qo8E6",
+                "3Qnj4QtdD4qtZcP82xyLq2paAEPDgfwezd"
+            ],
+            "funding_tems": "http://www.elastic.pro/crowdsale",
+            "funding_url": "http://www.elastic.pro/crowdsale",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": ""
+        },
+        "specs": {},
+        "links": [
+            {
+                "type": "site",
+                "name": "www.elastic.pro",
+                "url": "http://www.elastic.pro",
+                "icon": "site.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "site",
+                "name": "Elastic Crowdsale",
+                "url": "http://www.elastic.pro/crowdsale",
+                "icon": "site.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Elastic Project Whitepaper",
+                "url": "https://github.com/elastic-project/whitepaper/blob/master/whitepaper.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=1390623.0",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Elastic GitHub",
+                "url": "https://github.com/elastic-project",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Elastic Genesis Block",
+                "url": "https://github.com/elastic-project/genesis-block",
+                "icon": "github.png",
+                "tags": [
+                    "Apps"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "1b0122efc2c3fc3cb314468ab8e157146827ea55d0535d2c342e2bbd82fb467c",
         "system": "Electronic Gulden",
         "icon": "electronicgulden",
@@ -7789,7 +7891,7 @@
     {
         "genesis_id": "0x2fe75cf9ba10cb1105e1750d872911e75365ba24fdd5db7f099445c901fea895",
         "system": "Expanse",
-        "icon": "expance",
+        "icon": "expanse",
         "dependencies": [
             "independent"
         ],
@@ -7802,6 +7904,10 @@
         "token": {
             "token_name": "expanse",
             "token_symbol": "EXP"
+        },
+        "consensus": {
+            "type": "PoW",
+            "algorithm": "Dagger"
         },
         "specs": {},
         "aliases": {
@@ -12135,7 +12241,7 @@
             "btc_raised": 12200
         },
         "specs": {},
-        "links": [
+        "risks": [
             {
                 "type": "risk",
                 "name": "Network has not been launched",
@@ -12147,7 +12253,9 @@
                 "name": "Product release is depend on MaidSafe team",
                 "url": "",
                 "icon": ""
-            },
+            }
+        ],
+        "links": [
             {
                 "type": "website",
                 "name": "maidsafe.net",
@@ -12159,7 +12267,7 @@
             },
             {
                 "type": "forum",
-                "name": "Forum",
+                "name": "SAFE Forum",
                 "url": "https://www.maidsafe.org/",
                 "icon": "forum.png",
                 "tags": [
@@ -12168,8 +12276,56 @@
                 ]
             },
             {
+                "type": "custom",
+                "name": "SAFE Documentation",
+                "url": "https://maidsafe.readme.io/docs",
+                "icon": "maidsafecoin.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Omniwallet",
+                "url": "https://www.omniwallet.org/",
+                "icon": "wallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Omni Explorer",
+                "url": "http://omnichest.info/lookupsp.aspx?sp=3",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "SAFE Launcher",
+                "url": "https://github.com/maidsafe/safe_launcher/releases/tag/0.4.1",
+                "icon": "maidsafecoin.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "SAFE Demo App",
+                "url": "https://github.com/maidsafe/safe_examples/releases/tag/0.2.1",
+                "icon": "maidsafecoin.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
                 "type": "paper",
-                "name": "Documentation",
+                "name": "SAFE Whitepaper",
                 "url": "https://github.com/maidsafe/Whitepapers/blob/master/Project-Safe.md",
                 "icon": "whitepaper.png",
                 "tags": [
@@ -12182,7 +12338,6 @@
                 "url": "http://maidsafe.net/roadmap",
                 "icon": "whitepaper.png",
                 "tags": [
-                    "Main",
                     "Code"
                 ]
             },
@@ -12244,22 +12399,22 @@
                 ]
             },
             {
-                "name": "ShapeShift",
+                "type": "exchange",
+                "name": "Bittrex",
                 "headline": "nein",
-                "url": "https://shapeshift.io",
-                "type": "custom",
-                "icon": "shapeshift.png",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
                 "tags": [
                     "Apps",
                     "Exchange"
                 ]
             },
             {
-                "name": "MasterXchange",
+                "name": "ShapeShift",
                 "headline": "nein",
-                "url": "http://masterxchange.com/",
+                "url": "https://shapeshift.io",
                 "type": "custom",
-                "icon": "masterxchange.png",
+                "icon": "shapeshift.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -12636,8 +12791,7 @@
             "date": "2013-08-31T00:00:00"
         },
         "flags": {
-            "quantum": true,
-            "rating_do_not_display": true
+            "quantum": true
         }
     },
     {
@@ -16230,6 +16384,112 @@
         }
     },
     {
+        "genesis_id": "",
+        "system": "Project Decorum",
+        "icon": "decorum",
+        "dependencies": [
+            "Mastercoin (Omni)",
+            "MaidSafeCoin"
+        ],
+        "token": {
+            "token_name": "decorumcoin",
+            "token_symbol": "PDC"
+        },
+        "consensus": {
+            "type": "Omni",
+            "algorithm": "Locked Token"
+        },
+        "aliases": {
+            "coinmarketcap": "PDC",
+            "nickname": "Project Decorum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "A Decentralised Social Platform for the SAFE Network",
+            "tags": [
+                "DApp"
+            ],
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2016-04-04T00:00:00",
+            "end_date": "2016-05-03T00:00:00",
+            "genesis_address": [
+                "1FBiEbdAtY7JCWNcPDyWVRJdeeQarTZDDn",
+                "141QSMGUpBZ4Zb6bpetXkXDGiVTDgyc1Ae"
+            ],
+            "funding_tems": "http://www.project-decorum.com/crowdsale/",
+            "funding_url": "http://www.project-decorum.com/crowdsale/",
+            "tokens_sold": "",
+            "tokens_issued": 50000000,
+            "btc_raised": 378.63
+        },
+        "flags": {
+            "quantum": true
+        },
+        "specs": {},
+        "links": [
+            {
+                "type": "site",
+                "name": "project-decorum.com",
+                "url": "http://www.project-decorum.com/",
+                "icon": "site.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "site",
+                "name": "Decorum Crowdsale",
+                "url": "http://www.project-decorum.com/crowdsale/",
+                "icon": "site.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Proof of Concept",
+                "url": "http://projectdecorum.safenet/",
+                "icon": "link.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "SafeNet Forum Thread",
+                "url": "https://forum.safenetwork.io/t/introducing-project-decorum/6119",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://forum.safenetwork.io/t/project-decorum-crowdsale",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "PDC Omni Asset",
+                "url": "http://omnichest.info/lookupsp.aspx?sp=59",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            }
+        ]
+    },
+    {
         "system": "Qora",
         "genesis_id": "6pHMBFif7jXFG654joT8GPaymau1fMtaxacRyqSrnAwQMQDvqRuLpHpfFyqX4gWVvj4pF1mwQhFgqWAvjVvPJUjmBZQvL751dM9cEcQBTaUcxtNLuWZCVUAtbnWN9f7FsLppHhkPbxwpoodL3UJYRGt3EZrG17mhv1RJbmq8j6rr7Mk",
         "dependencies": "independent",
@@ -19449,7 +19709,7 @@
             "Mastercoin (Omni)"
         ],
         "descriptions": {
-            "state": "Pre-Public",
+            "state": "Public",
             "system_type": "cryptoasset",
             "headline": "Social Platform Owned by the People Who Use It",
             "summary": "Synereo is designed as a framework for managing the economy of attention. We create a social brain that optimizes your experience on the network, social or otherwise, by shaping the stream of information in ways that reflect what you and your social circle consider to be interesting and valuable.",
@@ -19481,12 +19741,7 @@
             "token_symbol": "AMP"
         },
         "specs": {
-            "supply": 1680400000,
-            "price_btc": 0.00000753,
-            "cap": {
-                "usd": 4808300,
-                "btc": 12653
-            }
+            "supply": 1680400000
         },
         "risks": [
             {
@@ -19586,6 +19841,28 @@
                 "icon": "github.png",
                 "tags": [
                     "Code"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Poloniex",
+                "headline": "nein",
+                "url": "https://www.poloniex.com",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Bittrex",
+                "headline": "nein",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
                 ]
             }
         ],
@@ -20609,6 +20886,120 @@
             "usd": 0.11838052,
             "date": "2014-06-18T00:00:00"
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Waves",
+        "icon": "waves",
+        "dependencies": [
+            "independent"
+        ],
+        "token": {
+            "token_name": "wave",
+            "token_symbol": "WAVES"
+        },
+        "consensus": {
+            "type": "PoS",
+            "algorithm": ""
+        },
+        "aliases": {
+            "coinmarketcap": "WAVES",
+            "nickname": "Waves Platform"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptocurrency",
+            "headline": "Asset/Custom Tokens Platform",
+            "tags": [
+                "DAO"
+            ],
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2016-04-12T00:00:00",
+            "end_date": "2016-06-01T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_tems": "https://medium.com/@wavesplatform/waves-ico-structure-and-timeline-aa2f7ceca43e#.fm72ogroo",
+            "funding_url": "",
+            "tokens_sold": "",
+            "tokens_issued": 100000000,
+            "btc_raised": ""
+        },
+        "specs": {
+            "supply": 100000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "wavesplatform.com",
+                "url": "http://wavesplatform.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://medium.com/@wavesplatform",
+                "rss": "https://medium.com/feed/@wavesplatform",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/wavesplatform",
+                "icon": "twitter.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/Wavesplatform/",
+                "rss": "https://www.reddit.com/r/Wavesplatform/.rss",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Slack",
+                "url": "http://slack.wavesplatform.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=1387944.0",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Waves Whitepaper v0 by Shasha Ivanov",
+                "url": "http://wavesplatform.com/whitepaper_v0.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "",
