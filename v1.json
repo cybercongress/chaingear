@@ -6850,7 +6850,7 @@
         ],
         "token": {
             "token_name": "elastic coin",
-            "token_symbol": "ELC"
+            "token_symbol": "XEL"
         },
         "consensus": {
             "type": "PoW",
@@ -17840,8 +17840,8 @@
             "total_tokens": 821014,
             "supply": 821014,
             "cap": {
-                "usd": 45492,
-                "btc": 106.41
+                "usd": 43534,
+                "btc": 96.2
             }
         },
         "flags": {
@@ -18026,34 +18026,34 @@
         ],
         "links": [
             {
+                "type": "website",
                 "name": "Siacoin.com",
                 "url": "http://siacoin.com/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
-                ],
-                "type": "website"
+                ]
             },
             {
+                "type": "github",
                 "name": "Nebulous organization on Github",
                 "url": "https://github.com/NebulousLabs",
                 "icon": "github.png",
                 "tags": [
-                    "Main",
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "paper",
                 "name": "Sia Whitepaper",
                 "url": "http://siacoin.com/sia.pdf",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Science"
-                ],
-                "type": "paper"
+                ]
             },
             {
+                "type": "explorer",
                 "name": "Explorer",
                 "url": "http://explore.siacoin.com/",
                 "icon": "explorer.png",
@@ -18061,8 +18061,7 @@
                     "Main",
                     "Apps",
                     "Analytics"
-                ],
-                "type": "explorer"
+                ]
             },
             {
                 "type": "wallet",
@@ -18076,16 +18075,37 @@
                 ]
             },
             {
+                "type": "blog",
+                "name": "Sia Blog",
+                "url": "http://blog.sia.tech/",
+                "rss": "http://blog.sia.tech/rss/",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
                 "name": "Twitter",
                 "url": "https://twitter.com/NebulousLabs",
                 "icon": "twitter.png",
                 "tags": [
                     "News"
-                ],
-                "type": "twitter"
+                ]
             },
             {
-                "name": "Forum",
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/siacoin",
+                "rss": "https://www.reddit.com/r/siacoin/.rss",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "name": "forum",
                 "url": "https://forum.siacoin.com/",
                 "icon": "forum.png",
                 "tags": [
@@ -18103,23 +18123,50 @@
                 ]
             },
             {
+                "type": "custom",
                 "name": "Facebook",
                 "url": "https://www.facebook.com/nebulouslabs",
                 "icon": "forum.png",
                 "tags": [
                     "News"
-                ],
-                "type": "forum"
+                ]
             },
             {
+                "type": "custom",
+                "name": "Slack",
+                "url": "http://slackin.sia.tech/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "exchange",
                 "name": "Poloniex",
                 "headline": "nein",
                 "url": "https://www.poloniex.com",
-                "type": "custom",
                 "icon": "poloniex.png",
                 "tags": [
                     "Apps",
                     "Exchange"
+                ]
+            },
+            {
+                "type": "earn",
+                "name": "Sia Oficial Miner",
+                "url": "https://github.com/NebulousLabs/Sia-GPU-Miner/releases",
+                "icon": "mining.png",
+                "tags": [
+                    "Apps"
+                ]
+            },
+            {
+                "type": "earn",
+                "name": "Sia Alternate Miner",
+                "url": "github.com/robvanmieghem/gominer",
+                "icon": "mining.png",
+                "tags": [
+                    "Apps"
                 ]
             }
         ],
