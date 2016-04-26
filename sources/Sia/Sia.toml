@@ -33,32 +33,32 @@ start_date = "2014-05-01T07:40:43"
 url = "https://bitcointalk.org/index.php?topic=1060294.0"
 
 [[links]]
+type = "website"
 name = "Siacoin.com"
 url = "http://siacoin.com/"
 icon = "website.png"
 tags = ["Main"]
-type = "website"
 
 [[links]]
+type = "github"
 name = "Nebulous organization on Github"
 url = "https://github.com/NebulousLabs"
 icon = "github.png"
-tags = ["Main","Code"]
-type = "github"
+tags = ["Code"]
 
 [[links]]
+type = "paper"
 name = "Sia Whitepaper"
 url = "http://siacoin.com/sia.pdf"
 icon = "whitepaper.png"
 tags = ["Science"]
-type = "paper"
 
 [[links]]
+type = "explorer"
 name = "Explorer"
 url = "http://explore.siacoin.com/"
 icon = "explorer.png"
 tags = ["Main", "Apps", "Analytics"]
-type = "explorer"
 
 [[links]]
 type = "wallet"
@@ -68,14 +68,30 @@ icon = "sia.png"
 tags = ["Main", "Apps", "Wallet"]
 
 [[links]]
+type = "blog"
+name = "Sia Blog"
+url = "http://blog.sia.tech/"
+rss = "http://blog.sia.tech/rss/"
+icon = "blog.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/NebulousLabs"
 icon = "twitter.png"
 tags = ["News"]
-type = "twitter"
 
 [[links]]
-name = "Forum"
+type = "reddit"
+name = "reddit"
+url = "https://www.reddit.com/r/siacoin"
+rss = "https://www.reddit.com/r/siacoin/.rss"
+icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+name = "forum"
 url = "https://forum.siacoin.com/"
 icon = "forum.png"
 tags = ["News"]
@@ -89,19 +105,40 @@ icon = "forum.png"
 tags = ["News"]
 
 [[links]]
+type = "custom"
 name = "Facebook"
 url = "https://www.facebook.com/nebulouslabs"
 icon = "forum.png"
 tags = ["News"]
-type = "forum"
 
 [[links]]
+type = "custom"
+name = "Slack"
+url = "http://slackin.sia.tech/"
+icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+type = "exchange"
 name = "Poloniex"
 headline = "nein"
 url = "https://www.poloniex.com"
-type = "custom"
 icon = "poloniex.png"
 tags = ["Apps", "Exchange"]
+
+[[links]]
+type = "earn"
+name = "Sia Oficial Miner"
+url = "https://github.com/NebulousLabs/Sia-GPU-Miner/releases"
+icon = "mining.png"
+tags = ["Apps"]
+
+[[links]]
+type = "earn"
+name = "Sia Alternate Miner"
+url = "github.com/robvanmieghem/gominer"
+icon = "mining.png"
+tags = ["Apps"]
 
 [first_price]
 btc = 0.00000017
