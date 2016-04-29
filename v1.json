@@ -5372,7 +5372,13 @@
         ],
         "token": {
             "token_name": "dash",
-            "token_symbol": "DASH"
+            "token_symbol": "DASH",
+            "base": "duffs",
+            "main": "DASH",
+            "10in2": "uDash",
+            "10in5": "mDASH",
+            "10in8": "DASH",
+            "symbol": "DASH"
         },
         "consensus": {
             "type": "PoW",
@@ -5392,11 +5398,12 @@
             "coinmarketcap": "Dash"
         },
         "specs": {
-            "block_time": 150,
-            "block_reward": 1000,
-            "halfing_cycle": 10000000,
-            "total_tokens": 100000000000000000,
-            "difficulty_cycle": 20
+            "block_time": "2.5 minutes",
+            "block_reward": "2222222/(((Difficulty+2600)/9)^2)",
+            "halfing_cycle": "210240 blocks",
+            "total_tokens": "18900000 DASH",
+            "difficulty_cycle": "Retargets using Dark Gravity Wave",
+            "txs_confirm": "6 blocks"
         },
         "events": [
             {
@@ -5405,10 +5412,15 @@
                 "start_date": "2014-01-18T05:50:23"
             }
         ],
+        "first_price": {
+            "btc": 0.00033188,
+            "usd": 0.21837893,
+            "date": "2014-02-07T00:00:00"
+        },
         "links": [
             {
-                "name": "Dashpay.io",
-                "url": "https://www.dashpay.io/",
+                "name": "sash.org",
+                "url": "https://dash.org/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
@@ -5427,7 +5439,7 @@
             },
             {
                 "name": "Dash Whitepaper",
-                "url": "https://www.dashpay.io/wp-content/uploads/2015/04/Dash-WhitepaperV1.pdf",
+                "url": "https://dash.org/wp-content/uploads/2015/04/Dash-WhitepaperV1.pdf",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Main",
@@ -5437,7 +5449,7 @@
             },
             {
                 "name": "Explorer",
-                "url": "http://explorer.dashpay.io/chain/Dash",
+                "url": "http://explorer.dash.org/chain/Dash",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
@@ -5447,7 +5459,7 @@
             },
             {
                 "name": "Press Releases",
-                "url": "https://www.dashpay.io/news/category/press/",
+                "url": "https://dash.org/news/category/press/",
                 "icon": "link.png",
                 "tags": [
                     "News"
@@ -5456,7 +5468,7 @@
             },
             {
                 "name": "Dash Blog",
-                "url": "https://www.dashpay.io/news/",
+                "url": "https://dash.org/news/",
                 "icon": "blog.png",
                 "tags": [
                     "News"
@@ -5492,7 +5504,7 @@
             },
             {
                 "name": "Dash Wallet",
-                "url": "https://www.dashpay.io/downloads/",
+                "url": "https://dash.org/downloads/",
                 "icon": "wallet.png",
                 "tags": [
                     "Wallet",
@@ -5538,6 +5550,15 @@
                 "type": "paper"
             },
             {
+                "name": "P2Pool: Peer-to-peer Dash mining pool",
+                "url": "https://github.com/dashpay/p2pool-dash",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "github"
+            },
+            {
                 "name": "ShapeShift",
                 "headline": "nein",
                 "url": "https://shapeshift.io",
@@ -5551,7 +5572,7 @@
             {
                 "name": "Poloniex",
                 "headline": "nein",
-                "url": "https://www.poloniex.com",
+                "url": "https://poloniex.com/exchange/btc_dash",
                 "type": "custom",
                 "icon": "poloniex.png",
                 "tags": [
@@ -5560,20 +5581,9 @@
                 ]
             },
             {
-                "name": "Cryptsy",
-                "headline": "nein",
-                "url": "https://www.cryptsy.com/users/register?refid=243274",
-                "type": "custom",
-                "icon": "cryptsy.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
                 "name": "Bittrex",
                 "headline": "nein",
-                "url": "https://bittrex.com/",
+                "url": "https://bittrex.com/Market/Index?MarketName=BTC-DASH",
                 "type": "custom",
                 "icon": "bittrex.png",
                 "tags": [
@@ -5584,9 +5594,30 @@
             {
                 "name": "BTER",
                 "headline": "nein",
-                "url": "https://bter.com/",
+                "url": "https://bter.com/trade/dash_btc",
                 "type": "custom",
                 "icon": "bter.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTC-e",
+                "url": "https://btc-e.com/dash_btc",
+                "type": "custom",
+                "icon": "btc-e.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "name": "BTC38",
+                "headline": "Cryptocurrensy Exchange",
+                "url": "http://www.btc38.com/trade.html?mk_type=btc&btc38_trade_coin_name=dash",
+                "type": "custom",
+                "icon": "btc38.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -5615,11 +5646,6 @@
                 ]
             }
         ],
-        "first_price": {
-            "btc": 0.00033188,
-            "usd": 0.21837893,
-            "date": "2014-02-07T00:00:00"
-        },
         "flags": {
             "quantum": true
         }
@@ -16413,7 +16439,7 @@
         "descriptions": {
             "state": "Project",
             "system_type": "cryptoasset",
-            "headline": "A Decentralised Social Platform for the SAFE Network",
+            "headline": "Decentralised Social Platform for the SAFE Network",
             "tags": [
                 "DApp"
             ],
