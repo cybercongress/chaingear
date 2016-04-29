@@ -1,41 +1,48 @@
-genesis_id = "00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6"
-system = "Dash"
-dependencies = ["independent"]
+name = "Dash"
+stage = "public"
+type = "cryptocurrency"
 
 [token]
-token_name = "dash"
-token_symbol = "DASH"
+base = "duffs"
+main = "DASH"
+10in2 = "uDash"
+10in5 = "mDASH"
+10in8 = "DASH"
+symbol = "DASH"
 
-[consensus]
+[[consensus]]
 type = "PoW"
 algorithm = "X11"
 
-[descriptions]
-state = "Public"
-system_type = "cryptocurrency"
-headline = "An open sourced, privacy-centric digital currency with instant transactions"
-tags = ["DAO"]
-hashtag = "#darkcoin"
-page_state = "ready"
-
-[aliases]
-coinmarketcap = "Dash"
-
 [specs]
-block_time = 150.0
-block_reward = 1000.0
-halfing_cycle = 10000000.0
-total_tokens = 100000000000000000.0
-difficulty_cycle = 20.0
+headline = "an open sourced, privacy-centric digital currency with instant transactions. First Self-Funding Self-Governing Crypto Currency"
+block_time = "2.5 minutes"
+block_reward = "controlled by 2222222/(((Difficulty+2600)/9)^2)"
+halfing_cycle = "210240 blocks"
+total_tokens = "18900000 DASH"
+difficulty_cycle = "Retargets using Dark Gravity Wave"
+txs_confirm = "6 blocks"
+tags = ["DAO"]
 
 [[events]]
 name = "Announcement"
 url = "https://bitcointalk.org/index.php?topic=421615.0"
 start_date = "2014-01-18T05:50:23"
 
+[[events]]
+type = "genesis"
+date = "2014-01-19T01:40:18"
+id = "00000ffd590b1485b3caadc19b22e6379c733355108f107a430458cdf3407ab6"
+
+[[events]]
+type = "first_price"
+date = "2014-02-07T00:00:00"
+btc = 0.00033188
+usd = 0.21837893
+
 [[links]]
-name = "Dashpay.io"
-url = "https://www.dashpay.io/"
+name = "dash.org"
+url = "https://www.dash.org/"
 icon = "website.png"
 tags = ["Main"]
 type = "website"
@@ -48,29 +55,36 @@ tags = ["Main", "Code"]
 type = "github"
 
 [[links]]
+name = "P2Pool: Peer-to-peer Dash mining pool"
+url = "https://github.com/dashpay/p2pool-dash"
+icon = "github.png"
+tags = ["Code"]
+type = "github"
+
+[[links]]
 name = "Dash Whitepaper"
-url = "https://www.dashpay.io/wp-content/uploads/2015/04/Dash-WhitepaperV1.pdf"
+url = "https://www.dash.org/wp-content/uploads/2015/04/Dash-WhitepaperV1.pdf"
 icon = "whitepaper.png"
 tags = ["Main", "Science"]
 type = "paper"
 
 [[links]]
 name = "Explorer"
-url = "http://explorer.dashpay.io/chain/Dash"
+url = "http://explorer.dash.org/chain/Dash"
 icon = "explorer.png"
 tags = ["Main", "Apps"]
 type = "explorer"
 
 [[links]]
 name = "Press Releases"
-url = "https://www.dashpay.io/news/category/press/"
+url = "https://www.dash.org/news/category/press/"
 icon = "link.png"
 tags = ["News"]
 type = "custom"
 
 [[links]]
 name = "Dash Blog"
-url = "https://www.dashpay.io/news/"
+url = "https://www.dash.org/news/"
 icon = "blog.png"
 tags = ["News"]
 type = "blog"
@@ -98,7 +112,7 @@ type = "reddit"
 
 [[links]]
 name = "Dash Wallet"
-url = "https://www.dashpay.io/downloads/"
+url = "https://www.dash.org/downloads/"
 icon = "wallet.png"
 tags = ["Wallet", "Apps"]
 type = "wallet"
@@ -112,7 +126,7 @@ type = "custom"
 
 [[links]]
 type = "forum"
-name = "BTT Thread"
+name = "BCT Thread"
 url = "https://bitcointalk.org/index.php?topic=421615.0"
 icon = "forum.png"
 tags = ["News"]
@@ -141,23 +155,15 @@ tags = ["Apps", "Exchange"]
 [[links]]
 name = "Poloniex"
 headline = "nein"
-url = "https://www.poloniex.com"
+url = "https://poloniex.com/exchange/btc_dash"
 type = "custom"
 icon = "poloniex.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
-name = "Cryptsy"
-headline = "nein"
-url = "https://www.cryptsy.com/users/register?refid=243274"
-type = "custom"
-icon = "cryptsy.png"
-tags = ["Apps", "Exchange"]
-
-[[links]]
 name = "Bittrex"
 headline = "nein"
-url = "https://bittrex.com/"
+url = "https://bittrex.com/Market/Index?MarketName=BTC-DASH"
 type = "custom"
 icon = "bittrex.png"
 tags = ["Apps", "Exchange"]
@@ -165,9 +171,25 @@ tags = ["Apps", "Exchange"]
 [[links]]
 name = "BTER"
 headline = "nein"
-url = "https://bter.com/"
+url = "https://bter.com/trade/dash_btc"
 type = "custom"
 icon = "bter.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "BTC-e"
+headline = "nein"
+url = "https://btc-e.com/dash_btc"
+type = "custom"
+icon = "btc-e.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+name = "BTC38"
+headline = "Cryptocurrensy Exchange"
+url = "http://www.btc38.com/trade.html?mk_type=btc&btc38_trade_coin_name=dash"
+type = "custom"
+icon = "btc38.png"
 tags = ["Apps", "Exchange"]
 
 [[links]]
@@ -186,10 +208,7 @@ type = "custom"
 icon = "dashwhale.png"
 tags = ["Apps", "Analytics"]
 
-[first_price]
-btc = 0.00033188
-usd = 0.21837893
-date = "2014-02-07T00:00:00"
-
-[flags]
-quantum = true
+[[flags]]
+coinmarketcap = "Dash"
+nickname = "Dash"
+page_state = "ready"
