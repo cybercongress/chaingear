@@ -1,0 +1,84 @@
+genesis_id = ""
+system = "Mycelium"
+icon = "mycelium"
+dependencies = ["Bitcoin"]
+
+[token]
+token_name = "mycelium"
+token_symbol = "SAR"
+
+[consensus]
+type = "Bitcoin"
+algorithm = "OP_Return"
+
+[aliases]
+coinmarketcap = "Mycelium"
+
+[descriptions]
+state = "Pre-Public"
+system_type = "cryptoasset"
+headline = "Opensource Bitcoin Wallet"
+tags = ["DApp"]
+page_state = "draft"
+
+[crowdsales]
+start_date = "2016-05-01T00:00:00"
+end_date = "2016-05-18T23:59:00"
+genesis_address = [""]
+funding_tems = "https://wallet.mycelium.com/crowdsale.pdf"
+funding_url = "https://wallet.mycelium.com/elements/licenses.html"
+tokens_sold = ""
+tokens_issued = ""
+btc_raised = ""
+
+[specs]
+
+[specs.cap]
+
+[first_price]
+
+[flags]
+rating_do_not_display = true
+
+[[links]]
+type = "website"
+name = "wallet.mycelium.com"
+url = "https://wallet.mycelium.com"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "website"
+name = "Mycelium Crowdsale"
+url = "https://wallet.mycelium.com/elements/licenses.html"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/myceliumcom"
+icon = "twitter.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "Dicussion on reddit"
+name = "reddit"
+url = "https://www.reddit.com/r/btc/comments/4gkwov/mycelium_new_wallet_and_crowdsale/"
+icon = "reddit.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "github"
+name = "Mycelium GitHub"
+url = "https://github.com/mycelium-com"
+icon = "github.png"
+tags = ["Code"]
+
+[[links]]
+type = "wallet"
+name = "Mycelium Wallet"
+url = "https://wallet.mycelium.com/contact.html"
+icon = "mycelium.png"
+tags = ["Apps","Wallet"]
+
