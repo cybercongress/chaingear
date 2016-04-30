@@ -1,0 +1,59 @@
+genesis_id = "0xbb9bc244d798123fde783fcc1c72d3bb8c189413"
+system = "TheDAO"
+icon = "thedao"
+dependencies = ["Ethereum"]
+
+[token]
+token_name = "dao"
+token_symbol = "DAO"
+
+[consensus]
+type = "Ethereum"
+algorithm = "Transferable Fungible"
+
+[descriptions]
+state = "Project"
+system_type = "cryptoasset"
+headline = "The Mother of all DAOs"
+tags = ["DAO"]
+page_state = "draft"
+
+[crowdsales]
+start_date = "2016-04-30T00:00:00"
+end_date = "2016-05-28T09:00:00"
+genesis_address = ["0xbb9bc244d798123fde783fcc1c72d3bb8c189413"]
+funding_tems = "https://daohub.org/explainer.html"
+funding_url = "https://daohub.org"
+tokens_sold = ""
+tokens_issued = ""
+btc_raised = ""
+
+[specs]
+
+[[links]]
+type = "website"
+name = "daohub.org"
+url = "https://daohub.org"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "website"
+name = "WavesPlatform Crowdsale"
+url = "https://ico.wavesplatform.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "forum"
+name = "Forum"
+url = "https://forum.daohub.org/c/theDAO"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+type = "github"
+name = "Standard DAO"
+url = "https://github.com/slockit/DAO"
+icon = "github.png"
+tags = ["Code"]
