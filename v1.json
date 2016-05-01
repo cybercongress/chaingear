@@ -13616,8 +13616,8 @@
                 ]
             },
             {
-                "type": "Dicussion on reddit",
-                "name": "reddit",
+                "type": "reddit",
+                "name": "Dicussion on reddit",
                 "url": "https://www.reddit.com/r/btc/comments/4gkwov/mycelium_new_wallet_and_crowdsale/",
                 "icon": "reddit.png",
                 "tags": [
@@ -16027,6 +16027,140 @@
         "flags": {
             "quantum": true
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Plutus",
+        "icon": "plutus",
+        "dependencies": [
+            "Bitcoin",
+            "Ethereum"
+        ],
+        "token": {
+            "token_name": "pluton",
+            "token_symbol": "Pluton"
+        },
+        "consensus": {
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
+        },
+        "aliases": {
+            "coinmarketcap": "Pluton"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Ethereum based platform for contactless Bitcoin payments at any merchant with NFC",
+            "tags": [
+                "DAO"
+            ],
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "",
+            "end_date": "",
+            "genesis_address": [
+                ""
+            ],
+            "funding_tems": "",
+            "funding_url": "https://getplutons.plutus.it/",
+            "tokens_sold": "",
+            "tokens_issued": 20000000,
+            "btc_raised": ""
+        },
+        "specs": {
+            "supply": 20000000,
+            "cap": {}
+        },
+        "first_price": {},
+        "flags": {
+            "rating_do_not_display": true
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "plutus.it",
+                "url": "https://plutus.it",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "website",
+                "name": "Plutus Crowdsale",
+                "url": "https://getplutons.plutus.it/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/PlutusIT",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Plutus Blog",
+                "url": "https://medium.com/@PlutusIT",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Plutus-526126840889793/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Google+",
+                "url": "https://plus.google.com/104713386950602312902/posts",
+                "icon": "googleplus.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Vimeo",
+                "url": "https://vimeo.com/user44924752",
+                "icon": "vimeo.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Plutus GitHub",
+                "url": "https://github.com/PlutusIt",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Plutus Whitepaper",
+                "url": "https://plutus.it/assets/Plutus.it-White-Paper-v1.0.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "5c894fbcb3b4043cb3140473207a9691d05d20163c3d5ff9228217fd776e7637",
