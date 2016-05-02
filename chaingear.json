@@ -13568,7 +13568,7 @@
             "page_state": "draft"
         },
         "crowdsales": {
-            "start_date": "2016-05-01T00:00:00",
+            "start_date": "2016-05-01T23:59:00",
             "end_date": "2016-05-18T23:59:00",
             "genesis_address": [
                 ""
@@ -13616,8 +13616,8 @@
                 ]
             },
             {
-                "type": "Dicussion on reddit",
-                "name": "reddit",
+                "type": "reddit",
+                "name": "Dicussion on reddit",
                 "url": "https://www.reddit.com/r/btc/comments/4gkwov/mycelium_new_wallet_and_crowdsale/",
                 "icon": "reddit.png",
                 "tags": [
@@ -16029,6 +16029,140 @@
         }
     },
     {
+        "genesis_id": "",
+        "system": "Plutus",
+        "icon": "plutus",
+        "dependencies": [
+            "Bitcoin",
+            "Ethereum"
+        ],
+        "token": {
+            "token_name": "pluton",
+            "token_symbol": "Pluton"
+        },
+        "consensus": {
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
+        },
+        "aliases": {
+            "coinmarketcap": "Plutus"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Ethereum based platform for contactless Bitcoin payments at any merchant with NFC",
+            "tags": [
+                "DAO"
+            ],
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2016-05-02T23:59:00",
+            "end_date": "2016-06-10T23:59:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_tems": "https://plutus.it/blog/pluton-crowdsale-how-it-will-work",
+            "funding_url": "https://getplutons.plutus.it/",
+            "tokens_sold": "",
+            "tokens_issued": 20000000,
+            "btc_raised": ""
+        },
+        "specs": {
+            "supply": 20000000,
+            "cap": {}
+        },
+        "first_price": {},
+        "flags": {
+            "rating_do_not_display": true
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "plutus.it",
+                "url": "https://plutus.it",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "website",
+                "name": "Plutus Crowdsale",
+                "url": "https://getplutons.plutus.it/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/PlutusIT",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Plutus Blog",
+                "url": "https://medium.com/@PlutusIT",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Plutus-526126840889793/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Google+",
+                "url": "https://plus.google.com/104713386950602312902/posts",
+                "icon": "googleplus.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Vimeo",
+                "url": "https://vimeo.com/user44924752",
+                "icon": "vimeo.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Plutus GitHub",
+                "url": "https://github.com/PlutusIt",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Plutus Whitepaper",
+                "url": "https://plutus.it/assets/Plutus.it-White-Paper-v1.0.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "5c894fbcb3b4043cb3140473207a9691d05d20163c3d5ff9228217fd776e7637",
         "system": "PotCoin",
         "icon": "potcoin",
@@ -17588,8 +17722,8 @@
             "total_tokens": 821014,
             "supply": 821014,
             "cap": {
-                "usd": 43534,
-                "btc": 96.2
+                "usd": 40442,
+                "btc": 89.41
             }
         },
         "flags": {
@@ -17982,155 +18116,6 @@
                 ]
             }
         ]
-    },
-    {
-        "genesis_id": "",
-        "system": "Slockit",
-        "icon": "slockit",
-        "dependencies": [
-            "Ethereum"
-        ],
-        "aliases": {
-            "coinmarketcap": "Slockit"
-        },
-        "ratings": {},
-        "consensus": {},
-        "descriptions": {
-            "state": "Project",
-            "headline": "Smart Locks",
-            "tags": [
-                "DApp"
-            ],
-            "system_type": "cryptoservice"
-        },
-        "token": {},
-        "specs": {},
-        "links": [
-            {
-                "type": "website",
-                "name": "slock.it",
-                "url": "http://www.slock.it/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "Slockit GitHub",
-                "url": "https://github.com/slockit",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Slockit Concept",
-                "url": "https://prezi.com/embed/igemlizj79du/?bgcolor=212121&lock_to_path=0&autoplay=1&autohide_ctrls=0&landing_data=bHVZS2czc0xSd0VNdzVYY2Z1eEJMMnE5R3l4aVFZQnc&landing_sign=XVzn4FZy_NCNtYOkh1KM1UuB9W9pJxnpvzQ9zAJr7o8",
-                "icon": "link.png",
-                "tags": [
-                    "Science"
-                ]
-            },
-            {
-                "type": "blog",
-                "name": "Blog",
-                "url": "https://blog.slock.it/",
-                "rss": "https://blog.slock.it/feed",
-                "icon": "blog.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            },
-            {
-                "type": "reddit",
-                "name": "reddit",
-                "url": "https://www.reddit.com/r/slockit",
-                "rss": "https://www.reddit.com/r/decred/.rss",
-                "icon": "reddit.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "twitter",
-                "name": "Twitter",
-                "url": "https://twitter.com/slockitproject",
-                "icon": "twitter.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Facebook",
-                "url": "https://www.facebook.com/slockitproject",
-                "icon": "facebook.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Google+",
-                "url": "https://plus.google.com/+SlockItproject",
-                "icon": "googleplus.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "YouTube",
-                "url": "https://www.youtube.com/+SlockItproject",
-                "icon": "youtube.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Slack",
-                "url": "http://slock.it:3000/",
-                "icon": "slack.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Slockit FAQ",
-                "url": "https://slock.it/faq.md",
-                "icon": "slack.png",
-                "tags": [
-                    "Code"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Slockit Roadmap",
-                "url": "https://slock.it/roadmap.html",
-                "icon": "link.png",
-                "tags": [
-                    "Code"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Slockit Presale",
-                "url": "https://slock.it/presale.html",
-                "icon": "link.png",
-                "tags": [
-                    "Main"
-                ]
-            }
-        ],
-        "flags": {
-            "rating_do_not_display": true
-        }
     },
     {
         "genesis_id": "660f734cf6c6d16111bde201bbd2122873f2f2c078b969779b9d4c99732354fd",

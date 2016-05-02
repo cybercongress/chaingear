@@ -1,0 +1,105 @@
+genesis_id = ""
+system = "Plutus"
+icon = "plutus"
+dependencies = ["Bitcoin","Ethereum"]
+
+[token]
+token_name = "pluton"
+token_symbol = "Pluton"
+
+[consensus]
+type = "Ethereum"
+algorithm = "Transferable Fungible"
+
+[aliases]
+coinmarketcap = "Plutus"
+
+[descriptions]
+state = "Project"
+system_type = "cryptoasset"
+headline = "Ethereum based platform for contactless Bitcoin payments at any merchant with NFC"
+tags = ["DAO"]
+page_state = "draft"
+
+[crowdsales]
+start_date = "2016-05-02T23:59:00"
+end_date = "2016-06-10T23:59:00"
+genesis_address = [""]
+funding_tems = "https://plutus.it/blog/pluton-crowdsale-how-it-will-work"
+funding_url = "https://getplutons.plutus.it/"
+tokens_sold = ""
+tokens_issued = 20000000
+btc_raised = ""
+
+[specs]
+supply = 20000000
+
+[specs.cap]
+
+[first_price]
+
+[flags]
+rating_do_not_display = true
+
+[[links]]
+type = "website"
+name = "plutus.it"
+url = "https://plutus.it"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "website"
+name = "Plutus Crowdsale"
+url = "https://getplutons.plutus.it/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/PlutusIT"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "blog"
+name = "Plutus Blog"
+url = "https://medium.com/@PlutusIT"
+icon = "medium.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/Plutus-526126840889793/"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Google+"
+url = "https://plus.google.com/104713386950602312902/posts"
+icon = "googleplus.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Vimeo"
+url = "https://vimeo.com/user44924752"
+icon = "vimeo.png"
+tags = ["News"]
+
+[[links]]
+type = "github"
+name = "Plutus GitHub"
+url = "https://github.com/PlutusIt"
+icon = "github.png"
+tags = ["Code"]
+
+[[links]]
+type = "paper"
+name = "Plutus Whitepaper"
+url = "https://plutus.it/assets/Plutus.it-White-Paper-v1.0.pdf"
+icon = "paper.png"
+tags = ["Main","Science"]
