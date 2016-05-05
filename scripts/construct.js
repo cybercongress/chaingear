@@ -33,8 +33,8 @@ function loadToml(filename, result, statistics) {
         if (isCurrency) {
           statistics.currencies.total++;
           if (!parsed.genesis_id) statistics.currencies.no_genesis.push(name);
-          if (!parsed.token || !parsed.token.token_name) statistics.currencies.no_token.push(name);
-          if (!parsed.token || !parsed.token.token_symbol) statistics.currencies.no_ticker.push(name);
+          if (!parsed.token || !parsed.token.name) statistics.currencies.no_token.push(name);
+          if (!parsed.token || !parsed.token.symbol) statistics.currencies.no_ticker.push(name);
           var links = parsed.links || [];
           if (!hasLinkOfType(links, 'code')) statistics.currencies.no_code_link.push(name);
           if (!hasLinkOfType(links, 'paper')) statistics.currencies.no_paper_link.push(name);
@@ -45,8 +45,8 @@ function loadToml(filename, result, statistics) {
         if (isAsset) {
           statistics.assets.total++;
           if (!parsed.genesis_id) statistics.assets.no_genesis.push(name);
-          if (!parsed.token || !parsed.token.token_name) statistics.assets.no_token.push(name);
-          if (!parsed.token || !parsed.token.token_symbol) statistics.assets.no_ticker.push(name);
+          if (!parsed.token || !parsed.token.name) statistics.assets.no_token.push(name);
+          if (!parsed.token || !parsed.token.symbol) statistics.assets.no_ticker.push(name);
         }
       }
     }
@@ -70,7 +70,7 @@ var walk = function (dir) {
     if (stat && stat.isDirectory()) {
       results = results.concat(walk(file));
     } else {
-      if (file.split(".").pop() != "toml") {
+      if (file.split(".").pop() != "toml") { // that is - dots are excluded from system names.
         console.log("found non-toml file^" + dir + "/" + file);
         return;
       }
@@ -112,7 +112,7 @@ function act() {
   }
 
   fs.writeFileSync(path.join(__dirname, "..", "chaingear.json"), JSON.stringify(result, null, 4));
-  fs.writeFileSync(path.join(__dirname, "..", "v1.json"), JSON.stringify(result, null, 4));
+  fs.writeFileSync(path.join(__dirname, "..", "v2.json"), JSON.stringify(result, null, 4));
   fs.writeFileSync(path.join(__dirname, "..", "statistics.json"), JSON.stringify(statistics, null, 4));
 
   console.log("");

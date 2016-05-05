@@ -7,9 +7,9 @@ for (var i = 0; i < chaingear.length; i++) {
   var item = chaingear[i];
   var token = item.token;
   if (!token) item.token = {};
-  var token_name= item.token.token_name;
+  var name= item.token.name;
   var curname = item.aliases && item.aliases.CurrencyName;
-  if (!token_name && curname) item.token.token_name = curname;
+  if (!name && curname) item.token.name = curname;
 
   /*if (item.ratings && item.ratings.rating) {
     item.ratings.rating_cyber = item.ratings.rating;
