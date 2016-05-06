@@ -1,0 +1,80 @@
+genesis_id = ""
+system = "MINEUM"
+icon = "mineum"
+dependencies = ["Bitcoin"]
+
+[token]
+name = "MINEUM"
+symbol = "MNM"
+
+[consensus]
+type = "Hybrid POS-POW"
+algorithm = "x13"
+
+[aliases]
+coinmarketcap = "MINEUM"
+nickname = "MINEUM"
+
+[descriptions]
+state = "Project"
+system_type = "cryptocurrency"
+headline = "Backed by Mining Activities"
+tags = ["DAO"]
+page_state = "draft"
+
+[crowdsales]
+start_date = "2016-05-07T12:00:00"
+end_date = "2016-05-28T23:59:59"
+genesis_address = ["Md1tCyT18DPnPbFqBKDSj77E1kHBTMUGrG"]
+funding_terms = "https://mineum.org/documentation/mineum-ico-terms.pdf"
+funding_url = "https://mymineum.org/"
+tokens_sold = ""
+tokens_issued = 10000000
+btc_raised = ""
+
+[specs]
+supply = 10000000
+
+[[links]]
+type = "website"
+name = "mineum.org"
+url = "https://mineum.org/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "website"
+name = "MINEUM Crowdsale"
+url = "https://mymineum.org/"
+icon = "website.png"
+tags = ["Main"]
+
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/mineumproject"
+icon = "twitter.png"
+tags = ["Main","News"]
+
+
+[[links]]
+type = "custom"
+name = "Slack"
+url = "http://mineum.slack.com"
+icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=1461341.0"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+type = "paper"
+name = "MINEUM Whitepaper"
+url = "https://mineum.org/documentation/mineum-whitepaper.pdf"
+icon = "paper.png"
+tags = ["Science"]
