@@ -1,0 +1,51 @@
+genesis_id = "1.3.1010"
+system = "SatoshiPie"
+icon = "satoshipie"
+dependencies = ["BitShares"]
+
+[descriptions]
+state = "Public"
+system_type = "cryptoasset"
+headline = "Blockchain Traded Fund managed by Satoshi•Fund"
+tags = ["DApp"]
+
+[token]
+name = "pie"
+symbol = "SPIES"
+
+[consensus]
+consensus_name = "BitShares"
+consensus_type = "User Issued Asset"
+
+[aliases]
+nickname = "Satoshi•Pie"
+
+[specs]
+supply = 143918.8182
+
+[specs.price]
+usd = 1.0036
+btc = 0.00221417
+
+[specs.cap]
+usd = 144437
+btc = 318.66
+
+[flags]
+rating_do_not_display = true
+supply_from_here = true
+quantum = true
+
+[[links]]
+type = "explorer"
+name = "Satoshi•Pie Asset"
+url = "http://cryptofresh.com/a/SPIES"
+icon = "explorer.png"
+tags = ["Main","Apps","Analytics"]
+
+[[links]]
+type = "explorer"
+name = "Satoshi•Pie Portfolio"
+url = "https://cyber.fund/@satoshi_pie"
+icon = "explorer.png"
+tags = ["Main","Apps","Analytics"]

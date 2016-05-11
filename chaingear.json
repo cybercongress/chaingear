@@ -910,24 +910,45 @@
                 ]
             },
             {
-                "type": "paper",
-                "name": "Documentation",
-                "url": "http://docs.bitshares.org/",
-                "icon": "whitepaper.png",
+                "type": "explorer",
+                "name": "CryptoFresh Explorer",
+                "url": "http://cryptofresh.com/?r=cyberfund",
+                "icon": "cryptofresh.png",
                 "tags": [
-                    "Science"
+                    "Main",
+                    "Apps",
+                    "Analytics"
                 ]
             },
             {
-                "type": "explorer",
-                "name": "OpenLedger Explorer",
-                "url": "https://bitshares.openledger.info/?r=cyberfund#/explorer",
+                "type": "wallet",
+                "name": "OpenLedger Wallet",
+                "url": "https://bitshares.openledger.info/?r=cyberfund#",
                 "icon": "openledger.png",
                 "tags": [
                     "Main",
                     "Apps",
-                    "Analytics",
-                    "Exchange"
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BitsharesTalk",
+                "url": "https://bitsharestalk.org/",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Bitshares 2.0 Wallets",
+                "url": "https://github.com/bitshares/bitshares-2/releases",
+                "icon": "bitshares.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
                 ]
             },
             {
@@ -941,23 +962,11 @@
                 ]
             },
             {
-                "type": "wallet",
-                "name": "Bitshares 2.0 Wallets",
-                "url": "https://github.com/bitshares/bitshares-2/releases",
-                "icon": "bitshares.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Wallet"
-                ]
-            },
-            {
                 "type": "github",
                 "name": "Bitshares GitHub",
                 "url": "https://github.com/BitShares/",
                 "icon": "github.png",
                 "tags": [
-                    "Main",
                     "Code"
                 ]
             },
@@ -971,30 +980,10 @@
                 ]
             },
             {
-                "type": "forum",
-                "name": "Forum",
-                "url": "https://bitsharestalk.org/",
-                "icon": "forum.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
                 "type": "explorer",
-                "name": "CryptoFresh Explorer",
-                "url": "http://cryptofresh.com/?r=cyberfund",
-                "icon": "cryptofresh.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "Graphene Stats",
-                "url": "http://stats.bitshares.eu/",
-                "icon": "bitshares.png",
+                "name": "OpenLedger Explorer",
+                "url": "https://bitshares.openledger.info/?r=cyberfund#/explorer",
+                "icon": "openledger.png",
                 "tags": [
                     "Apps",
                     "Analytics"
@@ -1041,6 +1030,7 @@
                 "type": "reddit",
                 "name": "reddit",
                 "url": "http://www.reddit.com/r/BitShares",
+                "rss": "https://www.reddit.com/r/BitShares/.rss",
                 "icon": "reddit.png",
                 "tags": [
                     "News"
@@ -1069,10 +1059,21 @@
             },
             {
                 "type": "exchange",
-                "name": "Open Ledger",
+                "name": "OpenLedger",
                 "headline": "Transparent Decentrilized Exchange",
                 "url": "https://openledger.info/?r=cyberfund#",
                 "icon": "openledger.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Poloniex",
+                "headline": "Cryptocurrensy Exchange",
+                "url": "https://www.poloniex.com/exchange#btc_bts",
+                "icon": "poloniex.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -1113,10 +1114,9 @@
             },
             {
                 "type": "exchange",
-                "name": "Poloniex",
-                "headline": "Cryptocurrensy Exchange",
-                "url": "https://www.poloniex.com/exchange#btc_bts",
-                "icon": "poloniex.png",
+                "name": "Bittrex",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -1125,7 +1125,6 @@
             {
                 "type": "exchange",
                 "name": "BlockTrades",
-                "headline": "Your Gateway to the BitShares Trading Network",
                 "url": "https://blocktrades.us/",
                 "icon": "blocktrades.png",
                 "tags": [
@@ -1136,7 +1135,6 @@
             {
                 "type": "exchange",
                 "name": "BTC38",
-                "headline": "Cryptocurrensy Exchange",
                 "url": "http://www.btc38.com/trade_en.html",
                 "icon": "btc38.png",
                 "tags": [
@@ -1145,47 +1143,56 @@
                 ]
             },
             {
+                "type": "exchange",
+                "name": "Yunbi",
+                "url": "https://yunbi.com/?lang=en",
+                "icon": "yunbi.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "BitShares Documentation",
+                "url": "http://docs.bitshares.org/",
+                "icon": "whitepaper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "type": "paper",
                 "name": "Summary About Tecnology",
                 "url": "https://bitshares.org/technology/",
                 "icon": "whitepaper.png",
                 "tags": [
-                    "Main",
                     "Science"
-                ],
-                "type": "paper"
+                ]
             },
             {
+                "type": "paper",
                 "name": "Directory of Distributed Autonomous Companies in the BitShares Marketplace",
                 "url": "http://www.bitsharesmarket.com/",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Science"
-                ],
-                "type": "paper"
+                ]
             },
             {
+                "type": "paper",
                 "name": "BitShares Infographics",
                 "url": "https://bitshares.org/media/2015_bitshares_infographic_en.pdf",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Science"
-                ],
-                "type": "paper"
-            },
-            {
-                "name": "BitShares Roadmap",
-                "url": "https://bitshares.org/roadmap/",
-                "icon": "whitepaper.png",
-                "tags": [
-                    "Code"
-                ],
-                "type": "paper"
+                ]
             },
             {
                 "type": "paper",
-                "name": "BitShares Documentation",
-                "url": "http://docs.bitshares.eu/",
-                "icon": "paper.png",
+                "name": "BitShares Roadmap",
+                "url": "https://bitshares.org/roadmap/",
+                "icon": "whitepaper.png",
                 "tags": [
                     "Code"
                 ]
@@ -17776,6 +17783,73 @@
                 "type": "explorer",
                 "name": "Satoshi•Fund Portfolio",
                 "url": "https://cyber.fund/@satoshi_fund",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "1.3.1010",
+        "system": "SatoshiPie",
+        "icon": "satoshipie",
+        "dependencies": [
+            "BitShares"
+        ],
+        "descriptions": {
+            "state": "Public",
+            "system_type": "cryptoasset",
+            "headline": "Blockchain Traded Fund managed by Satoshi•Fund",
+            "tags": [
+                "DApp"
+            ]
+        },
+        "token": {
+            "name": "pie",
+            "symbol": "SPIES"
+        },
+        "consensus": {
+            "consensus_name": "BitShares",
+            "consensus_type": "User Issued Asset"
+        },
+        "aliases": {
+            "nickname": "Satoshi•Pie"
+        },
+        "specs": {
+            "supply": 143918.8182,
+            "price": {
+                "usd": 1.0036,
+                "btc": 0.00221417
+            },
+            "cap": {
+                "usd": 144437,
+                "btc": 318.66
+            }
+        },
+        "flags": {
+            "rating_do_not_display": true,
+            "supply_from_here": true,
+            "quantum": true
+        },
+        "links": [
+            {
+                "type": "explorer",
+                "name": "Satoshi•Pie Asset",
+                "url": "http://cryptofresh.com/a/SPIES",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Satoshi•Pie Portfolio",
+                "url": "https://cyber.fund/@satoshi_pie",
                 "icon": "explorer.png",
                 "tags": [
                     "Main",
