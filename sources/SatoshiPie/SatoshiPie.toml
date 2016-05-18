@@ -6,7 +6,7 @@ dependencies = ["BitShares"]
 [descriptions]
 state = "Public"
 system_type = "cryptoasset"
-headline = "Blockchain Traded Fund managed by Satoshi•Fund"
+headline = "Asset Backed Blockchain Traded Fund managed by Satoshi•Fund"
 tags = ["DApp"]
 
 [token]
@@ -21,18 +21,22 @@ consensus_type = "User Issued Asset"
 nickname = "Satoshi•Pie"
 
 [specs]
-supply = 143918.8182
+supply = 210000.4386
 
 [specs.price]
-usd = 1.0163
-btc = 0.00224098
+usd = 1.1675
+btc = 0.00256685
 
 [specs.cap]
-usd = 146258
-btc = 322.52
+usd = 245167
+btc = 539.04
+
+[first_price]
+btc = 0.00216636
+usd = 1
+date = "2016-05-09T18:00:00"
 
 [flags]
-rating_do_not_display = true
 supply_from_here = true
 quantum = true
 
@@ -40,7 +44,7 @@ quantum = true
 type = "explorer"
 name = "Satoshi•Pie Asset"
 url = "http://cryptofresh.com/a/SPIES"
-icon = "explorer.png"
+icon = "cryptofresh.png"
 tags = ["Main","Apps","Analytics"]
 
 [[links]]
@@ -49,3 +53,31 @@ name = "Satoshi•Pie Portfolio"
 url = "https://cyber.fund/@satoshi_pie"
 icon = "explorer.png"
 tags = ["Main","Apps","Analytics"]
+
+[[links]]
+type = "wallet"
+name = "OpenLedger Wallet"
+url = "https://bitshares.openledger.info/?r=satoshifund#"
+icon = "openledger.png"
+tags = ["Main", "Apps" ,"Wallet"]
+
+[[links]]
+type = "exchange"
+name = "OpenLedger Exchange"
+url = "https://bitshares.openledger.info/?r=satoshifund#/market/SPIES_USD"
+icon = "openledger.png"
+tags = ["Main", "Apps","Exchange"]
+
+[[links]]
+type = "explorer"
+name = "OpenLedger Explorer"
+url = "https://bitshares.openledger.info/?r=satoshifund#/asset/SPIES"
+icon = "openledger.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+type = "wallet"
+name = "Bitshares Wallet"
+url = "https://github.com/bitshares/bitshares-2/releases"
+icon = "bitshares.png"
+tags = ["Apps", "Wallet"]

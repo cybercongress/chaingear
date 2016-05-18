@@ -6245,6 +6245,16 @@
             },
             {
                 "type": "exchange",
+                "name": "Yunbi",
+                "url": "https://yunbi.com",
+                "icon": "yunbi.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
                 "name": "Gatecoin",
                 "url": "https://gatecoin.com/",
                 "icon": "gatecoin.png",
@@ -17896,7 +17906,7 @@
         "descriptions": {
             "state": "Public",
             "system_type": "cryptoasset",
-            "headline": "Blockchain Traded Fund managed by Satoshi•Fund",
+            "headline": "Asset Backed Blockchain Traded Fund managed by Satoshi•Fund",
             "tags": [
                 "DApp"
             ]
@@ -17913,18 +17923,22 @@
             "nickname": "Satoshi•Pie"
         },
         "specs": {
-            "supply": 143918.8182,
+            "supply": 210000.4386,
             "price": {
-                "usd": 1.0163,
-                "btc": 0.00224098
+                "usd": 1.1675,
+                "btc": 0.00256685
             },
             "cap": {
-                "usd": 146258,
-                "btc": 322.52
+                "usd": 245167,
+                "btc": 539.04
             }
         },
+        "first_price": {
+            "btc": 0.00216636,
+            "usd": 1,
+            "date": "2016-05-09T18:00:00"
+        },
         "flags": {
-            "rating_do_not_display": true,
             "supply_from_here": true,
             "quantum": true
         },
@@ -17933,7 +17947,7 @@
                 "type": "explorer",
                 "name": "Satoshi•Pie Asset",
                 "url": "http://cryptofresh.com/a/SPIES",
-                "icon": "explorer.png",
+                "icon": "cryptofresh.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -17949,6 +17963,48 @@
                     "Main",
                     "Apps",
                     "Analytics"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "OpenLedger Wallet",
+                "url": "https://bitshares.openledger.info/?r=satoshifund#",
+                "icon": "openledger.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "OpenLedger Exchange",
+                "url": "https://bitshares.openledger.info/?r=satoshifund#/market/SPIES_USD",
+                "icon": "openledger.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "OpenLedger Explorer",
+                "url": "https://bitshares.openledger.info/?r=satoshifund#/asset/SPIES",
+                "icon": "openledger.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Bitshares Wallet",
+                "url": "https://github.com/bitshares/bitshares-2/releases",
+                "icon": "bitshares.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
                 ]
             }
         ]
@@ -18225,6 +18281,16 @@
                 "name": "Poloniex",
                 "url": "https://www.poloniex.com",
                 "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Yunbi",
+                "url": "https://yunbi.com/?lang=en",
+                "icon": "yunbi.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -22411,7 +22477,7 @@
         },
         "specs": {
             "price": {
-                "eth": 0.01
+                "eth": 0.012
             }
         },
         "links": [
@@ -22425,6 +22491,47 @@
                 ]
             },
             {
+                "type": "github",
+                "name": "Standard DAO contract",
+                "url": "https://github.com/slockit/DAO",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "TheDAO Contract",
+                "url": "http://etherscan.io/",
+                "icon": "etherscan.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Ethereum Wallet",
+                "url": "https://github.com/ethereum/mist/releases/",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Decentralized Autonomous Organization to Automate Governance by Christoph Jentzsch",
+                "url": "https://download.slock.it/public/DAO/WhitePaper.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
                 "type": "forum",
                 "name": "Forum",
                 "url": "https://forum.daohub.org/c/theDAO",
@@ -22434,21 +22541,22 @@
                 ]
             },
             {
-                "type": "github",
-                "name": "Standard DAO contract",
-                "url": "https://github.com/slockit/DAO",
-                "icon": "github.png",
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/TheDao/",
+                "rss": "https://www.reddit.com/r/TheDao/.rss",
+                "icon": "reddit.png",
                 "tags": [
-                    "Code"
+                    "News"
                 ]
             },
             {
-                "type": "paper",
-                "name": "Decentralized Autonomous Organization to Automate Governance by Christoph Jentzsch",
-                "url": "https://download.slock.it/public/DAO/WhitePaper.pdf",
-                "icon": "paper.png",
+                "type": "custom",
+                "name": "Slack",
+                "url": "https://slockit.slack.com/messages/dao_framework",
+                "icon": "slack.png",
                 "tags": [
-                    "Code"
+                    "News"
                 ]
             }
         ]
