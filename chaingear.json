@@ -3121,17 +3121,6 @@
         ]
     },
     {
-        "genesis_id": "ISO-4217-826",
-        "system": "GBP",
-        "dependencies": [
-            "independent"
-        ],
-        "token": {
-            "name": "pound",
-            "symbol": "GBP"
-        }
-    },
-    {
         "genesis_id": "3444294670862540038",
         "system": "Burst",
         "icon": "burst",
@@ -3740,17 +3729,6 @@
                 ]
             }
         ]
-    },
-    {
-        "genesis_id": "ISO-4217-124",
-        "system": "CAD",
-        "dependencies": [
-            "independent"
-        ],
-        "token": {
-            "name": "dollar",
-            "symbol": "CAD"
-        }
     },
     {
         "genesis_id": "000008f971bd331b204f4c96b32205103ac5790a93bd06a362b9650d478d1f51",
@@ -7804,17 +7782,6 @@
         ]
     },
     {
-        "genesis_id": "ISO-4217-978",
-        "system": "EUR",
-        "dependencies": [
-            "independent"
-        ],
-        "token": {
-            "name": "euro",
-            "symbol": "EUR"
-        }
-    },
-    {
         "genesis_id": "0x2fe75cf9ba10cb1105e1750d872911e75365ba24fdd5db7f099445c901fea895",
         "system": "Expanse",
         "icon": "expanse",
@@ -10710,17 +10677,6 @@
                 ]
             }
         ]
-    },
-    {
-        "genesis_id": "ISO-4217-392",
-        "system": "JPY",
-        "dependencies": [
-            "independent"
-        ],
-        "token": {
-            "name": "yen",
-            "symbol": "JPY"
-        }
     },
     {
         "genesis_id": "0000052f45f694ad4626eeca11c53c79cdd7b4c9ff3ccf123c90ebce3dea4f15",
@@ -13730,7 +13686,7 @@
         }
     },
     {
-        "genesis_id": "",
+        "genesis_id": "La3hSVSFkUqoPQqdDdbaYsJUkEJCkABuGCHosK",
         "system": "Mycelium",
         "icon": "mycelium",
         "dependencies": [
@@ -13764,12 +13720,12 @@
             ],
             "funding_terms": "https://wallet.mycelium.com/crowdsale.pdf",
             "funding_url": "https://wallet.mycelium.com/elements/licenses.html",
-            "tokens_sold": "",
-            "tokens_issued": "",
-            "btc_raised": 5137.094
+            "tokens_sold": 5311,
+            "tokens_issued": 5311,
+            "btc_raised": 5131.191
         },
         "specs": {
-            "cap": {}
+            "supply": 5311
         },
         "first_price": {},
         "flags": {
@@ -13810,7 +13766,6 @@
                 "url": "https://www.reddit.com/r/btc/comments/4gkwov/mycelium_new_wallet_and_crowdsale/",
                 "icon": "reddit.png",
                 "tags": [
-                    "Main",
                     "News"
                 ]
             },
@@ -13831,6 +13786,17 @@
                 "tags": [
                     "Apps",
                     "Wallet"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Mycelium Asset",
+                "url": "http://coloredcoins.org/explorer/asset/La3hSVSFkUqoPQqdDdbaYsJUkEJCkABuGCHosK/d2982ca94eb55b17ee328a58464997218218667940e6db71373461a224e59e5f/0",
+                "icon": "mycelium.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
                 ]
             }
         ]
@@ -16246,8 +16212,8 @@
             "page_state": "draft"
         },
         "crowdsales": {
-            "start_date": "2016-06-01T23:59:00",
-            "end_date": "2016-06-30T23:59:00",
+            "start_date": "2016-07-01T23:59:00",
+            "end_date": "2016-08-10T23:59:00",
             "genesis_address": [
                 ""
             ],
@@ -16299,7 +16265,6 @@
                 "url": "https://medium.com/@PlutusIT",
                 "icon": "medium.png",
                 "tags": [
-                    "Main",
                     "News"
                 ]
             },
@@ -16343,6 +16308,16 @@
                 "type": "paper",
                 "name": "Plutus Whitepaper",
                 "url": "https://plutus.it/assets/Plutus.it-White-Paper-v1.0.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Plutus DAO WhitePaper",
+                "url": "https://plutus.it/assets/PlutusDAO-White-Paper-v1.0.pdf",
                 "icon": "paper.png",
                 "tags": [
                     "Main",
@@ -17998,12 +17973,12 @@
         "specs": {
             "supply": 356480.8693,
             "price": {
-                "usd": 1.2739,
-                "btc": 0.00234933
+                "usd": 1.284,
+                "btc": 0.00241703
             },
             "cap": {
-                "usd": 454126,
-                "btc": 837.49
+                "usd": 457728,
+                "btc": 861.62
             }
         },
         "first_price": {
@@ -20569,7 +20544,6 @@
                 "url": "https://github.com/slockit/DAO",
                 "icon": "github.png",
                 "tags": [
-                    "Main",
                     "Code"
                 ]
             },
@@ -20595,10 +20569,21 @@
                 ]
             },
             {
-                "type": "custom",
+                "type": "explorer",
                 "name": "Proposals Report",
                 "url": "https://dao.report/",
-                "icon": "link.png",
+                "icon": "thedao.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "DAO Polling",
+                "url": "https://dao.consider.it/",
+                "icon": "thedao.png",
                 "tags": [
                     "Apps",
                     "Analytics"
@@ -20612,6 +20597,16 @@
                 "tags": [
                     "Main",
                     "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "The DAO Blog",
+                "url": "https://blog.daohub.org/",
+                "rss": "https://blog.daohub.org/feed",
+                "icon": "medium.png",
+                "tags": [
+                    "News"
                 ]
             },
             {
@@ -20640,6 +20635,15 @@
                 "icon": "slack.png",
                 "tags": [
                     "News"
+                ]
+            },
+            {
+                "type": "wiki",
+                "name": "The DAO Wiki",
+                "url": "https://daowiki.atlassian.net/wiki/",
+                "icon": "wiki.png",
+                "tags": [
+                    "Science"
                 ]
             },
             {
@@ -20911,17 +20915,6 @@
                 ]
             }
         ]
-    },
-    {
-        "genesis_id": "ISO-4217-840",
-        "system": "USD",
-        "dependencies": [
-            "independent"
-        ],
-        "token": {
-            "name": "dollar",
-            "symbol": "USD"
-        }
     },
     {
         "genesis_id": "000000009a68dab74c60cf8e1acd116c549eb0153d328e1f24a33a3e5474a7bd",
