@@ -1,0 +1,83 @@
+genesis_id = ""
+system = "Rise"
+icon = "rise-vision"
+dependencies = ["independent"]
+
+[token]
+name = "rise"
+symbol = "RISE"
+
+[consensus]
+type = "PoS"
+algorithm = "Delegated"
+
+[descriptions]
+state = "Pre-Public"
+system_type = "cryptocurrency"
+headline = "Multi-language Decentralized Application Platform"
+tags = ["DAO", "DApp", "]
+page_state = "draft"
+
+[crowdsales]
+start_date = "2016-05-10T10:00:00"
+end_date = "2016-06-24T10:00:00"
+genesis_address = ["3466r4y8FuVUE6FHuCShshQkCYZY3xaqdG"]
+funding_terms = "https://rise.vision/blog/post/ico-terms"
+funding_url = "https://rise.vision/ico"
+tokens_sold = "88000000"
+btc_raised = ""
+
+[specs]
+total_tokens = 100000000
+supply = 100000000
+
+[flags]
+supply_from_here = true
+
+[[links]]
+name = "Rise.Vision"
+url = "https://rise.vision/"
+icon = "website.png"
+tags = ["Main"]
+type = "site"
+
+[[links]]
+name = "Blog"
+url = "https://rise.vision/"
+icon = "blog.png"
+tags = ["Main","News"]
+type = "custom"
+
+[[links]]
+name = "Twitter"
+url = "https://twitter.com/risevisionteam"
+icon = "twitter.png"
+tags = ["News"]
+type = "twitter"
+
+[[links]]
+name = "Forum"
+url = "https://risevisionfoundation.atlassian.net/wiki/questions"
+icon = "forum.png"
+tags = ["News"]
+type = "forum"
+
+[[links]]
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=1445947.0"
+icon = "forum.png"
+tags = ["News"]
+type = "forum"
+
+[[links]]
+name = "Rise GitHub"
+url = "https://github.com/RiseVision"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+name = "Rise Whitepaper"
+url = "https://rise.vision/blog/post/rise-technology-white-paper"
+icon = "whitepaper.png"
+tags = ["Main","Science"]
+type = "paper"
