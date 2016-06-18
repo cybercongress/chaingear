@@ -25,6 +25,7 @@ function loadToml(filename, result, statistics) {
         isCurrency = tags.indexOf('DAO') > -1;
         isAsset =  tags.indexOf('DApp');
         isProject = parsed.descriptions && parsed.descriptions.state == 'Project';
+        isFiat = parsed.descriptions && parsed.descriptions.system_type == 'Fiat';
       //if (!parsed.icon) statistics.no_logo.push(name);
       if (!parsed.descriptions || !parsed.descriptions.headline) statistics.no_headline.push(name);
       if (isProject) {
@@ -47,6 +48,9 @@ function loadToml(filename, result, statistics) {
           if (!parsed.genesis_id) statistics.assets.no_genesis.push(name);
           if (!parsed.token || !parsed.token.name) statistics.assets.no_token.push(name);
           if (!parsed.token || !parsed.token.symbol) statistics.assets.no_ticker.push(name);
+        }
+        if (isFiat) {
+          statistics.fiats.total++;
         }
       }
     }
@@ -83,6 +87,7 @@ var walk = function (dir) {
 function act() {
   var result = [];
   var filenames_toml = walk(path.join(__dirname, "..", "sources"));
+  var filenames_toml_fiat = walk(path.join(__dirname, "..", "fiat"));
 
   var statistics = {
     no_logo: [],
@@ -104,12 +109,20 @@ function act() {
       no_token: [],
       no_ticker: []
     },
+    fiats: {
+      total: 0
+    },
     projects: []
   };
 
   for (var idx = 0; idx < filenames_toml.length; idx++) {
     loadToml(filenames_toml[idx], result, statistics);
   }
+
+  for (idx = 0; idx < filenames_toml_fiat.length; idx++) {
+    loadToml(filenames_toml_fiat[idx], result, statistics);
+  }
+
 
   fs.writeFileSync(path.join(__dirname, "..", "chaingear.json"), JSON.stringify(result, null, 4));
   fs.writeFileSync(path.join(__dirname, "..", "v2.json"), JSON.stringify(result, null, 4));
