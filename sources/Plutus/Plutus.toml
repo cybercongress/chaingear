@@ -27,16 +27,19 @@ end_date = "2016-06-30T20:00:00"
 genesis_address = ["0xA2D4035389aae620E36Bd828144b2015564C2702"]
 funding_terms = "https://plutus.it/blog/pluton-crowdsale-how-it-will-work"
 funding_url = "https://getplutons.plutus.it/"
-tokens_sold = ""
+tokens_sold = "850000"
 tokens_issued = 20000000
-btc_raised = ""
+btc_raised = 1491.85496171
 
 [specs]
 supply = 20000000
 
-[specs.cap]
+[specs.price]
+btc = 0.00007459
 
 [first_price]
+btc = 0.00007459
+usd = 0.05009067
 
 [flags]
 rating_do_not_display = true
@@ -101,12 +104,5 @@ tags = ["Code"]
 type = "paper"
 name = "Plutus Whitepaper"
 url = "https://plutus.it/assets/Plutus.it-White-Paper-v1.0.pdf"
-icon = "paper.png"
-tags = ["Main","Science"]
-
-[[links]]
-type = "paper"
-name = "Plutus DAO WhitePaper"
-url = "https://plutus.it/assets/PlutusDAO-White-Paper-v1.0.pdf"
 icon = "paper.png"
 tags = ["Main","Science"]
