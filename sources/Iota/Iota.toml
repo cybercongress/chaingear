@@ -14,7 +14,7 @@ algorithm = "Iota"
 [descriptions]
 state = "Pre-Public"
 system_type = "cryptocurrency"
-headline = "Cryptocurrency for Internet-of-Things "
+headline = "Cryptocurrency for Internet-of-Things"
 tags = ["DAO"]
 page_state = "draft"
 
@@ -27,12 +27,12 @@ end_date = "2015-12-21T00:00:00"
 genesis_address = ["1G8hh3bHMMhZSATwisBVbGFSYBKK3Suib8", "NXT-Q4N3-V2QJ-S3GT-FW4Z9"]
 funding_terms = "http://188.138.57.93/tos.pdf"
 funding_url = "http://www.iotatoken.com/"
-tokens_sold = 999999999
-tokens_issued = 999999999
+tokens_sold = 2779530283277761
+tokens_issued = 2779530283277761
 btc_raised = 1191.1311
 
 [specs]
-supply = 999999999
+supply = 2779530283277761
 
 [specs.cap]
 btc = 1191.1311
@@ -47,50 +47,78 @@ date = "2015-12-21T00:00:00"
 supply_from_here = true
 
 [[links]]
+type = "site"
 name = "iotatoken.com"
 url = "http://www.iotatoken.com/"
 icon = "website.png"
 tags = ["Main"]
-type = "site"
 
 [[links]]
-name = "tangle.ninja"
-url = "https://www.tangle.ninja"
-icon = "website.png"
-tags = ["Main"]
-type = "site"
+type = "github"
+name = "IOTA GitHub"
+url = "https://github.com/IOTAledger"
+icon = "github.png"
+tags = ["Main","Code"]
 
 [[links]]
+type = "wallet"
+name = "IOTA Client"
+url = "https://github.com/IOTAledger"
+icon = "iota.png"
+tags = ["Wallet","Apps"]
+
+[[links]]
+type = "forum"
+name = "IOTA Forum"
+url = "https://forum.iotatoken.com/"
+icon = "github.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "custom"
+name = "IOTA Slack"
+url = "http://slack.iotatoken.com/"
+icon = "github.png"
+tags = ["Apps","News"]
+
+[[links]]
+type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/iotatoken"
 icon = "twitter.png"
-tags = ["Main","News"]
-type = "twitter"
+tags = ["News"]
 
 [[links]]
+type = "custom"
+name = "IOTA Documentation"
+url = "https://iota.readme.io/"
+icon = "link.png"
+tags = ["Code"]
+
+[[links]]
+type = "custom"
 name = "CoinTelegraph"
 url = "http://cointelegraph.com/tags/iota"
-type = "custom"
 icon = "cointelegraph.png"
 tags = ["News"]
 
 [[links]]
+type = "custom"
 name = "Bitcoinist"
 url = "http://bitcoinist.net/tag/iota/"
-type = "custom"
 icon = "bitcoinist.png"
 tags = ["News"]
 
 [[links]]
+type = "forum"
 name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=1216479.0"
 icon = "forum.png"
 tags = ["News"]
-type = "forum"
 
 [[links]]
-name = "The tangle by Serguei Popov"
-url = "http://188.138.57.93/tangle.pdf"
-icon = "paper.png"
 type = "paper"
+name = "The Tangle by Serguei Popov"
+url = "https://iotatoken.com/IOTA_Whitepaper.pdf"
+icon = "paper.png"
 tags = ["Main","Science"]
