@@ -7,6 +7,9 @@ dependencies = ["Steem"]
 name = "steemdollar"
 symbol = "SBD"
 
+[specs]
+supply = 1313001.810
+
 [consensus]
 type = "PoS"
 algorithm = "Delegated"
@@ -21,8 +24,6 @@ system_type = "cryptocurrency"
 headline = "Convertable Loan of Steem blockchain denominated in US Dollar"
 tags = ["DAO"]
 page_state = "draft"
-
-[specs]
 
 [[links]]
 type = "website"
@@ -71,3 +72,4 @@ tags = ["Apps","Exchange"]
 
 [flags]
 quantum = true
+supply_from_here = true
