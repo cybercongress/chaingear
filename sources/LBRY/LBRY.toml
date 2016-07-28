@@ -1,0 +1,69 @@
+genesis_id = "9c89283ba0f3227f6c03b70216b9f665f0118d5e0fa729cedf4fb34d6a34f463"
+system = "LBRY"
+dependencies = ["independent"]
+
+[token]
+name = "lbry credit"
+symbol = "LBC"
+
+[consensus]
+type = "PoW"
+algorithm = ""
+
+[descriptions]
+state = "Public"
+system_type = "cryptocurrency"
+headline = "Quasi Decentralized Digital Library"
+tags = ["DAO"]
+page_state = "ready"
+
+[aliases]
+coinmarketcap = "LBRY Credits"
+
+[specs]
+supply = 401027129.4109525
+
+[flags]
+quantum = true
+supply_from_here = true
+
+[[links]]
+name = "lbry.io"
+url = "lbry.io"
+icon = "website.png"
+tags = ["Main"]
+type = "site"
+
+[[links]]
+name = "Explorer"
+url = "https://explorer.lbry.io/"
+icon = "explorer.png"
+tags = ["Main", "Apps", "Analytics"]
+type = "explorer"
+
+[[links]]
+name = "Blog"
+url = "https://lbry.io/news"
+icon = "blog.png"
+tags = ["News"]
+type = "custom"
+
+[[links]]
+name = "LBRY organization on GitHub"
+url = "https://github.com/lbryio"
+tags = ["Code"]
+type = "github"
+
+[[links]]
+type = "exchange"
+name = "Poloniex"
+url = "https://poloniex.com/exchange#btc_eth"
+icon = "poloniex.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+type = "exchange"
+name = "Bittrex"
+url = "https://bittrex.com"
+icon = "bittrex.png"
+tags = ["Apps", "Exchange"]
