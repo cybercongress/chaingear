@@ -1,6 +1,7 @@
 genesis_id = "0x818739a8aadc1cdc21667304c241e663dbf22a4067a0cae513805941c37fd6ed"
 system = "AntShares"
 dependencies = ["independent"]
+icon = "antshares"
 
 [token]
 name = "antcoin"
@@ -11,7 +12,7 @@ type = "dBFT"
 algorithm = "delegated Byzantine Fault Tolerance"
 
 [descriptions]
-state = "Public"
+state = "Pre-Public"
 system_type = "cryptocurrency"
 headline = "Block Chain for Digital Asset Registration & Transaction"
 tags = ["DAO"]
@@ -26,15 +27,21 @@ coinmarketcap = "AntShares"
 start_date = "2016-08-08T12:00:00"
 end_date = "2016-09-07T12:00:00"
 genesis_address = ["3LZoBhKUJzuyk7w3aX5H4LdmopJ8m5aesv"]
-funding_terms = "https://www.antshares.com/zh-CN/Blog/Details?id=8"
-funding_url = "https://www.antshares.com/ICO/Index"
+funding_terms = "https://www.antshares.org/Blog/Details/21"
+funding_url = "https://www.antshares.org/en-us/ICO"
 
 [flags]
-quantum = true
 
 [[links]]
-name = "Antshares.com"
+name = "antshares.com"
 url = "https://www.antshares.com"
+icon = "website.png"
+tags = ["Main"]
+type = "site"
+
+[[links]]
+name = "Antshares ICO"
+url = "https://www.antshares.org/en-us/ICO"
 icon = "website.png"
 tags = ["Main"]
 type = "site"
@@ -44,7 +51,7 @@ name = "AntShares Whitepaper 1.1"
 url = "https://github.com/AntShares/AntShares/wiki/Whitepaper-1.1"
 icon = "whitepaper.png"
 type = "whitepaper"
-tags = ["Science"]
+tags = ["Main","Science"]
 
 [[links]]
 name = "Twitter"
