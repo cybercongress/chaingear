@@ -1,0 +1,90 @@
+genesis_id = ""
+system = "Iconomy"
+icon = "iconomy"
+dependencies = ["Ethereum"]
+
+[token]
+name = "iconomy token"
+symbol = "ICN"
+
+[consensus]
+type = "Ethereum"
+algorithm = "Transferable Fungible"
+
+[aliases]
+
+[descriptions]
+state = "Pre-Public"
+system_type = "cryptoasset"
+headline = "Financial Services for the Decentralised Economy"
+tags = ["DApp"]
+twwidid = ""
+page_state = "draft"
+
+[crowdsales]
+start_date = "2016-08-25T08:00:00"
+end_date = "2016-09-29T20:00:00"
+genesis_address = [""]
+funding_terms = "https://www.iconomi.net/ICONOMI_Whitepaper.pdf"
+funding_url = "https://ico.iconomi.net/"
+tokens_sold = ""
+tokens_issued = 100000000
+btc_raised = ""
+
+[specs]
+supply = 100000000
+
+[first_price]
+
+[flags]
+supply_from_here = true
+
+[[links]]
+type = "website"
+name = "iconomi.net"
+url = "https://www.iconomi.net/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "website"
+name = "Iconomy Crowdsale"
+url = "https://ico.iconomi.net/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "blog"
+name = "Blog"
+url = "https://medium.com/iconominet"
+rss = "https://medium.com/feed/@iconominet"
+icon = "medium.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/iconominet"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/iconomi.net/"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+type = "paper"
+name = "Iconomy Whitepaper"
+url = "https://www.iconomi.net/ICONOMI_Whitepaper.pdf"
+icon = "paper.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "paper"
+name = "Whitepaper on App Token Funds"
+url = "https://www.iconomi.net/CoinFundsWhitepaper.pdf"
+icon = "paper.png"
+tags = ["Science"]
