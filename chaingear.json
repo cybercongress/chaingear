@@ -3096,6 +3096,119 @@
         }
     },
     {
+        "genesis_id": "1.3.1072",
+        "system": "BlockPay",
+        "icon": "blockpay",
+        "dependencies": [
+            "BitShares"
+        ],
+        "token": {
+            "name": "blockpay",
+            "symbol": "BLOCKPAY"
+        },
+        "consensus": {
+            "type": "BitShares",
+            "algorithm": "User Issued Asset"
+        },
+        "aliases": {},
+        "descriptions": {
+            "state": "Pre-Public",
+            "system_type": "cryptoasset",
+            "headline": "Precious Metals-Backed Crypto-Platform on Blockchain",
+            "tags": [
+                "DApp"
+            ],
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2016-08-20T00:00:00",
+            "end_date": "2016-09-10T14:30:00",
+            "genesis_address": [
+                "ico.blockpay"
+            ],
+            "funding_terms": "https://blockpay.ch/newsroom/investor-relations/",
+            "funding_url": "https://bitcointalk.org/index.php?topic=1587349",
+            "tokens_sold": "",
+            "tokens_issued": 100000000,
+            "btc_raised": ""
+        },
+        "specs": {
+            "supply": 100000000
+        },
+        "first_price": {},
+        "flags": {
+            "supply_from_here": true
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "blockpay.ch",
+                "url": "https://blockpay.ch",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "website",
+                "name": "BlockPay Crowdsale",
+                "url": "https://blockpay.ch/newsroom/investor-relations/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/blockpay",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://steemit.com/created/blockpay",
+                "icon": "steem.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=1568727",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/BlockPay-1348801331815770/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "OpenLedger Explorer",
+                "url": "https://bitshares.openledger.info/?r=cyberfund#/asset/BLOCKPAY",
+                "icon": "openledger.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "00000c2c71c0a0df4da4fa6d5756dc6b0c8709fc9c4e58973b330bb96900e2b4",
         "system": "BlockShares",
         "dependencies": [
@@ -19523,8 +19636,8 @@
             "symbol": "SSTEEM"
         },
         "consensus": {
-            "consensus_name": "BitShares",
-            "consensus_type": "User Issued Asset"
+            "name": "BitShares",
+            "type": "User Issued Asset"
         },
         "aliases": {
             "nickname": "Satoshi•Steem"
@@ -19689,8 +19802,8 @@
             "symbol": "SPIES"
         },
         "consensus": {
-            "consensus_name": "BitShares",
-            "consensus_type": "User Issued Asset"
+            "name": "BitShares",
+            "type": "User Issued Asset"
         },
         "aliases": {
             "nickname": "Satoshi•Pie"

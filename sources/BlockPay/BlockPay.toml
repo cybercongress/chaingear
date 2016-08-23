@@ -1,0 +1,88 @@
+genesis_id = "1.3.1072"
+system = "BlockPay"
+icon = "blockpay"
+dependencies = ["BitShares"]
+
+[token]
+name = "blockpay"
+symbol = "BLOCKPAY"
+
+[consensus]
+type = "BitShares"
+algorithm = "User Issued Asset"
+
+[aliases]
+
+[descriptions]
+state = "Pre-Public"
+system_type = "cryptoasset"
+headline = "Precious Metals-Backed Crypto-Platform on Blockchain"
+tags = ["DApp"]
+page_state = "draft"
+
+[crowdsales]
+start_date = "2016-08-20T00:00:00"
+end_date = "2016-09-10T14:30:00"
+genesis_address = ["ico.blockpay"]
+funding_terms = "https://blockpay.ch/newsroom/investor-relations/"
+funding_url = "https://bitcointalk.org/index.php?topic=1587349"
+tokens_sold = ""
+tokens_issued = 100000000
+btc_raised = ""
+
+[specs]
+supply = 100000000
+
+[first_price]
+
+[flags]
+supply_from_here = true
+
+[[links]]
+type = "website"
+name = "blockpay.ch"
+url = "https://blockpay.ch"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "website"
+name = "BlockPay Crowdsale"
+url = "https://blockpay.ch/newsroom/investor-relations/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/blockpay"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "blog"
+name = "Blog"
+url = "https://steemit.com/created/blockpay"
+icon = "steem.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=1568727"
+icon = "forum.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/BlockPay-1348801331815770/"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+type = "explorer"
+name = "OpenLedger Explorer"
+url = "https://bitshares.openledger.info/?r=cyberfund#/asset/BLOCKPAY"
+icon = "openledger.png"
+tags = ["Apps", "Analytics"]
