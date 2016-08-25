@@ -57,6 +57,13 @@ icon = "twitter.png"
 tags = ["Main","News"]
 
 [[links]]
+type = "explorer"
+name = "SteemWhales Explorer"
+url = "http://steemwhales.com/"
+icon = "steemwhales.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
 type = "blog"
 name = "Blog"
 url = "https://steem.io/blog/"
@@ -107,6 +114,21 @@ icon = "link.png"
 tags = ["Code"]
 
 [[links]]
+type = "explorer"
+name = "Steemle Explorer"
+url = "https://steemle.com/"
+icon = "explorer.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+type = "exchange"
+name = "Poloniex"
+headline = "nein"
+url = "https://www.poloniex.com"
+icon = "poloniex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
 type = "exchange"
 name = "OpenLedger"
 headline = "Transparent Decentrilized Exchange"
@@ -121,3 +143,6 @@ headline = "nein"
 url = "https://bittrex.com"
 icon = "bittrex.png"
 tags = ["Apps","Exchange"]
+
+[flags]
+quantum = true

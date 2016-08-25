@@ -1,17 +1,18 @@
 genesis_id = "0x818739a8aadc1cdc21667304c241e663dbf22a4067a0cae513805941c37fd6ed"
 system = "AntShares"
 dependencies = ["independent"]
+icon = "antshares"
 
 [token]
-name = "antcoin"
-symbol = "ATC"
+name = "AntShares"
+symbol = "ANS"
 
 [consensus]
 type = "dBFT"
 algorithm = "delegated Byzantine Fault Tolerance"
 
 [descriptions]
-state = "Public"
+state = "Pre-Public"
 system_type = "cryptocurrency"
 headline = "Block Chain for Digital Asset Registration & Transaction"
 tags = ["DAO"]
@@ -25,26 +26,31 @@ coinmarketcap = "AntShares"
 [crowdsales]
 start_date = "2016-08-08T12:00:00"
 end_date = "2016-09-07T12:00:00"
-genesis_address = ["3LZoBhKUJzuyk7w3aX5H4LdmopJ8m5aesv"]
-funding_terms = "https://www.antshares.com/zh-CN/Blog/Details?id=8"
-funding_url = "https://www.antshares.com/ICO/Index"
+funding_terms = "https://www.antshares.org/Blog/Details/21"
+funding_url = "https://www.antshares.org/en-us/ICO"
 
 [flags]
-quantum = true
 
 [[links]]
-name = "Antshares.com"
-url = "https://www.antshares.com"
+name = "antshares.org"
+url = "https://www.antshares.org"
 icon = "website.png"
 tags = ["Main"]
 type = "site"
 
 [[links]]
-name = "The White Paper of the AntShares"
-url = "https://www.antshares.com/Files/%E5%B0%8F%E8%9A%81%E7%99%BD%E7%9A%AE%E4%B9%A6%201.0.htm"
+name = "Antshares ICO"
+url = "https://www.antshares.org/en-us/ICO"
+icon = "website.png"
+tags = ["Main"]
+type = "site"
+
+[[links]]
+name = "AntShares Whitepaper 1.1"
+url = "https://github.com/AntShares/AntShares/wiki/Whitepaper-1.1"
 icon = "whitepaper.png"
 type = "whitepaper"
-tags = ["Science"]
+tags = ["Main","Science"]
 
 [[links]]
 name = "Twitter"
@@ -55,7 +61,7 @@ type = "twitter"
 
 [[links]]
 name = "Forum"
-url = "http://8btc.com/antshares"
+url = "http://www.antfans.org"
 icon = "forum.png"
 tags = ["News"]
 type = "forum"
@@ -69,7 +75,7 @@ type = "forum"
 
 [[links]]
 name = "Reddit"
-url = "https://www.reddit.com/user/AntShares"
+url = "https://www.reddit.com/r/antshares"
 icon = "reddit.png"
 tags = ["News"]
 type = "reddit"
