@@ -334,6 +334,27 @@
                 ]
             },
             {
+                "name": "AntShares Concensus Algorithm",
+                "url": "https://www.antshares.org/Files/A8A0E2.pdf",
+                "icon": "whitepaper.png",
+                "type": "whitepaper",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Official Wallet",
+                "url": "https://github.com/AntShares/AntShares/releases",
+                "icon": "antshares.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
                 "name": "Twitter",
                 "url": "https://twitter.com/antshares",
                 "icon": "twitter.png",
@@ -379,25 +400,6 @@
                 "type": "custom"
             },
             {
-                "type": "wallet",
-                "name": "Official Wallet",
-                "url": "https://github.com/AntShares/AntShares/releases",
-                "icon": "antshares.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Wallet"
-                ]
-            },
-            {
-                "name": "AntShares organization on GitHub",
-                "url": "https://github.com/AntShares",
-                "tags": [
-                    "Code"
-                ],
-                "type": "github"
-            },
-            {
                 "name": "Blog",
                 "url": "https://www.antshares.com/Blog/Index",
                 "icon": "blog.png",
@@ -407,8 +409,25 @@
                 "type": "custom"
             },
             {
+                "name": "AntShares Organization on GitHub",
+                "url": "https://github.com/AntShares",
+                "tags": [
+                    "Code"
+                ],
+                "type": "github"
+            },
+            {
                 "name": "AntShares SDK",
                 "url": "https://github.com/AntSharesSDK",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ],
+                "type": "github"
+            },
+            {
+                "name": "Java implementation",
+                "url": "https://github.com/AntSharesSDK/antshares-java",
                 "icon": "github.png",
                 "tags": [
                     "Code"
@@ -6725,7 +6744,7 @@
         }
     },
     {
-        "genesis_id": "",
+        "genesis_id": "0xe0b7927c4af23765cb51314a0e0521a9645f0e2a",
         "system": "DigixGlobal",
         "icon": "digixglobal",
         "dependencies": [
@@ -19879,12 +19898,12 @@
         "specs": {
             "supply": 763038846.803527,
             "price": {
-                "btc": 4.2e-7,
-                "usd": 0.00024148
+                "btc": 4.5e-7,
+                "usd": 0.00026013
             },
             "cap": {
-                "usd": 184256,
-                "btc": 320.48
+                "usd": 198492,
+                "btc": 343.37
             }
         },
         "first_price": {
@@ -20045,12 +20064,12 @@
         "specs": {
             "supply": 410204.0062,
             "price": {
-                "usd": 1.7088,
-                "btc": 0.00297219
+                "usd": 1.7086,
+                "btc": 0.00295571
             },
             "cap": {
-                "usd": 700974,
-                "btc": 1219.2
+                "usd": 700884,
+                "btc": 1212.45
             }
         },
         "first_price": {
@@ -22383,16 +22402,16 @@
             "coinmarketcap": "Synereo"
         },
         "crowdsales": {
-            "start_date": "2015-03-23T00:00:00",
-            "end_date": "2015-04-29T00:00:00",
+            "start_date": "2016-09-05T00:00:00",
+            "end_date": "2016-10-05T00:00:00",
             "genesis_address": [
-                "3BNGSfyKdTLvZwZAiUHdhgdENA9dJqgVq9"
+                ""
             ],
-            "funding_terms": "http://blog.synereo.com/2015/03/18/crowdsale/",
-            "funding_url": "https://crowdsale.synereo.com/",
-            "tokens_sold": 45439378,
+            "funding_terms": "https://blog.synereo.com/2016/08/29/synereos-second-fundraising-campaign-coming/",
+            "funding_url": "https://synereo.com/sale",
+            "tokens_sold": 850400000,
             "tokens_issued": 1680400000,
-            "btc_raised": 342
+            "btc_raised": ""
         },
         "consensus": {
             "type": "Omni",
@@ -22436,7 +22455,7 @@
                 "type": "blog",
                 "name": "Synereo Blog",
                 "url": "http://blog.synereo.com/",
-                "rss": "http://blog.synereo.com/feed.xml",
+                "rss": "http://blog.synereo.com/feed",
                 "icon": "blog.png",
                 "tags": [
                     "News",
