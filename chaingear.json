@@ -296,12 +296,19 @@
         "aliases": {
             "coinmarketcap": "AntShares"
         },
-        "specs": {},
+        "specs": {
+            "supply": 100000000
+        },
         "crowdsales": {
             "start_date": "2016-08-08T12:00:00",
             "end_date": "2016-09-07T12:00:00",
+            "genesis_address": [
+                "3LZoBhKUJzuyk7w3aX5H4LdmopJ8m5aesv"
+            ],
             "funding_terms": "https://www.antshares.org/Blog/Details/21",
-            "funding_url": "https://www.antshares.org/en-us/ICO"
+            "funding_url": "https://www.antshares.org/en-us/ICO",
+            "tokens_issued": 100000000,
+            "tokens_sold": 20000000
         },
         "flags": {},
         "links": [
@@ -17973,7 +17980,7 @@
         ]
     },
     {
-        "genesis_id": "",
+        "genesis_id": "0xd8912c10681d8b21fd3742244f44658dba12264e",
         "system": "Plutus",
         "icon": "plutus",
         "dependencies": [
@@ -17992,7 +17999,7 @@
             "coinmarketcap": "Plutus"
         },
         "descriptions": {
-            "state": "Pre-Public",
+            "state": "Public",
             "system_type": "cryptoasset",
             "headline": "Contactless Bitcoin Payments",
             "tags": [
@@ -18022,7 +18029,9 @@
             "btc": 0.00007459,
             "usd": 0.05009067
         },
-        "flags": {},
+        "flags": {
+            "supply_from_here": true
+        },
         "links": [
             {
                 "type": "website",
@@ -19820,10 +19829,10 @@
             "supply": 763038846.803527,
             "price": {
                 "btc": 4.1e-7,
-                "usd": 0.00024708
+                "usd": 0.00024882
             },
             "cap": {
-                "usd": 188534,
+                "usd": 189862,
                 "btc": 312.85
             }
         },
@@ -19983,14 +19992,14 @@
             "nickname": "Satoshi•Pie"
         },
         "specs": {
-            "supply": 410401.7772,
+            "supply": 411163.7945,
             "price": {
-                "usd": 1.8096,
-                "btc": 0.00300271
+                "usd": 1.7978,
+                "btc": 0.0029623
             },
             "cap": {
-                "usd": 742648,
-                "btc": 1232.32
+                "usd": 739183,
+                "btc": 1217.99
             }
         },
         "first_price": {
