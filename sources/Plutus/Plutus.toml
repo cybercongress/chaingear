@@ -1,4 +1,4 @@
-genesis_id = ""
+genesis_id = "0xd8912c10681d8b21fd3742244f44658dba12264e"
 system = "Plutus"
 icon = "plutus"
 dependencies = ["Bitcoin","Ethereum"]
@@ -15,7 +15,7 @@ algorithm = "Transferable Fungible"
 coinmarketcap = "Plutus"
 
 [descriptions]
-state = "Pre-Public"
+state = "Public"
 system_type = "cryptoasset"
 headline = "Contactless Bitcoin Payments"
 tags = ["DAO"]
@@ -42,6 +42,7 @@ btc = 0.00007459
 usd = 0.05009067
 
 [flags]
+supply_from_here = true
 
 [[links]]
 type = "website"
