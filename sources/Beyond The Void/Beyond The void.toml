@@ -1,0 +1,81 @@
+genesis_id = "1539037"
+system = "Beyond The Void"
+dependencies = ["Ethereum"]
+icon = "icon_name"
+
+[token]
+name = "Nexium"
+symbol = "NxC"
+
+[consensus]
+algorithm = "Locked Token"
+
+
+[descriptions]
+state = "Running"
+system_type = "Ethereum"
+headline = "Real Time Strategy Game"
+tags = ["BTV", "Beyond The Void"]
+hashtag = "#BTV"
+twwidid = ""
+page_state = "draft"
+
+[aliases]
+coinmarketcap = "Nexium"
+CurrencyName = "Nexium"
+nickname = "Beyond The Void"
+
+[specs]
+total_tokens = 100000000
+
+
+[ratings]
+
+[events]
+
+[crowdsales]
+start_date = "2016-10-01T12:00:00"
+end_date = "2016-11-01T00:00:00"
+genesis_address = ["35gLt5EgB367enjSjyEDahhWWcy6p1MGf6"] # Could be array. See multu currency crowdsale
+funding_url = "http://beyond-the-void.net/index.php/crowdfunding/"
+min_investment = 0.01 ether
+funding_operator = "nein" # Could be `nein`.
+crowsale_feed = "http://example.com/feed" # For multi currency or non bitcoin crowdsale
+tokens_sold = 4980003
+tokens_issued = 100000000
+
+[[links]]
+type = "website"
+name = "beyond-the-void.net"
+url = "http://www.beyond-the-void.net"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Ethplorer"
+url = "https://ethplorer.io/address/0x45e42d659d9f9466cd5df622506033145a9b89bc"
+icon = "explorer.png"
+tags = ["Main", "Apps"]
+
+[[links]]
+type = "wallet"
+name = "myetherwallet"
+url = "https://www.myetherwallet.com/"
+icon = "coinbase.png"
+tags = ["Main", "Apps", "Wallet"]
+
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/Bitcoin"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "forum"
+name = "Forum"
+url = "http://beyond-the-void.net/index.php/forums/"
+icon = "forum.png"
+tags = ["News"]
