@@ -1,0 +1,75 @@
+genesis_id = ""
+system = "Cosmos"
+icon = "cosmos"
+dependencies = ["indipendent"]
+
+[token]
+name = "atom"
+symbol = "ATOM"
+
+[consensus]
+type = "Proof-of-State"
+algorithm = "Tendermint"
+
+[aliases]
+coinmarketcap = "Cosmos"
+
+[descriptions]
+state = "Pre-Public"
+system_type = "cryptocurrency"
+headline = "A Network of Distributed Ledgers"
+tags = ["DAO"]
+page_state = "draft"
+
+[crowdsales]
+start_date = "2016-10-17T00:00:00"
+end_date = "2016-06-30T20:00:00"
+genesis_address = [""]
+funding_terms = "http://cosmos.network/plan"
+funding_url = "http://cosmos.network/"
+tokens_sold = 15000000
+tokens_issued = 20000000
+btc_raised = ""
+
+[specs]
+supply = 20000000
+
+[first_price]
+
+[flags]
+supply_from_here = true
+
+[[links]]
+type = "website"
+name = "cosmos.network"
+url = "http://cosmos.network/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "blog"
+name = "Cosmos Blog"
+url = "http://cosmos.network/blog"
+icon = "blog.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "github"
+name = "Cosmos GitHub"
+url = "https://github.com/cosmos/cosmos"
+icon = "github.png"
+tags = ["Code"]
+
+[[links]]
+type = "paper"
+name = "Cosmos Whitepaper"
+url = "http://cosmos.network/whitepaper"
+icon = "paper.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "custom"
+name = "Cosmos Slack"
+url = "http://forum.tendermint.com:3000/"
+icon = "slack.png"
+tags = ["News"]
