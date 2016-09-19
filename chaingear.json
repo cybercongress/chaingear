@@ -1995,7 +1995,6 @@
             {
                 "type": "exchange",
                 "name": "BTC38",
-                "headline": "Cryptocurrensy Exchange",
                 "url": "http://www.btc38.com/trade_en.html",
                 "icon": "btc38.png",
                 "tags": [
@@ -2006,7 +2005,6 @@
             {
                 "type": "exchange",
                 "name": "CCEDK",
-                "headline": "Your place for safe and secure crypto currency exchange",
                 "url": "https://www.ccedk.com/",
                 "icon": "ccedk.png",
                 "tags": [
@@ -2017,7 +2015,6 @@
             {
                 "type": "exchange",
                 "name": "OKCoin",
-                "headline": "The Bitcoin Exchange With Margin and Futures",
                 "url": "https://www.okcoin.com/",
                 "icon": "okcoin.png",
                 "tags": [
@@ -2028,7 +2025,6 @@
             {
                 "type": "exchange",
                 "name": "bit-x",
-                "headline": "The Bitcoin Exchange With Margin and Futures",
                 "url": "https://bit-x.com/",
                 "icon": "bit-x.png",
                 "tags": [
@@ -2039,7 +2035,6 @@
             {
                 "type": "exchange",
                 "name": "CEX",
-                "headline": "Global Bitcoin Exchange",
                 "url": "https://cex.io/",
                 "icon": "cex.png",
                 "tags": [
@@ -2134,6 +2129,16 @@
                 "name": "Bitcoinity",
                 "url": "https://bitcoinity.org/markets",
                 "icon": "bitcoinity.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Coin Dance",
+                "url": "https://coin.dance",
+                "icon": "explorer.png",
                 "tags": [
                     "Apps",
                     "Analytics"
@@ -4840,6 +4845,102 @@
             "quantum": true,
             "rating_do_not_display": true
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Cosmos",
+        "icon": "cosmos",
+        "dependencies": [
+            "indipendent"
+        ],
+        "token": {
+            "name": "atom",
+            "symbol": "ATOM"
+        },
+        "consensus": {
+            "type": "Proof-of-State",
+            "algorithm": "Tendermint"
+        },
+        "aliases": {
+            "coinmarketcap": "Cosmos"
+        },
+        "descriptions": {
+            "state": "Pre-Public",
+            "system_type": "cryptocurrency",
+            "headline": "A Network of Distributed Ledgers",
+            "tags": [
+                "DAO"
+            ],
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2016-10-17T00:00:00",
+            "end_date": "2016-06-30T20:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "http://cosmos.network/plan",
+            "funding_url": "http://cosmos.network/",
+            "tokens_sold": 15000000,
+            "tokens_issued": 20000000,
+            "btc_raised": ""
+        },
+        "specs": {
+            "supply": 20000000
+        },
+        "first_price": {},
+        "flags": {
+            "supply_from_here": true
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "cosmos.network",
+                "url": "http://cosmos.network/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Cosmos Blog",
+                "url": "http://cosmos.network/blog",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Cosmos GitHub",
+                "url": "https://github.com/cosmos/cosmos",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Cosmos Whitepaper",
+                "url": "http://cosmos.network/whitepaper",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Cosmos Slack",
+                "url": "http://forum.tendermint.com:3000/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "685623401c3f5e9d2eaaf0657a50454e56a270ee7630d409e98d3bc257560098",
