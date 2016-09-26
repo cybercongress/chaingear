@@ -5,7 +5,7 @@ dependencies = ["Ethereum"]
 
 [token]
 name = "firstblood token"
-symbol = "FBT"
+symbol = "1ST"
 
 [consensus]
 type = "Ethereum"
@@ -15,26 +15,32 @@ algorithm = "Transferable Fungible"
 coinmarketcap = "FirstBlood"
 
 [descriptions]
-state = "Pre-Public"
+state = "Public"
 system_type = "cryptoasset"
 headline = "A Decentralized eSports Platform Based on Smart Contracts"
 tags = ["DApp"]
 twwidid = ""
-page_state = "draft"
+page_state = "ready"
 
 [crowdsales]
 start_date = "2016-09-26T00:00:00"
-end_date = "2016-10-24T00:00:00"
-genesis_address = ["0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7"]
+end_date = "2016-09-26T01:00:00"
+genesis_address = ["0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7","0xa5384627F6DcD3440298E2D8b0Da9d5F0FCBCeF7"]
 funding_terms = "https://firstblood.io/sale/"
 funding_url = "https://github.com/Firstbloodio/white-paper/blob/master/FirstBlood_White_Paper.pdf"
-tokens_sold = ""
-tokens_issued = ""
-btc_raised = ""
+tokens_sold = 79103203.39060551785
+tokens_issued = 79103203.39060551785
+btc_raised = 10060
 
 [specs]
 
+[specs.cap]
+btc = 10060
+usd = 6042176
+
 [first_price]
+btc = 0.00012717
+usd = 0.07638132
 
 [flags]
 
@@ -101,3 +107,10 @@ name = "FirstBlood Whitepaper"
 url = "https://github.com/Firstbloodio/white-paper/blob/master/FirstBlood_White_Paper.pdf"
 icon = "paper.png"
 tags = ["Main","Science"]
+
+[[links]]
+type = "explorer"
+name = "FirstBlood Asset"
+url = "https://etherscan.io/address/0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7"
+icon = "etherscan.png"
+tags = ["Apps","Analytics"]
