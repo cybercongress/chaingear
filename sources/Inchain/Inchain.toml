@@ -1,0 +1,90 @@
+genesis_id = ""
+system = "Inchain"
+icon = "inchain"
+dependencies = ["Ethereum"]
+
+[token]
+name = "inchain"
+symbol = "INC"
+
+[consensus]
+type = "Ethereum"
+algorithm = "Transferable Fungible"
+
+[aliases]
+coinmarketcap = "Inchain"
+
+[descriptions]
+state = "PrePublic"
+system_type = "cryptoasset"
+headline = "Insurance platform based on Ethereum smart contracts"
+tags = ["DApp"]
+twwidid = ""
+page_state = "ready"
+
+[crowdsales]
+start_date = "2016-10-12T00:00:00"
+end_date = "2016-11-09T00:00:00"
+genesis_address = [""]
+funding_terms = "https://bitcointalk.org/index.php?topic=1623519"
+funding_url = "http://ico.inchain.io/"
+tokens_sold = 85000000
+tokens_issued = 100000000
+btc_raised = ""
+
+[specs]
+
+[specs.cap]
+
+[first_price]
+
+[flags]
+
+[[links]]
+type = "website"
+name = "inchain.io"
+url = "http://inchain.io/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "website"
+name = "Inchain Crowdsale"
+url = "http://ico.inchain.io/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "blog"
+name = "Blog"
+url = "https://medium.com/@inchain"
+icon = "Medium.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/Inchain_dot_io"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "forum"
+name = "BTT Thread"
+url = "https://bitcointalk.org/index.php?topic=1623519"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Slack"
+url = "https://inchain.slack.com/"
+icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+type = "paper"
+name = "Inchain Whitepaper"
+url = "http://ico.inchain.io/app/docs/whitepaper.pdf"
+icon = "paper.png"
+tags = ["Main","Science"]
