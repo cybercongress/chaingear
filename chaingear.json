@@ -936,6 +936,103 @@
         ]
     },
     {
+        "genesis_id": "0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
+        "system": "BeyondTheVoid",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "icon_name",
+        "token": {
+            "name": "Nexium",
+            "symbol": "NXC"
+        },
+        "consensus": {
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
+        },
+        "descriptions": {
+            "state": "Pre-Public",
+            "system_type": "cryptoasset",
+            "headline": "Real Time Strategy Game",
+            "tags": [
+                "BTV",
+                "Beyond The Void"
+            ],
+            "hashtag": "#BTV",
+            "twwidid": "",
+            "page_state": "draft"
+        },
+        "aliases": {
+            "coinmarketcap": "Nexium",
+            "nickname": "Beyond The Void"
+        },
+        "specs": {
+            "total_tokens": 100000000
+        },
+        "events": {},
+        "crowdsales": {
+            "start_date": "2016-10-01T12:00:00",
+            "end_date": "2016-11-01T00:00:00",
+            "genesis_address": [
+                "35gLt5EgB367enjSjyEDahhWWcy6p1MGf6"
+            ],
+            "funding_url": "http://beyond-the-void.net/index.php/crowdfunding/",
+            "funding_terms": "http://beyond-the-void.net/index.php/crowdfunding/",
+            "tokens_sold": 4980003,
+            "tokens_issued": 100000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "beyond-the-void.net",
+                "url": "http://www.beyond-the-void.net",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Ethereum Contract",
+                "url": "https://etherscan.io/address/0x45e42D659D9f9466cD5DF622506033145a9b89Bc",
+                "icon": "etherscan.png",
+                "tags": [
+                    "Main",
+                    "Apps"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "myetherwallet",
+                "url": "https://www.myetherwallet.com/",
+                "icon": "wallet.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/Bitcoin",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Forum",
+                "url": "http://beyond-the-void.net/index.php/forums/",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "00000d95b0fd9c2b9744b2f1234dcd0eb838692189cb8172540a7e6ac067c100",
         "system": "BitBay",
         "icon": "bitbay",
@@ -12404,7 +12501,7 @@
             "coinmarketcap": "Inchain"
         },
         "descriptions": {
-            "state": "PrePublic",
+            "state": "Pre-Public",
             "system_type": "cryptoasset",
             "headline": "Insurance platform based on Ethereum smart contracts",
             "tags": [
@@ -12453,6 +12550,7 @@
                 "type": "blog",
                 "name": "Blog",
                 "url": "https://medium.com/@inchain",
+                "rss": "https://medium.com/feed/@inchain",
                 "icon": "Medium.png",
                 "tags": [
                     "Main",
@@ -12479,6 +12577,15 @@
             },
             {
                 "type": "custom",
+                "name": "Facebook",
+                "url": " http://facebook.com/groups/inchain",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
                 "name": "Slack",
                 "url": "https://inchain.slack.com/",
                 "icon": "slack.png",
@@ -12493,6 +12600,15 @@
                 "icon": "paper.png",
                 "tags": [
                     "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Financial model",
+                "url": "https://dl.dropboxusercontent.com/s/9acj96asz58jnz3/Fin%20model.xlsx",
+                "icon": "paper.png",
+                "tags": [
                     "Science"
                 ]
             }
