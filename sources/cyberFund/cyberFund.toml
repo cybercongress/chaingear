@@ -1,14 +1,14 @@
-genesis_id = "AbhBFwWFpZzFMsBakZbDzUTYv67t9rThaK"
+genesis_id = "1.3.1158"
 system = "cyberFund"
 icon = "cyberfund"
-dependencies = ["Bitcoin", "Ethereum","Open Assets"]
+dependencies = ["BitShares"]
 
 [aliases]
 nickname = "cyber•Fund"
 
 [consensus]
-consensus_type = "Bitcoin"
-consensus_name = "Open Assets"
+name = "BitShares"
+type = "User Issued Asset"
 
 [descriptions]
 state = "Private"
@@ -22,11 +22,14 @@ name = "cyfund"
 symbol = "CFUND"
 
 [specs]
-supply = 1000000.0
+supply = 50000
 
 [specs.cap]
 usd = 1850441
 btc = 2959.45
+
+[first_price]
+usd =
 
 [flags]
 rating_do_not_display = true
@@ -98,9 +101,16 @@ tags = ["News"]
 [[links]]
 type = "explorer"
 name = "CFUND Asset"
-url = "https://www.coinprism.info/asset/AbhBFwWFpZzFMsBakZbDzUTYv67t9rThaK"
+url = "http://cryptofresh.com/a/CFUND"
 icon = "explorer.png"
 tags = ["Main", "Apps", "Analytics"]
+
+[[links]]
+type = "explorer"
+name = "Old CFUND Asset"
+url = "https://www.coinprism.info/asset/AbhBFwWFpZzFMsBakZbDzUTYv67t9rThaK"
+icon = "coinprism.png"
+tags = ["Apps", "Analytics"]
 
 [[links]]
 type = "github"
