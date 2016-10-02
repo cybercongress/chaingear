@@ -12,9 +12,10 @@ type = "Ethereum"
 algorithm = "Transferable Fungible"
 
 [aliases]
+coinmarketcap = "SingularDTV"
 
 [descriptions]
-state = "Pre-Public"
+state = "Public"
 system_type = "cryptoasset"
 headline = "Blockchain Entertainment Studio"
 tags = ["DAO"]
@@ -22,19 +23,28 @@ page_state = "draft"
 
 [crowdsales]
 start_date = "2016-10-02T14:00:00"
-end_date = "2016-11-02T00:00:00"
+end_date = "2016-10-02T14:15:00"
 genesis_address = ["0xbdf5c4f1c1a9d7335a6a68d9aa011d5f40cf5520"]
 funding_terms = "https://singulardtv.com/"
 funding_url = "https://singulardtv.com/"
-tokens_sold = ""
-tokens_issued = ""
-btc_raised = ""
+tokens_sold = 500000000
+tokens_issued = 1000000000
+btc_raised = 12556
 
 [specs]
+supply = 1000000000
+
+[specs.cap]
+btc = 25110
+usd = 15375028
 
 [first_price]
+btc = 0.00002511
+usd = 0.01537503
+date = "2016-10-02T14:15:00"
 
 [flags]
+supply_from_here = true
 
 [[links]]
 type = "website"
