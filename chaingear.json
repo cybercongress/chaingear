@@ -571,7 +571,7 @@
         ]
     },
     {
-        "genesis_id": "",
+        "genesis_id": "0x48c80F1f4D53D5951e5D5438B54Cba84f29F32a5",
         "system": "Augur",
         "dependencies": [
             "Ethereum"
@@ -585,7 +585,7 @@
             "algorithm": "Transferable Fungible"
         },
         "descriptions": {
-            "state": "Pre-Public",
+            "state": "Public",
             "system_type": "cryptoasset",
             "headline": "Future of the Prediction Markets",
             "tags": [
@@ -594,26 +594,12 @@
             "hashtag": "#augur",
             "page_state": "draft"
         },
-        "events": {
-            "announcement": "",
-            "genesis": ""
-        },
         "token": {
             "name": "reputation",
             "symbol": "REP"
         },
         "specs": {
-            "supply": 11000000,
-            "total_tokens": 11000000,
-            "cap": {
-                "usd": 6543039,
-                "btc": 27545
-            }
-        },
-        "cap": {
-            "supply_from": "chaingear",
-            "supply": 11000000,
-            "token_price_btc": 0.00250413
+            "supply": 11000000
         },
         "crowdsales": {
             "start_date": "2015-08-17T00:00:00",
@@ -625,14 +611,9 @@
             "funding_terms": "http://www.augur.net/blog/the-augur-crowdsale",
             "funding_url": "http://sale.augur.net/",
             "tokens_sold": 8800000,
+            "tokens_issued": 11000000,
             "btc_raised": 22036
         },
-        "risks": [
-            {
-                "name": "Application has not been launched",
-                "url": ""
-            }
-        ],
         "links": [
             {
                 "type": "website",
@@ -645,16 +626,7 @@
             },
             {
                 "type": "custom",
-                "name": "Tokens Crowdsale Info",
-                "url": "http://sale.augur.net/",
-                "icon": "augur.png",
-                "tags": [
-                    "Apps"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Augur Demo",
+                "name": "Augur App",
                 "url": "http://app.augur.net/",
                 "icon": "augur.png",
                 "tags": [
@@ -671,6 +643,15 @@
                 "tags": [
                     "Main",
                     "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Tokens Crowdsale Info",
+                "url": "http://sale.augur.net/",
+                "icon": "augur.png",
+                "tags": [
+                    "Apps"
                 ]
             },
             {
@@ -796,12 +777,63 @@
             },
             {
                 "type": "exchange",
+                "name": "Poloniex",
+                "url": "https://www.poloniex.com",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Kraken",
+                "icon": "kraken.png",
+                "url": "https://www.kraken.com",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
                 "name": "Gatecoin",
                 "url": "https://gatecoin.com/",
                 "icon": "gatecoin.png",
                 "tags": [
                     "Apps",
                     "Exchange"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Mist Wallet",
+                "url": "https://github.com/ethereum/mist/releases/",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MyEther Wallet",
+                "url": "https://www.myetherwallet.com/",
+                "icon": "myetherwallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "EthCore Parity",
+                "url": "https://ethcore.io/parity.html",
+                "icon": "parity.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
                 ]
             }
         ],
@@ -9881,6 +9913,57 @@
                 "tags": [
                     "Apps",
                     "Analytics"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Yunbi",
+                "url": "https://yunbi.com/?lang=en",
+                "icon": "yunbi.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Gatecoin",
+                "url": "https://gatecoin.com/",
+                "icon": "gatecoin.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Mist Wallet",
+                "url": "https://github.com/ethereum/mist/releases/",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MyEther Wallet",
+                "url": "https://www.myetherwallet.com/",
+                "icon": "myetherwallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "EthCore Parity",
+                "url": "https://ethcore.io/parity.html",
+                "icon": "parity.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
                 ]
             }
         ]
@@ -21228,6 +21311,47 @@
                 "tags": [
                     "Main",
                     "Science"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Bittrex",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Mist Wallet",
+                "url": "https://github.com/ethereum/mist/releases/",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MyEther Wallet",
+                "url": "https://www.myetherwallet.com/",
+                "icon": "myetherwallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "EthCore Parity",
+                "url": "https://ethcore.io/parity.html",
+                "icon": "parity.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
                 ]
             }
         ]
