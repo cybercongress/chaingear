@@ -22,8 +22,8 @@ tags = ["DAO"]
 page_state = "draft"
 
 [crowdsales]
-start_date = "2016-10-15T00:00:00"
-end_date = "2016-11-14T23:59:59"
+start_date = "2016-11-01T00:00:00"
+end_date = "2016-12-01T00:00:00"
 genesis_address = ["35ZoE4Evycq9rBqp4GfnpegaLA9RKScrb2"]
 funding_terms = "http://golos.io/"
 funding_url = "http://golos.io/"
@@ -42,27 +42,34 @@ type = "website"
 name = "golos.io"
 url = "http://golos.io"
 icon = "website.png"
-tags = ["Main"]
+tags = ["Apps"]
+
+[[links]]
+type = "wiki"
+name = "Golos Wiki"
+url = "https://wiki.golos.io/"
+icon = "wiki.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "blog"
+name = "Announcement ENG"
+url = "https://steemit.com/@golos"
+icon = "steem.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "custom"
+name = "YouTube Channel"
+url = "https://www.youtube.com/channel/UCL_XlALJ-2cERfY8m6s8uEA/featured"
+icon = "youtube.png"
+tags = ["Main","News"]
 
 [[links]]
 type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/goloschain"
 icon = "twitter.png"
-tags = ["Main","News"]
-
-[[links]]
-type = "blog"
-name = "Announcement ENG"
-url = "https://steemit.com/steem/@hipster/cyber-fund-is-to-launch-a-russian-steem-based-social-media-platform-golos-under-license-from-steemit-inc"
-icon = "steem.png"
-tags = ["News"]
-
-[[links]]
-type = "blog"
-name = "Announcement RUS"
-url = "https://steemit.com/ru-steem/@hipster/kiber-fond-zapuskaet-russkuyu-socialno-mediinuyu-blokchein-platformu-golos-pod-licenziei-stimit-ink"
-icon = "steem.png"
 tags = ["News"]
 
 [[links]]
@@ -85,10 +92,3 @@ name = "Golos GitHub"
 url = "https://github.com/GolosChain/"
 icon = "github.png"
 tags = ["Main","Code"]
-
-[[links]]
-type = "wiki"
-name = "Golos Wiki"
-url = "https://wiki.golos.io/"
-icon = "wiki.png"
-tags = ["Main","Science"]
