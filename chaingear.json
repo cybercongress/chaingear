@@ -11058,18 +11058,19 @@
             "page_state": "draft"
         },
         "crowdsales": {
-            "start_date": "2016-10-20T20:00:00",
-            "end_date": "2016-11-20T20:00:00",
+            "start_date": "2016-11-20T20:00:00",
+            "end_date": "2016-12-20T20:00:00",
             "genesis_address": [
                 ""
             ],
-            "funding_terms": "https://blog.golemproject.net/golem-network-token-gnt-sale-220c2a732f9#.fdn8hljmq",
-            "funding_url": "",
-            "tokens_sold": "",
-            "tokens_issued": "",
+            "funding_terms": "http://golemproject.net/doc/DraftGolemProjectWhitepaper.pdf",
+            "funding_url": "http://golemproject.net",
+            "tokens_sold": 820000000,
+            "tokens_issued": 1000000000,
             "btc_raised": ""
         },
         "specs": {
+            "supply": 1000000000,
             "price": {}
         },
         "first_price": {},
@@ -11085,12 +11086,21 @@
                 ]
             },
             {
+                "type": "github",
+                "name": "Golem GitHub",
+                "url": "https://github.com/imapp-pl/golem",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
                 "type": "twitter",
                 "name": "Twitter",
                 "url": "https://twitter.com/golemproject",
                 "icon": "twitter.png",
                 "tags": [
-                    "Main",
                     "News"
                 ]
             },
@@ -11119,7 +11129,7 @@
                 "type": "custom",
                 "name": "Golem Project Slack",
                 "url": "http://golemproject.org:3000/",
-                "icon": "github.png",
+                "icon": "slack.png",
                 "tags": [
                     "Main",
                     "News"
@@ -11129,6 +11139,15 @@
                 "type": "paper",
                 "name": "A Probabilistic Nanopayment Scheme for Golem",
                 "url": "http://golemproject.net/doc/GolemNanopayments.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "The Golem Project Crowdfunding Whitepaper",
+                "url": "http://golemproject.net/doc/DraftGolemProjectWhitepaper.pdf",
                 "icon": "paper.png",
                 "tags": [
                     "Science"
