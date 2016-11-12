@@ -1,4 +1,4 @@
-genesis_id = ""
+genesis_id = "0xa74476443119A942dE498590Fe1f2454d7D4aC0d"
 system = "Golem"
 icon = "golem"
 dependencies = ["Ethereum"]
@@ -24,22 +24,28 @@ page_state = "draft"
 
 [crowdsales]
 start_date = "2016-11-11T15:00:00"
-end_date = "2016-12-02T20:00:00"
-genesis_address = [""]
+end_date = "2016-11-11T15:20:00"
+genesis_address = ["0xa74476443119A942dE498590Fe1f2454d7D4aC0d"]
 funding_terms = "http://golemproject.net/doc/DraftGolemProjectWhitepaper.pdf"
 funding_url = "http://golemproject.net"
 tokens_sold = 820000000
 tokens_issued = 1000000000
-btc_raised = ""
+btc_raised = 11905.1946
 
 [specs]
 supply = 1000000000
 
 [specs.price]
+btc = 0.00001452
+usd = 0.01038761
 
 [first_price]
+btc = 0.00001452
+usd = 0.01038761
+date = "2016-11-11T15:20:00"
 
 [flags]
+supply_from_here = true
 
 [[links]]
 type = "website"
