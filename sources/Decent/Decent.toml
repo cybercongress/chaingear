@@ -12,6 +12,7 @@ type = ""
 algorithm = ""
 
 [aliases]
+coinmarketcap = "Decent"
 
 [descriptions]
 state = "Pre-Public"
@@ -22,19 +23,28 @@ page_state = "draft"
 
 [crowdsales]
 start_date = "2016-09-11T01:00:00"
-end_date = "2016-11-06T00:00:00"
+end_date = "2016-11-06T23:59:00"
 genesis_address = ["33WDB3nsVHH5qafCAriPb8Jmb1e3ptsY4h"]
 funding_terms = "http://sale.decent.ch/"
 funding_url = "http://sale.decent.ch/"
-tokens_sold = ""
-tokens_issued = ""
-btc_raised = ""
+tokens_sold = 47100000
+tokens_issued = 67300000
+btc_raised = 5881.44798307
 
 [specs]
+supply = 67300000
+
+[specs.price]
+btc = 0.00012487
+usd = 0.08876134
 
 [first_price]
+btc = 0.00012487
+usd = 0.08876134
+date = "2016-11-06T23:59:00"
 
 [flags]
+supply_from_here = true
 
 [[links]]
 type = "website"
