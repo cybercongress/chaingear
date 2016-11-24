@@ -1,0 +1,103 @@
+genesis_id = ""
+system = "Chronobank"
+icon = "сhronobank"
+dependencies = ["Ethereum","Waves","NEM"]
+
+[token]
+name = "time"
+symbol = "TIME"
+
+[consensus]
+type = "Ethereum","Waves","NEM"
+algorithm = "Locked Token"
+
+[aliases]
+coinmarketcap = "Chronobank"
+
+[descriptions]
+state = "Pre-Public"
+system_type = "cryptocurrency"
+headline = "The most sustainable stable coins"
+tags = ["DApp"]
+page_state = "draft"
+
+[crowdsales]
+start_date = "2016-12-15T00:00:00"
+end_date = "2017-02-15T20:00:00"
+genesis_address = [""]
+funding_terms = "https://chronobank.io"
+funding_url = "https://chronobank.io"
+tokens_sold =
+tokens_issued =
+btc_raised = ""
+
+[specs]
+supply =
+
+[first_price]
+
+[flags]
+supply_from_here = true
+
+[[links]]
+type = "website"
+name = "Chronobank.io"
+url = "https://chronobank.io"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "blog"
+name = "Chronobank Blog"
+url = "https://blog.chronobank.io/"
+icon = "blog.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "paper"
+name = "Development Plan"
+url = "https://chronobank.io/files/dev_plan.pdf"
+icon = "paper.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "paper"
+name = "Business Outline"
+url = "https://chronobank.io/files/business_outline.pdf"
+icon = "paper.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "custom"
+name = "Chronobank Slack"
+url = "https://chronobank.herokuapp.com/"
+icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/ChronobankNews"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+name = "reddit"
+url = "https://www.reddit.com/r/ChronoBank/"
+icon = "reddit.png"
+tags = ["News"]
+type = "reddit"
+
+[[links]]
+name = "Facebook"
+url = "https://www.facebook.com/ChronoBank.io"
+icon = "facebook.png"
+tags = ["News"]
+type = "custom"
+
+[[links]]
+name = "YouTube"
+url = "https://www.youtube.com/channel/UCTo65YisnLqmbDcCoWyktnQ"
+type = "custom"
+icon = "youtube.png"
+tags = ["News"]
