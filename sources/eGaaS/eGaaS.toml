@@ -36,33 +36,81 @@ btc_raised = ""
 [first_price]
 
 [flags]
+
 [[links]]
 type = "website"
-name = "Home page"
+name = "egaas.org"
 url = "http://egaas.org/"
 icon = "site.png"
 tags = ["Main"]
+
+[[links]]
+type = "github"
+name = "eGaaS GitHub"
+url = "https://github.com/EGaaS"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
+type = "github"
+name = "eGaaS Client"
+url = "https://github.com/EGaaS/go-egaas-mvp/releases"
+icon = "github.png"
+tags = ["Main","Wallet"]
+
+[[links]]
+type = "blog"
+name = "eGaaS Blog"
+url = "https://medium.com/egaas"
+rss = "https://medium.com/feed/@egaas"
+icon = "medium.png"
+tags = ["Main","News"]
+
 [[links]]
 type = "paper"
 name = "eGaaS Whitepaper"
 url = "http://egaas.org/docs/eGaaS_White_Paper.pdf"
 icon = "whitepaper.png"
-tags = ["Main", "Science"]
+tags = ["Science"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/egaasproject"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/EgaasProject"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "eGaaS Slack"
+url = "https://egaas.slack.com/"
+icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "eGaaS YouTube"
+url = "https://www.youtube.com/channel/UCLAccwf_YvWGnxSIVgGtl7g"
+icon = "youtube.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "eGaaS Telegram"
+url = "http://telegram.me/eGaaS"
+icon = "telegram.png"
+tags = ["News"]
+
 [[links]]
 type = "paper"
 name = "eGaaS Manifest"
 url = "http://egaas.org/docs/eGaaS_Manifest.pdf"
 icon = "whitepaper.png"
-tags = ["Main"]
-[[links]]
-name = "Facebook"
-url = "https://www.facebook.com/EgaasProject"
-icon = "facebook.png"
-tags = ["News"]
-type = "custom"
-[[links]]
-name = "Twitter"
-url = "https://twitter.com/egaasproject"
-icon = "twitter.png"
-tags = ["News"]
-type = "custom"
+tags = ["Science"]
