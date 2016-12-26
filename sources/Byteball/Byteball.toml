@@ -1,0 +1,91 @@
+genesis_id = ""
+system = "Byteball"
+icon = "byteball"
+dependencies = ["independent"]
+
+[token]
+name = "byte"
+symbol = "byte"
+
+[consensus]
+type = ""
+algorithm = "directed	acyclic	graph"
+
+[descriptions]
+state = "Public"
+system_type = "cryptocurrency"
+headline = "System that allows tamper proof	storage	of arbitrary data"
+tags = ["DAO"]
+page_state = "draft"
+
+[aliases]
+coinmarketcap = "Byteball"
+
+[specs]
+supply = 10000000000000000
+
+[specs.cap]
+
+[first_price]
+btc = ""
+usd = ""
+date = ""
+
+[flags]
+supply_from_here = true
+
+[[links]]
+type = "site"
+name = "byteball.org"
+url = "https://byteball.org"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "github"
+name = "IOTA GitHub"
+url = "https://github.com/byteball"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
+type = "wallet"
+name = "Byteball Wallet"
+url = "https://github.com/byteball/byteball/releases"
+icon = "wallet.png"
+tags = ["Wallet","Apps"]
+
+[[links]]
+type = "forum"
+name = "BTCtalk Forum"
+url = "https://forum.iotatoken.com/"
+icon = "forum.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "custom"
+name = "Byteball Slack"
+url = "http://slack.byteball.org/"
+icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/ByteballOrg"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "paper"
+name = "Byteball Whitepaper"
+url = "https://byteball.org/Byteball.pdf"
+icon = "paper.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "explorer"
+name = "Byteball Explorer"
+url = "https://explorer.byteball.org"
+icon = "explorer.png"
+tags = ["Wallet","Apps"]
