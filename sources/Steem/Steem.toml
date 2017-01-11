@@ -7,12 +7,12 @@ dependencies = ["independent"]
 name = "steem"
 symbol = "STEEM"
 
+[aliases]
+coinmarketcap = "Steem"
+
 [consensus]
 type = "PoS"
 algorithm = "Delegated"
-
-[aliases]
-coinmarketcap = "Steem"
 
 [descriptions]
 state = "Public"
@@ -27,6 +27,9 @@ page_state = "draft"
 btc = 0.00150433
 usd = 0.64543880
 date = "2016-04-18T16:19:00"
+
+[flags]
+quantum = true
 
 [[links]]
 type = "website"
@@ -50,11 +53,32 @@ icon = "steem.png"
 tags = ["Main","Apps","Wallet"]
 
 [[links]]
-type = "twitter"
-name = "Twitter"
-url = "https://twitter.com/steemchain"
-icon = "twitter.png"
+type = "blog"
+name = "Steemit Blog"
+url = "https://steemit.com/@steemitblog"
+icon = "steem.png"
 tags = ["Main","News"]
+
+[[links]]
+type = "wallet"
+name = "Piston Client"
+url = "https://github.com/xeroc/piston/releases"
+icon = "piston.png"
+tags = ["Apps","Wallet"]
+
+[[links]]
+type = "explorer"
+name = "Steemle Explorer"
+url = "https://steemle.com/"
+icon = "explorer.png"
+tags = ["Apps","Analytics"]
+
+[[links]]
+type = "explorer"
+name = "SteemDB Explorer"
+url = "https://steemdb.com/"
+icon = "explorer.png"
+tags = ["Apps","Analytics"]
 
 [[links]]
 type = "explorer"
@@ -64,10 +88,17 @@ icon = "steemwhales.png"
 tags = ["Apps","Analytics"]
 
 [[links]]
-type = "blog"
-name = "Blog"
-url = "https://steem.io/blog/"
-icon = "blog.png"
+type = "custom"
+name = "Steemit Chat"
+url = "https://steemit.chat/home"
+icon = "steem.png"
+tags = ["News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/steemchain"
+icon = "twitter.png"
 tags = ["News"]
 
 [[links]]
@@ -87,9 +118,9 @@ tags = ["News"]
 
 [[links]]
 type = "forum"
-name = "BTT Thread"
+name = "Bitcointalk"
 url = "https://bitcointalk.org/index.php?topic=1410943.0"
-icon = "forum.png"
+icon = "bitcoin.png"
 tags = ["News"]
 
 [[links]]
@@ -114,16 +145,8 @@ icon = "link.png"
 tags = ["Code"]
 
 [[links]]
-type = "explorer"
-name = "Steemle Explorer"
-url = "https://steemle.com/"
-icon = "explorer.png"
-tags = ["Apps","Analytics"]
-
-[[links]]
 type = "exchange"
 name = "Poloniex"
-headline = "nein"
 url = "https://www.poloniex.com"
 icon = "poloniex.png"
 tags = ["Apps","Exchange"]
@@ -131,7 +154,6 @@ tags = ["Apps","Exchange"]
 [[links]]
 type = "exchange"
 name = "OpenLedger"
-headline = "Transparent Decentrilized Exchange"
 url = "https://openledger.info/?r=cyberfund"
 icon = "openledger.png"
 tags = ["Apps","Exchange"]
@@ -139,10 +161,27 @@ tags = ["Apps","Exchange"]
 [[links]]
 type = "exchange"
 name = "Bittrex"
-headline = "nein"
 url = "https://bittrex.com"
 icon = "bittrex.png"
 tags = ["Apps","Exchange"]
 
-[flags]
-quantum = true
+[[links]]
+type = "exchange"
+name = "Liqui Exchange"
+url = "https://liqui.io/"
+icon = "liqui.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
+name = "LiveCoin Exchange"
+url = "https://www.livecoin.net/"
+icon = "livecoin.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
+name = "HitBTC"
+url = "https://hitbtc.com"
+icon = "hitbtc.png"
+tags = ["Apps","Exchange"]
