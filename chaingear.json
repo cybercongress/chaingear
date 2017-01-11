@@ -2232,16 +2232,6 @@
             },
             {
                 "type": "exchange",
-                "name": "Cryptsy",
-                "url": "https://www.cryptsy.com/users/register?refid=243274",
-                "icon": "cryptsy.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
-                "type": "exchange",
                 "name": "Kraken",
                 "icon": "kraken.png",
                 "url": "https://www.kraken.com",
@@ -2292,9 +2282,19 @@
             },
             {
                 "type": "exchange",
-                "name": "CCEDK",
-                "url": "https://www.ccedk.com/",
-                "icon": "ccedk.png",
+                "name": "Bittrex",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "OpenLedger",
+                "url": "https://openledger.info/?r=cyberfund",
+                "icon": "openledger.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -17774,12 +17774,17 @@
     {
         "genesis_id": "00000729be7c186c90758ebeb55f9f947ee3f1d856b5d136d5796b4a5a704a59",
         "system": "Navajo",
-        "icon": "navajo",
+        "icon": "navcoin",
         "dependencies": [
             "independent"
         ],
+        "token": {
+            "name": "navcoin",
+            "symbol": "NAV"
+        },
         "aliases": {
-            "coinmarketcap": "Navajo"
+            "coinmarketcap": "NAV Coin",
+            "nickname": "NAV Coin"
         },
         "consensus": {
             "type": "PoS",
@@ -17792,16 +17797,17 @@
             "state": "Public",
             "system_type": "cryptocurrency"
         },
-        "token": {
-            "name": "Navajo",
-            "symbol": "NAV"
+        "first_price": {
+            "btc": 0.00000618,
+            "usd": 0.00367082,
+            "date": "2014-06-12T00:00:00"
         },
         "specs": {},
         "links": [
             {
                 "type": "website",
-                "name": "navajocoin.org",
-                "url": "http://navajocoin.org/",
+                "name": "navcoin.org",
+                "url": "http://www.navcoin.org/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
@@ -17809,9 +17815,9 @@
             },
             {
                 "type": "explorer",
-                "name": "Explorer",
-                "url": "http://navajocoin.org/block-explorer",
-                "icon": "explorer.png",
+                "name": "CryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/nav/",
+                "icon": "cryptoid.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -17820,8 +17826,8 @@
             },
             {
                 "type": "github",
-                "name": "Navajo GitHub",
-                "url": "https://github.com/sherlockcoin/navajocoin",
+                "name": "NAV Coin GitHub",
+                "url": "https://github.com/navcoindev",
                 "icon": "github.png",
                 "tags": [
                     "Main",
@@ -17829,9 +17835,20 @@
                 ]
             },
             {
+                "type": "wallet",
+                "name": "NAV Coin Wallet",
+                "url": "http://www.navcoin.org/downloads",
+                "icon": "wallet.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
                 "type": "paper",
-                "name": "Documentation",
-                "url": "http://navajocoin.org/pdf/navajocoin.pdf",
+                "name": "Navtech Whitepaper",
+                "url": "http://www.navcoin.org/files/navtech-whitepaper-beta-v0.9.pdf",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Main",
@@ -17839,9 +17856,18 @@
                 ]
             },
             {
+                "type": "paper",
+                "name": "Navtech Decentralization Whitepaper",
+                "url": "http://www.navcoin.org/files/navtech-decentralisation-whitepaper-beta-v0.9.pdf",
+                "icon": "whitepaper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
                 "type": "twitter",
                 "name": "Twitter",
-                "url": "https://twitter.com/NavajoCoin",
+                "url": "https://twitter.com/NavCoin",
                 "icon": "twitter.png",
                 "tags": [
                     "News"
@@ -17849,9 +17875,9 @@
             },
             {
                 "type": "forum",
-                "name": "Forum",
-                "url": "http://forum.navajocointalk.org/",
-                "icon": "forum.png",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=679791",
+                "icon": "bitcoin.png",
                 "tags": [
                     "News"
                 ]
@@ -17859,18 +17885,62 @@
             {
                 "type": "reddit",
                 "name": "reddit",
-                "url": "http://www.reddit.com/r/navajocoin",
+                "url": "http://www.reddit.com/r/navcoin",
                 "icon": "reddit.png",
                 "tags": [
                     "News"
                 ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/NAVCoin",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Poloniex",
+                "url": "https://www.poloniex.com",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Bittrex",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "C-CEX",
+                "url": "https://c-cex.com",
+                "icon": "c-cex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Bitsquare",
+                "url": "https://market.bitsquare.io",
+                "icon": "bitsquare.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
             }
-        ],
-        "first_price": {
-            "btc": 0.00000618,
-            "usd": 0.00367082,
-            "date": "2014-06-12T00:00:00"
-        }
+        ]
     },
     {
         "genesis_id": "00000cde7894e403bc530b3d3f8d69679d50022dd7a5a6539194ff9c555a2d9f",
@@ -21627,10 +21697,10 @@
             "supply": 763038846.803527,
             "price": {
                 "btc": 8e-8,
-                "usd": 0.00007244
+                "usd": 0.00006748
             },
             "cap": {
-                "usd": 55277,
+                "usd": 51490,
                 "btc": 61.04
             }
         },
@@ -21801,12 +21871,12 @@
         "specs": {
             "supply": 480011.2163,
             "price": {
-                "usd": 2.261,
-                "btc": 0.00249684
+                "usd": 2.1015,
+                "btc": 0.00249143
             },
             "cap": {
-                "usd": 1085292,
-                "btc": 1198.51
+                "usd": 1008753,
+                "btc": 1195.91
             }
         },
         "first_price": {
@@ -23026,12 +23096,12 @@
             "name": "steem",
             "symbol": "STEEM"
         },
+        "aliases": {
+            "coinmarketcap": "Steem"
+        },
         "consensus": {
             "type": "PoS",
             "algorithm": "Delegated"
-        },
-        "aliases": {
-            "coinmarketcap": "Steem"
         },
         "descriptions": {
             "state": "Public",
@@ -23047,6 +23117,9 @@
             "btc": 0.00150433,
             "usd": 0.6454388,
             "date": "2016-04-18T16:19:00"
+        },
+        "flags": {
+            "quantum": true
         },
         "links": [
             {
@@ -23081,13 +23154,43 @@
                 ]
             },
             {
-                "type": "twitter",
-                "name": "Twitter",
-                "url": "https://twitter.com/steemchain",
-                "icon": "twitter.png",
+                "type": "blog",
+                "name": "Steemit Blog",
+                "url": "https://steemit.com/@steemitblog",
+                "icon": "steem.png",
                 "tags": [
                     "Main",
                     "News"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Piston Client",
+                "url": "https://github.com/xeroc/piston/releases",
+                "icon": "piston.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Steemle Explorer",
+                "url": "https://steemle.com/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "SteemDB Explorer",
+                "url": "https://steemdb.com/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
                 ]
             },
             {
@@ -23101,10 +23204,19 @@
                 ]
             },
             {
-                "type": "blog",
-                "name": "Blog",
-                "url": "https://steem.io/blog/",
-                "icon": "blog.png",
+                "type": "custom",
+                "name": "Steemit Chat",
+                "url": "https://steemit.chat/home",
+                "icon": "steem.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/steemchain",
+                "icon": "twitter.png",
                 "tags": [
                     "News"
                 ]
@@ -23130,9 +23242,9 @@
             },
             {
                 "type": "forum",
-                "name": "BTT Thread",
+                "name": "Bitcointalk",
                 "url": "https://bitcointalk.org/index.php?topic=1410943.0",
-                "icon": "forum.png",
+                "icon": "bitcoin.png",
                 "tags": [
                     "News"
                 ]
@@ -23165,19 +23277,8 @@
                 ]
             },
             {
-                "type": "explorer",
-                "name": "Steemle Explorer",
-                "url": "https://steemle.com/",
-                "icon": "explorer.png",
-                "tags": [
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
                 "type": "exchange",
                 "name": "Poloniex",
-                "headline": "nein",
                 "url": "https://www.poloniex.com",
                 "icon": "poloniex.png",
                 "tags": [
@@ -23188,7 +23289,6 @@
             {
                 "type": "exchange",
                 "name": "OpenLedger",
-                "headline": "Transparent Decentrilized Exchange",
                 "url": "https://openledger.info/?r=cyberfund",
                 "icon": "openledger.png",
                 "tags": [
@@ -23199,18 +23299,44 @@
             {
                 "type": "exchange",
                 "name": "Bittrex",
-                "headline": "nein",
                 "url": "https://bittrex.com",
                 "icon": "bittrex.png",
                 "tags": [
                     "Apps",
                     "Exchange"
                 ]
+            },
+            {
+                "type": "exchange",
+                "name": "Liqui Exchange",
+                "url": "https://liqui.io/",
+                "icon": "liqui.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "LiveCoin Exchange",
+                "url": "https://www.livecoin.net/",
+                "icon": "livecoin.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "HitBTC",
+                "url": "https://hitbtc.com",
+                "icon": "hitbtc.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
             }
-        ],
-        "flags": {
-            "quantum": true
-        }
+        ]
     },
     {
         "genesis_id": "",
@@ -25376,7 +25502,7 @@
         }
     },
     {
-        "genesis_id": "0xb582baaF5e749d6aA98A22355A9d08B4c4d013C8",
+        "genesis_id": "0x14f37b574242d366558db61f3335289a5035c506",
         "system": "VirtualAccelerator",
         "icon": "virtualaccelerator",
         "dependencies": [
@@ -25417,6 +25543,7 @@
             "btc_raised": 715.62891252
         },
         "specs": {
+            "previous_gen_id": "0xb582baaF5e749d6aA98A22355A9d08B4c4d013C8",
             "cap": {},
             "price": {
                 "usd": 0.05218567,
@@ -27260,6 +27387,15 @@
                 ]
             },
             {
+                "type": "website",
+                "name": "vslice.io",
+                "url": "http://www.vslice.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
                 "type": "blog",
                 "name": "Blog",
                 "url": "https://blog.vdice.io",
@@ -27275,7 +27411,6 @@
                 "url": "https://twitter.com/vdice_io",
                 "icon": "twitter.png",
                 "tags": [
-                    "Main",
                     "News"
                 ]
             },
@@ -27323,6 +27458,67 @@
                 "icon": "paper.png",
                 "tags": [
                     "Science"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Liqui Exchange",
+                "url": "https://liqui.io/",
+                "icon": "liqui.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "LiveCoin Exchange",
+                "url": "https://www.livecoin.net/",
+                "icon": "livecoin.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "EtherDelta",
+                "url": "https://etherdelta.github.io",
+                "icon": "etherdelta.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Mist Wallet",
+                "url": "https://github.com/ethereum/mist/releases/",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MyEther Wallet",
+                "url": "https://www.myetherwallet.com/",
+                "icon": "myetherwallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "EthCore Parity",
+                "url": "https://ethcore.io/parity.html",
+                "icon": "parity.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
                 ]
             }
         ]
