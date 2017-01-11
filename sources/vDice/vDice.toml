@@ -5,14 +5,14 @@ dependencies = ["Ethereum"]
 
 [token]
 name = "vslice"
-symbol = "vSlice"
+symbol = "VSL"
 
 [consensus]
 type = "Ethereum"
 algorithm = "Transferable Fungible"
 
 [aliases]
-coinmarketcap = "vDice"
+coinmarketcap = "vSlice"
 
 [descriptions]
 state = "Project"
@@ -48,6 +48,13 @@ icon = "website.png"
 tags = ["Main"]
 
 [[links]]
+type = "website"
+name = "vslice.io"
+url = "http://www.vslice.io/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
 type = "blog"
 name = "Blog"
 url = "https://blog.vdice.io"
@@ -59,7 +66,7 @@ type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/vdice_io"
 icon = "twitter.png"
-tags = ["Main","News"]
+tags = ["News"]
 
 [[links]]
 type = "forum"
@@ -95,3 +102,45 @@ name = "vDice Business Plan"
 url = "https://blog.vdice.io/wp-content/uploads/2016/10/vDice_Business_Plan_English.pdf"
 icon = "paper.png"
 tags = ["Science"]
+
+[[links]]
+type = "exchange"
+name = "Liqui Exchange"
+url = "https://liqui.io/"
+icon = "liqui.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
+name = "LiveCoin Exchange"
+url = "https://www.livecoin.net/"
+icon = "livecoin.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
+name = "EtherDelta"
+url = "https://etherdelta.github.io"
+icon = "etherdelta.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "wallet"
+name = "Mist Wallet"
+url = "https://github.com/ethereum/mist/releases/"
+icon = "ethereum.png"
+tags = ["Main", "Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "MyEther Wallet"
+url = "https://www.myetherwallet.com/"
+icon = "myetherwallet.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "EthCore Parity"
+url = "https://ethcore.io/parity.html"
+icon = "parity.png"
+tags = ["Apps", "Wallet"]
