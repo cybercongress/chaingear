@@ -762,6 +762,14 @@
         "specs": {
             "supply": 11000000
         },
+        "flags": {
+            "supply_from_here": true
+        },
+        "first_price": {
+            "btc": 0.00250409,
+            "usd": 0.5948961605,
+            "date": "2015-10-01T00:00:00"
+        },
         "crowdsales": {
             "start_date": "2015-08-17T00:00:00",
             "end_date": "2015-10-01T00:00:00",
@@ -834,7 +842,7 @@
                 ]
             },
             {
-                "type": "r/augur",
+                "type": "reddit",
                 "name": "reddit",
                 "url": "http://reddit.com/r/augur",
                 "rss": "https://www.reddit.com/r/Augur/.rss",
@@ -958,6 +966,36 @@
             },
             {
                 "type": "exchange",
+                "name": "Bittrex",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "BTER",
+                "url": "https://bter.com/",
+                "icon": "bter.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Yunbi",
+                "url": "https://yunbi.com/?lang=en",
+                "icon": "yunbi.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
                 "name": "Gatecoin",
                 "url": "https://gatecoin.com/",
                 "icon": "gatecoin.png",
@@ -1006,16 +1044,38 @@
                     "Apps",
                     "Wallet"
                 ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherScan",
+                "url": "http://etherscan.io/",
+                "icon": "etherscan.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherChain.org",
+                "url": "http://etherchain.org/",
+                "icon": "etherchain.jpg",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Ether.Camp",
+                "url": "https://live.ether.camp/account/48c80F1f4D53D5951e5D5438B54Cba84f29F32a5",
+                "icon": "ethercamp.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
             }
-        ],
-        "flags": {
-            "supply_from_here": true
-        },
-        "first_price": {
-            "btc": 0.00250409,
-            "usd": 0.5948961605,
-            "date": "2015-10-01T00:00:00"
-        }
+        ]
     },
     {
         "genesis_id": "f54c0f8ed0b8ba85f99525d37e7cc9a5107bd752a54d8778d6cfb4f36cb51131",
@@ -9815,7 +9875,7 @@
             },
             {
                 "type": "explorer",
-                "name": "FirstBlood Asset",
+                "name": "EtherScan",
                 "url": "https://etherscan.io/address/0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
                 "icon": "etherscan.png",
                 "tags": [
@@ -9838,6 +9898,26 @@
                 "name": "Gatecoin",
                 "url": "https://gatecoin.com/",
                 "icon": "gatecoin.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Liqui Exchange",
+                "url": "https://liqui.io/",
+                "icon": "liqui.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "EtherDelta",
+                "url": "https://etherdelta.github.io",
+                "icon": "etherdelta.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -9872,6 +9952,26 @@
                 "tags": [
                     "Apps",
                     "Wallet"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherChain.org",
+                "url": "http://etherchain.org/",
+                "icon": "etherchain.jpg",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Ether.Camp",
+                "url": "https://live.ether.camp/account/Af30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
+                "icon": "ethercamp.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
                 ]
             }
         ]
@@ -11026,6 +11126,96 @@
                 "icon": "paper.png",
                 "tags": [
                     "Science"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Mist Wallet",
+                "url": "https://github.com/ethereum/mist/releases/",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MyEther Wallet",
+                "url": "https://www.myetherwallet.com/",
+                "icon": "myetherwallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "EthCore Parity",
+                "url": "https://ethcore.io/parity.html",
+                "icon": "parity.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Yunbi",
+                "url": "https://yunbi.com/?lang=en",
+                "icon": "yunbi.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Liqui Exchange",
+                "url": "https://liqui.io/",
+                "icon": "liqui.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "EtherDelta",
+                "url": "https://etherdelta.github.io",
+                "icon": "etherdelta.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherScan",
+                "url": "http://etherscan.io/",
+                "icon": "etherscan.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherChain.org",
+                "url": "http://etherchain.org/",
+                "icon": "etherchain.jpg",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Ether.Camp",
+                "url": "https://live.ether.camp/account/Af30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
+                "icon": "ethercamp.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
                 ]
             }
         ]
@@ -15369,12 +15559,15 @@
             "funding_terms": "https://contribution.melonport.com/",
             "funding_url": "https://contribution.melonport.com/",
             "tokens_issued": 1250000,
-            "tokens_sold": "",
+            "tokens_sold": 375000,
             "btc_raised": ""
         },
         "specs": {
             "supply": 1250000,
-            "cap": {}
+            "cap": {},
+            "price": {
+                "btc": 0.0058723
+            }
         },
         "first_price": {
             "date": "2017-03-15T12:00:00",
@@ -19199,6 +19392,16 @@
                 ]
             },
             {
+                "type": "exchange",
+                "name": "Liqui Exchange",
+                "url": "https://liqui.io/",
+                "icon": "liqui.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
                 "type": "wallet",
                 "name": "Mist Wallet",
                 "url": "https://github.com/ethereum/mist/releases/",
@@ -19227,6 +19430,36 @@
                 "tags": [
                     "Apps",
                     "Wallet"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherScan",
+                "url": "http://etherscan.io/",
+                "icon": "etherscan.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherChain.org",
+                "url": "http://etherchain.org/",
+                "icon": "etherchain.jpg",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Ether.Camp",
+                "url": "https://live.ether.camp/account/d8912c10681d8b21fd3742244f44658dba12264e",
+                "icon": "ethercamp.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
                 ]
             }
         ]
@@ -21041,14 +21274,14 @@
             "nickname": "Satoshi•Pie"
         },
         "specs": {
-            "supply": 503496.7888,
+            "supply": 503698.3977,
             "price": {
-                "usd": 2.3704,
-                "btc": 0.00261105
+                "usd": 2.3609,
+                "btc": 0.00262787
             },
             "cap": {
-                "usd": 1193513,
-                "btc": 1314.65
+                "usd": 1189164,
+                "btc": 1323.65
             }
         },
         "first_price": {
