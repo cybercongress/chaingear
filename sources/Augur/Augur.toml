@@ -25,6 +25,14 @@ symbol = "REP"
 [specs]
 supply = 11000000.0
 
+[flags]
+supply_from_here = true
+
+[first_price]
+btc = 0.00250409
+usd = 0.5948961605
+date = "2015-10-01T00:00:00"
+
 [crowdsales]
 start_date = "2015-08-17T00:00:00"
 end_date = "2015-10-01T00:00:00"
@@ -79,7 +87,7 @@ icon = "facebook.png"
 tags = ["News"]
 
 [[links]]
-type = "r/augur"
+type = "reddit"
 name = "reddit"
 url = "http://reddit.com/r/augur"
 rss = "https://www.reddit.com/r/Augur/.rss"
@@ -172,6 +180,27 @@ tags = ["Apps", "Exchange"]
 
 [[links]]
 type = "exchange"
+name = "Bittrex"
+url = "https://bittrex.com"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
+name = "BTER"
+url = "https://bter.com/"
+icon = "bter.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+type = "exchange"
+name = "Yunbi"
+url = "https://yunbi.com/?lang=en"
+icon = "yunbi.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
 name = "Gatecoin"
 url = "https://gatecoin.com/"
 icon = "gatecoin.png"
@@ -205,10 +234,23 @@ url = "https://ethcore.io/parity.html"
 icon = "parity.png"
 tags = ["Apps", "Wallet"]
 
-[flags]
-supply_from_here = true
+[[links]]
+type = "explorer"
+name = "EtherScan"
+url = "http://etherscan.io/"
+icon = "etherscan.png"
+tags = ["Apps", "Analytics"]
 
-[first_price]
-btc = 0.00250409
-usd = 0.5948961605
-date = "2015-10-01T00:00:00"
+[[links]]
+type = "explorer"
+name = "EtherChain.org"
+url = "http://etherchain.org/"
+icon = "etherchain.jpg"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+type = "explorer"
+name = "Ether.Camp"
+url = "https://live.ether.camp/account/48c80F1f4D53D5951e5D5438B54Cba84f29F32a5"
+icon = "ethercamp.png"
+tags = ["Apps", "Analytics"]
