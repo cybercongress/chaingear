@@ -10549,6 +10549,139 @@
         }
     },
     {
+        "genesis_id": "",
+        "system": "FundRequest",
+        "icon": "fundrequest",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "token": {
+            "name": "FundRequest",
+            "symbol": "FND"
+        },
+        "consensus": {
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
+        },
+        "aliases": {
+            "coinmarketcap": "FundRequest"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralised Platform for rewarding open source contributions",
+            "tags": [
+                "DApp"
+            ],
+            "page_state": "ready",
+            "hashtag": "#fundrequest",
+            "twwidid": "781793651626242048"
+        },
+        "crowdsales": {
+            "start_date": "2017-02-06T14:30:00",
+            "end_date": "2017-03-19T14:30:00",
+            "genesis_address": [
+                ""
+            ],
+            "min_investment": 0.01,
+            "funding_terms": "https://fundrequest.io/whitepaper.pdf",
+            "funding_url": "https://fundrequest.io/ico/",
+            "tokens_issued": "2000000",
+            "btc_raised": ""
+        },
+        "specs": {
+            "cap": {}
+        },
+        "first_price": {},
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "www.fundrequest.io",
+                "url": "https://www.fundrequest.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://medium.com/@fundrequest_io",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/fundrequest_io",
+                "icon": "twitter.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTT Thread",
+                "url": "https://bitcointalk.org/index.php?topic=1696378.msg17019226#msg17019226",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/user/FundRequest_io",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Slack",
+                "url": "https://fundrequest.slack.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/watch?v=IjiY5MaoMlI",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "FundRequest GitHub",
+                "url": "https://github.com/FundRequest",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "FundRequest Business Plan",
+                "url": "https://fundrequest.io/whitepaper.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "91ec5f25ee9a0ffa1af7d4da4db9a552228dd2dc77cdb15b738be4e1f55f30ee",
         "system": "GameCredits",
         "icon": "gamecredits",
@@ -16567,6 +16700,99 @@
         "flags": {
             "rating_do_not_display": true
         }
+    },
+    {
+        "system": "Musicoin",
+        "icon": "musicoin",
+        "aliases": {
+            "coinmarketcap": "Musicoin"
+        },
+        "consensus": {
+            "type": "PoW",
+            "algorithm": "Ethash"
+        },
+        "descriptions": {
+            "state": "Public",
+            "system_type": "cryptocurrency",
+            "page_state": "ready"
+        },
+        "events": {
+            "announcement": "2/10/2017",
+            "genesis": "2/10/2017"
+        },
+        "token": {
+            "name": "Musicoin",
+            "symbol": "MC"
+        },
+        "specs": {
+            "block_reward": 500,
+            "premine_tokens": 0,
+            "block_time": 15,
+            "difficulty_cycle": "2016",
+            "txs_confirm": 6,
+            "rpc": "8545"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "musicoin",
+                "url": "http://musicoin.org",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "MC Orbiter",
+                "url": "http://orbiter.musicoin.org",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Musicoin GitHub",
+                "url": "https://github.com/onetimer/musicoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "MC Forum",
+                "url": "http://forum.musicoin.org",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "whitepaper",
+                "name": "Musicoin: Free Creations While Rewarding Creators",
+                "url": "https://medium.com/@musicoin/musicoin-free-creations-while-rewarding-creators-2832f7d2bd33",
+                "icon": "whitepaper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/musicoins",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "La3hSVSFkUqoPQqdDdbaYsJUkEJCkABuGCHosK",
