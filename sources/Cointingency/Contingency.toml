@@ -28,20 +28,25 @@ end_date = "2017-02-28T20:00:00"
 genesis_address = ["0xc96eec418b50c538c3f3e32e71575da068a97401"]
 funding_terms = "http://contingency.tech/Contingency-Whitepaper.pdf"
 funding_url = "https://contingency.tech/"
-tokens_sold = ""
-tokens_issued = ""
-btc_raised = ""
+tokens_sold = 3108579.75908104
+tokens_issued = 3453977.5100900459702466
+btc_raised = 281.247
 
 [specs]
+supply = 3453977.5100900459702466
 
 [specs.cap]
+btc = 312
+usd = 367487
+
 
 [first_price]
-date = ""
-btc = ""
-usd = ""
+date = "2017-02-28T20:00:00"
+btc = 0.00009047
+usd = 0.10639543
 
 [flags]
+supply_from_here = true
 
 [[links]]
 type = "website"
@@ -55,7 +60,7 @@ type = "github"
 name = "Contingency GitHub"
 url = "https://github.com/ContingencyEth/Contingency"
 icon = "github.png"
-tags = ["Code"]
+tags = ["Main","Code"]
 
 [[links]]
 type = "paper"
