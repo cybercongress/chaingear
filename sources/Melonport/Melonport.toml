@@ -1,0 +1,117 @@
+genesis_id = "0xBEB9eF514a379B997e0798FDcC901Ee474B6D9A1"
+system = "Melonport"
+icon = "melonport"
+dependencies = ["Ethereum"]
+
+[token]
+name = "melon"
+symbol = "MLN"
+
+[consensus]
+type = "Ethereum"
+algorithm = "Transferable Fungible"
+
+[aliases]
+coinmarketcap = "Melon"
+nickname = "Melonport"
+
+[descriptions]
+state = "Public"
+system_type = "cryptoasset"
+headline = "An open-source blockchain protocol for asset management"
+tags = ["DApp"]
+page_state = "ready"
+
+[crowdsales]
+start_date = "2017-02-15T12:00:00"
+end_date = "2017-02-15T12:00:00"
+genesis_address = ["0x3BF541f87056D134E0109BE1Be92978b26Cb09e0"]
+funding_terms = "https://contribution.melonport.com/terms.pdf"
+funding_url = "https://melonport.com/"
+tokens_issued = 1250000
+tokens_sold = 750000
+btc_raised = 2903
+
+[specs]
+supply = 1250000
+
+[specs.cap]
+
+[specs.price]
+
+[first_price]
+date = "2017-03-15T12:00:00"
+btc = 0.00387073
+usd = 3.88416143
+
+[flags]
+
+[[links]]
+type = "website"
+name = "melonport.com"
+url = "http://www.melonport.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/melonport"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "LinkedIn"
+url = "https://www.linkedin.com/company/melonport-ltd"
+icon = "linkedin.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Melonport Slack"
+url = "http://chat.melonport.com/"
+icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+type = "reddit"
+name = "reddit"
+url = "https://reddit.com/r/melonproject"
+icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+type = "github"
+name = "Melonport GitHub"
+url = "https://www.github.com/melonproject"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
+type = "paper"
+name = "Melonport Whitepaper"
+url = "https://github.com/melonproject/greenpaper/blob/master/melonprotocol.pdf"
+icon = "paper.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "wallet"
+name = "Mist Wallet"
+url = "https://github.com/ethereum/mist/releases/"
+icon = "ethereum.png"
+tags = ["Main", "Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "MetaMask Wallet"
+url = "https://metamask.io/"
+icon = "metamask.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "exchange"
+name = "Kraken"
+url = "https://www.kraken.com"
+icon = "kraken.png"
+tags = ["Apps", "Exchange"]

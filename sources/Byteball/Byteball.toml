@@ -22,14 +22,14 @@ page_state = "draft"
 coinmarketcap = "Byteball"
 
 [specs]
-supply = 10000000
+supply = 1000000
 
 [specs.cap]
 
 [first_price]
-btc = ""
-usd = ""
-date = ""
+date = "2016-12-27T13:00:00"
+btc = 0.01638507
+usd = 15.99209222
 
 [flags]
 supply_from_here = true
@@ -43,7 +43,7 @@ tags = ["Main"]
 
 [[links]]
 type = "github"
-name = "IOTA GitHub"
+name = "Byteball GitHub"
 url = "https://github.com/byteball"
 icon = "github.png"
 tags = ["Main","Code"]
@@ -89,3 +89,10 @@ name = "Byteball Explorer"
 url = "https://explorer.byteball.org"
 icon = "explorer.png"
 tags = ["Wallet","Apps"]
+
+[[links]]
+type = "exchange"
+name = "cryptox.pl"
+url = "https://cryptox.pl"
+icon = "explorer.png"
+tags = ["Exchange","Apps"]

@@ -1,10 +1,15 @@
 genesis_id = "00000729be7c186c90758ebeb55f9f947ee3f1d856b5d136d5796b4a5a704a59"
 system = "Navajo"
-icon = "navajo"
+icon = "navcoin"
 dependencies = ["independent"]
 
+[token]
+name = "navcoin"
+symbol = "NAV"
+
 [aliases]
-coinmarketcap = "Navajo"
+coinmarketcap = "NAV Coin"
+nickname = "NAV Coin"
 
 [consensus]
 type = "PoS"
@@ -15,64 +20,107 @@ tags = ["DAO"]
 state = "Public"
 system_type = "cryptocurrency"
 
-[token]
-name = "Navajo"
-symbol = "NAV"
+[first_price]
+btc = 0.00000618
+usd = 0.00367082
+date = "2014-06-12T00:00:00"
 
 [specs]
 
 [[links]]
 type = "website"
-name = "navajocoin.org"
-url = "http://navajocoin.org/"
+name = "navcoin.org"
+url = "http://www.navcoin.org/"
 icon = "website.png"
 tags = ["Main"]
 
-
 [[links]]
 type = "explorer"
-name = "Explorer"
-url = "http://navajocoin.org/block-explorer"
-icon = "explorer.png"
+name = "CryptoID Explorer"
+url = "https://chainz.cryptoid.info/nav/"
+icon = "cryptoid.png"
 tags = ["Main", "Apps","Analytics"]
 
 [[links]]
 type = "github"
-name = "Navajo GitHub"
-url = "https://github.com/sherlockcoin/navajocoin"
+name = "NAV Coin GitHub"
+url = "https://github.com/navcoindev"
 icon = "github.png"
 tags = ["Main", "Code"]
 
+[[links]]
+type = "wallet"
+name = "NAV Coin Wallet"
+url = "http://www.navcoin.org/downloads"
+icon = "wallet.png"
+tags = ["Main", "Apps","Wallet"]
 
 [[links]]
 type = "paper"
-name = "Documentation"
-url = "http://navajocoin.org/pdf/navajocoin.pdf"
+name = "Navtech Whitepaper"
+url = "http://www.navcoin.org/files/navtech-whitepaper-beta-v0.9.pdf"
 icon = "whitepaper.png"
 tags = ["Main", "Science"]
 
 [[links]]
+type = "paper"
+name = "Navtech Decentralization Whitepaper"
+url = "http://www.navcoin.org/files/navtech-decentralisation-whitepaper-beta-v0.9.pdf"
+icon = "whitepaper.png"
+tags = ["Science"]
+
+[[links]]
 type = "twitter"
 name = "Twitter"
-url = "https://twitter.com/NavajoCoin"
+url = "https://twitter.com/NavCoin"
 icon = "twitter.png"
 tags = ["News"]
 
 [[links]]
 type = "forum"
-name = "Forum"
-url = "http://forum.navajocointalk.org/"
-icon = "forum.png"
+name = "Bitcointalk"
+url = "https://bitcointalk.org/index.php?topic=679791"
+icon = "bitcoin.png"
 tags = ["News"]
 
 [[links]]
 type = "reddit"
 name = "reddit"
-url = "http://www.reddit.com/r/navajocoin"
+url = "http://www.reddit.com/r/navcoin"
 icon = "reddit.png"
 tags = ["News"]
 
-[first_price]
-btc = 0.00000618
-usd = 0.00367082
-date = "2014-06-12T00:00:00"
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/NAVCoin"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+type = "exchange"
+name = "Poloniex"
+url = "https://www.poloniex.com"
+icon = "poloniex.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+type = "exchange"
+name = "Bittrex"
+url = "https://bittrex.com"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
+name = "C-CEX"
+url = "https://c-cex.com"
+icon = "c-cex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
+name = "Bitsquare"
+url = "https://market.bitsquare.io"
+icon = "bitsquare.png"
+tags = ["Apps","Exchange"]

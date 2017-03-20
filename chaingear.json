@@ -762,6 +762,14 @@
         "specs": {
             "supply": 11000000
         },
+        "flags": {
+            "supply_from_here": true
+        },
+        "first_price": {
+            "btc": 0.00250409,
+            "usd": 0.5948961605,
+            "date": "2015-10-01T00:00:00"
+        },
         "crowdsales": {
             "start_date": "2015-08-17T00:00:00",
             "end_date": "2015-10-01T00:00:00",
@@ -834,7 +842,7 @@
                 ]
             },
             {
-                "type": "r/augur",
+                "type": "reddit",
                 "name": "reddit",
                 "url": "http://reddit.com/r/augur",
                 "rss": "https://www.reddit.com/r/Augur/.rss",
@@ -958,6 +966,36 @@
             },
             {
                 "type": "exchange",
+                "name": "Bittrex",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "BTER",
+                "url": "https://bter.com/",
+                "icon": "bter.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Yunbi",
+                "url": "https://yunbi.com/?lang=en",
+                "icon": "yunbi.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
                 "name": "Gatecoin",
                 "url": "https://gatecoin.com/",
                 "icon": "gatecoin.png",
@@ -1006,16 +1044,38 @@
                     "Apps",
                     "Wallet"
                 ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherScan",
+                "url": "http://etherscan.io/",
+                "icon": "etherscan.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherChain.org",
+                "url": "http://etherchain.org/",
+                "icon": "etherchain.jpg",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Ether.Camp",
+                "url": "https://live.ether.camp/account/48c80F1f4D53D5951e5D5438B54Cba84f29F32a5",
+                "icon": "ethercamp.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
             }
-        ],
-        "flags": {
-            "supply_from_here": true
-        },
-        "first_price": {
-            "btc": 0.00250409,
-            "usd": 0.5948961605,
-            "date": "2015-10-01T00:00:00"
-        }
+        ]
     },
     {
         "genesis_id": "f54c0f8ed0b8ba85f99525d37e7cc9a5107bd752a54d8778d6cfb4f36cb51131",
@@ -2232,16 +2292,6 @@
             },
             {
                 "type": "exchange",
-                "name": "Cryptsy",
-                "url": "https://www.cryptsy.com/users/register?refid=243274",
-                "icon": "cryptsy.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
-                "type": "exchange",
                 "name": "Kraken",
                 "icon": "kraken.png",
                 "url": "https://www.kraken.com",
@@ -2292,9 +2342,19 @@
             },
             {
                 "type": "exchange",
-                "name": "CCEDK",
-                "url": "https://www.ccedk.com/",
-                "icon": "ccedk.png",
+                "name": "Bittrex",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "OpenLedger",
+                "url": "https://openledger.info/?r=cyberfund",
+                "icon": "openledger.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -3562,126 +3622,6 @@
         ]
     },
     {
-        "genesis_id": "00000c2c71c0a0df4da4fa6d5756dc6b0c8709fc9c4e58973b330bb96900e2b4",
-        "system": "BlockShares",
-        "dependencies": [
-            "NuShares"
-        ],
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptocurrency",
-            "headline": "Decentralized Exchange for Everyone",
-            "tags": [
-                "DApp"
-            ],
-            "hashtag": "#blockshares"
-        },
-        "aliases": {
-            "coinmarketcap": "BlockShares"
-        },
-        "consensus": {
-            "type": "PoS",
-            "algorithm": "Peershares"
-        },
-        "token": {
-            "name": "BlockShare",
-            "symbol": "BKS"
-        },
-        "specs": {},
-        "links": [
-            {
-                "type": "risk",
-                "name": "Minimum Viable Product has not been launched",
-                "url": "",
-                "icon": ""
-            },
-            {
-                "name": "bcexchange.org",
-                "url": "https://bcexchange.org/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ],
-                "type": "website"
-            },
-            {
-                "name": "Design Document",
-                "url": "https://nubits.com/sites/default/files/assets/Blocks%20%26%20Chains%20Decentralized%20Exchange.pdf",
-                "icon": "whitepaper.png",
-                "tags": [
-                    "Main",
-                    "Science"
-                ],
-                "type": "paper"
-            },
-            {
-                "name": "BC Explorer",
-                "url": "https://bcblockexplorer.com/",
-                "icon": "blockshares.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ],
-                "type": "explorer"
-            },
-            {
-                "name": "Bitbucket",
-                "url": "https://bitbucket.org/JordanLeePeershares/bcexchange/src",
-                "icon": "bitbucket.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ],
-                "type": "github"
-            },
-            {
-                "name": "BTT Thread",
-                "url": "https://bitcointalk.org/index.php?topic=1033773.0",
-                "icon": "forum.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "forum"
-            },
-            {
-                "name": "Twitter",
-                "url": "https://twitter.com/BC_Exchange",
-                "icon": "twitter.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "twitter"
-            },
-            {
-                "name": "CCEDK",
-                "headline": "Your place for safe and secure crypto currency exchange",
-                "url": "https://www.ccedk.com/",
-                "type": "custom",
-                "icon": "ccedk.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
-                "name": "Markets CMC",
-                "url": "http://coinmarketcap.com/currencies/blockshares/#markets",
-                "type": "custom",
-                "icon": "link.png",
-                "tags": [
-                    "Apps",
-                    "Analytics"
-                ]
-            }
-        ],
-        "first_price": {
-            "btc": 0.007547500604,
-            "usd": 1.736055711,
-            "date": "2015-08-31T00:00:00"
-        }
-    },
-    {
         "genesis_id": "5299695311446529",
         "system": "Blockfreight",
         "icon": "blockfreight",
@@ -4067,13 +4007,13 @@
             "coinmarketcap": "Byteball"
         },
         "specs": {
-            "supply": 10000000,
+            "supply": 1000000,
             "cap": {}
         },
         "first_price": {
-            "btc": "",
-            "usd": "",
-            "date": ""
+            "date": "2016-12-27T13:00:00",
+            "btc": 0.01638507,
+            "usd": 15.99209222
         },
         "flags": {
             "supply_from_here": true
@@ -4090,7 +4030,7 @@
             },
             {
                 "type": "github",
-                "name": "IOTA GitHub",
+                "name": "Byteball GitHub",
                 "url": "https://github.com/byteball",
                 "icon": "github.png",
                 "tags": [
@@ -4153,6 +4093,16 @@
                 "icon": "explorer.png",
                 "tags": [
                     "Wallet",
+                    "Apps"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "cryptox.pl",
+                "url": "https://cryptox.pl",
+                "icon": "explorer.png",
+                "tags": [
+                    "Exchange",
                     "Apps"
                 ]
             }
@@ -4926,16 +4876,32 @@
             "start_date": "2016-12-15T00:00:00",
             "end_date": "2017-02-15T20:00:00",
             "genesis_address": [
-                ""
+                "36LHZyzMASdBQMecfSrTx5sGDaFS73YLLJ",
+                "3Cq8F4SzxmM5UfURgRNmq9PirVckeK1Hfn",
+                "NBHBCH-XNNOEZ-BJDWY2-JOTAMF-AKYJ3B-4BHJY4-LJ6T",
+                "0x8a37a0b8d48486b2117e958062d28096bec2539a",
+                "0x7e10e808a819e8bab77a749c5471ff4be8bd6325",
+                "3PQ5gszpaa6yPkGg7DuojbvYeSuGJzQC3aK",
+                "3PPxVMRb74J5dPPBTRsTeBSveNTicANT5iC",
+                "EUrg7oihDT1HR8rpYNMErtxWGpDF9iLDKc"
             ],
             "funding_terms": "https://chronobank.io",
             "funding_url": "https://chronobank.io",
-            "tokens_sold": "",
-            "tokens_issued": "",
-            "btc_raised": ""
+            "tokens_sold": 624899.2735,
+            "tokens_issued": 710112.8108,
+            "btc_raised": 4058.0147
         },
-        "specs": {},
-        "first_price": {},
+        "specs": {
+            "supply": 710112.8108,
+            "cap": {
+                "btc": 4611,
+                "usd": 4627382
+            }
+        },
+        "first_price": {
+            "btc": 0.00649387,
+            "usd": 6.51640373
+        },
         "flags": {},
         "links": [
             {
@@ -4948,6 +4914,26 @@
                 ]
             },
             {
+                "type": "paper",
+                "name": "Chronobank Whitepaper",
+                "url": "https://chronobank.io/files/whitepaper.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Chronobank GitHub",
+                "url": "https://github.com/ChronoBank",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
                 "type": "blog",
                 "name": "Chronobank Blog",
                 "url": "https://blog.chronobank.io/",
@@ -4955,26 +4941,6 @@
                 "tags": [
                     "Main",
                     "News"
-                ]
-            },
-            {
-                "type": "paper",
-                "name": "Development Plan",
-                "url": "https://chronobank.io/files/dev_plan.pdf",
-                "icon": "paper.png",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "paper",
-                "name": "Business Outline",
-                "url": "https://chronobank.io/files/business_outline.pdf",
-                "icon": "paper.png",
-                "tags": [
-                    "Main",
-                    "Science"
                 ]
             },
             {
@@ -4996,30 +4962,57 @@
                 ]
             },
             {
+                "type": "reddit",
                 "name": "reddit",
                 "url": "https://www.reddit.com/r/ChronoBank/",
                 "icon": "reddit.png",
                 "tags": [
                     "News"
-                ],
-                "type": "reddit"
+                ]
             },
             {
+                "type": "forum",
+                "name": "BTCtalk Forum",
+                "url": "https://bitcointalk.org/index.php?topic=1680361.0",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
                 "name": "Facebook",
                 "url": "https://www.facebook.com/ChronoBank.io",
                 "icon": "facebook.png",
                 "tags": [
                     "News"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "custom",
                 "name": "YouTube",
                 "url": "https://www.youtube.com/channel/UCTo65YisnLqmbDcCoWyktnQ",
-                "type": "custom",
                 "icon": "youtube.png",
                 "tags": [
                     "News"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Development Plan",
+                "url": "https://chronobank.io/files/dev_plan.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Business Outline",
+                "url": "https://chronobank.io/files/business_outline.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
                 ]
             }
         ]
@@ -5267,142 +5260,91 @@
         }
     },
     {
-        "genesis_id": "7474435909229872610",
-        "system": "Coinomat",
-        "dependencies": "NXT",
-        "aliases": {
-            "coinmarketcap": "Coinomat"
+        "genesis_id": "0xc96eec418b50c538c3f3e32e71575da068a97401",
+        "system": "Contingency",
+        "icon": "contingency",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "token": {
+            "name": "contingency token",
+            "symbol": "CTY"
         },
         "consensus": {
-            "type": "NXT",
-            "algorithm": "AE"
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
+        },
+        "aliases": {
+            "coinmarketcap": "Contingency"
         },
         "descriptions": {
-            "state": "Public",
+            "state": "Pre-Public",
             "system_type": "cryptoasset",
+            "headline": "Decentralized, Trustless Gambling Platform",
             "tags": [
                 "DApp"
-            ]
+            ],
+            "twwidid": "",
+            "page_state": "draft"
         },
-        "token": {
-            "name": "coinomat1",
-            "symbol": "CNMT"
+        "crowdsales": {
+            "start_date": "2017-01-31T20:00:00",
+            "end_date": "2017-02-28T20:00:00",
+            "genesis_address": [
+                "0xc96eec418b50c538c3f3e32e71575da068a97401"
+            ],
+            "funding_terms": "http://contingency.tech/Contingency-Whitepaper.pdf",
+            "funding_url": "https://contingency.tech/",
+            "tokens_sold": 3108579.75908104,
+            "tokens_issued": 3453977.510090046,
+            "btc_raised": 281.247
         },
-        "specs": {},
+        "specs": {
+            "supply": 3453977.510090046,
+            "cap": {
+                "btc": 312,
+                "usd": 367487
+            }
+        },
+        "first_price": {
+            "date": "2017-02-28T20:00:00",
+            "btc": 0.00009047,
+            "usd": 0.10639543
+        },
+        "flags": {
+            "supply_from_here": true
+        },
         "links": [
             {
-                "type": "risk",
-                "name": "Asset requre trust to an issuer",
-                "url": "",
-                "icon": ""
-            },
-            {
-                "name": "coinomat.com",
-                "url": "https://coinomat.com",
+                "type": "website",
+                "name": "contingency.tech",
+                "url": "http://contingency.tech",
                 "icon": "website.png",
                 "tags": [
                     "Main"
-                ],
-                "type": "website"
+                ]
             },
             {
-                "name": "Coinomat Asset",
-                "url": "http://nxtreporting.com/?as=7474435909229872610",
-                "icon": "nxt.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ],
-                "type": "explorer"
-            },
-            {
-                "name": "Transactions Stats",
-                "url": "https://coinomat.com/globalstat.php",
-                "icon": "link.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ],
-                "type": "custom"
-            },
-            {
-                "name": "Blog",
-                "url": "http://blog.coinomat.com/",
-                "icon": "blog.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "blog"
-            },
-            {
-                "name": "Coinomat API",
-                "url": "https://coinomat.com/api.php",
+                "type": "github",
+                "name": "Contingency GitHub",
+                "url": "https://github.com/ContingencyEth/Contingency",
                 "icon": "github.png",
                 "tags": [
+                    "Main",
                     "Code"
-                ],
-                "type": "github"
-            },
-            {
-                "name": "Twitter",
-                "url": "https://twitter.com/coinomat",
-                "icon": "twitter.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "twitter"
-            },
-            {
-                "name": "Facebook",
-                "url": "https://www.facebook.com/Coinomat",
-                "icon": "facebook.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "custom"
-            },
-            {
-                "name": "Markets CMC",
-                "url": "http://coinmarketcap.com/assets/coinomat/#markets",
-                "type": "custom",
-                "icon": "link.png",
-                "tags": [
-                    "Apps",
-                    "Analytics"
                 ]
             },
             {
-                "name": "Poloniex",
-                "url": "https://www.poloniex.com",
-                "type": "custom",
-                "icon": "poloniex.png",
+                "type": "paper",
+                "name": "Contingency Whitepaper",
+                "url": "http://contingency.tech/Contingency-Whitepaper.pdf",
+                "icon": "paper.png",
                 "tags": [
-                    "Apps",
-                    "Exchange"
+                    "Main",
+                    "Science"
                 ]
-            },
-            {
-                "name": "NXT AE",
-                "url": "http://nxtreporting.com/?as=7474435909229872610",
-                "icon": "nxt.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ],
-                "type": "custom"
             }
-        ],
-        "first_price": {
-            "btc": 0.00042034,
-            "usd": 0.20045159,
-            "date": "2014-09-05T00:00:00"
-        },
-        "flags": {
-            "quantum": true,
-            "rating_do_not_display": true
-        }
+        ]
     },
     {
         "genesis_id": "",
@@ -5416,7 +5358,7 @@
             "symbol": "ATOM"
         },
         "consensus": {
-            "type": "Proof-of-State",
+            "type": "Proof-of-Stake",
             "algorithm": "Tendermint"
         },
         "aliases": {
@@ -5432,8 +5374,8 @@
             "page_state": "draft"
         },
         "crowdsales": {
-            "start_date": "2017-01-30T00:00:00",
-            "end_date": "2017-02-28T20:00:00",
+            "start_date": "2017-03-31T14:00:00",
+            "end_date": "2017-04-31T14:00:00",
             "genesis_address": [
                 ""
             ],
@@ -5807,220 +5749,6 @@
         },
         "flags": {
             "quantum": true
-        }
-    },
-    {
-        "system": "Crypti",
-        "dependencies": "independent",
-        "aliases": {
-            "coinmarketcap": "Crypti"
-        },
-        "consensus": {
-            "type": "PoS",
-            "algorithm": "Delegated"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptocurrency",
-            "headline": "A platform for the development and distribution of JavaScript based DApps",
-            "tags": [
-                "DAO"
-            ]
-        },
-        "events": {
-            "announcement": "10/08/2014"
-        },
-        "token": {
-            "name": "crypti",
-            "symbol": "XCR"
-        },
-        "specs": {},
-        "links": [
-            {
-                "name": "crypti.me",
-                "url": "https://crypti.me/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ],
-                "type": "website"
-            },
-            {
-                "name": "Whitepaper",
-                "url": "https://crypti.me/crypti.pdf",
-                "icon": "whitepaper.png",
-                "tags": [
-                    "Main",
-                    "Science"
-                ],
-                "type": "paper"
-            },
-            {
-                "name": "Crypti GitHub",
-                "url": "https://github.com/crypti",
-                "icon": "github.png",
-                "tags": [
-                    "Code"
-                ],
-                "type": "github"
-            },
-            {
-                "name": "Web Wallet",
-                "url": "https://wallet.cryptichain.me/",
-                "type": "custom",
-                "icon": "wallet.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Wallet"
-                ]
-            },
-            {
-                "name": "Crypti Explorer",
-                "url": "https://cryptichain.me/",
-                "type": "custom",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "name": "Account Validator",
-                "url": "http://validator.crypti.me/",
-                "type": "custom",
-                "icon": "crypti.png",
-                "tags": [
-                    "Apps"
-                ]
-            },
-            {
-                "name": "Blog",
-                "url": "https://blog.crypti.me/",
-                "icon": "blog.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "blog"
-            },
-            {
-                "name": "Twitter",
-                "url": "https://twitter.com/CryptiTeam",
-                "icon": "twitter.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "twitter"
-            },
-            {
-                "name": "Forum",
-                "url": "https://forum.crypti.me/",
-                "icon": "forum.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "forum"
-            },
-            {
-                "name": "reddit",
-                "url": "https://www.reddit.com/r/crypti",
-                "icon": "reddit.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "reddit"
-            },
-            {
-                "name": "Slack",
-                "url": "http://slack.crypti.me/",
-                "icon": "slack.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "custom"
-            },
-            {
-                "name": "Facebook",
-                "url": "https://www.facebook.com/pages/Crypti/1468497296767839",
-                "icon": "facebook.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "custom"
-            },
-            {
-                "name": "Google+",
-                "url": "https://plus.google.com/u/0/112818205922585372230/about",
-                "icon": "googleplus.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "custom"
-            },
-            {
-                "name": "LinkedIn",
-                "url": "https://www.linkedin.com/grp/home?gid=8329030",
-                "icon": "linkedin.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "custom"
-            },
-            {
-                "name": "BTT Thread",
-                "url": "https://bitcointalk.org/index.php?topic=654463.0",
-                "icon": "forum.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "custom"
-            },
-            {
-                "name": "Markets CMC",
-                "url": "http://coinmarketcap.com/currencies/crypti/#markets",
-                "type": "custom",
-                "icon": "link.png",
-                "tags": [
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "name": "Poloniex",
-                "url": "https://www.poloniex.com",
-                "type": "custom",
-                "icon": "poloniex.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
-                "name": "Cryptsy",
-                "url": "https://www.cryptsy.com/users/register?refid=243274",
-                "type": "custom",
-                "icon": "cryptsy.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
-                "name": "BTER",
-                "url": "https://bter.com/",
-                "type": "custom",
-                "icon": "bter.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            }
-        ],
-        "first_price": {
-            "btc": 0.0000169,
-            "usd": 0.00972686,
-            "date": "2014-08-07T00:00:00"
         }
     },
     {
@@ -7087,6 +6815,129 @@
         }
     },
     {
+        "genesis_id": "0x1be116204bb55cb61c821a1c7866fa6f94b561a5",
+        "system": "Dfinity",
+        "icon": "dfinity",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "token": {
+            "name": "dfinity network token",
+            "symbol": "DFN"
+        },
+        "consensus": {
+            "type": "",
+            "algorithm": ""
+        },
+        "aliases": {
+            "coinmarketcap": "DFINITY"
+        },
+        "descriptions": {
+            "state": "Pre-Public",
+            "system_type": "cryptoasset",
+            "headline": "The Decentralized Cloud Computing",
+            "tags": [
+                "DAO"
+            ],
+            "twwidid": "",
+            "page_state": "ready"
+        },
+        "crowdsales": {
+            "start_date": "2017-02-12T18:00:00",
+            "end_date": "2017-02-13T18:00:00",
+            "genesis_address": [
+                "3JqsZhBnPbUvaEcTz6opfSFwddYu1YqBvt",
+                "0xad489DC1A250dfc0E49e83e7DAD51b084B2e1227"
+            ],
+            "funding_terms": "https://dfinity.network/pdfs/viewer.html?file=../library/dfinity-donation-terms-v6.pdf",
+            "funding_url": "https://dfinity.network/donate",
+            "tokens_sold": 93641562,
+            "tokens_issued": 93641562,
+            "btc_raised": 3107.027
+        },
+        "specs": {
+            "supply": 93641562,
+            "cap": {
+                "btc": 3107.027,
+                "usd": 3077072
+            }
+        },
+        "first_price": {
+            "date": "2016-02-13T18:00:00",
+            "btc": 0.00003318,
+            "usd": 0.03286011
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "dfinity.network",
+                "url": "https://dfinity.network/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Dfinity GitHub",
+                "url": "https://github.com/dfinity",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "A Brief Tour of DFINITY",
+                "url": "https://dfinity.network/pdfs/viewer.html?file=../library/a-brief-tour-of-dfinity.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://medium.com/dfinity-network-blog",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/dfinity_network",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/dfinity/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Threshold Relay - How to Achieve Near Instant Finality inPublic Blockchains using a VRF",
+                "url": "https://dfinity.network/pdfs/viewer.html?file=../library/threshold-relay-blockchain-stanford.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "000002e9686a879460eb5497d51a99fa6d5cad4a9edabb5112bd915b7d2302fc",
         "system": "Diamond",
         "icon": "diamond",
@@ -7676,6 +7527,10 @@
         "dependencies": [
             "independent"
         ],
+        "token": {
+            "name": "vergecoin",
+            "symbol": "XVG"
+        },
         "aliases": {
             "coinmarketcap": "Verge",
             "nickname": "Verge"
@@ -7688,11 +7543,14 @@
             "type": "PoW",
             "algorithm": "Scrypt"
         },
-        "token": {
-            "name": "vergecoin",
-            "symbol": "XVG"
+        "specs": {
+            "previous_name": "DogeCoinDark"
         },
-        "specs": {},
+        "first_price": {
+            "btc": 2e-8,
+            "usd": 0.0000074,
+            "date": "2014-10-25T00:00:00"
+        },
         "links": [
             {
                 "type": "website",
@@ -7745,12 +7603,7 @@
                     "Exchange"
                 ]
             }
-        ],
-        "first_price": {
-            "btc": 2e-8,
-            "usd": 0.0000074,
-            "date": "2014-10-25T00:00:00"
-        }
+        ]
     },
     {
         "genesis_id": "1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691",
@@ -7974,81 +7827,6 @@
         },
         "flags": {
             "quantum": true
-        }
-    },
-    {
-        "genesis_id": "Dogeparty",
-        "system": "Dogeparty",
-        "icon": "dogeparty",
-        "dependencies": [
-            "Dogecoin"
-        ],
-        "aliases": {
-            "coinmarketcap": "Dogeparty"
-        },
-        "consensus": {
-            "type": "Dogecoin",
-            "algorithm": "OP_Return"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptoasset",
-            "tags": [
-                "DApp"
-            ]
-        },
-        "token": {
-            "name": "Dogeparty",
-            "symbol": "XDP"
-        },
-        "specs": {},
-        "links": [
-            {
-                "type": "website",
-                "name": "dogeparty.io",
-                "url": "http://www.dogeparty.io/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "Dogeparty Explorer",
-                "url": "https://dogepartychain.io/",
-                "icon": "dogeparty.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Explorer",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "Dogeparty GitHub",
-                "url": "https://github.com/Dogeparty",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "BTT Thread",
-                "url": "https://bitcointalk.org/index.php?topic=737231.0",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            }
-        ],
-        "first_price": {
-            "btc": 0.0001852,
-            "usd": 0.09135455,
-            "date": "2014-08-27T00:00:00"
         }
     },
     {
@@ -8958,15 +8736,16 @@
         },
         "links": [
             {
+                "type": "site",
                 "name": "Ethereum.org",
                 "url": "http://ethereum.org/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
-                ],
-                "type": "site"
+                ]
             },
             {
+                "type": "explorer",
                 "name": "EtherScan",
                 "url": "http://etherscan.io/",
                 "icon": "etherscan.png",
@@ -8974,99 +8753,100 @@
                     "Main",
                     "Apps",
                     "Analytics"
-                ],
-                "type": "explorer"
+                ]
             },
             {
+                "type": "blog",
                 "name": "Blog",
                 "url": "http://blog.ethereum.org/",
                 "icon": "blog.png",
                 "tags": [
                     "News"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "twitter",
                 "name": "Twitter",
                 "url": "https://twitter.com/ethereumproject",
                 "icon": "twitter.png",
                 "tags": [
                     "News"
-                ],
-                "type": "twitter"
+                ]
             },
             {
+                "type": "custom",
                 "name": "CoinTelegraph",
                 "url": "http://cointelegraph.com/tags/ethereum",
-                "type": "custom",
                 "icon": "cointelegraph.png",
                 "tags": [
                     "News"
                 ]
             },
             {
+                "type": "custom",
                 "name": "BitcoinMagazine",
                 "url": "https://bitcoinmagazine.com/",
-                "type": "custom",
                 "icon": "bitcoinmagazine.png",
                 "tags": [
                     "News"
                 ]
             },
             {
+                "type": "custom",
                 "name": "CoinDesk",
                 "url": "http://www.coindesk.com/tag/ethereum/",
-                "type": "custom",
                 "icon": "coindesk.png",
                 "tags": [
                     "News"
                 ]
             },
             {
+                "type": "forum",
                 "name": "Forum",
                 "url": "http://forum.ethereum.org/",
                 "icon": "forum.png",
                 "tags": [
                     "News"
-                ],
-                "type": "forum"
+                ]
             },
             {
+                "type": "reddit",
                 "name": "Reddit",
                 "url": "https://www.reddit.com/r/ethereum",
                 "icon": "reddit.png",
                 "tags": [
                     "News"
-                ],
-                "type": "reddit"
+                ]
             },
             {
+                "type": "custom",
                 "name": "Facebook",
                 "url": "https://www.facebook.com/ethereumproject",
                 "icon": "facebook.png",
                 "tags": [
                     "News"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "custom",
                 "name": "YouTube",
                 "url": "https://www.youtube.com/user/ethereumproject",
                 "icon": "youtube.png",
                 "tags": [
                     "News"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "github",
                 "name": "Ethereum organization on GitHub",
                 "url": "https://github.com/ethereum/",
+                "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "explorer",
                 "name": "Network monitoring",
                 "url": "https://stats.ethdev.com/",
                 "icon": "ethereum.png",
@@ -9074,215 +8854,214 @@
                     "Main",
                     "Apps",
                     "Analytics"
-                ],
-                "type": "website"
+                ]
             },
             {
+                "type": "paper",
                 "name": "Homestead Guide",
                 "url": "https://ethereum-homestead.readthedocs.org",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "paper"
+                ]
             },
             {
+                "type": "whitepaper",
                 "name": "A Next-Generation Smart Contract and Decentralized Application Platform, Vitalik Buterin",
                 "url": "https://github.com/ethereum/wiki/wiki/White-Paper",
                 "icon": "whitepaper.png",
-                "type": "whitepaper",
                 "tags": [
                     "Science"
                 ]
             },
             {
+                "type": "whitepaper",
                 "name": "Ethereum: A Secure Decentralised Generalised Transaction Ledger, Dr. Gavin Wood",
                 "url": "http://gavwood.com/paper.pdf",
                 "icon": "whitepaper.png",
-                "type": "whitepaper",
                 "tags": [
                     "Science"
                 ]
             },
             {
+                "type": "whitepaper",
                 "name": "Notes on Scalable Blockchain Protocols, Vitalik Buterin",
                 "url": "file:///Users/xhipster/Downloads/scalability.pdf",
                 "icon": "whitepaper.png",
-                "type": "whitepaper",
                 "tags": [
                     "Science"
                 ]
             },
             {
+                "type": "github",
                 "name": "Jeffrey Wilcke's Go implementation",
                 "url": "https://github.com/ethereum/go-ethereum",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "Gavin Wood's C++ implementation",
                 "url": "https://github.com/ethereum/cpp-ethereum",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "Ethereum Compatible JavaScript API",
                 "url": "https://github.com/ethereum/web3.js",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "Vitalik Buterin's Python implementation",
                 "url": "https://github.com/ethereum/pyethereum",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "Java implementation",
                 "url": "https://github.com/ethereum/ethereumj",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "Meteor packages on Atmosphere",
                 "url": "https://atmospherejs.com/ethereum",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "Ethash implementation",
                 "url": "https://github.com/ethereum/ethash",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "Mist: Browser for Ethereum",
                 "url": "https://github.com/ethereum/mist",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "State of the Dapps",
                 "url": "http://dapps.ethercasts.com/",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "Embark: Framework for Ethereum DApps",
                 "url": "https://iurimatias.github.io/embark-framework/",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "Truffle: A development framework for Ethereum",
                 "url": "https://github.com/ConsenSys/truffle",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "Mintchalk: A contract publishing tool",
                 "url": "http://www.mintchalk.com/",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "github",
                 "name": "Cosmo: Browser-based IDE for the Solidity build in Meteor",
                 "url": "http://cosmo.to/",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
+                "type": "earn",
                 "name": "NanoPool",
                 "icon": "mining.png",
                 "url": "http://nanopool.org/",
                 "tags": [
                     "Apps"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "earn",
                 "name": "EthPool",
                 "icon": "mining.png",
                 "url": "http://ethpool.org/",
                 "tags": [
                     "Apps"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "earn",
                 "name": "SuperNova",
                 "icon": "mining.png",
                 "url": "https://eth.suprnova.cc/",
                 "tags": [
                     "Apps"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "earn",
                 "name": "CoinoTron",
                 "icon": "mining.png",
                 "url": "https://www.coinotron.com/coinotron/AccountServlet?action=home",
                 "tags": [
                     "Apps"
-                ],
-                "type": "custom"
+                ]
             },
             {
+                "type": "custom",
                 "name": "Ether.Fund",
-                "icon": "link.png",
                 "url": "http://ether.fund",
-                "headline": "Ethereum blockchain services",
+                "icon": "link.png",
                 "tags": [
                     "Apps"
                 ]
             },
             {
+                "type": "github",
                 "name": "A Python Implementation of the Serpent",
                 "url": "https://github.com/syng-io/serpent3",
                 "icon": "github.png",
                 "tags": [
                     "Code"
-                ],
-                "type": "github"
+                ]
             },
             {
                 "type": "exchange",
@@ -9406,7 +9185,7 @@
             },
             {
                 "type": "explorer",
-                "name": "Etherechain.org",
+                "name": "EtherChain.org",
                 "url": "http://etherchain.org/",
                 "icon": "etherchain.jpg",
                 "tags": [
@@ -9720,86 +9499,6 @@
                 ]
             }
         ]
-    },
-    {
-        "genesis_id": "?",
-        "system": "FIMKrypto",
-        "icon": "fimkrypto",
-        "dependencies": "independent",
-        "aliases": {
-            "coinmarketcap": "FIMKrypto"
-        },
-        "consensus": {
-            "type": "PoS",
-            "algorithm": "NXT"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptocurrency",
-            "tags": [
-                "DAO"
-            ]
-        },
-        "events": {
-            "announcement": "23/07/2014"
-        },
-        "token": {
-            "name": "FIMKrypto",
-            "symbol": "FIMK"
-        },
-        "specs": {
-            "block_time": "30 seconds",
-            "block_reward": "200 FIM",
-            "total_tokens": "1000000000"
-        },
-        "links": [
-            {
-                "type": "website",
-                "name": "fimk.fi",
-                "url": "http://fimk.fi/en/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "Explorer",
-                "url": "https://www.mofowallet.com/launch.html#/activity/fim/blockchain/latest",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Explorer",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "FIMKrypto GitHub",
-                "url": "https://github.com/fimkrypto/",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "BTT Thread",
-                "url": "https://bitcointalk.org/index.php?topic=633304.0",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            }
-        ],
-        "first_price": {
-            "btc": 0.00000339,
-            "usd": 0.0021129,
-            "date": "2014-07-2T00:00:00"
-        }
     },
     {
         "genesis_id": "2fb170f73c3961d4218ff806dd75e6e348ca1798a5fc7a99d443fbe2ff939d99",
@@ -10273,7 +9972,7 @@
             "algorithm": "Transferable Fungible"
         },
         "aliases": {
-            "coinmarketcap": "First Blood (..."
+            "coinmarketcap": "First Blood"
         },
         "descriptions": {
             "state": "Public",
@@ -10303,6 +10002,7 @@
             "cap": {}
         },
         "first_price": {
+            "date": "2016-09-26T01:00:00",
             "btc": 0.00012717,
             "usd": 0.07638132
         },
@@ -10394,7 +10094,7 @@
             },
             {
                 "type": "explorer",
-                "name": "FirstBlood Asset",
+                "name": "EtherScan",
                 "url": "https://etherscan.io/address/0xAf30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
                 "icon": "etherscan.png",
                 "tags": [
@@ -10417,6 +10117,26 @@
                 "name": "Gatecoin",
                 "url": "https://gatecoin.com/",
                 "icon": "gatecoin.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Liqui Exchange",
+                "url": "https://liqui.io/",
+                "icon": "liqui.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "EtherDelta",
+                "url": "https://etherdelta.github.io",
+                "icon": "etherdelta.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -10451,6 +10171,26 @@
                 "tags": [
                     "Apps",
                     "Wallet"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherChain.org",
+                "url": "http://etherchain.org/",
+                "icon": "etherchain.jpg",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Ether.Camp",
+                "url": "https://live.ether.camp/account/Af30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
+                "icon": "ethercamp.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
                 ]
             }
         ]
@@ -10946,6 +10686,139 @@
             "usd": 0.00013839,
             "date": "2014-06-12T00:00:00"
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "FundRequest",
+        "icon": "fundrequest",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "token": {
+            "name": "FundRequest",
+            "symbol": "FND"
+        },
+        "consensus": {
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
+        },
+        "aliases": {
+            "coinmarketcap": "FundRequest"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralised Platform for rewarding open source contributions",
+            "tags": [
+                "DApp"
+            ],
+            "page_state": "ready",
+            "hashtag": "#fundrequest",
+            "twwidid": "781793651626242048"
+        },
+        "crowdsales": {
+            "start_date": "2017-07-03T14:30:00",
+            "end_date": "2017-08-14T14:30:00",
+            "genesis_address": [
+                ""
+            ],
+            "min_investment": 0.01,
+            "funding_terms": "https://fundrequest.io/whitepaper.pdf",
+            "funding_url": "https://fundrequest.io/ico/",
+            "tokens_issued": 2000000,
+            "btc_raised": ""
+        },
+        "specs": {
+            "cap": {}
+        },
+        "first_price": {},
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "www.fundrequest.io",
+                "url": "https://www.fundrequest.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://medium.com/@fundrequest_io",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/fundrequest_io",
+                "icon": "twitter.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1696378.msg17019226#msg17019226",
+                "icon": "bitcoin.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/user/FundRequest_io",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Slack",
+                "url": "https://fundrequest.slack.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/watch?v=IjiY5MaoMlI",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "FundRequest GitHub",
+                "url": "https://github.com/FundRequest",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "FundRequest Business Plan",
+                "url": "https://fundrequest.io/whitepaper.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "91ec5f25ee9a0ffa1af7d4da4db9a552228dd2dc77cdb15b738be4e1f55f30ee",
@@ -11493,7 +11366,7 @@
             "algorithm": "Transferable Fungible"
         },
         "aliases": {
-            "coinmarketcap": "Golem Network...",
+            "coinmarketcap": "Golem",
             "nickname": "Golem Project"
         },
         "descriptions": {
@@ -11605,6 +11478,96 @@
                 "icon": "paper.png",
                 "tags": [
                     "Science"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Mist Wallet",
+                "url": "https://github.com/ethereum/mist/releases/",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MyEther Wallet",
+                "url": "https://www.myetherwallet.com/",
+                "icon": "myetherwallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "EthCore Parity",
+                "url": "https://ethcore.io/parity.html",
+                "icon": "parity.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Yunbi",
+                "url": "https://yunbi.com/?lang=en",
+                "icon": "yunbi.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Liqui Exchange",
+                "url": "https://liqui.io/",
+                "icon": "liqui.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "EtherDelta",
+                "url": "https://etherdelta.github.io",
+                "icon": "etherdelta.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherScan",
+                "url": "http://etherscan.io/",
+                "icon": "etherscan.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherChain.org",
+                "url": "http://etherchain.org/",
+                "icon": "etherchain.jpg",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Ether.Camp",
+                "url": "https://live.ether.camp/account/Af30D2a7E90d7DC361c8C4585e9BB7D2F6f15bc7",
+                "icon": "ethercamp.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
                 ]
             }
         ]
@@ -11782,6 +11745,16 @@
             },
             {
                 "type": "exchange",
+                "name": "Bittrex",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
                 "name": "Kuna Exchange",
                 "url": "https://kuna.io/",
                 "icon": "kuna.png",
@@ -11805,6 +11778,16 @@
                 "name": "LiveCoin Exchange",
                 "url": "https://www.livecoin.net/",
                 "icon": "livecoin.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "OpenLedger",
+                "url": "https://bitshares.openledger.info/#/market/GOLOS_OPEN.BTC",
+                "icon": "openledger.png",
                 "tags": [
                     "Apps",
                     "Exchange"
@@ -12295,130 +12278,6 @@
         }
     },
     {
-        "genesis_id": "",
-        "system": "Hong",
-        "icon": "hong",
-        "dependencies": [
-            "Ethereum"
-        ],
-        "token": {
-            "name": "hong",
-            "symbol": "HONG"
-        },
-        "consensus": {
-            "type": "Ethereum",
-            "algorithm": "Transferable Fungible"
-        },
-        "aliases": {
-            "coinmarketcap": "Project HONG"
-        },
-        "descriptions": {
-            "state": "Pre-Public",
-            "system_type": "cryptoasset",
-            "headline": "A Decentralized Venture Fund",
-            "tags": [
-                "DO"
-            ],
-            "page_state": "draft"
-        },
-        "crowdsales": {
-            "start_date": "2016-08-29T20:00:00",
-            "end_date": "2016-10-29T20:00:00",
-            "genesis_address": [
-                "0x9Fa8fA61A10Ff892E4EBCeB7f4e0FC684C2ce0a9"
-            ],
-            "funding_terms": "https://medium.com/@hongcoin/how-money-flows-in-hong-coin-operation-56e1b8143ad7#.lr12ijxq3",
-            "funding_url": "http://www.hongcoin.org/",
-            "tokens_sold": "",
-            "tokens_issued": "",
-            "btc_raised": ""
-        },
-        "specs": {
-            "price": {}
-        },
-        "first_price": {},
-        "flags": {},
-        "links": [
-            {
-                "type": "website",
-                "name": "hongcoin.org",
-                "url": "http://hongcoin.org",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "Hong GitHub",
-                "url": "https://github.com/hongcoin",
-                "tags": [
-                    "Code"
-                ]
-            },
-            {
-                "type": "twitter",
-                "name": "Twitter",
-                "url": "https://twitter.com/hongcoins",
-                "icon": "twitter.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            },
-            {
-                "type": "blog",
-                "name": "Project HONG Medium",
-                "url": "https://medium.com/@hongcoin",
-                "rss": "https://medium.com/feed/@hongcoin",
-                "icon": "medium.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            },
-            {
-                "type": "reddit",
-                "name": "reddit",
-                "url": "https://www.reddit.com/r/hong/",
-                "rss": "https://www.reddit.com/r/hong/.rss",
-                "icon": "reddit.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Hong Slack",
-                "url": "http://slack.hongcoin.org",
-                "icon": "slack.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            },
-            {
-                "type": "paper",
-                "name": "HONG, a Decentralized Venture Fund on Blockchain",
-                "url": "https://medium.com/@hongcoin/hong-coin-a-post-dao-organization-on-blockchain-cf88605cede5#.e7ejoll22",
-                "icon": "paper.png",
-                "tags": [
-                    "Science",
-                    "Reason"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Project HONG channel",
-                "url": "https://www.youtube.com/channel/UCfPwvDLNFgJ8n70RI65hwKA",
-                "icon": "youtube.png",
-                "tags": [
-                    "News"
-                ]
-            }
-        ]
-    },
-    {
         "genesis_id": "Horizon",
         "system": "Horizon",
         "icon": "horizon",
@@ -12630,11 +12489,10 @@
             "page_state": "draft"
         },
         "crowdsales": {
-            "start_date": "2016-12-15T00:00:00",
-            "end_date": "2016-12-27T00:00:00",
+            "start_date": "2017-04-06T00:00:00",
+            "end_date": "2017-04-27T00:00:00",
             "genesis_address": [
-                "0xa2c9a7578e2172F32a36c5c0e49d64776F9E7883",
-                "1JwkMP7eoqjg5rEG3vGuub8h5k3orPkpTf"
+                ""
             ],
             "funding_terms": "https://docs.google.com/document/d/1VNaQeKScFIX5YN2DoIofpgwx2Hen6Cksycwvilk8g9k/edit",
             "funding_url": "https://humaniq.co/",
@@ -12665,7 +12523,6 @@
                 "url": "http://twitter.com/Humaniq_co",
                 "icon": "twitter.png",
                 "tags": [
-                    "Main",
                     "News"
                 ]
             },
@@ -12690,7 +12547,7 @@
             {
                 "type": "paper",
                 "name": "Humaniq Whitepaper",
-                "url": "https://docs.google.com/document/d/1VNaQeKScFIX5YN2DoIofpgwx2Hen6Cksycwvilk8g9k/",
+                "url": "https://humaniq.co/assets/downloads/humaniq_wp_english.pdf",
                 "icon": "paper.png",
                 "tags": [
                     "Main",
@@ -12705,6 +12562,25 @@
                 "tags": [
                     "Main",
                     "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://blog.humaniq.co",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1711764.0",
+                "icon": "bitcoin.png",
+                "tags": [
+                    "News"
                 ]
             }
         ]
@@ -12978,6 +12854,7 @@
             "supply": 100000000
         },
         "first_price": {
+            "date": "2016-09-29T20:00:00",
             "btc": 0.00020323,
             "usd": 0.12313299
         },
@@ -13511,6 +13388,130 @@
         "flags": {
             "quantum": true
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "InternetofCoins",
+        "icon": "internetofcoins",
+        "dependencies": [
+            "independent"
+        ],
+        "token": {
+            "name": "hybrid asset",
+            "symbol": "XHY"
+        },
+        "consensus": {
+            "type": "Hybrid POS-POW",
+            "algorithm": "Haystack"
+        },
+        "aliases": {
+            "coinmarketcap": "",
+            "nickname": "Internet of Coins"
+        },
+        "descriptions": {
+            "state": "Public",
+            "system_type": "cryptocurrency",
+            "headline": "Decentralized Inclusive Cryptocurrency Environment",
+            "tags": [
+                "DAO",
+                "TOS",
+                "DAPP"
+            ],
+            "twwidid": "",
+            "page_state": "draft"
+        },
+        "specs": {
+            "supply": 7000000,
+            "premine_tokens": 0,
+            "rpc": "1111"
+        },
+        "crowdsales": {
+            "start_date": "2017-03-21T10:00:00",
+            "end_date": "2017-06-21T10:00:00",
+            "genesis_address": [
+                "14aV8dULoL67i6xQncfmFsbFaEtpRKskC2",
+                "1BshWVmV1o4ZPWRvTGVMGsXMmQaV1qAouw",
+                "0x197A920123DDa17040A065457Ef0c01B28A54045",
+                "NXT-FCXQ-K5NB-EA5E-CF36G",
+                "NB6TCTRBT7KUN5T5337LBSBIAYHL375VHCFZNOAU",
+                "3P6xW7z9rjfGcoTeEiitoWfHWMbZ5j2GZkN",
+                "internet-of-coins"
+            ],
+            "funding_terms": "https://coinstorm.net/terms",
+            "funding_url": "https://coinstorm.net",
+            "btc_raised": "",
+            "tokens_sold": "",
+            "tokens_issued": 7000000,
+            "min_investment": 0.01
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "coinstorm.net",
+                "url": "https://coinstorm.net/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Internet of Coins whitepaper",
+                "url": "https://internetofcoins.org/public/uploads/whitepaper_ioc.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Github",
+                "url": "https://github.com/internetofcoins",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://internetofcoins.org/blog",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1760129.0",
+                "icon": "bitcoin.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/internetofcoins",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Youtube",
+                "url": "https://www.youtube.com/results?search_query=internet+of+coins",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "",
@@ -14642,80 +14643,6 @@
         }
     },
     {
-        "genesis_id": "10524562908394749924",
-        "system": "MGW",
-        "icon": "mgw",
-        "dependencies": [
-            "NXT"
-        ],
-        "aliases": {
-            "coinmarketcap": "MGW"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptocurrency"
-        },
-        "consensus": {
-            "type": "NXT",
-            "algorithm": "AE"
-        },
-        "token": {
-            "name": "MGW",
-            "symbol": "MGW"
-        },
-        "specs": {},
-        "links": [
-            {
-                "type": "website",
-                "name": "multigateway.org",
-                "url": "http://multigateway.org/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "name": "MGW Asset",
-                "url": "http://www.nxtreporting.com/?as=10524562908394749924",
-                "icon": "nxt.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ],
-                "type": "explorer"
-            },
-            {
-                "name": "NXT Forum",
-                "url": "https://nxtforum.org/nxtservices-releases/multigateway-user-support-thread/",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ],
-                "type": "forum"
-            },
-            {
-                "name": "NXT AE",
-                "url": "http://www.nxtreporting.com/?as=10524562908394749924",
-                "icon": "nxt.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ],
-                "type": "custom"
-            }
-        ],
-        "first_price": {
-            "btc": 0.00055376,
-            "usd": 0.26544373,
-            "date": "2014-08-31T00:00:00"
-        },
-        "flags": {
-            "quantum": true
-        }
-    },
-    {
         "genesis_id": "",
         "system": "Mineum",
         "token": {
@@ -14808,194 +14735,6 @@
                 ]
             }
         ]
-    },
-    {
-        "genesis_id": "8122396658538927693",
-        "system": "MMBTCD",
-        "icon": "mmbtcd",
-        "dependencies": "NXT",
-        "aliases": {
-            "coinmarketcap": "MMBTCD"
-        },
-        "consensus": {
-            "type": "NXT",
-            "algorithm": "AE"
-        },
-        "descriptions": {
-            "tags": [
-                "DApp"
-            ],
-            "state": "Public",
-            "system_type": "cryptoasset"
-        },
-        "token": {
-            "name": "MMBTCD",
-            "symbol": "MMBTCD"
-        },
-        "specs": {},
-        "links": [
-            {
-                "name": "MMBTCD Asset",
-                "url": "http://nxtreporting.com/?as=8122396658538927693",
-                "icon": "nxt.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ],
-                "type": "explorer"
-            },
-            {
-                "name": "NXT Forum",
-                "url": "https://nxtforum.org/cryptoasset-fund-projects/btcd-market-maker-asset/",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ],
-                "type": "forum"
-            },
-            {
-                "name": "MMBTCD Announcement",
-                "url": "https://nxtforum.org/cryptoasset-fund-projects/btcd-market-maker-asset/",
-                "icon": "paper.png",
-                "tags": [
-                    "Main",
-                    "Science"
-                ],
-                "type": "paper"
-            },
-            {
-                "name": "Markets CMC",
-                "url": "http://coinmarketcap.com/assets/mmbtcd/#markets",
-                "type": "custom",
-                "icon": "link.png",
-                "tags": [
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "name": "NXT AE",
-                "url": "http://nxtreporting.com/?as=8122396658538927693",
-                "icon": "nxt.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ],
-                "type": "custom"
-            }
-        ],
-        "first_price": {
-            "btc": 0.00046246,
-            "usd": 0.13057263,
-            "date": "2015-07-07T00:00:00"
-        },
-        "flags": {
-            "quantum": true
-        }
-    },
-    {
-        "genesis_id": "979292558519844732",
-        "system": "MMNXT",
-        "dependencies": "NXT",
-        "aliases": {
-            "coinmarketcap": "MMNXT"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptoasset"
-        },
-        "consensus": {
-            "type": "NXT",
-            "algorithm": "AE"
-        },
-        "token": {
-            "name": "MMNXT",
-            "symbol": "MMNXT"
-        },
-        "specs": {},
-        "flags": {
-            "rating_do_not_display": true,
-            "quantum": true
-        },
-        "links": [
-            {
-                "name": "www.mmnxt.com",
-                "url": "http://www.mmnxt.com/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ],
-                "type": "website"
-            },
-            {
-                "name": "MMNXT Asset",
-                "url": "http://www.nxtreporting.com/?as=979292558519844732",
-                "icon": "nxt.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ],
-                "type": "explorer"
-            },
-            {
-                "name": "Twitter",
-                "url": "https://twitter.com/mmnxtfund",
-                "icon": "twitter.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ],
-                "type": "twitter"
-            },
-            {
-                "name": "NXT Forum",
-                "url": "https://nxtforum.org/cryptoasset-fund-projects/mmnxt-market-making-and-arbitrage-fund-for-nxt-ae/",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ],
-                "type": "forum"
-            },
-            {
-                "name": "Markets CMC",
-                "url": "http://coinmarketcap.com/assets/mmnxt/#markets",
-                "type": "custom",
-                "icon": "link.png",
-                "tags": [
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "name": "Poloniex",
-                "url": "https://www.poloniex.com",
-                "type": "custom",
-                "icon": "poloniex.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
-                "name": "NXT AE",
-                "url": "http://www.nxtreporting.com/?as=979292558519844732",
-                "icon": "nxt.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ],
-                "type": "custom"
-            }
-        ],
-        "first_price": {
-            "btc": 0.00006098,
-            "usd": 0.02475329,
-            "date": "2014-09-22T00:00:00"
-        }
     },
     {
         "genesis_id": "358",
@@ -15659,7 +15398,9 @@
             "tokens_sold": 563162,
             "tokens_issued": 613148.53852826
         },
-        "specs": {},
+        "specs": {
+            "previous_name": "Mastercoin"
+        },
         "links": [
             {
                 "type": "risk",
@@ -15870,6 +15611,133 @@
         }
     },
     {
+        "genesis_id": "",
+        "system": "Matchpool",
+        "icon": "matchpool",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "token": {
+            "name": "guppie",
+            "symbol": "GUP"
+        },
+        "consensus": {
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
+        },
+        "aliases": {
+            "coinmarketcap": "Matchpool"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Dapp that reward people for creating human connections",
+            "tags": [
+                "DApp"
+            ],
+            "twwidid": "",
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2017-03-25T10:00:00",
+            "end_date": "2017-04-25T10:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "http://matchpool.co/crowdsale/",
+            "funding_url": "http://matchpool.co/crowdsale/",
+            "tokens_sold": 60000000,
+            "tokens_issued": 100000000,
+            "btc_raised": ""
+        },
+        "specs": {
+            "supply": 100000000,
+            "cap": {}
+        },
+        "first_price": {
+            "date": "",
+            "btc": "",
+            "usd": ""
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "matchpool.co",
+                "url": "http://matchpool.co",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Matchpool GitHub",
+                "url": "https://github.com/Matchpool",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Matchpool Whitepaper",
+                "url": "http://matchpool.co/wp-content/uploads/2016/12/Matchpool_Whitepaper_221216.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://medium.com/@matchpool",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/matchpool",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1752471.0",
+                "icon": "bitcoin.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Slack",
+                "url": "https://matchpool.signup.team/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/matchpoolhq/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "00000c7c73d8ce604178dae13f0fc6ec0be3275614366d44b1b4b5c6e238c60c",
         "system": "MazaCoin",
         "icon": "mazacoin",
@@ -16039,6 +15907,156 @@
             "usd": 0.00419918,
             "date": "2013-07-07T00:00:00"
         }
+    },
+    {
+        "genesis_id": "0xBEB9eF514a379B997e0798FDcC901Ee474B6D9A1",
+        "system": "Melonport",
+        "icon": "melonport",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "token": {
+            "name": "melon",
+            "symbol": "MLN"
+        },
+        "consensus": {
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
+        },
+        "aliases": {
+            "coinmarketcap": "Melon",
+            "nickname": "Melonport"
+        },
+        "descriptions": {
+            "state": "Public",
+            "system_type": "cryptoasset",
+            "headline": "An open-source blockchain protocol for asset management",
+            "tags": [
+                "DApp"
+            ],
+            "page_state": "ready"
+        },
+        "crowdsales": {
+            "start_date": "2017-02-15T12:00:00",
+            "end_date": "2017-02-15T12:00:00",
+            "genesis_address": [
+                "0x3BF541f87056D134E0109BE1Be92978b26Cb09e0"
+            ],
+            "funding_terms": "https://contribution.melonport.com/terms.pdf",
+            "funding_url": "https://melonport.com/",
+            "tokens_issued": 1250000,
+            "tokens_sold": 750000,
+            "btc_raised": 2903
+        },
+        "specs": {
+            "supply": 1250000,
+            "cap": {},
+            "price": {}
+        },
+        "first_price": {
+            "date": "2017-03-15T12:00:00",
+            "btc": 0.00387073,
+            "usd": 3.88416143
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "melonport.com",
+                "url": "http://www.melonport.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/melonport",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "LinkedIn",
+                "url": "https://www.linkedin.com/company/melonport-ltd",
+                "icon": "linkedin.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Melonport Slack",
+                "url": "http://chat.melonport.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://reddit.com/r/melonproject",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Melonport GitHub",
+                "url": "https://www.github.com/melonproject",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Melonport Whitepaper",
+                "url": "https://github.com/melonproject/greenpaper/blob/master/melonprotocol.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Mist Wallet",
+                "url": "https://github.com/ethereum/mist/releases/",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MetaMask Wallet",
+                "url": "https://metamask.io/",
+                "icon": "metamask.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Kraken",
+                "url": "https://www.kraken.com",
+                "icon": "kraken.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "00000dd1b1e4472dde86b27f6775efdafc421017fc9ffdb0b863603608b9353e",
@@ -16862,6 +16880,99 @@
         }
     },
     {
+        "system": "Musicoin",
+        "icon": "musicoin",
+        "aliases": {
+            "coinmarketcap": "Musicoin"
+        },
+        "consensus": {
+            "type": "PoW",
+            "algorithm": "Ethash"
+        },
+        "descriptions": {
+            "state": "Public",
+            "system_type": "cryptocurrency",
+            "page_state": "ready"
+        },
+        "events": {
+            "announcement": "2/10/2017",
+            "genesis": "2/10/2017"
+        },
+        "token": {
+            "name": "Musicoin",
+            "symbol": "MC"
+        },
+        "specs": {
+            "block_reward": 500,
+            "premine_tokens": 0,
+            "block_time": 15,
+            "difficulty_cycle": "2016",
+            "txs_confirm": 6,
+            "rpc": "8545"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "musicoin",
+                "url": "http://musicoin.org",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "MC Orbiter",
+                "url": "http://orbiter.musicoin.org",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Explorer",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Musicoin GitHub",
+                "url": "https://github.com/onetimer/musicoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "MC Forum",
+                "url": "http://forum.musicoin.org",
+                "icon": "forum.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "whitepaper",
+                "name": "Musicoin: Free Creations While Rewarding Creators",
+                "url": "https://medium.com/@musicoin/musicoin-free-creations-while-rewarding-creators-2832f7d2bd33",
+                "icon": "whitepaper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/musicoins",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "La3hSVSFkUqoPQqdDdbaYsJUkEJCkABuGCHosK",
         "system": "Mycelium",
         "icon": "mycelium",
@@ -17589,12 +17700,17 @@
     {
         "genesis_id": "00000729be7c186c90758ebeb55f9f947ee3f1d856b5d136d5796b4a5a704a59",
         "system": "Navajo",
-        "icon": "navajo",
+        "icon": "navcoin",
         "dependencies": [
             "independent"
         ],
+        "token": {
+            "name": "navcoin",
+            "symbol": "NAV"
+        },
         "aliases": {
-            "coinmarketcap": "Navajo"
+            "coinmarketcap": "NAV Coin",
+            "nickname": "NAV Coin"
         },
         "consensus": {
             "type": "PoS",
@@ -17607,16 +17723,17 @@
             "state": "Public",
             "system_type": "cryptocurrency"
         },
-        "token": {
-            "name": "Navajo",
-            "symbol": "NAV"
+        "first_price": {
+            "btc": 0.00000618,
+            "usd": 0.00367082,
+            "date": "2014-06-12T00:00:00"
         },
         "specs": {},
         "links": [
             {
                 "type": "website",
-                "name": "navajocoin.org",
-                "url": "http://navajocoin.org/",
+                "name": "navcoin.org",
+                "url": "http://www.navcoin.org/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
@@ -17624,9 +17741,9 @@
             },
             {
                 "type": "explorer",
-                "name": "Explorer",
-                "url": "http://navajocoin.org/block-explorer",
-                "icon": "explorer.png",
+                "name": "CryptoID Explorer",
+                "url": "https://chainz.cryptoid.info/nav/",
+                "icon": "cryptoid.png",
                 "tags": [
                     "Main",
                     "Apps",
@@ -17635,8 +17752,8 @@
             },
             {
                 "type": "github",
-                "name": "Navajo GitHub",
-                "url": "https://github.com/sherlockcoin/navajocoin",
+                "name": "NAV Coin GitHub",
+                "url": "https://github.com/navcoindev",
                 "icon": "github.png",
                 "tags": [
                     "Main",
@@ -17644,9 +17761,20 @@
                 ]
             },
             {
+                "type": "wallet",
+                "name": "NAV Coin Wallet",
+                "url": "http://www.navcoin.org/downloads",
+                "icon": "wallet.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
                 "type": "paper",
-                "name": "Documentation",
-                "url": "http://navajocoin.org/pdf/navajocoin.pdf",
+                "name": "Navtech Whitepaper",
+                "url": "http://www.navcoin.org/files/navtech-whitepaper-beta-v0.9.pdf",
                 "icon": "whitepaper.png",
                 "tags": [
                     "Main",
@@ -17654,9 +17782,18 @@
                 ]
             },
             {
+                "type": "paper",
+                "name": "Navtech Decentralization Whitepaper",
+                "url": "http://www.navcoin.org/files/navtech-decentralisation-whitepaper-beta-v0.9.pdf",
+                "icon": "whitepaper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
                 "type": "twitter",
                 "name": "Twitter",
-                "url": "https://twitter.com/NavajoCoin",
+                "url": "https://twitter.com/NavCoin",
                 "icon": "twitter.png",
                 "tags": [
                     "News"
@@ -17664,9 +17801,9 @@
             },
             {
                 "type": "forum",
-                "name": "Forum",
-                "url": "http://forum.navajocointalk.org/",
-                "icon": "forum.png",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=679791",
+                "icon": "bitcoin.png",
                 "tags": [
                     "News"
                 ]
@@ -17674,18 +17811,62 @@
             {
                 "type": "reddit",
                 "name": "reddit",
-                "url": "http://www.reddit.com/r/navajocoin",
+                "url": "http://www.reddit.com/r/navcoin",
                 "icon": "reddit.png",
                 "tags": [
                     "News"
                 ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/NAVCoin",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Poloniex",
+                "url": "https://www.poloniex.com",
+                "icon": "poloniex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Bittrex",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "C-CEX",
+                "url": "https://c-cex.com",
+                "icon": "c-cex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Bitsquare",
+                "url": "https://market.bitsquare.io",
+                "icon": "bitsquare.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
             }
-        ],
-        "first_price": {
-            "btc": 0.00000618,
-            "usd": 0.00367082,
-            "date": "2014-06-12T00:00:00"
-        }
+        ]
     },
     {
         "genesis_id": "00000cde7894e403bc530b3d3f8d69679d50022dd7a5a6539194ff9c555a2d9f",
@@ -19593,12 +19774,8 @@
         },
         "specs": {
             "supply": 20000000,
-            "price": {
-                "btc": 0.00007459
-            },
-            "cap": {
-                "btc": 3534.74
-            }
+            "price": {},
+            "cap": {}
         },
         "first_price": {
             "btc": 0.00176737,
@@ -19702,6 +19879,16 @@
                 ]
             },
             {
+                "type": "exchange",
+                "name": "Liqui Exchange",
+                "url": "https://liqui.io/",
+                "icon": "liqui.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
                 "type": "wallet",
                 "name": "Mist Wallet",
                 "url": "https://github.com/ethereum/mist/releases/",
@@ -19730,6 +19917,36 @@
                 "tags": [
                     "Apps",
                     "Wallet"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherScan",
+                "url": "http://etherscan.io/",
+                "icon": "etherscan.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherChain.org",
+                "url": "http://etherchain.org/",
+                "icon": "etherchain.jpg",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Ether.Camp",
+                "url": "https://live.ether.camp/account/d8912c10681d8b21fd3742244f44658dba12264e",
+                "icon": "ethercamp.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
                 ]
             }
         ]
@@ -20225,6 +20442,133 @@
         }
     },
     {
+        "genesis_id": "",
+        "system": "Qtum",
+        "icon": "qtum",
+        "dependencies": [
+            "independent"
+        ],
+        "token": {
+            "name": "qutum",
+            "symbol": "QTUM"
+        },
+        "consensus": {
+            "type": "",
+            "algorithm": ""
+        },
+        "aliases": {
+            "coinmarketcap": "Qtum"
+        },
+        "descriptions": {
+            "state": "Pre-Public",
+            "system_type": "cryptoasset",
+            "headline": "Smart-Contract and Distributed Mobile Application Platform",
+            "tags": [
+                "DAO"
+            ],
+            "twwidid": "",
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2017-03-16T12:00:00",
+            "end_date": "2017-04-15T12:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://qtum.org/uploads/files/0c9eda5f51f62788a3f7d9d8fdc189d1.pdf",
+            "funding_url": "https://qtum.org/en/crowdsale",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": ""
+        },
+        "specs": {
+            "cap": {}
+        },
+        "first_price": {
+            "date": "",
+            "btc": "",
+            "usd": ""
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "qtum.org",
+                "url": "https://qtum.org",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "GitHub",
+                "url": "https://github.com/qtumproject",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Qtum Whitepaper",
+                "url": "https://qtum.org/uploads/files/cf6d69348ca50dd985b60425ccf282f3.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Qtum Blockchain Economy Whitepaper",
+                "url": "https://qtum.org/uploads/files/83afb59b6d9a0d58109d5bf9a1fa4de1.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Qtum Crowdsale Prospectus",
+                "url": "https://qtum.org/uploads/tmp/e0488eca3c7256ea97ce00003cc874a9.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://qtum.org/en/blog",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/QtumOfficial",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "facebook",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/QtumOfficial/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "00000c257b93a36e9a4318a64398d661866341331a984e2b486414fc5bb16ccd",
         "system": "Quark",
         "icon": "quark",
@@ -20431,80 +20775,6 @@
             "btc": 4e-8,
             "usd": 0.00002852,
             "date": "2014-02-10T00:00:00"
-        }
-    },
-    {
-        "genesis_id": "0000035cc3899836f94b588d61b0af526e7977e7fd18cae631eacf02bfdfcf0e",
-        "system": "RibbitRewards",
-        "icon": "ribbitrewards",
-        "dependencies": "independent",
-        "aliases": {
-            "coinmarketcap": "RibbitRewards",
-            "CurrencyName": "RibbitRewards"
-        },
-        "consensus": {
-            "type": "PoW",
-            "algorithm": "SHA-256+Scrypt"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptocurrency",
-            "tags": [
-                "DAO"
-            ]
-        },
-        "token": {
-            "name": "RibbitRewards",
-            "symbol": "RBR"
-        },
-        "specs": {},
-        "links": [
-            {
-                "type": "website",
-                "name": "ribbit.me",
-                "url": "https://ribbit.me",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "Explorer",
-                "url": "https://ribbitchain.info/",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Explorer",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "Ribbit GitHub",
-                "url": "https://github.com/RibbitFROG",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "BTT Thread",
-                "url": "https://bitcointalk.org/index.php?topic=857452.0",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            }
-        ],
-        "first_price": {
-            "btc": 0.00000139,
-            "usd": 0.00034137,
-            "date": "2015-01-23T00:00:00"
         }
     },
     {
@@ -21259,7 +21529,7 @@
             {
                 "type": "website",
                 "name": "rootstock.io",
-                "url": "http://www.rootstock.io/",
+                "url": "http://www.rsk.co/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
@@ -21272,6 +21542,33 @@
                 "icon": "reddit.png",
                 "tags": [
                     "News"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "RSK Explorer",
+                "url": "https://explorer.rsk.co",
+                "icon": "explorer.png",
+                "tags": [
+                    "Explorer"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "RSK Stats",
+                "url": "https://stats.rsk.co",
+                "icon": "explorer.png",
+                "tags": [
+                    "Data"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "RSK Faucet",
+                "url": "https://faucet.rsk.co",
+                "icon": "explorer.png",
+                "tags": [
+                    "Faucet"
                 ]
             }
         ]
@@ -21445,12 +21742,12 @@
         "specs": {
             "supply": 763038846.803527,
             "price": {
-                "btc": 8e-8,
-                "usd": 0.00007609
+                "btc": 0,
+                "usd": 0
             },
             "cap": {
-                "usd": 58057,
-                "btc": 61.04
+                "usd": 0,
+                "btc": 0
             }
         },
         "first_price": {
@@ -21618,14 +21915,14 @@
             "nickname": "Satoshi•Pie"
         },
         "specs": {
-            "supply": 482083.2163,
+            "supply": 567148.6665,
             "price": {
-                "usd": 2.1587,
-                "btc": 0.00226975
+                "usd": 4.6578,
+                "btc": 0.0044049
             },
             "cap": {
-                "usd": 1040677,
-                "btc": 1094.21
+                "usd": 2641655,
+                "btc": 2498.23
             }
         },
         "first_price": {
@@ -21638,6 +21935,15 @@
             "quantum": true
         },
         "links": [
+            {
+                "type": "website",
+                "name": "satoshi.fund",
+                "url": "http://satoshi.fund",
+                "icon": "site.png",
+                "tags": [
+                    "Main"
+                ]
+            },
             {
                 "type": "explorer",
                 "name": "Satoshi•Pie Asset",
@@ -21677,7 +21983,6 @@
                 "url": "https://bitshares.openledger.info/?r=satoshifund#/market/SPIES_USD",
                 "icon": "openledger.png",
                 "tags": [
-                    "Main",
                     "Apps",
                     "Exchange"
                 ]
@@ -22845,12 +23150,12 @@
             "name": "steem",
             "symbol": "STEEM"
         },
+        "aliases": {
+            "coinmarketcap": "Steem"
+        },
         "consensus": {
             "type": "PoS",
             "algorithm": "Delegated"
-        },
-        "aliases": {
-            "coinmarketcap": "Steem"
         },
         "descriptions": {
             "state": "Public",
@@ -22866,6 +23171,9 @@
             "btc": 0.00150433,
             "usd": 0.6454388,
             "date": "2016-04-18T16:19:00"
+        },
+        "flags": {
+            "quantum": true
         },
         "links": [
             {
@@ -22900,13 +23208,43 @@
                 ]
             },
             {
-                "type": "twitter",
-                "name": "Twitter",
-                "url": "https://twitter.com/steemchain",
-                "icon": "twitter.png",
+                "type": "blog",
+                "name": "Steemit Blog",
+                "url": "https://steemit.com/@steemitblog",
+                "icon": "steem.png",
                 "tags": [
                     "Main",
                     "News"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Piston Client",
+                "url": "https://github.com/xeroc/piston/releases",
+                "icon": "piston.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Steemle Explorer",
+                "url": "https://steemle.com/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "SteemDB Explorer",
+                "url": "https://steemdb.com/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
                 ]
             },
             {
@@ -22920,10 +23258,19 @@
                 ]
             },
             {
-                "type": "blog",
-                "name": "Blog",
-                "url": "https://steem.io/blog/",
-                "icon": "blog.png",
+                "type": "custom",
+                "name": "Steemit Chat",
+                "url": "https://steemit.chat/home",
+                "icon": "steem.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/steemchain",
+                "icon": "twitter.png",
                 "tags": [
                     "News"
                 ]
@@ -22949,9 +23296,9 @@
             },
             {
                 "type": "forum",
-                "name": "BTT Thread",
+                "name": "Bitcointalk",
                 "url": "https://bitcointalk.org/index.php?topic=1410943.0",
-                "icon": "forum.png",
+                "icon": "bitcoin.png",
                 "tags": [
                     "News"
                 ]
@@ -22984,13 +23331,131 @@
                 ]
             },
             {
-                "type": "explorer",
-                "name": "Steemle Explorer",
-                "url": "https://steemle.com/",
-                "icon": "explorer.png",
+                "type": "exchange",
+                "name": "Poloniex",
+                "url": "https://www.poloniex.com",
+                "icon": "poloniex.png",
                 "tags": [
                     "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "OpenLedger",
+                "url": "https://openledger.info/?r=cyberfund",
+                "icon": "openledger.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Bittrex",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Liqui Exchange",
+                "url": "https://liqui.io/",
+                "icon": "liqui.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "LiveCoin Exchange",
+                "url": "https://www.livecoin.net/",
+                "icon": "livecoin.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "HitBTC",
+                "url": "https://hitbtc.com",
+                "icon": "hitbtc.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "SteemDollar",
+        "icon": "steem",
+        "dependencies": [
+            "Steem"
+        ],
+        "token": {
+            "name": "steemdollar",
+            "symbol": "SBD"
+        },
+        "specs": {},
+        "consensus": {
+            "type": "PoS",
+            "algorithm": "Delegated"
+        },
+        "aliases": {
+            "coinmarketcap": "Steem Dollars",
+            "nickname": "Steem Dollar"
+        },
+        "descriptions": {
+            "state": "Public",
+            "system_type": "cryptocurrency",
+            "headline": "Convertable Loan of Steem blockchain denominated in US Dollar",
+            "tags": [
+                "DAO"
+            ],
+            "page_state": "draft"
+        },
+        "first_price": {
+            "date": "2016-07-10T00:00:00",
+            "btc": 0.00163451,
+            "usd": 1.07567811
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "steem.io",
+                "url": "https://steem.io",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Steem Explorer",
+                "url": "https://steemd.com/",
+                "icon": "explorer.png",
+                "tags": [
+                    "Main",
+                    "Apps",
                     "Analytics"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Steem Client",
+                "url": "https://steemit.com",
+                "icon": "steem.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
                 ]
             },
             {
@@ -23029,108 +23494,6 @@
         ],
         "flags": {
             "quantum": true
-        }
-    },
-    {
-        "genesis_id": "",
-        "system": "SteemDollar",
-        "icon": "steem",
-        "dependencies": [
-            "Steem"
-        ],
-        "token": {
-            "name": "steemdollar",
-            "symbol": "SBD"
-        },
-        "specs": {
-            "supply": 1313001.81
-        },
-        "consensus": {
-            "type": "PoS",
-            "algorithm": "Delegated"
-        },
-        "aliases": {
-            "coinmarketcap": "Steem Dollars",
-            "nickname": "Steem Dollar"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptocurrency",
-            "headline": "Convertable Loan of Steem blockchain denominated in US Dollar",
-            "tags": [
-                "DAO"
-            ],
-            "page_state": "draft"
-        },
-        "links": [
-            {
-                "type": "website",
-                "name": "steem.io",
-                "url": "https://steem.io",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "Steem Explorer",
-                "url": "https://steemd.com/",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "wallet",
-                "name": "Steem Client",
-                "url": "https://steemit.com",
-                "icon": "steem.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Wallet"
-                ]
-            },
-            {
-                "type": "exchange",
-                "name": "Poloniex",
-                "headline": "nein",
-                "url": "https://www.poloniex.com",
-                "icon": "poloniex.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
-                "type": "exchange",
-                "name": "OpenLedger",
-                "headline": "Transparent Decentrilized Exchange",
-                "url": "https://openledger.info/?r=cyberfund",
-                "icon": "openledger.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
-                "type": "exchange",
-                "name": "Bittrex",
-                "headline": "nein",
-                "url": "https://bittrex.com",
-                "icon": "bittrex.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            }
-        ],
-        "flags": {
-            "quantum": true,
-            "supply_from_here": true
         }
     },
     {
@@ -23726,6 +24089,132 @@
             "supply_from_here": true,
             "quantum": true
         }
+    },
+    {
+        "genesis_id": "0x0348b55abd6e1a99c6ebc972a6a4582ec0bceb5c",
+        "system": "SuperDAO",
+        "icon": "superdao",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "token": {
+            "name": "Superneum",
+            "symbol": "SUP"
+        },
+        "consensus": {
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
+        },
+        "aliases": {
+            "coinmarketcap": "SuperDAO"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralized Governance System for DApp Ventures",
+            "tags": [
+                "DApp"
+            ],
+            "twwidid": "",
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2017-02-26T06:00:00",
+            "end_date": "2017-03-31T06:00:00",
+            "genesis_address": [
+                "0x0348B55AbD6E1A99C6EBC972A6A4582Ec0bcEb5c"
+            ],
+            "funding_terms": "http://docs.superdao.io/",
+            "funding_url": "http://crowdfunding.superdao.io/",
+            "tokens_sold": 45000000,
+            "tokens_issued": 100000000,
+            "btc_raised": ""
+        },
+        "specs": {
+            "cap": {}
+        },
+        "first_price": {
+            "date": "",
+            "btc": "",
+            "usd": ""
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "superdao.io",
+                "url": "http://superdao.io",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "SuperDAO GitHub",
+                "url": "https://github.com/Superdao-DAO",
+                "icon": "github.png",
+                "tags": [
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "SuperDAO Whitepaper",
+                "url": "http://docs.superdao.io/",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://blog.superdao.io/",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/SuperDAOHQ",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/SuperDao/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Slack",
+                "url": "https://matchpool.signup.team/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/SuperDAOHQ",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "12071612744977229797",
@@ -25190,7 +25679,7 @@
         }
     },
     {
-        "genesis_id": "0xb582baaF5e749d6aA98A22355A9d08B4c4d013C8",
+        "genesis_id": "0x14f37b574242d366558db61f3335289a5035c506",
         "system": "VirtualAccelerator",
         "icon": "virtualaccelerator",
         "dependencies": [
@@ -25231,6 +25720,7 @@
             "btc_raised": 715.62891252
         },
         "specs": {
+            "previous_gen_id": "0xb582baaF5e749d6aA98A22355A9d08B4c4d013C8",
             "cap": {},
             "price": {
                 "usd": 0.05218567,
@@ -25442,6 +25932,143 @@
     },
     {
         "genesis_id": "",
+        "system": "WeTrust",
+        "icon": "wetrust",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "token": {
+            "name": "trustcoin",
+            "symbol": "TRST"
+        },
+        "consensus": {
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
+        },
+        "aliases": {
+            "coinmarketcap": "WeTrust"
+        },
+        "descriptions": {
+            "state": "Pre-Public",
+            "system_type": "cryptoasset",
+            "headline": "A platform for Trusted Lending Circles, powered by people and blockchain",
+            "tags": [
+                "DApp"
+            ],
+            "twwidid": "",
+            "page_state": "ready"
+        },
+        "crowdsales": {
+            "start_date": "2017-03-02T00:00:00",
+            "end_date": "2017-03-27T01:00:00",
+            "genesis_address": [
+                "0xc2cce1f4190d4451c63cf591678c807679c3d728"
+            ],
+            "funding_terms": "https://www.wetrust.io/static/WeTrust-Disclosures.pdf",
+            "funding_url": "https://www.wetrust.io/tlc/crowdsale",
+            "tokens_sold": 80000000,
+            "tokens_issued": 100000000,
+            "btc_raised": ""
+        },
+        "specs": {
+            "supply": 100000000,
+            "cap": {}
+        },
+        "first_price": {
+            "date": "",
+            "btc": "",
+            "usd": ""
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "wetrust.io",
+                "url": "https://www.wetrust.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://medium.com/wetrust-blog",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/wetrustplatform",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/WeTrustPlatform",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1773367",
+                "icon": "bitcoin.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Slack",
+                "url": "https://www.wetrust.io/slack-invite",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/wetrustplatform",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "GitHub",
+                "url": "https://github.com/WeTrustPlatform",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "WeTrust Whitepaper",
+                "url": "https://github.com/WeTrustPlatform/documents/blob/master/WeTrustWhitePaper.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "dependencies": [
             "Ethereum"
         ],
@@ -25562,7 +26189,7 @@
         },
         "crowdsales": {
             "start_date": "2016-11-18T12:00:00",
-            "end_date": "2016-12-18T12:00:00",
+            "end_date": "2017-01-06T02:00:00",
             "genesis_address": [
                 "3GQBU4AUPjdbg1hoYDPWSc4qTRfAgbiERW",
                 "0x0097B5E8c77ac7C54B10987d51975E70AF9cF4d6",
@@ -25572,14 +26199,24 @@
             ],
             "funding_terms": "https://blog.wings.ai/save-the-date-7-weeks-of-wings-dao-formation-2060c698ef3d#.j7gq95pt5",
             "funding_url": "https://wings.ai/",
-            "tokens_sold": "",
-            "tokens_issued": "",
-            "btc_raised": ""
+            "tokens_sold": 75000000,
+            "tokens_issued": 100000000,
+            "btc_raised": 2010.43179658
         },
         "specs": {
-            "cap": {}
+            "supply": 100000000,
+            "cap": {
+                "btc": 2718
+            },
+            "price": {
+                "btc": 0.00002718
+            }
         },
-        "first_price": {},
+        "first_price": {
+            "date": "2017-01-06T12:00:00",
+            "btc": 0.00002596,
+            "usd": 0.02302039
+        },
         "flags": {},
         "links": [
             {
@@ -25738,6 +26375,175 @@
         }
     },
     {
+        "genesis_id": "0x4DF812F6064def1e5e029f1ca858777CC98D2D81",
+        "system": "Xaurum",
+        "icon": "xaurum",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "token": {
+            "name": "xaurum",
+            "symbol": "XAUR"
+        },
+        "consensus": {
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
+        },
+        "aliases": {
+            "coinmarketcap": "Xaurum"
+        },
+        "descriptions": {
+            "state": "Public",
+            "system_type": "cryptoasset",
+            "headline": "Gold Backed tokens on Ethereum",
+            "tags": [
+                "DApp"
+            ],
+            "twwidid": "",
+            "page_state": "ready"
+        },
+        "first_price": {
+            "date": "2015-04-21T12:00:00",
+            "btc": 0.28549871,
+            "usd": 65.2917683
+        },
+        "specs": {
+            "previous_symbol": "XAU",
+            "cap": {}
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "xaurum.org",
+                "url": "http://www.xaurum.org/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Xaurum Whitepaper",
+                "url": "http://www.xaurum.org/TreatiseOnXaurum.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherScan",
+                "url": "https://etherscan.io/token/Xaurum",
+                "icon": "etherscan.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Mist Wallet",
+                "url": "https://github.com/ethereum/mist/releases/",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/urumproject",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1546279.0",
+                "icon": "bitcoin.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/xaurumofficial/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MyEther Wallet",
+                "url": "https://www.myetherwallet.com/",
+                "icon": "myetherwallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "EthCore Parity",
+                "url": "https://ethcore.io/parity.html",
+                "icon": "parity.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherChain.org",
+                "url": "http://etherchain.org/",
+                "icon": "etherchain.jpg",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Bittrex",
+                "url": "https://bittrex.com",
+                "icon": "bittrex.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "LiveCoin Exchange",
+                "url": "https://www.livecoin.net/",
+                "icon": "livecoin.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "EtherDelta",
+                "url": "https://etherdelta.github.io",
+                "icon": "etherdelta.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "000005aef7f601a0e5b5f17619735819d4250af7f0282954333e634335b35c9e",
         "system": "YbCoin",
         "dependencies": [
@@ -25890,6 +26696,11 @@
         },
         "aliases": {
             "coinmarketcap": "Zcash"
+        },
+        "first_price": {
+            "date": "2016-10-30T23:00:00",
+            "btc": 1.45933122,
+            "usd": 1037.17161004
         },
         "specs": {},
         "links": [
@@ -26085,6 +26896,126 @@
             "usd": 0.00001114,
             "date": "2014-03-20T00:00:00"
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "aeternity",
+        "dependencies": [
+            "independent"
+        ],
+        "icon": "aeternity",
+        "token": {
+            "name": "aeon",
+            "symbol": "AE"
+        },
+        "consensus": {
+            "type": "Hybrid",
+            "algorithm": ""
+        },
+        "aliases": {
+            "coinmarketcap": "aeternity",
+            "nickname": "aeternity"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptocurrency",
+            "headline": "Scalable Smart Contracts Interfacing with Real-World Data",
+            "tags": [
+                "DAO"
+            ],
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2017-03-31T17:00:00",
+            "end_date": "2017-05-15T17:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "",
+            "funding_url": "http://www.aeternity.com/",
+            "tokens_issued": "",
+            "tokens_sold": "",
+            "btc_raised": ""
+        },
+        "specs": {
+            "total_tokens": "",
+            "premine_tokens": ""
+        },
+        "first_price": {
+            "btc": "",
+            "usd": "",
+            "date": ""
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "aeternity.com",
+                "url": "http://www.aeternity.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "aeternity whitepaper",
+                "url": "http://blockchain.aeternity.com/%C3%A6ternity-blockchain-whitepaper.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "GitHub",
+                "url": "https://github.com/aeternity/",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "rss": "https://blog.aeternity.com/",
+                "url": "http://www.idni.org/blog",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/aetrnty",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "LinkedIn",
+                "url": "https://www.linkedin.com/company/aeternity",
+                "icon": "linkedin.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/aeternityproject/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "bitBTC",
@@ -27009,7 +27940,7 @@
         ]
     },
     {
-        "genesis_id": "",
+        "genesis_id": "0x5c543e7AE0A1104f78406C340E9C64FD9fCE5170",
         "system": "vDice",
         "icon": "vdice",
         "dependencies": [
@@ -27017,17 +27948,17 @@
         ],
         "token": {
             "name": "vslice",
-            "symbol": "vSlice"
+            "symbol": "VSL"
         },
         "consensus": {
             "type": "Ethereum",
             "algorithm": "Transferable Fungible"
         },
         "aliases": {
-            "coinmarketcap": "vDice"
+            "coinmarketcap": "vSlice"
         },
         "descriptions": {
-            "state": "Project",
+            "state": "Public",
             "system_type": "cryptoasset",
             "headline": "A Decentralized Gambling Game on Ethereum",
             "tags": [
@@ -27040,24 +27971,37 @@
             "start_date": "2016-11-15T09:00:00",
             "end_date": "2016-12-15T09:00:00",
             "genesis_address": [
-                "0xf052F444d144f3f1768Ca52Fd83dfe5AfB0634b4"
+                "0x8bCCc9BA2E5706E24a36ddA02ca2A846E39a7bbF"
             ],
             "funding_terms": "https://blog.vdice.io/wp-content/uploads/2016/10/vDice_ICO_Whitepaper_English.pdf",
             "funding_url": "http://crowdsale.vdice.io",
-            "tokens_sold": "",
-            "tokens_issued": "",
+            "tokens_sold": 33390496.0333756,
+            "tokens_issued": 33390496.0333756,
             "btc_raised": ""
         },
         "specs": {
             "cap": {}
         },
-        "first_price": {},
+        "first_price": {
+            "date": "2016-12-15T09:00:00",
+            "btc": 0.00005793,
+            "usd": 0.04492356
+        },
         "flags": {},
         "links": [
             {
                 "type": "website",
                 "name": "www.vdice.io",
                 "url": "https://www.vdice.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "website",
+                "name": "vslice.io",
+                "url": "http://www.vslice.io/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
@@ -27079,7 +28023,6 @@
                 "url": "https://twitter.com/vdice_io",
                 "icon": "twitter.png",
                 "tags": [
-                    "Main",
                     "News"
                 ]
             },
@@ -27127,6 +28070,67 @@
                 "icon": "paper.png",
                 "tags": [
                     "Science"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Liqui Exchange",
+                "url": "https://liqui.io/",
+                "icon": "liqui.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "LiveCoin Exchange",
+                "url": "https://www.livecoin.net/",
+                "icon": "livecoin.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "EtherDelta",
+                "url": "https://etherdelta.github.io",
+                "icon": "etherdelta.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Mist Wallet",
+                "url": "https://github.com/ethereum/mist/releases/",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MyEther Wallet",
+                "url": "https://www.myetherwallet.com/",
+                "icon": "myetherwallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "EthCore Parity",
+                "url": "https://ethcore.io/parity.html",
+                "icon": "parity.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
                 ]
             }
         ]
