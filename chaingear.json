@@ -4887,12 +4887,21 @@
             ],
             "funding_terms": "https://chronobank.io",
             "funding_url": "https://chronobank.io",
-            "tokens_sold": "",
-            "tokens_issued": "",
-            "btc_raised": ""
+            "tokens_sold": 624899.2735,
+            "tokens_issued": 710112.8108,
+            "btc_raised": 4058.0147
         },
-        "specs": {},
-        "first_price": {},
+        "specs": {
+            "supply": 710112.8108,
+            "cap": {
+                "btc": 4611,
+                "usd": 4627382
+            }
+        },
+        "first_price": {
+            "btc": 0.00649387,
+            "usd": 6.51640373
+        },
         "flags": {},
         "links": [
             {
@@ -5251,7 +5260,7 @@
         }
     },
     {
-        "genesis_id": "0x4485f44aa1f99b43BD6400586C1B2A02ec263Ec0",
+        "genesis_id": "0xc96eec418b50c538c3f3e32e71575da068a97401",
         "system": "Contingency",
         "icon": "contingency",
         "dependencies": [
@@ -5269,7 +5278,7 @@
             "coinmarketcap": "Contingency"
         },
         "descriptions": {
-            "state": "Project",
+            "state": "Pre-Public",
             "system_type": "cryptoasset",
             "headline": "Decentralized, Trustless Gambling Platform",
             "tags": [
@@ -5282,23 +5291,29 @@
             "start_date": "2017-01-31T20:00:00",
             "end_date": "2017-02-28T20:00:00",
             "genesis_address": [
-                "0x4485f44aa1f99b43BD6400586C1B2A02ec263Ec0"
+                "0xc96eec418b50c538c3f3e32e71575da068a97401"
             ],
-            "funding_terms": "http://docs.superdao.io/",
-            "funding_url": "http://crowdfunding.superdao.io/",
-            "tokens_sold": "",
-            "tokens_issued": "",
-            "btc_raised": ""
+            "funding_terms": "http://contingency.tech/Contingency-Whitepaper.pdf",
+            "funding_url": "https://contingency.tech/",
+            "tokens_sold": 3108579.75908104,
+            "tokens_issued": 3453977.510090046,
+            "btc_raised": 281.247
         },
         "specs": {
-            "cap": {}
+            "supply": 3453977.510090046,
+            "cap": {
+                "btc": 312,
+                "usd": 367487
+            }
         },
         "first_price": {
-            "date": "",
-            "btc": "",
-            "usd": ""
+            "date": "2017-02-28T20:00:00",
+            "btc": 0.00009047,
+            "usd": 0.10639543
         },
-        "flags": {},
+        "flags": {
+            "supply_from_here": true
+        },
         "links": [
             {
                 "type": "website",
@@ -5315,6 +5330,7 @@
                 "url": "https://github.com/ContingencyEth/Contingency",
                 "icon": "github.png",
                 "tags": [
+                    "Main",
                     "Code"
                 ]
             },
@@ -5342,7 +5358,7 @@
             "symbol": "ATOM"
         },
         "consensus": {
-            "type": "Proof-of-State",
+            "type": "Proof-of-Stake",
             "algorithm": "Tendermint"
         },
         "aliases": {
@@ -5358,8 +5374,8 @@
             "page_state": "draft"
         },
         "crowdsales": {
-            "start_date": "2017-02-25T00:00:00",
-            "end_date": "2017-03-28T20:00:00",
+            "start_date": "2017-03-31T14:00:00",
+            "end_date": "2017-04-31T14:00:00",
             "genesis_address": [
                 ""
             ],
@@ -6797,6 +6813,129 @@
             "usd": 0.32820104,
             "date": "2013-12-15T00:00:00"
         }
+    },
+    {
+        "genesis_id": "0x1be116204bb55cb61c821a1c7866fa6f94b561a5",
+        "system": "Dfinity",
+        "icon": "dfinity",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "token": {
+            "name": "dfinity network token",
+            "symbol": "DFN"
+        },
+        "consensus": {
+            "type": "",
+            "algorithm": ""
+        },
+        "aliases": {
+            "coinmarketcap": "DFINITY"
+        },
+        "descriptions": {
+            "state": "Pre-Public",
+            "system_type": "cryptoasset",
+            "headline": "The Decentralized Cloud Computing",
+            "tags": [
+                "DAO"
+            ],
+            "twwidid": "",
+            "page_state": "ready"
+        },
+        "crowdsales": {
+            "start_date": "2017-02-12T18:00:00",
+            "end_date": "2017-02-13T18:00:00",
+            "genesis_address": [
+                "3JqsZhBnPbUvaEcTz6opfSFwddYu1YqBvt",
+                "0xad489DC1A250dfc0E49e83e7DAD51b084B2e1227"
+            ],
+            "funding_terms": "https://dfinity.network/pdfs/viewer.html?file=../library/dfinity-donation-terms-v6.pdf",
+            "funding_url": "https://dfinity.network/donate",
+            "tokens_sold": 93641562,
+            "tokens_issued": 93641562,
+            "btc_raised": 3107.027
+        },
+        "specs": {
+            "supply": 93641562,
+            "cap": {
+                "btc": 3107.027,
+                "usd": 3077072
+            }
+        },
+        "first_price": {
+            "date": "2016-02-13T18:00:00",
+            "btc": 0.00003318,
+            "usd": 0.03286011
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "dfinity.network",
+                "url": "https://dfinity.network/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Dfinity GitHub",
+                "url": "https://github.com/dfinity",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "A Brief Tour of DFINITY",
+                "url": "https://dfinity.network/pdfs/viewer.html?file=../library/a-brief-tour-of-dfinity.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://medium.com/dfinity-network-blog",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/dfinity_network",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/dfinity/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Threshold Relay - How to Achieve Near Instant Finality inPublic Blockchains using a VRF",
+                "url": "https://dfinity.network/pdfs/viewer.html?file=../library/threshold-relay-blockchain-stanford.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "000002e9686a879460eb5497d51a99fa6d5cad4a9edabb5112bd915b7d2302fc",
@@ -12350,11 +12489,10 @@
             "page_state": "draft"
         },
         "crowdsales": {
-            "start_date": "2016-12-15T00:00:00",
-            "end_date": "2016-12-27T00:00:00",
+            "start_date": "2017-04-06T00:00:00",
+            "end_date": "2017-04-27T00:00:00",
             "genesis_address": [
-                "0xa2c9a7578e2172F32a36c5c0e49d64776F9E7883",
-                "1JwkMP7eoqjg5rEG3vGuub8h5k3orPkpTf"
+                ""
             ],
             "funding_terms": "https://docs.google.com/document/d/1VNaQeKScFIX5YN2DoIofpgwx2Hen6Cksycwvilk8g9k/edit",
             "funding_url": "https://humaniq.co/",
@@ -12385,7 +12523,6 @@
                 "url": "http://twitter.com/Humaniq_co",
                 "icon": "twitter.png",
                 "tags": [
-                    "Main",
                     "News"
                 ]
             },
@@ -12410,7 +12547,7 @@
             {
                 "type": "paper",
                 "name": "Humaniq Whitepaper",
-                "url": "https://docs.google.com/document/d/1VNaQeKScFIX5YN2DoIofpgwx2Hen6Cksycwvilk8g9k/",
+                "url": "https://humaniq.co/assets/downloads/humaniq_wp_english.pdf",
                 "icon": "paper.png",
                 "tags": [
                     "Main",
@@ -12425,6 +12562,25 @@
                 "tags": [
                     "Main",
                     "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://blog.humaniq.co",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1711764.0",
+                "icon": "bitcoin.png",
+                "tags": [
+                    "News"
                 ]
             }
         ]
@@ -13241,7 +13397,7 @@
             "independent"
         ],
         "token": {
-            "name": "",
+            "name": "hybrid asset",
             "symbol": "XHY"
         },
         "consensus": {
@@ -13255,33 +13411,37 @@
         "descriptions": {
             "state": "Public",
             "system_type": "cryptocurrency",
-            "headline": "Decentralized Inclusive Cryptocurrency Ecosystem",
+            "headline": "Decentralized Inclusive Cryptocurrency Environment",
             "tags": [
-                "DAO"
+                "DAO",
+                "TOS",
+                "DAPP"
             ],
             "twwidid": "",
             "page_state": "draft"
         },
         "specs": {
-            "supply": 5000000,
+            "supply": 7000000,
             "premine_tokens": 0,
             "rpc": "1111"
         },
         "crowdsales": {
             "start_date": "2017-03-21T10:00:00",
-            "end_date": "2017-07-21T10:00:00",
+            "end_date": "2017-06-21T10:00:00",
             "genesis_address": [
                 "14aV8dULoL67i6xQncfmFsbFaEtpRKskC2",
                 "1BshWVmV1o4ZPWRvTGVMGsXMmQaV1qAouw",
                 "0x197A920123DDa17040A065457Ef0c01B28A54045",
                 "NXT-FCXQ-K5NB-EA5E-CF36G",
-                "14431517850442967484L"
+                "NB6TCTRBT7KUN5T5337LBSBIAYHL375VHCFZNOAU",
+                "3P6xW7z9rjfGcoTeEiitoWfHWMbZ5j2GZkN",
+                "internet-of-coins"
             ],
             "funding_terms": "https://coinstorm.net/terms",
             "funding_url": "https://coinstorm.net",
             "btc_raised": "",
             "tokens_sold": "",
-            "tokens_issued": 5000000,
+            "tokens_issued": 7000000,
             "min_investment": 0.01
         },
         "links": [
@@ -13327,7 +13487,7 @@
             {
                 "type": "forum",
                 "name": "Bitcointalk",
-                "url": "http://bitcointalk.org/index.php?topic=827804.0",
+                "url": "https://bitcointalk.org/index.php?topic=1760129.0",
                 "icon": "bitcoin.png",
                 "tags": [
                     "News"
@@ -15749,7 +15909,7 @@
         }
     },
     {
-        "genesis_id": "",
+        "genesis_id": "0xBEB9eF514a379B997e0798FDcC901Ee474B6D9A1",
         "system": "Melonport",
         "icon": "melonport",
         "dependencies": [
@@ -15764,11 +15924,11 @@
             "algorithm": "Transferable Fungible"
         },
         "aliases": {
-            "coinmarketcap": "Melonport",
-            "nickname": "Melon Project"
+            "coinmarketcap": "Melon",
+            "nickname": "Melonport"
         },
         "descriptions": {
-            "state": "Pre-Public",
+            "state": "Public",
             "system_type": "cryptoasset",
             "headline": "An open-source blockchain protocol for asset management",
             "tags": [
@@ -15778,27 +15938,25 @@
         },
         "crowdsales": {
             "start_date": "2017-02-15T12:00:00",
-            "end_date": "2017-03-15T12:00:00",
+            "end_date": "2017-02-15T12:00:00",
             "genesis_address": [
-                ""
+                "0x3BF541f87056D134E0109BE1Be92978b26Cb09e0"
             ],
-            "funding_terms": "https://contribution.melonport.com/",
-            "funding_url": "https://contribution.melonport.com/",
+            "funding_terms": "https://contribution.melonport.com/terms.pdf",
+            "funding_url": "https://melonport.com/",
             "tokens_issued": 1250000,
-            "tokens_sold": 375000,
-            "btc_raised": ""
+            "tokens_sold": 750000,
+            "btc_raised": 2903
         },
         "specs": {
             "supply": 1250000,
             "cap": {},
-            "price": {
-                "btc": 0.0058723
-            }
+            "price": {}
         },
         "first_price": {
             "date": "2017-03-15T12:00:00",
-            "btc": "",
-            "usd": ""
+            "btc": 0.00387073,
+            "usd": 3.88416143
         },
         "flags": {},
         "links": [
@@ -15886,6 +16044,16 @@
                 "tags": [
                     "Apps",
                     "Wallet"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Kraken",
+                "url": "https://www.kraken.com",
+                "icon": "kraken.png",
+                "tags": [
+                    "Apps",
+                    "Exchange"
                 ]
             }
         ]
@@ -20274,6 +20442,133 @@
         }
     },
     {
+        "genesis_id": "",
+        "system": "Qtum",
+        "icon": "qtum",
+        "dependencies": [
+            "independent"
+        ],
+        "token": {
+            "name": "qutum",
+            "symbol": "QTUM"
+        },
+        "consensus": {
+            "type": "",
+            "algorithm": ""
+        },
+        "aliases": {
+            "coinmarketcap": "Qtum"
+        },
+        "descriptions": {
+            "state": "Pre-Public",
+            "system_type": "cryptoasset",
+            "headline": "Smart-Contract and Distributed Mobile Application Platform",
+            "tags": [
+                "DAO"
+            ],
+            "twwidid": "",
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2017-03-16T12:00:00",
+            "end_date": "2017-04-15T12:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://qtum.org/uploads/files/0c9eda5f51f62788a3f7d9d8fdc189d1.pdf",
+            "funding_url": "https://qtum.org/en/crowdsale",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": ""
+        },
+        "specs": {
+            "cap": {}
+        },
+        "first_price": {
+            "date": "",
+            "btc": "",
+            "usd": ""
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "qtum.org",
+                "url": "https://qtum.org",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "GitHub",
+                "url": "https://github.com/qtumproject",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Qtum Whitepaper",
+                "url": "https://qtum.org/uploads/files/cf6d69348ca50dd985b60425ccf282f3.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Qtum Blockchain Economy Whitepaper",
+                "url": "https://qtum.org/uploads/files/83afb59b6d9a0d58109d5bf9a1fa4de1.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Qtum Crowdsale Prospectus",
+                "url": "https://qtum.org/uploads/tmp/e0488eca3c7256ea97ce00003cc874a9.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://qtum.org/en/blog",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/QtumOfficial",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "facebook",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/QtumOfficial/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "00000c257b93a36e9a4318a64398d661866341331a984e2b486414fc5bb16ccd",
         "system": "Quark",
         "icon": "quark",
@@ -21234,7 +21529,7 @@
             {
                 "type": "website",
                 "name": "rootstock.io",
-                "url": "http://www.rootstock.io/",
+                "url": "http://www.rsk.co/",
                 "icon": "website.png",
                 "tags": [
                     "Main"
@@ -21247,6 +21542,33 @@
                 "icon": "reddit.png",
                 "tags": [
                     "News"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "RSK Explorer",
+                "url": "https://explorer.rsk.co",
+                "icon": "explorer.png",
+                "tags": [
+                    "Explorer"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "RSK Stats",
+                "url": "https://stats.rsk.co",
+                "icon": "explorer.png",
+                "tags": [
+                    "Data"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "RSK Faucet",
+                "url": "https://faucet.rsk.co",
+                "icon": "explorer.png",
+                "tags": [
+                    "Faucet"
                 ]
             }
         ]
@@ -21593,14 +21915,14 @@
             "nickname": "Satoshi•Pie"
         },
         "specs": {
-            "supply": 498554.7709,
+            "supply": 567148.6665,
             "price": {
-                "usd": 2.6207,
-                "btc": 0.00261934
+                "usd": 4.6578,
+                "btc": 0.0044049
             },
             "cap": {
-                "usd": 1306562,
-                "btc": 1305.88
+                "usd": 2641655,
+                "btc": 2498.23
             }
         },
         "first_price": {
@@ -21613,6 +21935,15 @@
             "quantum": true
         },
         "links": [
+            {
+                "type": "website",
+                "name": "satoshi.fund",
+                "url": "http://satoshi.fund",
+                "icon": "site.png",
+                "tags": [
+                    "Main"
+                ]
+            },
             {
                 "type": "explorer",
                 "name": "Satoshi•Pie Asset",
@@ -21652,7 +21983,6 @@
                 "url": "https://bitshares.openledger.info/?r=satoshifund#/market/SPIES_USD",
                 "icon": "openledger.png",
                 "tags": [
-                    "Main",
                     "Apps",
                     "Exchange"
                 ]
@@ -23073,9 +23403,7 @@
             "name": "steemdollar",
             "symbol": "SBD"
         },
-        "specs": {
-            "supply": 1313001.81
-        },
+        "specs": {},
         "consensus": {
             "type": "PoS",
             "algorithm": "Delegated"
@@ -23165,8 +23493,7 @@
             }
         ],
         "flags": {
-            "quantum": true,
-            "supply_from_here": true
+            "quantum": true
         }
     },
     {
@@ -23771,8 +24098,8 @@
             "Ethereum"
         ],
         "token": {
-            "name": "",
-            "symbol": ""
+            "name": "Superneum",
+            "symbol": "SUP"
         },
         "consensus": {
             "type": "Ethereum",
@@ -23795,12 +24122,12 @@
             "start_date": "2017-02-26T06:00:00",
             "end_date": "2017-03-31T06:00:00",
             "genesis_address": [
-                ""
+                "0x0348B55AbD6E1A99C6EBC972A6A4582Ec0bcEb5c"
             ],
             "funding_terms": "http://docs.superdao.io/",
             "funding_url": "http://crowdfunding.superdao.io/",
-            "tokens_sold": "",
-            "tokens_issued": "",
+            "tokens_sold": 45000000,
+            "tokens_issued": 100000000,
             "btc_raised": ""
         },
         "specs": {
@@ -25605,6 +25932,143 @@
     },
     {
         "genesis_id": "",
+        "system": "WeTrust",
+        "icon": "wetrust",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "token": {
+            "name": "trustcoin",
+            "symbol": "TRST"
+        },
+        "consensus": {
+            "type": "Ethereum",
+            "algorithm": "Transferable Fungible"
+        },
+        "aliases": {
+            "coinmarketcap": "WeTrust"
+        },
+        "descriptions": {
+            "state": "Pre-Public",
+            "system_type": "cryptoasset",
+            "headline": "A platform for Trusted Lending Circles, powered by people and blockchain",
+            "tags": [
+                "DApp"
+            ],
+            "twwidid": "",
+            "page_state": "ready"
+        },
+        "crowdsales": {
+            "start_date": "2017-03-02T00:00:00",
+            "end_date": "2017-03-27T01:00:00",
+            "genesis_address": [
+                "0xc2cce1f4190d4451c63cf591678c807679c3d728"
+            ],
+            "funding_terms": "https://www.wetrust.io/static/WeTrust-Disclosures.pdf",
+            "funding_url": "https://www.wetrust.io/tlc/crowdsale",
+            "tokens_sold": 80000000,
+            "tokens_issued": 100000000,
+            "btc_raised": ""
+        },
+        "specs": {
+            "supply": 100000000,
+            "cap": {}
+        },
+        "first_price": {
+            "date": "",
+            "btc": "",
+            "usd": ""
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "wetrust.io",
+                "url": "https://www.wetrust.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "url": "https://medium.com/wetrust-blog",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/wetrustplatform",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/WeTrustPlatform",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1773367",
+                "icon": "bitcoin.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Slack",
+                "url": "https://www.wetrust.io/slack-invite",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/wetrustplatform",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "GitHub",
+                "url": "https://github.com/WeTrustPlatform",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "WeTrust Whitepaper",
+                "url": "https://github.com/WeTrustPlatform/documents/blob/master/WeTrustWhitePaper.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "dependencies": [
             "Ethereum"
         ],
@@ -26432,6 +26896,126 @@
             "usd": 0.00001114,
             "date": "2014-03-20T00:00:00"
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "aeternity",
+        "dependencies": [
+            "independent"
+        ],
+        "icon": "aeternity",
+        "token": {
+            "name": "aeon",
+            "symbol": "AE"
+        },
+        "consensus": {
+            "type": "Hybrid",
+            "algorithm": ""
+        },
+        "aliases": {
+            "coinmarketcap": "aeternity",
+            "nickname": "aeternity"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptocurrency",
+            "headline": "Scalable Smart Contracts Interfacing with Real-World Data",
+            "tags": [
+                "DAO"
+            ],
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2017-03-31T17:00:00",
+            "end_date": "2017-05-15T17:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "",
+            "funding_url": "http://www.aeternity.com/",
+            "tokens_issued": "",
+            "tokens_sold": "",
+            "btc_raised": ""
+        },
+        "specs": {
+            "total_tokens": "",
+            "premine_tokens": ""
+        },
+        "first_price": {
+            "btc": "",
+            "usd": "",
+            "date": ""
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "aeternity.com",
+                "url": "http://www.aeternity.com/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "aeternity whitepaper",
+                "url": "http://blockchain.aeternity.com/%C3%A6ternity-blockchain-whitepaper.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "GitHub",
+                "url": "https://github.com/aeternity/",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Blog",
+                "rss": "https://blog.aeternity.com/",
+                "url": "http://www.idni.org/blog",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/aetrnty",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "LinkedIn",
+                "url": "https://www.linkedin.com/company/aeternity",
+                "icon": "linkedin.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/aeternityproject/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "bitBTC",

@@ -1,4 +1,4 @@
-genesis_id = ""
+genesis_id = "0xBEB9eF514a379B997e0798FDcC901Ee474B6D9A1"
 system = "Melonport"
 icon = "melonport"
 dependencies = ["Ethereum"]
@@ -12,11 +12,11 @@ type = "Ethereum"
 algorithm = "Transferable Fungible"
 
 [aliases]
-coinmarketcap = "Melonport"
-nickname = "Melon Project"
+coinmarketcap = "Melon"
+nickname = "Melonport"
 
 [descriptions]
-state = "Pre-Public"
+state = "Public"
 system_type = "cryptoasset"
 headline = "An open-source blockchain protocol for asset management"
 tags = ["DApp"]
@@ -24,13 +24,13 @@ page_state = "ready"
 
 [crowdsales]
 start_date = "2017-02-15T12:00:00"
-end_date = "2017-03-15T12:00:00"
-genesis_address = [""]
-funding_terms = "https://contribution.melonport.com/"
-funding_url = "https://contribution.melonport.com/"
+end_date = "2017-02-15T12:00:00"
+genesis_address = ["0x3BF541f87056D134E0109BE1Be92978b26Cb09e0"]
+funding_terms = "https://contribution.melonport.com/terms.pdf"
+funding_url = "https://melonport.com/"
 tokens_issued = 1250000
-tokens_sold = 375000
-btc_raised = ""
+tokens_sold = 750000
+btc_raised = 2903
 
 [specs]
 supply = 1250000
@@ -38,12 +38,11 @@ supply = 1250000
 [specs.cap]
 
 [specs.price]
-btc = 0.00587230
 
 [first_price]
 date = "2017-03-15T12:00:00"
-btc = ""
-usd = ""
+btc = 0.00387073
+usd = 3.88416143
 
 [flags]
 
@@ -109,3 +108,10 @@ name = "MetaMask Wallet"
 url = "https://metamask.io/"
 icon = "metamask.png"
 tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "exchange"
+name = "Kraken"
+url = "https://www.kraken.com"
+icon = "kraken.png"
+tags = ["Apps", "Exchange"]
