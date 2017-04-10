@@ -3626,15 +3626,15 @@
         "system": "BlockchainCapital",
         "icon": "blockchaincapital",
         "dependencies": [
-            "independent"
+            "Ethereum"
         ],
         "token": {
             "name": "bcap",
             "symbol": "BCAP"
         },
         "consensus": {
-            "type": "",
-            "algorithm": ""
+            "type": "ERC20 Token",
+            "algorithm": "Ethereum"
         },
         "aliases": {
             "coinmarketcap": "Blockchain Capital"
@@ -3650,25 +3650,31 @@
         },
         "crowdsales": {
             "start_date": "2017-04-10T11:00:00",
-            "end_date": "2017-04-20T11:00:00",
+            "end_date": "2017-04-10T17:00:00",
             "genesis_address": [
-                ""
+                "3AzSgmD3Bnuit3mhfNk5BhHF5w61xQajc4"
             ],
             "funding_terms": "https://blockchaincapital.tokenhub.com/",
             "funding_url": "https://blockchaincapital.tokenhub.com/",
             "tokens_sold": 10000000,
             "tokens_issued": 10000000,
-            "btc_raised": ""
+            "btc_raised": 8415
         },
         "specs": {
-            "supply": 10000000
+            "supply": 10000000,
+            "cap": {
+                "btc": 8415,
+                "usd": 10000000
+            }
         },
         "first_price": {
-            "btc": "",
-            "usd": "",
-            "date": ""
+            "btc": 0.00084153,
+            "usd": 1,
+            "date": "2017-04-10T17:00:00"
         },
-        "flags": {},
+        "flags": {
+            "supplu_from_here": true
+        },
         "links": [
             {
                 "type": "website",
