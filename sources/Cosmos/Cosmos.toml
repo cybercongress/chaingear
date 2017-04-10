@@ -23,18 +23,26 @@ page_state = "draft"
 
 [crowdsales]
 start_date = "2017-04-06T14:00:00"
-end_date = "2017-04-31T06:00:00"
-genesis_address = [""]
-funding_terms = "http://cosmos.network/plan"
+end_date = "2017-04-06T18:28:00"
+genesis_address = ["0xE825363f3bEDAbc95b2A9d42dBc73ec7B82B57d3"]
+funding_terms = "https://github.com/cosmos/cosmos/raw/master/fundraiser/Interchain%20Cosmos%20Contribution%20Terms%20-%20FINAL.pdf"
 funding_url = "http://cosmos.network/"
-tokens_sold = 15000000
-tokens_issued = 20000000
-btc_raised = ""
+tokens_sold = 168475963
+tokens_issued = 224634617
+btc_raised = 14413
+tokens_distribution = ["Strategic Contributors and Early Contributors - 75%", "Seed Contributors - 5%", "Bits Inc - 10%", "development and maintenance of the Cosmos Project - 10%"]
 
 [specs]
-supply = 20000000
+supply = 224634617
+
+[specs.cap]
+btc = 14413
+usd = 16719392
 
 [first_price]
+date = "2017-04-06T18:30:00"
+btc = 0.00008555
+usd = 0.09924313
 
 [flags]
 supply_from_here = true
@@ -58,7 +66,7 @@ type = "github"
 name = "Cosmos GitHub"
 url = "https://github.com/cosmos/cosmos"
 icon = "github.png"
-tags = ["Code"]
+tags = ["Main","Code"]
 
 [[links]]
 type = "paper"
@@ -72,4 +80,18 @@ type = "custom"
 name = "Cosmos Slack"
 url = "http://forum.tendermint.com:3000/"
 icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+type = "reddit"
+name = "reddit"
+url = "https://www.reddit.com/r/thecosmos"
+icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/cosmos_hq"
+icon = "twitter.png"
 tags = ["News"]
