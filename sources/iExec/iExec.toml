@@ -1,0 +1,94 @@
+genesis_id = ""
+system = "iExec"
+icon = "iexec"
+dependencies = ["Ethereum"]
+
+[token]
+name = "aeon"
+symbol = "RLC"
+
+[consensus]
+type = "ERC20 + Proof-of-Contribution"
+algorithm = "Ethereum"
+
+[aliases]
+coinmarketcap = "iExec"
+
+
+[descriptions]
+state = "Pre-Public"
+system_type = "cryptoasset"
+headline = "Blockchain-based Distributed Cloud"
+tags = ["DApp"]
+page_state = "draft"
+
+[crowdsales]
+start_date = "2017-04-12T13:00:00"
+end_date = "2017-05-12T13:00:00"
+genesis_address = [""]
+funding_terms = "http://iex.ec/wp-content/uploads/2016/08/iEx.ecWhitePaperV2_18Mar_8_27Paris.pdf"
+funding_url = "http://crowdsale.iex.ec"
+tokens_issued = 87000000
+tokens_sold = 60000000
+btc_raised = ""
+
+[specs]
+
+[specs.cap]
+
+[first_price]
+btc = ""
+usd = ""
+date = ""
+
+[flags]
+supply_from_here = true
+
+[[links]]
+type = "website"
+name = "iex.ec"
+url = "http://iex.ec/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "paper"
+name = "iExec whitepaper"
+url = "http://iex.ec/wp-content/uploads/2016/08/iEx.ecWhitePaperV2_18Mar_8_27Paris.pdf"
+icon = "paper.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "github"
+name = "GitHub"
+url = "https://github.com/iExecBlockchainComputing"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
+type = "blog"
+name = "Blog"
+url = "https://medium.com/iex-ec"
+icon = "blog.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/iEx_ec"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "LinkedIn"
+url = "https://www.linkedin.com/company/iex.ec"
+icon = "linkedin.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/Iex-ec-1164124083643301/"
+icon = "facebook.png"
+tags = ["News"]
