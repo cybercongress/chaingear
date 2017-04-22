@@ -1,4 +1,4 @@
-genesis_id = ""
+genesis_id = "0xec33fB8D7c781F6FeaF2Dd46D521D4F292320200"
 system = "iExec"
 icon = "iexec"
 dependencies = ["Ethereum"]
@@ -24,22 +24,25 @@ page_state = "draft"
 
 [crowdsales]
 start_date = "2017-04-19T13:00:00"
-end_date = "2017-05-19T13:00:00"
-genesis_address = [""]
+end_date = "2017-04-19T20:00:00"
+genesis_address = ["0xec33fB8D7c781F6FeaF2Dd46D521D4F292320200","0xAe307e3871E5A321c0559FBf0233A38c937B826A"]
 funding_terms = "http://iex.ec/wp-content/uploads/2016/08/iEx.ecWhitePaperV2_18Mar_8_27Paris.pdf"
 funding_url = "http://crowdsale.iex.ec"
 tokens_issued = 87000000
 tokens_sold = 60000000
-btc_raised = ""
+btc_raised = 10000
 
 [specs]
+supply = 87000000
 
 [specs.cap]
+btc = 14500
+usd = 17531431
 
 [first_price]
-btc = ""
-usd = ""
-date = ""
+btc = 0.00016667
+usd = 0.20151070
+date = "2017-04-19T20:00:00"
 
 [flags]
 supply_from_here = true
@@ -92,3 +95,45 @@ name = "Facebook"
 url = "https://www.facebook.com/Iex-ec-1164124083643301/"
 icon = "facebook.png"
 tags = ["News"]
+
+[[links]]
+type = "explorer"
+name = "EtherScan"
+url = "https://etherscan.io/address/0xec33fB8D7c781F6FeaF2Dd46D521D4F292320200"
+icon = "etherscan.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+type = "explorer"
+name = "Ether.Camp"
+url = "https://live.ether.camp/"
+icon = "ethercamp.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+type = "wallet"
+name = "Mist Wallet"
+url = "https://github.com/ethereum/mist/releases/"
+icon = "ethereum.png"
+tags = ["Main", "Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "MetaMask"
+url = "https://metamask.io/"
+icon = "metamask.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "MyEther Wallet"
+url = "https://www.myetherwallet.com/"
+icon = "myetherwallet.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "Parity"
+url = "https://github.com/paritytech/parity/releases"
+icon = "parity.png"
+tags = ["Apps", "Wallet"]
