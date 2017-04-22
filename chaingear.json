@@ -11485,28 +11485,49 @@
         }
     },
     {
+        "genesis_id": "0x6810e776880c02933d47db1b9fc05908e5386b96",
         "system": "Gnosis",
         "dependencies": [
             "Ethereum"
         ],
         "icon": "gnosis",
         "token": {
-            "name": "Gnosis",
-            "symbol": "GNS"
+            "name": "gnosis token",
+            "symbol": "GNO"
         },
         "consensus": {
-            "consensus_type": "",
+            "consensus_type": "ERC20 Token",
             "consensus_name": "Ethereum"
         },
         "descriptions": {
             "state": "Project",
             "system_type": "cryptoasset",
-            "headline": "Prediction Markets on Ethereum"
+            "headline": "Prediction Market Platform on Ethereum"
         },
         "aliases": {
             "coinmarketcap": "Gnosis"
         },
-        "specs": {},
+        "crowdsales": {
+            "start_date": "2017-04-24T00:00:00",
+            "end_date": "2017-05-24T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://blog.gnosis.pm/the-gnosis-model-of-token-sale-responsibility-3009958f70b8",
+            "funding_url": "https://gnosis.pm/",
+            "tokens_sold": "",
+            "tokens_issued": 100000000,
+            "btc_raised": "",
+            "cap_limit": [
+                "usd = 12500000"
+            ]
+        },
+        "specs": {
+            "supply": 100000000
+        },
+        "flags": {
+            "supply_from_here": true
+        },
         "links": [
             {
                 "type": "website",
@@ -11517,10 +11538,28 @@
                 ]
             },
             {
+                "type": "paper",
+                "name": "Gnosis Whitepaper",
+                "url": "https://gnosis.pm/resources/default/pdf/gnosis_whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "GitHub",
+                "url": "https://github.com/ConsenSys/gnosis.js",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
                 "type": "blog",
                 "name": "Gnosis Blog",
-                "url": "https://medium.com/gnosis-pm",
-                "icon": "medium.png",
+                "url": "https://blog.gnosis.pm/",
+                "icon": "blog.png",
                 "tags": [
                     "Main",
                     "News"
@@ -11532,7 +11571,6 @@
                 "url": "https://twitter.com/gnosisPM",
                 "icon": "twitter.png",
                 "tags": [
-                    "Main",
                     "News"
                 ]
             },
@@ -11542,8 +11580,68 @@
                 "url": "https://www.facebook.com/Gnosis.pm/",
                 "icon": "facebook.png",
                 "tags": [
-                    "Main",
                     "News"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherScan",
+                "url": "https://etherscan.io/token/Gnosis",
+                "icon": "etherscan.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Ether.Camp",
+                "url": "https://live.ether.camp/",
+                "icon": "ethercamp.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Mist Wallet",
+                "url": "https://github.com/ethereum/mist/releases/",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MetaMask",
+                "url": "https://metamask.io/",
+                "icon": "metamask.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MyEther Wallet",
+                "url": "https://www.myetherwallet.com/",
+                "icon": "myetherwallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Parity",
+                "url": "https://github.com/paritytech/parity/releases",
+                "icon": "parity.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
                 ]
             }
         ]
@@ -22214,14 +22312,14 @@
             "nickname": "Satoshi•Pie"
         },
         "specs": {
-            "supply": 578681.0818,
+            "supply": 589423.5139,
             "price": {
-                "usd": 5.7743,
-                "btc": 0.00491661
+                "usd": 5.9546,
+                "btc": 0.00483391
             },
             "cap": {
-                "usd": 3341484,
-                "btc": 2845.15
+                "usd": 3509786,
+                "btc": 2849.22
             }
         },
         "first_price": {
@@ -27325,7 +27423,7 @@
         },
         "crowdsales": {
             "start_date": "2017-04-03T13:05:00",
-            "end_date": "2017-06-03T13:05:00",
+            "end_date": "2017-04-06T13:05:00",
             "genesis_address": [
                 "0x6cC2D616E56e155D8A06E65542fdb9bD2D7f3c2E",
                 "335TYuEjiWFmTYjAjN5o2CSUjbqF8WmpMz"
@@ -28344,7 +28442,7 @@
         ]
     },
     {
-        "genesis_id": "",
+        "genesis_id": "0xec33fB8D7c781F6FeaF2Dd46D521D4F292320200",
         "system": "iExec",
         "icon": "iexec",
         "dependencies": [
@@ -28372,23 +28470,28 @@
         },
         "crowdsales": {
             "start_date": "2017-04-19T13:00:00",
-            "end_date": "2017-05-19T13:00:00",
+            "end_date": "2017-04-19T20:00:00",
             "genesis_address": [
-                ""
+                "0xec33fB8D7c781F6FeaF2Dd46D521D4F292320200",
+                "0xAe307e3871E5A321c0559FBf0233A38c937B826A"
             ],
             "funding_terms": "http://iex.ec/wp-content/uploads/2016/08/iEx.ecWhitePaperV2_18Mar_8_27Paris.pdf",
             "funding_url": "http://crowdsale.iex.ec",
             "tokens_issued": 87000000,
             "tokens_sold": 60000000,
-            "btc_raised": ""
+            "btc_raised": 10000
         },
         "specs": {
-            "cap": {}
+            "supply": 87000000,
+            "cap": {
+                "btc": 14500,
+                "usd": 17531431
+            }
         },
         "first_price": {
-            "btc": "",
-            "usd": "",
-            "date": ""
+            "btc": 0.00016667,
+            "usd": 0.2015107,
+            "date": "2017-04-19T20:00:00"
         },
         "flags": {
             "supply_from_here": true
@@ -28458,6 +28561,67 @@
                 "icon": "facebook.png",
                 "tags": [
                     "News"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "EtherScan",
+                "url": "https://etherscan.io/address/0xec33fB8D7c781F6FeaF2Dd46D521D4F292320200",
+                "icon": "etherscan.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "explorer",
+                "name": "Ether.Camp",
+                "url": "https://live.ether.camp/",
+                "icon": "ethercamp.png",
+                "tags": [
+                    "Apps",
+                    "Analytics"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Mist Wallet",
+                "url": "https://github.com/ethereum/mist/releases/",
+                "icon": "ethereum.png",
+                "tags": [
+                    "Main",
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MetaMask",
+                "url": "https://metamask.io/",
+                "icon": "metamask.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "MyEther Wallet",
+                "url": "https://www.myetherwallet.com/",
+                "icon": "myetherwallet.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
+                ]
+            },
+            {
+                "type": "wallet",
+                "name": "Parity",
+                "url": "https://github.com/paritytech/parity/releases",
+                "icon": "parity.png",
+                "tags": [
+                    "Apps",
+                    "Wallet"
                 ]
             }
         ]
