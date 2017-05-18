@@ -1,6 +1,6 @@
 genesis_id = ""
 system = "ZClassic"
-dependencies = ["Bitcoin"]
+dependencies = ["independent"]
 icon = "zclassic"
 
 [token]
@@ -8,29 +8,16 @@ name = "zclassic"
 symbol = "ZCL"
 
 [consensus]
-consensus_type = ""
-consensus_name = ""
+consensus_type = "Proof-of-Work"
+consensus_name = "Equihash"
 
 [descriptions]
-state = "Project"
+state = "Public"
 system_type = "cryptoasset"
-headline = "Zero-knowledge proving scheme is a decentralized and open-source technology that offers privacy and selective transparency of transactions."
+headline = "Zero-knowledge Cryptocurrency"
 
 [aliases]
 coinmarketcap = "ZClassic"
-
-[crowdsales]
-start_date = ""
-end_date = ""
-end_date_plan = ""
-genesis_address = [""]
-funding_terms = ""
-funding_url = "http://zclassic.org"
-tokens_sold = 1349963
-tokens_issued = 1349963
-btc_raised = ""
-cap_limit = [""]
-raised = [""]
 
 [specs]
 supply = ""
@@ -42,12 +29,6 @@ type = "website"
 name = "zclassic.org"
 url = "http://zclassic.org/"
 tags = ["Main"]
-
-[[links]]
-type = "paper"
-name = "Whitepaper"
-url = ""
-tags = ["Main", "Science"]
 
 [[links]]
 type = "github"
