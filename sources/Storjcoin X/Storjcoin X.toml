@@ -1,16 +1,15 @@
 genesis_id = ""
-dependencies = ["Bitcoin", "Counterparty"]
-system = "Storjcoin X"
+dependencies = ["Ethereum"]
+system = "Storj"
 
 [descriptions]
-state = "Public"
+state = "Project"
 system_type = "cryptoasset"
-headline = "Decentralized Cloud Storage"
-summary = "Storj is based on blockchain technology and peer-to-peer protocols to provide the most secure, private, and encrypted cloud storage."
+headline = "Peer-to-Peer Cloud Storage Network"
 tags = ["DApp"]
 
 [aliases]
-coinmarketcap = "Storjcoin X"
+coinmarketcap = ""
 nickname = "Storj"
 
 [crowdsales]
@@ -24,11 +23,11 @@ btc_raised = ""
 cap_limit = ["usd = 30000000"]
 
 [consensus]
-type = "Counterparty"
-algorithm = "Locked Token"
+consensus_type = "ERC20 Token"
+consensus_name = "Ethereum"
 
 [token]
-name = "storjcoin"
+name = "storj"
 symbol = "SJCX"
 
 [specs]
