@@ -1,33 +1,33 @@
-genesis_id = "322527"
-dependencies = ["Bitcoin", "Counterparty"]
-system = "Storjcoin X"
+genesis_id = ""
+dependencies = ["Ethereum"]
+system = "Storj"
 
 [descriptions]
-state = "Public"
+state = "Project"
 system_type = "cryptoasset"
-headline = "Decentralized Cloud Storage"
-summary = "Storj is based on blockchain technology and peer-to-peer protocols to provide the most secure, private, and encrypted cloud storage."
+headline = "The world's largest decentralized cloud storage provider"
 tags = ["DApp"]
 
 [aliases]
-coinmarketcap = "Storjcoin X"
+coinmarketcap = ""
 nickname = "Storj"
 
 [crowdsales]
-start_date = "2014-07-18T00:00:00"
-end_date = "2014-08-18T00:00:00"
-genesis_address = ["132aBrspLgL54cm9eQfGNFLGqXwBRQrugc"]
-funding_terms = "http://storj.io/CrowdsaleTerms.pdf"
-funding_url = "http://storj.io/crowdsale.html"
-tokens_sold = 35039704.0
-btc_raised = 910.0
+start_date = "2017-05-19T15:00:00"
+end_date = "2017-06-19T15:00:00"
+genesis_address = [""]
+funding_terms = "https://storj.io/saleterms.pdf"
+funding_url = "http://storj.io/"
+tokens_sold = ""
+btc_raised = ""
+cap_limit = ["usd = 30000000"]
 
 [consensus]
-type = "Counterparty"
-algorithm = "Locked Token"
+consensus_type = "ERC20 Token"
+consensus_name = "Ethereum"
 
 [token]
-name = "storjcoin"
+name = "storj token"
 symbol = "SJCX"
 
 [specs]
@@ -45,13 +45,6 @@ name = "storj.io"
 url = "http://storj.io/"
 icon = "website.png"
 tags = ["Main"]
-
-[[links]]
-type = "explorer"
-name = "Explorer"
-url = "http://blockscan.com/assetInfo.aspx?q=SJCX"
-icon = "explorer.png"
-tags = ["Main", "Apps", "Analytics"]
 
 [[links]]
 type = "github"
@@ -89,17 +82,9 @@ icon = "reddit.png"
 tags = ["News"]
 
 [[links]]
-name = "Counterparty DEX"
+name = ""
 
-url = "https://counterwallet.co"
-type = "custom"
-icon = "counterparty.png"
-tags = ["Apps", "Exchange"]
-
-[[links]]
-name = "Poloniex"
-
-url = "https://www.poloniex.com"
+url = ""
 type = "custom"
 icon = "poloniex.png"
 tags = ["Apps", "Exchange"]
@@ -107,7 +92,7 @@ tags = ["Apps", "Exchange"]
 [[links]]
 name = "Bittrex"
 
-url = "https://bittrex.com/"
+url = ""
 type = "custom"
 icon = "bittrex.png"
 tags = ["Apps", "Exchange"]
@@ -115,15 +100,15 @@ tags = ["Apps", "Exchange"]
 [[links]]
 name = "Markets CMC"
 
-url = "http://coinmarketcap.com/assets/storjcoin-x/#markets"
+url = ""
 type = "custom"
 icon = "link.png"
 tags = ["Apps", "Analytics"]
 
 [first_price]
-btc = 0.00002597
-usd = 0.01196365
-date = "2014-08-18T00:00:00"
+btc = ""
+usd = 0.5
+date = ""
 
 [flags]
 supply_from_here = true
