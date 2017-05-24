@@ -147,7 +147,7 @@ To add crowdfunding put this data to toml file of your system.
 ### Before
 ```toml
 [crowdsales]
-start_date = "2015-03-31T00:00:00"
+start_date = "2015-03-31T00:00:00" or ["blockchain":"Ethereum" ,"block":"16543"]
 end_date = "2015-05-15T00:00:00"
 genesis_address = ["35gLt5EgB367enjSjyEDahhWWcy6p1MGf6"] # Could be array. See multu currency crowdsale
 funding_url = "https://koinify.com/#/project/FACTOM"
