@@ -1,43 +1,34 @@
 genesis_id = ""
-system = "MassNetwork"
-icon = "massnetwork"
-dependencies = ["independed"]
+system = "MaskNetwork"
+icon = "masknetwork"
+dependencies = ["independent"]
 
 [token]
-name = "mass coin"
-symbol = "MASS"
+name = "masknetwork token"
+symbol = "MSK"
 
 [consensus]
-type = ""
-algorithm = "Variable Proof of Work algorithm"
+consensus_type = "VPOW"
+consensus_name = "Variable Proof of Work"
 
 [descriptions]
-state = "Project"
+state = "Project" 
 system_type = "cryptoasset"
 headline = "Peer-to-peer decentralized social trading network"
-tags = ["DApp"]
-twwidid = ""
-page_state = "draft"
 
 [crowdsales]
 start_date = "2017-05-24T00:00:00"
 end_date = "2017-06-24T23:59:59"
 funding_terms = "http://www.masknetwork.com/ico_terms.pdf"
 funding_url = "http://masknetwork.com/ico.php"
-tokens_sold = 700000000000
+tokens_sold = ""
 tokens_issued = 21000000
-btc_raised = 332148.0
-cap_limit = [""]
+btc_raised = ""
+cap_limit = ["usd=500000"]
 raised = [""]
 
-
 [specs]
-supply = 700000000000
-
-[first_price]
-
-[flags]
-supply_from_here = true
+supply = 21000000
 
 [[links]]
 type = "website"
@@ -62,16 +53,9 @@ tags = ["Main","Code"]
 
 [[links]]
 type = "forum"
-name = "BTT Thread"
-url = "https://bitcointalk.org/index.php?topic=1598276"
-icon = "forum.png"
-tags = ["News"]
-
-[[links]]
-type = "forum"
-name = "BTT Thread"
-url = "https://bitcointalk.org/index.php?topic=1598276"
-icon = "forum.png"
+name = "Bitcointalk"
+url = "https://bitcointalk.org/index.php?topic=1272309.0"
+icon = "bitcointalk.png"
 tags = ["News"]
 
 [[links]]
@@ -86,11 +70,4 @@ type = "reddit"
 name = "reddit"
 url = "https://www.reddit.com/domain/masknetwork.com/"
 icon = "reddit.png"
-tags = ["News"]
-
-[[links]]
-type = "blog"
-name = "Mass Blog"
-url = "http://blog.mass.network/"
-icon = "blog.png"
 tags = ["News"]
