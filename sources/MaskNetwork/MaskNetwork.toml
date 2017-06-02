@@ -8,16 +8,14 @@ name = "mass coin"
 symbol = "MASS"
 
 [consensus]
-type = ""
-algorithm = "Variable Proof of Work algorithm"
+
+consensus_type = "Variable Proof of Work algorithm"
+consensus_name = "VPOW"
 
 [descriptions]
 state = "Project"
 system_type = "cryptoasset"
 headline = "Peer-to-peer decentralized social trading network"
-tags = ["DApp"]
-twwidid = ""
-page_state = "draft"
 
 [crowdsales]
 start_date = "2017-05-24T00:00:00"
@@ -30,14 +28,8 @@ btc_raised = 332148.0
 cap_limit = [""]
 raised = [""]
 
-
 [specs]
 supply = 700000000000
-
-[first_price]
-
-[flags]
-supply_from_here = true
 
 [[links]]
 type = "website"
