@@ -1,15 +1,18 @@
-genesis_id = ""
+genesis_id = "0x0D8775F648430679A709E98d2b0Cb6250d2887EF"
 system = "Basic Attention Token"
 dependencies = ["Ethereum"]
 icon = "bat"
 
 [token]
-name = ""
+name = "attention token"
 symbol = "BAT"
 
 [consensus]
 consensus_type = "ERC20 Token"
 consensus_name = "Ethereum"
+
+[aliases]
+coinmarketcap = "Basic Attenti..."
 
 [descriptions]
 state = "Public"
@@ -84,3 +87,52 @@ name = "Reddit"
 url = "https://www.reddit.com/r/BATProject/"
 icon = "reddit.png"
 tags = ["News"]
+
+[[links]]
+type = "explorer"
+name = "EtherScan"
+url = "https://etherscan.io/token/Bat"
+icon = "etherscan.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+type = "wallet"
+name = "Ethereum Wallet"
+url = "https://github.com/ethereum/mist/releases/"
+icon = "ethereum.png"
+tags = ["Main", "Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "Parity"
+url = "https://parity.io/"
+icon = "parity.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "MyEther Wallet"
+url = "https://www.myetherwallet.com/"
+icon = "myetherwallet.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "MetaMask"
+url = "https://metamask.io/"
+icon = "metamask.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "exchange"
+name = "Bittrex"
+url = "https://bittrex.com"
+icon = "bittrex.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+type = "exchange"
+name = "Liqui Exchange"
+url = "https://liqui.io/"
+icon = "liqui.png"
+tags = ["Apps","Exchange"]
