@@ -1,0 +1,75 @@
+genesis_id = ""
+system = "BlockchainCapital"
+icon = "blockchaincapital"
+dependencies = ["Ethereum"]
+
+[token]
+name = "bcap"
+symbol = "BCAP"
+
+[consensus]
+type = "ERC20 Token"
+algorithm = "Ethereum"
+
+[aliases]
+coinmarketcap = "BCAP"
+
+[descriptions]
+state = "Project"
+system_type = "cryptoasset"
+headline = "Digital Liquid Venture Fund"
+tags = ["DApp"]
+page_state = "draft"
+
+[crowdsales]
+start_date = "2017-04-10T11:00:00"
+end_date = "2017-04-10T17:00:00"
+genesis_address = ["3AzSgmD3Bnuit3mhfNk5BhHF5w61xQajc4"]
+funding_terms = "https://blockchaincapital.tokenhub.com/"
+funding_url = "https://blockchaincapital.tokenhub.com/"
+tokens_sold = 10000000
+tokens_issued = 10000000
+btc_raised = 8415
+
+[specs]
+supply = 10000000
+
+[specs.cap]
+btc = 8415
+usd = 10000000
+
+[first_price]
+btc = 0.00084153
+usd = 1
+date = "2017-04-10T17:00:00"
+
+[flags]
+supplu_from_here = true
+
+[[links]]
+type = "website"
+name = "website"
+url = "https://blockchaincapital.tokenhub.com/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "reddit"
+name = "reddit"
+url = "https://www.reddit.com/r/vctoken/"
+icon = "reddit.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "forum"
+name = "Bitcointalk"
+url = "https://bitcointalk.org/index.php?topic=1829499.0"
+icon = "bitcoin.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "custom"
+name = "Telegram"
+url = "https://t.me/vctoken"
+icon = "telegram.png"
+tags = ["Main","News"]

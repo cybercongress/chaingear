@@ -1,4 +1,4 @@
-genesis_id = ""
+genesis_id = "0x667088b212ce3d06a1b553a7221E1fD19000d9aF"
 system = "Wings"
 icon = "wings"
 dependencies = ["Bitcoin"]
@@ -15,7 +15,7 @@ algorithm = "OP_Return"
 coinmarketcap = "Wings"
 
 [descriptions]
-state = "Pre-Public"
+state = "Public"
 system_type = "cryptoasset"
 headline = "A decentralized platform to create, join and manage DAOs"
 tags = ["DApp"]
@@ -23,19 +23,27 @@ page_state = "ready"
 
 [crowdsales]
 start_date = "2016-11-18T12:00:00"
-end_date = "2016-12-18T12:00:00"
+end_date = "2017-01-06T02:00:00"
 genesis_address = ["3GQBU4AUPjdbg1hoYDPWSc4qTRfAgbiERW","0x0097B5E8c77ac7C54B10987d51975E70AF9cF4d6","0x45Ded7312026854EFD298B36992c4126c0E03E1b","rUqmU4LujmbHyemDSjEURTovFpytZXM28T","xpub661MyMwAqRbcExoojJn242wdXL4AJn1ZavTfKQpRcvxz3vbp4gjsg4Hb2qNTaerCtkF8dXHkHEYeCCLXEunANcqxA2PUCwS3RGTEYTYsCXr"]
 funding_terms = "https://blog.wings.ai/save-the-date-7-weeks-of-wings-dao-formation-2060c698ef3d#.j7gq95pt5"
 funding_url = "https://wings.ai/"
-tokens_sold = ""
-tokens_issued = ""
-btc_raised = ""
+tokens_sold = 75000000
+tokens_issued = 100000000
+btc_raised = 2010.43179658
 
 [specs]
+supply = 100000000
 
 [specs.cap]
+btc = 2718
+
+[specs.price]
+btc = 0.00002718
 
 [first_price]
+date = "2017-01-06T12:00:00"
+btc = 0.00002596
+usd = 0.02302039
 
 [flags]
 
@@ -58,7 +66,7 @@ type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/wingsplatform"
 icon = "twitter.png"
-tags = ["Main","News"]
+tags = ["News"]
 
 [[links]]
 type = "forum"
@@ -87,3 +95,66 @@ name = "Wings GitHub"
 url = "https://github.com/ChainLab"
 icon = "github.png"
 tags = ["Code"]
+
+[[links]]
+type = "explorer"
+name = "EtherScan"
+url = "http://etherscan.io/"
+icon = "etherscan.png"
+tags = ["Main", "Apps", "Analytics"]
+
+[[links]]
+type = "explorer"
+name = "EtherChain.org"
+url = "http://etherchain.org/"
+icon = "etherchain.jpg"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+type = "explorer"
+name = "EtherScan"
+url = "https://etherscan.io/token/0x667088b212ce3d06a1b553a7221E1fD19000d9aF"
+icon = "etherscan.png"
+tags = ["Main", "Apps", "Analytics"]
+
+[[links]]
+type = "wallet"
+name = "Ethereum Wallet"
+url = "https://github.com/ethereum/mist/releases/"
+icon = "ethereum.png"
+tags = ["Main", "Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "Parity"
+url = "https://parity.io/"
+icon = "parity.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "MyEther Wallet"
+url = "https://www.myetherwallet.com/"
+icon = "myetherwallet.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "MetaMask"
+url = "https://metamask.io/"
+icon = "metamask.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "exchange"
+name = "Bittrex"
+url = "https://bittrex.com"
+icon = "bittrex.png"
+tags = ["Apps", "Exchange"]
+
+[[links]]
+type = "exchange"
+name = "Liqui Exchange"
+url = "https://liqui.io/"
+icon = "liqui.png"
+tags = ["Apps","Exchange"]

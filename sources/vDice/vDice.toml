@@ -1,21 +1,21 @@
-genesis_id = ""
+genesis_id = "0x5c543e7AE0A1104f78406C340E9C64FD9fCE5170"
 system = "vDice"
 icon = "vdice"
 dependencies = ["Ethereum"]
 
 [token]
 name = "vslice"
-symbol = "vSlice"
+symbol = "VSL"
 
 [consensus]
 type = "Ethereum"
 algorithm = "Transferable Fungible"
 
 [aliases]
-coinmarketcap = "vDice"
+coinmarketcap = "vSlice"
 
 [descriptions]
-state = "Project"
+state = "Public"
 system_type = "cryptoasset"
 headline = "A Decentralized Gambling Game on Ethereum"
 tags = ["DApp"]
@@ -25,18 +25,21 @@ page_state = "ready"
 [crowdsales]
 start_date = "2016-11-15T09:00:00"
 end_date = "2016-12-15T09:00:00"
-genesis_address = ["0xf052F444d144f3f1768Ca52Fd83dfe5AfB0634b4"]
+genesis_address = ["0x8bCCc9BA2E5706E24a36ddA02ca2A846E39a7bbF"]
 funding_terms = "https://blog.vdice.io/wp-content/uploads/2016/10/vDice_ICO_Whitepaper_English.pdf"
 funding_url = "http://crowdsale.vdice.io"
-tokens_sold = ""
-tokens_issued = ""
-btc_raised = ""
+tokens_sold = 33390496.03337560002666059
+tokens_issued = 33390496.03337560002666059
+btc_raised = 1934
 
 [specs]
 
 [specs.cap]
 
 [first_price]
+date = "2016-12-15T09:00:00"
+btc = 0.00005793
+usd = 0.04492356
 
 [flags]
 
@@ -44,6 +47,13 @@ btc_raised = ""
 type = "website"
 name = "www.vdice.io"
 url = "https://www.vdice.io/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "website"
+name = "vslice.io"
+url = "http://www.vslice.io/"
 icon = "website.png"
 tags = ["Main"]
 
@@ -59,7 +69,7 @@ type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/vdice_io"
 icon = "twitter.png"
-tags = ["Main","News"]
+tags = ["News"]
 
 [[links]]
 type = "forum"
@@ -67,6 +77,13 @@ name = "BTT Thread"
 url = "https://bitcointalk.org/index.php?topic=1633105.msg16425613#msg16425613"
 icon = "forum.png"
 tags = ["Main","News"]
+
+[[links]]
+type = "slack"
+name = "vDice Slack"
+url = "https://vdice-slack-invite-page.stamplayapp.com/"
+icon = "slack.png"
+tags = ["News"]
 
 [[links]]
 type = "reddit"
@@ -95,3 +112,47 @@ name = "vDice Business Plan"
 url = "https://blog.vdice.io/wp-content/uploads/2016/10/vDice_Business_Plan_English.pdf"
 icon = "paper.png"
 tags = ["Science"]
+
+
+
+[[links]]
+type = "exchange"
+name = "Liqui Exchange"
+url = "https://liqui.io/"
+icon = "liqui.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
+name = "LiveCoin Exchange"
+url = "https://www.livecoin.net/"
+icon = "livecoin.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
+name = "EtherDelta"
+url = "https://etherdelta.github.io"
+icon = "etherdelta.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "wallet"
+name = "Mist Wallet"
+url = "https://github.com/ethereum/mist/releases/"
+icon = "ethereum.png"
+tags = ["Main", "Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "MyEther Wallet"
+url = "https://www.myetherwallet.com/"
+icon = "myetherwallet.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "EthCore Parity"
+url = "https://ethcore.io/parity.html"
+icon = "parity.png"
+tags = ["Apps", "Wallet"]

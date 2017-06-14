@@ -1,0 +1,86 @@
+genesis_id = ""
+system = "Status"
+icon = "status"
+dependencies = ["Ethereum"]
+
+[token]
+name = ""
+symbol = ""
+
+[consensus]
+type = "Ethereum"
+algorithm = "ERC20"
+
+[aliases]
+coinmarketcap = "Status"
+nickname = "Status"
+
+[crowdsales]
+start_date = "2017-06-17T09:00:00"
+end_date = "2017-07-17T00:10:00"
+end_date_plan = "2017-06-30T00:00:00"
+genesis_address = [""]
+funding_terms = ""
+funding_url = "https://status.im/"
+tokens_sold = ""
+tokens_issued = ""
+btc_raised = ""
+cap_limit = [""]
+raised = [""]
+
+[descriptions]
+state = "Project"
+system_type = "cryptoasset"
+headline = "Gateway to access the decentralized web"
+tags = ["DApp"]
+page_state = "draft"
+
+[[links]]
+type = "website"
+name = "status.im"
+url = "https://status.im/"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "github"
+name = "Status GitHub"
+url = "https://github.com/status-im"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/ethstatus"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "reddit"
+name = "reddit"
+url = "https://www.reddit.com/r/statusim/"
+rss = "https://www.reddit.com/r/statusim/.rss"
+icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Slack"
+url = "http://slack.status.im/"
+icon = "slack.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "wiki"
+name = "Status Wiki"
+url = "https://wiki.status.im/"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+type = "wallet"
+name = "Status App"
+url = "https://github.com/status-im/status-react/releases"
+icon = "status.png"
+tags = ["Main","Apps", "Wallet"]

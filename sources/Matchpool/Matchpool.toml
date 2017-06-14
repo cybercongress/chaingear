@@ -1,0 +1,101 @@
+genesis_id = ""
+system = "Matchpool"
+icon = "matchpool"
+dependencies = ["Ethereum"]
+
+[token]
+name = "guppie"
+symbol = "GUP"
+
+[consensus]
+type = "Ethereum"
+algorithm = "Transferable Fungible"
+
+[aliases]
+coinmarketcap = "Matchpool"
+
+[descriptions]
+state = "Project"
+system_type = "cryptoasset"
+headline = "Dapp that reward people for creating human connections"
+tags = ["DApp"]
+twwidid = ""
+page_state = "draft"
+
+[crowdsales]
+start_date = "2017-04-02T13:00:00"
+end_date = "2017-04-04T13:00:00"
+genesis_address = ["0xE05CeDD2838E4e1d99B539D8C768D6EF2a10F729"]
+funding_terms = "https://medium.com/matchpool/announcement-matchpools-ether-cap-updated-campaign-information-ff2f539065da"
+funding_url = "http://matchpool.co/crowdsale/"
+tokens_sold = 60000000
+tokens_issued = 100000000
+btc_raised = ""
+
+[specs]
+supply = 100000000
+
+[specs.cap]
+
+[first_price]
+date = "2017-04-11T19:44:47"
+btc = 0.00020000
+usd = 0.240438
+
+[flags]
+
+[[links]]
+type = "website"
+name = "matchpool.co"
+url = "http://matchpool.co"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "github"
+name = "Matchpool GitHub"
+url = "https://github.com/Matchpool"
+icon = "github.png"
+tags = ["Code"]
+
+[[links]]
+type = "paper"
+name = "Matchpool Whitepaper"
+url = "http://matchpool.co/wp-content/uploads/2016/12/Matchpool_Whitepaper_221216.pdf"
+icon = "paper.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "blog"
+name = "Blog"
+url = "https://medium.com/@matchpool"
+icon = "blog.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/matchpool"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "forum"
+name = "Bitcointalk"
+url = "https://bitcointalk.org/index.php?topic=1752471.0"
+icon = "bitcoin.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Slack"
+url = "https://matchpool.signup.team/"
+icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/matchpoolhq/"
+icon = "facebook.png"
+tags = ["News"]

@@ -15,11 +15,11 @@ algorithm = "Delegated"
 coinmarketcap = "Golos"
 
 [descriptions]
-state = "Pre-Public"
+state = "Public"
 system_type = "cryptocurrency"
 headline = "Social Media Blockchain Platform for russian-speaking community"
 tags = ["DAO"]
-page_state = "draft"
+page_state = "ready"
 
 [crowdsales]
 start_date = "2016-11-01T11:00:00"
@@ -27,13 +27,16 @@ end_date = "2016-12-04T11:00:00"
 genesis_address = ["3CWicRKHQqcj1N6fT1pC9J3hUzHw1KyPv3"]
 funding_terms = "https://wiki.golos.io/1-introduction/golos_whitepaper.html"
 funding_url = "http://golos.io/ico"
-tokens_sold = 27405818
+tokens_sold = 27405651.5
 tokens_issued = 45676364
-btc_raised = 600.14202144
+btc_raised = 601.08806753
 
 [specs]
 
 [first_price]
+btc = 0.00002193
+usd = 0.01673005
+date = "2016-12-04T11:00:00"
 
 [flags]
 
@@ -46,17 +49,10 @@ tags = ["Main"]
 
 [[links]]
 type = "wallet"
-name = "golos.io"
+name = "Golos Wallet"
 url = "http://golos.io"
 icon = "wallet.png"
 tags = ["Main","Wallet"]
-
-[[links]]
-type = "website"
-name = "Crowdsale"
-url = "http://golos.io/ico"
-icon = "website.png"
-tags = ["Main"]
 
 [[links]]
 type = "wiki"
@@ -119,7 +115,7 @@ type = "explorer"
 name = "Golosdb Explorer"
 url = "https://golosdb.com"
 icon = "explorer.png"
-tags = ["Apps","Analytics"]
+tags = ["Main","Apps","Analytics"]
 
 [[links]]
 type = "explorer"
@@ -137,6 +133,13 @@ tags = ["Apps","Analytics"]
 
 [[links]]
 type = "exchange"
+name = "Bittrex"
+url = "https://bittrex.com"
+icon = "bittrex.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
 name = "Kuna Exchange"
 url = "https://kuna.io/"
 icon = "kuna.png"
@@ -144,7 +147,14 @@ tags = ["Apps","Exchange"]
 
 [[links]]
 type = "exchange"
-name = "Liqui Exchange"
-url = "https://liqui.io/"
-icon = "liqui.png"
+name = "LiveCoin Exchange"
+url = "https://www.livecoin.net/"
+icon = "livecoin.png"
+tags = ["Apps","Exchange"]
+
+[[links]]
+type = "exchange"
+name = "OpenLedger"
+url = "https://bitshares.openledger.info/#/market/GOLOS_OPEN.BTC"
+icon = "openledger.png"
 tags = ["Apps","Exchange"]

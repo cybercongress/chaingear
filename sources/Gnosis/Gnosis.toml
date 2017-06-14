@@ -1,24 +1,55 @@
+genesis_id = "0x6810e776880c02933d47db1b9fc05908e5386b96"
 system = "Gnosis"
 dependencies = ["Ethereum"]
 icon = "gnosis"
 
 [token]
-name = "Gnosis"
-symbol = "GNS"
+name = "gnosis token"
+symbol = "GNO"
 
 [consensus]
-consensus_type = ""
+consensus_type = "ERC20 Token"
 consensus_name = "Ethereum"
 
 [descriptions]
-state = "Project"
+state = "Pre-Public"
 system_type = "cryptoasset"
-headline = "Prediction Markets on Ethereum"
+headline = "Prediction Market Platform on Ethereum"
 
 [aliases]
 coinmarketcap = "Gnosis"
 
+[crowdsales]
+start_date = "2017-04-24T17:00:00"
+end_date = "2017-04-24T17:10:00"
+end_date_plan = "2017-05-24T17:00:00"
+genesis_address = ["0x1d0DcC8d8BcaFa8e8502BEaEeF6CBD49d3AFFCDC","0x851b7F3Ab81bd8dF354F0D7640EFcD7288553419"]
+funding_terms = "https://blog.gnosis.pm/the-gnosis-model-of-token-sale-responsibility-3009958f70b8"
+funding_url = "https://gnosis.pm/"
+tokens_sold = 417000
+tokens_issued = 10000000
+btc_raised = 10213
+cap_limit = ["usd = 12500000"]
+raised = ["eth = 250000"]
+
 [specs]
+supply = 10000000
+
+[specs.cap]
+usd = 311017923
+btc = 257244
+
+[spec.price]
+usd = 29.61010293
+btc = 0.02449059
+
+[first_price]
+date = "2017-04-24T17:10:10"
+usd = 29.61010293
+btc = 0.02449059
+
+[flags]
+supply_from_here = true
 
 [[links]]
 type = "website"
@@ -27,10 +58,22 @@ url = "https://www.gnosis.pm/"
 tags = ["Main"]
 
 [[links]]
+type = "paper"
+name = "Gnosis Whitepaper"
+url = "https://gnosis.pm/resources/default/pdf/gnosis_whitepaper.pdf"
+tags = ["Main", "Science"]
+
+[[links]]
+type = "github"
+name = "GitHub"
+url = "https://github.com/ConsenSys/gnosis.js"
+tags = ["Main","Code"]
+
+[[links]]
 type = "blog"
 name = "Gnosis Blog"
-url = "https://medium.com/gnosis-pm"
-icon = "medium.png"
+url = "https://blog.gnosis.pm/"
+icon = "blog.png"
 tags = ["Main","News"]
 
 [[links]]
@@ -38,11 +81,53 @@ type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/gnosisPM"
 icon = "twitter.png"
-tags = ["Main","News"]
+tags = ["News"]
 
 [[links]]
 type = "custom"
 name = "Facebook"
 url = "https://www.facebook.com/Gnosis.pm/"
 icon = "facebook.png"
-tags = ["Main","News"]
+tags = ["News"]
+
+[[links]]
+type = "explorer"
+name = "EtherScan"
+url = "https://etherscan.io/token/Gnosis"
+icon = "etherscan.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+type = "explorer"
+name = "Ether.Camp"
+url = "https://live.ether.camp/"
+icon = "ethercamp.png"
+tags = ["Apps", "Analytics"]
+
+[[links]]
+type = "wallet"
+name = "Mist Wallet"
+url = "https://github.com/ethereum/mist/releases/"
+icon = "ethereum.png"
+tags = ["Main", "Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "MetaMask"
+url = "https://metamask.io/"
+icon = "metamask.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "MyEther Wallet"
+url = "https://www.myetherwallet.com/"
+icon = "myetherwallet.png"
+tags = ["Apps", "Wallet"]
+
+[[links]]
+type = "wallet"
+name = "Parity"
+url = "https://github.com/paritytech/parity/releases"
+icon = "parity.png"
+tags = ["Apps", "Wallet"]

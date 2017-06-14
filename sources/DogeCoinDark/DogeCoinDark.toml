@@ -3,6 +3,10 @@ system = "DogeCoinDark"
 icon = "dogecoindark"
 dependencies = ["independent"]
 
+[token]
+name = "vergecoin"
+symbol = "XVG"
+
 [aliases]
 coinmarketcap = "Verge"
 nickname = "Verge"
@@ -15,11 +19,13 @@ system_type = "cryptocurrency"
 type = "PoW"
 algorithm = "Scrypt"
 
-[token]
-name = "vergecoin"
-symbol = "XVG"
-
 [specs]
+previous_name = "DogeCoinDark"
+
+[first_price]
+btc = 0.00000002
+usd = 0.0000074
+date = "2014-10-25T00:00:00"
 
 [[links]]
 type = "website"
@@ -56,8 +62,3 @@ type = "custom"
 icon = "bitrex.png"
 url = "https://bittrex.com/Market/Index?MarketName=BTC-XVG"
 tags = ["Apps", "Exchange"]
-
-[first_price]
-btc = 0.00000002
-usd = 0.0000074
-date = "2014-10-25T00:00:00"

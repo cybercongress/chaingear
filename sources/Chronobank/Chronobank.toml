@@ -24,16 +24,23 @@ page_state = "draft"
 [crowdsales]
 start_date = "2016-12-15T00:00:00"
 end_date = "2017-02-15T20:00:00"
-genesis_address = [""]
+genesis_address = ["36LHZyzMASdBQMecfSrTx5sGDaFS73YLLJ","3Cq8F4SzxmM5UfURgRNmq9PirVckeK1Hfn","NBHBCH-XNNOEZ-BJDWY2-JOTAMF-AKYJ3B-4BHJY4-LJ6T","0x8a37a0b8d48486b2117e958062d28096bec2539a","0x7e10e808a819e8bab77a749c5471ff4be8bd6325","3PQ5gszpaa6yPkGg7DuojbvYeSuGJzQC3aK","3PPxVMRb74J5dPPBTRsTeBSveNTicANT5iC","EUrg7oihDT1HR8rpYNMErtxWGpDF9iLDKc"]
 funding_terms = "https://chronobank.io"
 funding_url = "https://chronobank.io"
-tokens_sold = ""
-tokens_issued = ""
-btc_raised = ""
+tokens_sold = 624899.2735
+tokens_issued = 710112.8108
+btc_raised = 4058.0147
 
 [specs]
+supply = 710112.8108
+
+[specs.cap]
+btc = 4611
+usd = 4627382
 
 [first_price]
+btc = 0.00649387
+usd = 6.51640373
 
 [flags]
 
@@ -45,25 +52,25 @@ icon = "website.png"
 tags = ["Main"]
 
 [[links]]
+type = "paper"
+name = "Chronobank Whitepaper"
+url = "https://chronobank.io/files/whitepaper.pdf"
+icon = "paper.png"
+tags = ["Main","Science"]
+
+[[links]]
+type = "github"
+name = "Chronobank GitHub"
+url = "https://github.com/ChronoBank"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
 type = "blog"
 name = "Chronobank Blog"
 url = "https://blog.chronobank.io/"
 icon = "blog.png"
 tags = ["Main","News"]
-
-[[links]]
-type = "paper"
-name = "Development Plan"
-url = "https://chronobank.io/files/dev_plan.pdf"
-icon = "paper.png"
-tags = ["Main","Science"]
-
-[[links]]
-type = "paper"
-name = "Business Outline"
-url = "https://chronobank.io/files/business_outline.pdf"
-icon = "paper.png"
-tags = ["Main","Science"]
 
 [[links]]
 type = "custom"
@@ -80,22 +87,43 @@ icon = "twitter.png"
 tags = ["News"]
 
 [[links]]
+type = "reddit"
 name = "reddit"
 url = "https://www.reddit.com/r/ChronoBank/"
 icon = "reddit.png"
 tags = ["News"]
-type = "reddit"
 
 [[links]]
+type = "forum"
+name = "BTCtalk Forum"
+url = "https://bitcointalk.org/index.php?topic=1680361.0"
+icon = "forum.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
 name = "Facebook"
 url = "https://www.facebook.com/ChronoBank.io"
 icon = "facebook.png"
 tags = ["News"]
-type = "custom"
 
 [[links]]
+type = "custom"
 name = "YouTube"
 url = "https://www.youtube.com/channel/UCTo65YisnLqmbDcCoWyktnQ"
-type = "custom"
 icon = "youtube.png"
 tags = ["News"]
+
+[[links]]
+type = "paper"
+name = "Development Plan"
+url = "https://chronobank.io/files/dev_plan.pdf"
+icon = "paper.png"
+tags = ["Science"]
+
+[[links]]
+type = "paper"
+name = "Business Outline"
+url = "https://chronobank.io/files/business_outline.pdf"
+icon = "paper.png"
+tags = ["Science"]
