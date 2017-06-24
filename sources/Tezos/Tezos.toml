@@ -4,38 +4,30 @@ dependencies = "independent"
 icon = "tezos"
 
 [token]
-name = "tezos"
+name = "tezos token"
 symbol = "TEZOS"
 
 [consensus]
 consensus_type = "proof-of-stake"
-consensus_name = "Tezos"
+consensus_name = "POS"
 
 [descriptions]
 state = "Project"
 system_type = "cryptocurrency"
-headline = "Distributed consensus platform with meta-consensus capability"
-
-[aliases]
-coinmarketcap = ""
+headline = "Self-amending Crypto-ledger"
 
 [crowdsales]
-start_date = "2017-05-22T06:00:00"
-end_date = "2017-06-22T00:10:00"
-end_date_plan = "2017-06-22T00:00:00"
+start_date = "2017-07-01T07:00:00"
+end_date = "2017-08-01T07:10:00"
+end_date_plan = "2017-08-01T07:00:00"
 genesis_address = [""]
-funding_terms = ""
+funding_terms = "https://www.tezos.com/"
 funding_url = "https://www.tezos.com/"
 tokens_sold = ""
-tokens_issued = ""
+tokens_issued = 10000000000
 btc_raised = ""
 cap_limit = [""]
 raised = [""]
-
-[specs]
-supply = ""
-
-[flags]
 
 [[links]]
 type = "website"
@@ -82,4 +74,11 @@ type = "slack"
 name = "Tezos Slack"
 url = "http://slack.tezos.com/"
 icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/tezosledger/"
+icon = "facebook.png"
 tags = ["News"]
