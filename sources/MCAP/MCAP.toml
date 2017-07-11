@@ -1,0 +1,68 @@
+genesis_id = "0x0D8775F648430679A709E98d2b0Cb6250d2887EF"
+system = "MCAP"
+dependencies = ["Ethereum"]
+icon = "mcap"
+
+[token]
+name = "mcap token"
+symbol = "MCAP"
+
+[consensus]
+consensus_type = "ERC20 Token"
+consensus_name = "Ethereum"
+
+[aliases]
+coinmarketcap = "MCAP"
+
+[descriptions]
+state = "Public"
+system_type = "cryptoasset"
+headline = "Invest in high growth startups"
+
+[crowdsales]
+start_date = "2017-04-27T08:00:00"
+end_date = "2017-05-27T08:00:00"
+genesis_address = [""]
+funding_terms = "https://bitcoingrowthfund.com/mcap"
+funding_url = "https://bitcoingrowthfund.com/mcap"
+tokens_sold = ""
+tokens_issued = 100000000
+btc_raised = ""
+cap_limit = ["btc = 2000"]
+raised = [""]
+
+[specs]
+supply = 100000000
+
+[[links]]
+type = "website"
+name = "bitcoingrowthfund.com"
+url = "https://bitcoingrowthfund.com/mcap"
+tags = ["Main"]
+
+[[links]]
+type = "paper"
+name = "MCAP Whitepaper"
+url = "https://bitcoingrowthfund.com/static/pdf/mcap-whitepaper.pdf"
+tags = ["Main", "Science"]
+
+[[links]]
+type = "blog"
+name = "MCAP Blog"
+url = "https://medium.com/bitcoingrowthfund"
+icon = "medium.png"
+tags = ["Main", "News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/mcap_token"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/BitcoinGrowthFundBGF/"
+icon = "facebook.png"
+tags = ["News"]
