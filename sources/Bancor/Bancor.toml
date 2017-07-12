@@ -20,17 +20,17 @@ headline = "Network of Intrinsically Tradeable Smart Tokens"
 coinmarketcap = "Bancor"
 
 [crowdsales]
-start_date = "2017-06-12T14:00:00"
+start_date = "2017-06-12T10:00:00"
 end_date = "2017-06-25T14:00:00"
 end_date_plan = "2017-06-25T14:00:00"
 genesis_address = [""]
 funding_terms = "https://bancor.network/"
 funding_url = "https://bancor.network/fundraiser"
-tokens_sold = ""
-tokens_issued = ""
-btc_raised = ""
-cap_limit = [""]
-raised = [""]
+tokens_sold = 39661989
+tokens_issued = 79323978
+btc_raised = 55990
+cap_limit = ["usd = 306490147"]
+raised = ["usd = 153245073"]
 
 [[links]]
 type = "website"
@@ -41,7 +41,7 @@ tags = ["Main"]
 [[links]]
 type = "paper"
 name = "Bancor Whitepaper"
-url = "https://bancor.network/static/Bancor_Protocol_Whitepaper_en.pdf"
+url = "https://www.bancor.network/whitepaper/en"
 tags = ["Main", "Science"]
 
 [[links]]
@@ -73,6 +73,13 @@ icon = "twitter.png"
 tags = ["News"]
 
 [[links]]
+type = "custom"
+name = "Bancor Telegram"
+url = "https://t.me/bancor"
+icon = "telegram.png"
+tags = ["News"]
+
+[[links]]
 type = "slack"
 name = "Bancor Slack"
 url = "https://bancor-slack-invite.herokuapp.com/"
@@ -99,3 +106,8 @@ name = "YouTube"
 url = "https://www.youtube.com/channel/UCA125wWsdbsG1XPenWcBkyg"
 icon = "youtube.png"
 tags = ["News"]
+
+[first_price]
+btc = 0.00141168
+usd = 3.86377681
+date = ""
