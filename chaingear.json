@@ -1763,7 +1763,7 @@
             "coinmarketcap": "Bancor"
         },
         "crowdsales": {
-            "start_date": "2017-06-12T14:00:00",
+            "start_date": "2017-06-12T10:00:00",
             "end_date": "2017-06-25T14:00:00",
             "end_date_plan": "2017-06-25T14:00:00",
             "genesis_address": [
@@ -1771,14 +1771,14 @@
             ],
             "funding_terms": "https://bancor.network/",
             "funding_url": "https://bancor.network/fundraiser",
-            "tokens_sold": "",
-            "tokens_issued": "",
-            "btc_raised": "",
+            "tokens_sold": 39661989,
+            "tokens_issued": 79323978,
+            "btc_raised": 55990,
             "cap_limit": [
-                ""
+                "usd = 306490147"
             ],
             "raised": [
-                ""
+                "usd = 153245073"
             ]
         },
         "links": [
@@ -1793,7 +1793,7 @@
             {
                 "type": "paper",
                 "name": "Bancor Whitepaper",
-                "url": "https://bancor.network/static/Bancor_Protocol_Whitepaper_en.pdf",
+                "url": "https://www.bancor.network/whitepaper/en",
                 "tags": [
                     "Main",
                     "Science"
@@ -1838,6 +1838,15 @@
                 ]
             },
             {
+                "type": "custom",
+                "name": "Bancor Telegram",
+                "url": "https://t.me/bancor",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
                 "type": "slack",
                 "name": "Bancor Slack",
                 "url": "https://bancor-slack-invite.herokuapp.com/",
@@ -1873,10 +1882,15 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00141168,
+            "usd": 3.86377681,
+            "date": ""
+        }
     },
     {
-        "genesis_id": "0x0D8775F648430679A709E98d2b0Cb6250d2887EF",
+        "genesis_id": "",
         "system": "Basic Attention Token",
         "dependencies": [
             "Ethereum"
@@ -1891,7 +1905,7 @@
             "consensus_name": "Ethereum"
         },
         "aliases": {
-            "coinmarketcap": "Basic Attenti..."
+            "coinmarketcap": "Basic Attention Token"
         },
         "descriptions": {
             "state": "Public",
@@ -1899,21 +1913,21 @@
             "headline": "Digital Advertising Platform on Blockchain"
         },
         "crowdsales": {
-            "start_date": "2017-05-31T15:00:00",
-            "end_date": "2017-05-31T15:00:00",
+            "start_date": "2017-05-31T02:30:00",
+            "end_date": "2017-05-31T02:30:00",
             "genesis_address": [
-                ""
+                "0x0D8775F648430679A709E98d2b0Cb6250d2887EF"
             ],
             "funding_terms": "https://basicattentiontoken.org/terms-and-conditions/",
             "funding_url": "https://basicattentiontoken.org/token/index.html",
             "tokens_sold": 1000000000,
             "tokens_issued": 1500000000,
-            "btc_raised": "",
+            "btc_raised": 15843,
             "cap_limit": [
-                "usd = 1000000000"
+                "usd = 52373490"
             ],
             "raised": [
-                ""
+                "usd = 34922546"
             ]
         },
         "specs": {
@@ -2064,7 +2078,12 @@
                     "Exchange"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00001584,
+            "usd": 0.03491566,
+            "date": ""
+        }
     },
     {
         "genesis_id": "",
@@ -6086,6 +6105,237 @@
         },
         "links": [
             {
+<<<<<<< HEAD
+=======
+                "name": "Website",
+                "url": "https://ethereumclassic.github.io/",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ],
+                "type": "site"
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Chronobank",
+        "icon": "chronobank",
+        "dependencies": [
+            "Ethereum",
+            "Waves",
+            "NEM"
+        ],
+        "token": {
+            "name": "time",
+            "symbol": "TIME"
+        },
+        "consensus": {
+            "type": "",
+            "algorithm": ""
+        },
+        "aliases": {
+            "coinmarketcap": "Chronobank"
+        },
+        "descriptions": {
+            "state": "Pre-Public",
+            "system_type": "cryptocurrency",
+            "headline": "The most sustainable stable coins",
+            "tags": [
+                "DApp"
+            ],
+            "page_state": "draft"
+        },
+        "crowdsales": {
+            "start_date": "2016-12-15T00:00:00",
+            "end_date": "2017-02-15T20:00:00",
+            "genesis_address": [
+                "36LHZyzMASdBQMecfSrTx5sGDaFS73YLLJ",
+                "3Cq8F4SzxmM5UfURgRNmq9PirVckeK1Hfn",
+                "NBHBCH-XNNOEZ-BJDWY2-JOTAMF-AKYJ3B-4BHJY4-LJ6T",
+                "0x8a37a0b8d48486b2117e958062d28096bec2539a",
+                "0x7e10e808a819e8bab77a749c5471ff4be8bd6325",
+                "3PQ5gszpaa6yPkGg7DuojbvYeSuGJzQC3aK",
+                "3PPxVMRb74J5dPPBTRsTeBSveNTicANT5iC",
+                "EUrg7oihDT1HR8rpYNMErtxWGpDF9iLDKc"
+            ],
+            "funding_terms": "https://chronobank.io",
+            "funding_url": "https://chronobank.io",
+            "tokens_sold": 624899.2735,
+            "tokens_issued": 710112.8108,
+            "btc_raised": 4058.0147
+        },
+        "specs": {
+            "supply": 710112.8108,
+            "cap": {
+                "btc": 4611,
+                "usd": 4627382
+            }
+        },
+        "first_price": {
+            "btc": 0.00649387,
+            "usd": 6.51640373
+        },
+        "flags": {},
+        "links": [
+            {
+                "type": "website",
+                "name": "Chronobank.io",
+                "url": "https://chronobank.io",
+                "icon": "website.png",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Chronobank Whitepaper",
+                "url": "https://chronobank.io/files/whitepaper.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Chronobank GitHub",
+                "url": "https://github.com/ChronoBank",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Chronobank Blog",
+                "url": "https://blog.chronobank.io/",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Chronobank Slack",
+                "url": "https://chronobank.herokuapp.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/ChronobankNews",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "reddit",
+                "url": "https://www.reddit.com/r/ChronoBank/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "BTCtalk Forum",
+                "url": "https://bitcointalk.org/index.php?topic=1680361.0",
+                "icon": "forum.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/ChronoBank.io",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCTo65YisnLqmbDcCoWyktnQ",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Development Plan",
+                "url": "https://chronobank.io/files/dev_plan.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Business Outline",
+                "url": "https://chronobank.io/files/business_outline.pdf",
+                "icon": "paper.png",
+                "tags": [
+                    "Science"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Civic",
+        "dependencies": [
+            "Bitcoin"
+        ],
+        "icon": "civic",
+        "token": {
+            "name": "civic token",
+            "symbol": "CVC"
+        },
+        "consensus": {
+            "consensus_type": "",
+            "consensus_name": "Bitcoin"
+        },
+        "descriptions": {
+            "state": "Pre-public",
+            "system_type": "cryptoasset",
+            "headline": "Identity Verification via Blockchain"
+        },
+        "crowdsales": {
+            "start_date": "2017-06-21T13:00:00",
+            "end_date": "2017-06-28T00:00:00",
+            "end_date_plan": "2017-06-28T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://tokensale.civic.com/#terms",
+            "funding_url": "https://tokensale.civic.com/",
+            "tokens_sold": 330000000,
+            "tokens_issued": 1000000000,
+            "btc_raised": 12199,
+            "cap_limit": [
+                "usd = 100011140"
+            ],
+            "raised": [
+                "usd = 32999965"
+            ]
+        },
+        "specs": {
+            "supply": 1000000000
+        },
+        "links": [
+            {
+>>>>>>> Tezos
                 "type": "website",
                 "name": "civic.com",
                 "url": "https://www.civic.com/",
@@ -6138,7 +6388,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00003697,
+            "usd": 0.10001114,
+            "date": ""
+        }
     },
     {
         "genesis_id": "00000c3ce6b3d823a35224a39798eca9ad889966aeb5a9da7b960ffb9869db35",
@@ -6455,21 +6710,21 @@
         },
         "crowdsales": {
             "start_date": "2017-06-07T15:00:00",
-            "end_date": "2017-07-05T15:10:00",
-            "end_date_plan": "2017-06-13T13:00:00",
+            "end_date": "2017-06-07T15:00:00",
+            "end_date_plan": "2017-06-07T15:00:00",
             "genesis_address": [
                 ""
             ],
             "funding_terms": "https://cofound.it/index.html",
             "funding_url": "https://crowdsale.cofound.it/en/",
-            "tokens_sold": "",
+            "tokens_sold": 125000000,
             "tokens_issued": 500000000,
-            "btc_raised": "",
+            "btc_raised": 5110,
             "cap_limit": [
                 "usd = 125000000"
             ],
             "raised": [
-                ""
+                "usd = 13985397"
             ]
         },
         "links": [
@@ -6484,7 +6739,7 @@
             {
                 "type": "paper",
                 "name": "Cofound.it Whitepaper",
-                "url": "https://cofounditmedia.s3-eu-west-1.amazonaws.com/documents/Cofound.it_business_plan_Na27itB.pdf",
+                "url": "https://cofounditmedia.s3-eu-west-1.amazonaws.com/documents/Cofound.it_business_plan",
                 "tags": [
                     "Main",
                     "Science"
@@ -6546,7 +6801,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00004088,
+            "usd": 0.11188881,
+            "date": ""
+        }
     },
     {
         "genesis_id": "0xc96eec418b50c538c3f3e32e71575da068a97401",
@@ -22301,16 +22561,16 @@
             "headline": "Tokenizing Smart Enegry, AI, and Ownership"
         },
         "crowdsales": {
-            "start_date": "2017-06-27T00:00:00",
-            "end_date": "2017-07-27T00:10:00",
-            "end_date_plan": "2017-07-27T00:00:00",
+            "start_date": "2017-07-17T12:00:00",
+            "end_date": "2017-08-06T12:00:00",
+            "end_date_plan": "2017-08-06T12:00:00",
             "genesis_address": [
                 ""
             ],
-            "funding_terms": "http://mybit.io/",
-            "funding_url": "http://mybit.io/",
+            "funding_terms": "https://mybit.io/tokensale",
+            "funding_url": "https://mybit.io/tokensale",
             "tokens_sold": "",
-            "tokens_issued": 10000000,
+            "tokens_issued": 5000000,
             "btc_raised": "",
             "cap_limit": [
                 ""
@@ -22338,6 +22598,16 @@
                 ]
             },
             {
+                "type": "github",
+                "name": "Mybit GitHub",
+                "url": "https://github.com/MyBitDev",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
                 "type": "blog",
                 "name": "MyBit Blog",
                 "url": "https://medium.com/@MyBit_Blog",
@@ -22361,6 +22631,15 @@
                 "name": "Twitter",
                 "url": "https://twitter.com/MyBit_DApp",
                 "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Mybit Telegram",
+                "url": "http://t.me/mybitio",
+                "icon": "telegram.png",
                 "tags": [
                     "News"
                 ]
@@ -22640,27 +22919,27 @@
             "consensus_name": "Ethereum"
         },
         "descriptions": {
-            "state": "Project",
+            "state": "Public",
             "system_type": "cryptoasset",
             "headline": "Decentralized VPN powered by Blockchain"
         },
         "crowdsales": {
             "start_date": "2017-05-30T13:00:00",
-            "end_date": "2017-06-13T13:10:00",
-            "end_date_plan": "2017-06-13T13:00:00",
+            "end_date": "2017-05-30T13:45:00",
+            "end_date_plan": "2017-05-30T13:45:00",
             "genesis_address": [
                 ""
             ],
-            "funding_terms": "",
+            "funding_terms": "https://mysterium.network/",
             "funding_url": "https://mysterium.network/contribution/",
-            "tokens_sold": "",
-            "tokens_issued": "",
-            "btc_raised": "",
+            "tokens_sold": 19429024,
+            "tokens_issued": 32433366,
+            "btc_raised": 4462,
             "cap_limit": [
-                ""
+                "usd = 17082846"
             ],
             "raised": [
-                ""
+                "usd = 10233318"
             ]
         },
         "links": [
@@ -22746,7 +23025,12 @@
                     "News"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00022967,
+            "usd": 0.52670591,
+            "date": ""
+        }
     },
     {
         "genesis_id": "438cf6375dab5a0d32f9b7bf151d4539e00a590f7c022d5572c7d41815a24be4",
@@ -30069,22 +30353,22 @@
             "consensus_name": "Ethereum"
         },
         "crowdsales": {
-            "start_date": "2017-06-17T14:00:00",
-            "end_date": "2017-07-01T14:00:00",
-            "end_date_plan": "2017-07-01T14:00:00",
+            "start_date": "2017-06-20T11:45:00",
+            "end_date": "2017-07-04T11:45:00",
+            "end_date_plan": "2017-07-04T11:45:00",
             "genesis_address": [
                 ""
             ],
             "funding_terms": "http://contribute.status.im/",
             "funding_url": "http://contribute.status.im/",
-            "tokens_sold": "",
-            "tokens_issued": "",
-            "btc_raised": "",
+            "tokens_sold": 2999022400,
+            "tokens_issued": 7314688780,
+            "btc_raised": 41148,
             "cap_limit": [
-                ""
+                "usd = 271226246"
             ],
             "raised": [
-                ""
+                "usd = 111206819"
             ]
         },
         "descriptions": {
@@ -30263,7 +30547,12 @@
                     "Science"
                 ]
             }
-        ]
+        ],
+        "first_price": {
+            "btc": 0.00001372,
+            "usd": 0.03707967,
+            "date": ""
+        }
     },
     {
         "genesis_id": "145365481365",
@@ -32946,7 +33235,7 @@
             "coinmarketcap": "SuperDAO"
         },
         "descriptions": {
-            "state": "Project",
+            "state": "Public",
             "system_type": "cryptoasset",
             "headline": "Decentralized Governance System for DApp Ventures",
             "tags": [
@@ -32956,11 +33245,18 @@
             "page_state": "draft"
         },
         "crowdsales": {
+<<<<<<< HEAD
             "start_date": "2017-06-12T06:00:00",
             "end_date": "2017-07-12T06:00:00",
+=======
+            "start_date": "2017-05-02T16:00:00",
+            "end_date": "2017-05-02T16:05:00",
+            "end_date_plan": "2017-05-02T16:05:00",
+>>>>>>> Tezos
             "genesis_address": [
                 "0x0348B55AbD6E1A99C6EBC972A6A4582Ec0bcEb5c"
             ],
+<<<<<<< HEAD
             "funding_terms": "http://docs.superdao.io/",
             "funding_url": "http://crowdfunding.superdao.io/",
             "tokens_sold": 45000000,
@@ -32974,8 +33270,25 @@
             "date": "",
             "btc": "",
             "usd": ""
+=======
+            "funding_terms": "http://tokencard.io/TKNCreationTerms.pdf",
+            "funding_url": "http://tokencard.io/",
+            "tokens_sold": 23644056,
+            "tokens_issued": 39406760,
+            "btc_raised": 8644,
+            "cap_limit": [
+                "usd = 21122842"
+            ],
+            "raised": [
+                "usd = 12673744"
+            ]
         },
-        "flags": {},
+        "first_price": {
+            "date": "2017-05-07T02:04:49",
+            "usd": 0.5360207,
+            "btc": 0.0003656
+>>>>>>> Tezos
+        },
         "links": [
             {
                 "type": "website",
