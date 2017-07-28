@@ -4,23 +4,30 @@ icon = "status"
 dependencies = ["Ethereum"]
 
 [token]
-name = ""
-symbol = ""
+name = "status token"
+symbol = "SNT"
 
 [consensus]
-type = "Ethereum"
-algorithm = "ERC20"
+consensus_type = "ERC20 Token"
+consensus_name = "Ethereum"
 
-[aliases]
-coinmarketcap = "Status"
-nickname = "Status"
+[crowdsales]
+start_date = "2017-06-17T14:00:00"
+end_date = "2017-07-01T14:00:00"
+end_date_plan = "2017-07-01T14:00:00"
+genesis_address = [""]
+funding_terms = "http://contribute.status.im/"
+funding_url = "http://contribute.status.im/"
+tokens_sold = ""
+tokens_issued = ""
+btc_raised = ""
+cap_limit = [""]
+raised = [""]
 
 [descriptions]
 state = "Project"
 system_type = "cryptoasset"
-headline = "Mobile Ethereum Operating System"
-tags = ["DApp"]
-page_state = "draft"
+headline = "Mobile Browser and Messenger for Ethereum"
 
 [[links]]
 type = "website"
@@ -30,11 +37,24 @@ icon = "website.png"
 tags = ["Main"]
 
 [[links]]
+type = "paper"
+name = "Status Whitepaper"
+url = "https://status.im/whitepaper.pdf"
+tags = ["Main", "Science"]
+
+[[links]]
 type = "github"
 name = "Status GitHub"
 url = "https://github.com/status-im"
 icon = "github.png"
 tags = ["Main","Code"]
+
+[[links]]
+type = "blog"
+name = "Status Blog"
+url = "https://blog.status.im/"
+icon = "medium.png"
+tags = ["Main", "News"]
 
 [[links]]
 type = "twitter"
@@ -47,7 +67,6 @@ tags = ["News"]
 type = "reddit"
 name = "reddit"
 url = "https://www.reddit.com/r/statusim/"
-rss = "https://www.reddit.com/r/statusim/.rss"
 icon = "reddit.png"
 tags = ["News"]
 
@@ -59,15 +78,16 @@ icon = "slack.png"
 tags = ["Main","News"]
 
 [[links]]
-type = "wiki"
-name = "Status Wiki"
-url = "https://wiki.status.im/"
-icon = "paper.png"
-tags = ["Science"]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/ethstatus"
+icon = "facebook.png"
+tags = ["News"]
+
 
 [[links]]
-type = "wallet"
-name = "Status App"
-url = "https://github.com/status-im/status-react/releases"
-icon = "status.png"
-tags = ["Main","Apps", "Wallet"]
+type = "custom"
+name = "YouTube"
+url = "https://www.youtube.com/channel/UCFzdJTUdzqyX4e9dOW7UpPQ/"
+icon = "youtube.png"
+tags = ["News"]
