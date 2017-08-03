@@ -1,33 +1,77 @@
 genesis_id = ""
 system = "Skycoin"
+dependencies = ["independent"]
+icon = "skycoin"
 
-[aliases]
-coinmarketcap = ""
-CurrencyName = "skycoin"
+[token]
+name = "skycoin token"
+symbol = "SKY"
 
 [consensus]
 type = "PoS"
 algorithm = "SkyHash"
 
 [descriptions]
-state = "Project"
+state = "Public"
 system_type = "cryptocurrency"
 headline = "SkyHash based Cryptocurrency"
-page_state = "draft"
 
 [crowdsales]
-start_date = ""
-end_date = ""
+start_date = "2017-08-08T00:00:00"
+end_date = "2017-08-31T00:00:00"
 genesis_address = [""]
 funding_terms = ""
 funding_url = "http://skycoin.net/"
-tokens_sold = 5415299
-tokens_issued = 100000000
+tokens_sold = "http://skycoin.net/"
+tokens_issued = 1000000
 btc_raised = ""
+cap_limit = [""]
+raised = [""]
 
-[token]
-name = "skycoin"
-symbol = "SKY"
+[aliases]
+coinmarketcap = "Skycoin"
+CurrencyName = "skycoin"
+
+[[links]]
+type = "website"
+name = "skycoin.net"
+url = "http://skycoin.net/"
+tags = ["Main"]
+
+[[links]]
+type = "explorer"
+name = "Skycoin Explorer"
+url = "https://explorer.skycoin.net/app/blocks"
+icon = "explorer.png"
+tags = ["Main", "Apps", "Analytics"]
+
+[[links]]
+type = "blog"
+name = "Skycoin Blog"
+url = "https://blog.skycoin.net/"
+icon = "medium.png"
+tags = ["Main", "News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/Skycoinproject"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Skycoin Telegram"
+url = "https://t.me/Skycoin"
+icon = "telegram.png"
+tags = ["News"]
+
+[[links]]
+type = "slack"
+name = "Skycoin Slack"
+url = "https://skycoin.herokuapp.com/"
+icon = "slack.png"
+tags = ["News"]
 
 [[links]]
 name = "Bitcointalk Thread"
@@ -55,3 +99,10 @@ name = "Skycoin on GitHub"
 url = "https://github.com/skycoin/skycoin"
 type = "github"
 tags = ["Main", "Code"]
+
+[[links]]
+name = "Cryptopia"
+url = "https://www.cryptopia.co.nz/Exchange?market=SKY_BTC"
+type = "custom"
+icon = "cryptopia.png"
+tags = ["Apps", "Exchange"]
