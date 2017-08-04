@@ -9,6 +9,17 @@ symbol = "STAR"
 
 [consensus]
 consensus_type = "ERC20 Token"
+genesis_id = ""
+system = "Starbase"
+dependencies = ["Ethereum"]
+icon = "starbase"
+
+[token]
+name = "star token"
+symbol = "STAR"
+
+[consensus]
+consensus_type = "ERC20 Token"
 consensus_name = "Ethereum"
 
 [descriptions]
@@ -17,14 +28,14 @@ system_type = "cryptoasset"
 headline = "Token-based crowdfunding system"
 
 [crowdsales]
-start_date = "2017-07-01T00:00:00"
-end_date = "2017-08-01T00:10:00"
-end_date_plan = "2017-08-01T00:00:00"
+start_date = "2017-08-30T00:00:00"
+end_date = "2017-10-14T23:59:00"
+end_date_plan = "2017-10-14T23:59:00"
 genesis_address = [""]
-funding_terms = "https://docs.google.com/document/d/1lxfyUk-jKkRZpTFEah6XbFrOp0HWs82EW1GK20I2fos/edit#"
-funding_url = "https://docs.google.com/document/d/1lxfyUk-jKkRZpTFEah6XbFrOp0HWs82EW1GK20I2fos/edit#"
+funding_terms = "https://starbase.co/crowdsale"
+funding_url = "https://starbase.co/crowdsale"
 tokens_sold = ""
-tokens_issued = 1000000000
+tokens_issued = 0
 btc_raised = ""
 cap_limit = ["usd = 125000000"]
 raised = [""]
@@ -38,7 +49,7 @@ tags = ["Main"]
 [[links]]
 type = "paper"
 name = "starbase Whitepaper"
-url = "https://docs.google.com/document/d/1lxfyUk-jKkRZpTFEah6XbFrOp0HWs82EW1GK20I2fos/edit#heading=h.gjdgxs"
+url = "https://starbase.co/whitepaper"
 tags = ["Main", "Science"]
 
 [[links]]
