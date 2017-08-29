@@ -5,11 +5,26 @@ system = "Filecoin"
 state = "Project"
 system_type = "cryptocurrency"
 headline = "IFPS based Data Storage Network"
-page_state = "draft"
 
 [token]
 name = "filecoin"
-symbol = ""
+symbol = "FIL"
+
+[crowdsales]
+start_date = "2017-08-10T19:00:00"
+end_date = "2017-09-06T00:00:00"
+end_date_plan = "2017-09-06T00:00:00"
+genesis_address = [""]
+funding_terms = "https://coinlist.co/static/media/Protocol%20Labs%20-%20SAFT%20for%20Filecoin%20Token%20Presale.6ddb6fb6.pdf"
+funding_url = "https://coinlist.co/currencies/filecoin/overview"
+tokens_sold = ""
+tokens_issued = ""
+btc_raised = ""
+cap_limit = [""]
+raised = [""]
+
+[specs]
+supply = 2000000000
 
 [[links]]
 name = "filecoin.io"
@@ -20,7 +35,28 @@ type = "website"
 
 [[links]]
 name = "Whitepaper"
-url = "http://filecoin.io/filecoin.pdf"
+url = "https://filecoin.io/filecoin.pdf"
 icon = "whitepaper.png"
 tags = ["Main"]
 type = "whitepaper"
+
+[[links]]
+type = "reddit"
+name = "Reddit"
+url = "https://www.reddit.com/r/filecoin/"
+icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+type = "blog"
+name = "Filecoin Blog"
+url = "https://protocol.ai/blog/"
+icon = "medium.png"
+tags = ["Main", "News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/minefilecoin"
+icon = "twitter.png"
+tags = ["News"]
