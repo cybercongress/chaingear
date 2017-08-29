@@ -1,0 +1,63 @@
+genesis_id = ""
+system = "DigiCoinMaker"
+dependencies = ["Ethereum"]
+icon = "digicoinmaker"
+
+[token]
+name = "creator coin"
+symbol = "CTC"
+
+[consensus]
+consensus_type = "ERC20 Token"
+consensus_name = "Ethereum"
+
+[descriptions]
+state = "Project"
+system_type = "cryptoasset"
+headline = "Create Your own Ethereum Coin"
+
+[crowdsales]
+start_date = "2017-07-24T00:00:00"
+end_date = "2017-08-24T00:00:00"
+end_date_plan = "2017-08-24T00:00:00"
+genesis_address = [""]
+funding_terms = "http://digicoinmaker.com/"
+funding_url = "http://digicoinmaker.com/"
+tokens_sold = ""
+tokens_issued = 10000000
+btc_raised = ""
+cap_limit = [""]
+raised = [""]
+
+[[links]]
+type = "website"
+name = "digicoinmaker.com"
+url = "https://digicoinmaker.com/"
+tags = ["Main"]
+
+[[links]]
+type = "paper"
+name = "DigiCoinMaker Whitepaper"
+url = "https://digicoinmaker.com/whitepaper/DigiCoinMakerWhitepaper.pdf"
+tags = ["Main", "Science"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/digicoinmaker"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/digicoinmaker/"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "YouTube"
+url = "https://www.youtube.com/channel/UC0WrL2eufXnrhk8WffPQZsw"
+icon = "youtube.png"
+tags = ["News"]
