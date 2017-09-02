@@ -1,0 +1,56 @@
+genesis_id = ""
+system = "Apptrade"
+dependencies = ["BitShares"]
+icon = "apptrade"
+
+[token]
+name = "apptrade coin"
+symbol = "APPX"
+
+[consensus]
+consensus_type = "BitShares UIA"
+consensus_name = "BitShares"
+
+[descriptions]
+state = "Project"
+system_type = "cryptoasset"
+headline = "Profit from app portfolios"
+
+[crowdsales]
+start_date = "2017-04-10T03:00:00"
+end_date = "2017-04-30T12:00:00"
+end_date_plan = "2017-04-30T12:00:00"
+genesis_address = [""]
+funding_terms = "https://www.apptrade.io/"
+funding_url = "https://www.apptrade.io/"
+tokens_sold = ""
+tokens_issued =""
+btc_raised = ""
+cap_limit = ["usd = 5000000"]
+raised = [""]
+
+[[links]]
+type = "website"
+name = "apptrade.io"
+url = "https://www.apptrade.io/"
+tags = ["Main"]
+
+[[links]]
+type = "paper"
+name = "Apptrade Whitepaper"
+url = "https://ito.apptrade.io/docs/so.pdf"
+tags = ["Main", "Science"]
+
+[[links]]
+type = "forum"
+name = "Bitcointalk"
+url = "https://bitcointalk.org/index.php?topic=1806852.0"
+icon = "bitcointalk.png"
+tags = ["News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/theapptrade"
+icon = "twitter.png"
+tags = ["News"]
