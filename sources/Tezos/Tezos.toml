@@ -4,38 +4,30 @@ dependencies = "independent"
 icon = "tezos"
 
 [token]
-name = "tezos"
-symbol = "TEZOS"
+name = "tezos token"
+symbol = "TXZ"
 
 [consensus]
 consensus_type = "proof-of-stake"
-consensus_name = "Tezos"
+consensus_name = "POS"
 
 [descriptions]
 state = "Project"
 system_type = "cryptocurrency"
-headline = "Distributed consensus platform with meta-consensus capability"
-
-[aliases]
-coinmarketcap = ""
+headline = "Self-amending Crypto-ledger"
 
 [crowdsales]
-start_date = "2017-05-22T06:00:00"
-end_date = "2017-06-22T00:10:00"
-end_date_plan = "2017-06-22T00:00:00"
+start_date = "2017-07-01T00:00:00"
+end_date = "2017-07-13T00:00:00"
+end_date_plan = "2017-07-13T00:00:00"
 genesis_address = [""]
-funding_terms = ""
+funding_terms = "https://tezos.ch/pages/static/Tezos%20Contribution%20Terms.pdf?utm_source=Tezos&utm_campaign=682d936488-EMAIL_CAMPAIGN_2017_07_01&utm_medium=email&utm_term=0_d8f4b4112e-682d936488-117506397"
 funding_url = "https://www.tezos.com/"
 tokens_sold = ""
-tokens_issued = ""
-btc_raised = ""
+tokens_issued = 10000000000
+btc_raised = 97268
 cap_limit = [""]
-raised = [""]
-
-[specs]
-supply = ""
-
-[flags]
+raised = ["usd = 230595616"]
 
 [[links]]
 type = "website"
@@ -46,7 +38,7 @@ tags = ["Main"]
 [[links]]
 type = "paper"
 name = "Tezos Whitepaper"
-url = "https://tezos.com/pdf/white_paper.pdf"
+url = "https://www.tezos.com/static/papers/white_paper.pdf"
 tags = ["Main", "Science"]
 
 [[links]]
@@ -59,7 +51,7 @@ tags = ["Main","Code"]
 [[links]]
 type = "blog"
 name = "Tezos Blog"
-url = "https://tezos.com/blog/index.html"
+url = "https://medium.com/tezos"
 icon = "medium.png"
 tags = ["Main", "News"]
 
@@ -82,4 +74,11 @@ type = "slack"
 name = "Tezos Slack"
 url = "http://slack.tezos.com/"
 icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/tezosledger/"
+icon = "facebook.png"
 tags = ["News"]

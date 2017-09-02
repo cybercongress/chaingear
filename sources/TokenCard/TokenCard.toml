@@ -12,7 +12,7 @@ consensus_type = "ERC20"
 consensus_name = "Ethereum"
 
 [descriptions]
-state = "Project"
+state = "Public"
 system_type = "cryptoasset"
 headline = "Debit Card and Platform for Ethereum tokens"
 
@@ -20,30 +20,22 @@ headline = "Debit Card and Platform for Ethereum tokens"
 coinmarketcap = "TokenCard"
 
 [crowdsales]
-start_date = "2017-05-02T12:00:00"
-end_date = "2017-05-08T12:00:00"
-end_date_plan = "2017-05-08T12:00:00"
+start_date = "2017-05-02T16:00:00"
+end_date = "2017-05-02T16:05:00"
+end_date_plan = "2017-05-02T16:05:00"
 genesis_address = ["0x49EdF201c1E139282643d5e7C6fB0C7219Ad1db7"]
-funding_terms = "http://tokencard.io/#creation"
-funding_url = "https://tokencard.io/"
-tokens_sold = "23644056.0"
-tokens_issued = "39406760.0"
-btc_raised = ""
-raised = [""]
-
-[specs]
-total_tokens = 39406760.0
-
-[specs.cap]
-usd = "21125704.0 "
-btc = "12271.0"
+funding_terms = "http://tokencard.io/TKNCreationTerms.pdf"
+funding_url = "http://tokencard.io/"
+tokens_sold = 23644056
+tokens_issued = 39406760
+btc_raised = 8644
+cap_limit = ["usd = 21122842"]
+raised = ["usd = 12673744"]
 
 [first_price]
 date = "2017-05-07T02:04:49"
-usd = 0.971281
-btc = 0.00062137
-
-[flags]
+usd = 0.5360207
+btc = 0.0003656
 
 [[links]]
 type = "website"
