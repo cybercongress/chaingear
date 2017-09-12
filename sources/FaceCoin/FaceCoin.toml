@@ -1,0 +1,66 @@
+genesis_id = ""
+system = "FaceCoin"
+dependencies = ["Ethereum"]
+icon = "facecoin"
+
+[token]
+name = "face coin"
+symbol = "FC"
+
+[consensus]
+consensus_type = "ERC20 Token"
+consensus_name = "Ethereum"
+
+[descriptions]
+state = "Project"
+system_type = "cryptoasset"
+headline = "Decentralized social networking"
+
+[crowdsales]
+start_date = "2017-08-15T00:00:00"
+end_date = "2017-09-15T00:00:00"
+end_date_plan = "2017-09-15T00:00:00"
+genesis_address = ["0x1AAb0b6b167488085C7EE62d7930a4cD97E30495"]
+funding_terms = "http://facecoin.tech/ico/"
+funding_url = "http://facecoin.tech/ico/"
+tokens_sold = ""
+tokens_issued = ""
+btc_raised = ""
+cap_limit = [""]
+raised = [""]
+
+[specs]
+supply = 20000000
+
+[[links]]
+type = "website"
+name = "facecoin.tech"
+url = "http://facecoin.tech/#about"
+tags = ["Main"]
+
+[[links]]
+type = "paper"
+name = "FaceCoin Whitepaper"
+url = "http://facecoin.tech/WhitePaper.pdf"
+tags = ["Main", "Science"]
+
+[[links]]
+type = "forum"
+name = "Bitcointalk"
+url = "https://bitcointalk.org/index.php?topic=2095331.0"
+icon = "bitcointalk.png"
+tags = ["News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/facecointech"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "slack"
+name = "FaceCoin Slack"
+url = "https://facecoin.slack.com/join/shared_invite/MjI5NzUzNDU0Nzg2LTE1MDMzNjY5MzktZjAwNGQ0YTEzZQ"
+icon = "slack.png"
+tags = ["News"]
