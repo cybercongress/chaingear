@@ -287,6 +287,112 @@
     },
     {
         "genesis_id": "",
+        "system": "Adchain",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "adchain",
+        "token": {
+            "name": "adtoken",
+            "symbol": "ADT"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Public",
+            "system_type": "cryptoasset",
+            "headline": "Digital Advertising Protocol on Blockchain"
+        },
+        "crowdsales": {
+            "start_date": "2017-06-26T15:37:06",
+            "end_date": "2017-06-26T15:37:24",
+            "end_date_plan": "2017-06-26T15:37:24",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://adtoken.com/",
+            "funding_url": "https://adtoken.com/token/",
+            "tokens_sold": 500000000,
+            "tokens_issued": 1000000000,
+            "btc_raised": 3774,
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "adtoken.com",
+                "url": "https://adtoken.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Adchain Whitepaper",
+                "url": "https://adtoken.com/white-paper/",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Adchain GitHub",
+                "url": "https://github.com/adchain",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Adchain Blog",
+                "url": "https://medium.com/@AdChain",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/ad_chain",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Adchain Slack",
+                "url": "http://slack.adchain.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/adChain/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "AdEx",
         "dependencies": [
             "Ethereum"
@@ -546,101 +652,6 @@
                 "name": "Facebook",
                 "url": "https://web.facebook.com/adshares/",
                 "icon": "facebook.png",
-                "tags": [
-                    "News"
-                ]
-            }
-        ]
-    },
-    {
-        "genesis_id": "",
-        "system": "adToken",
-        "dependencies": [
-            "Ethereum"
-        ],
-        "icon": "adtoken",
-        "token": {
-            "name": "adtoken token",
-            "symbol": "ADT"
-        },
-        "consensus": {
-            "type": "ERC20 Token",
-            "algorithm": "Ethereum"
-        },
-        "aliases": {
-            "coinmarketcap": "adToken",
-            "nickname": "adToken"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptocurrency",
-            "headline": "Solution for digital advertising",
-            "tags": [
-                "DAO"
-            ],
-            "page_state": "ready"
-        },
-        "links": [
-            {
-                "type": "website",
-                "name": "adtoken.com",
-                "url": "https://adtoken.com/",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "paper",
-                "name": "adToken Whitepaper",
-                "url": "https://adchain-white-paper.docsend.com/view/qnce6gy",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "adToken GitHub",
-                "url": "https://github.com/adchain",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "blog",
-                "name": "adToken Blog",
-                "url": "https://medium.com/@AdChain",
-                "icon": "medium.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            },
-            {
-                "type": "twitter",
-                "name": "Twitter",
-                "url": "https://twitter.com/ad_chain",
-                "icon": "twitter.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "slack",
-                "name": "adToken Slack",
-                "url": "http://slack.adchain.com/",
-                "icon": "slack.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "reddit",
-                "name": "Reddit",
-                "url": "https://www.reddit.com/r/adChain/",
-                "icon": "reddit.png",
                 "tags": [
                     "News"
                 ]
@@ -1110,9 +1121,28 @@
             "consensus_name": "Ethereum"
         },
         "descriptions": {
-            "state": "Project",
+            "state": "Pre-Public",
             "system_type": "cryptoasset",
             "headline": "Global Robot Economics"
+        },
+        "crowdsales": {
+            "start_date": "2017-05-25T17:00:00",
+            "end_date": "2017-05-28T17:00:00",
+            "end_date_plan": "2017-05-28T17:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "http://aira.life/",
+            "funding_url": "http://aira.life/",
+            "tokens_sold": 999985,
+            "tokens_issued": 1000000,
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
         },
         "links": [
             {
@@ -1166,6 +1196,102 @@
                 "name": "YouTube",
                 "url": "https://www.youtube.com/channel/UCrSiho1uB-1n6F8cZpCLhjQ",
                 "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "AirSwap",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "airswap",
+        "token": {
+            "name": "airswap token",
+            "symbol": "AIR"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralized Exchange for Ethereum Tokens"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "airswap.io",
+                "url": "https://www.airswap.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "AirSwap Whitepaper",
+                "url": "https://swap.tech/whitepaper/",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "AirSwap GitHub",
+                "url": "https://github.com/airswap",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "AirSwap Blog",
+                "url": "https://medium.com/@airswap",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/airswapio",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "AirSwap Telegram",
+                "url": "https://t.me/airswap",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "AirSwap Slack",
+                "url": "https://bancor-slack-invite.herokuapp.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/airswapio/",
+                "icon": "facebook.png",
                 "tags": [
                     "News"
                 ]
@@ -9460,6 +9586,46 @@
                     "Main"
                 ],
                 "type": "site"
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "ChainLink",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "chainlink",
+        "token": {
+            "name": "chainlink token",
+            "symbol": "LINK"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralized Oracle Network"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "smartcontract.com",
+                "url": "http://smartcontract.com/link",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "ChainLink Whitepaper",
+                "url": "https://link.smartcontract.com/whitepaper",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
             }
         ]
     },
@@ -22154,6 +22320,112 @@
         ]
     },
     {
+        "genesis_id": "",
+        "system": "Grid+",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "grid+",
+        "token": {
+            "name": "grid token",
+            "symbol": "GRID"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Access to energy markets using Ethereum"
+        },
+        "crowdsales": {
+            "start_date": "2017-10-30T00:00:00",
+            "end_date": "2017-11-30T00:00:00",
+            "end_date_plan": "2017-11-30T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://gridplus.io/pre-sale",
+            "funding_url": "https://gridplus.io/pre-sale",
+            "tokens_sold": 90000000,
+            "tokens_issued": 300000000,
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "gridplus.io",
+                "url": "https://gridplus.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Grid+ Whitepaper",
+                "url": "https://drive.google.com/file/d/0Bz90riPGRHquNDVXVE81RmppaUk/view",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Grid+ GitHub",
+                "url": "https://github.com/gridplus",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Grid+ Blog",
+                "url": "https://blog.gridplus.io/",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2015773.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/gridplus_energy?lang=en",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Grid+ Slack",
+                "url": "https://join.slack.com/t/grid-plus/shared_invite/MjE1NTY1MDQ4NzIwLTE1MDA2NzYzNDAtYzdhOTViNWM1Mw",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "000005a247b397eadfefa58e872bc967c2614797bdc8d4d0e6b09fea5c191599",
         "system": "GridCoin",
         "dependencies": [
@@ -26492,6 +26764,96 @@
     },
     {
         "genesis_id": "",
+        "system": "Loopring",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "loopring",
+        "token": {
+            "name": "loopring token",
+            "symbol": "LRC"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralised Exchange and Open Protocol"
+        },
+        "aliases": {
+            "coinmarketcap": "Loopring"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "loopring.org",
+                "url": "https://loopring.org/en/index.html",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Loopring Whitepaper",
+                "url": "https://github.com/Loopring/whitepaper/raw/master/en_whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Loopring GitHub",
+                "url": "https://github.com/loopring",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Loopring Blog",
+                "url": "https://medium.com/@loopring",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2069498",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/loopringorg",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Loopring Slack",
+                "url": "https://loopring.now.sh/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "Lordmancer II",
         "dependencies": [
             "Ethereum"
@@ -28698,6 +29060,92 @@
     },
     {
         "genesis_id": "",
+        "system": "Mercury Protocol",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "mercuryprotocol",
+        "token": {
+            "name": "global messaging token",
+            "symbol": "GMT"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Future of Communication Platforms"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "mercuryprotocol.com",
+                "url": "https://www.mercuryprotocol.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Mercury Protocol Whitepaper",
+                "url": "https://www.mercuryprotocol.com/files/Mercury_Protocol_whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Mercury Protocol Blog",
+                "url": "https://medium.com/@mercuryprotocol",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2150438.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/mercuryprotocol",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Mercury Protocol Slack",
+                "url": "https://www.mercuryprotocol.com/slack",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/MercuryProtocol/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "Metaverse",
         "dependencies": [
             ""
@@ -28712,7 +29160,7 @@
             "consensus_name": ""
         },
         "descriptions": {
-            "state": "Project",
+            "state": "Public",
             "system_type": "cryptoasset",
             "headline": "Decentralised platform based on blockchain technology"
         },
@@ -33878,7 +34326,7 @@
         "genesis_id": "",
         "system": "Omega One",
         "dependencies": [
-            "Ethereum"
+            "IOTA"
         ],
         "icon": "omegaone",
         "token": {
@@ -33886,8 +34334,8 @@
             "symbol": "OMT"
         },
         "consensus": {
-            "consensus_type": "ERC20 Token",
-            "consensus_name": "Ethereum"
+            "consensus_type": "",
+            "consensus_name": "IOTA"
         },
         "descriptions": {
             "state": "Project",
@@ -45911,6 +46359,82 @@
             "usd": 0.00704841,
             "date": "2014-05-12T00:00:00"
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Verif-y",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "verif-y",
+        "token": {
+            "name": "verif-y token",
+            "symbol": "VFY"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Blockchain-based Identity for Digital Economy"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "verif-y.io",
+                "url": "https://www.verif-y.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Verif-y Whitepaper",
+                "url": "https://www.verif-y.io/vfy-white-paper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/YVerif",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Verif-y Telegram",
+                "url": "https://t.me/VFY_TOKEN",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Verif-y Slack",
+                "url": "https://verif-yworkspace.slack.com/messages/@slackbot/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/VerifyInc",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "",
