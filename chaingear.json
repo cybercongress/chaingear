@@ -287,6 +287,112 @@
     },
     {
         "genesis_id": "",
+        "system": "Adchain",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "adchain",
+        "token": {
+            "name": "adtoken",
+            "symbol": "ADT"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Public",
+            "system_type": "cryptoasset",
+            "headline": "Digital Advertising Protocol on Blockchain"
+        },
+        "crowdsales": {
+            "start_date": "2017-06-26T15:37:06",
+            "end_date": "2017-06-26T15:37:24",
+            "end_date_plan": "2017-06-26T15:37:24",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://adtoken.com/",
+            "funding_url": "https://adtoken.com/token/",
+            "tokens_sold": 500000000,
+            "tokens_issued": 1000000000,
+            "btc_raised": 3774,
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "adtoken.com",
+                "url": "https://adtoken.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Adchain Whitepaper",
+                "url": "https://adtoken.com/white-paper/",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Adchain GitHub",
+                "url": "https://github.com/adchain",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Adchain Blog",
+                "url": "https://medium.com/@AdChain",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/ad_chain",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Adchain Slack",
+                "url": "http://slack.adchain.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/adChain/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "AdEx",
         "dependencies": [
             "Ethereum"
@@ -428,7 +534,7 @@
         "icon": "adshares",
         "token": {
             "name": "adshares token",
-            "symbol": ""
+            "symbol": "ADST"
         },
         "consensus": {
             "consensus_type": "ERC20 Token",
@@ -546,101 +652,6 @@
                 "name": "Facebook",
                 "url": "https://web.facebook.com/adshares/",
                 "icon": "facebook.png",
-                "tags": [
-                    "News"
-                ]
-            }
-        ]
-    },
-    {
-        "genesis_id": "",
-        "system": "adToken",
-        "dependencies": [
-            "Ethereum"
-        ],
-        "icon": "adtoken",
-        "token": {
-            "name": "adtoken token",
-            "symbol": "ADT"
-        },
-        "consensus": {
-            "type": "ERC20 Token",
-            "algorithm": "Ethereum"
-        },
-        "aliases": {
-            "coinmarketcap": "adToken",
-            "nickname": "adToken"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptocurrency",
-            "headline": "Solution for digital advertising",
-            "tags": [
-                "DAO"
-            ],
-            "page_state": "ready"
-        },
-        "links": [
-            {
-                "type": "website",
-                "name": "adtoken.com",
-                "url": "https://adtoken.com/",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "paper",
-                "name": "adToken Whitepaper",
-                "url": "https://adchain-white-paper.docsend.com/view/qnce6gy",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "adToken GitHub",
-                "url": "https://github.com/adchain",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "blog",
-                "name": "adToken Blog",
-                "url": "https://medium.com/@AdChain",
-                "icon": "medium.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            },
-            {
-                "type": "twitter",
-                "name": "Twitter",
-                "url": "https://twitter.com/ad_chain",
-                "icon": "twitter.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "slack",
-                "name": "adToken Slack",
-                "url": "http://slack.adchain.com/",
-                "icon": "slack.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "reddit",
-                "name": "Reddit",
-                "url": "https://www.reddit.com/r/adChain/",
-                "icon": "reddit.png",
                 "tags": [
                     "News"
                 ]
@@ -951,6 +962,341 @@
         "flags": {
             "quantum": true
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Aidos Kuneen",
+        "dependencies": [
+            "independent"
+        ],
+        "icon": "aidoskuneen",
+        "token": {
+            "name": "aidos kuneen token",
+            "symbol": "ADK"
+        },
+        "consensus": {
+            "consensus_type": "Random Walk Monte Carlo, Proof-of-Work",
+            "consensus_name": ""
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptocurrency",
+            "headline": "Scalable and Anonymous system with Zero Fees"
+        },
+        "aliases": {
+            "coinmarketcap": "Aidos Kuneen"
+        },
+        "specs": {
+            "supply": 25000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "aidoskuneen.com",
+                "url": "http://aidoskuneen.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Aidos Kuneen Whitepaper",
+                "url": "http://aidoskuneen.com/about/",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Aidos Kuneen GitHub",
+                "url": "https://github.com/AidosKuneen",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1954428.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/Aidos_kuneen",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Aion",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "aion",
+        "token": {
+            "name": "aion token",
+            "symbol": "AION"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Third-generation blockchain network"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "aion.network",
+                "url": "https://aion.network/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Aion Whitepaper",
+                "url": "https://aion.network/downloads/aion.network-technical-introduction_en.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Aion Blog",
+                "url": "https://blog.aion.network/",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/Aion_Network",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/AionBlockchain",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Aira",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "aira",
+        "token": {
+            "name": "air token",
+            "symbol": "AIR"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Pre-Public",
+            "system_type": "cryptoasset",
+            "headline": "Global Robot Economics"
+        },
+        "crowdsales": {
+            "start_date": "2017-05-25T17:00:00",
+            "end_date": "2017-05-28T17:00:00",
+            "end_date_plan": "2017-05-28T17:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "http://aira.life/",
+            "funding_url": "http://aira.life/",
+            "tokens_sold": 999985,
+            "tokens_issued": 1000000,
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "aira.life",
+                "url": "http://aira.life/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Aira Whitepaper",
+                "url": "http://aira.life/wp-content/uploads/2017/08/Aira_robot_economics_doctrine_1-3.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Aira GitHub",
+                "url": "https://github.com/airalab/aira",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Aira Blog",
+                "url": "https://blog.aira.life/",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/EnsRationis",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCrSiho1uB-1n6F8cZpCLhjQ",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "AirSwap",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "airswap",
+        "token": {
+            "name": "airswap token",
+            "symbol": "AIR"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralized Exchange for Ethereum Tokens"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "airswap.io",
+                "url": "https://www.airswap.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "AirSwap Whitepaper",
+                "url": "https://swap.tech/whitepaper/",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "AirSwap GitHub",
+                "url": "https://github.com/airswap",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "AirSwap Blog",
+                "url": "https://medium.com/@airswap",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/airswapio",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "AirSwap Telegram",
+                "url": "https://t.me/airswap",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "AirSwap Slack",
+                "url": "https://bancor-slack-invite.herokuapp.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/airswapio/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "",
@@ -1325,205 +1671,6 @@
                 "tags": [
                     "News"
                 ]
-            }
-        ]
-    },
-    {
-        "genesis_id": "0x818739a8aadc1cdc21667304c241e663dbf22a4067a0cae513805941c37fd6ed",
-        "system": "AntShares",
-        "dependencies": [
-            "independent"
-        ],
-        "icon": "antshares",
-        "token": {
-            "name": "AntShares",
-            "symbol": "ANS"
-        },
-        "consensus": {
-            "type": "dBFT",
-            "algorithm": "delegated Byzantine Fault Tolerance"
-        },
-        "descriptions": {
-            "state": "Pre-Public",
-            "system_type": "cryptocurrency",
-            "headline": "Block Chain for Digital Asset Registration & Transaction",
-            "tags": [
-                "DAO"
-            ],
-            "page_state": "ready"
-        },
-        "aliases": {
-            "coinmarketcap": "AntShares"
-        },
-        "specs": {
-            "supply": 100000000
-        },
-        "crowdsales": {
-            "start_date": "2016-08-08T12:00:00",
-            "end_date": "2016-09-07T12:00:00",
-            "genesis_address": [
-                "3LZoBhKUJzuyk7w3aX5H4LdmopJ8m5aesv",
-                "19TuHRx2AVVEwVpXVm4hwMvKfV6Df5kwe9"
-            ],
-            "funding_terms": "https://www.antshares.org/Blog/Details/21",
-            "funding_url": "https://www.antshares.org/en-us/ICO",
-            "tokens_issued": 100000000,
-            "tokens_sold": 20000000,
-            "btc_raised": 6129.53
-        },
-        "first_price": {
-            "btc": 0.00030648,
-            "usd": 0.186765694,
-            "date": "2016-09-07T12:00:00"
-        },
-        "flags": {},
-        "links": [
-            {
-                "name": "antshares.org",
-                "url": "https://www.antshares.org",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ],
-                "type": "site"
-            },
-            {
-                "name": "Antshares ICO",
-                "url": "https://www.antshares.org/en-us/ICO",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ],
-                "type": "site"
-            },
-            {
-                "name": "AntShares Whitepaper 1.1",
-                "url": "https://github.com/AntShares/AntShares/wiki/Whitepaper-1.1",
-                "icon": "whitepaper.png",
-                "type": "whitepaper",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "name": "AntShares Concensus Algorithm",
-                "url": "https://www.antshares.org/Files/A8A0E2.pdf",
-                "icon": "whitepaper.png",
-                "type": "whitepaper",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "wallet",
-                "name": "Official Wallet",
-                "url": "https://github.com/AntShares/AntShares/releases",
-                "icon": "antshares.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Wallet"
-                ]
-            },
-            {
-                "name": "Twitter",
-                "url": "https://twitter.com/antshares",
-                "icon": "twitter.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "twitter"
-            },
-            {
-                "name": "Forum",
-                "url": "http://www.antfans.org",
-                "icon": "forum.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "forum"
-            },
-            {
-                "name": "Forum",
-                "url": "https://bitcointalk.org/index.php?topic=1541424.msg15496305#msg15496305",
-                "icon": "forum.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "forum"
-            },
-            {
-                "name": "Reddit",
-                "url": "https://www.reddit.com/r/antshares",
-                "icon": "reddit.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "reddit"
-            },
-            {
-                "name": "Facebook",
-                "url": "https://www.facebook.com/antshares",
-                "icon": "facebook.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "custom"
-            },
-            {
-                "name": "Blog",
-                "url": "https://www.antshares.com/Blog/Index",
-                "icon": "blog.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "custom"
-            },
-            {
-                "name": "AntShares Organization on GitHub",
-                "url": "https://github.com/AntShares",
-                "tags": [
-                    "Code"
-                ],
-                "type": "github"
-            },
-            {
-                "name": "AntShares SDK",
-                "url": "https://github.com/AntSharesSDK",
-                "icon": "github.png",
-                "tags": [
-                    "Code"
-                ],
-                "type": "github"
-            },
-            {
-                "name": "Java implementation",
-                "url": "https://github.com/AntSharesSDK/antshares-java",
-                "icon": "github.png",
-                "tags": [
-                    "Code"
-                ],
-                "type": "github"
-            },
-            {
-                "name": "Python implementation",
-                "url": "https://github.com/AntSharesSDK/antshares-python",
-                "icon": "github.png",
-                "tags": [
-                    "Code"
-                ],
-                "type": "github"
-            },
-            {
-                "name": "Typescript implementation",
-                "url": "https://github.com/AntSharesSDK/antshares-ts",
-                "icon": "github.png",
-                "tags": [
-                    "Code"
-                ],
-                "type": "github"
             }
         ]
     },
@@ -2317,6 +2464,148 @@
         ]
     },
     {
+        "genesis_id": "",
+        "system": "Atlant",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "atlant",
+        "token": {
+            "name": "atlant token",
+            "symbol": "ATL"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Real Estate Blockchain Platform"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-07T01:00:00",
+            "end_date": "2017-10-31T00:00:00",
+            "end_date_plan": "2017-10-31T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://atlant.io/assets/documents/en/Terms_of_Token_Sale.pdf",
+            "funding_url": "https://atlant.io",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "atlant.io",
+                "url": "https://atlant.io",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Atlant Whitepaper",
+                "url": "https://atlant.io/assets/documents/en/Atlant_WP_publish.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Atlant GitHub",
+                "url": "https://github.com/AtlantPlatform",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Atlant Blog",
+                "url": "https://medium.com/@atlantio",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2053239",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/atlantio",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Atlant Telegram",
+                "url": "https://t.me/atlant_eng",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Atlant Slack",
+                "url": "https://atlantio.slack.com/join/shared_invite/MjMyNzg4MTM5NTg0LTE1MDQwMzM4NjItMGEyZDY0MGY3Mg",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/user/Atlantio/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Atlant-Real-Estate-Platform-455717934793081/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCOunbV9gX_aB43S6chXuirw",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "0x48c80F1f4D53D5951e5D5438B54Cba84f29F32a5",
         "system": "Augur",
         "dependencies": [
@@ -2658,101 +2947,6 @@
                 "tags": [
                     "Apps",
                     "Analytics"
-                ]
-            }
-        ]
-    },
-    {
-        "genesis_id": "",
-        "system": "U.CASH",
-        "dependencies": [
-            "hybrid"
-        ],
-        "icon": "ucash",
-        "token": {
-            "name": "ucash token",
-            "symbol": "XUC"
-        },
-        "consensus": {
-            "consensus_type": "",
-            "consensus_name": ""
-        },
-        "descriptions": {
-            "state": "Project",
-            "system_type": "cryptoasset",
-            "headline": "Combining cash with digital currencies through retail locations"
-        },
-        "crowdsales": {
-            "start_date": "2017-09-08T00:00:00",
-            "end_date": "2017-11-08T00:00:00",
-            "end_date_plan": "2017-11-08T00:00:00",
-            "genesis_address": [
-                ""
-            ],
-            "funding_terms": "https://u.cash/ibo.html",
-            "funding_url": "https://u.cash",
-            "tokens_sold": "",
-            "tokens_issued": 21000000000,
-            "btc_raised": "",
-            "cap_limit": [
-                ""
-            ],
-            "raised": [
-                ""
-            ]
-        },
-        "links": [
-            {
-                "type": "website",
-                "name": "u.cash",
-                "url": "https://u.cash/",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "paper",
-                "name": "U.CASH Whitepaper",
-                "url": "https://docs.google.com/document/d/1Lvh4SEvGVHQ0Opj8wKmytMe63PxpXFgZNgIGbpIi22M/edit",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "twitter",
-                "name": "Twitter",
-                "url": "https://twitter.com/udotcash",
-                "icon": "twitter.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "reddit",
-                "name": "Reddit",
-                "url": "https://www.reddit.com/r/ucash/",
-                "icon": "reddit.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Facebook",
-                "url": "https://www.facebook.com/udotcash",
-                "icon": "facebook.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "YouTube",
-                "url": "https://www.youtube.com/channel/UCA125wWsdbsG1XPenWcBkyg",
-                "icon": "youtube.png",
-                "tags": [
-                    "News"
                 ]
             }
         ]
@@ -7986,9 +8180,6 @@
             "system_type": "cryptocurrency",
             "headline": "Congressional Network for Trust Contracts"
         },
-        "aliases": {
-            "coinmarketcap": "Bancor"
-        },
         "crowdsales": {
             "start_date": "2017-05-10T00:00:00",
             "end_date": "2017-06-20T00:00:00",
@@ -9165,6 +9356,121 @@
         }
     },
     {
+        "genesis_id": "",
+        "system": "Cash Poker Pro",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "cashpokerpro",
+        "token": {
+            "name": "poker room token",
+            "symbol": "CASH"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Modern decentralized poker room"
+        },
+        "crowdsales": {
+            "start_date": "2017-10-26T18:00:00",
+            "end_date": "2017-11-18T18:00:00",
+            "end_date_plan": "2017-11-18T18:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "http://cashpokerpro.io",
+            "funding_url": "http://cashpokerpro.io/token",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "cashpokerpro.io",
+                "url": "http://cashpokerpro.io",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Cash Poker Pro Whitepaper",
+                "url": "https://cashpokerpro.io/whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Cash Poker Pro GitHub",
+                "url": "https://github.com/cashpokerpro-dev/",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Cash Poker Pro Blog",
+                "url": "https://medium.com/@CashPokPro",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2056999.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/CashPokPro",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Cash Poker Pro Telegram",
+                "url": "https://t.me/cashpokerpro",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/cashppro",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "4f46c9af6d88a14114b7dc53a37d81ba4064cda5ae2ede1213ca28fea9b86e9c",
         "system": "Casinocoin",
         "icon": "casinocoin",
@@ -9422,6 +9728,65 @@
                     "Main"
                 ],
                 "type": "site"
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "ChainLink",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "chainlink",
+        "token": {
+            "name": "chainlink token",
+            "symbol": "LINK"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralized Oracle Network"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-19T00:00:00",
+            "end_date": "2017-09-19T00:00:00",
+            "end_date_plan": "2017-09-19T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "http://smartcontract.com/link",
+            "funding_url": "https://link.smartcontract.com/crowdsale",
+            "tokens_sold": "",
+            "tokens_issued": 1000000000,
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                "usd = 3000000"
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "smartcontract.com",
+                "url": "http://smartcontract.com/link",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "ChainLink Whitepaper",
+                "url": "https://link.smartcontract.com/whitepaper",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
             }
         ]
     },
@@ -9725,9 +10090,9 @@
             "headline": "Hybrid Intelligence for asset management"
         },
         "crowdsales": {
-            "start_date": "2017-09-12T16:00:00",
-            "end_date": "2017-10-12T16:00:00",
-            "end_date_plan": "2017-10-12T16:00:00",
+            "start_date": "2017-09-12T13:00:00",
+            "end_date": "2017-10-12T13:00:00",
+            "end_date_plan": "2017-10-12T13:00:00",
             "genesis_address": [
                 ""
             ],
@@ -10425,7 +10790,7 @@
     },
     {
         "genesis_id": "0xc96eec418b50c538c3f3e32e71575da068a97401",
-        "system": "Contingency",
+        "system": "Cointingency",
         "icon": "contingency",
         "dependencies": [
             "Ethereum"
@@ -10450,18 +10815,6 @@
             ],
             "twwidid": "",
             "page_state": "draft"
-        },
-        "crowdsales": {
-            "start_date": "2017-01-31T20:00:00",
-            "end_date": "2017-02-28T20:00:00",
-            "genesis_address": [
-                "0xc96eec418b50c538c3f3e32e71575da068a97401"
-            ],
-            "funding_terms": "http://contingency.tech/Contingency-Whitepaper.pdf",
-            "funding_url": "https://contingency.tech/",
-            "tokens_sold": 3108579.75908104,
-            "tokens_issued": 3453977.510090046,
-            "btc_raised": 281.247
         },
         "specs": {
             "supply": 3453977.510090046,
@@ -10506,6 +10859,102 @@
                 "tags": [
                     "Main",
                     "Science"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "CombiCoin",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "сombiсoin",
+        "token": {
+            "name": "combi coin",
+            "symbol": "TRIA"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "100% asset backed by the top 30 cryptocurrencies"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-01T00:00:00",
+            "end_date": "2017-09-30T23:59:00",
+            "end_date_plan": "2017-09-30T23:59:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://triaconta.com",
+            "funding_url": "https://triaconta.com",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                "usd = 2000000"
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "triaconta.com",
+                "url": "https://triaconta.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "CombiCoin Whitepaper",
+                "url": "https://triaconta.com/CombiCoin_Whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2116296.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "CombiCoin GitHub",
+                "url": "https://github.com/nevixa/triatoken_combicoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/triacontacc",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Triaconta/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
                 ]
             }
         ]
@@ -11523,6 +11972,139 @@
         ]
     },
     {
+        "genesis_id": "",
+        "system": "Crystal Clear",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "crystalclear",
+        "token": {
+            "name": "crystal clear token",
+            "symbol": "CCT"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Changing the way customers and service providers connect"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-08T12:00:00",
+            "end_date": "2017-10-08T12:00:00",
+            "end_date_plan": "2017-10-08T12:00:00",
+            "genesis_address": [
+                "0xec126D634D9be17A650881e598558AF1B90037d3"
+            ],
+            "funding_terms": "http://crystal-clear.io/Terms.pdf",
+            "funding_url": "http://crystal-clear.io",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "crystal-clear.io",
+                "url": "http://crystal-clear.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Crystal Clear Whitepaper",
+                "url": "http://crystal-clear.io/Whitepaper_english.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Crystal Clear GitHub",
+                "url": "https://github.com/CrystalClearS",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Crystal Clear Blog",
+                "url": "https://steemit.com/@crysser",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2046788.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/CCS_Crystal",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Crystal Clear Telegram",
+                "url": "https://t.me/CrystalClearICO",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Crystal Clear Slack",
+                "url": "https://crystalclears.slack.com/join/shared_invite/MjI3MDQ2MTM4NDU0LTE1MDI3MDA5ODUtMWQyMDFkZmFjZQ",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/CCSer/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCwD6YgRfMY7nsuX9g8N05tg",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "000000002f4984003de245a1666d8a8271ddf4236cf190bb9a2595dc4e7d4696",
         "system": "CureCoin",
         "icon": "cureCoin",
@@ -12441,9 +13023,9 @@
             "headline": "3D virtual world on blockchain"
         },
         "crowdsales": {
-            "start_date": "2017-08-18T00:00:00",
-            "end_date": "2017-08-18T00:00:00",
-            "end_date_plan": "2017-08-18T00:00:00",
+            "start_date": "2017-08-17T21:21:54",
+            "end_date": "2017-08-17T22:19:00",
+            "end_date_plan": "2017-08-17T22:19:00",
             "genesis_address": [
                 ""
             ],
@@ -12694,6 +13276,105 @@
                 "tags": [
                     "Apps",
                     "Exchange"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Detector",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "detector",
+        "token": {
+            "name": "detector token",
+            "symbol": "DTCT"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Bot that monitors cryptocurrency and betting"
+        },
+        "crowdsales": {
+            "start_date": "2017-08-20T00:00:00",
+            "end_date": "2017-09-20T00:00:00",
+            "end_date_plan": "2017-09-20T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://detectortoken.com/ico/",
+            "funding_url": "https://detectortoken.com",
+            "tokens_sold": "",
+            "tokens_issued": 10000000,
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 12000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "detectortoken.com",
+                "url": "https://detectortoken.com",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Detector Whitepaper",
+                "url": "https://detectortoken.com/docs/DetectorToken_White_Paper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Detector GitHub",
+                "url": "https://github.com/tommazuri/detectortoken/blob/master/DetectorToken.sol",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2088493.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/DetectorToken",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/DetectorToken/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
                 ]
             }
         ]
@@ -14489,6 +15170,123 @@
         }
     },
     {
+        "genesis_id": "",
+        "system": "Doc.ai",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "docai",
+        "token": {
+            "name": "neuron token",
+            "symbol": "NRN"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralized conversational AI for quantified biology"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-28T00:00:00",
+            "end_date": "2017-10-28T00:00:00",
+            "end_date_plan": "2017-10-28T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://doc.ai/",
+            "funding_url": "https://tokensale.doc.ai/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                "usd = 30000000"
+            ]
+        },
+        "specs": {
+            "supply": 860000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "doc.ai",
+                "url": "https://doc.ai/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Doc.ai Whitepaper",
+                "url": "https://tokensale.doc.ai/pdf/whitepaper.pdf?_t=1504348705571",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Doc.ai Blog",
+                "url": "https://medium.com/@_doc_ai",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2117440",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/_doc_ai",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Doc.ai Telegram",
+                "url": "https://t.me/doc_ai",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/doc_ai/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/docaidoc/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "1a91e3dace36e2be3bf030a65679fe821aa1d6ef92e7c9902eb318182c355691",
         "system": "Dogecoin",
         "icon": "dogecoin",
@@ -14793,6 +15591,148 @@
                 "tags": [
                     "Apps",
                     "Exchange"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "DomRaider",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "domraider",
+        "token": {
+            "name": "domraider token",
+            "symbol": "DRT"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralized Blockchain Auctions in Real-Time"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-12T08:00:00",
+            "end_date": "2017-10-11T08:00:00",
+            "end_date_plan": "2017-10-11T08:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://crowdsale.paragoncoin.com/",
+            "funding_url": "https://www.domraider.io/en/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "domraider.io",
+                "url": "https://www.domraider.io/en/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "DomRaider Whitepaper",
+                "url": "https://s3-eu-west-1.amazonaws.com/domraider/domraider/DomRaider+ICO+Whitepaper+EN.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "DomRaider GitHub",
+                "url": "https://github.com/Domraider/dr-token",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "DomRaider Blog",
+                "url": "https://medium.com/@domraider",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2132588.msg21314814#msg21314814",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/domraider",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "DomRaider Telegram",
+                "url": "https://t.me/DomraiderICO",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "DomRaider Slack",
+                "url": "https://domraiderico.slack.com/join/shared_invite/MjM1MDg0MTY2MDE4LTE1MDQyNzQ4MDYtNTU0NDg5YzgyNQ",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/user/domraider/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Domraider-1432606216988548",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/domraider",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
                 ]
             }
         ]
@@ -15387,8 +16327,8 @@
         },
         "crowdsales": {
             "start_date": "2017-09-14T00:01:00",
-            "end_date": "2017-09-30T11:59:00",
-            "end_date_plan": "2017-09-30T11:59:00",
+            "end_date": "2017-10-31T11:59:00",
+            "end_date_plan": "2017-10-31T11:59:00",
             "genesis_address": [
                 ""
             ],
@@ -17309,6 +18249,262 @@
     },
     {
         "genesis_id": "",
+        "system": "Etherparty",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "etherparty",
+        "token": {
+            "name": "fuel token",
+            "symbol": "FUEL"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Creating smart contracts on any blockchain"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-15T00:00:00",
+            "end_date": "2017-10-15T00:00:00",
+            "end_date_plan": "2017-10-15T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://etherparty.io/",
+            "funding_url": "https://ico.etherparty.io/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "etherparty.io",
+                "url": "https://etherparty.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Etherparty Whitepaper",
+                "url": "https://ico.etherparty.io/files/white_paper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Etherparty GitHub",
+                "url": "https://github.com/etherparty",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2005965",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/etherparty_io",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Etherparty Telegram",
+                "url": "https://t.me/etherparty",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Etherparty Slack",
+                "url": "http://slack.etherparty.io/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/etherparty",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/c/EtherpartyIo8",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "EventChain",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "eventchain",
+        "token": {
+            "name": "eventchain token",
+            "symbol": "EVC"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Solving ticketing issues for the event industry"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-13T13:00:00",
+            "end_date": "2017-09-27T13:00:00",
+            "end_date_plan": "2017-09-27T13:00:00",
+            "genesis_address": [
+                "0x486cf19a550e2814aef970b14e509e93209a0151"
+            ],
+            "funding_terms": "https://blog.eventchain.io/eventchain-ico-tokensale-details-631328961440",
+            "funding_url": "http://tokensale.eventchain.io/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "eventchain.io",
+                "url": "https://eventchain.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "EventChain Whitepaper",
+                "url": "https://eventchain.io/whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "EventChain GitHub",
+                "url": "https://github.com/eventchain",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "EventChain Blog",
+                "url": "https://blog.eventchain.io/@eventchain.io",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1978714",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/EventChain_io",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "EventChain Telegram",
+                "url": "https://www.t.me/EventChain",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "EventChain Slack",
+                "url": "https://eventchain.slack.com/join/shared_invite/MjI5MTYyMzg2OTMyLTE1MDMyNDEwMzEtZWJmNjFlZmQxYQ",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/EventChain/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/EventChain/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "Everex",
         "dependencies": [
             "Ethereum"
@@ -17633,6 +18829,95 @@
                 "icon": "mining.png",
                 "tags": [
                     "Apps"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "FaceCoin",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "facecoin",
+        "token": {
+            "name": "face coin",
+            "symbol": "FC"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralized social networking"
+        },
+        "crowdsales": {
+            "start_date": "2017-08-15T00:00:00",
+            "end_date": "2017-09-15T00:00:00",
+            "end_date_plan": "2017-09-15T00:00:00",
+            "genesis_address": [
+                "0x1AAb0b6b167488085C7EE62d7930a4cD97E30495"
+            ],
+            "funding_terms": "http://facecoin.tech/ico/",
+            "funding_url": "http://facecoin.tech/ico/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 20000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "facecoin.tech",
+                "url": "http://facecoin.tech/#about",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "FaceCoin Whitepaper",
+                "url": "http://facecoin.tech/WhitePaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2095331.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/facecointech",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "FaceCoin Slack",
+                "url": "https://facecoin.slack.com/join/shared_invite/MjI5NzUzNDU0Nzg2LTE1MDMzNjY5MzktZjAwNGQ0YTEzZQ",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
                 ]
             }
         ]
@@ -18073,8 +19358,8 @@
         },
         "crowdsales": {
             "start_date": "2017-08-10T19:00:00",
-            "end_date": "2017-09-09T00:00:00",
-            "end_date_plan": "2017-09-09T00:00:00",
+            "end_date": "2017-09-07T19:00:00",
+            "end_date_plan": "2017-09-07T19:00:00",
             "genesis_address": [
                 ""
             ],
@@ -18377,6 +19662,114 @@
                 "tags": [
                     "Apps",
                     "Analytics"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Flip Coin",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "flipcoin",
+        "token": {
+            "name": "flip coin",
+            "symbol": "ATM"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Bridging the gap between Consumer and Crypto"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-16T02:00:00",
+            "end_date": "2017-09-16T02:00:00",
+            "end_date_plan": "2017-09-16T02:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://www.flipcoinsale.com/Whitepaper.pdf",
+            "funding_url": "https://www.flipcoinsale.com/signup/individual",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                "usd = 5000000"
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 50000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "flipcoinsale.com",
+                "url": "https://www.flipcoinsale.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Flip Coin Whitepaper",
+                "url": "https://www.flipcoinsale.com/Whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Flip Coin GitHub",
+                "url": "https://github.com/CoinflipATM/Flipcoin-Sale",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/coinflipatm",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Flip Coin Slack",
+                "url": "https://glacial-harbor-23630.herokuapp.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/coinflipatm/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCo_NsvcSyYZgCd67G65h2dg",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
                 ]
             }
         ]
@@ -19337,6 +20730,132 @@
                 "name": "YouTube",
                 "url": "https://www.youtube.com/channel/UCv_GbaPjt44RhiKMEEywNYQ",
                 "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "FunFair",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "funfair",
+        "token": {
+            "name": "funfair token",
+            "symbol": "FUN"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "The world's fastest Ethereum casino platform"
+        },
+        "crowdsales": {
+            "start_date": "2017-06-22T14:00:00",
+            "end_date": "2017-06-22T18:00:00",
+            "end_date_plan": "2017-06-25T14:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://www.funfair.io/token-event/",
+            "funding_url": "https://www.funfair.io/token-event/",
+            "tokens_sold": 35181566734,
+            "tokens_issued": 35181566734,
+            "btc_raised": 79,
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 17173696075
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "funfair.io",
+                "url": "https://funfair.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "FunFair Whitepaper",
+                "url": "https://funfair.io/wp-content/uploads/2017/06/FunFair-Commercial-White-Paper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "FunFair Technical Whitepaper",
+                "url": "https://funfair.io/wp-content/uploads/2017/06/FunFair-Technical-White-Paper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "FunFair Blog",
+                "url": "https://funfair.io/blog/",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1968383.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/FunFairTech",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "FunFair Telegram",
+                "url": "https://t.me/FunFairTech/",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/FunfairTech/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/groups/148397155706069/",
+                "icon": "facebook.png",
                 "tags": [
                     "News"
                 ]
@@ -20845,6 +22364,217 @@
         ]
     },
     {
+        "genesis_id": "",
+        "system": "Graft",
+        "dependencies": [
+            "NEM"
+        ],
+        "icon": "graft",
+        "token": {
+            "name": "graft coin",
+            "symbol": ""
+        },
+        "consensus": {
+            "consensus_type": "Сombined PoW/PoS",
+            "consensus_name": "Сombined Proof-of-Work/Proof-of-State"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Unified Payment Processing Network"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "graft.network",
+                "url": "https://graft.network",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Graft Whitepaper",
+                "url": "https://github.com/graft-project/graft-white-paper/blob/master/graft-white-paper-1.02/graft-white-paper-1.02.md",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Graft GitHub",
+                "url": "https://github.com/graft-project",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Graft Blog",
+                "url": "https://www.graft.network/blog/",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2115188",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/graftnetwork",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Graft Telegram",
+                "url": "https://t.me/joinchat/EneBw0RALAOjkSL2mdt2Gw",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/Graft/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Graft-460292407666720/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Grid+",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "grid+",
+        "token": {
+            "name": "grid token",
+            "symbol": "GRID"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Access to energy markets using Ethereum"
+        },
+        "crowdsales": {
+            "start_date": "2017-10-30T00:00:00",
+            "end_date": "2017-11-30T00:00:00",
+            "end_date_plan": "2017-11-30T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://gridplus.io/pre-sale",
+            "funding_url": "https://gridplus.io/pre-sale",
+            "tokens_sold": 90000000,
+            "tokens_issued": 300000000,
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "gridplus.io",
+                "url": "https://gridplus.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Grid+ Whitepaper",
+                "url": "https://drive.google.com/file/d/0Bz90riPGRHquNDVXVE81RmppaUk/view",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Grid+ GitHub",
+                "url": "https://github.com/gridplus",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Grid+ Blog",
+                "url": "https://blog.gridplus.io/",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2015773.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/gridplus_energy?lang=en",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Grid+ Slack",
+                "url": "https://join.slack.com/t/grid-plus/shared_invite/MjE1NTY1MDQ4NzIwLTE1MDA2NzYzNDAtYzdhOTViNWM1Mw",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "000005a247b397eadfefa58e872bc967c2614797bdc8d4d0e6b09fea5c191599",
         "system": "GridCoin",
         "dependencies": [
@@ -21241,6 +22971,124 @@
             "usd": 0.00077126,
             "date": "2014-04-08T00:00:00"
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Hagglin",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "hagglin",
+        "token": {
+            "name": "ribbit token",
+            "symbol": ""
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Peer 2 Peer Marketplace & Logistics Platform"
+        },
+        "crowdsales": {
+            "start_date": "2017-10-31T12:00:00",
+            "end_date": "2017-11-30T12:00:00",
+            "end_date_plan": "2017-11-30T12:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://hagglin.com/pdf/Hagglin_App_Whitepaper.pdf",
+            "funding_url": "https://hagglin.com/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 1000000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "hagglin.com",
+                "url": "https://hagglin.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Hagglin Whitepaper",
+                "url": "https://hagglin.com/pdf/Hagglin_App_Whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Hagglin GitHub",
+                "url": "https://github.com/CoinFabrik/ico/tree/hagglin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Hagglin Blog",
+                "url": "https://medium.com/@hagglinapp",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/hagglinapp",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Hagglin Slack",
+                "url": "https://hagglin.slack.com/?redir=%2Fmessages",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/user/hagglinapp/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Hagglin-344657639288066/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "000009ea5ef5019446b315e7e581fc2ea184315ed46c9ddeadc8aa9442deedc9",
@@ -22496,7 +24344,7 @@
             "funding_terms": "https://indorse.io",
             "funding_url": "https://indorse.io",
             "tokens_sold": "",
-            "tokens_issued": 28288567.8,
+            "tokens_issued": 1000000000,
             "btc_raised": "",
             "cap_limit": [
                 ""
@@ -23378,7 +25226,7 @@
     },
     {
         "genesis_id": "",
-        "system": "KICKICO",
+        "system": "Kickico",
         "dependencies": [
             "Ethereum"
         ],
@@ -23484,111 +25332,6 @@
                 "name": "YouTube",
                 "url": "https://www.youtube.com/channel/UC_zMuXu_P7idt84qOqDFMcw",
                 "icon": "youtube.png",
-                "tags": [
-                    "News"
-                ]
-            }
-        ]
-    },
-    {
-        "genesis_id": "",
-        "system": "Kin",
-        "dependencies": [
-            "Ethereum"
-        ],
-        "icon": "kin",
-        "token": {
-            "name": "kin token",
-            "symbol": "TM-KIN"
-        },
-        "consensus": {
-            "consensus_type": "ERC20 Token",
-            "consensus_name": "Ethereum"
-        },
-        "descriptions": {
-            "state": "Project",
-            "system_type": "Cryptoasset",
-            "headline": "Decentralized ecosystem of digital services for daily life"
-        },
-        "crowdsales": {
-            "start_date": "",
-            "end_date": "",
-            "end_date_plan": "",
-            "genesis_address": [
-                ""
-            ],
-            "funding_terms": "",
-            "funding_url": "https://kin.kik.com/",
-            "tokens_sold": "",
-            "tokens_issued": "",
-            "btc_raised": "",
-            "cap_limit": [
-                ""
-            ],
-            "raised": [
-                ""
-            ]
-        },
-        "links": [
-            {
-                "type": "website",
-                "name": "kin.kik.com",
-                "url": "https://kin.kik.com/",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "paper",
-                "name": "Kin Whitepaper",
-                "url": "https://kin.kik.com/Kin%20Whitepaper%20v1.pdf",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "blog",
-                "name": "Kin Blog",
-                "url": "https://medium.com/kinfoundation",
-                "icon": "medium.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "Bitcointalk",
-                "url": "https://bitcointalk.org/index.php?topic=1933262.0",
-                "icon": "bitcointalk.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "twitter",
-                "name": "Twitter",
-                "url": "https://twitter.com/@kin_foundation",
-                "icon": "twitter.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "reddit",
-                "name": "Reddit",
-                "url": "https://www.reddit.com/r/KinFoundation/",
-                "icon": "reddit.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "slack",
-                "name": "Kin Slack",
-                "url": "http://slack.kinfoundation.com/",
-                "icon": "slack.png",
                 "tags": [
                     "News"
                 ]
@@ -23828,6 +25571,112 @@
     },
     {
         "genesis_id": "",
+        "system": "Kyber",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "kyber",
+        "token": {
+            "name": "kyber token",
+            "symbol": "KNC"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Instant exchange and conversion of digital assets"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-15T06:00:00",
+            "end_date": "2017-10-15T06:00:00",
+            "end_date_plan": "2017-10-15T06:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://kyber.network/",
+            "funding_url": "https://tokensale.kyber.network/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "kyber.network",
+                "url": "https://kyber.network/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Kyber Whitepaper",
+                "url": "https://kyber.network/assets/KyberNetworkWhitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Kyber GitHub",
+                "url": "https://github.com/kyberNetwork/",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Kyber Blog",
+                "url": "https://blog.kyber.network/",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/kybernetwork",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Kyber Telegram",
+                "url": "https://t.me/kybernetwork",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Kyber Slack",
+                "url": "https://slack.kyber.network/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "Lampix",
         "dependencies": [
             "Ethereum"
@@ -23933,6 +25782,132 @@
                 "type": "custom",
                 "name": "YouTube",
                 "url": "https://www.youtube.com/channel/UCY3N6_p3fWC76XFrQlid0vQ",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "LAToken",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "latoken",
+        "token": {
+            "name": "latoken",
+            "symbol": "LAT"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Tokenize and trade real assets via crypto"
+        },
+        "crowdsales": {
+            "start_date": "2017-08-22T11:00:00",
+            "end_date": "2017-10-10T11:00:00",
+            "end_date_plan": "2017-10-10T11:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://latoken.com/",
+            "funding_url": "https://sale.latoken.com/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 400000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "latoken.com",
+                "url": "https://latoken.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "LAToken Whitepaper",
+                "url": "https://cdn.latoken.com/common/files/whitepaper/latoken-whitepaper-en.pdf?_ga=2.136809840.1504055711.1504015118-1549099751.1499680070",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "LAToken GitHub",
+                "url": "https://github.com/latoken",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2083486.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/latokens",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "LAToken Telegram",
+                "url": "https://t.me/latoken",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "LAToken Slack",
+                "url": "http://latoken.herokuapp.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/LiquidAssetToken",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCvTfsRYJYD2X26VXbqDVgTQ",
                 "icon": "youtube.png",
                 "tags": [
                     "News"
@@ -24935,6 +26910,96 @@
         "flags": {
             "quantum": true
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Loopring",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "loopring",
+        "token": {
+            "name": "loopring token",
+            "symbol": "LRC"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralised Exchange and Open Protocol"
+        },
+        "aliases": {
+            "coinmarketcap": "Loopring"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "loopring.org",
+                "url": "https://loopring.org/en/index.html",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Loopring Whitepaper",
+                "url": "https://github.com/Loopring/whitepaper/raw/master/en_whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Loopring GitHub",
+                "url": "https://github.com/loopring",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Loopring Blog",
+                "url": "https://medium.com/@loopring",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2069498",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/loopringorg",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Loopring Slack",
+                "url": "https://loopring.now.sh/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "",
@@ -26606,6 +28671,130 @@
         ]
     },
     {
+        "genesis_id": "",
+        "system": "Matryx",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "matryx",
+        "token": {
+            "name": "matryx token",
+            "symbol": "MTX"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralized Collaboration Platform"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-13T15:00:00",
+            "end_date": "2017-08-13T15:00:00",
+            "end_date_plan": "2017-08-13T15:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://www.matryx.ai/",
+            "funding_url": "https://www.matryx.ai/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "matryx.ai",
+                "url": "https://www.matryx.ai/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Matryx Whitepaper",
+                "url": "https://www.matryx.ai/matryx-whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Matryx GitHub",
+                "url": "https://github.com/matryx",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Matryx Blog",
+                "url": "https://blog.matryx.ai/",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2141614.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/intent/follow?original_referer=http%3A%2F%2Flocalhost%3A8080%2F&ref_src=twsrc%5Etfw&region=follow_link&screen_name=matryx_ai&tw_p=followbutton",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Matryx Telegram",
+                "url": "https://t.me/matryxai",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/matryxai/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCmyCwkgekVmLzONJZ1jQk-A",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "00000c7c73d8ce604178dae13f0fc6ec0be3275614366d44b1b4b5c6e238c60c",
         "system": "MazaCoin",
         "icon": "mazacoin",
@@ -27020,6 +29209,185 @@
     },
     {
         "genesis_id": "",
+        "system": "Mercury Protocol",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "mercuryprotocol",
+        "token": {
+            "name": "global messaging token",
+            "symbol": "GMT"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Future of Communication Platforms"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "mercuryprotocol.com",
+                "url": "https://www.mercuryprotocol.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Mercury Protocol Whitepaper",
+                "url": "https://www.mercuryprotocol.com/files/Mercury_Protocol_whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Mercury Protocol Blog",
+                "url": "https://medium.com/@mercuryprotocol",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2150438.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/mercuryprotocol",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Mercury Protocol Slack",
+                "url": "https://www.mercuryprotocol.com/slack",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/MercuryProtocol/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Metaverse",
+        "dependencies": [
+            ""
+        ],
+        "icon": "metaverse",
+        "token": {
+            "name": "metaverse token",
+            "symbol": "ETP"
+        },
+        "consensus": {
+            "consensus_type": "",
+            "consensus_name": ""
+        },
+        "descriptions": {
+            "state": "Public",
+            "system_type": "cryptoasset",
+            "headline": "Decentralised platform based on blockchain technology"
+        },
+        "aliases": {
+            "coinmarketcap": "Metaverse ETP"
+        },
+        "specs": {
+            "supply": 52244767
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "mvs.org",
+                "url": "https://mvs.org/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Metaverse Whitepaper",
+                "url": "http://newmetaverse.org/white-paper/Metaverse-white-paper-v2.1-EN.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Metaverse GitHub",
+                "url": "https://github.com/mvs-org",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Metaverse Blog",
+                "url": "https://blog.mvs.live/",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/mvs_org",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/mvsofficial/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCdDGnCLtG2Fb6McCaDcAiBw",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "Mineum",
         "token": {
             "name": "mineum",
@@ -27199,6 +29567,112 @@
             "usd": 0.0001158,
             "date": "2014-02-19T00:00:00"
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Mito",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "mito",
+        "token": {
+            "name": "mitigation token",
+            "symbol": "MITO"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Integral platform for climate initiatives"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-11T13:00:00",
+            "end_date": "2017-10-31T13:00:00",
+            "end_date_plan": "2017-10-31T13:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "http://ipci.io/wp-content/uploads/2017/08/wp_eng_4.1.pdf",
+            "funding_url": "https://mito.ipci.io/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "mito.ipci.io",
+                "url": "https://mito.ipci.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Mito Whitepaper",
+                "url": "https://github.com/DAO-IPCI",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Mito GitHub",
+                "url": "http://ipci.io/wp-content/uploads/2017/08/wp_eng_4.1.pdf",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Mito Blog",
+                "url": "https://medium.com/@DAO_IPCI",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/DAO_IPCI",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Mito Telegram",
+                "url": "https://t.me/DAO_IPCI/2",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/DAOIPCI/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "",
@@ -30017,6 +32491,130 @@
         }
     },
     {
+        "genesis_id": "",
+        "system": "NEO",
+        "dependencies": [
+            "independent"
+        ],
+        "icon": "neo",
+        "token": {
+            "name": "neo token",
+            "symbol": "NEO"
+        },
+        "consensus": {
+            "type": "dBFT",
+            "algorithm": "delegated Byzantine Fault Tolerance"
+        },
+        "descriptions": {
+            "state": "Public",
+            "system_type": "cryptocurrency",
+            "headline": "Distributed Smart Economy Network",
+            "tags": [
+                "DAO"
+            ],
+            "page_state": "ready"
+        },
+        "aliases": {
+            "coinmarketcap": "NEO"
+        },
+        "crowdsales": {
+            "start_date": "2016-08-08T12:00:00",
+            "end_date": "2016-09-07T12:00:00",
+            "end_date_plan": "2016-09-07T12:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://neo.org/",
+            "funding_url": "https://neo.org/",
+            "tokens_sold": 20000000,
+            "tokens_issued": 100000000,
+            "btc_raised": 6119,
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 100000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "neo.org",
+                "url": "https://neo.org/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "NEO Whitepaper",
+                "url": "http://docs.neo.org/en-us/",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "NEO GitHub",
+                "url": "https://github.com/neo-project",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2057932.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/neo_blockchain",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "NEO Slack",
+                "url": "https://neosmarteconomy.herokuapp.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/NEO/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/NEOSmartEcon/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "00000cde7894e403bc530b3d3f8d69679d50022dd7a5a6539194ff9c555a2d9f",
         "system": "Neucoin",
         "dependencies": [
@@ -31875,6 +34473,74 @@
     },
     {
         "genesis_id": "",
+        "system": "Omega One",
+        "dependencies": [
+            "IOTA"
+        ],
+        "icon": "omegaone",
+        "token": {
+            "name": "omega token",
+            "symbol": "OMT"
+        },
+        "consensus": {
+            "consensus_type": "",
+            "consensus_name": "IOTA"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralized conversational AI for quantified biology"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "omega.one",
+                "url": "https://omega.one/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Omega One Whitepaper",
+                "url": "https://drive.google.com/file/d/0B2GfA1snZi6lMzJ0bFZZQnNEYlE/view",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Omega One Blog",
+                "url": "https://medium.com/@omega.one",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/OmegaOneProject",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/OmegaOneProject/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "OmiseGO",
         "dependencies": [
             "Ethereum"
@@ -32215,6 +34881,93 @@
     },
     {
         "genesis_id": "",
+        "system": "OpenZeppelin",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "openzeppelin",
+        "token": {
+            "name": "zeppelin token",
+            "symbol": "ZEP"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Build Secure Smart Contracts in Solidity"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "openzeppelin.org",
+                "url": "https://openzeppelin.org/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "OpenZeppelin Whitepaper",
+                "url": "https://zeppelinos.org/data/zeppelinOS_Whitepaper_Draft.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "OpenZeppelin GitHub",
+                "url": "https://github.com/OpenZeppelin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "OpenZeppelin Blog",
+                "url": "https://blog.zeppelin.solutions/",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/zeppelin_OS",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "OpenZeppelin Slack",
+                "url": "https://slack.openzeppelin.org/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCNzKv2vthnauGCgqdaI7MiQ",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "Opus",
         "dependencies": [
             "Ethereum"
@@ -32349,6 +35102,164 @@
                 "name": "YouTube",
                 "url": "https://www.youtube.com/channel/UCLXcTgzr05cFZaN972nuEXw",
                 "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Oracles Network",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "oraclesnetwork",
+        "token": {
+            "name": "orcales network token",
+            "symbol": ""
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Public notaries with active commission license validate blocks and secure the network"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "oracles.org",
+                "url": "https://oracles.org/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Oracles Network GitHub",
+                "url": "https://github.com/oraclesorg",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/oraclesorg",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Paragon",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "paragon",
+        "token": {
+            "name": "paragon coin",
+            "symbol": "PRG"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Revolutionizing All Things Cannabis with Blockchain"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-15T18:00:00",
+            "end_date": "2017-10-16T18:00:00",
+            "end_date_plan": "2017-10-16T18:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://crowdsale.paragoncoin.com/",
+            "funding_url": "https://crowdsale.paragoncoin.com/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 200000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "paragoncoin.com",
+                "url": "https://paragoncoin.com/en?q=%2Fru",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Paragon Whitepaper",
+                "url": "https://paragoncoin.com/whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Paragon Blog",
+                "url": "https://medium.com/@paragoncoin",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2092712",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/paragoncoin",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Paragon Telegram",
+                "url": "https://t.me/joinchat/Clv-u0IXuCq2B0xvCIlRXw",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/paragoncoin/",
+                "icon": "facebook.png",
                 "tags": [
                     "News"
                 ]
@@ -34065,7 +36976,7 @@
         "icon": "pylonnetwork",
         "token": {
             "name": "pylon token",
-            "symbol": "PYLON"
+            "symbol": "PYLNT"
         },
         "consensus": {
             "consensus_type": "ERC20 Token",
@@ -34077,8 +36988,8 @@
             "headline": "Renewable energy exchange platform"
         },
         "crowdsales": {
-            "start_date": "2017-09-04T00:00:00",
-            "end_date": "2017-10-02T23:59:00",
+            "start_date": "2017-09-25T00:00:00",
+            "end_date": "2017-10-24T23:59:00",
             "end_date_plan": "2017-10-02T23:59:00",
             "genesis_address": [
                 ""
@@ -34146,6 +37057,24 @@
                 "name": "Pylon Network Telegram",
                 "url": "https://t.me/pylonnetworkofficialtelegram",
                 "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "facebook",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/KlenergyTechOfficial/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Pylon Network GitHub",
+                "url": "https://github.com/klenergy/ethereum-contracts",
+                "icon": "github.png",
                 "tags": [
                     "News"
                 ]
@@ -34473,6 +37402,105 @@
                 "name": "Facebook",
                 "url": "https://www.facebook.com/QtumOfficial/",
                 "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Quantum Resistant Ledger",
+        "dependencies": [
+            ""
+        ],
+        "icon": "quantumresistantledger",
+        "token": {
+            "name": "qrl token",
+            "symbol": "QRL"
+        },
+        "consensus": {
+            "consensus_type": "",
+            "consensus_name": ""
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Quantum Resistant Ledger"
+        },
+        "aliases": {
+            "coinmarketcap": "Quantum Resistant Ledger"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "theqrl.org",
+                "url": "https://theqrl.org/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Quantum Resistant Ledger Whitepaper",
+                "url": "https://github.com/theQRL/Whitepaper/blob/master/QRL_whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Quantum Resistant Ledger GitHub",
+                "url": "https://github.com/theQRL",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Quantum Resistant Ledger Blog",
+                "url": "https://medium.com/the-quantum-resistant-ledger",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1730273.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/qrledger",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Quantum Resistant Ledger Slack",
+                "url": "http://slack.theqrl.org/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/QRL/",
+                "icon": "reddit.png",
                 "tags": [
                     "News"
                 ]
@@ -35509,6 +38537,139 @@
         ]
     },
     {
+        "genesis_id": "",
+        "system": "Rockchain",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "rockchain",
+        "token": {
+            "name": "rockchain token",
+            "symbol": "ROK"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Distributed data intelligence"
+        },
+        "crowdsales": {
+            "start_date": "2017-11-01T11:00:00",
+            "end_date": "2017-12-01T11:00:00",
+            "end_date_plan": "2017-12-01T11:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://rockchain.org/Rockchain_ICO_TermsAndConditions.pdf",
+            "funding_url": "https://rockchain.org/token.html",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "rockchain.org",
+                "url": "https://rockchain.org/index.html",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Rockchain Whitepaper",
+                "url": "https://rockchain.org/RockchainWhitePaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Rockchain GitHub",
+                "url": "https://github.com/AlphaDinoRC/rockchain",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Rockchain Blog",
+                "url": "https://medium.com/@alphadino/",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2158987.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/alphadinos",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Rockchain Slack",
+                "url": "http://www.rockteam.org/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/rockchain/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Rockchain-1830244540626531/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCrfR0cN8jSeweIywA_N5GHw/featured",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "system": "Rootstock",
         "dependencies": [
             "Bitcoin"
@@ -35575,6 +38736,84 @@
                 "icon": "explorer.png",
                 "tags": [
                     "Faucet"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Rouge Project",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "rouge",
+        "token": {
+            "name": "rouge token",
+            "symbol": "RGE"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Blockchain Coupon Platform"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "rouge.network",
+                "url": "https://rouge.network/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Rouge Project Whitepaper",
+                "url": "https://rouge.network/whitepaper-rge.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Bancor GitHub",
+                "url": "https://github.com/TheRougeProject",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Rouge Project Blog",
+                "url": "https://medium.com/the-rouge-project",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2011325.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/Rougetoken",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
                 ]
             }
         ]
@@ -37514,6 +40753,133 @@
         ]
     },
     {
+        "genesis_id": "",
+        "system": "Solar Bankers",
+        "dependencies": [
+            "Skycoin"
+        ],
+        "icon": "solarbankers",
+        "token": {
+            "name": "sun coin",
+            "symbol": "SUN"
+        },
+        "consensus": {
+            "consensus_type": "",
+            "consensus_name": ""
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralized Electricity Network based on Solar Energy"
+        },
+        "crowdsales": {
+            "start_date": "2017-08-04T00:00:00",
+            "end_date": "2017-09-30T00:00:00",
+            "end_date_plan": "2017-09-30T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://icobazaar.com/static/9020c0181d4aee07dd319d5dcedd3d02/SunCoin_Terms_and_Conditions_New.pdf",
+            "funding_url": "https://solarbankers.com/ico/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 300000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "solarbankers.com",
+                "url": "https://solarbankers.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Solar Bankers Whitepaper",
+                "url": "http://solarbankers.com/wp-content/uploads/2017/08/Solarbankers_whitepaper_Vers2BUpd.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Solar Bankers GitHub",
+                "url": "https://github.com/SolarBankers/SunCoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Solar Bankers Blog",
+                "url": "https://solarbankers.com/blog/",
+                "icon": "blog.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2064964.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/SolarBankers_",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Solar Bankers Telegram",
+                "url": "https://t.me/solarbankersICO",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Solar Bankers Slack",
+                "url": "https://solarbankers.slack.com/join/signup",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/solarbankerssingapore/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "e8666c8715fafbfb095132deb1dd2af63fe14d3d7163715341d48feffab458cc",
         "system": "SolarCoin",
         "icon": "solarcoin",
@@ -38012,6 +41378,151 @@
     },
     {
         "genesis_id": "",
+        "system": "Spheris",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "spheris",
+        "token": {
+            "name": "spheris token",
+            "symbol": "SPRS"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Open Source Decentralized Application Marketplace"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-19T12:00:00",
+            "end_date": "2017-10-19T12:00:00",
+            "end_date_plan": "2017-10-19T12:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://spheris.io",
+            "funding_url": "https://spheris.io",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                "usd = 720000"
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 1240000000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "spheris.io",
+                "url": "https://spheris.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Spheris Whitepaper",
+                "url": "https://spheris.io/spheris_whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Spheris GitHub",
+                "url": "https://github.com/bancorprotocol/contracts",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Spheris Blog",
+                "url": "https://medium.com/@spheris",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2076069",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/spheris_io",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Spheris Telegram",
+                "url": "https://t.me/spheris",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Spheris Slack",
+                "url": "https://bancor-slack-invite.herokuapp.com/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/spheris/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/bancor/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCAOF-RIZ0Mf1N_wvmvG7T6w",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "Stable",
         "dependencies": [
             "Ethereum"
@@ -38116,25 +41627,6 @@
             "state": "Project",
             "system_type": "cryptoasset",
             "headline": "Token-based crowdfunding system"
-        },
-        "crowdsales": {
-            "start_date": "2017-08-30T00:00:00",
-            "end_date": "2017-10-14T23:59:00",
-            "end_date_plan": "2017-10-14T23:59:00",
-            "genesis_address": [
-                ""
-            ],
-            "funding_terms": "https://starbase.co/crowdsale",
-            "funding_url": "https://starbase.co/crowdsale",
-            "tokens_sold": "",
-            "tokens_issued": 0,
-            "btc_raised": "",
-            "cap_limit": [
-                "usd = 125000000"
-            ],
-            "raised": [
-                ""
-            ]
         },
         "links": [
             {
@@ -39971,6 +43463,102 @@
                 "name": "Reddit",
                 "url": "https://www.reddit.com/r/stratisplatform/",
                 "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Streamr",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "streamr",
+        "token": {
+            "name": "DATAcoin token",
+            "symbol": "DATA"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Create unstoppable real-time data apps, even without writing code"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-12T00:00:00",
+            "end_date": "2017-10-12T00:00:00",
+            "end_date_plan": "2017-10-12T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "",
+            "funding_url": "",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "streamr.com",
+                "url": "https://www.streamr.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Streamr Whitepaper",
+                "url": "https://s3.amazonaws.com/streamr-public/streamr-datacoin-whitepaper-2017-07-25-v1_0.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Streamr Blog",
+                "url": "https://blog.streamr.com/",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/streamrinc",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Streamr Telegram",
+                "url": "https://www.streamr.com/assets/Icons/email.svg",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Streamr Slack",
+                "url": "https://slack.streamr.com/",
+                "icon": "slack.png",
                 "tags": [
                     "News"
                 ]
@@ -41942,6 +45530,101 @@
     },
     {
         "genesis_id": "",
+        "system": "U.CASH",
+        "dependencies": [
+            "hybrid"
+        ],
+        "icon": "ucash",
+        "token": {
+            "name": "ucash token",
+            "symbol": "XUC"
+        },
+        "consensus": {
+            "consensus_type": "",
+            "consensus_name": ""
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Combining cash with digital currencies through retail locations"
+        },
+        "crowdsales": {
+            "start_date": "2017-09-08T00:00:00",
+            "end_date": "2017-11-08T00:00:00",
+            "end_date_plan": "2017-11-08T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://u.cash/ibo.html",
+            "funding_url": "https://u.cash",
+            "tokens_sold": "",
+            "tokens_issued": 21000000000,
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "u.cash",
+                "url": "https://u.cash/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "U.CASH Whitepaper",
+                "url": "https://docs.google.com/document/d/1Lvh4SEvGVHQ0Opj8wKmytMe63PxpXFgZNgIGbpIi22M/edit",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/udotcash",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/ucash/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/udotcash",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCA125wWsdbsG1XPenWcBkyg",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "Ubiq",
         "icon": "ubiq",
         "dependencies": [
@@ -42307,6 +45990,84 @@
             "usd": 9.99441225,
             "date": "2013-12-21T00:00:00"
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Urbit",
+        "dependencies": [
+            "independent"
+        ],
+        "icon": "urbit",
+        "token": {
+            "name": "urbit token",
+            "symbol": ""
+        },
+        "consensus": {
+            "consensus_type": "",
+            "consensus_name": ""
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Peer-to-peer network of personal servers"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "urbit.org",
+                "url": "https://urbit.org/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Urbit Whitepaper",
+                "url": "https://media.urbit.org/whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Urbit GitHub",
+                "url": "https://github.com/urbit/urbit",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Urbit Blog",
+                "url": "https://urbit.org/blog",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1789222.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/urbit",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "0000005944f0d20d7ee82ac4dc65cd8796dd37f6d6e0b3af05af966d6c8b63c0",
@@ -42747,6 +46508,82 @@
             "usd": 0.00704841,
             "date": "2014-05-12T00:00:00"
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Verif-y",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "verif-y",
+        "token": {
+            "name": "verif-y token",
+            "symbol": "VFY"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Blockchain-based Identity for Digital Economy"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "verif-y.io",
+                "url": "https://www.verif-y.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Verif-y Whitepaper",
+                "url": "https://www.verif-y.io/vfy-white-paper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/YVerif",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Verif-y Telegram",
+                "url": "https://t.me/VFY_TOKEN",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Verif-y Slack",
+                "url": "https://verif-yworkspace.slack.com/messages/@slackbot/",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/VerifyInc",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "",
@@ -43429,6 +47266,105 @@
                 "name": "Voise Slack",
                 "url": "https://voiseit.slack.com/join/shared_invite/MTgwNTUyNDM1OTExLTE0OTQwODExNzktMTA1ODZiMzg0MA",
                 "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Vote Coin",
+        "dependencies": [
+            "Zerocash"
+        ],
+        "icon": "votecoin",
+        "token": {
+            "name": "vote coin",
+            "symbol": "VOT"
+        },
+        "consensus": {
+            "consensus_type": "zk-SNARKs",
+            "consensus_name": "Zerocash"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Anonymous crypto currency suitable for elections"
+        },
+        "crowdsales": {
+            "start_date": "2017-08-21T11:00:00",
+            "end_date": "2017-10-21T11:00:00",
+            "end_date_plan": "2017-10-21T11:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://votecoin.site/",
+            "funding_url": "https://votecoin.site/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 10000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "votecoin.site",
+                "url": "https://votecoin.site/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Vote Coin Whitepaper",
+                "url": "https://votecoin.site/VoteCoin-Whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Vote Coin GitHub",
+                "url": "https://github.com/Tomas-M/VoteCoin",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2137705.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/vote_coin",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/votecoin",
+                "icon": "facebook.png",
                 "tags": [
                     "News"
                 ]
