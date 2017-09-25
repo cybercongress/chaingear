@@ -1,0 +1,73 @@
+genesis_id = ""
+system = "Vote Coin"
+dependencies = ["Zerocash"]
+icon = "votecoin"
+
+[token]
+name = "vote coin"
+symbol = "VOT"
+
+[consensus]
+consensus_type = "zk-SNARKs"
+consensus_name = "Zerocash"
+
+[descriptions]
+state = "Project"
+system_type = "cryptoasset"
+headline = "Anonymous crypto currency suitable for elections"
+
+[crowdsales]
+start_date = "2017-08-21T11:00:00"
+end_date = "2017-10-21T11:00:00"
+end_date_plan = "2017-10-21T11:00:00"
+genesis_address = [""]
+funding_terms = "https://votecoin.site/"
+funding_url = "https://votecoin.site/"
+tokens_sold = ""
+tokens_issued = ""
+btc_raised = ""
+cap_limit = [""]
+raised = [""]
+
+[specs]
+supply = 10000000
+
+[[links]]
+type = "website"
+name = "votecoin.site"
+url = "https://votecoin.site/"
+tags = ["Main"]
+
+[[links]]
+type = "paper"
+name = "Vote Coin Whitepaper"
+url = "https://votecoin.site/VoteCoin-Whitepaper.pdf"
+tags = ["Main", "Science"]
+
+[[links]]
+type = "github"
+name = "Vote Coin GitHub"
+url = "https://github.com/Tomas-M/VoteCoin"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
+type = "forum"
+name = "Bitcointalk"
+url = "https://bitcointalk.org/index.php?topic=2137705.0"
+icon = "bitcointalk.png"
+tags = ["News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/vote_coin"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/votecoin"
+icon = "facebook.png"
+tags = ["News"]
