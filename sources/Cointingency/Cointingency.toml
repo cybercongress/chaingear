@@ -1,0 +1,59 @@
+genesis_id = "0xc96eec418b50c538c3f3e32e71575da068a97401"
+system = "Cointingency"
+icon = "contingency"
+dependencies = ["Ethereum"]
+
+[token]
+name = "contingency token"
+symbol = "CTY"
+
+[consensus]
+type = "Ethereum"
+algorithm = "Transferable Fungible"
+
+[aliases]
+coinmarketcap = "Contingency"
+
+[descriptions]
+state = "Pre-Public"
+system_type = "cryptoasset"
+headline = "Decentralized, Trustless Gambling Platform"
+tags = ["DApp"]
+twwidid = ""
+page_state = "draft"
+
+[specs]
+supply = 3453977.5100900459702466
+
+[specs.cap]
+btc = 312
+usd = 367487
+
+[first_price]
+date = "2017-02-28T20:00:00"
+btc = 0.00009047
+usd = 0.10639543
+
+[flags]
+supply_from_here = true
+
+[[links]]
+type = "website"
+name = "contingency.tech"
+url = "http://contingency.tech"
+icon = "website.png"
+tags = ["Main"]
+
+[[links]]
+type = "github"
+name = "Contingency GitHub"
+url = "https://github.com/ContingencyEth/Contingency"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
+type = "paper"
+name = "Contingency Whitepaper"
+url = "http://contingency.tech/Contingency-Whitepaper.pdf"
+icon = "paper.png"
+tags = ["Main","Science"]
