@@ -8789,8 +8789,7 @@
         ],
         "system": "BoardRoom",
         "aliases": {
-            "coinmarketcap": "",
-            "nickname": "BoardRoom"
+            "coinmarketcap": "BoardRoom"
         },
         "ratings": {},
         "consensus": {
@@ -8801,7 +8800,7 @@
         "descriptions": {
             "state": "Project",
             "system_type": "cryptoservice",
-            "headline": "Blockchain Governance",
+            "headline": "Next-gen Blockchain Governance Apparatus",
             "tags": [
                 "DApp"
             ],
@@ -8840,6 +8839,16 @@
                     "News"
                 ],
                 "type": "paper"
+            },
+            {
+                "type": "github",
+                "name": "BoardRoom GitHub",
+                "url": "https://github.com/boardroom-project",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
             }
         ]
     },
@@ -12221,7 +12230,9 @@
         "aliases": {
             "coinmarketcap": "Counterparty"
         },
-        "specs": {},
+        "specs": {
+            "supply": 2618187
+        },
         "crowdsales": {
             "start_date": "2014-01-02T02:40:50",
             "end_date": "2014-02-02T00:00:00",
@@ -33063,14 +33074,14 @@
     },
     {
         "genesis_id": "",
-        "system": "MassNetwork",
-        "icon": "massnetwork",
+        "system": "Mask Network",
+        "icon": "masknetwork",
         "dependencies": [
             "independed"
         ],
         "token": {
-            "name": "mass coin",
-            "symbol": "MASS"
+            "name": "mask coin",
+            "symbol": "MSK"
         },
         "consensus": {
             "consensus_type": "Variable Proof of Work algorithm",
@@ -33102,7 +33113,7 @@
         "links": [
             {
                 "type": "website",
-                "name": "mass.network",
+                "name": "masknetwork.com",
                 "url": "http://www.masknetwork.com/",
                 "icon": "website.png",
                 "tags": [
@@ -33111,7 +33122,7 @@
             },
             {
                 "type": "paper",
-                "name": "Mass Whitepaper",
+                "name": "Mask Whitepaper",
                 "url": "http://www.masknetwork.com/white_paper.pdf",
                 "icon": "paper.png",
                 "tags": [
@@ -33121,7 +33132,7 @@
             },
             {
                 "type": "github",
-                "name": "Mass GitHub",
+                "name": "Mask GitHub",
                 "url": "https://github.com/masknetwork",
                 "icon": "github.png",
                 "tags": [
@@ -33168,7 +33179,7 @@
             },
             {
                 "type": "blog",
-                "name": "Mass Blog",
+                "name": "Mask Blog",
                 "url": "http://blog.mass.network/",
                 "icon": "blog.png",
                 "tags": [
@@ -38373,6 +38384,124 @@
         ]
     },
     {
+        "genesis_id": "",
+        "system": "Nimiq",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "nimiq",
+        "token": {
+            "name": "nimiq token",
+            "symbol": "NET"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Browser Based Blockchain"
+        },
+        "aliases": {
+            "coinmarketcap": "Nimiq"
+        },
+        "crowdsales": {
+            "start_date": "2017-06-28T13:00:00",
+            "end_date": "2017-07-26T13:00:00",
+            "end_date_plan": "2017-07-26T13:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://medium.com/nimiq-network/nimiq-network-token-sale-terms-9af2e7fd6228",
+            "funding_url": "https://nimiq.com",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "nimiq.com",
+                "url": "https://nimiq.com",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Nimiq Whitepaper",
+                "url": "https://medium.com/nimiq-network/nimiq-a-peer-to-peer-payment-protocol-native-to-the-web-ffd324bb084",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Nimiq GitHub",
+                "url": "https://github.com/nimiq-network",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Nimiq Blog",
+                "url": "https://medium.com/nimiq-network",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/nimiqnetwork",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Nimiq Telegram",
+                "url": "https://t.me/joinchat/AAAAAEJW-ozFwo7Er9jpHw",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/Nimiq/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "YouTube",
+                "url": "https://www.youtube.com/channel/UCJ1qu3KXwfmkGwBkU8F1jQg",
+                "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "6780060819348751348",
         "system": "NobleNXT",
         "icon": "noblenxt",
@@ -42493,6 +42622,86 @@
         ]
     },
     {
+        "genesis_id": "",
+        "system": "Prizm",
+        "dependencies": [
+            "independent"
+        ],
+        "icon": "prizm",
+        "token": {
+            "name": "prizm token",
+            "symbol": "PZM"
+        },
+        "consensus": {
+            "consensus_type": "",
+            "consensus_name": ""
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptocurrency",
+            "headline": "Decentralized and self-regulating digital currency"
+        },
+        "aliases": {
+            "coinmarketcap": "PRIZM"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "prizm.club",
+                "url": "http://prizm.club/en/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Prizm Whitepaper",
+                "url": "https://docviewer.yandex.ru/view/122721294/?*=4ELPgTqF6aWcOwZzli5dz9%2B%2FJnV7InVybCI6InlhLWRpc2stcHVibGljOi8vMEFSQlY1cFBjZkh3RE9lYUlRQkdjUFQvOHlvSWsya3hueDRkYmVQdW05Yz0iLCJ0aXRsZSI6IlBSSVpNV2hpdGVwYXBlcl9FbmdsaXNoLnBkZiIsInVpZCI6IjEyMjcyMTI5NCIsInl1IjoiODA4MDc3NTUwMTUwNDcyOTE4MiIsIm5vaWZyYW1lIjpmYWxzZSwidHMiOjE1MDgwODIzNDg2NjR9",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Prizm GitHub",
+                "url": "https://github.com/prizmspace/PrizmCore",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/PRIZM_RU",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Prizm Telegram",
+                "url": "https://t.me/PRIZMclub",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/prizmcoin%20",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "9706a2be54a9bf4a53219a9eb4c4687a424c93e42c05d89523a49a677706e51b",
         "system": "Project Decorum",
         "icon": "decorum",
@@ -42622,6 +42831,105 @@
                 "tags": [
                     "Apps",
                     "Exchange"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Propy",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "propy",
+        "token": {
+            "name": "propy token",
+            "symbol": "PRO"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Global property Store with Decentralized Title Registry "
+        },
+        "aliases": {
+            "coinmarketcap": "Propy"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "propy.com",
+                "url": "http://propy.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Propy Whitepaper",
+                "url": "http://tokensale.propy.com/Propy-White-Paper-17-Jul-2017.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Propy GitHub",
+                "url": "https://github.com/Propy",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Propy Blog",
+                "url": "https://blog.propy.com/",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=1982115",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/PropyInc",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Propy Telegram",
+                "url": "https://t.me/propy",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Propy Slack",
+                "url": "http://propy.slack.com",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
                 ]
             }
         ]
@@ -42820,6 +43128,103 @@
                 "name": "Pylon Network GitHub",
                 "url": "https://github.com/klenergy/ethereum-contracts",
                 "icon": "github.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Qointum",
+        "dependencies": [
+            "independent"
+        ],
+        "icon": "qointum",
+        "token": {
+            "name": "qointum token",
+            "symbol": ""
+        },
+        "consensus": {
+            "consensus_type": "",
+            "consensus_name": ""
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Secure Trustless Smart Money powering Web 3.0"
+        },
+        "crowdsales": {
+            "start_date": "2017-07-02T00:00:00",
+            "end_date": "2017-08-14T00:00:00",
+            "end_date_plan": "2017-08-14T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://wiki.qointum.com/legal/crowdfunding/",
+            "funding_url": "https://qointum.com/",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "qointum.com",
+                "url": "https://qointum.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Qointum Whitepaper",
+                "url": "https://wiki.qointum.com/design/dev/",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Qointum GitHub",
+                "url": "https://github.com/Qointum",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Qointum Blog",
+                "url": "https://blog.qointum.com/",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/Qointum",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/Qointum/",
+                "icon": "reddit.png",
                 "tags": [
                     "News"
                 ]
@@ -43440,6 +43845,115 @@
         }
     },
     {
+        "genesis_id": "",
+        "system": "Real",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "real",
+        "token": {
+            "name": "real token",
+            "symbol": "REAL"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Real Estate Crypto-Crowdfunding"
+        },
+        "aliases": {
+            "coinmarketcap": "REAL"
+        },
+        "crowdsales": {
+            "start_date": "2017-08-30T00:00:00",
+            "end_date": "2017-09-30T00:00:00",
+            "end_date_plan": "2017-09-30T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "http://www.real.markets",
+            "funding_url": "http://www.real.markets",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                "usd = 10824148"
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "real.markets",
+                "url": "https://www.real.markets/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Real Whitepaper",
+                "url": "http://www.real.markets/REAL_Whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Real GitHub",
+                "url": "https://github.com/REALToken/real_contract",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Real Blog",
+                "url": "https://medium.com/@real_token/",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/real_token",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Real Telegram",
+                "url": "https://t.me/realplatform",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/realestateassetledger",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "b868e0d95a3c3c0e0dadc67ee587aaf9dc8acbf99e3b4b3110fad4eb74c1decc",
         "system": "ReddCoin",
         "icon": "reddcoin",
@@ -43711,8 +44225,8 @@
         },
         "crowdsales": {
             "start_date": "2017-07-31T00:00:00",
-            "end_date": "2017-08-28T00:10:00",
-            "end_date_plan": "2017-08-28T00:00:00",
+            "end_date": "2017-08-30T00:10:00",
+            "end_date_plan": "2017-08-30T00:00:00",
             "genesis_address": [
                 ""
             ],
@@ -48687,8 +49201,8 @@
         ],
         "icon": "starta",
         "token": {
-            "name": "bancor",
-            "symbol": "BANCOR"
+            "name": "starta token",
+            "symbol": "STA"
         },
         "consensus": {
             "consensus_type": "Token on Waves blockchain",
@@ -48700,7 +49214,7 @@
             "headline": "Smart-contract-based Token Conversion Protocol"
         },
         "aliases": {
-            "coinmarketcap": "Bancor"
+            "coinmarketcap": "Starta"
         },
         "crowdsales": {
             "start_date": "2017-05-25T20:18:00",
@@ -50167,7 +50681,8 @@
             "start_date": "2017-05-19T15:00:00",
             "end_date": "2017-06-19T15:00:00",
             "genesis_address": [
-                ""
+                "0xb64ef51c888972c908cfacf59b47c1afbc0ab8ac",
+                "0xe75509810e09b04eef4ebd0b471bacf5530b162e"
             ],
             "funding_terms": "https://storj.io/saleterms.pdf",
             "funding_url": "http://storj.io/",
@@ -51187,8 +51702,8 @@
             "headline": " Decentralized Collaboration Platform"
         },
         "token": {
-            "name": "SWARM",
-            "symbol": "SWARM"
+            "name": "swarm token",
+            "symbol": "SWT"
         },
         "specs": {},
         "links": [
@@ -54225,7 +54740,7 @@
         },
         "consensus": {
             "consensus_type": "Proof-of-Work",
-            "consensus_name": ""
+            "consensus_name": "PoW"
         },
         "descriptions": {
             "state": "Public",
@@ -54233,12 +54748,8 @@
             "headline": ""
         },
         "aliases": {
-            "coinmarketcap": ""
+            "coinmarketcap": "Veltor"
         },
-        "specs": {
-            "supply": ""
-        },
-        "flags": {},
         "links": [
             {
                 "type": "website",
@@ -55029,7 +55540,7 @@
         "icon": "voise",
         "token": {
             "name": "voisium",
-            "symbol": "VOISIUM"
+            "symbol": "VSM"
         },
         "consensus": {
             "consensus_type": "ERC20 Token",
@@ -55038,7 +55549,7 @@
         "descriptions": {
             "state": "Project",
             "system_type": "cryptoasset",
-            "headline": "A decentralized music platform that aims to monetize independent artists by giving them 100% of the revenue"
+            "headline": "Decentralized music platform that aims to monetize independent artists by giving them 100% of the revenue"
         },
         "crowdsales": {
             "start_date": "2017-05-06T02:00:00",
@@ -55049,9 +55560,9 @@
             ],
             "funding_terms": "https://ico.voise.it/",
             "funding_url": "https://voise.it/",
-            "tokens_sold": "",
-            "tokens_issued": 404078.4,
-            "btc_raised": 93.72,
+            "tokens_sold": 825578,
+            "tokens_issued": 16825578,
+            "btc_raised": 500,
             "cap_limit": [
                 ""
             ],
