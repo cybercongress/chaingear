@@ -1,3 +1,4 @@
+
 genesis_id = ""
 system = "Polkadot"
 dependencies = ["independent"]
@@ -5,16 +6,32 @@ icon = "polkadot"
 
 [token]
 name = "polkadot token"
-symbol = ""
+symbol = "DOT"
 
 [consensus]
-consensus_type = "PoA"
-consensus_name = "Proof-of-Authority"
+consensus_type = "POS"
+consensus_name = "Proof-of-Stake"
 
 [descriptions]
 state = "Project"
 system_type = "cryptoasset"
-headline = "Scalable Heterogeneous Multi-chain Framework"
+headline = "Decentralised home for diverse chains"
+
+[crowdsales]
+start_date = "2017-10-15T00:00:00"
+end_date = "2017-11-15T00:00:00"
+end_date_plan = "2017-11-15T00:00:00"
+genesis_address = [""]
+funding_terms = "https://polkadot.network/memorandum"
+funding_url = "https://sale.polkadot.network/"
+tokens_sold = "1488837"
+tokens_issued = "5000000"
+btc_raised = ""
+cap_limit = [""]
+raised = [""]
+
+[specs]
+supply = 10000000
 
 [[links]]
 type = "website"
@@ -30,7 +47,7 @@ tags = ["Main", "Science"]
 
 [[links]]
 type = "github"
-name = "Polkadot GitHub"
+name = "Polkadot Github"
 url = "https://github.com/paritytech/parity"
 icon = "github.png"
 tags = ["Main","Code"]
@@ -38,6 +55,13 @@ tags = ["Main","Code"]
 [[links]]
 type = "twitter"
 name = "Twitter"
-url = "https://twitter.com/ParityTech"
+url = "https://twitter.com/polkadotnetwork"
 icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "reddit"
+name = "Reddit"
+url = "https://www.reddit.com/r/polkadot_market/"
+icon = "reddit.png"
 tags = ["News"]
