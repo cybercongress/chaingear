@@ -2159,7 +2159,7 @@
         },
         "crowdsales": {
             "start_date": "2017-11-06T00:00:00",
-            "end_date": "2017-11-15T23:59:00",
+            "end_date": "2017-11-20T23:59:00",
             "end_date_plan": "2017-11-15T23:59:00",
             "genesis_address": [
                 ""
@@ -2170,14 +2170,14 @@
             "tokens_issued": "",
             "btc_raised": "",
             "cap_limit": [
-                ""
+                "usd = 18000000"
             ],
             "raised": [
                 ""
             ]
         },
         "specs": {
-            "supply": 700000000
+            "supply": 450000000
         },
         "links": [
             {
@@ -6975,6 +6975,95 @@
             "usd": 0.45823272,
             "date": "2014-06-16T00:00:00"
         }
+    },
+    {
+        "genesis_id": "",
+        "system": "Bitcoin Gold",
+        "dependencies": [
+            "independent"
+        ],
+        "icon": "bitcoingold",
+        "token": {
+            "name": "bitcoin gold token",
+            "symbol": "BTG"
+        },
+        "consensus": {
+            "consensus_type": "proof-of-work",
+            "consensus_name": "POW"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptocurrency",
+            "headline": "Make Bitcoin decentralized again"
+        },
+        "aliases": {
+            "coinmarketcap": "Bitcoin Gold"
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "bitcoingold.org",
+                "url": "http://bitcoingold.org/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Bitcoin Gold Whitepaper",
+                "url": "https://btcgpu.org/wp-content/uploads/2017/10/BitcoinGold-Roadmap.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Bitcoin Gold GitHub",
+                "url": "https://github.com/BTCGPU/BTCGPU",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Bitcoin Gold Blog",
+                "url": "https://bitcoingold.org/blog/",
+                "icon": "blog.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/bitcoingold",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "slack",
+                "name": "Bitcoin Gold Slack",
+                "url": "https://join.slack.com/t/bitcoin-gold/shared_invite/enQtMjY1MzkzMzUxNjY4LWM1YmQ4MjZhZTQxMWE1ZDQyNjA4N2QwZTkyZjYzMjhiMzdlMmVkNjQ3NzZlZDdmMDE4NWIyY2JmYzdjYmE2MzA",
+                "icon": "slack.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/btcgpu/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
     },
     {
         "genesis_id": "",
