@@ -1,37 +1,168 @@
-
-genesis_id = ""
-system = "Polkadot"
-dependencies = ["independent"]
-icon = "polkadot"
-
-[token]
-name = "polkadot token"
-symbol = "DOT"
-
-[consensus]
-consensus_type = "POS"
-consensus_name = "Proof-of-Stake"
-
-[descriptions]
-state = "Project"
-system_type = "cryptoasset"
+[description]
+project_name = "Polkadot"
 headline = "Decentralised home for diverse chains"
+logo = ""
+state = 1 # 0 - Project, 1 - Pre-public, 2 - Public
+asset_type = "cryptoasset" # cryptocurrency, cryptoasset
 
-[crowdsales]
-start_date = "2017-10-15T00:00:00"
-end_date = "2017-11-15T00:00:00"
-end_date_plan = "2017-11-15T00:00:00"
-genesis_address = [""]
-funding_terms = "https://polkadot.network/memorandum"
-funding_url = "https://sale.polkadot.network/"
-tokens_sold = "1488837"
-tokens_issued = "5000000"
-btc_raised = ""
-cap_limit = [""]
-raised = [""]
+[[legal_entity]]
+name = "Web 3.0 Technologies Foundation" 
+residence = "Switzerland, Zug"
+description = "non-profit"
+shareholders_list = ""
+registration_date = "2017-07-03T00:00:00" # Date format: 2017-11-22T00:00:00
+venture_capital_funding = ""
 
-[specs]
-supply = 10000000
+[[legal_entity]]
+name = "Parity Technologies" 
+residence = "England and Wales"
+description = "operational, contracted by Web 3.0 Technologies Foundation"
+shareholders_list = ""
+registration_date = "2017-07-22T00:00:00" # Date format: 2017-11-22T00:00:00
+venture_capital_funding = ""
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  
+    [ico.common_info.current_ico_phase]  # 0 - pre-sale, 1 - ICO phase 1, 2 - ICO phase 2 etc
+    num = 0
+    name = "token sale"
+  
+    [ico.common_info.registration]
+    start_date = "2017-10-15T00:00:00" # Date format: 2017-11-22T00:00:00
+    end_date = "2017-10-27T00:00:00" # Date format: 2017-11-22T00:00:00
+    website = "https://polkadot.network"
+    terms = "https://polkadot.network/memorandum"
+
+    [[ico.common_info.token]]
+    name = "DOT"
+    symbol = "DOT"
+    dependency = "Independent"
+    consensus_name = "Proof-of-Stake"
+    token_type = "Utility token"
+    inflation_rate = "TBA"
+    circulation_terms = ""
+    governance_rights_project = ""
+    governance_rights_org = "Yes, DOT holders have complete control over the protocol, including managing exceptional events such as protocol upgrades and fixes."
+
+    [ico.common_info.token_distribution]
+    total_supply = "10000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "for token sale participants"
+      share = 50
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "for pre-launch distribution"
+      share = 30
+      
+      [[ico.common_info.token_distribution.shares]]
+      description = "for the Web3 Foundation"
+      share = 20
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "to finance the development of Web 3.0 Technologies"
+    share = 100
+
+  [[ico.phases]]
+  phase_num = 0 # 0 - pre-sale, 1 - ICO phase 1, 2 - ICO phase 2 etc
+  phase_name = "token sale"
+  
+    [ico.phases.terms]
+    sales_agreement = "https://polkadot.network/memorandum"
+    sales_url = "https://polkadot.network/#auction"
+    issued_tokens = 5000000
+    sold_tokens = 5000000
+    share_of_sold = 100 # %, Filled by cyberanalytics team 
+    cap_limit = 0
+    token_distribution_date = "Q3/2019"
+    
+      [[ico.phases.vesting]]
+      supply_percent = 0
+      locup_condition = ""
+      locup_date = "2017-11-22T00:00:00" # Date format: 2017-11-22T00:00:00
+    
+      [[ico.phases.terms.crowdsale_adresses]]
+      currency = "ETH"
+      adress = "unspecified, personal for every contributor"
+
+    [ico.phases.dates]
+    start_date = "2017-11-22T00:00:00" # Date format: 2017-11-22T00:00:00
+    end_date = "2017-11-22T00:00:00" # Date format: 2017-11-22T00:00:00
+    duration = 0 # Filled by cyberanalytics team
+
+    [ico.phases.raised_funds]
+    currency = "ETH"
+    amount = 485331 # Filled by cyberanalytics team
+
+    [ico.phases.prices]
+    token_initial_price = 0.109 
+
+    [[ico.phases.contract]]
+    contract_type = "Multisig" 
+    contract_adress = "0x3bfc20f0b9afcace800d73d2191166ff16540258" 
+
+  [[ico.phases]]
+  phase_num = 1 # 0 - pre-sale, 1 - ICO phase 1, 2 - ICO phase 2 etc
+  phase_name = "pre-launch distribution"
+  
+    [ico.phases.terms]
+    sales_agreement = "TBA"
+    sales_url = "TBA"
+    issued_tokens = 2000000
+    sold_tokens = 0
+    share_of_sold = 0 # Filled by cyberanalytics team 
+    cap_limit = 0
+    token_distribution_date = "Q3/2019"
+    
+      [[ico.phases.vesting]]
+      supply_percent = 0
+      locup_condition = ""
+      locup_date = "2017-11-22T00:00:00" # Date format: 2017-11-22T00:00:00
+    
+      [[ico.phases.terms.crowdsale_adresses]]
+      currency = ""
+      adress = ""
+
+    [ico.phases.dates]
+    start_date = "TBA" # Date format: 2017-11-22T00:00:00
+    end_date = "TBA" # Date format: 2017-11-22T00:00:00
+    duration = 0 # Filled by cyberanalytics team
+
+    [ico.phases.raised_funds]
+    currency = ""
+    amount = 0 # Filled by cyberanalytics team
+
+    [ico.phases.prices]
+    token_initial_price = 0
+
+    [[ico.phases.contract]]
+    contract_type = "" 
+    contract_adress = "" 
+
+[product]
+
+  [product.info]
+  same_blockchain = false
+  sources_availability = true # Filled by cyberanalytics team
+  product_status = 2 # 
+  app_type = ""
+  app_url = ""
+
+    [[product.info.token]]
+    name = "DOT"
+    symbol = "DOT"
+    dependency = "Independent"
+    consensus_name = "Proof-of-Stake"
+
+    [[product.info.milestouns]]
+    number = 0
+    name = "Development"
+    start_date = ""
+    end_date = ""
+    current_status = "In progress"
 
 [[links]]
 type = "website"
@@ -65,3 +196,4 @@ name = "Reddit"
 url = "https://www.reddit.com/r/polkadot_market/"
 icon = "reddit.png"
 tags = ["News"]
+
