@@ -1,7 +1,7 @@
 
 [description]
 project_name = "Polkadot"
-headline = "Decentralised home for diverse chains"
+headline = "decentralised home for diverse chains"
 logo = ""
 state = 1 # 0 - Project, 1 - Pre-public, 2 - Public
 asset_type = "cryptoasset" # cryptocurrency, cryptoasset
@@ -37,16 +37,10 @@ venture_capital_funding = ""
     website = "https://polkadot.network"
     terms = "https://polkadot.network/memorandum"
 
-    [[ico.common_info.token]]
+    [ico.common_info.token]
     name = "DOT"
     symbol = "DOT"
     dependency = "Independent"
-    consensus_name = "Proof-of-Stake"
-    token_type = "Utility token"
-    inflation_rate = "TBA"
-    circulation_terms = ""
-    governance_rights_project = ""
-    governance_rights_org = "Yes, DOT holders have complete control over the protocol, including managing exceptional events such as protocol upgrades and fixes."
 
     [ico.common_info.token_distribution]
     total_supply = "10000000"
@@ -156,7 +150,11 @@ venture_capital_funding = ""
     name = "DOT"
     symbol = "DOT"
     dependency = "Independent"
-    consensus_name = "Proof-of-Stake"
+    token_type = "Utility token"
+    inflation_rate = "TBA"
+    circulation_terms = ""
+    governance_rights_project = ""
+    governance_rights_org = "Yes, DOT holders have complete control over the protocol, including managing exceptional events such as protocol upgrades and fixes."
 
     [[product.info.milestouns]]
     number = 0
