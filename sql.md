@@ -1,40 +1,18 @@
-Дикий драфт (на корточках)
-Простой реестр Create, Update, Delete
+# Chaingear: CRUD database on Ethereum
+Here we offer simple but flexible CRUD database which allow creation of incentivized registries with decentralized permission control.
 
-Свойства
-- открытый код
-- ugradability
+## Features
+- expensive
+- open-source
 - migratability
-- отсутствие фин рисков
+- economic incentives. Registry creators can set up fee beneficiaries.
+- beneficiaries can be complex structure.
+- registry_name: ENS name. Resolver is registry contract
+- registry_description: 256 chars. Can be string or IPFS hash or Swarm hash. Optional
+- registry tags: 64 chars. Optional
+- registries can be updated either by owners or entry creators
 
-Тезисы:
-- имя реестра: ENS name и ресолвер
-- дескрипшн. hash либо в IPFS или Сварм. Опционально (256 chars)
-- тэги есть (64 chars)
-- трансфер обдумать
-- метод получения реестров
-- Ключ: инкремент uint32
-- имя аттрибута. ловер кейс. -. цифры
-- кто может создавать записи. Овнер реестра или кто угодно.
-- expiration time - не нужно. Лишнее усложнение
-- changable
-[
-- Registration cost
-- Update cost
-- Remove cost
-- Transfer cost
-] 
-- Value distibition: parametr 1% фабрике. 99% создателю реестров.
-- аукционы не надо.
-
-Архитектура:
-1. Мультисиг создатель фабрики реестра
-2. Прокси контракт (ENS)
-3. Фабрика реестров
-4. Реестр реестров
-5. Migration contract (future)
-
-
+## Interfaces
 
 Fabric proxy: Ownable, Benificiaries, Destroyable
 - getBuilder
@@ -74,4 +52,3 @@ Benificiaries: Ownable
 - get ben
 - add ben (only owner)
 - delete ben (only owner)
-
