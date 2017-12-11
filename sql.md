@@ -1,6 +1,9 @@
 # Chaingear: CRUD database on Ethereum
 Here we offer simple but flexible CRUD database which allow creation of incentivized registries with decentralized permission control.
 
+## Philosophy
+Everything is a contract
+
 ## Features
 - expensive
 - open-source
