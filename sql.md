@@ -9,8 +9,8 @@
 
 Тезисы:
 - имя реестра: ENS name и ресолвер
-- дескрипшн. hash либо в IPFS или Сварм. Опционально
-- тэги есть
+- дескрипшн. hash либо в IPFS или Сварм. Опционально (256 chars)
+- тэги есть (64 chars)
 - трансфер обдумать
 - метод получения реестров
 - Ключ: инкремент uint32
@@ -36,24 +36,42 @@
 
 
 
-Fabric proxy:
+Fabric proxy: Ownable, Benificiaries, Destroyable
 - getBuilder
 - setBuilder
 - getFee
 - setFee
-- getOwner
-- setOwner
-- destroy
 - getRegistries (reg address, reg name, creator)
-- 
 
-
-Builder:
+Builder: Ownable, Destroyable
 - version
-- create ()
+- create()
 
-Registry:
-- create
-- read
-- update
-- delete
+Registry: Benificiaries, Owner, Destroyable
+- permissionType: OnlyOwner, All, PermissionList
+- getCreationFee
+- setCreationFee
+- getEntries
+- createEntry (permissions)
+- readEntry
+- deleteEntry (permissions)
+
+Entry: Ownable, Destroyable(if not in registry)
+- readAttribute
+- updateAttribute (only owner)
+- getFee
+- setFee (only owner)
+
+Ownable:
+- getOwner
+- transferOwnership
+
+Destroyable:
+- destroy
+
+Benificiaries: Ownable
+  default - owner
+- get ben
+- add ben (only owner)
+- delete ben (only owner)
+
