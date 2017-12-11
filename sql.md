@@ -33,3 +33,27 @@
 3. Фабрика реестров
 4. Реестр реестров
 5. Migration contract (future)
+
+
+
+Fabric proxy:
+- getBuilder
+- setBuilder
+- getFee
+- setFee
+- getOwner
+- setOwner
+- destroy
+- getRegistries (reg address, reg name, creator)
+- 
+
+
+Builder:
+- version
+- create ()
+
+Registry:
+- create
+- read
+- update
+- delete
