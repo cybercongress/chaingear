@@ -5,37 +5,49 @@ import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
 
 contract Registry is Destructible {
 
+  struct Entry{
+    address addr;
+    address owner;
+  }
+
   enum PermissionType {OnlyOwner, AllUsers}
 
   PermissionType public permissionType;
 
   uint public entryCreationFee;
 
-  address[] public entries;
+  Entry[] public entries;
 
-  address[] public entriesOwner;
-
-  function Registry() public {
-    // constructor
+  function Registry(PermissionType _permissionType, uint _entryCreationFee) public {
+    permissionType = _permissionType;
+    entryCreationFee = _entryCreationFee;
   }
 
-  modifier restricted(address entryAddress) {
+  modifier restricted(uint _entryId) {
     _;
   }
 
-  function createEntry(bytes parameters)
-    external payable restricted(0x0) returns (address) 
+  function createEntry(bytes _parameters)
+    external payable returns (address) 
   {
+    entries.push(Entry({
+      addr: 0x1,
+      owner: 0x0
+    }));
     return 0x0;
   }
 
-  function deleteEntry(address entryAddress) 
-    external restricted(entryAddress) returns (bool deleted)
+  function deleteEntry(uint _entryId) 
+    external returns (bool deleted)
   {
     return true;
   }
 
-  function setEntryCreationFee(uint _fee) onlyOwner external {
+  function entriesCount() external constant returns (uint){
+    return entries.length;
+  }
+
+  function setEntryCreationFee(uint _fee) external {
     
   }
 }
