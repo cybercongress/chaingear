@@ -31,7 +31,7 @@ contract("Registry", (accounts) => {
 
     it("#1 should allow to create new entry", async () => {
         const count1 = new BigNumber(await registry.entriesCount())
-        await registry.createEntry('0x42', { from: ENTRY_OWNER })
+        await registry.createEntry('0x42', { from: ENTRY_OWNER, value: CREATION_FEE })
         const count2 = new BigNumber(await registry.entriesCount())
 
         count2.should.bignumber.equal(count1.add(1))
@@ -40,7 +40,11 @@ contract("Registry", (accounts) => {
         web3.eth.getCode(entry[0]).should.not.equal('0x0')
     })
 
-    it("#2 should not allow unknown to create entry if permission type = OnlyOwner", async () => {
+    it("#2 should not allow to create new entry without creation fee", async () => {
+        await registry.createEntry('0x42', { from: ENTRY_OWNER, value: 0 }).should.be.rejected
+    })
+
+    it("#3 should not allow unknown to create entry if permission type = OnlyOwner", async () => {
         const registry2 = await Registry.new(
             PermissionType.OnlyOwner,
             CREATION_FEE,
@@ -54,7 +58,7 @@ contract("Registry", (accounts) => {
         count2.should.bignumber.equal(count1)
     })
 
-    it("#3 should allow entry owner to delete entry", async () => {
+    it("#4 should allow entry owner to delete entry", async () => {
         const count1 = new BigNumber(await registry.entriesCount())
         await registry.deleteEntry(count1, { from: ENTRY_OWNER })
 
@@ -63,7 +67,7 @@ contract("Registry", (accounts) => {
         entry[0].should.equal('0x0000000000000000000000000000000000000000')
     })
 
-    it("#4 should not allow unknown to delete entry", async () => {
+    it("#5 should not allow unknown to delete entry", async () => {
         const count1 = new BigNumber(await registry.entriesCount())
         await registry.deleteEntry(count1, { from: UNKNOWN }).should.be.rejected
 
@@ -72,7 +76,7 @@ contract("Registry", (accounts) => {
         entry[0].should.equal('0x0000000000000000000000000000000000000000')
     })
 
-    it("#5 should allow registry owner to set entry creation fee", async () => {
+    it("#6 should allow registry owner to set entry creation fee", async () => {
         const newFee = 14
         await registry.setEntryCreationFee(newFee, { from: REGISTRY_OWNER })
 
@@ -81,7 +85,7 @@ contract("Registry", (accounts) => {
     })
 
 
-    it("#6 should not allow unknown to set entry creation fee", async () => {
+    it("#7 should not allow unknown to set entry creation fee", async () => {
         const newFee = 14
         await registry.setEntryCreationFee(newFee, { from: UNKNOWN }).should.be.rejected
 
