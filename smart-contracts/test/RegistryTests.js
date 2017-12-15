@@ -5,6 +5,7 @@ chai.use(require("chai-as-promised"))
 chai.should()
 
 const Registry = artifacts.require("Registry.sol")
+const SampleEntry = require("../build/contracts/SampleEntry.json")
 
 contract("Registry", (accounts) => {
 
@@ -17,6 +18,7 @@ contract("Registry", (accounts) => {
     const ENTRY_OWNER = accounts[1]
     const UNKNOWN = accounts[2]
     const CREATION_FEE = 1
+    const CREATION_GAS = 4000000
 
     let registry
 
@@ -29,19 +31,19 @@ contract("Registry", (accounts) => {
     })
 
 
-    it("#1 should allow to create new entry", async () => {
+    it("#1 should allow to add and deploy new entry", async () => {
         const count1 = new BigNumber(await registry.entriesCount())
-        await registry.createEntry('0x42', { from: ENTRY_OWNER, value: CREATION_FEE })
+        await registry.createEntry(SampleEntry.bytecode, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS })
         const count2 = new BigNumber(await registry.entriesCount())
 
         count2.should.bignumber.equal(count1.add(1))
 
         const entry = await registry.entries(count1)
-        web3.eth.getCode(entry[0]).should.not.equal('0x0')
+        web3.eth.getCode(entry[0]).should.equal(SampleEntry.deployedBytecode)
     })
 
     it("#2 should not allow to create new entry without creation fee", async () => {
-        await registry.createEntry('0x42', { from: ENTRY_OWNER, value: 0 }).should.be.rejected
+        await registry.createEntry(SampleEntry.bytecode, { from: ENTRY_OWNER, value: 0, gas: CREATION_GAS }).should.be.rejected
     })
 
     it("#3 should not allow unknown to create entry if permission type = OnlyOwner", async () => {
@@ -52,7 +54,7 @@ contract("Registry", (accounts) => {
         )
 
         const count1 = new BigNumber(await registry2.entriesCount())
-        await registry2.createEntry('0x42', { from: ENTRY_OWNER }).should.be.rejected
+        await registry2.createEntry(SampleEntry.bytecode, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS }).should.be.rejected
         const count2 = new BigNumber(await registry2.entriesCount())
 
         count2.should.bignumber.equal(count1)
@@ -60,7 +62,7 @@ contract("Registry", (accounts) => {
 
     it("#4 should allow entry owner to delete entry", async () => {
         const count1 = new BigNumber(await registry.entriesCount())
-        await registry.deleteEntry(count1, { from: ENTRY_OWNER })
+        await registry.deleteEntry(count1.sub(1), { from: ENTRY_OWNER })
 
         const entry = await registry.entries(count1.sub(1))
 
@@ -86,11 +88,31 @@ contract("Registry", (accounts) => {
 
 
     it("#7 should not allow unknown to set entry creation fee", async () => {
-        const newFee = 14
+        const newFee = randomFee()
+        const oldFee = new BigNumber(await registry.entryCreationFee())
+
         await registry.setEntryCreationFee(newFee, { from: UNKNOWN }).should.be.rejected
 
         const fee = new BigNumber(await registry.entryCreationFee())
-        fee.should.bignumber.equal(CREATION_FEE)
+        fee.should.bignumber.equal(oldFee)
     })
+
+    it("#8 should allow registry owner to set permission type", async () => {
+        await registry.setPermissionType(PermissionType.OnlyOwner, { from: REGISTRY_OWNER })
+
+        const permissionType = new BigNumber(await registry.permissionType())
+        permissionType.should.bignumber.equal(PermissionType.OnlyOwner)
+    })
+
+    it("#9 should not allow unknown to set permission type", async () => {
+        await registry.setPermissionType(PermissionType.All, { from: UNKNOWN }).should.be.rejected
+
+        const permissionType = new BigNumber(await registry.permissionType())
+        permissionType.should.bignumber.equal(PermissionType.OnlyOwner)
+    })
+
+    function randomFee(){
+        return Math.floor(Math.random() * 100)
+    }
 
 })
