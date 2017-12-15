@@ -24,9 +24,7 @@ contract Registry is Destructible {
         entryCreationFee = _entryCreationFee;
     }
   
-    function createEntry(bytes _bytecode)
-      external payable returns (address addr) 
-    {
+    function createEntry(bytes _bytecode) external payable returns (address addr) {
         require(msg.sender == owner || msg.value == entryCreationFee);
         require(msg.sender == owner || permissionType == PermissionType.AllUsers);
     
