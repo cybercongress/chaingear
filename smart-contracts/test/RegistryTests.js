@@ -20,12 +20,15 @@ contract("Registry", (accounts) => {
     const CREATION_FEE = 1
     const CREATION_GAS = 4000000
 
+    const params = "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000016100000000000000000000000000000000000000000000000000000000000000"
+
     let registry
 
     before(async () => {
         registry = await Registry.new(
             PermissionType.All,
             CREATION_FEE,
+            SampleEntry.bytecode,
             { from: REGISTRY_OWNER }
         )
     })
@@ -33,7 +36,7 @@ contract("Registry", (accounts) => {
 
     it("#1 should allow to add and deploy new entry", async () => {
         const count1 = new BigNumber(await registry.entriesCount())
-        await registry.createEntry(SampleEntry.bytecode, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS })
+        await registry.createEntry(params, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS })
         const count2 = new BigNumber(await registry.entriesCount())
 
         count2.should.bignumber.equal(count1.add(1))
