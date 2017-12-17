@@ -2,9 +2,10 @@ pragma solidity ^0.4.17;
 
 import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
 import "./BytesLib.sol";
+import "./WithBeneficiaries.sol";
 
 
-contract Registry is Destructible {
+contract Registry is Destructible, WithBeneficiaries {
 
     using BytesLib for bytes;
 
