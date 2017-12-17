@@ -5,7 +5,8 @@ chai.use(require("chai-as-promised"))
 chai.should()
 
 const Registry = artifacts.require("Registry.sol")
-const SampleEntry = require("../build/contracts/SampleEntry.json")
+const SampleEntry = artifacts.require("SampleEntry.sol")
+const SampleEntryArtifacts = require("../build/contracts/SampleEntry.json")
 
 contract("Registry", (accounts) => {
 
@@ -28,7 +29,7 @@ contract("Registry", (accounts) => {
         registry = await Registry.new(
             PermissionType.All,
             CREATION_FEE,
-            SampleEntry.bytecode,
+            SampleEntryArtifacts.bytecode,
             { from: REGISTRY_OWNER }
         )
     })
@@ -36,17 +37,20 @@ contract("Registry", (accounts) => {
 
     it("#1 should allow to add and deploy new entry", async () => {
         const count1 = new BigNumber(await registry.entriesCount())
-        await registry.createEntry(params, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS })
+        const res = await registry.createEntry(params, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS })
         const count2 = new BigNumber(await registry.entriesCount())
-
         count2.should.bignumber.equal(count1.add(1))
 
         const entry = await registry.entries(count1)
-        web3.eth.getCode(entry[0]).should.equal(SampleEntry.deployedBytecode)
+        web3.eth.getCode(entry[0]).should.equal(SampleEntryArtifacts.deployedBytecode)
+
+        const entryContract = SampleEntry.at(res.logs[0].args.addr)
+        var attribute = await entryContract.str()
+        attribute.should.equal('a')
     })
 
     it("#2 should not allow to create new entry without creation fee", async () => {
-        await registry.createEntry(SampleEntry.bytecode, { from: ENTRY_OWNER, value: 0, gas: CREATION_GAS }).should.be.rejected
+        await registry.createEntry(SampleEntryArtifacts.bytecode, { from: ENTRY_OWNER, value: 0, gas: CREATION_GAS }).should.be.rejected
     })
 
     it("#3 should not allow unknown to create entry if permission type = OnlyOwner", async () => {
@@ -57,7 +61,7 @@ contract("Registry", (accounts) => {
         )
 
         const count1 = new BigNumber(await registry2.entriesCount())
-        await registry2.createEntry(SampleEntry.bytecode, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS }).should.be.rejected
+        await registry2.createEntry(SampleEntryArtifacts.bytecode, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS }).should.be.rejected
         const count2 = new BigNumber(await registry2.entriesCount())
 
         count2.should.bignumber.equal(count1)
