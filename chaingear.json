@@ -45904,16 +45904,16 @@
         "genesis_id": "",
         "system": "Raiden Network",
         "dependencies": [
-            "Ethereum"
+            "ERC20"
         ],
-        "icon": "raidennetwork",
+        "icon": "",
         "token": {
-            "name": "rdn token",
+            "name": "RDN token",
             "symbol": "RDN"
         },
         "consensus": {
-            "consensus_type": "ERC20 Token",
-            "consensus_name": "Ethereum"
+            "consensus_type": "ERC20",
+            "consensus_name": "ERC20"
         },
         "descriptions": {
             "state": "Project",
@@ -45921,34 +45921,74 @@
             "headline": "Fast, scalable transfers for Ethereum"
         },
         "crowdsales": {
-            "start_date": "2017-10-18T15:00:00",
-            "end_date": "2017-11-18T15:00:00",
-            "end_date_plan": "2017-11-18T15:00:00",
+            "start_date": "2017-10-18T18:39:00",
+            "end_date": "2017-11-01T14:49:00",
+            "end_date_plan": "2017-11-01T14:49:00",
             "genesis_address": [
                 ""
             ],
-            "funding_terms": "https://raiden.network/",
-            "funding_url": "https://raiden.network/",
-            "tokens_sold": "",
-            "tokens_issued": "",
+            "funding_term": "https://token.raiden.network/",
+            "funding_url": "https://token.raiden.network/",
+            "tokens_sold": 50000000,
+            "tokens_issued": 100000000,
             "btc_raised": "",
-            "cap_limit": [
-                ""
-            ],
+            "cap_limit": [],
             "raised": [
                 ""
             ]
         },
-        "specs": {
-            "supply": 100000000
-        },
         "links": [
+            {
+                "type": "exchange",
+                "name": "Binance",
+                "url": "https://www.binance.com/",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Huobi",
+                "url": "https://www.huobi.pro/",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "EtherDelta",
+                "url": "https://etherdelta.com/",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
+            {
+                "type": "exchange",
+                "name": "Kucoin",
+                "url": "https://www.kucoin.com/",
+                "tags": [
+                    "Apps",
+                    "Exchange"
+                ]
+            },
             {
                 "type": "website",
                 "name": "raiden.network",
                 "url": "https://raiden.network/",
                 "tags": [
                     "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Raiden Specification",
+                "url": "http://raiden-network.readthedocs.io/en/stable/spec.html",
+                "tags": [
+                    "Main",
+                    "Science"
                 ]
             },
             {
