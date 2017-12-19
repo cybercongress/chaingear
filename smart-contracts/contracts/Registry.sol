@@ -1,8 +1,8 @@
 pragma solidity ^0.4.17;
 
 import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
-import "./BytesLib.sol";
-import "./MultipleBeneficiaries.sol";
+import "./common/BytesLib.sol";
+import "./common/MultipleBeneficiaries.sol";
 
 
 contract Registry is Destructible, MultipleBeneficiaries {
