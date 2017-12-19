@@ -4,8 +4,8 @@ import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "zeppelin-solidity/contracts/payment/SplitPayment.sol";
 
 
-contract WithBeneficiaries is Ownable, SplitPayment {
-    function WithBeneficiaries(address[] _benefitiaries, uint256[] _shares)
+contract MultipleBeneficiaries is Ownable, SplitPayment {
+    function MultipleBeneficiaries(address[] _benefitiaries, uint256[] _shares)
         SplitPayment(_benefitiaries, _shares) public
     {
         addPayee(owner, 1);
