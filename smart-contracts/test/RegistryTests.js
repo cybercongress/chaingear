@@ -27,6 +27,8 @@ contract("Registry", (accounts) => {
 
     before(async () => {
         registry = await Registry.new(
+            [],
+            [],
             PermissionType.All,
             CREATION_FEE,
             SampleEntryArtifacts.bytecode,

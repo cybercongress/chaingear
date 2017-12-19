@@ -24,7 +24,14 @@ contract Registry is Destructible, MultipleBeneficiaries {
     event EntryCreated(address addr, uint entryId);
     event EntryDeleted(address addr);
   
-    function Registry(PermissionType _permissionType, uint _entryCreationFee, bytes _bytecode) public {
+    function Registry(
+        address[] _benefitiaries,
+        uint256[] _shares,
+        PermissionType _permissionType,
+        uint _entryCreationFee,
+        bytes _bytecode
+    ) MultipleBeneficiaries(_benefitiaries, _shares) public
+    {
         permissionType = _permissionType;
         entryCreationFee = _entryCreationFee;
         bytecode = _bytecode;
