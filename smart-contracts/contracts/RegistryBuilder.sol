@@ -9,7 +9,13 @@ contract RegistryBuilder is Builder {
 
     RegistryCreator public creator;
 
-    function RegistryBuilder(RegistryCreator _creator, uint _buildingFee) public {
+    function RegistryBuilder(
+        RegistryCreator _creator,
+        uint _buildingFee,
+        address[] _benefitiaries,
+        uint256[] _shares
+    ) Builder(_benefitiaries, _shares) public
+    {
         creator = _creator;
         buildingFee = _buildingFee;
     }

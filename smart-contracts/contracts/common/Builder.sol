@@ -19,6 +19,10 @@ contract Builder is Destructible, MultipleBeneficiaries {
  
     /* Addresses builded contracts at sender */
     mapping(address => address[]) public createdContracts;
+
+    function Builder(address[] _benefitiaries, uint256[] _shares)
+        MultipleBeneficiaries(_benefitiaries, _shares) public
+    { }
  
     /**
      * @dev Get last address
