@@ -5,8 +5,6 @@ logo = "" # Link to logo image
 state = 0 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
 asset_type = "cryptoasset" # cryptocurrency, cryptoasset
 
-
-
 [[legal_entity]]
 name = "" # Name of the company, checked by Cyberanalytics team
 residence = "" # Place of company registration, checked by Cyberanalytics team
@@ -29,8 +27,6 @@ venture_capital_funding = "" # Amount of fiat money or virtual currency raised b
    [ico.common_info.token_distribution]
    total_supply = 700000000
 
-
-
  [[ico.common_info.token_distribution.shares]]
      description = "Pre-sale,ICO,investors" # Name of category
      percent = 86 # Share of tokens granted to appropriate category
@@ -50,8 +46,6 @@ venture_capital_funding = "" # Amount of fiat money or virtual currency raised b
      description = "" # Purpose of collected procceeds (contributions)
      percent = 0 # Share of overall procceeds (contributions)
 
-
-
  [[ico.phases]]
  phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
  phase_name = "presale"
@@ -61,8 +55,6 @@ venture_capital_funding = "" # Amount of fiat money or virtual currency raised b
    end_date = "2017-01-10T23:59:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
    website = "https://tokengoplatform.com" # URL to the registration webpage
    terms = "https://tokengoplatform.com" # URL to the registration terms
-
-
 
    [ico.phases.terms]
    sales_agreement = "https://tokengoplatform.com" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
