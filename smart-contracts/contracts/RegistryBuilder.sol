@@ -40,10 +40,10 @@ contract RegistryBuilder is Builder {
         }
 
         Registry instance = creator.create(_benefitiaries, _shares, _permissionType, _entryCreationFee, _bytecode);
+        instance.transferOwnership(client);
 
         createdContracts[client].push(instance);
         Builded(client, instance);
-        instance.transferOwnership(client);
 
         return instance;
     }
