@@ -4,8 +4,8 @@ chai.use(require("chai-bignumber")())
 chai.use(require("chai-as-promised"))
 chai.should()
 
-const Registry = artifacts.require("Registry.sol")
-const SampleEntry = artifacts.require("SampleEntry.sol")
+const Registry = artifacts.require("Registry")
+const SampleEntry = artifacts.require("SampleEntry")
 const SampleEntryArtifacts = require("../build/contracts/SampleEntry.json")
 
 contract("Registry", (accounts) => {
