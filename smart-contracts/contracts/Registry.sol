@@ -49,6 +49,8 @@ contract Registry is Destructible, MultipleBeneficiaries {
           let p := add(completeBytecode, 0x20)                      // bytecode start
           addr := create(0, p, s)                                   // create new contract with code mem[p..(p+s)) and send v wei and return the new address
         }
+
+        assert(addr != 0x0);
     
         entries.push(Entry({ addr: addr, owner: msg.sender }));
     
