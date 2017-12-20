@@ -39,9 +39,11 @@ contract("Registry", (accounts) => {
 
     it("#1 should allow to add and deploy new entry", async () => {
         const count1 = new BigNumber(await registry.entriesCount())
-        await registry.createEntry(params, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS })
+        const res = await registry.createEntry(params, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS })
         const count2 = new BigNumber(await registry.entriesCount())
         count2.should.bignumber.equal(count1.add(1))
+
+        console.log("Gas used: " + res.receipt.gasUsed)
 
         const entry = await registry.entries(count1)
         web3.eth.getCode(entry[0]).should.equal(SampleEntryArtifacts.deployedBytecode)
