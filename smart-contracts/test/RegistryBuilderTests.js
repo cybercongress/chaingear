@@ -8,7 +8,6 @@ const Registry = artifacts.require("Registry")
 const RegistryBuilder = artifacts.require("RegistryBuilder")
 const RegistryCreator = artifacts.require("RegistryCreator")
 const SampleEntry = artifacts.require("SampleEntry")
-const SampleEntryArtifacts = require("../build/contracts/SampleEntry.json")
 
 contract("RegistryBuilder", (accounts) => {
 
@@ -45,7 +44,7 @@ contract("RegistryBuilder", (accounts) => {
             [],
             PermissionType.All,
             CREATION_FEE,
-            SampleEntryArtifacts.bytecode,
+            SampleEntry.bytecode,
             { from: CREATOR, value: BUILDING_FEE, gas: CREATION_GAS }
         )
 
