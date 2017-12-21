@@ -4,17 +4,17 @@ This project allows you to create your own Registry of general purpose entries o
 Entry type is defined during creation, so you can put into entry any custom logic you want (validation, entry-level permission control).
 
 ## Components:
-- *Registry Builder* allows any user to create his own registry. Building fee is collecting for builder services. All builded contracts are recorded into builder contract. Registry Builder supports multiple beneficiaries for building fee.
-- *Registry Creator* contains a bytecode of current version of Registry. This bytecode used by Registry Builder for Registry creation. Registry Creator address can be changed in Registry Builder by it's owner.
-- *Registry* is a contract, that implements basic CRUD database of some entries. Entry type (bytecode) in time of Registry instantiation. Registry supports entry creation fee charging, and basic permission management. Registry Builder supports multiple beneficiaries for creation fee.
-- *Sample Entry* is an example of possible entry type. It support Read and Update operation of string field.
+- _Registry Builder_ allows any user to create his own registry. Building fee is collecting for builder services. All builded contracts are recorded into builder contract. Registry Builder supports multiple beneficiaries for building fee.
+- _Registry Creator_ contains a bytecode of current version of Registry. This bytecode used by Registry Builder for Registry creation. Registry Creator address can be changed in Registry Builder by it's owner.
+- _Registry_ is a contract, that implements basic CRUD database of some entries. Entry type (bytecode) in time of Registry instantiation. Registry supports entry creation fee charging, and basic permission management. Registry Builder supports multiple beneficiaries for creation fee.
+- _Sample Entry_ is an example of possible entry type. It support Read and Update operation of string field.
 Additional validation and permission logic can be added into this contract.
 
 ## Prerequisites:
 
 - [Node.js](https://nodejs.org/en/download/) v8.5.0+
 - [Truffle](http://truffleframework.com/) v4.0.1+
-- [Parity]()
+- [Parity](https://www.parity.io/)
 
 ## Registry creation workflow (for Kovan test network:
 
