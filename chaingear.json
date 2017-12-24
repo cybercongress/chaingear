@@ -49863,6 +49863,115 @@
     },
     {
         "genesis_id": "",
+        "system": "SOLA",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "sola",
+        "token": {
+            "name": "sola token",
+            "symbol": "SOL"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Decentralized social network which pays users by cryptocurrency"
+        },
+        "crowdsales": {
+            "start_date": "2017-11-27T16:00:00",
+            "end_date": "2017-12-22T16:00:00",
+            "end_date_plan": "2017-12-22T16:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://sola.foundation/Sola_Whitepaper_V1-1_EN.pdf",
+            "funding_url": "https://sola.foundation/",
+            "tokens_sold": "",
+            "tokens_issued": "50000000",
+            "btc_raised": "",
+            "cap_limit": [
+                "usd=5000000"
+            ],
+            "raised": [
+                "usd=1685490"
+            ]
+        },
+        "specs": {
+            "supply": 150000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "sola.foundation",
+                "url": "https://sola.foundation/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "SOLA Whitepaper",
+                "url": "https://sola.foundation/Sola_Whitepaper_V1-1_EN.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "SOLA Github",
+                "url": "",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "SOLA Blog",
+                "url": "https://medium.com/solaplatform",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/solaplatform",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "SOLA Telegram",
+                "url": "https://t.me/solaplatform",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/solaplatform",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "SRG-Play&Earn",
         "dependencies": [
             "Ethereum"
@@ -62955,159 +63064,6 @@
                 "name": "ZrCoin Telegram",
                 "url": "https://t.me/joinchat/AAAAAEDj28WzzuNh5j6tVg",
                 "icon": "telegram.png",
-                "tags": [
-                    "News"
-                ]
-            }
-        ]
-    },
-    {
-        "genesis_id": "",
-        "system": "aeternity",
-        "dependencies": [
-            "independent"
-        ],
-        "icon": "aeternity",
-        "token": {
-            "name": "aeon",
-            "symbol": "AE"
-        },
-        "consensus": {
-            "type": "Hybrid",
-            "algorithm": ""
-        },
-        "aliases": {
-            "coinmarketcap": "aeternity",
-            "nickname": "aeternity"
-        },
-        "descriptions": {
-            "state": "Pre-Public",
-            "system_type": "cryptocurrency",
-            "headline": "Scalable Smart Contracts Interfacing with Real-World Data",
-            "tags": [
-                "DAO"
-            ],
-            "page_state": "draft"
-        },
-        "crowdsales": {
-            "start_date": "2017-05-29T13:05:00",
-            "end_date": "2017-06-19T13:05:00",
-            "genesis_address": [
-                "0x6cC2D616E56e155D8A06E65542fdb9bD2D7f3c2E",
-                "335TYuEjiWFmTYjAjN5o2CSUjbqF8WmpMz"
-            ],
-            "funding_terms": "https://blog.aeternity.com/security-transparency-simplicity-1411fad10974",
-            "funding_url": "http://www.aeternity.com/",
-            "tokens_issued": 138000956,
-            "tokens_sold": 138000956,
-            "btc_raised": 4871
-        },
-        "specs": {
-            "supply": 138000956,
-            "cap": {
-                "btc": 4871,
-                "usd": 5651156
-            }
-        },
-        "first_price": {
-            "btc": 0.0000353,
-            "usd": 0.04095012,
-            "date": "2017-06-03T13:05:00"
-        },
-        "flags": {
-            "supply_from_here": true
-        },
-        "links": [
-            {
-                "type": "website",
-                "name": "aeternity.com",
-                "url": "http://www.aeternity.com/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "paper",
-                "name": "Aeternity whitepaper",
-                "url": "http://blockchain.aeternity.com/%C3%A6ternity-blockchain-whitepaper.pdf",
-                "icon": "paper.png",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "GitHub",
-                "url": "https://github.com/aeternity/",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "blog",
-                "name": "Blog",
-                "rss": "https://blog.aeternity.com/",
-                "url": "http://www.idni.org/blog",
-                "icon": "blog.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            },
-            {
-                "type": "twitter",
-                "name": "Twitter",
-                "url": "https://twitter.com/aetrnty",
-                "icon": "twitter.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Aeternity Telegram",
-                "url": "https://telegram.me/aeternity",
-                "icon": "telegram.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "LinkedIn",
-                "url": "https://www.linkedin.com/company/aeternity",
-                "icon": "linkedin.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "slack",
-                "name": "Aeternity Slack",
-                "url": "https://slack.aeternity.com/",
-                "icon": "slack.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "reddit",
-                "name": "Reddit",
-                "url": "https://www.reddit.com/r/Aeternity/",
-                "icon": "reddit.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Facebook",
-                "url": "https://www.facebook.com/aeternityproject/",
-                "icon": "facebook.png",
                 "tags": [
                     "News"
                 ]
