@@ -10660,6 +10660,121 @@
     },
     {
         "genesis_id": "",
+        "system": "CREDITS",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "credits",
+        "token": {
+            "name": " token",
+            "symbol": ""
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Modern blockchain platform for creating financial services"
+        },
+        "crowdsales": {
+            "start_date": "2018-01-15T00:00:00",
+            "end_date": "2018-02-15T23:59:00",
+            "end_date_plan": "2018-02-15T23:59:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://credits.com/en/home/ico",
+            "funding_url": "https://credits.com/en/home/ico",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                "usd=20000000"
+            ],
+            "raised": [
+                "usd=1658809"
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "credits.com",
+                "url": "https://credits.com/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "CREDITS Whitepaper",
+                "url": "https://credits.com/Content/Docs/TechnicalWhitePaperCREDITSEng.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "CREDITS Github",
+                "url": "https://gist.github.com/Credits-com",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "CREDITS Blog",
+                "url": "https://medium.com/@credits",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2401248.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/creditscom",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "CREDITS Telegram",
+                "url": "https://t.me/creditscom",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/creditscom/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "CRYPTO20",
         "dependencies": [
             "Ethereum"
@@ -63021,85 +63136,5 @@
                 ]
             }
         ]
-    },
-    {
-        "genesis_id": "?",
-        "system": "bitSILVER",
-        "icon": "bitsilver",
-        "dependencies": [
-            "BitShares"
-        ],
-        "aliases": {
-            "coinmarketcap": "bitSilver"
-        },
-        "ratings": {
-            "rating_cyber": 3
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptoasset",
-            "headline": "Market-Pegget Asset"
-        },
-        "consensus": {
-            "consensus_name": "BitShares",
-            "consensus_type": ""
-        },
-        "token": {
-            "name": "bitSILVER",
-            "symbol": "BITSILVER"
-        },
-        "specs": {},
-        "links": [
-            {
-                "type": "website",
-                "name": "Introducing SmartCoins",
-                "url": "https://bitshares.org/technology/price-stable-cryptocurrencies/",
-                "icon": "website.png",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "wiki",
-                "name": "BitShares Wiki",
-                "url": "http://wiki.bitshares.org/index.php/BitShares/bitAssets",
-                "icon": "wiki.png",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "CryptoFresh Explorer",
-                "url": "http://cryptofresh.com/?r=cyberfund/a/SILVER",
-                "icon": "cryptofresh.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "OpenLedger Explorer",
-                "url": "https://bitshares.openledger.info/?r=cyberfund#/asset/SILVER",
-                "icon": "openledger.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ]
-            }
-        ],
-        "flags": {
-            "rating_do_not_display": true
-        },
-        "first_price": {
-            "btc": 0.0751038,
-            "usd": 17.81847418,
-            "date": "2015-02-25T00:00:00"
-        }
     }
 ]
