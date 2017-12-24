@@ -15290,6 +15290,115 @@
     },
     {
         "genesis_id": "",
+        "system": "DADI",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "dadi",
+        "token": {
+            "name": "dadi token",
+            "symbol": "DADI"
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "A new era of cloud services, powered by blockchain technology"
+        },
+        "crowdsales": {
+            "start_date": "2018-01-22T12:00:00",
+            "end_date": "2018-02-28T12:00:00",
+            "end_date_plan": "2018-02-28T12:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://dadi.cloud/en/crowdsale/terms",
+            "funding_url": "https://dadi.cloud",
+            "tokens_sold": "",
+            "tokens_issued": "",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 100000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "dadi.cloud",
+                "url": "https://dadi.cloud",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "DADI Whitepaper",
+                "url": "http://dadi.link/id",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "DADI Github",
+                "url": "https://github.com/dadi",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "DADI Blog",
+                "url": "https://medium.com/@daditech",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/dadi",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "DADI Telegram",
+                "url": "https://t.me/dadichat",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://reddit.com/r/dadi",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "DAOPlayMarket2.0",
         "dependencies": [
             "Ethereum"
@@ -63004,106 +63113,5 @@
                 ]
             }
         ]
-    },
-    {
-        "genesis_id": "bitBTC",
-        "system": "bitBTC",
-        "icon": "bitbtc",
-        "dependencies": [
-            "BitShares"
-        ],
-        "aliases": {
-            "coinmarketcap": "bitBTC"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptoasset",
-            "headline": "Market-Pegget Asset"
-        },
-        "consensus": {
-            "consensus_type": "",
-            "consensus_name": "BTS"
-        },
-        "token": {
-            "name": "bitBTC",
-            "symbol": "BITBTC"
-        },
-        "specs": {},
-        "ratings": {
-            "rating_cyber": 3
-        },
-        "links": [
-            {
-                "type": "website",
-                "name": "Introducing SmartCoins",
-                "url": "https://bitshares.org/technology/price-stable-cryptocurrencies/",
-                "icon": "website.png",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "wiki",
-                "name": "BitShares Wiki",
-                "url": "http://wiki.bitshares.org/index.php/BitShares/bitAssets",
-                "icon": "wiki.png",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "CryptoFresh Explorer",
-                "url": "http://cryptofresh.com/?r=cyberfund/a/BTC",
-                "icon": "cryptofresh.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "OpenLedger Explorer",
-                "url": "https://bitshares.openledger.info/?r=cyberfund#/asset/BTC",
-                "icon": "openledger.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "exchange",
-                "name": "Open Ledger",
-                "headline": "Transparent Decentrilized Exchange",
-                "url": "https://openledger.info/?r=cyberfund",
-                "icon": "openledger.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
-                "type": "exchange",
-                "name": "BitShares AE",
-                "url": "http://cryptofresh.com/assets",
-                "icon": "bitshares.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            }
-        ],
-        "flags": {
-            "rating_do_not_display": true
-        },
-        "first_price": {
-            "btc": 1,
-            "usd": 435.3779,
-            "date": "2014-09-23T00:00:00"
-        }
     }
 ]
