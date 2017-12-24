@@ -1,0 +1,123 @@
+[aliases]
+coinmarketcap = "Karbo"
+
+[consensus]
+type = "PoW"
+algorithm = "Cryptonote"
+
+[descriptions]
+state = "Public"
+system_type = "cryptocurrency"
+tags = ["DAO"]
+hashtag = "#Karbo"
+
+[[events]]
+name = "Announcement"
+date = "2016-05-30T07:55:58"
+url = "https://bitcointalk.org/index.php?topic=1491747"
+
+[token]
+name = "Karbo"
+symbol = "KRB"
+
+[specs]
+p2p = 32347.0
+rpc = 32348.0
+block_time = 240.0
+block_reward = "Initial Block block_reward = ~38 KRB, slight decrease every block, when decreases to 1 KRB will stay at that level"
+halfing_cycle = 263157.9
+total_tokens = 10 million KRB (+ tail emission ~1% yearly)
+difficulty_cycle = "every block"
+
+[description]
+project_name = "Karbowanec"
+headline = "Anonymous digital cash for Ukraine"
+logo = "https://avatars3.githubusercontent.com/u/26336362?s=400&v=4" # Link to logo image
+state = 2 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
+asset_type = "cryptocurrency" # cryptocurrency, cryptoasset
+
+[[legal_entity]]
+name = "" # Name of the company, checked by Cyberanalytics team
+residence = "" # Place of company registration, checked by Cyberanalytics team
+description = "operational" # Purpose (operational, non-profit, etc), checked by Cyberanalytics team
+shareholders_list = "" # Names of legal entities, trusts, natural persons and their beneficiaries, checked by Cyberanalytics teamm
+registration_date = "" # Legal entity registration date; Date format: 2017-11-22T00:00:00; Checked by Cyberanalytics team
+venture_capital_funding = "" # Amount of fiat money or virtual currency raised before phases[n]/ICO (USD equivalent at the moment of raising), Checked by Cyberanalytics team
+ico.common_info = false
+
+[product]
+
+[product.info]
+same_blockchain = false
+sources_availability = true
+product_status = 3
+app_type = "Desktop Wallet, Paper Wallet" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc
+app_url = "https://karbo.io/download/" # URL to App
+
+[[product.info.token]]
+name = "Karbovanets" # Token name
+symbol = "KRB" # Token short designation
+dependency = "independent"# Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+consensus_name = "PoW" # Name of consensys algorithm
+token_type = "cryptocurrency" # Token type declared by founders ('security token', 'utility token', 'donation', cryptocurrency)
+inflation_rate = "tail emission ~1% yearly" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+circulation_terms = "0% Pre-mine, Max supply: 10 million KRB (+ tail emission ~1% yearly), initial reward of ~38 KRB, slight decrease every block, when decreases to 1 KRB will stay at that level, "# Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+governance_rights_project=""# List of rights to be granted to tokenholders to vote for the course of the project development
+governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+
+[[links]]
+type = "" # Filled by cyberanalytics team
+name = "" # Filled by cyberanalytics team
+url = "https://www.livecoin.net/"
+tags =[] # Filled by cyberanalytics team
+
+[[links]]
+type = "" # Filled by cyberanalytics team
+name = "" # Filled by cyberanalytics team
+url = "https://www.cryptopia.co.nz"
+tags =[] # Filled by cyberanalytics team
+
+[[links]]
+type = "" # Filled by cyberanalytics team
+name = "" # Filled by cyberanalytics team
+url = "https://btc-trade.com.ua/"
+tags =[] # Filled by cyberanalytics team
+
+[[links]]
+type = "" # Filled by cyberanalytics team
+name = "" # Filled by cyberanalytics team
+url = "https://btc-trade.com.ua/"
+tags =[] # Filled by cyberanalytics team
+
+[[links]]
+type = "website"
+name = "Karbo"
+url = "https://karbo.io/"
+tags = ["Main"]
+
+[[links]]
+type = "Announcement"
+name = "Karbo"
+url = "https://bitcointalk.org/index.php?topic=1491747"
+tags = ["Main", "Science"]
+
+[[links]]
+type = "github"
+name = "Karbowanec Github"
+url = "https://github.com/seredat/karbowanec"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/krbcoin"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "Telegram"
+name = "Telegram"
+url = "https://t.me/karbo_en"
+icon = "Telegram.png"
+tags = ["News"]
