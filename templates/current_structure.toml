@@ -1,17 +1,28 @@
-[blockchain]
+[description]
 project_name = ""
 headline = "" # 50 symbols max
 logo = "" # Link to logo image
 state = 2 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
-asset_type = "" # blockchain protocol, blockchain app
-dependency = "" # Blockchain used to issue a token: Ethereum, Waves, Graphene. If its own blockchain - "independent"
-consensus_name = "" # Proof-of-Work, Proof-of-Stake, Delegated Proof-of-Stake, Proof-of-Burn, Proof-of-Authority
+asset_type = "" # cryptocurrency, cryptoasset
+
+[[legal_entity]]
+name = "" # Name of the company, checked by Cyberanalytics team
+residence = "" # Place of company registration, checked by Cyberanalytics team
+description = "" # Purpose (operational, non-profit, etc), checked by Cyberanalytics team
+shareholders_list = "" # Names of legal entities, trusts, natural persons and their beneficiaries, checked by Cyberanalytics teamm
+registration_date = "2017-07-03T00:00:00" # Legal entity registration date; Date format: 2017-11-22T00:00:00; Checked by Cyberanalytics team
+venture_capital_funding = "" # Amount of fiat money or virtual currency raised before phases[n]/ICO (USD equivalent at the moment of raising), Checked by Cyberanalytics team
 
 [ico]
 
   [ico.common_info]
   is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
   current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+  
+    [ico.common_info.token]
+    name = "" # Token name
+    symbol = "" # Token short designation
+    dependency = "" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
 
     [ico.common_info.token_distribution]
     total_supply = 0
@@ -43,9 +54,9 @@ consensus_name = "" # Proof-of-Work, Proof-of-Stake, Delegated Proof-of-Stake, P
     share_of_sold = 0  # %, Filled by cyberanalytics team
     token_distribution_date = "" # Date of token distribution
       
-      [[ico.phases.terms.cap_limit]]
-      currency = "" # USD, BTC or ETH
-      amount = 0 # Cap limit in specified currency
+      [ico.phases.terms.cap_limit]
+      currency = ""
+      amount = 0
       
       [[ico.phases.terms.vesting]]
       supply_percent = 0 # Percent of total token supply to be vested
@@ -61,7 +72,7 @@ consensus_name = "" # Proof-of-Work, Proof-of-Stake, Delegated Proof-of-Stake, P
     end_date = "2017-11-22T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
     duration = '' # Filled by cyberanalytics team
 
-    [[ico.phases.raised_funds]]
+    [ico.phases.raised_funds]
     currency = "" # Filled by developers or cyberanalytics team
     amount = 0 # Filled by developers or cyberanalytics team
 
@@ -76,47 +87,107 @@ consensus_name = "" # Proof-of-Work, Proof-of-Stake, Delegated Proof-of-Stake, P
     [[ico.phases.contract]]
     contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation) 
     contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+  
 
-[app]
+[product]
 
-  [[app.info]]
+  [[product.info]]
   name = "" # Name of application
   same_blockchain = false # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
   sources_availability = true # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
-  app_status = 2 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+  product_status = 2 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
   app_type = "" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc 
   app_url = "" # URL to App
 
-    [[app.info.milestone]]
+    [[product.info.token]]
+    name = "" # Token name
+    symbol = "" # Token short designation
+    dependency = "" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+    consensus_name = "" # Name of consensys algorithm
+    token_type = "" # Token type declared by founders ('security token', 'utility token', `donation`, cryptocurrency)
+    inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+    circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+    governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+    governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+
+    [[product.info.milestone]]
     number = 0 # Number of milestone
     name = "" # Short description of milestone
-    start_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
-    end_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    start_date = "" 
+    end_date = "" 
     current_status = "" # Planned, In work, Completed
-    
-    [[app.info.links]]
-    type = "" # Filled by cyberanalytics team
-    name = "" # Filled by cyberanalytics team
-    url = ""
-    tags = ["tag"] # Filled by cyberanalytics team
 
-[[token]]
-name = "" # Token name
-symbol = "" # Token short designation
-token_purpose = "" # Purpose of token (ICO/app)
-token_type = "" # core token or blockchain issued token
-inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
-circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
-governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
-governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+[[links]]
+type = "" # Filled by cyberanalytics team
+name = "" # Filled by cyberanalytics team
+url = "" 
+tags = ["tag"] # Filled by cyberanalytics team
 
-[[exchange]]
-exchange = "" # Name of exchange
-date = "2017-11-22T00:00:00" # Date format: "2017-11-22T00:00:00"
-price = "" # Token selling price on specified date 
-volume = "" # Trades volume on specified date
+[[links]]
+type = "website"
+name = ""
+url = ""
+tags = ["Main"]
 
-[[label]]
-blockchain = "" # Blockchain used to hold funds
-address = "" # Funds wallet adress
-balance = "" # Funds wallet balance
+[[links]]
+type = "paper"
+name = ""
+url = ""
+tags = ["Main", "Science"]
+
+[[links]]
+type = "github"
+name = "GitHub"
+url = ""
+tags = ["Main","Code"]
+
+[[links]]
+type = "blog"
+name = ""
+url = ""
+icon = "blog.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = ""
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "slack"
+name = ""
+url = ""
+icon = "slack.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = ""
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+type = "exchange"
+name = ""
+url = ""
+icon = ""
+tags = ["Apps", "Exchange"]
+
+[[links]]
+type = "explorer"
+name = ""
+url = ""
+icon = ""
+tags = ["Apps", "Analytics"]
+
+
+[[links]]
+type = "wallet"
+name = ""
+url = ""
+icon = ""
+tags = ["Main", "Apps", "Wallet"]
+
