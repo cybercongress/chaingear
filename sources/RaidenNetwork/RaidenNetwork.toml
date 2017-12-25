@@ -14,132 +14,131 @@ registration_date = "" # Legal entity registration date; Date format: 2017-11-22
 venture_capital_funding = "" # Amount of fiat money or virtual currency raised before phases[n]/ICO (USD equivalent at the moment of raising), Checked by Cyberanalytics team
 
 [ico]
-[ico.common_info]
-is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
-current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
-[ico.common_info.token]
-name = "RDN token" # Token name
-symbol = "RDN" # Token short designation
-dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+ [ico.common_info]
+ is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
+ current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+ [ico.common_info.token]
+ name = "RDN token" # Token name
+ symbol = "RDN" # Token short designation
+ dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
 
-[ico.common_info.token_distribution]
-total_supply = 100000000
+  [ico.common_info.token_distribution]
+  total_supply = 100000000
 
-[[ico.common_info.token_distribution.shares]]
+   [[ico.common_info.token_distribution.shares]]
+   description = "Public auction" #Name of tokenholder`s category
+   percent = 50 #Share of tokens granted to appropriate tokenholder`s category
+   [[ico.common_info.token_distribution.shares]]
+   description = "Retained by brainbot labs Establishment"
+   percent = 34
 
- description = "Public auction" #Name of tokenholder`s category
- percent = 50 #Share of tokens granted to appropriate tokenholder`s category
-[[ico.common_info.token_distribution.shares]]
-description = "Retained by brainbot labs Establishment"
-percent = 34
+   [[ico.common_info.token_distribution.shares]]
+   description = "External development fund"
+   percent = 16
 
-[[ico.common_info.token_distribution.shares]]
-description = "External development fund"
-percent = 16
+   [[ico.common_info.use_of_proceeds]]
+   description = "" # Purpose of collected procceeds (contributions)
+   percent = 0 # Share of overall procceeds (contributions)
 
-[[ico.common_info.use_of_proceeds]]
-description = "" # Purpose of collected procceeds (contributions)
-percent = 0 # Share of overall procceeds (contributions)
+ [[ico.phases]]
+ phase_num =0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+ phase_name = "ICO"
+ phase_status = "Finished" # Active/Finished
 
-[[ico.phases]]
-phase_num =0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
-phase_name = "ICO"
-phase_status = "Finished" # Active/Finished
+  [ico.phases.registration]
+  start_date = "2017-10-18T18:39:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+  end_date = "2017-11-01T14:49:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+  website = "https://token.raiden.network/" # URL to the registration webpage
+  terms = "https://token.raiden.network/" # URL to the registration terms
 
-[ico.phases.registration]
-start_date = "2017-10-18T18:39:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
-end_date = "2017-11-01T14:49:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
-website = "https://token.raiden.network/" # URL to the registration webpage
-terms = "https://token.raiden.network/" # URL to the registration terms
+  [ico.phases.terms]
+  sales_agreement = "https://token.raiden.network/" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+  sales_url = "https://token.raiden.network/" # URL to the sales webpage
+  issued_tokens = 100000000 # Actual amount of tokens issued at the current tokensale phase
+  sold_tokens = 50000000 # Actual amount of tokens sold at the current tokensale phase
+  share_of_sold = "" # %, Filled by cyberanalytics team
+  token_distribution_date = "2017-11-08T00:00:00" # Date of token distribution
 
-[ico.phases.terms]
-sales_agreement = "https://token.raiden.network/" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
-sales_url = "https://token.raiden.network/" # URL to the sales webpage
-issued_tokens = 100000000 # Actual amount of tokens issued at the current tokensale phase
-sold_tokens = 50000000 # Actual amount of tokens sold at the current tokensale phase
-share_of_sold = "" # %, Filled by cyberanalytics team
-token_distribution_date = "2017-11-08T00:00:00" # Date of token distribution
+    [ico.phases.terms.cap_limit]
+    currency = "ETH"
+    amount = ""
 
- [ico.phases.terms.cap_limit]
- currency = "ETH"
- amount = ""
+    [[ico.phases.terms.vesting]]
+    supply_percent = "" # Percent of total token supply to be vested
+    lockup_condition = "" # Type of tokenholders whose tokens will be vested
+    lockup_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
 
- [[ico.phases.terms.vesting]]
- supply_percent = "" # Percent of total token supply to be vested
- lockup_condition = "" # Type of tokenholders whose tokens will be vested
- lockup_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    [[ico.phases.terms.crowdsale_addresses]]
+    currency = "ETH" # Cryptocurrency in which contributions accepted
+    address = "" # Blockchain address for contributions
+  [ico.phases.dates]
+  start_date = "2017-10-18T18:39:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+  end_date = "2017-11-01T14:49:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+  duration = "14" # Filled by cyberanalytics team
 
- [[ico.phases.terms.crowdsale_addresses]]
- currency = "ETH" # Cryptocurrency in which contributions accepted
- address = "" # Blockchain address for contributions
-[ico.phases.dates]
-start_date = "2017-10-18T18:39:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
-end_date = "2017-11-01T14:49:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
-duration = "14" # Filled by cyberanalytics team
+  [ico.phases.raised_funds]
+  currency = "" # Filled by developers or cyberanalytics team
+  amount = "" # Filled by developers or cyberanalytics team
 
-[ico.phases.raised_funds]
-currency = "" # Filled by developers or cyberanalytics team
-amount = "" # Filled by developers or cyberanalytics team
+   [[ico.phases.prices.token_final_price]]
+   currency = "ETH" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+   price = 0.0021906 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
 
-[[ico.phases.prices.token_final_price]]
-currency = "ETH" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
-price = 0.0021906 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+   [[ico.phases.prices.bonuses]]
+   amount = "" # Size of discount on token final price
+   condition = "" # Conditions of the current discount
 
-[[ico.phases.prices.bonuses]]
-amount = "" # Size of discount on token final price
-condition = "" # Conditions of the current discount
-
-[[ico.phases.contract]]
-contract_address = "0xb5E5585D0057501c91c48094029a6F4FB10B5A01" # Fill this field out only if dependency = "ERC20"; Ethereum tokensale address - a hexadecimal field format (base 16 notation)
-contract_type = "RaidenTokenAuctionContract" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+  [[ico.phases.contract]]
+  contract_address = "0xb5E5585D0057501c91c48094029a6F4FB10B5A01" # Fill this field out only if dependency = "ERC20"; Ethereum tokensale address - a hexadecimal field format (base 16 notation)
+  contract_type = "RaidenTokenAuctionContract" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
 
 [product]
 
-[product.info]
-same_blockchain = true # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
-sources_availability = true # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
-product_status = 2 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
-app_type = "Web App" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc
-app_url = "https://demo.micro.raiden.network/" # URL to App
+ [product.info]
+ same_blockchain = true # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
+ sources_availability = true # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
+ product_status = 2 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+ app_type = "Web App" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc
+ app_url = "https://demo.micro.raiden.network/" # URL to App
 
-[[product.info.token]]
-name = "RDN token" # Token name
-symbol = "RDN" # Token short designation
-dependency = "ERC20"# Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
-consensus_name = "Ethereum" # Name of consensys algorithm
-token_type = "utility token" # Token type declared by founders ('security token', 'utility token', donation, cryptocurrency)
-inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
-circulation_terms = "Protocol level fees will be denominated in Ether or ERC20 tokens that are transferred in the payment channel and are necessary to keep the payment channel network balanced. Full Node Operators will use fees to prevent their channels from being depleted over time" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
-governance_rights_project = "In the future, Full Node Operators and Developers should have a vote in protocol upgrades" # List of rights to be granted to tokenholders to vote for the course of the project development
-governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+  [[product.info.token]]
+  name = "RDN token" # Token name
+  symbol = "RDN" # Token short designation
+  dependency = "ERC20"# Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+  consensus_name = "Ethereum" # Name of consensys algorithm
+  token_type = "utility token" # Token type declared by founders ('security token', 'utility token', donation, cryptocurrency)
+  inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+  circulation_terms = "Protocol level fees will be denominated in Ether or ERC20 tokens that are transferred in the payment channel and are necessary to keep the payment channel network balanced. Full Node Operators will use fees to prevent their channels from being depleted over time" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+  governance_rights_project = "In the future, Full Node Operators and Developers should have a vote in protocol upgrades" # List of rights to be granted to tokenholders to vote for the course of the project development
+  governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
 
-[[product.info.milestone]]
-number = 0 # Number of milestone
-name = "Mocked PoC" # Short description of milestone
-start_date = "2015-09-01T00:00:00"
-end_date = ""
-current_status = "Completed" # Planned, In work, Completed
+  [[product.info.milestone]]
+  number = 0 # Number of milestone
+  name = "Mocked PoC" # Short description of milestone
+  start_date = "2015-09-01T00:00:00"
+  end_date = ""
+  current_status = "Completed" # Planned, In work, Completed
 
-[[product.info.milestone]]
-number = 1 # Number of milestone
-name = "Testnet PoC" # Short description of milestone
-start_date = "2016-07-01T00:00:00"
-end_date = ""
-current_status = "Completed" # Planned, In work, Completed
+  [[product.info.milestone]]
+  number = 1 # Number of milestone
+  name = "Testnet PoC" # Short description of milestone
+  start_date = "2016-07-01T00:00:00"
+  end_date = ""
+  current_status = "Completed" # Planned, In work, Completed
 
-[[product.info.milestone]]
-number = 2 # Number of milestone
-name = "μRaiden" # Short description of milestone
-start_date = "2017-11-29T00:00:00"
-end_date = ""
-current_status = "Completed" # Planned, In work, Completed
+  [[product.info.milestone]]
+  number = 2 # Number of milestone
+  name = "μRaiden" # Short description of milestone
+  start_date = "2017-11-29T00:00:00"
+  end_date = ""
+  current_status = "Completed" # Planned, In work, Completed
 
-[[product.info.milestone]]
-number = 3 # Number of milestone
-name = "MVP" # Short description of milestone
-start_date = "2018-01-01T00:00:00"
-end_date = ""
-current_status = "In work" # Planned, In work, Completed
+  [[product.info.milestone]]
+  number = 3 # Number of milestone
+  name = "MVP" # Short description of milestone
+  start_date = "2018-01-01T00:00:00"
+  end_date = ""
+  current_status = "In work" # Planned, In work, Completed
 
 [[links]]
 type = "exchange" # Filled by cyberanalytics team
