@@ -1,0 +1,122 @@
+[blockchain]
+project_name = ""
+headline = "" # 50 symbols max
+logo = "" # Link to logo image
+state = 2 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
+asset_type = "" # blockchain protocol, blockchain app
+dependency = "" # Blockchain used to issue a token: Ethereum, Waves, Graphene. If its own blockchain - "independent"
+consensus_name = "" # Proof-of-Work, Proof-of-Stake, Delegated Proof-of-Stake, Proof-of-Burn, Proof-of-Authority
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
+  current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+
+    [ico.common_info.token_distribution]
+    total_supply = 0
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "" # Name of tokenholder`s category
+      percent = 0 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "" # Purpose of collected procceeds (contributions)
+      percent = 0 # Share of overall procceeds (contributions)
+
+  [[ico.phases]]
+  phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+  phase_name = ""
+  phase_status = "" # Active/Finished
+  
+    [ico.phases.registration]
+    start_date = "2017-10-15T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017-10-27T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    website = "" # URL to the registration webpage 
+    terms = "" # URL to the registration terms
+
+    [ico.phases.terms]
+    sales_agreement = "" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+    sales_url = "" # URL to the sales webpage
+    issued_tokens = 0 # Actual amount of tokens issued at the current tokensale phase
+    sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
+    share_of_sold = 0  # %, Filled by cyberanalytics team
+    token_distribution_date = "" # Date of token distribution
+      
+      [[ico.phases.terms.cap_limit]]
+      currency = "" # USD, BTC or ETH
+      amount = 0 # Cap limit in specified currency
+      
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0 # Percent of total token supply to be vested
+      lockup_condition = "" # Type of tokenholders whose tokens will be vested
+      lockup_date = "2017-11-22T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = "" # Cryptocurrency in which contributions accepted
+      address = "" # Blockchain address for contributions
+
+    [ico.phases.dates]
+    start_date = "2017-11-22T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+    end_date = "2017-11-22T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+    duration = '' # Filled by cyberanalytics team
+
+    [[ico.phases.raised_funds]]
+    currency = "" # Filled by developers or cyberanalytics team
+    amount = 0 # Filled by developers or cyberanalytics team
+
+    [[ico.phases.prices.token_final_price]]
+    currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+    price = 0 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+    
+    [[ico.phases.prices.bonuses]]
+    amount = "" # Size of discount on token final price
+    condition = "" # Conditions of the current discount
+
+    [[ico.phases.contract]]
+    contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation) 
+    contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+
+[app]
+
+  [[app.info]]
+  name = "" # Name of application
+  same_blockchain = false # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
+  sources_availability = true # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
+  app_status = 2 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+  app_type = "" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc 
+  app_url = "" # URL to App
+
+    [[app.info.milestone]]
+    number = 0 # Number of milestone
+    name = "" # Short description of milestone
+    start_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "" # Planned, In work, Completed
+    
+    [[app.info.links]]
+    type = "" # Filled by cyberanalytics team
+    name = "" # Filled by cyberanalytics team
+    url = ""
+    tags = ["tag"] # Filled by cyberanalytics team
+
+[[token]]
+name = "" # Token name
+symbol = "" # Token short designation
+token_purpose = "" # Purpose of token (ICO/app)
+token_type = "" # core token or blockchain issued token
+inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+
+[[exchange]]
+exchange = "" # Name of exchange
+date = "2017-11-22T00:00:00" # Date format: "2017-11-22T00:00:00"
+price = "" # Token selling price on specified date 
+volume = "" # Trades volume on specified date
+
+[[label]]
+blockchain = "" # Blockchain used to hold funds
+address = "" # Funds wallet adress
+balance = "" # Funds wallet balance
