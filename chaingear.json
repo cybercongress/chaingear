@@ -31877,6 +31877,124 @@
     },
     {
         "genesis_id": "",
+        "system": "InsurePal ",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "insurepal",
+        "token": {
+            "name": " token",
+            "symbol": ""
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Distributed blockchain-based social proof insurance"
+        },
+        "crowdsales": {
+            "start_date": "2018-01-16T13:00:00",
+            "end_date": "2018-02-05T13:00:00",
+            "end_date_plan": "2018-02-05T13:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://insurepal.io/InsurePal_whitepaper.pdf",
+            "funding_url": "https://insurepal.io/crowdsale",
+            "tokens_sold": "",
+            "tokens_issued": "201000000",
+            "btc_raised": "",
+            "cap_limit": [
+                "usd=18000000"
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "specs": {
+            "supply": 300000000
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "insurepal.io",
+                "url": "https://insurepal.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "InsurePal  Whitepaper",
+                "url": "https://insurepal.io/InsurePal_whitepaper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "InsurePal  Github",
+                "url": "https://github.com/InsurePal",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "InsurePal Blog",
+                "url": "https://medium.com/@InsurePal_io",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "forum",
+                "name": "Bitcointalk",
+                "url": "https://bitcointalk.org/index.php?topic=2495721.0",
+                "icon": "bitcointalk.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/InsurePal_io",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "InsurePal Telegram",
+                "url": "https://t.me/InsurePal",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/InsurePal/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "InternetofCoins",
         "icon": "internetofcoins",
         "dependencies": [
@@ -63031,79 +63149,5 @@
                 ]
             }
         ]
-    },
-    {
-        "genesis_id": "0000003f068a10c2446d021072691bb0b1ce833aa7b40a712365ac933a0d1f33",
-        "system": "Zeitcoin",
-        "icon": "zeitcoin",
-        "dependencies": [
-            "independent"
-        ],
-        "aliases": {
-            "coinmarketcap": "Zeitcoin"
-        },
-        "consensus": {
-            "type": "PoS",
-            "algorithm": "Scrypt+Peercoin"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptocurrency"
-        },
-        "events": {
-            "announcement": "26/02/2014"
-        },
-        "token": {
-            "name": "Zeitcoin",
-            "symbol": "ZEIT"
-        },
-        "specs": {
-            "block_time": 30,
-            "block_reward": "initial 250000-1000000 coins",
-            "halfing_cycle": "every week for the first 6 weeks, after the PoW payout will be fixed at 1 coin per block",
-            "total_tokens": 99000000000,
-            "premine_tokens": "990000000 (1%) for ongoing development support, maintenance and distribution to community",
-            "difficulty_cycle": "every block",
-            "txs_confirm": 4,
-            "mint_confirm": 50
-        },
-        "links": [
-            {
-                "type": "github",
-                "name": "Zeitcoin GitHub",
-                "url": "https://github.com/zeitcoinmovement/zeitcoin",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "CryptoID",
-                "url": "https://chainz.cryptoid.info/zeit/",
-                "icon": "cryptoid.png",
-                "tags": [
-                    "Main",
-                    "Explorer",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "BTT Thread",
-                "url": "https://bitcointalk.org/index.php?topic=487814.0",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            }
-        ],
-        "first_price": {
-            "btc": 2e-8,
-            "usd": 0.00001114,
-            "date": "2014-03-20T00:00:00"
-        }
     }
 ]
