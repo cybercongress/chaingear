@@ -1,37 +1,6 @@
-[aliases]
-coinmarketcap = "Karbo"
-
-[consensus]
-type = "PoW"
-algorithm = "Cryptonote"
-
-[descriptions]
-state = "Public"
-system_type = "cryptocurrency"
-tags = ["DAO"]
-hashtag = "#Karbo"
-
-[[events]]
-name = "Announcement"
-date = "2016-05-30T07:55:58"
-url = "https://bitcointalk.org/index.php?topic=1491747"
-
-[token]
-name = "Karbo"
-symbol = "KRB"
-
-[specs]
-p2p = 32347.0
-rpc = 32348.0
-block_time = 240.0
-block_reward = "Initial Block block_reward = ~38 KRB, slight decrease every block, when decreases to 1 KRB will stay at that level"
-halfing_cycle = 263157.9
-total_tokens = "10 million KRB (+ tail emission ~1% yearly)"
-difficulty_cycle = "every block"
-
 [description]
 project_name = "Karbowanec"
-headline = "Anonymous digital cash for Ukraine"
+headline = "Anonymous digital cash for Ukraine" # 50 symbols max
 logo = "https://avatars3.githubusercontent.com/u/26336362?s=400&v=4" # Link to logo image
 state = 2 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
 asset_type = "cryptocurrency" # cryptocurrency, cryptoasset
@@ -43,51 +12,116 @@ description = "operational" # Purpose (operational, non-profit, etc), checked by
 shareholders_list = "" # Names of legal entities, trusts, natural persons and their beneficiaries, checked by Cyberanalytics teamm
 registration_date = "" # Legal entity registration date; Date format: 2017-11-22T00:00:00; Checked by Cyberanalytics team
 venture_capital_funding = "" # Amount of fiat money or virtual currency raised before phases[n]/ICO (USD equivalent at the moment of raising), Checked by Cyberanalytics team
-# ico.common_info = false -> [ico.common_info]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = false # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
+  current_ico_phase = # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+  
+    [ico.common_info.token]
+    name = "" # Token name
+    symbol = "" # Token short designation
+    dependency = "" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+
+    [ico.common_info.token_distribution]
+    total_supply = 0
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "" # Name of tokenholder`s category
+      percent = 0 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "" # Purpose of collected procceeds (contributions)
+      percent = 0 # Share of overall procceeds (contributions)
+
+  [[ico.phases]]
+  phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+  phase_name = ""
+  phase_status = "" # Active/Finished
+  
+    [ico.phases.registration]
+    start_date = "2017-10-15T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017-10-27T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    website = "" # URL to the registration webpage 
+    terms = "" # URL to the registration terms
+
+    [ico.phases.terms]
+    sales_agreement = "" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+    sales_url = "" # URL to the sales webpage
+    issued_tokens = 0 # Actual amount of tokens issued at the current tokensale phase
+    sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
+    share_of_sold = 0  # %, Filled by cyberanalytics team
+    token_distribution_date = "" # Date of token distribution
+      
+      [ico.phases.terms.cap_limit]
+      currency = ""
+      amount = 0
+      
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0 # Percent of total token supply to be vested
+      lockup_condition = "" # Type of tokenholders whose tokens will be vested
+      lockup_date = "2017-11-22T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = "" # Cryptocurrency in which contributions accepted
+      address = "" # Blockchain address for contributions
+
+    [ico.phases.dates]
+    start_date = "2017-11-22T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+    end_date = "2017-11-22T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+    duration = '' # Filled by cyberanalytics team
+
+    [ico.phases.raised_funds]
+    currency = "" # Filled by developers or cyberanalytics team
+    amount = 0 # Filled by developers or cyberanalytics team
+
+    [[ico.phases.prices.token_final_price]]
+    currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+    price = 0 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+    
+    [[ico.phases.prices.bonuses]]
+    amount = "" # Size of discount on token final price
+    condition = "" # Conditions of the current discount
+
+    [[ico.phases.contract]]
+    contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation) 
+    contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+  
 
 [product]
 
-[product.info]
-same_blockchain = false
-sources_availability = true
-product_status = 3
-app_type = "Desktop Wallet, Paper Wallet" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc
-app_url = "https://karbo.io/download/" # URL to App
+  [[product.info]]
+  name = "Karbo" # Name of application
+  same_blockchain = false # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
+  sources_availability = true # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
+  product_status = 3 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+  app_type = "Desktop Wallet, Paper Wallet" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc 
+  app_url = "https://karbo.io/download/" # URL to App
 
-[[product.info.token]]
-name = "Karbovanets" # Token name
-symbol = "KRB" # Token short designation
-dependency = "independent"# Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
-consensus_name = "PoW" # Name of consensys algorithm
-token_type = "cryptocurrency" # Token type declared by founders ('security token', 'utility token', 'donation', cryptocurrency)
-inflation_rate = "tail emission ~1% yearly" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
-circulation_terms = "0% Pre-mine, Max supply: 10 million KRB (+ tail emission ~1% yearly), initial reward of ~38 KRB, slight decrease every block, when decreases to 1 KRB will stay at that level, "# Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
-governance_rights_project=""# List of rights to be granted to tokenholders to vote for the course of the project development
-governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+    [[product.info.token]]
+    name = "Karbowanets" # Token name
+    symbol = "KRB" # Token short designation
+    dependency = "independent" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+    consensus_name = "PoW" # Name of consensys algorithm
+    token_type = "cryptocurrency" # Token type declared by founders ('security token', 'utility token', `donation`, cryptocurrency)
+    inflation_rate = "tail emission ~1% yearly" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+    circulation_terms = "0% Pre-mine, Max supply: 10 million KRB (+ tail emission ~1% yearly), initial reward of ~38 KRB, slight decrease every block, when decreases to 1 KRB will stay at that level" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+    governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+    governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
 
-[[links]]
-type = "" # Filled by cyberanalytics team
-name = "" # Filled by cyberanalytics team
-url = "https://www.livecoin.net/"
-tags =[] # Filled by cyberanalytics team
-
-[[links]]
-type = "" # Filled by cyberanalytics team
-name = "" # Filled by cyberanalytics team
-url = "https://www.cryptopia.co.nz"
-tags =[] # Filled by cyberanalytics team
+    [[product.info.milestone]]
+    number = 0 # Number of milestone
+    name = "" # Short description of milestone
+    start_date = "" 
+    end_date = "" 
+    current_status = "" # Planned, In work, Completed
 
 [[links]]
 type = "" # Filled by cyberanalytics team
 name = "" # Filled by cyberanalytics team
-url = "https://btc-trade.com.ua/"
-tags =[] # Filled by cyberanalytics team
-
-[[links]]
-type = "" # Filled by cyberanalytics team
-name = "" # Filled by cyberanalytics team
-url = "https://btc-trade.com.ua/"
-tags =[] # Filled by cyberanalytics team
+url = "" 
+tags = ["tag"] # Filled by cyberanalytics team
 
 [[links]]
 type = "website"
@@ -96,17 +130,23 @@ url = "https://karbo.io/"
 tags = ["Main"]
 
 [[links]]
-type = "Announcement"
-name = "Karbo"
-url = "https://bitcointalk.org/index.php?topic=1491747"
+type = "paper"
+name = ""
+url = ""
 tags = ["Main", "Science"]
 
 [[links]]
 type = "github"
-name = "Karbowanec Github"
+name = "GitHub"
 url = "https://github.com/seredat/karbowanec"
-icon = "github.png"
 tags = ["Main","Code"]
+
+[[links]]
+type = "blog"
+name = ""
+url = ""
+icon = "blog.png"
+tags = ["Main","News"]
 
 [[links]]
 type = "twitter"
@@ -116,8 +156,52 @@ icon = "twitter.png"
 tags = ["News"]
 
 [[links]]
-type = "Telegram"
-name = "Telegram"
-url = "https://t.me/karbo_en"
-icon = "Telegram.png"
+type = "slack"
+name = ""
+url = ""
+icon = "slack.png"
 tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = ""
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+type = "exchange"
+name = "cryptopia"
+url = "https://www.cryptopia.co.nz/Exchange/?market=KRB_BTC"
+icon = ""
+tags = ["Apps", "Exchange"]
+
+[[links]]
+type = "exchange"
+name = "livecoin"
+url = "https://www.livecoin.net/"
+icon = ""
+tags = ["Apps", "Exchange"]
+
+[[links]]
+type = "exchange"
+name = "btc-trade"
+url = "https://btc-trade.com.ua/stock/krb_uah"
+icon = ""
+tags = ["Apps", "Exchange"]
+
+
+[[links]]
+type = "explorer"
+name = "Karbowanets"
+url = "http://explorer.karbowanec.com/en/"
+icon = ""
+tags = ["Apps", "Analytics"]
+
+
+[[links]]
+type = "wallet"
+name = "Karbowanec"
+url = "https://karbo.io/download/"
+icon = ""
+tags = ["Main", "Apps", "Wallet"]
