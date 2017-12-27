@@ -14,11 +14,7 @@ shareholders_list = "" # Names of legal entities, trusts, natural persons and th
 registration_date = "2017-07-03T00:00:00" # Legal entity registration date; Date format: 2017-11-22T00:00:00; Checked by Cyberanalytics team
 venture_capital_funding = "" # Amount of fiat money or virtual currency raised before phases[n]/ICO (USD equivalent at the moment of raising), Checked by Cyberanalytics team
 
-
-
 [ico]
-
-
 
  [ico.common_info]
  is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
@@ -29,10 +25,8 @@ venture_capital_funding = "" # Amount of fiat money or virtual currency raised b
    symbol = "DAXT" # Token short designation
    dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
 
-
-
    [ico.common_info.token_distribution]
-   total_supply =130 000 000
+   total_supply = 130000000
 
  [[ico.common_info.token_distribution.shares]]
 description = "Token Sale" # Name of category 
@@ -85,7 +79,7 @@ percent = 15 # Share of overall procceeds (contributions)
    [ico.phases.terms]
    sales_agreement = "" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
    sales_url = "" # URL to the sales webpage
-   issued_tokens = 130 000 000 # Actual amount of tokens issued at the current tokensale phase
+   issued_tokens = 130000000 # Actual amount of tokens issued at the current tokensale phase
    sold_tokens =""  # Actual amount of tokens sold at the current tokensale phase
    share_of_sold = ""  # %, Filled by cyberanalytics team
    token_distribution_date = "" # Date of token distribution
@@ -142,7 +136,7 @@ percent = 15 # Share of overall procceeds (contributions)
  name = "" # Name of application
  same_blockchain = true # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
  sources_availability = false # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
- product_status = 1# 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+ product_status = 1 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
  app_type = "" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc
  app_url = "" # URL to App
 
@@ -172,7 +166,7 @@ percent = 15 # Share of overall procceeds (contributions)
    number = 1 # Number of milestone
    name = "Brokerage,Leverage Trading,Social & Copy Trading" # Short description of milestone
    start_date ="Q4 2017"
-   end_date =""
+   end_date = ""
    current_status = " In work" # Planned, In work, Completed
 
 [[product.info.milestone]]
@@ -186,7 +180,7 @@ percent = 15 # Share of overall procceeds (contributions)
    name = "ICO Market" # Short description of milestone
    start_date = "Q2 2018"
    end_date = ""
-   current_status = " Planned" # Planned, In work, Completed
+   current_status = "Planned" # Planned, In work, Completed
 
 
 [[links]]
