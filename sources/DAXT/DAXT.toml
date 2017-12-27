@@ -19,7 +19,27 @@ venture_capital_funding = "" # Amount of fiat money or virtual currency raised b
  [ico.common_info]
  is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
  current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
-
+ 
+  [ico.common_info.token]
+    name = "" # Token name
+    symbol = "" # Token short designation
+    dependency = "" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+ 
+ [ico.common_info.token_distribution]
+    total_supply = 130000000
+    
+ [ico.phases.terms]
+    sales_agreement = "" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+    sales_url = "" # URL to the sales webpage
+    issued_tokens = 0 # Actual amount of tokens issued at the current tokensale phase
+    sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
+    share_of_sold = 0  # %, Filled by cyberanalytics team
+    token_distribution_date = "" # Date of token distribution
+      
+      [ico.phases.terms.cap_limit]
+      currency = "usd"
+      amount = 35700000
+      
    [ico.common_info.token]
    name = "DAXT" # Token name
    symbol = "DAXT" # Token short designation
