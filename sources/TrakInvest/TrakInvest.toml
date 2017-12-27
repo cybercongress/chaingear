@@ -17,8 +17,6 @@ venture_capital_funding = "" # Amount of fiat money or virtual currency raised b
 
 [ico]
 
-
-
  [ico.common_info]
  is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
  current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
@@ -27,8 +25,6 @@ venture_capital_funding = "" # Amount of fiat money or virtual currency raised b
  name = "TRAK tokens" # Token name
  symbol = "TRAK" # Token short designation
  dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
-
-
 
 [ico.common_info.token_distribution]
    total_supply = 155294118
