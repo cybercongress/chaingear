@@ -14,20 +14,23 @@ consensus_name = "Ethereum"
 [descriptions]
 state = "Project"
 system_type = "cryptoasset"
-headline = "First Decentralized Autonomous Jobmarket"
+headline = "Freelance Token enabling Autonomous Dispute Resolution"
 
 [crowdsales]
-start_date = "2017-08-05T24:00:00"
-end_date = "2017-09-05T24:00:00"
-end_date_plan = "2017-09-05T24:00:00"
+start_date = "2018-01-15T13:00:00"
+end_date = "2018-02-15T13:00:00"
+end_date_plan = "2018-02-15T13:00:00"
 genesis_address = [""]
-funding_terms = "https://blocklancer.net"
-funding_url = "https://blocklancer.net"
+funding_terms = "https://blocklancer.net/static/main/docs/lancer_whitepaper.pdf"
+funding_url = "https://blocklancer.net/"
 tokens_sold = ""
-tokens_issued = 1000000000
+tokens_issued = ""
 btc_raised = ""
-cap_limit = [""]
+cap_limit = ["usd=10000000"]
 raised = [""]
+
+[specs]
+supply = 0
 
 [[links]]
 type = "website"
@@ -43,10 +46,17 @@ tags = ["Main", "Science"]
 
 [[links]]
 type = "github"
-name = "Blocklancer GitHub"
-url = "https://github.com/Blocklancer/Blocklancer-Contracts"
+name = "Blocklancer Github"
+url = "https://github.com/BlocklancerOrg"
 icon = "github.png"
-tags = ["Main","Code"]
+tags = ["Main", "Code"]
+
+[[links]]
+type = "blog"
+name = "Blocklancer Blog"
+url = "https://publication.blocklancer.net/"
+icon = "medium.png"
+tags = ["Main", "News"]
 
 [[links]]
 type = "forum"
@@ -63,9 +73,16 @@ icon = "twitter.png"
 tags = ["News"]
 
 [[links]]
+type = "custom"
+name = "Blocklancer Telegram"
+url = "http://telegram.me/officialblocklancer"
+icon = "telegram.png"
+tags = ["News"]
+
+[[links]]
 type = "reddit"
 name = "Reddit"
-url = "https://www.reddit.com/r/blocklancer/"
+url = "https://www.reddit.com/r/blocklancer"
 icon = "reddit.png"
 tags = ["News"]
 
