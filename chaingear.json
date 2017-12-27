@@ -59400,6 +59400,118 @@
     },
     {
         "genesis_id": "",
+        "system": "TrakInvest",
+        "dependencies": [
+            "ERC20"
+        ],
+        "icon": "",
+        "token": {
+            "name": "TRAK tokens",
+            "symbol": "TRAK"
+        },
+        "consensus": {
+            "consensus_type": "ERC20",
+            "consensus_name": "ERC20"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "The world’s first virtual social trading platform on blockchain"
+        },
+        "crowdsales": {
+            "start_date": "2018-01-19T20:00:00",
+            "end_date": "2018-02-03T20:00:00",
+            "end_date_plan": "2018-02-03T20:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_term": "https://trakinvest.ai/join-ico.html",
+            "funding_url": "https://trakinvest.ai/traktoken.html",
+            "tokens_sold": 100000,
+            "tokens_issued": 66000000,
+            "btc_raised": "",
+            "cap_limit": [],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "trakinvest.ai",
+                "url": "https://trakinvest.ai/ ",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "TrakInvest Whitepaper",
+                "url": "https://trakinvest.ai/files/ti-whitepaper.pdf ",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "TrakInvest Blog",
+                "url": "https://medium.com/trakinvest-ico ",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/TrakInvest ",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "TrakInvest Telegram",
+                "url": "https://t.me/joinchat/GLe6KhCAs5bw4x6bNBYARw ",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/Trakinvest/ ",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/r/TrakInvest/ ",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "linkedin",
+                "name": "Linkedin",
+                "url": "https://www.linkedin.com/company/trakinvest-pte-ltd",
+                "icon": "linkedin.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "TripAlly",
         "dependencies": [
             "Ethereum"
@@ -63010,92 +63122,5 @@
                 ]
             }
         ]
-    },
-    {
-        "genesis_id": "7231b064d3e620c55960abce2963ea19e1c3ffb6f5ff70e975114835a7024107",
-        "system": "WorldCoin",
-        "icon": "worldcoin",
-        "dependencies": "independent",
-        "aliases": {
-            "coinmarketcap": "WorldCoin"
-        },
-        "ratings": {
-            "rating_cyber": 1
-        },
-        "consensus": {
-            "type": "PoW",
-            "algorithm": "Scrypt"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptocurrency",
-            "tags": [
-                "DAO"
-            ]
-        },
-        "events": {
-            "announcement": "14/05/2013",
-            "genesis": "14/05/2013"
-        },
-        "token": {
-            "name": "WorldCoin",
-            "symbol": "WDC"
-        },
-        "specs": {
-            "block_time": "30",
-            "block_reward": 64,
-            "halfing_cycle": 20160,
-            "total_tokens": 265420800,
-            "difficulty_cycle": "120",
-            "txs_confirm": 2
-        },
-        "links": [
-            {
-                "type": "website",
-                "name": "worldcoin.global",
-                "url": "http://worldcoin.global/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "Explorer",
-                "url": "https://www.wdcexplorer.com/",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Explorer",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "WorldCoin GitHub",
-                "url": "https://github.com/worldcoinproject",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "BTT Thread",
-                "url": "https://bitcointalk.org/index.php?topic=204894.0",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            }
-        ],
-        "first_price": {
-            "btc": 0.00010295,
-            "usd": 0.01070793,
-            "date": "2013-06-10T00:00:00"
-        }
     }
 ]
