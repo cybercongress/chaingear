@@ -1,0 +1,268 @@
+[description]
+project_name = "TradePlayz"
+headline = "The world's premiere fantasy cryptotrading game" # 50 symbols max
+logo = "" # Link to logo image
+state = 0 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
+asset_type = "cryptoasset" # cryptocurrency, cryptoasset
+
+
+
+[[legal_entity]]
+name = "" # Name of the company, checked by Cyberanalytics team
+residence = "" # Place of company registration, checked by Cyberanalytics team
+description = "" # Purpose (operational, non-profit, etc), checked by Cyberanalytics team
+shareholders_list = "" # Names of legal entities, trusts, natural persons and their beneficiaries, checked by Cyberanalytics teamm
+registration_date = "2017-07-03T00:00:00" # Legal entity registration date; Date format: 2017-11-22T00:00:00; Checked by Cyberanalytics team
+venture_capital_funding = "" # Amount of fiat money or virtual currency raised before phases[n]/ICO (USD equivalent at the moment of raising), Checked by Cyberanalytics team
+
+
+
+[ico]
+
+
+
+ [ico.common_info]
+ is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
+ current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+   [ico.common_info.token]
+   name = "TradePlayz token" # Token name
+   symbol = "TPZ" # Token short designation
+   dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+
+
+
+   [ico.common_info.token_distribution]
+   total_supply = 100000000
+
+ [[ico.common_info.token_distribution.shares]]
+     description = "Bounty program" # Name of   category
+     percent = 1 # Share of tokens granted to appropriate   category
+
+  [[ico.common_info.token_distribution.shares]]
+     description = "Close sale" # Name of   category
+     percent = 7 # Share of tokens granted to appropriate  category
+
+  [[ico.common_info.token_distribution.shares]]
+     description = "The team" # Name of   category
+     percent = 7 # Share of tokens granted to appropriate   category
+
+  [[ico.common_info.token_distribution.shares]]
+     description = "Founders" # Name of   category
+     percent = 10 # Share of tokens granted to appropriate   category
+
+  [[ico.common_info.token_distribution.shares]]
+     description = "TradePlayz system" # Name of   category
+     percent = 20 # Share of tokens granted to appropriate   category
+
+  [[ico.common_info.token_distribution.shares]]
+     description = "Crowdsale members" # Name of  category
+     percent = 55 # Share of tokens granted to appropriate  category
+
+
+
+
+[[ico.common_info.use_of_proceeds]]
+     description = "" # Purpose of collected procceeds (contributions)
+     percent = 0 # Share of overall procceeds (contributions)
+
+
+
+ [[ico.phases]]
+ phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+ phase_name = "presale"
+ phase_status = "Active" # Active/Finished
+   [ico.phases.registration]
+   start_date = "2017-12-20T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+   end_date = "2017-12-27T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+   website = "https://get.tradeplayz.com/Account/Login?ReturnUrl=%2FInvestor%2FDashboard " # URL to the registration webpage
+   terms = "http://tradeplayz.com/en " # URL to the registration terms
+
+
+
+ [ico.phases.terms]
+   sales_agreement = "http://tradeplayz.com/en " # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+   sales_url = "http://tradeplayz.com/en " # URL to the sales webpage
+   issued_tokens = 100000000 # Actual amount of tokens issued at the current tokensale phase
+   sold_tokens = 76 # Actual amount of tokens sold at the current tokensale phase
+   share_of_sold = 0  # %, Filled by cyberanalytics team
+   token_distribution_date = "" # Date of token distribution
+    
+[ico.phases.terms.cap_limit]
+     currency = "USD"
+     amount = 30000000
+    
+ [[ico.phases.terms.vesting]]
+     supply_percent = 0 # Percent of total token supply to be vested
+     lockup_condition = "" # Type of tokenholders whose tokens will be vested
+     lockup_date = "2017-11-22T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+  
+  [[ico.phases.terms.crowdsale_addresses]]
+     currency = "BTC" # Cryptocurrency in which contributions accepted
+     address = "" # Blockchain address for contributions
+
+ [[ico.phases.terms.crowdsale_addresses]]
+     currency = "ETH" # Cryptocurrency in which contributions accepted
+     address = "" # Blockchain address for contributions
+
+
+
+   [ico.phases.dates]
+   start_date = "2017-12-20T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+   end_date = "2018-02-28T23:59:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+   duration = '' # Filled by cyberanalytics team
+
+
+
+   [ico.phases.raised_funds]
+   currency = "" # Filled by developers or cyberanalytics team
+   amount = 0 # Filled by developers or cyberanalytics team
+
+
+
+   [[ico.phases.prices.token_final_price]]
+   currency = "USD" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+   price = 1 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+  
+   [[ico.phases.prices.bonuses]]
+   amount = "40" # Size of discount on token final price
+   condition = "Discounts will be available for first day crowd sale participants only and during the private sale." # Conditions of the current discount
+
+
+
+   [[ico.phases.contract]]
+   contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation)
+   contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+
+
+
+[product]
+
+
+
+ [[product.info]]
+ name = "" # Name of application
+ same_blockchain = true # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
+ sources_availability = true # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
+ product_status = 2# 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+ app_type = "Mobile App" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc
+ app_url = "" # URL to App
+
+
+
+   [[product.info.token]]
+   name = "Zed token" # Token name
+   symbol = "Zed" # Token short designation
+   dependency = "" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+   consensus_name = "ERC20" # Name of consensys algorithm
+   token_type = "utility token" # Token type declared by founders ('security token', 'utility token', `donation`, cryptocurrency)
+   inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+   circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+   governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+   governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+
+
+
+   [[product.info.milestone]]
+   number = 0 # Number of milestone
+   name = "Application release for iOS" # Short description of milestone
+   start_date = "2017-12-18T00:00:00"
+   end_date = ""
+   current_status = "In work" # Planned, In work, Completed
+
+ [[product.info.milestone]]
+   number = 1 # Number of milestone
+   name = "Application release for Android" # Short description of milestone
+   start_date = "2017-12-30T00:00:00"
+   end_date = ""
+   current_status = "Planned" # Planned, In work, Completed
+
+ [[product.info.milestone]]
+   number = 2 # Number of milestone
+   name = "Integration of the TPZ tokens into the application. Tournaments via subscription" # Short description of milestone
+   start_date = "2018-03-05T00:00:00"
+   end_date = ""
+   current_status = "Planned" # Planned, In work, Completed
+
+ [[product.info.milestone]]
+   number = 3 # Number of milestone
+   name = "Multi-table and CIS tournaments " # Short description of milestone
+   start_date = "2018-05-01T00:00:00"
+   end_date = ""
+   current_status = "Planned" # Planned, In work, Completed
+
+ [[product.info.milestone]]
+   number = 4 # Number of milestone
+   name = "Desktop and web versions of the application " # Short description of milestone
+   start_date = "2018-09-01T00:00:00"
+   end_date = ""
+   current_status = "Planned" # Planned, In work, Completed
+
+ [[product.info.milestone]]
+   number = 5 # Number of milestone
+   name = "Cashplay system, private tournaments" # Short description of milestone
+   start_date = "2018-11-01T00:00:00"
+   end_date = ""
+   current_status = "Planned" # Planned, In work, Completed
+
+[[links]]
+type = "" # Filled by cyberanalytics team
+name = "" # Filled by cyberanalytics team
+url = ""
+tags = ["tag"] # Filled by cyberanalytics team
+
+
+
+[[links]]
+type = "website"
+name = "tradeplayz.com"
+url = "http://tradeplayz.com/ "
+tags = ["Main"]
+
+
+
+[[links]]
+type = "paper"
+name = "TradePlayz Whitepaper"
+url = "http://tradeplayz.com/tpz_whitepapper.pdf "
+tags = ["Main", "Science"]
+
+
+
+[[links]]
+type = "github"
+name = "TradePlayz Github"
+url = "https://github.com/LeaguePlayer/tradeplayz_ios"
+icon = "github.png"
+tags = ["Main","Code"]
+
+[[links]]
+type = "twitter"
+name = "Twitter"
+url = "https://twitter.com/tradeplayz "
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "forum"
+name = "Bitcointalk"
+url = "https://bitcointalk.org/index.php?topic=2606706.msg26531465#msg26531465 "
+icon = "bitcointalk.png"
+tags = ["News"]
+
+
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/TradePlayz/ "
+icon = "facebook.png"
+tags = ["News"]
+
+
+
+[[links]]
+type = "custom"
+name = "Instagram"
+url = "https://www.instagram.com/tradeplayzapp/ "
+icon = "instagram.png"
+tags = ["News"]

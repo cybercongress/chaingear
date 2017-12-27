@@ -126,6 +126,7 @@ function act() {
 
 
   fs.writeFileSync(path.join(__dirname, "..", "chaingear.json"), JSON.stringify(result, null, 4));
+  fs.writeFileSync(path.join(__dirname, "..", "chaingear-min.json"), JSON.stringify(result));
   fs.writeFileSync(path.join(__dirname, "..", "v2.json"), JSON.stringify(result, null, 4));
   fs.writeFileSync(path.join(__dirname, "..", "statistics.json"), JSON.stringify(statistics, null, 4));
 
