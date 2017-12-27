@@ -5,7 +5,6 @@ logo = "" # Link to logo image
 state = 0 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
 asset_type = "cryptoasset" # cryptocurrency, cryptoasset
 
-
 [[legal_entity]]
 name = "" # Name of the company, checked by Cyberanalytics team
 residence = "" # Place of company registration, checked by Cyberanalytics team
@@ -25,8 +24,13 @@ venture_capital_funding = "" # Amount of fiat money or virtual currency raised b
   symbol = "DAXT" # Token short designation
   dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
  
- [ico.common_info.token_distribution]
-    total_supply = 130000000
+  [ico.common_info.token_distribution]
+  total_supply = 130000000
+ 
+ [[ico.phases]]
+  phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+  phase_name = ""
+  phase_status = "Active" # Active/Finished
     
  [ico.phases.terms]
     sales_agreement = "" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
