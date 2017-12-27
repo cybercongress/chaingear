@@ -1,20 +1,38 @@
+
 genesis_id = ""
 system = "Oracles Network"
-dependencies = ["Ethereum"]
+dependencies = ["independent"]
 icon = "oraclesnetwork"
 
 [token]
-name = "orcales network token"
-symbol = ""
+name = "poa token"
+symbol = "POA"
 
 [consensus]
-consensus_type = "ERC20 Token"
-consensus_name = "Ethereum"
+consensus_type = "Proof-of-Authority"
+consensus_name = "POA"
 
 [descriptions]
 state = "Project"
 system_type = "cryptoasset"
-headline = "Public notaries with active commission license validate blocks and secure the network"
+headline = "Public notaries with active commission license validate blocks and secure network"
+
+
+[crowdsales]
+start_date = "2017-11-17T00:00:00"
+end_date = "2017-11-17T23:59:00"
+end_date_plan = "2017-11-17T23:59:00"
+genesis_address = [""]
+funding_terms = "https://oracles.org/assets/pdf/20171211_Oracles_General_Terms_Conditions_VL_GOI.pdf"
+funding_url = "https://oracles.org/"
+tokens_sold = ""
+tokens_issued = "176722560"
+btc_raised = ""
+cap_limit = [""]
+raised = [""]
+
+[specs]
+supply =  252460800
 
 [[links]]
 type = "website"
@@ -30,8 +48,22 @@ icon = "github.png"
 tags = ["Main","Code"]
 
 [[links]]
+type = "blog"
+name = "Oracles Blog"
+url = "https://medium.com/@oraclesorg"
+icon = "medium.png"
+tags = ["Main", "News"]
+
+[[links]]
 type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/oraclesorg"
 icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Oracles Telegram"
+url = "https://t.me/joinchat/FlX0FD_ndCsB4_n60sCu2w"
+icon = "telegram.png"
 tags = ["News"]
