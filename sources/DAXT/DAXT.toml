@@ -26,33 +26,7 @@ venture_capital_funding = "" # Amount of fiat money or virtual currency raised b
  
   [ico.common_info.token_distribution]
   total_supply = 130000000
- 
- [[ico.phases]]
-  phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
-  phase_name = ""
-  phase_status = "Active" # Active/Finished
-    
- [ico.phases.terms]
-    sales_agreement = "" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
-    sales_url = "" # URL to the sales webpage
-    issued_tokens = 0 # Actual amount of tokens issued at the current tokensale phase
-    sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
-    share_of_sold = 0  # %, Filled by cyberanalytics team
-    token_distribution_date = "" # Date of token distribution
-      
-      [ico.phases.terms.cap_limit]
-      currency = "usd"
-      amount = 35700000
-      
-   [ico.common_info.token]
-   name = "DAXT" # Token name
-   symbol = "DAXT" # Token short designation
-   dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
-
-   [ico.common_info.token_distribution]
-   total_supply = 130000000
-
- [[ico.common_info.token_distribution.shares]]
+  [[ico.common_info.token_distribution.shares]]
  description = "Token Sale" # Name of category 
 percent = 55 # Share of tokens granted to appropriate category
 
@@ -84,10 +58,7 @@ percent = 15 # Share of overall procceeds (contributions)
 
 description = "surety bond" # Purpose of collected procceeds (contributions)
 percent = 15 # Share of overall procceeds (contributions)
-
-
-
-
+      
  [[ico.phases]]
  phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
  phase_name = "presale"
@@ -108,9 +79,9 @@ percent = 15 # Share of overall procceeds (contributions)
    share_of_sold = ""  # %, Filled by cyberanalytics team
    token_distribution_date = "" # Date of token distribution
     
- [ico.phase.terms.cap_limit]
-     currency = ""
-     amount = 0
+[ico.phases.terms.cap_limit]
+currency = "usd"
+amount = 35700000
     
 [[ico.phases.terms.vesting]]
      supply_percent = 0 # Percent of total token supply to be vested
@@ -153,8 +124,6 @@ percent = 15 # Share of overall procceeds (contributions)
 
 
 [product]
-
-
 
  [[product.info]]
  name = "" # Name of application
