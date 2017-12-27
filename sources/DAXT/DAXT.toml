@@ -21,9 +21,9 @@ venture_capital_funding = "" # Amount of fiat money or virtual currency raised b
  current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
  
   [ico.common_info.token]
-    name = "" # Token name
-    symbol = "" # Token short designation
-    dependency = "" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+  name = "daxt token" # Token name
+  symbol = "DAXT" # Token short designation
+  dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
  
  [ico.common_info.token_distribution]
     total_supply = 130000000
