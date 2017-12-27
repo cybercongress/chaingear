@@ -1,0 +1,215 @@
+[description]
+project_name = "DAXT"
+headline = "DAXT gives access to compliant, high quality ICO pre-sales" # 50 symbols max
+logo = "" # Link to logo image
+state = 0 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
+asset_type = "cryptoasset" # cryptocurrency, cryptoasset
+
+
+[[legal_entity]]
+name = "" # Name of the company, checked by Cyberanalytics team
+residence = "" # Place of company registration, checked by Cyberanalytics team
+description = "" # Purpose (operational, non-profit, etc), checked by Cyberanalytics team
+shareholders_list = "" # Names of legal entities, trusts, natural persons and their beneficiaries, checked by Cyberanalytics teamm
+registration_date = "2017-07-03T00:00:00" # Legal entity registration date; Date format: 2017-11-22T00:00:00; Checked by Cyberanalytics team
+venture_capital_funding = "" # Amount of fiat money or virtual currency raised before phases[n]/ICO (USD equivalent at the moment of raising), Checked by Cyberanalytics team
+
+[ico]
+
+ [ico.common_info]
+ is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
+ current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+
+   [ico.common_info.token]
+   name = "DAXT" # Token name
+   symbol = "DAXT" # Token short designation
+   dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+
+   [ico.common_info.token_distribution]
+   total_supply = 130000000
+
+ [[ico.common_info.token_distribution.shares]]
+description = "Token Sale" # Name of category 
+percent = 55 # Share of tokens granted to appropriate category
+
+[[ico.common_info.token_distribution.shares]]
+description = "Reserve" # Name of tokenholder category
+percent = 25 # Share of tokens granted to appropriate tokenholder`s category
+
+  [[ico.common_info.token_distribution.shares]]
+description = "Team & Founders" # Name of  category
+ percent = 20 # Share of tokens granted to appropriate tokenholder`s category
+
+[[ico.common_info.use_of_proceeds]]
+description = "marketing" # Purpose of collected procceeds (contributions)
+percent = 15 # Share of overall procceeds (contributions)
+
+   [[ico.common_info.use_of_proceeds]]
+     description = "scaling compliance team" # Purpose of collected procceeds (contributions)
+     percent = 20 # Share of overall procceeds (contributions)
+
+   [[ico.common_info.use_of_proceeds]]
+     description = "scaling technical team" # Purpose of collected procceeds (contributions)
+     percent = 25 # Share of overall procceeds (contributions)
+
+[[ico.common_info.use_of_proceeds]]
+     description = "licensing and legal fees" # Purpose of collected procceeds (contributions)
+     percent = 25 # Share of overall procceeds (contributions)
+
+[[ico.common_info.use_of_proceeds]]
+
+description = "surety bond" # Purpose of collected procceeds (contributions)
+percent = 15 # Share of overall procceeds (contributions)
+
+
+
+
+ [[ico.phases]]
+ phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+ phase_name = "presale"
+ phase_status = "Active" # Active/Finished
+   [ico.phases.registration]
+   start_date = "2017-11-27T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+   end_date = "2017-12-11T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+   website = "https://www.blockexmarkets.com/" # URL to the registration webpage
+   terms = "https://www.blockexmarkets.com/" # URL to the registration terms
+
+
+
+   [ico.phases.terms]
+   sales_agreement = "" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+   sales_url = "" # URL to the sales webpage
+   issued_tokens = 130000000 # Actual amount of tokens issued at the current tokensale phase
+   sold_tokens =""  # Actual amount of tokens sold at the current tokensale phase
+   share_of_sold = ""  # %, Filled by cyberanalytics team
+   token_distribution_date = "" # Date of token distribution
+    
+ [ico.phase.terms.cap_limit]
+     currency = ""
+     amount = 0
+    
+[[ico.phases.terms.vesting]]
+     supply_percent = 0 # Percent of total token supply to be vested
+     lockup_condition = "" # Type of tokenholders whose tokens will be vested
+     lockup_date = "2017-11-22T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+  
+[[ico.phases.terms.crowdsale_addresses]]
+     currency = "ETH,BTC" # Cryptocurrency in which contributions accepted
+     address = "" # Blockchain address for contributions
+
+
+
+   [ico.phases.dates]
+   start_date = "" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+   end_date = "" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+   duration = '' # Filled by cyberanalytics team
+
+
+
+   [ico.phases.raised_funds]
+   currency = "" # Filled by developers or cyberanalytics team
+   amount = 0 # Filled by developers or cyberanalytics team
+
+
+
+   [[ico.phases.prices.token_final_price]]
+   currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+   price = 0 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+  
+   [[ico.phases.prices.bonuses]]
+   amount = "25" # Size of discount on token final price
+   condition = "" # Conditions of the current discount
+
+
+
+   [[ico.phases.contract]]
+   contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation)
+   contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+
+
+
+[product]
+
+
+
+ [[product.info]]
+ name = "" # Name of application
+ same_blockchain = true # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
+ sources_availability = false # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
+ product_status = 1 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+ app_type = "" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc
+ app_url = "" # URL to App
+
+
+
+   [[product.info.token]]
+   name = "" # Token name
+   symbol = "" # Token short designation
+   dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+   consensus_name = "Ethereum" # Name of consensys algorithm
+   token_type = "utility token" # Token type declared by founders ('security token', 'utility token', `donation`, cryptocurrency)
+   inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+   circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+   governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+   governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+
+
+
+   [[product.info.milestone]]
+   number = 0 # Number of milestone
+   name = "Exchange,FIX protocol integration" # Short description of milestone
+   start_date = "Q4 2017"
+   end_date = ""
+   current_status = "Completed" # Planned, In work, Completed
+
+[[product.info.milestone]]
+   number = 1 # Number of milestone
+   name = "Brokerage,Leverage Trading,Social & Copy Trading" # Short description of milestone
+   start_date ="Q4 2017"
+   end_date = ""
+   current_status = " In work" # Planned, In work, Completed
+
+[[product.info.milestone]]
+   number = 2 # Number of milestone
+   name = "DACT,Golden Gate Tool,Trade Finance,Syndicated Loans" # Short description of milestone
+   start_date = "Q1 2018"
+   end_date = "Planned"
+   current_status = "" # Planned, In work, Completed
+[[product.info.milestone]]
+   number = 3 # Number of milestone
+   name = "ICO Market" # Short description of milestone
+   start_date = "Q2 2018"
+   end_date = ""
+   current_status = "Planned" # Planned, In work, Completed
+
+
+[[links]]
+type = "website"
+name = "daxt.io"
+url = "https://daxt.io/"
+tags = ["Main"]
+
+
+
+[[links]]
+type = "paper"
+name = "DAXT Whitepaper"
+url = "https://daxt.io/"
+tags = ["Main", "Science"]
+
+
+
+[[links]]
+type = "github"
+name = "Github"
+url = ""
+icon = "github.png"
+tags = ["Main","Code"]
+
+
+[[links]]
+type = "blog"
+name = "Blockex Blog"
+url = "https://medium.com/@blockex"
+icon = "medium.png"
+tags = ["Main","News"]
