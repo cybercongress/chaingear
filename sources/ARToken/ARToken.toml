@@ -1,98 +1,183 @@
-genesis_id = ""
-system = "ARToken"
-dependencies = ["Ethereum"]
-icon = "artoken"
+_id = "5a44c4b4747bee297698e22f"
+legal_entity = [name = ""
+residence = ""
+description = ""
+shareholders_list = ""
+registration_date = "2017-07-03T00:00:00"
+venture_capital_funding = ""
 
-[token]
-name = "artoken"
-symbol = "AR"
-
-[consensus]
-consensus_type = "ERC20 Token"
-consensus_name = "Ethereum"
-
-[descriptions]
-state = "Project"
-system_type = "cryptoasset"
-headline = "Decentralized AR/VR ecosystem for 3D content exchange powered by ARToken"
-
-[crowdsales]
-start_date = "2017-10-25T13:00:00"
-end_date = "2017-11-22T13:00:00"
-end_date_plan = "2017-11-22T13:00:00"
-genesis_address = [""]
-funding_terms = "https://artoken.io/whitepaper?utm_source=cyberfund&utm_medium=tracker&utm_content=upcomingico"
-funding_url = "https://artoken.io/"
-tokens_sold = ""
-tokens_issued = ""
-btc_raised = ""
-cap_limit = [""]
-raised = [""]
-
-[[links]]
-type = "website"
+]
+links = [type = "website"
 name = "artoken.io"
 url = "https://artoken.io/"
 tags = ["Main"]
 
-[[links]]
-type = "paper"
+, type = "paper"
 name = "ARToken Whitepaper"
 url = "https://artoken.io/whitepaper?utm_source=cyberfund&utm_medium=tracker&utm_content=upcomingico"
 tags = ["Main", "Science"]
 
-[[links]]
-type = "github"
+, type = "github"
 name = "ARToken GitHub"
 url = "https://github.com/CappasityTech/SmartContract/tree/master/contracts?utm_source=cyberfund&utm_medium=tracker&utm_content=upcomingico"
 icon = "github.png"
-tags = ["Main","Code"]
+tags = ["Main", "Code"]
 
-[[links]]
-type = "blog"
+, type = "blog"
 name = "ARToken Blog"
 url = "https://blog.artoken.io/?utm_source=cyberfund&utm_medium=tracker&utm_content=upcomingico"
 icon = "medium.png"
 tags = ["Main", "News"]
 
-[[links]]
-type = "forum"
+, type = "forum"
 name = "Bitcointalk"
 url = "https://bitcointalk.org/index.php?topic=2135473.0&utm_source=cyberfund&utm_medium=tracker&utm_content=upcomingico"
 icon = "bitcointalk.png"
 tags = ["News"]
 
-[[links]]
-type = "twitter"
+, type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/cappasity?utm_source=cyberfund&utm_medium=tracker&utm_content=upcomingico"
 icon = "twitter.png"
 tags = ["News"]
 
-[[links]]
-type = "custom"
+, type = "custom"
 name = "ARToken Telegram"
 url = "https://t.me/artoken?utm_source=cyberfund&utm_medium=tracker&utm_content=upcomingico"
 icon = "telegram.png"
 tags = ["News"]
 
-[[links]]
-type = "slack"
+, type = "slack"
 name = "ARToken Slack"
 url = "https://cappasity.herokuapp.com/?utm_source=cyberfund&utm_medium=tracker&utm_content=upcomingico- "
 icon = "slack.png"
 tags = ["News"]
 
-[[links]]
-type = "custom"
+, type = "custom"
 name = "Facebook"
 url = "https://www.facebook.com/cappasity?utm_source=cyberfund&utm_medium=tracker&utm_content=upcomingico"
 icon = "facebook.png"
 tags = ["News"]
 
-[[links]]
-type = "custom"
+, type = "custom"
 name = "YouTube"
 url = "https://www.youtube.com/channel/UCRCSGdmb2ClX-3P9A6oXkAw?utm_source=cyberfund&utm_medium=tracker&utm_content=upcomingico"
 icon = "youtube.png"
 tags = ["News"]
+
+]
+
+[description]
+project_name = "ARToken"
+headline = "Decentralized AR/VR ecosystem for 3D content exchange powered by ARToken"
+state = 2
+asset_type = "cryptoasset"
+
+[ico]
+phases = [phase_num = 0
+phase_name = ""
+phase_status = "Finished"
+raised_funds = [currency = "USD"
+
+, currency = "ETH"
+
+, currency = "BTC"
+
+]
+contract = [contract_address = ""
+contract_type = ""
+
+]
+
+[registration]
+start_date = "2017-10-15T00:00:00"
+end_date = "2017-10-27T00:00:00"
+website = ""
+terms = ""
+
+[terms]
+sales_agreement = "https://artoken.io/whitepaper?utm_source=cyberfund&utm_medium=tracker&utm_content=upcomingico"
+sales_url = "https://artoken.io/"
+issued_tokens = ""
+sold_tokens = "11423"
+share_of_sold = 0
+token_distribution_date = ""
+vesting = [supply_percent = 0
+lockup_condition = ""
+lockup_date = "2017-11-22T00:00:00"
+
+]
+crowdsale_addresses = [currency = ""
+address = ""
+
+]
+
+[terms.cap_limit]
+currency = ""
+amount = 0
+
+[dates]
+start_date = "2017-10-25T13:00:00"
+end_date = "2017-11-22T13:00:00"
+duration = "28 days"
+
+[prices]
+token_final_price = [currency = "ETH"
+price = 0
+
+]
+bonuses = [amount = ""
+condition = ""
+
+]
+
+]
+
+[ico.common_info]
+is_ico = true
+current_ico_phase = 0
+use_of_proceeds = [description = ""
+percent = 0
+
+]
+
+[ico.common_info.token]
+name = "artoken"
+symbol = "AR"
+dependency = "Ethereum"
+
+[ico.common_info.token_distribution]
+total_supply = 0
+shares = [description = ""
+percent = 0
+
+]
+
+[product]
+info = [name = ""
+same_blockchain = false
+sources_availability = true
+product_status = 2
+app_type = ""
+app_url = ""
+token = [name = ""
+symbol = ""
+dependency = ""
+consensus_name = ""
+token_type = ""
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
+
+]
+milestone = [number = 0
+name = ""
+start_date = ""
+end_date = ""
+current_status = ""
+
+]
+
+]
+
