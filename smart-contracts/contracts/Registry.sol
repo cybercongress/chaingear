@@ -2,10 +2,10 @@ pragma solidity ^0.4.17;
 
 import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
 import "./common/BytesLib.sol";
-import "./common/MultipleBeneficiaries.sol";
+import "./common/SplitPaymentChangeable.sol";
 
 
-contract Registry is Destructible, MultipleBeneficiaries {
+contract Registry is Destructible, SplitPaymentChangeable {
 
     using BytesLib for bytes;
 
@@ -30,7 +30,7 @@ contract Registry is Destructible, MultipleBeneficiaries {
         PermissionType _permissionType,
         uint _entryCreationFee,
         bytes _bytecode
-    ) MultipleBeneficiaries(_benefitiaries, _shares) public
+    ) SplitPaymentChangeable(_benefitiaries, _shares) public
     {
         permissionType = _permissionType;
         entryCreationFee = _entryCreationFee;

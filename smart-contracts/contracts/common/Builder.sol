@@ -1,13 +1,13 @@
 pragma solidity ^0.4.17;
 
 import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
-import "./MultipleBeneficiaries.sol";
+import "./SplitPaymentChangeable.sol";
 
 
 /**
  * @title Builder based contract
  */
-contract Builder is Destructible, MultipleBeneficiaries {
+contract Builder is Destructible, SplitPaymentChangeable {
 
     /* Building fee  */
     uint public buildingFee;
@@ -21,7 +21,7 @@ contract Builder is Destructible, MultipleBeneficiaries {
     mapping(address => address[]) public createdContracts;
 
     function Builder(address[] _benefitiaries, uint256[] _shares)
-        MultipleBeneficiaries(_benefitiaries, _shares) public
+        SplitPaymentChangeable(_benefitiaries, _shares) public
     { }
  
     /**
