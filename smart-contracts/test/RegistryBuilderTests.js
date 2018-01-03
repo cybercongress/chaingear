@@ -26,7 +26,7 @@ contract("RegistryBuilder", (accounts) => {
     const CLIENT = accounts[2]
 
     before(async () => {
-        creator = await RegistryCreator.new({ from: BUILDER_OWNER })
+        creator = await RegistryCreator.new(0x0, { from: BUILDER_OWNER })
         
         builder = await RegistryBuilder.new(
             creator.address,
@@ -35,6 +35,8 @@ contract("RegistryBuilder", (accounts) => {
             [],
             { from: BUILDER_OWNER }
         )
+
+        await creator.setBuilder(builder.address, { from: BUILDER_OWNER })
     })
 
     it("#1 should allow to build new registry", async () => {

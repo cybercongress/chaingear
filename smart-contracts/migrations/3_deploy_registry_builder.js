@@ -23,5 +23,6 @@ module.exports = function(deployer, network, accounts) {
     BUILDING_FEE,
     BENEFICIARIES,
     SHARES
-  );
+  ).then(() => RegistryCreator.deployed())
+    .then(creator => creator.setBuilder(RegistryBuilder.address))
 };
