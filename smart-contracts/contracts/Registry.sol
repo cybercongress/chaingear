@@ -16,11 +16,14 @@ contract Registry is Destructible, SplitPaymentChangeable {
   
     enum PermissionType {OnlyOwner, AllUsers}
   
+    string public name;
+    string public description;
+    string public tags;
     PermissionType public permissionType;
     uint public entryCreationFee;
     Entry[] public entries;
     bytes public bytecode;
-  
+
     event EntryCreated(address addr, uint entryId);
     event EntryDeleted(address addr);
   
@@ -80,5 +83,26 @@ contract Registry is Destructible, SplitPaymentChangeable {
 
     function setPermissionType(PermissionType _permissionType) external onlyOwner {
         permissionType = _permissionType;
+    }
+
+    function setName(string _name) external onlyOwner {
+        uint len = bytes(_name).length;
+        require(len > 0 && len <= 32);
+
+        name = _name;
+    }
+
+    function setDescription(string _description) external onlyOwner {
+        uint len = bytes(_description).length;
+        require(len <= 256);
+
+        description = _description;
+    }
+
+    function setTags(string _tags) external onlyOwner {
+        uint len = bytes(_tags).length;
+        require(len <= 64);
+
+        tags = _tags;
     }
 }

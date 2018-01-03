@@ -122,6 +122,24 @@ contract("Registry", (accounts) => {
         permissionType.should.bignumber.equal(PermissionType.OnlyOwner)
     })
 
+    it("#10 should allow registry owner to set name", async () => {
+        const newName = "new name"
+        await registry.setName(newName, { from: REGISTRY_OWNER })
+
+        const name = await registry.name()
+        name.should.be.equal(newName)
+    })
+
+    it("#11 should not allow registry owner to set too long name", async () => {
+        const newName = "123456789012345678901234567890123"
+        return registry.setName(newName, { from: REGISTRY_OWNER }).should.be.rejected
+    })
+
+    it("#11 should not allow unknown to set name", async () => {
+        const newName = "new name"
+        return registry.setName(newName, { from: UNKNOWN }).should.be.rejected
+    })
+
     function randomFee(){
         return Math.floor(Math.random() * 100)
     }
