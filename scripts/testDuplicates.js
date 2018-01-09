@@ -9,8 +9,10 @@ function loadToml(filename, result) {
     var data = fs.readFileSync(fullname);
     var parsed = toml.parse(data);
 
-
     result.push(parsed.system);
+    if (!parsed.system) {
+      console.error(fullname + ' has no system name. ' + parsed.system);
+    }
   } catch (e) {
     console.error("Parsing error on line " + e.line + ", column " + e.column +
       ": " + e.message);
@@ -50,10 +52,10 @@ function act() {
 
   var counts =_.countBy(result);
   _.each(counts, function(v,k){
-    if (v==1) delete counts[k]
+    if (v!=1) {
+      console.error(v + " system name duplicates for " + k);
+    }
   });
-  console.log(counts);
-
 }
 
 act();/**
