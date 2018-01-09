@@ -1,0 +1,330 @@
+[description]
+project_name = "VRT.world"
+headline = "VR platform for global integration of developers, consumers and business" # 50 symbols max
+logo = "https://vrt.world/img/logo.png" # Link to logo image
+state = 0 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
+asset_type = "cryptoasset" # cryptocurrency, cryptoasset
+
+[[legal_entity]]
+name = "" # Name of the company, checked by Cyberanalytics team
+residence = "" # Place of company registration, checked by Cyberanalytics team
+description = "" # Purpose (operational, non-profit, etc), checked by Cyberanalytics team
+shareholders_list = "" # Names of legal entities, trusts, natural persons and their beneficiaries, checked by Cyberanalytics teamm
+registration_date = "" # Legal entity registration date; Date format: 2017-11-22T00:00:00; Checked by Cyberanalytics team
+venture_capital_funding = "" # Amount of fiat money or virtual currency raised before phases[n]/ICO (USD equivalent at the moment of raising), Checked by Cyberanalytics team
+
+[ico]
+
+[ico.common_info]
+is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
+current_ico_phase = 1 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+
+[ico.common_info.token]
+name = "VRT tokens" # Token name
+symbol = "VRT" # Token short designation
+dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+
+[ico.common_info.token_distribution]
+total_supply = 100000000
+
+[[ico.common_info.token_distribution.shares]]
+description = "Token sale participants" # Name of category
+percent = 75 # Share of tokens granted to appropriate category
+
+[[ico.common_info.token_distribution.shares]]
+description = "Founders" # Name of category
+percent = 15 # Share of tokens granted to appropriate category
+
+[[ico.common_info.token_distribution.shares]]
+description = "VRT Fund" # Name of category
+percent = 5 # Share of tokens granted to appropriate category
+
+[[ico.common_info.token_distribution.shares]]
+description = "Reserved for Bancor" # Name of category
+percent = 3 # Share of tokens granted to appropriate category
+
+[[ico.common_info.token_distribution.shares]]
+description = "Reward members of the community" # Name of category
+percent = 2 # Share of tokens granted to appropriate category
+
+[[ico.common_info.use_of_proceeds]]
+description = "Creation and promotion of platform using blockchain" # Purpose of collected procceeds (contributions)
+percent = 30 # Share of overall procceeds (contributions)
+
+[[ico.common_info.use_of_proceeds]]
+description = "Creation of SDK" # Purpose of collected procceeds (contributions)
+percent = 25 # Share of overall procceeds (contributions)
+
+[[ico.common_info.use_of_proceeds]]
+description = "Creation content fo VR parks" # Purpose of collected procceeds (contributions)
+percent = 18 # Share of overall procceeds (contributions)
+
+[[ico.common_info.use_of_proceeds]]
+description = "General marketing of the project, PR activities" # Purpose of collected procceeds (contributions)
+percent = 15 # Share of overall procceeds (contributions)
+
+[[ico.common_info.use_of_proceeds]]
+description = "Developing the VR park franchise" # Purpose of collected procceeds (contributions)
+percent = 12 # Share of overall procceeds (contributions)
+
+[[ico.phases]]
+phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+phase_name = "Pre-sale"
+phase_status = "Finished" # Active/Finished
+
+[ico.phases.registration]
+start_date = "2017-12-05T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+end_date = "2017-12-23T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+website = "https://presale.vrt.world" # URL to the registration webpage
+terms = "https://presale.vrt.world/sites/default/files/Terms%20and%20Conditions.pdf" # URL to the registration terms
+
+[[ico.phases]]
+phase_num = 1 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+phase_name = "Token Sale"
+phase_status = "Active" # Active/Finished
+
+[ico.phases.registration]
+start_date = "2018-02-27T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+end_date = "2018-03-27T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+website = "https://presale.vrt.world" # URL to the registration webpage
+terms = "https://presale.vrt.world/sites/default/files/Terms%20and%20Conditions.pdf" # URL to the registration terms
+
+[ico.phases.terms]
+sales_agreement = "https://presale.vrt.world/sites/default/files/Terms%20and%20Conditions.pdf" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+sales_url = "https://presale.vrt.world" # URL to the sales webpage
+issued_tokens = 1000000 # Actual amount of tokens issued at the current tokensale phase
+sold_tokens = ”” # Actual amount of tokens sold at the current tokensale phase
+share_of_sold = "" # %, Filled by cyberanalytics team
+token_distribution_date = "2017-12-23T00:00:00" # Date of token distribution
+
+[ico.phases.terms.cap_limit]
+currency = ""
+amount = 0
+
+[[ico.phases.terms.vesting]]
+supply_percent = 15 # Percent of total token supply to be vested
+lockup_condition = "Founders of the project and top management" # Type of tokenholders whose tokens will be vested
+lockup_date = "2020-03-26T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+
+[[ico.phases.terms.crowdsale_addresses]]
+currency = "ETH" # Cryptocurrency in which contributions accepted
+address = "" # Blockchain address for contributions
+
+[[ico.phases.terms.crowdsale_addresses]]
+currency = "DASH" # Cryptocurrency in which contributions accepted
+address = "" # Blockchain address for contributions
+
+[[ico.phases.terms.crowdsale_addresses]]
+currency = "BTC" # Cryptocurrency in which contributions accepted
+address = "" # Blockchain address for contributions
+
+[[ico.phases.terms.crowdsale_addresses]]
+currency = "LTC" # Cryptocurrency in which contributions accepted
+address = "" # Blockchain address for contributions
+
+[ico.phases.dates]
+start_date = "2018-02-27T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+end_date = "2018-03-27T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+duration ="" # Filled by cyberanalytics team
+
+[ico.phases.raised_funds]
+currency = "" # Filled by developers or cyberanalytics team
+amount ="" # Filled by developers or cyberanalytics team
+
+[[ico.phases.prices.token_final_price]]
+currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+price = ""“” # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+
+[[ico.phases.prices.bonuses]]
+amount = "20" # Size of discount on token final price
+condition = "Bonuses for purchase in the first 1-3 days “ # Conditions of the current discount
+
+[[ico.phases.prices.bonuses]]
+amount = "15" # Size of discount on token final price
+condition = "Bonuses for purchase in the 4-11 days" # Conditions of the current discount
+
+[[ico.phases.prices.bonuses]]
+amount = "10" # Size of discount on token final price
+condition = "Bonuses for purchase till end of sale" # Conditions of the current discount
+
+[[ico.phases.contract]]
+contract_address = "0x2496477fb081a0ee9d62e7c32d897872f28ae86c" # Fill this field out only if dependency = "ERC20"; Ethereum tokensale address - a hexadecimal field format (base 16 notation)
+contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+
+[product]
+
+[[product.info]]
+name = "Blockchain based VR marketplace" # Name of application
+same_blockchain = true # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
+sources_availability = false # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
+product_status = 1 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+app_type = "Web App, Mobile App, Desktop Wallet" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc
+app_url = "" # URL to App
+
+[[product.info.token]]
+name = "VRTtoken" # Token name
+symbol = "VRT" # Token short designation
+dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+consensus_name = "" # Name of consensys algorithm
+token_type = "utility token" # Token type declared by founders ('security token', 'utility token', donation, cryptocurrency)
+inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+
+[[product.info.milestone]]
+number = 0 # Number of milestone
+name = "Developing the VRT platform" # Short description of milestone
+start_date = "2017-12-01T00:00:00"
+end_date = ""
+current_status = "In work" # Planned, In work, Completed
+
+[[product.info.milestone]]
+number = 1 # Number of milestone
+name = "Start the construction of the VR park network" # Short description of milestone
+start_date = "2017-12-01T00:00:00"
+end_date = ""
+current_status = "In work" # Planned, In work, Completed
+
+[[product.info.milestone]]
+number = 2 # Number of milestone
+name = "Searching for partners and administrators in promising markets" # Short description of milestone
+start_date = "2018-02-01T00:00:00"
+end_date = ""
+current_status = "Planned" # Planned, In work, Completed
+
+[[product.info.milestone]]
+number = 3 # Number of milestone
+name = "Launching three to five VR parks each month" # Short description of milestone
+start_date = "2018-04-01T00:00:00"
+end_date = ""
+current_status = "Planned" # Planned, In work, Completed
+
+[[product.info.milestone]]
+number = 4 # Number of milestone
+name = "Transfering newly created game worlds from VR parks to PCs and home game consoles" # Short description of milestone
+start_date = "2018-10-01T00:00:00"
+end_date = ""
+current_status = "Planned" # Planned, In work, Completed
+
+[[product.info.milestone]]
+number = 5 # Number of milestone
+name = "Establish an e-sports league to promote e-sports with VR technologies" # Short description of milestone
+start_date = "2019-05-01T00:00:00"
+end_date = ""
+current_status = "Planned" # Planned, In work, Completed
+
+[[product.info.milestone]]
+number = 6 # Number of milestone
+name = "Establish an e-sports league to promote e-sports with VR technologies" # Short description of milestone
+start_date = "2019-05-01T00:00:00"
+end_date = ""
+current_status = "Planned" # Planned, In work, Completed
+
+[[product.info.milestone]]
+number = 7 # Number of milestone
+name = "Creating our own streaming platform, designed specifically for VR technologies" # Short description of milestone
+start_date = "2020-12-01T00:00:00"
+end_date = ""
+current_status = "Planned" # Planned, In work, Completed
+
+[[product.info.milestone]]
+number = 8 # Number of milestone
+name = "Watching the game from the outside" # Short description of milestone
+start_date = ""
+end_date = ""
+current_status = "Planned" # Planned, In work, Completed
+
+[[product.info.milestone]]
+number = 9 # Number of milestone
+name = "Becoming basis for further development of our e-sports league and will also include a function for people to reward their favorite players with cryptocurrency" # Short description of milestone
+start_date = ""
+end_date = ""
+current_status = "Planned" # Planned, In work, Completed
+
+[[links]]
+type = "" # Filled by cyberanalytics team
+name = "" # Filled by cyberanalytics team
+url = ""
+tags = ["tag"] # Filled by cyberanalytics team
+
+[[links]]
+type = "website"
+name = "VRT.world"
+url = "http://vrt.world/ "
+tags = ["Main"]
+
+[[links]]
+type = "paper"
+name = "VRT.world Whitepaper"
+url = "https://vrt.world/wpvrAlbum_EN.pdf"
+tags = ["Main",  “Science"]
+
+[[links]]
+type = "paper"
+name = "VRT.world Whitepaper"
+url = "https://vrt.world/WPru.pdf"
+tags = ["Main", “Science"]
+
+[[links]]
+type = "blog"
+name = "VRT.world Blog"
+url = "https://medium.com/vrtoken"
+icon = "medium.png"
+tags = ["Main","News"]
+
+[[links]]
+type = "twitter"
+name = "VRT.worl Twitter"
+url = "https://twitter.com/VRTworld"
+icon = "twitter.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "VRT.world Telegram"
+url = "https://t.me/vrtico"
+icon = "telegram.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/vrtworld/"
+icon = "facebook.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Steemit.com"
+url = "https://steemit.com/@vrtoken"
+icon = ""
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "Golos.io"
+url = "https://golos.io/@vrtoken"
+icon = "golos_logo.png"
+tags = ["News"]
+
+[[links]]
+type = "custom"
+name = "bitcointalk.org"
+url = "https://bitcointalk.org/index.php?topic=2409858"
+icon = "bitcointalk.png"
+tags = ["News"]
+
+[[links]]
+type ="reddit"
+name ="Reddit"
+url = "https://www.reddit.com/r/VRTcommunity/"
+icon = "reddit.png"
+tags = ["News"]
+
+[[links]]
+type ="youtube"
+name ="youtube"
+url = "https://www.youtube.com/channel/UCkdGbAmBFw1GIq5kSTvs3Aw/featured"
+icon = "youtube.png"
+tags = ["News"]
