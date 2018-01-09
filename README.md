@@ -1,6 +1,6 @@
 # Chaingear
 
-[![Travis CI](https://img.shields.io/travis/cyberFund/chaingear/master.svg)](https://travis-ci.org/cyberFund/chaingear/builds)
+[![Travis CI](https://img.shields.io/travis/cyberFund/chaingear.svg)](https://travis-ci.org/cyberFund/chaingear/builds)
 
 [![Join the chat at https://gitter.im/cyberFund/chaingear](https://badges.gitter.im/cyberFund/chaingear.svg)](https://gitter.im/cyberFund/chaingear?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
