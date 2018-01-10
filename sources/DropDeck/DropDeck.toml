@@ -1,0 +1,178 @@
+[blockchain]
+project_name = "DropDeck"
+headline = "A Cross-border Business Funding Platform" # 50 symbols max
+logo = "dropdeck" # Link to logo image
+state = 1 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
+asset_type = "blockchain app" # blockchain protocol, blockchain app
+dependency = "Ethereum" # Blockchain used to issue a token: Ethereum, Waves, Graphene. If its own blockchain - "independent"
+consensus_name = "Proof-of-Work" # Proof-of-Work, Proof-of-Stake, Delegated Proof-of-Stake, Proof-of-Burn, Proof-of-Authority
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
+  current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+
+    [ico.common_info.token_distribution]
+    total_supply = 0
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Crowdsale​" # Name of tokenholder`s category
+      percent = 50 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Founders​ ​and​ ​Advisors​" # Name of tokenholder`s category
+      percent = 12 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Key​ ​Pool​" # Name of tokenholder`s category
+      percent = 7 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Early​ ​Contributors​" # Name of tokenholder`s category
+      percent = 1 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Crowdsale​ ​Rewards​" # Name of tokenholder`s category
+      percent = 5 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Reserve​" # Name of tokenholder`s category
+      percent = 25 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Product​ ​Development​ ​and​ ​R&D​" # Purpose of collected procceeds (contributions)
+      percent = 55 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Marketing​ ​and​ ​business​ ​development​" # Purpose of collected procceeds (contributions)
+      percent = 20 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Legal​ ​expenses​" # Purpose of collected procceeds (contributions)
+      percent = 10 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Operations​" # Purpose of collected procceeds (contributions)
+      percent = 10 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Buffer" # Purpose of collected procceeds (contributions)
+      percent = 5 # Share of overall procceeds (contributions)
+
+  [[ico.phases]]
+  phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+  phase_name = "Crowdsale​"
+  phase_status = "Active" # Active/Finished
+  
+    [ico.phases.registration]
+    start_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    website = "" # URL to the registration webpage 
+    terms = "" # URL to the registration terms
+
+    [ico.phases.terms]
+    sales_agreement = "https://dropdeck.io/" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+    sales_url = "https://dropdeck.io/" # URL to the sales webpage
+    issued_tokens = 0 # Actual amount of tokens issued at the current tokensale phase
+    sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
+    share_of_sold = 0  # %, Filled by cyberanalytics team
+    token_distribution_date = "2018-01-21T00:00:00" # Date of token distribution
+      
+      [[ico.phases.terms.cap_limit]]
+      currency = "ETH" # USD, BTC or ETH
+      amount = 50000 # Cap limit in specified currency
+      
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0 # Percent of total token supply to be vested
+      lockup_condition = "" # Type of tokenholders whose tokens will be vested
+      lockup_date = "2017-11-22T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = "" # Cryptocurrency in which contributions accepted
+      address = "" # Blockchain address for contributions
+
+    [ico.phases.dates]
+    start_date = "2017-11-21T01:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+    end_date = "2017-12-21T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+    duration = '30 days' # Filled by cyberanalytics team
+
+    [[ico.phases.raised_funds]]
+    currency = "USD" # Filled by developers or cyberanalytics team
+    amount = 4200000 # Filled by developers or cyberanalytics team
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH" # Filled by developers or cyberanalytics team
+    amount = 5251 # Filled by developers or cyberanalytics team
+
+    [[ico.phases.prices.token_final_price]]
+    currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+    price = 0 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+    
+    [[ico.phases.prices.bonuses]]
+    amount = "50" # Size of discount on token final price
+    condition = "First hour of the sale" # Conditions of the current discount
+
+    [[ico.phases.prices.bonuses]]
+    amount = "40" # Size of discount on token final price
+    condition = "Day 1" # Conditions of the current discount
+
+    [[ico.phases.prices.bonuses]]
+    amount = "30" # Size of discount on token final price
+    condition = "Week 1" # Conditions of the current discount
+
+    [[ico.phases.prices.bonuses]]
+    amount = "20" # Size of discount on token final price
+    condition = "Week 2" # Conditions of the current discount
+
+    [[ico.phases.prices.bonuses]]
+    amount = "10" # Size of discount on token final price
+    condition = "Week 3" # Conditions of the current discount
+
+    [[ico.phases.contract]]
+    contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation) 
+    contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+
+[app]
+
+  [[app.info]]
+  name = "DropDeck Platform" # Name of application
+  same_blockchain = true # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
+  sources_availability = false # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
+  app_status = 1 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+  app_type = "Funding platform" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc 
+  app_url = "" # URL to App
+
+    [[app.info.milestone]]
+    number = 0 # Number of milestone
+    name = "" # Short description of milestone
+    start_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "" # Planned, In work, Completed
+    
+    [[app.info.links]]
+    type = "" # Filled by cyberanalytics team
+    name = "" # Filled by cyberanalytics team
+    url = ""
+    tags = ["tag"] # Filled by cyberanalytics team
+
+[[token]]
+name = "ddd token" # Token name
+symbol = "DDD" # Token short designation
+token_purpose = "app" # Purpose of token (ICO/app)
+token_type = "blockchain issued token" # core token or blockchain issued token
+inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+
+[[exchange]]
+exchange = "" # Name of exchange
+date = "2017-11-22T00:00:00" # Date format: "2017-11-22T00:00:00"
+price = "" # Token selling price on specified date 
+volume = "" # Trades volume on specified date
+
+[[label]]
+blockchain = "" # Blockchain used to hold funds
+address = "" # Funds wallet adress
+balance = "" # Funds wallet balance
