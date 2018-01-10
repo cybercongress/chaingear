@@ -83,13 +83,13 @@ phase_num = 1 # 0 - first token sale (including presale), 1 - second token sale,
 phase_name = "Token Sale"
 phase_status = "Active" # Active/Finished
 
-[[ico.phases.registration]]
+[ico.phases.registration]
 start_date = "2018-02-27T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
 end_date = "2018-03-27T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
 website = "https://presale.vrt.world" # URL to the registration webpage
 terms = "https://presale.vrt.world/sites/default/files/Terms%20and%20Conditions.pdf" # URL to the registration terms
 
-[[ico.phases.terms]]
+[ico.phases.terms]
 sales_agreement = "https://presale.vrt.world/sites/default/files/Terms%20and%20Conditions.pdf" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
 sales_url = "https://presale.vrt.world" # URL to the sales webpage
 issued_tokens = 1000000 # Actual amount of tokens issued at the current tokensale phase
@@ -122,7 +122,7 @@ address = "" # Blockchain address for contributions
 currency = "LTC" # Cryptocurrency in which contributions accepted
 address = "" # Blockchain address for contributions
 
-[[ico.phases.dates]]
+[ico.phases.dates]
 start_date = "2018-02-27T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
 end_date = "2018-03-27T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
 duration ="" # Filled by cyberanalytics team
@@ -151,9 +151,9 @@ condition = "Bonuses for purchase till end of sale" # Conditions of the current 
 contract_address = "0x2496477fb081a0ee9d62e7c32d897872f28ae86c" # Fill this field out only if dependency = "ERC20"; Ethereum tokensale address - a hexadecimal field format (base 16 notation)
 contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
 
-[product]
+[app]
 
-[[product.info]]
+[[app.info]]
 name = "Blockchain based VR marketplace" # Name of application
 same_blockchain = true # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
 sources_availability = false # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
