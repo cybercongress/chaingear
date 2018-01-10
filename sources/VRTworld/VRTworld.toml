@@ -161,17 +161,6 @@ product_status = 1 # 1 - not working product, 2 - working prototype (alpha, beta
 app_type = "Web App, Mobile App, Desktop Wallet" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc
 app_url = "" # URL to App
 
-[[product.info.token]]
-name = "VRTtoken" # Token name
-symbol = "VRT" # Token short designation
-dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
-consensus_name = "" # Name of consensys algorithm
-token_type = "utility token" # Token type declared by founders ('security token', 'utility token', donation, cryptocurrency)
-inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
-circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
-governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
-governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
-
 [[product.info.milestone]]
 number = 0 # Number of milestone
 name = "Developing the VRT platform" # Short description of milestone
@@ -322,3 +311,14 @@ name ="youtube"
 url = "https://www.youtube.com/channel/UCkdGbAmBFw1GIq5kSTvs3Aw/featured"
 icon = "youtube.png"
 tags = ["News"]
+
+[[token]]
+name = "VRTtoken" # Token name
+symbol = "VRT" # Token short designation
+dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+consensus_name = "" # Name of consensys algorithm
+token_type = "utility token" # Token type declared by founders ('security token', 'utility token', donation, cryptocurrency)
+inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
