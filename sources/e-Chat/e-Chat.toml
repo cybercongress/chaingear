@@ -1,0 +1,318 @@
+[blockchain]
+project_name = "e-Chat ICO"
+headline = "First decentralized multi-tasking messenger" # 50 symbols max
+logo = "echatico" # Link to logo image
+state = 2 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
+asset_type = "blockchain app" # blockchain protocol, blockchain app
+dependency = "Ethereum" # Blockchain used to issue a token: Ethereum, Waves, Graphene. If its own blockchain - "independent"
+consensus_name = "Proof-of-Work" # Proof-of-Work, Proof-of-Stake, Delegated Proof-of-Stake, Proof-of-Burn, Proof-of-Authority
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
+  current_ico_phase = 3 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+
+    [ico.common_info.token_distribution]
+    total_supply = 0
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Token sale" # Name of tokenholder`s category
+      percent = 92 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Referral program" # Name of tokenholder`s category
+      percent = 7 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Bounty campaign" # Name of tokenholder`s category
+      percent = 1 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Development" # Purpose of collected procceeds (contributions)
+      percent = 30 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Marketing & PR" # Purpose of collected procceeds (contributions)
+      percent = 48 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Reserve fund" # Purpose of collected procceeds (contributions)
+      percent = 10 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Founders" # Purpose of collected procceeds (contributions)
+      percent = 12 # Share of overall procceeds (contributions)
+
+  [[ico.phases]]
+  phase_num = 3 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+  phase_name = "Token distribution phase #3"
+  phase_status = "Active" # Active/Finished
+  
+    [ico.phases.registration]
+    start_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    website = "" # URL to the registration webpage 
+    terms = "" # URL to the registration terms
+
+    [ico.phases.terms]
+    sales_agreement = "https://ico.echat.io/" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+    sales_url = "https://ico.echat.io/" # URL to the sales webpage
+    issued_tokens = 295000000 # Actual amount of tokens issued at the current tokensale phase
+    sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
+    share_of_sold = 0  # %, Filled by cyberanalytics team
+    token_distribution_date = "" # Date of token distribution
+      
+      [[ico.phases.terms.cap_limit]]
+      currency = "" # USD, BTC or ETH
+      amount = 0 # Cap limit in specified currency
+      
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0 # Percent of total token supply to be vested
+      lockup_condition = "" # Type of tokenholders whose tokens will be vested
+      lockup_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = "" # Cryptocurrency in which contributions accepted
+      address = "" # Blockchain address for contributions
+
+    [ico.phases.dates]
+    start_date = "2017-01-08T12:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+    end_date = "2017-01-15T12:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+    duration = "" # Filled by cyberanalytics team
+
+    [[ico.phases.raised_funds]]
+    currency = "" # Filled by developers or cyberanalytics team
+    amount = 0 # Filled by developers or cyberanalytics team
+
+    [[ico.phases.prices.token_final_price]]
+    currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+    price = 0 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+    
+    [[ico.phases.prices.bonuses]]
+    amount = "30" # Size of discount on token final price
+    condition = "8-15 January" # Conditions of the current discount
+
+    [[ico.phases.prices.bonuses]]
+    amount = "25" # Size of discount on token final price
+    condition = "16-21 January" # Conditions of the current discount
+
+    [[ico.phases.prices.bonuses]]
+    amount = "20" # Size of discount on token final price
+    condition = "22-31 January" # Conditions of the current discount
+
+    [[ico.phases.prices.bonuses]]
+    amount = "15" # Size of discount on token final price
+    condition = "1-8 February" # Conditions of the current discount
+
+    [[ico.phases.prices.bonuses]]
+    amount = "10" # Size of discount on token final price
+    condition = "8-15 February" # Conditions of the current discount
+
+    [[ico.phases.contract]]
+    contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation) 
+    contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+
+[app]
+
+  [[app.info]]
+  name = "e-Chat" # Name of application
+  same_blockchain = true # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
+  sources_availability = false # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
+  app_status = 2 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+  app_type = "messenger & social network" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc 
+  app_url = "https://echat.io/" # URL to App
+
+    [[app.info.milestone]]
+    number = 0 # Number of milestone
+    name = "e-Chat is connected to payment services" # Short description of milestone
+    start_date = "2017 September" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 September" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 1 # Number of milestone
+    name = "Pre-ICO Start" # Short description of milestone
+    start_date = "2017 October" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 November" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 2 # Number of milestone
+    name = "Start first round of the ICO" # Short description of milestone
+    start_date = "2017 November" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 December" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 3 # Number of milestone
+    name = "Redesign of the application, connection of a cryptocurrency wallets" # Short description of milestone
+    start_date = "2017 December" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 December" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 4 # Number of milestone
+    name = "Start second round of ICO" # Short description of milestone
+    start_date = "2017 December" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 December" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 5 # Number of milestone
+    name = "50,000 application installations" # Short description of milestone
+    start_date = "2017 December" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 December" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 6 # Number of milestone
+    name = "Completion of ICO and connection of an own token to application" # Short description of milestone
+    start_date = "2018 January" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 February" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "In work" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 7 # Number of milestone
+    name = "Connection of the most popular payment methods" # Short description of milestone
+    start_date = "2018 February" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 February" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 8 # Number of milestone
+    name = "The release of the test-net of the messenger updated version" # Short description of milestone
+    start_date = "2018 February" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 February" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 9 # Number of milestone
+    name = "Internal cryptocurrency exchange launch" # Short description of milestone
+    start_date = "2018 February" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 March" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 10 # Number of milestone
+    name = "Implementing the feature to create paid chats" # Short description of milestone
+    start_date = "2018 March" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 April" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 11 # Number of milestone
+    name = "1.000.000 installations / 100.000.000 messages per day" # Short description of milestone
+    start_date = "2018 April" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 May" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 12 # Number of milestone
+    name = "Desktop version release" # Short description of milestone
+    start_date = "2018 May" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 June" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 13 # Number of milestone
+    name = "Live-streaming launch" # Short description of milestone
+    start_date = "2018 July" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 August" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 14 # Number of milestone
+    name = "Group video calls" # Short description of milestone
+    start_date = "2018 August" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 September" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 15 # Number of milestone
+    name = "Connecting the streaming function will give an additional push to donates inside e-Chat and promote further expansion at the market" # Short description of milestone
+    start_date = "2018 October" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 November" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 16 # Number of milestone
+    name = "50,000,000 installations / 10 millions messages per day milestone" # Short description of milestone
+    start_date = "2018 December" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 December" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+    
+    [[links]]
+    type = "website"
+    name = "ico.echat.io"
+    url = "https://ico.echat.io/?utm_source=syberfund&utm_medium=bn&utm_campaign=1"
+    tags = ["Main"]
+
+    [[links]]
+    type = "paper"
+    name = "e-Chat ICO Whitepaper"
+    url = "https://ico.echat.io/static/doc-pdf/e-Chat_Whitepaper_ver13.pdf"
+    tags = ["Main", "Science"]
+
+    [[links]]
+    type = "blog"
+    name = "eChat ICO Blog"
+    url = "https://medium.com/@icoechat"
+    icon = "medium.png"
+    tags = ["Main", "News"]
+
+    [[links]]
+    type = "forum"
+    name = "Bitcointalk"
+    url = "https://bitcointalk.org/index.php?topic=2255337.0"
+    icon = "bitcointalk.png"
+    tags = ["News"]
+
+    [[links]]
+    type = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/e_Chat_ICO"
+    icon = "twitter.png"
+    tags = ["News"]
+
+    [[links]]
+    type = "custom"
+    name = "e-Chat ICO Telegram"
+    url = "https://t.me/ico_eChat"
+    icon = "telegram.png"
+    tags = ["News"]
+
+    [[links]]
+    type = "reddit"
+    name = "Reddit"
+    url = "https://www.reddit.com/user/e_Chat/"
+    icon = "reddit.png"
+    tags = ["News"]
+
+    [[links]]
+    type = "custom"
+    name = "Facebook"
+    url = "https://www.facebook.com/E-Chat-ICO-1736291553333819/"
+    icon = "facebook.png"
+    tags = ["News"]
+
+[[token]]
+name = "echt token" # Token name
+symbol = "ECHT" # Token short designation
+token_purpose = "app" # Purpose of token (ICO/app)
+token_type = "blockchain issued token" # core token or blockchain issued token
+inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+
+[[exchange]]
+exchange = "" # Name of exchange
+date = "" # Date format: "2017-11-22T00:00:00"
+price = "" # Token selling price on specified date 
+volume = "" # Trades volume on specified date
+
+[[label]]
+blockchain = "" # Blockchain used to hold funds
+address = "" # Funds wallet adress
+balance = "" # Funds wallet balance
