@@ -1,0 +1,229 @@
+[blockchain]
+project_name = "LockChain"
+headline = "Hotel Booking & Vacation Rental Marketplace With 0% Commissions" # 50 symbols max
+logo = "lockchain" # Link to logo image
+state = 0 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
+asset_type = "blockchain app" # blockchain protocol, blockchain app
+dependency = "Ethereum" # Blockchain used to issue a token: Ethereum, Waves, Graphene. If its own blockchain - "independent"
+consensus_name = "Proof-of-Work" # Proof-of-Work, Proof-of-Stake, Delegated Proof-of-Stake, Proof-of-Burn, Proof-of-Authority
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
+  current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+
+    [ico.common_info.token_distribution]
+    total_supply = 25000000
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Crowdsale" # Name of tokenholder`s category
+      percent = 50 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Team, advisors, community, supporters" # Name of tokenholder`s category
+      percent = 25 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Future development" # Name of tokenholder`s category
+      percent = 25 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Worldwide integration" # Purpose of collected procceeds (contributions)
+      percent = 45 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Development, R&D" # Purpose of collected procceeds (contributions)
+      percent = 30 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Marketing" # Purpose of collected procceeds (contributions)
+      percent = 20 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Legal" # Purpose of collected procceeds (contributions)
+      percent = 5 # Share of overall procceeds (contributions)
+
+  [[ico.phases]]
+  phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+  phase_name = ""
+  phase_status = "" # Active/Finished
+  
+    [ico.phases.registration]
+    start_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    website = "" # URL to the registration webpage 
+    terms = "" # URL to the registration terms
+
+    [ico.phases.terms]
+    sales_agreement = "" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+    sales_url = "" # URL to the sales webpage
+    issued_tokens = 0 # Actual amount of tokens issued at the current tokensale phase
+    sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
+    share_of_sold = 0  # %, Filled by cyberanalytics team
+    token_distribution_date = "" # Date of token distribution
+      
+      [[ico.phases.terms.cap_limit]]
+      currency = "ETH" # USD, BTC or ETH
+      amount = 32000 # Cap limit in specified currency
+      
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0 # Percent of total token supply to be vested
+      lockup_condition = "" # Type of tokenholders whose tokens will be vested
+      lockup_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = "" # Cryptocurrency in which contributions accepted
+      address = "" # Blockchain address for contributions
+
+    [ico.phases.dates]
+    start_date = "" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+    end_date = "" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+    duration = "" # Filled by cyberanalytics team
+
+    [[ico.phases.raised_funds]]
+    currency = "USD" # Filled by developers or cyberanalytics team
+    amount = 4400000 # Filled by developers or cyberanalytics team
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH" # Filled by developers or cyberanalytics team
+    amount = 10344 # Filled by developers or cyberanalytics team
+
+    [[ico.phases.prices.token_final_price]]
+    currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+    price = 0 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+    
+    [[ico.phases.prices.bonuses]]
+    amount = "" # Size of discount on token final price
+    condition = "" # Conditions of the current discount
+
+    [[ico.phases.contract]]
+    contract_address = "  0x5e3346444010135322268a4630d2ed5f8d09446c" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation) 
+    contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+
+[app]
+
+  [[app.info]]
+  name = "LockChain" # Name of application
+  same_blockchain = true # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
+  sources_availability = false # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
+  app_status = 1 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+  app_type = "Blockchain Powered Marketplace" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc 
+  app_url = "" # URL to App
+
+    [[app.info.milestone]]
+    number = 0 # Number of milestone
+    name = "Development started" # Short description of milestone
+    start_date = "2017 April" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 September" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 1 # Number of milestone
+    name = "Testnet launch" # Short description of milestone
+    start_date = "2017 September" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 October" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 2 # Number of milestone
+    name = "LOC Token ICO Pre-Sale Launch" # Short description of milestone
+    start_date = "2017 October" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 October" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 3 # Number of milestone
+    name = "LOC Token ICO Main Sale" # Short description of milestone
+    start_date = "2017 October" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 November" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 4 # Number of milestone
+    name = "LOC Ledger Alfa Version Launch with 300 pilot properties" # Short description of milestone
+    start_date = "2017 November" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 Q1" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "In work" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 5 # Number of milestone
+    name = "LOC Ledger Beta Version with 7000+ properties" # Short description of milestone
+    start_date = "2018 Q1" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 Q2" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 5 # Number of milestone
+    name = "Main LOC Ledger Launch with 15+k" # Short description of milestone
+    start_date = "2018 Q2" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[links]]
+    type = "website"
+    name = "lockchain.co"
+    url = "https://lockchain.co/"
+    tags = ["Main"]
+
+    [[links]]
+    type = "paper"
+    name = "LockChain Whitepaper"
+    url = "https://lockchain.co/whitepaper_v1.0_ed.pdf"
+    tags = ["Main", "Science"]
+
+    [[links]]
+    type = "github"
+    name = "LockChain Github"
+    url = "https://github.com/LockChainLtd/"
+    icon = "github.png"
+    tags = ["Main", "Code"]
+
+    [[links]]
+    type = "blog"
+    name = "LockChain Blog"
+    url = "https://medium.com/@LockChainCo"
+    icon = "medium.png"
+    tags = ["Main", "News"]
+
+    [[links]]
+    type = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/LockChainCo"
+    icon = "twitter.png"
+    tags = ["News"]
+
+    [[links]]
+    type = "custom"
+    name = "LockChain Telegram"
+    url = "https://t.me/joinchat/F3YOYQx123PO4FPfNRPihQ"
+    icon = "telegram.png"
+    tags = ["News"]
+
+    [[links]]
+    type = "custom"
+    name = "Facebook"
+    url = "https://www.facebook.com/LockChainLOK/"
+    icon = "facebook.png"
+    tags = ["News"]
+
+[[token]]
+name = "loc coin" # Token name
+symbol = "LOC" # Token short designation
+token_purpose = "" # Purpose of token (ICO/app)
+token_type = "" # core token or blockchain issued token
+inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+
+[[exchange]]
+exchange = "" # Name of exchange
+date = "" # Date format: "2017-11-22T00:00:00"
+price = "" # Token selling price on specified date 
+volume = "" # Trades volume on specified date
+
+[[label]]
+blockchain = "" # Blockchain used to hold funds
+address = "" # Funds wallet adress
+balance = "" # Funds wallet balance
