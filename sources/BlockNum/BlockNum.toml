@@ -1,0 +1,239 @@
+[description]
+
+project_name = "BlockNum"
+headline = "Environmentally Friendly Blockchain using PSTN and SIP protocole" # 50 symbols max
+logo = "" # Link to logo image
+state = 0 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
+asset_type = "cryptoasset" # cryptocurrency, cryptoasset
+
+[[legal_entity]]
+name = "" # Name of the company, checked by Cyberanalytics team
+residence = "" # Place of company registration, checked by Cyberanalytics team
+description = "" # Purpose (operational, non-profit, etc), checked by Cyberanalytics team
+shareholders_list = "" # Names of legal entities, trusts, natural persons and their beneficiaries, checked by Cyberanalytics teamm
+registration_date = "2017-07-03T00:00:00" # Legal entity registration date; Date format: 2017-11-22T00:00:00; Checked by Cyberanalytics team
+venture_capital_funding = "" # Amount of fiat money or virtual currency raised before phases[n]/ICO (USD equivalent at the moment of raising), Checked by Cyberanalytics team
+
+
+
+[ico]
+
+
+
+ [ico.common_info]
+ is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
+ current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+
+   [ico.common_info.token]
+   name = "Token GIGA" # Token name
+   symbol = "GIGA" # Token short designation
+   dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+
+
+
+[ico.common_info.token_distribution]
+ total_supply = 10000000
+
+ [[ico.common_info.token_distribution.shares]]
+description = "Purchase or reserve for data" # Name of tokenholders category
+percent = 47 # Share of tokens granted to appropriate tokenholders category
+
+[[ico.common_info.token_distribution.shares]]
+description = "Human Resources" # Name of tokenholders category
+percent = 4.3 # Share of tokens granted to appropriate tokenholders category
+
+ [[ico.common_info.token_distribution.shares]]
+description = "Development" # Name of tokenholders category
+percent = 20 # Share of tokens granted to appropriate tokenholders category
+
+ [[ico.common_info.token_distribution.shares]]
+description = "Administration" # Name of tokenholders category
+percent = 2 # Share of tokens granted to appropriate tokenholders category
+
+ [[ico.common_info.token_distribution.shares]]
+description = "Marketing" # Name of tokenholders category
+ percent = 6.6 # Share of tokens granted to appropriate tokenholders category
+
+  [[ico.common_info.token_distribution.shares]]
+description = "Overhead" # Name of tokenholders category
+ percent = 2.9 # Share of tokens granted to appropriate tokenholders category
+ 
+ [[ico.common_info.token_distribution.shares]]
+ description = "Equipment/Servers" # Name of tokenholders category
+ percent = 5.2 # Share of tokens granted to appropriate tokenholders category
+
+[[ico.common_info.token_distribution.shares]]
+description = "Audit/Legal" # Name of tokenholders category
+ percent = 3 # Share of tokens granted to appropriate tokenholders category
+
+[[ico.common_info.token_distribution.shares]]
+description = "Working Capital" # Name of tokenholders category
+ percent = 9 # Share of tokens granted to appropriate tokenholders category
+ 
+[[ico.common_info.use_of_proceeds]]
+ description = "" # Purpose of collected procceeds (contributions)
+  percent = ""  # Share of overall procceeds (contributions)
+
+ [[ico.phases]]
+ phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+ phase_name = "TGE"
+ phase_status = "Active" # Active/Finished
+   [ico.phases.registration]
+   start_date = "2017-12-22T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+   end_date = "2018-01-30T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+   website = "https://blocknum.com/crowdsale/gigacrowdsale.html" # URL to the registration webpage
+   terms = "https://blocknum.com/crowdsale/gigacrowdsale.html" # URL to the registration terms
+
+
+
+   [ico.phases.terms]
+   sales_agreement = "https://blocknum.com/crowdsale/gigacrowdsale.html" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+   sales_url = "https://blocknum.com/token-generation-event/" # URL to the sales webpage
+   issued_tokens = 10000000 # Actual amount of tokens issued at the current tokensale phase
+   sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
+   share_of_sold = 0  # %, Filled by cyberanalytics team
+   token_distribution_date = "" # Date of token distribution
+    
+[ico.phases.terms.cap_limit]
+currency = ""
+amount = ""
+    
+[[ico.phases.terms.vesting]]
+supply_percent = "" # Percent of total token supply to be vested
+lockup_condition = "" # Type of tokenholders whose tokens will be vested
+lockup_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+  
+[[ico.phases.terms.crowdsale_addresses]]
+ currency = "ETH" # Cryptocurrency in which contributions accepted
+address = "0x8c27fafc6e56a997abe1681eee6de0077b458fd1" # Blockchain address for contributions
+
+ [[ico.phases.terms.crowdsale_addresses]]
+currency = "BTC" # Cryptocurrency in which contributions accepted
+address = "" # Blockchain address for contributions
+ [[ico.phases.terms.crowdsale_addresses]]
+currency = "USD" # Cryptocurrency in which contributions accepted
+address = "" # Blockchain address for contributions
+
+
+
+
+[ico.phases.dates]
+start_date = "2017-12-22T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+end_date = "2018-01-30T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+duration = 40 # Filled by cyberanalytics team
+
+
+
+[ico.phases.raised_funds]
+currency = "" # Filled by developers or cyberanalytics team
+amount = 0 # Filled by developers or cyberanalytics team
+
+
+
+[[ico.phases.prices.token_final_price]]
+currency = "ETH" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+price = 0.02857143 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+  
+[[ico.phases.prices.bonuses]]
+amount = "20" # Size of discount on token final price
+condition = "" # Conditions of the current discount
+
+
+
+[[ico.phases.contract]]
+contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation)
+contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+
+
+
+[product]
+
+
+
+ [[product.info]]
+ name = "BlockNum" # Name of application
+ same_blockchain = false # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
+ sources_availability = false # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
+ product_status = 1 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+ app_type = "Web App, Mobile App" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc
+ app_url = "" # URL to App
+
+
+
+[[product.info.token]]
+name = "GIGA token " # Token name
+symbol = "GIGA" # Token short designation
+dependency = "independent" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+   consensus_name = "PoC" # Name of consensys algorithm
+   token_type = "utility token" # Token type declared by founders ('security token', 'utility token', cryptocurrency)
+   inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+   circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+   governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+   governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+
+
+
+   [[product.info.milestone]]
+   number = 0 # Number of milestone
+   name = "iPCS Application/the iPCS SIM" # Short description of milestone
+   start_date = "2018 Q1"
+   end_date = "2018 Q1"
+   current_status = "In work" # Planned, In work, Completed
+
+   [[product.info.milestone]]
+   number = 1 # Number of milestone
+   name = "Authorization/Accounting" # Short description of milestone
+   start_date = "2018 Q1"
+   end_date = "2018 Q1"
+   current_status = "In work" # Planned, In work, Completed
+
+   
+   [[product.info.milestone]]
+   number = 2 # Number of milestone
+   name = "IP Routing Engine/Access Protocol" # Short description of milestone
+   start_date = "2018 Q1"
+   end_date = "2018 Q1"
+   current_status = "In work" # Planned, In work, Completed
+
+ [[product.info.milestone]]
+   number = 3 # Number of milestone
+   name = "Core EPC/3G and Interconnection with GSM Clearinghouse" # Short description of milestone
+   start_date = "2018 Q1"
+   end_date = "2018 Q1"
+   current_status = "In work" # Planned, In work, Completed
+
+ [[product.info.milestone]]
+   number = 4 # Number of milestone
+   name = "GIGA Wallet Back Office/Exchange" # Short description of milestone
+   start_date = "2018 Q1"
+   end_date = "2018 Q1"
+   current_status = "In work" # Planned, In work, Completed
+
+ [[product.info.milestone]]
+   number = 5 # Number of milestone
+   name = "Smart Contracts" # Short description of milestone
+   start_date = "2018 Q1"
+   end_date = "2018 Q1"
+   current_status = "In work" # Planned, In work, Completed
+
+
+[[links]]
+type = "website"
+name = "blocknum.com"
+url = "http://blocknum.com"
+tags = ["Main"]
+
+
+
+[[links]]
+type = "paper"
+name = "BlockNum Whitepaper"
+url = "https://blocknum.com/wp-content/uploads/2017/12/BN_White-paper.pdf"
+tags = ["Main", "Science"]
+
+[[links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/BlockNum/"
+icon = "facebook.png"
+tags = ["News"]

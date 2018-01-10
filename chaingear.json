@@ -1225,8 +1225,8 @@
         },
         "crowdsales": {
             "start_date": "2017-07-07T10:00:00",
-            "end_date": "2017-12-31T23:59:00",
-            "end_date_plan": "2017-12-31T23:59:00",
+            "end_date": "2018-01-12T20:00:00",
+            "end_date_plan": "2018-01-12T20:00:00",
             "genesis_address": [
                 ""
             ],
@@ -8867,6 +8867,72 @@
         ]
     },
     {
+        "genesis_id": "",
+        "system": "BlockNum",
+        "dependencies": [
+            "ERC20"
+        ],
+        "icon": "",
+        "token": {
+            "name": "Token GIGA",
+            "symbol": "GIGA"
+        },
+        "consensus": {
+            "consensus_type": "ERC20",
+            "consensus_name": "ERC20"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Environmentally Friendly Blockchain using PSTN and SIP protocole"
+        },
+        "crowdsales": {
+            "start_date": "2017-12-22T00:00:00",
+            "end_date": "2018-01-30T00:00:00",
+            "end_date_plan": "2018-01-30T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_term": "https://blocknum.com/crowdsale/gigacrowdsale.html",
+            "funding_url": "https://blocknum.com/token-generation-event/",
+            "tokens_sold": 0,
+            "tokens_issued": 10000000,
+            "btc_raised": "",
+            "cap_limit": [],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "blocknum.com",
+                "url": "http://blocknum.com",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "BlockNum Whitepaper",
+                "url": "https://blocknum.com/wp-content/uploads/2017/12/BN_White-paper.pdf",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/BlockNum/",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
         "genesis_id": "1.3.1072",
         "system": "BlockPay",
         "icon": "blockpay",
@@ -14343,7 +14409,7 @@
         "descriptions": {
             "state": "Project",
             "system_type": "cryptoasset",
-            "headline": "The world's first  public crypto analytics based on AI. "
+            "headline": "The world's first public crypto analytics based on AI. "
         },
         "crowdsales": {
             "start_date": "2018-03-26T00:00:00",
@@ -15769,16 +15835,16 @@
         "genesis_id": "",
         "system": "DAXT",
         "dependencies": [
-            "ERC20"
+            "Ethereum"
         ],
-        "icon": "",
+        "icon": "daxt",
         "token": {
             "name": "daxt token",
             "symbol": "DAXT"
         },
         "consensus": {
-            "consensus_type": "ERC20",
-            "consensus_name": "ERC20"
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
         },
         "descriptions": {
             "state": "Project",
@@ -15786,16 +15852,16 @@
             "headline": "DAXT gives access to compliant, high quality ICO pre-sales"
         },
         "crowdsales": {
-            "start_date": "",
-            "end_date": "",
-            "end_date_plan": "",
+            "start_date": "2017-12-11T09:30:00",
+            "end_date": "2017-12-31T17:30:00",
+            "end_date_plan": "2017-12-31T17:30:00",
             "genesis_address": [
                 ""
             ],
-            "funding_term": "",
-            "funding_url": "",
+            "funding_terms": "https://daxt.io/token-sale-terms",
+            "funding_url": "https://www.blockexmarkets.com/",
             "tokens_sold": "",
-            "tokens_issued": 130000000,
+            "tokens_issued": "",
             "btc_raised": "",
             "cap_limit": [
                 "usd=35700000"
@@ -15803,6 +15869,9 @@
             "raised": [
                 ""
             ]
+        },
+        "specs": {
+            "supply": 130000000
         },
         "links": [
             {
@@ -15816,29 +15885,27 @@
             {
                 "type": "paper",
                 "name": "DAXT Whitepaper",
-                "url": "https://daxt.io/",
+                "url": "https://daxt.io/dist/BlockEx-Initial-Coin-Offering-Market-and-Digital-Asset-Exchange-Token-White-Paper-v15.pdf",
                 "tags": [
                     "Main",
                     "Science"
                 ]
             },
             {
-                "type": "github",
-                "name": "Github",
-                "url": "",
-                "icon": "github.png",
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/BlockEx",
+                "icon": "twitter.png",
                 "tags": [
-                    "Main",
-                    "Code"
+                    "News"
                 ]
             },
             {
-                "type": "blog",
-                "name": "Blockex Blog",
-                "url": "https://medium.com/@blockex",
-                "icon": "medium.png",
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/BlockExDAxP",
+                "icon": "facebook.png",
                 "tags": [
-                    "Main",
                     "News"
                 ]
             }
@@ -19816,6 +19883,121 @@
                 "name": "YouTube",
                 "url": "https://www.youtube.com/channel/UCihooU0crqQkBOvV0_lsRnw",
                 "icon": "youtube.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
+        "system": "Doc Coin",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "doccoin",
+        "token": {
+            "name": "doccoin token",
+            "symbol": ""
+        },
+        "consensus": {
+            "consensus_type": "ERC20 Token",
+            "consensus_name": "Ethereum"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Blockchain protocol for telehealth"
+        },
+        "crowdsales": {
+            "start_date": "2018-01-25T00:00:00",
+            "end_date": "2018-04-04T00:00:00",
+            "end_date_plan": "2018-04-04T00:00:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_terms": "https://www.doc-coin.com",
+            "funding_url": "https://www.doc-coin.com",
+            "tokens_sold": "",
+            "tokens_issued": "20000000",
+            "btc_raised": "",
+            "cap_limit": [
+                ""
+            ],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "www.d-c-x.org",
+                "url": "https://www.d-c-x.org",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Doc Coin Whitepaper",
+                "url": "https://www.doc-coin.com/white-paper-eng",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "github",
+                "name": "Doc Coin Github",
+                "url": "https://github.com/DocCoinICO",
+                "icon": "github.png",
+                "tags": [
+                    "Main",
+                    "Code"
+                ]
+            },
+            {
+                "type": "blog",
+                "name": "Doc Coin Blog",
+                "url": "https://medium.com/@doc.coin.ico",
+                "icon": "medium.png",
+                "tags": [
+                    "Main",
+                    "News"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/Doc_Coin",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Doc Coin Telegram",
+                "url": "https://t.me/joinchat/AAAAAEHmgwIjLMLc3F88mA",
+                "icon": "telegram.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "reddit",
+                "name": "Reddit",
+                "url": "https://www.reddit.com/user/Doc_Coin/",
+                "icon": "reddit.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/groups/DocCoin/",
+                "icon": "facebook.png",
                 "tags": [
                     "News"
                 ]
@@ -32173,8 +32355,8 @@
         ],
         "icon": "insurepal",
         "token": {
-            "name": "ipl token",
-            "symbol": "IPL"
+            "name": " token",
+            "symbol": ""
         },
         "consensus": {
             "consensus_type": "ERC20 Token",
@@ -62723,329 +62905,6 @@
                 "icon": "facebook.png",
                 "tags": [
                     "News"
-                ]
-            }
-        ]
-    },
-    {
-        "genesis_id": "0xcb94be6f13a1182e4a4b6140cb7bf2025d28e41b",
-        "system": "WeTrust",
-        "icon": "wetrust",
-        "dependencies": [
-            "Ethereum"
-        ],
-        "token": {
-            "name": "trustcoin",
-            "symbol": "TRST"
-        },
-        "consensus": {
-            "type": "Ethereum",
-            "algorithm": "Transferable Fungible"
-        },
-        "aliases": {
-            "coinmarketcap": "WeTrust"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptoasset",
-            "headline": "A platform for Trusted Lending Circles, powered by people and blockchain",
-            "tags": [
-                "DApp"
-            ],
-            "twwidid": "",
-            "page_state": "ready"
-        },
-        "crowdsales": {
-            "start_date": "2017-03-02T00:00:00",
-            "end_date": "2017-04-12T11:59:00",
-            "genesis_address": [
-                "0xc2cce1f4190d4451c63cf591678c807679c3d728"
-            ],
-            "funding_terms": "https://www.wetrust.io/static/WeTrust-Disclosures.pdf",
-            "funding_url": "https://www.wetrust.io/tlc/crowdsale",
-            "tokens_sold": 80000000,
-            "tokens_issued": 100000000,
-            "btc_raised": 1048.95
-        },
-        "specs": {
-            "supply": 100000000,
-            "cap": {}
-        },
-        "first_price": {
-            "date": "",
-            "btc": "",
-            "usd": ""
-        },
-        "flags": {},
-        "links": [
-            {
-                "type": "website",
-                "name": "wetrust.io",
-                "url": "https://www.wetrust.io/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "blog",
-                "name": "Blog",
-                "url": "https://medium.com/wetrust-blog",
-                "icon": "medium.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            },
-            {
-                "type": "twitter",
-                "name": "Twitter",
-                "url": "https://twitter.com/wetrustplatform",
-                "icon": "twitter.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "reddit",
-                "name": "reddit",
-                "url": "https://www.reddit.com/r/WeTrustPlatform",
-                "icon": "reddit.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "Bitcointalk",
-                "url": "https://bitcointalk.org/index.php?topic=1773367",
-                "icon": "bitcoin.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Slack",
-                "url": "https://www.wetrust.io/slack-invite",
-                "icon": "slack.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "custom",
-                "name": "Facebook",
-                "url": "https://www.facebook.com/wetrustplatform",
-                "icon": "facebook.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "GitHub",
-                "url": "https://github.com/WeTrustPlatform",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "paper",
-                "name": "WeTrust Whitepaper",
-                "url": "https://github.com/WeTrustPlatform/documents/blob/master/WeTrustWhitePaper.pdf",
-                "icon": "paper.png",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "EtherScan",
-                "url": "http://etherscan.io/",
-                "icon": "etherscan.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "EtherChain.org",
-                "url": "http://etherchain.org/",
-                "icon": "etherchain.jpg",
-                "tags": [
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "EtherScan",
-                "url": "https://etherscan.io/token/0xcb94be6f13a1182e4a4b6140cb7bf2025d28e41b",
-                "icon": "etherscan.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "wallet",
-                "name": "Ethereum Wallet",
-                "url": "https://github.com/ethereum/mist/releases/",
-                "icon": "ethereum.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Wallet"
-                ]
-            },
-            {
-                "type": "wallet",
-                "name": "Parity",
-                "url": "https://parity.io/",
-                "icon": "parity.png",
-                "tags": [
-                    "Apps",
-                    "Wallet"
-                ]
-            },
-            {
-                "type": "wallet",
-                "name": "MyEther Wallet",
-                "url": "https://www.myetherwallet.com/",
-                "icon": "myetherwallet.png",
-                "tags": [
-                    "Apps",
-                    "Wallet"
-                ]
-            },
-            {
-                "type": "wallet",
-                "name": "MetaMask",
-                "url": "https://metamask.io/",
-                "icon": "metamask.png",
-                "tags": [
-                    "Apps",
-                    "Wallet"
-                ]
-            },
-            {
-                "type": "exchange",
-                "name": "Bittrex",
-                "url": "https://bittrex.com",
-                "icon": "bittrex.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            },
-            {
-                "type": "exchange",
-                "name": "Liqui Exchange",
-                "url": "https://liqui.io/",
-                "icon": "liqui.png",
-                "tags": [
-                    "Apps",
-                    "Exchange"
-                ]
-            }
-        ]
-    },
-    {
-        "genesis_id": "",
-        "dependencies": [
-            "Ethereum"
-        ],
-        "system": "WeiFund",
-        "aliases": {
-            "coinmarketcap": "",
-            "CurrencyName": "",
-            "nickname": "WeiFund"
-        },
-        "ratings": {},
-        "consensus": {
-            "consensus_name": "",
-            "hashing": "",
-            "consensus_type": ""
-        },
-        "descriptions": {
-            "state": "Project",
-            "system_type": "cryptoasset",
-            "headline": "Decentralized Crowdfunding Platform",
-            "tags": [
-                "DApp"
-            ],
-            "hashtag": "#weifund",
-            "page_state": "draft"
-        },
-        "events": {
-            "announcement": "",
-            "genesis": ""
-        },
-        "token": {
-            "name": "",
-            "symbol": ""
-        },
-        "links": [
-            {
-                "name": "weifund.io",
-                "url": "http://weifund.io/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ],
-                "type": "website"
-            },
-            {
-                "name": "Twitter",
-                "url": "https://twitter.com/weifund",
-                "icon": "twitter.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ],
-                "type": "twitter"
-            },
-            {
-                "name": "Facebook",
-                "url": "https://www.facebook.com/WeiFund",
-                "icon": "facebook.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "custom"
-            },
-            {
-                "name": "Google+",
-                "url": "https://plus.google.com/115585706546158843009",
-                "icon": "googleplus.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "custom"
-            },
-            {
-                "name": "LinkedIn",
-                "url": "https://www.linkedin.com/company/weifund",
-                "icon": "linkedin.png",
-                "tags": [
-                    "News"
-                ],
-                "type": "custom"
-            },
-            {
-                "name": "WeiFund GitHub",
-                "url": "https://github.com/weifund",
-                "type": "github",
-                "tags": [
-                    "Main",
-                    "Code"
                 ]
             }
         ]

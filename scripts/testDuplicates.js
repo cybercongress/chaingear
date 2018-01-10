@@ -3,14 +3,19 @@ var path = require('path');
 var toml = require('toml');
 var _ = require("lodash");
 
+var errors = 0;
+
 function loadToml(filename, result) {
   try {
     var fullname = path.join(filename);
     var data = fs.readFileSync(fullname);
     var parsed = toml.parse(data);
 
-
     result.push(parsed.system);
+    if (!parsed.system) {
+      errors += 1;
+      console.error(fullname + ' has no system name. ' + parsed.system);
+    }
   } catch (e) {
     console.error("Parsing error on line " + e.line + ", column " + e.column +
       ": " + e.message);
@@ -50,12 +55,15 @@ function act() {
 
   var counts =_.countBy(result);
   _.each(counts, function(v,k){
-    if (v==1) delete counts[k]
+    if (v!=1) {
+      errors += 1;
+      console.error(v + " system name duplicates for " + k);
+    }
   });
-  console.log(counts);
-
 }
 
-act();/**
+act();
+process.exit(errors);
+/**
  * Created by angelo on 7/21/15.
  */
