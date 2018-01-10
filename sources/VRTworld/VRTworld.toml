@@ -68,17 +68,6 @@ description = "Developing the VR park franchise" # Purpose of collected procceed
 percent = 12 # Share of overall procceeds (contributions)
 
 [[ico.phases]]
-phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
-phase_name = "Pre-sale"
-phase_status = "Finished" # Active/Finished
-
-[[ico.phases.registration]]
-start_date = "2017-12-05T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
-end_date = "2017-12-23T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
-website = "https://presale.vrt.world" # URL to the registration webpage
-terms = "https://presale.vrt.world/sites/default/files/Terms%20and%20Conditions.pdf" # URL to the registration terms
-
-[[ico.phases]]
 phase_num = 1 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
 phase_name = "Token Sale"
 phase_status = "Active" # Active/Finished
@@ -151,6 +140,59 @@ condition = "Bonuses for purchase till end of sale" # Conditions of the current 
 contract_address = "0x2496477fb081a0ee9d62e7c32d897872f28ae86c" # Fill this field out only if dependency = "ERC20"; Ethereum tokensale address - a hexadecimal field format (base 16 notation)
 contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
 
+[[ico.phases]]
+phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+phase_name = "Pre-sale"
+phase_status = "Finished" # Active/Finished
+
+[[ico.phases.registration]]
+start_date = "2017-12-05T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+end_date = "2017-12-23T00:00:00" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+website = "https://presale.vrt.world" # URL to the registration webpage
+terms = "https://presale.vrt.world/sites/default/files/Terms%20and%20Conditions.pdf" # URL to the registration terms
+
+[ico.phases.terms]
+    sales_agreement = "" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+    sales_url = "" # URL to the sales webpage
+    issued_tokens = 0 # Actual amount of tokens issued at the current tokensale phase
+    sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
+    share_of_sold = 0  # %, Filled by cyberanalytics team
+    token_distribution_date = "" # Date of token distribution
+      
+      [[ico.phases.terms.cap_limit]]
+      currency = "" # USD, BTC or ETH
+      amount = 0 # Cap limit in specified currency
+      
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0 # Percent of total token supply to be vested
+      lockup_condition = "" # Type of tokenholders whose tokens will be vested
+      lockup_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = "" # Cryptocurrency in which contributions accepted
+      address = "" # Blockchain address for contributions
+
+    [ico.phases.dates]
+    start_date = "" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+    end_date = "" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+    duration = "" # Filled by cyberanalytics team
+
+    [[ico.phases.raised_funds]]
+    currency = "" # Filled by developers or cyberanalytics team
+    amount = 0 # Filled by developers or cyberanalytics team
+
+    [[ico.phases.prices.token_final_price]]
+    currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+    price = 0 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+    
+    [[ico.phases.prices.bonuses]]
+    amount = "" # Size of discount on token final price
+    condition = "" # Conditions of the current discount
+
+    [[ico.phases.contract]]
+    contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation) 
+    contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+    
 [app]
 
 [[app.info]]
