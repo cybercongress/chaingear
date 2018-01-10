@@ -56,8 +56,8 @@ consensus_name = "Proof-of-Work" # Proof-of-Work, Proof-of-Stake, Delegated Proo
     terms = "" # URL to the registration terms
 
     [ico.phases.terms]
-    sales_agreement = "" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
-    sales_url = "" # URL to the sales webpage
+    sales_agreement = "https://lockchain.co/whitepaper_v1.0_ed.pdf" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+    sales_url = "https://lockchain.co/" # URL to the sales webpage
     issued_tokens = 0 # Actual amount of tokens issued at the current tokensale phase
     sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
     share_of_sold = 0  # %, Filled by cyberanalytics team
@@ -77,8 +77,8 @@ consensus_name = "Proof-of-Work" # Proof-of-Work, Proof-of-Stake, Delegated Proo
       address = "" # Blockchain address for contributions
 
     [ico.phases.dates]
-    start_date = "" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
-    end_date = "" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+    start_date = "2017-10-29T16:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+    end_date = "2017-11-30T19:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
     duration = "" # Filled by cyberanalytics team
 
     [[ico.phases.raised_funds]]
