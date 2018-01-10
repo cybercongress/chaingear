@@ -1,0 +1,319 @@
+[blockchain]
+project_name = "Movement App"
+headline = "Unique ecosystem designed to reward users for physical activity" # 50 symbols max
+logo = "movementapp" # Link to logo image
+state = 0 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
+asset_type = "blockchain app" # blockchain protocol, blockchain app
+dependency = "Ethereum" # Blockchain used to issue a token: Ethereum, Waves, Graphene. If its own blockchain - "independent"
+consensus_name = "Proof-of-Work" # Proof-of-Work, Proof-of-Stake, Delegated Proof-of-Stake, Proof-of-Burn, Proof-of-Authority
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
+  current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+
+    [ico.common_info.token_distribution]
+    total_supply = 21172000
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Developers and advisors" # Name of tokenholder`s category
+      percent = 4.7 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "ICO" # Name of tokenholder`s category
+      percent = 47 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "ICO bonuses" # Name of tokenholder`s category
+      percent = 14 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Bounty" # Name of tokenholder`s category
+      percent = 9.4 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Developers reserve" # Name of tokenholder`s category
+      percent = 9.9 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Pre-ICO" # Name of tokenholder`s category
+      percent = 14 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Platform development" # Purpose of collected procceeds (contributions)
+      percent = 55 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Marketing" # Purpose of collected procceeds (contributions)
+      percent = 35 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Legal" # Purpose of collected procceeds (contributions)
+      percent = 5 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Operations" # Purpose of collected procceeds (contributions)
+      percent = 3 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Security" # Purpose of collected procceeds (contributions)
+      percent = 2 # Share of overall procceeds (contributions)
+
+  [[ico.phases]]
+    phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+    phase_name = "ICO"
+    phase_status = "" # Active/Finished
+    
+      [ico.phases.registration]
+      start_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+      end_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+      website = "" # URL to the registration webpage 
+      terms = "" # URL to the registration terms
+
+      [ico.phases.terms]
+      sales_agreement = "https://d3pdmwutokxl28.cloudfront.net/Terms_and_Conditions_Movement_App.pdf" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+      sales_url = "https://www.movementapp.io" # URL to the sales webpage
+      issued_tokens = 10000000 # Actual amount of tokens issued at the current tokensale phase
+      sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
+      share_of_sold = 0  # %, Filled by cyberanalytics team
+      token_distribution_date = "" # Date of token distribution
+        
+        [[ico.phases.terms.cap_limit]]
+        currency = "" # USD, BTC or ETH
+        amount = 0 # Cap limit in specified currency
+        
+        [[ico.phases.terms.vesting]]
+        supply_percent = 0 # Percent of total token supply to be vested
+        lockup_condition = "" # Type of tokenholders whose tokens will be vested
+        lockup_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+      
+        [[ico.phases.terms.crowdsale_addresses]]
+        currency = "" # Cryptocurrency in which contributions accepted
+        address = "" # Blockchain address for contributions
+
+      [ico.phases.dates]
+      start_date = "" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+      end_date = "" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+      duration = "" # Filled by cyberanalytics team
+
+      [[ico.phases.raised_funds]]
+      currency = "" # Filled by developers or cyberanalytics team
+      amount = 0 # Filled by developers or cyberanalytics team
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+      price = 0 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+      
+      [[ico.phases.prices.bonuses]]
+      amount = "20" # Size of discount on token final price
+      condition = "Week 1" # Conditions of the current discount
+
+      [[ico.phases.prices.bonuses]]
+      amount = "10" # Size of discount on token final price
+      condition = "Week 2" # Conditions of the current discount
+
+      [[ico.phases.prices.bonuses]]
+      amount = "5" # Size of discount on token final price
+      condition = "Week 3" # Conditions of the current discount
+
+      [[ico.phases.contract]]
+      contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation) 
+      contract_type = ""
+
+  [[ico.phases]]
+  phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+  phase_name = "Pre-ICO"
+  phase_status = "Finished" # Active/Finished
+  
+    [ico.phases.registration]
+    start_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    website = "" # URL to the registration webpage 
+    terms = "" # URL to the registration terms
+
+    [ico.phases.terms]
+    sales_agreement = "https://d3pdmwutokxl28.cloudfront.net/Terms_and_Conditions_Movement_App.pdf" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+    sales_url = "https://www.movementapp.io" # URL to the sales webpage
+    issued_tokens = 3072000 # Actual amount of tokens issued at the current tokensale phase
+    sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
+    share_of_sold = 0  # %, Filled by cyberanalytics team
+    token_distribution_date = "" # Date of token distribution
+      
+      [[ico.phases.terms.cap_limit]]
+      currency = "" # USD, BTC or ETH
+      amount = 0 # Cap limit in specified currency
+      
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0 # Percent of total token supply to be vested
+      lockup_condition = "" # Type of tokenholders whose tokens will be vested
+      lockup_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = "" # Cryptocurrency in which contributions accepted
+      address = "" # Blockchain address for contributions
+
+    [ico.phases.dates]
+    start_date = "2017-12-15T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+    end_date = "2017-12-25T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+    duration = "" # Filled by cyberanalytics team
+
+    [[ico.phases.raised_funds]]
+    currency = "" # Filled by developers or cyberanalytics team
+    amount = 0 # Filled by developers or cyberanalytics team
+
+    [[ico.phases.prices.token_final_price]]
+    currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+    price = 0 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+    
+    [[ico.phases.prices.bonuses]]
+    amount = "" # Size of discount on token final price
+    condition = "" # Conditions of the current discount
+
+    [[ico.phases.contract]]
+    contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation) 
+    contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+
+[app]
+
+  [[app.info]]
+  name = "Movement app" # Name of application
+  same_blockchain = false # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
+  sources_availability = true # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
+  app_status = 1 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+  app_type = "" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc 
+  app_url = "" # URL to App
+
+    [[app.info.milestone]]
+    number = 0 # Number of milestone
+    name = "Idea found" # Short description of milestone
+    start_date = "2017 January" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 January" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 1 # Number of milestone
+    name = "Market research, consultations with advisor, technical research" # Short description of milestone
+    start_date = "2017 February" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 June" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 2 # Number of milestone
+    name = "Whitepaper published" # Short description of milestone
+    start_date = "2017 October" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 October" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 3 # Number of milestone
+    name = "Brand Awareness, Marketing" # Short description of milestone
+    start_date = "2017 October" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 November" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 4 # Number of milestone
+    name = "Token sale phase 1" # Short description of milestone
+    start_date = "2017 December" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 December" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 5 # Number of milestone
+    name = "Token sale phase 2, Exchange listing" # Short description of milestone
+    start_date = "2018 February" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 March" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 6 # Number of milestone
+    name = "Movement App Alpha" # Short description of milestone
+    start_date = "2018 March" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 March" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 7 # Number of milestone
+    name = "Movement App Release" # Short description of milestone
+    start_date = "2018 June" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 June" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+    
+    [[links]]
+    type = "website"
+    name = "www.movementapp.io"
+    url = "https://www.movementapp.io"
+    tags = ["Main"]
+
+    [[links]]
+    type = "paper"
+    name = "Movement App Whitepaper"
+    url = "https://d3pdmwutokxl28.cloudfront.net/Movement_App_Whitepaper_Final.pdf"
+    tags = ["Main", "Science"]
+
+    [[links]]
+    type = "github"
+    name = "Movement App Github"
+    url = "https://github.com/movement-ico/contract"
+    icon = "github.png"
+    tags = ["Main", "Code"]
+
+    [[links]]
+    type = "blog"
+    name = "Movement App Blog"
+    url = "https://medium.com/@Movement_app"
+    icon = "medium.png"
+    tags = ["Main", "News"]
+
+    [[links]]
+    type = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/Movement_app_"
+    icon = "twitter.png"
+    tags = ["News"]
+
+    [[links]]
+    type = "custom"
+    name = "Movement App Telegram"
+    url = "https://t.me/movementapp"
+    icon = "telegram.png"
+    tags = ["News"]
+
+    [[links]]
+    type = "custom"
+    name = "Facebook"
+    url = "https://www.facebook.com/Movement-App-478970352502125/"
+    icon = "facebook.png"
+    tags = ["News"]
+
+[[token]]
+name = "move token" # Token name
+symbol = "MOVE" # Token short designation
+token_purpose = "ICO" # Purpose of token (ICO/app)
+token_type = "blockchain issued token" # core token or blockchain issued token
+inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+
+[[token]]
+name = "run token" # Token name
+symbol = "RUN" # Token short designation
+token_purpose = "app" # Purpose of token (ICO/app)
+token_type = "core token" # core token or blockchain issued token
+inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+governance_rights_org = ""
+
+[[exchange]]
+exchange = "" # Name of exchange
+date = "" # Date format: "2017-11-22T00:00:00"
+price = "" # Token selling price on specified date 
+volume = "" # Trades volume on specified date
+
+[[label]]
+blockchain = "" # Blockchain used to hold funds
+address = "" # Funds wallet adress
+balance = "" # Funds wallet balance
