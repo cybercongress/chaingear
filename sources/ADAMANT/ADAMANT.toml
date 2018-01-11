@@ -1,0 +1,311 @@
+[blockchain]
+project_name = "ADAMANT"
+headline = "A top-notch anonymous messenger encrypted with Blockchain" # 50 symbols max
+logo = "adamant" # Link to logo image
+state = 0 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
+asset_type = "blockchain app" # blockchain protocol, blockchain app
+dependency = "independent" # Blockchain used to issue a token: Ethereum, Waves, Graphene. If its own blockchain - "independent"
+consensus_name = "Delegated Proof-of-Stake" # Proof-of-Work, Proof-of-Stake, Delegated Proof-of-Stake, Proof-of-Burn, Proof-of-Authority
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
+  current_ico_phase = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+
+    [ico.common_info.token_distribution]
+    total_supply = 200000000
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "ICO" # Name of tokenholder`s category
+      percent = 75 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Initial investors rewards" # Name of tokenholder`s category
+      percent = 9 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Bounty Campaigns and initial user assessments" # Name of tokenholder`s category
+      percent = 8 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "ADAMANT Business Service marketing reserve" # Name of tokenholder`s category
+      percent = 4 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "reserve for system development and infrastructure support" # Name of tokenholder`s category
+      percent = 4 # Share of tokens granted to appropriate tokenholder`s category
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Infrastructure support" # Purpose of collected procceeds (contributions)
+      percent = 10 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Development" # Purpose of collected procceeds (contributions)
+      percent = 30 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "External security and code auditions (reviews) —" # Purpose of collected procceeds (contributions)
+      percent = 10 # Share of overall procceeds (contributions)
+
+      [[ico.common_info.use_of_proceeds]]
+      description = "Users involvement (promotion, advertising)" # Purpose of collected procceeds (contributions)
+      percent = 50 # Share of overall procceeds (contributions)
+
+  [[ico.phases]]
+  phase_num = 0 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+  phase_name = "Pre-sale"
+  phase_status = "Active" # Active/Finished
+  
+    [ico.phases.registration]
+    start_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    website = "" # URL to the registration webpage 
+    terms = "" # URL to the registration terms
+
+    [ico.phases.terms]
+    sales_agreement = "https://adamant.im/ico/" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+    sales_url = "https://adamant.im/ico/" # URL to the sales webpage
+    issued_tokens = 0 # Actual amount of tokens issued at the current tokensale phase
+    sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
+    share_of_sold = 0  # %, Filled by cyberanalytics team
+    token_distribution_date = "" # Date of token distribution
+      
+      [[ico.phases.terms.cap_limit]]
+      currency = "" # USD, BTC or ETH
+      amount = 0 # Cap limit in specified currency
+      
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0 # Percent of total token supply to be vested
+      lockup_condition = "" # Type of tokenholders whose tokens will be vested
+      lockup_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = "" # Cryptocurrency in which contributions accepted
+      address = "" # Blockchain address for contributions
+
+    [ico.phases.dates]
+    start_date = "2017-12-14T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+    end_date = "2018-01-25T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+    duration = "" # Filled by cyberanalytics team
+
+    [[ico.phases.raised_funds]]
+    currency = "" # Filled by developers or cyberanalytics team
+    amount = 0 # Filled by developers or cyberanalytics team
+
+    [[ico.phases.prices.token_final_price]]
+    currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+    price = 0 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+    
+    [[ico.phases.prices.bonuses]]
+    amount = "+20%" # Size of discount on token final price
+    condition = "20-30 ETH" # Conditions of the current discount
+
+    [[ico.phases.prices.bonuses]]
+    amount = "+30%" # Size of discount on token final price
+    condition = "30-50 ETH" # Conditions of the current discount
+
+    [[ico.phases.prices.bonuses]]
+    amount = "+40%" # Size of discount on token final price
+    condition = "50-90 ETH" # Conditions of the current discount
+
+    [[ico.phases.prices.bonuses]]
+    amount = "+50" # Size of discount on token final price
+    condition = "> 90 ETH" # Conditions of the current discount
+
+    [[ico.phases.contract]]
+    contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation) 
+    contract_type = "" # Fill this field out only if dependency = "ERC20"; NameTag of Ethereum tokensale address (you can find it at https://etherscan.io page of contract in Contract Overview section)
+
+    [[ico.phases]]
+    phase_num = 1 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
+    phase_name = "ICO"
+    phase_status = "Active" # Active/Finished
+    
+      [ico.phases.registration]
+      start_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+      end_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+      website = "" # URL to the registration webpage 
+      terms = "" # URL to the registration terms
+
+      [ico.phases.terms]
+      sales_agreement = "https://adamant.im/ico/" # URL to Token Sales Agreement and indication of its type (regular, SAFT etc.)
+      sales_url = "https://adamant.im/ico/" # URL to the sales webpage
+      issued_tokens = 73500000 # Actual amount of tokens issued at the current tokensale phase
+      sold_tokens = 0 # Actual amount of tokens sold at the current tokensale phase
+      share_of_sold = 0  # %, Filled by cyberanalytics team
+      token_distribution_date = "" # Date of token distribution
+        
+        [[ico.phases.terms.cap_limit]]
+        currency = "USD" # USD, BTC or ETH
+        amount = 30000000 # Cap limit in specified currency
+        
+        [[ico.phases.terms.vesting]]
+        supply_percent = 0 # Percent of total token supply to be vested
+        lockup_condition = "" # Type of tokenholders whose tokens will be vested
+        lockup_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+      
+        [[ico.phases.terms.crowdsale_addresses]]
+        currency = "" # Cryptocurrency in which contributions accepted
+        address = "" # Blockchain address for contributions
+
+      [ico.phases.dates]
+      start_date = "2018-01-30T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+      end_date = "2018-03-30T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+      duration = "" # Filled by cyberanalytics team
+
+      [[ico.phases.raised_funds]]
+      currency = "" # Filled by developers or cyberanalytics team
+      amount = 0 # Filled by developers or cyberanalytics team
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+      price = 0 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+      
+      [[ico.phases.prices.bonuses]]
+      amount = "+20%" # Size of discount on token final price
+      condition = "20-30 ETH" # Conditions of the current discount
+
+      [[ico.phases.prices.bonuses]]
+      amount = "+30%" # Size of discount on token final price
+      condition = "30-50 ETH" # Conditions of the current discount
+
+      [[ico.phases.prices.bonuses]]
+      amount = "+40%" # Size of discount on token final price
+      condition = "50-90 ETH" # Conditions of the current discount
+
+      [[ico.phases.prices.bonuses]]
+      amount = "+50" # Size of discount on token final price
+      condition = "> 90 ETH" # Conditions of the current discount
+
+      [[ico.phases.contract]]
+      contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation) 
+      contract_type = ""
+
+[app]
+
+  [[app.info]]
+  name = "ADAMANT messenger" # Name of application
+  same_blockchain = true # Field format: true or false; whether or not project will be using the same blockchain both for token sale and its product
+  sources_availability = true # Whether the code of the platform is delivered and openly available on Github/Bitbucket (at least partially); Checked by cyberanalytics team
+  app_status = 3 # 1 - not working product, 2 - working prototype (alpha, beta), 3 - working product in operation
+  app_type = "messenger" # Web App, Mobile App, Mobile Wallet, Desktop Wallet etc 
+  app_url = "https://msg.adamant.im/#/" # URL to App
+
+    [[app.info.milestone]]
+    number = 0 # Number of milestone
+    name = "Developing ADAMANT conceptions, Consulting with industry experts, ADAMANT TestNet deployment" # Short description of milestone
+    start_date = "2017 Q2" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 Q3" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 1 # Number of milestone
+    name = "Progressive Web App development (ADAMANT Wallet and Messenger), Making the Whitepaper" # Short description of milestone
+    start_date = "2017 Q3" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2017 Q4" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 2 # Number of milestone
+    name = "Website development, Starting up the ADAMANT MainNet, Making a full node distribution package, Creating ADAMANT Blockchain Explorer, Setting up information resources (social networks, forums and blogs), Bounty Campaign launch, Pre-ICO launch (12/14/2017)" # Short description of milestone
+    start_date = "2017 Q4" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 Q1" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Completed" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 3 # Number of milestone
+    name = "Pre-ICO closure (01/14/2018), ICO launch (01/30/2018), Adding new languages and translations for information resources, Extending ADAMANT Messenger functionality (with user profiles, simpler login process and sending files / tokens right from the chat screen), ICO end up (03/30/2018" # Short description of milestone
+    start_date = "2018 Q1" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 Q2" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "In work" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 4 # Number of milestone
+    name = "Listing ADM tokens on the cryptocurrency markets, Infrastructure whole-scaling, Extending ADAMANT Messenger functionality (adding address book, group chats, search through messages, ability for chatroom closure), Releasing ADAMANT Messenger native application for iOS" # Short description of milestone
+    start_date = "2018 Q2" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 Q3" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 5 # Number of milestone
+    name = "Introducing ADAMANT Business Service (with blockchain storing for documents and their digital signing), Releasing ADAMANT Messenger native application for Android, Marketing campaigns" # Short description of milestone
+    start_date = "2018 Q3" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2018 Q4" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+
+    [[app.info.milestone]]
+    number = 6 # Number of milestone
+    name = "Setting up ADAMANT Business Service for partner companies, Marketing campaigns, Security Audit" # Short description of milestone
+    start_date = "2018 Q4" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "2019" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    current_status = "Planned" # Planned, In work, Completed
+    
+    [[links]]
+    type = "website"
+    name = "adamant.im"
+    url = "https://adamant.im/"
+    tags = ["Main"]
+
+    [[links]]
+    type = "paper"
+    name = "ADAMANT Whitepaper"
+    url = "https://adamant.im/whitepaper/adamant-whitepaper-en.pdf"
+    tags = ["Main", "Science"]
+
+    [[links]]
+    type = "github"
+    name = "ADAMANT Github"
+    url = "https://github.com/adamant-im"
+    icon = "github.png"
+    tags = ["Main", "Code"]
+
+    [[links]]
+    type = "forum"
+    name = "Bitcointalk"
+    url = "https://bitcointalk.org/index.php?topic=2635646.0"
+    icon = "bitcointalk.png"
+    tags = ["News"]
+
+    [[links]]
+    type = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/adamant_im"
+    icon = "twitter.png"
+    tags = ["News"]
+
+    [[links]]
+    type = "custom"
+    name = "ADAMANT Telegram"
+    url = "https://t.me/adamant_im"
+    icon = "telegram.png"
+    tags = ["News"]
+
+    [[links]]
+    type = "custom"
+    name = "Facebook"
+    url = "https://www.facebook.com/adamant.im/"
+    icon = "facebook.png"
+    tags = ["News"]
+
+
+[[token]]
+name = "adm token" # Token name
+symbol = "ADM" # Token short designation
+token_purpose = "app" # Purpose of token (ICO/app)
+token_type = "core token" # core token or blockchain issued token
+inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
+circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+governance_rights_org = "" # List of rights to be granted to tokenholders to govern the operational organization
+
+[[exchange]]
+exchange = "" # Name of exchange
+date = "" # Date format: "2017-11-22T00:00:00"
+price = "" # Token selling price on specified date 
+volume = "" # Trades volume on specified date
+
+[[label]]
+blockchain = "" # Blockchain used to hold funds
+address = "" # Funds wallet adress
+balance = "" # Funds wallet balance
