@@ -42883,6 +42883,81 @@
     },
     {
         "genesis_id": "",
+        "system": "Neunet",
+        "dependencies": [
+            "Independent"
+        ],
+        "icon": "neunet",
+        "token": {
+            "name": "neunio token",
+            "symbol": "https://neunio.io/res/pdf/Whitepaper-English.pdf"
+        },
+        "consensus": {
+            "consensus_type": "",
+            "consensus_name": ""
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "AI and Blockchain powered platform revolutionizing HR"
+        },
+        "crowdsales": {
+            "start_date": "2017-11-22T00:01:00",
+            "end_date": "2017-12-08T23:59:00",
+            "end_date_plan": "2017-12-08T23:59:00",
+            "genesis_address": [
+                ""
+            ],
+            "funding_term": "https://neunio.io/res/pdf/Whitepaper-English.pdf",
+            "funding_url": "https://neunio.io/",
+            "tokens_sold": 0,
+            "tokens_issued": 10025640,
+            "btc_raised": "",
+            "cap_limit": [],
+            "raised": [
+                ""
+            ]
+        },
+        "links": [
+            {
+                "type": "website",
+                "name": "neunio.io",
+                "url": "https://neunio.io/",
+                "tags": [
+                    "Main"
+                ]
+            },
+            {
+                "type": "paper",
+                "name": "Neunet Whitepaper",
+                "url": "https://neunio.io/",
+                "tags": [
+                    "Main",
+                    "Science"
+                ]
+            },
+            {
+                "type": "twitter",
+                "name": "Twitter",
+                "url": "https://twitter.com/idea_x_design",
+                "icon": "twitter.png",
+                "tags": [
+                    "News"
+                ]
+            },
+            {
+                "type": "custom",
+                "name": "Facebook",
+                "url": "https://www.facebook.com/ideaxdesign",
+                "icon": "facebook.png",
+                "tags": [
+                    "News"
+                ]
+            }
+        ]
+    },
+    {
+        "genesis_id": "",
         "system": "Neuron network",
         "dependencies": [
             "Ethereum"
@@ -62137,88 +62212,5 @@
                 ]
             }
         ]
-    },
-    {
-        "genesis_id": "4d96a915f49d40b1e5c2844d1ee2dccb90013a990ccea12c492d22110489f0c4",
-        "system": "Vertcoin",
-        "icon": "vertcoin",
-        "dependencies": "independent",
-        "aliases": {
-            "coinmarketcap": "Vertcoin"
-        },
-        "consensus": {
-            "type": "PoW",
-            "algorithm": "ScryptN"
-        },
-        "descriptions": {
-            "state": "Public",
-            "system_type": "cryptocurrency",
-            "tags": [
-                "DAO"
-            ]
-        },
-        "events": {
-            "announcement": "08/01/2014"
-        },
-        "token": {
-            "name": "Vertcoin",
-            "symbol": "VTC"
-        },
-        "specs": {
-            "block_time": 150,
-            "block_reward": 50,
-            "halfing_cycle": "840000 blocks (~4 years)",
-            "total_tokens": 84000000,
-            "premine_tokens": "3 blocks",
-            "difficulty_cycle": "2016(3.5 days)"
-        },
-        "links": [
-            {
-                "type": "website",
-                "name": "vertcoin.org",
-                "url": "http://vertcoin.org/",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "type": "explorer",
-                "name": "Explorer",
-                "url": "https://explorer.thisisvtc.com/",
-                "icon": "explorer.png",
-                "tags": [
-                    "Main",
-                    "Apps",
-                    "Explorer",
-                    "Analytics"
-                ]
-            },
-            {
-                "type": "github",
-                "name": "Vertcoin GitHub",
-                "url": "https://github.com/vertcoin/vertcoin",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "type": "forum",
-                "name": "BTT Thread",
-                "url": "https://bitcointalk.org/index.php?topic=404364.0",
-                "icon": "forum.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            }
-        ],
-        "first_price": {
-            "btc": 0.00032875,
-            "usd": 0.28203892,
-            "date": "2014-01-20T00:00:00"
-        }
     }
 ]
