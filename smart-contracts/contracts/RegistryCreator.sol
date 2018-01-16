@@ -15,13 +15,12 @@ contract RegistryCreator is Ownable {
         address[] _benefitiaries,
         uint256[] _shares,
         Registry.PermissionType _permissionType,
-        uint _entryCreationFee,
-        bytes _bytecode
+        uint _entryCreationFee
     ) external returns (Registry result)
     {
         require(msg.sender == builder);
 
-        result = new Registry(_benefitiaries, _shares, _permissionType, _entryCreationFee, _bytecode);
+        result = new Registry(_benefitiaries, _shares, _permissionType, _entryCreationFee);
         result.transferOwnership(msg.sender);
     }
 

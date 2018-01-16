@@ -9,9 +9,12 @@ contract Registry is Destructible, SplitPaymentChangeable {
 
     using BytesLib for bytes;
 
-    struct Entry {
-        address addr;
+    struct TokenEntry {
         address owner;
+        uint creationTime;
+        uint lastUpdateTime;
+        string name;
+        string ticker;
     }
   
     enum PermissionType {OnlyOwner, AllUsers}
@@ -21,56 +24,60 @@ contract Registry is Destructible, SplitPaymentChangeable {
     string public tags;
     PermissionType public permissionType;
     uint public entryCreationFee;
-    Entry[] public entries;
-    bytes public bytecode;
+    TokenEntry[] public entries;
 
-    event EntryCreated(address addr, uint entryId);
-    event EntryDeleted(address addr);
+    event EntryCreated(address owner, uint entryId);
+    event EntryDeleted(uint entryId);
+    event EntryUpdated(uint entryId, address owner, string name, string ticker);
   
     function Registry(
         address[] _benefitiaries,
         uint256[] _shares,
         PermissionType _permissionType,
-        uint _entryCreationFee,
-        bytes _bytecode
+        uint _entryCreationFee
     ) SplitPaymentChangeable(_benefitiaries, _shares) public
     {
         permissionType = _permissionType;
         entryCreationFee = _entryCreationFee;
-        bytecode = _bytecode;
     }
   
-    function createEntry(bytes _params) external payable returns (address addr) {
+    function createEntry(string _name, string _ticker) external payable {
         require(msg.sender == owner || msg.value == entryCreationFee);
         require(msg.sender == owner || permissionType == PermissionType.AllUsers);
     
-        bytes memory params = _params;                              // copy into memory from calldata
-        bytes memory completeBytecode = bytecode.concat(params);    // add constructor params to the end of bytecode
-        
-        assembly {
-          let s := mload(completeBytecode)                          // bytecode array length
-          let p := add(completeBytecode, 0x20)                      // bytecode start
-          addr := create(0, p, s)                                   // create new contract with code mem[p..(p+s)) and send v wei and return the new address
-        }
+        entries.push(TokenEntry(
+        {
+            owner: msg.sender,
+            creationTime: now,
+            lastUpdateTime: now,
+            name: _name,
+            ticker: _ticker
+        }));
+    
+        EntryCreated(msg.sender, entries.length - 1);
+    }
 
-        assert(addr != 0x0);
-    
-        entries.push(Entry({ addr: addr, owner: msg.sender }));
-    
-        EntryCreated(addr, entries.length - 1);
+    function updateEntry(uint _entryId, address _owner, string _name, string _ticker) external {
+        require(entries[_entryId].owner == msg.sender);
+
+        entries[_entryId].lastUpdateTime = now;
+        entries[_entryId].owner = _owner;
+        entries[_entryId].name = _name;
+        entries[_entryId].ticker = _ticker;
+
+        EntryUpdated(_entryId, _owner, _name, _ticker);
     }
   
     function deleteEntry(uint _entryId) external {
         require(entries[_entryId].owner == msg.sender);
 
-        EntryDeleted(entries[_entryId].addr);
+        delete entries[_entryId];
 
-        entries[_entryId].addr = 0x0;
-        entries[_entryId].owner = 0x0;
+        EntryDeleted(_entryId);
     }
 
     function isDeleted(uint _entryId) external constant returns (bool) {
-        return entries[_entryId].addr == 0x0;
+        return entries[_entryId].owner == 0x0;
     }
   
     function entriesCount() external constant returns (uint) {

@@ -21,7 +21,8 @@ contract("Registry", (accounts) => {
     const CREATION_FEE = 1
     const CREATION_GAS = 4000000
 
-    const params = "0x000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000016100000000000000000000000000000000000000000000000000000000000000"
+    const NAME = "Bitcoin"
+    const TICKER = "BTC"
 
     let registry
 
@@ -31,7 +32,6 @@ contract("Registry", (accounts) => {
             [],
             PermissionType.All,
             CREATION_FEE,
-            SampleEntryArtifacts.bytecode,
             { from: REGISTRY_OWNER }
         )
     })
@@ -39,22 +39,19 @@ contract("Registry", (accounts) => {
 
     it("#1 should allow to add and deploy new entry", async () => {
         const count1 = new BigNumber(await registry.entriesCount())
-        const res = await registry.createEntry(params, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS })
+        const res = await registry.createEntry(NAME, TICKER, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS })
         const count2 = new BigNumber(await registry.entriesCount())
         count2.should.bignumber.equal(count1.add(1))
 
         console.log("Gas used: " + res.receipt.gasUsed)
 
         const entry = await registry.entries(count1)
-        web3.eth.getCode(entry[0]).should.equal(SampleEntryArtifacts.deployedBytecode)
-
-        const entryContract = SampleEntry.at(entry[0])
-        var attribute = await entryContract.str()
-        attribute.should.equal('a')
+        entry[3].should.be.equal(NAME)
+        entry[4].should.be.equal(TICKER)
     })
 
     it("#2 should not allow to create new entry without creation fee", async () => {
-        await registry.createEntry(SampleEntryArtifacts.bytecode, { from: ENTRY_OWNER, value: 0, gas: CREATION_GAS }).should.be.rejected
+        await registry.createEntry(NAME, TICKER, { from: ENTRY_OWNER, value: 0, gas: CREATION_GAS }).should.be.rejected
     })
 
     it("#3 should not allow unknown to create entry if permission type = OnlyOwner", async () => {
@@ -65,24 +62,26 @@ contract("Registry", (accounts) => {
         )
 
         const count1 = new BigNumber(await registry2.entriesCount())
-        await registry2.createEntry(SampleEntryArtifacts.bytecode, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS }).should.be.rejected
+        await registry2.createEntry(NAME, TICKER, { from: ENTRY_OWNER, value: CREATION_FEE, gas: CREATION_GAS }).should.be.rejected
         const count2 = new BigNumber(await registry2.entriesCount())
 
         count2.should.bignumber.equal(count1)
     })
 
-    it("#4 should allow entry owner to delete entry", async () => {
+    // TODO: add update tests
+
+    it("#4 should not allow unknown to delete entry", async () => {
         const count1 = new BigNumber(await registry.entriesCount())
-        await registry.deleteEntry(count1.sub(1), { from: ENTRY_OWNER })
+        await registry.deleteEntry(count1, { from: UNKNOWN }).should.be.rejected
 
         const entry = await registry.entries(count1.sub(1))
 
-        entry[0].should.equal('0x0000000000000000000000000000000000000000')
+        entry[0].should.equal(ENTRY_OWNER)
     })
 
-    it("#5 should not allow unknown to delete entry", async () => {
+    it("#5 should allow entry owner to delete entry", async () => {
         const count1 = new BigNumber(await registry.entriesCount())
-        await registry.deleteEntry(count1, { from: UNKNOWN }).should.be.rejected
+        await registry.deleteEntry(count1.sub(1), { from: ENTRY_OWNER })
 
         const entry = await registry.entries(count1.sub(1))
 

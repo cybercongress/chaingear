@@ -46,7 +46,6 @@ contract("RegistryBuilder", (accounts) => {
             [],
             PermissionType.All,
             CREATION_FEE,
-            SampleEntry.bytecode,
             { from: CREATOR, value: BUILDING_FEE, gas: CREATION_GAS }
         )
 

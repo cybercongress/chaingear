@@ -25,8 +25,7 @@ contract RegistryBuilder is Builder {
         address[] _benefitiaries,
         uint256[] _shares,
         Registry.PermissionType _permissionType,
-        uint _entryCreationFee,
-        bytes _bytecode
+        uint _entryCreationFee
     )
         external payable returns (address) 
     {
@@ -39,7 +38,7 @@ contract RegistryBuilder is Builder {
             client = _client;
         }
 
-        Registry instance = creator.create(_benefitiaries, _shares, _permissionType, _entryCreationFee, _bytecode);
+        Registry instance = creator.create(_benefitiaries, _shares, _permissionType, _entryCreationFee);
         instance.transferOwnership(client);
 
         createdContracts[client].push(instance);

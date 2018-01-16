@@ -13,8 +13,8 @@ module.exports = function(deployer, network, accounts) {
     SHARES = []
   } else {
     BUILDING_FEE = 1
-    BENEFICIARIES = []
-    SHARES = []
+    BENEFICIARIES = [accounts[0]]
+    SHARES = [1]
   }
 
   deployer.deploy(
