@@ -1,0 +1,155 @@
+[blockchain]
+project_name = "name"
+headline = "headline"
+logo = ""
+state = 0.0
+asset_type = "blockchain_app"
+dependency = "Waves"
+consensus_name = "POW"
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = "1"
+
+    [ico.common_info.token_distribution]
+    total_supply = 0.0
+
+      [[ico.common_info.token_distribution.shares]]
+      description = ""
+      percent = 0.0
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = 25.0
+    description = "proceeds share 1"
+    value = false
+
+  [[ico.phases]]
+  phase_num = "1"
+  phase_name = "name"
+  phase_status = "Finished"
+
+    [ico.phases.registration]
+    start_date = "2018-01-17T00:00:00.000Z"
+    end_date = "2018-01-29T00:00:00.000Z"
+    website = "website"
+    terms = "terms"
+
+    [ico.phases.terms]
+    sales_agreement = "agreement"
+    sales_url = "website"
+    issued_tokens = "issued"
+    sold_tokens = "sold"
+    share_of_sold = 0.0
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "123"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      address = "crowdsale adress"
+      currency = "ETH"
+      value = false
+
+    [ico.phases.dates]
+    start_date = "2018-01-25T00:00:00.000Z"
+    end_date = "2018-01-31T00:00:00.000Z"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = "1234"
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = "12345"
+
+      [[ico.phases.prices.bonuses]]
+      amount = ""
+      condition = ""
+
+    [[ico.phases.contract]]
+    address = "contract adress"
+    type = "type"
+    value = false
+
+[app]
+
+  [[app.info]]
+  name = ""
+  same_blockchain = false
+  sources_availability = true
+  app_status = 1.0
+  app_type = ""
+  app_url = ""
+
+    [[app.info.milestone]]
+    number = 0.0
+    name = ""
+    start_date = ""
+    end_date = ""
+    current_status = ""
+
+    [[app.info.links]]
+    type = "website"
+    name = "Website"
+    url = "website"
+    tags = [
+      "Main"
+    ]
+
+    [[app.info.links]]
+    type = "paper"
+    name = "Paper"
+    url = "paper"
+    tags = [
+      "Main",
+      "Science"
+    ]
+
+    [[app.info.links]]
+    type = "github"
+    name = "Github"
+    url = "git"
+    tags = [
+      "Main",
+      "Code"
+    ]
+
+    [[app.info.links]]
+    type = "blog"
+    name = "Blog"
+    url = "blog"
+    tags = [
+      "Main",
+      "News"
+    ]
+
+[[token]]
+name = "name"
+symbol = "sym"
+token_purpose = "ICO token"
+token_type = "Core token"
+inflation_rate = "inflation"
+circulation_terms = "circulation"
+governance_rights_project = "rights project"
+governance_rights_org = "rights org"
+
+[[exchange]]
+exchange = ""
+date = ""
+price = ""
+volume = ""
+
+[[label]]
+blockchain = ""
+address = ""
+balance = ""
