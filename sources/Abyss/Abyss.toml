@@ -1,0 +1,175 @@
+[blockchain]
+project_name = "Abyss "
+headline = "A digital distribution platform"
+logo = ""
+state = "0"
+asset_type = "blockchain_app"
+dependency = "Ethereum"
+consensus_name = "POW"
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = "0"
+  current_phase_status = "Active"
+
+    [ico.common_info.token_distribution]
+    total_supply = 0.0
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Company and Advisors"
+      percent = "21"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Bounty"
+      percent = "1"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Reserve"
+      percent = "18"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Crowdsale"
+      percent = "60"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Marketing"
+    percent = "25"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Reserve"
+    percent = "5"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Development"
+    percent = "20"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Legal"
+    percent = "5"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Operational"
+    percent = "45"
+
+  [[ico.phases]]
+  phase_num = "0"
+  phase_name = "ICO"
+  phase_status = "Active"
+
+    [ico.phases.registration]
+    start_date = "2018-01-26T00:00:00.000Z"
+    end_date = "2018-01-28T00:00:00.000Z"
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    sales_agreement = "https://www.theabyss.com/static/docs/abyss-tokens-sale-agreement-en.pdf?20180117T022214"
+    sales_url = "https://www.theabyss.com/#"
+    issued_tokens = 0.0
+    sold_tokens = 0.0
+    share_of_sold = 0.0
+    token_distribution_date = ""
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "ETH"
+      amount = "100000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      address = "342345"
+      currency = "уер"
+      index = 0.0
+      value = false
+
+    [ico.phases.dates]
+    start_date = "2018-02-07T00:00:00.000Z"
+    end_date = "2018-03-01T00:00:00.000Z"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = 0.0
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = ""
+      price = 0.0
+
+      [[ico.phases.prices.bonuses]]
+      amount = "25%"
+      condition = "Day 1"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "15%"
+      condition = "Day 2-5"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "10%"
+      condition = "Day 6-10"
+
+    [[ico.phases.contract]]
+    address = "434е5е"
+    type = "ico"
+    index = 0.0
+    value = false
+
+[app]
+
+  [[app.info]]
+  name = "test"
+  same_blockchain = "true"
+  sources_availability = "false"
+  app_status = "1"
+  app_type = "test"
+  app_url = "test"
+
+    [[app.info.milestone]]
+    name = "Active phase of platform development"
+    start_date = "Q2 2018"
+    end_date = "Q3 2018"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.links]]
+    type = "website"
+    name = "Website"
+    url = "https://www.theabyss.com"
+    tags = [
+      "Main"
+    ]
+
+[[token]]
+name = "ABYSS"
+symbol = "ABYSS"
+token_purpose = "App token"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
+
+[[exchange]]
+exchange = ""
+date = ""
+price = ""
+volume = ""
+
+[[label]]
+blockchain = ""
+address = ""
+balance = ""
