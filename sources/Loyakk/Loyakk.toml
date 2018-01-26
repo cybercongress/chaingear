@@ -1,0 +1,208 @@
+[blockchain]
+project_name = "Loyakk"
+headline = "Loyakk Vega - The Platform for Decentralized Business Networks"
+logo = ""
+state = "0"
+asset_type = "blockchain_app"
+dependency = "Ethereum"
+consensus_name = "POW"
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = "0"
+  current_phase_status = "Active"
+
+    [ico.common_info.token_distribution]
+    total_supply = "1000000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Token Purchasers"
+      percent = "61"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Team & Advisors"
+      percent = "17"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Blockchain Research Fund"
+      percent = "10"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Incentives"
+      percent = "7"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Partners"
+      percent = "5"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Development"
+    percent = "45"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Operations"
+    percent = "20"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Marketing"
+    percent = "15"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Sales and Customer Adoption"
+    percent = "10"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Legal and Administrative"
+    percent = "10"
+
+  [[ico.phases]]
+  phase_num = "0"
+  phase_name = "Token sale"
+  phase_status = "Active"
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    sales_agreement = "https://www.loyakk.io/assets/Loyakk-Token-Terms-&-Conditions-O21.pdf"
+    sales_url = "https://www.loyakk.io/"
+    issued_tokens = "183000000"
+    sold_tokens = 0.0
+    share_of_sold = 0.0
+    token_distribution_date = ""
+
+      [[ico.phases.terms.cap_limit]]
+      currency = ""
+      amount = 0.0
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      address = ""
+      currency = ""
+
+    [ico.phases.dates]
+    start_date = "2018-02-23T00:00:00.000Z"
+    end_date = "2018-04-23T00:00:00.000Z"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = 0.0
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = ""
+      price = 0.0
+
+      [[ico.phases.prices.bonuses]]
+      amount = "20-25%"
+      condition = "Days 1-5"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "15-20%"
+      condition = "Days 6-10"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "7-10%"
+      condition = "Days 11-15"
+
+    [[ico.phases.contract]]
+    contract = ""
+    type = ""
+
+[app]
+
+  [[app.info]]
+  name = "Loyakk Vega Business Relationship Platform"
+  same_blockchain = "true"
+  sources_availability = "true"
+  app_status = "1"
+  app_type = "Web app"
+  app_url = "https://www.loyakk.io/"
+
+    [[app.info.milestone]]
+    name = "ICO start"
+    start_date = "2018 January"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.links]]
+    type = "website"
+    name = "Website"
+    url = "https://www.loyakk.io/"
+    tags = [
+      "Main"
+    ]
+
+    [[app.info.links]]
+    type = "paper"
+    name = "Paper"
+    url = "https://www.loyakk.io/assets/Loyakk-Vega-Business-Overview-O21.pdf"
+    tags = [
+      "Main",
+      "Science"
+    ]
+
+    [[app.info.links]]
+    type = "github"
+    name = "Github"
+    url = "https://github.com/Loyakkio/loyakk"
+    tags = [
+      "Main",
+      "Code"
+    ]
+
+    [[app.info.links]]
+    type = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/LoyakkVega"
+    tags = [
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "facebook"
+    name = "Facebook"
+    url = "https://www.facebook.com/loyakk/?fref=ts"
+    tags = [
+      "News"
+    ]
+
+[[token]]
+name = "LYK token"
+symbol = "LYK"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = "Ownership of Loyakk Token carries no rights express or implied"
+governance_rights_org = ""
+
+[[exchange]]
+exchange = ""
+date = ""
+price = ""
+volume = ""
+
+[[label]]
+blockchain = ""
+address = ""
+balance = ""
