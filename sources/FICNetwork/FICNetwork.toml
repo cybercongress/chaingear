@@ -1,0 +1,240 @@
+[blockchain]
+project_name = "FIC Network"
+headline = "Fixed income infrastructure for blockchain assets"
+logo = ""
+state = "1"
+asset_type = "blockchain_app"
+dependency = "Ethereum"
+consensus_name = "POW"
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = "0"
+  current_phase_status = "Active"
+
+    [ico.common_info.token_distribution]
+    total_supply = "594666667 "
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Token sale participants"
+      percent = "50"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Reserves"
+      percent = "30"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Company"
+      percent = "20"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "People and operations"
+    percent = "39"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Development"
+    percent = "35"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Marketing and business development"
+    percent = "13"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Legal"
+    percent = "7"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Services and others"
+    percent = "6"
+
+  [[ico.phases]]
+  phase_num = "0"
+  phase_name = "Pre-sale"
+  phase_status = "Active"
+
+    [ico.phases.registration]
+    start_date = "2018-01-18T00:00:00.000Z"
+    end_date = "2018-03-25T00:00:00.000Z"
+    website = "https://ficnetwork.com/en"
+    terms = ""
+
+    [ico.phases.terms]
+    sales_agreement = "https://ficnetwork.com/en"
+    sales_url = "https://ficnetwork.com/en"
+    issued_tokens = 0.0
+    sold_tokens = 0.0
+    share_of_sold = 0.0
+    token_distribution_date = ""
+
+      [[ico.phases.terms.cap_limit]]
+      currency = ""
+      amount = 0.0
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      address = ""
+      currency = ""
+
+    [ico.phases.dates]
+    start_date = "2018-03-25T00:00:00.000Z"
+    end_date = "2018-05-15T00:00:00.000Z"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = 0.0
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "USD"
+      price = "0.10"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "60"
+      condition = "During the Pre-ICO Phase 1 Sale Period, until $2 million is raised"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "50"
+      condition = "During the Pre-ICO Phase 2 Sale Period, until $3 million is raised"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "40"
+      condition = "Day 1 of the public ICO. Each day the discount will go down by 2% down to a minimum of 0%. In the last 10 days of the ICO there will be no more discount"
+
+    [[ico.phases.contract]]
+    contract = ""
+    type = ""
+
+[app]
+
+  [[app.info]]
+  name = "eDepository"
+  same_blockchain = "true"
+  sources_availability = "false"
+  app_status = "2"
+  app_type = " exe"
+  app_url = "https://ficnetwork.com/en/download"
+
+    [[app.info.milestone]]
+    name = "Pre-token eFIC on Ethereum network"
+    start_date = "2017 Q4"
+    current_status = "Completed"
+    value = false
+
+    [[app.info.milestone]]
+    name = "Setting up a legal framework for the operation of FIC network Tests with Network Participants on Testnet Enabling the exchange of eFIC to FIC"
+    start_date = "2018 Q1"
+    current_status = "In work"
+    value = false
+
+    [[app.info.milestone]]
+    name = "Launch of FIC Network for loan trading"
+    start_date = "2018 Q2"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.milestone]]
+    name = "Cryptocurrency implementation Implementing the ability to trade single ECF separately Listing and trading of corporate bonds"
+    start_date = "2019"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.milestone]]
+    name = "Listing and trading of other financial instruments"
+    start_date = "2020"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.links]]
+    type = "website"
+    name = "Website"
+    url = "https://ficnetwork.com/en"
+    tags = [
+      "Main"
+    ]
+
+    [[app.info.links]]
+    type = "paper"
+    name = "Paper"
+    url = "https://drive.google.com/file/d/0ByzKCCWTHkioZzRhTThXSi0zcWM/view"
+    tags = [
+      "Main",
+      "Science"
+    ]
+
+    [[app.info.links]]
+    type = "blog"
+    name = "Blog"
+    url = "https://medium.com/@ficnetwork"
+    tags = [
+      "Main",
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/ficnetwork"
+    tags = [
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "telegram"
+    name = "Telegram"
+    url = "https://t.me/joinchat/Ch5GRUHJ576RiIkhuYVwuw"
+    tags = [
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "reddit"
+    name = "Reddit"
+    url = "https://t.me/joinchat/Ch5GRUHJ576RiIkhuYVwuw"
+    tags = [
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "facebook"
+    name = "Facebook"
+    url = "https://www.facebook.com/ficnetwork"
+    tags = [
+      "News"
+    ]
+
+[[token]]
+name = "eFIC token"
+symbol = "eFIC"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
+
+[[exchange]]
+exchange = ""
+date = ""
+price = ""
+volume = ""
+
+[[label]]
+blockchain = ""
+address = ""
+balance = ""
