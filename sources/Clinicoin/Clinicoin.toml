@@ -5,32 +5,34 @@ logo = ""
 state = "0"
 asset_type = "blockchain_app"
 dependency = "Ethereum"
-consensus_name = ""
+consensus_name = "Proof-of-Work"
 
 [ico]
+phases = []
 
   [ico.common_info]
   is_ico = true
-  current_phase_status = "Planned"
+  current_ico_phase = 0.0
+  current_phase_status = ""
 
     [ico.common_info.token_distribution]
-    total_supply = "3000000"
+    total_supply = "3000000000"
 
       [[ico.common_info.token_distribution.shares]]
-      description = "Discount Sale"
-      percent = "52.4"
+      description = "Company/Team"
+      percent = "8"
 
       [[ico.common_info.token_distribution.shares]]
       description = "Community Rewards Pool"
       percent = "20"
 
       [[ico.common_info.token_distribution.shares]]
-      description = "Partners/Developers/Growth "
+      description = "Partners/Developers/Growth"
       percent = "17.6"
 
       [[ico.common_info.token_distribution.shares]]
-      description = "Company/Team"
-      percent = "8"
+      description = "Discount Sale"
+      percent = "52.4"
 
       [[ico.common_info.token_distribution.shares]]
       description = "Advisors/Consultants"
@@ -41,75 +43,25 @@ consensus_name = ""
     percent = "20"
 
     [[ico.common_info.use_of_proceeds]]
-    description = "Legal & Accounting"
-    percent = "8"
-
-    [[ico.common_info.use_of_proceeds]]
     description = "Product & Support"
     percent = "67"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Legal & Accounting"
+    percent = "8"
 
     [[ico.common_info.use_of_proceeds]]
     description = "Miscellaneous"
     percent = "5"
 
-  [ico.phases]
-
-    [[ico.phases.phases]]
-    phase_name = "Token sale"
-    phase_status = "Planned"
-
-      [ico.phases.phases.registration]
-      start_date = ""
-      end_date = ""
-      website = ""
-      terms = ""
-
-      [ico.phases.phases.terms]
-      issued_tokens = 0.0
-      sold_tokens = 0.0
-      share_of_sold = 0.0
-      token_distribution_date = ""
-
-        [[ico.phases.phases.terms.cap_limit]]
-        currency = "USD"
-        amount = "26000000"
-
-        [[ico.phases.phases.terms.vesting]]
-        supply_percent = 0.0
-        lockup_condition = ""
-        lockup_date = ""
-
-      [ico.phases.phases.dates]
-      start_date = "2018-02-21T00:00:00.000Z"
-      end_date = "2018-03-21T00:00:00.000Z"
-      duration = ""
-
-      [[ico.phases.phases.raised_funds]]
-      currency = "USD"
-      amount = 0.0
-
-      [[ico.phases.phases.raised_funds]]
-      currency = "ETH"
-      amount = 0.0
-
-      [[ico.phases.phases.raised_funds]]
-      currency = "BTC"
-      amount = 0.0
-
-      [ico.phases.phases.prices]
-
-        [[ico.phases.phases.prices.token_final_price]]
-        currency = "BTC"
-        price = 0.0
-
 [app]
 
   [[app.info]]
-  name = "Clinicoin Platform"
+  name = "Clinicoin platform"
   same_blockchain = "true"
   sources_availability = "true"
   app_status = "1"
-  app_type = "Healthcare platform"
+  app_type = "Wellness platform"
   app_url = "https://clinicoin.io/"
   milestone = []
 
@@ -164,16 +116,8 @@ consensus_name = ""
       "News"
     ]
 
-    [[app.info.links]]
-    type = "reddit"
-    name = "Reddit"
-    url = "https://www.reddit.com/r/clinicoin"
-    tags = [
-      "News"
-    ]
-
 [[token]]
-name = "CLIN token"
+name = "Clinicoin Token"
 symbol = "CLIN"
 token_purpose = "Both"
 token_type = "Blockchain issued token"
