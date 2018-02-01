@@ -8,7 +8,6 @@ dependency = "Ethereum"
 consensus_name = "Proof-of-Work"
 
 [ico]
-phases = []
 
   [ico.common_info]
   is_ico = true
@@ -53,6 +52,89 @@ phases = []
     [[ico.common_info.use_of_proceeds]]
     description = "Miscellaneous"
     percent = "5"
+
+  [[ico.phases]]
+  phase_name = "Token sale"
+  phase_status = "Planned"
+  contract = []
+  phase_num = 0.0
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    sales_agreement = "https://clinicoin.io/#token-sale"
+    sales_url = "https://clinicoin.io/register"
+    issued_tokens = 0.0
+    sold_tokens = 0.0
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "26000000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-02-21T00:00:00.000Z"
+    end_date = "2018-03-21T00:00:00.000Z"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = 0.0
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = 0.0
+
+      [[ico.phases.prices.bonuses]]
+      amount = "50%"
+      condition = "Days 1-4"
+      index = 0.0
+      value = false
+
+      [[ico.phases.prices.bonuses]]
+      amount = "35%"
+      condition = "Days 5-7"
+      index = 1.0
+      value = false
+
+      [[ico.phases.prices.bonuses]]
+      amount = "25%"
+      condition = "Week 2"
+      index = 2.0
+      value = false
+
+      [[ico.phases.prices.bonuses]]
+      amount = "20%"
+      condition = "Week 3"
+      index = 3.0
+      value = false
+
+      [[ico.phases.prices.bonuses]]
+      amount = "10%"
+      condition = "Week 4"
+      index = 4.0
+      value = false
 
 [app]
 
