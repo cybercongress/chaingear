@@ -1,0 +1,138 @@
+[blockchain]
+project_name = "Clinicoin"
+headline = "Platform rewards healthy behavior with tokens"
+logo = ""
+state = "0"
+asset_type = "blockchain_app"
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+
+[ico]
+phases = []
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+  current_phase_status = ""
+
+    [ico.common_info.token_distribution]
+    total_supply = "3000000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Company/Team"
+      percent = "8"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Community Rewards Pool"
+      percent = "20"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Partners/Developers/Growth"
+      percent = "17.6"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Discount Sale"
+      percent = "52.4"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Advisors/Consultants"
+      percent = "2"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Biz Dev & Marketing"
+    percent = "20"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Product & Support"
+    percent = "67"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Legal & Accounting"
+    percent = "8"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Miscellaneous"
+    percent = "5"
+
+[app]
+
+  [[app.info]]
+  name = "Clinicoin platform"
+  same_blockchain = "true"
+  sources_availability = "true"
+  app_status = "1"
+  app_type = "Wellness platform"
+  app_url = "https://clinicoin.io/"
+  milestone = []
+
+    [[app.info.links]]
+    type = "website"
+    name = "Website"
+    url = "https://clinicoin.io/"
+    tags = [
+      "Main"
+    ]
+
+    [[app.info.links]]
+    type = "paper"
+    name = "Paper"
+    url = "https://www.mosio.com/noidx/Clinicoin_Whitepaper_2018.pdf"
+    tags = [
+      "Main",
+      "Science"
+    ]
+
+    [[app.info.links]]
+    type = "github"
+    name = "Github"
+    url = "https://github.com/clinicoin"
+    tags = [
+      "Main",
+      "Code"
+    ]
+
+    [[app.info.links]]
+    type = "blog"
+    name = "Blog"
+    url = "https://medium.com/clinicoin"
+    tags = [
+      "Main",
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/clinicoin"
+    tags = [
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "telegram"
+    name = "Telegram"
+    url = "https://t.me/clinicoin"
+    tags = [
+      "News"
+    ]
+
+[[token]]
+name = "Clinicoin Token"
+symbol = "CLIN"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
+
+[[exchange]]
+exchange = ""
+date = ""
+price = ""
+volume = ""
+
+[[label]]
+blockchain = ""
+address = ""
+balance = ""
