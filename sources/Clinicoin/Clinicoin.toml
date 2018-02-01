@@ -56,7 +56,6 @@ consensus_name = "Proof-of-Work"
   [[ico.phases]]
   phase_name = "Token sale"
   phase_status = "Planned"
-  contract = []
   phase_num = 0.0
 
     [ico.phases.registration]
@@ -72,7 +71,6 @@ consensus_name = "Proof-of-Work"
     sold_tokens = 0.0
     share_of_sold = 0.0
     token_distribution_date = ""
-    crowdsale_addresses = []
 
       [[ico.phases.terms.cap_limit]]
       currency = "USD"
@@ -82,6 +80,10 @@ consensus_name = "Proof-of-Work"
       supply_percent = 0.0
       lockup_condition = ""
       lockup_date = ""
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = ""
+      address = ""
 
     [ico.phases.dates]
     start_date = "2018-02-21T00:00:00.000Z"
@@ -99,6 +101,10 @@ consensus_name = "Proof-of-Work"
     [[ico.phases.raised_funds]]
     currency = "BTC"
     amount = 0.0
+
+    [[ico.phases.contract]]
+    address = ""
+    type = ""
 
     [ico.phases.prices]
 
