@@ -1,5 +1,5 @@
 [blockchain]
-project_name = "On.Live"
+project_name = "OnLive"
 headline = "Join On.Live and grow with us"
 logo = "onlive" 
 state = "0"
@@ -109,7 +109,11 @@ consensus_name = "Proof-Of-Work"
     issued_tokens = "12210000"
     share_of_sold = 0.0
     token_distribution_date = "" # Date of token distribution
-
+      
+      [[ico.phases.terms.cap_limit]]
+      currency = ""
+      amount = ""
+      
       [[ico.phases.terms.cap_limit]]
       currency = "ETH"
       amount = "14000"
