@@ -1,0 +1,339 @@
+[blockchain]
+project_name = "On.Live"
+headline = "Join On.Live and grow with us"
+logo = ""
+state = "0"
+asset_type = "blockchain_app"
+dependency = "Ethereum"
+consensus_name = "POW"
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = "0"
+
+    [ico.common_info.token_distribution]
+    total_supply = "111000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "ICO"
+      percent = "55"
+      value = false
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "PRE ICO"
+      percent = "11"
+      value = false
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "ONL Wallet (Reserve)"
+      percent = "11"
+      value = false
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Founders (lock)"
+      percent = "11"
+      value = false
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Bounty Marketing "
+      percent = "6"
+      value = false
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Advisors"
+      percent = "5"
+      value = false
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Legal insurance"
+      percent = "1"
+      value = false
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "RCS -developers team"
+    percent = "31"
+    value = false
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Marketing"
+    percent = "36"
+    value = false
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Loyality Program"
+    percent = "11"
+    value = false
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "RCS - support team"
+    percent = "6"
+    value = false
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "RCS -other costs"
+    percent = "5"
+    value = false
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Board & Administrative team"
+    percent = "6"
+    value = false
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "other costs"
+    percent = "2"
+    value = false
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "CAPEX"
+    percent = "3"
+    value = false
+
+  [[ico.phases]]
+  phase_num = "0"
+  phase_name = "Pre-ICO"
+  phase_status = "Active"
+
+    [ico.phases.registration]
+    start_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    end_date = "" # Date format: 2017-11-22T00:00:00 or "2018 Q4"
+    website = "" # URL to the registration webpage 
+    terms = "" # URL to the registration terms
+
+    [ico.phases.terms]
+    sales_agreement = "https://on.live/documents/OnLive_Whitepaper.pdf"
+    sales_url = "https://on.live/"
+    issued_tokens = "12210000"
+    share_of_sold = 0.0
+    token_distribution_date = "" # Date of token distribution
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "ETH"
+      amount = "14000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = "" # Cryptocurrency in which contributions accepted
+      address = "" # Blockchain address for contributions
+
+    [ico.phases.dates]
+    start_date = "2018-01-22T00:00:00.000Z"
+    end_date = "2018-02-22T00:00:00.000Z"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "" # Filled by developers or cyberanalytics team
+    amount = 0 # Filled by developers or cyberanalytics team
+
+    [[ico.phases.prices.token_final_price]]
+    currency = "" # Cryptocurrency in which price is calculated; Filled by developers or cyberanalytics team
+    price = 0 # Final token price at the end of current phase; Filled by developers or cyberanalytics team
+    
+    [[ico.phases.prices.bonuses]]
+    amount = "" # Size of discount on token final price
+    condition = "" # Conditions of the current discount
+
+  [[ico.phases.contract]]
+    contract_address = "" # Fill this field out only if dependency = "ERC20";  Ethereum tokensale address - a hexadecimal field format (base 16 notation) 
+    contract_type = ""
+
+[app]
+
+  [[app.info]]
+  name = "On.Live platform"
+  same_blockchain = "true"
+  sources_availability = "false"
+  app_status = "1"
+  app_type = "Market place"
+  app_url = "https://on.live/"
+
+    [[app.info.milestone]]
+    number = "0"
+    name = "Project start"
+    start_date = "H1 2014"
+    current_status = "Completed"
+    value = false
+
+    [[app.info.milestone]]
+    number = "1"
+    name = "Technology tests for video transmission one to many"
+    start_date = "H2 2014"
+    current_status = "Completed"
+    value = false
+
+    [[app.info.milestone]]
+    number = "2"
+    name = "Development of a functional web application. "
+    start_date = "H1 2015"
+    current_status = "Completed"
+    value = false
+
+    [[app.info.milestone]]
+    number = "3"
+    name = "Development of a payment system Tokens within a system based on blockchain technology. "
+    start_date = "H2 2015"
+    current_status = "Completed"
+    value = false
+
+    [[app.info.milestone]]
+    number = "4"
+    name = "Beta Version WEB. Start OnLive LTD UK and cooperate with UKTI / DIT (UK Trade & Investment) "
+    start_date = "H1 2016"
+    current_status = "Completed"
+    value = false
+
+    [[app.info.milestone]]
+    number = "5"
+    name = "Getting started work on iOS and Android mobile applications. Developing the OnLive API. "
+    start_date = "H2 2016"
+    current_status = "Completed"
+    value = false
+
+    [[app.info.milestone]]
+    number = "6"
+    name = "Joining the GEP program (Global Entrepreneur Program). "
+    start_date = "H1 2017"
+    current_status = "Completed"
+    value = false
+
+    [[app.info.milestone]]
+    number = "7"
+    name = "Preparation for Pre ICO • Team recruitment • Investor Inviting"
+    start_date = "H2 2017"
+    current_status = "Completed"
+    value = false
+
+    [[app.info.milestone]]
+    number = "8"
+    name = "Bulking up marketing and communication activities connected to the platform. Create Team.On.Live Launch of Pre ICO and ICO - Token distribution, waiting for registration of tokens on crypto exchanges"
+    start_date = "H1 2018"
+    current_status = "In work"
+    value = false
+
+    [[app.info.milestone]]
+    number = "9"
+    name = "Launching the platform, recruiting the first critical mass of users / broadcasters in the UK and US. "
+    start_date = "Q2 2018"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.milestone]]
+    number = "10"
+    name = "Launch one to many broadcasts (WEB), public broadcasts (centralized version), all Pay models. "
+    start_date = "Q3 2018"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.milestone]]
+    number = "11"
+    name = "Generic widening of activity into new sectors increases the number of users / broadcasters, "
+    start_date = "Q4 2018"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.milestone]]
+    number = "12"
+    name = "Decentralized, open one on one a live streaming ecosystem. enable one-to-one transmission and build any onlive-based application."
+    start_date = "H1 2019"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.milestone]]
+    number = "13"
+    name = "OnLive one to many public broadcasts, code open for everyone. Allow any broadcaster to send a live video into the network, transcoded into various formats and bitrates and sell it."
+    start_date = "H2 2019"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.milestone]]
+    number = "14"
+    name = "Full Decentralized Live services and any public broadcasts no censorship. "
+    start_date = "H1 2020"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.links]]
+    type = "website"
+    name = "Website"
+    url = "https://on.live"
+    tags = [
+      "Main"
+    ]
+
+    [[app.info.links]]
+    type = "paper"
+    name = "Paper"
+    url = "https://on.live/documents/OnLive_Whitepaper.pdf"
+    tags = [
+      "Main",
+      "Science"
+    ]
+
+    [[app.info.links]]
+    type = "blog"
+    name = "Blog"
+    url = "https://medium.com/@On.Live"
+    tags = [
+      "Main",
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "github"
+    name = "Github"
+    url = "https://github.com/OnLivePlatform/onlive-contracts"
+    tags = [
+      "Main",
+      "Code"
+    ]
+
+    [[app.info.links]]
+    type = "twitter"
+    name = "Twitter"
+    url = "http://twitter.com/on_live"
+    tags = [
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "reddit"
+    name = "Reddit"
+    url = "https://reddit.com/r/OnLiveTv/"
+    tags = [
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "facebook"
+    name = "Facebook"
+    url = "https://www.facebook.com/OnLive.TV/"
+    tags = [
+      "News"
+    ]
+
+[[token]]
+name = "ONL Token"
+symbol = "ONL"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = "All unsold tokens will be burnt."
+circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
+governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
+governance_rights_org = ""
+
+[[exchange]]
+exchange = ""
+date = ""
+price = ""
+volume = ""
+
+[[label]]
+blockchain = ""
+address = ""
+balance = ""
