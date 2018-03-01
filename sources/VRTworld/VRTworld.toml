@@ -4,6 +4,89 @@ headline = "VR platform for global integration of developers, consumers and busi
 logo = "https://vrt.world/img/logo.png" # Link to logo image 
 state = 0 # 0 - Project (before ICO begins), 1 - Pre-public (ICO ends, but tokens ain`t tradable), 2 - Public Project (tokens are tradable)
 asset_type = "cryptoasset" # cryptocurrency, cryptoasset
+dependency = "Ethereum" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
+consensus_name = "Proof-of-Work" # Name of consensys algorithm
+
+[[blockchain.links]]
+type = "website"
+name = "VRT.world"
+url = "http://vrt.world/"
+tags = ["Main"]
+
+[[blockchain.links]]
+type = "paper"
+name = "VRT.world Whitepaper"
+url = "https://vrt.world/wpvrAlbum_EN.pdf"
+tags = ["Main",  "Science"]
+
+[[blockchain.links]]
+type = "paper"
+name = "VRT.world Whitepaper"
+url = "https://vrt.world/WPru.pdf"
+tags = ["Main", "Science"]
+
+[[blockchain.links]]
+type = "blog"
+name = "VRT.world Blog"
+url = "https://medium.com/vrtoken"
+icon = "medium.png"
+tags = ["Main","News"]
+
+[[blockchain.links]]
+type = "twitter"
+name = "VRT.worl Twitter"
+url = "https://twitter.com/VRTworld"
+icon = "twitter.png"
+tags = ["News"]
+
+[[blockchain.links]]
+type = "custom"
+name = "VRT.world Telegram"
+url = "https://t.me/vrtico"
+icon = "telegram.png"
+tags = ["News"]
+
+[[blockchain.links]]
+type = "custom"
+name = "Facebook"
+url = "https://www.facebook.com/vrtworld/"
+icon = "facebook.png"
+tags = ["News"]
+
+[[blockchain.links]]
+type = "custom"
+name = "Steemit.com"
+url = "https://steemit.com/@vrtoken"
+icon = ""
+tags = ["News"]
+
+[[blockchain.links]]
+type = "custom"
+name = "Golos.io"
+url = "https://golos.io/@vrtoken"
+icon = "golos_logo.png"
+tags = ["News"]
+
+[[blockchain.links]]
+type = "custom"
+name = "bitcointalk.org"
+url = "https://bitcointalk.org/index.php?topic=2409858"
+icon = "bitcointalk.png"
+tags = ["News"]
+
+[[blockchain.links]]
+type ="reddit"
+name ="Reddit"
+url = "https://www.reddit.com/r/VRTcommunity/"
+icon = "reddit.png"
+tags = ["News"]
+
+[[blockchain.links]]
+type ="youtube"
+name ="youtube"
+url = "https://www.youtube.com/channel/UCkdGbAmBFw1GIq5kSTvs3Aw/featured"
+icon = "youtube.png"
+tags = ["News"]
 
 [[legal_entity]]
 name = "" # Name of the company, checked by Cyberanalytics team
@@ -18,11 +101,6 @@ venture_capital_funding = "" # Amount of fiat money or virtual currency raised b
 [ico.common_info]
 is_ico = true # Field format: true or false; whether or not will be token sale, if false, leave ICO section empty
 current_ico_phase = 1 # 0 - first token sale (including presale), 1 - second token sale, 2 - third token sale, etc
-
-[ico.common_info.token]
-name = "VRT tokens" # Token name
-symbol = "VRT" # Token short designation
-dependency = "ERC20" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
 
 [ico.common_info.token_distribution]
 total_supply = 100000000
@@ -112,8 +190,8 @@ currency = "LTC" # Cryptocurrency in which contributions accepted
 address = "" # Blockchain address for contributions
 
 [ico.phases.dates]
-start_date = "2018-02-27T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
-end_date = "2018-03-27T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
+start_date = "2018-03-14T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q3"
+end_date = "2018-04-30T00:00:00" # Date format: "2017-11-22T00:00:00" or "2018 Q4"
 duration ="" # Filled by cyberanalytics team
 
 [[ico.phases.raised_funds]]
@@ -273,93 +351,10 @@ start_date = ""
 end_date = ""
 current_status = "Planned" # Planned, In work, Completed
 
-[[links]]
-type = "website"
-name = "VRT.world"
-url = "http://vrt.world/"
-tags = ["Main"]
-
-[[links]]
-type = "paper"
-name = "VRT.world Whitepaper"
-url = "https://vrt.world/wpvrAlbum_EN.pdf"
-tags = ["Main",  "Science"]
-
-[[links]]
-type = "paper"
-name = "VRT.world Whitepaper"
-url = "https://vrt.world/WPru.pdf"
-tags = ["Main", "Science"]
-
-[[links]]
-type = "blog"
-name = "VRT.world Blog"
-url = "https://medium.com/vrtoken"
-icon = "medium.png"
-tags = ["Main","News"]
-
-[[links]]
-type = "twitter"
-name = "VRT.worl Twitter"
-url = "https://twitter.com/VRTworld"
-icon = "twitter.png"
-tags = ["News"]
-
-[[links]]
-type = "custom"
-name = "VRT.world Telegram"
-url = "https://t.me/vrtico"
-icon = "telegram.png"
-tags = ["News"]
-
-[[links]]
-type = "custom"
-name = "Facebook"
-url = "https://www.facebook.com/vrtworld/"
-icon = "facebook.png"
-tags = ["News"]
-
-[[links]]
-type = "custom"
-name = "Steemit.com"
-url = "https://steemit.com/@vrtoken"
-icon = ""
-tags = ["News"]
-
-[[links]]
-type = "custom"
-name = "Golos.io"
-url = "https://golos.io/@vrtoken"
-icon = "golos_logo.png"
-tags = ["News"]
-
-[[links]]
-type = "custom"
-name = "bitcointalk.org"
-url = "https://bitcointalk.org/index.php?topic=2409858"
-icon = "bitcointalk.png"
-tags = ["News"]
-
-[[links]]
-type ="reddit"
-name ="Reddit"
-url = "https://www.reddit.com/r/VRTcommunity/"
-icon = "reddit.png"
-tags = ["News"]
-
-[[links]]
-type ="youtube"
-name ="youtube"
-url = "https://www.youtube.com/channel/UCkdGbAmBFw1GIq5kSTvs3Aw/featured"
-icon = "youtube.png"
-tags = ["News"]
-
 [[token]]
 name = "vrt token" # Token name
 symbol = "VRT" # Token short designation
-dependency = "Ethereum" # Blockchain used to issue a token or ERC20. If its own blockchain - "independent"
-consensus_name = "" # Name of consensys algorithm
-token_type = "utility token" # Token type declared by founders ('security token', 'utility token', donation, cryptocurrency)
+token_type = "funds raising" # Token type declared by founders ('security token', 'utility token', donation, cryptocurrency)
 inflation_rate = "" # Annual increase/decrease of the token volume in the ecosystem and a type of its production
 circulation_terms = "" # Conditions for consumed tokens (re-sale, burning), rate of fee for intermidearies
 governance_rights_project = "" # List of rights to be granted to tokenholders to vote for the course of the project development
