@@ -1,0 +1,151 @@
+[blockchain]
+project_name = "Lightstreams"
+headline = "A decentralized peer-to-peer network for digital content distribution"
+short_description = "An independent Ethereum compliant blockchain, but with another consensus mechanism: Proof of Authority"
+state = "0"
+asset_type = ""
+dependency = "independent"
+consensus_name = "Proof-of-Authority"
+
+  [[blockchain.milestone]]
+  number = 1.0
+  name = "Launching of network infrastructure"
+  start_date = "Q3 2018"
+  current_status = "Planned"
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "http://lightstreams.network"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://s3.amazonaws.com/lightstreams/Lightstreams+White+Paper.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "github"
+  name = "Github"
+  url = "https://github.com/lightstreams/lightstreams"
+  tags = [
+    "Main",
+    "Code"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://medium.com/lightstreams"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/lightstreams"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/lightstreams_io"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/Lightstreams-169874263742"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+  use_of_proceeds = []
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "http://lightstreams.network/"
+    sales_agreement = "http://lightstreams.network/"
+
+    [ico.common_info.token_distribution]
+    total_supply = ""
+    shares = []
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Seed-funding"
+  phase_status = "Finished"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = ""
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "300000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-01-01"
+    end_date = "2018-01-23"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "Photon"
+symbol = "PHT"
+token_purpose = "Both"
+token_type = "Core token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = "vote on proposals such as fees, addition or removing of authority nodes, variable parameters and policies changes"
+governance_rights_org = ""
