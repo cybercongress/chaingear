@@ -1,3 +1,5 @@
+New Frontier of chaingear, registries grow here!
+
 Frontend (stateless web UI) for cyber-markets and cyber-search (blockchain browser).
 
 [![CircleCI](https://img.shields.io/circleci/project/github/cyberFund/cyber-browser.svg)](https://circleci.com/gh/cyberFund/cyber-browser)
