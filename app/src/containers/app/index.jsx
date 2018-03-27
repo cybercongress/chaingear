@@ -5,7 +5,7 @@ import React, { Component } from 'react';
     return (
       <div>
         <div>
-          header test 1
+          New Frontier of chaingear
         </div>
         {this.props.children}
       </div>
