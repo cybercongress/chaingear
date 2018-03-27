@@ -1,95 +1,199 @@
-
-genesis_id = ""
-system = "Debitum"
-dependencies = ["Ethereum"]
-icon = "debitum"
-
-[token]
-name = "debitum token"
-symbol = "DEB"
-
-[consensus]
-consensus_type = "ERC20 Token"
-consensus_name = "Ethereum"
-
-[descriptions]
-state = "Project"
-system_type = "cryptoasset"
+[description]
+project_name = "Debitum"
 headline = "Accessible business borrowing and investment in loans."
+state = 2.0
+asset_type = "cryptoasset"
 
-[crowdsales]
-start_date = "2017-11-30T15:00:00"
-end_date = "2017-12-30T00:00:00"
-end_date_plan = "2017-12-30T00:00:00"
-genesis_address = [""]
-funding_terms = "https://debitum.network/wp-content/uploads/2017/09/Debitum-ICO-Prospectus.pdf"
-funding_url = "http://debitum.network/"
-tokens_sold = 0
-tokens_issued = 0
-btc_raised = 0
-cap_limit = [""]
-raised = [""]
+[[legal_entity]]
+name = ""
+residence = ""
+description = ""
+shareholders_list = ""
+registration_date = "2017-07-03T00:00:00"
+venture_capital_funding = ""
 
-[specs]
-supply = 1000000000
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.token]
+    name = "debitum token"
+    symbol = "DEB"
+    dependency = "Ethereum"
+
+    [ico.common_info.token_distribution]
+    total_supply = 1000000000.0
+
+      [[ico.common_info.token_distribution.shares]]
+      description = ""
+      percent = 0.0
+
+    [[ico.common_info.use_of_proceeds]]
+    description = ""
+    percent = 0.0
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = ""
+  phase_status = "Finished"
+
+    [ico.phases.registration]
+    start_date = "2017-10-15T00:00:00"
+    end_date = "2017-10-27T00:00:00"
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    sales_agreement = "https://debitum.network/wp-content/uploads/2017/09/Debitum-ICO-Prospectus.pdf"
+    sales_url = "http://debitum.network/"
+    issued_tokens = 0.0
+    share_of_sold = 0.0
+    token_distribution_date = ""
+
+      [ico.phases.terms.cap_limit]
+      currency = ""
+      amount = 0.0
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = "2017-11-22T00:00:00"
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = ""
+      address = ""
+
+    [ico.phases.dates]
+    start_date = "2017-11-30T15:00:00"
+    end_date = "2017-12-30T00:00:00"
+    duration = "29 days and 9 hours"
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = "1200000"
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "ETH"
+      price = 0.0
+      amount = ""
+
+      [[ico.phases.prices.bonuses]]
+      amount = ""
+      condition = ""
+
+    [[ico.phases.contract]]
+    contract_address = ""
+    contract_type = ""
+
+[product]
+
+  [[product.info]]
+  name = ""
+  same_blockchain = false
+  sources_availability = true
+  product_status = 2.0
+  app_type = ""
+  app_url = ""
+
+    [[product.info.token]]
+    name = ""
+    symbol = ""
+    dependency = ""
+    consensus_name = ""
+    token_type = ""
+    inflation_rate = ""
+    circulation_terms = ""
+    governance_rights_project = ""
+    governance_rights_org = ""
+
+    [[product.info.milestone]]
+    number = 0.0
+    name = ""
+    start_date = ""
+    end_date = ""
+    current_status = ""
 
 [[links]]
 type = "website"
 name = "debitum.network"
 url = "https://debitum.network/"
-tags = ["Main"]
+tags = [
+  "Main"
+]
 
 [[links]]
 type = "paper"
 name = "Debitum Whitepaper"
 url = "https://debitum.network/whitepaper/"
-tags = ["Main", "Science"]
+tags = [
+  "Main",
+  "Science"
+]
 
 [[links]]
 type = "github"
 name = "Debitum GitHub"
 url = "https://github.com/debitum"
 icon = "github.png"
-tags = ["Main","Code"]
+tags = [
+  "Main",
+  "Code"
+]
 
 [[links]]
 type = "forum"
 name = "Bitcointalk"
 url = "https://bitcointalk.org/index.php?topic=2321064.0"
 icon = "bitcointalk.png"
-tags = ["News"]
+tags = [
+  "News"
+]
 
 [[links]]
 type = "blog"
 name = "Debitum Blog"
 url = "https://medium.com/@mliberts"
 icon = "medium.png"
-tags = ["News"]
+tags = [
+  "News"
+]
 
 [[links]]
 type = "twitter"
 name = "Twitter"
 url = "https://twitter.com/DebitumNetwork"
 icon = "twitter.png"
-tags = ["News"]
+tags = [
+  "News"
+]
 
 [[links]]
 type = "custom"
 name = "Debitum Telegram"
 url = "https://t.me/joinchat/G6KFmURKsu0FIfJetJ3mOA"
 icon = "telegram.png"
-tags = ["News"]
+tags = [
+  "News"
+]
 
 [[links]]
 type = "reddit"
 name = "Reddit"
 url = "https://www.reddit.com/user/DebitumNetwork"
 icon = "reddit.png"
-tags = ["News"]
+tags = [
+  "News"
+]
 
 [[links]]
 type = "custom"
 name = "Facebook"
 url = "http://facebook.com/DebitumNetwork"
 icon = "facebook.png"
-tags = ["News"]
+tags = [
+  "News"
+]
