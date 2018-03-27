@@ -1,0 +1,263 @@
+[blockchain]
+project_name = "Safe Haven"
+headline = "The solution to digital inheritance."
+logo = ""
+state = "0"
+asset_type = "blockchain_protocol"
+dependency = "Ethereum"
+consensus_name = "POS"
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = "0"
+  current_phase_status = "Active"
+
+    [ico.common_info.token_distribution]
+    total_supply = "85000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Pre-Sale"
+      percent = "6"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Pre-ICO Sale"
+      percent = "31"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "ICO Sale"
+      percent = "23"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Founders"
+      percent = "18"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Company"
+      percent = "12"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Advisors"
+      percent = "7"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Community & Bounty"
+      percent = "3"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Development"
+    percent = "40"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Marketing"
+    percent = "10"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Salary Plans"
+    percent = "18"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Legal Expenses"
+    percent = "15"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = "Operational Expenses"
+    percent = "17"
+
+  [[ico.phases]]
+  phase_num = "0"
+  phase_name = "Pre-Sale"
+  phase_status = "Active"
+
+    [ico.phases.registration]
+    start_date = "2018-02-24T00:00:00.000Z"
+    end_date = "2018-03-10T00:00:00.000Z"
+    website = "https://safehaven.io"
+    terms = " "
+
+    [ico.phases.terms]
+    sales_agreement = "https://ico.safehaven.io"
+    sales_url = "https://ico.safehaven.io"
+    issued_tokens = 0.0
+    sold_tokens = 0.0
+    share_of_sold = 0.0
+    token_distribution_date = ""
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "25000000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      address = ""
+      currency = ""
+
+    [ico.phases.dates]
+    start_date = "2018-02-24T00:00:00.000Z"
+    end_date = "2018-03-10T00:00:00.000Z"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = 0.0
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "USD"
+      price = " 0.50"
+
+      [[ico.phases.prices.bonuses]]
+      amount = ""
+      condition = ""
+
+    [[ico.phases.contract]]
+    contract = ""
+    type = ""
+
+[app]
+
+  [[app.info]]
+  name = "Escrow Protocol"
+  same_blockchain = "true"
+  sources_availability = "false"
+  app_status = "1"
+  app_type = " "
+  app_url = " "
+
+    [[app.info.milestone]]
+    name = "Idea Reflection  Creating SD Protocols."
+    start_date = "2017 Q3"
+    current_status = "Completed"
+    value = false
+
+    [[app.info.milestone]]
+    name = "Writing White paper Development front Setting up social media Consulting Advisors & legal entities Pre sale Launch."
+    start_date = "2017 Q4"
+    current_status = "Completed"
+    value = false
+
+    [[app.info.milestone]]
+    name = "Ico Launch Safehaven platform development  Alliance program expansion."
+    start_date = "2018 Q1"
+    current_status = "In work"
+    value = false
+
+    [[app.info.milestone]]
+    name = "Safehaven platform development + beta launch Alliance program expansion  Wallet."
+    start_date = "2018 Q2"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.milestone]]
+    name = "Platform Production Launch Alliance program expansion Hardware ledger integration program launch"
+    start_date = "2018 Q3"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.milestone]]
+    name = "(will be published once available on safehaven.io site)"
+    start_date = "2018 Q4"
+    current_status = "Planned"
+    value = false
+
+    [[app.info.links]]
+    type = "website"
+    name = "Website"
+    url = "https://safehaven.io/"
+    tags = [
+      "Main"
+    ]
+
+    [[app.info.links]]
+    type = "paper"
+    name = "Paper"
+    url = "https://safehaven.io/files/SafeHaven_WhitePaper.pdf"
+    tags = [
+      "Main",
+      "Science"
+    ]
+
+    [[app.info.links]]
+    type = "github"
+    name = "Github"
+    url = "https://github.com/SafeHaven"
+    tags = [
+      "Main",
+      "Code"
+    ]
+
+    [[app.info.links]]
+    type = "blog"
+    name = "Blog"
+    url = "https://medium.com/@safehavenio"
+    tags = [
+      "Main",
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "twitter"
+    name = "Twitter"
+    url = "https://twitter.com/safeHavenio"
+    tags = [
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "telegram"
+    name = "Telegram"
+    url = "https://t.me/safehavenio"
+    tags = [
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "reddit"
+    name = "Reddit"
+    url = "https://www.reddit.com/r/safehavenio/"
+    tags = [
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "facebook"
+    name = "Facebook"
+    url = "https://www.facebook.com/SafeHaven.io"
+    tags = [
+      "News"
+    ]
+
+[[token]]
+name = "SHA-token"
+symbol = "SHA"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
+
+[[exchange]]
+exchange = ""
+date = ""
+price = ""
+volume = ""
+
+[[label]]
+blockchain = ""
+address = ""
+balance = ""
