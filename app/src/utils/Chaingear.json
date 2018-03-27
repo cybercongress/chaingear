@@ -1,0 +1,814 @@
+{
+  "contractName": "Chaingear",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "register",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "contractsLength",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "contracts",
+      "outputs": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "contractAddress",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "entryId",
+          "type": "uint256"
+        }
+      ],
+      "name": "EntryCreated",
+      "type": "event"
+    }
+  ],
+  "bytecode": "0x6060604052341561000f57600080fd5b6105228061001e6000396000f300606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631e59c5291461005c5780633fad74ad146100a9578063474da79a146100d2575b600080fd5b341561006757600080fd5b6100a76004808035906020019082018035906020019190919290803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101be565b005b34156100b457600080fd5b6100bc610323565b6040518082815260200191505060405180910390f35b34156100dd57600080fd5b6100f3600480803590602001909190505061032f565b60405180806020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281038252848181546001816001161561010002031660029004815260200191508054600181600116156101000203166002900480156101ae5780601f10610183576101008083540402835291602001916101ae565b820191906000526020600020905b81548152906001019060200180831161019157829003601f168201915b5050935050505060405180910390f35b600080548060010182816101d29190610381565b91600052602060002090600202016000604080519081016040528087878080601f01602080910402602001604051908101604052809392919081815260200183838082843782019150505050505081526020018573ffffffffffffffffffffffffffffffffffffffff16815250909190915060008201518160000190805190602001906102609291906103b3565b5060208201518160010160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050507fe9a0a2aca9c41fae94448dec8914ad73e4d00ebdc2427e61f3fc66919f4ffa2a33600160008054905003604051808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019250505060405180910390a1505050565b60008080549050905090565b60008181548110151561033e57fe5b906000526020600020906002020160009150905080600001908060010160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905082565b8154818355818115116103ae576002028160020283600052602060002091820191016103ad9190610433565b5b505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106103f457805160ff1916838001178555610422565b82800160010185558215610422579182015b82811115610421578251825591602001919060010190610406565b5b50905061042f9190610489565b5090565b61048691905b80821115610482576000808201600061045291906104ae565b6001820160006101000a81549073ffffffffffffffffffffffffffffffffffffffff021916905550600201610439565b5090565b90565b6104ab91905b808211156104a757600081600090555060010161048f565b5090565b90565b50805460018160011615610100020316600290046000825580601f106104d457506104f3565b601f0160209004906000526020600020908101906104f29190610489565b5b505600a165627a7a72305820ef6cbded14942428da2038d6afd849fa6360aa7f7ea5f1d8303ca3765fb980810029",
+  "deployedBytecode": "0x606060405260043610610057576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631e59c5291461005c5780633fad74ad146100a9578063474da79a146100d2575b600080fd5b341561006757600080fd5b6100a76004808035906020019082018035906020019190919290803573ffffffffffffffffffffffffffffffffffffffff169060200190919050506101be565b005b34156100b457600080fd5b6100bc610323565b6040518082815260200191505060405180910390f35b34156100dd57600080fd5b6100f3600480803590602001909190505061032f565b60405180806020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281038252848181546001816001161561010002031660029004815260200191508054600181600116156101000203166002900480156101ae5780601f10610183576101008083540402835291602001916101ae565b820191906000526020600020905b81548152906001019060200180831161019157829003601f168201915b5050935050505060405180910390f35b600080548060010182816101d29190610381565b91600052602060002090600202016000604080519081016040528087878080601f01602080910402602001604051908101604052809392919081815260200183838082843782019150505050505081526020018573ffffffffffffffffffffffffffffffffffffffff16815250909190915060008201518160000190805190602001906102609291906103b3565b5060208201518160010160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505050507fe9a0a2aca9c41fae94448dec8914ad73e4d00ebdc2427e61f3fc66919f4ffa2a33600160008054905003604051808373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281526020019250505060405180910390a1505050565b60008080549050905090565b60008181548110151561033e57fe5b906000526020600020906002020160009150905080600001908060010160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905082565b8154818355818115116103ae576002028160020283600052602060002091820191016103ad9190610433565b5b505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106103f457805160ff1916838001178555610422565b82800160010185558215610422579182015b82811115610421578251825591602001919060010190610406565b5b50905061042f9190610489565b5090565b61048691905b80821115610482576000808201600061045291906104ae565b6001820160006101000a81549073ffffffffffffffffffffffffffffffffffffffff021916905550600201610439565b5090565b90565b6104ab91905b808211156104a757600081600090555060010161048f565b5090565b90565b50805460018160011615610100020316600290046000825580601f106104d457506104f3565b601f0160209004906000526020600020908101906104f29190610489565b5b505600a165627a7a72305820ef6cbded14942428da2038d6afd849fa6360aa7f7ea5f1d8303ca3765fb980810029",
+  "sourceMap": "26:534:0:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "26:534:0:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;203:248;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;460:98;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;118:31;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;203:248;273:9;:113;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;288:97;;;;;;;;;330:5;;288:97;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;366:8;288:97;;;;;273:113;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;401:46;414:10;445:1;426:9;:16;;;;:20;401:46;;;;;;;;;;;;;;;;;;;;;;;;;;;;203:248;;;:::o;460:98::-;512:4;535:9;:16;;;;528:23;;460:98;:::o;118:31::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;26:534::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o",
+  "source": "pragma solidity ^0.4.18;\n\ncontract Chaingear  {\n\tstruct ContractItem {\n\t\tstring name;\n\t\taddress contractAddress;\n\t}\n\n\tContractItem[] public contracts;\n\tevent EntryCreated(address owner, uint entryId);\n\n\tfunction register(string _name, address _address) external {\n\n        contracts.push(ContractItem(\n        {\n            name: _name,\n            contractAddress: _address\n        }));\n    \n        EntryCreated(msg.sender, contracts.length - 1);\n\t}\n\n\t\n\n    function contractsLength() constant public returns (uint) {\n        return contracts.length;\n    }\n}",
+  "sourcePath": "/Users/andrey/projects/cyberFund/test-orbit/contracts/Chaingear.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/Users/andrey/projects/cyberFund/test-orbit/contracts/Chaingear.sol",
+      "exportedSymbols": {
+        "Chaingear": [
+          51
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".18"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "0:24:0"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            51
+          ],
+          "name": "Chaingear",
+          "scope": 52
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "Chaingear.ContractItem",
+              "name": "ContractItem",
+              "scope": 51,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "name",
+                  "scope": 6,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string storage pointer",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string storage pointer"
+                    },
+                    "id": 2,
+                    "name": "ElementaryTypeName",
+                    "src": "73:6:0"
+                  }
+                ],
+                "id": 3,
+                "name": "VariableDeclaration",
+                "src": "73:11:0"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "contractAddress",
+                  "scope": 6,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 4,
+                    "name": "ElementaryTypeName",
+                    "src": "88:7:0"
+                  }
+                ],
+                "id": 5,
+                "name": "VariableDeclaration",
+                "src": "88:23:0"
+              }
+            ],
+            "id": 6,
+            "name": "StructDefinition",
+            "src": "49:66:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "contracts",
+              "scope": 51,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "struct Chaingear.ContractItem storage ref[] storage ref",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "length": null,
+                  "type": "struct Chaingear.ContractItem storage ref[] storage pointer"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "ContractItem",
+                      "referencedDeclaration": 6,
+                      "type": "struct Chaingear.ContractItem storage pointer"
+                    },
+                    "id": 7,
+                    "name": "UserDefinedTypeName",
+                    "src": "118:12:0"
+                  }
+                ],
+                "id": 8,
+                "name": "ArrayTypeName",
+                "src": "118:14:0"
+              }
+            ],
+            "id": 9,
+            "name": "VariableDeclaration",
+            "src": "118:31:0"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "EntryCreated"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "owner",
+                      "scope": 15,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 10,
+                        "name": "ElementaryTypeName",
+                        "src": "171:7:0"
+                      }
+                    ],
+                    "id": 11,
+                    "name": "VariableDeclaration",
+                    "src": "171:13:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "entryId",
+                      "scope": 15,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 12,
+                        "name": "ElementaryTypeName",
+                        "src": "186:4:0"
+                      }
+                    ],
+                    "id": 13,
+                    "name": "VariableDeclaration",
+                    "src": "186:12:0"
+                  }
+                ],
+                "id": 14,
+                "name": "ParameterList",
+                "src": "170:29:0"
+              }
+            ],
+            "id": 15,
+            "name": "EventDefinition",
+            "src": "152:48:0"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "register",
+              "payable": false,
+              "scope": 51,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_name",
+                      "scope": 41,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string calldata",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 16,
+                        "name": "ElementaryTypeName",
+                        "src": "221:6:0"
+                      }
+                    ],
+                    "id": 17,
+                    "name": "VariableDeclaration",
+                    "src": "221:12:0"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_address",
+                      "scope": 41,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 18,
+                        "name": "ElementaryTypeName",
+                        "src": "235:7:0"
+                      }
+                    ],
+                    "id": 19,
+                    "name": "VariableDeclaration",
+                    "src": "235:16:0"
+                  }
+                ],
+                "id": 20,
+                "name": "ParameterList",
+                "src": "220:32:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 21,
+                "name": "ParameterList",
+                "src": "262:0:0"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "uint256",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_struct$_ContractItem_$6_memory",
+                                  "typeString": "struct Chaingear.ContractItem memory"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "push",
+                              "referencedDeclaration": null,
+                              "type": "function (struct Chaingear.ContractItem storage ref) returns (uint256)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 9,
+                                  "type": "struct Chaingear.ContractItem storage ref[] storage ref",
+                                  "value": "contracts"
+                                },
+                                "id": 22,
+                                "name": "Identifier",
+                                "src": "273:9:0"
+                              }
+                            ],
+                            "id": 24,
+                            "name": "MemberAccess",
+                            "src": "273:14:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": true,
+                              "lValueRequested": false,
+                              "names": [
+                                "name",
+                                "contractAddress"
+                              ],
+                              "type": "struct Chaingear.ContractItem memory",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6,
+                                  "type": "type(struct Chaingear.ContractItem storage pointer)",
+                                  "value": "ContractItem"
+                                },
+                                "id": 25,
+                                "name": "Identifier",
+                                "src": "288:12:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 17,
+                                  "type": "string calldata",
+                                  "value": "_name"
+                                },
+                                "id": 26,
+                                "name": "Identifier",
+                                "src": "330:5:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 19,
+                                  "type": "address",
+                                  "value": "_address"
+                                },
+                                "id": 27,
+                                "name": "Identifier",
+                                "src": "366:8:0"
+                              }
+                            ],
+                            "id": 28,
+                            "name": "FunctionCall",
+                            "src": "288:97:0"
+                          }
+                        ],
+                        "id": 29,
+                        "name": "FunctionCall",
+                        "src": "273:113:0"
+                      }
+                    ],
+                    "id": 30,
+                    "name": "ExpressionStatement",
+                    "src": "273:113:0"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 15,
+                              "type": "function (address,uint256)",
+                              "value": "EntryCreated"
+                            },
+                            "id": 31,
+                            "name": "Identifier",
+                            "src": "401:12:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "referencedDeclaration": null,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 1405,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 32,
+                                "name": "Identifier",
+                                "src": "414:3:0"
+                              }
+                            ],
+                            "id": 33,
+                            "name": "MemberAccess",
+                            "src": "414:10:0"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "-",
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": true,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "length",
+                                  "referencedDeclaration": null,
+                                  "type": "uint256"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 9,
+                                      "type": "struct Chaingear.ContractItem storage ref[] storage ref",
+                                      "value": "contracts"
+                                    },
+                                    "id": 34,
+                                    "name": "Identifier",
+                                    "src": "426:9:0"
+                                  }
+                                ],
+                                "id": 35,
+                                "name": "MemberAccess",
+                                "src": "426:16:0"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "31",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "number",
+                                  "type": "int_const 1",
+                                  "value": "1"
+                                },
+                                "id": 36,
+                                "name": "Literal",
+                                "src": "445:1:0"
+                              }
+                            ],
+                            "id": 37,
+                            "name": "BinaryOperation",
+                            "src": "426:20:0"
+                          }
+                        ],
+                        "id": 38,
+                        "name": "FunctionCall",
+                        "src": "401:46:0"
+                      }
+                    ],
+                    "id": 39,
+                    "name": "ExpressionStatement",
+                    "src": "401:46:0"
+                  }
+                ],
+                "id": 40,
+                "name": "Block",
+                "src": "262:189:0"
+              }
+            ],
+            "id": 41,
+            "name": "FunctionDefinition",
+            "src": "203:248:0"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "contractsLength",
+              "payable": false,
+              "scope": 51,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 42,
+                "name": "ParameterList",
+                "src": "484:2:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 50,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 43,
+                        "name": "ElementaryTypeName",
+                        "src": "512:4:0"
+                      }
+                    ],
+                    "id": 44,
+                    "name": "VariableDeclaration",
+                    "src": "512:4:0"
+                  }
+                ],
+                "id": 45,
+                "name": "ParameterList",
+                "src": "511:6:0"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 45
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "member_name": "length",
+                          "referencedDeclaration": null,
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 9,
+                              "type": "struct Chaingear.ContractItem storage ref[] storage ref",
+                              "value": "contracts"
+                            },
+                            "id": 46,
+                            "name": "Identifier",
+                            "src": "535:9:0"
+                          }
+                        ],
+                        "id": 47,
+                        "name": "MemberAccess",
+                        "src": "535:16:0"
+                      }
+                    ],
+                    "id": 48,
+                    "name": "Return",
+                    "src": "528:23:0"
+                  }
+                ],
+                "id": 49,
+                "name": "Block",
+                "src": "518:40:0"
+              }
+            ],
+            "id": 50,
+            "name": "FunctionDefinition",
+            "src": "460:98:0"
+          }
+        ],
+        "id": 51,
+        "name": "ContractDefinition",
+        "src": "26:534:0"
+      }
+    ],
+    "id": 52,
+    "name": "SourceUnit",
+    "src": "0:560:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {
+    "42": {
+      "events": {},
+      "links": {},
+      "address": "0xb119051fffe84723c5a4dca02ebbd716c39a08f9"
+    },
+    "4447": {
+      "events": {},
+      "links": {},
+      "address": "0x3a1E59b572e1880aBf1D030eAa759BE4d892e620"
+    }
+  },
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-02-26T14:41:13.367Z"
+}
