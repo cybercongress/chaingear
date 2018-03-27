@@ -13,7 +13,7 @@ module.exports = {
       network_id: 42,
       gasPrice: 1000000000,
       gas: 6721975,
-      from: "0x271FD5BBB0835DA3b295322096660f9b2Ea537C0"
+      from: "0xa3564D084fabf13e69eca6F2949D3328BF6468Ef"
     },
     live: {
       host: "localhost",

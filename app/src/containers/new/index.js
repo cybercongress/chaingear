@@ -11,9 +11,11 @@ import generateContractCode from '../../generateContractCode';
 import * as chaingear from '../../utils/chaingear';
 import getWeb3 from '../../utils/getWeb3.js';
 
-const IPFS = require('ipfs')
-const OrbitDB = require('orbit-db')
+// const IPFS = require('ipfs')
+// const OrbitDB = require('orbit-db')
 
+const IPFS = require('ipfs-api');
+const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 
 // async function test() {
 //  let t = axios.get('/test');
@@ -25,40 +27,40 @@ const ipfsOptions = {
   },
 }
 
-const saveAbi = (address, abi) => 
-  new Promise(resolve => {
+// const saveAbi = (address, abi) => 
+//   new Promise(resolve => {
     
-    const ipfs = new IPFS(ipfsOptions);
-    const orbitdb = new OrbitDB(ipfs)
+//     const ipfs = new IPFS(ipfsOptions);
+//     const orbitdb = new OrbitDB(ipfs)
 
-    ipfs.on('ready', () => {
-      orbitdb.keyvalue('chaingear.abis', { overwrite: true })
-        .then(db => db.put(address, abi))
-        .then(() => {
-          debugger
-          resolve();
-        })
-        // .catch(e => {
+//     ipfs.on('ready', () => {
+//       orbitdb.keyvalue('chaingear.abis', { overwrite: true })
+//         .then(db => db.put(address, abi))
+//         .then(() => {
+//           debugger
+//           resolve();
+//         })
+//         // .catch(e => {
           
-        // })
-    //  // debugger
-    //  // ipfs.object.put(address, { enc: 'json' }, (err, node) => {
-    //  // debugger
+//         // })
+//     //  // debugger
+//     //  // ipfs.object.put(address, { enc: 'json' }, (err, node) => {
+//     //  // debugger
 
-    //  // })
-    // //   debugger
-    //   const orbitdb = new OrbitDB(ipfs);
-    //   orbitdb.keyvalue('chaingear.abis')
-    //    .then(db => {
-    //      debugger
-    //      return db.set(address, abi);
-    //    })
-    //    .then(s => {
-    //      debugger
-    //      resolve();
-    //    });
-    })    
-  })
+//     //  // })
+//     // //   debugger
+//     //   const orbitdb = new OrbitDB(ipfs);
+//     //   orbitdb.keyvalue('chaingear.abis')
+//     //    .then(db => {
+//     //      debugger
+//     //      return db.set(address, abi);
+//     //    })
+//     //    .then(s => {
+//     //      debugger
+//     //      resolve();
+//     //    });
+//     })    
+//   })
 
 
 class NewRegister extends Component {
@@ -130,7 +132,7 @@ class NewRegister extends Component {
       let bytecode = '0x'+compiledContract.contracts[contractName].bytecode;
       web3.eth.estimateGas({data: bytecode}, function(e, gasEstimate) {
         let Contract = web3.eth.contract(JSON.parse(abi));
-        debugger
+
         Contract.new("sanchit", "s@a.com", {
            from: web3.eth.accounts[0],// fromAddress, //web3.eth.coinbase,
            data:bytecode,
@@ -138,19 +140,21 @@ class NewRegister extends Component {
          }, function(err, myContract){
           console.log(' >> ', err, myContract);
           if (myContract.address) {
-            saveAbi(myContract.address, JSON.parse(abi))
-              .then(x => {
+            // saveAbi(myContract.address, JSON.parse(abi))
+            //   .then(x => {
                 
-                chaingear.register(contractName, myContract.address).then(() => {
-                  browserHistory.push(`/`);
-                })
-              })
-            // axios.post('/api/compile', {
-            //  abi: JSON.parse(abi),
-            //  name: contractName
-            // }).then((response) => {
-            //  chaingear.register(contractName, myContract.address);
-            // })
+            //     chaingear.register(contractName, myContract.address).then(() => {
+            //       browserHistory.push(`/`);
+            //     })
+            //   })
+            const buffer = Buffer.from(JSON.stringify(abi));
+            ipfs.add(buffer, (err, ipfsHash) => {
+              const hash = ipfsHash[0].path;
+              debugger
+              chaingear.register(contractName, myContract.address, hash).then(() => {
+                browserHistory.push(`/`);
+              });
+            })
           }
          });
       });

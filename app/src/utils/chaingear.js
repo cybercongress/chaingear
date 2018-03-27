@@ -36,10 +36,10 @@ const getContract = () => {
     })
 }
 
-export const register = (name, adress) => {
+export const register = (name, adress, hash) => {
   return new Promise(resolve => {
     getContract().then(( { contract, web3 }) => {   
-      contract.register(name, adress, { from: web3.eth.accounts[0] }).then(x => {
+      contract.register(name, adress, hash, { from: web3.eth.accounts[0] }).then(x => {
         resolve();
       })
     })
@@ -50,7 +50,8 @@ export const getContracts = () => {
   return getContract().then(( { contract, web3 }) => {  
     return getItems(contract, 'contractsLength', 'contracts', (items) => ({
       name: items[0],
-      address: items[1]
+      address: items[1],
+      ipfsHash: items[2]
     }))
   })
 }

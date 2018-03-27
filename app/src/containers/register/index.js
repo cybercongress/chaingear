@@ -118,8 +118,8 @@ import React, { Component } from 'react';
 import getWeb3 from '../../utils/getWeb3.js';
 import * as chaingear from '../../utils/chaingear'
 
-const IPFS = require('ipfs')
-const OrbitDB = require('orbit-db')
+// const IPFS = require('ipfs')
+// const OrbitDB = require('orbit-db')
 
 
 
@@ -172,60 +172,62 @@ const getItems2 = (contract, count, array, mapFn) => {
 //  let t = axios.get('/test');
 //  return t;
 // }
-const ipfsOptions = {
-  repo: '/orbitdb/chaingear/0.0.1',
-  EXPERIMENTAL: {
-    pubsub: true
-  },
-}
+// const ipfsOptions = {
+//   repo: '/orbitdb/chaingear/0.0.1',
+//   EXPERIMENTAL: {
+//     pubsub: true
+//   },
+// }
 
 // https://github.com/orbitdb/example-orbitdb-todomvc/blob/master/src/store.js
 
-const getAbi = (address) => 
-  new Promise(resolve => {
+// const getAbi = (address) => 
+//   new Promise(resolve => {
     
-    const ipfs = new IPFS(ipfsOptions);
-    const orbitdb = new OrbitDB(ipfs)
+//     const ipfs = new IPFS(ipfsOptions);
+//     const orbitdb = new OrbitDB(ipfs)
 
-    ipfs.on('ready', () => {
-      orbitdb.keyvalue('chaingear.abis', '/zzzz')
-        .then(db => {
-          console.log(db.address.toString())
-          db.load().then(() => {
-            var data = db.get(address)
-            resolve(data);
-          })
-          // var data = db.get(address)
-          // debugger
-          // resolve(data);
-        })
-        // .then((db) => {
-        //  var data = db.get(address)
-        //  resolve(data);
-        // })
-        // .then((x, b) => {
-        //  debugger
-        //  resolve(x);
-        // })
-    //  // debugger
-    //  // ipfs.object.put(address, { enc: 'json' }, (err, node) => {
-    //  // debugger
+//     ipfs.on('ready', () => {
+//       orbitdb.keyvalue('chaingear.abis', '/zzzz')
+//         .then(db => {
+//           console.log(db.address.toString())
+//           db.load().then(() => {
+//             var data = db.get(address)
+//             resolve(data);
+//           })
+//           // var data = db.get(address)
+//           // debugger
+//           // resolve(data);
+//         })
+//         // .then((db) => {
+//         //  var data = db.get(address)
+//         //  resolve(data);
+//         // })
+//         // .then((x, b) => {
+//         //  debugger
+//         //  resolve(x);
+//         // })
+//     //  // debugger
+//     //  // ipfs.object.put(address, { enc: 'json' }, (err, node) => {
+//     //  // debugger
 
-    //  // })
-    // //   debugger
-    //   const orbitdb = new OrbitDB(ipfs);
-    //   orbitdb.keyvalue('chaingear.abis')
-    //    .then(db => {
-    //      debugger
-    //      return db.set(address, abi);
-    //    })
-    //    .then(s => {
-    //      debugger
-    //      resolve();
-    //    });
-    })    
-  })
+//     //  // })
+//     // //   debugger
+//     //   const orbitdb = new OrbitDB(ipfs);
+//     //   orbitdb.keyvalue('chaingear.abis')
+//     //    .then(db => {
+//     //      debugger
+//     //      return db.set(address, abi);
+//     //    })
+//     //    .then(s => {
+//     //      debugger
+//     //      resolve();
+//     //    });
+//     })    
+//   })
 
+const IPFS = require('ipfs-api');
+const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 
 
 const getContract = (address, abi) => {
@@ -256,16 +258,26 @@ class Register extends Component {
   componentDidMount() {
     
     const address = this.props.params.adress;
-
+    // const mapFn = item => {
+    //     const aItem = Array.isArray(item) ? item : [item];
+    //     return fields.reduce((o, field, index) => {
+    //       o[field.name] = aItem[index]; 
+    //       return o;
+    //     },{})
+    // }
     chaingear.getContracts()
       .then(contracts => {
-          getAbi(address)
-            .then(data => {
-              var fields = data.filter(x => x.name === 'entries')[0].outputs;
-              getContract(address, data)
-              .then(({ contract }) => {
-                this.contract = contract; 
-                const mapFn = item => {
+        // console.log(contracts)
+        var ipfsHash = contracts.filter(x => x.address === address)[0].ipfsHash;
+        // console.log(ipfsHash);
+        ipfs.get(ipfsHash, (err, files) => {
+          const buf = files[0].content;
+          var data = JSON.parse(JSON.parse(buf.toString()));
+          var fields = data.filter(x => x.name === 'entries')[0].outputs;
+          getContract(address, data)
+          .then(({ contract }) => {
+            this.contract = contract; 
+             const mapFn = item => {
                   const aItem = Array.isArray(item) ? item : [item];
                   return fields.reduce((o, field, index) => {
                     o[field.name] = aItem[index]; 
@@ -278,19 +290,36 @@ class Register extends Component {
                     items, fields 
                   })
                 });
+          })
+        });
+          // getAbi(address)
+          //   .then(data => {
+          //     var fields = data.filter(x => x.name === 'entries')[0].outputs;
+          //     getContract(address, data)
+          //     .then(({ contract }) => {
+          //       this.contract = contract; 
+          //       const mapFn = item => {
+          //         const aItem = Array.isArray(item) ? item : [item];
+          //         return fields.reduce((o, field, index) => {
+          //           o[field.name] = aItem[index]; 
+          //           return o;
+          //         },{})
+          //     }
+          //     getItems2(contract, 'entriesCount', 'entries', mapFn)
+          //       .then(items => {
+          //         this.setState({ 
+          //           items, fields 
+          //         })
+          //       });
 
-              contract.EntryCreated().watch(this.created);
-              contract.EntryDeleted().watch(this.deleted)
-            });
-            })        
+          //     contract.EntryCreated().watch(this.created);
+          //     contract.EntryDeleted().watch(this.deleted)
+          //   });
+          //   })        
       })
-
- 
-
   }
 
   deleted = (e, result) => {
-    debugger
     const index = result.args.entryId.toNumber();
     this.setState({
       items: this.state.items.filter((x, i) => i !== index),
@@ -305,7 +334,7 @@ class Register extends Component {
       ...this.state.newItem,
 
     }
-    debugger
+    // debugger
     // debugger
     this.setState({
       items: this.state.items.concat(newItem),
