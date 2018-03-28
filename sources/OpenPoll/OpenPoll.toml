@@ -1,0 +1,223 @@
+[blockchain]
+project_name = "OpenPoll"
+headline = "Independent, anonymous polling, delivered cheaper."
+logo = ""
+state = "0"
+asset_type = "blockchain_app"
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 1.0
+  current_phase_status = "Active"
+
+    [ico.common_info.token_distribution]
+    total_supply = "170000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Token sale"
+      percent = "50"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "Retained by OpenPoll"
+      percent = "35"
+
+      [[ico.common_info.token_distribution.shares]]
+      description = "will be released directly to corporations, politicians, and research institutions to promote the platform, and provide a trial period to inspire use. I"
+      percent = "15"
+
+    [[ico.common_info.use_of_proceeds]]
+    description = ""
+    percent = 0.0
+
+  [[ico.phases]]
+  phase_name = "Token sale"
+  phase_status = "Planned"
+  phase_num = 0.0
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    sales_agreement = "http://openpoll.io/whitepaper/latest"
+    sales_url = "https://ico.openpoll.io/"
+    issued_tokens = 0.0
+    sold_tokens = 0.0
+    share_of_sold = 0.0
+    token_distribution_date = ""
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "8500000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = ""
+      address = ""
+
+    [ico.phases.dates]
+    start_date = "2018-03-31T00:00:00.000Z"
+    end_date = "2018-05-15T00:00:00.000Z"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = 0.0
+
+    [[ico.phases.contract]]
+    address = ""
+    type = ""
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = 0.0
+
+      [[ico.phases.prices.bonuses]]
+      description = ""
+      percent = ""
+
+  [[ico.phases]]
+  phase_name = "Public pre-sale"
+  phase_status = "Active"
+  contract = 1.0
+  phase_num = 1.0
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    sales_agreement = "http://openpoll.io/whitepaper/latest"
+    sales_url = "https://ico.openpoll.io/"
+    issued_tokens = 0.0
+    sold_tokens = 0.0
+    share_of_sold = 0.0
+    token_distribution_date = ""
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = 0.0
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      currency = ""
+      address = ""
+
+    [ico.phases.dates]
+    start_date = "2018-02-16T00:00:00.000Z"
+    end_date = "2018-03-31T00:00:00.000Z"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = 0.0
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = 0.0
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = 0.0
+
+      [[ico.phases.prices.bonuses]]
+      amount = "30%"
+      condition = "During the presale"
+
+[app]
+
+  [[app.info]]
+  name = "OpenPoll"
+  same_blockchain = "false"
+  sources_availability = "true"
+  app_status = "1"
+  app_type = "Polling platform"
+  app_url = "http://openpoll.io/"
+  milestone = []
+
+    [[app.info.links]]
+    type = "website"
+    name = "Website"
+    url = "http://openpoll.io/"
+    tags = [
+      "Main"
+    ]
+
+    [[app.info.links]]
+    type = "telegram"
+    name = "Telegram"
+    url = "https://t.me/joinchat/IF57WkVCpOafTkI28YyZ-g"
+    tags = [
+      "News"
+    ]
+
+    [[app.info.links]]
+    type = "paper"
+    name = "Paper"
+    url = "http://openpoll.io/whitepaper/latest"
+    tags = [
+      "Main",
+      "Science"
+    ]
+
+    [[app.info.links]]
+    type = "github"
+    name = "Github"
+    url = "https://github.com/opoll"
+    tags = [
+      "Main",
+      "Code"
+    ]
+
+[[token]]
+name = "POL token"
+symbol = "POL"
+token_purpose = "ICO token"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
+
+[[exchange]]
+exchange = ""
+date = ""
+price = ""
+volume = ""
+
+[[label]]
+blockchain = ""
+address = ""
+balance = ""
