@@ -47,7 +47,10 @@ class AddField extends Component {
           </td>
           <td>
             <select ref='type'>
-              <option>string</option>
+              <option value='string'>string</option>
+              <option value='bool'>bool</option>
+              <option value='int256'>int</option>
+              <option value='uint256'>uint</option>
             </select>
           </td>
           <td>
@@ -159,7 +162,7 @@ class NewRegister extends Component {
     const { contractName, fields, status, inProgress, contracts } = this.state;
     const code = generateContractCode(contractName, fields);
     const exist = !!contracts.find(x => x.name === contractName)
-    const canDeploy = contractName.length > 0 && contractName.length <= MAX_FIELD_COUNT && !exist;
+    const canDeploy = contractName.length > 0 && contractName.length > 0 && contractName.length <= MAX_FIELD_COUNT && !exist;
  
     return (
       <div>

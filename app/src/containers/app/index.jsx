@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
- class App extends Component {
+import { Link } from 'react-router';
+
+class App extends Component {
   render() {
     return (
       <div>
         <div>
-          New Frontier of chaingear
+          <Link to='/'>Chaingear 2.0</Link>
         </div>
         {this.props.children}
       </div>
