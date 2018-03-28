@@ -1,0 +1,208 @@
+app = []
+
+[blockchain]
+project_name = "PUBLIQ"
+headline = "Blockchain Distributed Media"
+short_description = "PUBLIQ introduces a peer-to-peer distributed network that implements a new vision and approach to the media industry. It changes the way people interact and stay informed, specifically in the fast growing online media environment where no disintermediated way to transact and exchange exists.\n\nThe incredible growth of Internet access and speed around the world allows more and more people to be connected to media, anytime, anywhere. However, the media environment is currently under threats. Over centralization, unfair remunerations, poor customer experience, and absence of quality contents are on the rise. The situation is not only affecting our approach and trust towards media, but also our understanding of what is really happening around us.\n\nThe PUBLIQ team is building our future media ecosystem based on blockchain technology combined with analytics and artificial intelligence (AI). PUBLIQ is rebuilding trust in media by empowering authors and readers to be part of a safe, impartial, and fair ecosystem."
+state = "0"
+asset_type = ""
+dependency = "independent"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://publiq.network/en/white-paper/"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://publiq.network/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/PUBLIQnetwork"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/joinchat/E7QPpRKxq0pMWxIDcHc98A"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "reddit"
+  name = "Reddit"
+  url = "https://www.reddit.com/user/PUBLIQ-Network"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "bitcointalk"
+  name = "Bitcointalk"
+  url = "https://bitcointalk.org/index.php?topic=2398117"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://publiq.network/en/blog/"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/PUBLIQNetwork/"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://ito.publiq.network"
+    sales_agreement = "https://ito.publiq.network"
+
+    [ico.common_info.token_distribution]
+    total_supply = "500000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "30"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "50"
+      description = "Mining"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "8"
+      description = "Reserve for Foundation"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "12"
+      description = "Team, early backers and partners"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "45"
+    description = "Engineering & development"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "20"
+    description = "PR & marketing"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "15"
+    description = "Ecosystem deployment"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "15"
+    description = "Operations"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "5"
+    description = "Legal"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token Sale"
+  phase_status = "Finished"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "150000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = ""
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2017-11-15"
+    end_date = "2018-02-15"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+      [[ico.phases.prices.bonuses]]
+      amount = "40%"
+      condition = "First 10 days (Pre-Sale)"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "20%"
+      condition = "First 24 hours"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "10"
+      condition = "Day 2nd and 3rd"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "7.5%"
+      condition = "Day 4th to 7th"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "5"
+      condition = "Day 8th to Day 14th (included)"
+
+[[token]]
+name = "PBQ token"
+symbol = "PBQ"
+token_purpose = "Both"
+token_type = "Core token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
