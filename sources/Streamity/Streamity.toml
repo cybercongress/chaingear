@@ -1,0 +1,201 @@
+app = []
+
+[blockchain]
+project_name = "Streamity"
+headline = "The decentralized cryptocurrency exchange"
+short_description = "The STREAMITY project is focused on creating\na powerful cryptocurrency exchange that\nincludes a broad range of services. The\ngoal is to ensure users can benefit from the\ndevelopments in the cryptocurrency market,\nwhile mitigating risks arising from\ncryptocurrency ownership, transfer, and\nexchange.\nThe key element of the STREAMITY project is\nthe STREAMDESK aggregator. STREAMDESK\nensures exchange of cryptocurrencies for fiat\ncurrencies using smart contracts. The\nSTREAMDESK prototype is available on-line\nand represents our core concept.\nSTREAMDESK will ensure the most secure\nand efficient exchange of cryptocurrencies\nby aggregating market capitalization and price\ndata from major cryptocurrency exchanges.\nThus, cryptocurrency rates will always be bound\nto its true market rate, and forprofit\nmanipulation of exchange rates\nwill be impossible. All fees are known in\nadvance and will be transparent.\nSTREAMDESK provides significant advantages\nto investors and users. There will be a clear\ndisplay of relevant market data and its fees,\ncoupled with a fair, transparent, and secure\nexchange .\n3\nFurthermore the STREAMITY service will include news, analysis, educational,\nand investment resources. All the aforementioned services will provide\nvalue-added assistance to investors with regard to their management and\naccumulation of cryptocurrency funds.\nEach STREAMITY service will represent an independent business environment\nand will generate income from its various digital services."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://streamity.org/en/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://streamity.org/uploads/docs/en/Whitepaper_Streamity_en.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "github"
+  name = "Github"
+  url = "https://github.com/streamity/stm-smartcontract"
+  tags = [
+    "Main",
+    "Code"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://medium.com/@streamityorg"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "bitcointalk"
+  name = "Bitcointalk"
+  url = "https://bitcointalk.org/index.php?topic=2519489"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/streamityorg"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/streamityChat_en"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://facebook.com/streamity"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://streamity.org/en/"
+    sales_agreement = "https://streamity.org/uploads/docs/en/Whitepaper_Streamity_en.pdf"
+
+    [ico.common_info.token_distribution]
+    total_supply = "186000000 "
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "70"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "25"
+      description = "STREAMITY team"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "13"
+      description = "bonus program"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "12"
+      description = "advisors and partners"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "40"
+    description = "product development"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "25"
+    description = "marketing"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "25"
+    description = "reserve fund"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "legal support"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Crowdsale"
+  phase_status = "Active"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "130200000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "20000000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-03-12"
+    end_date = "2018-04-29"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = "4200000"
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+      [[ico.phases.prices.bonuses]]
+      amount = "30%"
+      condition = "PRE ICO"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "20%"
+      condition = "1st phase of the ICO (1st day)"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "15%"
+      condition = "1st phase of the ICO (2nd - 14th day)"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "10%"
+      condition = "2nd phase of the ICO"
+
+[[token]]
+name = "Streamity token"
+symbol = "STM"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
