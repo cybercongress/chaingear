@@ -1,0 +1,140 @@
+app = []
+
+[blockchain]
+project_name = "BlockFood"
+headline = "Decentralized Food Ordering Platform based on Smart Contracts"
+short_description = "The BlockFood project is the first project from the Open Sharing Economy foundation.\n\nBlockFood aims to become the first decentralized service that allows customers to order food from restaurants and have it delivered by couriers. BlockFood technical architecture is based on smart contracts.\n\nBlockFood's business model relies on fair wealth distribution and a dynamic commission rate adjusted to structure costs.\n\nBusiness development of BlockFood is made possible through independent users, the BlockFood ambassadors, who will canvass their local businesses and introduce them to the platform.\n\nTo fund this project, a pre-sale and a token sale will take place in 2018. During this token sale, participants will be able to exchange Ether for BlockFoodTokens, a token which fuels the platform.\n\nThis document will explain the philosophy of the project, its market, the technical solution and the team behind the project."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://funcorp.gitlab.io/blockfood-whitepaper/"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://funcorp.gitlab.io/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "github"
+  name = "Github"
+  url = "https://github.com/BlockFood"
+  tags = [
+    "Main",
+    "Code"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/BlockFood"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://medium.com/blockfood"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/blockfood"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+  use_of_proceeds = []
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://blockfood.io/pre-sale"
+    sales_agreement = "https://whitepaper.blockfood.io/token-sale"
+
+    [ico.common_info.token_distribution]
+    total_supply = ""
+    shares = []
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token Sale"
+  phase_status = "Finished"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = ""
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = "2018-04-12"
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "ETH"
+      amount = "200"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-01-18"
+    end_date = "2018-02-18"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "BlockFoodToken"
+symbol = "BFT"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
