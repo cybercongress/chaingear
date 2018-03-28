@@ -1,0 +1,175 @@
+app = []
+
+[blockchain]
+project_name = "Legolas Exchange"
+headline = "Legolas creates a new decentralized blockchain protocol"
+short_description = "e\ncrypto community has been plagued by opaue\nand unprincipled exchanges.\nImproving and strengthening these fundamental links within the community must be front\nand center.\nWith cryptocurrencies emerging as a legitimate asset class, nancial\ninstitutions are\nworking on entering this growing market, but they currently lack the tools to make large\ninvestments that remain in line with their security and transparency needs.\nWithin this context, Legolas Exchange is committed to creating a trustworthy,\ndemonstrably fair and bank-backed premium protocol where traders and investors, small\nand large, can transact without doubting the integrity and robustness of the platform or its\norder management system.\nLegolas Exchange’s protocol incorporates a decentralized ledger within its proprietary\ncentralized platform in order to neutralize front-running, guarantee the inalterability,\ntemporality and transparency of the order book, and ensure a fair trading environment.\nLed by an experienced team of nanciers\nand successful entrepreneurs, Legolas Exchange\nhas partnered with global brokerage rm\nMakor Capital. Makor operates a broker dealer\nbusiness trading under 2 brand names, Makor Securities London Limited, regulated by the\nFCA, and Oscar Gruss and Son Inc, regulated by FINRA and the NFA. Makor will\nprovide Legolas Exchange customers with custody of their deposits at major banks, and\naccess to hundreds of nancial\ninstitutions already onboarded.\nLegolas Exchange aspires to become the reference in terms of security and compliance for\nall crypto exchanges."
+state = "1"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+
+  [[blockchain.milestone]]
+  number = 1.0
+  name = "PoC Development"
+  start_date = "2017 Q2"
+  current_status = "Completed"
+
+  [[blockchain.milestone]]
+  number = 2.0
+  name = "Beta Version Release"
+  start_date = "2018 Q2"
+  current_status = "In work"
+
+  [[blockchain.milestone]]
+  number = 3.0
+  name = "V1 Release"
+  start_date = "2018 Q3"
+  current_status = "Planned"
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://legolas.exchange/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://legolas.exchange/static//public/legolas-whitepaper-en.pdf?v=13"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://medium.com/legolas-exchange"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/LegolasExchange?lang=en"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/LegolasEx"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "reddit"
+  name = "Reddit"
+  url = "https://www.reddit.com/r/LegolasExchange/"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/legolas.exchange/"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+  use_of_proceeds = []
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://lgo.legolas.exchange"
+    sales_agreement = "https://lgo.legolas.exchange/cgv/"
+
+    [ico.common_info.token_distribution]
+    total_supply = ""
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "60"
+      description = "Percentage of total supply sold during the pre-sale"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "20"
+      description = "Minimum percentage of total supply sold to Round 0 buyers"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "20"
+      description = "Reserves"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Round 2"
+  phase_status = "Finished"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = "2018-02-01"
+    end_date = "2018-02-15"
+    website = "https://lgo.legolas.exchange/register/"
+    terms = "https://lgo.legolas.exchange/register/"
+
+    [ico.phases.terms]
+    issued_tokens = ""
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "BTC"
+      amount = "1000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-02-01"
+    end_date = "2018-02-15"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = "0.000035"
+
+[[token]]
+name = "LGO token"
+symbol = "LGO"
+token_purpose = "Raising funds"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
