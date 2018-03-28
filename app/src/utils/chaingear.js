@@ -55,3 +55,46 @@ export const getContracts = () => {
     }))
   })
 }
+
+
+export const getContractByAbi = (address, abi) => {
+  return new Promise(resolve => {
+    getWeb3.then(({ web3 }) => {
+      web3.eth.defaultAccount = web3.eth.accounts[0];
+      const CoursetroContract = web3.eth.contract(abi);
+      const contract = CoursetroContract.at(address);
+      resolve({ web3, contract })
+    })
+  })
+}
+
+
+
+export const getItems2 = (contract, count, array, mapFn) => {
+  return new Promise(resolve => {
+    contract[count]((e, lengthData) => {
+      console.log(e, lengthData)
+      const length = lengthData.toNumber();
+      let promises = [];
+          for(let i =0; i < length; i++) {
+            promises.push(new Promise((itemResolve, itemReject) => {
+              contract[array](i, (e, r) => {
+                if (e) itemReject(e)
+                  else itemResolve(r);
+              })
+            }));
+          }
+
+          Promise.all(promises).then(data => {
+            // .filter(arr => arr[0] !== '')
+            const results = data.map(mapFn);
+            resolve(results);
+          })
+    })
+  })
+}
+
+const IPFS = require('ipfs-api');
+
+export const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
+

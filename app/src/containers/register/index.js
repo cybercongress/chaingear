@@ -1,65 +1,8 @@
 import React, { Component } from 'react';
 
-import getWeb3 from '../../utils/getWeb3.js';
 import * as chaingear from '../../utils/chaingear'
 
-const getItems = (contract, count, array, mapFn) => {
-  return new Promise(resolve => {
-    contract[count]().then(lengthData => {
-      const length = lengthData.toNumber();
-      let promises = [];
-          for(let i =0; i < length; i++) {
-            promises.push(contract[array](i));
-          }
-
-          Promise.all(promises).then(data => {
-            const results = data.map(mapFn);
-            resolve(results);
-          })
-    })
-  })
-}
-
-const getItems2 = (contract, count, array, mapFn) => {
-  return new Promise(resolve => {
-    contract[count]((e, lengthData) => {
-      console.log(e, lengthData)
-      const length = lengthData.toNumber();
-      let promises = [];
-          for(let i =0; i < length; i++) {
-            promises.push(new Promise((itemResolve, itemReject) => {
-              contract[array](i, (e, r) => {
-                if (e) itemReject(e)
-                  else itemResolve(r);
-              })
-            }));
-          }
-
-          Promise.all(promises).then(data => {
-            // .filter(arr => arr[0] !== '')
-            const results = data.map(mapFn);
-            resolve(results);
-          })
-    })
-  })
-}
-
-const IPFS = require('ipfs-api');
-const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
-
-
-const getContract = (address, abi) => {
-  return new Promise(resolve => {
-    getWeb3.then(({ web3 }) => {
-      web3.eth.defaultAccount = web3.eth.accounts[0];
-      const CoursetroContract = web3.eth.contract(abi);
-      const contract = CoursetroContract.at(address);
-      resolve({ web3, contract })
-    })
-  })
-}
-// import axios from "axios";
-
+import AddRow from './AddRow';
 
 class Register extends Component {
     
@@ -78,11 +21,11 @@ class Register extends Component {
     chaingear.getContracts()
       .then(contracts => {
         var ipfsHash = contracts.filter(x => x.address === address)[0].ipfsHash;
-        ipfs.get(ipfsHash, (err, files) => {
+        chaingear.ipfs.get(ipfsHash, (err, files) => {
           const buf = files[0].content;
           var data = JSON.parse(JSON.parse(buf.toString()));
           var fields = data.filter(x => x.name === 'entries')[0].outputs;
-          getContract(address, data)
+          chaingear.getContractByAbi(address, data)
           .then(({ contract }) => {
             this.contract = contract; 
              const mapFn = item => {
@@ -92,7 +35,7 @@ class Register extends Component {
                     return o;
                   },{})
               }
-              getItems2(contract, 'entriesCount', 'entries', mapFn)
+              chaingear.getItems2(contract, 'entriesCount', 'entries', mapFn)
                 .then(items => {
                   this.setState({ 
                     items, fields ,
@@ -123,41 +66,31 @@ class Register extends Component {
     })
   } 
 
-  add = () => {
-    const newItem = {
-      // id: guid()
-    }
-    const args = [];
-    for(let key in this.refs) {
-      if (this.refs[key]) {
-        const field = this.state.fields.find(x => x.name === key);
-        if (field.type === 'bool') {
-          args.push(this.refs[key].checked);
-        } else {
-          args.push(this.refs[key].value);
-        }
-        newItem[key] = +this.refs[key].value          
-      }
-    }
+  add = (args) => {
 
     args.push(function(e, r){
 
     })
 
     this.contract.createEntry.apply(this.contract, args);   
-    this.setState({
-      newItem,
-      loading: true
-    })
+    // this.setState({
+    //   newItem,
+    //   loading: true
+    // })
   }
 
   removeItem = (id) => {
     this.contract.deleteEntry(id, function(e, r){
 
     });
-    this.setState({
-      loading: true
-    })
+    // this.setState({
+    //   loading: true
+    // })
+  }
+
+  validate = (e) => {
+    e.preventDefault();
+    console.log(e.target.value)
   }
   
   render() {
@@ -194,17 +127,7 @@ class Register extends Component {
       );
     });
 
-    const bottom = fields.map(field => {
-      let content = <input ref={field.name} />;
-      if (field.type === 'bool') {
-        content = <input ref={field.name} type='checkbox' />
-      }
-      return (
-        <td key={field.name}>
-          {content}
-        </td>
-      )
-    })
+
     return (
       <div>
         <table>
@@ -216,12 +139,11 @@ class Register extends Component {
           </thead>
           <tbody>
             {rows}
-            <tr key='add-row'>
-              {bottom}
-              <td key='button-cell'>
-                <button onClick={this.add}>add</button>
-              </td>
-            </tr>
+            <AddRow
+              key='add-row'
+              onAdd={this.add}
+              fields={fields}
+            />
           </tbody>
         </table>
       </div>
