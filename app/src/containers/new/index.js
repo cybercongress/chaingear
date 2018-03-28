@@ -10,6 +10,7 @@ import getWeb3 from '../../utils/getWeb3.js';
 const IPFS = require('ipfs-api');
 const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 
+const MAX_FIELD_COUNT = 10;
 
 class AddField extends Component {
   state = {
@@ -158,7 +159,7 @@ class NewRegister extends Component {
     const { contractName, fields, status, inProgress, contracts } = this.state;
     const code = generateContractCode(contractName, fields);
     const exist = !!contracts.find(x => x.name === contractName)
-    const canDeploy = contractName.length > 0 && !exist;
+    const canDeploy = contractName.length > 0 && contractName.length <= MAX_FIELD_COUNT && !exist;
  
     return (
       <div>
