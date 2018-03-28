@@ -1,0 +1,178 @@
+app = []
+
+[blockchain]
+project_name = "SingularityNET "
+headline = "Decentralized Market to Coordinate, Discover, and Transact AI "
+short_description = "The value and power of Artificial Intelligence is growing dramatically\nevery year, and will soon dominate the internet – and the economy as a\nwhole. However, AI tools today are fragmented by a closed development\nenvironment; most are developed by one company to perform one task,\nand there is no way to plug two tools together. SingularityNET aims to\nbecome the key protocol for networking AI and machine learning tools to\nform a coordinated Artificial General Intelligence.\nSingularityNET is an open-source protocol and collection of smart\ncontracts for a decentralized market of coordinated AI services. Within\nthis framework, the benefits of AI become a global commons infrastructure\nfor the benefit of all; anyone can access AI tech or become a stakeholder\nin its development. Anyone can add an AI/machine learning service to\nSingularityNET for use by the network, and receive network payment\ntokens in exchange.\nSingularityNET is backed by the SingularityNET Foundation, which\noperates on a belief that the benefits of AI should not be dominated by\nany small set of powerful institutions, but shared by all. A key goal of\nSingularityNET is to ensure the technology is benevolent according to\nhuman standards, and the network is designed to incentivize and reward\nbeneficial players"
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://singularitynet.io/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://public.singularitynet.io/whitepaper.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "github"
+  name = "Github"
+  url = "https://github.com/singnet/singnet"
+  tags = [
+    "Main",
+    "Code"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://blog.singularitynet.io/"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/singularity_net"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/singularitynet"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/singularityNET.io"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://SingularityNET.io"
+    sales_agreement = "https://SingularityNET.io"
+
+    [ico.common_info.token_distribution]
+    total_supply = " 1000000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "50"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "20"
+      description = " Reserved for the Reward Pool"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "18"
+      description = "Distributed to the founders"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "8"
+      description = " Distributed to the SingularityNET Foundation"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "4"
+      description = "Distributed to campaign supporters (i.e. bounties)"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "40"
+    description = " Development reserve"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "40"
+    description = "Beneficial reserve."
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "20"
+    description = "Curation reserve"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Tokensale"
+  phase_status = "Finished"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "500000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = ""
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2017-12-08"
+    end_date = "2017-12-29"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = "36000000"
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "AGI Token"
+symbol = "AGI"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
