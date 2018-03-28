@@ -1,0 +1,190 @@
+app = []
+
+[blockchain]
+project_name = "Taklimakan"
+headline = "The Blockchain Investment Platform"
+short_description = "TAKLIMAKAN NETWORK is an educational platform for crypto\nenthusiasts, analysts and traders, which enables users to make\nprofessional investment decisions regardless of the level of their\nfinancial literacy using educational resources, analytical and trading\ntools, reviews, etc.\nTaklimakan Network benefits both beginners and advanced users. The\nplatform gives access to aggregated news and analytical materials on\ncryptocurrencies — each material undergoes professional moderation by\nthe platform’s own analytical service.\nExperienced traders and analysts will have the opportunity to publish\ntheir own trading recommendations and analytical materials. In addition,\nthey will be able to conduct webinars, lectures, and individual\nconsultations.\nThe goal of Taklimakan Network team is to bring together financial\nanalysts, crypto consultants and enthusiasts and increase the overall level\nof financial expertise to raise market to a whole new level.\nTaklimakan Network will become your mentor in the world of\ncryptocurrency, helping you choose the right way to manage your\npersonal finances. "
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://taklimakan.io/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://taklimakan.io/taklimakan-whitepaper-eng.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://medium.com/@taklimakan"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "github"
+  name = "Github"
+  url = "https://github.com/usetech-llc/taklimakan-ico-contracts"
+  tags = [
+    "Main",
+    "Code"
+  ]
+
+  [[blockchain.links]]
+  type = "bitcointalk"
+  name = "Bitcointalk"
+  url = "https://bitcointalk.org/index.php?topic=2426759.0"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/taklimakan_net"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/taklimakan_en"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/taklimakannetwork/"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://taklimakan.io/#conditions"
+    sales_agreement = "http://taklimakan.io/taklimakan-whitepaper-eng.pdf"
+
+    [ico.common_info.token_distribution]
+    total_supply = "1000000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "65"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "2"
+      description = "Bounty"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "18"
+      description = "Team, advisers, early buyers"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "10"
+      description = "Reserve"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "5"
+      description = "Partners"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "40"
+    description = "Development"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "30"
+    description = "Marketing"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "Legal"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "20"
+    description = "Administrative expenses"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token sale"
+  phase_status = "Finished"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "550000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "27500000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-04-09"
+    end_date = "2018-06-09"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "TKLN token"
+symbol = "TKLN"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
