@@ -1,0 +1,137 @@
+app = []
+
+[blockchain]
+project_name = "MOOVER"
+headline = "You can share mobile data communications with around the world"
+short_description = "MOOVER is a protocol that allows all mobile users to share (sell or buy) excess\nmobile data, going beyond the boundaries of contracted communication carriers,\nand is a new sharing economy that gives value to excess resources that have\nbeen opaque up to this day. This is a project that is intended not only to share\ncommunication data, but also to help address the global problem of the digital\ndivide, so that everyone around the world can access the internet equally and\ntruly freely."
+state = "1"
+asset_type = ""
+dependency = "independent"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://moover-contrib.tech/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://drive.google.com/file/d/19pKcAgFWE3YTmd9EM9sOvJ4jzrTIdgql/view"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/MOOVER_NETWORK"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://moover-contrib.tech/"
+    sales_agreement = "https://moover-contrib.tech/"
+
+    [ico.common_info.token_distribution]
+    total_supply = ""
+    shares = []
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "30"
+    description = "Development"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "25"
+    description = "Marketing"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "20"
+    description = "Secirity and user support"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "Outsourcing, audititng, legal"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "Office"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "5"
+    description = "Reserve"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token sale"
+  phase_status = "Active"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = ""
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "50000000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2017-12-01"
+    end_date = "2018-04-20"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = "15432000"
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "MOVE tokens"
+symbol = "MOVE tokens"
+token_purpose = "Both"
+token_type = "Core token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
