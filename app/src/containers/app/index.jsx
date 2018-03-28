@@ -5,7 +5,7 @@ import React, { Component } from 'react';
     return (
       <div>
         <div>
-          New Frontier of chaingear 1
+          New Frontier of chaingear
         </div>
         {this.props.children}
       </div>
