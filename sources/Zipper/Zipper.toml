@@ -1,0 +1,155 @@
+app = []
+
+[blockchain]
+project_name = "Zipper"
+headline = "Mobile platform making blockchain easy for everyday users."
+short_description = "Zipper is building a mobile platform which brings blockchain based services to the\nmasses by making them easy to use. The project aims to elevate our smartphones to\nblockchain powered devices which anyone can use.\nWhile Ethereum and other blockchains enable a new decentralized economy, the\ncumbersome user experience, for example, with handling one’s private keys, can severely\nhinder the mass adoption of various blockchain services. At the same time, there are\nbillions of people around the world who access the internet primarily with their\nsmartphones. Building a secure and easy to use mobile platform for smartphone users is\nthe key to bring the benefits of blockchain based services to the masses.\nThe Zipper team is specialized in building open source mobile operating systems,\nproducts and communities. A decade ago, we contributed in building Nokia’s MeeGo OS,\nand founded Jolla in 2011 to create the independent Sailfish OS which is now licensed by\nseveral large nations and industry players. We have also grown active open source\ncommunities around these projects, an asset we can further utilize with the Zipper\ninitiative.\nAs its first step to enter the market, Zipper has partnered with Jolla to launch a developer\n& community program for Sony Xperia smartphone. Developers can use the device to\nintegrate their blockchain based services to the Zipper platform, and community members\nto provide feedback as the platform’s first users. Over time, Zipper aims to make the Zipper\nplatform and the services integrated into it available to many other Android and Sailfish OS\nsmartphones as a pre-installed or downloadable solution.\nZIP token (ZIPT) is Zipper platform’s utility token which is used mainly for three purposes:\nthe platform and service providers can use ZIP to reward their active users, helping the\nproviders to establish a loyal user base and on the other hand rewarding loyal users for\ntheir attention. Moreover, ZIP is used to incentivise application development for the\nZipper platform as well as to curate the best applications for discovery through a\ncuration market mechanism.\nZipper will invest into projects which are essential for the Zipper ecosystem to succeed, and\ninvites existing blockchain projects to integrate their services into the Zipper platform.\nTogether we can offer a smooth integrated user experience, just like iOS and Android do\ntoday, but, in a decentralized way valuing privacy, transparency and collaboration."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://zipperglobal.com/whitepaper.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://zipperglobal.com/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://medium.com/zipperglobal"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "github"
+  name = "Github"
+  url = "https://github.com/zipperglobal"
+  tags = [
+    "Main",
+    "Code"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/zipperglobal"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/zipperglobal"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+  use_of_proceeds = []
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://zipperglobal.com/presale/"
+    sales_agreement = "https://zipperglobal.com/contribution-terms-conditions/"
+
+    [ico.common_info.token_distribution]
+    total_supply = ""
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "25"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "40"
+      description = "ecosystem: developers, community & partners"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "20"
+      description = "Team & advisors"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "15"
+      description = "Zipper Global Ltd"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token Sale"
+  phase_status = "Finished"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = ""
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "3000000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2017-11-30"
+    end_date = "2018-01-04"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = "3200000"
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "ZIP token"
+symbol = "ZIP"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
