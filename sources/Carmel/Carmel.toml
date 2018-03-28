@@ -1,0 +1,148 @@
+app = []
+
+[blockchain]
+project_name = "Carmel"
+headline = "Decentralized Open Source Tech Education Platform "
+short_description = "The Decentralized Open Source Tech Education Platform that helps aspiring and seasoned Software Developers grow their skill set and track their growth through tokenized peer challenges."
+state = "0"
+asset_type = ""
+dependency = "Graphene"
+consensus_name = "Delegated Proof-of-Stake"
+milestone = []
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://carmel.io/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://carmel.io/whitepaper/"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "github"
+  name = "Github"
+  url = "https://github.com/fluidtrends/carmel"
+  tags = [
+    "Main",
+    "Code"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/carmelplatform"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+  use_of_proceeds = []
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://carmel.io/tokens"
+    sales_agreement = "https://carmel.io/whitepaper/tokens"
+
+    [ico.common_info.token_distribution]
+    total_supply = "70000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "60"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "20"
+      description = "Founders Fund"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "10"
+      description = "Partners Fund"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "10"
+      description = "used for bounties, rewards, scholarships and incentives in a Fluid Fund"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token Sale"
+  phase_status = "Active"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "42000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "30000000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      address = "0x4E52e804905CC320BF631523a9cb1416B8d613Fb"
+      currency = "ETH"
+
+    [ico.phases.dates]
+    start_date = "2018-02-26"
+    end_date = "2018-08-20"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+      [[ico.phases.prices.bonuses]]
+      amount = "90% discount"
+      condition = "Private Sale: February 26 - April 2 (5 weeks)"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "The discount starts at 50% and decreases 10% progressively every week."
+      condition = "Public Pre-Sale: May 7 - June 11 (5 weeks)"
+
+[[token]]
+name = "Carmel Token"
+symbol = "CT"
+token_purpose = "Raising funds"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
