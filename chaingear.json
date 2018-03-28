@@ -46370,6 +46370,44 @@
     },
     {
         "genesis_id": "",
+        "system": "OpenPoll",
+        "dependencies": [
+            "Ethereum"
+        ],
+        "icon": "openpoll",
+        "token": {
+            "name": "POL token",
+            "symbol": "POL"
+        },
+        "consensus": {
+            "consensus_type": "Proof-of-Work",
+            "consensus_name": "Proof-of-Work"
+        },
+        "descriptions": {
+            "state": "Project",
+            "system_type": "cryptoasset",
+            "headline": "Independent, anonymous polling, delivered cheaper."
+        },
+        "crowdsales": {
+            "start_date": "2018-03-31T00:00:00.000Z",
+            "end_date": "2018-05-15T00:00:00.000Z",
+            "end_date_plan": "2018-05-15T00:00:00.000Z",
+            "genesis_address": [
+                ""
+            ],
+            "funding_term": "http://openpoll.io/whitepaper/latest",
+            "funding_url": "https://ico.openpoll.io/",
+            "tokens_sold": 0,
+            "tokens_issued": 0,
+            "btc_raised": "",
+            "cap_limit": [],
+            "raised": [
+                ""
+            ]
+        }
+    },
+    {
+        "genesis_id": "",
         "system": "OpenZeppelin",
         "dependencies": [
             "Ethereum"
@@ -61944,213 +61982,6 @@
                 "icon": "reddit.png",
                 "tags": [
                     "News"
-                ]
-            }
-        ]
-    },
-    {
-        "genesis_id": "",
-        "system": "Truthcoin",
-        "dependencies": [
-            "Bitcoin"
-        ],
-        "token": {
-            "name": "VoteCoin",
-            "symbol": "VoteCoin"
-        },
-        "consensus": {
-            "consensus_type": "Blockchain Record",
-            "consensus_name": "Bitcoin",
-            "hashing": ""
-        },
-        "descriptions": {
-            "state": "Project",
-            "system_type": "cryptocurrency",
-            "headline": "Sidechain for Prediction Markets",
-            "tags": [
-                "DApp"
-            ],
-            "hashtag": "#hivemind",
-            "twwidid": "",
-            "page_state": "ready"
-        },
-        "aliases": {
-            "nickname": "Hivemind"
-        },
-        "links": [
-            {
-                "name": "bitcoinhivemind.com",
-                "url": "http://bitcoinhivemind.com/",
-                "type": "website",
-                "icon": "website.png",
-                "tags": [
-                    "Main"
-                ]
-            },
-            {
-                "name": "Github Organization",
-                "url": "https://github.com/truthcoin",
-                "type": "github",
-                "icon": "github.png",
-                "tags": [
-                    "Main",
-                    "Code"
-                ]
-            },
-            {
-                "name": "Truthcoin Whitepaper",
-                "url": "http://www.truthcoin.info/papers/truthcoin-whitepaper.pdf",
-                "type": "paper",
-                "icon": "paper.png",
-                "tags": [
-                    "Main",
-                    "Science"
-                ]
-            },
-            {
-                "name": "@truthcoin",
-                "url": "https://twitter.com/truthcoin",
-                "type": "twitter",
-                "icon": "twitter.png",
-                "tags": [
-                    "Main",
-                    "News"
-                ]
-            },
-            {
-                "name": "Truthcoin Blog",
-                "url": "http://www.truthcoin.info/archive/",
-                "rss": "http://www.truthcoin.info/feed",
-                "type": "blog",
-                "icon": "blog.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "name": "TruthcoinTalk",
-                "url": "http://forum.truthcoin.info/",
-                "type": "forum",
-                "icon": "forum.png",
-                "tags": [
-                    "News"
-                ]
-            },
-            {
-                "name": "Dev Center",
-                "url": "https://dev.truthcoin.info/",
-                "type": "custom",
-                "icon": "truthcoin.png",
-                "tags": [
-                    "Apps"
-                ]
-            },
-            {
-                "name": "Voting Demo",
-                "url": "https://lyoshenka.ocpu.io/truthcoindemo/www/",
-                "type": "custom",
-                "icon": "truthcoin.png",
-                "tags": [
-                    "Apps"
-                ]
-            },
-            {
-                "name": "The Prediction Markets Sequence - 1. Statement of Purpose",
-                "url": "http://www.truthcoin.info/papers/1_Purpose.pdf",
-                "type": "paper",
-                "icon": "paper.png",
-                "tags": [
-                    "Science"
-                ]
-            },
-            {
-                "name": "The Prediction Markets Sequence - 2. The Power of Prediction Markets",
-                "url": "http://www.truthcoin.info/papers/2_PM_Types.pdf",
-                "type": "paper",
-                "icon": "paper.png",
-                "tags": [
-                    "Science"
-                ]
-            },
-            {
-                "name": "The Prediction Markets Sequence - 3. Applications of PMs",
-                "url": "http://www.truthcoin.info/papers/3_PM_Applications.pdf",
-                "type": "paper",
-                "icon": "paper.png",
-                "tags": [
-                    "Science"
-                ]
-            },
-            {
-                "name": "The Prediction Markets Sequence - 4. PM Myths",
-                "url": "http://www.truthcoin.info/papers/4_PM_Myths.pdf",
-                "type": "paper",
-                "icon": "paper.png",
-                "tags": [
-                    "Science"
-                ]
-            },
-            {
-                "name": "The Prediction Markets Sequence - 5. PM Manipulation",
-                "url": "http://www.truthcoin.info/papers/5_PM_Manipulation.pdf",
-                "type": "paper",
-                "icon": "paper.png",
-                "tags": [
-                    "Science"
-                ]
-            },
-            {
-                "name": "Presentation - What is Truthcoin?",
-                "url": "http://www.truthcoin.info/presentations/what-is-truthcoin.pdf",
-                "type": "paper",
-                "icon": "paper.png",
-                "tags": [
-                    "Science"
-                ]
-            },
-            {
-                "name": "Presentation - Outcome Resolution",
-                "url": "http://www.truthcoin.info/presentations/truthcoin-outcomes.pdf",
-                "type": "paper",
-                "icon": "paper.png",
-                "tags": [
-                    "Science"
-                ]
-            },
-            {
-                "name": "Presentation - The Age of Bullshit",
-                "url": "http://www.truthcoin.info/presentations/info-problems.pdf",
-                "type": "paper",
-                "icon": "paper.png",
-                "tags": [
-                    "Science"
-                ]
-            },
-            {
-                "name": "Presentation - Value of a Truthcoin",
-                "url": "http://www.truthcoin.info/presentations/truthcoin-valuable.pdf",
-                "type": "paper",
-                "icon": "paper.png",
-                "tags": [
-                    "Science"
-                ]
-            },
-            {
-                "name": "Presentation - In Six Slides",
-                "url": "http://www.truthcoin.info/presentations/six-slide-sprint.pdf",
-                "type": "paper",
-                "icon": "paper.png",
-                "tags": [
-                    "Science"
-                ]
-            },
-            {
-                "name": "Truthcoin FAQ",
-                "url": "http://www.truthcoin.info/faq/",
-                "type": "paper",
-                "icon": "paper.png",
-                "tags": [
-                    "Science"
                 ]
             }
         ]
