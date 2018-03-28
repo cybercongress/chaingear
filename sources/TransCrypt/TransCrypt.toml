@@ -1,0 +1,310 @@
+[blockchain]
+project_name = "TransCrypt"
+headline = "Decentralized Payment Platform"
+short_description = "TransCrypt - это одно окно для всех финансовых транзакций, будь то транзакции с криптовалютой, покупка токенов или оплата услуг - все это делается в вашем любимом мессенджере. Больше не нужно будет беспокоиться о валюте платежа - встроенное преобразование автоматически обменивает требуемую сумму в запрошенную валюту. Благодаря собственному блокчейну- TransCrypt и криптовалюте-Tizer транзакции будут выполняться мгновенно и практически бесплатно."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+
+  [[blockchain.milestone]]
+  number = 1.0
+  name = "Development of the project concept"
+  start_date = "2016-12-01"
+  current_status = "Completed"
+
+  [[blockchain.milestone]]
+  number = 2.0
+  name = "Prototype creation"
+  start_date = "2017-08-01"
+  current_status = "Completed"
+
+  [[blockchain.milestone]]
+  number = 3.0
+  name = "TransCrypt ALPHA"
+  start_date = "2017-12-01"
+  current_status = "Completed"
+
+  [[blockchain.milestone]]
+  number = 4.0
+  name = "TSR Closed BETA BTC wallets and transfers"
+  start_date = "2018-03-01"
+  current_status = "In work"
+
+  [[blockchain.milestone]]
+  number = 5.0
+  name = "BCH, LTC wallets and transfers Cryptocurrency exchange"
+  start_date = "2018-04-01"
+  current_status = "Planned"
+
+  [[blockchain.milestone]]
+  number = 6.0
+  name = "TSR Public BETA Telegram Integration ETH wallets and transfers"
+  start_date = "2015-05-01"
+  current_status = "Planned"
+
+  [[blockchain.milestone]]
+  number = 7.0
+  name = "XRP, Cardano wallets and transfers"
+  start_date = "2016-06-01"
+  current_status = "Planned"
+
+  [[blockchain.milestone]]
+  number = 8.0
+  name = "TransCrypt Public Stable"
+  start_date = "2018-07-01"
+  current_status = "Planned"
+
+  [[blockchain.milestone]]
+  number = 9.0
+  name = "NEO, Stellar wallets and transfers"
+  start_date = "2018-08-01"
+  current_status = "Planned"
+
+  [[blockchain.milestone]]
+  number = 10.0
+  name = "EOS, NEM, Dash wallets and transfers"
+  start_date = "2018-10-01"
+  current_status = "Planned"
+
+  [[blockchain.milestone]]
+  number = 11.0
+  name = "PCI DSS Certification"
+  start_date = "2018-11-01"
+  current_status = "Planned"
+
+  [[blockchain.milestone]]
+  number = 12.0
+  name = "EMI License"
+  start_date = "2018-12-01"
+  current_status = "Planned"
+
+  [[blockchain.milestone]]
+  number = 13.0
+  name = "Launch of an MVP of the Tizer blockchain Launch of fiat transfers Buy&Sell Crypto TransCrypt debit card"
+  start_date = "2019 Q1"
+  current_status = "Planned"
+
+  [[blockchain.milestone]]
+  number = 14.0
+  name = "Tizer Invest"
+  start_date = "2019 Q2"
+  current_status = "Planned"
+
+  [[blockchain.milestone]]
+  number = 15.0
+  name = "Audit of Tizer blockchain and launch of stable version"
+  start_date = "2019 Q3"
+  current_status = "Planned"
+
+  [[blockchain.milestone]]
+  number = 16.0
+  name = "Launch of payment widget for commercial solutions"
+  start_date = "2019 Q4"
+  current_status = "Planned"
+
+  [[blockchain.milestone]]
+  number = 17.0
+  name = "Transfer economics of project to the Tizer platform"
+  start_date = "2020 Q1"
+  current_status = "Planned"
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://tsrpay.com/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://tsrpay.com/docs/whitepaper.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "bitcointalk"
+  name = "Bitcointalk"
+  url = "https://bitcointalk.org/index.php?topic=3070065.0"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://medium.com/@tsrpay"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/tsrpay"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/tsrpay"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "reddit"
+  name = "Reddit"
+  url = "https://www.reddit.com/user/TSRPAY/"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/tsrpay/"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://account.tokensale.tsrpay.com/"
+    sales_agreement = "https://tsrpay.com/docs/terms-of-service.pdf"
+
+    [ico.common_info.token_distribution]
+    total_supply = "1000000000 "
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "60"
+      description = "TSR will be allocated for public distribution."
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "20"
+      description = "TSR will be allocated for the team, the advisors and company bounty"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "20"
+      description = "TSR will be allocated to the reserve fund of the Company and will b e blocked for at l east 36 m onths. "
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "51.12"
+    description = "Research and development"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "16.43"
+    description = "PR and marketing"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "13.98"
+    description = "Legal costs"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "7.32"
+    description = "IT infrastructure"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "5.18"
+    description = "Financial center "
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "0.97"
+    description = "General running costs"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "5"
+    description = "The unforeseen expenses fund"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Private Token Sale"
+  phase_status = "Active"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = "2018-03-05"
+    end_date = "2018-04-02"
+    website = "https://account.tokensale.tsrpay.com/"
+    terms = "https://tsrpay.com/docs/terms-of-service.pdf"
+
+    [ico.phases.terms]
+    issued_tokens = "10000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = ""
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-03-05"
+    end_date = "2018-04-02"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "ETH"
+      price = "0.001"
+
+[[token]]
+name = "Token TSR"
+symbol = "TSR"
+token_purpose = "Raising funds"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
+
+[[token]]
+name = "Token Tizer "
+symbol = "Tizer"
+token_purpose = "Utility"
+token_type = "Core token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
+
+[[app]]
+name = "TransCrypt"
+same_blockchain = "false"
+sources_availability = "true"
+app_status = "1"
+app_type = "Wallet, Web app, Mobile app"
+app_url = ""
