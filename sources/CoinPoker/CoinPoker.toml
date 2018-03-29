@@ -1,0 +1,181 @@
+app = []
+
+[blockchain]
+project_name = "CoinPoker"
+headline = "CoinPoker, an online poker room based on blockchain technology"
+short_description = "CoinPoker is a poker room built on blockchain technology that will offer fantastic value for poker players\nand casual purchasers. Poker players will benefit from games offered at extremely competitive rakes with\nhuge value added bonuses and promotions to drive traffic and a potential appreciation of their CHPs\nassociated with the development of a robust poker economy.\nCoinPoker is not a concept, it’s been fully developed and is ready to launch post ICO ensuring immediate\nbenefits to the CHP purchasers. The software is fully tested and the MVP (minimum viable product) is\nready to try. Millions have already been invested to get the software to this state.\nCoinPoker’s blockchain technology also solves the key obstacles inhabiting the growth of online poker\ntoday, namely avoiding payment processing issues, managing game integrity, creating purely random\nnumber generation and allowing for blockchain marketing initiatives. Even product design, new games\ncan be controlled by a blockchain voting system based on user preferences.\nThe timing is perfect for CoinPoker as recent forecasts expect online poker to surge in popularity with\npreviously taboo markets coming back online (such as parts of the U.S) and poker growing in popularity in\nemerging regions such as Asia and South America. Expenditure is set to treble of the next 3 years.\nDue to the reasons listed above, we would like to introduce you to our ICO, or Initial Coin Offering.PreICO\nis going to start on November 16th, and the ICO is expected to start mid-January. Throughout we\nwill be releasing 500 million of our Tokens called Chips (CHP). Chips will be our official currency that will\ncirculate within the platform, benefiting the holders of the currency."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://coinpoker.com/downloads/coinpoker-whitepaper.pdf?v171221"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://coinpoker.com/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "bitcointalk"
+  name = "Bitcointalk"
+  url = "https://bitcointalk.org/index.php?topic=2312197.0"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://medium.com/@CoinPoker"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/CoinPoker_OFF"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/officialcoinpoker"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "reddit"
+  name = "Reddit"
+  url = "https://www.reddit.com/r/coinpoker/"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/CoinPokerOfficial/"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://coinpoker.com/#home"
+    sales_agreement = "https://coinpoker.com/how-to"
+
+    [ico.common_info.token_distribution]
+    total_supply = "500000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "15"
+      description = "tournaments"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "5"
+      description = "exchange"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "5"
+      description = "Team/Advisors"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "75"
+      description = "ICO"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "60"
+    description = "development"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "25"
+    description = "marketing"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "15"
+    description = "Team/Advisors/Ambassadors"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token Sale"
+  phase_status = "Planned"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "375000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = ""
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-01-19"
+    end_date = "2018-01-26"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = "52700000"
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "Chips"
+symbol = "CHP"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
