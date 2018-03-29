@@ -1,0 +1,164 @@
+app = []
+
+[blockchain]
+project_name = "DeHedge"
+headline = "Risk-hedging platform for cryptocurrency investors"
+short_description = "DeHedge intends to develop and implement hedging tools for the cryptocurrencies market and the initial placement of project tokens. According to the DeHedge team, hedging is an effective strategy to protect against fluctuations in token rates and cryptocurrencies. Reducing the risk of investors, to a certain extent, also reduces their potential profit by the amount of the Hedge premium."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://dehedge.com/documents/13.03.-18-dehedge-whitepaper-en-2.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://dehedge.com/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/De_Hedge"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/Dehedge"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/dehedgeofficial/"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://dehedge.com/"
+    sales_agreement = "https://dehedge.com/"
+
+    [ico.common_info.token_distribution]
+    total_supply = "10000000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "80"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "15"
+      description = "project team and cofounders"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "2"
+      description = "bounty program"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "1"
+      description = "marketing"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "2"
+      description = "advisor compensation"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "80"
+    description = "hedging reserves"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "12"
+    description = "project development and team administration"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "6"
+    description = "marketing and promotion"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "2"
+    description = " legal and accounting services"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token Sale"
+  phase_status = "Active"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = " 2500000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "ETH"
+      amount = "50000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-03-15"
+    end_date = "2018-04-20"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "DeHedge Tokens"
+symbol = "DeHedge "
+token_purpose = "Raising funds"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
