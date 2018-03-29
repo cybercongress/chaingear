@@ -1,0 +1,200 @@
+app = []
+
+[blockchain]
+project_name = "Tutellus"
+headline = "The platform that pays you for learning"
+short_description = "The main objective of Tutellus is to create a new educational model that answers to the challenges of\nthe market: train and identify the most committed students, increase the involvement of the best\nteachers, and strongly tie an educational community - the student body and teacher faculty - to the\njob market.\nPulling people out of Poverty by paying and matching them with Jobs\nImagine a platform that help people to leave poverty behind. Tutellus plans to partially fund education\nfor some of its students that are studying for available jobs.\nAdding value to the Students\nImagine a platform that rewards the best students for their participation. The logic is simple: the\nbetter the training the student gets, the higher the value of the student for both the education\ncommunity and companies (employers, job placement agencies, other service providers). This higher\nvalue of the student body stretches across the education platform to reach employers, and further\ninto society as a whole.\nAdding value to the Teachers\nImagine a platform in which teachers are rewarded for the excellence of their students: the more the\nstudents become relevant to the education platform and the job market, the more money their\nteachers will receive. Improving the students’ relevance will motivate the teachers, which in turn will\nsignificantly improve students’ motivation, the quality of the content, and the teachers’ commitment\nto their students.\nAdding value to Companies searching for Candidates\nImagine a platform where companies may find the perfect fit for a position or contract. The platform\nwill help students become more relevant to companies by creating a virtuous circle motivating the\nentire community of teachers and students. Students will be identified as job candidates by\ncompanies by their value in any specific learned skill."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://www.tutellus.io/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://lib.tutellus.com/ico/pdf/tutellus.io_whitepaper_v3.24_en.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "github"
+  name = "Github"
+  url = "https://github.com/tutellus-io"
+  tags = [
+    "Main",
+    "Code"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://medium.com/tutellus-io"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "bitcointalk"
+  name = "Bitcointalk"
+  url = "https://bitcointalk.org/index.php?topic=2571779.0"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/tutellusico"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/tutellus"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "reddit"
+  name = "Reddit"
+  url = "https://www.reddit.com/r/Tutellus/"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/tutellusio/"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://www.tutellus.io/signup"
+    sales_agreement = "https://lib.tutellus.com/ico/pdf/tutellus.io_token_launch_v3.19_en.pdf"
+
+    [ico.common_info.token_distribution]
+    total_supply = "1500000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "60"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "20"
+      description = "Pool"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "10"
+      description = "Team"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "10"
+      description = "Bounty & Advisors"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "40"
+    description = "Product & Engineering"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "20"
+    description = "Sales & Marketing"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "20"
+    description = "Publicity & PR"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "Operations"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "Security, Loyalty & Reserves"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token Sale"
+  phase_status = "Active"
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "900000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "40000000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-03-01"
+    end_date = "2018-03-31"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+    [[ico.phases.contract]]
+    address = "0x0F3D5562cA6084F7d59CE10Dc5aB672257573dE6"
+
+[[token]]
+name = "TUT Token"
+symbol = "TUT"
+token_purpose = "Raising funds"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
