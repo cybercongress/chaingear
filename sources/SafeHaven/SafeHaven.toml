@@ -1,0 +1,193 @@
+app = []
+
+[blockchain]
+project_name = "Safe Haven "
+headline = "The first inheritable digital asset."
+short_description = "Cryptocurrencies and digital assets are a new and evolving concept that brings promises of a future with decentralized stores of value and peer-to-peer transactions. However, with any new and revolutionary idea comes skepticism and distrust. • Digital currencies are volatile, unpredictable, easily lost. • Once our valuable stakes in digital assets are gone, they cannot ever be retrieved regardless of reasons (simple forgetfulness, loss of keys or saved passphrases, or in some instances, death). • Losing cryptocurrencies contributes to the many problems hindering the advancement and widespread utilization of digital assets in the modern world. 1.2 Our Solution • Safe Haven offers a solution to this problem by providing a safe, secure, and transparent means for one’s digital assets to be inherited by anyone they chose, at any time they chose, while remaining in full control of his or her investment. • Safe Haven’s complex, yet effective platform uses the advanced technology of Smart Contracts combined with legal entities from across the globe. This combination empowers Safe Haven Digital Asset (SHA DA) holders to ensure secure inheritance of widespread digital assets. • Any group or organization to maximize security and safety in a world of volatility, precaution, and unpredictability can utilize safe Haven’s platform. 1.3How? • First, the Safe Haven solution requires minimal involvement, which results in the initiator remaining in control. The initiator may retrieve their token at any time throughout this process. SafeHaven.io White Paper Page 5/38 • Through secure encryption, the initiators keys are split and encoded in the blockchain. The number of times the key is split varies between each case (see more on this topic further in our whitepaper). • Through the enlistment of legal entities worldwide via our TAN (Trust Alliance Network) each individual case is legally noted, and conditions for inheritance are given on an individual level, dependent on the wishes of the initiator. • By involving both legal entities and secure, encrypted transactions all while leaving the initiator completely in control, our solution is extremely valuable and unprecedented. 1.4 The Necessity of Safe Haven • The inheritability of digital assets is necessary for digital assets to be implemented in the global community. No more vast utilizations or implementations will occur until digital assets become a more secure and trustworthy asset. • Safe Haven is a necessity on an individual level. Digital assets are often stolen; keys are forgotten, investment-based technology investments can break, etc. Safe Haven is the only way to secure any investment or involvement in cryptocurrencies. 2 Solution Safe Haven gives contributors the opportunity to secure their digital assets without locking themselves out. Thanks to our TFC Share Distribution Key, Escrow Protocol, and the Trust Alliance program, seeds/private-keys/passphrases can be shared amongst stakeholders or family members in a transparent and secure manner. Our protocol distributes the shares in a way where the investor keeps (at all costs) the power over his assets. On the unfortunate and unavoidable day that he/she should pass away, a registered member of the Trust Alliance Platform (notary) can retrieve the remaining share on the blockchain to pass the contributor’s legacy down to his/her children or stakeholders."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://safehaven.io/files/SafeHaven_WhitePaper.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://safehaven.io/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://medium.com/@safehavenio"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "bitcointalk"
+  name = "Bitcointalk"
+  url = "https://bitcointalk.org/index.php?topic=2803657.0"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/safeHavenio"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/safehavenio"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "reddit"
+  name = "Reddit"
+  url = "https://www.reddit.com/r/safehavenio"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://fb.me/SafeHaven.io"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://safehaven.io/"
+    sales_agreement = "https://safehaven.io/files/SafeHaven_WhitePaper.pdf"
+
+    [ico.common_info.token_distribution]
+    total_supply = "85000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "60"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "18"
+      description = "FOUNDERS"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "12"
+      description = "Company"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "7"
+      description = "Advisors"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "3"
+      description = "COMMUNITY & BOUNTY"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "40"
+    description = "Development"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "Marketing"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "18"
+    description = "Salary Plans"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "15"
+    description = "Legal Expenses"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "17"
+    description = "Operational Expenses"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token Sale"
+  phase_status = "Finished"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "51000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "25000000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-02-24"
+    end_date = "2018-03-10"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "SHA token"
+symbol = "SHA"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
