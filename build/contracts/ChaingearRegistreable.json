@@ -1,0 +1,179 @@
+{
+  "contractName": "ChaingearRegistreable",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "register",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.4.17;\n\ncontract ChaingearRegistreable {\n\n\n    function register(string _name, address _address) external payable;\n\n}\n",
+  "sourcePath": "/Users/litvintech/Projects/chaingear/contracts/common/ChaingearRegistreable.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/Users/litvintech/Projects/chaingear/contracts/common/ChaingearRegistreable.sol",
+      "exportedSymbols": {
+        "ChaingearRegistreable": [
+          522
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".17"
+          ]
+        },
+        "id": 514,
+        "name": "PragmaDirective",
+        "src": "0:24:3"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            522
+          ],
+          "name": "ChaingearRegistreable",
+          "scope": 523
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "constant": false,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "register",
+              "payable": true,
+              "scope": 522,
+              "stateMutability": "payable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_name",
+                      "scope": 521,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string calldata",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 515,
+                        "name": "ElementaryTypeName",
+                        "src": "83:6:3"
+                      }
+                    ],
+                    "id": 516,
+                    "name": "VariableDeclaration",
+                    "src": "83:12:3"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_address",
+                      "scope": 521,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 517,
+                        "name": "ElementaryTypeName",
+                        "src": "97:7:3"
+                      }
+                    ],
+                    "id": 518,
+                    "name": "VariableDeclaration",
+                    "src": "97:16:3"
+                  }
+                ],
+                "id": 519,
+                "name": "ParameterList",
+                "src": "82:32:3"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 520,
+                "name": "ParameterList",
+                "src": "131:0:3"
+              }
+            ],
+            "id": 521,
+            "name": "FunctionDefinition",
+            "src": "65:67:3"
+          }
+        ],
+        "id": 522,
+        "name": "ContractDefinition",
+        "src": "26:109:3"
+      }
+    ],
+    "id": 523,
+    "name": "SourceUnit",
+    "src": "0:136:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-03-28T22:30:02.431Z"
+}
