@@ -1,0 +1,140 @@
+app = []
+
+[blockchain]
+project_name = "Privelege Coin"
+headline = "The official means of payment in the Kingdom of Privelege."
+short_description = "The intent of Privelege Coin is to create an alternative protocol for\nbuilding decentralized applications, providing a different set of tradeoffs\nthat we believe will be very useful for a large class of decentralized\napplications, with particular emphasis on situations where rapid\ndevelopment time, security for small and rarely used applications, and\nthe ability of different applications to very efficiently interact, are\nimportant. Privelege Coin does this by building what is essentially the\nultimate abstract foundational layer: a blockchain with a built-in Turingcomplete\nprogramming language, allowing anyone to write smart\ncontracts and decentralized applications where they can create their own\narbitrary rules for ownership, transaction formats and state transition\nfunctions. A bare-bones version of Namecoin can be written in two lines\nof code, and other protocols like currencies and reputation systems can\nbe built in under twenty. Smart contracts, cryptographic \"boxes\" that\ncontain value and only unlock it if certain conditions are met, can also\nbe built on top of the platform, with vastly more power than that offered\nby Bitcoin scripting because of the added powers of Turingcompleteness,\nvalue-awareness, blockchain-awareness and state"
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://kingdomofprivelege.com/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://kingdomofprivelege.com/wp-content/uploads/2018/01/WhitePapers_ver_10.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://kingdomofprivelege.com/https://twitter.com/XPVMonarchy"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "github"
+  name = "Github"
+  url = "https://github.com/privelegemonarchy/privelege-coin"
+  tags = [
+    "Main",
+    "Code"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/privelegemonarchy/"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+  use_of_proceeds = []
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://kingdomofprivelege.com"
+    sales_agreement = "https://kingdomofprivelege.com"
+
+    [ico.common_info.token_distribution]
+    total_supply = ""
+    shares = []
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token Sale"
+  phase_status = "Active"
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = ""
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = ""
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      address = "0x780ac44F1e0051C297449429687d7181413aa828"
+      currency = "ETH"
+
+      [[ico.phases.terms.crowdsale_addresses]]
+      address = "17vSMYGeMPKci7wpVohiYPHzjYC5Bi4fi7"
+      currency = "BTC"
+
+    [ico.phases.dates]
+    start_date = "2018-02-15"
+    end_date = "2018-04-10"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+    [[ico.phases.contract]]
+    address = "0x98cfA36850a37791edDe18e641A5D44164fd3d39"
+
+[[token]]
+name = "Privelege Coin"
+symbol = "XPV"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
