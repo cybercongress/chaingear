@@ -9,25 +9,25 @@ class Home extends Component {
       super(props)
 
       this.state = {
-        registers: []
+        registries: []
       }
     }
 
     componentDidMount() {
-      chaingear.getContracts().then(registers => {
+      chaingear.getContracts().then(registries => {
         this.setState({
-        registers
+        registries
       })
       })
     }
 
   render() {
-    const { registers } = this.state;
+    const { registries } = this.state;
     return (
       <div>
-        <h2>Existing registers:</h2>
+        <h2>Existing registries:</h2>
         <ul >
-          {registers.map(register => (
+          {registries.map(register => (
                 <li key={register.name}>
                   {
                     register.status === 'pending' ? (

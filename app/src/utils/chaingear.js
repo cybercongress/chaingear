@@ -48,11 +48,14 @@ export const register = (name, adress, hash) => {
 
 export const getContracts = () => {
   return getContract().then(( { contract, web3 }) => {  
-    return getItems(contract, 'contractsLength', 'contracts', (items) => ({
-      name: items[0],
-      address: items[1],
-      ipfsHash: items[2]
-    }))
+    return getItems(contract, 'registriesAmount', 'registries', (items) => {
+      return ({
+        name: items[0],
+        address: items[1],
+        ipfsHash: items[4]
+      })
+
+    })
   })
 }
 

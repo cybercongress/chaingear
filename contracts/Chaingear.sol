@@ -15,6 +15,7 @@ contract Chaingear is Ownable, IPFSeable, Pausable, Destructible, SplitPaymentCh
         address contractAddress;
         address creator;
         uint registrationTimestamp;
+        string linkABI;
     }
 
     string public name;
@@ -41,7 +42,7 @@ contract Chaingear is Ownable, IPFSeable, Pausable, Destructible, SplitPaymentCh
         description = _description;
     }
 
-    function register(string _name, address _address) external payable {
+    function register(string _name, address _address, string _linkABI) external payable {
         require(msg.value == registrationFee);
 
         registries.push(Registry(
@@ -49,6 +50,7 @@ contract Chaingear is Ownable, IPFSeable, Pausable, Destructible, SplitPaymentCh
             name: _name,
             contractAddress: _address,
             creator: msg.sender,
+            linkABI: _linkABI,
             registrationTimestamp: now
         }));
 
