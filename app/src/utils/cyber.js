@@ -1,9 +1,12 @@
 import getWeb3 from './getWeb3.js';
 
-import ChaingearBuild from './Chaingear.json'
+import ChaingearBuild from '../../../build/contracts/Chaingear.json'
+// './Chaingear.json'
 //'../../../smart-contracts/build/contracts/Chaingear.json'
 
 // './Chaingear.json'
+
+//TODO: move in npm package
 
 const getItems = (contract, count, array, mapFn) => {
   return new Promise(resolve => {

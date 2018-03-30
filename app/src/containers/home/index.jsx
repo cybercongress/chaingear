@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router';
 
-import * as chaingear from '../../utils/chaingear'
+import * as cyber from '../../utils/cyber'
 
 class Home extends Component {
     constructor(props) {
@@ -14,7 +14,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-      chaingear.getContracts().then(registries => {
+      cyber.getContracts().then(registries => {
         this.setState({
         registries
       })

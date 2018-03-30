@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import * as chaingear from '../../utils/chaingear'
+import * as cyber from '../../utils/cyber'
 
 import AddRow from './AddRow';
 
@@ -18,15 +18,15 @@ class Register extends Component {
       loading: true
     })
     const address = this.props.params.adress;
-    chaingear.getContracts()
+    cyber.getContracts()
       .then(contracts => {
         var ipfsHash = contracts.filter(x => x.address === address)[0].ipfsHash;
-        chaingear.ipfs.get(ipfsHash, (err, files) => {
+        cyber.ipfs.get(ipfsHash, (err, files) => {
           const buf = files[0].content;
           var data = JSON.parse(JSON.parse(buf.toString()));
           var fields = data.filter(x => x.name === 'entries')[0].outputs;
           fields = fields.filter(x => x.name != 'owner' && x.name != 'lastUpdateTime');
-          chaingear.getContractByAbi(address, data)
+          cyber.getContractByAbi(address, data)
           .then(({ contract }) => {
             this.contract = contract; 
              const mapFn = item => {
@@ -36,7 +36,7 @@ class Register extends Component {
                     return o;
                   },{})
               }
-              chaingear.getItems2(contract, 'entriesCount', 'entries', mapFn)
+              cyber.getItems2(contract, 'entriesCount', 'entries', mapFn)
                 .then(items => {
                   this.setState({ 
                     items, fields ,
