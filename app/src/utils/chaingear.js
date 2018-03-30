@@ -99,5 +99,8 @@ export const getItems2 = (contract, count, array, mapFn) => {
 
 const IPFS = require('ipfs-api');
 
+//require('ipfs-api/dist/index.min.js')
+//require('ipfs-api');
+
 export const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
 

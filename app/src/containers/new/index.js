@@ -7,9 +7,6 @@ import generateContractCode from '../../generateContractCode';
 import * as chaingear from '../../utils/chaingear';
 import getWeb3 from '../../utils/getWeb3.js';
 
-const IPFS = require('ipfs-api');
-const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
-
 const MAX_FIELD_COUNT = 10;
 
 class AddField extends Component {
@@ -134,7 +131,7 @@ class NewRegister extends Component {
           if (myContract.address) {
             this.setState({ status: 'save abi in ipfs...'})
             const buffer = Buffer.from(JSON.stringify(abi));
-            ipfs.add(buffer, (err, ipfsHash) => {
+            chaingear.ipfs.add(buffer, (err, ipfsHash) => {
               const hash = ipfsHash[0].path;
               this.setState({ status: 'register contract...'})
               chaingear.register(contractName, myContract.address, hash).then(() => {

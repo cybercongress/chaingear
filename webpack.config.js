@@ -159,7 +159,9 @@ function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_A
     );
 
     plugins.push(
-      new UglifyJsPlugin()
+      new UglifyJsPlugin({
+         test: /\.js($|\?)/i
+      })
     )
   }
 
