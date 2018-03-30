@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router'
 
 import generateContractCode from '../../generateContractCode';
 
-import * as chaingear from '../../utils/chaingear';
+import * as cyber from '../../utils/cyber';
 import getWeb3 from '../../utils/getWeb3.js';
 
 const MAX_FIELD_COUNT = 10;
@@ -84,7 +84,7 @@ class NewRegister extends Component {
 
   
   componentDidMount() {    
-    chaingear.getContracts()
+    cyber.getContracts()
       .then(contracts => this.setState({ contracts }))
   }
   add = (name, type) => {
@@ -124,10 +124,10 @@ class NewRegister extends Component {
 
         this.setState({ status: 'deploy contract...'})
 
-        var _benefitiaries = ['0xa3564D084fabf13e69eca6F2949D3328BF6468Ef'];
-        var _shares = [100];
+        var _benefitiaries = ['0xa3564D084fabf13e69eca6F2949D3328BF6468Ef']; // ???
+        var _shares = [100];// ???
         var _permissionType = +this.refs.permission.value;
-        var _entryCreationFee = 0.1;
+        var _entryCreationFee = 0.1;// ???
         var _name = contractName;
         var _description = this.refs.description.value;
         var _tags = this.refs.tags.value;
@@ -149,10 +149,10 @@ class NewRegister extends Component {
           if (myContract.address) {
             this.setState({ status: 'save abi in ipfs...'})
             const buffer = Buffer.from(JSON.stringify(abi));
-            chaingear.ipfs.add(buffer, (err, ipfsHash) => {
+            cyber.ipfs.add(buffer, (err, ipfsHash) => {
               const hash = ipfsHash[0].path;
               this.setState({ status: 'register contract...'})
-              chaingear.register(contractName, myContract.address, hash).then(() => {
+              cyber.register(contractName, myContract.address, hash).then(() => {
                 this.setState({ status: '', inProgress: false })
                 browserHistory.push(`/`);
               });
@@ -177,7 +177,8 @@ class NewRegister extends Component {
     const { contractName, fields, status, inProgress, contracts } = this.state;
     const code = generateContractCode(contractName, fields);
     const exist = !!contracts.find(x => x.name === contractName)
-    const canDeploy = contractName.length > 0 && contractName.length > 0 && contractName.length <= MAX_FIELD_COUNT && !exist;
+    const fieldsCount = fields.length;
+    const canDeploy = contractName.length > 0 && fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !exist;
  
     return (
       <div>
