@@ -25,6 +25,7 @@ class Register extends Component {
           const buf = files[0].content;
           var data = JSON.parse(JSON.parse(buf.toString()));
           var fields = data.filter(x => x.name === 'entries')[0].outputs;
+          fields = fields.filter(x => x.name != 'owner' && x.name != 'lastUpdateTime');
           chaingear.getContractByAbi(address, data)
           .then(({ contract }) => {
             this.contract = contract; 

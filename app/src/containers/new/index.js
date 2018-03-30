@@ -118,11 +118,29 @@ class NewRegister extends Component {
       let abi = compiledContract.contracts[contractName].interface;
       let bytecode = '0x'+compiledContract.contracts[contractName].bytecode;
       web3.eth.estimateGas({data: bytecode}, (e, gasEstimate) => {
+        console.log(e, gasEstimate);
+
         let Contract = web3.eth.contract(JSON.parse(abi));
 
         this.setState({ status: 'deploy contract...'})
 
-        Contract.new("sanchit", "s@a.com", {
+        var _benefitiaries = ['0xa3564D084fabf13e69eca6F2949D3328BF6468Ef'];
+        var _shares = [100];
+        var _permissionType = +this.refs.permission.value;
+        var _entryCreationFee = 0.1;
+        var _name = contractName;
+        var _description = this.refs.description.value;
+        var _tags = this.refs.tags.value;
+
+        Contract.new(
+          _benefitiaries,
+          _shares,
+          _permissionType,
+          _entryCreationFee,
+          _name,
+          _description,
+          _tags,
+         {
            from: web3.eth.accounts[0],
            data:bytecode,
            gas: gasEstimate
@@ -185,11 +203,27 @@ class NewRegister extends Component {
           </div>
           <div className="pure-u-1-2">
             <div>
-              <input 
+              <p>Name:<input 
                 placeholder='name'
                 value={contractName}
                 onChange={this.changeContractName}
-              />
+              /></p>
+              <p>Description:<input 
+                placeholder='description'
+                ref='description'
+              /></p>
+              <p>Permission:
+                <select ref='permission'>
+                  <option value='1'>OnlyOwner</option>
+                  <option value='2'>AllUsers</option>
+                  <option value='3'>Whitelist</option>
+                </select>
+              </p>
+
+              <p>Tags:<input 
+                placeholder='tags'
+                ref='tags'
+              /></p>
             </div>
             <table className="pure-table">
               <thead>
