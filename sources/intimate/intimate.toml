@@ -1,0 +1,173 @@
+app = []
+
+[blockchain]
+project_name = "intimate"
+headline = "Provide Trust and security other industries take for granted"
+short_description = "intimate is a cryptocurrency facilitating payments and trust for the adult industry, making it safer and more secure for all."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://intimate.io/whitepaper.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://intimate.io/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "github"
+  name = "Github"
+  url = "https://github.com/intimatetoken"
+  tags = [
+    "Main",
+    "Code"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/intimate_io"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/intimatetoken"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/intimatetoken/"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://intimate.io"
+    sales_agreement = "https://intimate.io/whitepaper.pdf"
+
+    [ico.common_info.token_distribution]
+    total_supply = "100000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "60"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "15"
+      description = "Staff and General Administration"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "25"
+      description = "Held by Foundation"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "25"
+    description = "Core development"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "20"
+    description = "Ecosystem development"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "25"
+    description = "Marketing"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "Industry support"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "Financial"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "Administration"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Public Sale"
+  phase_status = "Planned"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "60000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "16850000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-04-11"
+    end_date = "2018-04-25"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "ITM Token"
+symbol = "ITM"
+token_purpose = "Raising funds"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
