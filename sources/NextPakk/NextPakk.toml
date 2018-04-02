@@ -1,0 +1,155 @@
+app = []
+
+[blockchain]
+project_name = "NextPakk"
+headline = "Consumer-scheduled Package deliveries on sharing economy"
+short_description = "While there exists no silver bullet for offsetting delivery costs, efficiency and planning go a\nlong way. At NextPakk, we’re uprooting the last-mile delivery system so we can build it\nstronger through meeting modern-day demands:\nWe’ve eliminated the need for warehouses in our ecosystem. Instead, we’re supporting local\nbusinesses, as they’re paid per package received in their stores.\nIndependent drivers have the opportunity to earn income making scheduled deliveries, while\nNextPakk is protecting the environment by eliminating the need for not only land\nconsumption and building materials/waste, but also eradicating additional trips for missed\ndeliveries.\nBlockchain technology removes the need for consumer address labels containing personal\ninformation, offering privacy throughout; personal information is secure, available only to\nNextPakk’s vetted drivers who have consumer name and address information on a need-toknow\nbasis."
+state = "0"
+asset_type = ""
+dependency = "independent"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://s3.amazonaws.com/nextpakk-assets/docs/pakka-ico-whitepaper.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://www.nextpakk.com/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "github"
+  name = "Github"
+  url = "https://github.com/nextpakk"
+  tags = [
+    "Main",
+    "Code"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://medium.com/nextpakk"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "bitcointalk"
+  name = "Bitcointalk"
+  url = ""
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/nextpakk"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/nextpakk/"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+  use_of_proceeds = []
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://www.nextpakk.com/"
+    sales_agreement = "https://www.nextpakk.com/"
+
+    [ico.common_info.token_distribution]
+    total_supply = "1000000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "50"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "50"
+      description = "platform adoption"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token Sale"
+  phase_status = "Planned"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "500000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "32000000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-03-29"
+    end_date = "2018-07-30"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "Pakka token"
+symbol = "Pakka"
+token_purpose = "Raising funds"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
