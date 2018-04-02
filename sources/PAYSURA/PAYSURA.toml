@@ -1,0 +1,166 @@
+app = []
+
+[blockchain]
+project_name = "PAYSURA"
+headline = "Paysura is providing a worldwide uniform reward system"
+short_description = "PAYSURAs main goal and mission is to establish a globally fair and trusted reward system that\nempowers end-customers without weakening the merchant with the vision to become the world's\nleading customer gratification system.\nP\nAYSURA is providing the International PayReward Coin (IPC). The IPC is a coin that\nrewards end-customers for buying products or services. The focus of IPC is to be available\nworldwide for a uniform and secure reward system through the blockchain technology.\nNo tracking of end-customers personal data or influence on consumer behavior due to the\nEthereum Blockchain. No complicated registrations. No physical cards to be held in the personal\nwallet. No expiration dates for the use of the IPC. The end-customer has full control over his\ncollected reward in IPC, and will be able to send or transfer these to friends, family members\nor colleagues throughout the world. End-customers will be able to collect IPC through different\nchannels and options. One will be to embed IPC on different platforms where products such as\nsmartphones, TVs or services such as video-on-demand, insurance or even car sharing packages\ncan be bought. Reward in IPC will be generated through these platforms and automatically sent to\nthe customer. Other options will be the cryptocurrency market in general as well as all partners/\nmerchants that reward customers by IPC. All IPC shall further be usable in a reward pool provided\nby PAYSURA in order to exchange them for other values.\nThe concept is simple: The end-customer is looking for a new product, the end-customer will\nregister via App or the PAYSURA website, the end-customer will select his product on merchants’\nsites participating in the PAYSURA reward system, the end-customer will buy his product and he will receive IPCs automatically. No complicated configuration, no confusing installments, just\na simple registration. The platform of PAYSURA will be easy to manage for everyone and no\nprevious knowledge about cryptocurrencies will be required. The gained IPCs will be stored\nautomatically in an automated generated address after the registration. Neither the end-customer\nnor the merchant will have to handle any IPC configurations or IPC related tasks as PAYSURA is\nfully administrating the system. PAYSURA's reward system intends to reward the end-customer\nwithout any disadvantaging the merchant."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://paysura.com/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://paysura.com/wp-content/uploads/2018/03/Whitepaper_Ext.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://www.twitter.com/PAYSURA_IPC"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "github"
+  name = "Github"
+  url = "https://github.com/PAYSURA/"
+  tags = [
+    "Main",
+    "Code"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "http://www.facebook.com/paysura"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://paysura.com/crowdsale/"
+    sales_agreement = "https://paysura.com/wp-content/uploads/2018/03/Whitepaper_Ext.pdf"
+
+    [ico.common_info.token_distribution]
+    total_supply = "440000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "60"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "25"
+      description = "Reward for Community"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "10"
+      description = "Dev Team"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "5"
+      description = "Advisors & Investors"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "70"
+    description = "Development"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "30"
+    description = " will be reserved for products that will be available to the community in the reward pool"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Crowdsale"
+  phase_status = "Active"
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "264000000"
+    sold_tokens = "2121123"
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = "30000000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-03-03"
+    end_date = "2018-04-02"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+      [[ico.phases.prices.bonuses]]
+      amount = "35%"
+      condition = "03/03/2018"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "25%"
+      condition = "04/03/2018"
+
+      [[ico.phases.prices.bonuses]]
+      amount = "15%"
+      condition = "07/03/2018"
+
+    [[ico.phases.contract]]
+    address = "0xa5FD4f631Ddf9C37d7B8A2c429a58bDC78abC843 "
+
+[[token]]
+name = "PayReward Coin"
+symbol = "IPC"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
