@@ -1,0 +1,197 @@
+app = []
+
+[blockchain]
+project_name = "GigTricks"
+headline = "GigTricks a blockchain-based ecosystem "
+short_description = "GigTricks Marketplace connects entrepreneurs with freelancers on a global scale. It will act as a mechanism to connect worldwide professionals to trade services between each other by using GigBit token."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://drive.google.com/file/d/145JX1ruoW9gunajXbP7pQJz2e_-yyz9I/view"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://www.gigtricks.io/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "blog"
+  name = "Blog"
+  url = "https://medium.com/gigtricks"
+  tags = [
+    "Main",
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/gigtricksglobal"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/gigtricks"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "reddit"
+  name = "Reddit"
+  url = "https://www.reddit.com/r/GigTricks/"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "slack"
+  name = "Slack"
+  url = "https://join.slack.com/t/gigtricks/shared_invite/enQtMzE2NDM0NDEyMjczLWE1NTNmYzUzNzk4NzI4YTI5Zjk2YjA0NDkwZDVhOTY0NmE5ZmNlMTFiYmE1ZDc3YWMxZDY5ZGJmMmQ1NjE4Yz"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/gigtricks/"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://gigtricks.io/"
+    sales_agreement = "http://bit.ly/GigTricks-Whitepaper"
+
+    [ico.common_info.token_distribution]
+    total_supply = "1000000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "35"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "15"
+      description = "Team, Advisors, Community"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "20"
+      description = "Locked for ecosystem Incentive"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "20"
+      description = "Treasury"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "5"
+      description = "Marketing & Bounty"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "5"
+      description = "Liquidity Fund"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "28"
+    description = "Operational Expense"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "34"
+    description = "Marketing"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "25"
+    description = "Platform development"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "8"
+    description = "R&D"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "5"
+    description = "Business Acquisitions"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "ICO"
+  phase_status = "Planned"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "350000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = ""
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-04-15"
+    end_date = "2018-08-30"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "GigBit Token"
+symbol = "GigBit"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
