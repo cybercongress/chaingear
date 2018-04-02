@@ -7,6 +7,8 @@ import generateContractCode from '../../generateContractCode';
 import * as cyber from '../../utils/cyber';
 import getWeb3 from '../../utils/getWeb3.js';
 
+import ChaingeareableSource from '../../ChaingeareableSource';
+
 const MAX_FIELD_COUNT = 10;
 
 class AddField extends Component {
@@ -65,21 +67,21 @@ class AddField extends Component {
 
 
 class NewRegister extends Component {
-    constructor(props) {
-      super(props)
+  constructor(props) {
+    super(props)
 
-      this.state = {
-        name: '',
-          fields: [
-          { name: 'name', type: 'string' }, 
-          { name: 'ticker', type: 'string' }
-        ],
-        status: '',
-        inProgress: false,
-        contractName: 'Tokens',
-        contracts: []
-      }
+    this.state = {
+      name: '',
+        fields: [
+        { name: 'name', type: 'string' }, 
+        { name: 'ticker', type: 'string' }
+      ],
+      status: '',
+      inProgress: false,
+      contractName: 'Tokens',
+      contracts: []
     }
+  }
 
 
   
@@ -87,6 +89,7 @@ class NewRegister extends Component {
     cyber.getContracts()
       .then(contracts => this.setState({ contracts }))
   }
+
   add = (name, type) => {
     const newItem = {
       name,
@@ -95,83 +98,89 @@ class NewRegister extends Component {
     this.setState({
       fields: this.state.fields.concat(newItem)
     });
-    }
+  }
 
-    remove = (name) => {
-      this.setState({
-        fields: this.state.fields.filter(x => x.name !== name)
-      })
-    }
+  remove = (name) => {
+    this.setState({
+      fields: this.state.fields.filter(x => x.name !== name)
+    })
+  }
 
-    create = () => {
-      const { contractName, fields } = this.state;
-      const code = generateContractCode(contractName, fields);
+  create = () => {
+    const { contractName, fields } = this.state;
+    const code = generateContractCode(contractName, fields);
 
-      this.setState({ status: 'load compiler...', inProgress : true })
-      window.BrowserSolc.loadVersion("soljson-v0.4.6+commit.2dabbdf0.js", (compiler) => {
-      const optimize = 1;
-      this.setState({ status: 'compile...'})
-      const compiledContract = compiler.compile('pragma solidity ^0.4.6; ' + code, optimize);
+    this.setState({ status: 'load compiler...', inProgress : true })
+    window.BrowserSolc.loadVersion("soljson-v0.4.18+commit.9cf6e910.js", (compiler) => {
+    const optimize = 1;
+    this.setState({ status: 'compile...'});
+    const input = {
+      'Chaingeareable.sol': ChaingeareableSource,
+      [contractName]: 'pragma solidity ^0.4.18; ' + code,
+    };
 
-      this.setState({ status: 'estimate gas...'})
-      getWeb3.then(({ web3 }) => {
-      let abi = compiledContract.contracts[contractName].interface;
-      let bytecode = '0x'+compiledContract.contracts[contractName].bytecode;
-      web3.eth.estimateGas({data: bytecode}, (e, gasEstimate) => {
-        console.log(e, gasEstimate);
+    
+    const compiledContract = compiler.compile({sources : input }, optimize);
 
-        let Contract = web3.eth.contract(JSON.parse(abi));
+    this.setState({ status: 'estimate gas...'})
+    getWeb3.then(({ web3 }) => {
+    let abi = compiledContract.contracts[contractName +":"+ contractName].interface;
+    let bytecode = '0x'+compiledContract.contracts[contractName +":"+ contractName].bytecode;
+    web3.eth.estimateGas({data: bytecode}, (e, gasEstimate) => {
+      console.log(e, gasEstimate);
 
-        this.setState({ status: 'deploy contract...'})
+      let Contract = web3.eth.contract(JSON.parse(abi));
 
-        var _benefitiaries = ['0xa3564D084fabf13e69eca6F2949D3328BF6468Ef']; // ???
-        var _shares = [100];// ???
-        var _permissionType = +this.refs.permission.value;
-        var _entryCreationFee = 0.1;// ???
-        var _name = contractName;
-        var _description = this.refs.description.value;
-        var _tags = this.refs.tags.value;
+      this.setState({ status: 'deploy contract...'})
 
-        Contract.new(
-          _benefitiaries,
-          _shares,
-          _permissionType,
-          _entryCreationFee,
-          _name,
-          _description,
-          _tags,
-         {
-           from: web3.eth.accounts[0],
-           data:bytecode,
-           gas: gasEstimate
-         }, (err, myContract) => {
-          console.log(' >> ', err, myContract);
-          if (myContract.address) {
-            this.setState({ status: 'save abi in ipfs...'})
-            const buffer = Buffer.from(JSON.stringify(abi));
-            cyber.ipfs.add(buffer, (err, ipfsHash) => {
-              const hash = ipfsHash[0].path;
-              this.setState({ status: 'register contract...'})
-              cyber.register(contractName, myContract.address, hash).then(() => {
-                this.setState({ status: '', inProgress: false })
-                browserHistory.push(`/`);
-              });
-            })
-          }
-         });
-      });
-              
-      })
+      var _benefitiaries = ['0xa3564D084fabf13e69eca6F2949D3328BF6468Ef']; // ???
+      var _shares = [100];// ???
+      var _permissionType = +this.refs.permission.value;
+      var _entryCreationFee = 0.1;// ???
+      var _name = contractName;
+      var _description = this.refs.description.value;
+      var _tags = this.refs.tags.value;
 
+      Contract.new(
+        _benefitiaries,
+        _shares,
+        _permissionType,
+        _entryCreationFee,
+        _name,
+        _description,
+        _tags,
+       {
+         from: web3.eth.accounts[0],
+         data:bytecode,
+         gas: gasEstimate
+       }, (err, myContract) => {
+        console.log(' >> ', err, myContract);
+        if (myContract.address) {
+          this.setState({ status: 'save abi in ipfs...'})
+          const buffer = Buffer.from(JSON.stringify(abi));
+          cyber.ipfs.add(buffer, (err, ipfsHash) => {
+            const hash = ipfsHash[0].path;
+            this.setState({ status: 'register contract...'})
+            cyber.register(contractName, myContract.address, hash).then(() => {
+              this.setState({ status: '', inProgress: false })
+              browserHistory.push(`/`);
+            });
+          })
+        }
+       });
     });
+            
+    })
 
-    }
+  });
 
-    changeContractName = (e) => {
-      this.setState({
-        contractName: e.target.value
-      })
-    }
+  }
+
+  changeContractName = (e) => {
+    this.setState({
+      contractName: e.target.value
+    })
+  }
 
   render() {
     const { contractName, fields, status, inProgress, contracts } = this.state;

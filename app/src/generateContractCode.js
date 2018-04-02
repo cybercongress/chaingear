@@ -3,24 +3,19 @@ const generateContractCode = (name, fields) => {
 
   const structBodyStr = fields.map(f => `${f.type} ${f.name};`).join('\n');
 
-      // PermissionType _permissionType,
-      // uint _entryCreationFee,
-      // string _name,
-      // string _description,
-      // string _tags
-
   const createArgsStr = fields.map(f => `${f.type} _${f.name}`).join(', ');
   const createItemStr = fields.map(f => `${f.name}: _${f.name}`).join(',\n');
   return `
-contract ${name} {
+
+import 'Chaingeareable.sol';
+
+contract ${name} is Chaingeareable {
   struct ${name}Item {
     ${structBodyStr}
 
     address owner;
     uint lastUpdateTime;
   }
-
-  enum PermissionType {OnlyOwner, AllUsers, Whitelist}
 
   ${name}Item[] public entries;
   event EntryCreated(address owner, uint entryId);
@@ -35,7 +30,7 @@ contract ${name} {
       string _name,
       string _description,
       string _tags
-  ) public {
+  ) Chaingeareable(_benefitiaries, _shares, _permissionType, _entryCreationFee, _name, _description, _tags) public {
 
   }
 
