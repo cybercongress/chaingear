@@ -7,7 +7,9 @@ import generateContractCode from '../../generateContractCode';
 import * as cyber from '../../utils/cyber';
 import getWeb3 from '../../utils/getWeb3.js';
 
-import ChaingeareableSource from '../../ChaingeareableSource';
+// import ChaingeareableSource from '../../ChaingeareableSource';
+const ChaingeareableSource = require('../../Chaingeareable.sol');
+
 
 const MAX_FIELD_COUNT = 10;
 
