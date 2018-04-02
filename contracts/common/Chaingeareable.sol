@@ -10,7 +10,7 @@ import "./IPFSeable.sol";
 import "./ChaingearRegistreable.sol";
 
 
-contract Chaingeareable is Ownable, IPFSeable, Destructible, Pausable, SplitPaymentChangeable {
+contract Chaingeareable is Ownable, Destructible, Pausable, SplitPaymentChangeable {
 
     string public name;
     string public description;
@@ -25,12 +25,10 @@ contract Chaingeareable is Ownable, IPFSeable, Destructible, Pausable, SplitPaym
         uint256[] _shares,
         PermissionType _permissionType,
         uint _entryCreationFee,
-        string _linkABI,
-        string _linkMeta,
         string _name,
         string _description,
         string _tags
-    ) SplitPaymentChangeable(_benefitiaries, _shares) IPFSeable(_linkABI, _linkMeta) public
+    ) SplitPaymentChangeable(_benefitiaries, _shares) public
     {
         permissionType = _permissionType;
         entryCreationFee = _entryCreationFee;
