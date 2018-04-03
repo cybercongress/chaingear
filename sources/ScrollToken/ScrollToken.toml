@@ -1,0 +1,157 @@
+app = []
+
+[blockchain]
+project_name = "Scroll Token"
+headline = "THE DIAMOND STANDARD OF BLOCKCHAIN DATA"
+short_description = "The Scroll Network stores data in the blocks of a protected blockchain that supports data transfer from block to block at enterprise grade transaction rates. The Scroll Network is the blockchain data management solution that processes transactions fast for fractions of a penny, secures data, and scales as the Scroll Network usage increases or decreases. The Scroll Network is the protected data management solution that readies Blockchain for business."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://www.scroll.network/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://www.scroll.network/resources/"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/ScrollToken"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "telegram"
+  name = "Telegram"
+  url = "https://t.me/joinchat/IGswQk2xBnqipPeMBrhYxw"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "reddit"
+  name = "Reddit"
+  url = "http://reddit.com/r/ScrollToken/"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/SoluTechincorporated/"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+  use_of_proceeds = []
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "https://www.scroll.network"
+    sales_agreement = "https://www.scroll.network"
+
+    [ico.common_info.token_distribution]
+    total_supply = "5000000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "20"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "20"
+      description = "Institutions"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "10"
+      description = "Incentives"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "10"
+      description = "Team"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "40"
+      description = "Escrow"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token Sale"
+  phase_status = "Planned"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "1000000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "ETH"
+      amount = "20 000"
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-04-10"
+    end_date = "2018-05-10"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "Scroll Token "
+symbol = "SCROLL"
+token_purpose = "Both"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
