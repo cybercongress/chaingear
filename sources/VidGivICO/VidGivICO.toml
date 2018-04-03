@@ -1,0 +1,130 @@
+app = []
+
+[blockchain]
+project_name = "VidGiv ICO"
+headline = "Meet the YouTube Killer. Creators can earn crypto for videos. "
+short_description = "Everyone has heard of YouTube. It is a video-sharing and live-streaming platform\nowned by Google which allows anyone to upload videos and earn an ad-based\nincome.\nWhile there are other ways of earning additional income, such as promoting\non-line stores, obtaining sponsorships or receiving 'super-chats' during livestreams,\nthe ad-based model is generally the primary method of receiving revenue.\nUnfortunately, in 2017, YouTube decided to take steps to flag and manually review\nmost of the video content being uploaded, following the infamous 'Adpocalypse', in\nwhich many large blue-chip brands started pulling out of the Google advertising\nplatform, triggered by news reports that their ads were being shown next to\nextremist videos.[2]\nThis resulted in many honest creators losing up to 90% of their income, and, in\nmost cases, the videos being flagged and 'demonetized' didn't actually breach any\nguidelines.\nBasically, it is now up to Google, a private company, to decide what is controversial\nand what isn't. They recently hired 10,000 additional staff to manually review the\nmajority of videos being uploaded. Alarmed by this Orwellian approach, Ocular\nIntelligence Ltd decided to launch VidGiv.\nVidGiv isn't just another cloned cryptocurrency. VidGiv is an app, blockchain and\ncrawler all rolled into one revolutionary ecosystem.\nThe premise is simple. The user creates a video and attached their VidGiv payment\naddress to the properties of the video. Once the video is uploaded to the Internet,\nthe VidGiv crawler finds the video and automatically creates the VidGiv user\ninterface, so the user can start receiving payments, in the form of VidGiv tokens.\nInstead of a corporation deciding whether a video should earn revenue, it is up to the\nVidGiv user to decide whether the video content is worthy of a tip. This takes power\nfrom advertisers and places it in the hands of the individual user.\nOur aim is to completely decentralize the process of earning revenue from videos.\nIn addition to our decentralized payment system, video storage is also decentralized.\nVideos can be uploaded anywhere on the Internet, and can even be hosted by the\nusers themselves. The VidGiv crawler finds the videos anywhere on the Internet.\nBy dismantling these two key areas of power, VidGiv aims to be the first truly\ndecentralized and censorship-free video sharing service"
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "http://www.vidgiv.com/vidgiv_whitepaper.pdf"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "http://www.vidgiv.com/"
+  tags = [
+    "Main"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "http://www.vidgiv.com/ico.html"
+    sales_agreement = "http://www.vidgiv.com/vidgiv_whitepaper.pdf"
+
+    [ico.common_info.token_distribution]
+    total_supply = "55000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "95"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "5"
+      description = "Team"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "70"
+    description = "VidGiv Mainnet development"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "R&D and administration"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "Promotion and advertising"
+
+    [[ico.common_info.use_of_proceeds]]
+    percent = "10"
+    description = "Unexpected costs buffer"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Token Sale"
+  phase_status = "Active"
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "52250000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = ""
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-03-10"
+    end_date = "2018-05-09"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+    [[ico.phases.contract]]
+    address = "0xd7b5C8646F5983C07b34D127B9699283A84A6E6a"
+
+[[token]]
+name = "VGV token"
+symbol = "VGV"
+token_purpose = "Raising funds"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
