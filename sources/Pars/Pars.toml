@@ -1,0 +1,149 @@
+app = []
+
+[blockchain]
+project_name = "Pars"
+headline = "Pars is the crypto solution to people in the developing world"
+short_description = "In an era of constant change and disruptive technologies, we are experiencing new and innovative\nways to share information, customise services, communicate and ultimately conduct business.\nDigitised processes and payments are building on these advances and becoming more prevalent.\nBlockchain technology is one of those technologies that have the potential to disrupt, initially, the\nfinance and logistics industries with innovative automated solutions. In 2017 Blockchain technology\nwas recognised as one of ten trending technologies and a potential disruptor for well-established\ncompanies [1]. Considering the huge potential for organisations to digitise their business processes\nand therefore achieve new savings and efficiencies one should seek to embrace the technology and\nexperience the benefits it may bring.\nThere are many examples of the digitisation of our lives, especially in the world of social media and\nbanking. An innovative digital cryptocurrency such as Bitcoin is helping to drive the transformation\nof how one conducts business enabling a smoother flow of capital based on transparency and\navoiding a single central authority.\nMany of the World’s financial institutions are experimenting with blockchain technology; some of\nthem combining their efforts with governmental agencies. However, none of them is digitised\nenough and capable of competing with new FinTechs who, through a lack of legacy systems, can\ninnovate and deliver at a higher frequency. Some financial institutions may actually be working\nagainst this trend since the current finance model actually benefits them; the current banking\nsystem is based on centralised money management and control. Bankers and service providers\nbenefit from this centralisation, wherein the clients pay a fee to store and access their money.\nDespite the initial objective of the founding fathers of the Blockchain technology and\ncryptocurrencies, this technology in its current form is not providing the opportunities to those\npeople who have limited or no access to (international) financial systems. In developing countries,\none sees that specifically, speculators benefit most from trading cryptocurrencies which limits any\nbenefits for the broader economy. The wider community encompassing tourism and small and\nmedium businesses, for example, are not benefitting from these technological advances.\nWe firmly believe that Pars implementation as a localised cryptocurrency for developing countries\nshall enhance the flow of capital, reduce the barriers prohibiting payments and ultimately help grow\nthe economy. BY respecting the laws and regulations of the country, empowering local FinTechs and\nproviding low fee solutions for international payments for the industry, Pars shall bring the\nadvantages of cryptocurrencies while minimising any side effects from which all should benefit."
+state = "0"
+asset_type = ""
+dependency = "Ethereum"
+consensus_name = "Proof-of-Work"
+milestone = []
+
+  [[blockchain.links]]
+  type = "website"
+  name = "Website"
+  url = "https://www.parschain.io/"
+  tags = [
+    "Main"
+  ]
+
+  [[blockchain.links]]
+  type = "paper"
+  name = "Paper"
+  url = "https://www.parschain.io/#papers"
+  tags = [
+    "Main",
+    "Science"
+  ]
+
+  [[blockchain.links]]
+  type = "twitter"
+  name = "Twitter"
+  url = "https://twitter.com/@Parschain"
+  tags = [
+    "News"
+  ]
+
+  [[blockchain.links]]
+  type = "facebook"
+  name = "Facebook"
+  url = "https://www.facebook.com/Parschain"
+  tags = [
+    "News"
+  ]
+
+[ico]
+
+  [ico.common_info]
+  is_ico = true
+  current_ico_phase = 0.0
+  use_of_proceeds = []
+
+    [ico.common_info.terms]
+    sales_argeement = ""
+    sales_url = "http://www.parschain.io"
+    sales_agreement = "https://parschain.io/wp-content/uploads/2018/02/pars_whitepaper_revision_0.0_22-02-2018.pdf"
+
+    [ico.common_info.token_distribution]
+    total_supply = "100000000000"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "40"
+      description = "ICO"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "10"
+      description = "Local investors"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "30"
+      description = "Development projecs"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "5"
+      description = "Bounty"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "15"
+      description = "Founders"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "3"
+      description = "Advisors"
+
+      [[ico.common_info.token_distribution.shares]]
+      percent = "2"
+      description = "Charity"
+
+  [[ico.phases]]
+  phase_num = 0.0
+  phase_name = "Pre Sale"
+  phase_status = "Active"
+  contract = []
+
+    [ico.phases.registration]
+    start_date = ""
+    end_date = ""
+    website = ""
+    terms = ""
+
+    [ico.phases.terms]
+    issued_tokens = "10000000000"
+    sold_tokens = ""
+    share_of_sold = 0.0
+    token_distribution_date = ""
+    crowdsale_addresses = []
+
+      [[ico.phases.terms.cap_limit]]
+      currency = "USD"
+      amount = ""
+
+      [[ico.phases.terms.vesting]]
+      supply_percent = 0.0
+      lockup_condition = ""
+      lockup_date = ""
+
+    [ico.phases.dates]
+    start_date = "2018-03-18"
+    end_date = "2018-04-15"
+    duration = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "USD"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "ETH"
+    amount = ""
+
+    [[ico.phases.raised_funds]]
+    currency = "BTC"
+    amount = ""
+
+    [ico.phases.prices]
+    bonuses = []
+
+      [[ico.phases.prices.token_final_price]]
+      currency = "BTC"
+      price = ""
+
+[[token]]
+name = "PARS Token"
+symbol = "PARS"
+token_purpose = "Raising funds"
+token_type = "Blockchain issued token"
+inflation_rate = ""
+circulation_terms = ""
+governance_rights_project = ""
+governance_rights_org = ""
