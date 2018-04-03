@@ -34,8 +34,10 @@ contract ${name} is Chaingeareable {
 
   }
 
-  function createEntry(${createArgsStr}) external {
-
+  function createEntry(${createArgsStr}) external payable {
+        require(msg.sender == owner || msg.value == entryCreationFee);
+        require(msg.sender == owner || permissionType == PermissionType.AllUsers);
+        
         entries.push(${name}Item(
         {
             owner: msg.sender,

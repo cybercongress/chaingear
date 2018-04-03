@@ -138,7 +138,7 @@ class NewRegister extends Component {
       var _benefitiaries = ['0xa3564D084fabf13e69eca6F2949D3328BF6468Ef']; // ???
       var _shares = [100];// ???
       var _permissionType = +this.refs.permission.value;
-      var _entryCreationFee = 0.1;// ???
+      var _entryCreationFee = web3.toWei(+this.refs.entryCreationFee.value, 'ether');// ???
       var _name = contractName;
       var _description = this.refs.description.value;
       var _tags = this.refs.tags.value;
@@ -220,6 +220,12 @@ class NewRegister extends Component {
                 value={contractName}
                 onChange={this.changeContractName}
               /></p>
+              <p>entry Creation Fee:<input 
+                ref='entryCreationFee'
+                defaultValue='0.1'
+              /></p>
+
+
               <p>Description:<input 
                 placeholder='description'
                 ref='description'

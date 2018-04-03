@@ -24,11 +24,13 @@ class Register extends Component {
         cyber.ipfs.get(ipfsHash, (err, files) => {
           const buf = files[0].content;
           var data = JSON.parse(JSON.parse(buf.toString()));
+          // console.log(JSON.parse(buf.toString()))
           var fields = data.filter(x => x.name === 'entries')[0].outputs;
           fields = fields.filter(x => x.name != 'owner' && x.name != 'lastUpdateTime');
           cyber.getContractByAbi(address, data)
-          .then(({ contract }) => {
+          .then(({ contract, web3 }) => {
             this.contract = contract; 
+            this.web3 = web3;
              const mapFn = item => {
                   const aItem = Array.isArray(item) ? item : [item];
                   return fields.reduce((o, field, index) => {
@@ -68,16 +70,19 @@ class Register extends Component {
   } 
 
   add = (args) => {
+    this.contract.entryCreationFee.call((e, data) => {
+      var value = data.toString()
 
-    args.push(function(e, r){
+      args.push({
+        value: data
+      })
 
-    })
+      args.push(function(e, r){
 
-    this.contract.createEntry.apply(this.contract, args);   
-    // this.setState({
-    //   newItem,
-    //   loading: true
-    // })
+      })
+
+      this.contract.createEntry.apply(this.contract, args);   
+    });
   }
 
   removeItem = (id) => {
