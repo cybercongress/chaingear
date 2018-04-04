@@ -14,7 +14,8 @@ class Register extends Component {
       fields: [],
       newItem: {},
       loading: false,
-      balance: null
+      balance: null,
+      isOwner: null
     }
   
   componentDidMount() {
@@ -33,6 +34,11 @@ class Register extends Component {
           fields = fields.filter(x => x.name != 'owner' && x.name != 'lastUpdateTime');
           cyber.getContractByAbi(address, data)
           .then(({ contract, web3 }) => {
+
+            contract.owner.call((e, data) => {
+              this.setState({ isOwner: web3.eth.accounts[0] === data })
+            })
+
             web3.eth.getBalance(address, (e, d) => {
               this.setState({
                 balance: web3.fromWei(d).toString()
@@ -126,7 +132,7 @@ class Register extends Component {
   }
   
   render() {
-    const { fields, items, loading, balance } = this.state;
+    const { fields, items, loading, balance, isOwner } = this.state;
 
     if (loading) {
       return (
@@ -162,11 +168,11 @@ class Register extends Component {
 
     return (
       <div>
-        <div>
+        {isOwner && <div>
           <div>Balance: {balance}</div>
           <button onClick={this.claim}>claim</button>
           <button onClick={this.removeContract}>remove</button>
-        </div>
+        </div>}
         <table>
           <thead>
             <tr>
