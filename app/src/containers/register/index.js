@@ -4,13 +4,17 @@ import * as cyber from '../../utils/cyber'
 
 import AddRow from './AddRow';
 
+import { browserHistory } from 'react-router'
+
+
 class Register extends Component {
     
     state = {
       items: [],
       fields: [],
       newItem: {},
-      loading: false
+      loading: false,
+      balance: null
     }
   
   componentDidMount() {
@@ -29,6 +33,11 @@ class Register extends Component {
           fields = fields.filter(x => x.name != 'owner' && x.name != 'lastUpdateTime');
           cyber.getContractByAbi(address, data)
           .then(({ contract, web3 }) => {
+            web3.eth.getBalance(address, (e, d) => {
+              this.setState({
+                balance: web3.fromWei(d).toString()
+              })
+            })
             this.contract = contract; 
             this.web3 = web3;
              const mapFn = item => {
@@ -98,9 +107,26 @@ class Register extends Component {
     e.preventDefault();
     console.log(e.target.value)
   }
+
+  claim = () => {
+    this.contract.claim((e, d) => {
+      this.setState({ balance: 0 })
+    })
+  }
+
+  removeContract = () => {
+    // alert(1)
+
+    const address = this.props.params.adress;
+    cyber.removeRegistry(address).then(() => {
+      this.contract.destroy((e, d) => {
+        browserHistory.push(`/`);  
+      })      
+    });
+  }
   
   render() {
-    const { fields, items, loading } = this.state;
+    const { fields, items, loading, balance } = this.state;
 
     if (loading) {
       return (
@@ -136,6 +162,11 @@ class Register extends Component {
 
     return (
       <div>
+        <div>
+          <div>Balance: {balance}</div>
+          <button onClick={this.claim}>claim</button>
+          <button onClick={this.removeContract}>remove</button>
+        </div>
         <table>
           <thead>
             <tr>
