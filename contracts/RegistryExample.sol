@@ -29,12 +29,10 @@ contract RegistryExample is Chaingeareable {
         uint256[] _shares,
         PermissionType _permissionType,
         uint _entryCreationFee,
-        string _linkABI,
-        string _linkMeta,
         string _name,
         string _description,
         string _tags
-    ) Chaingeareable(_benefitiaries, _shares, _permissionType, _entryCreationFee, _linkABI, _linkMeta, _name, _description, _tags) public
+    ) Chaingeareable(_benefitiaries, _shares, _permissionType, _entryCreationFee, _name, _description, _tags) public
     {
 
     }

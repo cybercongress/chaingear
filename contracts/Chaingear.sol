@@ -27,6 +27,7 @@ contract Chaingear is Ownable, IPFSeable, Pausable, Destructible, SplitPaymentCh
 
     Registry[] public registries;
     event RegistryAdded(string name, address creator, uint entryId);
+    event RegistryDeleted(uint index);
 
     function Chaingear(
         address[] _benefitiaries,
@@ -55,6 +56,23 @@ contract Chaingear is Ownable, IPFSeable, Pausable, Destructible, SplitPaymentCh
         }));
 
         RegistryAdded(_name, msg.sender, registries.length - 1);
+    }
+
+    function deleteRegistry(address contractAddress) external {
+        uint index;
+        for (uint j = 0; j<registries.length-1; j++){
+          if (registries[j].contractAddress == contractAddress) {
+            index = j;
+          }
+        }
+
+        for (uint i = index; i<registries.length-1; i++){
+            registries[i] = registries[i+1];
+        }
+        delete registries[registries.length-1];
+        registries.length--;
+
+        RegistryDeleted(index);
     }
 
     function registriesAmount() constant public returns (uint) {
