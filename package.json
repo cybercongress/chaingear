@@ -34,6 +34,7 @@
     "material-ui-icons": "1.0.0-beta.17",
     "moment": "2.21.0",
     "normalizr": "3.2.3",
+    "npm": "^5.8.0",
     "numeral": "2.0.6",
     "orbit-db": "0.19.5",
     "react": "15.6.1",
@@ -89,7 +90,7 @@
     "webpack": "3.6.0",
     "webpack-dev-server": "2.8.2",
     "websocket": "1.0.25",
-    "zeppelin-solidity": "1.4.0"
+    "zeppelin-solidity": "^1.8.0"
   },
   "scripts": {
     "prestart": "yarn install",
@@ -102,5 +103,8 @@
   },
   "homepage": "https://github.com/cyberFund/cyberchaingear",
   "keywords": [],
-  "license": "MIT"
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  }
 }

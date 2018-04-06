@@ -1,76 +1,65 @@
-pragma solidity ^0.4.17;
+pragma solidity ^0.4.18;
 
-import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
-import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
-/* import "zeppelin-solidity/contracts/ownership/Claimable.sol"; */
-/* import "zeppelin-solidity/contracts/ownership/Whitelist.sol"; */
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
-import "./SplitPaymentChangeable.sol";
 import "./IPFSeable.sol";
 import "./ChaingearRegistreable.sol";
+import "./SplitPaymentChangeable.sol";
+import "./RegistryAccessControl.sol";
 
 
-contract Chaingeareable is Ownable, IPFSeable, Destructible, Pausable, SplitPaymentChangeable {
+contract Chaingeareable is IPFSeable, SplitPaymentChangeable, RegistryAccessControl {
+    uint public entryCreationFee_;
+    string public registryName_;
+    string public registryDescription_;
+    bytes32[] public registryTags_;
 
-    string public name;
-    string public description;
-    string public tags;
-    PermissionType public permissionType;
-    uint public entryCreationFee;
+    /* uint256 public currentRegistryBalanceETH;
+    uint256 public accumulatedOverallRegistryETH; */
 
-    enum PermissionType {OnlyOwner, AllUsers, Whitelist}
-
-    function Chaingeareable(
-        address[] _benefitiaries,
-        uint256[] _shares,
-        PermissionType _permissionType,
-        uint _entryCreationFee,
-        string _linkABI,
-        string _linkMeta,
-        string _name,
-        string _description,
-        string _tags
-    ) SplitPaymentChangeable(_benefitiaries, _shares) IPFSeable(_linkABI, _linkMeta) public
-    {
-        permissionType = _permissionType;
-        entryCreationFee = _entryCreationFee;
-        name = _name;
-        description = _description;
-        tags = _tags;
-    }
+    address constant public CHAINGEAR_ADDRESS = 0x0;
 
     function updateEntryCreationFee(uint _fee) external onlyOwner {
-        entryCreationFee = _fee;
+        entryCreationFee_ = _fee;
     }
 
-    function updatePermissionType(PermissionType _permissionType) external onlyOwner {
-        permissionType = _permissionType;
-    }
-
-    function updateName(string _name) external onlyOwner {
-        uint len = bytes(_name).length;
+    function updateRegistryName(string _registryName) external onlyOwner {
+        uint len = bytes(_registryName).length;
         require(len > 0 && len <= 32);
 
-        name = _name;
+        registryName_ = _registryName;
     }
 
-    function updateDescription(string _description) external onlyOwner {
-        uint len = bytes(_description).length;
+    function updateRegistryDescription(string _registryDescription) external onlyOwner {
+        uint len = bytes(_registryDescription).length;
         require(len <= 256);
 
-        description = _description;
+        registryDescription_ = _registryDescription;
     }
 
-    //change to array
-    function updateTags(string _tags) external onlyOwner {
-        uint len = bytes(_tags).length;
-        require(len <= 64);
+    function addRegistryTag(bytes32 _tag) external onlyOwner {
+        require(_tag.length <= 16);
 
-        tags = _tags;
+        registryTags_.push(_tag);
     }
 
-    function registerInChaingear(string _name, address _chaingearAddress) external onlyOwner {
-        ChaingearRegistreable chaingear = ChaingearRegistreable(_chaingearAddress);
-        chaingear.register(_name, this);
+    function updateRegistryTag(uint256 _index, bytes32 _tag) external onlyOwner {
+        require(_tag.length <= 16);
+
+        registryTags_[_index] = _tag;
+    }
+
+    function removeRegistryTag(uint256 _index, bytes32 _tag) external onlyOwner {
+        require(_tag.length <= 16);
+
+        uint256 lastTagIndex = registryTags_.length.sub(1);
+        bytes32 lastTag = registryTags_[lastTagIndex];
+
+        registryTags_[_index] = lastTag;
+        registryTags_[lastTagIndex] = ""; //""?
+        registryTags_.length--;
+    }
+
+    function registerInChaingear() public onlyOwner returns (uint256 registryId) {
+        ChaingearRegistreable chaingear = ChaingearRegistreable(CHAINGEAR_ADDRESS);
+        return chaingear.registerRegistry(registryName_, linkABI_, this);
     }
 }
