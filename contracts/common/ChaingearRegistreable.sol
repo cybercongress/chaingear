@@ -1,8 +1,8 @@
-pragma solidity ^0.4.17;
+pragma solidity ^0.4.18;
+
 
 contract ChaingearRegistreable {
 
-
-    function register(string _name, address _address) external payable;
+    function registerRegistry(string _name, string _linkABI, address _address) public payable returns (uint256 registryId);
 
 }

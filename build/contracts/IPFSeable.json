@@ -4,11 +4,53 @@
     {
       "constant": true,
       "inputs": [],
+      "name": "linkSourceCode_",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "linkMeta_",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
       "name": "owner",
       "outputs": [
         {
           "name": "",
           "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "linkABI_",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
         }
       ],
       "payable": false,
@@ -30,21 +72,6 @@
       "type": "function"
     },
     {
-      "inputs": [
-        {
-          "name": "_linkABI",
-          "type": "string"
-        },
-        {
-          "name": "_linkMeta",
-          "type": "string"
-        }
-      ],
-      "payable": false,
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
       "anonymous": false,
       "inputs": [
         {
@@ -54,6 +81,30 @@
         }
       ],
       "name": "MetaLinkUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "linkABI",
+          "type": "string"
+        }
+      ],
+      "name": "ABILinkUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "linkSource",
+          "type": "string"
+        }
+      ],
+      "name": "SourceLinkUpdated",
       "type": "event"
     },
     {
@@ -77,6 +128,20 @@
       "constant": false,
       "inputs": [
         {
+          "name": "_linkABI",
+          "type": "string"
+        }
+      ],
+      "name": "updateABILink",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
           "name": "_linkMeta",
           "type": "string"
         }
@@ -86,1113 +151,951 @@
       "payable": false,
       "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_linkSourceCode",
+          "type": "string"
+        }
+      ],
+      "name": "updateSourceLink",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
-  "bytecode": "0x",
-  "deployedBytecode": "0x",
-  "sourceMap": "",
-  "deployedSourceMap": "",
-  "source": "pragma solidity ^0.4.17;\n\nimport \"zeppelin-solidity/contracts/ownership/Ownable.sol\";\n\n\ncontract IPFSeable is Ownable {\n\n    string linkABI;\n    string linkMeta;\n\n    event MetaLinkUpdated (string linkMeta);\n\n    function IPFSeable(string _linkABI, string _linkMeta) internal onlyOwner {\n        linkABI = _linkABI;\n        linkMeta = _linkMeta;\n    }\n\n    function updateMetaLink(string _linkMeta) external onlyOwner {\n        linkMeta = _linkMeta;\n        MetaLinkUpdated(_linkMeta);\n    }\n}\n",
-  "sourcePath": "/Users/andrey/projects/cyberFund/chaingear/contracts/common/IPFSeable.sol",
+  "bytecode": "0x6060604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506109c0806100536000396000f30060606040526004361061008e576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630f6a2ad51461009357806312a8cad4146100c1578063505b13901461014f5780638aed4b63146101dd5780638da5cb5b1461020b578063acab3bd514610260578063e16f48f21461028e578063f2fde38b1461031c575b600080fd5b341561009e57600080fd5b6100bf60048080359060200190820180359060200191909192905050610355565b005b34156100cc57600080fd5b6100d4610417565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101145780820151818401526020810190506100f9565b50505050905090810190601f1680156101415780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b341561015a57600080fd5b6101626104b5565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101a2578082015181840152602081019050610187565b50505050905090810190601f1680156101cf5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34156101e857600080fd5b61020960048080359060200190820180359060200191909192905050610553565b005b341561021657600080fd5b61021e610615565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561026b57600080fd5b61028c6004808035906020019082018035906020019190919290505061063a565b005b341561029957600080fd5b6102a16106fc565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156102e15780820151818401526020810190506102c6565b50505050905090810190601f16801561030e5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b341561032757600080fd5b610353600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190505061079a565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156103b057600080fd5b8181600391906103c19291906108ef565b507fcfaf57d92b1b2684731a770c593d162587ca98e9d372be876ab14b389866f0f68282604051808060200182810382528484828181526020019250808284378201915050935050505060405180910390a15050565b60038054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104ad5780601f10610482576101008083540402835291602001916104ad565b820191906000526020600020905b81548152906001019060200180831161049057829003601f168201915b505050505081565b60028054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561054b5780601f106105205761010080835404028352916020019161054b565b820191906000526020600020905b81548152906001019060200180831161052e57829003601f168201915b505050505081565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156105ae57600080fd5b8181600291906105bf9291906108ef565b507f6362a59ae98fef1a0a45d03a1127a82c2268ca380148117a052b9f8bce8e6f1e8282604051808060200182810382528484828181526020019250808284378201915050935050505060405180910390a15050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561069557600080fd5b8181600191906106a69291906108ef565b507f97bc322e754962c4ff23eb8a9d58b147ead5be0347d9a799addc5a2d44564cbe8282604051808060200182810382528484828181526020019250808284378201915050935050505060405180910390a15050565b60018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156107925780601f1061076757610100808354040283529160200191610792565b820191906000526020600020905b81548152906001019060200180831161077557829003601f168201915b505050505081565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156107f557600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561083157600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061093057803560ff191683800117855561095e565b8280016001018555821561095e579182015b8281111561095d578235825591602001919060010190610942565b5b50905061096b919061096f565b5090565b61099191905b8082111561098d576000816000905550600101610975565b5090565b905600a165627a7a72305820be570e81b512e0b2f8df69fbae8f9a32fa55e27334473aa0bd4ffb0f85a028ba0029",
+  "deployedBytecode": "0x60606040526004361061008e576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680630f6a2ad51461009357806312a8cad4146100c1578063505b13901461014f5780638aed4b63146101dd5780638da5cb5b1461020b578063acab3bd514610260578063e16f48f21461028e578063f2fde38b1461031c575b600080fd5b341561009e57600080fd5b6100bf60048080359060200190820180359060200191909192905050610355565b005b34156100cc57600080fd5b6100d4610417565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101145780820151818401526020810190506100f9565b50505050905090810190601f1680156101415780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b341561015a57600080fd5b6101626104b5565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156101a2578082015181840152602081019050610187565b50505050905090810190601f1680156101cf5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b34156101e857600080fd5b61020960048080359060200190820180359060200191909192905050610553565b005b341561021657600080fd5b61021e610615565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b341561026b57600080fd5b61028c6004808035906020019082018035906020019190919290505061063a565b005b341561029957600080fd5b6102a16106fc565b6040518080602001828103825283818151815260200191508051906020019080838360005b838110156102e15780820151818401526020810190506102c6565b50505050905090810190601f16801561030e5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b341561032757600080fd5b610353600480803573ffffffffffffffffffffffffffffffffffffffff1690602001909190505061079a565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156103b057600080fd5b8181600391906103c19291906108ef565b507fcfaf57d92b1b2684731a770c593d162587ca98e9d372be876ab14b389866f0f68282604051808060200182810382528484828181526020019250808284378201915050935050505060405180910390a15050565b60038054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156104ad5780601f10610482576101008083540402835291602001916104ad565b820191906000526020600020905b81548152906001019060200180831161049057829003601f168201915b505050505081565b60028054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561054b5780601f106105205761010080835404028352916020019161054b565b820191906000526020600020905b81548152906001019060200180831161052e57829003601f168201915b505050505081565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156105ae57600080fd5b8181600291906105bf9291906108ef565b507f6362a59ae98fef1a0a45d03a1127a82c2268ca380148117a052b9f8bce8e6f1e8282604051808060200182810382528484828181526020019250808284378201915050935050505060405180910390a15050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561069557600080fd5b8181600191906106a69291906108ef565b507f97bc322e754962c4ff23eb8a9d58b147ead5be0347d9a799addc5a2d44564cbe8282604051808060200182810382528484828181526020019250808284378201915050935050505060405180910390a15050565b60018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156107925780601f1061076757610100808354040283529160200191610792565b820191906000526020600020905b81548152906001019060200180831161077557829003601f168201915b505050505081565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156107f557600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561083157600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061093057803560ff191683800117855561095e565b8280016001018555821561095e579182015b8281111561095d578235825591602001919060010190610942565b5b50905061096b919061096f565b5090565b61099191905b8082111561098d576000816000905550600101610975565b5090565b905600a165627a7a72305820be570e81b512e0b2f8df69fbae8f9a32fa55e27334473aa0bd4ffb0f85a028ba0029",
+  "sourceMap": "88:709:3:-;;;509:10:10;501:5;;:18;;;;;;;;;;;;;;;;;;88:709:3;;;;;;",
+  "deployedSourceMap": "88:709:3:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;632:163;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;182:29;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:2;8:100;;;99:1;94:3;90;84:5;80:1;75:3;71;64:6;52:2;49:1;45:3;40:15;;8:100;;;12:14;3:109;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;153:23:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:2;8:100;;;99:1;94:3;90;84:5;80:1;75:3;71;64:6;52:2;49:1;45:3;40:15;;8:100;;;12:14;3:109;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;491:135:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;238:20:10;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;356:129:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;125:22;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:2;8:100;;;99:1;94:3;90;84:5;80:1;75:3;71;64:6;52:2;49:1;45:3;40:15;;8:100;;;12:14;3:109;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;832:169:10;;;;;;;;;;;;;;;;;;;;;;;;;;;;632:163:3;653:5:10;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;729:15:3;;711;:33;;;;;;;:::i;:::-;;754:34;772:15;;754:34;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;632:163;;:::o;182:29::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;153:23::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;491:135::-;653:5:10;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;574:9:3;;562;:21;;;;;;;:::i;:::-;;593:26;609:9;;593:26;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;491:135;;:::o;238:20:10:-;;;;;;;;;;;;;:::o;356:129:3:-;653:5:10;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;436:8:3;;425;:19;;;;;;;:::i;:::-;;454:24;469:8;;454:24;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;356:129;;:::o;125:22::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;832:169:10:-;653:5;;;;;;;;;;;639:19;;:10;:19;;;631:28;;;;;;;;928:1;908:22;;:8;:22;;;;900:31;;;;;;;;965:8;937:37;;958:5;;;;;;;;;;;937:37;;;;;;;;;;;;988:8;980:5;;:16;;;;;;;;;;;;;;;;;;832:169;:::o;88:709:3:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.4.18;\n\nimport \"zeppelin-solidity/contracts/ownership/Ownable.sol\";\n\n\ncontract IPFSeable is Ownable {\n\n    string public linkABI_;\n    string public linkMeta_;\n    string public linkSourceCode_;\n\n    event MetaLinkUpdated (string linkMeta);\n    event ABILinkUpdated (string linkABI);\n    event SourceLinkUpdated (string linkSource);\n\n    function updateABILink(string _linkABI) external onlyOwner {\n        linkABI_ = _linkABI;\n        ABILinkUpdated(_linkABI);\n    }\n\n    function updateMetaLink(string _linkMeta) external onlyOwner {\n        linkMeta_ = _linkMeta;\n        MetaLinkUpdated(_linkMeta);\n    }\n\n    function updateSourceLink(string _linkSourceCode) external onlyOwner {\n        linkSourceCode_ = _linkSourceCode;\n        SourceLinkUpdated(_linkSourceCode);\n    }\n}\n",
+  "sourcePath": "/Users/litvintech/Projects/chaingear/contracts/common/IPFSeable.sol",
   "ast": {
-    "absolutePath": "/Users/andrey/projects/cyberFund/chaingear/contracts/common/IPFSeable.sol",
-    "exportedSymbols": {
-      "IPFSeable": [
-        248
-      ]
+    "attributes": {
+      "absolutePath": "/Users/litvintech/Projects/chaingear/contracts/common/IPFSeable.sol",
+      "exportedSymbols": {
+        "IPFSeable": [
+          559
+        ]
+      }
     },
-    "id": 249,
-    "nodeType": "SourceUnit",
-    "nodes": [
+    "children": [
       {
-        "id": 202,
-        "literals": [
-          "solidity",
-          "^",
-          "0.4",
-          ".17"
-        ],
-        "nodeType": "PragmaDirective",
-        "src": "0:24:1"
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".18"
+          ]
+        },
+        "id": 489,
+        "name": "PragmaDirective",
+        "src": "0:24:3"
       },
       {
-        "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
-        "file": "zeppelin-solidity/contracts/ownership/Ownable.sol",
-        "id": 203,
-        "nodeType": "ImportDirective",
-        "scope": 249,
-        "sourceUnit": 580,
-        "src": "26:59:1",
-        "symbolAliases": [],
-        "unitAlias": ""
+        "attributes": {
+          "SourceUnit": 989,
+          "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
+          "file": "zeppelin-solidity/contracts/ownership/Ownable.sol",
+          "scope": 560,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 490,
+        "name": "ImportDirective",
+        "src": "26:59:3"
       },
       {
-        "baseContracts": [
+        "attributes": {
+          "contractDependencies": [
+            988
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            559,
+            988
+          ],
+          "name": "IPFSeable",
+          "scope": 560
+        },
+        "children": [
           {
-            "arguments": [],
-            "baseName": {
-              "contractScope": null,
-              "id": 204,
-              "name": "Ownable",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 579,
-              "src": "110:7:1",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$579",
-                "typeString": "contract Ownable"
-              }
-            },
-            "id": 205,
-            "nodeType": "InheritanceSpecifier",
-            "src": "110:7:1"
-          }
-        ],
-        "contractDependencies": [
-          579
-        ],
-        "contractKind": "contract",
-        "documentation": null,
-        "fullyImplemented": true,
-        "id": 248,
-        "linearizedBaseContracts": [
-          248,
-          579
-        ],
-        "name": "IPFSeable",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "constant": false,
-            "id": 207,
-            "name": "linkABI",
-            "nodeType": "VariableDeclaration",
-            "scope": 248,
-            "src": "125:14:1",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_string_storage",
-              "typeString": "string storage ref"
-            },
-            "typeName": {
-              "id": 206,
-              "name": "string",
-              "nodeType": "ElementaryTypeName",
-              "src": "125:6:1",
-              "typeDescriptions": {
-                "typeIdentifier": "t_string_storage_ptr",
-                "typeString": "string storage pointer"
-              }
-            },
-            "value": null,
-            "visibility": "internal"
-          },
-          {
-            "constant": false,
-            "id": 209,
-            "name": "linkMeta",
-            "nodeType": "VariableDeclaration",
-            "scope": 248,
-            "src": "145:15:1",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_string_storage",
-              "typeString": "string storage ref"
-            },
-            "typeName": {
-              "id": 208,
-              "name": "string",
-              "nodeType": "ElementaryTypeName",
-              "src": "145:6:1",
-              "typeDescriptions": {
-                "typeIdentifier": "t_string_storage_ptr",
-                "typeString": "string storage pointer"
-              }
-            },
-            "value": null,
-            "visibility": "internal"
-          },
-          {
-            "anonymous": false,
-            "id": 213,
-            "name": "MetaLinkUpdated",
-            "nodeType": "EventDefinition",
-            "parameters": {
-              "id": 212,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 211,
-                  "indexed": false,
-                  "name": "linkMeta",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 213,
-                  "src": "190:15:1",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string memory"
-                  },
-                  "typeName": {
-                    "id": 210,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "190:6:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string storage pointer"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "189:17:1"
-            },
-            "src": "167:40:1"
-          },
-          {
-            "body": {
-              "id": 230,
-              "nodeType": "Block",
-              "src": "286:65:1",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 224,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 222,
-                      "name": "linkABI",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 207,
-                      "src": "296:7:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_storage",
-                        "typeString": "string storage ref"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 223,
-                      "name": "_linkABI",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 215,
-                      "src": "306:8:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_memory_ptr",
-                        "typeString": "string memory"
-                      }
-                    },
-                    "src": "296:18:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage",
-                      "typeString": "string storage ref"
-                    }
-                  },
-                  "id": 225,
-                  "nodeType": "ExpressionStatement",
-                  "src": "296:18:1"
-                },
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 228,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 226,
-                      "name": "linkMeta",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 209,
-                      "src": "324:8:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_storage",
-                        "typeString": "string storage ref"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 227,
-                      "name": "_linkMeta",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 217,
-                      "src": "335:9:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_memory_ptr",
-                        "typeString": "string memory"
-                      }
-                    },
-                    "src": "324:20:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage",
-                      "typeString": "string storage ref"
-                    }
-                  },
-                  "id": 229,
-                  "nodeType": "ExpressionStatement",
-                  "src": "324:20:1"
-                }
+            "attributes": {
+              "arguments": [
+                null
               ]
             },
-            "id": 231,
-            "implemented": true,
-            "isConstructor": true,
-            "isDeclaredConst": false,
-            "modifiers": [
+            "children": [
               {
-                "arguments": [],
-                "id": 220,
-                "modifierName": {
-                  "argumentTypes": null,
-                  "id": 219,
-                  "name": "onlyOwner",
-                  "nodeType": "Identifier",
-                  "overloadedDeclarations": [],
-                  "referencedDeclaration": 553,
-                  "src": "276:9:1",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_modifier$__$",
-                    "typeString": "modifier ()"
-                  }
+                "attributes": {
+                  "contractScope": null,
+                  "name": "Ownable",
+                  "referencedDeclaration": 988,
+                  "type": "contract Ownable"
                 },
-                "nodeType": "ModifierInvocation",
-                "src": "276:9:1"
+                "id": 491,
+                "name": "UserDefinedTypeName",
+                "src": "110:7:3"
               }
             ],
-            "name": "IPFSeable",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 218,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 215,
-                  "name": "_linkABI",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 231,
-                  "src": "232:15:1",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string memory"
-                  },
-                  "typeName": {
-                    "id": 214,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "232:6:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string storage pointer"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 217,
-                  "name": "_linkMeta",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 231,
-                  "src": "249:16:1",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string memory"
-                  },
-                  "typeName": {
-                    "id": 216,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "249:6:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string storage pointer"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "231:35:1"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 221,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "286:0:1"
-            },
-            "scope": 248,
-            "src": "213:138:1",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "internal"
+            "id": 492,
+            "name": "InheritanceSpecifier",
+            "src": "110:7:3"
           },
           {
-            "body": {
-              "id": 246,
-              "nodeType": "Block",
-              "src": "418:73:1",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 240,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 238,
-                      "name": "linkMeta",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 209,
-                      "src": "428:8:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_storage",
-                        "typeString": "string storage ref"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 239,
-                      "name": "_linkMeta",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 233,
-                      "src": "439:9:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_calldata_ptr",
-                        "typeString": "string calldata"
-                      }
-                    },
-                    "src": "428:20:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage",
-                      "typeString": "string storage ref"
-                    }
-                  },
-                  "id": 241,
-                  "nodeType": "ExpressionStatement",
-                  "src": "428:20:1"
+            "attributes": {
+              "constant": false,
+              "name": "linkABI_",
+              "scope": 559,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "string storage ref",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "string",
+                  "type": "string storage pointer"
                 },
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "arguments": [
+                "id": 493,
+                "name": "ElementaryTypeName",
+                "src": "125:6:3"
+              }
+            ],
+            "id": 494,
+            "name": "VariableDeclaration",
+            "src": "125:22:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "linkMeta_",
+              "scope": 559,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "string storage ref",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "string",
+                  "type": "string storage pointer"
+                },
+                "id": 495,
+                "name": "ElementaryTypeName",
+                "src": "153:6:3"
+              }
+            ],
+            "id": 496,
+            "name": "VariableDeclaration",
+            "src": "153:23:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "linkSourceCode_",
+              "scope": 559,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "string storage ref",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "string",
+                  "type": "string storage pointer"
+                },
+                "id": 497,
+                "name": "ElementaryTypeName",
+                "src": "182:6:3"
+              }
+            ],
+            "id": 498,
+            "name": "VariableDeclaration",
+            "src": "182:29:3"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "MetaLinkUpdated"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "linkMeta",
+                      "scope": 502,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string memory",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
                       {
-                        "argumentTypes": null,
-                        "id": 243,
-                        "name": "_linkMeta",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 233,
-                        "src": "474:9:1",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_string_calldata_ptr",
-                          "typeString": "string calldata"
-                        }
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 499,
+                        "name": "ElementaryTypeName",
+                        "src": "241:6:3"
                       }
                     ],
-                    "expression": {
-                      "argumentTypes": [
-                        {
-                          "typeIdentifier": "t_string_calldata_ptr",
-                          "typeString": "string calldata"
-                        }
-                      ],
-                      "id": 242,
-                      "name": "MetaLinkUpdated",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 213,
-                      "src": "458:15:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$returns$__$",
-                        "typeString": "function (string memory)"
-                      }
-                    },
-                    "id": 244,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "kind": "functionCall",
-                    "lValueRequested": false,
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "458:26:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$__$",
-                      "typeString": "tuple()"
-                    }
-                  },
-                  "id": 245,
-                  "nodeType": "ExpressionStatement",
-                  "src": "458:26:1"
-                }
-              ]
-            },
-            "id": 247,
-            "implemented": true,
-            "isConstructor": false,
-            "isDeclaredConst": false,
-            "modifiers": [
-              {
-                "arguments": [],
-                "id": 236,
-                "modifierName": {
-                  "argumentTypes": null,
-                  "id": 235,
-                  "name": "onlyOwner",
-                  "nodeType": "Identifier",
-                  "overloadedDeclarations": [],
-                  "referencedDeclaration": 553,
-                  "src": "408:9:1",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_modifier$__$",
-                    "typeString": "modifier ()"
+                    "id": 500,
+                    "name": "VariableDeclaration",
+                    "src": "241:15:3"
                   }
-                },
-                "nodeType": "ModifierInvocation",
-                "src": "408:9:1"
+                ],
+                "id": 501,
+                "name": "ParameterList",
+                "src": "240:17:3"
               }
             ],
-            "name": "updateMetaLink",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 234,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 233,
-                  "name": "_linkMeta",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 247,
-                  "src": "381:16:1",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_calldata_ptr",
-                    "typeString": "string calldata"
-                  },
-                  "typeName": {
-                    "id": 232,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "381:6:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string storage pointer"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "380:18:1"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 237,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "418:0:1"
-            },
-            "scope": 248,
-            "src": "357:134:1",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
-          }
-        ],
-        "scope": 249,
-        "src": "88:405:1"
-      }
-    ],
-    "src": "0:494:1"
-  },
-  "legacyAST": {
-    "absolutePath": "/Users/andrey/projects/cyberFund/chaingear/contracts/common/IPFSeable.sol",
-    "exportedSymbols": {
-      "IPFSeable": [
-        248
-      ]
-    },
-    "id": 249,
-    "nodeType": "SourceUnit",
-    "nodes": [
-      {
-        "id": 202,
-        "literals": [
-          "solidity",
-          "^",
-          "0.4",
-          ".17"
-        ],
-        "nodeType": "PragmaDirective",
-        "src": "0:24:1"
-      },
-      {
-        "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
-        "file": "zeppelin-solidity/contracts/ownership/Ownable.sol",
-        "id": 203,
-        "nodeType": "ImportDirective",
-        "scope": 249,
-        "sourceUnit": 580,
-        "src": "26:59:1",
-        "symbolAliases": [],
-        "unitAlias": ""
-      },
-      {
-        "baseContracts": [
-          {
-            "arguments": [],
-            "baseName": {
-              "contractScope": null,
-              "id": 204,
-              "name": "Ownable",
-              "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 579,
-              "src": "110:7:1",
-              "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$579",
-                "typeString": "contract Ownable"
-              }
-            },
-            "id": 205,
-            "nodeType": "InheritanceSpecifier",
-            "src": "110:7:1"
-          }
-        ],
-        "contractDependencies": [
-          579
-        ],
-        "contractKind": "contract",
-        "documentation": null,
-        "fullyImplemented": true,
-        "id": 248,
-        "linearizedBaseContracts": [
-          248,
-          579
-        ],
-        "name": "IPFSeable",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "constant": false,
-            "id": 207,
-            "name": "linkABI",
-            "nodeType": "VariableDeclaration",
-            "scope": 248,
-            "src": "125:14:1",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_string_storage",
-              "typeString": "string storage ref"
-            },
-            "typeName": {
-              "id": 206,
-              "name": "string",
-              "nodeType": "ElementaryTypeName",
-              "src": "125:6:1",
-              "typeDescriptions": {
-                "typeIdentifier": "t_string_storage_ptr",
-                "typeString": "string storage pointer"
-              }
-            },
-            "value": null,
-            "visibility": "internal"
+            "id": 502,
+            "name": "EventDefinition",
+            "src": "218:40:3"
           },
           {
-            "constant": false,
-            "id": 209,
-            "name": "linkMeta",
-            "nodeType": "VariableDeclaration",
-            "scope": 248,
-            "src": "145:15:1",
-            "stateVariable": true,
-            "storageLocation": "default",
-            "typeDescriptions": {
-              "typeIdentifier": "t_string_storage",
-              "typeString": "string storage ref"
+            "attributes": {
+              "anonymous": false,
+              "name": "ABILinkUpdated"
             },
-            "typeName": {
-              "id": 208,
-              "name": "string",
-              "nodeType": "ElementaryTypeName",
-              "src": "145:6:1",
-              "typeDescriptions": {
-                "typeIdentifier": "t_string_storage_ptr",
-                "typeString": "string storage pointer"
-              }
-            },
-            "value": null,
-            "visibility": "internal"
-          },
-          {
-            "anonymous": false,
-            "id": 213,
-            "name": "MetaLinkUpdated",
-            "nodeType": "EventDefinition",
-            "parameters": {
-              "id": 212,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 211,
-                  "indexed": false,
-                  "name": "linkMeta",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 213,
-                  "src": "190:15:1",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string memory"
-                  },
-                  "typeName": {
-                    "id": 210,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "190:6:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string storage pointer"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "189:17:1"
-            },
-            "src": "167:40:1"
-          },
-          {
-            "body": {
-              "id": 230,
-              "nodeType": "Block",
-              "src": "286:65:1",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 224,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 222,
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
                       "name": "linkABI",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 207,
-                      "src": "296:7:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_storage",
-                        "typeString": "string storage ref"
-                      }
+                      "scope": 506,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string memory",
+                      "value": null,
+                      "visibility": "internal"
                     },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 223,
-                      "name": "_linkABI",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 215,
-                      "src": "306:8:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_memory_ptr",
-                        "typeString": "string memory"
-                      }
-                    },
-                    "src": "296:18:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage",
-                      "typeString": "string storage ref"
-                    }
-                  },
-                  "id": 225,
-                  "nodeType": "ExpressionStatement",
-                  "src": "296:18:1"
-                },
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 228,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 226,
-                      "name": "linkMeta",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 209,
-                      "src": "324:8:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_storage",
-                        "typeString": "string storage ref"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 227,
-                      "name": "_linkMeta",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 217,
-                      "src": "335:9:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_memory_ptr",
-                        "typeString": "string memory"
-                      }
-                    },
-                    "src": "324:20:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage",
-                      "typeString": "string storage ref"
-                    }
-                  },
-                  "id": 229,
-                  "nodeType": "ExpressionStatement",
-                  "src": "324:20:1"
-                }
-              ]
-            },
-            "id": 231,
-            "implemented": true,
-            "isConstructor": true,
-            "isDeclaredConst": false,
-            "modifiers": [
-              {
-                "arguments": [],
-                "id": 220,
-                "modifierName": {
-                  "argumentTypes": null,
-                  "id": 219,
-                  "name": "onlyOwner",
-                  "nodeType": "Identifier",
-                  "overloadedDeclarations": [],
-                  "referencedDeclaration": 553,
-                  "src": "276:9:1",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_modifier$__$",
-                    "typeString": "modifier ()"
-                  }
-                },
-                "nodeType": "ModifierInvocation",
-                "src": "276:9:1"
-              }
-            ],
-            "name": "IPFSeable",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 218,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 215,
-                  "name": "_linkABI",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 231,
-                  "src": "232:15:1",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string memory"
-                  },
-                  "typeName": {
-                    "id": 214,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "232:6:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string storage pointer"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 217,
-                  "name": "_linkMeta",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 231,
-                  "src": "249:16:1",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_memory_ptr",
-                    "typeString": "string memory"
-                  },
-                  "typeName": {
-                    "id": 216,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "249:6:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string storage pointer"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "231:35:1"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 221,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "286:0:1"
-            },
-            "scope": 248,
-            "src": "213:138:1",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "internal"
-          },
-          {
-            "body": {
-              "id": 246,
-              "nodeType": "Block",
-              "src": "418:73:1",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 240,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "id": 238,
-                      "name": "linkMeta",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 209,
-                      "src": "428:8:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_storage",
-                        "typeString": "string storage ref"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 239,
-                      "name": "_linkMeta",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 233,
-                      "src": "439:9:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_string_calldata_ptr",
-                        "typeString": "string calldata"
-                      }
-                    },
-                    "src": "428:20:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage",
-                      "typeString": "string storage ref"
-                    }
-                  },
-                  "id": 241,
-                  "nodeType": "ExpressionStatement",
-                  "src": "428:20:1"
-                },
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "arguments": [
+                    "children": [
                       {
-                        "argumentTypes": null,
-                        "id": 243,
-                        "name": "_linkMeta",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 233,
-                        "src": "474:9:1",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_string_calldata_ptr",
-                          "typeString": "string calldata"
-                        }
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 503,
+                        "name": "ElementaryTypeName",
+                        "src": "285:6:3"
                       }
                     ],
-                    "expression": {
-                      "argumentTypes": [
-                        {
-                          "typeIdentifier": "t_string_calldata_ptr",
-                          "typeString": "string calldata"
-                        }
-                      ],
-                      "id": 242,
-                      "name": "MetaLinkUpdated",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 213,
-                      "src": "458:15:1",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_function_event_nonpayable$_t_string_memory_ptr_$returns$__$",
-                        "typeString": "function (string memory)"
-                      }
-                    },
-                    "id": 244,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "kind": "functionCall",
-                    "lValueRequested": false,
-                    "names": [],
-                    "nodeType": "FunctionCall",
-                    "src": "458:26:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_tuple$__$",
-                      "typeString": "tuple()"
-                    }
-                  },
-                  "id": 245,
-                  "nodeType": "ExpressionStatement",
-                  "src": "458:26:1"
-                }
-              ]
-            },
-            "id": 247,
-            "implemented": true,
-            "isConstructor": false,
-            "isDeclaredConst": false,
-            "modifiers": [
-              {
-                "arguments": [],
-                "id": 236,
-                "modifierName": {
-                  "argumentTypes": null,
-                  "id": 235,
-                  "name": "onlyOwner",
-                  "nodeType": "Identifier",
-                  "overloadedDeclarations": [],
-                  "referencedDeclaration": 553,
-                  "src": "408:9:1",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_modifier$__$",
-                    "typeString": "modifier ()"
+                    "id": 504,
+                    "name": "VariableDeclaration",
+                    "src": "285:14:3"
                   }
-                },
-                "nodeType": "ModifierInvocation",
-                "src": "408:9:1"
+                ],
+                "id": 505,
+                "name": "ParameterList",
+                "src": "284:16:3"
               }
             ],
-            "name": "updateMetaLink",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 234,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 233,
-                  "name": "_linkMeta",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 247,
-                  "src": "381:16:1",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_calldata_ptr",
-                    "typeString": "string calldata"
-                  },
-                  "typeName": {
-                    "id": 232,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "381:6:1",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string storage pointer"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "380:18:1"
+            "id": 506,
+            "name": "EventDefinition",
+            "src": "263:38:3"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "SourceLinkUpdated"
             },
-            "payable": false,
-            "returnParameters": {
-              "id": 237,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "418:0:1"
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "linkSource",
+                      "scope": 510,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string memory",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 507,
+                        "name": "ElementaryTypeName",
+                        "src": "331:6:3"
+                      }
+                    ],
+                    "id": 508,
+                    "name": "VariableDeclaration",
+                    "src": "331:17:3"
+                  }
+                ],
+                "id": 509,
+                "name": "ParameterList",
+                "src": "330:19:3"
+              }
+            ],
+            "id": 510,
+            "name": "EventDefinition",
+            "src": "306:44:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "name": "updateABILink",
+              "payable": false,
+              "scope": 559,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
             },
-            "scope": 248,
-            "src": "357:134:1",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "external"
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_linkABI",
+                      "scope": 526,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string calldata",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 511,
+                        "name": "ElementaryTypeName",
+                        "src": "379:6:3"
+                      }
+                    ],
+                    "id": 512,
+                    "name": "VariableDeclaration",
+                    "src": "379:15:3"
+                  }
+                ],
+                "id": 513,
+                "name": "ParameterList",
+                "src": "378:17:3"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 516,
+                "name": "ParameterList",
+                "src": "415:0:3"
+              },
+              {
+                "attributes": {
+                  "arguments": [
+                    null
+                  ]
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 962,
+                      "type": "modifier ()",
+                      "value": "onlyOwner"
+                    },
+                    "id": 514,
+                    "name": "Identifier",
+                    "src": "405:9:3"
+                  }
+                ],
+                "id": 515,
+                "name": "ModifierInvocation",
+                "src": "405:9:3"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "string storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 494,
+                              "type": "string storage ref",
+                              "value": "linkABI_"
+                            },
+                            "id": 517,
+                            "name": "Identifier",
+                            "src": "425:8:3"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 512,
+                              "type": "string calldata",
+                              "value": "_linkABI"
+                            },
+                            "id": 518,
+                            "name": "Identifier",
+                            "src": "436:8:3"
+                          }
+                        ],
+                        "id": 519,
+                        "name": "Assignment",
+                        "src": "425:19:3"
+                      }
+                    ],
+                    "id": 520,
+                    "name": "ExpressionStatement",
+                    "src": "425:19:3"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_calldata_ptr",
+                                  "typeString": "string calldata"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 506,
+                              "type": "function (string memory)",
+                              "value": "ABILinkUpdated"
+                            },
+                            "id": 521,
+                            "name": "Identifier",
+                            "src": "454:14:3"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 512,
+                              "type": "string calldata",
+                              "value": "_linkABI"
+                            },
+                            "id": 522,
+                            "name": "Identifier",
+                            "src": "469:8:3"
+                          }
+                        ],
+                        "id": 523,
+                        "name": "FunctionCall",
+                        "src": "454:24:3"
+                      }
+                    ],
+                    "id": 524,
+                    "name": "ExpressionStatement",
+                    "src": "454:24:3"
+                  }
+                ],
+                "id": 525,
+                "name": "Block",
+                "src": "415:70:3"
+              }
+            ],
+            "id": 526,
+            "name": "FunctionDefinition",
+            "src": "356:129:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "name": "updateMetaLink",
+              "payable": false,
+              "scope": 559,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_linkMeta",
+                      "scope": 542,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string calldata",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 527,
+                        "name": "ElementaryTypeName",
+                        "src": "515:6:3"
+                      }
+                    ],
+                    "id": 528,
+                    "name": "VariableDeclaration",
+                    "src": "515:16:3"
+                  }
+                ],
+                "id": 529,
+                "name": "ParameterList",
+                "src": "514:18:3"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 532,
+                "name": "ParameterList",
+                "src": "552:0:3"
+              },
+              {
+                "attributes": {
+                  "arguments": [
+                    null
+                  ]
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 962,
+                      "type": "modifier ()",
+                      "value": "onlyOwner"
+                    },
+                    "id": 530,
+                    "name": "Identifier",
+                    "src": "542:9:3"
+                  }
+                ],
+                "id": 531,
+                "name": "ModifierInvocation",
+                "src": "542:9:3"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "string storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 496,
+                              "type": "string storage ref",
+                              "value": "linkMeta_"
+                            },
+                            "id": 533,
+                            "name": "Identifier",
+                            "src": "562:9:3"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 528,
+                              "type": "string calldata",
+                              "value": "_linkMeta"
+                            },
+                            "id": 534,
+                            "name": "Identifier",
+                            "src": "574:9:3"
+                          }
+                        ],
+                        "id": 535,
+                        "name": "Assignment",
+                        "src": "562:21:3"
+                      }
+                    ],
+                    "id": 536,
+                    "name": "ExpressionStatement",
+                    "src": "562:21:3"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_calldata_ptr",
+                                  "typeString": "string calldata"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 502,
+                              "type": "function (string memory)",
+                              "value": "MetaLinkUpdated"
+                            },
+                            "id": 537,
+                            "name": "Identifier",
+                            "src": "593:15:3"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 528,
+                              "type": "string calldata",
+                              "value": "_linkMeta"
+                            },
+                            "id": 538,
+                            "name": "Identifier",
+                            "src": "609:9:3"
+                          }
+                        ],
+                        "id": 539,
+                        "name": "FunctionCall",
+                        "src": "593:26:3"
+                      }
+                    ],
+                    "id": 540,
+                    "name": "ExpressionStatement",
+                    "src": "593:26:3"
+                  }
+                ],
+                "id": 541,
+                "name": "Block",
+                "src": "552:74:3"
+              }
+            ],
+            "id": 542,
+            "name": "FunctionDefinition",
+            "src": "491:135:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "implemented": true,
+              "isConstructor": false,
+              "name": "updateSourceLink",
+              "payable": false,
+              "scope": 559,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_linkSourceCode",
+                      "scope": 558,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string calldata",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 543,
+                        "name": "ElementaryTypeName",
+                        "src": "658:6:3"
+                      }
+                    ],
+                    "id": 544,
+                    "name": "VariableDeclaration",
+                    "src": "658:22:3"
+                  }
+                ],
+                "id": 545,
+                "name": "ParameterList",
+                "src": "657:24:3"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 548,
+                "name": "ParameterList",
+                "src": "701:0:3"
+              },
+              {
+                "attributes": {
+                  "arguments": [
+                    null
+                  ]
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 962,
+                      "type": "modifier ()",
+                      "value": "onlyOwner"
+                    },
+                    "id": 546,
+                    "name": "Identifier",
+                    "src": "691:9:3"
+                  }
+                ],
+                "id": 547,
+                "name": "ModifierInvocation",
+                "src": "691:9:3"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "string storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 498,
+                              "type": "string storage ref",
+                              "value": "linkSourceCode_"
+                            },
+                            "id": 549,
+                            "name": "Identifier",
+                            "src": "711:15:3"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 544,
+                              "type": "string calldata",
+                              "value": "_linkSourceCode"
+                            },
+                            "id": 550,
+                            "name": "Identifier",
+                            "src": "729:15:3"
+                          }
+                        ],
+                        "id": 551,
+                        "name": "Assignment",
+                        "src": "711:33:3"
+                      }
+                    ],
+                    "id": 552,
+                    "name": "ExpressionStatement",
+                    "src": "711:33:3"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_string_calldata_ptr",
+                                  "typeString": "string calldata"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 510,
+                              "type": "function (string memory)",
+                              "value": "SourceLinkUpdated"
+                            },
+                            "id": 553,
+                            "name": "Identifier",
+                            "src": "754:17:3"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 544,
+                              "type": "string calldata",
+                              "value": "_linkSourceCode"
+                            },
+                            "id": 554,
+                            "name": "Identifier",
+                            "src": "772:15:3"
+                          }
+                        ],
+                        "id": 555,
+                        "name": "FunctionCall",
+                        "src": "754:34:3"
+                      }
+                    ],
+                    "id": 556,
+                    "name": "ExpressionStatement",
+                    "src": "754:34:3"
+                  }
+                ],
+                "id": 557,
+                "name": "Block",
+                "src": "701:94:3"
+              }
+            ],
+            "id": 558,
+            "name": "FunctionDefinition",
+            "src": "632:163:3"
           }
         ],
-        "scope": 249,
-        "src": "88:405:1"
+        "id": 559,
+        "name": "ContractDefinition",
+        "src": "88:709:3"
       }
     ],
-    "src": "0:494:1"
+    "id": 560,
+    "name": "SourceUnit",
+    "src": "0:798:3"
   },
   "compiler": {
     "name": "solc",
     "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "2.0.0",
-  "updatedAt": "2018-03-29T12:50:23.827Z"
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-04-06T10:18:16.483Z"
 }

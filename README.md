@@ -1,8 +1,8 @@
 <h1 align="center">
-  <img src="https://i.imgur.com/Cp9BmvE.png"
-srcset="https://i.imgur.com/HvP6jpJ.png 2x"
-  alt="Dotlicense" width="970"></a>
+  <img src=""
+  alt="chaingear" width="970"></a>
 </h1>
+
 
 <h3 align="center">Most expensive Registry</h3>
 <div align="center">
@@ -38,7 +38,7 @@ srcset="https://i.imgur.com/HvP6jpJ.png 2x"
 
 # Configuring and deploying
 
-Deploy contract:
+##### Deploy contract:
 
 ```
 parity ui --chain=kovan
@@ -47,6 +47,14 @@ truffle migrate --network=kovan
 ```
 
 PS: approve transaction in parity ui (http://127.0.0.1:8180/)
+
+##### Linting:
+
+```
+npm install -g solium
+
+solium -d contracts
+```
 
 # Join Us On Telegram
 

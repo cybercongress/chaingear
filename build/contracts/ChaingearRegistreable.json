@@ -9,12 +9,21 @@
           "type": "string"
         },
         {
+          "name": "_linkABI",
+          "type": "string"
+        },
+        {
           "name": "_address",
           "type": "address"
         }
       ],
-      "name": "register",
-      "outputs": [],
+      "name": "registerRegistry",
+      "outputs": [
+        {
+          "name": "registryId",
+          "type": "uint256"
+        }
+      ],
       "payable": true,
       "stateMutability": "payable",
       "type": "function"
@@ -24,257 +33,204 @@
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "pragma solidity ^0.4.17;\n\ncontract ChaingearRegistreable {\n\n\n    function register(string _name, address _address) external payable;\n\n}\n",
-  "sourcePath": "/Users/andrey/projects/cyberFund/chaingear/contracts/common/ChaingearRegistreable.sol",
+  "source": "pragma solidity ^0.4.18;\n\n\ncontract ChaingearRegistreable {\n\n    function registerRegistry(string _name, string _linkABI, address _address) public payable returns (uint256 registryId);\n\n}\n",
+  "sourcePath": "/Users/litvintech/Projects/chaingear/contracts/common/ChaingearRegistreable.sol",
   "ast": {
-    "absolutePath": "/Users/andrey/projects/cyberFund/chaingear/contracts/common/ChaingearRegistreable.sol",
-    "exportedSymbols": {
-      "ChaingearRegistreable": [
-        9
-      ]
+    "attributes": {
+      "absolutePath": "/Users/litvintech/Projects/chaingear/contracts/common/ChaingearRegistreable.sol",
+      "exportedSymbols": {
+        "ChaingearRegistreable": [
+          283
+        ]
+      }
     },
-    "id": 10,
-    "nodeType": "SourceUnit",
-    "nodes": [
+    "children": [
       {
-        "id": 1,
-        "literals": [
-          "solidity",
-          "^",
-          "0.4",
-          ".17"
-        ],
-        "nodeType": "PragmaDirective",
-        "src": "0:24:0"
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".18"
+          ]
+        },
+        "id": 271,
+        "name": "PragmaDirective",
+        "src": "0:24:1"
       },
       {
-        "baseContracts": [],
-        "contractDependencies": [],
-        "contractKind": "contract",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 9,
-        "linearizedBaseContracts": [
-          9
-        ],
-        "name": "ChaingearRegistreable",
-        "nodeType": "ContractDefinition",
-        "nodes": [
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            283
+          ],
+          "name": "ChaingearRegistreable",
+          "scope": 284
+        },
+        "children": [
           {
-            "body": null,
-            "id": 8,
-            "implemented": false,
-            "isConstructor": false,
-            "isDeclaredConst": false,
-            "modifiers": [],
-            "name": "register",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 6,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3,
-                  "name": "_name",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 8,
-                  "src": "83:12:0",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_calldata_ptr",
-                    "typeString": "string calldata"
-                  },
-                  "typeName": {
-                    "id": 2,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "83:6:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string storage pointer"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 5,
-                  "name": "_address",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 8,
-                  "src": "97:16:0",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 4,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "97:7:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
+            "attributes": {
+              "body": null,
+              "constant": false,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
               ],
-              "src": "82:32:0"
+              "name": "registerRegistry",
+              "payable": true,
+              "scope": 283,
+              "stateMutability": "payable",
+              "superFunction": null,
+              "visibility": "public"
             },
-            "payable": true,
-            "returnParameters": {
-              "id": 7,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "131:0:0"
-            },
-            "scope": 9,
-            "src": "65:67:0",
-            "stateMutability": "payable",
-            "superFunction": null,
-            "visibility": "external"
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_name",
+                      "scope": 282,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string memory",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 272,
+                        "name": "ElementaryTypeName",
+                        "src": "91:6:1"
+                      }
+                    ],
+                    "id": 273,
+                    "name": "VariableDeclaration",
+                    "src": "91:12:1"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_linkABI",
+                      "scope": 282,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "string memory",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string storage pointer"
+                        },
+                        "id": 274,
+                        "name": "ElementaryTypeName",
+                        "src": "105:6:1"
+                      }
+                    ],
+                    "id": 275,
+                    "name": "VariableDeclaration",
+                    "src": "105:15:1"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_address",
+                      "scope": 282,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 276,
+                        "name": "ElementaryTypeName",
+                        "src": "122:7:1"
+                      }
+                    ],
+                    "id": 277,
+                    "name": "VariableDeclaration",
+                    "src": "122:16:1"
+                  }
+                ],
+                "id": 278,
+                "name": "ParameterList",
+                "src": "90:49:1"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "registryId",
+                      "scope": 282,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 279,
+                        "name": "ElementaryTypeName",
+                        "src": "164:7:1"
+                      }
+                    ],
+                    "id": 280,
+                    "name": "VariableDeclaration",
+                    "src": "164:18:1"
+                  }
+                ],
+                "id": 281,
+                "name": "ParameterList",
+                "src": "163:20:1"
+              }
+            ],
+            "id": 282,
+            "name": "FunctionDefinition",
+            "src": "65:119:1"
           }
         ],
-        "scope": 10,
-        "src": "26:109:0"
+        "id": 283,
+        "name": "ContractDefinition",
+        "src": "27:160:1"
       }
     ],
-    "src": "0:136:0"
-  },
-  "legacyAST": {
-    "absolutePath": "/Users/andrey/projects/cyberFund/chaingear/contracts/common/ChaingearRegistreable.sol",
-    "exportedSymbols": {
-      "ChaingearRegistreable": [
-        9
-      ]
-    },
-    "id": 10,
-    "nodeType": "SourceUnit",
-    "nodes": [
-      {
-        "id": 1,
-        "literals": [
-          "solidity",
-          "^",
-          "0.4",
-          ".17"
-        ],
-        "nodeType": "PragmaDirective",
-        "src": "0:24:0"
-      },
-      {
-        "baseContracts": [],
-        "contractDependencies": [],
-        "contractKind": "contract",
-        "documentation": null,
-        "fullyImplemented": false,
-        "id": 9,
-        "linearizedBaseContracts": [
-          9
-        ],
-        "name": "ChaingearRegistreable",
-        "nodeType": "ContractDefinition",
-        "nodes": [
-          {
-            "body": null,
-            "id": 8,
-            "implemented": false,
-            "isConstructor": false,
-            "isDeclaredConst": false,
-            "modifiers": [],
-            "name": "register",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 6,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 3,
-                  "name": "_name",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 8,
-                  "src": "83:12:0",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_string_calldata_ptr",
-                    "typeString": "string calldata"
-                  },
-                  "typeName": {
-                    "id": 2,
-                    "name": "string",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "83:6:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_string_storage_ptr",
-                      "typeString": "string storage pointer"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 5,
-                  "name": "_address",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 8,
-                  "src": "97:16:0",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_address",
-                    "typeString": "address"
-                  },
-                  "typeName": {
-                    "id": 4,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "97:7:0",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_address",
-                      "typeString": "address"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "82:32:0"
-            },
-            "payable": true,
-            "returnParameters": {
-              "id": 7,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "131:0:0"
-            },
-            "scope": 9,
-            "src": "65:67:0",
-            "stateMutability": "payable",
-            "superFunction": null,
-            "visibility": "external"
-          }
-        ],
-        "scope": 10,
-        "src": "26:109:0"
-      }
-    ],
-    "src": "0:136:0"
+    "id": 284,
+    "name": "SourceUnit",
+    "src": "0:188:1"
   },
   "compiler": {
     "name": "solc",
     "version": "0.4.19+commit.c4cbbb05.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "2.0.0",
-  "updatedAt": "2018-03-29T12:32:51.457Z"
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-04-06T10:18:16.481Z"
 }
