@@ -5,68 +5,17 @@ import { browserHistory } from 'react-router'
 import generateContractCode from '../../generateContractCode';
 
 import * as cyber from '../../utils/cyber';
-import getWeb3 from '../../utils/getWeb3.js';
 
-// import ChaingeareableSource from '../../ChaingeareableSource';
 const ChaingeareableSource = require('../../Chaingeareable.sol');
-
 
 const MAX_FIELD_COUNT = 10;
 
-class AddField extends Component {
-  state = {
-    name: ''
-  }
-  add = () => {
-    const {
-      name
-    } = this.state;
-    const type = this.refs.type.value;
-    this.props.onAdd(name, type);
-    this.setState({
-      name: ''
-    })
-  }
-  changeName = (e) => {
-    this.setState({ name: e.target.value })
-  }
+import AddField from './AddField';
 
-  render() {
-    const {
-      fields
-    } = this.props;
-    const {
-      name
-    } = this.state;
-    const exist = !!fields.find(x => x.name === name);
-    const canAdd = name.length > 0 && !exist;
-
-    return (
-      <tr >
-          <td>
-            <input value={name} onChange={this.changeName}/>
-          </td>
-          <td>
-            <select ref='type'>
-              <option value='string'>string</option>
-              <option value='bool'>bool</option>
-              <option value='int256'>int</option>
-              <option value='uint256'>uint</option>
-            </select>
-          </td>
-          <td>
-            <button 
-              style={{ fontSize: '70%' }} 
-              className="pure-button"
-              onClick={this.add}
-              disabled={!canAdd}
-            >add</button>                   
-          </td>
-        </tr>
-    );
-  }
-}
-
+let compiler;
+let compiledContract;
+let bytecode;
+let abi;
 
 class NewRegister extends Component {
   constructor(props) {
@@ -81,7 +30,9 @@ class NewRegister extends Component {
       status: '',
       inProgress: false,
       contractName: 'Tokens',
-      contracts: []
+      contracts: [],
+      gasEstimate: null,
+      error: null
     }
   }
 
@@ -89,7 +40,17 @@ class NewRegister extends Component {
   
   componentDidMount() {    
     cyber.getContracts()
-      .then(contracts => this.setState({ contracts }))
+      .then(contracts => this.setState({ contracts }));
+
+    this.setState({ status: 'load compiler...', inProgress : true });
+    setTimeout(() => {
+      window.BrowserSolc.loadVersion("soljson-v0.4.18+commit.9cf6e910.js", (_compiler) => {
+        compiler = _compiler;
+        this.setState({ status: null, inProgress : false })
+        this.compileAndEstimateGas();
+      });
+    }, 30);
+
   }
 
   add = (name, type) => {
@@ -99,42 +60,58 @@ class NewRegister extends Component {
     };
     this.setState({
       fields: this.state.fields.concat(newItem)
-    });
+    }, () => this.compileAndEstimateGas());
   }
 
   remove = (name) => {
     this.setState({
       fields: this.state.fields.filter(x => x.name !== name)
-    })
+    }, () => this.compileAndEstimateGas())
   }
 
-  create = () => {
+  compileAndEstimateGas = (cb) => {
     const { contractName, fields } = this.state;
     const code = generateContractCode(contractName, fields);
 
-    this.setState({ status: 'load compiler...', inProgress : true })
-    window.BrowserSolc.loadVersion("soljson-v0.4.18+commit.9cf6e910.js", (compiler) => {
-    const optimize = 1;
-    this.setState({ status: 'compile...'});
+    this.setState({ status: 'compile...', inProgress: true });
+
     const input = {
       'Chaingeareable.sol': ChaingeareableSource,
       [contractName]: 'pragma solidity ^0.4.18; ' + code,
     };
 
+    setTimeout(() => {
+      compiledContract = compiler.compile({sources : input }, 1);
+      if (compiledContract.errors && compiledContract.errors.length > 0) {
+        this.setState({
+          inProgress: false,
+          error: compiledContract.errors[0]
+        })
+        return;
+      }
+      abi = compiledContract.contracts[contractName +":"+ contractName].interface;
+      bytecode = '0x'+compiledContract.contracts[contractName +":"+ contractName].bytecode;
+
+      this.setState({ status: 'estimate gas...'});
+      cyber.getWeb3.then(({ web3 }) => {
+        web3.eth.estimateGas({data: bytecode}, (e, gasEstimate) => {
+          this.setState({
+            gasEstimate: gasEstimate + 1000000,
+            inProgress: false
+          }, () => {
+            if (cb) cb();            
+          });
+        })
+      });
+    }, 20);
+  }
+
+  create = () => {
     
-    const compiledContract = compiler.compile({sources : input }, optimize);
-
-    this.setState({ status: 'estimate gas...'})
-    getWeb3.then(({ web3 }) => {
-    let abi = compiledContract.contracts[contractName +":"+ contractName].interface;
-    let bytecode = '0x'+compiledContract.contracts[contractName +":"+ contractName].bytecode;
-    web3.eth.estimateGas({data: bytecode}, (e, gasEstimate) => {
-      console.log(e, gasEstimate);
-
+    this.compileAndEstimateGas(() => {
+      const { contractName, gasEstimate } = this.state;
+      this.setState({ status: 'deploy contract...', inProgress: true });
       let Contract = web3.eth.contract(JSON.parse(abi));
-
-      this.setState({ status: 'deploy contract...'})
-
       var _benefitiaries = ['0xa3564D084fabf13e69eca6F2949D3328BF6468Ef']; // ???
       var _shares = [100];// ???
       var _permissionType = +this.refs.permission.value;
@@ -157,25 +134,28 @@ class NewRegister extends Component {
          gas: gasEstimate
        }, (err, myContract) => {
         console.log(' >> ', err, myContract);
-        if (myContract.address) {
-          this.setState({ status: 'save abi in ipfs...'})
-          const buffer = Buffer.from(JSON.stringify(abi));
-          cyber.ipfs.add(buffer, (err, ipfsHash) => {
-            const hash = ipfsHash[0].path;
-            this.setState({ status: 'register contract...'})
-            cyber.register(contractName, myContract.address, hash).then(() => {
-              this.setState({ status: '', inProgress: false })
-              browserHistory.push(`/`);
-            });
+        if (err) {
+          this.setState({
+            error: err,
+            inProgress: false
           })
+        } else {
+          if (myContract.address) {
+            this.setState({ status: 'save abi in ipfs...'})
+            const buffer = Buffer.from(JSON.stringify(abi));
+            cyber.ipfs.add(buffer, (err, ipfsHash) => {
+              const hash = ipfsHash[0].path;
+              this.setState({ status: 'register contract...'})
+              cyber.register(contractName, myContract.address, hash).then(() => {
+                this.setState({ status: '', inProgress: false })
+                browserHistory.push(`/`);
+              });
+            })
+          }          
         }
        });
+
     });
-            
-    })
-
-  });
-
   }
 
   changeContractName = (e) => {
@@ -185,7 +165,7 @@ class NewRegister extends Component {
   }
 
   render() {
-    const { contractName, fields, status, inProgress, contracts } = this.state;
+    const { contractName, fields, status, inProgress, contracts, gasEstimate, error } = this.state;
     const code = generateContractCode(contractName, fields);
     const exist = !!contracts.find(x => x.name === contractName)
     const fieldsCount = fields.length;
@@ -243,6 +223,13 @@ class NewRegister extends Component {
                 ref='tags'
               /></p>
             </div>
+            {error ? (
+              <div>
+                {error}
+              </div>
+            ) : <div>
+              gas Estimate: {gasEstimate} gwei
+            </div>}
             <table className="pure-table">
               <thead>
                 <tr>

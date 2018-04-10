@@ -107,6 +107,8 @@ export const getItems2 = (contract, count, array, mapFn) => {
   })
 }
 
+export { getWeb3 };
+
 const IPFS = require('ipfs-api');
 
 //require('ipfs-api/dist/index.min.js')

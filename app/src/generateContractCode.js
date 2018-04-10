@@ -41,7 +41,7 @@ contract ${name} is Chaingeareable {
         entries.push(${name}Item(
         {
             owner: msg.sender,
-            lastUpdateTime: now,
+            lastUpdateTime: now ${fields.length > 0 ? ',' : ''}
             ${createItemStr}
         }));
     
