@@ -15,7 +15,7 @@ class Register extends Component {
       newItem: {},
       loading: false,
       balance: null,
-      isOwner: null
+      isOwner: false
     }
   
   componentDidMount() {
@@ -73,16 +73,6 @@ class Register extends Component {
     })
   }
 
-  created = (error, result) => {
-    const newItem = {
-      ...this.state.newItem,
-
-    }
-    this.setState({
-      items: this.state.items.concat(newItem),
-      loading: false
-    })
-  } 
 
   add = (args) => {
     this.contract.entryCreationFee.call((e, data) => {
@@ -95,7 +85,6 @@ class Register extends Component {
       args.push(function(e, r){
 
       })
-
       this.contract.createEntry.apply(this.contract, args);   
     });
   }
