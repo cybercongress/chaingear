@@ -9,7 +9,7 @@ class AddRow extends Component {
     const {
       fields
     } = this.props;
-debugger
+
     const newItem = {
       // id: guid()
     }

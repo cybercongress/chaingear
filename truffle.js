@@ -13,27 +13,28 @@ module.exports = {
       port: 8545,
       network_id: "*" // Match any network id
     },
-    // kovan: {
-    //   host: "localhost",
-    //   port: 8545,
-    //   network_id: 42,
-    //   gasPrice: 1000000000,
-    //   gas: 6721975,
-    //   from: "0xa3564D084fabf13e69eca6F2949D3328BF6468Ef"
-    // },
 
     kovan: {
-      provider() {
-        return new HDWalletProvider(MNEMONIC, 'https://kovan.infura.io/');
-      },
+      host: "localhost",
+      port: 8545,
       network_id: 42,
-      gasPrice: toWei(4, 'gwei').toNumber(),
-      gas: toWei(6.9, 'mwei').toNumber(),
-
-      // gasPrice: 1000000000, //toWei(4, 'gwei').toNumber(),
-      // gas: 7992189, //toWei(6.9, 'mwei').toNumber(),
-      // from: "0xa3564D084fabf13e69eca6F2949D3328BF6468Ef",
+      gasPrice: 1000000000,
+      gas: 6721975,
+      from: "0xa3564D084fabf13e69eca6F2949D3328BF6468Ef"
     },
+
+    // kovan: {
+    //   provider() {
+    //     return new HDWalletProvider(MNEMONIC, 'https://kovan.infura.io/');
+    //   },
+    //   network_id: 42,
+    //   gasPrice: toWei(4, 'gwei').toNumber(),
+    //   gas: toWei(6.9, 'mwei').toNumber(),
+
+    //   // gasPrice: 1000000000, //toWei(4, 'gwei').toNumber(),
+    //   // gas: 7992189, //toWei(6.9, 'mwei').toNumber(),
+    //   // from: "0xa3564D084fabf13e69eca6F2949D3328BF6468Ef",
+    // },
 
     live: {
       host: "localhost",
