@@ -2,18 +2,14 @@ import React, { Component } from 'react';
 
 import { browserHistory } from 'react-router'
 
-import generateContractCode from '../../generateContractCode';
 
 import * as cyber from '../../utils/cyber';
-
-const ChaingeareableSource = require('../../Chaingeareable.sol');
 
 const MAX_FIELD_COUNT = 10;
 
 import AddField from './AddField';
 
 let compiler;
-let compiledContract;
 let bytecode;
 let abi;
 
@@ -39,18 +35,14 @@ class NewRegister extends Component {
 
   
   componentDidMount() {    
-    cyber.getContracts()
+    cyber.getRegistry()
       .then(contracts => this.setState({ contracts }));
 
     this.setState({ status: 'load compiler...', inProgress : true });
-    setTimeout(() => {
-      window.BrowserSolc.loadVersion("soljson-v0.4.18+commit.9cf6e910.js", (_compiler) => {
-        compiler = _compiler;
-        this.setState({ status: null, inProgress : false })
-        this.compileAndEstimateGas();
-      });
-    }, 30);
-
+    cyber.loadCompiler((_compiler) => {
+      compiler = _compiler;
+      this.setState({ status: null, inProgress : false })      
+    })
   }
 
   add = (name, type) => {
@@ -71,90 +63,70 @@ class NewRegister extends Component {
 
   compileAndEstimateGas = (cb) => {
     const { contractName, fields } = this.state;
-    const code = generateContractCode(contractName, fields);
+    const code = cyber.generateContractCode(contractName, fields);
 
     this.setState({ status: 'compile...', inProgress: true });
 
-    const input = {
-      'Chaingeareable.sol': ChaingeareableSource,
-      [contractName]: 'pragma solidity ^0.4.18; ' + code,
-    };
-
-    setTimeout(() => {
-      compiledContract = compiler.compile({sources : input }, 1);
-      if (compiledContract.errors && compiledContract.errors.length > 0) {
+    cyber.compileRegistry(code, contractName, compiler)
+      .then((data) => {
+        bytecode = data.bytecode;
+        abi = data.abi;
+        this.setState({ status: 'estimate gas...'});
+        return data;
+      })
+      .then(() => cyber.estimateNewRegistryGas(bytecode))
+      .then(({ web3, gasEstimate }) => {
+        this.setState({
+          gasEstimate: gasEstimate + 1000000,//bug with web3, incorrect estimate
+          inProgress: false,
+          error: null
+        }, () => {
+          if (cb) cb(web3);  
+        })
+      })
+      .catch(error => {
         this.setState({
           inProgress: false,
-          error: compiledContract.errors[0]
+          error
         })
-        return;
-      }
-      abi = compiledContract.contracts[contractName +":"+ contractName].interface;
-      bytecode = '0x'+compiledContract.contracts[contractName +":"+ contractName].bytecode;
-
-      this.setState({ status: 'estimate gas...'});
-      cyber.getWeb3.then(({ web3 }) => {
-        web3.eth.estimateGas({data: bytecode}, (e, gasEstimate) => {
-          this.setState({
-            gasEstimate: gasEstimate + 1000000,
-            inProgress: false
-          }, () => {
-            if (cb) cb();            
-          });
-        })
-      });
-    }, 20);
+      })
   }
 
   create = () => {
     
-    this.compileAndEstimateGas(() => {
+    this.compileAndEstimateGas((web3) => {
       const { contractName, gasEstimate } = this.state;
       this.setState({ status: 'deploy contract...', inProgress: true });
-      let Contract = web3.eth.contract(JSON.parse(abi));
-      var _benefitiaries = ['0xa3564D084fabf13e69eca6F2949D3328BF6468Ef']; // ???
-      var _shares = [100];// ???
-      var _permissionType = +this.refs.permission.value;
-      var _entryCreationFee = web3.toWei(+this.refs.entryCreationFee.value, 'ether');// ???
-      var _name = contractName;
-      var _description = this.refs.description.value;
-      var _tags = this.refs.tags.value;
 
-      Contract.new(
-        _benefitiaries,
-        _shares,
-        _permissionType,
-        _entryCreationFee,
-        _name,
-        _description,
-        _tags,
-       {
-         from: web3.eth.accounts[0],
-         data:bytecode,
-         gas: gasEstimate
-       }, (err, myContract) => {
-        console.log(' >> ', err, myContract);
-        if (err) {
+      const opt = {
+        gasEstimate,
+        contractName,
+        permissionType: +this.refs.permission.value,
+        entryCreationFee: +this.refs.entryCreationFee.value,
+        description: this.refs.description.value,
+        tags: this.refs.tags.value
+      };
+      let address;
+      cyber.deployRegistry(bytecode, abi, web3, opt)
+        .then((_address) => {
+          address = _address;
+          this.setState({ status: 'save abi in ipfs...'});
+          return cyber.saveInIPFS(abi);
+        })
+        .then(hash => {
+          this.setState({ status: 'register contract...'});
+          return cyber.register(contractName, address, hash);
+        })
+        .then(() => {
+          this.setState({ status: '', inProgress: false });
+          browserHistory.push(`/`);
+        })
+        .catch(err => {
           this.setState({
             error: err,
             inProgress: false
           })
-        } else {
-          if (myContract.address) {
-            this.setState({ status: 'save abi in ipfs...'})
-            const buffer = Buffer.from(JSON.stringify(abi));
-            cyber.ipfs.add(buffer, (err, ipfsHash) => {
-              const hash = ipfsHash[0].path;
-              this.setState({ status: 'register contract...'})
-              cyber.register(contractName, myContract.address, hash).then(() => {
-                this.setState({ status: '', inProgress: false })
-                browserHistory.push(`/`);
-              });
-            })
-          }          
-        }
-       });
-
+        })
     });
   }
 
@@ -166,7 +138,7 @@ class NewRegister extends Component {
 
   render() {
     const { contractName, fields, status, inProgress, contracts, gasEstimate, error } = this.state;
-    const code = generateContractCode(contractName, fields);
+    const code = cyber.generateContractCode(contractName, fields);
     const exist = !!contracts.find(x => x.name === contractName)
     const fieldsCount = fields.length;
     const canDeploy = contractName.length > 0 && fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !exist;
@@ -230,6 +202,7 @@ class NewRegister extends Component {
             ) : <div>
               gas Estimate: {gasEstimate} gwei
             </div>}
+            <button onClick={() => this.compileAndEstimateGas()}>estimate</button>
             <table className="pure-table">
               <thead>
                 <tr>
