@@ -4,13 +4,18 @@ import * as cyber from '../../utils/cyber'
 
 import AddRow from './AddRow';
 
+import { browserHistory } from 'react-router'
+
+
 class Register extends Component {
     
     state = {
       items: [],
       fields: [],
       newItem: {},
-      loading: false
+      loading: false,
+      balance: null,
+      isOwner: null
     }
   
   componentDidMount() {
@@ -24,11 +29,23 @@ class Register extends Component {
         cyber.ipfs.get(ipfsHash, (err, files) => {
           const buf = files[0].content;
           var data = JSON.parse(JSON.parse(buf.toString()));
+          // console.log(JSON.parse(buf.toString()))
           var fields = data.filter(x => x.name === 'entries')[0].outputs;
           fields = fields.filter(x => x.name != 'owner' && x.name != 'lastUpdateTime');
           cyber.getContractByAbi(address, data)
-          .then(({ contract }) => {
+          .then(({ contract, web3 }) => {
+
+            contract.owner.call((e, data) => {
+              this.setState({ isOwner: web3.eth.accounts[0] === data })
+            })
+
+            web3.eth.getBalance(address, (e, d) => {
+              this.setState({
+                balance: web3.fromWei(d).toString()
+              })
+            })
             this.contract = contract; 
+            this.web3 = web3;
              const mapFn = item => {
                   const aItem = Array.isArray(item) ? item : [item];
                   return fields.reduce((o, field, index) => {
@@ -68,16 +85,19 @@ class Register extends Component {
   } 
 
   add = (args) => {
+    this.contract.entryCreationFee.call((e, data) => {
+      var value = data.toString()
 
-    args.push(function(e, r){
+      args.push({
+        value: data
+      })
 
-    })
+      args.push(function(e, r){
 
-    this.contract.createEntry.apply(this.contract, args);   
-    // this.setState({
-    //   newItem,
-    //   loading: true
-    // })
+      })
+
+      this.contract.createEntry.apply(this.contract, args);   
+    });
   }
 
   removeItem = (id) => {
@@ -93,9 +113,26 @@ class Register extends Component {
     e.preventDefault();
     console.log(e.target.value)
   }
+
+  claim = () => {
+    this.contract.claim((e, d) => {
+      this.setState({ balance: 0 })
+    })
+  }
+
+  removeContract = () => {
+    // alert(1)
+
+    const address = this.props.params.adress;
+    cyber.removeRegistry(address).then(() => {
+      this.contract.destroy((e, d) => {
+        browserHistory.push(`/`);  
+      })      
+    });
+  }
   
   render() {
-    const { fields, items, loading } = this.state;
+    const { fields, items, loading, balance, isOwner } = this.state;
 
     if (loading) {
       return (
@@ -131,6 +168,11 @@ class Register extends Component {
 
     return (
       <div>
+        {isOwner && <div>
+          <div>Balance: {balance}</div>
+          <button onClick={this.claim}>claim</button>
+          <button onClick={this.removeContract}>remove</button>
+        </div>}
         <table>
           <thead>
             <tr>

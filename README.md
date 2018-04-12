@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src=""
+  <img src="https://raw.githubusercontent.com/cybercongress/chaingear/ERC721-integration/chaingear.png"
   alt="chaingear" width="970"></a>
 </h1>
 
@@ -48,12 +48,26 @@ truffle migrate --network=kovan
 
 PS: approve transaction in parity ui (http://127.0.0.1:8180/)
 
+Build contract in file:
+
+```
+truffle-flattener contracts/common/Chaingeareable.sol >> app/src/Chaingeareable.sol
+```
+
 ##### Linting:
 
 ```
 npm install -g solium
 
 solium -d contracts
+```
+
+##### Development environment
+Recommending to use [Remix Ethereum Online IDE](remix.ethereum.org)  or [desktop electron-based Remix IDE](https://github.com/horizon-games/remix-app)
+
+PS: to import to IDE open-zeppelin contacts follow this:
+```
+import "github.com/OpenZeppelin/zeppelin-solidity/contracts/ownership/Ownable.sol";
 ```
 
 # Join Us On Telegram
@@ -68,7 +82,7 @@ If you're interested in using or developing Chaingear, come [join us on Telegram
 
 # Authors
 
-Originally created by [cyber•Search](https://twitter.com/cyber_devs)
+Originally created by [cyber•Congress](https://twitter.com/cyber_devs)
 
 # License
 
