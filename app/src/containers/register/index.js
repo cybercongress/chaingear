@@ -23,7 +23,7 @@ class Register extends Component {
       loading: true
     })
     const address = this.props.params.adress;
-    cyber.getContracts()
+    cyber.getRegistry()
       .then(contracts => {
         var ipfsHash = contracts.filter(x => x.address === address)[0].ipfsHash;
         cyber.ipfs.get(ipfsHash, (err, files) => {
@@ -31,7 +31,7 @@ class Register extends Component {
           var data = JSON.parse(JSON.parse(buf.toString()));
           // console.log(JSON.parse(buf.toString()))
           var fields = data.filter(x => x.name === 'entries')[0].outputs;
-          fields = fields.filter(x => x.name != 'owner' && x.name != 'lastUpdateTime');
+          fields = fields.filter(x => x.name !== 'owner' && x.name !== 'lastUpdateTime');
           cyber.getContractByAbi(address, data)
           .then(({ contract, web3 }) => {
 
@@ -46,7 +46,7 @@ class Register extends Component {
             })
             this.contract = contract; 
             this.web3 = web3;
-             const mapFn = item => {
+              const mapFn = item => {
                   const aItem = Array.isArray(item) ? item : [item];
                   return fields.reduce((o, field, index) => {
                     o[field.name] = aItem[index]; 
@@ -75,18 +75,7 @@ class Register extends Component {
 
 
   add = (args) => {
-    this.contract.entryCreationFee.call((e, data) => {
-      var value = data.toString()
-
-      args.push({
-        value: data
-      })
-
-      args.push(function(e, r){
-
-      })
-      this.contract.createEntry.apply(this.contract, args);   
-    });
+    cyber.addRegistryItem(this.contract, args);
   }
 
   removeItem = (id) => {
