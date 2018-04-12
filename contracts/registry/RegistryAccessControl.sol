@@ -8,7 +8,7 @@ import "zeppelin-solidity/contracts/ownership/Whitelist.sol";
 
 contract RegistryAccessControl is Ownable, Whitelist, Destructible, Pausable {
 
-    PermissionTypeEntries public permissionTypeEntries_;
+    PermissionTypeEntries internal permissionTypeEntries_;
 
     enum PermissionTypeEntries {OnlyOwner, Whitelist, AllUsers}
 
@@ -21,7 +21,18 @@ contract RegistryAccessControl is Ownable, Whitelist, Destructible, Pausable {
         _;
     }
 
-    function updatePermissionTypeEntries(uint _permissionTypeEntries) external onlyOwner {
+    function permissionsTypeEntries()
+        public
+        view
+        returns (PermissionTypeEntries)
+    {
+        return permissionTypeEntries_;
+    }
+
+    function updatePermissionTypeEntries(uint _permissionTypeEntries)
+      external
+      onlyOwner
+    {
         require(uint(PermissionTypeEntries.AllUsers) >= _permissionTypeEntries);
         permissionTypeEntries_ = PermissionTypeEntries(_permissionTypeEntries);
     }

@@ -12,7 +12,10 @@ contract SplitPaymentChangeable is SplitPayment, Ownable {
         SplitPayment(_payees, _shares) public payable
     { }
 
-    function changePayeeAddress(uint _payeeIndex, address _newAddress) external onlyOwner {
+    function changePayeeAddress(uint _payeeIndex, address _newAddress)
+        external
+        onlyOwner
+    {
         address oldAddress = payees[_payeeIndex];
 
         shares[_newAddress] = shares[oldAddress];
@@ -22,6 +25,6 @@ contract SplitPaymentChangeable is SplitPayment, Ownable {
         delete shares[oldAddress];
         delete released[oldAddress];
 
-        PayeeAddressChanged(_payeeIndex, oldAddress, _newAddress);
+         PayeeAddressChanged(_payeeIndex, oldAddress, _newAddress);
     }
 }

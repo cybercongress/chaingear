@@ -63,6 +63,13 @@ export const getContracts = () => {
 }
 
 
+export const removeRegistry = (address, cb) => {
+  return getContract().then(( { contract, web3 }) => {  
+    return contract.deleteRegistry(address, { from: web3.eth.accounts[0] });
+  })
+} 
+
+
 export const getContractByAbi = (address, abi) => {
   return new Promise(resolve => {
     getWeb3.then(({ web3 }) => {
