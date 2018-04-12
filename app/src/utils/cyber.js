@@ -254,6 +254,26 @@ export const getItems2 = (contract, count, array, mapFn) => {
   })
 }
 
+export const addRegistryItem = (contract, data) => {
+  return new Promise((resolve, reject) => {
+    const args = [...data];
+    contract.entryCreationFee.call((e, data) => {
+      args.push({
+        value: data
+      })
+
+      args.push(function(e, r){
+        if (e) {
+          reject(e)
+        } else {
+          resolve(r);
+        }
+      });
+      contract.createEntry.apply(contract, args);   
+    });
+  })
+}
+
 export { getWeb3, generateContractCode };
 
 const IPFS = require('ipfs-api');
