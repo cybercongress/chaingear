@@ -4,7 +4,7 @@ import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/AddressUtils.sol";
 import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "../common/SplitPaymentChangeable.sol";
-import "./IPFSeable.sol";
+import "../common/IPFSeable.sol";
 import "./RegistryBase.sol";
 import "../common/ChaingearRegistrable.sol";
 
@@ -149,5 +149,29 @@ contract Chaingear is RegistryBase, ERC721Token, IPFSeable, SplitPaymentChangeab
         require(len <= 128);
 
         chaingearDescription_ = _description;
+    }
+
+    function updateABILink(string _linkABI)
+        external
+        onlyOwner
+    {
+        linkABI_ = _linkABI;
+         ABILinkUpdated(_linkABI);
+    }
+
+    function setMetaLink(string _linkMeta)
+        external
+        onlyOwner
+    {
+        linkMeta_ = _linkMeta;
+         MetaLinkUpdated(_linkMeta);
+    }
+
+    function setSourceLink(string _linkSourceCode)
+        external
+        onlyOwner
+    {
+        linkSourceCode_ = _linkSourceCode;
+         SourceLinkUpdated(_linkSourceCode);
     }
 }

@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-import "./IPFSeable.sol";
+import "../common/IPFSeable.sol";
 import "../common/ChaingearRegistrable.sol";
 import "./RegistryAccessControl.sol";
 
@@ -13,6 +13,8 @@ contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessContro
     bytes32[] internal registryTags_;
 
     bytes32 internal chaingearVersion = "1.0";
+
+    address internal registrySafe_;
 
     /* uint256 public currentRegistryBalanceETH;
     uint256 public accumulatedOverallRegistryETH; */
@@ -186,5 +188,13 @@ contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessContro
     {
         linkSourceCode_ = _linkSourceCode;
          SourceLinkUpdated(_linkSourceCode);
+    }
+
+    function registrySafe()
+        public
+        view
+        returns (address)
+    {
+        return registrySafe_;
     }
 }

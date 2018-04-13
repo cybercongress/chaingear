@@ -6,7 +6,7 @@ import "../common/SplitPaymentChangeable.sol";
 import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/AddressUtils.sol";
-
+import "../common/RegistrySafe.sol";
 
 contract Registry is EntryBase, Chaingeareable, ERC721Token, SplitPaymentChangeable {
 
@@ -33,6 +33,7 @@ contract Registry is EntryBase, Chaingeareable, ERC721Token, SplitPaymentChangea
         entryCreationFee_ = _entryCreationFee;
         registryName_ = _name;
         registryDescription_ = _description;
+        registrySafe_ = new RegistrySafe();
     }
 
     function createEntry(address _expensiveAddress, uint _expensiveUint, int _expensiveInt, string _expensiveString)
