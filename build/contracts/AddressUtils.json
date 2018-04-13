@@ -3,8 +3,8 @@
   "abi": [],
   "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a723058207c5dfae92cdd2612b3e291c08160764d1aaaf0ed4977256996190c192653d7750029",
   "deployedBytecode": "0x6060604052600080fd00a165627a7a723058207c5dfae92cdd2612b3e291c08160764d1aaaf0ed4977256996190c192653d7750029",
-  "sourceMap": "86:518:12:-;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "86:518:12:-;;;;;",
+  "sourceMap": "86:518:11:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "86:518:11:-;;;;;",
   "source": "pragma solidity ^0.4.18;\n\n/**\n * Utility library of inline functions on addresses\n */\nlibrary AddressUtils {\n\n  /**\n   * Returns whether there is code in the target address\n   * @dev This function will return false if invoked during the constructor of a contract,\n   *  as the code is not actually created until after the constructor finishes.\n   * @param addr address address to check\n   * @return whether there is code in the target address\n   */\n  function isContract(address addr) internal view returns (bool) {\n    uint256 size;\n    assembly { size := extcodesize(addr) }\n    return size > 0;\n  }\n\n}\n",
   "sourcePath": "zeppelin-solidity/contracts/AddressUtils.sol",
   "ast": {
@@ -12,7 +12,7 @@
       "absolutePath": "zeppelin-solidity/contracts/AddressUtils.sol",
       "exportedSymbols": {
         "AddressUtils": [
-          1936
+          1907
         ]
       }
     },
@@ -26,9 +26,9 @@
             ".18"
           ]
         },
-        "id": 1919,
+        "id": 1890,
         "name": "PragmaDirective",
-        "src": "0:24:12"
+        "src": "0:24:11"
       },
       {
         "attributes": {
@@ -42,10 +42,10 @@
           "documentation": "Utility library of inline functions on addresses",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            1936
+            1907
           ],
           "name": "AddressUtils",
-          "scope": 1937
+          "scope": 1908
         },
         "children": [
           {
@@ -58,7 +58,7 @@
               ],
               "name": "isContract",
               "payable": false,
-              "scope": 1936,
+              "scope": 1907,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "internal"
@@ -70,7 +70,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "addr",
-                      "scope": 1935,
+                      "scope": 1906,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -83,19 +83,19 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1920,
+                        "id": 1891,
                         "name": "ElementaryTypeName",
-                        "src": "471:7:12"
+                        "src": "471:7:11"
                       }
                     ],
-                    "id": 1921,
+                    "id": 1892,
                     "name": "VariableDeclaration",
-                    "src": "471:12:12"
+                    "src": "471:12:11"
                   }
                 ],
-                "id": 1922,
+                "id": 1893,
                 "name": "ParameterList",
-                "src": "470:14:12"
+                "src": "470:14:11"
               },
               {
                 "children": [
@@ -103,7 +103,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 1935,
+                      "scope": 1906,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bool",
@@ -116,19 +116,19 @@
                           "name": "bool",
                           "type": "bool"
                         },
-                        "id": 1923,
+                        "id": 1894,
                         "name": "ElementaryTypeName",
-                        "src": "508:4:12"
+                        "src": "508:4:11"
                       }
                     ],
-                    "id": 1924,
+                    "id": 1895,
                     "name": "VariableDeclaration",
-                    "src": "508:4:12"
+                    "src": "508:4:11"
                   }
                 ],
-                "id": 1925,
+                "id": 1896,
                 "name": "ParameterList",
-                "src": "507:6:12"
+                "src": "507:6:11"
               },
               {
                 "children": [
@@ -144,7 +144,7 @@
                         "attributes": {
                           "constant": false,
                           "name": "size",
-                          "scope": 1935,
+                          "scope": 1906,
                           "stateVariable": false,
                           "storageLocation": "default",
                           "type": "uint256",
@@ -157,38 +157,38 @@
                               "name": "uint256",
                               "type": "uint256"
                             },
-                            "id": 1926,
+                            "id": 1897,
                             "name": "ElementaryTypeName",
-                            "src": "520:7:12"
+                            "src": "520:7:11"
                           }
                         ],
-                        "id": 1927,
+                        "id": 1898,
                         "name": "VariableDeclaration",
-                        "src": "520:12:12"
+                        "src": "520:12:11"
                       }
                     ],
-                    "id": 1928,
+                    "id": 1899,
                     "name": "VariableDeclarationStatement",
-                    "src": "520:12:12"
+                    "src": "520:12:11"
                   },
                   {
                     "attributes": {
                       "externalReferences": [
                         {
                           "size": {
-                            "declaration": 1927,
+                            "declaration": 1898,
                             "isOffset": false,
                             "isSlot": false,
-                            "src": "549:4:12",
+                            "src": "549:4:11",
                             "valueSize": 1
                           }
                         },
                         {
                           "addr": {
-                            "declaration": 1921,
+                            "declaration": 1892,
                             "isOffset": false,
                             "isSlot": false,
-                            "src": "569:4:12",
+                            "src": "569:4:11",
                             "valueSize": 1
                           }
                         }
@@ -196,13 +196,13 @@
                       "operations": "{\n    size := extcodesize(addr)\n}"
                     },
                     "children": [],
-                    "id": 1929,
+                    "id": 1900,
                     "name": "InlineAssembly",
-                    "src": "538:49:12"
+                    "src": "538:49:11"
                   },
                   {
                     "attributes": {
-                      "functionReturnParameters": 1925
+                      "functionReturnParameters": 1896
                     },
                     "children": [
                       {
@@ -226,13 +226,13 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1927,
+                              "referencedDeclaration": 1898,
                               "type": "uint256",
                               "value": "size"
                             },
-                            "id": 1930,
+                            "id": 1901,
                             "name": "Identifier",
-                            "src": "588:4:12"
+                            "src": "588:4:11"
                           },
                           {
                             "attributes": {
@@ -247,39 +247,39 @@
                               "type": "int_const 0",
                               "value": "0"
                             },
-                            "id": 1931,
+                            "id": 1902,
                             "name": "Literal",
-                            "src": "595:1:12"
+                            "src": "595:1:11"
                           }
                         ],
-                        "id": 1932,
+                        "id": 1903,
                         "name": "BinaryOperation",
-                        "src": "588:8:12"
+                        "src": "588:8:11"
                       }
                     ],
-                    "id": 1933,
+                    "id": 1904,
                     "name": "Return",
-                    "src": "581:15:12"
+                    "src": "581:15:11"
                   }
                 ],
-                "id": 1934,
+                "id": 1905,
                 "name": "Block",
-                "src": "514:87:12"
+                "src": "514:87:11"
               }
             ],
-            "id": 1935,
+            "id": 1906,
             "name": "FunctionDefinition",
-            "src": "451:150:12"
+            "src": "451:150:11"
           }
         ],
-        "id": 1936,
+        "id": 1907,
         "name": "ContractDefinition",
-        "src": "86:518:12"
+        "src": "86:518:11"
       }
     ],
-    "id": 1937,
+    "id": 1908,
     "name": "SourceUnit",
-    "src": "0:605:12"
+    "src": "0:605:11"
   },
   "compiler": {
     "name": "solc",
@@ -287,5 +287,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-13T15:34:57.413Z"
+  "updatedAt": "2018-04-13T16:07:30.399Z"
 }
