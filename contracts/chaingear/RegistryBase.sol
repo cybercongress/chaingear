@@ -12,6 +12,7 @@ contract RegistryBase is ChaingearAccessControl {
         uint registrationTimestamp;
         string linkABI;
         address owner;
+        bytes32 chaingeareableVersion;
     }
 
     Registry[] internal registries;
@@ -73,18 +74,26 @@ contract RegistryBase is ChaingearAccessControl {
         return registries[_registryID].linkABI;
     }
 
-    // function ownerOf(uint256 _registryID)
-    //     public
-    //     view
-    //     returns (address)
-    // {
-    //     return registries[_registryID].owner;
-    // }
+    function registryOwnerOf(uint256 _registryID)
+        public
+        view
+        returns (address)
+    {
+        return registries[_registryID].owner;
+    }
+
+    function versionOf(uint256 _registryID)
+        public
+        view
+        returns (bytes32)
+    {
+        return registries[_registryID].chaingeareableVersion;
+    }
 
     function registryInfo(uint256 _registryID)
         public
         view
-        returns (string, address, address, uint, string, address)
+        returns (string, address, address, uint, string, address, bytes32)
     {
         return (
             nameOf(_registryID),
@@ -92,8 +101,8 @@ contract RegistryBase is ChaingearAccessControl {
             creatorOf(_registryID),
             registryDateOf(_registryID),
             ABILinkOf(_registryID),
-            // ownerOf(_registryID)
-            registries[_registryID].owner
+            registryOwnerOf(_registryID),
+            versionOf(_registryID)
         );
     }
 
