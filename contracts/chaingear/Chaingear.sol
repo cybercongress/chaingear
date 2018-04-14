@@ -1,8 +1,8 @@
 pragma solidity ^0.4.18;
 
-import "zeppelin-solidity/contracts/math/SafeMath.sol";
-import "zeppelin-solidity/contracts/AddressUtils.sol";
-import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "github.com/OpenZeppelin/zeppelin-solidity/contracts/math/SafeMath.sol";
+import "github.com/OpenZeppelin/zeppelin-solidity/contracts/AddressUtils.sol";
+import "github.com/OpenZeppelin/zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "../common/IPFSeable.sol";
 import "./RegistryBase.sol";

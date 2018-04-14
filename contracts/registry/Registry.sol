@@ -3,9 +3,9 @@ pragma solidity ^0.4.18;
 import "./Chaingeareable.sol";
 import "./EntryBase.sol";
 import "../common/SplitPaymentChangeable.sol";
-import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
-import "zeppelin-solidity/contracts/math/SafeMath.sol";
-import "zeppelin-solidity/contracts/AddressUtils.sol";
+import "github.com/OpenZeppelin/zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "github.com/OpenZeppelin/zeppelin-solidity/contracts/math/SafeMath.sol";
+import "github.com/OpenZeppelin/zeppelin-solidity/contracts/AddressUtils.sol";
 import "../common/RegistrySafe.sol";
 
 contract Registry is EntryBase, Chaingeareable, ERC721Token, SplitPaymentChangeable {
@@ -44,15 +44,22 @@ contract Registry is EntryBase, Chaingeareable, ERC721Token, SplitPaymentChangea
         returns (uint256)
     {
         require(msg.value == entryCreationFee_);
-
+        EntryMeta memory meta = (EntryMeta(
+        {
+            lastUpdateTime: block.timestamp,
+            createdAt: block.timestamp,
+            owner: msg.sender,
+            creator: msg.sender,
+            currentEntryBalanceETH: 0,
+            accumulatedOverallEntryETH: 0
+        }));
         Entry memory entry = (Entry(
         {
-            owner: msg.sender,
             expensiveAddress: _expensiveAddress,
             expensiveUint: _expensiveUint,
             expensiveInt: _expensiveInt,
             expensiveString: _expensiveString,
-            lastUpdateTime: now
+            metainformation: meta
         }));
 
         uint256 newEntryId = entries.push(entry) - 1;
@@ -67,7 +74,7 @@ contract Registry is EntryBase, Chaingeareable, ERC721Token, SplitPaymentChangea
         whenNotPaused
         external
     {
-        require (ERC721BasicToken.ownerOf(_entryId) == msg.sender);
+        require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
 
         uint256 entryIndex = allTokensIndex[_entryId];
         uint256 lastEntryIndex = entries.length.sub(1);
@@ -88,11 +95,36 @@ contract Registry is EntryBase, Chaingeareable, ERC721Token, SplitPaymentChangea
         external
     {
         require (ERC721BasicToken.ownerOf(_entryId) == msg.sender);
+        // throw if balance?
+        entries[_entryId].metainformation.owner = _newOwner;
+        entries[_entryId].metainformation.lastUpdateTime = block.timestamp;
 
         super.removeTokenFrom(msg.sender, _entryId);
         super.addTokenTo(_newOwner, _entryId);
 
         EntryChangedOwner(_entryId, _newOwner);
     }
-
+    
+    function fundEntry(uint256 _entryId)
+        whenNotPaused
+        payable
+        public
+    {
+        entries[_entryId].metainformation.accumulatedOverallEntryETH.add(msg.value);
+        registrySafe_.transfer(msg.value);
+        
+        EntryFunded(_entryId, msg.sender);
+    }
+    
+    function claimEntryFunds(uint256 _entryId, uint _amount)
+        whenNotPaused
+        public
+    {
+        require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
+        require(_amount <= entries[_entryId].metainformation.currentEntryBalanceETH);
+        entries[_entryId].metainformation.currentEntryBalanceETH.sub(_amount);
+        RegistrySafe(registrySafe_).claim(msg.sender, _amount);
+        
+        EntryFundsClaimed(_entryId, msg.sender, _amount);
+    }
 }
