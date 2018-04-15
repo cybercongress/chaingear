@@ -65,7 +65,7 @@ contract Chaingear is RegistryBase, ERC721Token, IPFSeable, SplitPaymentChangeab
         uint256 newRegistryId = registries.push(registry) - 1;
         super._mint(msg.sender, newRegistryId);
 
-         RegistryRegistered(_registryName, msg.sender, newRegistryId);
+        RegistryRegistered(_registryName, msg.sender, newRegistryId);
 
         return newRegistryId;
     }

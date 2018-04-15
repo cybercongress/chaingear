@@ -96,6 +96,7 @@ contract Registry is EntryBase, Chaingeareable, ERC721Token, SplitPaymentChangea
     {
         require (ERC721BasicToken.ownerOf(_entryId) == msg.sender);
         // throw if balance?
+        //locked balance?
         entries[_entryId].metainformation.owner = _newOwner;
         entries[_entryId].metainformation.lastUpdateTime = block.timestamp;
 
@@ -104,7 +105,7 @@ contract Registry is EntryBase, Chaingeareable, ERC721Token, SplitPaymentChangea
 
         EntryChangedOwner(_entryId, _newOwner);
     }
-    
+
     function fundEntry(uint256 _entryId)
         whenNotPaused
         payable
@@ -112,10 +113,10 @@ contract Registry is EntryBase, Chaingeareable, ERC721Token, SplitPaymentChangea
     {
         entries[_entryId].metainformation.accumulatedOverallEntryETH.add(msg.value);
         registrySafe_.transfer(msg.value);
-        
+
         EntryFunded(_entryId, msg.sender);
     }
-    
+
     function claimEntryFunds(uint256 _entryId, uint _amount)
         whenNotPaused
         public
@@ -124,7 +125,7 @@ contract Registry is EntryBase, Chaingeareable, ERC721Token, SplitPaymentChangea
         require(_amount <= entries[_entryId].metainformation.currentEntryBalanceETH);
         entries[_entryId].metainformation.currentEntryBalanceETH.sub(_amount);
         RegistrySafe(registrySafe_).claim(msg.sender, _amount);
-        
+
         EntryFundsClaimed(_entryId, msg.sender, _amount);
     }
 }
