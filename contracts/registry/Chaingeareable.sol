@@ -177,7 +177,7 @@ contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessContro
         onlyOwner
     {
         linkABI_ = _linkABI;
-         ABILinkUpdated(_linkABI);
+        ABILinkUpdated(_linkABI);
     }
 
     function setMetaLink(string _linkMeta)
@@ -185,7 +185,7 @@ contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessContro
         onlyOwner
     {
         linkMeta_ = _linkMeta;
-         MetaLinkUpdated(_linkMeta);
+        MetaLinkUpdated(_linkMeta);
     }
 
     function setSourceLink(string _linkSourceCode)
@@ -193,7 +193,7 @@ contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessContro
         onlyOwner
     {
         linkSourceCode_ = _linkSourceCode;
-         SourceLinkUpdated(_linkSourceCode);
+        SourceLinkUpdated(_linkSourceCode);
     }
 
     function registrySafe()
