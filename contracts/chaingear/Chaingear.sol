@@ -35,13 +35,13 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 
 
     function registerRegistry(
-        address[] _benefitiaries,
-        uint256[] _shares,
-        Registry.PermissionTypeEntries _permissionType,
+        /* address[] _benefitiaries, */
+        /* uint256[] _shares, */
+        /* Registry.PermissionTypeEntries _permissionType, */
         uint _entryCreationFee,
         string _name,
         string _symbol,
-        string _description,
+        /* string _description, */
         string _linkToABIOfRegistryContract,
         // string _linkToABIOfEntriesContract,
         bytes _bytecodeOfEntriesContract
@@ -49,18 +49,18 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         external
         payable
         whenNotPaused
-        /* returns (address registryAddress, uint256 registryID) */
+        returns (address registryAddress, uint256 registryID)
     {
         require(msg.value == registryRegistrationFee_);
 
-        /* Registry newRegistryContract = creator_.create(
-            _benefitiaries,
-            _shares,
-            _permissionType,
+        Registry newRegistryContract = creator_.create(
+            /* _benefitiaries, */
+            /* _shares, */
+            /* _permissionType, */
             _entryCreationFee,
             _name,
             _symbol,
-            _description,
+            /* _description, */
             // _linkToABIOfEntriesContract,
             _bytecodeOfEntriesContract
         );
@@ -84,7 +84,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         return (
             newRegistryContract,
             newRegistryID
-        ); */
+        );
     }
 
     // function unregisterRegistry(uint256 _registryID)

@@ -14,13 +14,13 @@ contract RegistryCreator is Ownable {
     }
 
     function create(
-        address[] _benefitiaries,
-        uint256[] _shares,
-        Registry.PermissionTypeEntries _permissionType,
+        /* address[] _benefitiaries, */
+        /* uint256[] _shares, */
+        /* Registry.PermissionTypeEntries _permissionType, */
         uint _entryCreationFee,
         string _name,
         string _symbol,
-        string _description,
+        /* string _description, */
         // string _linkToABIOfEntriesContract,
         bytes _bytecodeOfEntriesContract
     )
@@ -29,18 +29,17 @@ contract RegistryCreator is Ownable {
     {
         require(msg.sender == builder_);
 
-        /* newRegistryContract = new Registry(
-            _benefitiaries,
-            _shares,
-            _permissionType,
+        newRegistryContract = new Registry(
+            /* _benefitiaries, */
+            /* _shares, */
+            /* _permissionType, */
             _entryCreationFee,
             _name,
             _symbol,
-            _description,
             // _linkToABIOfEntriesContract,
             _bytecodeOfEntriesContract
         );
-        newRegistryContract.transferOwnership(msg.sender); */
+        newRegistryContract.transferOwnership(msg.sender);
     }
 
     function setBuilder(address _builder)
