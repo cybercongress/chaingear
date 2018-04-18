@@ -8,32 +8,33 @@ import "./Chaingeareable.sol";
 import "./EntryBase.sol";
 // import "../common/RegistrySafe.sol";
 
-contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
+/* contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable { */
+contract Registry is Chaingeareable, ERC721Token {
 
     using SafeMath for uint256;
     using AddressUtils for address;
 
     function Registry(
-        address[] _benefitiaries,
-        uint256[] _shares,
-        PermissionTypeEntries _permissionType,
+        /* address[] _benefitiaries, */
+        /* uint256[] _shares, */
+        /* PermissionTypeEntries _permissionType, */
         uint _entryCreationFee,
         string _name,
         string _symbol,
-        string _description,
+        /* string _description, */
         // string _linkToABIOfEntriesContract,
         bytes _bytecodeOfEntriesContract
     )
-        SplitPaymentChangeable(_benefitiaries, _shares)
+        /* SplitPaymentChangeable(_benefitiaries, _shares) */
         ERC721Token(_name, _symbol)
         public
         payable
     {
-        permissionTypeEntries_ = _permissionType;
+        /* permissionTypeEntries_ = _permissionType; */
         // linkABI_ = _linkABI;
         entryCreationFee_ = _entryCreationFee;
         registryName_ = _name;
-        registryDescription_ = _description;
+        /* registryDescription_ = _description; */
         // registrySafe_ = new RegistrySafe();
 
         address deployedAddress;
