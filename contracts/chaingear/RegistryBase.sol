@@ -1,38 +1,36 @@
 pragma solidity ^0.4.18;
 
-import "./ChaingearAccessControl.sol";
 
+contract RegistryBase {
 
-contract RegistryBase is ChaingearAccessControl {
-
-    struct Registry {
+    struct RegistryMeta {
         string name;
         address contractAddress;
         address creator;
-        uint registrationTimestamp;
         string linkABI;
+        uint registrationTimestamp;
         address owner;
-        bytes32 chaingeareableVersion;
     }
 
-    Registry[] internal registries;
+    RegistryMeta[] internal registries;
 
     event RegistryRegistered(
         string name,
+        address registryAddress,
         address creator,
-        uint registryId
+        uint registryID
     );
 
-    event RegistryUnregistered(
-        address owner,
-        string registryName
-    );
+    // event RegistryUnregistered(
+    //     address owner,
+    //     string registryName
+    // );
 
-    event RegistryTransferred(
-        address caller,
-        string registryName,
-        address newOwner
-    );
+    // event RegistryTransferred(
+    //     address caller,
+    //     string registryName,
+    //     address newOwner
+    // );
 
     function nameOf(uint256 _registryID)
         public
@@ -82,18 +80,18 @@ contract RegistryBase is ChaingearAccessControl {
         return registries[_registryID].owner;
     }
 
-    function versionOf(uint256 _registryID)
-        public
-        view
-        returns (bytes32)
-    {
-        return registries[_registryID].chaingeareableVersion;
-    }
+    // function versionOf(uint256 _registryID)
+    //     public
+    //     view
+    //     returns (bytes32)
+    // {
+    //     return registries[_registryID].chaingeareableVersion;
+    // }
 
     function registryInfo(uint256 _registryID)
         public
         view
-        returns (string, address, address, uint, string, address, bytes32)
+        returns (string, address, address, uint, string, address)
     {
         return (
             nameOf(_registryID),
@@ -101,10 +99,21 @@ contract RegistryBase is ChaingearAccessControl {
             creatorOf(_registryID),
             registryDateOf(_registryID),
             ABILinkOf(_registryID),
-            registryOwnerOf(_registryID),
-            versionOf(_registryID)
+            registryOwnerOf(_registryID)
+            // versionOf(_registryID)
         );
     }
+    
+    // function registryBalanceInfo(uint256 _registryID)
+    //     public
+    //     view
+    //     returns (uint, uint)
+    // {
+    //     return (
+    //         currentRegistryBalanceETHOf(_registryID),
+    //         accumulatedRegistryETHOf(_registryID)
+    //     );
+    // }
 
     function registriesAmount()
         public

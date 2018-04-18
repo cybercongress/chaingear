@@ -1,40 +1,43 @@
 pragma solidity ^0.4.18;
 
-contract RegistryAccessControl {
+import "github.com/OpenZeppelin/zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "github.com/OpenZeppelin/zeppelin-solidity/contracts/lifecycle/Destructible.sol";
+
+contract RegistryAccessControl is Ownable, Destructible {
+    
+    address internal creator_;
 
     PermissionTypeEntries internal permissionTypeEntries_;
 
-    enum PermissionTypeEntries {OnlyOwner, Whitelist, AllUsers}
+    enum PermissionTypeEntries {OnlyCreator, Whitelist, AllUsers}
 
-    bool internal chaingearModeState = false;
-
-    address internal chaingearAddress;
-
-    modifier onlyChaingearModeOn() {
-        require(chaingearModeState == true);
-        _;
-    }
-
-    modifier onlyChaingearModeOff() {
-        require(chaingearModeState == false);
+    modifier onlyCreator() {
+        require(msg.sender == creator_);
         _;
     }
 
     modifier onlyPermissionedToEntries() {
-        if (permissionTypeEntries_ == PermissionTypeEntries.OnlyOwner) {
-            require(msg.sender == owner);
+        if (permissionTypeEntries_ == PermissionTypeEntries.OnlyCreator) {
+            require(msg.sender == creator_);
         } 
-        // else if (permissionTypeEntries_ == PermissionTypeEntries.Whitelist) {
-        //     require(whitelist[msg.sender] || msg.sender == owner);
+        // if (permissionTypeEntries_ == PermissionTypeEntries.Whitelist) {
+        //     require(whitelist[msg.sender] || msg.sender == creator_);
         // }
         _;
     }
 
     function RegistryAccessControl()
         public
-        payable
     {
-        owner = msg.sender;
+        creator_ = tx.origin;
+    }
+    
+    function creator()
+        public
+        view
+        returns (address)
+    {
+        return creator_;
     }
 
     function permissionsTypeEntries()
@@ -46,88 +49,11 @@ contract RegistryAccessControl {
     }
 
     function updatePermissionTypeEntries(uint _permissionTypeEntries)
-      external
-      onlyOwner
+        external
+        onlyCreator
     {
         require(uint(PermissionTypeEntries.AllUsers) >= _permissionTypeEntries);
         permissionTypeEntries_ = PermissionTypeEntries(_permissionTypeEntries);
     }
-
-    //ownable
-    address public owner;
-
-    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
-    event TokenizedOwnershipTransferred(address indexed previousOwner, address indexed newOwner);
-
-    modifier onlyOwner() {
-        require(msg.sender == owner);
-        _;
-    }
-
-    modifier onlyChaingear() {
-        require(msg.sender == chaingearAddress);
-        _;
-    }
-
-    function transferOwnership(address newOwner)
-        onlyOwner
-        onlyChaingearModeOff
-        public
-    {
-        require(newOwner != address(0));
-        OwnershipTransferred(owner, newOwner);
-        owner = newOwner;
-    }
-
-    //pausable
-    event Pause();
-    event Unpause();
-
-    bool public paused = false;
-
-    modifier whenNotPaused() {
-        require(!paused);
-        _;
-    }
-
-    modifier whenPaused() {
-        require(paused);
-        _;
-    }
-
-    function pause()
-        onlyOwner
-        whenNotPaused
-        public
-    {
-        paused = true;
-        Pause();
-    }
-
-    function unpause()
-        onlyOwner
-        whenPaused
-        public
-    {
-        paused = false;
-        Unpause();
-    }
-
-    //Destructible
-
-    function destroy()
-        onlyOwner
-        onlyChaingearModeOff
-        public
-    {
-        selfdestruct(owner);
-    }
-
-    function destroyAndSend(address _recipient)
-        onlyOwner
-        onlyChaingearModeOff
-        public
-    {
-        selfdestruct(_recipient);
-    }
+    
 }

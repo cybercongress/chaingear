@@ -4,24 +4,20 @@ import "github.com/OpenZeppelin/zeppelin-solidity/contracts/math/SafeMath.sol";
 import "github.com/OpenZeppelin/zeppelin-solidity/contracts/AddressUtils.sol";
 import "github.com/OpenZeppelin/zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "../common/SplitPaymentChangeable.sol";
-import "../common/IPFSeable.sol";
-import "./RegistryBase.sol";
-import "../common/ChaingearRegistrable.sol";
+import "./ChaingearCore.sol";
+import "../registry/Registry.sol";
 
 
-contract Chaingear is RegistryBase, ERC721Token, IPFSeable, SplitPaymentChangeable {
+contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 
     using SafeMath for uint256;
     using AddressUtils for address;
 
-    string internal chaingearDescription_;
-    uint internal registryRegistrationFee_;
-
     function Chaingear(
+        RegistryCreator _creator,
         address[] _benefitiaries,
         uint256[] _shares,
         string _description,
-        string _linkABI,
         uint _registrationFee,
         string _chaingearName,
         string _chaingearSymbol
@@ -33,145 +29,108 @@ contract Chaingear is RegistryBase, ERC721Token, IPFSeable, SplitPaymentChangeab
     {
         registryRegistrationFee_ = _registrationFee;
         chaingearDescription_ = _description;
-        linkABI_ = _linkABI;
+        creator_ = _creator;
     }
 
 
-    function registerRegistry(string _registryName, string _linkABI, address _registryAddress)
+    function registerRegistry(
+        address[] _benefitiaries,
+        uint256[] _shares,
+        Registry.PermissionTypeEntries _permissionType,
+        uint _entryCreationFee,
+        string _name,
+        string _symbol,
+        string _description,
+        string _linkToABIOfRegistryContract,
+        // string _linkToABIOfEntriesContract,
+        bytes _bytecodeOfEntriesContract
+    )
         external
         payable
         whenNotPaused
-        returns (uint256 registryId)
+        returns (address registryAddress, uint256 registryID)
     {
         require(msg.value == registryRegistrationFee_);
 
-        ChaingearRegistrable registryContract = ChaingearRegistrable(_registryAddress);
-        require(registryContract.implementsChaingearedRegistry() == true);
-        require(registryContract.setChaingearMode(msg.sender, true) == true);
+        Registry newRegistryContract = creator_.create(
+            _benefitiaries,
+            _shares,
+            _permissionType,
+            _entryCreationFee,
+            _name,
+            _symbol,
+            _description,
+            // _linkToABIOfEntriesContract,
+            _bytecodeOfEntriesContract
+        );
+        newRegistryContract.transferOwnership(msg.sender);
 
-        bytes32 contractChaingearVersion = registryContract.getChaingeareableVersion();
-
-        Registry memory registry = (Registry(
+        RegistryMeta memory registry = (RegistryMeta(
         {
-            name: _registryName,
-            contractAddress: _registryAddress,
+            name: _name,
+            contractAddress: newRegistryContract,
             creator: msg.sender,
-            linkABI: _linkABI,
+            linkABI: _linkToABIOfRegistryContract,
             registrationTimestamp: block.timestamp,
-            owner: msg.sender,
-            chaingeareableVersion: contractChaingearVersion
+            owner: msg.sender
         }));
 
-        uint256 newRegistryId = registries.push(registry) - 1;
-        super._mint(msg.sender, newRegistryId);
+        uint256 newRegistryID = registries.push(registry) - 1;
+        ERC721Token._mint(msg.sender, newRegistryID);
 
-        RegistryRegistered(_registryName, msg.sender, newRegistryId);
+        RegistryRegistered(_name, newRegistryContract, msg.sender, newRegistryID);
 
-        return newRegistryId;
+        return (
+            newRegistryContract, 
+            newRegistryID
+        );
     }
 
-    function unregisterRegistry(uint256 _registryID)
-        external
-        whenNotPaused
-    {
-        require (ERC721BasicToken.ownerOf(_registryID) == msg.sender);
-        address registryAddress = registries[_registryID].contractAddress;
+    // function unregisterRegistry(uint256 _registryID)
+    //     external
+    //     whenNotPaused
+    // {
+    //     require (ERC721BasicToken.ownerOf(_registryID) == msg.sender);
+    //     address registryAddress = registries[_registryID].contractAddress;
 
-        ChaingearRegistrable registryContract = ChaingearRegistrable(registryAddress);
-        require(registryContract.owner() == msg.sender);
-        require(registryContract.setChaingearMode(msg.sender, false) == false);
+    //     ChaingearRegistrable registryContract = ChaingearRegistrable(registryAddress);
+    //     require(registryContract.owner() == msg.sender);
+    //     require(registryContract.setChaingearMode(msg.sender, false) == false);
 
-        string storage registryName = registries[_registryID].name;
-        uint256 registryIndex = allTokensIndex[_registryID];
-        uint256 lastRegistryIndex = registries.length.sub(1);
-        Registry storage lastRegistry = registries[lastRegistryIndex];
+    //     string storage registryName = registries[_registryID].name;
+    //     uint256 registryIndex = allTokensIndex[_registryID];
+    //     uint256 lastRegistryIndex = registries.length.sub(1);
+    //     Registry storage lastRegistry = registries[lastRegistryIndex];
 
-        registries[registryIndex] = lastRegistry;
-        delete registries[lastRegistryIndex];
-        registries.length--;
+    //     registries[registryIndex] = lastRegistry;
+    //     delete registries[lastRegistryIndex];
+    //     registries.length--;
 
-        super._burn(msg.sender, _registryID);
+    //     super._burn(msg.sender, _registryID);
 
-        //rethink this event
-        RegistryUnregistered(msg.sender, registryName);
-    }
+    //     //rethink this event
+    //     RegistryUnregistered(msg.sender, registryName);
+    // }
 
-    function updateRegistryOwnership(uint256 _registryID, address _newOwner)
-        external
-        whenNotPaused
-    {
-        require (ERC721BasicToken.ownerOf(_registryID) == msg.sender);
+    // function updateRegistryOwnership(uint256 _registryID, address _newOwner)
+    //     external
+    //     whenNotPaused
+    // {
+    //     require (ERC721BasicToken.ownerOf(_registryID) == msg.sender);
 
-        address registryAddress = registries[_registryID].contractAddress;
-        ChaingearRegistrable registryContract = ChaingearRegistrable(registryAddress);
+    //     address registryAddress = registries[_registryID].contractAddress;
+    //     ChaingearRegistrable registryContract = ChaingearRegistrable(registryAddress);
 
-        require(registryContract.owner() == msg.sender);
-        require(registryContract.transferTokenizedOnwerhip(msg.sender, _newOwner) == true);
-        require(registryContract.owner() == _newOwner);
+    //     require(registryContract.owner() == msg.sender);
+    //     require(registryContract.transferTokenizedOnwerhip(msg.sender, _newOwner) == true);
+    //     require(registryContract.owner() == _newOwner);
 
-        string storage registryName = registries[_registryID].name;
-        registries[_registryID].owner = _newOwner;
+    //     string storage registryName = registries[_registryID].name;
+    //     registries[_registryID].owner = _newOwner;
 
-        super.removeTokenFrom(msg.sender, _registryID);
-        super.addTokenTo(_newOwner, _registryID);
+    //     super.removeTokenFrom(msg.sender, _registryID);
+    //     super.addTokenTo(_newOwner, _registryID);
 
-        RegistryTransferred(msg.sender, registryName, _newOwner);
-    }
-
-    function registryRegistrationFee()
-        public
-        view
-        returns (uint)
-    {
-        return registryRegistrationFee_;
-    }
-
-    function updateRegistrationFee(uint _newFee)
-        external
-        onlyOwner
-    {
-        registryRegistrationFee_ = _newFee;
-    }
-
-    function chaingearDescription()
-        public
-        view
-        returns (string)
-    {
-        return chaingearDescription_;
-    }
-
-    function updateDescription(string _description)
-        external
-        onlyOwner
-    {
-        uint len = bytes(_description).length;
-        require(len <= 128);
-
-        chaingearDescription_ = _description;
-    }
-
-    function updateABILink(string _linkABI)
-        external
-        onlyOwner
-    {
-        linkABI_ = _linkABI;
-         ABILinkUpdated(_linkABI);
-    }
-
-    function setMetaLink(string _linkMeta)
-        external
-        onlyOwner
-    {
-        linkMeta_ = _linkMeta;
-         MetaLinkUpdated(_linkMeta);
-    }
-
-    function setSourceLink(string _linkSourceCode)
-        external
-        onlyOwner
-    {
-        linkSourceCode_ = _linkSourceCode;
-         SourceLinkUpdated(_linkSourceCode);
-    }
+    //     RegistryTransferred(msg.sender, registryName, _newOwner);
+    // }
 }

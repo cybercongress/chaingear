@@ -1,21 +1,48 @@
 pragma solidity ^0.4.18;
 
 import "../common/IPFSeable.sol";
-import "../common/ChaingearRegistrable.sol";
 import "./RegistryAccessControl.sol";
-import "../common/RegistrySafe.sol";
+// import "../common/RegistrySafe.sol";
+import "./EntryBase.sol";
 
 
-contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessControl {
+contract Chaingeareable is IPFSeable, RegistryAccessControl {
 
     uint internal entryCreationFee_;
     string internal registryName_;
     string internal registryDescription_;
     bytes32[] internal registryTags_;
+    address internal entryBase_;
 
-    bytes32 internal chaingearVersion = "1.0";
+    // address internal registrySafe_;
+    
+    event EntryCreated(
+        address creator,
+        uint entryId
+    );
 
-    address internal registrySafe_;
+    event EntryUpdated(
+        address owner,
+        uint entryId
+    );
+
+    event EntryChangedOwner(
+        uint entryId,
+        address newOwner
+    );
+
+    event EntryDeleted(
+        address owner,
+        uint entryId
+    );
+    
+    function entryBase()
+        public
+        view
+        returns (address)
+    {
+        return entryBase_;
+    }
     
     function registryBalance()
         public
@@ -24,61 +51,6 @@ contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessContro
     {
         return this.balance;
     }
-
-    function implementsChaingearedRegistry()
-        public
-        view
-        returns (bool)
-    {
-        return true;
-    }
-
-    function setChaingearMode(address _originAddress, bool _mode)
-        public
-        returns (bool)
-    {
-        require(tx.origin == owner);
-        require(_originAddress == owner);
-        chaingearModeState = _mode;
-        if (_mode == true) {
-            chaingearAddress = msg.sender;
-        } else {
-            chaingearAddress = address(0);
-        }
-        return chaingearModeState;
-    }
-
-    function chaingearModeStatus()
-        public
-        view
-        returns (bool)
-    {
-        return chaingearModeState;
-    }
-
-    function getChaingeareableVersion()
-        public
-        view
-        returns (bytes32)
-    {
-        return chaingearVersion;
-    }
-
-    function transferTokenizedOnwerhip(address _originAddress, address newOwner)
-        onlyChaingear
-        onlyChaingearModeOn
-        public
-        returns (bool)
-    {
-        require(tx.origin == owner);
-        require(_originAddress == owner);
-
-        require(newOwner != address(0));
-        TokenizedOwnershipTransferred(_originAddress, newOwner);
-        owner = newOwner;
-        return true;
-    }
-
 
     function entryCreationFee()
         public
@@ -114,14 +86,14 @@ contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessContro
 
     function updateEntryCreationFee(uint _fee)
         external
-        onlyOwner
+        onlyCreator
     {
         entryCreationFee_ = _fee;
     }
 
     function updateRegistryName(string _registryName)
         external
-        onlyOwner
+        onlyCreator
     {
         uint len = bytes(_registryName).length;
         require(len > 0 && len <= 32);
@@ -131,7 +103,7 @@ contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessContro
 
     function updateRegistryDescription(string _registryDescription)
         external
-        onlyOwner
+        onlyCreator
     {
         uint len = bytes(_registryDescription).length;
         require(len <= 256);
@@ -141,7 +113,7 @@ contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessContro
 
     function addRegistryTag(bytes32 _tag)
         external
-        onlyOwner
+        onlyCreator
     {
         require(_tag.length <= 16);
 
@@ -150,7 +122,7 @@ contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessContro
 
     function updateRegistryTag(uint256 _index, bytes32 _tag)
         external
-        onlyOwner
+        onlyCreator
     {
         require(_tag.length <= 16);
 
@@ -159,7 +131,7 @@ contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessContro
 
     function removeRegistryTag(uint256 _index, bytes32 _tag)
         external
-        onlyOwner
+        onlyCreator
     {
         require(_tag.length <= 16);
 
@@ -171,37 +143,12 @@ contract Chaingeareable is IPFSeable, ChaingearRegistrable, RegistryAccessContro
         registryTags_.length--;
     }
 
-
-    function updateABILink(string _linkABI)
-        external
-        onlyOwner
-    {
-        linkABI_ = _linkABI;
-        ABILinkUpdated(_linkABI);
-    }
-
-    function setMetaLink(string _linkMeta)
-        external
-        onlyOwner
-    {
-        linkMeta_ = _linkMeta;
-        MetaLinkUpdated(_linkMeta);
-    }
-
-    function setSourceLink(string _linkSourceCode)
-        external
-        onlyOwner
-    {
-        linkSourceCode_ = _linkSourceCode;
-        SourceLinkUpdated(_linkSourceCode);
-    }
-
-    function registrySafe()
-        public
-        view
-        returns (address)
-    {
-        return registrySafe_;
-    }
+    // function registrySafe()
+    //     public
+    //     view
+    //     returns (address)
+    // {
+    //     return registrySafe_;
+    // }
 
 }
