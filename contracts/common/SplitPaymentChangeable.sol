@@ -1,7 +1,7 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.19;
 
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/payment/SplitPayment.sol";
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "zeppelin-solidity/contracts/payment/SplitPayment.sol";
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 contract SplitPaymentChangeable is SplitPayment, Ownable {

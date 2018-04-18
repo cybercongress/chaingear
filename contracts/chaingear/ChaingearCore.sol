@@ -1,20 +1,20 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.19;
 
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/ownership/Ownable.sol";
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/lifecycle/Destructible.sol";
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
+import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "../common/IPFSeable.sol";
 import "./RegistryCreator.sol";
 import "./RegistryBase.sol";
 
 
 contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
-    
+
     string internal chaingearDescription_;
     uint internal registryRegistrationFee_;
-    
+
     RegistryCreator internal creator_;
-    
+
     function registryRegistrationFee()
         public
         view
@@ -47,7 +47,7 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
 
         chaingearDescription_ = _description;
     }
-    
+
     function registryCreator()
         public
         view
@@ -55,7 +55,7 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
     {
         return creator_;
     }
-    
+
     function setRegistryCreator(RegistryCreator _creator)
         external
         onlyOwner

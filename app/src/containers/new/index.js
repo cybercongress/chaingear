@@ -118,7 +118,7 @@ class NewRegister extends Component {
     this.setState({ status: 'compile...'});
     const input = {
       'Chaingeareable.sol': ChaingeareableSource,
-      [contractName]: 'pragma solidity ^0.4.18; ' + code,
+      [contractName]: 'pragma solidity ^0.4.19; ' + code,
     };
 
     

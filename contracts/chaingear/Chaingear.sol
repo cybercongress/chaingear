@@ -1,11 +1,12 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.19;
 
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/math/SafeMath.sol";
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/AddressUtils.sol";
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "zeppelin-solidity/contracts/math/SafeMath.sol";
+import "zeppelin-solidity/contracts/AddressUtils.sol";
+import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "./ChaingearCore.sol";
 import "../registry/Registry.sol";
+import "./RegistryCreator.sol";
 
 
 contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
@@ -48,11 +49,11 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         external
         payable
         whenNotPaused
-        returns (address registryAddress, uint256 registryID)
+        /* returns (address registryAddress, uint256 registryID) */
     {
         require(msg.value == registryRegistrationFee_);
 
-        Registry newRegistryContract = creator_.create(
+        /* Registry newRegistryContract = creator_.create(
             _benefitiaries,
             _shares,
             _permissionType,
@@ -76,14 +77,14 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         }));
 
         uint256 newRegistryID = registries.push(registry) - 1;
-        ERC721Token._mint(msg.sender, newRegistryID);
+        _mint(msg.sender, newRegistryID);
 
         RegistryRegistered(_name, newRegistryContract, msg.sender, newRegistryID);
 
         return (
-            newRegistryContract, 
+            newRegistryContract,
             newRegistryID
-        );
+        ); */
     }
 
     // function unregisterRegistry(uint256 _registryID)

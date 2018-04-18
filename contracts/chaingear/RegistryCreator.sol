@@ -1,13 +1,13 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.19;
 
 import "../registry/Registry.sol";
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract RegistryCreator is Ownable {
 
     address internal builder_;
 
-    function RegistryCreator(address _builder) 
+    function RegistryCreator(address _builder)
         public
     {
         builder_ = _builder;
@@ -23,13 +23,13 @@ contract RegistryCreator is Ownable {
         string _description,
         // string _linkToABIOfEntriesContract,
         bytes _bytecodeOfEntriesContract
-    ) 
+    )
         external
         returns (Registry newRegistryContract)
     {
         require(msg.sender == builder_);
 
-        newRegistryContract = new Registry(
+        /* newRegistryContract = new Registry(
             _benefitiaries,
             _shares,
             _permissionType,
@@ -40,17 +40,17 @@ contract RegistryCreator is Ownable {
             // _linkToABIOfEntriesContract,
             _bytecodeOfEntriesContract
         );
-        newRegistryContract.transferOwnership(msg.sender);
+        newRegistryContract.transferOwnership(msg.sender); */
     }
 
-    function setBuilder(address _builder) 
+    function setBuilder(address _builder)
         external
         onlyOwner
     {
         builder_ = _builder;
     }
 
-    function registryBuilder() 
+    function registryBuilder()
         public
         view
         returns (address)

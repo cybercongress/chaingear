@@ -1,10 +1,10 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.19;
 
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/ownership/Ownable.sol";
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/lifecycle/Destructible.sol";
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
 
 contract RegistryAccessControl is Ownable, Destructible {
-    
+
     address internal creator_;
 
     PermissionTypeEntries internal permissionTypeEntries_;
@@ -19,7 +19,7 @@ contract RegistryAccessControl is Ownable, Destructible {
     modifier onlyPermissionedToEntries() {
         if (permissionTypeEntries_ == PermissionTypeEntries.OnlyCreator) {
             require(msg.sender == creator_);
-        } 
+        }
         // if (permissionTypeEntries_ == PermissionTypeEntries.Whitelist) {
         //     require(whitelist[msg.sender] || msg.sender == creator_);
         // }
@@ -31,7 +31,7 @@ contract RegistryAccessControl is Ownable, Destructible {
     {
         creator_ = tx.origin;
     }
-    
+
     function creator()
         public
         view
@@ -55,5 +55,5 @@ contract RegistryAccessControl is Ownable, Destructible {
         require(uint(PermissionTypeEntries.AllUsers) >= _permissionTypeEntries);
         permissionTypeEntries_ = PermissionTypeEntries(_permissionTypeEntries);
     }
-    
+
 }
