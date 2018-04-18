@@ -1,8 +1,8 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.19;
 
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/math/SafeMath.sol";
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/AddressUtils.sol";
+import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "zeppelin-solidity/contracts/math/SafeMath.sol";
+import "zeppelin-solidity/contracts/AddressUtils.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "./Chaingeareable.sol";
 import "./EntryBase.sol";
@@ -35,7 +35,7 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         registryName_ = _name;
         registryDescription_ = _description;
         // registrySafe_ = new RegistrySafe();
-        
+
         address deployedAddress;
         assembly {
           let s := mload(_bytecodeOfEntriesContract)
@@ -44,7 +44,7 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         }
 
         assert(deployedAddress != 0x0);
-        
+
         entryBase_ = deployedAddress;
     }
 
@@ -75,7 +75,7 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
 
         // uint256 newEntryId = entries.push(entry) - 1;
         uint256 newEntryId = EntryBase(entryBase_).createEntry(_serializedParams);
-        super._mint(msg.sender, newEntryId);
+        _mint(msg.sender, newEntryId);
 
         EntryCreated(msg.sender, newEntryId);
 

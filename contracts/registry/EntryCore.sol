@@ -1,11 +1,11 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.19;
 
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/ownership/Ownable.sol";
-import "github.com/pouladzade/Seriality/src/Seriality.sol";
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "../common/seriality/Seriality.sol";
 import "./EntryBase.sol";
 
 
-contract Entry is EntryBase {
+contract EntryCore is EntryBase, Ownable, Seriality {
 
     struct Entry {
         address expensiveAddress;
@@ -17,12 +17,12 @@ contract Entry is EntryBase {
     }
 
     Entry[] internal entries;
-    
+
     // event EntryFunded(
     //     uint entryId,
     //     address funder
     // );
-    
+
     // event EntryFundsClaimed(
     //     uint entryId,
     //     address receiver,
@@ -81,26 +81,26 @@ contract Entry is EntryBase {
     {
         return entries.length;
     }
-    
+
     function createEntry(bytes _serializedParams)
         public
         onlyOwner
         returns (uint256 entryId)
     {
         uint offset = _serializedParams.length;
-        
-        _expensiveAddress = bytesToAddress(offset, _serializedParams);
+
+        address _expensiveAddress = bytesToAddress(offset, _serializedParams);
         offset -= sizeOfAddress();
-        
-        _expensiveUint = bytesToUint256(offset, _serializedParams);
+
+        uint256 _expensiveUint = bytesToUint256(offset, _serializedParams);
         offset -= sizeOfUint(256);
-        
-        _expensiveInt = bytesToInt128(offset, _serializedParams);
+
+        int128 _expensiveInt = bytesToInt128(offset, _serializedParams);
         offset -= sizeOfInt(128);
-        
-        _expensiveString = new string(32);
+
+        string memory _expensiveString = new string(32);
         bytesToString(offset, _serializedParams, bytes(_expensiveString));
-        
+
         EntryMeta memory meta = (EntryMeta(
         {
             lastUpdateTime: block.timestamp,
@@ -110,7 +110,7 @@ contract Entry is EntryBase {
             // currentEntryBalanceETH: 0,
             // accumulatedOverallEntryETH: 0
         }));
-        
+
         Entry memory entry = (Entry(
         {
             expensiveAddress: _expensiveAddress,
@@ -119,21 +119,19 @@ contract Entry is EntryBase {
             expensiveString: _expensiveString,
             metainformation: meta
         }));
-        
+
         uint256 newEntryId = entries.push(entry) - 1;
-        
-        EntryCreated(tx.origin. newEntryId);
-        
+
         return newEntryId;
-    }   
-    
+    }
+
     // function updateEntry(bytes _serializedParams)
     //     public
     //     onlyOwner
     // {
-        
-    // } 
-    
+
+    // }
+
     function registryOwnerOf(uint256 _entryId)
         public
         view
@@ -141,7 +139,7 @@ contract Entry is EntryBase {
     {
         entries[_entryId].metainformation.owner;
     }
-    
+
     function creatorOf(uint256 _entryId)
         public
         view
@@ -149,7 +147,7 @@ contract Entry is EntryBase {
     {
         entries[_entryId].metainformation.creator;
     }
-    
+
     function createdAtOf(uint256 _entryId)
         public
         view

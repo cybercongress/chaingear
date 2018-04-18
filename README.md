@@ -67,7 +67,7 @@ Recommending to use [Remix Ethereum Online IDE](remix.ethereum.org)  or [desktop
 
 PS: to import to IDE open-zeppelin contacts follow this:
 ```
-import "github.com/OpenZeppelin/zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 ```
 
 # Join Us On Telegram
@@ -76,7 +76,7 @@ If you're interested in using or developing Chaingear, come [join us on Telegram
 
 # Built With
 
-* [OpenZeppelin](https://github.com/OpenZeppelin/zeppelin-solidity)
+* [OpenZeppelin](https://zeppelin-solidity)
 * [Truffle](https://truffleframework.com)
 * [Web3.js](https://github.com/ethereum/web3.js/)
 
