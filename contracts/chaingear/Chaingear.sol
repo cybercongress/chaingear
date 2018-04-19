@@ -38,7 +38,6 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         uint256[] _shares,
         string _name,
         string _symbol,
-        /* string _linkToABIOfRegistryContract, */
         string _linkToABIOfEntriesContract,
         bytes _bytecodeOfEntriesContract
     )
@@ -49,36 +48,14 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         require(msg.value == registryRegistrationFee_);
 
-        /* Registry newRegistryContract = creator_.create(
-            _benefitiaries,
-            _shares,
-            _name,
-            _symbol,
-            _linkToABIOfEntriesContract,
-            _bytecodeOfEntriesContract
-        );
-        newRegistryContract.transferOwnership(msg.sender);  */
         return createRegistry(
             _benefitiaries,
             _shares,
             _name,
             _symbol,
-            /* _linkToABIOfRegistryContract, */
             _linkToABIOfEntriesContract,
             _bytecodeOfEntriesContract
         );
-
-        /* uint256 newRegistryID = addToRegistries(
-            _name,
-            newRegistryContract,
-            _linkToABIOfRegistryContract
-        ); */
-        /* _mint(msg.sender, registryID); */
-
-        /* return (
-            registryAddress,
-            registryID
-        ); */
     }
 
     function createRegistry(
@@ -86,11 +63,10 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         uint256[] _shares,
         string _name,
         string _symbol,
-        /* string _linkToABIOfRegistryContract, */
         string _linkToABIOfEntriesContract,
         bytes _bytecodeOfEntriesContract
     )
-        internal
+        private
         returns (address newRegistryContract, uint256 newRegistryID)
     {
         Registry registryContract = creator_.create(
@@ -108,9 +84,11 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             name: _name,
             contractAddress: registryContract,
             creator: msg.sender,
-            /* linkABI: _linkToABIOfRegistryContract, */
+            linkABI: "",
             registrationTimestamp: block.timestamp,
-            owner: msg.sender
+            owner: msg.sender,
+            currentRegistryBalanceETH: 0,
+            accumulatedRegistryETH: 0
         }));
         uint256 registryID = registries.push(registry) - 1;
         _mint(msg.sender, registryID);
@@ -118,28 +96,6 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 
         return (registryContract, registryID);
     }
-
-    /* function addToRegistries(
-        string _name,
-        Registry _newRegistryContract,
-        string _linkToABIOfRegistryContract
-    )
-        internal
-        returns (uint256 registryID)
-    {
-        RegistryMeta memory registry = (RegistryMeta(
-        {
-            name: _name,
-            contractAddress: _newRegistryContract,
-            creator: msg.sender,
-            linkABI: _linkToABIOfRegistryContract,
-            registrationTimestamp: block.timestamp,
-            owner: msg.sender
-        }));
-        uint256 newRegistryID = registries.push(registry) - 1;
-
-        return newRegistryID;
-    } */
 
     // function unregisterRegistry(uint256 _registryID)
     //     external
