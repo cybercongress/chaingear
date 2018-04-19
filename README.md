@@ -59,7 +59,7 @@ Your creating your registry in Chaingear - metaregistry, which are one point of 
 
 # Contracts Overview
 
-##### /chaingear
+### /chaingear
 - **_Chaingear_** allows any user to create his own registry. Building fee is collecting by new registry creation. All builded registries are tokenized with ERC721 NFT token standard and saved in Chaingear metaregistry with registry metainformation. Creator of registry may transfer tokenized ownership of registry and destroy registry with token burning. Chaingear supports multiple benefitiaries witch have access to collected fees.
 
   ###### depends on:
@@ -87,7 +87,7 @@ Your creating your registry in Chaingear - metaregistry, which are one point of 
     - _Registry_
     - _Ownable_
 
-##### /common
+### /common
 - [Seriality](https://github.com/pouladzade/Seriality) is a library for serializing and de-serializing all the Solidity types in a very efficient way which mostly written in solidity-assembly.
 
 - **_IPFSeable_** contains logic which allows view and save links to CID in IPFS with ABI, source code and contract metainformation. Inherited by Chaingear and Registry.
@@ -109,7 +109,7 @@ Your creating your registry in Chaingear - metaregistry, which are one point of 
     - _Ownable_
     - [_SplitPayment_](https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/payment/SplitPayment.sol)
 
-##### /registry
+### /registry
 - **_Chaingeareable_** holds basic logic of Registry as registry basic information, balance and fees amount. Contains getters and setters for registry name, desciption, tags, entry base address.
 
   ###### depends on:
@@ -143,6 +143,14 @@ Your creating your registry in Chaingear - metaregistry, which are one point of 
     - _Destructible_
 
 # FAQ
+
+draft
+
+Registry Creation
+  - description should be setted on after creation
+  - beneficiaries should be setted on after creation
+  - \_permissionType by default is OnlyCreator
+  - \_entryCreationFee by default is 0
 
 # Configuring and deploying
 

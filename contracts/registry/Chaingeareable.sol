@@ -12,8 +12,9 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
     string internal registryDescription_;
     bytes32[] internal registryTags_;
     address internal entryBase_;
+    string internal linkToABIOfEntriesContract_;
 
-    // address internal registrySafe_;
+    address internal registrySafe_;
 
     event EntryCreated(
         address creator,
@@ -41,6 +42,14 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
         returns (address)
     {
         return entryBase_;
+    }
+
+    function ABIOfEntriesContract()
+        public
+        view
+        returns (string)
+    {
+        return linkToABIOfEntriesContract_;
     }
 
     function registryBalance()
@@ -142,12 +151,12 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
         registryTags_.length--;
     }
 
-    // function registrySafe()
-    //     public
-    //     view
-    //     returns (address)
-    // {
-    //     return registrySafe_;
-    // }
+    function registrySafe()
+        public
+        view
+        returns (address)
+    {
+        return registrySafe_;
+    }
 
 }

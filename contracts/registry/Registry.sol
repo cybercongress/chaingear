@@ -6,36 +6,31 @@ import "zeppelin-solidity/contracts/AddressUtils.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "./Chaingeareable.sol";
 import "./EntryBase.sol";
-// import "../common/RegistrySafe.sol";
+import "../common/RegistrySafe.sol";
 
-/* contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable { */
-contract Registry is Chaingeareable, ERC721Token {
+contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
+/* contract Registry is Chaingeareable, ERC721Token { */
 
     using SafeMath for uint256;
     using AddressUtils for address;
 
     function Registry(
-        /* address[] _benefitiaries, */
-        /* uint256[] _shares, */
-        /* PermissionTypeEntries _permissionType, */
-        uint _entryCreationFee,
+        address[] _benefitiaries,
+        uint256[] _shares,
         string _name,
         string _symbol,
-        /* string _description, */
-        // string _linkToABIOfEntriesContract,
+        string _linkToABIOfEntriesContract,
         bytes _bytecodeOfEntriesContract
     )
-        /* SplitPaymentChangeable(_benefitiaries, _shares) */
+        SplitPaymentChangeable(_benefitiaries, _shares)
         ERC721Token(_name, _symbol)
         public
         payable
     {
-        /* permissionTypeEntries_ = _permissionType; */
-        // linkABI_ = _linkABI;
-        entryCreationFee_ = _entryCreationFee;
+        permissionTypeEntries_ = PermissionTypeEntries.OnlyCreator;
         registryName_ = _name;
-        /* registryDescription_ = _description; */
-        // registrySafe_ = new RegistrySafe();
+        linkToABIOfEntriesContract_ = _linkToABIOfEntriesContract;
+        registrySafe_ = new RegistrySafe();
 
         address deployedAddress;
         assembly {
@@ -56,25 +51,7 @@ contract Registry is Chaingeareable, ERC721Token {
         returns (uint256)
     {
         require(msg.value == entryCreationFee_);
-        // EntryMeta memory meta = (EntryMeta(
-        // {
-        //     lastUpdateTime: block.timestamp,
-        //     createdAt: block.timestamp,
-        //     owner: msg.sender,
-        //     creator: msg.sender,
-        //     currentEntryBalanceETH: 0,
-        //     accumulatedOverallEntryETH: 0
-        // }));
-        // Entry memory entry = (Entry(
-        // {
-        //     expensiveAddress: _expensiveAddress,
-        //     expensiveUint: _expensiveUint,
-        //     expensiveInt: _expensiveInt,
-        //     expensiveString: _expensiveString,
-        //     metainformation: meta
-        // }));
 
-        // uint256 newEntryId = entries.push(entry) - 1;
         uint256 newEntryId = EntryBase(entryBase_).createEntry(_serializedParams);
         _mint(msg.sender, newEntryId);
 

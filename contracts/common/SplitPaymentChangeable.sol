@@ -9,7 +9,9 @@ contract SplitPaymentChangeable is SplitPayment, Ownable {
     event PayeeAddressChanged(uint payeeIndex, address oldAddress, address newAddress);
 
     function SplitPaymentChangeable(address[] _payees, uint256[] _shares)
-        SplitPayment(_payees, _shares) public payable
+        public 
+        payable
+        SplitPayment(_payees, _shares)
     { }
 
     function changePayeeAddress(uint _payeeIndex, address _newAddress)
