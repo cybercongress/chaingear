@@ -129,7 +129,7 @@
       "absolutePath": "/Users/litvintech/Projects/chaingear/contracts/registry/RegistryAccessControl.sol",
       "exportedSymbols": {
         "RegistryAccessControl": [
-          1317
+          1388
         ]
       }
     },
@@ -143,56 +143,56 @@
             ".19"
           ]
         },
-        "id": 1226,
+        "id": 1297,
         "name": "PragmaDirective",
         "src": "0:24:10"
       },
       {
         "attributes": {
-          "SourceUnit": 1583,
+          "SourceUnit": 1654,
           "absolutePath": "zeppelin-solidity/contracts/ownership/Ownable.sol",
           "file": "zeppelin-solidity/contracts/ownership/Ownable.sol",
-          "scope": 1318,
+          "scope": 1389,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 1227,
+        "id": 1298,
         "name": "ImportDirective",
         "src": "26:59:10"
       },
       {
         "attributes": {
-          "SourceUnit": 1369,
+          "SourceUnit": 1440,
           "absolutePath": "zeppelin-solidity/contracts/lifecycle/Destructible.sol",
           "file": "zeppelin-solidity/contracts/lifecycle/Destructible.sol",
-          "scope": 1318,
+          "scope": 1389,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 1228,
+        "id": 1299,
         "name": "ImportDirective",
         "src": "86:64:10"
       },
       {
         "attributes": {
           "contractDependencies": [
-            1368,
-            1582
+            1439,
+            1653
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            1317,
-            1368,
-            1582
+            1388,
+            1439,
+            1653
           ],
           "name": "RegistryAccessControl",
-          "scope": 1318
+          "scope": 1389
         },
         "children": [
           {
@@ -206,15 +206,15 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "Ownable",
-                  "referencedDeclaration": 1582,
+                  "referencedDeclaration": 1653,
                   "type": "contract Ownable"
                 },
-                "id": 1229,
+                "id": 1300,
                 "name": "UserDefinedTypeName",
                 "src": "186:7:10"
               }
             ],
-            "id": 1230,
+            "id": 1301,
             "name": "InheritanceSpecifier",
             "src": "186:7:10"
           },
@@ -229,15 +229,15 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "Destructible",
-                  "referencedDeclaration": 1368,
+                  "referencedDeclaration": 1439,
                   "type": "contract Destructible"
                 },
-                "id": 1231,
+                "id": 1302,
                 "name": "UserDefinedTypeName",
                 "src": "195:12:10"
               }
             ],
-            "id": 1232,
+            "id": 1303,
             "name": "InheritanceSpecifier",
             "src": "195:12:10"
           },
@@ -245,7 +245,7 @@
             "attributes": {
               "constant": false,
               "name": "creator_",
-              "scope": 1317,
+              "scope": 1388,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "address",
@@ -258,12 +258,12 @@
                   "name": "address",
                   "type": "address"
                 },
-                "id": 1233,
+                "id": 1304,
                 "name": "ElementaryTypeName",
                 "src": "215:7:10"
               }
             ],
-            "id": 1234,
+            "id": 1305,
             "name": "VariableDeclaration",
             "src": "215:25:10"
           },
@@ -271,7 +271,7 @@
             "attributes": {
               "constant": false,
               "name": "permissionTypeEntries_",
-              "scope": 1317,
+              "scope": 1388,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "enum RegistryAccessControl.PermissionTypeEntries",
@@ -283,15 +283,15 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "PermissionTypeEntries",
-                  "referencedDeclaration": 1240,
+                  "referencedDeclaration": 1311,
                   "type": "enum RegistryAccessControl.PermissionTypeEntries"
                 },
-                "id": 1235,
+                "id": 1306,
                 "name": "UserDefinedTypeName",
                 "src": "247:21:10"
               }
             ],
-            "id": 1236,
+            "id": 1307,
             "name": "VariableDeclaration",
             "src": "247:53:10"
           },
@@ -305,7 +305,7 @@
                 "attributes": {
                   "name": "OnlyCreator"
                 },
-                "id": 1237,
+                "id": 1308,
                 "name": "EnumValue",
                 "src": "335:11:10"
               },
@@ -313,7 +313,7 @@
                 "attributes": {
                   "name": "Whitelist"
                 },
-                "id": 1238,
+                "id": 1309,
                 "name": "EnumValue",
                 "src": "348:9:10"
               },
@@ -321,12 +321,12 @@
                 "attributes": {
                   "name": "AllUsers"
                 },
-                "id": 1239,
+                "id": 1310,
                 "name": "EnumValue",
                 "src": "359:8:10"
               }
             ],
-            "id": 1240,
+            "id": 1311,
             "name": "EnumDefinition",
             "src": "307:61:10"
           },
@@ -343,7 +343,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1241,
+                "id": 1312,
                 "name": "ParameterList",
                 "src": "394:2:10"
               },
@@ -377,11 +377,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2951,
+                              "referencedDeclaration": 3022,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 1242,
+                            "id": 1313,
                             "name": "Identifier",
                             "src": "407:7:10"
                           },
@@ -418,16 +418,16 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2948,
+                                      "referencedDeclaration": 3019,
                                       "type": "msg",
                                       "value": "msg"
                                     },
-                                    "id": 1243,
+                                    "id": 1314,
                                     "name": "Identifier",
                                     "src": "415:3:10"
                                   }
                                 ],
-                                "id": 1244,
+                                "id": 1315,
                                 "name": "MemberAccess",
                                 "src": "415:10:10"
                               },
@@ -437,41 +437,41 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1234,
+                                  "referencedDeclaration": 1305,
                                   "type": "address",
                                   "value": "creator_"
                                 },
-                                "id": 1245,
+                                "id": 1316,
                                 "name": "Identifier",
                                 "src": "429:8:10"
                               }
                             ],
-                            "id": 1246,
+                            "id": 1317,
                             "name": "BinaryOperation",
                             "src": "415:22:10"
                           }
                         ],
-                        "id": 1247,
+                        "id": 1318,
                         "name": "FunctionCall",
                         "src": "407:31:10"
                       }
                     ],
-                    "id": 1248,
+                    "id": 1319,
                     "name": "ExpressionStatement",
                     "src": "407:31:10"
                   },
                   {
-                    "id": 1249,
+                    "id": 1320,
                     "name": "PlaceholderStatement",
                     "src": "448:1:10"
                   }
                 ],
-                "id": 1250,
+                "id": 1321,
                 "name": "Block",
                 "src": "397:59:10"
               }
             ],
-            "id": 1251,
+            "id": 1322,
             "name": "ModifierDefinition",
             "src": "374:82:10"
           },
@@ -488,7 +488,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1252,
+                "id": 1323,
                 "name": "ParameterList",
                 "src": "496:2:10"
               },
@@ -503,7 +503,7 @@
                         "attributes": {
                           "argumentTypes": null,
                           "commonType": {
-                            "typeIdentifier": "t_enum$_PermissionTypeEntries_$1240",
+                            "typeIdentifier": "t_enum$_PermissionTypeEntries_$1311",
                             "typeString": "enum RegistryAccessControl.PermissionTypeEntries"
                           },
                           "isConstant": false,
@@ -520,11 +520,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1236,
+                              "referencedDeclaration": 1307,
                               "type": "enum RegistryAccessControl.PermissionTypeEntries",
                               "value": "permissionTypeEntries_"
                             },
-                            "id": 1253,
+                            "id": 1324,
                             "name": "Identifier",
                             "src": "513:22:10"
                           },
@@ -546,21 +546,21 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1240,
+                                  "referencedDeclaration": 1311,
                                   "type": "type(enum RegistryAccessControl.PermissionTypeEntries)",
                                   "value": "PermissionTypeEntries"
                                 },
-                                "id": 1254,
+                                "id": 1325,
                                 "name": "Identifier",
                                 "src": "539:21:10"
                               }
                             ],
-                            "id": 1255,
+                            "id": 1326,
                             "name": "MemberAccess",
                             "src": "539:33:10"
                           }
                         ],
-                        "id": 1256,
+                        "id": 1327,
                         "name": "BinaryOperation",
                         "src": "513:59:10"
                       },
@@ -594,11 +594,11 @@
                                       "overloadedDeclarations": [
                                         null
                                       ],
-                                      "referencedDeclaration": 2951,
+                                      "referencedDeclaration": 3022,
                                       "type": "function (bool) pure",
                                       "value": "require"
                                     },
-                                    "id": 1257,
+                                    "id": 1328,
                                     "name": "Identifier",
                                     "src": "588:7:10"
                                   },
@@ -635,16 +635,16 @@
                                               "overloadedDeclarations": [
                                                 null
                                               ],
-                                              "referencedDeclaration": 2948,
+                                              "referencedDeclaration": 3019,
                                               "type": "msg",
                                               "value": "msg"
                                             },
-                                            "id": 1258,
+                                            "id": 1329,
                                             "name": "Identifier",
                                             "src": "596:3:10"
                                           }
                                         ],
-                                        "id": 1259,
+                                        "id": 1330,
                                         "name": "MemberAccess",
                                         "src": "596:10:10"
                                       },
@@ -654,51 +654,51 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1234,
+                                          "referencedDeclaration": 1305,
                                           "type": "address",
                                           "value": "creator_"
                                         },
-                                        "id": 1260,
+                                        "id": 1331,
                                         "name": "Identifier",
                                         "src": "610:8:10"
                                       }
                                     ],
-                                    "id": 1261,
+                                    "id": 1332,
                                     "name": "BinaryOperation",
                                     "src": "596:22:10"
                                   }
                                 ],
-                                "id": 1262,
+                                "id": 1333,
                                 "name": "FunctionCall",
                                 "src": "588:31:10"
                               }
                             ],
-                            "id": 1263,
+                            "id": 1334,
                             "name": "ExpressionStatement",
                             "src": "588:31:10"
                           }
                         ],
-                        "id": 1264,
+                        "id": 1335,
                         "name": "Block",
                         "src": "574:56:10"
                       }
                     ],
-                    "id": 1265,
+                    "id": 1336,
                     "name": "IfStatement",
                     "src": "509:121:10"
                   },
                   {
-                    "id": 1266,
+                    "id": 1337,
                     "name": "PlaceholderStatement",
                     "src": "801:1:10"
                   }
                 ],
-                "id": 1267,
+                "id": 1338,
                 "name": "Block",
                 "src": "499:310:10"
               }
             ],
-            "id": 1268,
+            "id": 1339,
             "name": "ModifierDefinition",
             "src": "462:347:10"
           },
@@ -712,7 +712,7 @@
               ],
               "name": "RegistryAccessControl",
               "payable": false,
-              "scope": 1317,
+              "scope": 1388,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -725,7 +725,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1269,
+                "id": 1340,
                 "name": "ParameterList",
                 "src": "845:2:10"
               },
@@ -736,7 +736,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1270,
+                "id": 1341,
                 "name": "ParameterList",
                 "src": "867:0:10"
               },
@@ -761,11 +761,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1234,
+                              "referencedDeclaration": 1305,
                               "type": "address",
                               "value": "creator_"
                             },
-                            "id": 1271,
+                            "id": 1342,
                             "name": "Identifier",
                             "src": "877:8:10"
                           },
@@ -787,36 +787,36 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 2958,
+                                  "referencedDeclaration": 3029,
                                   "type": "tx",
                                   "value": "tx"
                                 },
-                                "id": 1272,
+                                "id": 1343,
                                 "name": "Identifier",
                                 "src": "888:2:10"
                               }
                             ],
-                            "id": 1273,
+                            "id": 1344,
                             "name": "MemberAccess",
                             "src": "888:9:10"
                           }
                         ],
-                        "id": 1274,
+                        "id": 1345,
                         "name": "Assignment",
                         "src": "877:20:10"
                       }
                     ],
-                    "id": 1275,
+                    "id": 1346,
                     "name": "ExpressionStatement",
                     "src": "877:20:10"
                   }
                 ],
-                "id": 1276,
+                "id": 1347,
                 "name": "Block",
                 "src": "867:37:10"
               }
             ],
-            "id": 1277,
+            "id": 1348,
             "name": "FunctionDefinition",
             "src": "815:89:10"
           },
@@ -830,7 +830,7 @@
               ],
               "name": "creator",
               "payable": false,
-              "scope": 1317,
+              "scope": 1388,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -843,7 +843,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1278,
+                "id": 1349,
                 "name": "ParameterList",
                 "src": "926:2:10"
               },
@@ -853,7 +853,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 1285,
+                      "scope": 1356,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -866,17 +866,17 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 1279,
+                        "id": 1350,
                         "name": "ElementaryTypeName",
                         "src": "974:7:10"
                       }
                     ],
-                    "id": 1280,
+                    "id": 1351,
                     "name": "VariableDeclaration",
                     "src": "974:7:10"
                   }
                 ],
-                "id": 1281,
+                "id": 1352,
                 "name": "ParameterList",
                 "src": "973:9:10"
               },
@@ -884,7 +884,7 @@
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 1281
+                      "functionReturnParameters": 1352
                     },
                     "children": [
                       {
@@ -893,26 +893,26 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 1234,
+                          "referencedDeclaration": 1305,
                           "type": "address",
                           "value": "creator_"
                         },
-                        "id": 1282,
+                        "id": 1353,
                         "name": "Identifier",
                         "src": "1004:8:10"
                       }
                     ],
-                    "id": 1283,
+                    "id": 1354,
                     "name": "Return",
                     "src": "997:15:10"
                   }
                 ],
-                "id": 1284,
+                "id": 1355,
                 "name": "Block",
                 "src": "987:32:10"
               }
             ],
-            "id": 1285,
+            "id": 1356,
             "name": "FunctionDefinition",
             "src": "910:109:10"
           },
@@ -926,7 +926,7 @@
               ],
               "name": "permissionsTypeEntries",
               "payable": false,
-              "scope": 1317,
+              "scope": 1388,
               "stateMutability": "view",
               "superFunction": null,
               "visibility": "public"
@@ -939,7 +939,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1286,
+                "id": 1357,
                 "name": "ParameterList",
                 "src": "1056:2:10"
               },
@@ -949,7 +949,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 1293,
+                      "scope": 1364,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "enum RegistryAccessControl.PermissionTypeEntries",
@@ -961,20 +961,20 @@
                         "attributes": {
                           "contractScope": null,
                           "name": "PermissionTypeEntries",
-                          "referencedDeclaration": 1240,
+                          "referencedDeclaration": 1311,
                           "type": "enum RegistryAccessControl.PermissionTypeEntries"
                         },
-                        "id": 1287,
+                        "id": 1358,
                         "name": "UserDefinedTypeName",
                         "src": "1104:21:10"
                       }
                     ],
-                    "id": 1288,
+                    "id": 1359,
                     "name": "VariableDeclaration",
                     "src": "1104:21:10"
                   }
                 ],
-                "id": 1289,
+                "id": 1360,
                 "name": "ParameterList",
                 "src": "1103:23:10"
               },
@@ -982,7 +982,7 @@
                 "children": [
                   {
                     "attributes": {
-                      "functionReturnParameters": 1289
+                      "functionReturnParameters": 1360
                     },
                     "children": [
                       {
@@ -991,26 +991,26 @@
                           "overloadedDeclarations": [
                             null
                           ],
-                          "referencedDeclaration": 1236,
+                          "referencedDeclaration": 1307,
                           "type": "enum RegistryAccessControl.PermissionTypeEntries",
                           "value": "permissionTypeEntries_"
                         },
-                        "id": 1290,
+                        "id": 1361,
                         "name": "Identifier",
                         "src": "1148:22:10"
                       }
                     ],
-                    "id": 1291,
+                    "id": 1362,
                     "name": "Return",
                     "src": "1141:29:10"
                   }
                 ],
-                "id": 1292,
+                "id": 1363,
                 "name": "Block",
                 "src": "1131:46:10"
               }
             ],
-            "id": 1293,
+            "id": 1364,
             "name": "FunctionDefinition",
             "src": "1025:152:10"
           },
@@ -1021,7 +1021,7 @@
               "isConstructor": false,
               "name": "updatePermissionTypeEntries",
               "payable": false,
-              "scope": 1317,
+              "scope": 1388,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "external"
@@ -1033,7 +1033,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_permissionTypeEntries",
-                      "scope": 1316,
+                      "scope": 1387,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -1046,17 +1046,17 @@
                           "name": "uint",
                           "type": "uint256"
                         },
-                        "id": 1294,
+                        "id": 1365,
                         "name": "ElementaryTypeName",
                         "src": "1220:4:10"
                       }
                     ],
-                    "id": 1295,
+                    "id": 1366,
                     "name": "VariableDeclaration",
                     "src": "1220:27:10"
                   }
                 ],
-                "id": 1296,
+                "id": 1367,
                 "name": "ParameterList",
                 "src": "1219:29:10"
               },
@@ -1067,7 +1067,7 @@
                   ]
                 },
                 "children": [],
-                "id": 1299,
+                "id": 1370,
                 "name": "ParameterList",
                 "src": "1290:0:10"
               },
@@ -1084,16 +1084,16 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 1251,
+                      "referencedDeclaration": 1322,
                       "type": "modifier ()",
                       "value": "onlyCreator"
                     },
-                    "id": 1297,
+                    "id": 1368,
                     "name": "Identifier",
                     "src": "1274:11:10"
                   }
                 ],
-                "id": 1298,
+                "id": 1369,
                 "name": "ModifierInvocation",
                 "src": "1274:11:10"
               },
@@ -1127,11 +1127,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 2951,
+                              "referencedDeclaration": 3022,
                               "type": "function (bool) pure",
                               "value": "require"
                             },
-                            "id": 1300,
+                            "id": 1371,
                             "name": "Identifier",
                             "src": "1300:7:10"
                           },
@@ -1169,7 +1169,7 @@
                                     "attributes": {
                                       "argumentTypes": [
                                         {
-                                          "typeIdentifier": "t_enum$_PermissionTypeEntries_$1240",
+                                          "typeIdentifier": "t_enum$_PermissionTypeEntries_$1311",
                                           "typeString": "enum RegistryAccessControl.PermissionTypeEntries"
                                         }
                                       ],
@@ -1180,7 +1180,7 @@
                                       "type": "type(uint256)",
                                       "value": "uint"
                                     },
-                                    "id": 1301,
+                                    "id": 1372,
                                     "name": "ElementaryTypeNameExpression",
                                     "src": "1308:4:10"
                                   },
@@ -1202,21 +1202,21 @@
                                           "overloadedDeclarations": [
                                             null
                                           ],
-                                          "referencedDeclaration": 1240,
+                                          "referencedDeclaration": 1311,
                                           "type": "type(enum RegistryAccessControl.PermissionTypeEntries)",
                                           "value": "PermissionTypeEntries"
                                         },
-                                        "id": 1302,
+                                        "id": 1373,
                                         "name": "Identifier",
                                         "src": "1313:21:10"
                                       }
                                     ],
-                                    "id": 1303,
+                                    "id": 1374,
                                     "name": "MemberAccess",
                                     "src": "1313:30:10"
                                   }
                                 ],
-                                "id": 1304,
+                                "id": 1375,
                                 "name": "FunctionCall",
                                 "src": "1308:36:10"
                               },
@@ -1226,26 +1226,26 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1295,
+                                  "referencedDeclaration": 1366,
                                   "type": "uint256",
                                   "value": "_permissionTypeEntries"
                                 },
-                                "id": 1305,
+                                "id": 1376,
                                 "name": "Identifier",
                                 "src": "1348:22:10"
                               }
                             ],
-                            "id": 1306,
+                            "id": 1377,
                             "name": "BinaryOperation",
                             "src": "1308:62:10"
                           }
                         ],
-                        "id": 1307,
+                        "id": 1378,
                         "name": "FunctionCall",
                         "src": "1300:71:10"
                       }
                     ],
-                    "id": 1308,
+                    "id": 1379,
                     "name": "ExpressionStatement",
                     "src": "1300:71:10"
                   },
@@ -1268,11 +1268,11 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 1236,
+                              "referencedDeclaration": 1307,
                               "type": "enum RegistryAccessControl.PermissionTypeEntries",
                               "value": "permissionTypeEntries_"
                             },
-                            "id": 1309,
+                            "id": 1380,
                             "name": "Identifier",
                             "src": "1381:22:10"
                           },
@@ -1302,11 +1302,11 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1240,
+                                  "referencedDeclaration": 1311,
                                   "type": "type(enum RegistryAccessControl.PermissionTypeEntries)",
                                   "value": "PermissionTypeEntries"
                                 },
-                                "id": 1310,
+                                "id": 1381,
                                 "name": "Identifier",
                                 "src": "1406:21:10"
                               },
@@ -1316,46 +1316,46 @@
                                   "overloadedDeclarations": [
                                     null
                                   ],
-                                  "referencedDeclaration": 1295,
+                                  "referencedDeclaration": 1366,
                                   "type": "uint256",
                                   "value": "_permissionTypeEntries"
                                 },
-                                "id": 1311,
+                                "id": 1382,
                                 "name": "Identifier",
                                 "src": "1428:22:10"
                               }
                             ],
-                            "id": 1312,
+                            "id": 1383,
                             "name": "FunctionCall",
                             "src": "1406:45:10"
                           }
                         ],
-                        "id": 1313,
+                        "id": 1384,
                         "name": "Assignment",
                         "src": "1381:70:10"
                       }
                     ],
-                    "id": 1314,
+                    "id": 1385,
                     "name": "ExpressionStatement",
                     "src": "1381:70:10"
                   }
                 ],
-                "id": 1315,
+                "id": 1386,
                 "name": "Block",
                 "src": "1290:168:10"
               }
             ],
-            "id": 1316,
+            "id": 1387,
             "name": "FunctionDefinition",
             "src": "1183:275:10"
           }
         ],
-        "id": 1317,
+        "id": 1388,
         "name": "ContractDefinition",
         "src": "152:1309:10"
       }
     ],
-    "id": 1318,
+    "id": 1389,
     "name": "SourceUnit",
     "src": "0:1462:10"
   },
@@ -1365,5 +1365,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-19T16:07:50.108Z"
+  "updatedAt": "2018-04-19T16:48:45.076Z"
 }

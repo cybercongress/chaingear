@@ -40,7 +40,7 @@
       "absolutePath": "zeppelin-solidity/contracts/token/ERC721/ERC721Receiver.sol",
       "exportedSymbols": {
         "ERC721Receiver": [
-          2565
+          2636
         ]
       }
     },
@@ -54,7 +54,7 @@
             ".18"
           ]
         },
-        "id": 2550,
+        "id": 2621,
         "name": "PragmaDirective",
         "src": "0:24:21"
       },
@@ -70,17 +70,17 @@
           "documentation": "@title ERC721 token receiver interface\n@dev Interface for any contract that wants to support safeTransfers\n from ERC721 asset contracts.",
           "fullyImplemented": false,
           "linearizedBaseContracts": [
-            2565
+            2636
           ],
           "name": "ERC721Receiver",
-          "scope": 2566
+          "scope": 2637
         },
         "children": [
           {
             "attributes": {
               "constant": true,
               "name": "ERC721_RECEIVED",
-              "scope": 2565,
+              "scope": 2636,
               "stateVariable": true,
               "storageLocation": "default",
               "type": "bytes4",
@@ -92,7 +92,7 @@
                   "name": "bytes4",
                   "type": "bytes4"
                 },
-                "id": 2551,
+                "id": 2622,
                 "name": "ElementaryTypeName",
                 "src": "455:6:21"
               },
@@ -109,12 +109,12 @@
                   "type": "int_const 4038714810",
                   "value": "0xf0b9e5ba"
                 },
-                "id": 2552,
+                "id": 2623,
                 "name": "Literal",
                 "src": "489:10:21"
               }
             ],
-            "id": 2553,
+            "id": 2624,
             "name": "VariableDeclaration",
             "src": "455:44:21"
           },
@@ -129,7 +129,7 @@
               ],
               "name": "onERC721Received",
               "payable": false,
-              "scope": 2565,
+              "scope": 2636,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -141,7 +141,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_from",
-                      "scope": 2564,
+                      "scope": 2635,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "address",
@@ -154,12 +154,12 @@
                           "name": "address",
                           "type": "address"
                         },
-                        "id": 2554,
+                        "id": 2625,
                         "name": "ElementaryTypeName",
                         "src": "1189:7:21"
                       }
                     ],
-                    "id": 2555,
+                    "id": 2626,
                     "name": "VariableDeclaration",
                     "src": "1189:13:21"
                   },
@@ -167,7 +167,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_tokenId",
-                      "scope": 2564,
+                      "scope": 2635,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "uint256",
@@ -180,12 +180,12 @@
                           "name": "uint256",
                           "type": "uint256"
                         },
-                        "id": 2556,
+                        "id": 2627,
                         "name": "ElementaryTypeName",
                         "src": "1204:7:21"
                       }
                     ],
-                    "id": 2557,
+                    "id": 2628,
                     "name": "VariableDeclaration",
                     "src": "1204:16:21"
                   },
@@ -193,7 +193,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "_data",
-                      "scope": 2564,
+                      "scope": 2635,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes memory",
@@ -206,17 +206,17 @@
                           "name": "bytes",
                           "type": "bytes storage pointer"
                         },
-                        "id": 2558,
+                        "id": 2629,
                         "name": "ElementaryTypeName",
                         "src": "1222:5:21"
                       }
                     ],
-                    "id": 2559,
+                    "id": 2630,
                     "name": "VariableDeclaration",
                     "src": "1222:11:21"
                   }
                 ],
-                "id": 2560,
+                "id": 2631,
                 "name": "ParameterList",
                 "src": "1188:46:21"
               },
@@ -226,7 +226,7 @@
                     "attributes": {
                       "constant": false,
                       "name": "",
-                      "scope": 2564,
+                      "scope": 2635,
                       "stateVariable": false,
                       "storageLocation": "default",
                       "type": "bytes4",
@@ -239,32 +239,32 @@
                           "name": "bytes4",
                           "type": "bytes4"
                         },
-                        "id": 2561,
+                        "id": 2632,
                         "name": "ElementaryTypeName",
                         "src": "1250:6:21"
                       }
                     ],
-                    "id": 2562,
+                    "id": 2633,
                     "name": "VariableDeclaration",
                     "src": "1250:6:21"
                   }
                 ],
-                "id": 2563,
+                "id": 2634,
                 "name": "ParameterList",
                 "src": "1249:8:21"
               }
             ],
-            "id": 2564,
+            "id": 2635,
             "name": "FunctionDefinition",
             "src": "1163:95:21"
           }
         ],
-        "id": 2565,
+        "id": 2636,
         "name": "ContractDefinition",
         "src": "180:1080:21"
       }
     ],
-    "id": 2566,
+    "id": 2637,
     "name": "SourceUnit",
     "src": "0:1261:21"
   },
@@ -274,5 +274,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-19T16:07:50.112Z"
+  "updatedAt": "2018-04-19T16:48:45.085Z"
 }
