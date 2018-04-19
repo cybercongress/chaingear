@@ -34,15 +34,12 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 
 
     function registerRegistry(
-        /* address[] _benefitiaries, */
-        /* uint256[] _shares, */
-        /* Registry.PermissionTypeEntries _permissionType, */
-        uint _entryCreationFee,
+        address[] _benefitiaries,
+        uint256[] _shares,
         string _name,
         string _symbol,
-        /* string _description, */
-        string _linkToABIOfRegistryContract,
-        // string _linkToABIOfEntriesContract,
+        /* string _linkToABIOfRegistryContract, */
+        string _linkToABIOfEntriesContract,
         bytes _bytecodeOfEntriesContract
     )
         external
@@ -52,39 +49,97 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         require(msg.value == registryRegistrationFee_);
 
-        Registry newRegistryContract = creator_.create(
-            /* _benefitiaries, */
-            /* _shares, */
-            /* _permissionType, */
-            _entryCreationFee,
+        /* Registry newRegistryContract = creator_.create(
+            _benefitiaries,
+            _shares,
             _name,
             _symbol,
-            /* _description, */
-            // _linkToABIOfEntriesContract,
+            _linkToABIOfEntriesContract,
             _bytecodeOfEntriesContract
         );
-        newRegistryContract.transferOwnership(msg.sender);
+        newRegistryContract.transferOwnership(msg.sender);  */
+        return createRegistry(
+            _benefitiaries,
+            _shares,
+            _name,
+            _symbol,
+            /* _linkToABIOfRegistryContract, */
+            _linkToABIOfEntriesContract,
+            _bytecodeOfEntriesContract
+        );
+
+        /* uint256 newRegistryID = addToRegistries(
+            _name,
+            newRegistryContract,
+            _linkToABIOfRegistryContract
+        ); */
+        /* _mint(msg.sender, registryID); */
+
+        /* return (
+            registryAddress,
+            registryID
+        ); */
+    }
+
+    function createRegistry(
+        address[] _benefitiaries,
+        uint256[] _shares,
+        string _name,
+        string _symbol,
+        /* string _linkToABIOfRegistryContract, */
+        string _linkToABIOfEntriesContract,
+        bytes _bytecodeOfEntriesContract
+    )
+        internal
+        returns (address newRegistryContract, uint256 newRegistryID)
+    {
+        Registry registryContract = creator_.create(
+            _benefitiaries,
+            _shares,
+            _name,
+            _symbol,
+            _linkToABIOfEntriesContract,
+            _bytecodeOfEntriesContract
+        );
+        registryContract.transferOwnership(msg.sender); //?'
 
         RegistryMeta memory registry = (RegistryMeta(
         {
             name: _name,
-            contractAddress: newRegistryContract,
+            contractAddress: registryContract,
+            creator: msg.sender,
+            /* linkABI: _linkToABIOfRegistryContract, */
+            registrationTimestamp: block.timestamp,
+            owner: msg.sender
+        }));
+        uint256 registryID = registries.push(registry) - 1;
+        _mint(msg.sender, registryID);
+        RegistryRegistered(_name, registryContract, msg.sender, registryID);
+
+        return (registryContract, registryID);
+    }
+
+    /* function addToRegistries(
+        string _name,
+        Registry _newRegistryContract,
+        string _linkToABIOfRegistryContract
+    )
+        internal
+        returns (uint256 registryID)
+    {
+        RegistryMeta memory registry = (RegistryMeta(
+        {
+            name: _name,
+            contractAddress: _newRegistryContract,
             creator: msg.sender,
             linkABI: _linkToABIOfRegistryContract,
             registrationTimestamp: block.timestamp,
             owner: msg.sender
         }));
-
         uint256 newRegistryID = registries.push(registry) - 1;
-        _mint(msg.sender, newRegistryID);
 
-        RegistryRegistered(_name, newRegistryContract, msg.sender, newRegistryID);
-
-        return (
-            newRegistryContract,
-            newRegistryID
-        );
-    }
+        return newRegistryID;
+    } */
 
     // function unregisterRegistry(uint256 _registryID)
     //     external
