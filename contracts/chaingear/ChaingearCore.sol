@@ -1,6 +1,5 @@
 pragma solidity ^0.4.19;
 
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "../common/IPFSeable.sol";

@@ -3,7 +3,6 @@ pragma solidity ^0.4.19;
 import "../common/IPFSeable.sol";
 import "./RegistryAccessControl.sol";
 // import "../common/RegistrySafe.sol";
-import "./EntryBase.sol";
 
 
 contract Chaingeareable is IPFSeable, RegistryAccessControl {
@@ -15,7 +14,7 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
     address internal entryBase_;
 
     // address internal registrySafe_;
-    
+
     event EntryCreated(
         address creator,
         uint entryId
@@ -35,7 +34,7 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
         address owner,
         uint entryId
     );
-    
+
     function entryBase()
         public
         view
@@ -43,7 +42,7 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
     {
         return entryBase_;
     }
-    
+
     function registryBalance()
         public
         view

@@ -8,6 +8,11 @@ contract RegistrySafe is Ownable, Destructible {
 
     function RegistrySafe() public payable { }
 
+    function() public {
+        require(msg.sender == owner);
+    }
+
+
     function claim(address _entryOwner, uint _amount)
         public
         onlyOwner

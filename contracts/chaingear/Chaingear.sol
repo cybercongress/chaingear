@@ -6,7 +6,6 @@ import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "./ChaingearCore.sol";
 import "../registry/Registry.sol";
-import "./RegistryCreator.sol";
 
 
 contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
