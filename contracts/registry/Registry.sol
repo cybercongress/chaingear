@@ -9,7 +9,6 @@ import "./EntryBase.sol";
 import "../common/RegistrySafe.sol";
 
 contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
-/* contract Registry is Chaingeareable, ERC721Token { */
 
     using SafeMath for uint256;
     using AddressUtils for address;
@@ -60,62 +59,63 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         return newEntryId;
     }
 
-    // function deleteEntry(uint256 _entryId)
-    //     whenNotPaused
-    //     external
-    // {
-    //     require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
+    function transferTokenizedOnwerhip(address _newOwner)
+        public
+        onlyOwner
+    {
+        creator_ = _newOwner;
+    }
 
-    //     uint256 entryIndex = allTokensIndex[_entryId];
-    //     uint256 lastEntryIndex = entries.length.sub(1);
-    //     Entry storage lastEntry = entries[lastEntryIndex];
+     /* function deleteEntry(uint256 _entryId)
+         whenNotPaused
+         external
+     {
+         require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
 
-    //     entries[entryIndex] = lastEntry;
-    //     delete entries[lastEntryIndex];
-    //     entries.length--;
+         uint256 entryIndex = allTokensIndex[_entryId];
+         uint256 lastEntryIndex = entries.length.sub(1);
+         Entry storage lastEntry = entries[lastEntryIndex];
 
-    //     super._burn(msg.sender, _entryId);
+         entries[entryIndex] = lastEntry;
+         delete entries[lastEntryIndex];
+         entries.length--;
 
-    //     EntryDeleted(msg.sender, _entryId);
-    // }
+         super._burn(msg.sender, _entryId);
+
+         EntryDeleted(msg.sender, _entryId);
+     } */
 
 
-    // function transferEntryOwnership(uint _entryId, address _newOwner)
-    //     whenNotPaused
-    //     external
-    // {
-    //     require (ERC721BasicToken.ownerOf(_entryId) == msg.sender);
-    //     // throw if balance?
-    //     //locked balance?
-    //     entries[_entryId].metainformation.owner = _newOwner;
-    //     entries[_entryId].metainformation.lastUpdateTime = block.timestamp;
+     function transferEntryOwnership(uint _entryId, address _newOwner)
+         public
+     {
+         require (ownerOf(_entryId) == msg.sender);
+         EntryBase(entryBase_).updateEntryOwnership(_entryId, _newOwner);
 
-    //     super.removeTokenFrom(msg.sender, _entryId);
-    //     super.addTokenTo(_newOwner, _entryId);
+         super.removeTokenFrom(msg.sender, _entryId);
+         super.addTokenTo(_newOwner, _entryId);
 
-    //     EntryChangedOwner(_entryId, _newOwner);
-    // }
+         EntryChangedOwner(_entryId, _newOwner);
+     }
 
-    // function fundEntry(uint256 _entryId)
-    //     whenNotPaused
-    //     payable
-    //     public
-    // {
-    //     entries[_entryId].metainformation.accumulatedOverallEntryETH.add(msg.value);
-    //     registrySafe_.transfer(msg.value);
+     function fundEntry(uint256 _entryId)
+         payable
+         public
+     {
+         EntryBase(entryBase_).updateEntryFund(_entryId, msg.value);
+         registrySafe_.transfer(msg.value);
 
-    //     EntryFunded(_entryId, msg.sender);
-    // }
+         EntryFunded(_entryId, msg.sender);
+     }
 
-    // function claimEntryFunds(uint256 _entryId, uint _amount)
-    //     whenNotPaused
-    //     public
-    // {
-    //     require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
-    //     require(_amount <= entries[_entryId].metainformation.currentEntryBalanceETH);
-    //     entries[_entryId].metainformation.currentEntryBalanceETH.sub(_amount);
-    //     RegistrySafe(registrySafe_).claim(msg.sender, _amount);
+     function claimEntryFunds(uint256 _entryId, uint _amount)
+         public
+     {
+         require(ownerOf(_entryId) == msg.sender);
+         require(_amount <= EntryBase(entryBase_).currentEntryBalanceETHOf(_entryId));
+         EntryBase(entryBase_).claimEntryFund(_entryId, _amount);
+         RegistrySafe(registrySafe_).claim(msg.sender, _amount);
 
-    //     EntryFundsClaimed(_entryId, msg.sender, _amount);
-    // }
+         EntryFundsClaimed(_entryId, msg.sender, _amount);
+     }
 }

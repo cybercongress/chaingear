@@ -77,7 +77,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             _linkToABIOfEntriesContract,
             _bytecodeOfEntriesContract
         );
-        registryContract.transferOwnership(msg.sender); //?'
+        registryContract.transferOwnership(msg.sender);
 
         RegistryMeta memory registry = (RegistryMeta(
         {
@@ -97,51 +97,44 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         return (registryContract, registryID);
     }
 
-    // function unregisterRegistry(uint256 _registryID)
-    //     external
-    //     whenNotPaused
-    // {
-    //     require (ERC721BasicToken.ownerOf(_registryID) == msg.sender);
-    //     address registryAddress = registries[_registryID].contractAddress;
+     /* function unregisterRegistry(uint256 _registryID)
+         external
+         whenNotPaused
+     {
+         require (ERC721BasicToken.ownerOf(_registryID) == msg.sender);
+         address registryAddress = registries[_registryID].contractAddress;
 
-    //     ChaingearRegistrable registryContract = ChaingearRegistrable(registryAddress);
-    //     require(registryContract.owner() == msg.sender);
-    //     require(registryContract.setChaingearMode(msg.sender, false) == false);
+         ChaingearRegistrable registryContract = ChaingearRegistrable(registryAddress);
+         require(registryContract.owner() == msg.sender);
+         require(registryContract.setChaingearMode(msg.sender, false) == false);
 
-    //     string storage registryName = registries[_registryID].name;
-    //     uint256 registryIndex = allTokensIndex[_registryID];
-    //     uint256 lastRegistryIndex = registries.length.sub(1);
-    //     Registry storage lastRegistry = registries[lastRegistryIndex];
+         string storage registryName = registries[_registryID].name;
+         uint256 registryIndex = allTokensIndex[_registryID];
+         uint256 lastRegistryIndex = registries.length.sub(1);
+         Registry storage lastRegistry = registries[lastRegistryIndex];
 
-    //     registries[registryIndex] = lastRegistry;
-    //     delete registries[lastRegistryIndex];
-    //     registries.length--;
+         registries[registryIndex] = lastRegistry;
+         delete registries[lastRegistryIndex];
+         registries.length--;
 
-    //     super._burn(msg.sender, _registryID);
+         super._burn(msg.sender, _registryID);
 
-    //     //rethink this event
-    //     RegistryUnregistered(msg.sender, registryName);
-    // }
+         rethink this event
+         RegistryUnregistered(msg.sender, registryName);
+     } */
 
-    // function updateRegistryOwnership(uint256 _registryID, address _newOwner)
-    //     external
-    //     whenNotPaused
-    // {
-    //     require (ERC721BasicToken.ownerOf(_registryID) == msg.sender);
+     function updateRegistryOwnership(uint256 _registryID, address _newOwner)
+         external
+         whenNotPaused
+     {
+         require (ownerOf(_registryID) == msg.sender);
 
-    //     address registryAddress = registries[_registryID].contractAddress;
-    //     ChaingearRegistrable registryContract = ChaingearRegistrable(registryAddress);
+         Registry(registries[_registryID].contractAddress).transferTokenizedOnwerhip(_newOwner);
+         registries[_registryID].owner = _newOwner;
 
-    //     require(registryContract.owner() == msg.sender);
-    //     require(registryContract.transferTokenizedOnwerhip(msg.sender, _newOwner) == true);
-    //     require(registryContract.owner() == _newOwner);
+         super.removeTokenFrom(msg.sender, _registryID);
+         super.addTokenTo(_newOwner, _registryID);
 
-    //     string storage registryName = registries[_registryID].name;
-    //     registries[_registryID].owner = _newOwner;
-
-    //     super.removeTokenFrom(msg.sender, _registryID);
-    //     super.addTokenTo(_newOwner, _registryID);
-
-    //     RegistryTransferred(msg.sender, registryName, _newOwner);
-    // }
+         RegistryTransferred(msg.sender, registries[_registryID].name, _registryID, _newOwner);
+     }
 }
