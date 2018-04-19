@@ -21,19 +21,30 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
         uint entryId
     );
 
-    event EntryUpdated(
+    /* event EntryUpdated(
         address owner,
         uint entryId
-    );
+    ); */
 
     event EntryChangedOwner(
         uint entryId,
         address newOwner
     );
 
-    event EntryDeleted(
+    /* event EntryDeleted(
         address owner,
         uint entryId
+    ); */
+
+    event EntryFunded(
+        uint entryId,
+        address funder
+    );
+
+    event EntryFundsClaimed(
+        uint entryId,
+        address owner,
+        uint amount
     );
 
     function entryBase()

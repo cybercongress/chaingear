@@ -10,8 +10,8 @@
   ],
   "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820b843e0cb9737e354b11e0e3ce1bed7dbc7b7bc7fce8e1928306462582ab8288e0029",
   "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820b843e0cb9737e354b11e0e3ce1bed7dbc7b7bc7fce8e1928306462582ab8288e0029",
-  "sourceMap": "290:102:9:-;;;354:36;;;;;;;;290:102;;;;;;",
-  "deployedSourceMap": "290:102:9:-;;;;;",
+  "sourceMap": "290:102:1:-;;;354:36;;;;;;;;290:102;;;;;;",
+  "deployedSourceMap": "290:102:1:-;;;;;",
   "source": "pragma solidity ^0.4.16;\n\n/**\n * @title Seriality\n * @dev The Seriality contract is the main interface for serializing data using the TypeToBytes, BytesToType and SizeOf\n * @author pouladzade@gmail.com\n */\n \nimport \"./BytesToTypes.sol\";\nimport \"./TypesToBytes.sol\";\nimport \"./SizeOf.sol\";\n\ncontract Seriality is BytesToTypes, TypesToBytes, SizeOf {\n\n    function Seriality() public {\n\n    }\n}\n",
   "sourcePath": "/Users/litvintech/Projects/chaingear/contracts/common/seriality/Seriality.sol",
   "ast": {
@@ -19,7 +19,7 @@
       "absolutePath": "/Users/litvintech/Projects/chaingear/contracts/common/seriality/Seriality.sol",
       "exportedSymbols": {
         "Seriality": [
-          1477
+          795
         ]
       }
     },
@@ -33,73 +33,73 @@
             ".16"
           ]
         },
-        "id": 1463,
+        "id": 781,
         "name": "PragmaDirective",
-        "src": "0:24:9"
+        "src": "0:24:1"
       },
       {
         "attributes": {
-          "SourceUnit": 1462,
+          "SourceUnit": 780,
           "absolutePath": "/Users/litvintech/Projects/chaingear/contracts/common/seriality/BytesToTypes.sol",
           "file": "./BytesToTypes.sol",
-          "scope": 1478,
+          "scope": 796,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 1464,
+        "id": 782,
         "name": "ImportDirective",
-        "src": "208:28:9"
+        "src": "208:28:1"
       },
       {
         "attributes": {
-          "SourceUnit": 1653,
+          "SourceUnit": 971,
           "absolutePath": "/Users/litvintech/Projects/chaingear/contracts/common/seriality/TypesToBytes.sol",
           "file": "./TypesToBytes.sol",
-          "scope": 1478,
+          "scope": 796,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 1465,
+        "id": 783,
         "name": "ImportDirective",
-        "src": "237:28:9"
+        "src": "237:28:1"
       },
       {
         "attributes": {
-          "SourceUnit": 1554,
+          "SourceUnit": 872,
           "absolutePath": "/Users/litvintech/Projects/chaingear/contracts/common/seriality/SizeOf.sol",
           "file": "./SizeOf.sol",
-          "scope": 1478,
+          "scope": 796,
           "symbolAliases": [
             null
           ],
           "unitAlias": ""
         },
-        "id": 1466,
+        "id": 784,
         "name": "ImportDirective",
-        "src": "266:22:9"
+        "src": "266:22:1"
       },
       {
         "attributes": {
           "contractDependencies": [
-            1461,
-            1553,
-            1652
+            779,
+            871,
+            970
           ],
           "contractKind": "contract",
           "documentation": null,
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            1477,
-            1553,
-            1652,
-            1461
+            795,
+            871,
+            970,
+            779
           ],
           "name": "Seriality",
-          "scope": 1478
+          "scope": 796
         },
         "children": [
           {
@@ -113,17 +113,17 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "BytesToTypes",
-                  "referencedDeclaration": 1461,
+                  "referencedDeclaration": 779,
                   "type": "contract BytesToTypes"
                 },
-                "id": 1467,
+                "id": 785,
                 "name": "UserDefinedTypeName",
-                "src": "312:12:9"
+                "src": "312:12:1"
               }
             ],
-            "id": 1468,
+            "id": 786,
             "name": "InheritanceSpecifier",
-            "src": "312:12:9"
+            "src": "312:12:1"
           },
           {
             "attributes": {
@@ -136,17 +136,17 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "TypesToBytes",
-                  "referencedDeclaration": 1652,
+                  "referencedDeclaration": 970,
                   "type": "contract TypesToBytes"
                 },
-                "id": 1469,
+                "id": 787,
                 "name": "UserDefinedTypeName",
-                "src": "326:12:9"
+                "src": "326:12:1"
               }
             ],
-            "id": 1470,
+            "id": 788,
             "name": "InheritanceSpecifier",
-            "src": "326:12:9"
+            "src": "326:12:1"
           },
           {
             "attributes": {
@@ -159,17 +159,17 @@
                 "attributes": {
                   "contractScope": null,
                   "name": "SizeOf",
-                  "referencedDeclaration": 1553,
+                  "referencedDeclaration": 871,
                   "type": "contract SizeOf"
                 },
-                "id": 1471,
+                "id": 789,
                 "name": "UserDefinedTypeName",
-                "src": "340:6:9"
+                "src": "340:6:1"
               }
             ],
-            "id": 1472,
+            "id": 790,
             "name": "InheritanceSpecifier",
-            "src": "340:6:9"
+            "src": "340:6:1"
           },
           {
             "attributes": {
@@ -181,7 +181,7 @@
               ],
               "name": "Seriality",
               "payable": false,
-              "scope": 1477,
+              "scope": 795,
               "stateMutability": "nonpayable",
               "superFunction": null,
               "visibility": "public"
@@ -194,9 +194,9 @@
                   ]
                 },
                 "children": [],
-                "id": 1473,
+                "id": 791,
                 "name": "ParameterList",
-                "src": "372:2:9"
+                "src": "372:2:1"
               },
               {
                 "attributes": {
@@ -205,9 +205,9 @@
                   ]
                 },
                 "children": [],
-                "id": 1474,
+                "id": 792,
                 "name": "ParameterList",
-                "src": "382:0:9"
+                "src": "382:0:1"
               },
               {
                 "attributes": {
@@ -216,24 +216,24 @@
                   ]
                 },
                 "children": [],
-                "id": 1475,
+                "id": 793,
                 "name": "Block",
-                "src": "382:8:9"
+                "src": "382:8:1"
               }
             ],
-            "id": 1476,
+            "id": 794,
             "name": "FunctionDefinition",
-            "src": "354:36:9"
+            "src": "354:36:1"
           }
         ],
-        "id": 1477,
+        "id": 795,
         "name": "ContractDefinition",
-        "src": "290:102:9"
+        "src": "290:102:1"
       }
     ],
-    "id": 1478,
+    "id": 796,
     "name": "SourceUnit",
-    "src": "0:393:9"
+    "src": "0:393:1"
   },
   "compiler": {
     "name": "solc",
@@ -241,5 +241,5 @@
   },
   "networks": {},
   "schemaVersion": "1.0.1",
-  "updatedAt": "2018-04-18T22:26:09.242Z"
+  "updatedAt": "2018-04-19T18:43:01.161Z"
 }

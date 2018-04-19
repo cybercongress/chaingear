@@ -1,11 +1,14 @@
 pragma solidity ^0.4.19;
 
+import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "../common/seriality/Seriality.sol";
 import "./EntryBase.sol";
 
 
 contract EntryCore is EntryBase, Ownable, Seriality {
+
+    using SafeMath for uint256;
 
     struct Entry {
         address expensiveAddress;
@@ -17,17 +20,6 @@ contract EntryCore is EntryBase, Ownable, Seriality {
     }
 
     Entry[] internal entries;
-
-    // event EntryFunded(
-    //     uint entryId,
-    //     address funder
-    // );
-
-    // event EntryFundsClaimed(
-    //     uint entryId,
-    //     address receiver,
-    //     uint amount
-    // );
 
     function expensiveAddressOf(uint256 _entryId)
         public
@@ -106,9 +98,9 @@ contract EntryCore is EntryBase, Ownable, Seriality {
             lastUpdateTime: block.timestamp,
             createdAt: block.timestamp,
             owner: tx.origin,
-            creator: tx.origin
-            // currentEntryBalanceETH: 0,
-            // accumulatedOverallEntryETH: 0
+            creator: tx.origin,
+            currentEntryBalanceETH: 0,
+            accumulatedOverallEntryETH: 0
         }));
 
         Entry memory entry = (Entry(
@@ -123,6 +115,28 @@ contract EntryCore is EntryBase, Ownable, Seriality {
         uint256 newEntryId = entries.push(entry) - 1;
 
         return newEntryId;
+    }
+
+    function updateEntryOwnership(uint _entryId, address _newOwner)
+        public
+        onlyOwner
+    {
+        entries[_entryId].metainformation.owner = _newOwner;
+    }
+
+    function updateEntryFund(uint _entryId, uint _amount)
+        public
+        onlyOwner
+    {
+        entries[_entryId].metainformation.accumulatedOverallEntryETH.add(_amount);
+    }
+
+
+    function claimEntryFund(uint _entryId, uint _amount)
+        public
+        onlyOwner
+    {
+        entries[_entryId].metainformation.currentEntryBalanceETH.sub(_amount);
     }
 
     // function updateEntry(bytes _serializedParams)
@@ -162,6 +176,22 @@ contract EntryCore is EntryBase, Ownable, Seriality {
         returns (uint)
     {
         return entries[_entryId].metainformation.lastUpdateTime;
+    }
+
+    function currentEntryBalanceETHOf(uint256 _entryId)
+        public
+        view
+        returns (uint)
+    {
+        return entries[_entryId].metainformation.currentEntryBalanceETH;
+    }
+
+    function accumulatedOverallEntryETHOf(uint256 _entryId)
+        public
+        view
+        returns (uint)
+    {
+        return entries[_entryId].metainformation.accumulatedOverallEntryETH;
     }
 
 }

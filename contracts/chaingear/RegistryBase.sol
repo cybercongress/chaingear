@@ -28,11 +28,12 @@ contract RegistryBase {
     //     string registryName
     // );
 
-    // event RegistryTransferred(
-    //     address caller,
-    //     string registryName,
-    //     address newOwner
-    // );
+    event RegistryTransferred(
+         address caller,
+         string registryName,
+         uint256 registyID,
+         address newOwner
+    );
 
     function nameOf(uint256 _registryID)
         public
