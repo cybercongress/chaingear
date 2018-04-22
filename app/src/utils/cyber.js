@@ -120,6 +120,7 @@ export const deployRegistry = (bytecode, abi, web3, opt) => {
       Contract.new(
         _benefitiaries,
         _shares,
+        [{ a: '0xa3564D084fabf13e69eca6F2949D3328BF6468Ef', count: 5 }],
         permissionType,
         _entryCreationFee,
         contractName,
