@@ -93,7 +93,7 @@ class NewRegister extends Component {
   }
 
   create = () => {
-    
+    debugger
     this.compileAndEstimateGas((web3) => {
       const { contractName, gasEstimate } = this.state;
       this.setState({ status: 'deploy contract...', inProgress: true });
