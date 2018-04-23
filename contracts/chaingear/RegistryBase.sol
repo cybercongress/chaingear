@@ -1,22 +1,23 @@
 pragma solidity ^0.4.19;
-
-/// @title holds struct of data with describes registry metainformation which
-/// associated with token, views function for registry metainformation.
-/// @author Cyber Congress
-/// @dev All function calls are currently implement without side effects
+/**
+* @title holds struct of data with describes registry metainformation which
+* associated with token, views function for registry metainformation.
+* @author Cyber Congress
+* @dev All function calls are currently implement without side effects
+*/
 
 /// @dev Registry base constructor
-
 contract RegistryBase {
 
-/// @dev data structure with Regisrty parameters
-/// @param Registry name
-/// @param address of the contract
-/// @param address of Registry creator
-/// @param Registry' link to ABI
-/// @param timestamp of Registry creation
-/// @param address of Registry owner
-
+    /**
+    * @dev data structure with Regisrty parameters
+    * @param Registry name
+    * @param address of the contract
+    * @param address of Registry creator
+    * @param Registry' link to ABI
+    * @param timestamp of Registry creation
+    * @param address of Registry owner
+    */
     struct RegistryMeta {
         string name;
         address contractAddress;
@@ -25,16 +26,17 @@ contract RegistryBase {
         uint registrationTimestamp;
         address owner;
     }
-/// @dev creation an internal data structure
 
+    /// @dev creation an internal data structure
     RegistryMeta[] internal registries;
 
-/// @dev an event of Registry creation
-/// @param name of Registry
-/// @param address of Registry
-/// @param address of Registry creator
-/// @param Registry ID
-
+    /**
+    * @dev an event of Registry creation
+    * @param name of Registry
+    * @param address of Registry
+    * @param address of Registry creator
+    * @param Registry ID
+    */
     event RegistryRegistered(
         string name,
         address registryAddress,
@@ -53,10 +55,11 @@ contract RegistryBase {
     //     address newOwner
     // );
 
+    /**
     /// @dev Registry' name getter
     /// @param Registry ID
     /// @return name of Registry
-
+    */
     function nameOf(uint256 _registryID)
         public
         view
@@ -65,10 +68,11 @@ contract RegistryBase {
         return registries[_registryID].name;
     }
 
-    /// @dev Registry' address getter
-    /// @param Registry ID
-    /// @return address of Registry
-
+    /**
+    * @dev Registry' address getter
+    * @param Registry ID
+    * @return address of Registry
+    */
     function contractAddressOf(uint256 _registryID)
         public
         view
@@ -77,10 +81,11 @@ contract RegistryBase {
         return registries[_registryID].contractAddress;
     }
 
-    /// @dev Registy' creator address getter
-    /// @param Registry ID
-    /// @return address of Registry creator
-
+    /**
+    * @dev Registy' creator address getter
+    * @param Registry ID
+    * @return address of Registry creator
+    */
     function creatorOf(uint256 _registryID)
         public
         view
@@ -89,10 +94,11 @@ contract RegistryBase {
         return registries[_registryID].creator;
     }
 
-    /// @dev Registy' creating timestamp getter
-    /// @param Registry ID
-    /// @return timestamp of creating Registy
-
+    /**
+    * @dev Registy' creating timestamp getter
+    * @param Registry ID
+    * @return timestamp of creating Registy
+    */
     function registryDateOf(uint256 _registryID)
         public
         view
@@ -101,10 +107,11 @@ contract RegistryBase {
         return registries[_registryID].registrationTimestamp;
     }
 
-    /// @dev Registy' ABI link getter
-    /// @param Registry ID
-    /// @return Registy' ABI link
-
+    /**
+    * @dev Registy' ABI link getter
+    * @param Registry ID
+    * @return Registy' ABI link
+    */
     function ABILinkOf(uint256 _registryID)
         public
         view
@@ -113,10 +120,11 @@ contract RegistryBase {
         return registries[_registryID].linkABI;
     }
 
-    /// @dev Registy' owner address getter
-    /// @param Registry ID
-    /// @return Registy' owner address
-
+    /**
+    * @dev Registy' owner address getter
+    * @param Registry ID
+    * @return Registy' owner address
+    */
     function registryOwnerOf(uint256 _registryID)
         public
         view
@@ -133,15 +141,16 @@ contract RegistryBase {
     //     return registries[_registryID].chaingeareableVersion;
     // }
 
-    /// @dev Registy' metainfo getter
-    /// @param Registry ID
-    /// @return Registy' name
-    /// @return Registy' address
-    /// @return Registy' creator address
-    /// @return Registy' creation timestamp
-    /// @return Registy' ABI link
-    /// @return Registy' owner address
-
+    /**
+    * @dev Registy' metainfo getter
+    * @param Registry ID
+    * @return Registy' name
+    * @return Registy' address
+    * @return Registy' creator address
+    * @return Registy' creation timestamp
+    * @return Registy' ABI link
+    * @return Registy' owner address
+    */
     function registryInfo(uint256 _registryID)
         public
         view
@@ -169,9 +178,10 @@ contract RegistryBase {
     //     );
     // }
 
-    /// @dev Registies amount getter
-    /// @return amounts of Registries
-
+    /**
+    * @dev Registies amount getter
+    * @return amounts of Registries
+    */
     function registriesAmount()
         public
         view
