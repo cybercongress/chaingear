@@ -1,5 +1,11 @@
 pragma solidity ^0.4.19;
 
+/// @title The most expensive Regisrty
+/// @author Cyber Congress
+/// @notice Chaingear is an Ethereum ERC721-based registries framework.
+/// You can use it to register your own Register in Chaingear
+/// @dev All function calls are currently implement without side effects
+
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/AddressUtils.sol";
 import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
@@ -7,11 +13,20 @@ import "../common/SplitPaymentChangeable.sol";
 import "./ChaingearCore.sol";
 import "../registry/Registry.sol";
 
-
+/// @notice ERC721 contract to work with Chaingear
 contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 
     using SafeMath for uint256;
     using AddressUtils for address;
+
+/// @dev Chaingear constructor, pre-deployment of Chaingear
+/// @param Registry creator: creator_
+/// @param address[] _benefitiaries, addresses of Registry benefitiaries
+/// @param uint256[] _shares, allocation of shares
+/// @param string _description, description of Registry
+/// @param uint _registrationFee, registration fee
+/// @param string _chaingearName, Registry name
+/// @param string _chaingearSymbol, Registry symbol
 
     function Chaingear(
         RegistryCreator _creator,
@@ -32,6 +47,15 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         creator_ = _creator;
     }
 
+    /// @notice this function add your own Registry to Chaingear. Registration fee
+    /// is required to send with tx. Tx sender become Creator is Register owner.
+    /// @param uint _entryCreationFee, Registry creation fee
+    /// @param string _name, Registry name
+    /// @param string _symbol, Registry symbol
+    /// @param string _linkToABIOfRegistryContract, link to ABI of Registry contract
+    /// @param bytes _bytecodeOfEntriesContract, bytecode of entries contract
+    /// @return new Registry contract address
+    /// @return new Registry ID 
 
     function registerRegistry(
         /* address[] _benefitiaries, */
