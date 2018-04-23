@@ -12,38 +12,21 @@ contract EntryBase {
         uint accumulatedOverallEntryETH;
     }
 
-    function entriesAmount() public view returns (uint256);
-    function createEntry(bytes) public returns (uint256);
-    function updateEntry(bytes) public;
+    function entriesAmount() public view returns (uint256 entryID);
 
-    function updateEntryFund(uint, uint) public;
-    function claimEntryFund(uint, uint) public;
-    function updateEntryOwnership(uint, address) public;
+    function createEntry() public returns (uint256 entryID);
+    function deleteEntry(uint256 _entryIndex) public;
 
-    /* function deleteEntry(bytes) public; */
+    function updateEntryOwnership(uint256 _entryID, address _newOwner) public;
+    function updateEntryFund(uint256 _entryID, uint256 _amount) public;
+    function claimEntryFund(uint256 _entryID, uint256 _amount) public;
 
-    function registryOwnerOf(uint256 _entryId) public view returns (address);
-    function creatorOf(uint256 _entryId) public view returns (address);
-    function createdAtOf(uint256 _entryId) public view returns (uint);
-    function lastUpdateTimeOf(uint256 _entryId) public view returns (uint);
-    function currentEntryBalanceETHOf(uint256 _entryId) public view returns (uint);
-    function accumulatedOverallEntryETHOf(uint256 _entryId) public view returns (uint);
-
-     /* function currentEntryBalanceETHOf(uint256 _entryId)
-         public
-         view
-         returns (uint)
-     {
-         return entries[_entryId].metainformation.currentEntryBalanceETH;
-     }
-
-     function accumulatedOverallEntryETHOf(uint256 _entryId)
-         public
-         view
-         returns (uint)
-     {
-         return entries[_entryId].metainformation.accumulatedOverallEntryETH;
-     } */
+    function entryOwnerOf(uint256 _entryID) public view returns (address);
+    function creatorOf(uint256 _entryID) public view returns (address);
+    function createdAtOf(uint256 _entryID) public view returns (uint);
+    function lastUpdateTimeOf(uint256 _entryID) public view returns (uint);
+    function currentEntryBalanceETHOf(uint256 _entryID) public view returns (uint);
+    function accumulatedOverallEntryETHOf(uint256 _entryID) public view returns (uint);
 
     function entryMeta(uint256 _entryId)
         public
@@ -51,7 +34,7 @@ contract EntryBase {
         returns (address, address, uint, uint, uint, uint)
     {
         return (
-            registryOwnerOf(_entryId),
+            entryOwnerOf(_entryId),
             creatorOf(_entryId),
             createdAtOf(_entryId),
             lastUpdateTimeOf(_entryId),

@@ -2,11 +2,10 @@ pragma solidity ^0.4.19;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
-import "../common/seriality/Seriality.sol";
 import "./EntryBase.sol";
 
 
-contract EntryCore is EntryBase, Ownable, Seriality {
+contract EntryCore is EntryBase, Ownable {
 
     using SafeMath for uint256;
 
@@ -20,6 +19,19 @@ contract EntryCore is EntryBase, Ownable, Seriality {
     }
 
     Entry[] internal entries;
+
+    modifier onlyEntryOwner(uint256 _entryId) {
+        require(entries[_entryId].metainformation.owner == msg.sender);
+        _;
+    }
+
+    function entriesAmount()
+        public
+        view
+        returns (uint256 entryID)
+    {
+        return entries.length;
+    }
 
     function expensiveAddressOf(uint256 _entryId)
         public
@@ -66,33 +78,11 @@ contract EntryCore is EntryBase, Ownable, Seriality {
         );
     }
 
-    function entriesAmount()
-        public
-        view
-        returns (uint256)
-    {
-        return entries.length;
-    }
-
-    function createEntry(bytes _serializedParams)
+    function createEntry()
         public
         onlyOwner
         returns (uint256 entryId)
     {
-        uint offset = _serializedParams.length;
-
-        address _expensiveAddress = bytesToAddress(offset, _serializedParams);
-        offset -= sizeOfAddress();
-
-        uint256 _expensiveUint = bytesToUint256(offset, _serializedParams);
-        offset -= sizeOfUint(256);
-
-        int128 _expensiveInt = bytesToInt128(offset, _serializedParams);
-        offset -= sizeOfInt(128);
-
-        string memory _expensiveString = new string(32);
-        bytesToString(offset, _serializedParams, bytes(_expensiveString));
-
         EntryMeta memory meta = (EntryMeta(
         {
             lastUpdateTime: block.timestamp,
@@ -105,10 +95,10 @@ contract EntryCore is EntryBase, Ownable, Seriality {
 
         Entry memory entry = (Entry(
         {
-            expensiveAddress: _expensiveAddress,
-            expensiveUint: _expensiveUint,
-            expensiveInt: _expensiveInt,
-            expensiveString: _expensiveString,
+            expensiveAddress: address(0),
+            expensiveUint: uint256(0),
+            expensiveInt: int128(0),
+            expensiveString: "",
             metainformation: meta
         }));
 
@@ -117,81 +107,97 @@ contract EntryCore is EntryBase, Ownable, Seriality {
         return newEntryId;
     }
 
-    function updateEntryOwnership(uint _entryId, address _newOwner)
+    function updateEntry(uint256 _entryId, address _newAddress, uint256 _newUint, int128 _newInt, string _newString)
+        /* onlyEntryOwner(_entryId) */
         public
-        onlyOwner
     {
-        entries[_entryId].metainformation.owner = _newOwner;
+        entries[_entryId].expensiveAddress = _newAddress;
+        entries[_entryId].expensiveUint = _newUint;
+        entries[_entryId].expensiveInt = _newInt;
+        entries[_entryId].expensiveString = _newString;
+
+        entries[_entryId].metainformation.lastUpdateTime = block.timestamp;
     }
 
-    function updateEntryFund(uint _entryId, uint _amount)
-        public
+    function deleteEntry(uint256 _entryIndex)
         onlyOwner
+        public
     {
-        entries[_entryId].metainformation.accumulatedOverallEntryETH.add(_amount);
+        uint256 lastEntryIndex = entries.length.sub(1);
+        Entry storage lastEntry = entries[lastEntryIndex];
+
+        entries[_entryIndex] = lastEntry;
+        delete entries[lastEntryIndex];
+        entries.length--;
     }
 
-
-    function claimEntryFund(uint _entryId, uint _amount)
-        public
+    function updateEntryOwnership(uint256 _entryID, address _newOwner)
         onlyOwner
+        public
     {
-        entries[_entryId].metainformation.currentEntryBalanceETH.sub(_amount);
+        entries[_entryID].metainformation.owner = _newOwner;
     }
 
-    // function updateEntry(bytes _serializedParams)
-    //     public
-    //     onlyOwner
-    // {
+    function updateEntryFund(uint256 _entryID, uint256 _amount)
+        onlyOwner
+        public
+    {
+        entries[_entryID].metainformation.accumulatedOverallEntryETH.add(_amount);
+    }
 
-    // }
+    function claimEntryFund(uint256 _entryID, uint256 _amount)
+        onlyOwner
+        public
+    {
+        entries[_entryID].metainformation.currentEntryBalanceETH.sub(_amount);
+    }
 
-    function registryOwnerOf(uint256 _entryId)
+    function entryOwnerOf(uint256 _entryID)
         public
         view
         returns (address)
     {
-        entries[_entryId].metainformation.owner;
+        entries[_entryID].metainformation.owner;
     }
 
-    function creatorOf(uint256 _entryId)
+    function creatorOf(uint256 _entryID)
         public
         view
         returns (address)
     {
-        entries[_entryId].metainformation.creator;
+        entries[_entryID].metainformation.creator;
     }
 
-    function createdAtOf(uint256 _entryId)
+    function createdAtOf(uint256 _entryID)
         public
         view
         returns (uint)
     {
-        entries[_entryId].metainformation.createdAt;
+        entries[_entryID].metainformation.createdAt;
     }
 
-    function lastUpdateTimeOf(uint256 _entryId)
+    function lastUpdateTimeOf(uint256 _entryID)
         public
         view
         returns (uint)
     {
-        return entries[_entryId].metainformation.lastUpdateTime;
+        return entries[_entryID].metainformation.lastUpdateTime;
     }
 
-    function currentEntryBalanceETHOf(uint256 _entryId)
+    function currentEntryBalanceETHOf(uint256 _entryID)
         public
         view
         returns (uint)
     {
-        return entries[_entryId].metainformation.currentEntryBalanceETH;
+        return entries[_entryID].metainformation.currentEntryBalanceETH;
     }
 
-    function accumulatedOverallEntryETHOf(uint256 _entryId)
+    function accumulatedOverallEntryETHOf(uint256 _entryID)
         public
         view
         returns (uint)
     {
-        return entries[_entryId].metainformation.accumulatedOverallEntryETH;
+        return entries[_entryID].metainformation.accumulatedOverallEntryETH;
     }
 
 }

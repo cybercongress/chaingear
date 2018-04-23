@@ -1,7 +1,7 @@
 pragma solidity ^0.4.19;
 
-import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
-import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/lifecycle/Destructible.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "../common/IPFSeable.sol";
 import "./RegistryCreator.sol";
 import "./RegistryBase.sol";
@@ -23,8 +23,8 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
     }
 
     function updateRegistrationFee(uint _newFee)
-        onlyOwner
         external
+        onlyOwner
     {
         registryRegistrationFee_ = _newFee;
     }
@@ -38,8 +38,8 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
     }
 
     function updateDescription(string _description)
-        onlyOwner
         external
+        onlyOwner
     {
         uint len = bytes(_description).length;
         require(len <= 128);
@@ -56,8 +56,8 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
     }
 
     function setRegistryCreator(RegistryCreator _creator)
-        onlyOwner
         external
+        onlyOwner
     {
         creator_ = _creator;
     }

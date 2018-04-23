@@ -1,7 +1,7 @@
 pragma solidity ^0.4.19;
 
-import "zeppelin-solidity/contracts/payment/SplitPayment.sol";
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/payment/SplitPayment.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 contract SplitPaymentChangeable is SplitPayment, Ownable {
@@ -9,7 +9,7 @@ contract SplitPaymentChangeable is SplitPayment, Ownable {
     event PayeeAddressChanged(uint payeeIndex, address oldAddress, address newAddress);
 
     function SplitPaymentChangeable(address[] _payees, uint256[] _shares)
-        public
+        public 
         payable
         SplitPayment(_payees, _shares)
     { }

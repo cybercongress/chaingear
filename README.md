@@ -107,7 +107,7 @@ Your creating your registry in Chaingear - metaregistry, which are one point of 
 
   ###### depends on:
     - _Ownable_
-    - [_SplitPayment_](https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/payment/SplitPayment.sol)
+    - [_SplitPayment_](https://zeppelin-solidity/blob/master/contracts/payment/SplitPayment.sol)
 
 ### /registry
 - **_Chaingeareable_** holds basic logic of Registry as registry basic information, balance and fees amount. Contains getters and setters for registry name, desciption, tags, entry base address.
@@ -152,6 +152,8 @@ Registry Creation
   - \_permissionType by default is OnlyCreator
   - \_entryCreationFee by default is 0
 
+TODO create interface in chaingear to pause/unpause registry
+
 # Configuring and deploying
 
 ##### Deploy contract:
@@ -185,6 +187,35 @@ PS: to import to IDE open-zeppelin contacts follow this:
 ```
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 ```
+
+##### Truffle + Ganache workflow
+
+Install Ganache from [latest release](https://github.com/trufflesuite/ganache/releases), then =>
+
+```
+npm install -g ganache-cli
+```
+
+Configure development config in truffle.js and launch Ganache (configure them too if needed) and:
+```
+ganache-cli -p 7545 (in first tab)
+truffle migrate --network development --reset (in second tab)
+truffle console --network development (in second tab)
+```
+
+##### Create new registry
+```
+var chaingear = Chaingear.at(Chaingear.address)
+
+var beneficiaries = []
+var shares = []
+var buildingFee = 1000000
+var gas = 10000000
+
+chaingear.registerRegistry([], [], "BlockchainRegistry", "BLCHR", "", EntryCore.bytecode, {value: buildingFee, gas: 10000000})
+
+```
+
 
 # Join Us On Telegram
 

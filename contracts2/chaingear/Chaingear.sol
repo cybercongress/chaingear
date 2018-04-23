@@ -1,7 +1,8 @@
 pragma solidity ^0.4.19;
 
-import "zeppelin-solidity/contracts/math/SafeMath.sol";
-import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/math/SafeMath.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/AddressUtils.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "./ChaingearCore.sol";
 import "../registry/Registry.sol";
@@ -10,11 +11,7 @@ import "../registry/Registry.sol";
 contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 
     using SafeMath for uint256;
-
-    modifier onlyRegistryOwner(uint256 _registryID) {
-        require (ownerOf(_registryID) == msg.sender);
-        _;
-    }
+    using AddressUtils for address;
 
     function Chaingear(
         RegistryCreator _creator,
@@ -44,9 +41,9 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         string _linkToABIOfEntriesContract,
         bytes _bytecodeOfEntriesContract
     )
+        external
         payable
         whenNotPaused
-        external
         returns (address registryAddress, uint256 registryID)
     {
         require(msg.value == registryRegistrationFee_);
@@ -107,6 +104,10 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
          require (ERC721BasicToken.ownerOf(_registryID) == msg.sender);
          address registryAddress = registries[_registryID].contractAddress;
 
+         ChaingearRegistrable registryContract = ChaingearRegistrable(registryAddress);
+         require(registryContract.owner() == msg.sender);
+         require(registryContract.setChaingearMode(msg.sender, false) == false);
+
          string storage registryName = registries[_registryID].name;
          uint256 registryIndex = allTokensIndex[_registryID];
          uint256 lastRegistryIndex = registries.length.sub(1);
@@ -123,10 +124,11 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
      } */
 
      function updateRegistryOwnership(uint256 _registryID, address _newOwner)
-         whenNotPaused
-         onlyRegistryOwner(_registryID)
          external
+         whenNotPaused
      {
+         require (ownerOf(_registryID) == msg.sender);
+
          Registry(registries[_registryID].contractAddress).transferTokenizedOnwerhip(_newOwner);
          registries[_registryID].owner = _newOwner;
 
