@@ -23,6 +23,11 @@ contract RegistryBase {
         uint registryID
     );
 
+    // event RegistryUnregistered(
+    //     address owner,
+    //     string registryName
+    // );
+
     event RegistryTransferred(
          address caller,
          string registryName,

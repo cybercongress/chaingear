@@ -1,7 +1,8 @@
 pragma solidity ^0.4.19;
 
-import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
-import "zeppelin-solidity/contracts/math/SafeMath.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/math/SafeMath.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/AddressUtils.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "./Chaingeareable.sol";
 import "./EntryBase.sol";
@@ -10,6 +11,7 @@ import "../common/RegistrySafe.sol";
 contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
 
     using SafeMath for uint256;
+    using AddressUtils for address;
 
     function Registry(
         address[] _benefitiaries,
@@ -41,16 +43,15 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         entryBase_ = deployedAddress;
     }
 
-    function createEntry()
-        whenNotPaused
-        onlyPermissionedToEntries
-        payable
+    function createEntry(bytes _serializedParams)
         external
+        payable
+        onlyPermissionedToEntries
         returns (uint256)
     {
         require(msg.value == entryCreationFee_);
 
-        uint256 newEntryId = EntryBase(entryBase_).createEntry();
+        uint256 newEntryId = EntryBase(entryBase_).createEntry(_serializedParams);
         _mint(msg.sender, newEntryId);
 
         EntryCreated(msg.sender, newEntryId);
@@ -58,31 +59,34 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         return newEntryId;
     }
 
-
     function transferTokenizedOnwerhip(address _newOwner)
-        whenNotPaused
-        onlyOwner
         public
+        onlyOwner
     {
-        registryOwner_ = _newOwner;
+        creator_ = _newOwner;
     }
 
-     function deleteEntry(uint256 _entryId)
+     /* function deleteEntry(uint256 _entryId)
          whenNotPaused
          external
      {
          require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
 
          uint256 entryIndex = allTokensIndex[_entryId];
-         EntryBase(entryBase_).deleteEntry(entryIndex);
+         uint256 lastEntryIndex = entries.length.sub(1);
+         Entry storage lastEntry = entries[lastEntryIndex];
+
+         entries[entryIndex] = lastEntry;
+         delete entries[lastEntryIndex];
+         entries.length--;
+
          super._burn(msg.sender, _entryId);
 
          EntryDeleted(msg.sender, _entryId);
-     }
+     } */
 
 
      function transferEntryOwnership(uint _entryId, address _newOwner)
-         whenNotPaused
          public
      {
          require (ownerOf(_entryId) == msg.sender);
@@ -95,7 +99,6 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
      }
 
      function fundEntry(uint256 _entryId)
-         whenNotPaused
          payable
          public
      {
@@ -106,7 +109,6 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
      }
 
      function claimEntryFunds(uint256 _entryId, uint _amount)
-         whenNotPaused
          public
      {
          require(ownerOf(_entryId) == msg.sender);

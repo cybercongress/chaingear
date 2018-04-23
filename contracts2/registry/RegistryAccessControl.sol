@@ -1,28 +1,27 @@
 pragma solidity ^0.4.19;
 
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
-import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
-import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/lifecycle/Destructible.sol";
 
-contract RegistryAccessControl is Ownable, Pausable, Destructible {
+contract RegistryAccessControl is Ownable, Destructible {
 
-    address internal registryOwner_;
+    address internal creator_;
 
     PermissionTypeEntries internal permissionTypeEntries_;
 
     enum PermissionTypeEntries {OnlyCreator, Whitelist, AllUsers}
 
-    modifier onlyRegistryOwner() {
-        require(msg.sender == registryOwner_);
+    modifier onlyCreator() {
+        require(msg.sender == creator_);
         _;
     }
 
     modifier onlyPermissionedToEntries() {
         if (permissionTypeEntries_ == PermissionTypeEntries.OnlyCreator) {
-            require(msg.sender == registryOwner_);
+            require(msg.sender == creator_);
         }
         // if (permissionTypeEntries_ == PermissionTypeEntries.Whitelist) {
-        //     require(whitelist[msg.sender] || msg.sender == registryOwner_);
+        //     require(whitelist[msg.sender] || msg.sender == creator_);
         // }
         _;
     }
@@ -30,15 +29,15 @@ contract RegistryAccessControl is Ownable, Pausable, Destructible {
     function RegistryAccessControl()
         public
     {
-        registryOwner_ = tx.origin;
+        creator_ = tx.origin;
     }
 
-    function registryOwner()
+    function creator()
         public
         view
         returns (address)
     {
-        return registryOwner_;
+        return creator_;
     }
 
     function permissionsTypeEntries()
@@ -51,7 +50,7 @@ contract RegistryAccessControl is Ownable, Pausable, Destructible {
 
     function updatePermissionTypeEntries(uint _permissionTypeEntries)
         external
-        onlyRegistryOwner
+        onlyCreator
     {
         require(uint(PermissionTypeEntries.AllUsers) >= _permissionTypeEntries);
         permissionTypeEntries_ = PermissionTypeEntries(_permissionTypeEntries);
