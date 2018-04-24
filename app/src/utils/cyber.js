@@ -1,5 +1,3 @@
-import getWeb3 from './getWeb3.js';
-
 import ChaingearBuild from '../../../build/contracts/Chaingear.json'
 // './Chaingear.json'
 //'../../../smart-contracts/build/contracts/Chaingear.json'
@@ -7,6 +5,156 @@ import ChaingearBuild from '../../../build/contracts/Chaingear.json'
 // './Chaingear.json'
 
 //TODO: move in npm package
+
+import generateContractCode from './generateContractCode';
+
+import Web3 from 'web3'
+
+export const loadCompiler = (cb) => {
+  setTimeout(() => {
+      window.BrowserSolc.loadVersion("soljson-v0.4.18+commit.9cf6e910.js", cb);
+    }, 30);
+}
+
+const ChaingeareableSource = require('../Chaingeareable.sol');
+
+
+
+
+export const compileRegistry = (code, contractName, compiler) => {
+  return new Promise((resolve, reject) => {
+    const input = {
+      'Chaingeareable.sol': ChaingeareableSource,
+      [contractName]: 'pragma solidity ^0.4.18; ' + code,
+    };
+
+    setTimeout(() => {
+      var compiledContract = compiler.compile({sources : input }, 1);
+      if (compiledContract.errors && compiledContract.errors.length > 0) {
+        reject(compiledContract.errors[0]);
+        return;
+      }
+      var abi = compiledContract.contracts[contractName +":"+ contractName].interface;
+      var bytecode = '0x'+compiledContract.contracts[contractName +":"+ contractName].bytecode;
+
+      resolve({
+        abi,
+        bytecode
+      });
+    }, 20);
+  })
+}
+
+
+let getWeb3 = new Promise(function(resolve, reject) {
+  // Wait for loading completion to avoid race conditions with web3 injection timing.
+  window.addEventListener('load', function() {
+    var results
+    var web3 = window.web3
+
+    // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+    if (typeof web3 !== 'undefined') {
+      // Use Mist/MetaMask's provider.
+      web3 = new Web3(web3.currentProvider)
+
+      results = {
+        web3: web3
+      }
+
+      console.log('Injected web3 detected.');
+
+      resolve(results)
+    } else {
+      // Fallback to localhost if no web3 injection. We've configured this to
+      // use the development console's port by default.
+      var provider = new Web3.providers.HttpProvider('https://kovan.infura.io/eKZdJzgmRo31DJI94iSO')
+
+      web3 = new Web3(provider)
+
+      results = {
+        web3: web3
+      }
+
+      console.log('No web3 instance injected, using Local web3.');
+
+      resolve(results)
+    }
+  })
+})
+
+export const estimateNewRegistryGas = (bytecode) => {
+  return new Promise((resolve, reject) => {
+    getWeb3.then(({ web3 }) => {
+      web3.eth.estimateGas({data: bytecode }, (e, gasEstimate) => {
+        if (e) {
+          reject(e);
+        } else {
+          resolve({ web3, gasEstimate })
+        }
+      })
+    })  
+  })  
+}
+
+
+
+
+export const deployRegistry = (bytecode, abi, web3, opt) => {
+  const {
+    gasEstimate,
+    contractName,
+    permissionType,
+    entryCreationFee,
+    description,
+    tags
+  } = opt;
+
+  return new Promise((resolve, reject) => {
+
+      let Contract = web3.eth.contract(JSON.parse(abi));
+      const currentAccount = web3.eth.accounts[0];
+      var _benefitiaries = [currentAccount]; // ???
+      var _shares = [100];// ???
+      var _entryCreationFee = web3.toWei(entryCreationFee, 'ether');// ???
+
+      Contract.new(
+        _benefitiaries,
+        _shares,
+        [{ a: '0xa3564D084fabf13e69eca6F2949D3328BF6468Ef', count: 5 }],
+        permissionType,
+        _entryCreationFee,
+        contractName,
+        description,
+        tags,
+       {
+         from: currentAccount,
+         data:bytecode,
+         gas: gasEstimate
+       }, (err, myContract) => {
+        // console.log(' >> ', err, myContract);
+        if (err) {
+          reject(err);
+        } else {
+          if (myContract.address) {
+            resolve(myContract.address)
+            // this.setState({ status: 'save abi in ipfs...'})
+            // const buffer = Buffer.from(JSON.stringify(abi));
+            // cyber.ipfs.add(buffer, (err, ipfsHash) => {
+            //   const hash = ipfsHash[0].path;
+            //   this.setState({ status: 'register contract...'})
+            //   cyber.register(contractName, myContract.address, hash).then(() => {
+            //     this.setState({ status: '', inProgress: false })
+            //     browserHistory.push(`/`);
+            //   });
+            // })
+          }          
+        }
+       });
+
+
+  })
+}
+
 
 const getItems = (contract, count, array, mapFn) => {
   return new Promise(resolve => {
@@ -49,7 +197,7 @@ export const register = (name, adress, hash) => {
   })
 }
 
-export const getContracts = () => {
+export const getRegistry = () => {
   return getContract().then(( { contract, web3 }) => {  
     return getItems(contract, 'registriesAmount', 'registries', (items) => {
       return ({
@@ -107,10 +255,48 @@ export const getItems2 = (contract, count, array, mapFn) => {
   })
 }
 
+export const addRegistryItem = (contract, data) => {
+  return new Promise((resolve, reject) => {
+    const args = [...data];
+    contract.entryCreationFee.call((e, data) => {
+      args.push({
+        value: data
+      })
+
+      args.push(function(e, r){
+        if (e) {
+          reject(e)
+        } else {
+          resolve(r);
+        }
+      });
+      contract.createEntry.apply(contract, args);   
+    });
+  })
+}
+
+export { getWeb3, generateContractCode };
+
 const IPFS = require('ipfs-api');
 
 //require('ipfs-api/dist/index.min.js')
 //require('ipfs-api');
 
 export const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
+
+
+export const saveInIPFS = (jsonStr) => {
+  return new Promise((resolve, reject) => {
+    const buffer = Buffer.from(JSON.stringify(jsonStr));
+      ipfs.add(buffer, (err, ipfsHash) => {
+        if (err) {
+          reject(err);
+        } else {
+          const hash = ipfsHash[0].path;
+          resolve(hash)
+        }
+      })
+  })
+}
+
 
