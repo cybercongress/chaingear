@@ -3,16 +3,13 @@ const generateContractCode = (name, fields) => {
 
   const structBodyStr = fields.map(f => `${f.type} ${f.name};`).join('\n');
 
-      // PermissionType _permissionType,
-      // uint _entryCreationFee,
-      // string _name,
-      // string _description,
-      // string _tags
-
   const createArgsStr = fields.map(f => `${f.type} _${f.name}`).join(', ');
   const createItemStr = fields.map(f => `${f.name}: _${f.name}`).join(',\n');
   return `
-contract ${name} {
+
+import 'Chaingeareable.sol';
+
+contract ${name} is Chaingeareable {
   struct ${name}Item {
     ${structBodyStr}
 
@@ -20,31 +17,37 @@ contract ${name} {
     uint lastUpdateTime;
   }
 
-  enum PermissionType {OnlyOwner, AllUsers, Whitelist}
-
   ${name}Item[] public entries;
   event EntryCreated(address owner, uint entryId);
   event EntryDeleted(uint entryId);
+
+  struct Tokens {
+    address a;
+    uint count;
+  }
 
 
   function ${name}(
       address[] _benefitiaries,
       uint256[] _shares,
+      Tokens[] tokens,
       PermissionType _permissionType,
       uint _entryCreationFee,
       string _name,
       string _description,
       string _tags
-  ) public {
+  ) Chaingeareable(_benefitiaries, _shares, _permissionType, _entryCreationFee, _name, _description, _tags) public {
 
   }
 
-  function createEntry(${createArgsStr}) external {
-
+  function createEntry(${createArgsStr}) external payable {
+        require(msg.sender == owner || msg.value == entryCreationFee);
+        require(msg.sender == owner || permissionType == PermissionType.AllUsers);
+        
         entries.push(${name}Item(
         {
             owner: msg.sender,
-            lastUpdateTime: now,
+            lastUpdateTime: now ${fields.length > 0 ? ',' : ''}
             ${createItemStr}
         }));
     
