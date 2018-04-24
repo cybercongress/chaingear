@@ -1,0 +1,64 @@
+pragma solidity ^0.4.19;
+
+import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
+import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "../common/IPFSeable.sol";
+import "./RegistryCreator.sol";
+import "./RegistryBase.sol";
+
+
+contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
+
+    string internal chaingearDescription_;
+    uint internal registryRegistrationFee_;
+
+    RegistryCreator internal creator_;
+
+    function registryRegistrationFee()
+        public
+        view
+        returns (uint)
+    {
+        return registryRegistrationFee_;
+    }
+
+    function updateRegistrationFee(uint _newFee)
+        onlyOwner
+        external
+    {
+        registryRegistrationFee_ = _newFee;
+    }
+
+    function chaingearDescription()
+        public
+        view
+        returns (string)
+    {
+        return chaingearDescription_;
+    }
+
+    function updateDescription(string _description)
+        onlyOwner
+        external
+    {
+        uint len = bytes(_description).length;
+        require(len <= 128);
+
+        chaingearDescription_ = _description;
+    }
+
+    function registryCreator()
+        public
+        view
+        returns (address)
+    {
+        return creator_;
+    }
+
+    function setRegistryCreator(RegistryCreator _creator)
+        onlyOwner
+        external
+    {
+        creator_ = _creator;
+    }
+}

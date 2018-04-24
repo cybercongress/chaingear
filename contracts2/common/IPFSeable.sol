@@ -1,6 +1,6 @@
 pragma solidity ^0.4.19;
 
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "http://github.com/OpenZeppelin/zeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 contract IPFSeable is Ownable {

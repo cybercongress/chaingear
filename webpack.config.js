@@ -51,7 +51,12 @@ module.exports = function (options = {}) {
       './config.js': "env"
     },
       module: {
-      rules: [{
+      rules: [
+{
+        test: /\.sol$/,
+        use: 'raw-loader'
+      },
+      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         // loader: "ts-loader"

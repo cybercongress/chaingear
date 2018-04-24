@@ -18,6 +18,7 @@
     "@vx/scale": "0.0.143",
     "@vx/shape": "0.0.147",
     "@vx/tooltip": "0.0.148",
+    "argparse": "1.0.10",
     "axios": "0.16.2",
     "babel-polyfill": "6.26.0",
     "boom": "7.2.0",
@@ -25,6 +26,8 @@
     "classnames": "2.2.5",
     "copy-webpack-plugin": "4.2.3",
     "cyber-search-js": "0.1.1",
+    "ethereumjs-abi": "^0.6.5",
+    "ethjs-unit": "0.1.6",
     "ipfs": "0.27.7",
     "ipfs-api": "18.2.1",
     "json-loader": "0.5.7",
@@ -34,6 +37,7 @@
     "material-ui-icons": "1.0.0-beta.17",
     "moment": "2.21.0",
     "normalizr": "3.2.3",
+    "npm": "^5.8.0",
     "numeral": "2.0.6",
     "orbit-db": "0.19.5",
     "react": "15.6.1",
@@ -50,7 +54,14 @@
     "redux-observable": "0.16.0",
     "redux-thunk": "2.2.0",
     "rxjs": "5.4.3",
-    "socket.io-client": "2.0.4"
+    "semver": "5.5.0",
+    "socket.io-client": "2.0.4",
+    "solc": "^0.4.20",
+    "solidify": "3.0.0",
+    "solidity-parser": "0.4.0",
+    "truffle-hdwallet-provider": "0.0.3",
+    "web3-utils": "^1.0.0-beta.34",
+    "web3": "1.0.0-beta.33"
   },
   "devDependencies": {
     "@types/history": "3.2.2",
@@ -76,6 +87,7 @@
     "less-loader": "4.0.5",
     "node-sass": "4.5.3",
     "postcss-loader": "2.0.6",
+    "raw-loader": "0.5.1",
     "sass-loader": "6.0.6",
     "solium": "1.0.11",
     "style-loader": "0.18.2",
@@ -85,11 +97,10 @@
     "typescript": "2.5.2",
     "uglifyjs-webpack-plugin": "1.2.2",
     "url-loader": "0.5.9",
-    "web3": "0.15.3",
     "webpack": "3.6.0",
     "webpack-dev-server": "2.8.2",
     "websocket": "1.0.25",
-    "zeppelin-solidity": "1.4.0"
+    "zeppelin-solidity": "^1.8.0"
   },
   "scripts": {
     "prestart": "yarn install",
@@ -102,5 +113,8 @@
   },
   "homepage": "https://github.com/cyberFund/cyberchaingear",
   "keywords": [],
-  "license": "MIT"
+  "license": "MIT",
+  "directories": {
+    "test": "test"
+  }
 }
