@@ -6,16 +6,15 @@ import App from "./containers/app/";
 import HomePage from './containers/home/';
 import NewRegister from './containers/new';
 import RegisterPage from './containers/register/';
-import Test from './containers/test/';
-
+import { Test } from './containers/test/';
 
 export function Root() {
   return (
     <Router  history={browserHistory}>
       <Route component={App} >
       <Route path={"/"} component={HomePage}/>
-      <Route path={"/test"} component={Test}/>
       <Route path={"/new"} component={NewRegister}/>
+      <Route path={"/test"} component={Test}/>
       <Route path={"/registers/:adress"} component={RegisterPage}/>
 
       </Route>

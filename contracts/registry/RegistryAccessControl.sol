@@ -2,26 +2,27 @@ pragma solidity ^0.4.19;
 
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
+import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 
-contract RegistryAccessControl is Ownable, Destructible {
+contract RegistryAccessControl is Ownable, Pausable, Destructible {
 
-    address internal creator_;
+    address internal registryOwner_;
 
     PermissionTypeEntries internal permissionTypeEntries_;
 
     enum PermissionTypeEntries {OnlyCreator, Whitelist, AllUsers}
 
-    modifier onlyCreator() {
-        require(msg.sender == creator_);
+    modifier onlyRegistryOwner() {
+        require(msg.sender == registryOwner_);
         _;
     }
 
     modifier onlyPermissionedToEntries() {
         if (permissionTypeEntries_ == PermissionTypeEntries.OnlyCreator) {
-            require(msg.sender == creator_);
+            require(msg.sender == registryOwner_);
         }
         // if (permissionTypeEntries_ == PermissionTypeEntries.Whitelist) {
-        //     require(whitelist[msg.sender] || msg.sender == creator_);
+        //     require(whitelist[msg.sender] || msg.sender == registryOwner_);
         // }
         _;
     }
@@ -29,15 +30,15 @@ contract RegistryAccessControl is Ownable, Destructible {
     function RegistryAccessControl()
         public
     {
-        creator_ = tx.origin;
+        registryOwner_ = tx.origin;
     }
 
-    function creator()
+    function registryOwner()
         public
         view
         returns (address)
     {
-        return creator_;
+        return registryOwner_;
     }
 
     function permissionsTypeEntries()
@@ -50,7 +51,7 @@ contract RegistryAccessControl is Ownable, Destructible {
 
     function updatePermissionTypeEntries(uint _permissionTypeEntries)
         external
-        onlyCreator
+        onlyRegistryOwner
     {
         require(uint(PermissionTypeEntries.AllUsers) >= _permissionTypeEntries);
         permissionTypeEntries_ = PermissionTypeEntries(_permissionTypeEntries);

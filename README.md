@@ -59,7 +59,7 @@ Your creating your registry in Chaingear - metaregistry, which are one point of 
 
 # Contracts Overview
 
-##### /chaingear
+### /chaingear
 - **_Chaingear_** allows any user to create his own registry. Building fee is collecting by new registry creation. All builded registries are tokenized with ERC721 NFT token standard and saved in Chaingear metaregistry with registry metainformation. Creator of registry may transfer tokenized ownership of registry and destroy registry with token burning. Chaingear supports multiple benefitiaries witch have access to collected fees.
 
   ###### depends on:
@@ -87,7 +87,7 @@ Your creating your registry in Chaingear - metaregistry, which are one point of 
     - _Registry_
     - _Ownable_
 
-##### /common
+### /common
 - [Seriality](https://github.com/pouladzade/Seriality) is a library for serializing and de-serializing all the Solidity types in a very efficient way which mostly written in solidity-assembly.
 
 - **_IPFSeable_** contains logic which allows view and save links to CID in IPFS with ABI, source code and contract metainformation. Inherited by Chaingear and Registry.
@@ -107,9 +107,9 @@ Your creating your registry in Chaingear - metaregistry, which are one point of 
 
   ###### depends on:
     - _Ownable_
-    - [_SplitPayment_](https://github.com/OpenZeppelin/zeppelin-solidity/blob/master/contracts/payment/SplitPayment.sol)
+    - [_SplitPayment_](https://zeppelin-solidity/blob/master/contracts/payment/SplitPayment.sol)
 
-##### /registry
+### /registry
 - **_Chaingeareable_** holds basic logic of Registry as registry basic information, balance and fees amount. Contains getters and setters for registry name, desciption, tags, entry base address.
 
   ###### depends on:
@@ -144,6 +144,16 @@ Your creating your registry in Chaingear - metaregistry, which are one point of 
 
 # FAQ
 
+draft
+
+Registry Creation
+  - description should be setted on after creation
+  - beneficiaries should be setted on after creation
+  - \_permissionType by default is OnlyCreator
+  - \_entryCreationFee by default is 0
+
+TODO create interface in chaingear to pause/unpause registry
+
 # Configuring and deploying
 
 ##### Deploy contract:
@@ -177,6 +187,35 @@ PS: to import to IDE open-zeppelin contacts follow this:
 ```
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 ```
+
+##### Truffle + Ganache workflow
+
+Install Ganache from [latest release](https://github.com/trufflesuite/ganache/releases), then =>
+
+```
+npm install -g ganache-cli
+```
+
+Configure development config in truffle.js and launch Ganache (configure them too if needed) and:
+```
+ganache-cli -p 7545 (in first tab)
+truffle migrate --network development --reset (in second tab)
+truffle console --network development (in second tab)
+```
+
+##### Create new registry
+```
+var chaingear = Chaingear.at(Chaingear.address)
+
+var beneficiaries = []
+var shares = []
+var buildingFee = 1000000
+var gas = 10000000
+
+chaingear.registerRegistry([], [], "BlockchainRegistry", "BLCHR", "", EntryCore.bytecode, {value: buildingFee, gas: 10000000})
+
+```
+
 
 # Join Us On Telegram
 

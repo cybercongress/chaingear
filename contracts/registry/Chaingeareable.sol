@@ -1,29 +1,30 @@
 pragma solidity ^0.4.19;
 
-import "../common/IPFSeable.sol";
+/* import "../common/IPFSeable.sol"; */
 import "./RegistryAccessControl.sol";
 // import "../common/RegistrySafe.sol";
 
 
-contract Chaingeareable is IPFSeable, RegistryAccessControl {
+contract Chaingeareable is RegistryAccessControl {
 
     uint internal entryCreationFee_;
     string internal registryName_;
     string internal registryDescription_;
     bytes32[] internal registryTags_;
     address internal entryBase_;
+    string internal linkToABIOfEntriesContract_;
 
-    // address internal registrySafe_;
+    address internal registrySafe_;
 
     event EntryCreated(
         address creator,
         uint entryId
     );
 
-    event EntryUpdated(
+    /* event EntryUpdated(
         address owner,
         uint entryId
-    );
+    ); */
 
     event EntryChangedOwner(
         uint entryId,
@@ -35,12 +36,31 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
         uint entryId
     );
 
+    event EntryFunded(
+        uint entryId,
+        address funder
+    );
+
+    event EntryFundsClaimed(
+        uint entryId,
+        address owner,
+        uint amount
+    );
+
     function entryBase()
         public
         view
         returns (address)
     {
         return entryBase_;
+    }
+
+    function ABIOfEntriesContract()
+        public
+        view
+        returns (string)
+    {
+        return linkToABIOfEntriesContract_;
     }
 
     function registryBalance()
@@ -85,14 +105,14 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
 
     function updateEntryCreationFee(uint _fee)
         external
-        onlyCreator
+        onlyRegistryOwner
     {
         entryCreationFee_ = _fee;
     }
 
     function updateRegistryName(string _registryName)
         external
-        onlyCreator
+        onlyRegistryOwner
     {
         uint len = bytes(_registryName).length;
         require(len > 0 && len <= 32);
@@ -102,7 +122,7 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
 
     function updateRegistryDescription(string _registryDescription)
         external
-        onlyCreator
+        onlyRegistryOwner
     {
         uint len = bytes(_registryDescription).length;
         require(len <= 256);
@@ -112,7 +132,7 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
 
     function addRegistryTag(bytes32 _tag)
         external
-        onlyCreator
+        onlyRegistryOwner
     {
         require(_tag.length <= 16);
 
@@ -121,7 +141,7 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
 
     function updateRegistryTag(uint256 _index, bytes32 _tag)
         external
-        onlyCreator
+        onlyRegistryOwner
     {
         require(_tag.length <= 16);
 
@@ -130,7 +150,7 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
 
     function removeRegistryTag(uint256 _index, bytes32 _tag)
         external
-        onlyCreator
+        onlyRegistryOwner
     {
         require(_tag.length <= 16);
 
@@ -142,12 +162,12 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
         registryTags_.length--;
     }
 
-    // function registrySafe()
-    //     public
-    //     view
-    //     returns (address)
-    // {
-    //     return registrySafe_;
-    // }
+    function registrySafe()
+        public
+        view
+        returns (address)
+    {
+        return registrySafe_;
+    }
 
 }

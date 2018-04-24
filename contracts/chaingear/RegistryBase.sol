@@ -25,6 +25,8 @@ contract RegistryBase {
         string linkABI;
         uint registrationTimestamp;
         address owner;
+        uint currentRegistryBalanceETH;
+        uint accumulatedRegistryETH;
     }
 
     /// @dev creation an internal data structure
@@ -44,16 +46,12 @@ contract RegistryBase {
         uint registryID
     );
 
-    // event RegistryUnregistered(
-    //     address owner,
-    //     string registryName
-    // );
-
-    // event RegistryTransferred(
-    //     address caller,
-    //     string registryName,
-    //     address newOwner
-    // );
+    event RegistryTransferred(
+         address caller,
+         string registryName,
+         uint256 registyID,
+         address newOwner
+    );
 
     /**
     /// @dev Registry' name getter
@@ -133,14 +131,6 @@ contract RegistryBase {
         return registries[_registryID].owner;
     }
 
-    // function versionOf(uint256 _registryID)
-    //     public
-    //     view
-    //     returns (bytes32)
-    // {
-    //     return registries[_registryID].chaingeareableVersion;
-    // }
-
     /**
     * @dev Registy' metainfo getter
     * @param Registry ID
@@ -163,20 +153,36 @@ contract RegistryBase {
             registryDateOf(_registryID),
             ABILinkOf(_registryID),
             registryOwnerOf(_registryID)
-            // versionOf(_registryID)
         );
     }
 
-    // function registryBalanceInfo(uint256 _registryID)
-    //     public
-    //     view
-    //     returns (uint, uint)
-    // {
-    //     return (
-    //         currentRegistryBalanceETHOf(_registryID),
-    //         accumulatedRegistryETHOf(_registryID)
-    //     );
-    // }
+     function currentRegistryBalanceETHOf(uint256 _registryID)
+         public
+         view
+         returns (uint)
+     {
+         return registries[_registryID].currentRegistryBalanceETH;
+     }
+
+     function accumulatedRegistryETHOf(uint256 _registryID)
+         public
+         view
+         returns (uint)
+     {
+         return registries[_registryID].accumulatedRegistryETH;
+     }
+
+
+    function registryBalanceInfo(uint256 _registryID)
+        public
+        view
+        returns (uint, uint)
+    {
+        return (
+            currentRegistryBalanceETHOf(_registryID),
+            accumulatedRegistryETHOf(_registryID)
+        );
+    }
 
     /**
     * @dev Registies amount getter
