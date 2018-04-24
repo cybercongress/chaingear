@@ -21,10 +21,16 @@ contract ${name} is Chaingeareable {
   event EntryCreated(address owner, uint entryId);
   event EntryDeleted(uint entryId);
 
+  struct Tokens {
+    address a;
+    uint count;
+  }
+
 
   function ${name}(
       address[] _benefitiaries,
       uint256[] _shares,
+      Tokens[] tokens,
       PermissionType _permissionType,
       uint _entryCreationFee,
       string _name,
@@ -41,7 +47,7 @@ contract ${name} is Chaingeareable {
         entries.push(${name}Item(
         {
             owner: msg.sender,
-            lastUpdateTime: now,
+            lastUpdateTime: now ${fields.length > 0 ? ',' : ''}
             ${createItemStr}
         }));
     
