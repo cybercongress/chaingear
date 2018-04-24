@@ -14,7 +14,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-      cyber.getContracts().then(registries => {
+      cyber.getRegistry().then(registries => {
         this.setState({
         registries
       })

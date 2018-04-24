@@ -23,8 +23,8 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
     }
 
     function updateRegistrationFee(uint _newFee)
-        external
         onlyOwner
+        external
     {
         registryRegistrationFee_ = _newFee;
     }
@@ -38,8 +38,8 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
     }
 
     function updateDescription(string _description)
-        external
         onlyOwner
+        external
     {
         uint len = bytes(_description).length;
         require(len <= 128);
@@ -56,8 +56,8 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
     }
 
     function setRegistryCreator(RegistryCreator _creator)
-        external
         onlyOwner
+        external
     {
         creator_ = _creator;
     }

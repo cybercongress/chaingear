@@ -2,40 +2,32 @@ pragma solidity ^0.4.19;
 
 import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
-import "zeppelin-solidity/contracts/AddressUtils.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "./Chaingeareable.sol";
 import "./EntryBase.sol";
-// import "../common/RegistrySafe.sol";
+import "../common/RegistrySafe.sol";
 
-/* contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable { */
-contract Registry is Chaingeareable, ERC721Token {
+contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
 
     using SafeMath for uint256;
-    using AddressUtils for address;
 
     function Registry(
-        /* address[] _benefitiaries, */
-        /* uint256[] _shares, */
-        /* PermissionTypeEntries _permissionType, */
-        uint _entryCreationFee,
+        address[] _benefitiaries,
+        uint256[] _shares,
         string _name,
         string _symbol,
-        /* string _description, */
-        // string _linkToABIOfEntriesContract,
+        string _linkToABIOfEntriesContract,
         bytes _bytecodeOfEntriesContract
     )
-        /* SplitPaymentChangeable(_benefitiaries, _shares) */
+        SplitPaymentChangeable(_benefitiaries, _shares)
         ERC721Token(_name, _symbol)
         public
         payable
     {
-        /* permissionTypeEntries_ = _permissionType; */
-        // linkABI_ = _linkABI;
-        entryCreationFee_ = _entryCreationFee;
+        permissionTypeEntries_ = PermissionTypeEntries.OnlyCreator;
         registryName_ = _name;
-        /* registryDescription_ = _description; */
-        // registrySafe_ = new RegistrySafe();
+        linkToABIOfEntriesContract_ = _linkToABIOfEntriesContract;
+        registrySafe_ = new RegistrySafe();
 
         address deployedAddress;
         assembly {
@@ -49,33 +41,16 @@ contract Registry is Chaingeareable, ERC721Token {
         entryBase_ = deployedAddress;
     }
 
-    function createEntry(bytes _serializedParams)
-        external
-        payable
+    function createEntry()
+        whenNotPaused
         onlyPermissionedToEntries
+        payable
+        external
         returns (uint256)
     {
         require(msg.value == entryCreationFee_);
-        // EntryMeta memory meta = (EntryMeta(
-        // {
-        //     lastUpdateTime: block.timestamp,
-        //     createdAt: block.timestamp,
-        //     owner: msg.sender,
-        //     creator: msg.sender,
-        //     currentEntryBalanceETH: 0,
-        //     accumulatedOverallEntryETH: 0
-        // }));
-        // Entry memory entry = (Entry(
-        // {
-        //     expensiveAddress: _expensiveAddress,
-        //     expensiveUint: _expensiveUint,
-        //     expensiveInt: _expensiveInt,
-        //     expensiveString: _expensiveString,
-        //     metainformation: meta
-        // }));
 
-        // uint256 newEntryId = entries.push(entry) - 1;
-        uint256 newEntryId = EntryBase(entryBase_).createEntry(_serializedParams);
+        uint256 newEntryId = EntryBase(entryBase_).createEntry();
         _mint(msg.sender, newEntryId);
 
         EntryCreated(msg.sender, newEntryId);
@@ -83,62 +58,62 @@ contract Registry is Chaingeareable, ERC721Token {
         return newEntryId;
     }
 
-    // function deleteEntry(uint256 _entryId)
-    //     whenNotPaused
-    //     external
-    // {
-    //     require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
 
-    //     uint256 entryIndex = allTokensIndex[_entryId];
-    //     uint256 lastEntryIndex = entries.length.sub(1);
-    //     Entry storage lastEntry = entries[lastEntryIndex];
+    function transferTokenizedOnwerhip(address _newOwner)
+        whenNotPaused
+        onlyOwner
+        public
+    {
+        registryOwner_ = _newOwner;
+    }
 
-    //     entries[entryIndex] = lastEntry;
-    //     delete entries[lastEntryIndex];
-    //     entries.length--;
+     function deleteEntry(uint256 _entryId)
+         whenNotPaused
+         external
+     {
+         require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
 
-    //     super._burn(msg.sender, _entryId);
+         uint256 entryIndex = allTokensIndex[_entryId];
+         EntryBase(entryBase_).deleteEntry(entryIndex);
+         super._burn(msg.sender, _entryId);
 
-    //     EntryDeleted(msg.sender, _entryId);
-    // }
+         EntryDeleted(msg.sender, _entryId);
+     }
 
 
-    // function transferEntryOwnership(uint _entryId, address _newOwner)
-    //     whenNotPaused
-    //     external
-    // {
-    //     require (ERC721BasicToken.ownerOf(_entryId) == msg.sender);
-    //     // throw if balance?
-    //     //locked balance?
-    //     entries[_entryId].metainformation.owner = _newOwner;
-    //     entries[_entryId].metainformation.lastUpdateTime = block.timestamp;
+     function transferEntryOwnership(uint _entryId, address _newOwner)
+         whenNotPaused
+         public
+     {
+         require (ownerOf(_entryId) == msg.sender);
+         EntryBase(entryBase_).updateEntryOwnership(_entryId, _newOwner);
 
-    //     super.removeTokenFrom(msg.sender, _entryId);
-    //     super.addTokenTo(_newOwner, _entryId);
+         super.removeTokenFrom(msg.sender, _entryId);
+         super.addTokenTo(_newOwner, _entryId);
 
-    //     EntryChangedOwner(_entryId, _newOwner);
-    // }
+         EntryChangedOwner(_entryId, _newOwner);
+     }
 
-    // function fundEntry(uint256 _entryId)
-    //     whenNotPaused
-    //     payable
-    //     public
-    // {
-    //     entries[_entryId].metainformation.accumulatedOverallEntryETH.add(msg.value);
-    //     registrySafe_.transfer(msg.value);
+     function fundEntry(uint256 _entryId)
+         whenNotPaused
+         payable
+         public
+     {
+         EntryBase(entryBase_).updateEntryFund(_entryId, msg.value);
+         registrySafe_.transfer(msg.value);
 
-    //     EntryFunded(_entryId, msg.sender);
-    // }
+         EntryFunded(_entryId, msg.sender);
+     }
 
-    // function claimEntryFunds(uint256 _entryId, uint _amount)
-    //     whenNotPaused
-    //     public
-    // {
-    //     require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
-    //     require(_amount <= entries[_entryId].metainformation.currentEntryBalanceETH);
-    //     entries[_entryId].metainformation.currentEntryBalanceETH.sub(_amount);
-    //     RegistrySafe(registrySafe_).claim(msg.sender, _amount);
+     function claimEntryFunds(uint256 _entryId, uint _amount)
+         whenNotPaused
+         public
+     {
+         require(ownerOf(_entryId) == msg.sender);
+         require(_amount <= EntryBase(entryBase_).currentEntryBalanceETHOf(_entryId));
+         EntryBase(entryBase_).claimEntryFund(_entryId, _amount);
+         RegistrySafe(registrySafe_).claim(msg.sender, _amount);
 
-    //     EntryFundsClaimed(_entryId, msg.sender, _amount);
-    // }
+         EntryFundsClaimed(_entryId, msg.sender, _amount);
+     }
 }
