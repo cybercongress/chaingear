@@ -1,4 +1,4 @@
-pragma solidity ^0.4.19;
+pragma solidity 0.4.19;
 
 import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
@@ -6,6 +6,7 @@ import "../common/SplitPaymentChangeable.sol";
 import "./Chaingeareable.sol";
 import "./EntryBase.sol";
 import "../common/RegistrySafe.sol";
+
 
 contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
 
@@ -31,9 +32,9 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
 
         address deployedAddress;
         assembly {
-          let s := mload(_bytecodeOfEntriesContract)
-          let p := add(_bytecodeOfEntriesContract, 0x20)
-          deployedAddress := create(0, p, s)
+            let s := mload(_bytecodeOfEntriesContract)
+            let p := add(_bytecodeOfEntriesContract, 0x20)
+            deployedAddress := create(0, p, s)
         }
 
         assert(deployedAddress != 0x0);
@@ -42,10 +43,10 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
     }
 
     function createEntry()
+        external
         whenNotPaused
         onlyPermissionedToEntries
         payable
-        external
         returns (uint256)
     {
         require(msg.value == entryCreationFee_);
@@ -58,62 +59,68 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         return newEntryId;
     }
 
-
     function transferTokenizedOnwerhip(address _newOwner)
+        public
         whenNotPaused
         onlyOwner
-        public
     {
         registryOwner_ = _newOwner;
     }
 
-     function deleteEntry(uint256 _entryId)
-         whenNotPaused
-         external
-     {
-         require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
+    function deleteEntry(uint256 _entryId)
+        external
+        whenNotPaused
+    {
+        require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
 
-         uint256 entryIndex = allTokensIndex[_entryId];
-         EntryBase(entryBase_).deleteEntry(entryIndex);
-         super._burn(msg.sender, _entryId);
+        uint256 entryIndex = allTokensIndex[_entryId];
+        EntryBase(entryBase_).deleteEntry(entryIndex);
+        super._burn(msg.sender, _entryId);
 
-         EntryDeleted(msg.sender, _entryId);
-     }
+        EntryDeleted(msg.sender, _entryId);
+    }
 
+    function transferEntryOwnership(uint _entryId, address _newOwner)
+        public
+        whenNotPaused
+    {
+        require (ownerOf(_entryId) == msg.sender);
+        EntryBase(entryBase_).updateEntryOwnership(_entryId, _newOwner);
 
-     function transferEntryOwnership(uint _entryId, address _newOwner)
-         whenNotPaused
-         public
-     {
-         require (ownerOf(_entryId) == msg.sender);
-         EntryBase(entryBase_).updateEntryOwnership(_entryId, _newOwner);
+        super.removeTokenFrom(msg.sender, _entryId);
+        super.addTokenTo(_newOwner, _entryId);
 
-         super.removeTokenFrom(msg.sender, _entryId);
-         super.addTokenTo(_newOwner, _entryId);
+        EntryChangedOwner(_entryId, _newOwner);
+    }
 
-         EntryChangedOwner(_entryId, _newOwner);
-     }
+    function fundEntry(uint256 _entryId)
+        public
+        whenNotPaused
+        payable
+    {
+        EntryBase(entryBase_).updateEntryFund(_entryId, msg.value);
+        registrySafe_.transfer(msg.value);
 
-     function fundEntry(uint256 _entryId)
-         whenNotPaused
-         payable
-         public
-     {
-         EntryBase(entryBase_).updateEntryFund(_entryId, msg.value);
-         registrySafe_.transfer(msg.value);
+        EntryFunded(_entryId, msg.sender);
+    }
 
-         EntryFunded(_entryId, msg.sender);
-     }
+    function claimEntryFunds(uint256 _entryId, uint _amount)
+        public
+        whenNotPaused
+    {
+        require(ownerOf(_entryId) == msg.sender);
+        require(_amount <= EntryBase(entryBase_).currentEntryBalanceETHOf(_entryId));
+        EntryBase(entryBase_).claimEntryFund(_entryId, _amount);
+        RegistrySafe(registrySafe_).claim(msg.sender, _amount);
 
-     function claimEntryFunds(uint256 _entryId, uint _amount)
-         whenNotPaused
-         public
-     {
-         require(ownerOf(_entryId) == msg.sender);
-         require(_amount <= EntryBase(entryBase_).currentEntryBalanceETHOf(_entryId));
-         EntryBase(entryBase_).claimEntryFund(_entryId, _amount);
-         RegistrySafe(registrySafe_).claim(msg.sender, _amount);
-
-         EntryFundsClaimed(_entryId, msg.sender, _amount);
-     }
+        EntryFundsClaimed(_entryId, msg.sender, _amount);
+    }
+    
+    function safeBalance()
+        public
+        view
+        returns (uint balance)
+    {
+        return RegistrySafe(registrySafe_).balance;
+    }
 }

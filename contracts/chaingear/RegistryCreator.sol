@@ -1,16 +1,32 @@
-pragma solidity ^0.4.19;
+pragma solidity 0.4.19;
 
 import "../registry/Registry.sol";
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
+
 contract RegistryCreator is Ownable {
 
+	/*
+	*  Srorage
+	*/
+
     address internal builder_;
+
+	/*
+	*  Constructor
+	*/
 
     function RegistryCreator(address _builder)
         public
     {
         builder_ = _builder;
+    }
+
+	/*
+	*  External Functions
+	*/
+    
+    function() external {
     }
 
     function create(
@@ -38,6 +54,17 @@ contract RegistryCreator is Ownable {
         return newRegistryContract;
     }
 
+    function setBuilder(address _builder)
+        external
+        onlyOwner
+    {
+        builder_ = _builder;
+    }
+
+	/*
+	*  Internal Functions
+	*/
+
     function createRegistry(
         address[] _benefitiaries,
         uint256[] _shares,
@@ -62,12 +89,9 @@ contract RegistryCreator is Ownable {
         return registryContract;
     }
 
-    function setBuilder(address _builder)
-        external
-        onlyOwner
-    {
-        builder_ = _builder;
-    }
+	/*
+	*  View Functions
+	*/
 
     function registryBuilder()
         public

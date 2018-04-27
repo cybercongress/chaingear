@@ -1,4 +1,4 @@
-pragma solidity ^0.4.19;
+pragma solidity 0.4.19;
 
 import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
@@ -9,25 +9,57 @@ import "./RegistryBase.sol";
 
 contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
 
+	/*
+	*  Storage
+	*/
+    
+    // @dev Short Chaingear description, less than 128 symbols
     string internal chaingearDescription_;
+    
+    // @dev 
     uint internal registryRegistrationFee_;
-
+    
+    // @dev
     RegistryCreator internal creator_;
 
-    function registryRegistrationFee()
-        public
-        view
-        returns (uint)
-    {
-        return registryRegistrationFee_;
-    }
+	/*
+	*  External Functions
+	*/
 
-    function updateRegistrationFee(uint _newFee)
-        onlyOwner
+    
+    function updateRegistrationFee(
+        uint _newFee
+    )
         external
+        onlyOwner
     {
         registryRegistrationFee_ = _newFee;
     }
+
+    function updateDescription(
+        string _description
+    )
+        external
+        onlyOwner
+    {
+        uint len = bytes(_description).length;
+        require(len <= 128);
+
+        chaingearDescription_ = _description;
+    }
+
+    function setRegistryCreator(
+        RegistryCreator _creator
+    )
+        external
+        onlyOwner
+    {
+        creator_ = _creator;
+    }
+
+	/*
+	*  View Functions
+	*/
 
     function chaingearDescription()
         public
@@ -37,14 +69,12 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
         return chaingearDescription_;
     }
 
-    function updateDescription(string _description)
-        onlyOwner
-        external
+    function registryRegistrationFee()
+        public
+        view
+        returns (uint)
     {
-        uint len = bytes(_description).length;
-        require(len <= 128);
-
-        chaingearDescription_ = _description;
+        return registryRegistrationFee_;
     }
 
     function registryCreator()
@@ -54,11 +84,5 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
     {
         return creator_;
     }
-
-    function setRegistryCreator(RegistryCreator _creator)
-        onlyOwner
-        external
-    {
-        creator_ = _creator;
-    }
+    
 }
