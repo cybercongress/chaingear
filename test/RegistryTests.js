@@ -11,7 +11,7 @@ const EntryCoreArtifacts = require("../build/contracts/EntryCore.json")
 contract("Registry", (accounts) => {
 
     const PermissionTypeEntries = {
-        OnlyCreator: 0,
+        OnlyAdmin: 0,
         Whitelist: 1,
         AllUsers: 2
     }
@@ -39,14 +39,17 @@ contract("Registry", (accounts) => {
             REGISTRY_SYMBOL,
             IPFS_HASH_1,
             EntryCoreArtifacts.bytecode,
-            { from: REGISTRY_OWNER, gas: CREATION_GAS }
+            { 
+                from: REGISTRY_OWNER,
+                gas: CREATION_GAS 
+            }
         )
     })
 
 
     it("#1 should allow owner to add empty new entry", async () => {
         
-        const entryContractAddress = await registry.entryBase()
+        const entryContractAddress = await registry.EntryBasic()
         const entries = EntryCore.at(entryContractAddress)
         const count1 = new BigNumber(await entries.entriesAmount())
         
@@ -106,7 +109,7 @@ contract("Registry", (accounts) => {
     })
 
     it("#4 should allow entry owner to delete entry", async () => {
-        const entryContractAddress = await registry.entryBase()
+        const entryContractAddress = await registry.EntryBasic()
         const entries = EntryCore.at(entryContractAddress)
         const count1 = new BigNumber(await entries.entriesAmount())
         await registry.deleteEntry(
@@ -120,7 +123,7 @@ contract("Registry", (accounts) => {
     })
     
     it("#5 should not allow unknown to delete entry", async () => {
-        const entryContractAddress = await registry.entryBase()
+        const entryContractAddress = await registry.EntryBasic()
         const entries = EntryCore.at(entryContractAddress)
         const count1 = new BigNumber(await entries.entriesAmount())
         
@@ -166,7 +169,7 @@ contract("Registry", (accounts) => {
     it("#8 should allow registry owner to set permission type", async () => {
         
         await registry.updatePermissionTypeEntries(
-            PermissionTypeEntries.OnlyCreator,
+            PermissionTypeEntries.OnlyAdmin,
             {
                 from: REGISTRY_OWNER
             })
@@ -174,7 +177,7 @@ contract("Registry", (accounts) => {
         const permissionsTypeEntries = new BigNumber(await registry.permissionsTypeEntries())
         
         permissionsTypeEntries.should.bignumber.equal(
-            PermissionTypeEntries.OnlyCreator
+            PermissionTypeEntries.OnlyAdmin
         )
     })
     
@@ -189,7 +192,7 @@ contract("Registry", (accounts) => {
         const permissionsTypeEntries = new BigNumber(await registry.permissionsTypeEntries())
         
         permissionsTypeEntries.should.bignumber.equal(
-            PermissionTypeEntries.OnlyCreator
+            PermissionTypeEntries.OnlyAdmin
         )
     })
     

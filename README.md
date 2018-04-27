@@ -117,12 +117,12 @@ Your creating your registry in Chaingear - metaregistry, which are one point of 
     - _RegistryAccessControl_
 
 
-- **_EntryBase_** base for _EntryCore_. Holds entry metainformation and interfaces of functions (**C** _R_ **UD**) which should be implemented in _EntryCore_.
+- **_EntryBasic_** base for _EntryCore_. Holds entry metainformation and interfaces of functions (**C** _R_ **UD**) which should be implemented in _EntryCore_.
 
 - **_EntryCore_** partilly codegenerated contract where registry creator setup their custom entry structure and setters/getters. _EntryCore_ then goes to Registry constructor as bytecode, where _EntryCore_ contract creates. Registry goes as owner of contract (and acts as proxy) with entries creating, transfering and deleting.
 
   ###### depends on:
-    - _EntryBase_
+    - _EntryBasic_
     - _Ownable_
     - _Seriality_
 
@@ -133,7 +133,7 @@ Your creating your registry in Chaingear - metaregistry, which are one point of 
     - _Chaingeareable_
     - _ERC721Token_
     - _SplitPaymentChangeable_
-    - _EntryBase (int)_
+    - _EntryBasic (int)_
 
 
 - **_RegistryAccessControl_** holds logic of controlling registry and accessing to entries creation. Policy options to entries creation are OnlyCreator, Whitelist, AllUsers. Chaingear acts as owner of registry and creator of registry acts of creator with separated policies to Registry functions.

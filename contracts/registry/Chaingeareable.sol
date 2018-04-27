@@ -1,17 +1,17 @@
 pragma solidity 0.4.19;
 
-/* import "../common/IPFSeable.sol"; */
+import "./IPFSeable.sol";
 import "./RegistryAccessControl.sol";
 // import "../common/RegistrySafe.sol";
 
 
-contract Chaingeareable is RegistryAccessControl {
+contract Chaingeareable is IPFSeable, RegistryAccessControl {
 
     uint internal entryCreationFee_;
     string internal registryName_;
     string internal registryDescription_;
     bytes32[] internal registryTags_;
-    address internal entryBase_;
+    address internal entryBasic_;
     string internal linkToABIOfEntriesContract_;
 
     address internal registrySafe_;
@@ -47,12 +47,12 @@ contract Chaingeareable is RegistryAccessControl {
         uint amount
     );
 
-    function entryBase()
+    function entryBasic()
         public
         view
         returns (address)
     {
-        return entryBase_;
+        return entryBasic_;
     }
 
     function ABIOfEntriesContract()
@@ -105,14 +105,14 @@ contract Chaingeareable is RegistryAccessControl {
 
     function updateEntryCreationFee(uint _fee)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         entryCreationFee_ = _fee;
     }
 
     function updateRegistryName(string _registryName)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         uint len = bytes(_registryName).length;
         require(len > 0 && len <= 32);
@@ -122,7 +122,7 @@ contract Chaingeareable is RegistryAccessControl {
 
     function updateRegistryDescription(string _registryDescription)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         uint len = bytes(_registryDescription).length;
         require(len <= 256);
@@ -132,7 +132,7 @@ contract Chaingeareable is RegistryAccessControl {
 
     function addRegistryTag(bytes32 _tag)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         require(_tag.length <= 16);
 
@@ -141,7 +141,7 @@ contract Chaingeareable is RegistryAccessControl {
 
     function updateRegistryTag(uint256 _index, bytes32 _tag)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         require(_tag.length <= 16);
 
@@ -150,7 +150,7 @@ contract Chaingeareable is RegistryAccessControl {
 
     function removeRegistryTag(uint256 _index, bytes32 _tag)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         require(_tag.length <= 16);
 

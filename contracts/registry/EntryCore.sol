@@ -2,10 +2,10 @@ pragma solidity 0.4.19;
 
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
-import "./EntryBase.sol";
+import "../common/EntryBasic.sol";
 
 
-contract EntryCore is EntryBase, Ownable {
+contract EntryCore is EntryBasic, Ownable {
 
     using SafeMath for uint256;
 

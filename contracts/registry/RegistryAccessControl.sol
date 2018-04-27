@@ -1,45 +1,25 @@
 pragma solidity 0.4.19;
 
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
-import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
+/* import "zeppelin-solidity/contracts/lifecycle/Destructible.sol"; */
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "./Adminable.sol";
 
 
-contract RegistryAccessControl is Ownable, Pausable, Destructible {
-
-    address internal registryOwner_;
+contract RegistryAccessControl is Adminable, Ownable, Pausable {
 
     PermissionTypeEntries internal permissionTypeEntries_;
 
-    enum PermissionTypeEntries {OnlyCreator, Whitelist, AllUsers}
-
-    modifier onlyRegistryOwner() {
-        require(msg.sender == registryOwner_);
-        _;
-    }
+    enum PermissionTypeEntries {OnlyAdmin, Whitelist, AllUsers}
 
     modifier onlyPermissionedToEntries() {
-        if (permissionTypeEntries_ == PermissionTypeEntries.OnlyCreator) {
-            require(msg.sender == registryOwner_);
+        if (permissionTypeEntries_ == PermissionTypeEntries.OnlyAdmin) {
+            require(msg.sender == registryAdmin_);
         }
         // if (permissionTypeEntries_ == PermissionTypeEntries.Whitelist) {
         //     require(whitelist[msg.sender] || msg.sender == registryOwner_);
         // }
         _;
-    }
-
-    function RegistryAccessControl()
-        public
-    {
-        registryOwner_ = tx.origin;
-    }
-
-    function registryOwner()
-        public
-        view
-        returns (address)
-    {
-        return registryOwner_;
     }
 
     function permissionsTypeEntries()
@@ -52,7 +32,7 @@ contract RegistryAccessControl is Ownable, Pausable, Destructible {
 
     function updatePermissionTypeEntries(uint _permissionTypeEntries)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         require(uint(PermissionTypeEntries.AllUsers) >= _permissionTypeEntries);
         permissionTypeEntries_ = PermissionTypeEntries(_permissionTypeEntries);

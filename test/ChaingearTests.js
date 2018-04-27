@@ -43,7 +43,10 @@ contract("Chaingear", (accounts) => {
             BUILDING_FEE,
             CHAINGEAR_NAME,
             CHAINGEAR_SYMBOL,
-            { from: CHAINGEAR_OWNER }
+            { 
+                from: CHAINGEAR_OWNER,
+                gas: CREATION_GAS
+            }
         )
 
         await creator.setBuilder(
@@ -61,7 +64,11 @@ contract("Chaingear", (accounts) => {
             REGISTRY_SYMBOL,
             IPFS_HASH_1,
             EntryCore.bytecode,
-            { from: CREATOR, value: BUILDING_FEE, gas: CREATION_GAS }
+            { 
+                from: CREATOR, 
+                value: BUILDING_FEE,
+                gas: CREATION_GAS 
+            }
         )
         
         console.log("Gas used: " + res.receipt.gasUsed)

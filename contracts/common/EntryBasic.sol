@@ -1,7 +1,7 @@
 pragma solidity 0.4.19;
 
 
-contract EntryBase {
+contract EntryBasic {
 
     struct EntryMeta {
         address owner;
