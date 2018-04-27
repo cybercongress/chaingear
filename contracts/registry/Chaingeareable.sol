@@ -1,17 +1,15 @@
 pragma solidity 0.4.19;
 
-import "./IPFSeable.sol";
 import "./RegistryAccessControl.sol";
-// import "../common/RegistrySafe.sol";
 
 
-contract Chaingeareable is IPFSeable, RegistryAccessControl {
+contract Chaingeareable is RegistryAccessControl {
 
     uint internal entryCreationFee_;
     string internal registryName_;
     string internal registryDescription_;
     bytes32[] internal registryTags_;
-    address internal entryBasic_;
+    address internal entryBase_;
     string internal linkToABIOfEntriesContract_;
 
     address internal registrySafe_;
@@ -47,12 +45,12 @@ contract Chaingeareable is IPFSeable, RegistryAccessControl {
         uint amount
     );
 
-    function entryBasic()
+    function entryBase()
         public
         view
         returns (address)
     {
-        return entryBasic_;
+        return entryBase_;
     }
 
     function ABIOfEntriesContract()

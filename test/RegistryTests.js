@@ -12,8 +12,7 @@ contract("Registry", (accounts) => {
 
     const PermissionTypeEntries = {
         OnlyAdmin: 0,
-        Whitelist: 1,
-        AllUsers: 2
+        AllUsers: 1
     }
 
     const REGISTRY_OWNER = accounts[0]
@@ -49,7 +48,7 @@ contract("Registry", (accounts) => {
 
     it("#1 should allow owner to add empty new entry", async () => {
         
-        const entryContractAddress = await registry.EntryBasic()
+        const entryContractAddress = await registry.entryBase()
         const entries = EntryCore.at(entryContractAddress)
         const count1 = new BigNumber(await entries.entriesAmount())
         
@@ -109,7 +108,7 @@ contract("Registry", (accounts) => {
     })
 
     it("#4 should allow entry owner to delete entry", async () => {
-        const entryContractAddress = await registry.EntryBasic()
+        const entryContractAddress = await registry.entryBase()
         const entries = EntryCore.at(entryContractAddress)
         const count1 = new BigNumber(await entries.entriesAmount())
         await registry.deleteEntry(
@@ -123,7 +122,7 @@ contract("Registry", (accounts) => {
     })
     
     it("#5 should not allow unknown to delete entry", async () => {
-        const entryContractAddress = await registry.EntryBasic()
+        const entryContractAddress = await registry.entryBase()
         const entries = EntryCore.at(entryContractAddress)
         const count1 = new BigNumber(await entries.entriesAmount())
         

@@ -202,7 +202,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             uint256 newRegistryID
         )
     {
-        RegistryBasic registryContract = RegistryCreator(creator_).create(
+        address registryContract = RegistryCreator(creator_).create(
             _benefitiaries,
             _shares,
             _name,
@@ -210,7 +210,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             _linkToABIOfEntriesContract,
             _bytecodeOfEntriesContract
         );
-        registryContract.transferOwnership(msg.sender);
+        RegistryBasic(registryContract).transferOwnership(msg.sender);
 
         RegistryMeta memory registry = (RegistryMeta(
         {

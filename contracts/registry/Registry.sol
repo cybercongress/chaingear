@@ -3,10 +3,10 @@ pragma solidity 0.4.19;
 import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "../common/SplitPaymentChangeable.sol";
-import "../common/RegistrySafe.sol";
-import "../common/RegistryBasic.sol";
-import "../common/EntryBasic.sol";
 import "./Chaingeareable.sol";
+import "../common/EntryBasic.sol";
+import "../common/RegistryBasic.sol";
+import "../common/RegistrySafe.sol";
 
 
 contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentChangeable {
@@ -47,7 +47,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         
         entryCreationFee_ = 0;
 
-        entryBasic_ = deployedAddress;
+        entryBase_ = deployedAddress;
     }
 
     function createEntry()
@@ -59,7 +59,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     {
         require(msg.value == entryCreationFee_);
 
-        uint256 newEntryId = EntryBasic(entryBasic_).createEntry();
+        uint256 newEntryId = EntryBasic(entryBase_).createEntry();
         _mint(msg.sender, newEntryId);
 
         EntryCreated(msg.sender, newEntryId);
@@ -81,7 +81,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         onlyEntryOwner(_entryId)
     {
         uint256 entryIndex = allTokensIndex[_entryId];
-        EntryBasic(entryBasic_).deleteEntry(entryIndex);
+        EntryBasic(entryBase_).deleteEntry(entryIndex);
         super._burn(msg.sender, _entryId);
 
         EntryDeleted(msg.sender, _entryId);
@@ -92,7 +92,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         whenNotPaused
         onlyEntryOwner(_entryId)
     {
-        EntryBasic(entryBasic_).updateEntryOwnership(_entryId, _newOwner);
+        EntryBasic(entryBase_).updateEntryOwnership(_entryId, _newOwner);
 
         super.removeTokenFrom(msg.sender, _entryId);
         super.addTokenTo(_newOwner, _entryId);
@@ -105,7 +105,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         whenNotPaused
         payable
     {
-        EntryBasic(entryBasic_).updateEntryFund(_entryId, msg.value);
+        EntryBasic(entryBase_).updateEntryFund(_entryId, msg.value);
         registrySafe_.transfer(msg.value);
 
         EntryFunded(_entryId, msg.sender);
@@ -116,8 +116,8 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         whenNotPaused
         onlyEntryOwner(_entryId)
     {
-        require(_amount <= EntryBasic(entryBasic_).currentEntryBalanceETHOf(_entryId));
-        EntryBasic(entryBasic_).claimEntryFund(_entryId, _amount);
+        require(_amount <= EntryBasic(entryBase_).currentEntryBalanceETHOf(_entryId));
+        EntryBasic(entryBase_).claimEntryFund(_entryId, _amount);
         RegistrySafe(registrySafe_).claim(msg.sender, _amount);
 
         EntryFundsClaimed(_entryId, msg.sender, _amount);

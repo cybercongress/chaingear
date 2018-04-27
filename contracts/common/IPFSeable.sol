@@ -1,6 +1,6 @@
 pragma solidity 0.4.19;
 
-import "./Adminable.sol";
+import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
 /**
 * @title IPFSeable contract
@@ -8,7 +8,7 @@ import "./Adminable.sol";
 * @dev Allows store in contract links to files which stored in IPFS 
 * @notice not recommend to use before release!
 */
-contract IPFSeable is Adminable {
+contract IPFSeable is Ownable {
 
 	/*
 	*  Storage
@@ -46,7 +46,7 @@ contract IPFSeable is Adminable {
     */
     function setABILink(string _linkABI)
         external
-        onlyRegistryAdmin
+        onlyOwner
     {
         linkABI_ = _linkABI;
         ABILinkUpdated(_linkABI);
@@ -58,7 +58,7 @@ contract IPFSeable is Adminable {
     */
     function setMetaLink(string _linkMeta)
         external
-        onlyRegistryAdmin
+        onlyOwner
     {
         linkMeta_ = _linkMeta;
         MetaLinkUpdated(_linkMeta);
@@ -70,7 +70,7 @@ contract IPFSeable is Adminable {
     */
     function setSourceLink(string _linkSourceCode)
         external
-        onlyRegistryAdmin
+        onlyOwner
     {
         linkSourceCode_ = _linkSourceCode;
         SourceLinkUpdated(_linkSourceCode);

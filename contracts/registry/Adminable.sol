@@ -2,7 +2,7 @@ pragma solidity 0.4.19;
 
 
 contract Adminable {
-
+    
     address internal registryAdmin_;
 
     modifier onlyRegistryAdmin() {
@@ -23,5 +23,4 @@ contract Adminable {
     {
         return registryAdmin_;
     }
-
 }

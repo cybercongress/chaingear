@@ -2,7 +2,7 @@ pragma solidity 0.4.19;
 
 import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+/* import "./RegistryCreator.sol"; */
 import "./RegistryBase.sol";
 
 
@@ -12,7 +12,7 @@ import "./RegistryBase.sol";
 * @dev Storage of core params with setters, getters
 * @notice not recommend to use before release!
 */
-contract ChaingearCore is RegistryBase, Ownable, Destructible, Pausable {
+contract ChaingearCore is RegistryBase, Destructible, Pausable {
 
 	/*
 	*  Storage
@@ -114,5 +114,5 @@ contract ChaingearCore is RegistryBase, Ownable, Destructible, Pausable {
     {
         return creator_;
     }
-
+    
 }
