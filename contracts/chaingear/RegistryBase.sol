@@ -2,10 +2,10 @@ pragma solidity 0.4.19;
 
 
 /**
-* @title holds struct of data with describes registry metainformation which
-* associated with token, views function for registry metainformation.
-* @author Cyber Congress
-* @dev All function calls are currently implement without side effects
+* @title Contracts which holds logic and struct of data witch describes registry metainformation which
+* associated with token, provides views function for registry metainformation.
+* @author cyber•Congress
+* @notice not recommend to use before release!
 */
 contract RegistryBase {
 
@@ -13,6 +13,7 @@ contract RegistryBase {
 	*  Storage
 	*/
 
+    // @dev Sctruct which describes registry metainformation with balance state and status
     struct RegistryMeta {
         string name;
         address contractAddress;
@@ -24,13 +25,14 @@ contract RegistryBase {
         uint accumulatedRegistryETH;
     }
 
-    // @dev creation an internal data structure
+    // @dev Array of registries
     RegistryMeta[] internal registries;
 
 	/*
 	*  Events
 	*/
 
+    // @dev Events witch signals that new Registry registered
     event RegistryRegistered(
         string name,
         address registryAddress,
@@ -38,6 +40,8 @@ contract RegistryBase {
         uint registryID
     );
 
+    // @dev Events witch signals that Registry' ownership transferred
+    // @notice that also means associated token transferred too
     event RegistryTransferred(
          address caller,
          string registryName,
@@ -45,6 +49,8 @@ contract RegistryBase {
          address newOwner
     );
     
+    // @dev Events witch signals that Registry' unregistered from Chaingear
+    // @notice ownership of Registry transfers from Chaingear to Creator
     event RegistryUnregistered(
         address owner,
         string name
@@ -59,9 +65,7 @@ contract RegistryBase {
     * @param _registryID uint256 Registry ID
     * @return string name of Registry
     */
-    function nameOf(
-        uint256 _registryID
-    )
+    function nameOf(uint256 _registryID)
         public
         view
         returns (string)
@@ -96,7 +100,7 @@ contract RegistryBase {
     }
 
     /**
-    * @dev Registy' creating timestamp getter
+    * @dev Registry' creating timestamp getter
     * @param _registryID uint256 Registry ID
     * @return uint of creating Registy
     */
@@ -111,7 +115,7 @@ contract RegistryBase {
     /**
     * @dev Registy' ABI link getter
     * @param _registryID uint256 Registry ID
-    * @return string Registy' ABI link
+    * @return string Registy' hash IPFS link to JSON with ABI
     */
     function ABILinkOf(uint256 _registryID)
         public
@@ -141,7 +145,7 @@ contract RegistryBase {
     * @return address Registy' address
     * @return address Registy' creator address
     * @return uint Registy' creation timestamp
-    * @return string Registy' ABI link
+    * @return string Registy' IPFS hash link to JSON with ABI
     * @return address Registy' owner address
     */
     function registryInfo(uint256 _registryID)
@@ -166,7 +170,12 @@ contract RegistryBase {
         );
     }
 
-    function currentRegistryBalanceETHOf( uint256 _registryID)
+    /**
+    * @dev Registy' current balance in safe getter
+    * @param _registryID uint256 Registry ID
+    * @return uint Registy' balance in safe in wei
+    */
+    function currentRegistryBalanceETHOf(uint256 _registryID)
         public
         view
         returns (uint)
@@ -174,6 +183,11 @@ contract RegistryBase {
         return registries[_registryID].currentRegistryBalanceETH;
     }
 
+    /**
+    * @dev Registy' total accumulated balance in safe getter
+    * @param _registryID uint256 Registry ID
+    * @return uint Registy' total accumulated balance in safe in wei
+    */
     function accumulatedRegistryETHOf(uint256 _registryID)
         public
         view
@@ -182,7 +196,12 @@ contract RegistryBase {
         return registries[_registryID].accumulatedRegistryETH;
     }
 
-
+    /**
+    * @dev Registy' safe stats getter
+    * @param _registryID uint256 Registry ID
+    * @return uint Registy' balance in safe in wei
+    * @return uint Registy' total accumulated balance in safe in wei
+    */
     function registryBalanceInfo(uint256 _registryID)
         public
         view

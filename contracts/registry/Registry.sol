@@ -11,6 +11,11 @@ import "../common/RegistrySafe.sol";
 contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
 
     using SafeMath for uint256;
+    
+    modifier onlyEntryOwner(uint256 _entryID) {
+        require(ownerOf(_entryID) == msg.sender);
+        _;
+    }
 
     function Registry(
         address[] _benefitiaries,
@@ -38,6 +43,8 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         }
 
         assert(deployedAddress != 0x0);
+        
+        entryCreationFee_ = 0;
 
         entryBase_ = deployedAddress;
     }
@@ -70,9 +77,8 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
     function deleteEntry(uint256 _entryId)
         external
         whenNotPaused
+        onlyEntryOwner(_entryId)
     {
-        require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
-
         uint256 entryIndex = allTokensIndex[_entryId];
         EntryBase(entryBase_).deleteEntry(entryIndex);
         super._burn(msg.sender, _entryId);
@@ -83,8 +89,8 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
     function transferEntryOwnership(uint _entryId, address _newOwner)
         public
         whenNotPaused
+        onlyEntryOwner(_entryId)
     {
-        require (ownerOf(_entryId) == msg.sender);
         EntryBase(entryBase_).updateEntryOwnership(_entryId, _newOwner);
 
         super.removeTokenFrom(msg.sender, _entryId);
@@ -107,8 +113,8 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
     function claimEntryFunds(uint256 _entryId, uint _amount)
         public
         whenNotPaused
+        onlyEntryOwner(_entryId)
     {
-        require(ownerOf(_entryId) == msg.sender);
         require(_amount <= EntryBase(entryBase_).currentEntryBalanceETHOf(_entryId));
         EntryBase(entryBase_).claimEntryFund(_entryId, _amount);
         RegistrySafe(registrySafe_).claim(msg.sender, _amount);

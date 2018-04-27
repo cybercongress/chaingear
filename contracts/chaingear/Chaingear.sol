@@ -7,10 +7,10 @@ import "../registry/Registry.sol";
 
 
 /**
-* @title The most expensive Regisrty
+* @title Chaingear - the most expensive Regisrty
 * @author cyber•Congress
-* @notice Chaingear is an Ethereum ERC721-based registries framework.
-* @dev not recommend to use before release!
+* @dev Main metaregistry contract 
+* @notice not recommend to use before release!
 */
 contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 

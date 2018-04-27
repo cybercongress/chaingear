@@ -6,7 +6,11 @@ import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract SplitPaymentChangeable is SplitPayment, Ownable {
 
-    event PayeeAddressChanged(uint payeeIndex, address oldAddress, address newAddress);
+    event PayeeAddressChanged(
+        uint payeeIndex, 
+        address oldAddress, 
+        address newAddress
+    );
 
     function SplitPaymentChangeable(address[] _payees, uint256[] _shares)
         public
