@@ -1,8 +1,6 @@
 pragma solidity 0.4.19;
 
-/* import "../common/IPFSeable.sol"; */
 import "./RegistryAccessControl.sol";
-// import "../common/RegistrySafe.sol";
 
 
 contract Chaingeareable is RegistryAccessControl {
@@ -105,14 +103,14 @@ contract Chaingeareable is RegistryAccessControl {
 
     function updateEntryCreationFee(uint _fee)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         entryCreationFee_ = _fee;
     }
 
     function updateRegistryName(string _registryName)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         uint len = bytes(_registryName).length;
         require(len > 0 && len <= 32);
@@ -122,7 +120,7 @@ contract Chaingeareable is RegistryAccessControl {
 
     function updateRegistryDescription(string _registryDescription)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         uint len = bytes(_registryDescription).length;
         require(len <= 256);
@@ -132,7 +130,7 @@ contract Chaingeareable is RegistryAccessControl {
 
     function addRegistryTag(bytes32 _tag)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         require(_tag.length <= 16);
 
@@ -141,7 +139,7 @@ contract Chaingeareable is RegistryAccessControl {
 
     function updateRegistryTag(uint256 _index, bytes32 _tag)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         require(_tag.length <= 16);
 
@@ -150,7 +148,7 @@ contract Chaingeareable is RegistryAccessControl {
 
     function removeRegistryTag(uint256 _index, bytes32 _tag)
         external
-        onlyRegistryOwner
+        onlyRegistryAdmin
     {
         require(_tag.length <= 16);
 

@@ -2,8 +2,7 @@ pragma solidity 0.4.19;
 
 import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
-import "../common/IPFSeable.sol";
-import "./RegistryCreator.sol";
+/* import "./RegistryCreator.sol"; */
 import "./RegistryBase.sol";
 
 
@@ -13,7 +12,7 @@ import "./RegistryBase.sol";
 * @dev Storage of core params with setters, getters
 * @notice not recommend to use before release!
 */
-contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
+contract ChaingearCore is RegistryBase, Destructible, Pausable {
 
 	/*
 	*  Storage
@@ -27,7 +26,7 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
     uint internal registryRegistrationFee_;
     
     // @dev Address of RegistryCreator contract
-    RegistryCreator internal creator_;
+    address internal creator_;
 
 	/*
 	*  External Functions
@@ -68,7 +67,7 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
     * @param _creator RegistryCreator address
     */
     function setRegistryCreator(
-        RegistryCreator _creator
+        address _creator
     )
         external
         onlyOwner
@@ -115,5 +114,6 @@ contract ChaingearCore is RegistryBase, IPFSeable, Destructible, Pausable {
     {
         return creator_;
     }
+    
     
 }

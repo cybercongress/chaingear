@@ -12,8 +12,7 @@ contract("Registry", (accounts) => {
 
     const PermissionTypeEntries = {
         OnlyCreator: 0,
-        Whitelist: 1,
-        AllUsers: 2
+        AllUsers: 1
     }
 
     const REGISTRY_OWNER = accounts[0]

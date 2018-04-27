@@ -2,8 +2,9 @@ pragma solidity 0.4.19;
 
 import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "../common/SplitPaymentChangeable.sol";
+import "../common/RegistryBasic.sol";
 import "./ChaingearCore.sol";
-import "../registry/Registry.sol";
+import "./RegistryCreator.sol";
 
 
 /**
@@ -42,7 +43,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 	* @param _chaingearSymbol string Chaingear symbol
 	*/
     function Chaingear(
-        RegistryCreator _creator,
+        address _creator,
         address[] _benefitiaries,
         uint256[] _shares,
         string _description,
@@ -114,7 +115,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         whenNotPaused
         onlyRegistryOwner(_registryID)
     {
-        Registry(registries[_registryID].contractAddress).transferTokenizedOnwerhip(_newOwner);
+        RegistryBasic(registries[_registryID].contractAddress).transferTokenizedOnwerhip(_newOwner);
         registries[_registryID].owner = _newOwner;
 
         super.removeTokenFrom(msg.sender, _registryID);
@@ -135,7 +136,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         onlyRegistryOwner(_registryID)
     {        
         address registryAddress = registries[_registryID].contractAddress;
-        require(Registry(registryAddress).safeBalance() == 0);
+        require(RegistryBasic(registryAddress).safeBalance() == 0);
         /* require(Registry(registryAddress).entriesAmount() == 0); */
         
         uint256 registryIndex = allTokensIndex[_registryID];
@@ -146,7 +147,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         delete registries[lastRegistryIndex];
         registries.length--;
         
-        Registry(registryAddress).transferOwnership(registries[_registryID].owner);
+        RegistryBasic(registryAddress).transferOwnership(registries[_registryID].owner);
 
         super._burn(msg.sender, _registryID);
         
@@ -201,7 +202,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             uint256 newRegistryID
         )
     {
-        Registry registryContract = creator_.create(
+        address registryContract = RegistryCreator(creator_).create(
             _benefitiaries,
             _shares,
             _name,
@@ -209,7 +210,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             _linkToABIOfEntriesContract,
             _bytecodeOfEntriesContract
         );
-        registryContract.transferOwnership(msg.sender);
+        RegistryBasic(registryContract).transferOwnership(msg.sender);
 
         RegistryMeta memory registry = (RegistryMeta(
         {
