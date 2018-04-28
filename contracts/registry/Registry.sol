@@ -1,7 +1,7 @@
-pragma solidity 0.4.19;
+pragma solidity 0.4.21;
 
-import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
-import "zeppelin-solidity/contracts/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "./Chaingeareable.sol";
 import "../common/EntryBasic.sol";
@@ -62,7 +62,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         uint256 newEntryId = EntryBasic(entryBase_).createEntry();
         _mint(msg.sender, newEntryId);
 
-        EntryCreated(msg.sender, newEntryId);
+        emit EntryCreated(msg.sender, newEntryId);
 
         return newEntryId;
     }
@@ -84,7 +84,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         EntryBasic(entryBase_).deleteEntry(entryIndex);
         super._burn(msg.sender, _entryId);
 
-        EntryDeleted(msg.sender, _entryId);
+        emit EntryDeleted(msg.sender, _entryId);
     }
 
     function transferEntryOwnership(uint256 _entryId, address _newOwner)
@@ -97,7 +97,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         super.removeTokenFrom(msg.sender, _entryId);
         super.addTokenTo(_newOwner, _entryId);
 
-        EntryChangedOwner(_entryId, _newOwner);
+        emit EntryChangedOwner(_entryId, _newOwner);
     }
 
     function fundEntry(uint256 _entryId)
@@ -108,7 +108,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         EntryBasic(entryBase_).updateEntryFund(_entryId, msg.value);
         registrySafe_.transfer(msg.value);
 
-        EntryFunded(_entryId, msg.sender);
+        emit EntryFunded(_entryId, msg.sender);
     }
 
     function claimEntryFunds(uint256 _entryId, uint _amount)
@@ -120,7 +120,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         EntryBasic(entryBase_).claimEntryFund(_entryId, _amount);
         RegistrySafe(registrySafe_).claim(msg.sender, _amount);
 
-        EntryFundsClaimed(_entryId, msg.sender, _amount);
+        emit EntryFundsClaimed(_entryId, msg.sender, _amount);
     }
     
     function safeBalance()
@@ -128,6 +128,6 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         view
         returns (uint balance)
     {
-        return RegistrySafe(registrySafe_).balance;
+        return address(registrySafe_).balance;
     }
 }

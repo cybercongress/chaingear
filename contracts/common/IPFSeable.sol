@@ -1,6 +1,6 @@
-pragma solidity 0.4.19;
+pragma solidity 0.4.21;
 
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 /**
@@ -50,7 +50,7 @@ contract IPFSeable is Ownable {
         onlyOwner
     {
         linkABI_ = _linkABI;
-        ABILinkUpdated(_linkABI);
+        emit ABILinkUpdated(_linkABI);
     }
 
     /**
@@ -62,7 +62,7 @@ contract IPFSeable is Ownable {
         onlyOwner
     {
         linkMeta_ = _linkMeta;
-        MetaLinkUpdated(_linkMeta);
+        emit MetaLinkUpdated(_linkMeta);
     }
 
     /**
@@ -74,7 +74,7 @@ contract IPFSeable is Ownable {
         onlyOwner
     {
         linkSourceCode_ = _linkSourceCode;
-        SourceLinkUpdated(_linkSourceCode);
+        emit SourceLinkUpdated(_linkSourceCode);
     }
 
     /*

@@ -1,6 +1,6 @@
-pragma solidity 0.4.19;
+pragma solidity 0.4.21;
 
-import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "../common/RegistryBasic.sol";
 import "./ChaingearCore.sol";
@@ -121,7 +121,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         super.removeTokenFrom(msg.sender, _registryID);
         super.addTokenTo(_newOwner, _registryID);
 
-        RegistryTransferred(msg.sender, registries[_registryID].name, _registryID, _newOwner);
+        emit RegistryTransferred(msg.sender, registries[_registryID].name, _registryID, _newOwner);
     }
     
     /**
@@ -152,7 +152,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         super._burn(msg.sender, _registryID);
         
         string storage registryName = registries[_registryID].name;
-        RegistryUnregistered(msg.sender, registryName);
+        emit RegistryUnregistered(msg.sender, registryName);
     }
     
     /**
@@ -226,7 +226,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         
         uint256 registryID = registries.push(registry) - 1;
         _mint(msg.sender, registryID);
-        RegistryRegistered(_name, registryContract, msg.sender, registryID);
+        emit RegistryRegistered(_name, registryContract, msg.sender, registryID);
 
         return (
             registryContract, 

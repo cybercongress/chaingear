@@ -1,7 +1,7 @@
-pragma solidity 0.4.19;
+pragma solidity 0.4.21;
 
-import "zeppelin-solidity/contracts/payment/SplitPayment.sol";
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 contract SplitPaymentChangeable is SplitPayment, Ownable {
@@ -31,6 +31,6 @@ contract SplitPaymentChangeable is SplitPayment, Ownable {
         delete shares[oldAddress];
         delete released[oldAddress];
 
-        PayeeAddressChanged(_payeeIndex, oldAddress, _newAddress);
+        emit PayeeAddressChanged(_payeeIndex, oldAddress, _newAddress);
     }
 }

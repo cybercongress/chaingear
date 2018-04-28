@@ -185,7 +185,7 @@ Recommending to use [Remix Ethereum Online IDE](remix.ethereum.org)  or [desktop
 
 PS: to import to IDE open-zeppelin contacts follow this:
 ```
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 ```
 
 ##### Truffle + Ganache workflow

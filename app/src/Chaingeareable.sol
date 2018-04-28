@@ -1,4 +1,4 @@
-pragma solidity 0.4.19;
+pragma solidity 0.4.21;
 
 // File: contracts/common/ChaingearRegistreable.sol
 
@@ -266,8 +266,8 @@ contract Pausable is Ownable {
 
 // File: contracts/common/Chaingeareable.sol
 
-/* import "zeppelin-solidity/contracts/ownership/Claimable.sol"; */
-/* import "zeppelin-solidity/contracts/ownership/Whitelist.sol"; */
+/* import "openzeppelin-solidity/contracts/ownership/Claimable.sol"; */
+/* import "openzeppelin-solidity/contracts/ownership/Whitelist.sol"; */
 
 
 

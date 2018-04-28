@@ -1,4 +1,4 @@
-pragma solidity 0.4.19;
+pragma solidity 0.4.21;
 
 import "./RegistryAccessControl.sol";
 
@@ -66,7 +66,7 @@ contract Chaingeareable is RegistryAccessControl {
         view
         returns (uint)
     {
-        return this.balance;
+        return address(this).balance;
     }
 
     function entryCreationFee()

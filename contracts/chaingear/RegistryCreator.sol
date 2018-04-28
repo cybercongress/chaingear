@@ -1,7 +1,7 @@
-pragma solidity 0.4.19;
+pragma solidity 0.4.21;
 
 import "../registry/Registry.sol";
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 /**

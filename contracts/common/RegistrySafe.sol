@@ -1,7 +1,7 @@
-pragma solidity 0.4.19;
+pragma solidity 0.4.21;
 
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
-/* import "zeppelin-solidity/contracts/lifecycle/Destructible.sol"; */
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+/* import "openzeppelin-solidity/contracts/lifecycle/Destructible.sol"; */
 
 /**
 * @title RegistySafe contract
