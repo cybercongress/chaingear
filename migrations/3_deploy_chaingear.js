@@ -8,11 +8,11 @@ module.exports = function(deployer, network, accounts) {
 
   if (network == 'live') {
     // TODO: adjust parameters
-    BUILDING_FEE = 1
+    BUILDING_FEE = 0
     BENEFICIARIES = []
     SHARES = []
   } else {
-    BUILDING_FEE = 1
+    BUILDING_FEE = 100000
     BENEFICIARIES = []
     SHARES = []
   }
@@ -23,7 +23,7 @@ module.exports = function(deployer, network, accounts) {
     BENEFICIARIES,
     SHARES,
     "Most Expensive Registry",
-    1000000,
+    BUILDING_FEE,
     "CHAINGEAR",
     "CHG"
   ).then(() => RegistryCreator.deployed())

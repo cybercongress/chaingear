@@ -108,7 +108,7 @@ contract EntryCore is EntryBasic, Ownable {
     }
 
     function updateEntry(uint256 _entryId, address _newAddress, uint256 _newUint, int128 _newInt, string _newString)
-        /* onlyEntryOwner(_entryId) */
+        onlyEntryOwner(_entryId)
         public
     {
         entries[_entryId].expensiveAddress = _newAddress;

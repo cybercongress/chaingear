@@ -63,7 +63,7 @@ contract RegistryCreator is Ownable {
         bytes _bytecodeOfEntriesContract
     )
         external
-        returns (Registry newRegistryContract)
+        returns (address newRegistryContract)
     {
         require(msg.sender == builder_);
 
@@ -113,7 +113,7 @@ contract RegistryCreator is Ownable {
         bytes _bytecodeOfEntriesContract
     )
         private
-        returns (Registry registryContract)
+        returns (address registryContract)
     {
         registryContract = new Registry(
             _benefitiaries,
@@ -123,7 +123,7 @@ contract RegistryCreator is Ownable {
             _linkToABIOfEntriesContract,
             _bytecodeOfEntriesContract
         );
-        registryContract.transferOwnership(msg.sender);
+        Registry(registryContract).transferOwnership(msg.sender);
 
         return registryContract;
     }

@@ -11,10 +11,10 @@ const EntryCore = artifacts.require("EntryCore")
 
 contract("Chaingear", (accounts) => {
 
-    // const PermissionType = {
-    //     OnlyOwner: 0,
-    //     All: 1
-    // }
+    const PermissionTypeEntries = {
+        OnlyAdmin: 0,
+        AllUsers: 1
+    }
 
     let chaingear, creator
 

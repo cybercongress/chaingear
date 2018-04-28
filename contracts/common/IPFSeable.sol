@@ -2,6 +2,7 @@ pragma solidity 0.4.19;
 
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 
+
 /**
 * @title IPFSeable contract
 * @author cyber•Congress
