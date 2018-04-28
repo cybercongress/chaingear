@@ -12,6 +12,14 @@ module.exports = {
           runs: 200
         }
     },
+    
+    mocha: {
+        reporter: 'eth-gas-reporter',
+            reporterOptions : {
+            currency: 'USD',
+            gasPrice: 21
+        }
+    },
 
     // See <http://truffleframework.com/docs/advanced/configuration>
     // to customize your Truffle configuration!
