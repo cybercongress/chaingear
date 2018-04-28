@@ -159,6 +159,7 @@ export const deployRegistry = (bytecode, abi, web3, opt) => {
 const getItems = (contract, count, array, mapFn) => {
   return new Promise(resolve => {
     contract[count]().then(lengthData => {
+        debugger
       const length = lengthData.toNumber();
       let promises = [];
           for(let i =0; i < length; i++) {
@@ -173,17 +174,22 @@ const getItems = (contract, count, array, mapFn) => {
   })
 }
 
-const getContract = () => {
+export const getContract = () => {
   return getWeb3
       .then(results => {
       const contract = require('truffle-contract');
       const registryContract = contract(ChaingearBuild);
       registryContract.setProvider(results.web3.currentProvider);
       results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
-      return registryContract.deployed().then(contract => ({
-        contract,
-        web3: results.web3
-      }));
+      return results.web3.eth.getAccounts()
+        .then(accounts => {
+            return registryContract.deployed().then(contract => ({
+                contract,
+                web3: results.web3,
+                accounts
+            }));
+        })
+      
     })
 }
 
@@ -199,7 +205,8 @@ export const register = (name, adress, hash) => {
 
 export const getRegistry = () => {
   return getContract().then(( { contract, web3 }) => {  
-    return getItems(contract, 'registriesAmount', 'registries', (items) => {
+    return getItems(contract, 'registriesAmount', 'registryInfo', (items) => {
+        debugger
       return ({
         name: items[0],
         address: items[1],

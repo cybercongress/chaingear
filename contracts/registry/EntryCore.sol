@@ -18,7 +18,7 @@ contract EntryCore is EntryBasic, Ownable {
         EntryMeta metainformation;
     }
 
-    Entry[] internal entries;
+    Entry[] public entries;
 
     modifier onlyEntryOwner(uint256 _entryId) {
         require(entries[_entryId].metainformation.owner == msg.sender);

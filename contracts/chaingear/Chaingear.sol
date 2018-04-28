@@ -217,7 +217,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             name: _name,
             contractAddress: registryContract,
             creator: msg.sender,
-            linkABI: "",
+            linkABI: _linkToABIOfEntriesContract,
             registrationTimestamp: block.timestamp,
             owner: msg.sender,
             currentRegistryBalanceETH: 0,
