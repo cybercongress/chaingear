@@ -28,7 +28,7 @@ class Register extends Component {
         var ipfsHash = contracts.filter(x => x.address === address)[0].ipfsHash;
         cyber.ipfs.get(ipfsHash, (err, files) => {
           const buf = files[0].content;
-          var data = JSON.parse(JSON.parse(buf.toString()));
+          var data = JSON.parse(buf.toString()); // JSON.parse(
           // console.log(JSON.parse(buf.toString()))
           var fields = data.filter(x => x.name === 'entries')[0].outputs;
           fields = fields.filter(x => x.name !== 'owner' && x.name !== 'lastUpdateTime');
@@ -53,7 +53,7 @@ class Register extends Component {
                     return o;
                   },{})
               }
-              cyber.getItems2(contract, 'entriesCount', 'entries', mapFn)
+              cyber.getItems2(contract, 'entriesAmount', 'entries', mapFn)
                 .then(items => {
                   this.setState({ 
                     items, fields ,

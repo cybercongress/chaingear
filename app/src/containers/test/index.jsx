@@ -255,19 +255,203 @@ let _contract;
 let _web3;
 let _accounts;
 
+
+import Web3 from 'web3'
+const web3 = new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/eKZdJzgmRo31DJI94iSO'));
+
+import Chaingear from '../../../../build/contracts/Chaingear.json';
+
+
+import Registry from '../../../../build/contracts/Registry.json';
+import EntryCore from '../../../../build/contracts/EntryCore.json';
+
+import { getItems2, generateContractCode } from '../../utils/cyber';
+// const _contract = new web3.eth.Contract(Chaingear.abi, Chaingear.networks['42'].address);
+
+const createRegistry = (name, fields, symbol) => {
+
+}
+
+const getContractCode = (name, fields) => {
+
+}
+
 export class Test extends Component {
     state = {
-        registries: []
+        registries: [],
+        code: '',
     }
     componentDidMount() {
         getContract()
             .then(({ contract, web3, accounts }) => {
+                // debugger
                 _contract = contract;
                 _web3 = web3;
                 _accounts = accounts;
             })
     }
-    test = () => {
+
+    get = () => {
+       getRegistry().then(data => {
+            const address = data[0].address;
+
+            const registry = _web3.eth.contract(Registry.abi).at(address);
+
+            // registry.entryBase(function(e, data) {
+            //     debugger
+            // })
+
+            registry.entryCreationFee(function(e, data) {
+                var fee = data.toNumber();
+
+                debugger
+            })
+       })
+    }
+    updateFee = () => {
+       getRegistry().then(data => {
+            const address = data[0].address;
+
+            const registry = _web3.eth.contract(Registry.abi).at(address);
+            registry.updateEntryCreationFee(_web3.toWei(0.001, 'ether'), function(){
+                debugger
+            })
+
+        });
+    }
+
+    createEntry = () => {
+        getRegistry().then(data => {
+            const address = data[0].address;
+
+            const registry = _web3.eth.contract(Registry.abi).at(address);
+
+            registry.entryCreationFee(function(e, data) {
+                var fee = data.toNumber();
+
+                registry.createEntry({ value: fee }, function(){
+                    debugger
+                })
+            })
+            
+
+        });
+    }
+
+    getAllEntrys = () => {
+        getRegistry().then(data => {
+            const address = data[0].address;
+
+            const registry = _web3.eth.contract(Registry.abi).at(address);
+
+            registry.entryBase(function(e, data) {
+                
+
+                const entryCore = _web3.eth.contract(EntryCore.abi).at(data);
+
+                // entryCore.entriesAmount(function(e, data) {
+                //     console.log(data.toNumber());
+                // })
+
+                const fields = [
+                    { name: 'expensiveAddress'},
+                    { name: 'expensiveUint' },
+                    { name: 'expensiveInt' },
+                    { name: 'expensiveString' }
+                ]
+                const mapFn = item => {
+                  const aItem = Array.isArray(item) ? item : [item];
+                  return fields.reduce((o, field, index) => {
+                    o[field.name] = aItem[index]; 
+                    return o;
+                  },{})
+                }
+                
+                getItems2(entryCore, 'entriesAmount', 'entryInfo', mapFn)
+                    .then(items => {
+                        console.log(items);
+                  // this.setState({ 
+                  //   items, fields ,
+                  //   loading: false
+                  // })
+                    });
+            })
+
+            // registry.entryCreationFee(function(e, data) {
+            //     var fee = data.toNumber();
+
+            //     debugger
+            // })
+       })
+    }
+
+    updateEntrys = () => {
+        getRegistry().then(data => {
+            const address = data[0].address;
+
+            const registry = _web3.eth.contract(Registry.abi).at(address);
+
+            registry.entryBase(function(e, data) {
+                
+
+                const entryCore = _web3.eth.contract(EntryCore.abi).at(data);
+
+                // entryCore.entriesAmount(function(e, data) {
+                //     console.log(data.toNumber());
+
+
+                // })
+                // const fields = [
+                //     { name: 'expensiveAddress'},
+                //     { name: 'expensiveUint' },
+                //     { name: 'expensiveInt' },
+                //     { name: 'expensiveString' }
+                // ]
+                // const mapFn = item => {
+                //   const aItem = Array.isArray(item) ? item : [item];
+                //   return fields.reduce((o, field, index) => {
+                //     o[field.name] = aItem[index]; 
+                //     return o;
+                //   },{})
+                // }
+                
+                // getItems2(entryCore, 'entriesAmount', 'entryInfo', mapFn)
+                //     .then(items => {
+                //         console.log(items);
+                //   // this.setState({ 
+                //   //   items, fields ,
+                //   //   loading: false
+                //   // })
+                //     });
+
+                entryCore.updateEntry(0, "0x0000000000000000000000000000000000000001", 1, 2, 'test', function(e, data){
+                    debugger
+                })
+            })
+
+            // registry.entryCreationFee(function(e, data) {
+            //     var fee = data.toNumber();
+
+            //     debugger
+            // })
+       })
+    }
+
+    createRegistryClick = () => {
+        // var buildingFee = 100000;
+        // saveInIPFS(EntryCoreBuild.abi)
+        //     .then(ipfsHash => {
+        //         _contract.methods.registerRegistry(
+        //              [], [], "BlockchainRegistry2", "BLCHR5", 
+        //              ipfsHash,
+        //              EntryCoreBuild.bytecode
+        //         ).send({
+        //             value: buildingFee, from: '0xa3564D084fabf13e69eca6F2949D3328BF6468Ef'
+        //         }, function(e, r){
+        //             debugger
+        //         })
+        //     })
+        
         // console.log(_web3.eth.accounts[0]);
 
         // getRegistry().then(registries => 
@@ -285,21 +469,44 @@ export class Test extends Component {
         //         debugger
         //     })
 
-        var buildingFee = 1000000;
-        var gas = 10000000
+        // var buildingFee = 100000;
+        var gas = 40000000
         saveInIPFS(EntryCoreBuild.abi)
             .then(ipfsHash => {
-                debugger
-                debugger
-                _contract.registerRegistry(
-                    [], [], "BlockchainRegistry", "BLCHR", 
-                    ipfsHash,
-                    EntryCoreBuild.bytecode,
-                    { value: buildingFee, gas: gas, from: _accounts[0] }
-                )
-            }).then(d => {
-                debugger
-            })
+                // debugger
+                // debugger
+                // _contract.defaults({
+                //   value: buildingFee
+                // })
+                _contract.registryRegistrationFee(function(e, data) {
+                    
+                    var buildingFee = data.toNumber();
+                    debugger
+                    _contract.registerRegistry.sendTransaction(
+                        [], [], "BlockchainRegistry", "BLCHR", 
+                        ipfsHash,
+                        EntryCoreBuild.bytecode, 
+                        { 
+                            value: buildingFee,
+                            //_web3.toWei(0.001, 'ether'), 
+                            // gas: 10000000, 
+                            // gasPrice: 15
+                            // from: _accounts[0],
+                            // Function: function(e, data) {
+                            //     debugger
+                            // }
+                        },
+                        function(e, data){
+                            debugger
+                        }
+                    )
+                })
+                
+            });
+            // .then(d => {
+            //     debugger
+            // })
+            
         // var buildingFee = 1000000;
         // _contract.registerRegistry(
         //             [], [], "BlockchainRegistry", "BLCHR", "",
@@ -321,8 +528,14 @@ export class Test extends Component {
 
         // })
     }
+    getContractCodeClick = () => {
+        const code = generateContractCode('Tokens', [{ name: 'name', type: 'string'}, { name: 'symbol', type: 'string' }]);
+        this.setState({
+            code
+        })
+    }
     render() {
-        const { registries } = this.state;
+        const { registries, code } = this.state;
 
         const items = registries.map(x => (
             <div key={x.name}>
@@ -336,7 +549,19 @@ export class Test extends Component {
                     {items}
                 </div>
                 <div>
-                    <button onClick={this.test}>test</button>
+                    <div>
+                        <textarea rows="25" cols="60" value={code} onChange={()=>{}}>
+                        </textarea>
+                        <button onClick={this.getContractCodeClick}>getContractCode</button>
+                    </div>
+                    <button onClick={this.createRegistryClick}>create registry</button>
+                    <button onClick={this.get}>get</button>
+                    <button onClick={this.updateFee}>update fee</button>
+                    <button onClick={this.createEntry}>create entry</button>
+                    <button onClick={this.getAllEntrys}>get all entrys</button>
+                    <div>
+                    <button onClick={this.updateEntrys}>updateEntrys</button>
+                    </div>
                 </div>
             </div>
         );

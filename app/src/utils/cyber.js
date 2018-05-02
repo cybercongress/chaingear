@@ -51,7 +51,6 @@ let getWeb3 = new Promise(function(resolve, reject) {
   window.addEventListener('load', function() {
     var results
     var web3 = window.web3
-
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
       // Use Mist/MetaMask's provider.
@@ -177,18 +176,33 @@ const getItems = (contract, count, array, mapFn) => {
 export const getContract = () => {
   return getWeb3
       .then(results => {
-      const contract = require('truffle-contract');
-      const registryContract = contract(ChaingearBuild);
-      registryContract.setProvider(results.web3.currentProvider);
+      // const contract = require('truffle-contract');
+      // const registryContract = contract(ChaingearBuild);
+      const web3 = results.web3;
+      const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks['42'].address);
+      // registryContract.setProvider(results.web3.currentProvider);
       results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
-      return results.web3.eth.getAccounts()
-        .then(accounts => {
-            return registryContract.deployed().then(contract => ({
-                contract,
-                web3: results.web3,
-                accounts
-            }));
+      
+      return new Promise(resolve => {
+        results.web3.eth.getAccounts((e, accounts)=> {
+            // debugger
+            // registryContract.deployed().then(contract => {
+                resolve({
+                    contract,
+                    web3: results.web3,
+                    accounts
+                })
+            // });    
         })
+      })
+      
+        // .then(accounts => {
+        //     return registryContract.deployed().then(contract => ({
+        //         contract,
+        //         web3: results.web3,
+        //         accounts
+        //     }));
+        // })
       
     })
 }
@@ -205,8 +219,7 @@ export const register = (name, adress, hash) => {
 
 export const getRegistry = () => {
   return getContract().then(( { contract, web3 }) => {  
-    return getItems(contract, 'registriesAmount', 'registryInfo', (items) => {
-        debugger
+    return getItems2(contract, 'registriesAmount', 'registryInfo', (items) => {
       return ({
         name: items[0],
         address: items[1],
@@ -241,7 +254,7 @@ export const getContractByAbi = (address, abi) => {
 export const getItems2 = (contract, count, array, mapFn) => {
   return new Promise(resolve => {
     contract[count]((e, lengthData) => {
-      console.log(e, lengthData)
+      console.log(e, lengthData.toNumber())
       const length = lengthData.toNumber();
       let promises = [];
           for(let i =0; i < length; i++) {
