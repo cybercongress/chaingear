@@ -12,20 +12,23 @@ import Web3 from 'web3'
 
 export const loadCompiler = (cb) => {
   setTimeout(() => {
-      window.BrowserSolc.loadVersion("soljson-v0.4.18+commit.9cf6e910.js", cb);
+      window.BrowserSolc.loadVersion("soljson-v0.4.21+commit.dfe3193c.js", cb);
     }, 30);
 }
 
-const ChaingeareableSource = require('../Chaingeareable.sol');
+// const ChaingeareableSource = require('../Chaingeareable.sol');
 
+const EntryBasic = require('../EntryBasic.sol');
 
+console.log('>> ' , EntryBasic)
 
 
 export const compileRegistry = (code, contractName, compiler) => {
   return new Promise((resolve, reject) => {
     const input = {
-      'Chaingeareable.sol': ChaingeareableSource,
-      [contractName]: 'pragma solidity ^0.4.18; ' + code,
+      // 'Chaingeareable.sol': ChaingeareableSource,
+      'EntryBasic.sol': EntryBasic,
+      [contractName]: 'pragma solidity ^0.4.21; ' + code,
     };
 
     setTimeout(() => {
@@ -34,8 +37,8 @@ export const compileRegistry = (code, contractName, compiler) => {
         reject(compiledContract.errors[0]);
         return;
       }
-      var abi = compiledContract.contracts[contractName +":"+ contractName].interface;
-      var bytecode = '0x'+compiledContract.contracts[contractName +":"+ contractName].bytecode;
+      var abi = compiledContract.contracts[contractName +":"+ contractName  ].interface;
+      var bytecode = '0x'+compiledContract.contracts[contractName +":"+ contractName ].bytecode;
 
       resolve({
         abi,

@@ -336,3 +336,14 @@ contract Chaingeareable is Ownable, Destructible, Pausable, SplitPaymentChangeab
         chaingear.register(_name, this);
     }
 }
+Error: Could not find contracts/common/Chaingeareable.sol from any sources
+    at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/truffle-resolver/index.js:76:23
+    at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/internal/onlyOnce.js:12:16
+    at next (/Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/whilst.js:68:18)
+    at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/truffle-resolver/index.js:64:7
+    at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/truffle-resolver/fs.js:85:5
+    at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/internal/once.js:12:16
+    at replenish (/Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/internal/eachOfLimit.js:59:25)
+    at iterateeCallback (/Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/internal/eachOfLimit.js:49:17)
+    at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/internal/onlyOnce.js:12:16
+    at ReadFileContext.callback (/Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/truffle-resolver/fs.js:81:14) 'Error: Could not find contracts/common/Chaingeareable.sol from any sources\n    at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/truffle-resolver/index.js:76:23\n    at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/internal/onlyOnce.js:12:16\n    at next (/Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/whilst.js:68:18)\n    at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/truffle-resolver/index.js:64:7\n    at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/truffle-resolver/fs.js:85:5\n    at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/internal/once.js:12:16\n    at replenish (/Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/internal/eachOfLimit.js:59:25)\n    at iterateeCallback (/Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/internal/eachOfLimit.js:49:17)\n    at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/internal/onlyOnce.js:12:16\n    at ReadFileContext.callback (/Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/truffle-resolver/fs.js:81:14)'

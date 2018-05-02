@@ -32,9 +32,13 @@ const generateContractCode = (name, fields) => {
     return '""';
   }
 
+// is EntryBasic, Ownable
+
   return `
 
-contract ${name}Core is EntryBasic, Ownable {
+import 'EntryBasic.sol';
+
+contract ${name} is EntryBasic, Ownable {
 
     using SafeMath for uint256;
 
@@ -105,7 +109,7 @@ contract ${name}Core is EntryBasic, Ownable {
         public
     {
 
-        ${fields.map(({ name, type }) => `entries[_entryId].${name} = _${name}`).join(';\n')}
+        ${fields.map(({ name, type }) => `entries[_entryId].${name} = _${name}`).join(';\n')};
 
 
         entries[_entryId].metainformation.lastUpdateTime = block.timestamp;

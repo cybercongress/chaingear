@@ -247,7 +247,7 @@
 
 import React, { Component } from 'react';
 
-import { getContract, getRegistry, saveInIPFS } from '../../utils/cyber';
+import { getContract, getRegistry, saveInIPFS, compileRegistry } from '../../utils/cyber';
 
 import EntryCoreBuild from '../../../../build/contracts/EntryCore.json';
 
@@ -265,16 +265,56 @@ import Chaingear from '../../../../build/contracts/Chaingear.json';
 import Registry from '../../../../build/contracts/Registry.json';
 import EntryCore from '../../../../build/contracts/EntryCore.json';
 
-import { getItems2, generateContractCode } from '../../utils/cyber';
+import { getItems2, generateContractCode, loadCompiler } from '../../utils/cyber';
 // const _contract = new web3.eth.Contract(Chaingear.abi, Chaingear.networks['42'].address);
 
-const createRegistry = (name, fields, symbol) => {
+let _bytecode;
+let _ipfsHash;
+const createRegistry = (name, symbol, fields) => {
+    const code = generateContractCode(name, fields);
 
+    return new Promise(resolve => {
+        loadCompiler((compiler) => {
+            compileRegistry(code, name, compiler)
+                .then(({ abi, bytecode }) => {
+                    _bytecode = bytecode
+                    return saveInIPFS(EntryCoreBuild.abi)
+                })
+                .then(ipfsHash => {
+                    _ipfsHash = ipfsHash;
+                    return getContract()
+                    
+                })
+                .then(({ contract, web3, accounts }) => {
+                    contract.registryRegistrationFee(function(e, data) {
+                    
+                    var buildingFee = data.toNumber();
+                    console.log(' buildingFee ', buildingFee);
+
+                    contract.registerRegistry.sendTransaction(
+                        [], [], name, symbol, 
+                        _ipfsHash,
+                        _bytecode, 
+                        { 
+                            value: buildingFee,
+                            //_web3.toWei(0.001, 'ether'), 
+                            // gas: 10000000, 
+                            // gasPrice: 15
+                            // from: _accounts[0],
+                            // Function: function(e, data) {
+                            //     debugger
+                            // }
+                        },
+                        function(e, data){
+                            resolve(data);
+                        }
+                    )
+                    })
+                })
+        })        
+    })
 }
 
-const getContractCode = (name, fields) => {
-
-}
 
 export class Test extends Component {
     state = {
@@ -438,6 +478,13 @@ export class Test extends Component {
     }
 
     createRegistryClick = () => {
+        const fields = [{ name: 'name', type: 'string'}, { name: 'symbol', type: 'string' }];
+        
+        createRegistry("Tokens2", "BLCHR3", fields)
+            .then(data => {
+                debugger
+            })
+
         // var buildingFee = 100000;
         // saveInIPFS(EntryCoreBuild.abi)
         //     .then(ipfsHash => {
@@ -470,39 +517,39 @@ export class Test extends Component {
         //     })
 
         // var buildingFee = 100000;
-        var gas = 40000000
-        saveInIPFS(EntryCoreBuild.abi)
-            .then(ipfsHash => {
-                // debugger
-                // debugger
-                // _contract.defaults({
-                //   value: buildingFee
-                // })
-                _contract.registryRegistrationFee(function(e, data) {
+        // var gas = 40000000
+        // saveInIPFS(EntryCoreBuild.abi)
+        //     .then(ipfsHash => {
+        //         // debugger
+        //         // debugger
+        //         // _contract.defaults({
+        //         //   value: buildingFee
+        //         // })
+        //         _contract.registryRegistrationFee(function(e, data) {
                     
-                    var buildingFee = data.toNumber();
-                    debugger
-                    _contract.registerRegistry.sendTransaction(
-                        [], [], "BlockchainRegistry", "BLCHR", 
-                        ipfsHash,
-                        EntryCoreBuild.bytecode, 
-                        { 
-                            value: buildingFee,
-                            //_web3.toWei(0.001, 'ether'), 
-                            // gas: 10000000, 
-                            // gasPrice: 15
-                            // from: _accounts[0],
-                            // Function: function(e, data) {
-                            //     debugger
-                            // }
-                        },
-                        function(e, data){
-                            debugger
-                        }
-                    )
-                })
+        //             var buildingFee = data.toNumber();
+        //             debugger
+        //             _contract.registerRegistry.sendTransaction(
+        //                 [], [], "BlockchainRegistry", "BLCHR", 
+        //                 ipfsHash,
+        //                 EntryCoreBuild.bytecode, 
+        //                 { 
+        //                     value: buildingFee,
+        //                     //_web3.toWei(0.001, 'ether'), 
+        //                     // gas: 10000000, 
+        //                     // gasPrice: 15
+        //                     // from: _accounts[0],
+        //                     // Function: function(e, data) {
+        //                     //     debugger
+        //                     // }
+        //                 },
+        //                 function(e, data){
+        //                     debugger
+        //                 }
+        //             )
+        //         })
                 
-            });
+        //     });
             // .then(d => {
             //     debugger
             // })
