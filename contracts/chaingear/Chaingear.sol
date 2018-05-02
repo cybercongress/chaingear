@@ -17,7 +17,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 	/*
 	*  Modifiers
 	*/
-    
+
     /**
     * @dev modifier for checking ownership of Registry associated token
     * @param _registryID uint256 token-registry ID
@@ -26,21 +26,21 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         require (ownerOf(_registryID) == msg.sender);
         _;
     }
-    
-    /*
-    *  Constructor
-    */
 
-	/**
-	* @dev Chaingear constructor, pre-deployment of Chaingear
-	* @param _creator RegistryCreator address of RegistryCreator contract
-	* @param _benefitiaries address[] addresses of Chaingear benefitiaries
-	* @param _shares uint256[] array with amount of shares
-	* @param _description string description of Chaingear
-	* @param _registrationFee uint Registration fee for registry creation
-	* @param _chaingearName string Chaingear name
-	* @param _chaingearSymbol string Chaingear symbol
-	*/
+  /*
+  *  Constructor
+  */
+
+  	/**
+  	* @dev Chaingear constructor, pre-deployment of Chaingear
+  	* @param _creator RegistryCreator address of RegistryCreator contract
+  	* @param _benefitiaries address[] addresses of Chaingear benefitiaries
+  	* @param _shares uint256[] array with amount of shares
+  	* @param _description string description of Chaingear
+  	* @param _registrationFee uint Registration fee for registry creation
+  	* @param _chaingearName string Chaingear name
+  	* @param _chaingearSymbol string Chaingear symbol
+  	*/
     function Chaingear(
         RegistryCreator _creator,
         address[] _benefitiaries,
@@ -59,15 +59,15 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         chaingearDescription_ = _description;
         creator_ = _creator;
     }
-    
+
     /*
     *  Public functions
     */
 
     /**
     * @dev Add and tokenize registry with specified parameters to Chaingear.
-	* @dev Registration fee is required to send with tx.
-	* @dev Tx sender become Creator of Registry, chaingear become Owner of Registry
+	  * @dev Registration fee is required to send with tx.
+	  * @dev Tx sender become Creator of Registry, chaingear become Owner of Registry
     * @param _name string, Registry name
     * @param _symbol string, Registry symbol
     * @param _linkToABIOfEntriesContract string, link to ABI of EntryCore contract
@@ -99,7 +99,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             _bytecodeOfEntriesContract
         );
     }
-    
+
     /**
     * @dev Allows transfer ownership of Registry to new owner
     * @dev Transfer associated token and set owner of registry to new owner
@@ -122,7 +122,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 
         RegistryTransferred(msg.sender, registries[_registryID].name, _registryID, _newOwner);
     }
-    
+
     /**
     * @dev Allows to unregister created Registry from Chaingear
     * @dev Only possible when safe of Registry is empty
@@ -133,11 +133,11 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         public
         whenNotPaused
         onlyRegistryOwner(_registryID)
-    {        
+    {
         address registryAddress = registries[_registryID].contractAddress;
         require(Registry(registryAddress).safeBalance() == 0);
         /* require(Registry(registryAddress).entriesAmount() == 0); */
-        
+
         uint256 registryIndex = allTokensIndex[_registryID];
         uint256 lastRegistryIndex = registries.length.sub(1);
         RegistryMeta storage lastRegistry = registries[lastRegistryIndex];
@@ -145,15 +145,15 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         registries[registryIndex] = lastRegistry;
         delete registries[lastRegistryIndex];
         registries.length--;
-        
+
         Registry(registryAddress).transferOwnership(registries[_registryID].owner);
 
         super._burn(msg.sender, _registryID);
-        
+
         string storage registryName = registries[_registryID].name;
         RegistryUnregistered(msg.sender, registryName);
     }
-    
+
     /**
     * @dev Allows set and update ABI link for generated and created Registry
     * @dev Only Registry associated token owner can update
@@ -161,7 +161,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     * @param _link string IPFS hash to json with ABI
     */
     function setABILinkForRegistry(
-        uint256 _registryID, 
+        uint256 _registryID,
         string _link
     )
         public
@@ -170,11 +170,11 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         registries[_registryID].linkABI = _link;
     }
-    
+
     /*
     *  Private functions
     */
-    
+
     /**
     * @dev Private function for registry creation
     * @dev Pass Registry params and bytecode to RegistryCreator to current builder
@@ -197,7 +197,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     )
         private
         returns (
-            address newRegistryContract, 
+            address newRegistryContract,
             uint256 newRegistryID
         )
     {
@@ -222,15 +222,15 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             currentRegistryBalanceETH: 0,
             accumulatedRegistryETH: 0
         }));
-        
+
         uint256 registryID = registries.push(registry) - 1;
         _mint(msg.sender, registryID);
         RegistryRegistered(_name, registryContract, msg.sender, registryID);
 
         return (
-            registryContract, 
+            registryContract,
             registryID
         );
     }
-    
+
 }
