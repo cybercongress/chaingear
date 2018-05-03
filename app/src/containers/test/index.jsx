@@ -247,105 +247,17 @@
 
 import React, { Component } from 'react';
 
-import { getContract, getRegistry, saveInIPFS, compileRegistry, getFieldByHash } from '../../utils/cyber';
-
-import EntryCoreBuild from '../../../../build/contracts/EntryCore.json';
-
-let _contract;
-let _web3;
-let _accounts;
-
-
-import Web3 from 'web3'
-const web3 = new Web3(new Web3.providers.HttpProvider('https://kovan.infura.io/eKZdJzgmRo31DJI94iSO'));
-
-import Chaingear from '../../../../build/contracts/Chaingear.json';
-
-
-import Registry from '../../../../build/contracts/Registry.json';
-import EntryCore from '../../../../build/contracts/EntryCore.json';
-
-import { getItems2, generateContractCode, loadCompiler } from '../../utils/cyber';
-// const _contract = new web3.eth.Contract(Chaingear.abi, Chaingear.networks['42'].address);
-
-let _bytecode;
-let _ipfsHash;
-const createRegistry = (name, symbol, fields) => {
-    const code = generateContractCode(name, fields);
-
-    return new Promise(resolve => {
-        loadCompiler((compiler) => {
-            compileRegistry(code, name, compiler)
-                .then(({ abi, bytecode }) => {
-                    _bytecode = bytecode
-                    return saveInIPFS(abi)
-                })
-                .then(ipfsHash => {
-                    _ipfsHash = ipfsHash;
-                    return getContract()
-                    
-                })
-                .then(({ contract, web3, accounts }) => {
-                    contract.registryRegistrationFee(function(e, data) {
-                    
-                    var buildingFee = data.toNumber();
-                    // console.log(' buildingFee ', buildingFee);
-
-                    contract.registerRegistry.sendTransaction(
-                        [], [], name, symbol, 
-                        _ipfsHash,
-                        _bytecode, 
-                        { 
-                            value: buildingFee,
-                            //_web3.toWei(0.001, 'ether'), 
-                            // gas: 10000000, 
-                            // gasPrice: 15
-                            // from: _accounts[0],
-                            // Function: function(e, data) {
-                            //     debugger
-                            // }
-                        },
-                        function(e, data){
-                            resolve(data);
-                        }
-                    )
-                    })
-                })
-        })        
-    })
-}
-
-const getRegistryData = (address, fields) => {
-    return new Promise(resolve => {
-        const registry = _web3.eth.contract(Registry.abi).at(address);
-
-        registry.entryBase((e, entryAddress) => {
-            
-
-            const entryCore = _web3.eth.contract(EntryCore.abi).at(entryAddress);
-
-            const mapFn = item => {
-              const aItem = Array.isArray(item) ? item : [item];
-              return fields.reduce((o, field, index) => {
-                o[field.name] = aItem[index]; 
-                return o;
-              },{})
-            }
-            
-            getItems2(entryCore, 'entriesAmount', 'entryInfo', mapFn)
-                .then(items => {
-                    registry.entryCreationFee((e, data) => {
-                        var fee = data.toNumber();
-                        resolve({
-                            fee,
-                            items,
-                            fields
-                        })
-                    })
-                });
-        })
-    })
-}
+import { 
+    updateEntryCreationFee, 
+    generateContractCode, 
+    addItem, 
+    updateItem,
+    createRegistry,
+    init,
+    getRegistry,
+    getFieldByHash,
+    getRegistryData
+} from '../../utils/cyber';
 
 
 export class Test extends Component {
@@ -357,13 +269,8 @@ export class Test extends Component {
         fields: []
     }
     componentDidMount() {
-        getContract()
-            .then(({ contract, web3, accounts }) => {
-                // debugger
-                _contract = contract;
-                _web3 = web3;
-                _accounts = accounts;
-            })
+        init();
+
     }
 
     getAllRegistry = () => {
@@ -376,44 +283,26 @@ export class Test extends Component {
     updateFee = () => {
         const address = this.refs.address.value;
         const newfee = this.refs.fee.value;
-        //_web3.toWei(0.001, 'ether')
-        const registry = _web3.eth.contract(Registry.abi).at(address);
-        registry.updateEntryCreationFee(newfee, function(){
-            debugger
-        })
-
+        
+        updateEntryCreationFee(address, newfee)
+            .then(() => {
+                debugger
+            })
     }
 
     createEntry = (values) => {
-        const { registries } = this.state;
+        const { registries, items } = this.state;
         const address = this.refs.address.value;
         const registry = registries.find(x => x.address === address);
         if (!registry) return;
 
         const ipfsHash = registry.ipfsHash;
 
-        const registryContract = _web3.eth.contract(Registry.abi).at(address);
-
-        getFieldByHash(ipfsHash)
-            .then(({ abi }) => {
-                registryContract.entryCreationFee((e, data) => {
-                            var fee = data.toNumber();
-
-                            registryContract.createEntry({ value: fee }, (e, d) => {
-                                registryContract.entryBase((e, entryAddress) => {
-                                    const entryCore = _web3.eth.contract(abi).at(entryAddress);
-
-                                    const newEntryId = this.state.items.length;
-                                    var args = [0, ...values, function(e, dat) {
-                                        debugger
-                                    }]
-                                    debugger
-                                    entryCore.updateEntry.apply(entryCore, args)
-                                })
-                            })
-                        })
-            })
-        
+        addItem(address)
+            .then(() => {
+                const entryId = items.length;
+                return updateItem(address, ipfsHash, entryId, values)
+            })        
     }
 
     getAllEntrysClick = () => {
@@ -427,7 +316,7 @@ export class Test extends Component {
 
         getFieldByHash(ipfsHash)
             .then(({ abi, fields }) => {
-                getRegistryData(address, fields)
+                getRegistryData(address, fields, abi)
                     .then(({ fee, items, fields }) => {
                         this.setState({ fee, items, fields });
                         this.refs.fee.value =fee;
@@ -458,7 +347,7 @@ export class Test extends Component {
         })
     }
     render() {
-        const { registries, code, items, fee, fields } = this.state;
+        const { registries, code, items, fields } = this.state;
 
         const registriesItems = registries.map(x => (
             <div key={x.name}>
@@ -528,7 +417,9 @@ class FieldsForm extends Component {
     createClick = () => {
         var args = [];
         for(let key in this.refs) {
-            args.push(this.refs[key].value);
+            if (this.refs[key]) {
+                args.push(this.refs[key].value);
+            }
         }
 
         this.props.onCreate(args);
@@ -536,7 +427,7 @@ class FieldsForm extends Component {
     render() {
         const { fields } = this.props;
 
-        if (!fields || fields.length == 0 ) return null;
+        if (!fields || fields.length === 0 ) return null;
 
         const controls = fields.map(field => (
             <div key={field.name}>
