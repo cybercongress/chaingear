@@ -103,7 +103,7 @@ class Register extends Component {
 
   add = (values) => {
     // cyber.addRegistryItem(this.contract, args);
-    const { registries, items } = this.state;
+    const { registries } = this.state;
     const address = this.props.params.adress;
     const registry = registries.find(x => x.address === address);
     if (!registry) return;
@@ -111,8 +111,7 @@ class Register extends Component {
     const ipfsHash = registry.ipfsHash;
 
     cyber.addItem(address)
-        .then(() => {
-            const entryId = items.length;
+        .then((entryId) => {
             return cyber.updateItem(address, ipfsHash, entryId, values)
         }) 
   }

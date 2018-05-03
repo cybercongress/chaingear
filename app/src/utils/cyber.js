@@ -346,7 +346,7 @@ let _ipfsHash;
 export const createRegistry = (name, symbol, fields) => {
     const code = generateContractCode(name, fields);
 
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
         loadCompiler((compiler) => {
             compileRegistry(code, name, compiler)
                 .then(({ abi, bytecode }) => {
@@ -378,8 +378,18 @@ export const createRegistry = (name, symbol, fields) => {
                             //     debugger
                             // }
                         },
-                        function(e, data){
-                            resolve(data);
+                        function(e, data){  
+                            if (e) {
+                                reject(e)
+                            } else {
+                                var event = contract.RegistryRegistered();
+
+                                event.watch((ee, results) => {
+                                    event.stopWatching();
+                                    if (ee) reject(ee)
+                                        else resolve(results.args);
+                                })                                
+                            }
                         }
                     )
                     })
@@ -459,11 +469,18 @@ export const addItem = (address) => {
     return new Promise(resolve => {
         const registryContract = _web3.eth.contract(Registry.abi).at(address);
 
+        var event = registryContract.EntryCreated();
+
+        event.watch((e, results) => {
+            event.stopWatching();
+            resolve(results.args.entryId.toNumber());
+        })
+
         registryContract.entryCreationFee((e, data) => {
             var fee = data.toNumber();
 
             registryContract.createEntry({ value: fee }, (e, d) => {
-                resolve(d);
+                // resolve(d);
             })
         })
     });
