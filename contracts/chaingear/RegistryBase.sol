@@ -189,7 +189,7 @@ contract RegistryBase {
     function currentRegistryBalanceETHOf(uint256 _registryID)
         public
         view
-        returns (uint)
+        returns (uint currentRegistryBalanceETH)
     {
         return registries[_registryID].currentRegistryBalanceETH;
     }
@@ -202,7 +202,7 @@ contract RegistryBase {
     function accumulatedRegistryETHOf(uint256 _registryID)
         public
         view
-        returns (uint)
+        returns (uint accumulatedRegistryETH)
     {
         return registries[_registryID].accumulatedRegistryETH;
     }
@@ -217,8 +217,8 @@ contract RegistryBase {
         public
         view
         returns (
-            uint,
-            uint
+            uint currentRegistryBalanceETH,
+            uint accumulatedRegistryETH
         )
     {
         return (

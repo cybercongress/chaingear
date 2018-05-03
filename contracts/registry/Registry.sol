@@ -13,6 +13,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
 
     using SafeMath for uint256;
     
+    // TODO change to inner ERC721 modifier
     modifier onlyEntryOwner(uint256 _entryID) {
         require(ownerOf(_entryID) == msg.sender);
         _;
@@ -33,6 +34,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         permissionTypeEntries_ = PermissionTypeEntries.OnlyAdmin;
         entryCreationFee_ = 0;
         registrySafe_ = new RegistrySafe();
+        registryInitialized_ = false;
     }
 
     function initializeRegistry(string _linkToABIOfEntriesContract, bytes _entryCore)
@@ -63,8 +65,10 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         returns (uint256)
     {
         require(msg.value == entryCreationFee_);
+        // TODO check for uniqueness for fields (+protected by uniq field gen)
 
         uint256 newEntryId = EntryBasic(entryBase_).createEntry();
+        
         _mint(msg.sender, newEntryId);
 
         emit EntryCreated(msg.sender, newEntryId);
@@ -78,7 +82,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         registryInitialized
         onlyOwner
     {
-        registryAdmin_ = _newOwner;
+        registryAdmin = _newOwner;
     }
 
     function deleteEntry(uint256 _entryId)

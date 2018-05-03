@@ -13,7 +13,7 @@ contract RegistryAccessControl is Adminable, Ownable, Pausable {
 
     modifier onlyPermissionedToEntries() {
         if (permissionTypeEntries_ == PermissionTypeEntries.OnlyAdmin) {
-            require(msg.sender == registryAdmin_);
+            require(msg.sender == registryAdmin);
         }
         _;
     }

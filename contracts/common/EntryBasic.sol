@@ -10,6 +10,8 @@ contract EntryBasic {
         address creator;
         uint createdAt;
         uint lastUpdateTime;
+        
+        //TODO think about move this vars to Registry
         uint currentEntryBalanceETH;
         uint accumulatedOverallEntryETH;
     }

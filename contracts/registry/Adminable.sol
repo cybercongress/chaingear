@@ -3,24 +3,17 @@ pragma solidity 0.4.23;
 
 contract Adminable {
     
-    address internal registryAdmin_;
+    address public registryAdmin;
 
     modifier onlyRegistryAdmin() {
-        require(msg.sender == registryAdmin_);
+        require(msg.sender == registryAdmin);
         _;
     }
 
     constructor()
         public
     {
-        registryAdmin_ = tx.origin;
+        registryAdmin = tx.origin;
     }
 
-    function registryAdmin()
-        public
-        view
-        returns (address)
-    {
-        return registryAdmin_;
-    }
 }

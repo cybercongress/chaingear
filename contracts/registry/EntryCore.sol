@@ -136,13 +136,16 @@ contract EntryCore is EntryBasic, Ownable {
         entries[_entryID].metainformation.owner = _newOwner;
     }
 
+    // TODO move out
     function updateEntryFund(uint256 _entryID, uint256 _amount)
         onlyOwner
         public
     {
+        entries[_entryID].metainformation.currentEntryBalanceETH.add(_amount);
         entries[_entryID].metainformation.accumulatedOverallEntryETH.add(_amount);
     }
 
+    // TODO move out
     function claimEntryFund(uint256 _entryID, uint256 _amount)
         onlyOwner
         public

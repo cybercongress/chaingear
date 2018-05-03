@@ -1,8 +1,10 @@
 pragma solidity 0.4.23;
 
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "../common/RegistryBasic.sol";
+import "../common/RegistrySafe.sol";
 import "./ChaingearCore.sol";
 import "./RegistryCreator.sol";
 
@@ -15,6 +17,8 @@ import "./RegistryCreator.sol";
 */
 contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 
+    using SafeMath for uint256;
+
 	/*
 	*  Modifiers
 	*/
@@ -23,6 +27,8 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     * @dev modifier for checking ownership of Registry associated token
     * @param _registryID uint256 token-registry ID
     */
+    
+    // TODO change to inner ERC721 modifier
     modifier onlyRegistryAdmin(uint256 _registryID) {
         require (ownerOf(_registryID) == msg.sender);
         _;
@@ -56,6 +62,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         registryRegistrationFee_ = _registrationFee;
         chaingearDescription_ = _description;
+        /* registrySafe_ = new RegistrySafe(); */
     }
     
     /*
@@ -89,6 +96,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         require(registryCreatorsAddresses[_version] != 0x0);
         require(msg.value == registryRegistrationFee_);
+        // TODO check for uniqueness for registry name and symbol
 
         return createRegistry(
             _version,
@@ -231,6 +239,31 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             registryContract, 
             registryID
         );
+    }
+    
+    
+    function fundRegistry(uint256 _registryID)
+        public
+        whenNotPaused
+        payable
+    {
+        registries[_registryID].currentRegistryBalanceETH.add(msg.value);
+        registries[_registryID].accumulatedRegistryETH.add(msg.value);
+        registrySafe_.transfer(msg.value);
+
+        emit registryFunded(_registryID, msg.sender);
+    }
+
+    function claimEntryFunds(uint256 _registryID, uint _amount)
+        public
+        whenNotPaused
+        onlyRegistryAdmin(_registryID)
+    {
+        require(_amount <= registries[_amount].currentRegistryBalanceETH);
+        registries[_registryID].currentRegistryBalanceETH.sub(_amount);
+        RegistrySafe(registrySafe_).claim(msg.sender, _amount);
+
+        emit registryFundsClaimed(_registryID, msg.sender, _amount);
     }
     
 }

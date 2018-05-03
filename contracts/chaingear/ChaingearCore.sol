@@ -24,10 +24,25 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     // @notice In Wei
     uint internal registryRegistrationFee_;
     
+    
+    address internal registrySafe_;
+    
     mapping (string => address) internal registryCreatorsAddresses;
     mapping (string => string) internal registryCreatorsABIsLinks;
     mapping (string => string) internal registryCreatorsDescriptions;
 
+
+
+    event registryFunded(
+        uint ID,
+        address sender
+    );
+    
+    event registryFundsClaimed(
+        uint ID,
+        address claimer,
+        uint amout
+    );
 
     function addRegistryCreatorVersion(
         string _nameOfVerions, 
@@ -38,6 +53,7 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         public
         onlyOwner
     {
+        // TODO check for uniqueness
         registryCreatorsAddresses[_nameOfVerions] = _addressRegistryCreator;
         registryCreatorsABIsLinks[_nameOfVerions] = _link;
         registryCreatorsDescriptions[_nameOfVerions] = _description;
@@ -57,6 +73,14 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
             registryCreatorsABIsLinks[_version],
             registryCreatorsDescriptions[_version]
         );
+    }
+    
+    function registrySafe()
+        public
+        view
+        returns (address)
+    {
+        return registrySafe_;
     }
 
 	/*
@@ -121,4 +145,11 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         return registryRegistrationFee_;
     }
     
+    function safeBalance()
+        public
+        view
+        returns (uint balance)
+    {
+        return address(registrySafe_).balance;
+    }
 }
