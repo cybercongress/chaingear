@@ -4,11 +4,17 @@ import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "zeppelin-solidity/contracts/lifecycle/Destructible.sol";
 import "zeppelin-solidity/contracts/lifecycle/Pausable.sol";
 
-
+/**
+* @title Registry access control processor
+* @author Cyber•Congress
+* @dev not recommend to use before release!
+*/
 contract RegistryAccessControl is Ownable, Pausable, Destructible {
 
+    // @dev initiate registryOwner_ variable
     address internal registryOwner_;
 
+    // @dev initiate permissionTypeEntries_ variable
     PermissionTypeEntries internal permissionTypeEntries_;
 
     enum PermissionTypeEntries {OnlyCreator, Whitelist, AllUsers}
@@ -28,12 +34,19 @@ contract RegistryAccessControl is Ownable, Pausable, Destructible {
         _;
     }
 
+    /**
+    * @dev Registry access control constructor
+    */
     function RegistryAccessControl()
         public
     {
         registryOwner_ = tx.origin;
     }
 
+    /**
+    * @dev Registry owner getter
+    * @param address of Registry' owner
+    */
     function registryOwner()
         public
         view
@@ -42,6 +55,10 @@ contract RegistryAccessControl is Ownable, Pausable, Destructible {
         return registryOwner_;
     }
 
+    /**
+    * @dev permissions type entries getter
+    * @param type of permissions for entries
+    */
     function permissionsTypeEntries()
         public
         view
@@ -50,6 +67,9 @@ contract RegistryAccessControl is Ownable, Pausable, Destructible {
         return permissionTypeEntries_;
     }
 
+    /**
+    * @dev permissions type entries setter
+    */
     function updatePermissionTypeEntries(uint _permissionTypeEntries)
         external
         onlyRegistryOwner

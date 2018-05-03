@@ -7,11 +7,24 @@ import "./Chaingeareable.sol";
 import "./EntryBase.sol";
 import "../common/RegistrySafe.sol";
 
-
+/**
+* @title Entries of Registry processor
+* @author Cyber•Congress
+* @dev not recommend to use before release!
+*/
 contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
 
     using SafeMath for uint256;
 
+    /**
+    * @dev Registry constructor, deployment
+    * @param benefitiaries' addresses[]
+    * @param charging shares uint256[]
+    * @param Registry name string
+    * @param Registry symbol string
+    * @param link to ABI of entries contract string
+    * @param bytecode of entries contract bytes
+    */
     function Registry(
         address[] _benefitiaries,
         uint256[] _shares,
@@ -42,6 +55,10 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         entryBase_ = deployedAddress;
     }
 
+/**
+* @dev entry creation
+* @return new entry ID uint256
+*/
     function createEntry()
         external
         whenNotPaused
@@ -59,6 +76,10 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         return newEntryId;
     }
 
+    /**
+    * @dev delegate tokenized ownership to new admin
+    * @param new owner (admin) address
+    */
     function transferTokenizedOnwerhip(address _newOwner)
         public
         whenNotPaused
@@ -67,6 +88,10 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         registryOwner_ = _newOwner;
     }
 
+    /**
+    * @dev remove entry from the Regisrty
+    * @param entry ID uint256
+    */
     function deleteEntry(uint256 _entryId)
         external
         whenNotPaused
@@ -80,6 +105,11 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         EntryDeleted(msg.sender, _entryId);
     }
 
+    /**
+    * @dev delegate entry tokenized ownership to new owner
+    * @param entry ID uint256
+    * @param new owner address
+    */
     function transferEntryOwnership(uint _entryId, address _newOwner)
         public
         whenNotPaused
@@ -93,6 +123,10 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         EntryChangedOwner(_entryId, _newOwner);
     }
 
+    /**
+    * @dev entry fund setter
+    * @param entry ID uint256
+    */
     function fundEntry(uint256 _entryId)
         public
         whenNotPaused
@@ -104,6 +138,11 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
         EntryFunded(_entryId, msg.sender);
     }
 
+    /**
+    * @dev entry fund claimer
+    * @param entry ID uint256
+    * @param claim amount uint
+    */
     function claimEntryFunds(uint256 _entryId, uint _amount)
         public
         whenNotPaused
@@ -115,7 +154,11 @@ contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
 
         EntryFundsClaimed(_entryId, msg.sender, _amount);
     }
-    
+
+    /**
+    * @dev safe balance getter
+    * @return balance uint
+    */
     function safeBalance()
         public
         view
