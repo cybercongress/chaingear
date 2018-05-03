@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity 0.4.23;
 
 
 /**
@@ -18,6 +18,7 @@ contract RegistryBase {
         string name;
         address contractAddress;
         address creator;
+        string version;
         string linkABI;
         uint registrationTimestamp;
         address owner;
@@ -98,6 +99,14 @@ contract RegistryBase {
     {
         return registries[_registryID].creator;
     }
+    
+    function versionOf(uint256 _registryID)
+        public
+        view
+        returns (string)
+    {
+        return registries[_registryID].version;
+    }
 
     /**
     * @dev Registry' creating timestamp getter
@@ -155,6 +164,7 @@ contract RegistryBase {
             string,
             address,
             address,
+            string,
             uint,
             string,
             address
@@ -164,6 +174,7 @@ contract RegistryBase {
             nameOf(_registryID),
             contractAddressOf(_registryID),
             creatorOf(_registryID),
+            versionOf(_registryID),
             registryDateOf(_registryID),
             ABILinkOf(_registryID),
             registryOwnerOf(_registryID)

@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity 0.4.23;
 
 import "openzeppelin-solidity/contracts/lifecycle/Destructible.sol";
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
@@ -24,8 +24,40 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     // @notice In Wei
     uint internal registryRegistrationFee_;
     
-    // @dev Address of RegistryCreator contract
-    address internal creator_;
+    mapping (string => address) internal registryCreatorsAddresses;
+    mapping (string => string) internal registryCreatorsABIsLinks;
+    mapping (string => string) internal registryCreatorsDescriptions;
+
+
+    function addRegistryCreatorVersion(
+        string _nameOfVerions, 
+        address _addressRegistryCreator,
+        string _link,
+        string _description
+    )
+        public
+        onlyOwner
+    {
+        registryCreatorsAddresses[_nameOfVerions] = _addressRegistryCreator;
+        registryCreatorsABIsLinks[_nameOfVerions] = _link;
+        registryCreatorsDescriptions[_nameOfVerions] = _description;
+    }
+    
+    function getRegistryCreatorInfo(string _version) 
+        public
+        view
+        returns (
+            address _addressRegistryCreator,
+            string _link,
+            string _description
+        )
+    {
+        return(
+            registryCreatorsAddresses[_version],
+            registryCreatorsABIsLinks[_version],
+            registryCreatorsDescriptions[_version]
+        );
+    }
 
 	/*
 	*  External Functions
@@ -61,19 +93,6 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         chaingearDescription_ = _description;
     }
 
-    /**
-    * @dev Chaingear' RegistryCreator setter
-    * @param _creator RegistryCreator address
-    */
-    function setRegistryCreator(
-        address _creator
-    )
-        external
-        onlyOwner
-    {
-        creator_ = _creator;
-    }
-
 	/*
 	*  View Functions
 	*/
@@ -100,18 +119,6 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         returns (uint)
     {
         return registryRegistrationFee_;
-    }
-
-    /**
-    * @dev Current RegistryCreator contract address getter
-    * @return address of current RegistryCreator contract
-    */
-    function registryCreator()
-        public
-        view
-        returns (address)
-    {
-        return creator_;
     }
     
 }

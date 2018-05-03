@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity 0.4.23;
 
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "../common/SplitPaymentChangeable.sol";
@@ -34,7 +34,6 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 
 	/**
 	* @dev Chaingear constructor, pre-deployment of Chaingear
-	* @param _creator RegistryCreator address of RegistryCreator contract
 	* @param _benefitiaries address[] addresses of Chaingear benefitiaries
 	* @param _shares uint256[] array with amount of shares
 	* @param _description string description of Chaingear
@@ -43,7 +42,6 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 	* @param _chaingearSymbol string Chaingear symbol
 	*/
     function Chaingear(
-        address _creator,
         address[] _benefitiaries,
         uint256[] _shares,
         string _description,
@@ -58,7 +56,6 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         registryRegistrationFee_ = _registrationFee;
         chaingearDescription_ = _description;
-        creator_ = _creator;
     }
     
     /*
@@ -71,33 +68,35 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 	* @dev Tx sender become Creator of Registry, chaingear become Owner of Registry
     * @param _name string, Registry name
     * @param _symbol string, Registry symbol
-    * @param _linkToABIOfEntriesContract string, link to ABI of EntryCore contract
-    * @param _bytecodeOfEntriesContract bytes, bytecode of user generated EntryCore contract
     * @return address new Registry contract address
     * @return uint256 new Registry ID in Chaingear contract, same token ID
     */
     function registerRegistry(
+        string _version,
         address[] _benefitiaries,
         uint256[] _shares,
         string _name,
-        string _symbol,
-        string _linkToABIOfEntriesContract,
-        bytes _bytecodeOfEntriesContract
+        string _symbol
+        /* string _linkToABIOfEntriesContract */
     )
         public
         payable
         whenNotPaused
-        returns (address registryAddress, uint256 registryID)
+        returns (
+            address registryAddress,
+            uint256 registryID
+        )
     {
+        require(registryCreatorsAddresses[_version] != 0x0);
         require(msg.value == registryRegistrationFee_);
 
         return createRegistry(
+            _version,
             _benefitiaries,
             _shares,
             _name,
-            _symbol,
-            _linkToABIOfEntriesContract,
-            _bytecodeOfEntriesContract
+            _symbol
+            /* _linkToABIOfEntriesContract, */
         );
     }
     
@@ -183,18 +182,16 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     * @param _shares uint256[]
     * @param _name string
     * @param _symbol string
-    * @param _linkToABIOfEntriesContract string
-    * @param _bytecodeOfEntriesContract bytes
     * @return address new Registry contract address
     * @return uint256 new Registry ID in Chaingear contract, same token ID
     */
     function createRegistry(
+        string _version,
         address[] _benefitiaries,
         uint256[] _shares,
         string _name,
-        string _symbol,
-        string _linkToABIOfEntriesContract,
-        bytes _bytecodeOfEntriesContract
+        string _symbol
+        /* string _linkToABIOfEntriesContract, */
     )
         private
         returns (
@@ -202,22 +199,24 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             uint256 newRegistryID
         )
     {
-        address registryContract = RegistryCreator(creator_).create(
+        address registryContract = RegistryCreator(registryCreatorsAddresses[_version]).create(
             _benefitiaries,
             _shares,
             _name,
-            _symbol,
-            _linkToABIOfEntriesContract,
-            _bytecodeOfEntriesContract
+            _symbol
+            /* _linkToABIOfEntriesContract, */
         );
-        RegistryBasic(registryContract).transferOwnership(msg.sender);
-
+        // sets in Adminable constructor.. need to audit and test
+        /* RegistryBasic(registryContract).transferTokenizedOnwerhip(msg.sender); */
+        
         RegistryMeta memory registry = (RegistryMeta(
         {
             name: _name,
             contractAddress: registryContract,
             creator: msg.sender,
-            linkABI: _linkToABIOfEntriesContract,
+            version: _version,
+            /* linkABI: _linkToABIOfEntriesContract, */
+            linkABI: "",
             registrationTimestamp: block.timestamp,
             owner: msg.sender,
             currentRegistryBalanceETH: 0,

@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity 0.4.23;
 
 import "../registry/Registry.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
@@ -50,17 +50,14 @@ contract RegistryCreator is Ownable {
     * @param _shares uint256[] array of shares amont ot each beneficiary
     * @param _name string name of Registry and token
     * @param _symbol string symbol of Registry and token
-    * @param _linkToABIOfEntriesContract string IPFS hash link to JSON ABI of Entries contract
-    * @param _bytecodeOfEntriesContract bytes bytecode with which Registry creates custom registry' entries contract 
     * @return Registy new registry address
     */
     function create(
         address[] _benefitiaries,
         uint256[] _shares,
         string _name,
-        string _symbol,
-        string _linkToABIOfEntriesContract,
-        bytes _bytecodeOfEntriesContract
+        string _symbol
+        /* string _linkToABIOfEntriesContract, */
     )
         external
         returns (address newRegistryContract)
@@ -71,9 +68,8 @@ contract RegistryCreator is Ownable {
             _benefitiaries,
             _shares,
             _name,
-            _symbol,
-            _linkToABIOfEntriesContract,
-            _bytecodeOfEntriesContract
+            _symbol
+            /* _linkToABIOfEntriesContract */
         );
 
         return newRegistryContract;
@@ -100,17 +96,14 @@ contract RegistryCreator is Ownable {
     * @param _shares uint256[] array of shares amont ot each beneficiary
     * @param _name string name of Registry and token
     * @param _symbol string symbol of Registry and token
-    * @param _linkToABIOfEntriesContract string IPFS hash link to JSON ABI of Entries contract
-    * @param _bytecodeOfEntriesContract bytes bytecode with which Registry creates custom registry' entries contract
     * @return Registy new registry address
     */
     function createRegistry(
         address[] _benefitiaries,
         uint256[] _shares,
         string _name,
-        string _symbol,
-        string _linkToABIOfEntriesContract,
-        bytes _bytecodeOfEntriesContract
+        string _symbol
+        /* string _linkToABIOfEntriesContract, */
     )
         private
         returns (address registryContract)
@@ -119,9 +112,8 @@ contract RegistryCreator is Ownable {
             _benefitiaries,
             _shares,
             _name,
-            _symbol,
-            _linkToABIOfEntriesContract,
-            _bytecodeOfEntriesContract
+            _symbol
+            /* _linkToABIOfEntriesContract */
         );
         Registry(registryContract).transferOwnership(msg.sender);
 
