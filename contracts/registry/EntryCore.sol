@@ -1,6 +1,8 @@
 pragma solidity 0.4.23;
 
 import "../common/EntryBasic.sol";
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 contract EntryCore is EntryBasic, Ownable {

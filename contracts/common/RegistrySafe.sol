@@ -1,7 +1,5 @@
 pragma solidity 0.4.23;
 
-import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
-/* import "openzeppelin-solidity/contracts/lifecycle/Destructible.sol"; */
 
 /**
 * @title RegistySafe contract
@@ -9,11 +7,9 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 * @dev Allows store etheirs and claim them by owner
 * @notice not recommend to use before release!
 */
-contract RegistrySafe is Ownable {
+contract RegistrySafe {
 
-    /*
-    *  Contructor Function
-    */
+    address public owner;
 
     /**
     * @dev Constructor of contract, payable
@@ -21,7 +17,9 @@ contract RegistrySafe is Ownable {
     constructor()
         public
         payable
-    { }
+    {
+        owner = msg.sender;
+    }
 
     /*
     *  Public Functions
@@ -46,8 +44,8 @@ contract RegistrySafe is Ownable {
         uint _amount
     )
         public
-        onlyOwner
     {
+        require(msg.sender == owner);
         _entryOwner.transfer(_amount);
     }
 

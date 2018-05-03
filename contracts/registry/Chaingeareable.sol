@@ -55,7 +55,7 @@ contract Chaingeareable is RegistryAccessControl {
     function entryBase()
         public
         view
-        returns (address)
+        returns (address entryCore)
     {
         return entryBase_;
     }

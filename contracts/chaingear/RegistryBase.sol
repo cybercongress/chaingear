@@ -22,8 +22,8 @@ contract RegistryBase {
         string linkABI;
         uint registrationTimestamp;
         address owner;
-        uint currentRegistryBalanceETH;
-        uint accumulatedRegistryETH;
+        /* uint currentRegistryBalanceETH;
+        uint accumulatedRegistryETH; */
     }
 
     // @dev Array of registries
@@ -186,26 +186,26 @@ contract RegistryBase {
     * @param _registryID uint256 Registry ID
     * @return uint Registy' balance in safe in wei
     */
-    function currentRegistryBalanceETHOf(uint256 _registryID)
+    /* function currentRegistryBalanceETHOf(uint256 _registryID)
         public
         view
         returns (uint currentRegistryBalanceETH)
     {
         return registries[_registryID].currentRegistryBalanceETH;
-    }
+    } */
 
     /**
     * @dev Registy' total accumulated balance in safe getter
     * @param _registryID uint256 Registry ID
     * @return uint Registy' total accumulated balance in safe in wei
     */
-    function accumulatedRegistryETHOf(uint256 _registryID)
+    /* function accumulatedRegistryETHOf(uint256 _registryID)
         public
         view
         returns (uint accumulatedRegistryETH)
     {
         return registries[_registryID].accumulatedRegistryETH;
-    }
+    } */
 
     /**
     * @dev Registy' safe stats getter
@@ -213,7 +213,7 @@ contract RegistryBase {
     * @return uint Registy' balance in safe in wei
     * @return uint Registy' total accumulated balance in safe in wei
     */
-    function registryBalanceInfo(uint256 _registryID)
+    /* function registryBalanceInfo(uint256 _registryID)
         public
         view
         returns (
@@ -225,7 +225,7 @@ contract RegistryBase {
             currentRegistryBalanceETHOf(_registryID),
             accumulatedRegistryETHOf(_registryID)
         );
-    }
+    } */
 
     /**
     * @dev Registies amount getter

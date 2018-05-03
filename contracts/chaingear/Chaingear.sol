@@ -62,8 +62,17 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         registryRegistrationFee_ = _registrationFee;
         chaingearDescription_ = _description;
+        
+        // TODO out of gas
         /* registrySafe_ = new RegistrySafe(); */
     }
+    
+    /* function addSafe()
+        external
+        onlyOwner
+    {
+        registrySafe_ = new RegistrySafe();
+    } */
     
     /*
     *  Public functions
@@ -226,9 +235,9 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             /* linkABI: _linkToABIOfEntriesContract, */
             linkABI: "",
             registrationTimestamp: block.timestamp,
-            owner: msg.sender,
-            currentRegistryBalanceETH: 0,
-            accumulatedRegistryETH: 0
+            owner: msg.sender
+            /* currentRegistryBalanceETH: 0,
+            accumulatedRegistryETH: 0 */
         }));
         
         uint256 registryID = registries.push(registry) - 1;
@@ -242,7 +251,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     }
     
     
-    function fundRegistry(uint256 _registryID)
+    /* function fundRegistry(uint256 _registryID)
         public
         whenNotPaused
         payable
@@ -264,6 +273,6 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         RegistrySafe(registrySafe_).claim(msg.sender, _amount);
 
         emit registryFundsClaimed(_registryID, msg.sender, _amount);
-    }
+    } */
     
 }

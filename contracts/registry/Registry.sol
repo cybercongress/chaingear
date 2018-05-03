@@ -37,23 +37,30 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         registryInitialized_ = false;
     }
 
-    function initializeRegistry(string _linkToABIOfEntriesContract, bytes _entryCore)
+    function initializeRegistry(
+        string _linkToABIOfEntriesContract,
+        bytes _entryCore
+    )
         public
         onlyRegistryAdmin
-        returns (address deployedAddress)
+        returns (
+            address entryBase
+        )
     {
+        address deployedAddress;
         assembly {
             let s := mload(_entryCore)
             let p := add(_entryCore, 0x20)
             deployedAddress := create(0, p, s)
         }
-        assert(deployedAddress != 0x0);
+        entryBase_ = deployedAddress;
+        require(entryBase_ != 0x0);
         registryInitialized_ = true;
         linkToABIOfEntriesContract_ = _linkToABIOfEntriesContract;
         
-        entryBase_ = deployedAddress;
+        /* entryBase_ = entryBase_; */
         
-        return deployedAddress;
+        return entryBase_;
     }
 
     function createEntry()

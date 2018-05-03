@@ -7,6 +7,7 @@ chai.should()
 const Registry = artifacts.require("Registry")
 const Chaingear = artifacts.require("Chaingear")
 const RegistryCreator = artifacts.require("RegistryCreator")
+const EntryCore = artifacts.require("EntryCore")
 
 contract("Chaingear", (accounts) => {
 
@@ -39,6 +40,8 @@ contract("Chaingear", (accounts) => {
     const CREATION_FEE_EQUAL = 1000000
     const CREATION_FEE_NOT_EQUAL = 100
     const CREATION_GAS = 7000000
+    
+    const REGISTRY_FUNDING = 10000000
     
     const REGISTRY_CREATOR_1_VERSION = "V1.0"
     const NOT_EXISTED_REGISTRY_CREATOR_VERSION = "HELLO_WORLD"
@@ -176,23 +179,86 @@ contract("Chaingear", (accounts) => {
     
     })
     
-    // it("#3/1 should not allow registry owner to transfer tokenized ownership before registry initialized", async () => {
-    // 
-    //     true.should.be.equal(false)
-    // 
-    // })
-    // 
-    // it("#3/2 should allow registry owner to transfer tokenized ownership", async () => {
-    // 
-    //     true.should.be.equal(false)
-    // 
-    // })
-    // 
-    // it("#3/3 should not allow unknown to transfer tokenized ownership for any registry", async () => {
-    // 
-    //     true.should.be.equal(false)
-    // 
-    // })
+    it("#3/1 should not allow registry owner to transfer tokenized ownership before registry initialized", async () => {
+        
+        const ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
+        
+        await chaingear.updateRegistryOwnership(
+            ID.toNumber(),
+            RANDOM_CREATOR_2,
+            {
+                from: RANDOM_CREATOR_1
+            }
+        ).should.be.rejected
+    
+    })
+    
+    it("#3/2 should allow registry owner to initialize registry", async () => {
+    
+        var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
+    
+        const registryAddress = await chaingear.contractAddressOf(ID.toNumber())
+
+        const registry = Registry.at(registryAddress)
+        
+        const registryInitializedBefore = await registry.registryInitialized_();
+        const registryEntryBaseBefore = await registry.entryBase()
+        
+        const registryEntryCoreAddress = await registry.initializeRegistry(
+            "Q_ABI_HASH",
+            EntryCore.bytecode,
+            {
+                from: RANDOM_CREATOR_1
+            }
+        )
+        const registryInitializedAfter = await registry.registryInitialized_();
+        registryInitializedBefore.should.not.equal(registryInitializedAfter)
+        
+        const registryEntryBaseAfter = await registry.entryBase()
+        registryEntryBaseBefore.should.not.equal(registryEntryBaseAfter)
+        
+    })
+    
+    it("#3/3 should allow registry owner to transfer tokenized ownership", async () => {
+        
+        var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
+        
+        const registryAddress = await chaingear.contractAddressOf(ID.toNumber())        
+        const registry = Registry.at(registryAddress)
+        
+        await chaingear.updateRegistryOwnership(
+            ID.toNumber(),
+            RANDOM_CREATOR_2,
+            {
+                from: RANDOM_CREATOR_1
+            }
+        )
+        
+        const registryAdmin = await registry.registryAdmin()
+        registryAdmin.should.be.equal(RANDOM_CREATOR_2)
+        
+        const ID_2 = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
+        ID_2.toNumber().should.be.equal(ID.toNumber())
+    
+    })
+    
+    it("#3/4 should not allow unknown to transfer tokenized ownership for any registry", async () => {
+    
+        var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
+        
+        const registryAddress = await chaingear.contractAddressOf(ID.toNumber())
+        
+        const registry = Registry.at(registryAddress)
+        
+        await chaingear.updateRegistryOwnership(
+            ID.toNumber(),
+            UNKNOWN,
+            {
+                from: UNKNOWN
+            }
+        ).should.be.rejected
+    
+    })
     
     it("#4/1 should allow chaingear owner to add registry version to chaingear", async () => {
         
@@ -266,5 +332,36 @@ contract("Chaingear", (accounts) => {
             }).should.be.rejected
     
     })
+    
+    // it("#7/1 funds from funded registry should be transfered to RegistrySafe", async () => {
+    // 
+    //     await chaingear.addSafe(
+    //         {
+    //             from: CHAINGEAR_OWNER
+    //         }
+    //     )
+    // 
+    //     const registrySafeBalanceBefore = await chaingear.safeBalance()
+    //     console.log(registrySafeBalanceBefore.toNumber())
+    //     // const funderBalanceBefore = await RANDOM_CREATOR_2.balance()
+    // 
+    //     var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
+    // 
+    //     await chaingear.fundRegistry(
+    //         ID.toNumber(),
+    //         {
+    //             from: RANDOM_CREATOR_1,
+    //             value: REGISTRY_FUNDING
+    //         }
+    //     )
+    // 
+    //     const registrySafeBalanceAfter = await chaingear.safeBalance()
+    //     console.log(registrySafeBalanceAfter.toNumber())
+    //     const diff = registrySafeBalanceAfter.toNumber() - registrySafeBalanceBefore.toNumber()
+    //     diff.should.be.equal(REGISTRY_FUNDING)
+    // 
+    //     // const funderBalanceAfter = await RANDOM_CREATOR_2.balance()
+    //     // funderBalanceAfter.should.be.equal(registrySafeBalanceBefore-REGISTRY_FUNDING)
+    // })
 
 })
