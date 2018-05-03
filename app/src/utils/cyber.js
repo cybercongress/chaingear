@@ -20,7 +20,6 @@ export const loadCompiler = (cb) => {
 
 const EntryBasic = require('../EntryBasic.sol');
 
-console.log('>> ' , EntryBasic)
 
 
 export const compileRegistry = (code, contractName, compiler) => {
@@ -239,6 +238,22 @@ export const removeRegistry = (address, cb) => {
     return contract.deleteRegistry(address, { from: web3.eth.accounts[0] });
   })
 } 
+
+
+export const getFieldByHash = (ipfsHash) => {
+    return new Promise(resolve => {
+        ipfs.get(ipfsHash, (err, files) => {
+            const buf = files[0].content;
+            var abi = JSON.parse(JSON.parse(buf.toString()));
+            var fields = abi.filter(x => x.name === 'entries')[0].outputs;
+            fields = fields.filter(x => x.name !== 'metainformation' && x.name !== 'owner' && x.name !== 'lastUpdateTime');        
+            resolve({
+                abi,
+                fields
+            })
+        });
+    })
+}
 
 
 export const getContractByAbi = (address, abi) => {
