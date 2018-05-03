@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity 0.4.23;
 
 
 contract Adminable {
@@ -10,7 +10,7 @@ contract Adminable {
         _;
     }
 
-    function Adminable()
+    constructor()
         public
     {
         registryAdmin_ = tx.origin;

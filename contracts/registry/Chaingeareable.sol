@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity 0.4.23;
 
 import "./RegistryAccessControl.sol";
 
@@ -13,6 +13,13 @@ contract Chaingeareable is RegistryAccessControl {
     string internal linkToABIOfEntriesContract_;
 
     address internal registrySafe_;
+
+    bool public registryInitialized_;
+
+    modifier registryInitialized {
+        require(registryInitialized_ == true);
+        _;
+    }
 
     event EntryCreated(
         address creator,

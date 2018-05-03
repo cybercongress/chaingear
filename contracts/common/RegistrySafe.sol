@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity 0.4.23;
 
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 /* import "openzeppelin-solidity/contracts/lifecycle/Destructible.sol"; */
@@ -18,7 +18,7 @@ contract RegistrySafe is Ownable {
     /**
     * @dev Constructor of contract, payable
     */
-    function RegistrySafe()
+    constructor()
         public
         payable
     { }

@@ -41,7 +41,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 	* @param _chaingearName string Chaingear name
 	* @param _chaingearSymbol string Chaingear symbol
 	*/
-    function Chaingear(
+    constructor(
         address[] _benefitiaries,
         uint256[] _shares,
         string _description,

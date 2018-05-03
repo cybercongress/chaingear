@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity 0.4.23;
 
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
@@ -18,41 +18,46 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         _;
     }
 
-    function Registry(
+    constructor(
         address[] _benefitiaries,
         uint256[] _shares,
         string _name,
-        string _symbol,
-        string _linkToABIOfEntriesContract,
-        bytes _bytecodeOfEntriesContract
+        string _symbol
     )
         SplitPaymentChangeable(_benefitiaries, _shares)
         ERC721Token(_name, _symbol)
         public
         payable
     {
-        permissionTypeEntries_ = PermissionTypeEntries.OnlyAdmin;
         registryName_ = _name;
-        linkToABIOfEntriesContract_ = _linkToABIOfEntriesContract;
+        permissionTypeEntries_ = PermissionTypeEntries.OnlyAdmin;
+        entryCreationFee_ = 0;
         registrySafe_ = new RegistrySafe();
+    }
 
-        address deployedAddress;
+    function initializeRegistry(string _linkToABIOfEntriesContract, bytes _entryCore)
+        public
+        onlyRegistryAdmin
+        returns (address deployedAddress)
+    {
         assembly {
-            let s := mload(_bytecodeOfEntriesContract)
-            let p := add(_bytecodeOfEntriesContract, 0x20)
+            let s := mload(_entryCore)
+            let p := add(_entryCore, 0x20)
             deployedAddress := create(0, p, s)
         }
-
         assert(deployedAddress != 0x0);
+        registryInitialized_ = true;
+        linkToABIOfEntriesContract_ = _linkToABIOfEntriesContract;
         
-        entryCreationFee_ = 0;
-
         entryBase_ = deployedAddress;
+        
+        return deployedAddress;
     }
 
     function createEntry()
         external
         whenNotPaused
+        registryInitialized
         onlyPermissionedToEntries
         payable
         returns (uint256)
@@ -70,6 +75,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     function transferTokenizedOnwerhip(address _newOwner)
         public
         whenNotPaused
+        registryInitialized
         onlyOwner
     {
         registryAdmin_ = _newOwner;
@@ -90,6 +96,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     function transferEntryOwnership(uint256 _entryId, address _newOwner)
         public
         whenNotPaused
+        registryInitialized
         onlyEntryOwner(_entryId)
     {
         EntryBasic(entryBase_).updateEntryOwnership(_entryId, _newOwner);
@@ -103,6 +110,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     function fundEntry(uint256 _entryId)
         public
         whenNotPaused
+        registryInitialized
         payable
     {
         EntryBasic(entryBase_).updateEntryFund(_entryId, msg.value);
@@ -114,6 +122,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     function claimEntryFunds(uint256 _entryId, uint _amount)
         public
         whenNotPaused
+        registryInitialized
         onlyEntryOwner(_entryId)
     {
         require(_amount <= EntryBasic(entryBase_).currentEntryBalanceETHOf(_entryId));

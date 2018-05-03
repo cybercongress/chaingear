@@ -28,7 +28,7 @@ contract RegistryCreator is Ownable {
     * @notice setting 0x0, than whet creating Chaingear pass RegistryCreator address
     * @notice after that need to set up builder, Chaingear address
     */
-    function RegistryCreator()
+    constructor()
         public
     {
         builder_ = 0x0;

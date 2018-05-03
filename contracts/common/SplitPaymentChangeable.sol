@@ -1,4 +1,4 @@
-pragma solidity 0.4.21;
+pragma solidity 0.4.23;
 
 import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
@@ -12,7 +12,7 @@ contract SplitPaymentChangeable is SplitPayment, Ownable {
         address newAddress
     );
 
-    function SplitPaymentChangeable(address[] _payees, uint256[] _shares)
+    constructor(address[] _payees, uint256[] _shares)
         public
         payable
         SplitPayment(_payees, _shares)
