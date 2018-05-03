@@ -9,6 +9,7 @@ contract RegistryAccessControl is Adminable, Ownable, Pausable {
 
     PermissionTypeEntries internal permissionTypeEntries_;
 
+    //todo rename
     enum PermissionTypeEntries {OnlyAdmin, AllUsers}
 
     modifier onlyPermissionedToEntries() {
