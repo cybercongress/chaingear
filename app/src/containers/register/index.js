@@ -45,7 +45,15 @@ class Register extends Component {
                                     });
                                 });
                         })            
-                })                
+                })  
+
+                cyber.getSafeBalance(address)
+                    .then(data => {
+                        this.setState({
+                            isOwner: true,
+                            balance: data.toNumber()
+                        })
+                    })              
             }) 
 
 
@@ -109,20 +117,32 @@ class Register extends Component {
     if (!registry) return;
 
     const ipfsHash = registry.ipfsHash;
-
     cyber.addItem(address)
         .then((entryId) => {
             return cyber.updateItem(address, ipfsHash, entryId, values)
         }) 
   }
 
-  removeItem = (id) => {
-    this.contract.deleteEntry(id, function(e, r){
+  removeItemClick = (id) => {
 
-    });
+    this.setState({ loading: true})
+    const address = this.props.params.adress;
+    cyber.removeItem(address, id)
+        .then(() => {
+            const newItems = this.state.items.filter((item, index) => index !== id);
+            this.setState({ items: newItems, loading: false })
+        })
+    // alert(id)
+    // this.contract.deleteEntry(id, function(e, r){
+
+    // });
     // this.setState({
     //   loading: true
     // })
+  }
+
+  fundEntryClick = (index) => {
+    alert(index)
   }
 
   validate = (e) => {
@@ -145,6 +165,15 @@ class Register extends Component {
         browserHistory.push(`/`);  
       })      
     });
+  }
+
+  fundEntryClick = (index, value) => {
+    this.setState({ loading: true })
+    const address = this.props.params.adress;
+    cyber.fundEntry(address, index, value)
+        .then(() => {
+            this.setState({ loading: false })
+        })
   }
   
   render() {
@@ -174,9 +203,10 @@ class Register extends Component {
       return (
         <tr key={index}>
           {row}
-          {/*<td key='remove'>
-            <button onClick={() => this.removeItem(item.id)}>remove</button>
-          </td>*/}
+          <td key='remove'>
+            <button onClick={() => this.removeItemClick(index)}>remove</button>
+            <Dotate onInter={(value) => this.fundEntryClick(index, value)}/>
+          </td>
         </tr>
       );
     });
@@ -207,7 +237,48 @@ class Register extends Component {
         </table>
       </div>
     );
-  }
+  } 
+}
+
+class Dotate extends Component {
+    state = {
+        open: false,
+    }
+    fundEntryClick = () => {
+        this.setState({
+            open: true
+        })
+    }
+
+    ok = () => {
+        const value = this.refs.value.value;
+        this.props.onInter(value);
+        this.setState({
+            open: false
+        })
+
+    }
+    cancel = () => {
+        this.setState({
+            open: false
+        })
+
+    }
+    render() {
+        const { open } = this.state;
+        if (open) {
+            return (
+                <div style={{ display: 'inline-block'}}>
+                    <input ref='value'/>
+                    <button onClick={this.ok}>ok</button>
+                    <button onClick={this.cancel}>cancel</button>
+                </div>
+            )
+        }
+        return (
+            <button onClick={this.fundEntryClick}>fundEntry</button>
+        );
+    }
 }
 
 

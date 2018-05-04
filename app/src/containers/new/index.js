@@ -52,13 +52,15 @@ class NewRegister extends Component {
     };
     this.setState({
       fields: this.state.fields.concat(newItem)
-    }, () => this.compileAndEstimateGas());
+    });
+    //, () => this.compileAndEstimateGas()
   }
 
   remove = (name) => {
     this.setState({
       fields: this.state.fields.filter(x => x.name !== name)
-    }, () => this.compileAndEstimateGas())
+    })
+    //, () => this.compileAndEstimateGas()
   }
 
   compileAndEstimateGas = (cb) => {

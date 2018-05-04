@@ -464,6 +464,36 @@ export const getRegistryData = (address, fields, abi) => {
 }
 
 
+export const removeItem = (address, id) => {
+    return new Promise(resolve => {
+        const registryContract = _web3.eth.contract(Registry.abi).at(address);
+
+        var event = registryContract.EntryDeleted();
+        event.watch((e, results) => {
+            event.stopWatching();
+            resolve(results.args);
+        }) 
+        registryContract.deleteEntry(id, (e, d) => {
+
+        });       
+    })
+}
+
+export const fundEntry = (address, id, value) => {
+    return new Promise(resolve => {
+        const registryContract = _web3.eth.contract(Registry.abi).at(address);
+
+        var event = registryContract.EntryFunded();
+        event.watch((e, results) => {
+            event.stopWatching();
+            resolve(results.args);
+        }) 
+        registryContract.fundEntry(id, { value: _web3.toWei(value, 'ether') }, (e, d) => {
+
+        });       
+
+    });
+}
 
 export const addItem = (address) => {
     return new Promise(resolve => {
@@ -485,6 +515,15 @@ export const addItem = (address) => {
         })
     });
         
+}
+
+export const getSafeBalance = (address) => {
+    return new Promise(resolve => {
+        const registryContract = _web3.eth.contract(Registry.abi).at(address);
+        registryContract.safeBalance((e, data) => {
+            resolve(data);
+        })
+    })
 }
 
 export const updateEntryCreationFee = (address, newfee) => {
