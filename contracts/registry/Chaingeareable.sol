@@ -1,9 +1,9 @@
 pragma solidity 0.4.21;
 
-import "./RegistryAccessControl.sol";
+import "./RegistryPermissionControl.sol";
 
 
-contract Chaingeareable is RegistryAccessControl {
+contract Chaingeareable is RegistryPermissionControl {
 
     uint internal entryCreationFee_;
     string internal registryName_;
@@ -167,5 +167,4 @@ contract Chaingeareable is RegistryAccessControl {
     {
         return registrySafe_;
     }
-
 }

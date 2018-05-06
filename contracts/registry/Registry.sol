@@ -31,7 +31,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         public
         payable
     {
-        permissionTypeEntries_ = PermissionTypeEntries.OnlyAdmin;
+        createEntryPermissionGroup_ = CreateEntryPermissionGroup.OnlyAdmin;
         registryName_ = _name;
         linkToABIOfEntriesContract_ = _linkToABIOfEntriesContract;
         registrySafe_ = new RegistrySafe();
@@ -53,7 +53,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     function createEntry()
         external
         whenNotPaused
-        onlyPermissionedToEntries
+        onlyPermissionedToCreateEntries
         payable
         returns (uint256)
     {

@@ -3,7 +3,7 @@ const Registry = artifacts.require("Registry")
 const BigNumber = require("bignumber.js")
 
 
-const RegistryCreateEntryPermissionGroup = {
+const CreateEntryPermissionGroup = {
     OnlyAdmin: 0,
     AllUsers: 1
 }
@@ -14,7 +14,7 @@ function isEntryCreatedEvent(log) {
 
 const createTestRegistry = async function (
     ownerAccount, adminAccount, entryCreationFee = 100000,
-    createEntryPermissionGroup = RegistryCreateEntryPermissionGroup.OnlyAdmin
+    createEntryPermissionGroup = CreateEntryPermissionGroup.OnlyAdmin
 ) {
 
     const registry = {}
@@ -30,7 +30,7 @@ const createTestRegistry = async function (
         {from: adminAccount, gas: 10000000}
     )
 
-    await registry.contract.updatePermissionTypeEntries(createEntryPermissionGroup, {from: adminAccount})
+    await registry.contract.updateCreateEntryPermissionGroup(createEntryPermissionGroup, {from: adminAccount})
     await registry.contract.updateEntryCreationFee(entryCreationFee, {from: adminAccount})
     //todo should be vice versa: created by owner, change admin BUT NOT created by admin, change owner
     await registry.contract.transferOwnership(ownerAccount, {from: adminAccount})
@@ -129,7 +129,7 @@ const createTestRegistry = async function (
     return registry
 }
 
-module.exports.RegistryCreateEntryPermissionGroup = RegistryCreateEntryPermissionGroup
+module.exports.CreateEntryPermissionGroup = CreateEntryPermissionGroup
 module.exports.createTestRegistry = createTestRegistry
 module.exports.isEntryCreatedEvent = isEntryCreatedEvent
 

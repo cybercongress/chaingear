@@ -3,7 +3,7 @@ chai.should()
 chai.use(require("chai-bignumber")())
 chai.use(require("chai-as-promised"))
 
-const {createTestRegistry, RegistryCreateEntryPermissionGroup} = require('./RegistryUtils')
+const {createTestRegistry, CreateEntryPermissionGroup} = require('./RegistryUtils')
 
 
 contract("Registry Update Settings Tests", (accounts) => {
@@ -17,7 +17,7 @@ contract("Registry Update Settings Tests", (accounts) => {
     before(async () => {
         registry = await createTestRegistry(
             REGISTRY_OWNER_ACCOUNT, REGISTRY_ADMIN_ACCOUNT, 100000,
-            RegistryCreateEntryPermissionGroup.AllUsers
+            CreateEntryPermissionGroup.AllUsers
         )
         registryDefaultName = registry.name
     })
@@ -44,52 +44,15 @@ contract("Registry Update Settings Tests", (accounts) => {
         await registry.contract.entryCreationFee().should.eventually.bignumber.equal(registry.fee)
     })
 
-    /*  -------------------------------- Create Entry Permission Group ------  */
-    it("#2/1 should allow registry admin to set entry creation permission group", async () => {
-
-        const currentPermissionGroup = await registry.registryCreateEntryPermissionGroup()
-        const newPermissionGroup = anotherRegistryCreateEntryPermissionGroup(currentPermissionGroup)
-
-        await registry.contract.updatePermissionTypeEntries(
-            newPermissionGroup, {from: REGISTRY_ADMIN_ACCOUNT}
-        ).should.be.fulfilled
-
-        await registry.registryCreateEntryPermissionGroup().should.eventually.be.equal(newPermissionGroup)
-    })
-
-    it("#2/2 should not allow registry owner to set entry creation permission group", async () => {
-
-        const currentPermissionGroup = await registry.registryCreateEntryPermissionGroup()
-        const newPermissionGroup = anotherRegistryCreateEntryPermissionGroup(currentPermissionGroup)
-
-        await registry.contract.updatePermissionTypeEntries(
-            newPermissionGroup, {from: REGISTRY_OWNER_ACCOUNT}
-        ).should.be.rejected
-
-        await registry.registryCreateEntryPermissionGroup().should.eventually.be.equal(currentPermissionGroup)
-    })
-
-    it("#2/3 should not allow unknown account to set entry creation permission group", async () => {
-
-        const currentPermissionGroup = await registry.registryCreateEntryPermissionGroup()
-        const newPermissionGroup = anotherRegistryCreateEntryPermissionGroup(currentPermissionGroup)
-
-        await registry.contract.updatePermissionTypeEntries(
-            newPermissionGroup, {from: UNKNOWN_ACCOUNT}
-        ).should.be.rejected
-
-        await registry.registryCreateEntryPermissionGroup().should.eventually.be.equal(currentPermissionGroup)
-    })
-
     /*  -------------------------------- Registry Name ----------------------  */
-    it("#3/1 should allow registry admin to set name", async () => {
+    it("#2/1 should allow registry admin to set name", async () => {
 
         const newName = registryDefaultName + "1"
         await registry.updateRegistryName(REGISTRY_ADMIN_ACCOUNT, newName).should.be.fulfilled
         await registry.contract.registryName().should.eventually.equal(newName)
     })
 
-    it("#3/2 should not allow registry owner to set name", async () => {
+    it("#2/2 should not allow registry owner to set name", async () => {
 
         const currentName = await registry.contract.registryName()
         const newName = registryDefaultName + "2"
@@ -97,7 +60,7 @@ contract("Registry Update Settings Tests", (accounts) => {
         await registry.contract.registryName().should.eventually.equal(currentName)
     })
 
-    it("#3/3 should not allow unknown account to set name", async () => {
+    it("#2/3 should not allow unknown account to set name", async () => {
 
         const currentName = await registry.contract.registryName()
         const newName = registryDefaultName + "3"
@@ -105,7 +68,7 @@ contract("Registry Update Settings Tests", (accounts) => {
         await registry.contract.registryName().should.eventually.equal(currentName)
     })
 
-    it("#3/4 should not allow to set too long name", async () => {
+    it("#2/4 should not allow to set too long name", async () => {
 
         const currentName = await registry.contract.registryName()
         const newName = registryDefaultName + "VeryVeryVeryLongSuffixWithTonsOfBytes"
@@ -114,10 +77,4 @@ contract("Registry Update Settings Tests", (accounts) => {
     })
 })
 
-function anotherRegistryCreateEntryPermissionGroup(registryCreateEntryPermissionGroup) {
-    if (registryCreateEntryPermissionGroup === RegistryCreateEntryPermissionGroup.OnlyAdmin) {
-        return RegistryCreateEntryPermissionGroup.AllUsers
-    } else {
-        return RegistryCreateEntryPermissionGroup.OnlyAdmin
-    }
-}
+
