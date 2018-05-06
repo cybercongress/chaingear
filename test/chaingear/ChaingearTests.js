@@ -179,21 +179,7 @@ contract("Chaingear", (accounts) => {
     
     })
     
-    it("#3/1 should not allow registry owner to transfer tokenized ownership before registry initialized", async () => {
-        
-        const ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
-        
-        await chaingear.updateRegistryOwnership(
-            ID.toNumber(),
-            RANDOM_CREATOR_2,
-            {
-                from: RANDOM_CREATOR_1
-            }
-        ).should.be.rejected
-    
-    })
-    
-    it("#3/2 should allow registry owner to initialize registry", async () => {
+    it("#3/2 should allow registry_admin/token_owner to initialize registry", async () => {
     
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
     
@@ -219,7 +205,7 @@ contract("Chaingear", (accounts) => {
         
     })
     
-    it("#3/3 should allow registry owner to transfer tokenized ownership", async () => {
+    it("#3/3 should allow registry_admin/token_owner to transfer tokenized ownership", async () => {
         
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
         

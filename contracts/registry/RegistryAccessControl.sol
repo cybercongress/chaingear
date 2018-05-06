@@ -2,13 +2,26 @@ pragma solidity 0.4.23;
 
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
-import "./Adminable.sol";
 
 
-contract RegistryAccessControl is Adminable, Ownable, Pausable {
+contract RegistryAccessControl is Ownable, Pausable {
+
+    address public registryAdmin;
+
+    // can use constructor for admin with tx.origin or transfer in chaingear on creation
+    constructor()
+    {
+        registryAdmin = tx.origin;
+    }
+
+    modifier onlyRegistryAdmin() {
+        require(msg.sender == registryAdmin);
+        _;
+    }
 
     PermissionTypeEntries internal permissionTypeEntries_;
 
+    //todo rename
     enum PermissionTypeEntries {OnlyAdmin, AllUsers}
 
     modifier onlyPermissionedToEntries() {

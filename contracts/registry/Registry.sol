@@ -86,7 +86,6 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     function transferTokenizedOnwerhip(address _newOwner)
         public
         whenNotPaused
-        registryInitialized
         onlyOwner
     {
         registryAdmin = _newOwner;

@@ -7,6 +7,7 @@ pragma solidity 0.4.23;
 * @author cyber•Congress
 * @notice not recommend to use before release!
 */
+//todo rename: we have RegistryBase and RegistryBasic
 contract RegistryBase {
 
 	/*
