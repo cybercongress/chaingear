@@ -38,11 +38,11 @@ class NewRegister extends Component {
     cyber.getRegistry()
       .then(contracts => this.setState({ contracts }));
 
-    this.setState({ status: 'load compiler...', inProgress : true });
-    cyber.loadCompiler((_compiler) => {
-      compiler = _compiler;
-      this.setState({ status: null, inProgress : false })
-    })
+    // this.setState({ status: 'load compiler...', inProgress : true });
+    // cyber.loadCompiler((_compiler) => {
+    //   compiler = _compiler;
+    //   this.setState({ status: null, inProgress : false })
+    // })
   }
 
   add = (name, type) => {
@@ -52,13 +52,15 @@ class NewRegister extends Component {
     };
     this.setState({
       fields: this.state.fields.concat(newItem)
-    }, () => this.compileAndEstimateGas());
+    });
+    //, () => this.compileAndEstimateGas()
   }
 
   remove = (name) => {
     this.setState({
       fields: this.state.fields.filter(x => x.name !== name)
-    }, () => this.compileAndEstimateGas())
+    })
+    //, () => this.compileAndEstimateGas()
   }
 
   compileAndEstimateGas = (cb) => {
@@ -93,40 +95,47 @@ class NewRegister extends Component {
   }
 
   create = () => {
-    this.compileAndEstimateGas((web3) => {
-      const { contractName, gasEstimate } = this.state;
-      this.setState({ status: 'deploy contract...', inProgress: true });
+    const { contractName, fields } = this.state;
+    const symbol = this.refs.symbol.value;
 
-      const opt = {
-        gasEstimate,
-        contractName,
-        permissionType: +this.refs.permission.value,
-        entryCreationFee: +this.refs.entryCreationFee.value,
-        description: this.refs.description.value,
-        tags: this.refs.tags.value
-      };
-      let address;
-      cyber.deployRegistry(bytecode, abi, web3, opt)
-        .then((_address) => {
-          address = _address;
-          this.setState({ status: 'save abi in ipfs...'});
-          return cyber.saveInIPFS(abi);
-        })
-        .then(hash => {
-          this.setState({ status: 'register contract...'});
-          return cyber.register(contractName, address, hash);
-        })
+    cyber.createRegistry(contractName, symbol, fields)
         .then(() => {
-          this.setState({ status: '', inProgress: false });
-          browserHistory.push(`/`);
+            browserHistory.push(`/`);
         })
-        .catch(err => {
-          this.setState({
-            error: err,
-            inProgress: false
-          })
-        })
-    });
+    // this.compileAndEstimateGas((web3) => {
+    //   const { contractName, gasEstimate } = this.state;
+    //   this.setState({ status: 'deploy contract...', inProgress: true });
+
+    //   const opt = {
+    //     gasEstimate,
+    //     contractName,
+    //     permissionType: +this.refs.permission.value,
+    //     entryCreationFee: +this.refs.entryCreationFee.value,
+    //     description: this.refs.description.value,
+    //     tags: this.refs.tags.value
+    //   };
+    //   let address;
+    //   cyber.deployRegistry(bytecode, abi, web3, opt)
+    //     .then((_address) => {
+    //       address = _address;
+    //       this.setState({ status: 'save abi in ipfs...'});
+    //       return cyber.saveInIPFS(abi);
+    //     })
+    //     .then(hash => {
+    //       this.setState({ status: 'register contract...'});
+    //       return cyber.register(contractName, address, hash);
+    //     })
+    //     .then(() => {
+    //       this.setState({ status: '', inProgress: false });
+    //       browserHistory.push(`/`);
+    //     })
+    //     .catch(err => {
+    //       this.setState({
+    //         error: err,
+    //         inProgress: false
+    //       })
+    //     })
+    // });
   }
 
   changeContractName = (e) => {
@@ -171,7 +180,12 @@ class NewRegister extends Component {
                 value={contractName}
                 onChange={this.changeContractName}
               /></p>
-              <p>entry Creation Fee:<input
+                <p>symbol:<input
+                ref='symbol'
+                defaultValue='TTT'
+              /></p>
+              
+              {/*<p>entry Creation Fee:<input
                 ref='entryCreationFee'
                 defaultValue='0.1'
               /></p>
@@ -187,21 +201,21 @@ class NewRegister extends Component {
                   <option value='2'>AllUsers</option>
                   <option value='3'>Whitelist</option>
                 </select>
-              </p>
+              </p>*
 
               <p>Tags:<input
                 placeholder='tags'
                 ref='tags'
-              /></p>
+              /></p>*/}
             </div>
-            {error ? (
+            {/*error ? (
               <div>
                 {error}
               </div>
             ) : <div>
               gas Estimate: {gasEstimate} gwei
-            </div>}
-            <button onClick={() => this.compileAndEstimateGas()}>estimate</button>
+            </div>*/}
+            {/*<button onClick={() => this.compileAndEstimateGas()}>estimate</button>*/}
             <table className="pure-table">
               <thead>
                 <tr>
