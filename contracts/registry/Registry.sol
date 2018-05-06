@@ -30,8 +30,8 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         public
         payable
     {
+        createEntryPermissionGroup_ = CreateEntryPermissionGroup.OnlyAdmin;
         registryName_ = _name;
-        permissionTypeEntries_ = PermissionTypeEntries.OnlyAdmin;
         entryCreationFee_ = 0;
         registrySafe_ = new RegistrySafe();
         registryInitialized_ = false;
@@ -42,7 +42,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         bytes _entryCore
     )
         public
-        onlyRegistryAdmin
+        onlyAdmin
         returns (
             address entryBase
         )
@@ -53,12 +53,11 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
             let p := add(_entryCore, 0x20)
             deployedAddress := create(0, p, s)
         }
+
+        assert(deployedAddress != 0x0);
         entryBase_ = deployedAddress;
-        require(entryBase_ != 0x0);
         registryInitialized_ = true;
         linkToABIOfEntriesContract_ = _linkToABIOfEntriesContract;
-        
-        /* entryBase_ = entryBase_; */
         
         return entryBase_;
     }
@@ -67,7 +66,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         external
         whenNotPaused
         registryInitialized
-        onlyPermissionedToEntries
+        onlyPermissionedToCreateEntries
         payable
         returns (uint256)
     {
@@ -83,12 +82,13 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         return newEntryId;
     }
 
+    //todo remove in favor of Adminable.changeAdmin()?
     function transferTokenizedOnwerhip(address _newOwner)
         public
         whenNotPaused
         onlyOwner
     {
-        registryAdmin = _newOwner;
+        admin_ = _newOwner;
     }
 
     function deleteEntry(uint256 _entryId)
@@ -141,7 +141,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
 
         emit EntryFundsClaimed(_entryId, msg.sender, _amount);
     }
-    
+
     function safeBalance()
         public
         view

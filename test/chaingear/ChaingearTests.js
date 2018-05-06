@@ -108,7 +108,7 @@ contract("Chaingear", (accounts) => {
         const name = await registry.name()
         name.should.equal(REGISTRY_NAME_1)
         
-        const registryAdmin = await registry.registryAdmin()
+        const registryAdmin = await registry.admin_()
         const registryOwner = await registry.owner()
         
         registryAdmin.should.equal(RANDOM_CREATOR_1)
@@ -220,7 +220,7 @@ contract("Chaingear", (accounts) => {
             }
         )
         
-        const registryAdmin = await registry.registryAdmin()
+        const registryAdmin = await registry.admin_()
         registryAdmin.should.be.equal(RANDOM_CREATOR_2)
         
         const ID_2 = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)

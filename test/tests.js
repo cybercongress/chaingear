@@ -1,5 +1,0 @@
-require('./SplitPaymentChangeableTests.js')
-require('./chaingear/chaingearTests.js')
-require('./registry/RegistryUpdateSettingsTests.js')
-require('./registry/AllUsersRegistryEntryCrudTests.js')
-require('./registry/OnlyAdminRegistryEntryCrudTests.js')

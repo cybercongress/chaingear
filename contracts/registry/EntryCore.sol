@@ -4,7 +4,7 @@ import "../common/EntryBasic.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
-
+//todo remove from here. Maybe move into /contracts/test??
 contract EntryCore is EntryBasic, Ownable {
 
     using SafeMath for uint256;

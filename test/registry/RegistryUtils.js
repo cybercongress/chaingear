@@ -3,7 +3,7 @@ const Registry = artifacts.require("Registry")
 const BigNumber = require("bignumber.js")
 
 
-const RegistryCreateEntryPermissionGroup = {
+const CreateEntryPermissionGroup = {
     OnlyAdmin: 0,
     AllUsers: 1
 }
@@ -14,7 +14,7 @@ function isEntryCreatedEvent(log) {
 
 const createTestRegistry = async function (
     ownerAccount, adminAccount, entryCreationFee = 100000,
-    createEntryPermissionGroup = RegistryCreateEntryPermissionGroup.OnlyAdmin
+    createEntryPermissionGroup = CreateEntryPermissionGroup.OnlyAdmin
 ) {
 
     const registry = {}
@@ -31,7 +31,7 @@ const createTestRegistry = async function (
     )
     await registry.contract.transferTokenizedOnwerhip(adminAccount, {from: ownerAccount})
     
-    await registry.contract.updatePermissionTypeEntries(createEntryPermissionGroup, {from: adminAccount})
+    await registry.contract.updateCreateEntryPermissionGroup(createEntryPermissionGroup, {from: adminAccount})
     await registry.contract.updateEntryCreationFee(entryCreationFee, {from: adminAccount})
     await registry.contract.initializeRegistry(registry.linkToABIOfEntriesContract, EntryCoreArtifacts.bytecode,
         {from: adminAccount})
@@ -43,6 +43,17 @@ const createTestRegistry = async function (
     registry.containsEntry = async function (entryId) {
         return await registry.contract.exists(entryId)
     }
+
+    /**
+     * @param account to be used for invoking function
+     * @param fee required by registry
+     * @param gas attached to tx
+     * @returns {*} execution result promise
+     */
+    registry.createEntryPromise = function (account, fee = registry.fee, gas = 500000) {
+        return registry.contract.createEntry({from: account, value: fee, gas: gas})
+    }
+
 
     /**
      * @param account to be used for invoking function
@@ -119,6 +130,6 @@ const createTestRegistry = async function (
     return registry
 }
 
-module.exports.RegistryCreateEntryPermissionGroup = RegistryCreateEntryPermissionGroup
+module.exports.CreateEntryPermissionGroup = CreateEntryPermissionGroup
 module.exports.createTestRegistry = createTestRegistry
 module.exports.isEntryCreatedEvent = isEntryCreatedEvent
