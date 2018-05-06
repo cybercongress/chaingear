@@ -2,7 +2,7 @@ pragma solidity 0.4.21;
 
 import "../common/EntryBasic.sol";
 
-
+//todo remove from here. Maybe move into /contracts/test??
 contract EntryCore is EntryBasic, Ownable {
 
     using SafeMath for uint256;

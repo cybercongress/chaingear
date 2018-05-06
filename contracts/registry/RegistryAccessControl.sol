@@ -2,10 +2,10 @@ pragma solidity 0.4.21;
 
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
-import "./Adminable.sol";
+import "../common/Adminable.sol";
 
 
-contract RegistryAccessControl is Adminable, Ownable, Pausable {
+contract RegistryAccessControl is Adminable {
 
     PermissionTypeEntries internal permissionTypeEntries_;
 
@@ -14,7 +14,7 @@ contract RegistryAccessControl is Adminable, Ownable, Pausable {
 
     modifier onlyPermissionedToEntries() {
         if (permissionTypeEntries_ == PermissionTypeEntries.OnlyAdmin) {
-            require(msg.sender == registryAdmin_);
+            require(msg.sender == admin_);
         }
         _;
     }
@@ -29,7 +29,7 @@ contract RegistryAccessControl is Adminable, Ownable, Pausable {
 
     function updatePermissionTypeEntries(uint _permissionTypeEntries)
         external
-        onlyRegistryAdmin
+        onlyAdmin
     {
         require(uint(PermissionTypeEntries.AllUsers) >= _permissionTypeEntries);
         permissionTypeEntries_ = PermissionTypeEntries(_permissionTypeEntries);

@@ -12,7 +12,7 @@ import "../common/RegistrySafe.sol";
 contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentChangeable {
 
     using SafeMath for uint256;
-    
+
     modifier onlyEntryOwner(uint256 _entryID) {
         require(ownerOf(_entryID) == msg.sender);
         _;
@@ -44,7 +44,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         }
 
         assert(deployedAddress != 0x0);
-        
+
         entryCreationFee_ = 0;
 
         entryBase_ = deployedAddress;
@@ -67,12 +67,13 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         return newEntryId;
     }
 
+    //todo remove in favor of Adminable.changeAdmin()?
     function transferTokenizedOnwerhip(address _newOwner)
         public
         whenNotPaused
         onlyOwner
     {
-        registryAdmin_ = _newOwner;
+        admin_ = _newOwner;
     }
 
     function deleteEntry(uint256 _entryId)
@@ -122,7 +123,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
 
         emit EntryFundsClaimed(_entryId, msg.sender, _amount);
     }
-    
+
     function safeBalance()
         public
         view

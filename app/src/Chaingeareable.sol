@@ -336,6 +336,7 @@ contract Chaingeareable is Ownable, Destructible, Pausable, SplitPaymentChangeab
         chaingear.register(_name, this);
     }
 }
+// todo ??
 Error: Could not find contracts/common/Chaingeareable.sol from any sources
     at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/truffle-resolver/index.js:76:23
     at /Users/andrey/.nvm/versions/node/v8.9.0/lib/node_modules/truffle-flattener/node_modules/async/internal/onlyOnce.js:12:16
