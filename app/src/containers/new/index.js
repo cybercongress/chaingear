@@ -33,7 +33,6 @@ class NewRegister extends Component {
   }
 
 
-
   componentDidMount() {
     cyber.getRegistry()
       .then(contracts => this.setState({ contracts }));
@@ -83,7 +82,7 @@ class NewRegister extends Component {
           inProgress: false,
           error: null
         }, () => {
-          if (cb) cb(web3);
+          if (cb) cb(web3);  
         })
       })
       .catch(error => {

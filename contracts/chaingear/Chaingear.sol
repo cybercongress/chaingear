@@ -22,18 +22,17 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 	/*
 	*  Modifiers
 	*/
-    
+
+    // TODO change to inner ERC721 modifier
     /**
     * @dev modifier for checking ownership of Registry associated token
     * @param _registryID uint256 token-registry ID
     */
-    
-    // TODO change to inner ERC721 modifier
     modifier onlyRegistryAdmin(uint256 _registryID) {
         require (ownerOf(_registryID) == msg.sender);
         _;
     }
-    
+
     /*
     *  Constructor
     */
@@ -82,6 +81,9 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     * @dev Add and tokenize registry with specified parameters to Chaingear.
 	* @dev Registration fee is required to send with tx.
 	* @dev Tx sender become Creator of Registry, chaingear become Owner of Registry
+    * @param _version version of registry code which added to chaingear
+    * @param _benefitiaries address[] addresses of Chaingear benefitiaries
+    * @param _shares uint256[] array with amount of shares
     * @param _name string, Registry name
     * @param _symbol string, Registry symbol
     * @return address new Registry contract address
@@ -93,7 +95,6 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         uint256[] _shares,
         string _name,
         string _symbol
-        /* string _linkToABIOfEntriesContract */
     )
         public
         payable
@@ -113,10 +114,9 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             _shares,
             _name,
             _symbol
-            /* _linkToABIOfEntriesContract, */
         );
     }
-    
+
     /**
     * @dev Allows transfer ownership of Registry to new owner
     * @dev Transfer associated token and set owner of registry to new owner
@@ -139,7 +139,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 
         emit RegistryTransferred(msg.sender, registries[_registryID].name, _registryID, _newOwner);
     }
-    
+
     /**
     * @dev Allows to unregister created Registry from Chaingear
     * @dev Only possible when safe of Registry is empty
@@ -154,7 +154,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         address registryAddress = registries[_registryID].contractAddress;
         require(RegistryBasic(registryAddress).safeBalance() == 0);
         /* require(Registry(registryAddress).entriesAmount() == 0); */
-        
+
         uint256 registryIndex = allTokensIndex[_registryID];
         uint256 lastRegistryIndex = registries.length.sub(1);
         RegistryMeta storage lastRegistry = registries[lastRegistryIndex];
@@ -166,11 +166,11 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         RegistryBasic(registryAddress).transferOwnership(registries[_registryID].owner);
 
         super._burn(msg.sender, _registryID);
-        
+
         string storage registryName = registries[_registryID].name;
         emit RegistryUnregistered(msg.sender, registryName);
     }
-    
+
     /**
     * @dev Allows set and update ABI link for generated and created Registry
     * @dev Only Registry associated token owner can update
@@ -178,7 +178,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     * @param _link string IPFS hash to json with ABI
     */
     function setABILinkForRegistry(
-        uint256 _registryID, 
+        uint256 _registryID,
         string _link
     )
         public
@@ -187,18 +187,19 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         registries[_registryID].linkABI = _link;
     }
-    
+
     /*
     *  Private functions
     */
-    
+
     /**
     * @dev Private function for registry creation
     * @dev Pass Registry params and bytecode to RegistryCreator to current builder
-    * @param _benefitiaries address[]
-    * @param _shares uint256[]
-    * @param _name string
-    * @param _symbol string
+    * @param _version version of registry code which added to chaingear
+    * @param _benefitiaries address[] addresses of Chaingear benefitiaries
+    * @param _shares uint256[] array with amount of shares
+    * @param _name string, Registry name
+    * @param _symbol string, Registry symbol
     * @return address new Registry contract address
     * @return uint256 new Registry ID in Chaingear contract, same token ID
     */
@@ -208,11 +209,10 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         uint256[] _shares,
         string _name,
         string _symbol
-        /* string _linkToABIOfEntriesContract, */
     )
         private
         returns (
-            address newRegistryContract, 
+            address newRegistryContract,
             uint256 newRegistryID
         )
     {
@@ -221,7 +221,6 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             _shares,
             _name,
             _symbol
-            /* _linkToABIOfEntriesContract, */
         );
         // sets in Adminable constructor.. need to audit and test
         /* RegistryBasic(registryContract).transferTokenizedOnwerhip(msg.sender); */
@@ -232,23 +231,26 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             contractAddress: registryContract,
             creator: msg.sender,
             version: _version,
-            /* linkABI: _linkToABIOfEntriesContract, */
             linkABI: "",
             registrationTimestamp: block.timestamp,
             owner: msg.sender
             /* currentRegistryBalanceETH: 0,
             accumulatedRegistryETH: 0 */
         }));
-        
+
         uint256 registryID = registries.push(registry) - 1;
         _mint(msg.sender, registryID);
         emit RegistryRegistered(_name, registryContract, msg.sender, registryID);
 
         return (
-            registryContract, 
+            registryContract,
             registryID
         );
     }
+    
+    /*
+    *  TODO
+    */
     
     
     /* function fundRegistry(uint256 _registryID)

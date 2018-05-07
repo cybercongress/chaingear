@@ -16,7 +16,7 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
 	/*
 	*  Storage
 	*/
-    
+
     // @dev Short Chaingear description, less than 128 symbols
     string internal chaingearDescription_;
     
@@ -24,14 +24,20 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     // @notice In Wei
     uint internal registryRegistrationFee_;
     
+    /* address internal registrySafe_; */
     
-    address internal registrySafe_;
-    
+    // @dev mapping with address of registry creators with different code base of registries
     mapping (string => address) internal registryCreatorsAddresses;
+    
+    // @dev mapping with ipfs links to json with ABI of different registries
     mapping (string => string) internal registryCreatorsABIsLinks;
+    
+    // @dev mapping description of different registries
     mapping (string => string) internal registryCreatorsDescriptions;
 
-
+    /*
+    *  Events
+    */
 
     event registryFunded(
         uint ID,
@@ -43,7 +49,18 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         address claimer,
         uint amout
     );
+    
+    /*
+    *  Public Functions
+    */
 
+    /**
+    * @dev Provides funcitonality for adding bytecode different kind of registries
+    * @param _nameOfVerions string which represents name of registry type
+    * @param _addressRegistryCreator address of registry creator for this version
+    * @param _link string which represents IPFS hash to JSON with ABI of registry 
+    * @param _description string which resprent info about this registry
+    */
     function addRegistryCreatorVersion(
         string _nameOfVerions, 
         address _addressRegistryCreator,
@@ -59,6 +76,13 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         registryCreatorsDescriptions[_nameOfVerions] = _description;
     }
     
+    /**
+    * @dev Provides funcitonality for adding bytecode different kind of registries
+    * @param _version address which represents name of registry type
+    * @return _addressRegistryCreator address of registry creator for this version
+    * @return _link string which represents IPFS hash to JSON with ABI of registry 
+    * @return _description string which resprent info about this registry
+    */
     function getRegistryCreatorInfo(string _version) 
         public
         view
@@ -73,14 +97,6 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
             registryCreatorsABIsLinks[_version],
             registryCreatorsDescriptions[_version]
         );
-    }
-    
-    function registrySafe()
-        public
-        view
-        returns (address)
-    {
-        return registrySafe_;
     }
 
 	/*
@@ -145,11 +161,23 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         return registryRegistrationFee_;
     }
     
-    function safeBalance()
+    /*
+    *  TODO
+    */
+    
+    /* function safeBalance()
         public
         view
         returns (uint balance)
     {
         return address(registrySafe_).balance;
-    }
+    } */
+    
+    /* function registrySafe()
+        public
+        view
+        returns (address)
+    {
+        return registrySafe_;
+    } */
 }

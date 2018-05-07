@@ -62,6 +62,10 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         return entryBase_;
     }
 
+    /**
+    * @dev entry creation
+    * @return uint256
+    */
     function createEntry()
         external
         whenNotPaused
@@ -83,6 +87,10 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     }
 
     //todo remove in favor of Adminable.changeAdmin()?
+    /**
+    * @dev delegate tokenized ownership to new admin
+    * @param _newOwner address 
+    */
     function transferTokenizedOnwerhip(address _newOwner)
         public
         whenNotPaused
@@ -91,6 +99,10 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         admin_ = _newOwner;
     }
 
+    /**
+    * @dev remove entry from the Regisrty
+    * @param _entryId uint256
+    */
     function deleteEntry(uint256 _entryId)
         external
         whenNotPaused
@@ -103,7 +115,15 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         emit EntryDeleted(msg.sender, _entryId);
     }
 
-    function transferEntryOwnership(uint256 _entryId, address _newOwner)
+    /**
+    * @dev delegate entry tokenized ownership to new owner
+    * @param _entryId uint256
+    * @param _newOwner address
+    */
+    function transferEntryOwnership(
+        uint _entryId, 
+        address _newOwner
+    )
         public
         whenNotPaused
         registryInitialized
@@ -117,6 +137,10 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         emit EntryChangedOwner(_entryId, _newOwner);
     }
 
+    /**
+    * @dev entry fund setter
+    * @param _entryId uint256
+    */
     function fundEntry(uint256 _entryId)
         public
         whenNotPaused
@@ -129,7 +153,15 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         emit EntryFunded(_entryId, msg.sender);
     }
 
-    function claimEntryFunds(uint256 _entryId, uint _amount)
+    /**
+    * @dev entry fund claimer
+    * @param _entryId uint256
+    * @param _amount uint
+    */
+    function claimEntryFunds(
+        uint256 _entryId, 
+        uint _amount
+    )
         public
         whenNotPaused
         registryInitialized
@@ -142,6 +174,10 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         emit EntryFundsClaimed(_entryId, msg.sender, _amount);
     }
 
+    /**
+    * @dev safe balance getter
+    * @return uint
+    */
     function safeBalance()
         public
         view

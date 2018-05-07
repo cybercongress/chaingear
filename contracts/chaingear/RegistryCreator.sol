@@ -5,7 +5,7 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 /**
-* @title Registry Creator contract
+* @title Registry Creator engine
 * @author cyber•Congress
 * @dev Allows setted Chaingear contract create new Registries via this proxy contract
 * @notice not recommend to use before release!
@@ -13,14 +13,14 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 contract RegistryCreator is Ownable {
 
 	/*
-	*  Srorage
+	* @dev Srorage
 	*/
 
     // @dev Holds address of contract which can call creation, means Chaingear
     address internal builder_;
 
 	/*
-	*  Constructor
+	* @dev Constructor
 	*/
 
     /**
@@ -35,7 +35,7 @@ contract RegistryCreator is Ownable {
     }
 
 	/*
-	*  External Functions
+	* @dev External Functions
 	*/
     
     /**
@@ -50,14 +50,13 @@ contract RegistryCreator is Ownable {
     * @param _shares uint256[] array of shares amont ot each beneficiary
     * @param _name string name of Registry and token
     * @param _symbol string symbol of Registry and token
-    * @return Registy new registry address
+    * @return address of new registry
     */
     function create(
         address[] _benefitiaries,
         uint256[] _shares,
         string _name,
         string _symbol
-        /* string _linkToABIOfEntriesContract, */
     )
         external
         returns (address newRegistryContract)
@@ -69,15 +68,14 @@ contract RegistryCreator is Ownable {
             _shares,
             _name,
             _symbol
-            /* _linkToABIOfEntriesContract */
         );
 
         return newRegistryContract;
     }
 
     /**
-    * @dev
-    * @param
+    * @dev Registry builder setter
+    * @param _builder address
     */
     function setBuilder(address _builder)
         external
@@ -96,14 +94,13 @@ contract RegistryCreator is Ownable {
     * @param _shares uint256[] array of shares amont ot each beneficiary
     * @param _name string name of Registry and token
     * @param _symbol string symbol of Registry and token
-    * @return Registy new registry address
+    * @return address of new registry 
     */
     function createRegistry(
         address[] _benefitiaries,
         uint256[] _shares,
         string _name,
         string _symbol
-        /* string _linkToABIOfEntriesContract, */
     )
         private
         returns (address registryContract)
@@ -113,7 +110,6 @@ contract RegistryCreator is Ownable {
             _shares,
             _name,
             _symbol
-            /* _linkToABIOfEntriesContract */
         );
         Registry(registryContract).transferOwnership(msg.sender);
 
@@ -126,7 +122,7 @@ contract RegistryCreator is Ownable {
 
     /**
     * @dev RegistryCreator's builder getter
-    * @return address of setted Registry Buyilder (Chaingear contract)
+    * @return address of setted Registry builder (Chaingear contract)
     */
     function registryBuilder()
         public

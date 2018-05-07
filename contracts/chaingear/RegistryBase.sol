@@ -10,11 +10,16 @@ pragma solidity 0.4.23;
 //todo rename: we have RegistryBase and RegistryBasic
 contract RegistryBase {
 
-	/*
-	*  Storage
-	*/
-
     // @dev Sctruct which describes registry metainformation with balance state and status
+    /*
+    * @param Registry name string
+    * @param Registry contract address
+    * @param Registry creator address
+    * @param Registry version string
+    * @param Registry ABI link string
+    * @param Registry creation timestamp uint
+    * @param Registry owner address
+     */
     struct RegistryMeta {
         string name;
         address contractAddress;
@@ -52,7 +57,7 @@ contract RegistryBase {
     );
     
     // @dev Events witch signals that Registry' unregistered from Chaingear
-    // @notice ownership of Registry transfers from Chaingear to Creator
+    // @notice ownership of Registry transfers from Chaingear to Admin
     event RegistryUnregistered(
         address owner,
         string name
@@ -154,6 +159,7 @@ contract RegistryBase {
     * @return string Registy' name
     * @return address Registy' address
     * @return address Registy' creator address
+    * @return string Registy' version 
     * @return uint Registy' creation timestamp
     * @return string Registy' IPFS hash link to JSON with ABI
     * @return address Registy' owner address

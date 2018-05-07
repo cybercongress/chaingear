@@ -2,16 +2,27 @@ pragma solidity 0.4.23;
 
 import "./RegistryPermissionControl.sol";
 
-
+/**
+* @title Entries processor for Chaingear
+* @author Cyber•Congress
+* @dev not recommend to use before release!
+*/
 contract Chaingeareable is RegistryPermissionControl {
-
+    
+    // @dev initiate entry creation fee uint
     uint internal entryCreationFee_;
+    // @dev initiate Registry name string
     string internal registryName_;
+    // @dev initiate Registry description string
     string internal registryDescription_;
+    // @dev initiate Registry tags bytes32[]
     bytes32[] internal registryTags_;
+    // @dev initiate address of entry base
     address internal entryBase_;
+    // @dev initiate link to ABI of entries contract
     string internal linkToABIOfEntriesContract_;
 
+    // @dev initiate address of Registry safe
     address internal registrySafe_;
 
     bool public registryInitialized_;
@@ -20,6 +31,10 @@ contract Chaingeareable is RegistryPermissionControl {
         require(registryInitialized_ == true);
         _;
     }
+    
+    /**
+    * @dev events
+    */
 
     event EntryCreated(
         address creator,
@@ -52,6 +67,10 @@ contract Chaingeareable is RegistryPermissionControl {
         uint amount
     );
 
+    /**
+    * @dev entry base address getter
+    * @return address of entry base
+    */
     function entryBase()
         public
         view
@@ -60,6 +79,10 @@ contract Chaingeareable is RegistryPermissionControl {
         return entryBase_;
     }
 
+    /**
+    * @dev link to ABI of entries contract getter
+    * @return string link to ABI of entries contract
+    */
     function ABIOfEntriesContract()
         public
         view
@@ -68,6 +91,10 @@ contract Chaingeareable is RegistryPermissionControl {
         return linkToABIOfEntriesContract_;
     }
 
+    /**
+    * @dev Registry balance getter
+    * @return uint balance uint
+    */
     function registryBalance()
         public
         view
@@ -76,6 +103,10 @@ contract Chaingeareable is RegistryPermissionControl {
         return address(this).balance;
     }
 
+    /**
+    * @dev entry creation fee getter
+    * @return uint creation fee uint
+    */
     function entryCreationFee()
         public
         view
@@ -84,6 +115,10 @@ contract Chaingeareable is RegistryPermissionControl {
         return entryCreationFee_;
     }
 
+    /**
+    * @dev Registry name getter
+    * @return string
+    */
     function registryName()
         public
         view
@@ -92,6 +127,10 @@ contract Chaingeareable is RegistryPermissionControl {
         return registryName_;
     }
 
+    /**
+    * @dev Registry description getter
+    * @return string description 
+    */
     function registryDescription()
         public
         view
@@ -100,6 +139,10 @@ contract Chaingeareable is RegistryPermissionControl {
         return registryDescription_;
     }
 
+    /**
+    * @dev Registry tags getter
+    * @return bytes32[]
+    */
     function registryTags()
         public
         view
@@ -108,6 +151,10 @@ contract Chaingeareable is RegistryPermissionControl {
         return registryTags_;
     }
 
+    /**
+    * @dev entry creation fee setter
+    * @param _fee uint
+    */
     function updateEntryCreationFee(uint _fee)
         external
         onlyAdmin
@@ -115,6 +162,10 @@ contract Chaingeareable is RegistryPermissionControl {
         entryCreationFee_ = _fee;
     }
 
+    /**
+    * @dev Registry name setter
+    * @param _registryName string
+    */
     function updateRegistryName(string _registryName)
         external
         onlyAdmin
@@ -125,6 +176,10 @@ contract Chaingeareable is RegistryPermissionControl {
         registryName_ = _registryName;
     }
 
+    /**
+    * @dev Registry description setter
+    * @param _registryDescription string
+    */
     function updateRegistryDescription(string _registryDescription)
         external
         onlyAdmin
@@ -135,6 +190,10 @@ contract Chaingeareable is RegistryPermissionControl {
         registryDescription_ = _registryDescription;
     }
 
+    /**
+    * @dev add tags for Registry
+    * @param _tag bytes32
+    */
     function addRegistryTag(bytes32 _tag)
         external
         onlyAdmin
@@ -144,6 +203,11 @@ contract Chaingeareable is RegistryPermissionControl {
         registryTags_.push(_tag);
     }
 
+    /**
+    * @dev Registry tag setter
+    * @param _index uint256
+    * @param _tag bytes32
+    */
     function updateRegistryTag(uint256 _index, bytes32 _tag)
         external
         onlyAdmin
@@ -153,6 +217,11 @@ contract Chaingeareable is RegistryPermissionControl {
         registryTags_[_index] = _tag;
     }
 
+    /**
+    * @dev remove tag from Registry
+    * @param _index uint256
+    * @param _tag bytes32
+    */
     function removeRegistryTag(uint256 _index, bytes32 _tag)
         external
         onlyAdmin
@@ -167,6 +236,10 @@ contract Chaingeareable is RegistryPermissionControl {
         registryTags_.length--;
     }
 
+    /**
+    * @dev safe Registry
+    * @return address of Registry safe
+    */
     function registrySafe()
         public
         view
