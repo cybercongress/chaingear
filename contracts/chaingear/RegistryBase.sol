@@ -5,12 +5,20 @@ pragma solidity 0.4.19;
 * @title holds struct of data with describes registry metainformation which
 * associated with token, views function for registry metainformation.
 * @author Cyber Congress
-* @dev All function calls are currently implement without side effects
+* @dev not recommend to use before release!
 */
 contract RegistryBase {
 
 	/*
-	*  Storage
+	* @notice Storage as a structure with following metainformation
+  * @param Registry name string
+  * @param Registry contract address
+  * @param Registry creator address
+  * @param Registry ABI link string
+  * @param Registry creation timestamp uint
+  * @param Registry owner address
+  * @param Registry current balance ETH
+  * @param Registry accumulated balance ETH
 	*/
 
     struct RegistryMeta {
@@ -44,7 +52,7 @@ contract RegistryBase {
          uint256 registyID,
          address newOwner
     );
-    
+
     event RegistryUnregistered(
         address owner,
         string name
@@ -166,6 +174,11 @@ contract RegistryBase {
         );
     }
 
+    /**
+    * @dev Registry current balance getter
+    * @param _registryID uint256 Registry ID
+    * @return current Registry balance ETH uint
+    */
     function currentRegistryBalanceETHOf( uint256 _registryID)
         public
         view
@@ -174,6 +187,11 @@ contract RegistryBase {
         return registries[_registryID].currentRegistryBalanceETH;
     }
 
+    /**
+    * @dev Registry accumulate balance getter
+    * @param _registryID uint256 Registry ID
+    * @return accumulated Registry balance ETH uint
+    */
     function accumulatedRegistryETHOf(uint256 _registryID)
         public
         view
@@ -182,7 +200,12 @@ contract RegistryBase {
         return registries[_registryID].accumulatedRegistryETH;
     }
 
-
+    /**
+    * @dev Registry balance getter
+    * @param _registryID uint256 Registry ID
+    * @return current Registry balance ETH uint
+    * @return accumulated Registry balance ETH uint
+    */
     function registryBalanceInfo(uint256 _registryID)
         public
         view

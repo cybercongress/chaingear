@@ -4,11 +4,18 @@ import "zeppelin-solidity/contracts/math/SafeMath.sol";
 import "zeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./EntryBase.sol";
 
-
+/**
+* @title Entries engine for Chaingear
+* @author Cyber•Congress
+* @dev not recommend to use before release!
+*/
 contract EntryCore is EntryBase, Ownable {
 
     using SafeMath for uint256;
 
+    /*
+    * @dev original structure of entry for example
+    */
     struct Entry {
         address expensiveAddress;
         uint256 expensiveUint;
@@ -18,6 +25,7 @@ contract EntryCore is EntryBase, Ownable {
         EntryMeta metainformation;
     }
 
+    // @dev initial structure of entries
     Entry[] internal entries;
 
     modifier onlyEntryOwner(uint256 _entryId) {
@@ -25,6 +33,10 @@ contract EntryCore is EntryBase, Ownable {
         _;
     }
 
+    /**
+    * @dev entries amount getter
+    * @return entries amount
+    */
     function entriesAmount()
         public
         view
@@ -33,6 +45,9 @@ contract EntryCore is EntryBase, Ownable {
         return entries.length;
     }
 
+    /**
+    * @dev example of custom variables getters
+    */
     function expensiveAddressOf(uint256 _entryId)
         public
         view
@@ -78,6 +93,10 @@ contract EntryCore is EntryBase, Ownable {
         );
     }
 
+    /**
+    * @dev entry creation method
+    * @return entry ID uint256
+    */
     function createEntry()
         public
         onlyOwner
@@ -107,6 +126,10 @@ contract EntryCore is EntryBase, Ownable {
         return newEntryId;
     }
 
+    /**
+    * @dev Entry custom information setter
+    * @param custom variables
+    */
     function updateEntry(uint256 _entryId, address _newAddress, uint256 _newUint, int128 _newInt, string _newString)
         /* onlyEntryOwner(_entryId) */
         public
@@ -119,6 +142,10 @@ contract EntryCore is EntryBase, Ownable {
         entries[_entryId].metainformation.lastUpdateTime = block.timestamp;
     }
 
+    /**
+    * @dev remove entry method
+    * @param entry index uint256
+    */
     function deleteEntry(uint256 _entryIndex)
         onlyOwner
         public
@@ -131,6 +158,11 @@ contract EntryCore is EntryBase, Ownable {
         entries.length--;
     }
 
+    /**
+    * @dev entry ownership setter
+    * @param entry index uint256
+    * @param address of new owner
+    */
     function updateEntryOwnership(uint256 _entryID, address _newOwner)
         onlyOwner
         public
@@ -138,6 +170,11 @@ contract EntryCore is EntryBase, Ownable {
         entries[_entryID].metainformation.owner = _newOwner;
     }
 
+    /**
+    * @dev entry fund setter
+    * @param entry index uint256
+    * @param fund amount uint256
+    */
     function updateEntryFund(uint256 _entryID, uint256 _amount)
         onlyOwner
         public
@@ -145,6 +182,11 @@ contract EntryCore is EntryBase, Ownable {
         entries[_entryID].metainformation.accumulatedOverallEntryETH.add(_amount);
     }
 
+    /**
+    * @dev entry fund claim
+    * @param entry index uint256
+    * @param fund amount uint256
+    */
     function claimEntryFund(uint256 _entryID, uint256 _amount)
         onlyOwner
         public
@@ -152,6 +194,11 @@ contract EntryCore is EntryBase, Ownable {
         entries[_entryID].metainformation.currentEntryBalanceETH.sub(_amount);
     }
 
+    /**
+    * @dev entry owner getter
+    * @param entry index uint256
+    * @return owner address
+    */
     function entryOwnerOf(uint256 _entryID)
         public
         view
@@ -160,6 +207,11 @@ contract EntryCore is EntryBase, Ownable {
         entries[_entryID].metainformation.owner;
     }
 
+    /**
+    * @dev entry creator getter
+    * @param entry index uint256
+    * @return creator address
+    */
     function creatorOf(uint256 _entryID)
         public
         view
@@ -168,6 +220,11 @@ contract EntryCore is EntryBase, Ownable {
         entries[_entryID].metainformation.creator;
     }
 
+    /**
+    * @dev entry creating timestamp getter
+    * @param entry index uint256
+    * @return creation timestamp uint
+    */
     function createdAtOf(uint256 _entryID)
         public
         view
@@ -176,6 +233,11 @@ contract EntryCore is EntryBase, Ownable {
         entries[_entryID].metainformation.createdAt;
     }
 
+    /**
+    * @dev entry UPD timestamp getter
+    * @param entry index uint256
+    * @return UPD timestamp uint
+    */
     function lastUpdateTimeOf(uint256 _entryID)
         public
         view
@@ -184,6 +246,11 @@ contract EntryCore is EntryBase, Ownable {
         return entries[_entryID].metainformation.lastUpdateTime;
     }
 
+    /**
+    * @dev entry current ETH balance getter
+    * @param entry index uint256
+    * @return current balance of entry ETH
+    */
     function currentEntryBalanceETHOf(uint256 _entryID)
         public
         view
@@ -192,6 +259,11 @@ contract EntryCore is EntryBase, Ownable {
         return entries[_entryID].metainformation.currentEntryBalanceETH;
     }
 
+    /**
+    * @dev entry accumulated ETH balance getter
+    * @param entry index uint256
+    * @return current balance of entry ETH
+    */
     function accumulatedOverallEntryETHOf(uint256 _entryID)
         public
         view
