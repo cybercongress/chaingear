@@ -2,6 +2,7 @@ pragma solidity 0.4.23;
 
 import "../../registry/RegistryPermissionControl.sol";
 
+
 contract RegistryPermissionControlTestContract is RegistryPermissionControl {
 
     uint public uintValue_;
