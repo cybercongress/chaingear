@@ -2,6 +2,7 @@ pragma solidity 0.4.23;
 
 import "../common/Adminable.sol";
 
+
 /**
 * @title Registry permissions control contract
 * @author Cyber•Congress

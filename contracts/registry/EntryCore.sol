@@ -4,6 +4,7 @@ import "../common/EntryBasic.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
+
 //todo remove from here. Maybe move into /contracts/test??
 /**
 * @title Entries engine for Chaingear

@@ -4,8 +4,10 @@ import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "../common/RegistryBasic.sol";
-import "../common/RegistrySafe.sol";
+/* import "../common/RegistrySafe.sol"; */
 import "./ChaingearCore.sol";
+
+// TODO: move out
 import "./RegistryCreator.sol";
 
 
@@ -216,6 +218,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             uint256 newRegistryID
         )
     {
+        // TODO assembly call
         address registryContract = RegistryCreator(registryCreatorsAddresses[_version]).create(
             _benefitiaries,
             _shares,
