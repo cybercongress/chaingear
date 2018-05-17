@@ -4,38 +4,17 @@
 
 Main design principle goes from ERC721 NFT tokenization of Registries (in Chaingear) and Entries (in custom Registry). 
 
-In reason of Registries tokenization in Chaingear which allows token holder acts as administrator of their Registry, Chaingear acts to Registry as owner, which sets holder as administrator on creation phase, changes administrator when holder transfers token to another user, and transfers ownership when user unregister Registry in Chaingear, giving them full control to contract. Registry deep-linked to Chaingear registry token. In other words token ownership means control to Registry. Also Chaingear supports multiple Registry Creators, and allows Chaingear owners provide different kind and versioning of Registries.
+In reason of Registries tokenization in Chaingear which allows token holder acts as administrator of their Registry, Chaingear acts to Registry as owner, which sets holder as administrator on creation phase, changes administrator when holder transfers token to another user, and transfers ownership when user unregister Registry in Chaingear, giving them full control to contract. Registry deep-linked to Chaingear registry token. In other words, token ownership means control to Registry. Also, Chaingear supports multiple Registry Creators, and allows Chaingear owners provide different kind and versioning of Registries.
 
-In reason of providing user functionality to describe their custom registry data structures and CRUD operations, user creates their custom smart-contract, which implements EntryBasic interface. This contracts acts as inner storage and Registry acts them on token operations (creating and deleting). User may deploy erroneous or vulnerable EntryCore contract, but this should not crash Chaingear-Registry NFT-token logic and Registry inner entry NFT-logic too.
+In reason of providing user functionality to describe their custom registry data structures and CRUD operations, a user creates their custom smart-contract, which implements the EntryBasic interface. This contract acts as inner storage and Registry acts them on token operations (creating and deleting). A user may deploy erroneous or vulnerable EntryCore contract, but this should not crash Chaingear-Registry NFT-token logic and Registry inner entry NFT-logic too.
 
 This brings us to tokenized (**C** _RU_ **D**) operations in Registry and public (_C_ **RU** _D_) actions / inner private (**C** _RU_ **D**) in EntryCore.
 
 ## Chaingear inheritance 
-```mermaid
-graph TD;
-    ERC721Token/OZ-->Chaingear;
-    SplitPaymentChangeable-->Chaingear;
-    ChaingearCore-->Chaingear;
-    SplitPayment/OZ-->SplitPaymentChangeable;
-    Ownable/OZ-->SplitPaymentChangeable;
-    RegistryBase-->ChaingearCore;
-    Destructible/OZ-->ChaingearCore;
-    Pausable/OZ-->ChaingearCore;
-```
+![chaingear_inheritance](mermaid/contracts-chaingear_inheritance.svg)
 
 ## Registry inheritance
-```mermaid
-graph TD;
-    RegistryBasic-->Registry;
-    Chaingeareable-->Registry;
-    ERC721Token/OZ-->Registry;
-    SplitPaymentChangeable-->Registry;
-    SplitPayment/OZ-->SplitPaymentChangeable;
-    RegistryPermissionControl-->Chaingeareable;
-    Adminable-->RegistryPermissionControl;
-    Pausable/OZ-->Adminable;
-    Ownable/OZ-->SplitPaymentChangeable;
-```
+![registry_inheritance](mermaid/contracts-registry_inheritance.svg)
 
 ##### PS: OZ stands to Open Zeppelin contracts
 
