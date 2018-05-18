@@ -7,7 +7,6 @@ import "../common/RegistryBasic.sol";
 import "../common/RegistrySafe.sol";
 import "./ChaingearCore.sol";
 import "./RegistryCreator.sol";
-import "../common/RegistrySafe.sol";
 
 
 /**
@@ -234,30 +233,29 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         );
     }
     
-    /*
-    *  TODO
-    */
-    
-    
     function fundRegistry(uint256 _registryID)
         public
         whenNotPaused
         payable
     {
-        registries[_registryID].currentRegistryBalanceETH.add(msg.value);
-        registries[_registryID].accumulatedRegistryETH.add(msg.value);
+        uint256 weiAmount = msg.value;
+        registries[_registryID].currentRegistryBalanceETH = registries[_registryID].currentRegistryBalanceETH.add(weiAmount);
+        registries[_registryID].accumulatedRegistryETH = registries[_registryID].accumulatedRegistryETH.add(weiAmount);
         registrySafe_.transfer(msg.value);
 
         emit registryFunded(_registryID, msg.sender);
     }
 
-    function claimEntryFunds(uint256 _registryID, uint _amount)
+    function claimEntryFunds(
+        uint256 _registryID,
+        uint256 _amount
+    )
         public
         whenNotPaused
         onlyOwnerOf(_registryID)
     {
-        require(_amount <= registries[_amount].currentRegistryBalanceETH);
-        registries[_registryID].currentRegistryBalanceETH.sub(_amount);
+        require(_amount <= registries[_registryID].currentRegistryBalanceETH);
+        registries[_registryID].currentRegistryBalanceETH = registries[_registryID].currentRegistryBalanceETH.sub(_amount);
         RegistrySafe(registrySafe_).claim(msg.sender, _amount);
 
         emit registryFundsClaimed(_registryID, msg.sender, _amount);

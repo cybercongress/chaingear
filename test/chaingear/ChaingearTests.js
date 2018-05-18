@@ -325,35 +325,59 @@ contract("Chaingear", (accounts) => {
     
     })
     
-    // it("#7/1 funds from funded registry should be transfered to RegistrySafe", async () => {
-    // 
-    //     await chaingear.addSafe(
-    //         {
-    //             from: CHAINGEAR_OWNER
-    //         }
-    //     )
-    // 
-    //     const registrySafeBalanceBefore = await chaingear.safeBalance()
-    //     console.log(registrySafeBalanceBefore.toNumber())
-    //     // const funderBalanceBefore = await RANDOM_CREATOR_2.balance()
-    // 
-    //     var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
-    // 
-    //     await chaingear.fundRegistry(
-    //         ID.toNumber(),
-    //         {
-    //             from: RANDOM_CREATOR_1,
-    //             value: REGISTRY_FUNDING
-    //         }
-    //     )
-    // 
-    //     const registrySafeBalanceAfter = await chaingear.safeBalance()
-    //     console.log(registrySafeBalanceAfter.toNumber())
-    //     const diff = registrySafeBalanceAfter.toNumber() - registrySafeBalanceBefore.toNumber()
-    //     diff.should.be.equal(REGISTRY_FUNDING)
-    // 
-    //     // const funderBalanceAfter = await RANDOM_CREATOR_2.balance()
-    //     // funderBalanceAfter.should.be.equal(registrySafeBalanceBefore-REGISTRY_FUNDING)
-    // })
+    it("#7/1 funds from funded registry should be transfered to RegistrySafe", async () => {
+    
+        const registrySafeBalanceBefore = await chaingear.safeBalance()
+    
+        var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
+    
+        await chaingear.fundRegistry(
+            ID.toNumber(),
+            {
+                from: RANDOM_CREATOR_1,
+                value: REGISTRY_FUNDING
+            }
+        )
+    
+        const registrySafeBalanceAfter = await chaingear.safeBalance()
+        const diff = registrySafeBalanceAfter.toNumber() - registrySafeBalanceBefore.toNumber()
+        
+        diff.should.be.equal(REGISTRY_FUNDING)
+    })
+    
+    it("#7/2 owner of registry should can claim funds on balance of their Registry", async () => {
+    
+        const registrySafeBalanceBefore = await chaingear.safeBalance()
+    
+        var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
+        
+        // var balance = await chaingear.registryBalanceInfo(ID.toNumber())
+        // console.log(balance.toString().split(',')[0])
+    
+        await chaingear.claimEntryFunds(
+            ID.toNumber(),
+            REGISTRY_FUNDING,
+            {
+                from: RANDOM_CREATOR_2
+            }
+        )
+    
+        const registrySafeBalanceAfter = await chaingear.safeBalance()
+        const diff = registrySafeBalanceBefore.toNumber() - registrySafeBalanceAfter.toNumber()
+        diff.should.be.equal(REGISTRY_FUNDING)
+    })
+    
+    it("#7/3 non-holder of registry token should not can claim tokens from registry balance", async () => {
+    
+        var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
+        
+        await chaingear.claimEntryFunds(
+            ID.toNumber(),
+            REGISTRY_FUNDING,
+            {
+                from: RANDOM_CREATOR_1
+            }
+        ).should.be.rejected
+    })
 
 })

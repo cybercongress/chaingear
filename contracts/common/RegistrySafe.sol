@@ -30,6 +30,7 @@ contract RegistrySafe {
     */
     function()
         public
+        payable
     {
         require(msg.sender == owner);
     }
@@ -41,7 +42,7 @@ contract RegistrySafe {
     */
     function claim(
         address _entryOwner,
-        uint _amount
+        uint256 _amount
     )
         public
     {

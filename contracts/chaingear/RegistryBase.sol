@@ -28,8 +28,8 @@ contract RegistryBase {
         string linkABI;
         uint registrationTimestamp;
         address owner;
-        uint currentRegistryBalanceETH;
-        uint accumulatedRegistryETH;
+        uint256 currentRegistryBalanceETH;
+        uint256 accumulatedRegistryETH;
     }
     
 
@@ -114,8 +114,8 @@ contract RegistryBase {
         public
         view
         returns (
-            uint,
-            uint 
+            uint256,
+            uint256 
         )
     {
         return (
