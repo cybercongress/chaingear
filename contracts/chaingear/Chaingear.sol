@@ -7,6 +7,7 @@ import "../common/RegistryBasic.sol";
 import "../common/RegistrySafe.sol";
 import "./ChaingearCore.sol";
 import "./RegistryCreator.sol";
+import "../common/RegistrySafe.sol";
 
 
 /**
@@ -18,20 +19,6 @@ import "./RegistryCreator.sol";
 contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 
     using SafeMath for uint256;
-
-	/*
-	*  Modifiers
-	*/
-
-    // TODO change to inner ERC721 modifier
-    /**
-    * @dev modifier for checking ownership of Registry associated token
-    * @param _registryID uint256 token-registry ID
-    */
-    modifier onlyRegistryAdmin(uint256 _registryID) {
-        require (ownerOf(_registryID) == msg.sender);
-        _;
-    }
 
     /*
     *  Constructor
@@ -63,7 +50,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         chaingearDescription_ = _description;
         
         // TODO out of gas
-        /* registrySafe_ = new RegistrySafe(); */
+        registrySafe_ = new RegistrySafe();
     }
     
     /* function addSafe()
@@ -129,13 +116,13 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     )
         public
         whenNotPaused
-        onlyRegistryAdmin(_registryID)
+        onlyOwnerOf(_registryID)
     {
         RegistryBasic(registries[_registryID].contractAddress).transferTokenizedOnwerhip(_newOwner);
         registries[_registryID].owner = _newOwner;
 
-        super.removeTokenFrom(msg.sender, _registryID);
-        super.addTokenTo(_newOwner, _registryID);
+        removeTokenFrom(msg.sender, _registryID);
+        addTokenTo(_newOwner, _registryID);
 
         emit RegistryTransferred(msg.sender, registries[_registryID].name, _registryID, _newOwner);
     }
@@ -149,11 +136,10 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     function unregisterRegistry(uint256 _registryID)
         public
         whenNotPaused
-        onlyRegistryAdmin(_registryID)
+        onlyOwnerOf(_registryID)
     {        
         address registryAddress = registries[_registryID].contractAddress;
         require(RegistryBasic(registryAddress).safeBalance() == 0);
-        /* require(Registry(registryAddress).entriesAmount() == 0); */
 
         uint256 registryIndex = allTokensIndex[_registryID];
         uint256 lastRegistryIndex = registries.length.sub(1);
@@ -165,7 +151,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         
         RegistryBasic(registryAddress).transferOwnership(registries[_registryID].owner);
 
-        super._burn(msg.sender, _registryID);
+        _burn(msg.sender, _registryID);
 
         string storage registryName = registries[_registryID].name;
         emit RegistryUnregistered(msg.sender, registryName);
@@ -183,7 +169,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     )
         public
         whenNotPaused
-        onlyRegistryAdmin(_registryID)
+        onlyOwnerOf(_registryID)
     {
         registries[_registryID].linkABI = _link;
     }
@@ -233,9 +219,9 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             version: _version,
             linkABI: "",
             registrationTimestamp: block.timestamp,
-            owner: msg.sender
-            /* currentRegistryBalanceETH: 0,
-            accumulatedRegistryETH: 0 */
+            owner: msg.sender,
+            currentRegistryBalanceETH: 0,
+            accumulatedRegistryETH: 0
         }));
 
         uint256 registryID = registries.push(registry) - 1;
@@ -253,7 +239,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     */
     
     
-    /* function fundRegistry(uint256 _registryID)
+    function fundRegistry(uint256 _registryID)
         public
         whenNotPaused
         payable
@@ -268,13 +254,13 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     function claimEntryFunds(uint256 _registryID, uint _amount)
         public
         whenNotPaused
-        onlyRegistryAdmin(_registryID)
+        onlyOwnerOf(_registryID)
     {
         require(_amount <= registries[_amount].currentRegistryBalanceETH);
         registries[_registryID].currentRegistryBalanceETH.sub(_amount);
         RegistrySafe(registrySafe_).claim(msg.sender, _amount);
 
         emit registryFundsClaimed(_registryID, msg.sender, _amount);
-    } */
+    }
     
 }

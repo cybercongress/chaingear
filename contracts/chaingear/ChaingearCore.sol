@@ -24,7 +24,7 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     // @notice In Wei
     uint internal registryRegistrationFee_;
     
-    /* address internal registrySafe_; */
+    address internal registrySafe_;
     
     // @dev mapping with address of registry creators with different code base of registries
     mapping (string => address) internal registryCreatorsAddresses;
@@ -165,19 +165,19 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     *  TODO
     */
     
-    /* function safeBalance()
+    function safeBalance()
         public
         view
         returns (uint balance)
     {
         return address(registrySafe_).balance;
-    } */
+    }
     
-    /* function registrySafe()
+    function registrySafe()
         public
         view
         returns (address)
     {
         return registrySafe_;
-    } */
+    }
 }

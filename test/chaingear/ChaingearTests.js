@@ -102,7 +102,8 @@ contract("Chaingear", (accounts) => {
     
         const entriesAmount = await chaingear.registriesAmount()
     
-        const createdAddress = await chaingear.contractAddressOf(entriesAmount-1)
+        const registryInfo = await chaingear.registryInfo(entriesAmount-1)
+        const createdAddress = registryInfo.toString().split(',')[1]
         
         const registry = Registry.at(createdAddress)
         const name = await registry.name()
@@ -162,7 +163,8 @@ contract("Chaingear", (accounts) => {
             }
         )
     
-        const registryLink = await chaingear.ABILinkOf(ID.toNumber())
+        const registryInfo = await chaingear.registryInfo(ID.toNumber())
+        const registryLink = registryInfo.toString().split(',')[5]
         registryLink.should.be.equal("Q_HASH")
     
     })
@@ -182,8 +184,9 @@ contract("Chaingear", (accounts) => {
     it("#3/2 should allow registry_admin/token_owner to initialize registry", async () => {
     
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
-    
-        const registryAddress = await chaingear.contractAddressOf(ID.toNumber())
+        
+        const registryInfo = await chaingear.registryInfo(ID.toNumber())
+        const registryAddress = registryInfo.toString().split(',')[1]
 
         const registry = Registry.at(registryAddress)
         
@@ -209,7 +212,9 @@ contract("Chaingear", (accounts) => {
         
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
         
-        const registryAddress = await chaingear.contractAddressOf(ID.toNumber())        
+        const registryInfo = await chaingear.registryInfo(ID.toNumber())
+        const registryAddress = registryInfo.toString().split(',')[1]
+        
         const registry = Registry.at(registryAddress)
         
         await chaingear.updateRegistryOwnership(
@@ -232,7 +237,8 @@ contract("Chaingear", (accounts) => {
     
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
         
-        const registryAddress = await chaingear.contractAddressOf(ID.toNumber())
+        const registryInfo = await chaingear.registryInfo(ID.toNumber())
+        const registryAddress = registryInfo.toString().split(',')[1]
         
         const registry = Registry.at(registryAddress)
         
