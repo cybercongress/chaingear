@@ -13,11 +13,16 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
 
     using SafeMath for uint256;
     
-    // TODO change to inner ERC721 modifier
-    modifier onlyEntryOwner(uint256 _entryID) {
-        require(ownerOf(_entryID) == msg.sender);
-        _;
+    struct EntryMeta {
+        address owner;
+        address creator;
+        uint createdAt;
+        uint lastUpdateTime;
+        uint currentEntryBalanceETH;
+        uint accumulatedOverallEntryETH;
     }
+    
+    EntryMeta[] internal entriesMeta;
 
     constructor(
         address[] _benefitiaries,
@@ -75,11 +80,25 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         returns (uint256)
     {
         require(msg.value == entryCreationFee_);
-        // TODO check for uniqueness for fields (+protected by uniq field gen)
-
-        uint256 newEntryId = EntryBasic(entryBase_).createEntry();
         
+        // TODO check for uniqueness for fields (+protected by uniq field gen)
+        
+        /* entriesMeta[_entryID].creator = msg.sender; */
+        
+        uint256 newEntryId = EntryBasic(entryBase_).createEntry();
         _mint(msg.sender, newEntryId);
+        
+        EntryMeta memory meta = (EntryMeta(
+        {
+            lastUpdateTime: block.timestamp,
+            createdAt: block.timestamp,
+            owner: tx.origin,
+            creator: tx.origin,
+            currentEntryBalanceETH: 0,
+            accumulatedOverallEntryETH: 0
+        }));
+        
+        entriesMeta.push(meta);
 
         emit EntryCreated(msg.sender, newEntryId);
 
@@ -101,77 +120,85 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
 
     /**
     * @dev remove entry from the Regisrty
-    * @param _entryId uint256
+    * @param _entryID uint256
     */
-    function deleteEntry(uint256 _entryId)
+    function deleteEntry(uint256 _entryID)
         external
         whenNotPaused
-        onlyEntryOwner(_entryId)
+        onlyOwnerOf(_entryID)
     {
-        uint256 entryIndex = allTokensIndex[_entryId];
+        uint256 entryIndex = allTokensIndex[_entryID];
         EntryBasic(entryBase_).deleteEntry(entryIndex);
-        super._burn(msg.sender, _entryId);
+        super._burn(msg.sender, _entryID);
+        
+        uint256 lastEntryIndex = entriesMeta.length.sub(1);
+        EntryMeta storage lastEntry = entriesMeta[lastEntryIndex];
 
-        emit EntryDeleted(msg.sender, _entryId);
+        entriesMeta[_entryID] = lastEntry;
+        delete entriesMeta[lastEntryIndex];
+        entriesMeta.length--;
+
+        emit EntryDeleted(msg.sender, _entryID);
     }
 
     /**
     * @dev delegate entry tokenized ownership to new owner
-    * @param _entryId uint256
+    * @param _entryID uint256
     * @param _newOwner address
     */
     function transferEntryOwnership(
-        uint _entryId, 
+        uint _entryID, 
         address _newOwner
     )
         public
         whenNotPaused
         registryInitialized
-        onlyEntryOwner(_entryId)
+        onlyOwnerOf(_entryID)
     {
-        EntryBasic(entryBase_).updateEntryOwnership(_entryId, _newOwner);
+        entriesMeta[_entryID].owner = _newOwner;
 
-        super.removeTokenFrom(msg.sender, _entryId);
-        super.addTokenTo(_newOwner, _entryId);
+        super.removeTokenFrom(msg.sender, _entryID);
+        super.addTokenTo(_newOwner, _entryID);
 
-        emit EntryChangedOwner(_entryId, _newOwner);
+        emit EntryChangedOwner(_entryID, _newOwner);
     }
 
     /**
     * @dev entry fund setter
-    * @param _entryId uint256
+    * @param _entryID uint256
     */
-    function fundEntry(uint256 _entryId)
+    function fundEntry(uint256 _entryID)
         public
         whenNotPaused
         registryInitialized
         payable
     {
-        EntryBasic(entryBase_).updateEntryFund(_entryId, msg.value);
+        entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.add(msg.value);
+        entriesMeta[_entryID].accumulatedOverallEntryETH = entriesMeta[_entryID].accumulatedOverallEntryETH.add(msg.value);
         registrySafe_.transfer(msg.value);
 
-        emit EntryFunded(_entryId, msg.sender);
+        emit EntryFunded(_entryID, msg.sender);
     }
 
     /**
     * @dev entry fund claimer
-    * @param _entryId uint256
+    * @param _entryID uint256
     * @param _amount uint
     */
     function claimEntryFunds(
-        uint256 _entryId, 
+        uint256 _entryID, 
         uint _amount
     )
         public
         whenNotPaused
         registryInitialized
-        onlyEntryOwner(_entryId)
+        onlyOwnerOf(_entryID)
     {
-        require(_amount <= EntryBasic(entryBase_).currentEntryBalanceETHOf(_entryId));
-        EntryBasic(entryBase_).claimEntryFund(_entryId, _amount);
+        require(_amount <= entriesMeta[_entryID].currentEntryBalanceETH);
+        entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.sub(_amount);
         RegistrySafe(registrySafe_).claim(msg.sender, _amount);
 
-        emit EntryFundsClaimed(_entryId, msg.sender, _amount);
+        emit EntryFundsClaimed(_entryID, msg.sender, _amount);
     }
 
     /**
@@ -185,4 +212,35 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     {
         return address(registrySafe_).balance;
     }
+    
+    function entryMeta(uint256 _entryID) 
+        public 
+        view 
+        returns (
+            address,
+            address, 
+            uint, 
+            uint, 
+            uint, 
+            uint
+        )
+    {
+        return (
+            entriesMeta[_entryID].owner,
+            entriesMeta[_entryID].creator,
+            entriesMeta[_entryID].createdAt,
+            entriesMeta[_entryID].lastUpdateTime,
+            entriesMeta[_entryID].currentEntryBalanceETH,
+            entriesMeta[_entryID].accumulatedOverallEntryETH
+        );
+    }
+    
+    function updateEntry(uint256 _entryID) 
+        external
+    {
+        require(entryBase_ == msg.sender);
+        require(entriesMeta[_entryID].owner == tx.origin);
+        entriesMeta[_entryID].lastUpdateTime = block.timestamp;
+    }
+
 }

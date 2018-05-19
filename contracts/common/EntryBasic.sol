@@ -3,17 +3,6 @@ pragma solidity 0.4.23;
 
 contract EntryBasic {
 
-    struct EntryMeta {
-        address owner;
-        address creator;
-        uint createdAt;
-        uint lastUpdateTime;
-        
-        //TODO think about move this vars to Registry
-        uint currentEntryBalanceETH;
-        uint accumulatedOverallEntryETH;
-    }
-
     function entriesAmount() public view returns (uint256 entryID);
 
     function createEntry() public returns (uint256 entryID);
@@ -23,26 +12,6 @@ contract EntryBasic {
     function updateEntryFund(uint256 _entryID, uint256 _amount) public;
     function claimEntryFund(uint256 _entryID, uint256 _amount) public;
 
-    function entryOwnerOf(uint256 _entryID) public view returns (address);
-    function creatorOf(uint256 _entryID) public view returns (address);
-    function createdAtOf(uint256 _entryID) public view returns (uint);
-    function lastUpdateTimeOf(uint256 _entryID) public view returns (uint);
-    function currentEntryBalanceETHOf(uint256 _entryID) public view returns (uint);
-    function accumulatedOverallEntryETHOf(uint256 _entryID) public view returns (uint);
-
-    function entryMeta(uint256 _entryId)
-        public
-        view
-        returns (address, address, uint, uint, uint, uint)
-    {
-        return (
-            entryOwnerOf(_entryId),
-            creatorOf(_entryId),
-            createdAtOf(_entryId),
-            lastUpdateTimeOf(_entryId),
-            currentEntryBalanceETHOf(_entryId),
-            accumulatedOverallEntryETHOf(_entryId)
-        );
-    }
+    function entryMeta(uint256 _entryId) public view returns (address, address, uint, uint, uint, uint);
 
 }
