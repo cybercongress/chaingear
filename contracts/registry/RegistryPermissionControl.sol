@@ -8,40 +8,77 @@ import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 */
 contract RegistryPermissionControl is Pausable {
     
-    address public admin_;
+    /*
+    *  Storage
+    */
+    
+    address internal admin;
+    
     enum CreateEntryPermissionGroup {OnlyAdmin, AllUsers}
-    CreateEntryPermissionGroup public createEntryPermissionGroup_;
+    
+    CreateEntryPermissionGroup internal createEntryPermissionGroup;
+    
+    /*
+    *  Modifiers
+    */
     
     modifier onlyAdmin() {
-        require(msg.sender == admin_);
+        require(msg.sender == admin);
         _;
     }
 
     modifier onlyPermissionedToCreateEntries() {
-        if (createEntryPermissionGroup_ == CreateEntryPermissionGroup.OnlyAdmin) {
-            require(msg.sender == admin_);
+        if (createEntryPermissionGroup == CreateEntryPermissionGroup.OnlyAdmin) {
+            require(msg.sender == admin);
         }
         _;
     }
     
-    constructor()
-        public
-    {
-        admin_ = tx.origin;
-    }
+    /*
+    *  Public functions
+    */
 
-    function updateCreateEntryPermissionGroup(uint _createEntryPermissionGroup)
-        external
+    function updateCreateEntryPermissionGroup(
+        uint8 _createEntryPermissionGroup
+    )
+        public
         onlyAdmin
     {
-        createEntryPermissionGroup_ = CreateEntryPermissionGroup(_createEntryPermissionGroup);
+        require(uint8(CreateEntryPermissionGroup.AllUsers) >= _createEntryPermissionGroup);
+        createEntryPermissionGroup = CreateEntryPermissionGroup(_createEntryPermissionGroup);
     }
-
-    function changeAdmin(address _newAdmin)
+    
+    function changeAdmin(
+        address _newAdmin
+    )
         public
-        whenNotPaused
         onlyOwner
+        whenNotPaused
     {
-        admin_ = _newAdmin;
+        admin = _newAdmin;
+    }
+    
+    /*
+    *  View functions
+    */
+    
+    function getAdmin()
+        public
+        view
+        returns (
+            address
+        )
+    {
+        return admin;
+    }
+    
+    function getEntryPermissions()
+        public
+        view
+        returns (
+            uint8
+        )
+    {
+        return uint8(createEntryPermissionGroup);
     }
 }

@@ -109,7 +109,7 @@ contract("Chaingear", (accounts) => {
         const name = await registry.name()
         name.should.equal(REGISTRY_NAME_1)
         
-        const registryAdmin = await registry.admin_()
+        const registryAdmin = await registry.admin()
         const registryOwner = await registry.owner()
         
         registryAdmin.should.equal(RANDOM_CREATOR_1)
@@ -190,7 +190,7 @@ contract("Chaingear", (accounts) => {
 
         const registry = Registry.at(registryAddress)
         
-        const registryInitializedBefore = await registry.registryInitialized_();
+        const registryInitializedBefore = await registry.registryInitialized();
         const registryEntryBaseBefore = await registry.entryBase()
         
         const registryEntryCoreAddress = await registry.initializeRegistry(
@@ -200,7 +200,7 @@ contract("Chaingear", (accounts) => {
                 from: RANDOM_CREATOR_1
             }
         )
-        const registryInitializedAfter = await registry.registryInitialized_();
+        const registryInitializedAfter = await registry.registryInitialized();
         registryInitializedBefore.should.not.equal(registryInitializedAfter)
         
         const registryEntryBaseAfter = await registry.entryBase()
@@ -225,7 +225,7 @@ contract("Chaingear", (accounts) => {
             }
         )
         
-        const registryAdmin = await registry.admin_()
+        const registryAdmin = await registry.admin()
         registryAdmin.should.be.equal(RANDOM_CREATOR_2)
         
         const ID_2 = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
@@ -379,5 +379,7 @@ contract("Chaingear", (accounts) => {
             }
         ).should.be.rejected
     })
-
+    
+    
+    // TODO writes test for uniqueness of registry names/symbols
 })

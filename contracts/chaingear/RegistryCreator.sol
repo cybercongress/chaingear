@@ -17,7 +17,7 @@ contract RegistryCreator is Ownable {
 	*/
 
     // @dev Holds address of contract which can call creation, means Chaingear
-    address internal builder_;
+    address internal builder;
 
 	/*
 	* @dev Constructor
@@ -31,7 +31,7 @@ contract RegistryCreator is Ownable {
     constructor()
         public
     {
-        builder_ = 0x0;
+        builder = 0x0;
     }
 
 	/*
@@ -45,7 +45,7 @@ contract RegistryCreator is Ownable {
     }
 
     /**
-    * @dev Allows chaingear (builder_) create new registry
+    * @dev Allows chaingear (builder) create new registry
     * @param _benefitiaries address[] array of beneficiaries addresses
     * @param _shares uint256[] array of shares amont ot each beneficiary
     * @param _name string name of Registry and token
@@ -61,7 +61,7 @@ contract RegistryCreator is Ownable {
         external
         returns (address newRegistryContract)
     {
-        require(msg.sender == builder_);
+        require(msg.sender == builder);
 
         newRegistryContract = createRegistry(
             _benefitiaries,
@@ -81,7 +81,7 @@ contract RegistryCreator is Ownable {
         external
         onlyOwner
     {
-        builder_ = _builder;
+        builder = _builder;
     }
 
 	/*
@@ -124,11 +124,13 @@ contract RegistryCreator is Ownable {
     * @dev RegistryCreator's builder getter
     * @return address of setted Registry builder (Chaingear contract)
     */
-    function registryBuilder()
+    function getRegistryBuilder()
         public
         view
-        returns (address)
+        returns (
+            address
+        )
     {
-        return builder_;
+        return builder;
     }
 }

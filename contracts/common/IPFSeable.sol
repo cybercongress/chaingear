@@ -16,26 +16,15 @@ contract IPFSeable is Ownable {
 	*/
     
     // @dev IPFS hash link to JSON with ABI of contract
-    string internal linkABI_;
-    
+    string internal linkABI;
     // @dev IPFS hash link to JSON with metainformation of contract
-    string internal linkMeta_;
-    
+    string internal linkMeta;
     // @dev IPFS hash link to *.sol of deployed contract
-    string internal linkSourceCode_;
+    string internal linkSourceCode;
 
 	/*
 	*  Events
 	*/
-    
-    // @dev Signals that IPFS hask link to meta was updated
-    event MetaLinkUpdated (string linkMeta);
-    
-    // @dev Signals that IPFS hask link to JSON with ABI was updated
-    event ABILinkUpdated (string linkABI);
-    
-    // @dev Signals that IPFS hask link to *.sol with source code was updated
-    event SourceLinkUpdated (string linkSource);
 
 	/*
 	*  External Functions
@@ -45,36 +34,39 @@ contract IPFSeable is Ownable {
     * @dev Allows set new link to JSON with contract's ABI
     * @param _linkABI string IPFS hash link to file
     */
-    function setABILink(string _linkABI)
+    function setABILink(
+        string _linkABI
+    )
         external
         onlyOwner
     {
-        linkABI_ = _linkABI;
-        emit ABILinkUpdated(_linkABI);
+        linkABI = _linkABI;
     }
 
     /**
     * @dev Allows set new link to contract metainformation
     * @param _linkMeta string IPFS hash link to file
     */
-    function setMetaLink(string _linkMeta)
+    function setMetaLink(
+        string _linkMeta
+    )
         external
         onlyOwner
     {
-        linkMeta_ = _linkMeta;
-        emit MetaLinkUpdated(_linkMeta);
+        linkMeta = _linkMeta;
     }
 
     /**
     * @dev Allows set new link to source code
     * @param _linkSourceCode string IPFS hash link to file
     */
-    function setSourceLink(string _linkSourceCode)
+    function setSourceLink(
+        string _linkSourceCode
+    )
         external
         onlyOwner
     {
-        linkSourceCode_ = _linkSourceCode;
-        emit SourceLinkUpdated(_linkSourceCode);
+        linkSourceCode = _linkSourceCode;
     }
 
     /*
@@ -85,35 +77,41 @@ contract IPFSeable is Ownable {
     * @dev getter for IPFS hask link to JSON file with contract's ABI
     * @return string hash to file
     */
-    function linkABI()
+    function getLinkABI()
         public
         view
-        returns (string)
+        returns (
+            string
+        )
     {
-        return linkABI_;
+        return linkABI;
     }
 
     /**
     * @dev getter for IPFS hask link to contract metainformation
     * @return string hash to file
     */
-    function linkMeta()
+    function getMetaLink()
         public
         view
-        returns (string)
+        returns (
+            string
+        )
     {
-        return linkMeta_;
+        return linkMeta;
     }
 
     /**
     * @dev getter for IPFS hask link to source code
     * @return string hash to file
     */
-    function linkSourceCode()
+    function getSourceLink()
         public
         view
-        returns (string)
+        returns (
+            string
+        )
     {
-        return linkSourceCode_;
+        return linkSourceCode;
     }
 }

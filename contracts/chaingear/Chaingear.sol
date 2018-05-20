@@ -47,17 +47,9 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         registryRegistrationFee_ = _registrationFee;
         chaingearDescription_ = _description;
-        
-        // TODO out of gas
-        registrySafe_ = new RegistrySafe();
-    }
     
-    /* function addSafe()
-        external
-        onlyOwner
-    {
-        registrySafe_ = new RegistrySafe();
-    } */
+        registrySafe = new RegistrySafe();
+    }
     
     /*
     *  Public functions
@@ -86,13 +78,14 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         payable
         whenNotPaused
         returns (
-            address registryAddress,
-            uint256 registryID
+            address,
+            uint256
         )
     {
         require(registryCreatorsAddresses[_version] != 0x0);
         require(msg.value == registryRegistrationFee_);
-        // TODO check for uniqueness for registry name and symbol
+        require(registryNamesIndex[_name] == false);
+        require(registrySymbolsIndex[_symbol] == false);
 
         return createRegistry(
             _version,
@@ -117,6 +110,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         whenNotPaused
         onlyOwnerOf(_registryID)
     {
+        //TODO optimizing? delete inf
         RegistryBasic(registries[_registryID].contractAddress).transferTokenizedOnwerhip(_newOwner);
         registries[_registryID].owner = _newOwner;
 
@@ -138,7 +132,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         onlyOwnerOf(_registryID)
     {        
         address registryAddress = registries[_registryID].contractAddress;
-        require(RegistryBasic(registryAddress).safeBalance() == 0);
+        require(RegistryBasic(registryAddress).getSafeBalance() == 0);
 
         uint256 registryIndex = allTokensIndex[_registryID];
         uint256 lastRegistryIndex = registries.length.sub(1);
@@ -172,6 +166,34 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         registries[_registryID].linkABI = _link;
     }
+    
+    function fundRegistry(uint256 _registryID)
+        public
+        whenNotPaused
+        payable
+    {
+        uint256 weiAmount = msg.value;
+        registries[_registryID].currentRegistryBalanceETH = registries[_registryID].currentRegistryBalanceETH.add(weiAmount);
+        registries[_registryID].accumulatedRegistryETH = registries[_registryID].accumulatedRegistryETH.add(weiAmount);
+        registrySafe.transfer(msg.value);
+
+        emit registryFunded(_registryID, msg.sender);
+    }
+
+    function claimEntryFunds(
+        uint256 _registryID,
+        uint256 _amount
+    )
+        public
+        whenNotPaused
+        onlyOwnerOf(_registryID)
+    {
+        require(_amount <= registries[_registryID].currentRegistryBalanceETH);
+        registries[_registryID].currentRegistryBalanceETH = registries[_registryID].currentRegistryBalanceETH.sub(_amount);
+        RegistrySafe(registrySafe).claim(msg.sender, _amount);
+
+        emit registryFundsClaimed(_registryID, msg.sender, _amount);
+    }
 
     /*
     *  Private functions
@@ -197,8 +219,8 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     )
         private
         returns (
-            address newRegistryContract,
-            uint256 newRegistryID
+            address,
+            uint256
         )
     {
         address registryContract = RegistryCreator(registryCreatorsAddresses[_version]).create(
@@ -207,8 +229,8 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             _name,
             _symbol
         );
-        // sets in Adminable constructor.. need to audit and test
-        /* RegistryBasic(registryContract).transferTokenizedOnwerhip(msg.sender); */
+        
+        RegistryBasic(registryContract).transferTokenizedOnwerhip(msg.sender);
         
         RegistryMeta memory registry = (RegistryMeta(
         {
@@ -225,40 +247,16 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
 
         uint256 registryID = registries.push(registry) - 1;
         _mint(msg.sender, registryID);
+        
+        registryNamesIndex[_name] = true;
+        registrySymbolsIndex[_symbol] = true;
+        
         emit RegistryRegistered(_name, registryContract, msg.sender, registryID);
 
         return (
             registryContract,
             registryID
         );
-    }
-    
-    function fundRegistry(uint256 _registryID)
-        public
-        whenNotPaused
-        payable
-    {
-        uint256 weiAmount = msg.value;
-        registries[_registryID].currentRegistryBalanceETH = registries[_registryID].currentRegistryBalanceETH.add(weiAmount);
-        registries[_registryID].accumulatedRegistryETH = registries[_registryID].accumulatedRegistryETH.add(weiAmount);
-        registrySafe_.transfer(msg.value);
-
-        emit registryFunded(_registryID, msg.sender);
-    }
-
-    function claimEntryFunds(
-        uint256 _registryID,
-        uint256 _amount
-    )
-        public
-        whenNotPaused
-        onlyOwnerOf(_registryID)
-    {
-        require(_amount <= registries[_registryID].currentRegistryBalanceETH);
-        registries[_registryID].currentRegistryBalanceETH = registries[_registryID].currentRegistryBalanceETH.sub(_amount);
-        RegistrySafe(registrySafe_).claim(msg.sender, _amount);
-
-        emit registryFundsClaimed(_registryID, msg.sender, _amount);
     }
     
 }

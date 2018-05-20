@@ -12,13 +12,19 @@ contract SplitPaymentChangeable is SplitPayment, Ownable {
         address newAddress
     );
 
-    constructor(address[] _payees, uint256[] _shares)
+    constructor(
+        address[] _payees,
+        uint256[] _shares
+    )
         public
         payable
         SplitPayment(_payees, _shares)
     { }
 
-    function changePayeeAddress(uint _payeeIndex, address _newAddress)
+    function changePayeeAddress(
+        uint _payeeIndex,
+        address _newAddress
+    )
         external
         onlyOwner
     {

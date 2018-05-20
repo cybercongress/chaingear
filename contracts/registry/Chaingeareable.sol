@@ -9,96 +9,193 @@ import "./RegistryPermissionControl.sol";
 */
 contract Chaingeareable is RegistryPermissionControl {
     
+    /*
+    *  Storage
+    */
+    
     // @dev initiate entry creation fee uint
-    uint internal entryCreationFee_;
-    // @dev initiate Registry name string
-    string internal registryName_;
+    uint internal entryCreationFee;
     // @dev initiate Registry description string
-    string internal registryDescription_;
+    string internal registryDescription;
     // @dev initiate Registry tags bytes32[]
-    bytes32[] internal registryTags_;
+    bytes32[] internal registryTags;
     // @dev initiate address of entry base
-    address internal entryBase_;
+    address internal entriesStorage;
     // @dev initiate link to ABI of entries contract
-    string internal linkToABIOfEntriesContract_;
-
+    string internal linkToABIOfEntriesContract;
     // @dev initiate address of Registry safe
-    address internal registrySafe_;
+    address internal registrySafe;
 
-    bool public registryInitialized_;
+    bool internal registryInitStatus;
+
+    /*
+    *  Modifiers
+    */
 
     modifier registryInitialized {
-        require(registryInitialized_ == true);
+        require(registryInitStatus == true);
         _;
     }
     
     /**
-    * @dev events
+    *  Events
     */
 
     event EntryCreated(
         address creator,
-        uint entryId
+        uint entryID
     );
 
-    /* event EntryUpdated(
-        address owner,
-        uint entryId
-    ); */
-
     event EntryChangedOwner(
-        uint entryId,
+        uint entryID,
         address newOwner
     );
 
     event EntryDeleted(
         address owner,
-        uint entryId
+        uint entryID
     );
 
     event EntryFunded(
-        uint entryId,
+        uint entryID,
         address funder
     );
 
     event EntryFundsClaimed(
-        uint entryId,
+        uint entryID,
         address owner,
         uint amount
     );
 
     /**
+    *  External Functions
+    */
+
+    /**
+    * @dev entry creation fee setter
+    * @param _fee uint
+    */
+    function updateEntryCreationFee(
+        uint _fee
+    )
+        external
+        onlyAdmin
+    {
+        entryCreationFee = _fee;
+    }
+
+    /**
+    * @dev Registry description setter
+    * @param _registryDescription string
+    */
+    function updateRegistryDescription(
+        string _registryDescription
+    )
+        external
+        onlyAdmin
+    {
+        uint len = bytes(_registryDescription).length;
+        require(len <= 256);
+
+        registryDescription = _registryDescription;
+    }
+
+    /**
+    * @dev add tags for Registry
+    * @param _tag bytes32
+    */
+    function addRegistryTag(
+        bytes32 _tag
+    )
+        external
+        onlyAdmin
+    {
+        require(_tag.length <= 16);
+
+        registryTags.push(_tag);
+    }
+
+    /**
+    * @dev Registry tag setter
+    * @param _index uint256
+    * @param _tag bytes32
+    */
+    function updateRegistryTag(
+        uint256 _index,
+        bytes32 _tag
+    )
+        external
+        onlyAdmin
+    {
+        require(_tag.length <= 16);
+
+        registryTags[_index] = _tag;
+    }
+
+    /**
+    * @dev remove tag from Registry
+    * @param _index uint256
+    * @param _tag bytes32
+    */
+    function removeRegistryTag(
+        uint256 _index,
+        bytes32 _tag
+    )
+        external
+        onlyAdmin
+    {
+        require(_tag.length <= 16);
+
+        uint256 lastTagIndex = registryTags.length - 1;
+        bytes32 lastTag = registryTags[lastTagIndex];
+
+        registryTags[_index] = lastTag;
+        registryTags[lastTagIndex] = "";
+        registryTags.length--;
+    }
+    
+    /**
+    *  View functions
+    */
+
+    /**
     * @dev entry base address getter
     * @return address of entry base
     */
-    function entryBase()
+    function getEntriesStorage()
         public
         view
-        returns (address entryCore)
+        returns (
+            address
+        )
     {
-        return entryBase_;
+        return entriesStorage;
     }
 
     /**
     * @dev link to ABI of entries contract getter
     * @return string link to ABI of entries contract
     */
-    function ABIOfEntriesContract()
+    function getInterfaceEntriesContract()
         public
         view
-        returns (string)
+        returns (
+            string
+        )
     {
-        return linkToABIOfEntriesContract_;
+        return linkToABIOfEntriesContract;
     }
 
     /**
     * @dev Registry balance getter
     * @return uint balance uint
     */
-    function registryBalance()
+    function getRegistryBalance()
         public
         view
-        returns (uint)
+        returns (
+            uint
+        )
     {
         return address(this).balance;
     }
@@ -107,144 +204,55 @@ contract Chaingeareable is RegistryPermissionControl {
     * @dev entry creation fee getter
     * @return uint creation fee uint
     */
-    function entryCreationFee()
+    function getEntryCreationFee()
         public
         view
-        returns (uint)
+        returns (
+            uint
+        )
     {
-        return entryCreationFee_;
-    }
-
-    /**
-    * @dev Registry name getter
-    * @return string
-    */
-    function registryName()
-        public
-        view
-        returns (string)
-    {
-        return registryName_;
+        return entryCreationFee;
     }
 
     /**
     * @dev Registry description getter
     * @return string description 
     */
-    function registryDescription()
+    function getRegistryDescription()
         public
         view
-        returns (string)
+        returns (
+            string
+        )
     {
-        return registryDescription_;
+        return registryDescription;
     }
 
     /**
     * @dev Registry tags getter
     * @return bytes32[]
     */
-    function registryTags()
+    function getRegistryTags()
         public
         view
-        returns (bytes32[])
+        returns (
+            bytes32[]
+        )
     {
-        return registryTags_;
-    }
-
-    /**
-    * @dev entry creation fee setter
-    * @param _fee uint
-    */
-    function updateEntryCreationFee(uint _fee)
-        external
-        onlyAdmin
-    {
-        entryCreationFee_ = _fee;
-    }
-
-    /**
-    * @dev Registry name setter
-    * @param _registryName string
-    */
-    function updateRegistryName(string _registryName)
-        external
-        onlyAdmin
-    {
-        uint len = bytes(_registryName).length;
-        require(len > 0 && len <= 32);
-
-        registryName_ = _registryName;
-    }
-
-    /**
-    * @dev Registry description setter
-    * @param _registryDescription string
-    */
-    function updateRegistryDescription(string _registryDescription)
-        external
-        onlyAdmin
-    {
-        uint len = bytes(_registryDescription).length;
-        require(len <= 256);
-
-        registryDescription_ = _registryDescription;
-    }
-
-    /**
-    * @dev add tags for Registry
-    * @param _tag bytes32
-    */
-    function addRegistryTag(bytes32 _tag)
-        external
-        onlyAdmin
-    {
-        require(_tag.length <= 16);
-
-        registryTags_.push(_tag);
-    }
-
-    /**
-    * @dev Registry tag setter
-    * @param _index uint256
-    * @param _tag bytes32
-    */
-    function updateRegistryTag(uint256 _index, bytes32 _tag)
-        external
-        onlyAdmin
-    {
-        require(_tag.length <= 16);
-
-        registryTags_[_index] = _tag;
-    }
-
-    /**
-    * @dev remove tag from Registry
-    * @param _index uint256
-    * @param _tag bytes32
-    */
-    function removeRegistryTag(uint256 _index, bytes32 _tag)
-        external
-        onlyAdmin
-    {
-        require(_tag.length <= 16);
-
-        uint256 lastTagIndex = registryTags_.length - 1;
-        bytes32 lastTag = registryTags_[lastTagIndex];
-
-        registryTags_[_index] = lastTag;
-        registryTags_[lastTagIndex] = ""; //""?
-        registryTags_.length--;
+        return registryTags;
     }
 
     /**
     * @dev safe Registry
     * @return address of Registry safe
     */
-    function registrySafe()
+    function getRegistrySafe()
         public
         view
-        returns (address)
+        returns (
+            address
+        )
     {
-        return registrySafe_;
+        return registrySafe;
     }
 }

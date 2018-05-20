@@ -280,7 +280,7 @@ contract Chaingeareable is Ownable, Destructible, Pausable, SplitPaymentChangeab
     string public description_;
     string public tags_;
     PermissionType public permissionType_;
-    uint public entryCreationFee_;
+    uint public entryCreationFee;
 
     enum PermissionType {OnlyOwner, AllUsers, Whitelist}
 
@@ -295,14 +295,14 @@ contract Chaingeareable is Ownable, Destructible, Pausable, SplitPaymentChangeab
     ) SplitPaymentChangeable(_benefitiaries, _shares) public
     {
         permissionType_ = _permissionType;
-        entryCreationFee_ = _entryCreationFee;
+        entryCreationFee = _entryCreationFee;
         name_ = _name;
         description = _description;
         tags_ = _tags;
     }
 
     function updateEntryCreationFee(uint _fee) external onlyOwner {
-        entryCreationFee_ = _fee;
+        entryCreationFee = _fee;
     }
 
     function updatePermissionType(PermissionType _permissionType) external onlyOwner {

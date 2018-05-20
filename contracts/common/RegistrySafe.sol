@@ -8,8 +8,16 @@ pragma solidity 0.4.23;
 * @notice not recommend to use before release!
 */
 contract RegistrySafe {
+    
+    /*
+    *  Storage
+    */
 
     address public owner;
+
+    /*
+    *  Constructor
+    */
 
     /**
     * @dev Constructor of contract, payable

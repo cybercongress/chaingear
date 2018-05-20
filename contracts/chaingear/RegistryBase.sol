@@ -9,6 +9,10 @@ pragma solidity 0.4.23;
 */
 //todo rename: we have RegistryBase and RegistryBasic
 contract RegistryBase {
+    
+    /*
+    *  Storage
+    */
 
     // @dev Sctruct which describes registry metainformation with balance state and status
     /*
@@ -79,7 +83,9 @@ contract RegistryBase {
     * @return string Registy' IPFS hash link to JSON with ABI
     * @return address Registy' owner address
     */
-    function registryInfo(uint256 _registryID)
+    function registryInfo(
+        uint256 _registryID
+    )
         public
         view
         returns (
@@ -110,7 +116,9 @@ contract RegistryBase {
     * @return uint Registy' balance in safe in wei
     * @return uint Registy' total accumulated balance in safe in wei
     */
-    function registryBalanceInfo(uint256 _registryID)
+    function registryBalanceInfo(
+        uint256 _registryID
+    )
         public
         view
         returns (
@@ -131,7 +139,9 @@ contract RegistryBase {
     function registriesAmount()
         public
         view
-        returns (uint256)
+        returns (
+            uint256
+        )
     {
         return registries.length;
     }
