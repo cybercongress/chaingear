@@ -109,7 +109,7 @@ contract("Chaingear", (accounts) => {
         const name = await registry.name()
         name.should.equal(REGISTRY_NAME_1)
         
-        const registryAdmin = await registry.admin()
+        const registryAdmin = await registry.getAdmin()
         const registryOwner = await registry.owner()
         
         registryAdmin.should.equal(RANDOM_CREATOR_1)
@@ -190,8 +190,8 @@ contract("Chaingear", (accounts) => {
 
         const registry = Registry.at(registryAddress)
         
-        const registryInitializedBefore = await registry.registryInitialized();
-        const registryEntryBaseBefore = await registry.entryBase()
+        const registryInitializedBefore = await registry.getRegistryInitStatus();
+        const registryEntryBaseBefore = await registry.getEntriesStorage()
         
         const registryEntryCoreAddress = await registry.initializeRegistry(
             "Q_ABI_HASH",
@@ -200,10 +200,10 @@ contract("Chaingear", (accounts) => {
                 from: RANDOM_CREATOR_1
             }
         )
-        const registryInitializedAfter = await registry.registryInitialized();
+        const registryInitializedAfter = await registry.getRegistryInitStatus();
         registryInitializedBefore.should.not.equal(registryInitializedAfter)
         
-        const registryEntryBaseAfter = await registry.entryBase()
+        const registryEntryBaseAfter = await registry.getEntriesStorage()
         registryEntryBaseBefore.should.not.equal(registryEntryBaseAfter)
         
     })
@@ -225,7 +225,7 @@ contract("Chaingear", (accounts) => {
             }
         )
         
-        const registryAdmin = await registry.admin()
+        const registryAdmin = await registry.getAdmin()
         registryAdmin.should.be.equal(RANDOM_CREATOR_2)
         
         const ID_2 = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
@@ -289,7 +289,7 @@ contract("Chaingear", (accounts) => {
                 from: CHAINGEAR_OWNER 
             })
             
-        const newRegistrationFee = await chaingear.registryRegistrationFee()
+        const newRegistrationFee = await chaingear.getRegistrationFee()
         newRegistrationFee.toNumber().should.be.equal(7777777)
     })
     
@@ -311,7 +311,7 @@ contract("Chaingear", (accounts) => {
                 from: CHAINGEAR_OWNER 
             })
         
-        const newChaingearDescription = await chaingear.chaingearDescription()
+        const newChaingearDescription = await chaingear.getDescription()
         newChaingearDescription.should.be.equal("MOST AWESOME REGISTRY")
     })
     
@@ -327,7 +327,7 @@ contract("Chaingear", (accounts) => {
     
     it("#7/1 funds from funded registry should be transfered to RegistrySafe", async () => {
     
-        const registrySafeBalanceBefore = await chaingear.safeBalance()
+        const registrySafeBalanceBefore = await chaingear.getSafeBalance()
     
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
     
@@ -339,7 +339,7 @@ contract("Chaingear", (accounts) => {
             }
         )
     
-        const registrySafeBalanceAfter = await chaingear.safeBalance()
+        const registrySafeBalanceAfter = await chaingear.getSafeBalance()
         const diff = registrySafeBalanceAfter.toNumber() - registrySafeBalanceBefore.toNumber()
         
         diff.should.be.equal(REGISTRY_FUNDING)
@@ -347,7 +347,7 @@ contract("Chaingear", (accounts) => {
     
     it("#7/2 owner of registry should can claim funds on balance of their Registry", async () => {
     
-        const registrySafeBalanceBefore = await chaingear.safeBalance()
+        const registrySafeBalanceBefore = await chaingear.getSafeBalance()
     
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
         
@@ -362,7 +362,7 @@ contract("Chaingear", (accounts) => {
             }
         )
     
-        const registrySafeBalanceAfter = await chaingear.safeBalance()
+        const registrySafeBalanceAfter = await chaingear.getSafeBalance()
         const diff = registrySafeBalanceBefore.toNumber() - registrySafeBalanceAfter.toNumber()
         diff.should.be.equal(REGISTRY_FUNDING)
     })

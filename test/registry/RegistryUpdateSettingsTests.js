@@ -9,7 +9,7 @@ const {createTestRegistry, CreateEntryPermissionGroup} = require('./RegistryUtil
 contract("Registry Update Settings Tests", (accounts) => {
 
     let registry
-    let registryDefaultName
+    let registryDefaultDescription
     const REGISTRY_OWNER_ACCOUNT = accounts[0]
     const REGISTRY_ADMIN_ACCOUNT = accounts[1]
     const UNKNOWN_ACCOUNT = accounts[2]
@@ -19,7 +19,7 @@ contract("Registry Update Settings Tests", (accounts) => {
             REGISTRY_OWNER_ACCOUNT, REGISTRY_ADMIN_ACCOUNT, 100000,
             CreateEntryPermissionGroup.AllUsers
         )
-        registryDefaultName = registry.name
+        registryDefaultDescription = registry.name
     })
 
     /*  -------------------------------- Entry Creation Fee -----------------  */
@@ -27,54 +27,52 @@ contract("Registry Update Settings Tests", (accounts) => {
 
         const newFee = registry.fee * 2
         await registry.updateEntryCreationFee(REGISTRY_ADMIN_ACCOUNT, newFee).should.be.fulfilled
-        // await registry.contract.entryCreationFee().should.eventually.bignumber.equal(newFee)
-        const fee = await registry.contract.entryCreationFee()
-        fee.toNumber().should.be.equal(newFee)
+        await registry.contract.getEntryCreationFee().should.eventually.bignumber.equal(newFee)
     })
 
     it("#1/2 should not allow registry owner to set entry creation fee", async () => {
-
+    
         const newFee = registry.fee * 2
         await registry.updateEntryCreationFee(REGISTRY_OWNER_ACCOUNT, newFee).should.be.rejected
-        // await registry.contract.entryCreationFee().should.eventually.bignumber.equal(registry.fee)
+        await registry.contract.getEntryCreationFee().should.eventually.bignumber.equal(registry.fee)
     })
-
+    
     it("#1/3 should not allow unknown account to set entry creation fee", async () => {
-
+    
         const newFee = registry.fee * 2
         await registry.updateEntryCreationFee(UNKNOWN_ACCOUNT, newFee).should.be.rejected
-        // await registry.contract.entryCreationFee().should.eventually.bignumber.equal(registry.fee)
+        await registry.contract.getEntryCreationFee().should.eventually.bignumber.equal(registry.fee)
     })
-
+    
     /*  -------------------------------- Registry Name ----------------------  */
-    it("#2/1 should allow registry admin to set name", async () => {
-
-        const newName = registryDefaultName + "1"
-        await registry.updateRegistryName(REGISTRY_ADMIN_ACCOUNT, newName).should.be.fulfilled
-        await registry.contract.registryName().should.eventually.equal(newName)
+    it("#2/1 should allow registry admin to set description", async () => {
+    
+        const newDescription = registryDefaultDescription + "1"
+        await registry.updateRegistryDescription(REGISTRY_ADMIN_ACCOUNT, newDescription).should.be.fulfilled
+        await registry.contract.getRegistryDescription().should.eventually.equal(newDescription)
     })
-
-    it("#2/2 should not allow registry owner to set name", async () => {
-
-        const currentName = await registry.contract.registryName()
-        const newName = registryDefaultName + "2"
-        await registry.updateRegistryName(REGISTRY_OWNER_ACCOUNT, newName).should.be.rejected
-        await registry.contract.registryName().should.eventually.equal(currentName)
+    
+    it("#2/2 should not allow registry owner to set description", async () => {
+    
+        const currentDescription = await registry.contract.getRegistryDescription()
+        const newDescription = registryDefaultDescription + "2"
+        await registry.updateRegistryDescription(REGISTRY_OWNER_ACCOUNT, newDescription).should.be.rejected
+        await registry.contract.getRegistryDescription().should.eventually.equal(currentDescription)
     })
-
-    it("#2/3 should not allow unknown account to set name", async () => {
-
-        const currentName = await registry.contract.registryName()
-        const newName = registryDefaultName + "3"
-        await registry.updateRegistryName(UNKNOWN_ACCOUNT, newName).should.be.rejected
-        await registry.contract.registryName().should.eventually.equal(currentName)
+    
+    it("#2/3 should not allow unknown account to set description", async () => {
+    
+        const currentDescription = await registry.contract.getRegistryDescription()
+        const newDescription = registryDefaultDescription + "3"
+        await registry.updateRegistryDescription(UNKNOWN_ACCOUNT, newDescription).should.be.rejected
+        await registry.contract.getRegistryDescription().should.eventually.equal(currentDescription)
     })
-
-    it("#2/4 should not allow to set too long name", async () => {
-
-        const currentName = await registry.contract.registryName()
-        const newName = registryDefaultName + "VeryVeryVeryLongSuffixWithTonsOfBytes"
-        await registry.updateRegistryName(REGISTRY_ADMIN_ACCOUNT, newName).should.be.rejected
-        await registry.contract.registryName().should.eventually.equal(currentName)
+    
+    it("#2/4 should not allow to set too long description", async () => {
+    
+        const currentDescription = await registry.contract.getRegistryDescription()
+        const newDescription = registryDefaultDescription + "42".repeat(128)
+        await registry.updateRegistryDescription(REGISTRY_ADMIN_ACCOUNT, newDescription).should.be.rejected
+        await registry.contract.getRegistryDescription().should.eventually.equal(currentDescription)
     })
 })

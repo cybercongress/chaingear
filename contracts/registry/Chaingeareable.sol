@@ -255,4 +255,14 @@ contract Chaingeareable is RegistryPermissionControl {
     {
         return registrySafe;
     }
+    
+    function getRegistryInitStatus()
+        public
+        view
+        returns (
+            bool
+        )
+    {
+        return registryInitStatus;
+    }
 }

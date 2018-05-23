@@ -37,16 +37,6 @@ contract RegistryPermissionControl is Pausable {
     /*
     *  Public functions
     */
-
-    function updateCreateEntryPermissionGroup(
-        uint8 _createEntryPermissionGroup
-    )
-        public
-        onlyAdmin
-    {
-        require(uint8(CreateEntryPermissionGroup.AllUsers) >= _createEntryPermissionGroup);
-        createEntryPermissionGroup = CreateEntryPermissionGroup(_createEntryPermissionGroup);
-    }
     
     function changeAdmin(
         address _newAdmin
@@ -56,6 +46,16 @@ contract RegistryPermissionControl is Pausable {
         whenNotPaused
     {
         admin = _newAdmin;
+    }
+
+    function updateCreateEntryPermissionGroup(
+        uint8 _createEntryPermissionGroup
+    )
+        public
+        onlyAdmin
+    {
+        require(uint8(CreateEntryPermissionGroup.AllUsers) >= _createEntryPermissionGroup);
+        createEntryPermissionGroup = CreateEntryPermissionGroup(_createEntryPermissionGroup);
     }
     
     /*

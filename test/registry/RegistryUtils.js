@@ -21,6 +21,7 @@ const createTestRegistry = async function (
     registry.adminAccount = adminAccount
     registry.ownerAccount = ownerAccount
     registry.name = "EXPENSIVE_REGISTRY"
+    registry.description = ""
     registry.symbol = "EXP"
     registry.linkToABIOfEntriesContract = "IPFS_CID"
     registry.fee = entryCreationFee
@@ -43,17 +44,6 @@ const createTestRegistry = async function (
     registry.containsEntry = async function (entryId) {
         return await registry.contract.exists(entryId)
     }
-
-    /**
-     * @param account to be used for invoking function
-     * @param fee required by registry
-     * @param gas attached to tx
-     * @returns {*} execution result promise
-     */
-    registry.createEntryPromise = function (account, fee = registry.fee, gas = 500000) {
-        return registry.contract.createEntry({from: account, value: fee, gas: gas})
-    }
-
 
     /**
      * @param account to be used for invoking function
@@ -93,13 +83,13 @@ const createTestRegistry = async function (
 
     /**
      * @param account to be used for invoking function
-     * @param newName
+     * @param newDescription
      * @returns {*} execution result promise
      */
-    registry.updateRegistryName = function (account, newName) {
-        return registry.contract.updateRegistryName(newName, {from: account}).then(
+    registry.updateRegistryDescription = function (account, newDescription) {
+        return registry.contract.updateRegistryDescription(newDescription, {from: account}).then(
             function (result) {
-                registry.name = newName
+                registry.description = newDescription
                 return result
             }
         )
