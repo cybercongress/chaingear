@@ -36,6 +36,13 @@ const createTestRegistry = async function (
     await registry.contract.updateEntryCreationFee(entryCreationFee, {from: adminAccount})
     await registry.contract.initializeRegistry(registry.linkToABIOfEntriesContract, EntryCoreArtifacts.bytecode,
         {from: adminAccount})
+        
+    /**
+     * @returns {Promise<string>}
+     */
+    registry.getEntriesStorage = async function () {
+        return await registry.contract.getEntriesStorage()
+    }    
 
     /**
      * @param entryId to check existence
