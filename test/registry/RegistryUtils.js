@@ -69,7 +69,7 @@ const createTestRegistry = async function (
                 gas: gas
             }
         )
-        return executionResult.logs.find(isEntryCreatedEvent).args.entryId
+        return executionResult.logs.find(isEntryCreatedEvent).args.entryID
     }
 
     /**

@@ -1,4 +1,4 @@
-pragma solidity 0.4.23;
+pragma solidity 0.4.24;
 
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
@@ -45,8 +45,8 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         public
         payable
     {
-        registryRegistrationFee_ = _registrationFee;
-        chaingearDescription_ = _description;
+        registryRegistrationFee = _registrationFee;
+        chaingearDescription = _description;
     
         registrySafe = new RegistrySafe();
     }
@@ -83,7 +83,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         )
     {
         require(registryCreatorsAddresses[_version] != 0x0);
-        require(msg.value == registryRegistrationFee_);
+        require(registryRegistrationFee == msg.value);
         require(registryNamesIndex[_name] == false);
         require(registrySymbolsIndex[_symbol] == false);
 

@@ -1,4 +1,4 @@
-pragma solidity 0.4.23;
+pragma solidity 0.4.24;
 
 import "openzeppelin-solidity/contracts/lifecycle/Destructible.sol";
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
@@ -22,10 +22,10 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     mapping(string => bool) internal registrySymbolsIndex;
 
     // @dev Short Chaingear description, less than 128 symbols
-    string internal chaingearDescription_;
+    string internal chaingearDescription;
     
     // @dev Amount that Creator should pay for registry creation
-    uint internal registryRegistrationFee_;
+    uint internal registryRegistrationFee;
     
     address internal registrySafe;
     
@@ -93,7 +93,7 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         external
         onlyOwner
     {
-        registryRegistrationFee_ = _newFee;
+        registryRegistrationFee = _newFee;
     }
 
     /**
@@ -110,7 +110,7 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         uint len = bytes(_description).length;
         require(len <= 128);
 
-        chaingearDescription_ = _description;
+        chaingearDescription = _description;
     }
 
 	/*
@@ -151,7 +151,7 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         view
         returns (string)
     {
-        return chaingearDescription_;
+        return chaingearDescription;
     }
 
     /**
@@ -163,7 +163,7 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         view
         returns (uint)
     {
-        return registryRegistrationFee_;
+        return registryRegistrationFee;
     }
     
     function getSafeBalance()
