@@ -2,6 +2,7 @@ pragma solidity 0.4.24;
 
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 
+
 /**
 * @title Registry permissions control contract
 * @author Cyber•Congress

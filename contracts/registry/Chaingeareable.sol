@@ -2,6 +2,7 @@ pragma solidity 0.4.24;
 
 import "./RegistryPermissionControl.sol";
 
+
 /**
 * @title Entries processor for Chaingear
 * @author Cyber•Congress
