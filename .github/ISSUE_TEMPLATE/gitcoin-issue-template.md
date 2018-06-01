@@ -28,7 +28,7 @@ Explain task clearly with details
 ---
 #### Contribution rules
 
-[Here](https://github.com/cybercongress/cyber-search/blob/master/docs/contributing/contributing.md) you can learn how to contribute to our project
+[Here](https://github.com/cybercongress/chaingear/blob/master/CONTRIBUTING.md) you can learn how to contribute to our project
 
 ---
 #### Definition of done
