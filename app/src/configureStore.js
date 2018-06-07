@@ -1,10 +1,10 @@
 import {Store} from "react-redux";
-import {createEpicMiddleware} from "redux-observable";
-import {createLogger} from "redux-logger";
+// import {createEpicMiddleware} from "redux-observable";
+// import {createLogger} from "redux-logger";
 import {createStore, applyMiddleware, GenericStoreEnhancer} from "redux";
 import thunk from 'redux-thunk';
 import {combineReducers} from "redux";
-import {combineEpics} from "redux-observable";
+// import {combineEpics} from "redux-observable";
 
 import { reducer as formReducer } from "redux-form";
 
@@ -26,11 +26,11 @@ export const combinedReducers = combineReducers({
   // test
 });
 
-const rootEpic = combineEpics(
-  // chaingearEpic,
-  // searchEpic,
-  // tokensDetailsEpic,
-);
+// const rootEpic = combineEpics(
+//   // chaingearEpic,
+//   // searchEpic,
+//   // tokensDetailsEpic,
+// );
 
 export function configureStore() {
   return createStore(
@@ -40,16 +40,19 @@ export function configureStore() {
 }
 
 function getMiddlewares() {
-  const logger = createLogger({
-    collapsed: true
-  });
+  // const logger = createLogger({
+  //   collapsed: true
+  // });
 
   /**
    * Split middlewares which we using in development and in production.
    */
-  if (process.env.NODE_ENV === "production") {
-    return applyMiddleware(createEpicMiddleware(rootEpic), thunk);
-  } else {
-    return applyMiddleware(createEpicMiddleware(rootEpic), thunk);
-  }
+  return applyMiddleware(thunk);
+
+  // if (process.env.NODE_ENV === "production") {
+  //   return applyMiddleware(thunk);
+  //       //createEpicMiddleware(rootEpic), thunk);
+  // } else {
+  //   return applyMiddleware(createEpicMiddleware(rootEpic), thunk);
+  // }
 }

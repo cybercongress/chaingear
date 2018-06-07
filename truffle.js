@@ -31,12 +31,16 @@ module.exports = {
         // },
 
         kovan: {
-          provider() {
-            return new HDWalletProvider(MNEMONIC, 'https://kovan.infura.io/');
-          },
+          // provider() {
+          //   return new HDWalletProvider(MNEMONIC, 'https://kovan.infura.io/');
+          // },
+           host: "localhost",
+           port: 8545,
+           from: '0xf2492533F7d89DBfEd69757156c4B746839E59E8',
+
           network_id: 42,
-          gasPrice: toWei(4, 'gwei').toNumber(),
-          gas: toWei(6.9, 'mwei').toNumber(),
+          gasPrice: toWei(10, 'gwei').toNumber(),
+          gas: toWei(7.3, 'mwei').toNumber(),
         },
 
         // live: {

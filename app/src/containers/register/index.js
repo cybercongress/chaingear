@@ -26,16 +26,20 @@ class Register extends Component {
 
         const address = this.props.params.adress;
         cyber.init()
-            .then(() => {
+            .then(({ web3 }) => {
                 cyber.getRegistry().then(registries => {
                     const registry = registries.find(x => x.address === address);
                     if (!registry) return;
+                    debugger
+                    
 
-                    const ipfsHash = registry.ipfsHash;
-
-                    cyber.getFieldByHash(ipfsHash)
-                        .then(({ abi, fields }) => {
-                            cyber.getRegistryData(address, fields, abi)
+                    const r = cyber.getRegistryByAddress(registry.address);
+                    r.getInterfaceEntriesContract((e, ipfsHash) => {
+                        
+                        cyber.getFieldByHash(ipfsHash)
+                            .then(({ abi, fields }) => {
+                                debugger
+                                cyber.getRegistryData(address, fields, abi)
                                 .then(({ fee, items, fields }) => {
                                     this.setState({ 
                                         items, 
@@ -44,16 +48,32 @@ class Register extends Component {
                                         loading: false 
                                     });
                                 });
-                        })            
+                            })
+                    })
+                    // const ipfsHash = registry.ipfsHash;
+
+                    // cyber.getFieldByHash(ipfsHash)
+                    //     .then(({ abi, fields }) => {
+                    //         debugger
+                    //         cyber.getRegistryData(address, fields, abi)
+                    //             .then(({ fee, items, fields }) => {
+                    //                 this.setState({ 
+                    //                     items, 
+                    //                     fields, 
+                    //                     registries,
+                    //                     loading: false 
+                    //                 });
+                    //             });
+                    //     })            
                 })  
 
-                cyber.getSafeBalance(address)
-                    .then(data => {
-                        this.setState({
-                            isOwner: true,
-                            balance: data.toNumber()
-                        })
-                    })              
+                // cyber.getSafeBalance(address)
+                //     .then(data => {
+                //         this.setState({
+                //             isOwner: true,
+                //             balance: data.toNumber()
+                //         })
+                //     })              
             }) 
 
 
@@ -116,11 +136,15 @@ class Register extends Component {
     const registry = registries.find(x => x.address === address);
     if (!registry) return;
 
-    const ipfsHash = registry.ipfsHash;
-    cyber.addItem(address)
-        .then((entryId) => {
-            return cyber.updateItem(address, ipfsHash, entryId, values)
-        }) 
+    const r = cyber.getRegistryByAddress(registry.address);
+    r.getInterfaceEntriesContract((e, ipfsHash) => {
+        // const ipfsHash = registry.ipfsHash;
+        cyber.addItem(address)
+            .then((entryId) => {
+                debugger
+                return cyber.updateItem(address, ipfsHash, entryId, values)
+            }) 
+    });
   }
 
   removeItemClick = (id) => {
