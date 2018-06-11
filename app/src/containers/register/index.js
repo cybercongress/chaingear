@@ -5,6 +5,7 @@ import * as cyber from '../../utils/cyber'
 import AddRow from './AddRow';
 
 import { browserHistory } from 'react-router'
+var moment = require('moment');
 
 
 class Register extends Component {
@@ -16,7 +17,21 @@ class Register extends Component {
       newItem: {},
       loading: false,
       balance: null,
-      isOwner: false
+      isOwner: false,
+      total_fee: 0,
+      funded: '???',
+
+      registryContract: null,
+      web3: null,
+
+       name: '',
+       description: '',
+       tag: '',
+       registrationTimestamp: null,
+       entryCreationFee: 0,
+       entriesAmount: 0,
+      creator: ''
+
     }
   
   componentDidMount() {
@@ -27,27 +42,64 @@ class Register extends Component {
         const address = this.props.params.adress;
         cyber.init()
             .then(({ web3 }) => {
-                cyber.getRegistry().then(registries => {
+                cyber.getRegistry().then(({ items }) => {
+                    const registries = items;
                     const registry = registries.find(x => x.address === address);
                     if (!registry) return;
                     
-
+                    this.setState({
+                        name: registry.name,
+                        registrationTimestamp: registry.registrationTimestamp,
+                        creator: registry.creator,
+                        description: '???',
+                        tag: 'TODO',
+                        web3: web3
+                    })
                     const r = cyber.getRegistryByAddress(registry.address);
-                    r.getInterfaceEntriesContract((e, ipfsHash) => {
-                        
-                        cyber.getFieldByHash(ipfsHash)
-                            .then(({ abi, fields }) => {
+                    web3.eth.getBalance(registry.address, (e, balance) => {
+                        balance = web3.fromWei(web3.toDecimal(balance), 'ether');
+                        this.setState({
+                            total_fee: balance
+                        })
+                    });
+                    
 
-                                cyber.getRegistryData(address, fields, abi)
-                                .then(({ fee, items, fields }) => {
-                                    this.setState({ 
-                                        items, 
-                                        fields, 
-                                        registries,
-                                        loading: false 
-                                    });
-                                });
+                    r.getInterfaceEntriesContract((e, ipfsHash) => {
+                        r.getEntryCreationFee((e, data) => {
+                            var fee = web3.fromWei(data, 'ether').toNumber();
+
+
+                            this.setState({
+                                entryCreationFee: fee,
+                                registryContract: r
                             })
+                            cyber.getFieldByHash(ipfsHash)
+                                .then(({ abi, fields }) => {
+
+                                    cyber.getRegistryData(address, fields, abi)
+                                    .then(({ fee, items, fields }) => {
+                                        Promise.all(
+                                            items.map((i, index) => new Promise((resolve, reject) => r.getEntryMeta(index, (e, data) => resolve(data))))
+                                        ).then(data => {
+                                            var _items = items.map((item, index) => {                                        
+                                            var currentEntryBalanceETH = web3.fromWei(data[index][4]).toNumber();
+                                                return {
+                                                    ...item, 
+                                                    currentEntryBalanceETH
+                                                }
+                                            });
+
+                                            this.setState({ 
+                                                items: _items, 
+                                                fields, 
+                                                registries,
+                                                entriesAmount: items.length,
+                                                loading: false 
+                                            });
+                                        });
+                                    });
+                                })                            
+                        });
                     })
         
                 })  
@@ -55,47 +107,6 @@ class Register extends Component {
             }) 
 
 
-    // const address = this.props.params.adress;
-    // cyber.getRegistry()
-    //   .then(contracts => {
-    //     var ipfsHash = contracts.filter(x => x.address === address)[0].ipfsHash;
-    //     cyber.ipfs.get(ipfsHash, (err, files) => {
-    //       const buf = files[0].content;
-    //       var data = JSON.parse(buf.toString()); // JSON.parse(
-    //       // console.log(JSON.parse(buf.toString()))
-    //       var fields = data.filter(x => x.name === 'entries')[0].outputs;
-    //       fields = fields.filter(x => x.name !== 'owner' && x.name !== 'lastUpdateTime');
-    //       cyber.getContractByAbi(address, data)
-    //       .then(({ contract, web3 }) => {
-
-    //         contract.owner.call((e, data) => {
-    //           this.setState({ isOwner: web3.eth.accounts[0] === data })
-    //         })
-
-    //         web3.eth.getBalance(address, (e, d) => {
-    //           this.setState({
-    //             balance: web3.fromWei(d).toString()
-    //           })
-    //         })
-    //         this.contract = contract; 
-    //         this.web3 = web3;
-    //           const mapFn = item => {
-    //               const aItem = Array.isArray(item) ? item : [item];
-    //               return fields.reduce((o, field, index) => {
-    //                 o[field.name] = aItem[index]; 
-    //                 return o;
-    //               },{})
-    //           }
-    //           cyber.getItems2(contract, 'entriesAmount', 'entries', mapFn)
-    //             .then(items => {
-    //               this.setState({ 
-    //                 items, fields ,
-    //                 loading: false
-    //               })
-    //             });
-    //       })
-    //     });     
-    //   })
   }
 
   deleted = (e, result) => {
@@ -173,6 +184,29 @@ class Register extends Component {
             this.setState({ loading: false })
         })
   }
+
+    changeName = (name) => {
+        alert('TODO')
+    }
+
+    changeDescription = (description) => {
+        alert('TODO')
+    }
+
+    changeTag = (tag) => {
+        alert('TODO')
+    }
+
+    changeEntryCreationFee = (entryCreationFee) => {
+        const address = this.props.params.adress;
+        cyber.updateEntryCreationFee(address, entryCreationFee)
+    }
+
+    clameRecord = (entryID, amount) => {
+        this.state.registryContract.claimEntryFunds(entryID, this.state.web3.toWei(amount, 'ether'), (e, data) => {
+            debugger
+        })
+    }
   
   render() {
     const { fields, items, loading, balance, isOwner } = this.state;
@@ -201,6 +235,14 @@ class Register extends Component {
       return (
         <tr key={index}>
           {row}
+          <td>
+            <span>{item['currentEntryBalanceETH']}</span>
+
+            <Dotate 
+                onInter={(value) => this.clameRecord(index, value)}
+                buttonLable='clame record'
+            />
+          </td>
           <td key='remove'>
             <button onClick={() => this.removeItemClick(index)}>remove</button>
             <Dotate onInter={(value) => this.fundEntryClick(index, value)}/>
@@ -209,9 +251,60 @@ class Register extends Component {
       );
     });
 
+    const {
+        name,
+        description,
+        tag,
+        registrationTimestamp,
+        entryCreationFee,
+        creator,
+        entriesAmount,
+        total_fee,
+        funded
+    } = this.state;
 
     return (
       <div>
+        <div>
+            <FormField
+              label='Name'
+              value={name}
+              onUpdate={this.changeName}
+            />
+            <FormField
+              label='Description'
+              value={description}
+              onUpdate={this.changeDescription}
+            />
+            <FormField
+              label='Tag'
+              value={tag}
+              onUpdate={this.changeTag}
+            />
+            <FormField
+              label='Created date'
+              value={registrationTimestamp ? moment(new Date(registrationTimestamp.toNumber() * 1000)).format('DD-MM-YYYY') : ''}
+            />
+            <FormField
+              label='create record fee'
+              value={entryCreationFee}
+              onUpdate={this.changeEntryCreationFee}
+            />
+            <FormField
+              label='admin'
+              value={creator}
+            />
+            <FormField
+              label='Record count'
+              value={entriesAmount}
+            />
+          </div>
+          <div>
+            total fee: {total_fee}
+          </div>
+          <div>
+            funded: {funded}
+          </div>
         {isOwner && <div>
           <div>Balance: {balance}</div>
           <button onClick={this.claim}>claim</button>
@@ -221,6 +314,7 @@ class Register extends Component {
           <thead>
             <tr>
               {head}
+              <th>balance</th>
               <th key='buttons'></th>
             </tr>
           </thead>
@@ -236,6 +330,55 @@ class Register extends Component {
       </div>
     );
   } 
+}
+
+class FormField extends Component {
+    state = {
+        edit: false
+    }
+
+    startEdit = () => {
+        // this.props.onStart();
+        this.setState({ edit: true })
+    }
+
+    save = () => {
+        const { onUpdate } = this.props;
+        this.setState({ edit: false })
+        onUpdate(this.refs.input.value)
+    }
+
+    cancel = () => {
+        this.setState({ edit: false })        
+    }
+
+    render() {
+        console.log(' render ')
+        const { label, value, onUpdate } = this.props;
+        const { edit } = this.state;
+
+        return (
+            <div>
+                <span>{label}:</span>
+                {!edit ? (<span>{value}</span>) : (<input ref='input' defaultValue={value}/>)}
+                {onUpdate && (
+                    <div>
+                        {!edit ? (
+                            <div>
+                                <button onClick={this.startEdit}>Update</button>
+                            </div>
+                        ) : (
+                            <div>
+                                <button onClick={this.save}>save</button>
+                                <button onClick={this.cancel}>cancel</button>
+                            </div>
+                        )}
+                    </div>
+                    
+                )}
+            </div>
+        );
+    }
 }
 
 class Dotate extends Component {
@@ -263,6 +406,8 @@ class Dotate extends Component {
 
     }
     render() {
+        let buttonLable = this.props.buttonLable || 'fundEntry';
+
         const { open } = this.state;
         if (open) {
             return (
@@ -274,7 +419,7 @@ class Dotate extends Component {
             )
         }
         return (
-            <button onClick={this.fundEntryClick}>fundEntry</button>
+            <button onClick={this.fundEntryClick}>{buttonLable}</button>
         );
     }
 }

@@ -54,7 +54,6 @@ class Home extends Component {
                     <td>
                         {moment(new Date(register.registrationTimestamp.toNumber() * 1000)).format('DD-MM-YYYY')}
                     </td>
-                    <td></td>
                 </tr>
           ));
 
@@ -82,11 +81,6 @@ class Home extends Component {
                     </td>
                     <td>
                         {moment(new Date(register.registrationTimestamp.toNumber() * 1000)).format('DD-MM-YYYY')}
-                    </td>
-                    <td>
-                        <Link 
-                                to={`/registers/${register.address}/edit`} 
-                              >edit</Link>
                     </td>
                 </tr>
           ))

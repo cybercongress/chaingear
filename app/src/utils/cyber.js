@@ -483,7 +483,7 @@ export const getRegistryData = (address, fields, abi) => {
                         var fee = data.toNumber();
                         resolve({
                             fee,
-                            items,
+                            items: items,
                             fields
                         })
                     })
@@ -491,6 +491,11 @@ export const getRegistryData = (address, fields, abi) => {
         })
     })
 }
+
+export const getEntryMeta = () => {
+
+}
+
 
 
 export const removeItem = (address, id) => {
@@ -503,7 +508,7 @@ export const removeItem = (address, id) => {
             resolve(results.args);
         }) 
         registryContract.deleteEntry(id, (e, d) => {
-
+            debugger
         });       
     })
 }
@@ -559,8 +564,8 @@ export const getSafeBalance = (address) => {
 export const updateEntryCreationFee = (address, newfee) => {
     return new Promise((resolve, reject) => {
         const registry = _web3.eth.contract(Registry.abi).at(address);
-        registry.updateEntryCreationFee(newfee, function(e, data){
-            if (reject) reject(e)
+        registry.updateEntryCreationFee(_web3.toWei(newfee, 'ether'), function(e, data){
+            if (e) reject(e)
                 else resolve(data);
         })
     })
