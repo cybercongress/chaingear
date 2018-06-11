@@ -160,7 +160,6 @@ export const deployRegistry = (bytecode, abi, web3, opt) => {
 const getItems = (contract, count, array, mapFn) => {
   return new Promise(resolve => {
     contract[count]().then(lengthData => {
-        debugger
       const length = lengthData.toNumber();
       let promises = [];
           for(let i =0; i < length; i++) {
@@ -220,7 +219,9 @@ export const register = (name, adress, hash) => {
 }
 
 export const getRegistry = () => {
-  return getContract().then(( { contract, web3 }) => {  
+    let accounts = null;
+  return getContract().then(( { contract, web3, accounts }) => {  
+    _accounts = accounts;
     return getItems2(contract, 'registriesAmount', 'registryInfo', (items) => {
       return ({
         name: items[0],
@@ -230,6 +231,11 @@ export const getRegistry = () => {
         ipfsHash: items[5]
       })
 
+    }).then(items => {
+        return {
+            accounts: _accounts,
+            items: items
+        }
     })
   })
 }

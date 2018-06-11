@@ -12,14 +12,15 @@ class Home extends Component {
 
       this.state = {
         registries: [],
-        account: '0xf2492533f7d89dbfed69757156c4b746839e59e8'
+        account: null
       }
     }
 
     componentDidMount() {
-      cyber.getRegistry().then(registries => {
+      cyber.getRegistry().then(({ items, accounts }) => {
         this.setState({
-        registries
+        registries: items,
+        account: accounts[0]
       })
       })
     }
