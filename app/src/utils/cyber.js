@@ -225,6 +225,8 @@ export const getRegistry = () => {
       return ({
         name: items[0],
         address: items[1],
+        creator: items[2],
+        registrationTimestamp: items[4],
         ipfsHash: items[5]
       })
 

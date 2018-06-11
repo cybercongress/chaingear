@@ -30,7 +30,6 @@ class Register extends Component {
                 cyber.getRegistry().then(registries => {
                     const registry = registries.find(x => x.address === address);
                     if (!registry) return;
-                    debugger
                     
 
                     const r = cyber.getRegistryByAddress(registry.address);
@@ -38,7 +37,7 @@ class Register extends Component {
                         
                         cyber.getFieldByHash(ipfsHash)
                             .then(({ abi, fields }) => {
-                                debugger
+
                                 cyber.getRegistryData(address, fields, abi)
                                 .then(({ fee, items, fields }) => {
                                     this.setState({ 
@@ -50,30 +49,9 @@ class Register extends Component {
                                 });
                             })
                     })
-                    // const ipfsHash = registry.ipfsHash;
-
-                    // cyber.getFieldByHash(ipfsHash)
-                    //     .then(({ abi, fields }) => {
-                    //         debugger
-                    //         cyber.getRegistryData(address, fields, abi)
-                    //             .then(({ fee, items, fields }) => {
-                    //                 this.setState({ 
-                    //                     items, 
-                    //                     fields, 
-                    //                     registries,
-                    //                     loading: false 
-                    //                 });
-                    //             });
-                    //     })            
+        
                 })  
-
-                // cyber.getSafeBalance(address)
-                //     .then(data => {
-                //         this.setState({
-                //             isOwner: true,
-                //             balance: data.toNumber()
-                //         })
-                //     })              
+              
             }) 
 
 
@@ -141,7 +119,6 @@ class Register extends Component {
         // const ipfsHash = registry.ipfsHash;
         cyber.addItem(address)
             .then((entryId) => {
-                debugger
                 return cyber.updateItem(address, ipfsHash, entryId, values)
             }) 
     });
@@ -165,9 +142,6 @@ class Register extends Component {
     // })
   }
 
-  fundEntryClick = (index) => {
-    alert(index)
-  }
 
   validate = (e) => {
     e.preventDefault();
