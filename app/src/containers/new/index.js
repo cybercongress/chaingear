@@ -9,6 +9,9 @@ const MAX_FIELD_COUNT = 10;
 
 import AddField from './AddField';
 
+import Code from '../../components/SolidityHighlight/';
+
+
 let compiler;
 let bytecode;
 let abi;
@@ -35,7 +38,7 @@ class NewRegister extends Component {
 
   componentDidMount() {
     cyber.getRegistry()
-      .then(contracts => this.setState({ contracts }));
+      .then(({ items }) => this.setState({ contracts: items }));
 
     // this.setState({ status: 'load compiler...', inProgress : true });
     // cyber.loadCompiler((_compiler) => {
@@ -97,8 +100,10 @@ class NewRegister extends Component {
     const { contractName, fields } = this.state;
     const symbol = this.refs.symbol.value;
 
+    this.setState({ status: 'processing...', inProgress: true });
     cyber.createRegistry(contractName, symbol, fields)
         .then(() => {
+            this.setState({ status: null, inProgress: false });
             browserHistory.push(`/`);
         })
     // this.compileAndEstimateGas((web3) => {
@@ -150,6 +155,7 @@ class NewRegister extends Component {
     const fieldsCount = fields.length;
     const canDeploy = contractName.length > 0 && fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !exist;
 
+    console.log('>> ', inProgress, status)
     return (
       <div>
         <div style={{
@@ -169,8 +175,9 @@ class NewRegister extends Component {
         </div>
         <div className="pure-g">
           <div className="pure-u-1-2">
-            <textarea rows="25" cols="60" value={code} onChange={()=>{}}>
-            </textarea>
+            <Code>
+                {code}
+            </Code>
           </div>
           <div className="pure-u-1-2">
             <div>
