@@ -124,13 +124,29 @@ class Register extends Component {
     const address = this.props.params.adress;
     const registry = registries.find(x => x.address === address);
     if (!registry) return;
-
     const r = cyber.getRegistryByAddress(registry.address);
     r.getInterfaceEntriesContract((e, ipfsHash) => {
         // const ipfsHash = registry.ipfsHash;
         cyber.addItem(address)
             .then((entryId) => {
-                return cyber.updateItem(address, ipfsHash, entryId, values)
+                this.componentDidMount();
+                // return cyber.updateItem(address, ipfsHash, entryId, values)
+            }) 
+    });
+  }
+
+  onUpdate = (values, entryId) => {
+    const { registries } = this.state;
+    const address = this.props.params.adress;
+    const registry = registries.find(x => x.address === address);
+    if (!registry) return;
+    const r = cyber.getRegistryByAddress(registry.address);
+    r.getInterfaceEntriesContract((e, ipfsHash) => {
+        // const ipfsHash = registry.ipfsHash;
+        cyber.updateItem(address, ipfsHash, entryId, values)
+            .then((entryId) => {
+                this.componentDidMount();
+                // return cyber.updateItem(address, ipfsHash, entryId, values)
             }) 
     });
   }
@@ -204,7 +220,7 @@ class Register extends Component {
 
     clameRecord = (entryID, amount) => {
         this.state.registryContract.claimEntryFunds(entryID, this.state.web3.toWei(amount, 'ether'), (e, data) => {
-            debugger
+            this.componentDidMount();
         })
     }
   
@@ -225,30 +241,43 @@ class Register extends Component {
       )
     })
     const rows = items.map((item, index) => {
-      const row = fields.map(field => {
-        return (
-          <td key={field.name}>
-            <span>{item[field.name].toString()}</span>
-          </td>
-        )
-      })
-      return (
-        <tr key={index}>
-          {row}
-          <td>
-            <span>{item['currentEntryBalanceETH']}</span>
+      // const row = fields.map(field => {
+      //   return (
+      //     <td key={field.name}>
+      //       <span>{item[field.name].toString()}</span>
+      //     </td>
+      //   )
+      // })
+      // return (
+      //   <tr key={index}>
+      //     {row}
+      //     <td>
+      //       <span>{item['currentEntryBalanceETH']}</span>
 
-            <Dotate 
-                onInter={(value) => this.clameRecord(index, value)}
-                buttonLable='clame record'
+      //       <Dotate 
+      //           onInter={(value) => this.clameRecord(index, value)}
+      //           buttonLable='clame record'
+      //       />
+      //     </td>
+      //     <td key='remove'>
+      //       <button onClick={() => this.removeItemClick(index)}>remove</button>
+      //       <Dotate onInter={(value) => this.fundEntryClick(index, value)}/>
+      //     </td>
+      //   </tr>
+      // );
+        return (
+            <RegistryItem
+              clameRecord={this.clameRecord}
+              removeItemClick={this.removeItemClick}
+              fundEntryClick={this.fundEntryClick}
+              
+              onUpdate={(values) => this.onUpdate(values, index)}
+
+              fields={fields}
+              item={item}
+              index={index}
             />
-          </td>
-          <td key='remove'>
-            <button onClick={() => this.removeItemClick(index)}>remove</button>
-            <Dotate onInter={(value) => this.fundEntryClick(index, value)}/>
-          </td>
-        </tr>
-      );
+        );
     });
 
     const {
@@ -320,16 +349,157 @@ class Register extends Component {
           </thead>
           <tbody>
             {rows}
-            <AddRow
+            <button onClick={this.add}>add</button>
+            
+            {/*<AddRow
               key='add-row'
               onAdd={this.add}
               fields={fields}
-            />
+            />*/}
+
           </tbody>
         </table>
       </div>
     );
   } 
+}
+
+class RegistryItem extends Component {
+    state = {
+        edit: false,
+        data: {}
+    }
+
+    change = (e, name, type) => {
+        console.log(type)
+        if (type === 'int256' && isNaN(e.target.value)) return;
+
+        if (type === 'uint256' && (isNaN(e.target.value) || +e.target.value < 0)) return;
+
+        this.setState({
+            data: {
+                ...this.state.data,
+                [name]: e.target.value
+            }
+        });
+    }
+
+    startEdit = () => {
+        this.setState({
+            edit: true
+        })
+    }
+
+    cancel = () => {
+        this.setState({
+            edit: false
+        })
+    }
+
+    update = () => {
+        const {
+          fields
+        } = this.props;
+
+        const newItem = {
+          // id: guid()
+        }
+        const args = [];
+        for(let key in this.refs) {
+          if (this.refs[key]) {
+            const field = fields.find(x => x.name === key);
+            if (field.type === 'bool') {
+              args.push(this.refs[key].checked);
+            } else {
+              args.push(this.state.data[key]);
+            }
+            newItem[key] = +this.refs[key].value          
+          }
+        }
+
+        if (args.some(x => x === "" || x === undefined)) return ;
+
+        this.props.onUpdate(args);
+        this.setState({
+            edit: false
+        })
+    }
+
+    render() {
+        const { 
+            fields, item, index,
+            clameRecord,
+            removeItemClick,
+            fundEntryClick
+        } = this.props;
+
+        const {
+            edit
+        } = this.state;
+
+        let row = fields.map(field => {
+            return (
+                <td key={field.name}>
+                    <span>{item[field.name].toString()}</span>
+                </td>
+            );
+        });
+
+        let button = (
+            <button onClick={this.startEdit}>update</button>
+        );
+
+        if (edit) {
+            row = fields.map(field => {
+              let content = (
+                <input 
+                  ref={field.name} 
+                  onChange={e => this.change(e, field.name, field.type)}
+                  value={this.state[field.name]}
+                />
+              );
+              if (field.type === 'bool') {
+                content = <input ref={field.name}  type='checkbox' />
+              }
+              return (
+                <td key={field.name}>
+                  {content}
+                </td>
+              )
+            });
+
+            button = (
+                <div>
+                    <button onClick={this.update}>update</button>
+                    <button onClick={this.cancel}>cancel</button>
+                </div>
+            );
+        }
+        return (
+            <tr>
+                {row}
+                <td>
+                <span>{item['currentEntryBalanceETH']}</span>
+
+                <Dotate 
+                    onInter={(value) => clameRecord(index, value)}
+                    buttonLable='clame record'
+                />
+                </td>
+                <td key='remove'>
+                    <div>
+                        {button}
+                    </div>
+                    <div>
+                        <button onClick={() => removeItemClick(index)}>remove</button>
+                    </div>
+                    <div>
+                        <Dotate onInter={(value) => fundEntryClick(index, value)}/>
+                    </div>
+                </td>
+            </tr>
+        );
+    }
 }
 
 class FormField extends Component {
