@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import * as cyber from '../../utils/cyber'
 
-import AddRow from './AddRow';
 
 import { browserHistory } from 'react-router'
 var moment = require('moment');
@@ -39,10 +38,34 @@ class Register extends Component {
       loading: true
     })
 
+
         const address = this.props.params.adress;
+
+        
+
+        // const address = this.props.params.adress;
         cyber.init()
             .then(({ web3 }) => {
                 cyber.getRegistry().then(({ items }) => {
+
+                    var registryID = this.getRegistryID(items);
+                    // alert(registryID)
+                    cyber.getContract().then(({ contract, web3 }) => {
+                        // contract.paused((e, data) => {
+                        //     debugger
+                        // })
+                        console.log('items ', items);
+                        console.log('registryID ', registryID);
+                        contract.registryBalanceInfo(registryID, (e, data) => {
+                            var funded = web3.fromWei(web3.toDecimal(data[0].toNumber()));
+            //                this.componentDidMount();
+                            this.setState({
+                                funded
+                            })
+                        })
+                    })
+
+
                     const registries = items;
                     const registry = registries.find(x => x.address === address);
                     if (!registry) return;
@@ -51,7 +74,6 @@ class Register extends Component {
                         name: registry.name,
                         registrationTimestamp: registry.registrationTimestamp,
                         creator: registry.creator,
-                        description: '???',
                         tag: 'TODO',
                         web3: web3
                     })
@@ -63,6 +85,15 @@ class Register extends Component {
                         })
                     });
                     
+                    r.getRegistryDescription((e, description) => {
+                        this.setState({
+                            description
+                        })
+                    });
+
+                    // r.getRegistryTags((e, data) => {
+                    //     debugger
+                    // })
 
                     r.getInterfaceEntriesContract((e, ipfsHash) => {
                         r.getEntryCreationFee((e, data) => {
@@ -206,11 +237,19 @@ class Register extends Component {
     }
 
     changeDescription = (description) => {
-        alert('TODO')
+        this.state.registryContract.updateRegistryDescription(description, (e, data) => {
+            this.setState({
+                description
+            })
+        })
     }
 
     changeTag = (tag) => {
-        alert('TODO')
+        this.state.registryContract.addRegistryTag(tag, () => {
+            this.setState({
+                tag: tag
+            })
+        })
     }
 
     changeEntryCreationFee = (entryCreationFee) => {
@@ -221,6 +260,44 @@ class Register extends Component {
     clameRecord = (entryID, amount) => {
         this.state.registryContract.claimEntryFunds(entryID, this.state.web3.toWei(amount, 'ether'), (e, data) => {
             this.componentDidMount();
+        })
+    }
+    getRegistryID = (registries) => {
+        const address = this.props.params.adress;
+
+        let index = null;
+        (registries || this.state.registries).forEach((reg, _index) => {
+            if (reg.address === address){
+                index = _index;
+            }
+        });
+
+        return index;
+    }
+    fundRegistry = (amount) => {
+        var registryID = this.getRegistryID();
+        alert(registryID);
+        cyber.getContract().then(({ contract, web3 }) => {
+            contract.fundRegistry(registryID, { value: web3.toWei(amount, 'ether') }, (e, data) => {
+                this.componentDidMount();
+            })
+            
+        })
+
+    }
+
+    clameRegistry = (amount) => {
+        var registryID = this.getRegistryID();
+        cyber.getContract().then(({ contract, web3 }) => {
+            contract.claimEntryFunds(registryID, web3.toWei(amount, 'ether'), (e, data) => {
+                this.componentDidMount();
+            })
+        })
+    }
+
+    clameFee = (amount) => {
+        this.state.registryContract.claim((e, data) => {
+            debugger
         })
     }
   
@@ -276,6 +353,7 @@ class Register extends Component {
               fields={fields}
               item={item}
               index={index}
+              key={index}
             />
         );
     });
@@ -305,11 +383,11 @@ class Register extends Component {
               value={description}
               onUpdate={this.changeDescription}
             />
-            <FormField
+            {/*<FormField
               label='Tag'
               value={tag}
               onUpdate={this.changeTag}
-            />
+            />*/}
             <FormField
               label='Created date'
               value={registrationTimestamp ? moment(new Date(registrationTimestamp.toNumber() * 1000)).format('DD-MM-YYYY') : ''}
@@ -329,10 +407,23 @@ class Register extends Component {
             />
           </div>
           <div>
+            <div>
             total fee: {total_fee}
+            </div>
+            <button onClick={this.clameFee}>clame fee</button>
           </div>
           <div>
+            <div>
             funded: {funded}
+            </div>
+            <Dotate 
+                onInter={this.clameRegistry}
+                buttonLable='clame'
+            />
+            <Dotate 
+                onInter={this.fundRegistry}
+                buttonLable='fund registry'
+            />
           </div>
         {isOwner && <div>
           <div>Balance: {balance}</div>
@@ -349,8 +440,11 @@ class Register extends Component {
           </thead>
           <tbody>
             {rows}
+            <tr>
+            <td>
             <button onClick={this.add}>add</button>
-            
+            </td>
+            </tr>
             {/*<AddRow
               key='add-row'
               onAdd={this.add}

@@ -378,7 +378,7 @@ export const createRegistry = (name, symbol, fields) => {
 
                     contract.registerRegistry.sendTransaction(
                         "V1",
-                        [], [], name, symbol, 
+                        [accounts[0]], [100], name, symbol, 
                         { 
                             value: buildingFee,
                             //_web3.toWei(0.001, 'ether'), 
