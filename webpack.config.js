@@ -40,7 +40,7 @@ module.exports = function (options = {}) {
     output: {
       path: path.resolve(__dirname, "dist"),
       filename: "[name].js?[hash]",
-      publicPath: "/"
+      publicPath: ""
     },
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".jsx"],
@@ -151,23 +151,24 @@ function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_A
     }),
     new CopyWebpackPlugin([
       // Copy directory contents to {output}/
-      { from: 'config.js' }
+      { from: 'config.js' },
+      { from: 'app/browser-solc.min.js' }
     ]) 
   ];
 
   if (NODE_ENV === "production") {
-    plugins.push(
-      new webpack.optimize.CommonsChunkPlugin({
-        name: "vendor",
-        minChunks: 2
-      })
-    );
+    // plugins.push(
+    //   new webpack.optimize.CommonsChunkPlugin({
+    //     name: "vendor",
+    //     minChunks: 2
+    //   })
+    // );
 
-    plugins.push(
-      new UglifyJsPlugin({
-         test: /\.js($|\?)/i
-      })
-    )
+    // plugins.push(
+    //   new UglifyJsPlugin({
+    //      test: /\.js($|\?)/i
+    //   })
+    // )
   }
 
   return plugins;
