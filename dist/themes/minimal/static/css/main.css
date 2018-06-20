@@ -1,0 +1,161 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+main {
+    margin: auto;
+    padding: 0px;
+    flex: 1 0 auto;
+    max-width: 100%;
+}
+
+/*footer*/
+
+.copyright {
+    margin: 15px 0;
+}
+
+/*home page*/
+
+.intro {
+    transform: translateY(5vh);
+}
+
+.intro > h1 {
+    color: #212121;
+    font-size: 4vmax;
+    text-align: center;
+}
+
+.intro > h2 {
+    color: #757575;
+    font-size: 3vmin;
+}
+
+.profile {
+    margin: auto;
+}
+
+.logo {
+    width: 35%;
+}
+
+.features {
+    display: flex;
+    margin: auto;
+    transform: translateY(5vh);
+}
+
+.pic{
+    margin: auto;
+    float: left;
+    width: 30%;
+}
+
+.f_title{
+    font-size: 2.5vmax;
+    margin: auto;
+
+}
+
+.f_description{
+    font-size: 0.8vmax;
+}
+
+.overview{
+    text-align: justify;
+    text-indent: 1.5em;
+    margin: auto;
+    margin-bottom: 20px;
+    background: #c2c2c2;
+    border-radius: 5px;
+    max-width: 942px;
+    padding: 10px;
+    font-size: 2vh;
+}
+
+.follow{
+  text-align: left;
+  text-indent: 1.5em;
+  font-size: 3vmax;
+  margin-left: 10px;
+  margin: auto;
+}
+
+.o_title{
+    text-align: left;
+    text-indent: 1.5em;
+    font-size: 3vmax;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.social{
+  float: left;
+  margin: auto;
+  width: 30%;
+}
+
+.o_text{
+  font-size: 1.5vmax;
+}
+/*apply accent colour to links*/
+
+a:link, a:visited {
+    color: var(--accent);
+}
+
+a.icon:hover {
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent) !important;
+}
+
+/*paginator at bottom of list view*/
+
+.pages {
+    padding: 15px 0;
+}
+
+.pages-icon {
+    padding: 0 15px;
+}
+
+/*list item for posts and projects*/
+
+.item {
+    padding: 10px 0;
+}
+
+.item-tag {
+    background-color: var(--accent);
+}
+
+/*navigation bar icons*/
+
+.navbar-icon {
+    font-size: 125%;
+    display: inline-block !important;
+}
+
+/*coloured borders at top and bottom of the page*/
+
+.navbar.navbar-default {
+    border-top: var(--border-width) solid var(--accent);
+}
+
+footer {
+    border-bottom: var(--border-width) solid var(--accent);
+}
+
+img {
+    max-width: 100%;
+}
