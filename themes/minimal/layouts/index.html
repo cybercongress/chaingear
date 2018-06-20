@@ -1,0 +1,70 @@
+{{ partial "header" . }}
+
+<main>
+
+    <div class="intro">
+
+        <h1>{{ .Site.Title }}</h1>
+
+        <div class="profile">
+        <img class="logo" src="img/logo.png" alt="Chaingear">
+        </div>
+        <!-- <h2>{{ markdownify .Site.Params.Description }}</h2> -->
+
+        <div class="features">
+
+          <div class="pic">
+            <p class="f_title">FLEXIBLE</p>
+            <img src="img/feat.jpg" alt="automated">
+              <div class="f_description">
+              <p class="f_description">define the registry you want</p>
+              </div>
+          </div>
+
+          <div class="pic">
+            <p class="f_title">ECONOMICS</p>
+            <img src="img/feat.jpg" alt="automated">
+              <div class="f_description">
+              <p class="f_description">set rules of adding entries</p>
+            </div>
+          </div>
+
+          <div class="pic">
+            <p class="f_title">OWNERSHIP</p>
+            <img src="img/feat.jpg" alt="automated">
+            <div class="f_description">
+            <p>transfer and trade records and registries</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="o_title">
+          <p>Overview</p>
+        </div>
+        <div class="overview">
+            <p class="o_text">This project allows you to create your own Registry of general purpose entries on Ethereum blockchain.
+              Entry type is defined during creation, so you can put into entry any custom logic you want (validation, entry-level permission control).
+              Entries are tokenized as NFT. </p>
+              <p class="o_text">Your creating your registry in Chaingear - metaregistry, which are one point of access to all registries.
+              Registries on chaingear level are tokenized as NFT. Chaingear is most expensive registry, so you should pay for your registry creation.</p>
+        </div>
+        <div class="follow">
+          <p>Follow us</p>
+        </div>
+        <div class="features">
+          <div class="social">
+            <img class="profile" src="img/feat.jpg" alt="automated">
+          </div>
+          <div class="social">
+            <img class="profile" src="img/feat.jpg" alt="automated">
+          </div>
+          <div class="social">
+            <img class="profile" src="img/feat.jpg" alt="automated">
+          </div>
+        </div>
+    </div>
+    <div>
+      <p class="copyright text-muted">{{ .Site.Params.copyright | default "&copy; All rights reserved. Powered by [Hugo](https://gohugo.io) and [Minimal](https://github.com/calintat/minimal)" | markdownify }}</p>
+    </div>
+</main>
