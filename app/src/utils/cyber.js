@@ -16,7 +16,6 @@ export const loadCompiler = (cb) => {
     }, 30);
 }
 
-// const ChaingeareableSource = require('../Chaingeareable.sol');
 
 const EntryBasic = require('../EntryBasic.sol');
 

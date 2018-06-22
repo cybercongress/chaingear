@@ -157,18 +157,18 @@ function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_A
   ];
 
   if (NODE_ENV === "production") {
-    // plugins.push(
-    //   new webpack.optimize.CommonsChunkPlugin({
-    //     name: "vendor",
-    //     minChunks: 2
-    //   })
-    // );
+    plugins.push(
+      new webpack.optimize.CommonsChunkPlugin({
+        name: "vendor",
+        minChunks: 2
+      })
+    );
 
-    // plugins.push(
-    //   new UglifyJsPlugin({
-    //      test: /\.js($|\?)/i
-    //   })
-    // )
+    plugins.push(
+      new UglifyJsPlugin({
+         test: /\.js($|\?)/i
+      })
+    )
   }
 
   return plugins;

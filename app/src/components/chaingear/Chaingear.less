@@ -1,0 +1,217 @@
+body {
+    margin: 0;
+}
+
+.container {
+    background: #eff3f6;
+    min-height: 100vh;
+}
+
+.containerInner {
+    width: 1090px;
+    margin: 0 auto;    
+    padding-top: 65px;
+    padding-bottom: 65px;
+}
+
+.paper {
+  background: #fff;
+  box-shadow: 1px 5px 4px rgba(0,0,0,0.14);
+  margin-bottom: 70px;
+}
+
+
+.titile {
+  font-size: 24px;
+  line-height: 24px;
+  color: #7c7c7c;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  margin-top: 0;
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
+  text-transform: uppercase;
+    // padding-bottom: 10px;
+    // padding-left: 40px;
+    // color: #7c7c7c;
+    // font-size: 24px;
+    // line-height: 24p;x
+    font-weight: bold;
+}
+
+.badge {
+  background: #438cef;
+  color: #fff;
+  margin-left: 5px;
+  margin-right: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 8px;
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+
+.footerButton {
+    display: block;
+    border: 1px dashed #cbcbcb;
+    background: #eff3f6;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 15px;
+    cursor: pointer;
+}
+
+
+
+.pageTitle {
+  font-size: 36px;
+  line-height: 42px;
+  color: #7c7c7c;
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 40px;
+  margin-top: 0;
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
+}
+
+.pageTitle::before {
+  content: '';
+  width: 39px;
+  height: 2px;
+  background: #7c7c7c;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: rotate(-65deg);
+}
+
+.container2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sideBar {
+  width: 29%;
+}
+
+.content {
+  width: 68%;
+}
+
+.label {
+  display: block;
+  background: #438cef;
+  color: #fff;
+  border-radius: 2px;
+  padding: 5px 15px;
+  margin-bottom: 13px;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 1px 4px 4px rgba(0, 0, 0, 0.14);
+  margin-bottom: 20px;
+}
+
+.panelTitle {
+  padding: 30px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dedede;
+  color: #7c7c7c;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.panelContent {
+  padding: 30px;
+  padding-top: 20px;
+}
+
+
+
+
+
+.control {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+
+.controlLabel {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.controlComponent {
+  width: 155px;
+}
+
+.controlComponent input {
+  width: 100%;
+  padding: 6px 9px;
+}
+
+.totalCost {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.createButton {
+  width: 100%;
+  text-transform: uppercase;
+  background: #438cef;
+  color: #fff;
+  border-radius: 2px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  padding: 15px 30px;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.createButton::before {
+  background: url(../chaingear/ic-create.svg);
+  content: '';
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 35px;
+  bottom: 0;
+  right: 30px;
+}
+
+.fieldsTable {
+  width: 100%;
+  table-layout: fixed;
+  font-size: 14px;
+}
+
+.fieldsTable th {
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.fieldsTable input {
+  width: 100%;
+}
+
+.fieldsTable tbody {
+  border: 1px solid #dedede;
+}
+
+.fieldsTable td,
+.fieldsTable th {
+  padding:  5px 10px;
+}

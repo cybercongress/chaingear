@@ -5,6 +5,11 @@ import { Link } from 'react-router';
 var moment = require('moment');
 
 import * as cyber from '../../utils/cyber'
+import { Paper, Title, Badge, FooterButton } from '../../components/chaingear/'
+import { Table } from '../../components/Table/';
+import { Container, Text, Link as ActionLink } from '../../components/CallToAction/';
+
+const dateFormat = 'DD/MM/YYYY mm:hh';
 
 class Home extends Component {
     constructor(props) {
@@ -27,7 +32,6 @@ class Home extends Component {
 
   render() {
     const { registries, account } = this.state;
-    console.log(registries);
 
     const rows = registries.map(register => (
                 <tr key={register.name}>
@@ -44,15 +48,15 @@ class Home extends Component {
                               >{register.name}</Link>
                             )
                           }
-                    </td>
-                        ????
+                    </td>                        
                     <td>
+                        ????
                     </td>
                     <td>
                         {register.creator}
                     </td>
                     <td>
-                        {moment(new Date(register.registrationTimestamp.toNumber() * 1000)).format('DD-MM-YYYY')}
+                        {moment(new Date(register.registrationTimestamp.toNumber() * 1000)).format(dateFormat)}
                     </td>
                 </tr>
           ));
@@ -73,42 +77,50 @@ class Home extends Component {
                             )
                           }
                     </td>
-                        ????
                     <td>
+                        ????
                     </td>
                     <td>
                         {register.creator}
                     </td>
                     <td>
-                        {moment(new Date(register.registrationTimestamp.toNumber() * 1000)).format('DD-MM-YYYY')}
+                        {moment(new Date(register.registrationTimestamp.toNumber() * 1000)).format(dateFormat)}
                     </td>
                 </tr>
           ))
 
     let content = (
         <div>
-            <Link to='/new'>create new register</Link>
+        <Title>My registries<Badge>{myRows.length}</Badge></Title>
+        <Paper>
+          <Container>
+              <Text>You haven`t created registers yet!</Text>
+              <ActionLink to='/new'>create</ActionLink>
+          </Container>
+        </Paper>
         </div>
     );
 
     if (myRows.length > 0 ){
         content = (
             <div>
-                <h2>My registries:</h2>
-                <table>
+                <Title>My registries<Badge>{myRows.length}</Badge></Title>
+                <Paper>
+                <Table>
                     <thead>
                         <tr>
-                            <th>name</th>
-                            <th>symbol</th>
-                            <th>owner</th>
-                            <th>created date</th>
+                            <th>Name</th>
+                            <th>Symbol</th>
+                            <th>Creator</th>
+                            <th>Created</th>
                         </tr>
                     </thead>
                     <tbody>
                         {myRows}
                     </tbody>
-                </table>
-                  <Link to='/new'>create new register</Link>
+                </Table>
+                  <FooterButton to='/new'>create new register</FooterButton>
+                </Paper>
             </div>
         )        
     }
@@ -119,20 +131,22 @@ class Home extends Component {
             {content}
         </div>
 
-        <h2>Existing registries:</h2>
-        <table>
+        <Title>All registries<Badge>{rows.length}</Badge></Title>
+        <Paper>
+        <Table>
             <thead>
                 <tr>
-                    <th>name</th>
-                    <th>symbol</th>
-                    <th>owner</th>
-                    <th>created date</th>
+                    <th>Name</th>
+                    <th>Symbol</th>
+                    <th>Creator</th>
+                    <th>Created</th>
                 </tr>
             </thead>
             <tbody>
                 {rows}
             </tbody>
-        </table>
+        </Table>
+        </Paper>
       </div>
     );
   }

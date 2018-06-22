@@ -12,6 +12,18 @@ import AddField from './AddField';
 import Code from '../../components/SolidityHighlight/';
 
 
+import { 
+    PageTitle,
+    ContainerRegister,
+    Content,
+    SideBar,
+    Label,
+    CreateButton,
+    Panel,
+    FieldsTable,
+    Control
+} from '../../components/chaingear/'
+
 let compiler;
 let bytecode;
 let abi;
@@ -173,56 +185,26 @@ class NewRegister extends Component {
         }}>
         {status}
         </div>
-        <div className="pure-g">
-          <div className="pure-u-1-2">
-            <Code>
-                {code}
-            </Code>
-          </div>
-          <div className="pure-u-1-2">
-            <div>
-              <p>Name:<input
+
+        <PageTitle>New registry creation</PageTitle>
+        <ContainerRegister>
+          <SideBar>
+            <Label>Input</Label>
+            <Panel title='General Parameters'>
+              <Control title='Name:'><input
                 placeholder='name'
                 value={contractName}
                 onChange={this.changeContractName}
-              /></p>
-                <p>symbol:<input
+              /></Control>
+                <Control title='symbol:'><input
                 ref='symbol'
                 defaultValue='TTT'
-              /></p>
-              
-              {/*<p>entry Creation Fee:<input
-                ref='entryCreationFee'
-                defaultValue='0.1'
-              /></p>
+              /></Control>
 
+            </Panel>
 
-              <p>Description:<input
-                placeholder='description'
-                ref='description'
-              /></p>
-              <p>Permission:
-                <select ref='permission'>
-                  <option value='1'>OnlyOwner</option>
-                  <option value='2'>AllUsers</option>
-                  <option value='3'>Whitelist</option>
-                </select>
-              </p>*
-
-              <p>Tags:<input
-                placeholder='tags'
-                ref='tags'
-              /></p>*/}
-            </div>
-            {/*error ? (
-              <div>
-                {error}
-              </div>
-            ) : <div>
-              gas Estimate: {gasEstimate} gwei
-            </div>*/}
-            {/*<button onClick={() => this.compileAndEstimateGas()}>estimate</button>*/}
-            <table className="pure-table">
+            <Panel title='Record Structure'>
+            <FieldsTable>
               <thead>
                 <tr>
                   <th>Name</th>
@@ -249,12 +231,21 @@ class NewRegister extends Component {
                 fields={fields}
               />
               </tbody>
-            </table>
-            <button disabled={!canDeploy} onClick={this.create}>
-              create contract
-            </button>
-          </div>
-        </div>
+            </FieldsTable>
+            <CreateButton disabled={!canDeploy} onClick={this.create}>
+              create registry
+            </CreateButton>
+            </Panel>
+          </SideBar>
+
+          <Content>
+            <Label color="#3fb990">Output</Label>
+            <Code>
+                {code}
+            </Code>
+          </Content>
+
+        </ContainerRegister>
       </div>
     );
   }

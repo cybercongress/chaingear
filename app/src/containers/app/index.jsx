@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router';
 
+import { Container } from '../../components/chaingear/'
+
 class App extends Component {
   render() {
     return (
-      <div>
-        <div>
-          <Link to='/'>Chaingear 2.0</Link>
-        </div>
+      <Container>
         {this.props.children}
-      </div>
+      </Container>
     );
   }
 }

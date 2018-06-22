@@ -7,6 +7,11 @@ import { browserHistory } from 'react-router'
 var moment = require('moment');
 
 
+import { 
+    Title,
+    Paper
+} from '../../components/chaingear/'
+
 class Register extends Component {
     
     state = {
@@ -372,7 +377,32 @@ class Register extends Component {
 
     return (
       <div>
-        <div>
+        <Title>General</Title>
+        <Paper>
+            <div>
+            <div>
+            total fee: {total_fee}
+            </div>
+            <button onClick={this.clameFee}>clame fee</button>
+          </div>
+          <div>
+            <div>
+            funded: {funded}
+            </div>
+            <Dotate 
+                onInter={this.clameRegistry}
+                buttonLable='clame'
+            />
+            <Dotate 
+                onInter={this.fundRegistry}
+                buttonLable='fund registry'
+            />
+          </div>
+        </Paper>
+
+
+        <Title>Overview</Title>
+        <Paper>
             <FormField
               label='Name'
               value={name}
@@ -402,42 +432,15 @@ class Register extends Component {
               value={creator}
             />
             <FormField
-              label='Record count'
+              label='Entries'
               value={entriesAmount}
             />
-          </div>
-          <div>
-            <div>
-            total fee: {total_fee}
-            </div>
-            <button onClick={this.clameFee}>clame fee</button>
-          </div>
-          <div>
-            <div>
-            funded: {funded}
-            </div>
-            <Dotate 
-                onInter={this.clameRegistry}
-                buttonLable='clame'
-            />
-            <Dotate 
-                onInter={this.fundRegistry}
-                buttonLable='fund registry'
-            />
-          </div>
-        {isOwner && <div>
-          <div>Balance: {balance}</div>
-          <button onClick={this.claim}>claim</button>
-          <button onClick={this.removeContract}>remove</button>
-        </div>}
+        </Paper>
+          
+          
+                  
         <table>
-          <thead>
-            <tr>
-              {head}
-              <th>balance</th>
-              <th key='buttons'></th>
-            </tr>
-          </thead>
+
           <tbody>
             {rows}
             <tr>
