@@ -19,13 +19,18 @@ import {
 
     Centred,
 
-    Button
+    Button,
+
+    FundContainer,
+    BoxTitle
 } from '../../components/chaingear/'
 
 import { RegistryItem, RegistryList } from './RegistryItem';
 import ValueInput from '../../components/ValueInput';
 import FormField from './FormField';
-
+import QRCode from '../../components/QRCode/';
+import Robohash from '../../components/Robohash/';
+import { LinkHash } from '../../components/LinkHash/'
 
 class Register extends Component {
     
@@ -347,6 +352,7 @@ class Register extends Component {
             />
         );
     });
+    const address = this.props.params.adress;
 
     const {
         name,
@@ -365,15 +371,15 @@ class Register extends Component {
         <Section title='General'>
             <SectionContent style={{ width: '25%' }}>
                 <Centred>
-                robo hash
+                    <Robohash hash={address} />
                 </Centred>
             </SectionContent>
 
             <SectionContent style={{ width: '25%' }}>
                 <Centred>
-                <div>
+                <BoxTitle>
                     Created:
-                </div>
+                </BoxTitle>
                 <div>
                     {registrationTimestamp ? moment(new Date(registrationTimestamp.toNumber() * 1000)).format('DD-MM-YYYY') : ''}
                 </div>
@@ -382,23 +388,24 @@ class Register extends Component {
 
             <SectionContent style={{ width: '25%' }}>
                 <Centred>
-                    Hash
+                    <BoxTitle>Hash</BoxTitle>
+                    <LinkHash  value={address} />
                 </Centred>
             </SectionContent>
 
             <SectionContent style={{ width: '25%' }}>
                 <Centred>
-                <div>
+                <BoxTitle>
                     FUNDED/FEES:
-                </div>
+                </BoxTitle>
 
-                <div>
+                <FundContainer>
                     <span>
                     {total_fee} ETH
                     </span>
-                    <Button onClick={this.clameFee}>clame fee</Button>
-                </div>
-                <div>
+                    <Button style={{ width: 119 }} onClick={this.clameFee}>clame fee</Button>
+                </FundContainer>
+                <FundContainer>
                     <span>
                     {funded} ETH
                     </span>
@@ -409,16 +416,16 @@ class Register extends Component {
                         color='second'
                     />
                 
-                </div>
+                </FundContainer>
                 </Centred>
             </SectionContent>            
         </Section>
 
         <Section title='Overview'>
-            <SectionContent grow={1} style={{ width: '25%'}}>
+            <SectionContent grow={0} style={{ width: '25%'}}>
                 <Centred>
                 <div>
-                    qr
+                    <QRCode hash={address} size={160} />
                 </div>
                 <ValueInput 
                     onInter={this.fundRegistry}

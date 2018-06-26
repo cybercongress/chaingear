@@ -9,6 +9,9 @@ import {
     Centred 
 } from '../../components/chaingear/'
 
+import QRCode from '../../components/QRCode/';
+
+
 class RegistryItem extends Component {
     state = {
         edit: false,
@@ -135,10 +138,10 @@ class RegistryItem extends Component {
                         {row}
                     </SectionContent>
 
-                    <SectionContent>   
+                    <SectionContent grow={0} style={{ width: '25%'}}>   
                         <Centred>                     
                             <div>
-                                qr
+                               <QRCode hash='0xb6ee5dcb7b5e63704a9af45bdd9e0e493ff26c81' size={100} />
                             </div>
                             <div>
                                 <ValueInput 
@@ -149,7 +152,7 @@ class RegistryItem extends Component {
                         </Centred>
                     </SectionContent>
 
-                    <SectionContent>
+                    <SectionContent grow={0} style={{ width: '25%'}}>
                         <Centred>
                         <div>
                             Funded:

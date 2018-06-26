@@ -159,3 +159,14 @@ export const Button = (props) => (
     <button {...props} className={styles.button + ' ' + (props.color ? styles[props.color]: '')} />
 );
 
+
+export const FundContainer = (props) => (
+    <div {...props} className={styles.fundContainer}/>
+);
+
+
+export const BoxTitle = (props) => (
+    <div {...props} className={styles.boxTitle}/>
+);
+
+
