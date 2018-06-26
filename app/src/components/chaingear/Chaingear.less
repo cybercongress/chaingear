@@ -15,9 +15,12 @@ body {
 }
 
 .paper {
-  background: #fff;
-  box-shadow: 1px 5px 4px rgba(0,0,0,0.14);
-  margin-bottom: 70px;
+    height: 100%;
+    background: #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: 1px 5px 4px 0 rgba(0, 0, 0, 0.14);  
+    flex-grow: 1;
 }
 
 
@@ -214,4 +217,91 @@ body {
 .fieldsTable td,
 .fieldsTable th {
   padding:  5px 10px;
+}
+
+.addItemButton {
+    display: block;
+    width: 100%;
+    background: #438cef;
+    padding: 25px;
+    font-size: 16px;
+}
+
+.addItemButtonText {
+    color: #fff;
+    display: inline-block;
+    margin-right: 20px;
+    text-transform: uppercase;
+}
+
+
+
+
+
+.section {
+  margin-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.sectionContent {
+  flex-grow: 1;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.sectionTitle {
+  box-sizing: border-box;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding-left: 30px;
+  color: #7c7c7c;
+  line-height: 23px;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+  font-weight: normal;
+}
+
+
+.sectionTabContainer {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.centred {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100% - 40px);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.button {
+    padding: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    border: none;
+    color: #fff;
+    background: #438cef;
+    border: 1px solid #438cef;
+    box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.14);
+    display: inline-block;
+}
+
+
+.button.second {
+    background-color: #03cba0;
+    border: 1px solid #03cba0;
 }

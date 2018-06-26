@@ -9,8 +9,23 @@ var moment = require('moment');
 
 import { 
     Title,
-    Paper
+    Paper,
+    Container,
+    AddItemButton,
+    AddItemButtonText,
+
+    Section,
+    SectionContent,
+
+    Centred,
+
+    Button
 } from '../../components/chaingear/'
+
+import { RegistryItem, RegistryList } from './RegistryItem';
+import ValueInput from '../../components/ValueInput';
+import FormField from './FormField';
+
 
 class Register extends Component {
     
@@ -217,25 +232,23 @@ class Register extends Component {
     })
   }
 
-  removeContract = () => {
-    // alert(1)
+    removeContract = () => {    
+        const address = this.props.params.adress;
+        cyber.removeRegistry(address).then(() => {
+          this.contract.destroy((e, d) => {
+            browserHistory.push(`/`);  
+          })      
+        });
+    }
 
-    const address = this.props.params.adress;
-    cyber.removeRegistry(address).then(() => {
-      this.contract.destroy((e, d) => {
-        browserHistory.push(`/`);  
-      })      
-    });
-  }
-
-  fundEntryClick = (index, value) => {
-    this.setState({ loading: true })
-    const address = this.props.params.adress;
-    cyber.fundEntry(address, index, value)
-        .then(() => {
-            this.setState({ loading: false })
-        })
-  }
+    fundEntryClick = (index, value) => {
+        this.setState({ loading: true })
+        const address = this.props.params.adress;
+        cyber.fundEntry(address, index, value)
+            .then(() => {
+                this.setState({ loading: false })
+            })
+    }
 
     changeName = (name) => {
         alert('TODO')
@@ -317,36 +330,8 @@ class Register extends Component {
       );
     }
 
-    const head = fields.map(field => {
-      return (
-        <th key={field.name}>{field.name}</th>
-      )
-    })
     const rows = items.map((item, index) => {
-      // const row = fields.map(field => {
-      //   return (
-      //     <td key={field.name}>
-      //       <span>{item[field.name].toString()}</span>
-      //     </td>
-      //   )
-      // })
-      // return (
-      //   <tr key={index}>
-      //     {row}
-      //     <td>
-      //       <span>{item['currentEntryBalanceETH']}</span>
 
-      //       <Dotate 
-      //           onInter={(value) => this.clameRecord(index, value)}
-      //           buttonLable='clame record'
-      //       />
-      //     </td>
-      //     <td key='remove'>
-      //       <button onClick={() => this.removeItemClick(index)}>remove</button>
-      //       <Dotate onInter={(value) => this.fundEntryClick(index, value)}/>
-      //     </td>
-      //   </tr>
-      // );
         return (
             <RegistryItem
               clameRecord={this.clameRecord}
@@ -366,7 +351,6 @@ class Register extends Component {
     const {
         name,
         description,
-        tag,
         registrationTimestamp,
         entryCreationFee,
         creator,
@@ -377,319 +361,115 @@ class Register extends Component {
 
     return (
       <div>
-        <Title>General</Title>
-        <Paper>
-            <div>
-            <div>
-            total fee: {total_fee}
-            </div>
-            <button onClick={this.clameFee}>clame fee</button>
-          </div>
-          <div>
-            <div>
-            funded: {funded}
-            </div>
-            <Dotate 
-                onInter={this.clameRegistry}
-                buttonLable='clame'
-            />
-            <Dotate 
-                onInter={this.fundRegistry}
-                buttonLable='fund registry'
-            />
-          </div>
-        </Paper>
+        <Container>
+        <Section title='General'>
+            <SectionContent style={{ width: '25%' }}>
+                <Centred>
+                robo hash
+                </Centred>
+            </SectionContent>
 
+            <SectionContent style={{ width: '25%' }}>
+                <Centred>
+                <div>
+                    Created:
+                </div>
+                <div>
+                    {registrationTimestamp ? moment(new Date(registrationTimestamp.toNumber() * 1000)).format('DD-MM-YYYY') : ''}
+                </div>
+                </Centred>
+            </SectionContent>
 
-        <Title>Overview</Title>
-        <Paper>
-            <FormField
-              label='Name'
-              value={name}
-              onUpdate={this.changeName}
-            />
-            <FormField
-              label='Description'
-              value={description}
-              onUpdate={this.changeDescription}
-            />
-            {/*<FormField
-              label='Tag'
-              value={tag}
-              onUpdate={this.changeTag}
-            />*/}
-            <FormField
-              label='Created date'
-              value={registrationTimestamp ? moment(new Date(registrationTimestamp.toNumber() * 1000)).format('DD-MM-YYYY') : ''}
-            />
-            <FormField
-              label='create record fee'
-              value={entryCreationFee}
-              onUpdate={this.changeEntryCreationFee}
-            />
-            <FormField
-              label='admin'
-              value={creator}
-            />
-            <FormField
-              label='Entries'
-              value={entriesAmount}
-            />
-        </Paper>
-          
-          
-                  
-        <table>
+            <SectionContent style={{ width: '25%' }}>
+                <Centred>
+                    Hash
+                </Centred>
+            </SectionContent>
 
-          <tbody>
+            <SectionContent style={{ width: '25%' }}>
+                <Centred>
+                <div>
+                    FUNDED/FEES:
+                </div>
+
+                <div>
+                    <span>
+                    {total_fee} ETH
+                    </span>
+                    <Button onClick={this.clameFee}>clame fee</Button>
+                </div>
+                <div>
+                    <span>
+                    {funded} ETH
+                    </span>
+
+                    <ValueInput 
+                        onInter={this.clameRegistry}
+                        buttonLable='claim funds'
+                        color='second'
+                    />
+                
+                </div>
+                </Centred>
+            </SectionContent>            
+        </Section>
+
+        <Section title='Overview'>
+            <SectionContent grow={1} style={{ width: '25%'}}>
+                <Centred>
+                <div>
+                    qr
+                </div>
+                <ValueInput 
+                    onInter={this.fundRegistry}
+                    buttonLable='fund registry'
+                    width='100%'
+                />
+                </Centred>
+            </SectionContent>
+
+            <SectionContent grow={3}>
+                <FormField
+                  label='Name'
+                  value={name}
+                  onUpdate={this.changeName}
+                />
+                <FormField
+                  label='Description'
+                  value={description}
+                  onUpdate={this.changeDescription}
+                />
+                <FormField
+                  label='fee'
+                  value={entryCreationFee}
+                  onUpdate={this.changeEntryCreationFee}
+                />
+                <FormField
+                  label='admin'
+                  value={creator}
+                />
+                <FormField
+                  label='Entries'
+                  value={entriesAmount}
+                />
+            </SectionContent>        
+        </Section>
+
+                         
+        <RegistryList>
             {rows}
-            <tr>
-            <td>
-            <button onClick={this.add}>add</button>
-            </td>
-            </tr>
-            {/*<AddRow
-              key='add-row'
-              onAdd={this.add}
-              fields={fields}
-            />*/}
-
-          </tbody>
-        </table>
+        </RegistryList>
+        
+        </Container>
+        <AddItemButton onClick={this.add}>
+            <AddItemButtonText>Add Record</AddItemButtonText>
+            <span>Fee: {entryCreationFee} ETH</span>
+        </AddItemButton>
       </div>
     );
   } 
 }
 
-class RegistryItem extends Component {
-    state = {
-        edit: false,
-        data: {}
-    }
-
-    change = (e, name, type) => {
-        console.log(type)
-        if (type === 'int256' && isNaN(e.target.value)) return;
-
-        if (type === 'uint256' && (isNaN(e.target.value) || +e.target.value < 0)) return;
-
-        this.setState({
-            data: {
-                ...this.state.data,
-                [name]: e.target.value
-            }
-        });
-    }
-
-    startEdit = () => {
-        this.setState({
-            edit: true
-        })
-    }
-
-    cancel = () => {
-        this.setState({
-            edit: false
-        })
-    }
-
-    update = () => {
-        const {
-          fields
-        } = this.props;
-
-        const newItem = {
-          // id: guid()
-        }
-        const args = [];
-        for(let key in this.refs) {
-          if (this.refs[key]) {
-            const field = fields.find(x => x.name === key);
-            if (field.type === 'bool') {
-              args.push(this.refs[key].checked);
-            } else {
-              args.push(this.state.data[key]);
-            }
-            newItem[key] = +this.refs[key].value          
-          }
-        }
-
-        if (args.some(x => x === "" || x === undefined)) return ;
-
-        this.props.onUpdate(args);
-        this.setState({
-            edit: false
-        })
-    }
-
-    render() {
-        const { 
-            fields, item, index,
-            clameRecord,
-            removeItemClick,
-            fundEntryClick
-        } = this.props;
-
-        const {
-            edit
-        } = this.state;
-
-        let row = fields.map(field => {
-            return (
-                <td key={field.name}>
-                    <span>{item[field.name].toString()}</span>
-                </td>
-            );
-        });
-
-        let button = (
-            <button onClick={this.startEdit}>update</button>
-        );
-
-        if (edit) {
-            row = fields.map(field => {
-              let content = (
-                <input 
-                  ref={field.name} 
-                  onChange={e => this.change(e, field.name, field.type)}
-                  value={this.state[field.name]}
-                />
-              );
-              if (field.type === 'bool') {
-                content = <input ref={field.name}  type='checkbox' />
-              }
-              return (
-                <td key={field.name}>
-                  {content}
-                </td>
-              )
-            });
-
-            button = (
-                <div>
-                    <button onClick={this.update}>update</button>
-                    <button onClick={this.cancel}>cancel</button>
-                </div>
-            );
-        }
-        return (
-            <tr>
-                {row}
-                <td>
-                <span>{item['currentEntryBalanceETH']}</span>
-
-                <Dotate 
-                    onInter={(value) => clameRecord(index, value)}
-                    buttonLable='clame record'
-                />
-                </td>
-                <td key='remove'>
-                    <div>
-                        {button}
-                    </div>
-                    <div>
-                        <button onClick={() => removeItemClick(index)}>remove</button>
-                    </div>
-                    <div>
-                        <Dotate onInter={(value) => fundEntryClick(index, value)}/>
-                    </div>
-                </td>
-            </tr>
-        );
-    }
-}
-
-class FormField extends Component {
-    state = {
-        edit: false
-    }
-
-    startEdit = () => {
-        // this.props.onStart();
-        this.setState({ edit: true })
-    }
-
-    save = () => {
-        const { onUpdate } = this.props;
-        this.setState({ edit: false })
-        onUpdate(this.refs.input.value)
-    }
-
-    cancel = () => {
-        this.setState({ edit: false })        
-    }
-
-    render() {
-        console.log(' render ')
-        const { label, value, onUpdate } = this.props;
-        const { edit } = this.state;
-
-        return (
-            <div>
-                <span>{label}:</span>
-                {!edit ? (<span>{value}</span>) : (<input ref='input' defaultValue={value}/>)}
-                {onUpdate && (
-                    <div>
-                        {!edit ? (
-                            <div>
-                                <button onClick={this.startEdit}>Update</button>
-                            </div>
-                        ) : (
-                            <div>
-                                <button onClick={this.save}>save</button>
-                                <button onClick={this.cancel}>cancel</button>
-                            </div>
-                        )}
-                    </div>
-                    
-                )}
-            </div>
-        );
-    }
-}
-
-class Dotate extends Component {
-    state = {
-        open: false,
-    }
-    fundEntryClick = () => {
-        this.setState({
-            open: true
-        })
-    }
-
-    ok = () => {
-        const value = this.refs.value.value;
-        this.props.onInter(value);
-        this.setState({
-            open: false
-        })
-
-    }
-    cancel = () => {
-        this.setState({
-            open: false
-        })
-
-    }
-    render() {
-        let buttonLable = this.props.buttonLable || 'fundEntry';
-
-        const { open } = this.state;
-        if (open) {
-            return (
-                <div style={{ display: 'inline-block'}}>
-                    <input ref='value'/>
-                    <button onClick={this.ok}>ok</button>
-                    <button onClick={this.cancel}>cancel</button>
-                </div>
-            )
-        }
-        return (
-            <button onClick={this.fundEntryClick}>{buttonLable}</button>
-        );
-    }
-}
 
 
 export default Register;

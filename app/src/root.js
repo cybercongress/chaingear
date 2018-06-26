@@ -14,11 +14,10 @@ export function Root() {
   return (
     <Router  history={history}>
       <Route component={App} >
-
-      <Route path={"/"} component={HomePage}/>
-      <Route path={"/new"} component={NewRegister}/>
-      <Route path={"/registers/:adress"} component={RegisterPage}/>
+          <Route path={"/"} component={HomePage}/>
+          <Route path={"/new"} component={NewRegister}/>
       </Route>
+      <Route path={"/registers/:adress"} component={RegisterPage}/>
     </Router>
   );
 }
