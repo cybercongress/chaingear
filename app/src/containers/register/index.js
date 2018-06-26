@@ -8,8 +8,6 @@ var moment = require('moment');
 
 
 import { 
-    Title,
-    Paper,
     Container,
     AddItemButton,
     AddItemButtonText,
@@ -362,7 +360,8 @@ class Register extends Component {
         creator,
         entriesAmount,
         total_fee,
-        funded
+        funded,
+        tag
     } = this.state;
 
     return (
@@ -380,16 +379,18 @@ class Register extends Component {
                 <BoxTitle>
                     Created:
                 </BoxTitle>
-                <div>
-                    {registrationTimestamp ? moment(new Date(registrationTimestamp.toNumber() * 1000)).format('DD-MM-YYYY') : ''}
+                <div style={{ height: 100, color: '#7c7c7c' }}>
+                    {registrationTimestamp ? moment(new Date(registrationTimestamp.toNumber() * 1000)).format('DD/MM/YYYY mm::hh:ss') : ''}
                 </div>
                 </Centred>
             </SectionContent>
 
             <SectionContent style={{ width: '25%' }}>
                 <Centred>
-                    <BoxTitle>Hash</BoxTitle>
-                    <LinkHash  value={address} />
+                    <BoxTitle>creator:</BoxTitle>
+                    <div style={{ height: 100 }}>
+                        <LinkHash  value={creator} />
+                    </div>
                 </Centred>
             </SectionContent>
 
@@ -442,23 +443,28 @@ class Register extends Component {
                   onUpdate={this.changeName}
                 />
                 <FormField
+                  label='Symbol'
+                  value={'R1'}
+                />
+                <FormField
                   label='Description'
                   value={description}
                   onUpdate={this.changeDescription}
                 />
                 <FormField
-                  label='fee'
-                  value={entryCreationFee}
-                  onUpdate={this.changeEntryCreationFee}
-                />
-                <FormField
-                  label='admin'
-                  value={creator}
+                  label='Tag'
+                  value={tag}
+                  onUpdate={this.changeTag}
                 />
                 <FormField
                   label='Entries'
-                  value={entriesAmount}
+                  value={rows.length}
                 />
+                <FormField
+                  label='fee'
+                  value={entryCreationFee}
+                  onUpdate={this.changeEntryCreationFee}
+                />                
             </SectionContent>        
         </Section>
 

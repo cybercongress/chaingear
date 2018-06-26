@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import ValueInput from '../../components/ValueInput';
 
 import { 
-
     Section,
     SectionContent,
     Centred 
@@ -11,11 +10,29 @@ import {
 
 import QRCode from '../../components/QRCode/';
 
+import {
+    Label,
+    Amount,
+    ButtonContainer,
+    FieldLabel,
+    FieldValue,
+    FieldInput,
+
+    EditButton,
+    DeleteButton,
+    UpdateButton,
+    CancelButton
+} from '../../components/RegistryItem/';
 
 class RegistryItem extends Component {
     state = {
         edit: false,
         data: {}
+    }
+
+    constructor(props) {
+        super(props);
+        this._refs = {};
     }
 
     change = (e, name, type) => {
@@ -53,15 +70,16 @@ class RegistryItem extends Component {
           // id: guid()
         }
         const args = [];
-        for(let key in this.refs) {
-          if (this.refs[key]) {
+
+        for(let key in this._refs) {
+          if (this._refs[key]) {
             const field = fields.find(x => x.name === key);
             if (field.type === 'bool') {
-              args.push(this.refs[key].checked);
+              args.push(this._refs[key].checked);
             } else {
               args.push(this.state.data[key]);
             }
-            newItem[key] = +this.refs[key].value          
+            newItem[key] = +this._refs[key].value          
           }
         }
 
@@ -88,54 +106,56 @@ class RegistryItem extends Component {
         let row = fields.map(field => {
             return (
                 <div key={field.name}>
-                    <span>{field.name}</span>
-                    <span>{item[field.name].toString()}</span>
+                    <FieldLabel>{field.name}</FieldLabel>
+                    <FieldValue>{item[field.name].toString()}</FieldValue>
                 </div>
             );
         });
 
         let button = (
             <div>
-                <button onClick={this.startEdit}>update</button>
-                <button onClick={() => removeItemClick(index)}>remove</button>
+                <EditButton onClick={this.startEdit}>edit</EditButton>
+                <DeleteButton onClick={() => removeItemClick(index)}>remove</DeleteButton>
             </div>
         );
 
         if (edit) {
             row = fields.map(field => {
-              let content = (
-                <input 
-                  ref={field.name} 
+              let control = (
+                <FieldInput 
+                  inputRef={el => this._refs[field.name] = el}
                   onChange={e => this.change(e, field.name, field.type)}
                   defaultValue={item[field.name].toString()}
                 />
               );
               if (field.type === 'bool') {
-                content = <input ref={field.name}  type='checkbox' />
+                control = <input ref={field.name}  type='checkbox' />
               }
               return (
                 <div key={field.name}>
-                  <span>{field.name}</span>
-                  {content}
+                  <FieldLabel>{field.name}</FieldLabel>
+                  {control}
                 </div>
               )
             });
 
             button = (
                 <div>
-                    <button onClick={this.update}>update</button>
-                    <button onClick={this.cancel}>cancel</button>
+                    <UpdateButton onClick={this.update}>update</UpdateButton>
+                    <CancelButton onClick={this.cancel}>cancel</CancelButton>
                 </div>
             );
         }
         return (
             <div>
-                <div>
+                <ButtonContainer>
                     {button}                    
-                </div>
+                </ButtonContainer>
                 <Section>
                     <SectionContent grow={2}>
+                        <div style={{ margintTop: 20 }}>
                         {row}
+                        </div>
                     </SectionContent>
 
                     <SectionContent grow={0} style={{ width: '25%'}}>   
@@ -153,11 +173,13 @@ class RegistryItem extends Component {
                     </SectionContent>
 
                     <SectionContent grow={0} style={{ width: '25%'}}>
-                        <Centred>
-                        <div>
+                        <Centred style={{ justifyContent: 'space-between'}}>
+                        <Label>
                             Funded:
-                        </div>
-                        <div>{item['currentEntryBalanceETH']} ETH</div>
+                        </Label>
+                        <Amount>
+                            {item['currentEntryBalanceETH']} ETH
+                        </Amount>
                         <ValueInput 
                             onInter={(value) => clameRecord(index, value)}
                             buttonLable='claim funds'

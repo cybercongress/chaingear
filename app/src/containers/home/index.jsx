@@ -11,6 +11,13 @@ import { Container, Text, Link as ActionLink } from '../../components/CallToActi
 
 const dateFormat = 'DD/MM/YYYY mm:hh';
 
+import { 
+
+    Section,
+    SectionContent,
+
+} from '../../components/chaingear/'
+
 class Home extends Component {
     constructor(props) {
       super(props)
@@ -91,21 +98,22 @@ class Home extends Component {
 
     let content = (
         <div>
-        <Title>My registries<Badge>{myRows.length}</Badge></Title>
-        <Paper>
+        <Section title={<span>My registries<Badge>{myRows.length}</Badge></span>}>
+            <SectionContent>
           <Container>
               <Text>You haven`t created registers yet!</Text>
               <ActionLink to='/new'>create</ActionLink>
           </Container>
-        </Paper>
+        </SectionContent>
+        </Section>
         </div>
     );
 
     if (myRows.length > 0 ){
         content = (
             <div>
-                <Title>My registries<Badge>{myRows.length}</Badge></Title>
-                <Paper>
+                <Section title={<span>My registries<Badge>{myRows.length}</Badge></span>}>
+                <SectionContent>
                 <Table>
                     <thead>
                         <tr>
@@ -120,7 +128,8 @@ class Home extends Component {
                     </tbody>
                 </Table>
                   <FooterButton to='/new'>create new register</FooterButton>
-                </Paper>
+                  </SectionContent>
+                </Section>
             </div>
         )        
     }
@@ -131,8 +140,8 @@ class Home extends Component {
             {content}
         </div>
 
-        <Title>All registries<Badge>{rows.length}</Badge></Title>
-        <Paper>
+        <Section title={<span>All registries<Badge>{rows.length}</Badge></span>}>
+        <SectionContent>
         <Table>
             <thead>
                 <tr>
@@ -146,7 +155,8 @@ class Home extends Component {
                 {rows}
             </tbody>
         </Table>
-        </Paper>
+        </SectionContent>
+        </Section>
       </div>
     );
   }

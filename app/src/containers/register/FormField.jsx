@@ -1,5 +1,19 @@
 import React, { Component } from 'react';
 
+import {
+    FormFieldContainer,
+    ForamLable,
+    ForamValue,
+    ButtonContainer
+} from '../../components/FormField/';
+
+
+import {
+    EditButton,
+    UpdateButton,
+    CancelButton
+} from '../../components/RegistryItem/';
+
 class FormField extends Component {
     state = {
         edit: false
@@ -26,25 +40,25 @@ class FormField extends Component {
         const { edit } = this.state;
 
         return (
-            <div>
-                <span>{label}:</span>
-                {!edit ? (<span>{value}</span>) : (<input ref='input' defaultValue={value}/>)}
+            <FormFieldContainer>
+                <ForamLable>{label}:</ForamLable>
+                <ForamValue>{!edit ? (<span>{value}</span>) : (<input ref='input' defaultValue={value}/>)}</ForamValue>
                 {onUpdate && (
-                    <div>
+                    <ButtonContainer>
                         {!edit ? (
                             <div>
-                                <button onClick={this.startEdit}>Update</button>
+                                <EditButton onClick={this.startEdit}>Update</EditButton>
                             </div>
                         ) : (
                             <div>
-                                <button onClick={this.save}>save</button>
-                                <button onClick={this.cancel}>cancel</button>
+                                <UpdateButton onClick={this.save}>save</UpdateButton>
+                                <CancelButton onClick={this.cancel}>cancel</CancelButton>
                             </div>
                         )}
-                    </div>
+                    </ButtonContainer>
                     
                 )}
-            </div>
+            </FormFieldContainer>
         );
     }
 }
