@@ -287,7 +287,7 @@ export const getItems2 = (contract, count, array, mapFn) => {
             promises.push(new Promise((itemResolve, itemReject) => {
               contract[array](i, (e, r) => {
                 if (e) itemReject(e)
-                  else itemResolve(r);
+                  else itemResolve(r, i);
               })
             }));
           }
@@ -469,18 +469,35 @@ export const getRegistryData = (address, fields, abi) => {
 
             const entryCore = _web3.eth.contract(abi).at(entryAddress);
 
-            const mapFn = item => {
+            const mapFn = (item, index2) => {
               const aItem = Array.isArray(item) ? item : [item];
               return fields.reduce((o, field, index) => {
                 o[field.name] = aItem[index]; 
                 return o;
-              },{})
+              },{ __index: index2 })
             }
             
             getItems2(entryCore, 'entriesAmount', 'entryInfo', mapFn)
                 .then(items => {
                     registry.getEntryCreationFee((e, data) => {
                         var fee = data.toNumber();
+
+                        // //return owner for each item by index
+                        // const pp = items.map((d, index) => new Promise((resolve) => 
+                        //         registry.getEntryMeta(index, (e, metaData) => 
+                        //             resolve({ ...d, owner: metaData[0]})
+                        //         )
+                        //     )
+                        // )
+
+                        // Promise.all(pp).then(newItems => {
+                        //     resolve({
+                        //         fee,
+                        //         items: newItems,
+                        //         fields
+                        //     }) 
+                        // })
+                        
                         resolve({
                             fee,
                             items: items,

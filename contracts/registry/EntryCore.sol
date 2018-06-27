@@ -3,6 +3,7 @@ pragma solidity 0.4.24;
 import "../common/EntryBasic.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
+
 /**
 * @title Entries engine for Chaingear
 * @author Cyber•Congress

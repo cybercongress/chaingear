@@ -4,7 +4,7 @@ const generateContractCode = (name, fields) => {
   const structBodyStr = fields.map(f => `${f.type} ${f.name};`).join('\n');
 
   const createArgsStr = fields.map(f => `${f.type} _${f.name}`).join(', ');
-  const createItemStr = fields.map(f => `${f.name}: _${f.name}`).join(',\n');
+  // const createItemStr = fields.map(f => `${f.name}: _${f.name}`).join(',\n');
 
   const generateGetor = (name, type) => {
     return `
@@ -23,6 +23,9 @@ const generateContractCode = (name, fields) => {
   const empty = (type) => {
     if (type === 'address') return 'address(0)';
     if (type === 'uint256') return 'uint256(0)';
+    if (type === 'int256') return 'int256(0)';
+    if (type === 'bool') return 'true';
+
     if (type === 'uint') return 'uint(0)';
     if (type === 'int') return 'int(0)';
     if (type === 'string') return '""';

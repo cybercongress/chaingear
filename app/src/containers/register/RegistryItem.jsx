@@ -96,7 +96,8 @@ class RegistryItem extends Component {
             fields, item, index,
             clameRecord,
             removeItemClick,
-            fundEntryClick
+            fundEntryClick,
+            userAccount
         } = this.props;
 
         const {
@@ -146,11 +147,14 @@ class RegistryItem extends Component {
                 </div>
             );
         }
+
+        const isOwner = userAccount === item.owner;
+
         return (
             <div>
-                <ButtonContainer>
+                {isOwner && <ButtonContainer>
                     {button}                    
-                </ButtonContainer>
+                </ButtonContainer>}
                 <Section>
                     <SectionContent grow={2}>
                         <div style={{ margintTop: 20 }}>
@@ -180,11 +184,11 @@ class RegistryItem extends Component {
                         <Amount>
                             {item['currentEntryBalanceETH']} ETH
                         </Amount>
-                        <ValueInput 
+                        {isOwner && <ValueInput 
                             onInter={(value) => clameRecord(index, value)}
                             buttonLable='claim funds'
                             color='second'
-                        />
+                        />}
                         </Centred>
                     </SectionContent>
 

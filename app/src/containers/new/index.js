@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { browserHistory } from 'react-router'
-
 
 import * as cyber from '../../utils/cyber';
 
@@ -104,8 +102,8 @@ class NewRegister extends Component {
     cyber.createRegistry(contractName, symbol, fields)
         .then(() => {
             this.setState({ status: null, inProgress: false });
-            browserHistory.push(`/`);
-        })
+            this.props.router.push('/')
+        })    
   }
 
   changeContractName = (e) => {
@@ -119,7 +117,7 @@ class NewRegister extends Component {
     const code = cyber.generateContractCode(contractName, fields);
     const exist = !!contracts.find(x => x.name === contractName)
     const fieldsCount = fields.length;
-    const canDeploy = contractName.length > 0 && fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !exist;
+    const canDeploy =  contractName.length > 0 && fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !exist;
 
     return (
       <div>

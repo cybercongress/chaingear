@@ -52,7 +52,8 @@ class Register extends Component {
        registrationTimestamp: null,
        entryCreationFee: 0,
        entriesAmount: 0,
-      creator: ''
+      creator: '',
+      userAccount: null
 
     }
   
@@ -68,7 +69,11 @@ class Register extends Component {
 
         // const address = this.props.params.adress;
         cyber.init()
-            .then(({ web3 }) => {
+            .then(({ web3, accounts }) => {
+                const userAccount = accounts[0];
+                this.setState({
+                    userAccount
+                })
                 cyber.getRegistry().then(({ items }) => {
 
                     var registryID = this.getRegistryID(items);
@@ -142,10 +147,13 @@ class Register extends Component {
                                             items.map((i, index) => new Promise((resolve, reject) => r.getEntryMeta(index, (e, data) => resolve(data))))
                                         ).then(data => {
                                             var _items = items.map((item, index) => {                                        
-                                            var currentEntryBalanceETH = web3.fromWei(data[index][4]).toNumber();
+                                                var currentEntryBalanceETH = web3.fromWei(data[index][4]).toNumber();
+                                                var owner = data[index][0];
+                                            
                                                 return {
                                                     ...item, 
-                                                    currentEntryBalanceETH
+                                                    currentEntryBalanceETH,
+                                                    owner
                                                 }
                                             });
 
@@ -329,7 +337,7 @@ class Register extends Component {
     }
   
   render() {
-    const { fields, items, loading, balance, isOwner } = this.state;
+    const { fields, items, loading, balance, isOwner, userAccount } = this.state;
 
     if (loading) {
       return (
@@ -346,7 +354,7 @@ class Register extends Component {
               clameRecord={this.clameRecord}
               removeItemClick={this.removeItemClick}
               fundEntryClick={this.fundEntryClick}
-              
+              userAccount={userAccount}
               onUpdate={(values) => this.onUpdate(values, index)}
 
               fields={fields}
