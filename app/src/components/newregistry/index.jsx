@@ -8,12 +8,12 @@ export const FieldsTable = ({ children }) => (
   </table>
 );
 
-export const Panel = ({ children, title }) => (
+export const Panel = ({ children, title, noPadding }) => (
   <div className={styles.panel}>
     {title && <h3 className={styles.panelTitle}>{title}</h3>}
-    <div className={styles.panelContent}>
+    {noPadding ? children : <div className={styles.panelContent}>
       {children}
-    </div>
+    </div>}
   </div>
 );
 
@@ -63,3 +63,14 @@ export const PageTitle = ({ children, inline }) => (
     {children}
   </h2>
 );
+
+
+export const RemoveButton = (props) => (
+    <button {...props} className={styles.removeButton} />
+);
+
+export const AddButton = (props) => (
+    <button {...props} className={styles.addButton} />
+);
+
+

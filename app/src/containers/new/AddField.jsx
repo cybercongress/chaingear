@@ -1,6 +1,10 @@
 
 import React, { Component } from 'react';
 
+import {
+    AddButton
+} from '../../components/newregistry/';
+
 class AddField extends Component {
   state = {
     name: ''
@@ -43,12 +47,10 @@ class AddField extends Component {
             </select>
           </td>
           <td>
-            <button 
-              style={{ fontSize: '70%' }} 
-              className="pure-button"
+            <AddButton 
               onClick={this.add}
               disabled={!canAdd}
-            >add</button>                   
+            >add</AddButton>                   
           </td>
         </tr>
     );

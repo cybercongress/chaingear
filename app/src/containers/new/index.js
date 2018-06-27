@@ -20,7 +20,8 @@ import {
     Label,
     CreateButton,
     Control,
-    PageTitle
+    PageTitle,
+    RemoveButton,
 } from '../../components/newregistry/'
 
 let compiler;
@@ -32,7 +33,8 @@ class NewRegister extends Component {
 
     this.state = {
         name: '',
-        fields: [],
+        fields: [
+        ],
         status: '',
         inProgress: false,
         contractName: 'Tokens',
@@ -143,7 +145,7 @@ class NewRegister extends Component {
 
             </Panel>
 
-            <Panel title='Record Structure'>
+            <Panel title='Record Structure' noPadding={true}>
             <FieldsTable>
               <thead>
                 <tr>
@@ -158,11 +160,9 @@ class NewRegister extends Component {
                   <td>{field.name}</td>
                   <td>{field.type}</td>
                   <td>
-                    <button
-                      style={{ fontSize: '70%' }}
-                      className="pure-button"
+                    <RemoveButton
                       onClick={() => this.remove(field.name)}
-                    >remove</button>
+                    >remove</RemoveButton>
                   </td>
                 </tr>
               ))}

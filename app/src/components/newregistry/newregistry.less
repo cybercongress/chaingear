@@ -16,6 +16,9 @@
   width: 100%;
   table-layout: fixed;
   font-size: 14px;
+    padding: 30px;
+    padding-bottom: 70px;
+    padding-top: 20px;
 }
 
 .fieldsTable th {
@@ -34,6 +37,10 @@
 .fieldsTable td,
 .fieldsTable th {
   padding:  5px 10px;
+}
+
+.fieldsTable th {
+    text-align: left;
 }
 
 
@@ -80,18 +87,24 @@
   border: none;
   cursor: pointer;
   position: relative;
+  text-align: center;
 }
 
-.createButton::before {
-  background: url(../newregistry/ic-create.svg);
-  content: '';
-  position: absolute;
-  display: block;
-  width: 50px;
-  height: 35px;
-  bottom: 0;
-  right: 30px;
+
+.createButton[disabled] {
+    opacity: 0.7;
+    cursor: default;
 }
+// .createButton::before {
+//   background: url(../newregistry/ic-create.svg);
+//   content: '';
+//   position: absolute;
+//   display: block;
+//   width: 50px;
+//   height: 35px;
+//   bottom: 0;
+//   right: 30px;
+// }
 
 
 .control {
@@ -114,6 +127,7 @@
 .controlComponent input {
   width: 100%;
   padding: 6px 9px;
+  box-sizing: border-box;
 }
 
 
@@ -139,3 +153,32 @@
   top: 50%;
   transform: rotate(-65deg);
 }
+
+.removeButton {
+    background: none;
+    border: none;
+    font-size: 70%;
+    cursor: pointer;
+    background: url(../newregistry/ic-remove.svg) no-repeat left center;
+    padding-left: 20px;
+}
+
+.removeButton[disabled] {
+    cursor: default;
+}
+
+.addButton {
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 70%;
+    background: url(../newregistry/ic-plus.svg) no-repeat left center;
+    background-size: 14px;
+    padding-left: 20px;
+}
+
+.addButton[disabled] {
+    cursor: default;
+}
+
+
