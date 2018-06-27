@@ -60,7 +60,7 @@ class Home extends Component {
                           }
                     </td>                        
                     <td>
-                        {index}
+                        {register.symbol}
                     </td>
                     <td>
                         <LinkHash value={register.creator} />
@@ -88,7 +88,7 @@ class Home extends Component {
                           }
                     </td>
                     <td>
-                        {index}
+                        {register.symbol}
                     </td>
                     <td>
                         <LinkHash value={register.creator} />

@@ -114,6 +114,12 @@ class Register extends Component {
                         })
                     });
 
+                    r.symbol((e, data) => {
+                        this.setState({
+                            symbol: data
+                        })
+                    })
+
                     // r.getRegistryTags((e, data) => {
                     //     debugger
                     // })
@@ -360,7 +366,8 @@ class Register extends Component {
         creator,
         total_fee,
         funded,
-        tag
+        tag,
+        symbol
     } = this.state;
 
     return (
@@ -442,7 +449,7 @@ class Register extends Component {
                 />
                 <FormField
                   label='Symbol'
-                  value={'R1'}
+                  value={symbol}
                 />
                 <FormField
                   label='Description'

@@ -227,7 +227,8 @@ export const getRegistry = () => {
         address: items[1],
         creator: items[2],
         registrationTimestamp: items[4],
-        ipfsHash: items[5]
+        ipfsHash: items[5],
+        symbol: 'R1??', //TODO: add symbol to registryInfo method
       })
 
     }).then(items => {
