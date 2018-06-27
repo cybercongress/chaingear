@@ -11,39 +11,34 @@ import AddField from './AddField';
 
 import Code from '../../components/SolidityHighlight/';
 
+import StatusBar from '../../components/StatusBar/';
 
 import { 
-    PageTitle,
-    ContainerRegister,
-    Content,
-    SideBar,
+    Content, ContainerRegister, SideBar,
+    FieldsTable,
+    Panel,
     Label,
     CreateButton,
-    Panel,
-    FieldsTable,
-    Control
-} from '../../components/chaingear/'
+    Control,
+    PageTitle
+} from '../../components/newregistry/'
 
 let compiler;
 let bytecode;
-let abi;
 
 class NewRegister extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      name: '',
-        fields: [
-        { name: 'name', type: 'string' },
-        { name: 'ticker', type: 'string' }
-      ],
-      status: '',
-      inProgress: false,
-      contractName: 'Tokens',
-      contracts: [],
-      gasEstimate: null,
-      error: null
+        name: '',
+        fields: [],
+        status: '',
+        inProgress: false,
+        contractName: 'Tokens',
+        contracts: [],
+        gasEstimate: null,
+        error: null
     }
   }
 
@@ -51,12 +46,6 @@ class NewRegister extends Component {
   componentDidMount() {
     cyber.getRegistry()
       .then(({ items }) => this.setState({ contracts: items }));
-
-    // this.setState({ status: 'load compiler...', inProgress : true });
-    // cyber.loadCompiler((_compiler) => {
-    //   compiler = _compiler;
-    //   this.setState({ status: null, inProgress : false })
-    // })
   }
 
   add = (name, type) => {
@@ -67,14 +56,12 @@ class NewRegister extends Component {
     this.setState({
       fields: this.state.fields.concat(newItem)
     });
-    //, () => this.compileAndEstimateGas()
   }
 
   remove = (name) => {
     this.setState({
       fields: this.state.fields.filter(x => x.name !== name)
     })
-    //, () => this.compileAndEstimateGas()
   }
 
   compileAndEstimateGas = (cb) => {
@@ -86,7 +73,6 @@ class NewRegister extends Component {
     cyber.compileRegistry(code, contractName, compiler)
       .then((data) => {
         bytecode = data.bytecode;
-        abi = data.abi;
         this.setState({ status: 'estimate gas...'});
         return data;
       })
@@ -118,40 +104,6 @@ class NewRegister extends Component {
             this.setState({ status: null, inProgress: false });
             browserHistory.push(`/`);
         })
-    // this.compileAndEstimateGas((web3) => {
-    //   const { contractName, gasEstimate } = this.state;
-    //   this.setState({ status: 'deploy contract...', inProgress: true });
-
-    //   const opt = {
-    //     gasEstimate,
-    //     contractName,
-    //     permissionType: +this.refs.permission.value,
-    //     entryCreationFee: +this.refs.entryCreationFee.value,
-    //     description: this.refs.description.value,
-    //     tags: this.refs.tags.value
-    //   };
-    //   let address;
-    //   cyber.deployRegistry(bytecode, abi, web3, opt)
-    //     .then((_address) => {
-    //       address = _address;
-    //       this.setState({ status: 'save abi in ipfs...'});
-    //       return cyber.saveInIPFS(abi);
-    //     })
-    //     .then(hash => {
-    //       this.setState({ status: 'register contract...'});
-    //       return cyber.register(contractName, address, hash);
-    //     })
-    //     .then(() => {
-    //       this.setState({ status: '', inProgress: false });
-    //       browserHistory.push(`/`);
-    //     })
-    //     .catch(err => {
-    //       this.setState({
-    //         error: err,
-    //         inProgress: false
-    //       })
-    //     })
-    // });
   }
 
   changeContractName = (e) => {
@@ -161,30 +113,18 @@ class NewRegister extends Component {
   }
 
   render() {
-    const { contractName, fields, status, inProgress, contracts, gasEstimate, error } = this.state;
+    const { contractName, fields, status, inProgress, contracts } = this.state;
     const code = cyber.generateContractCode(contractName, fields);
     const exist = !!contracts.find(x => x.name === contractName)
     const fieldsCount = fields.length;
     const canDeploy = contractName.length > 0 && fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !exist;
 
-    console.log('>> ', inProgress, status)
     return (
       <div>
-        <div style={{
-          position: 'fixed',
-          background: 'rgba(0, 0, 0, 0.5)',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-          display: inProgress ? 'flex' : 'none',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: '50px',
-          color: '#fff'
-        }}>
-        {status}
-        </div>
+        <StatusBar
+          open={inProgress}
+          message={status}
+        />
 
         <PageTitle>New registry creation</PageTitle>
         <ContainerRegister>

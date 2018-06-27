@@ -97,7 +97,7 @@ class Register extends Component {
                         name: registry.name,
                         registrationTimestamp: registry.registrationTimestamp,
                         creator: registry.creator,
-                        tag: 'TODO',
+                        tag: '',
                         web3: web3
                     })
                     const r = cyber.getRegistryByAddress(registry.address);
@@ -358,7 +358,6 @@ class Register extends Component {
         registrationTimestamp,
         entryCreationFee,
         creator,
-        entriesAmount,
         total_fee,
         funded,
         tag
@@ -380,7 +379,7 @@ class Register extends Component {
                     Created:
                 </BoxTitle>
                 <div style={{ height: 100, color: '#7c7c7c' }}>
-                    {registrationTimestamp ? moment(new Date(registrationTimestamp.toNumber() * 1000)).format('DD/MM/YYYY mm::hh:ss') : ''}
+                    {registrationTimestamp ? moment(new Date(registrationTimestamp.toNumber() * 1000)).format('DD/MM/YYYY mm:hh:ss') : ''}
                 </div>
                 </Centred>
             </SectionContent>
@@ -440,7 +439,6 @@ class Register extends Component {
                 <FormField
                   label='Name'
                   value={name}
-                  onUpdate={this.changeName}
                 />
                 <FormField
                   label='Symbol'
@@ -454,7 +452,6 @@ class Register extends Component {
                 <FormField
                   label='Tag'
                   value={tag}
-                  onUpdate={this.changeTag}
                 />
                 <FormField
                   label='Entries'

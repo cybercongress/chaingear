@@ -32,6 +32,13 @@ class ValueInput extends Component {
         })
 
     }
+
+    componentDidUpdate = (prevProps, prevState, snapshot) => {
+        if (prevState.open === false) {
+            this.refs.value.focus();
+        }
+    }
+    
     cancel = () => {
         this.setState({
             open: false

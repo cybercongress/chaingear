@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Router, Route } from "react-router";
 
-import { createHashHistory } from 'history'
+import { createHashHistory } from 'history'; //use hash becouse ipfs  use path /ipfs/hash/{app}
 
 import App from "./containers/app/";
 import HomePage from './containers/home/';
