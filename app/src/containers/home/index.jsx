@@ -5,18 +5,21 @@ import { Link } from 'react-router';
 var moment = require('moment');
 
 import * as cyber from '../../utils/cyber'
-import { Paper, Title, Badge, FooterButton } from '../../components/chaingear/'
+import { Badge, FooterButton } from '../../components/chaingear/'
 import { Table } from '../../components/Table/';
 import { Container, Text, Link as ActionLink } from '../../components/CallToAction/';
 
 const dateFormat = 'DD/MM/YYYY mm:hh';
 
 import { 
-
     Section,
     SectionContent,
-
+    
 } from '../../components/chaingear/'
+
+import {
+    LinkHash
+} from '../../components/LinkHash/'
 
 class Home extends Component {
     constructor(props) {
@@ -40,7 +43,7 @@ class Home extends Component {
   render() {
     const { registries, account } = this.state;
 
-    const rows = registries.map(register => (
+    const rows = registries.map((register, index) => (
                 <tr key={register.name}>
                     <td>
                         {
@@ -57,10 +60,10 @@ class Home extends Component {
                           }
                     </td>                        
                     <td>
-                        ????
+                        {index}
                     </td>
                     <td>
-                        {register.creator}
+                        <LinkHash value={register.creator} />
                     </td>
                     <td>
                         {moment(new Date(register.registrationTimestamp.toNumber() * 1000)).format(dateFormat)}
@@ -68,7 +71,7 @@ class Home extends Component {
                 </tr>
           ));
 
-    const myRows = registries.filter(x => x.creator === account).map(register => (
+    const myRows = registries.filter(x => x.creator === account).map((register, index) => (
                 <tr key={register.name}>
                     <td>
                         {
@@ -85,10 +88,10 @@ class Home extends Component {
                           }
                     </td>
                     <td>
-                        ????
+                        {index}
                     </td>
                     <td>
-                        {register.creator}
+                        <LinkHash value={register.creator} />
                     </td>
                     <td>
                         {moment(new Date(register.registrationTimestamp.toNumber() * 1000)).format(dateFormat)}
