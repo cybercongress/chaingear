@@ -30,6 +30,8 @@ import QRCode from '../../components/QRCode/';
 import Robohash from '../../components/Robohash/';
 import { LinkHash } from '../../components/LinkHash/'
 
+import StatusBar from '../../components/StatusBar/';
+
 class Register extends Component {
     
     state = {
@@ -102,6 +104,7 @@ class Register extends Component {
                         name: registry.name,
                         registrationTimestamp: registry.registrationTimestamp,
                         creator: registry.creator,
+                        isOwner: userAccount === registry.creator,
                         tag: '',
                         web3: web3
                     })
@@ -149,7 +152,6 @@ class Register extends Component {
                                             var _items = items.map((item, index) => {                                        
                                                 var currentEntryBalanceETH = web3.fromWei(data[index][4]).toNumber();
                                                 var owner = data[index][0];
-                                            
                                                 return {
                                                     ...item, 
                                                     currentEntryBalanceETH,
@@ -337,15 +339,8 @@ class Register extends Component {
     }
   
   render() {
-    const { fields, items, loading, balance, isOwner, userAccount } = this.state;
+    const { fields, items, loading, isOwner, userAccount } = this.state;
 
-    if (loading) {
-      return (
-        <div>
-          loading...
-        </div>
-      );
-    }
 
     const rows = items.map((item, index) => {
 
@@ -380,6 +375,10 @@ class Register extends Component {
 
     return (
       <div>
+        <StatusBar
+          open={loading}
+          message='loading...'
+        />
         <Container>
         <Section title='General'>
             <SectionContent style={{ width: '25%' }}>
@@ -414,22 +413,22 @@ class Register extends Component {
                     FUNDED/FEES:
                 </BoxTitle>
 
-                <FundContainer>
+                <FundContainer style={{ justifyContent: isOwner ? 'space-between' : 'center'}}>
                     <span>
                     {total_fee} ETH
                     </span>
-                    <Button style={{ width: 119 }} onClick={this.clameFee}>clame fee</Button>
+                    {isOwner && <Button style={{ width: 119 }} onClick={this.clameFee}>clame fee</Button>}
                 </FundContainer>
-                <FundContainer>
+                <FundContainer style={{ justifyContent: isOwner ? 'space-between' : 'center'}}>
                     <span>
                     {funded} ETH
                     </span>
 
-                    <ValueInput 
+                    {isOwner && <ValueInput 
                         onInter={this.clameRegistry}
                         buttonLable='claim funds'
                         color='second'
-                    />
+                    />}
                 
                 </FundContainer>
                 </Centred>
@@ -462,7 +461,7 @@ class Register extends Component {
                 <FormField
                   label='Description'
                   value={description}
-                  onUpdate={this.changeDescription}
+                  onUpdate={isOwner && this.changeDescription}
                 />
                 <FormField
                   label='Tag'
@@ -475,7 +474,7 @@ class Register extends Component {
                 <FormField
                   label='fee'
                   value={entryCreationFee}
-                  onUpdate={this.changeEntryCreationFee}
+                  onUpdate={isOwner && this.changeEntryCreationFee}
                 />                
             </SectionContent>        
         </Section>

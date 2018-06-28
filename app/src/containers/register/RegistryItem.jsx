@@ -116,7 +116,10 @@ class RegistryItem extends Component {
         let button = (
             <div>
                 <EditButton onClick={this.startEdit}>edit</EditButton>
-                <DeleteButton onClick={() => removeItemClick(index)}>remove</DeleteButton>
+                <DeleteButton 
+                  disabled={item['currentEntryBalanceETH'] > 0}
+                  onClick={() => removeItemClick(index)}
+                >remove</DeleteButton>
             </div>
         );
 
@@ -177,8 +180,8 @@ class RegistryItem extends Component {
                     </SectionContent>
 
                     <SectionContent grow={0} style={{ width: '25%'}}>
-                        <Centred style={{ justifyContent: 'space-between'}}>
-                        <Label>
+                        <Centred style={{ justifyContent: isOwner ? 'space-between' : 'start' }}>
+                        <Label style={{ marginBottom : isOwner ? 0 : 40 }}>
                             Funded:
                         </Label>
                         <Amount>

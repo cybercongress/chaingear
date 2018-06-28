@@ -34,7 +34,7 @@ class ValueInput extends Component {
     }
 
     componentDidUpdate = (prevProps, prevState, snapshot) => {
-        if (prevState.open === false) {
+        if (prevState.open === false && this.refs.value) {
             this.refs.value.focus();
         }
     }

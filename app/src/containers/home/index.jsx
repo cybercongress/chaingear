@@ -4,7 +4,9 @@ import { Link } from 'react-router';
 
 var moment = require('moment');
 
-import * as cyber from '../../utils/cyber'
+
+import * as cyber from '../../utils/cyber';
+
 import { Badge, FooterButton } from '../../components/chaingear/'
 import { Table } from '../../components/Table/';
 import { Container, Text, Link as ActionLink } from '../../components/CallToAction/';
@@ -46,18 +48,9 @@ class Home extends Component {
     const rows = registries.map((register, index) => (
                 <tr key={register.name}>
                     <td>
-                        {
-                            register.status === 'pending' ? (
-                              <span>
-                                <span>{register.name}</span>
-                                (<Link to={`/wait/${register.txHash}`}>pending</Link>)
-                              </span>
-                            ) : (
-                              <Link 
-                                to={`/registers/${register.address}`} 
-                              >{register.name}</Link>
-                            )
-                          }
+                        <Link 
+                          to={`/registers/${register.address}`} 
+                        >{register.name}</Link>
                     </td>                        
                     <td>
                         {register.symbol}
@@ -74,18 +67,9 @@ class Home extends Component {
     const myRows = registries.filter(x => x.creator === account).map((register, index) => (
                 <tr key={register.name}>
                     <td>
-                        {
-                            register.status === 'pending' ? (
-                              <span>
-                                <span>{register.name}</span>
-                                (<Link to={`/wait/${register.txHash}`}>pending</Link>)
-                              </span>
-                            ) : (
-                              <Link 
-                                to={`/registers/${register.address}`} 
-                              >{register.name}</Link>
-                            )
-                          }
+                        <Link 
+                          to={`/registers/${register.address}`} 
+                        >{register.name}</Link>
                     </td>
                     <td>
                         {register.symbol}
