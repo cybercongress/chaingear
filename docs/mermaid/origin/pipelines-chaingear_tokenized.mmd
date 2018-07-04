@@ -12,7 +12,7 @@ sequenceDiagram
     Note over 721, CC: Initializing ERC721 Registry token for User 1 in Chaingear, <br/> creates new Registry and sets User 1 as Registry administrator
     
     U1->>+CC: updateRegistryOwnership to=User2
-    CC-->>R: transferTokenizedOnwerhip to=User2
+    CC-->>R: transferAdminRights to=User2
     CC-->721: removeTokenFrom User1
     CC-->-721: addTokenTo User2
     Note over 721, R: Chaingear transfers token from User 1 to User 2 and also as owner of Registry sets <br/> User 2 as administrator

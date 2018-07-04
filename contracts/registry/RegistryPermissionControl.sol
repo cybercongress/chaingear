@@ -73,7 +73,7 @@ contract RegistryPermissionControl is Pausable {
         return admin;
     }
     
-    function getEntryPermissions()
+    function getRegistryPermissions()
         public
         view
         returns (

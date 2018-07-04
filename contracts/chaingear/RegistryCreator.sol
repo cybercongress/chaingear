@@ -13,7 +13,7 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 contract RegistryCreator is Ownable {
 
 	/*
-	* @dev Srorage
+	* @dev Storage
 	*/
 
     // @dev Holds address of contract which can call creation, means Chaingear

@@ -4,7 +4,7 @@ import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "../common/RegistryBasic.sol";
-/* import "../common/RegistrySafe.sol"; */
+import "../common/Safe.sol";
 import "./ChaingearCore.sol";
 
 // TODO: move out
@@ -50,7 +50,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         registryRegistrationFee = _registrationFee;
         chaingearDescription = _description;
     
-        registrySafe = new RegistrySafe();
+        registrySafe = new Safe();
     }
     
     /*
@@ -113,7 +113,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         onlyOwnerOf(_registryID)
     {
         //TODO optimizing? delete inf
-        RegistryBasic(registries[_registryID].contractAddress).transferTokenizedOnwerhip(_newOwner);
+        RegistryBasic(registries[_registryID].contractAddress).transferAdminRights(_newOwner);
         registries[_registryID].owner = _newOwner;
 
         removeTokenFrom(msg.sender, _registryID);
@@ -179,7 +179,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         registries[_registryID].accumulatedRegistryETH = registries[_registryID].accumulatedRegistryETH.add(weiAmount);
         registrySafe.transfer(msg.value);
 
-        emit registryFunded(_registryID, msg.sender);
+        emit RegistryFunded(_registryID, msg.sender);
     }
 
     function claimEntryFunds(
@@ -192,9 +192,9 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         require(_amount <= registries[_registryID].currentRegistryBalanceETH);
         registries[_registryID].currentRegistryBalanceETH = registries[_registryID].currentRegistryBalanceETH.sub(_amount);
-        RegistrySafe(registrySafe).claim(msg.sender, _amount);
+        Safe(registrySafe).claim(msg.sender, _amount);
 
-        emit registryFundsClaimed(_registryID, msg.sender, _amount);
+        emit RegistryFundsClaimed(_registryID, msg.sender, _amount);
     }
 
     /*
@@ -225,7 +225,6 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             uint256
         )
     {
-        // TODO assembly call
         address registryContract = RegistryCreator(registryCreatorsAddresses[_version]).create(
             _benefitiaries,
             _shares,
@@ -233,7 +232,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             _symbol
         );
         
-        RegistryBasic(registryContract).transferTokenizedOnwerhip(msg.sender);
+        RegistryBasic(registryContract).transferAdminRights(msg.sender);
         
         RegistryMeta memory registry = (RegistryMeta(
         {

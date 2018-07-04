@@ -2,12 +2,12 @@ pragma solidity 0.4.24;
 
 
 /**
-* @title RegistySafe contract
+* @title Safe contract
 * @author cyber•Congress
 * @dev Allows store etheirs and claim them by owner
 * @notice not recommend to use before release!
 */
-contract RegistrySafe {
+contract Safe {
     
     /*
     *  Storage

@@ -6,7 +6,7 @@ import "../common/SplitPaymentChangeable.sol";
 import "./Chaingeareable.sol";
 import "../common/EntryBasic.sol";
 import "../common/RegistryBasic.sol";
-import "../common/RegistrySafe.sol";
+import "../common/Safe.sol";
 
 
 contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentChangeable {
@@ -45,7 +45,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     {
         createEntryPermissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
         entryCreationFee = 0;
-        registrySafe = new RegistrySafe();
+        registrySafe = new Safe();
         registryInitStatus = false;
     }
     
@@ -120,7 +120,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     * @dev delegate tokenized ownership to new admin
     * @param _newOwner address 
     */
-    function transferTokenizedOnwerhip(
+    function transferAdminRights(
         address _newOwner
     )
         public
@@ -212,7 +212,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     {
         require(_amount <= entriesMeta[_entryID].currentEntryBalanceETH);
         entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.sub(_amount);
-        RegistrySafe(registrySafe).claim(msg.sender, _amount);
+        Safe(registrySafe).claim(msg.sender, _amount);
 
         emit EntryFundsClaimed(_entryID, msg.sender, _amount);
     }

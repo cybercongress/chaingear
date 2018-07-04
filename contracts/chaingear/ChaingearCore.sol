@@ -42,12 +42,12 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     *  Events
     */
 
-    event registryFunded(
+    event RegistryFunded(
         uint ID,
         address sender
     );
     
-    event registryFundsClaimed(
+    event RegistryFundsClaimed(
         uint ID,
         address claimer,
         uint amout
@@ -59,13 +59,13 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
 
     /**
     * @dev Provides funcitonality for adding bytecode different kind of registries
-    * @param _nameOfVerions string which represents name of registry type
+    * @param _nameOfVersions string which represents name of registry type
     * @param _addressRegistryCreator address of registry creator for this version
     * @param _link string which represents IPFS hash to JSON with ABI of registry 
     * @param _description string which resprent info about this registry
     */
     function addRegistryCreatorVersion(
-        string _nameOfVerions, 
+        string _nameOfVersions, 
         address _addressRegistryCreator,
         string _link,
         string _description
@@ -74,9 +74,9 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         onlyOwner
     {
         // TODO check for uniqueness
-        registryCreatorsAddresses[_nameOfVerions] = _addressRegistryCreator;
-        registryCreatorsABIsLinks[_nameOfVerions] = _link;
-        registryCreatorsDescriptions[_nameOfVerions] = _description;
+        registryCreatorsAddresses[_nameOfVersions] = _addressRegistryCreator;
+        registryCreatorsABIsLinks[_nameOfVersions] = _link;
+        registryCreatorsDescriptions[_nameOfVersions] = _description;
     }
 
 	/*

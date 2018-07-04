@@ -30,7 +30,7 @@ const createTestRegistry = async function (
         [adminAccount], [100], registry.name, registry.symbol,
         {from: ownerAccount, gas: 10000000}
     )
-    await registry.contract.transferTokenizedOnwerhip(adminAccount, {from: ownerAccount})
+    await registry.contract.transferAdminRights(adminAccount, {from: ownerAccount})
     
     await registry.contract.updateCreateEntryPermissionGroup(createEntryPermissionGroup, {from: adminAccount})
     await registry.contract.updateEntryCreationFee(entryCreationFee, {from: adminAccount})
