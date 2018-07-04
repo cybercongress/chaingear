@@ -20,6 +20,7 @@ import {
     Control,
     PageTitle,
     RemoveButton,
+    ErrorMessage
 } from '../../components/newregistry/'
 
 let compiler;
@@ -33,12 +34,14 @@ class NewRegister extends Component {
         name: '',
         fields: [
         ],
-        status: '',
+        message: '',
         inProgress: false,
-        contractName: 'Tokens',
+        contractName: '',
         contracts: [],
         gasEstimate: null,
-        error: null
+        error: null,
+        type: 'processing',
+        registryAddress: null
     }
   }
 
@@ -64,56 +67,46 @@ class NewRegister extends Component {
     })
   }
 
-  compileAndEstimateGas = (cb) => {
-    const { contractName, fields } = this.state;
-    const code = cyber.generateContractCode(contractName, fields);
-
-    this.setState({ status: 'compile...', inProgress: true });
-
-    cyber.compileRegistry(code, contractName, compiler)
-      .then((data) => {
-        bytecode = data.bytecode;
-        this.setState({ status: 'estimate gas...'});
-        return data;
-      })
-      .then(() => cyber.estimateNewRegistryGas(bytecode))
-      .then(({ web3, gasEstimate }) => {
-        this.setState({
-          gasEstimate: gasEstimate + 1000000,//bug with web3, incorrect estimate
-          inProgress: false,
-          error: null
-        }, () => {
-          if (cb) cb(web3);  
-        })
-      })
-      .catch(error => {
-        this.setState({
-          inProgress: false,
-          error
-        })
-      })
-  }
 
   create = () => {
     const { contractName, fields } = this.state;
     const symbol = this.refs.symbol.value;
 
-    this.setState({ status: 'processing...', inProgress: true });
+    this.setState({ message: 'processing...', inProgress: true, type: 'processing' });
     cyber.createRegistry(contractName, symbol, fields)
-        .then(() => {
-            this.setState({ status: null, inProgress: false });
-            this.props.router.push('/')
+        .then(({ registryAddress }) => {
+            this.setState({ message: 'registry created', type: 'success', registryAddress });
+            
+        })
+        .catch(e => {
+            this.setState({ message: e, type: 'error' });
         })    
+  }
+
+  closeMessage = () => {
+    const { type, registryAddress } = this.state;
+    this.setState({
+        inProgress: false
+    })
+    if (type === 'success') {
+        if (registryAddress) {
+            this.props.router.push('/registers/' + registryAddress);
+        } else {
+            this.props.router.push('/');
+        }
+    } 
   }
 
   changeContractName = (e) => {
     this.setState({
       contractName: e.target.value
     })
+
+    this.refs.symbol.value = e.target.value
   }
 
   render() {
-    const { contractName, fields, status, inProgress, contracts } = this.state;
+    const { contractName, fields, message, inProgress, contracts, type } = this.state;
     const code = cyber.generateContractCode(contractName, fields);
     const exist = !!contracts.find(x => x.name === contractName)
     const fieldsCount = fields.length;
@@ -123,7 +116,9 @@ class NewRegister extends Component {
       <div>
         <StatusBar
           open={inProgress}
-          message={status}
+          message={message}
+          type={type}
+          onClose={this.closeMessage}
         />
 
         <PageTitle>New registry creation</PageTitle>
@@ -138,7 +133,8 @@ class NewRegister extends Component {
               /></Control>
                 <Control title='symbol:'><input
                 ref='symbol'
-                defaultValue='TTT'
+                defaultValue=''
+                placeholder='symbol'
               /></Control>
 
             </Panel>
@@ -181,6 +177,7 @@ class NewRegister extends Component {
             <Code>
                 {code}
             </Code>
+            {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
           </Content>
 
         </ContainerRegister>

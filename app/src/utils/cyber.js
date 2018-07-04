@@ -35,13 +35,19 @@ export const compileRegistry = (code, contractName, compiler) => {
         reject(compiledContract.errors[0]);
         return;
       }
-      var abi = compiledContract.contracts[contractName +":"+ contractName  ].interface;
-      var bytecode = '0x'+compiledContract.contracts[contractName +":"+ contractName ].bytecode;
 
-      resolve({
-        abi,
-        bytecode
-      });
+      try {
+          var abi = compiledContract.contracts[contractName +":"+ contractName  ].interface;
+          var bytecode = '0x'+compiledContract.contracts[contractName +":"+ contractName ].bytecode;
+
+          resolve({
+            abi,
+            bytecode
+          });
+      } catch(e) {
+        reject(e);
+      }
+
     }, 20);
   })
 }
@@ -411,7 +417,7 @@ export const createRegistry = (name, symbol, fields) => {
                                         console.log('>> ', results.args)
                                         const registry = web3.eth.contract(Registry.abi).at(results.args.registryAddress);
                                         registry.initializeRegistry(_ipfsHash, _bytecode, function(e, data) {
-                                            resolve(data)
+                                            resolve(results.args)
                                         })
                                     }
                                 })                                
@@ -419,7 +425,7 @@ export const createRegistry = (name, symbol, fields) => {
                         }
                     )
                     })
-                })
+                }).catch(reject)
         })        
     })
 }

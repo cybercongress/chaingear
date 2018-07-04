@@ -73,4 +73,8 @@ export const AddButton = (props) => (
     <button {...props} className={styles.addButton} />
 );
 
+export const ErrorMessage = (props) => (
+    <div {...props} className={styles.errorMessage} />
+);
+
 

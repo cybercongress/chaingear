@@ -3,7 +3,7 @@ import * as React from 'react';
 const styles = require("./StatusBar.less");
 
 // TODO: move in browser
-const StatusBar = ({ open, message }) => (
+const StatusBar = ({ open, message, type = 'processing', onClose }) => (
     <div style={{
           position: 'fixed',
           top: 0,
@@ -18,7 +18,8 @@ const StatusBar = ({ open, message }) => (
         }}
       className={styles.container}
     >
-        <div className={styles.message}>{message}</div>
+        <div className={styles.message + ' ' + styles['message' + type]}>{message}</div>
+        {type !== 'processing' && <button onClick={onClose} className={styles.button}>ok</button>}
     </div>
 );
 
