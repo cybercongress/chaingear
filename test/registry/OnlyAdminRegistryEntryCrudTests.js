@@ -44,7 +44,7 @@ contract("OnlyAdmin Registry Entry Crud Tests", (accounts) => {
     })
 
     /*  -------------------------------- Delete Entry -----------------------  */
-    it("#3/1 should allow registry admin to delete entry", async () => {
+    it("#3/1 should allow registry admin-as-user to delete his entry", async () => {
         const newEntryId = await registry.createEntry(REGISTRY_ADMIN_ACCOUNT)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
 
@@ -52,7 +52,7 @@ contract("OnlyAdmin Registry Entry Crud Tests", (accounts) => {
         await registry.containsEntry(newEntryId).should.eventually.equal(false)
     })
 
-    it("#3/2 should not allow registry owner to delete entry", async () => {
+    it("#3/2 should not allow registry owner to delete not his entry", async () => {
         const newEntryId = await registry.createEntry(REGISTRY_ADMIN_ACCOUNT)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
 
@@ -60,7 +60,7 @@ contract("OnlyAdmin Registry Entry Crud Tests", (accounts) => {
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     })
 
-    it("#3/3 should not allow unknown to delete entry", async () => {
+    it("#3/3 should not allow unknown to delete not his entry", async () => {
         const newEntryId = await registry.createEntry(REGISTRY_ADMIN_ACCOUNT)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
 

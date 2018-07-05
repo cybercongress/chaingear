@@ -51,7 +51,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
     })
     
     /*  -------------------------------- Delete Entry -----------------------  */
-    it("#3/1 should allow registry admin to delete entry if her is entry owner", async () => {
+    it("#3/1 should allow registry admin to delete his entry", async () => {
         const newEntryId = await registry.createEntry(REGISTRY_ADMIN_ACCOUNT)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     
@@ -67,7 +67,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
         await registry.containsEntry(newEntryId).should.eventually.equal(false)
     })
     
-    it("#3/3 should not allow registry admin to delete entry if her isn't entry owner", async () => {
+    it("#3/3 should not allow registry admin to delete entry if it's not his entry", async () => {
         const newEntryId = await registry.createEntry(UNKNOWN_ACCOUNT)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     
@@ -75,7 +75,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     })
     
-    it("#3/4 should not allow registry owner to delete entry if her isn't entry owner", async () => {
+    it("#3/4 should not allow registry owner to delete entry if it's not his entry", async () => {
         const newEntryId = await registry.createEntry(UNKNOWN_ACCOUNT)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     
@@ -83,7 +83,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     })
     
-    it("#3/5 should allow unknown to delete entry if her is entry owner", async () => {
+    it("#3/5 should allow unknown to delete entry his entry", async () => {
         const newEntryId = await registry.createEntry(UNKNOWN_ACCOUNT)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     
@@ -91,11 +91,70 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
         await registry.containsEntry(newEntryId).should.eventually.equal(false)
     })
     
-    it("#3/6 should not allow unknown to delete entry if her isn't entry owner", async () => {
+    it("#3/6 should not allow unknown to delete entry if it's not his entry", async () => {
         const newEntryId = await registry.createEntry(REGISTRY_ADMIN_ACCOUNT)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     
         await registry.deleteEntry(UNKNOWN_ACCOUNT, newEntryId).should.be.rejected
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
+    })
+    
+    it("#3/7 should not allow unknown to delete entry his entry if there is funds", async () => {
+        const newEntryId = await registry.createEntry(UNKNOWN_ACCOUNT)
+        await registry.containsEntry(newEntryId).should.eventually.equal(true)
+        
+        const entrySafeBalanceBefore = await registry.contract.getSafeBalance()
+        
+        const entryFunding = 100000
+        
+        await registry.contract.fundEntry( 
+                newEntryId,
+                {
+                    from: UNKNOWN_ACCOUNT,
+                    value: entryFunding
+                }
+        )
+        
+        const entrySafeBalanceAfter = await registry.contract.getSafeBalance()
+        const diff = entrySafeBalanceAfter.toNumber() - entrySafeBalanceBefore.toNumber()
+        diff.should.be.equal(100000)
+    
+        await registry.deleteEntry(UNKNOWN_ACCOUNT, newEntryId).should.be.rejected
+        await registry.containsEntry(newEntryId).should.eventually.equal(true)
+    })
+    
+    it("#3/8 should allow unknown to delete entry his entry if there is no funds", async () => {
+        const newEntryId = await registry.createEntry(UNKNOWN_ACCOUNT)
+        await registry.containsEntry(newEntryId).should.eventually.equal(true)
+        
+        const entrySafeBalanceBefore = await registry.contract.getSafeBalance()
+        
+        const entryFunding = 100000
+        
+        await registry.contract.fundEntry( 
+                newEntryId,
+                {
+                    from: UNKNOWN_ACCOUNT,
+                    value: entryFunding
+                }
+        )
+        
+        const entrySafeBalanceAfter = await registry.contract.getSafeBalance()
+        const diff = entrySafeBalanceAfter.toNumber() - entrySafeBalanceBefore.toNumber()
+        diff.should.be.equal(entryFunding)
+    
+        await registry.deleteEntry(UNKNOWN_ACCOUNT, newEntryId).should.be.rejected
+        await registry.containsEntry(newEntryId).should.eventually.equal(true)
+        
+        await registry.contract.claimEntryFunds(
+            newEntryId,
+            entryFunding,
+            {
+                from: UNKNOWN_ACCOUNT
+            }
+        )
+        
+        await registry.deleteEntry(UNKNOWN_ACCOUNT, newEntryId).should.be.fulfilled
+        await registry.containsEntry(newEntryId).should.eventually.equal(false)
     })
 })

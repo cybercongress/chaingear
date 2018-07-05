@@ -21,14 +21,13 @@ contract("Only Registry can CruD with EntryCore", (accounts) => {
         registry = await RegistryUtils.createTestRegistry(REGISTRY_OWNER_ACCOUNT, REGISTRY_ADMIN_ACCOUNT)
     })
 
-    /*  -------------------------------- Create Entry -----------------------  */
     it("#1/1 should not allow unknown to add new entry", async () => {
         const entriesStorageAddress = await registry.getEntriesStorage()
         const entryCore = EntryCore.at(entriesStorageAddress)
         await entryCore.createEntry({from: UNKNOWN_ACCOUNT}).should.be.rejected
     })
     
-    it("#1/2 should not allow unknown to add new entry", async () => {
+    it("#1/2 should not allow unknown to delete entry", async () => {
         const newEntryId = await registry.createEntry(REGISTRY_ADMIN_ACCOUNT, registry.fee)
         
         const entriesStorageAddress = await registry.getEntriesStorage()

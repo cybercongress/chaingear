@@ -141,6 +141,8 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
+        require(entriesMeta[_entryID].currentEntryBalanceETH == 0);
+        
         uint256 entryIndex = allTokensIndex[_entryID];
         EntryBasic(entriesStorage).deleteEntry(entryIndex);
         _burn(msg.sender, _entryID);
