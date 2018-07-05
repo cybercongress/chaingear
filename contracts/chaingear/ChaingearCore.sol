@@ -30,13 +30,13 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     address internal registrySafe;
     
     // @dev mapping with address of registry creators with different code base of registries
-    mapping (string => address) internal registryCreatorsAddresses;
+    mapping (string => address) internal registryAddresses;
     
     // @dev mapping with ipfs links to json with ABI of different registries
-    mapping (string => string) internal registryCreatorsABIsLinks;
+    mapping (string => string) internal registryABIsLinks;
     
     // @dev mapping description of different registries
-    mapping (string => string) internal registryCreatorsDescriptions;
+    mapping (string => string) internal registryDescriptions;
 
     /*
     *  Events
@@ -74,9 +74,9 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         onlyOwner
     {
         // TODO check for uniqueness
-        registryCreatorsAddresses[_nameOfVersions] = _addressRegistryCreator;
-        registryCreatorsABIsLinks[_nameOfVersions] = _link;
-        registryCreatorsDescriptions[_nameOfVersions] = _description;
+        registryAddresses[_nameOfVersions] = _addressRegistryCreator;
+        registryABIsLinks[_nameOfVersions] = _link;
+        registryDescriptions[_nameOfVersions] = _description;
     }
 
 	/*
@@ -136,9 +136,9 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         )
     {
         return(
-            registryCreatorsAddresses[_version],
-            registryCreatorsABIsLinks[_version],
-            registryCreatorsDescriptions[_version]
+            registryAddresses[_version],
+            registryABIsLinks[_version],
+            registryDescriptions[_version]
         );
     }
 

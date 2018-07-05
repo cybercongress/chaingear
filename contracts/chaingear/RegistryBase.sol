@@ -1,4 +1,5 @@
 pragma solidity 0.4.24;
+import "../common/RegistryBasic.sol";
 
 
 /**
@@ -22,16 +23,17 @@ contract RegistryBase {
     * @param Registry version string
     * @param Registry ABI link string
     * @param Registry creation timestamp uint
-    * @param Registry owner address
+    * @param Registry admin address
      */
     struct RegistryMeta {
-        string name;
+        /* string name;
+        string symbol; */
         address contractAddress;
         address creator;
         string version;
         string linkABI;
         uint registrationTimestamp;
-        address owner;
+        /* address admin; */
         uint256 currentRegistryBalanceETH;
         uint256 accumulatedRegistryETH;
     }
@@ -52,19 +54,18 @@ contract RegistryBase {
         uint registryID
     );
 
-    // @dev Events witch signals that Registry' ownership transferred
+    // @dev Events witch signals that Registry' adminship transferred
     // @notice that also means associated token transferred too
     event RegistryTransferred(
          address caller,
-         string registryName,
          uint256 registyID,
          address newOwner
     );
     
     // @dev Events witch signals that Registry' unregistered from Chaingear
-    // @notice ownership of Registry transfers from Chaingear to Admin
+    // @notice adminship of Registry transfers from Chaingear to Admin
     event RegistryUnregistered(
-        address owner,
+        address admin,
         string name
     );
 
@@ -81,7 +82,7 @@ contract RegistryBase {
     * @return string Registy' version 
     * @return uint Registy' creation timestamp
     * @return string Registy' IPFS hash link to JSON with ABI
-    * @return address Registy' owner address
+    * @return address Registy' admin address
     */
     function registryInfo(
         uint256 _registryID
@@ -90,26 +91,29 @@ contract RegistryBase {
         view
         returns (
             string,
+            string,
             address,
             address,
             string,
             uint,
-            string,
             address
+            /* string */
         )
     {
+        address contractAddress = registries[_registryID].contractAddress;
+        
         return (
-            registries[_registryID].name,
-            registries[_registryID].contractAddress,
+            RegistryBasic(contractAddress).name(),
+            RegistryBasic(contractAddress).symbol(),
+            contractAddress,
             registries[_registryID].creator,
             registries[_registryID].version,
             registries[_registryID].registrationTimestamp,
-            registries[_registryID].linkABI,
-            registries[_registryID].owner
+            RegistryBasic(contractAddress).getAdmin()
+            /* registries[_registryID].linkABI */
         );
     }
-
-
+    
     /**
     * @dev Registy' safe stats getter
     * @param _registryID uint256 Registry ID

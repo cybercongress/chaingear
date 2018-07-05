@@ -44,7 +44,7 @@ contract("Registry Update Settings Tests", (accounts) => {
         await registry.contract.getEntryCreationFee().should.eventually.bignumber.equal(registry.fee)
     })
     
-    /*  -------------------------------- Registry Name ----------------------  */
+    /*  -------------------------------- Registry Description ----------------------  */
     it("#2/1 should allow registry admin to set description", async () => {
     
         const newDescription = registryDefaultDescription + "1"
@@ -74,5 +74,19 @@ contract("Registry Update Settings Tests", (accounts) => {
         const newDescription = registryDefaultDescription + "42".repeat(128)
         await registry.updateRegistryDescription(REGISTRY_ADMIN_ACCOUNT, newDescription).should.be.rejected
         await registry.contract.getRegistryDescription().should.eventually.equal(currentDescription)
+    })
+    
+    /*  -------------------------------- Registry Name ----------------------  */
+    it("#2/5 should allow registry admin to set new Registry name", async () => {
+        const newName = "NEW_NAME"
+        
+        await registry.contract.updateName(
+            newName, 
+            {
+                from: REGISTRY_ADMIN_ACCOUNT
+            }
+        ).should.be.fulfilled
+        
+        await registry.contract.name().should.eventually.equal(newName)
     })
 })

@@ -103,7 +103,7 @@ contract("Chaingear", (accounts) => {
         const entriesAmount = await chaingear.registriesAmount()
     
         const registryInfo = await chaingear.registryInfo(entriesAmount-1)
-        const createdAddress = registryInfo.toString().split(',')[1]
+        const createdAddress = registryInfo.toString().split(',')[2]
         
         const registry = Registry.at(createdAddress)
         const name = await registry.name()
@@ -151,42 +151,12 @@ contract("Chaingear", (accounts) => {
     
     })
     
-    it("#2/1 should allow registry owner to set ABI link for registry", async () => {
-    
-        var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
-    
-        await chaingear.setABILinkForRegistry(
-            ID.toNumber(),
-            "Q_HASH",
-            {
-                from: RANDOM_CREATOR_1
-            }
-        )
-    
-        const registryInfo = await chaingear.registryInfo(ID.toNumber())
-        const registryLink = registryInfo.toString().split(',')[5]
-        registryLink.should.be.equal("Q_HASH")
-    
-    })
-    
-    it("#2/2 should not allow unknown to set ABI link for any registry", async () => {
-    
-        await chaingear.setABILinkForRegistry(
-            0,
-            "T_HASH",
-            {
-                from: UNKNOWN
-            }
-        ).should.be.rejected
-    
-    })
-    
     it("#3/2 should allow registry_admin/token_owner to initialize registry", async () => {
     
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
         
         const registryInfo = await chaingear.registryInfo(ID.toNumber())
-        const registryAddress = registryInfo.toString().split(',')[1]
+        const registryAddress = registryInfo.toString().split(',')[2]
 
         const registry = Registry.at(registryAddress)
         
@@ -213,7 +183,7 @@ contract("Chaingear", (accounts) => {
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
         
         const registryInfo = await chaingear.registryInfo(ID.toNumber())
-        const registryAddress = registryInfo.toString().split(',')[1]
+        const registryAddress = registryInfo.toString().split(',')[2]
         
         const registry = Registry.at(registryAddress)
         
@@ -238,7 +208,7 @@ contract("Chaingear", (accounts) => {
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
         
         const registryInfo = await chaingear.registryInfo(ID.toNumber())
-        const registryAddress = registryInfo.toString().split(',')[1]
+        const registryAddress = registryInfo.toString().split(',')[2]
         
         const registry = Registry.at(registryAddress)
         

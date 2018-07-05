@@ -11,5 +11,7 @@ contract RegistryBasic {
     function claimEntryFunds(uint256 _entryId, uint _amount) public;
     function transferOwnership(address _newOwner) public;
     function getSafeBalance() public view returns (uint256);
-    
+    function getAdmin() public view returns (address);
+    function name() public view returns (string);
+    function symbol() public view returns (string);
 }

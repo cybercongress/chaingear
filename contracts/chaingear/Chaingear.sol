@@ -84,7 +84,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             uint256
         )
     {
-        require(registryCreatorsAddresses[_version] != 0x0);
+        require(registryAddresses[_version] != 0x0);
         require(registryRegistrationFee == msg.value);
         require(registryNamesIndex[_name] == false);
         require(registrySymbolsIndex[_symbol] == false);
@@ -99,10 +99,10 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     }
 
     /**
-    * @dev Allows transfer ownership of Registry to new owner
-    * @dev Transfer associated token and set owner of registry to new owner
+    * @dev Allows transfer adminship of Registry to new admin
+    * @dev Transfer associated token and set admin of registry to new admin
     * @param _registryID uint256 Registry-token ID
-    * @param _newOwner address Address of new owner
+    * @param _newOwner address Address of new admin
     */
     function updateRegistryOwnership(
         uint256 _registryID,
@@ -114,18 +114,18 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         //TODO optimizing? delete inf
         RegistryBasic(registries[_registryID].contractAddress).transferAdminRights(_newOwner);
-        registries[_registryID].owner = _newOwner;
+        /* registries[_registryID].admin = _newOwner; */
 
         removeTokenFrom(msg.sender, _registryID);
         addTokenTo(_newOwner, _registryID);
 
-        emit RegistryTransferred(msg.sender, registries[_registryID].name, _registryID, _newOwner);
+        emit RegistryTransferred(msg.sender, _registryID, _newOwner);
     }
 
     /**
     * @dev Allows to unregister created Registry from Chaingear
     * @dev Only possible when safe of Registry is empty
-    * @dev Burns associated registry token and transfer Registry ownership to creator
+    * @dev Burns associated registry token and transfer Registry adminship to creator
     * @param _registryID uint256 Registry-token ID
     */
     function unregisterRegistry(uint256 _registryID)
@@ -144,29 +144,13 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         delete registries[lastRegistryIndex];
         registries.length--;
         
-        RegistryBasic(registryAddress).transferOwnership(registries[_registryID].owner);
+        address currentAdmin = RegistryBasic(registryAddress).getAdmin();
+        RegistryBasic(registryAddress).transferOwnership(currentAdmin);
 
         _burn(msg.sender, _registryID);
 
-        string storage registryName = registries[_registryID].name;
+        string memory registryName = RegistryBasic(registryAddress).name();
         emit RegistryUnregistered(msg.sender, registryName);
-    }
-
-    /**
-    * @dev Allows set and update ABI link for generated and created Registry
-    * @dev Only Registry associated token owner can update
-    * @param _registryID uint256 Registry-token ID
-    * @param _link string IPFS hash to json with ABI
-    */
-    function setABILinkForRegistry(
-        uint256 _registryID,
-        string _link
-    )
-        public
-        whenNotPaused
-        onlyOwnerOf(_registryID)
-    {
-        registries[_registryID].linkABI = _link;
     }
     
     function fundRegistry(uint256 _registryID)
@@ -225,7 +209,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             uint256
         )
     {
-        address registryContract = RegistryCreator(registryCreatorsAddresses[_version]).create(
+        address registryContract = RegistryCreator(registryAddresses[_version]).create(
             _benefitiaries,
             _shares,
             _name,
@@ -236,13 +220,14 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         
         RegistryMeta memory registry = (RegistryMeta(
         {
-            name: _name,
+            /* name: _name,
+            symbol: _symbol, */
             contractAddress: registryContract,
             creator: msg.sender,
             version: _version,
-            linkABI: "",
+            linkABI: registryABIsLinks[_version],
             registrationTimestamp: block.timestamp,
-            owner: msg.sender,
+            /* admin: msg.sender, */
             currentRegistryBalanceETH: 0,
             accumulatedRegistryETH: 0
         }));
