@@ -3,6 +3,7 @@ chai.use(require("chai-as-promised"))
 chai.should()
 
 const RegistryUtils = require('./RegistryUtils')
+const EntryCore = artifacts.require("EntryCore")
 
 contract("All Users Registry Entry Crud Tests", (accounts) => {
 
@@ -10,6 +11,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
     const REGISTRY_OWNER_ACCOUNT = accounts[0]
     const REGISTRY_ADMIN_ACCOUNT = accounts[1]
     const UNKNOWN_ACCOUNT = accounts[2]
+    const VERY_UNKNOWN_ACCOUNT = accounts[5]
 
     before(async () => {
         registry = await RegistryUtils.createTestRegistry(
@@ -39,6 +41,67 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     
         await registry.createEntryPromise(UNKNOWN_ACCOUNT, registry.fee + registry.fee).should.be.rejected
+    })
+    
+    it("#1/4 should allow unknown to add new entry and update them", async () => {
+        const newEntryId = await registry.createEntry(UNKNOWN_ACCOUNT, registry.fee)
+        await registry.containsEntry(newEntryId).should.eventually.equal(true)
+    
+        const entriesStorageAddress = await registry.getEntriesStorage()
+        const entryCore = EntryCore.at(entriesStorageAddress)
+        
+        await entryCore.updateEntry(
+            newEntryId,
+            UNKNOWN_ACCOUNT,
+            42,
+            -42,
+            "42",
+            {
+                from: UNKNOWN_ACCOUNT
+            }
+        ).should.be.fulfilled
+        
+        const entryInfo = await entryCore.entryInfo(newEntryId.toNumber())
+        const expensiveUint = entryInfo.toString().split(',')[1]
+        expensiveUint.should.be.equal("42")
+    })
+    
+    it("#1/5 should not allow very unknown to update not his entry", async () => {
+        const newEntryId = await registry.createEntry(UNKNOWN_ACCOUNT, registry.fee)
+        await registry.containsEntry(newEntryId).should.eventually.equal(true)
+    
+        const entriesStorageAddress = await registry.getEntriesStorage()
+        const entryCore = EntryCore.at(entriesStorageAddress)
+        
+        await entryCore.updateEntry(
+            newEntryId,
+            UNKNOWN_ACCOUNT,
+            42,
+            -42,
+            "42",
+            {
+                from: VERY_UNKNOWN_ACCOUNT
+            }
+        ).should.be.rejected
+    })
+    
+    it("#1/6 should not allow unknown add entry with non-uniq string (example in EntryCore)", async () => {
+        const newEntryId = await registry.createEntry(UNKNOWN_ACCOUNT, registry.fee)
+        await registry.containsEntry(newEntryId).should.eventually.equal(true)
+    
+        const entriesStorageAddress = await registry.getEntriesStorage()
+        const entryCore = EntryCore.at(entriesStorageAddress)
+        
+        await entryCore.updateEntry(
+            newEntryId,
+            UNKNOWN_ACCOUNT,
+            1,
+            -1,
+            "42",
+            {
+                from: UNKNOWN_ACCOUNT
+            }
+        ).should.be.rejected
     })
     
     //todo discuss: should admin be able to create entries without fee?

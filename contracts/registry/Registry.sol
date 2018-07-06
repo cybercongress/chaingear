@@ -279,7 +279,8 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
             bool
         )
     {
-        return (ownerOf(_entryID) == _caller ? true : false);
+        require(ownerOf(_entryID) == _caller);
+        return true;
     }
     
     function updateName(

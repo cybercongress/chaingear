@@ -3,7 +3,9 @@ pragma solidity 0.4.24;
 import "../common/EntryBasic.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
-
+contract RegistryInterface {
+    function checkAuth(uint256, address) public view returns (bool);
+}
 /**
 * @title Entries engine for Chaingear
 * @author Cyber•Congress
@@ -24,6 +26,9 @@ contract EntryCore is EntryBasic, Ownable {
         int128 expensiveInt;
         string expensiveString;
     }
+    
+    // for uniq check example
+    mapping(string => bool) internal entryExpensiveStringIndex;
 
     // @dev initial structure of entries
     Entry[] internal entries;
@@ -70,13 +75,20 @@ contract EntryCore is EntryBasic, Ownable {
     )
         public
     {
-        bool status = owner.call(bytes4(keccak256("checkAuth(uint256, address)")), _entryID, msg.sender);
-        require(status == true);
+        require(owner.call(bytes4(keccak256("checkAuth(uint256, address)")), _entryID, msg.sender));
+
+        /* require(RegistryInterface(owner).checkAuth(_entryID, msg.sender)); */
         
+        // for uniq check example
+        require(entryExpensiveStringIndex[_newString] == false);
+            
         entries[_entryID].expensiveAddress = _newAddress;
         entries[_entryID].expensiveUint = _newUint;
         entries[_entryID].expensiveInt = _newInt;
         entries[_entryID].expensiveString = _newString;
+        
+        // for uniq check example
+        entryExpensiveStringIndex[_newString] = true;
         
         require(owner.call(bytes4(keccak256("updateEntryTimestamp(uint256)")), _entryID));
     }
