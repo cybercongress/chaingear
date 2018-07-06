@@ -14,7 +14,8 @@
     right: 0;
     text-align: center;
     background: #438cef;
-    font-size: 16px;
+    font-weight: lighter;
+    font-size: 14px;
     height: 70px;
     text-transform: uppercase;
     display: flex;
@@ -22,20 +23,39 @@
     justify-content: center;
 }
 
+.containererror {
+    background-image: url(../StatusBar/group-2.svg);    
+}
+
 .messageprocessing {
 
 }
 
 .messagesuccess {
-    background: green;
+    background: #34bfa3;
 }
 
 .messageerror {
-    background: red;
+    background: #cd333a;
 }
 
 .button {
     position: fixed;
-    bottom: 30px;
-    right: 100px;
+    top: 43%;
+    right: 36%;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 2px;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 1px 5px 4px 0px rgba(0, 0, 0, 0.14);
+    cursor: pointer;
+}
+
+.buttonError {
+   background: #cd333a;;
+}
+
+.buttonSuccess {
+    background: #34bfa3;
 }

@@ -23,8 +23,6 @@ import {
     ErrorMessage
 } from '../../components/newregistry/'
 
-let compiler;
-let bytecode;
 
 class NewRegister extends Component {
   constructor(props) {
@@ -34,14 +32,20 @@ class NewRegister extends Component {
         name: '',
         fields: [
         ],
-        message: '',
-        inProgress: false,
         contractName: '',
         contracts: [],
         gasEstimate: null,
+        registryAddress: null,
         error: null,
+
+        inProgress: false,
+        message: '',
         type: 'processing',
-        registryAddress: null
+
+        // message: 'Build failed. Please, make sure your entered names don’t start with a digit and they aren’t reserved words.',
+        // inProgress: true,
+        // type: 'error',
+
     }
   }
 
@@ -75,11 +79,11 @@ class NewRegister extends Component {
     this.setState({ message: 'processing...', inProgress: true, type: 'processing' });
     cyber.createRegistry(contractName, symbol, fields)
         .then(({ registryAddress }) => {
-            this.setState({ message: 'registry created', type: 'success', registryAddress });
+            this.setState({ message: 'build successful', type: 'success', registryAddress });
             
         })
         .catch(e => {
-            this.setState({ message: e, type: 'error' });
+            this.setState({ message: 'Build failed. Please, make sure your entered names don’t start with a digit and they aren’t reserved words.', type: 'error' });
         })    
   }
 
