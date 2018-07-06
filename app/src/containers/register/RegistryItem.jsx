@@ -10,6 +10,8 @@ import {
 
 import QRCode from '../../components/QRCode/';
 
+import TransferForm from './TransferForm';
+
 import {
     Label,
     Amount,
@@ -97,7 +99,8 @@ class RegistryItem extends Component {
             clameRecord,
             removeItemClick,
             fundEntryClick,
-            userAccount
+            userAccount,
+            onTransfer
         } = this.props;
 
         const {
@@ -168,7 +171,13 @@ class RegistryItem extends Component {
                     <SectionContent grow={0} style={{ width: '25%'}}>   
                         <Centred>                     
                             <div>
-                               <QRCode hash='0xb6ee5dcb7b5e63704a9af45bdd9e0e493ff26c81' size={100} />
+                               {/* <QRCode hash='0xb6ee5dcb7b5e63704a9af45bdd9e0e493ff26c81' size={100} />*/}
+                               <TransferForm 
+                                  height={100}
+                                  address={item.owner} 
+                                  isOwner={isOwner}
+                                  onTransfer={onTransfer}
+                                />
                             </div>
                             <div>
                                 <ValueInput 

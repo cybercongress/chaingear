@@ -23,11 +23,13 @@ import {
     BoxTitle
 } from '../../components/chaingear/'
 
+import TransferForm from './TransferForm';
+
 import { RegistryItem, RegistryList } from './RegistryItem';
 import ValueInput from '../../components/ValueInput';
 import FormField from './FormField';
 import QRCode from '../../components/QRCode/';
-import Robohash from '../../components/Robohash/';
+// import Robohash from '../../components/Robohash/';
 import { LinkHash } from '../../components/LinkHash/'
 
 import StatusBar from '../../components/StatusBar/';
@@ -100,15 +102,31 @@ class Register extends Component {
                     const registry = registries.find(x => x.address === address);
                     if (!registry) return;
                     
+
                     this.setState({
                         name: registry.name,
                         registrationTimestamp: registry.registrationTimestamp,
                         creator: registry.creator,
-                        isOwner: userAccount === registry.creator,
+                        // isOwner: userAccount === registry.owner,
+                        // owner: registry.owner,
                         tag: '',
                         web3: web3
                     })
                     const r = cyber.getRegistryByAddress(registry.address);
+
+                    // debugger
+                    // contract.getEntryMeta(registryID, (e, data) => {
+                    //     debugger
+                    // });
+                    r.getAdmin((e, owner) => {
+                        this.setState({
+
+                            isOwner: userAccount === owner,
+                            owner: owner,
+
+                        })
+                    })
+
                     web3.eth.getBalance(registry.address, (e, balance) => {
                         balance = web3.fromWei(web3.toDecimal(balance), 'ether');
                         this.setState({
@@ -334,7 +352,22 @@ class Register extends Component {
 
     clameFee = (amount) => {
         this.state.registryContract.claim((e, data) => {
-            debugger
+
+        })
+    }
+
+    transferRegistry = (newOwner) => {        
+        var registryID = this.getRegistryID();
+        cyber.getContract().then(({ contract, web3 }) => {
+            contract.updateRegistryOwnership(registryID, newOwner, (e, data) => {
+                this.componentDidMount();
+            })
+        })
+    }
+
+    transferItem = (entryID, newOwner) => {
+        this.state.registryContract.transferEntryOwnership(entryID, newOwner, (e, data) => {
+            this.componentDidMount();
         })
     }
   
@@ -351,7 +384,7 @@ class Register extends Component {
               fundEntryClick={this.fundEntryClick}
               userAccount={userAccount}
               onUpdate={(values) => this.onUpdate(values, index)}
-
+              onTransfer={(newOwner) => this.transferItem(index, newOwner)}
               fields={fields}
               item={item}
               index={index}
@@ -370,7 +403,8 @@ class Register extends Component {
         total_fee,
         funded,
         tag,
-        symbol
+        symbol,
+        owner
     } = this.state;
 
     return (
@@ -381,12 +415,6 @@ class Register extends Component {
         />
         <Container>
         <Section title='General'>
-            <SectionContent style={{ width: '25%' }}>
-                <Centred>
-                    <Robohash hash={address} />
-                </Centred>
-            </SectionContent>
-
             <SectionContent style={{ width: '25%' }}>
                 <Centred>
                 <BoxTitle>
@@ -410,16 +438,10 @@ class Register extends Component {
             <SectionContent style={{ width: '25%' }}>
                 <Centred>
                 <BoxTitle>
-                    FUNDED/FEES:
+                    FUNDED:
                 </BoxTitle>
 
-                <FundContainer style={{ justifyContent: isOwner ? 'space-between' : 'center'}}>
-                    <span>
-                    {total_fee} ETH
-                    </span>
-                    {isOwner && <Button style={{ width: 119 }} onClick={this.clameFee}>clame fee</Button>}
-                </FundContainer>
-                <FundContainer style={{ justifyContent: isOwner ? 'space-between' : 'center'}}>
+                <FundContainer style={{ height: 100, justifyContent: isOwner ? 'space-around' : 'start'}}>
                     <span>
                     {funded} ETH
                     </span>
@@ -432,14 +454,37 @@ class Register extends Component {
                 
                 </FundContainer>
                 </Centred>
-            </SectionContent>            
+            </SectionContent>    
+
+            <SectionContent style={{ width: '25%' }}>
+                <Centred>
+                <BoxTitle>
+                    FEES:
+                </BoxTitle>
+
+                <FundContainer style={{ height: 100, justifyContent: isOwner ? 'space-around' : 'start'}}>
+                    <span>
+                    {total_fee} ETH
+                    </span>
+                    {isOwner && <Button style={{ width: 119 }} onClick={this.clameFee}>clame fee</Button>}
+                </FundContainer>
+                
+                </Centred>
+            </SectionContent>
+
         </Section>
 
         <Section title='Overview'>
             <SectionContent grow={0} style={{ width: '25%'}}>
                 <Centred>
                 <div>
-                    <QRCode hash={address} size={160} />
+                    {/*<QRCode hash={address} size={160} />*/}
+                    <TransferForm 
+                      height={140}
+                      address={owner} 
+                      isOwner={isOwner}
+                      onTransfer={this.transferRegistry}
+                    />
                 </div>
                 <ValueInput 
                     onInter={this.fundRegistry}
