@@ -1,4 +1,4 @@
-FROM node:8.9.0 as webpack
+FROM node:9.4.0 as webpack
 WORKDIR /src
 COPY . /src
 RUN npm install
