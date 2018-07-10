@@ -1,28 +1,231 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=pice-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Chaingear</title>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Abstriangulation</title>
-      <link rel="stylesheet" href="css/style.css">
-</head>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
 
-<body>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+ <body>
+   <!--lg, md, sm visible header-->
+    <div class="container path-3 hidden-xs">
 
-<div>
-  Hello world!
-</div>
-  <canvas id='c'></canvas>
-  <script src='js/kzymdn.js'></script>
-  <script  src="js/index.js"></script>
+      <!--Wave background-->
+      <div class="row row-fix">
+        <div class="col-sm-12 col-xs-12 wave-bg text-center hidden-xs">
+          <img src="img/bg.png" class="wave-bg-img img-responsive text-center">
+        </div>
+      </div>
 
-  <div>
-    Hello world!
-  </div>
+      <!--Message title h1-->
+      <div class="row">
+        <div class="col-sm-12 col-xs-12 txt-h1 text-center">
+          <h1 class="text-uppercase">The most expensive database</h1>
+        </div>
+      </div>
+
+      <!--Logo-->
+      <div class="row">
+        <div class="col-sm-12 col-xs-12 logoC text-center">
+          <img src="img/logo.png" class="logoImg">
+        </div>
+      </div>
 
 
+      <!--LG-screen for large features row-->
+      <div class="row hidden-md hidden-sm hidden-xs">
+        <div class="col-lg-10 col-sm-offset-2 rectangle text-center">
+          <div class="row">
+            <div class="col-lg-4 features text-center">
+              <img src="img/flexible.svg" class="feat-img">
+            </div>
+            <div class="col-lg-4 img-responsive features text-center">
+              <img src="img/economics.svg" class="feat-img">
+            </div>
+            <div class="col-lg-4 img-responsive features">
+              <img src="img/ownership.svg" class="feat-img">
+            </div>
+          </div>
+          <div class="row text-center feat-text text-uppercase">
+            <div class="col-lg-4">
+                    Flexible
+            </div>
+            <div class="col-lg-4">
+                    Economics
+            </div>
+            <div class="col-lg-4">
+                    Ownership
+            </div>
+          </div>
+          <div class="row text-center text-descr">
+            <div class="col-lg-4">
+                    define the you want
+            </div>
+            <div class="col-lg-4">
+                    set rules of adding entries
+            </div>
+            <div class="col-lg-4">
+                    transfer and trade records and registries
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MD-SM-screen features-->
+      <div class="row hidden-lg hidden-xs">
+        <div class="col-sm-12 col-md-12 rectangle-md-sm">
+          <div class="row">
+            <div class="col-sm-4 features text-center">
+              <img src="img/flexible.svg" class="feat-img">
+            </div>
+            <div class="col-sm-4 img-responsive features">
+              <img src="img/economics.svg" class="feat-img">
+            </div>
+            <div class="col-sm-4 img-responsive features">
+              <img src="img/ownership.svg" class="feat-img">
+            </div>
+          </div>
+          <div class="row text-center feat-text text-uppercase">
+            <div class="col-sm-4">
+                  Flexible
+            </div>
+            <div class="col-sm-4">
+                  Economics
+            </div>
+            <div class="col-sm-4">
+                  Ownership
+            </div>
+          </div>
+          <div class="row text-center text-descr">
+            <div class="col-sm-4">
+                  define the you want
+            </div>
+            <div class="col-sm-4">
+                  set rules of adding entries
+            </div>
+            <div class="col-sm-4">
+                  transfer and trade records and registries
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!--XS-->
+    <div class="container path-3-xs hidden-lg hidden-md hidden-sm">
+
+      <!--Message title h1-->
+      <div class="row">
+        <div class="col-xs-12 text-center txt-h1-xs">
+          <h1 class="text-uppercase h1-fix">The most expensive database</h1>
+        </div>
+      </div>
+
+      <!--Logo-->
+      <div class="row">
+        <div class="col-sm-12 col-xs-12 logoC-xs text-center">
+          <img src="img/logo.png" class="logoImg-xs">
+        </div>
+      </div>
+    </div>
+
+    <div class="row hidden-lg hidden-md hidden-sm row-fix">
+        <div class="row rectangle-xs text-center row-fix">
+          <div class="col-xs-6 col-xs-offset-3">
+            <img src="img/flexible.svg" class="feat-img-xs">
+            <p class="text-h-xs text-uppercase">Flexible</p>
+            <p class="text-descr-xs">define the you want</p>
+          </div>
+          <div class="col-xs-6 col-xs-offset-3">
+            <img src="img/economics.svg" class="feat-img-xs">
+            <p class="text-h-xs text-uppercase">Economics</p>
+            <p class="text-descr-xs">set rules of adding entries</p>
+          </div>
+          <div class="col-xs-6 col-xs-offset-3">
+            <img src="img/ownership.svg" class="feat-img-xs">
+            <p class="text-h-xs text-uppercase">Ownership</p>
+            <p class="text-descr-xs">transfer and trade records and registries</p>
+          </div>
+        </div>
+      </div>
+
+    <!-- full adapting overview-->
+    <div class="container overview">
+      <div class="row">
+        <div class="col-lg-4 col-lg-offset-2 hidden-xs hidden-sm hidden-md">
+          <img src="img/overview.png" class="img-responsive overview-img">
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <p class="overview-section text-uppercase">Overview</p>
+          <p class="overview-descr">This project allows you to create your own Registry of general purpose entries on Ethereum blockchain. Entry type is defined during creation, so you can put into entry any custom logic you want (validation, entry-level permission control). Entries are tokenized as NFT.</p>
+          <p class="overview-descr">Your creating your registry in Chaingear - metaregistry, which are one point of access to all registries. Registries on chaingear level are tokenized as NFT. Chaingear is most expensive registry, so you should pay for your registry creation.</p>
+          <div class="text-uppercase shadow hidden-xs hidden-sm hidden-md">Overview</div>
+        </div>
+      </div>
+    </div>
+
+    <!--lg, md, sm visible footer-->
+    <div class="container foot text-center hidden-xs">
+      <div class="row">
+        <ul class="list-inline">
+          <li class="overview-descr">Follow us</li>
+          <li><a href=""><img src="img/medium.svg" class=""></a></li>
+          <li><a href=""><img src="img/github.svg" class=""></a></li>
+          <li><a href=""><img src="img/telegram.svg" class=""></a></li>
+          <li><a href=""><img src="img/twitter.svg" class=""></a></li>
+          <li><a href=""><img src="img/reddit.svg" class=""></a></li>
+          <li><a href=""><img src="img/knowledge.svg" class=""></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- xs visible footer-->
+    <div class="container foot text-center hidden-lg hidden-md hidden-sm">
+      <div class="col-xs-12 text-center">
+        <p>Follow us</p>
+      </div>
+      <div class="row">
+        <div class="col-xs-2 col-xs-offset-3">
+          <a class="" href=""><img src="img/medium.svg"></a>
+        </div>
+        <div class="col-xs-2">
+          <a href=""><img src="img/github.svg"></a>
+        </div>
+        <div class="col-xs-2">
+          <a href=""><img src="img/telegram.svg"></a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-2 col-xs-offset-3">
+          <a href=""><img src="img/twitter.svg"></a>
+        </div>
+        <div class="col-xs-2">
+          <a href=""><img src="img/reddit.svg"></a>
+        </div>
+        <div class="col-xs-2">
+          <a href=""><img src="img/knowledge.svg"></a>
+        </div>
+      </div>
+    </div>
 
 
-</body>
-
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
 </html>
