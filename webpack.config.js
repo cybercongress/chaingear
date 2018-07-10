@@ -9,7 +9,7 @@ module.exports = function (options = {}) {
   // Settings
   // --env.NODE_ENV root --env.SOURCE_MAP source-map ...
   const NODE_ENV = options.NODE_ENV || "development"; // "production"
-  const SOURCE_MAP = options.SOURCE_MAP || "source-map";// "eval-source-map"; // "source-map"
+  const SOURCE_MAP = options.SOURCE_MAP || "eval";// "eval-source-map"; // "source-map"
   const API_ROOT = options.API_ROOT || "http://search-api.cyber.fund"; // "http://cyber.fund/api/"
   const APP_VERSION = options.APP_VERSION || "DEV";
   const CYBER_CHAINGEAR_API = process.env.CYBER_CHAINGEAR_API || 'localhost:8000';
@@ -31,7 +31,7 @@ module.exports = function (options = {}) {
       vendor: [
         "babel-polyfill",
         "react",
-        "react-dom"
+        "react-dom",
       ],
       app: [
         path.resolve(__dirname, "app", "src", "main")
@@ -40,7 +40,7 @@ module.exports = function (options = {}) {
     output: {
       path: path.resolve(__dirname, "dist"),
       filename: "[name].js?[hash]",
-      publicPath: "/"
+      publicPath: ""
     },
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".jsx"],
@@ -122,7 +122,8 @@ module.exports = function (options = {}) {
         colors: true
       },
       historyApiFallback: true,
-      inline: false,
+      inline: true,
+      hot: false,
       proxy: {
         "/api": {
           target: "http://search-api.cyber.fund",
@@ -151,17 +152,20 @@ function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_A
     }),
     new CopyWebpackPlugin([
       // Copy directory contents to {output}/
-      { from: 'config.js' }
+      { from: 'config.js' },
+      { from: 'app/browser-solc.min.js' }
     ]) 
   ];
 
-  if (NODE_ENV === "production") {
-    plugins.push(
+  plugins.push(
       new webpack.optimize.CommonsChunkPlugin({
         name: "vendor",
         minChunks: 2
       })
     );
+
+  if (NODE_ENV === "production") {
+    
 
     plugins.push(
       new UglifyJsPlugin({

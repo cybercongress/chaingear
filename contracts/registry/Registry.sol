@@ -1,169 +1,296 @@
-pragma solidity 0.4.19;
+pragma solidity 0.4.24;
 
-import "zeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
-import "zeppelin-solidity/contracts/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "./Chaingeareable.sol";
-import "./EntryBase.sol";
-import "../common/RegistrySafe.sol";
+import "../common/EntryBasic.sol";
+import "../common/RegistryBasic.sol";
+import "../common/Safe.sol";
 
-/**
-* @title Entries of Registry processor
-* @author Cyber•Congress
-* @dev not recommend to use before release!
-*/
-contract Registry is Chaingeareable, ERC721Token, SplitPaymentChangeable {
+
+contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentChangeable {
 
     using SafeMath for uint256;
-
-    /**
-    * @dev Registry constructor, deployment
-    * @param benefitiaries' addresses[]
-    * @param charging shares uint256[]
-    * @param Registry name string
-    * @param Registry symbol string
-    * @param link to ABI of entries contract string
-    * @param bytecode of entries contract bytes
+    
+    /*
+    *  Storage
     */
-    function Registry(
+
+    struct EntryMeta {
+        address owner;
+        address creator;
+        uint createdAt;
+        uint lastUpdateTime;
+        uint256 currentEntryBalanceETH;
+        uint256 accumulatedOverallEntryETH;
+    }
+    
+    EntryMeta[] internal entriesMeta;
+
+    /*
+    *  Constructor
+    */
+
+    constructor(
         address[] _benefitiaries,
         uint256[] _shares,
         string _name,
-        string _symbol,
-        string _linkToABIOfEntriesContract,
-        bytes _bytecodeOfEntriesContract
+        string _symbol
     )
         SplitPaymentChangeable(_benefitiaries, _shares)
         ERC721Token(_name, _symbol)
         public
         payable
     {
-        permissionTypeEntries_ = PermissionTypeEntries.OnlyCreator;
-        registryName_ = _name;
-        linkToABIOfEntriesContract_ = _linkToABIOfEntriesContract;
-        registrySafe_ = new RegistrySafe();
+        createEntryPermissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
+        entryCreationFee = 0;
+        registrySafe = new Safe();
+        registryInitStatus = false;
+    }
+    
+    /*
+    *  Public functions
+    */
 
+    function initializeRegistry(
+        string _linkToABIOfEntriesContract,
+        bytes _entryCore
+    )
+        public
+        onlyAdmin
+        returns (
+            address
+        )
+    {
         address deployedAddress;
         assembly {
-            let s := mload(_bytecodeOfEntriesContract)
-            let p := add(_bytecodeOfEntriesContract, 0x20)
+            let s := mload(_entryCore)
+            let p := add(_entryCore, 0x20)
             deployedAddress := create(0, p, s)
         }
 
         assert(deployedAddress != 0x0);
-
-        entryBase_ = deployedAddress;
+        entriesStorage = deployedAddress;
+        registryInitStatus = true;
+        linkToABIOfEntriesContract = _linkToABIOfEntriesContract;
+        
+        return entriesStorage;
     }
 
-/**
-* @dev entry creation
-* @return new entry ID uint256
-*/
+    /**
+    * @dev entry creation
+    * @return uint256
+    */
     function createEntry()
-        external
+        public
+        registryInitialized
+        onlyPermissionedToCreateEntries
         whenNotPaused
-        onlyPermissionedToEntries
         payable
-        returns (uint256)
+        returns (
+            uint256
+        )
     {
-        require(msg.value == entryCreationFee_);
-
-        uint256 newEntryId = EntryBase(entryBase_).createEntry();
+        require(msg.value == entryCreationFee);
+        
+        // TODO check for uniqueness for fields (+protected by uniq field gen)
+        
+        uint256 newEntryId = EntryBasic(entriesStorage).createEntry();
         _mint(msg.sender, newEntryId);
+        
+        EntryMeta memory meta = (EntryMeta(
+        {
+            lastUpdateTime: block.timestamp,
+            createdAt: block.timestamp,
+            owner: msg.sender,
+            creator: msg.sender,
+            currentEntryBalanceETH: 0,
+            accumulatedOverallEntryETH: 0
+        }));
+        
+        entriesMeta.push(meta);
 
-        EntryCreated(msg.sender, newEntryId);
+        emit EntryCreated(msg.sender, newEntryId);
 
         return newEntryId;
     }
 
     /**
     * @dev delegate tokenized ownership to new admin
-    * @param new owner (admin) address
+    * @param _newOwner address 
     */
-    function transferTokenizedOnwerhip(address _newOwner)
+    function transferAdminRights(
+        address _newOwner
+    )
         public
-        whenNotPaused
         onlyOwner
+        whenNotPaused
     {
-        registryOwner_ = _newOwner;
+        admin = _newOwner;
     }
 
     /**
     * @dev remove entry from the Regisrty
-    * @param entry ID uint256
+    * @param _entryID uint256
     */
-    function deleteEntry(uint256 _entryId)
-        external
+    function deleteEntry(
+        uint256 _entryID
+    )
+        public
+        onlyOwnerOf(_entryID)
         whenNotPaused
     {
-        require(ERC721BasicToken.ownerOf(_entryId) == msg.sender);
+        require(entriesMeta[_entryID].currentEntryBalanceETH == 0);
+        
+        uint256 entryIndex = allTokensIndex[_entryID];
+        EntryBasic(entriesStorage).deleteEntry(entryIndex);
+        _burn(msg.sender, _entryID);
+        
+        uint256 lastEntryIndex = entriesMeta.length - 1;
+        EntryMeta storage lastEntry = entriesMeta[lastEntryIndex];
 
-        uint256 entryIndex = allTokensIndex[_entryId];
-        EntryBase(entryBase_).deleteEntry(entryIndex);
-        super._burn(msg.sender, _entryId);
+        entriesMeta[_entryID] = lastEntry;
+        delete entriesMeta[lastEntryIndex];
+        entriesMeta.length--;
 
-        EntryDeleted(msg.sender, _entryId);
+        emit EntryDeleted(msg.sender, _entryID);
     }
 
     /**
     * @dev delegate entry tokenized ownership to new owner
-    * @param entry ID uint256
-    * @param new owner address
+    * @param _entryID uint256
+    * @param _newOwner address
     */
-    function transferEntryOwnership(uint _entryId, address _newOwner)
+    function transferEntryOwnership(
+        uint _entryID, 
+        address _newOwner
+    )
         public
+        registryInitialized
+        onlyOwnerOf(_entryID)
         whenNotPaused
     {
-        require (ownerOf(_entryId) == msg.sender);
-        EntryBase(entryBase_).updateEntryOwnership(_entryId, _newOwner);
+        entriesMeta[_entryID].owner = _newOwner;
 
-        super.removeTokenFrom(msg.sender, _entryId);
-        super.addTokenTo(_newOwner, _entryId);
+        super.removeTokenFrom(msg.sender, _entryID);
+        super.addTokenTo(_newOwner, _entryID);
 
-        EntryChangedOwner(_entryId, _newOwner);
+        emit EntryChangedOwner(_entryID, _newOwner);
     }
 
     /**
     * @dev entry fund setter
-    * @param entry ID uint256
+    * @param _entryID uint256
     */
-    function fundEntry(uint256 _entryId)
+    function fundEntry(
+        uint256 _entryID
+    )
         public
+        registryInitialized
         whenNotPaused
         payable
     {
-        EntryBase(entryBase_).updateEntryFund(_entryId, msg.value);
-        registrySafe_.transfer(msg.value);
+        entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.add(msg.value);
+        entriesMeta[_entryID].accumulatedOverallEntryETH = entriesMeta[_entryID].accumulatedOverallEntryETH.add(msg.value);
+        registrySafe.transfer(msg.value);
 
-        EntryFunded(_entryId, msg.sender);
+        emit EntryFunded(_entryID, msg.sender);
     }
 
     /**
     * @dev entry fund claimer
-    * @param entry ID uint256
-    * @param claim amount uint
+    * @param _entryID uint256
+    * @param _amount uint
     */
-    function claimEntryFunds(uint256 _entryId, uint _amount)
+    function claimEntryFunds(
+        uint256 _entryID, 
+        uint _amount
+    )
         public
+        registryInitialized
+        onlyOwnerOf(_entryID)
         whenNotPaused
     {
-        require(ownerOf(_entryId) == msg.sender);
-        require(_amount <= EntryBase(entryBase_).currentEntryBalanceETHOf(_entryId));
-        EntryBase(entryBase_).claimEntryFund(_entryId, _amount);
-        RegistrySafe(registrySafe_).claim(msg.sender, _amount);
+        require(_amount <= entriesMeta[_entryID].currentEntryBalanceETH);
+        entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.sub(_amount);
+        Safe(registrySafe).claim(msg.sender, _amount);
 
-        EntryFundsClaimed(_entryId, msg.sender, _amount);
+        emit EntryFundsClaimed(_entryID, msg.sender, _amount);
     }
+    
+    /*
+    *  External functions
+    */
+    
+    function updateEntryTimestamp(
+        uint256 _entryID
+    ) 
+        external
+    {
+        require(entriesStorage == msg.sender);
+        entriesMeta[_entryID].lastUpdateTime = block.timestamp;
+    }
+    
+    /*
+    *  View functions
+    */
 
     /**
     * @dev safe balance getter
-    * @return balance uint
+    * @return uint
     */
-    function safeBalance()
+    function getSafeBalance()
         public
         view
-        returns (uint balance)
+        returns (
+            uint balance
+        )
     {
-        return RegistrySafe(registrySafe_).balance;
+        return address(registrySafe).balance;
     }
+    
+    function getEntryMeta(uint256 _entryID)
+        public
+        view
+        returns (
+            address,
+            address,
+            uint,
+            uint,
+            uint256,
+            uint256
+        )
+    {
+        return(
+            entriesMeta[_entryID].owner,
+            entriesMeta[_entryID].creator,
+            entriesMeta[_entryID].createdAt,
+            entriesMeta[_entryID].lastUpdateTime,
+            entriesMeta[_entryID].currentEntryBalanceETH,
+            entriesMeta[_entryID].accumulatedOverallEntryETH
+        );
+    }
+    
+    function checkAuth(uint256 _entryID, address _caller)
+        public
+        view
+        returns (
+            bool
+        )
+    {
+        require(ownerOf(_entryID) == _caller);
+        return true;
+    }
+    
+    function updateName(
+        string _name
+    )
+        public
+        onlyAdmin
+    {
+        name_ = _name;
+    }
+        
+    
 }

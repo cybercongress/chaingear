@@ -1,0 +1,51 @@
+
+.container {
+  padding: 50px 80px;
+  position: relative;
+}
+
+.container::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.container::before {
+  content: '';
+  display: block;
+  background: url(../CallToAction/il-comp.svg);
+  width: 260px;
+  height: 200px;
+  position: absolute;
+  left: 30px;
+}
+
+.innerContainer {
+  width: 70%;
+  min-height: 200px;
+  float: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  color: #438cef;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.link {
+  background: #438cef;
+  color: #fff;
+  padding: 7px 18px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #fff;
+}

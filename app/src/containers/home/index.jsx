@@ -2,49 +2,148 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router';
 
-import * as cyber from '../../utils/cyber'
+var moment = require('moment');
+
+
+import * as cyber from '../../utils/cyber';
+
+import { Badge, FooterButton } from '../../components/chaingear/'
+import { Table } from '../../components/Table/';
+import { Container, Text, Link as ActionLink } from '../../components/CallToAction/';
+
+const dateFormat = 'DD/MM/YYYY mm:hh';
+
+import { 
+    Section,
+    SectionContent,
+    
+} from '../../components/chaingear/'
+
+import {
+    LinkHash
+} from '../../components/LinkHash/'
 
 class Home extends Component {
     constructor(props) {
       super(props)
 
       this.state = {
-        registries: []
+        registries: [],
+        account: null
       }
     }
 
     componentDidMount() {
-      cyber.getRegistry().then(registries => {
+      cyber.getRegistry().then(({ items, accounts }) => {
         this.setState({
-        registries
+        registries: items,
+        account: accounts[0]
       })
       })
     }
 
   render() {
-    const { registries } = this.state;
+    const { registries, account } = this.state;
+
+    const rows = registries.map((register, index) => (
+                <tr key={register.name}>
+                    <td>
+                        <Link 
+                          to={`/registers/${register.address}`} 
+                        >{register.name}</Link>
+                    </td>                        
+                    <td>
+                        {register.symbol}
+                    </td>
+                    <td>
+                        <LinkHash value={register.creator} />
+                    </td>
+                    <td>
+                        {moment(new Date(register.registrationTimestamp.toNumber() * 1000)).format(dateFormat)}
+                    </td>
+                </tr>
+          ));
+
+    const myRows = registries.filter(x => x.creator === account).map((register, index) => (
+                <tr key={register.name}>
+                    <td>
+                        <Link 
+                          to={`/registers/${register.address}`} 
+                        >{register.name}</Link>
+                    </td>
+                    <td>
+                        {register.symbol}
+                    </td>
+                    <td>
+                        <LinkHash value={register.creator} />
+                    </td>
+                    <td>
+                        {moment(new Date(register.registrationTimestamp.toNumber() * 1000)).format(dateFormat)}
+                    </td>
+                </tr>
+          ))
+
+    let content = (
+        <div>
+        <Section title={<span>My registries<Badge>{myRows.length}</Badge></span>}>
+            <SectionContent>
+          <Container>
+              <Text>You haven`t created registers yet!</Text>
+              <ActionLink to='/new'>create</ActionLink>
+          </Container>
+        </SectionContent>
+        </Section>
+        </div>
+    );
+
+    if (myRows.length > 0 ){
+        content = (
+            <div>
+                <Section title={<span>My registries<Badge>{myRows.length}</Badge></span>}>
+                <SectionContent>
+                <Table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Symbol</th>
+                            <th>Creator</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {myRows}
+                    </tbody>
+                </Table>
+                  <FooterButton to='/new'>create new register</FooterButton>
+                  </SectionContent>
+                </Section>
+            </div>
+        )        
+    }
+
     return (
       <div>
-        <h2>Existing registries:</h2>
-        <ul >
-          {registries.map(register => (
-                <li key={register.name}>
-                  {
-                    register.status === 'pending' ? (
-                      <span>
-                        <span>{register.name}</span>
-                        (<Link to={`/wait/${register.txHash}`}>pending</Link>)
-                      </span>
-                    ) : (
-                      <Link 
-                        to={`/registers/${register.address}`} 
-                      >{register.name}</Link>
-                    )
-                  }
-                </li>
-          ))}
-          </ul>
-          <Link to='/new'>create new register</Link>
+        <div>
+            {content}
+        </div>
+
+        <Section title={<span>All registries<Badge>{rows.length}</Badge></span>}>
+        <SectionContent>
+        <Table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Symbol</th>
+                    <th>Creator</th>
+                    <th>Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                {rows}
+            </tbody>
+        </Table>
+        </SectionContent>
+        </Section>
       </div>
     );
   }

@@ -12,20 +12,21 @@ import Web3 from 'web3'
 
 export const loadCompiler = (cb) => {
   setTimeout(() => {
-      window.BrowserSolc.loadVersion("soljson-v0.4.18+commit.9cf6e910.js", cb);
+      window.BrowserSolc.loadVersion("soljson-v0.4.24+commit.e67f0147.js", cb);
     }, 30);
 }
 
-const ChaingeareableSource = require('../Chaingeareable.sol');
 
+const EntryBasic = require('../EntryBasic.sol');
 
 
 
 export const compileRegistry = (code, contractName, compiler) => {
   return new Promise((resolve, reject) => {
     const input = {
-      'Chaingeareable.sol': ChaingeareableSource,
-      [contractName]: 'pragma solidity ^0.4.18; ' + code,
+      // 'Chaingeareable.sol': ChaingeareableSource,
+      'EntryBasic.sol': EntryBasic,
+      [contractName]: 'pragma solidity ^0.4.23; ' + code,
     };
 
     setTimeout(() => {
@@ -34,13 +35,19 @@ export const compileRegistry = (code, contractName, compiler) => {
         reject(compiledContract.errors[0]);
         return;
       }
-      var abi = compiledContract.contracts[contractName +":"+ contractName].interface;
-      var bytecode = '0x'+compiledContract.contracts[contractName +":"+ contractName].bytecode;
 
-      resolve({
-        abi,
-        bytecode
-      });
+      try {
+          var abi = compiledContract.contracts[contractName +":"+ contractName  ].interface;
+          var bytecode = '0x'+compiledContract.contracts[contractName +":"+ contractName ].bytecode;
+
+          resolve({
+            abi,
+            bytecode
+          });
+      } catch(e) {
+        reject(e);
+      }
+
     }, 20);
   })
 }
@@ -51,7 +58,6 @@ let getWeb3 = new Promise(function(resolve, reject) {
   window.addEventListener('load', function() {
     var results
     var web3 = window.web3
-
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
     if (typeof web3 !== 'undefined') {
       // Use Mist/MetaMask's provider.
@@ -173,17 +179,37 @@ const getItems = (contract, count, array, mapFn) => {
   })
 }
 
-const getContract = () => {
+export const getContract = () => {
   return getWeb3
       .then(results => {
-      const contract = require('truffle-contract');
-      const registryContract = contract(ChaingearBuild);
-      registryContract.setProvider(results.web3.currentProvider);
+      // const contract = require('truffle-contract');
+      // const registryContract = contract(ChaingearBuild);
+      const web3 = results.web3;
+      const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks['42'].address);
+      // registryContract.setProvider(results.web3.currentProvider);
       results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
-      return registryContract.deployed().then(contract => ({
-        contract,
-        web3: results.web3
-      }));
+      
+      return new Promise(resolve => {
+        results.web3.eth.getAccounts((e, accounts)=> {
+            // debugger
+            // registryContract.deployed().then(contract => {
+                resolve({
+                    contract,
+                    web3: results.web3,
+                    accounts
+                })
+            // });    
+        })
+      })
+      
+        // .then(accounts => {
+        //     return registryContract.deployed().then(contract => ({
+        //         contract,
+        //         web3: results.web3,
+        //         accounts
+        //     }));
+        // })
+      
     })
 }
 
@@ -198,14 +224,24 @@ export const register = (name, adress, hash) => {
 }
 
 export const getRegistry = () => {
-  return getContract().then(( { contract, web3 }) => {  
-    return getItems(contract, 'registriesAmount', 'registries', (items) => {
+    let accounts = null;
+  return getContract().then(( { contract, web3, accounts }) => {  
+    _accounts = accounts;
+    return getItems2(contract, 'registriesAmount', 'registryInfo', (items) => {
       return ({
         name: items[0],
         address: items[1],
-        ipfsHash: items[4]
+        creator: items[2],
+        registrationTimestamp: items[4],
+        ipfsHash: items[5],
+        symbol: 'R1??', //TODO: add symbol to registryInfo method
       })
 
+    }).then(items => {
+        return {
+            accounts: _accounts,
+            items: items
+        }
     })
   })
 }
@@ -216,6 +252,22 @@ export const removeRegistry = (address, cb) => {
     return contract.deleteRegistry(address, { from: web3.eth.accounts[0] });
   })
 } 
+
+
+export const getFieldByHash = (ipfsHash) => {
+    return new Promise(resolve => {
+        ipfs.get(ipfsHash, (err, files) => {
+            const buf = files[0].content;
+            var abi = JSON.parse(JSON.parse(buf.toString()));
+            var fields = abi.filter(x => x.name === 'entries')[0].outputs;
+            fields = fields.filter(x => x.name !== 'metainformation' && x.name !== 'owner' && x.name !== 'lastUpdateTime');        
+            resolve({
+                abi,
+                fields
+            })
+        });
+    })
+}
 
 
 export const getContractByAbi = (address, abi) => {
@@ -234,14 +286,14 @@ export const getContractByAbi = (address, abi) => {
 export const getItems2 = (contract, count, array, mapFn) => {
   return new Promise(resolve => {
     contract[count]((e, lengthData) => {
-      console.log(e, lengthData)
+      console.log(e, lengthData.toNumber())
       const length = lengthData.toNumber();
       let promises = [];
           for(let i =0; i < length; i++) {
             promises.push(new Promise((itemResolve, itemReject) => {
               contract[array](i, (e, r) => {
                 if (e) itemReject(e)
-                  else itemResolve(r);
+                  else itemResolve(r, i);
               })
             }));
           }
@@ -299,4 +351,266 @@ export const saveInIPFS = (jsonStr) => {
   })
 }
 
+// Public API
+
+
+
+let _bytecode;
+let _ipfsHash;
+export const createRegistry = (name, symbol, fields) => {
+    const code = generateContractCode(name, fields);
+
+    return new Promise((resolve, reject) => {
+        loadCompiler((compiler) => {
+            compileRegistry(code, name, compiler)
+                .then(({ abi, bytecode }) => {
+                    _bytecode = bytecode
+                    return saveInIPFS(abi)
+                })
+                .then(ipfsHash => {
+                    _ipfsHash = ipfsHash;
+                    return getContract()
+                    
+                })
+                .then(({ contract, web3, accounts }) => {
+                    contract.getRegistrationFee(function(e, data) {
+                    
+                    var buildingFee = data.toNumber();
+                    // console.log(' buildingFee ', buildingFee);
+
+
+                        // _ipfsHash,
+                        // _bytecode, 
+
+                    contract.registerRegistry.sendTransaction(
+                        "V1",
+                        [accounts[0]], [100], name, symbol, 
+                        { 
+                            value: buildingFee,
+                            //_web3.toWei(0.001, 'ether'), 
+                            // gas: 10000000, 
+                            // gasPrice: 15
+                            // from: _accounts[0],
+                            // Function: function(e, data) {
+                            //     debugger
+                            // }
+                        },
+                        function(e, data, a, b){  
+                            // debugger
+                            if (e) {
+                                reject(e)
+                            } else {
+                                // console.log(data)
+                                // const registry = web3.eth.contract(Registry.abi).at(data);
+
+                                // registry.initializeRegistry(_ipfsHash, _bytecode, function(e, data) {
+                                //     debugger
+                                // })
+                                var event = contract.RegistryRegistered();
+
+                                event.watch((ee, results) => {
+                                    event.stopWatching();
+                                    // debugger
+                                    if (ee) {
+                                        reject(ee)
+                                    } else {
+                                        console.log('>> ', results.args)
+                                        const registry = web3.eth.contract(Registry.abi).at(results.args.registryAddress);
+                                        registry.initializeRegistry(_ipfsHash, _bytecode, function(e, data) {
+                                            resolve(results.args)
+                                        })
+                                    }
+                                })                                
+                            }
+                        }
+                    )
+                    })
+                }).catch(reject)
+        })        
+    })
+}
+
+let _contract;
+let _web3;
+let _accounts;
+
+import Registry from '../../../build/contracts/Registry.json';
+
+
+export const init = () => {
+    return new Promise(resolve => {
+        if (_web3) {
+            resolve({
+                contract: _contract,
+                web3: _web3,
+                accounts: _accounts                
+            })
+        } else {
+            getContract()
+                .then(({ contract, web3, accounts }) => {
+                    // debugger
+                    _contract = contract;
+                    _web3 = web3;
+                    _accounts = accounts;
+                    resolve({
+                        contract,
+                        web3,
+                        accounts
+                    })
+                })           
+        }
+     })
+}
+
+export const getRegistryByAddress = (address) => {
+    return _web3.eth.contract(Registry.abi).at(address);
+}
+
+export const getRegistryData = (address, fields, abi) => {
+    return new Promise(resolve => {
+        const registry = _web3.eth.contract(Registry.abi).at(address);
+
+        registry.getEntriesStorage((e, entryAddress) => {
+            
+
+            const entryCore = _web3.eth.contract(abi).at(entryAddress);
+
+            const mapFn = (item, index2) => {
+              const aItem = Array.isArray(item) ? item : [item];
+              return fields.reduce((o, field, index) => {
+                o[field.name] = aItem[index]; 
+                return o;
+              },{ __index: index2 })
+            }
+            
+            getItems2(entryCore, 'entriesAmount', 'entryInfo', mapFn)
+                .then(items => {
+                    registry.getEntryCreationFee((e, data) => {
+                        var fee = data.toNumber();
+
+                        // //return owner for each item by index
+                        // const pp = items.map((d, index) => new Promise((resolve) => 
+                        //         registry.getEntryMeta(index, (e, metaData) => 
+                        //             resolve({ ...d, owner: metaData[0]})
+                        //         )
+                        //     )
+                        // )
+
+                        // Promise.all(pp).then(newItems => {
+                        //     resolve({
+                        //         fee,
+                        //         items: newItems,
+                        //         fields
+                        //     }) 
+                        // })
+                        
+                        resolve({
+                            fee,
+                            items: items,
+                            fields
+                        })
+                    })
+                });
+        })
+    })
+}
+
+export const getEntryMeta = () => {
+
+}
+
+
+
+export const removeItem = (address, id) => {
+    return new Promise(resolve => {
+        const registryContract = _web3.eth.contract(Registry.abi).at(address);
+
+        var event = registryContract.EntryDeleted();
+        event.watch((e, results) => {
+            event.stopWatching();
+            resolve(results.args);
+        }) 
+        registryContract.deleteEntry(id, (e, d) => {
+            debugger
+        });       
+    })
+}
+
+export const fundEntry = (address, id, value) => {
+    return new Promise(resolve => {
+        const registryContract = _web3.eth.contract(Registry.abi).at(address);
+
+        var event = registryContract.EntryFunded();
+        event.watch((e, results) => {
+            event.stopWatching();
+            resolve(results.args);
+        }) 
+        registryContract.fundEntry(id, { value: _web3.toWei(value, 'ether') }, (e, d) => {
+
+        });       
+
+    });
+}
+
+export const addItem = (address) => {
+    return new Promise(resolve => {
+        const registryContract = _web3.eth.contract(Registry.abi).at(address);
+
+        var event = registryContract.EntryCreated();
+
+        event.watch((e, results) => {
+            event.stopWatching();
+            // debugger
+            resolve(results.args.entryID.toNumber());
+        })
+
+        registryContract.getEntryCreationFee((e, data) => {
+            var fee = data.toNumber();
+
+            registryContract.createEntry({ value: fee }, (e, d) => {
+                // resolve(d);
+            })
+        })
+    });
+        
+}
+
+export const getSafeBalance = (address) => {
+    return new Promise(resolve => {
+        const registryContract = _web3.eth.contract(Registry.abi).at(address);
+        registryContract.safeBalance((e, data) => {
+            resolve(data);
+        })
+    })
+}
+
+export const updateEntryCreationFee = (address, newfee) => {
+    return new Promise((resolve, reject) => {
+        const registry = _web3.eth.contract(Registry.abi).at(address);
+        registry.updateEntryCreationFee(_web3.toWei(newfee, 'ether'), function(e, data){
+            if (e) reject(e)
+                else resolve(data);
+        })
+    })
+}
+
+export const updateItem = (address, ipfsHash, newEntryId, values) => {
+    return new Promise(resolve => {
+        const registryContract = _web3.eth.contract(Registry.abi).at(address);
+
+        getFieldByHash(ipfsHash)
+            .then(({ abi }) => {
+
+            registryContract.getEntriesStorage((e, entryAddress) => {
+                const entryCore = _web3.eth.contract(abi).at(entryAddress);
+
+                var args = [newEntryId, ...values, function(e, dat) {
+                    resolve(dat);
+                }]
+
+                entryCore.updateEntry.apply(entryCore, args)
+            })
+        })
+    });
+}
 
