@@ -67,4 +67,8 @@ contract("OnlyAdmin Registry Entry Crud Tests", (accounts) => {
         await registry.deleteEntry(UNKNOWN_ACCOUNT, newEntryId).should.be.rejected
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     })
+
+    after(async() =>{
+        registry = null
+    })
 })

@@ -27,21 +27,24 @@ contract("Registry Update Settings Tests", (accounts) => {
 
         const newFee = registry.fee * 2
         await registry.updateEntryCreationFee(REGISTRY_ADMIN_ACCOUNT, newFee).should.be.fulfilled
-        await registry.contract.getEntryCreationFee().should.eventually.bignumber.equal(newFee)
+        const result = await registry.contract.getEntryCreationFee()
+        result.should.bignumber.equal(newFee)
     })
 
     it("#1/2 should not allow registry owner to set entry creation fee", async () => {
     
         const newFee = registry.fee * 2
         await registry.updateEntryCreationFee(REGISTRY_OWNER_ACCOUNT, newFee).should.be.rejected
-        await registry.contract.getEntryCreationFee().should.eventually.bignumber.equal(registry.fee)
+        const result = await registry.contract.getEntryCreationFee()
+        result.should.bignumber.equal(registry.fee)
     })
     
     it("#1/3 should not allow unknown account to set entry creation fee", async () => {
     
         const newFee = registry.fee * 2
         await registry.updateEntryCreationFee(UNKNOWN_ACCOUNT, newFee).should.be.rejected
-        await registry.contract.getEntryCreationFee().should.eventually.bignumber.equal(registry.fee)
+        const result = await registry.contract.getEntryCreationFee()
+        result.should.bignumber.equal(registry.fee)
     })
     
     /*  -------------------------------- Registry Description ----------------------  */
@@ -88,5 +91,10 @@ contract("Registry Update Settings Tests", (accounts) => {
         ).should.be.fulfilled
         
         await registry.contract.name().should.eventually.equal(newName)
+    })
+
+    after(async() =>{
+        registry = null
+        registryDefaultDescription = null
     })
 })

@@ -34,5 +34,9 @@ contract("Only Registry can CruD with EntryCore", (accounts) => {
         const entryCore = EntryCore.at(entriesStorageAddress)
         await entryCore.deleteEntry(newEntryId, {from: UNKNOWN_ACCOUNT}).should.be.rejected
     })
+
+    after(async() =>{
+        registry = null
+    })
     
 })

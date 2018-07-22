@@ -220,4 +220,9 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
         await registry.deleteEntry(UNKNOWN_ACCOUNT, newEntryId).should.be.fulfilled
         await registry.containsEntry(newEntryId).should.eventually.equal(false)
     })
+
+
+    after(async() =>{
+        registry = null
+    })
 })
