@@ -1,0 +1,40 @@
+strict digraph {
+  constructor [color=brown]
+  initializeRegistry
+  createEntry [color=brown]
+  _mint
+  push
+  EntryCreated
+  deleteEntry
+  _burn
+  EntryDeleted
+  transferEntryOwnership
+  removeTokenFrom
+  addTokenTo
+  EntryChangedOwner
+  fundEntry [color=purple]
+  transfer
+  EntryFunded
+  claimEntryFunds
+  claim
+  EntryFundsClaimed
+  updateEntryTimestamp
+  getSafeBalance [color=yellow]
+  getEntryMeta [color=yellow]
+  checkAuth [color=yellow]
+  updateName
+  createEntry -> _mint
+  createEntry -> push
+  createEntry -> EntryCreated
+  deleteEntry -> deleteEntry
+  deleteEntry -> _burn
+  deleteEntry -> EntryDeleted
+  transferEntryOwnership -> removeTokenFrom
+  transferEntryOwnership -> addTokenTo
+  transferEntryOwnership -> EntryChangedOwner
+  fundEntry -> transfer
+  fundEntry -> EntryFunded
+  claimEntryFunds -> claim
+  claimEntryFunds -> EntryFundsClaimed
+}
+
