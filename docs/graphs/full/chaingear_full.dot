@@ -1,0 +1,167 @@
+strict digraph {
+  balanceOf [color=yellow]
+  ownerOf [color=yellow]
+  exists [color=yellow]
+  approve
+  getApproved [color=yellow]
+  setApprovalForAll
+  isApprovedForAll [color=yellow]
+  transferFrom
+  safeTransferFrom
+  totalSupply [color=yellow]
+  tokenOfOwnerByIndex [color=yellow]
+  tokenByIndex [color=yellow]
+  name [color=yellow]
+  symbol [color=yellow]
+  tokenURI [color=yellow]
+  onERC721Received
+  mul [color=gray]
+  div [color=gray]
+  sub [color=gray]
+  add [color=gray]
+  isContract [color=gray]
+  ApprovalForAll
+  clearApproval [color=gray]
+  removeTokenFrom [color=gray]
+  addTokenTo [color=gray]
+  Transfer
+  isApprovedOrOwner [color=gray]
+  _mint [color=gray]
+  _burn [color=gray]
+  checkAndCallSafeTransfer [color=gray]
+  ERC721Token
+  _setTokenURI [color=gray]
+  push
+  SplitPayment [color=brown]
+  addPayee [color=gray]
+  fallback [color=brown]
+  claim [color=purple]
+  transfer
+  Ownable
+  transferOwnership
+  OwnershipTransferred
+  constructor
+  changePayeeAddress
+  PayeeAddressChanged
+  getSafeBalance [color=yellow]
+  getAdmin [color=yellow]
+  createEntry [color=brown]
+  deleteEntry
+  transferEntryOwnership
+  fundEntry [color=purple]
+  claimEntryFunds
+  transferAdminRights
+  Destructible [color=brown]
+  destroy
+  selfdestruct
+  destroyAndSend
+  pause
+  Pause
+  unpause
+  Unpause
+  registryInfo [color=yellow]
+  registryBalanceInfo [color=yellow]
+  registriesAmount [color=yellow]
+  addRegistryCreatorVersion
+  updateRegistrationFee
+  updateDescription
+  getRegistryCreatorInfo [color=yellow]
+  getDescription [color=yellow]
+  getRegistrationFee [color=yellow]
+  getSafe [color=yellow]
+  getRegistryPermissions [color=yellow]
+  updateCreateEntryPermissionGroup
+  updateEntryCreationFee
+  updateRegistryDescription
+  addRegistryTag
+  updateRegistryTag
+  removeRegistryTag
+  getEntriesStorage [color=yellow]
+  getInterfaceEntriesContract [color=yellow]
+  getRegistryBalance [color=yellow]
+  getEntryCreationFee [color=yellow]
+  getRegistryDescription [color=yellow]
+  getRegistryTags [color=yellow]
+  getRegistrySafe [color=yellow]
+  getRegistryInitStatus [color=yellow]
+  entriesAmount [color=yellow]
+  EntryCreated
+  EntryDeleted
+  EntryChangedOwner
+  EntryFunded
+  EntryFundsClaimed
+  updateEntryTimestamp
+  getEntryMeta [color=yellow]
+  checkAuth [color=yellow]
+  updateName
+  initializeRegistry
+  create
+  setBuilder
+  getRegistryBuilder [color=yellow]
+  registerRegistry [color=brown]
+  updateRegistryOwnership
+  RegistryChangedOwner
+  unregisterRegistry
+  RegistryUnregistered
+  fundRegistry [color=purple]
+  RegistryFunded
+  RegistryFundsClaimed
+  createRegistry
+  RegistryRegistered
+  setApprovalForAll -> ApprovalForAll
+  transferFrom -> clearApproval
+  transferFrom -> removeTokenFrom
+  transferFrom -> addTokenTo
+  transferFrom -> Transfer
+  safeTransferFrom -> safeTransferFrom
+  safeTransferFrom -> transferFrom
+  _mint -> addTokenTo
+  _mint -> Transfer
+  _burn -> clearApproval
+  _burn -> removeTokenFrom
+  _burn -> Transfer
+  addTokenTo -> addTokenTo
+  addTokenTo -> push
+  removeTokenFrom -> removeTokenFrom
+  _mint -> _mint
+  _mint -> push
+  _burn -> _burn
+  SplitPayment -> addPayee
+  claim -> transfer
+  addPayee -> push
+  transferOwnership -> OwnershipTransferred
+  changePayeeAddress -> PayeeAddressChanged
+  destroy -> selfdestruct
+  destroyAndSend -> selfdestruct
+  pause -> Pause
+  unpause -> Unpause
+  addRegistryTag -> push
+  createEntry -> push
+  createEntry -> _mint
+  createEntry -> EntryCreated
+  deleteEntry -> _burn
+  deleteEntry -> EntryDeleted
+  deleteEntry -> deleteEntry
+  transferEntryOwnership -> removeTokenFrom
+  transferEntryOwnership -> addTokenTo
+  transferEntryOwnership -> EntryChangedOwner
+  fundEntry -> EntryFunded
+  fundEntry -> transfer
+  claimEntryFunds -> EntryFundsClaimed
+  claimEntryFunds -> claim
+  create -> transferOwnership
+  updateRegistryOwnership -> removeTokenFrom
+  updateRegistryOwnership -> addTokenTo
+  updateRegistryOwnership -> RegistryChangedOwner
+  updateRegistryOwnership -> transferAdminRights
+  unregisterRegistry -> _burn
+  unregisterRegistry -> RegistryUnregistered
+  unregisterRegistry -> transferOwnership
+  fundRegistry -> RegistryFunded
+  fundRegistry -> transfer
+  claimEntryFunds -> RegistryFundsClaimed
+  createRegistry -> _mint
+  createRegistry -> RegistryRegistered
+  createRegistry -> transferAdminRights
+}
+

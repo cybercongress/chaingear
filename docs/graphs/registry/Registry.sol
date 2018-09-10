@@ -1,0 +1,1 @@
+../../../contracts/registry/Registry.sol

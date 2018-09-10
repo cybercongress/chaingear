@@ -35,13 +35,13 @@ const generateContractCode = (name, fields) => {
     return '""';
   }
 
-// is EntryBasic, Ownable
+// is EntryInterface, Ownable
 
   return `
 
-import 'EntryBasic.sol';
+import 'EntryInterface.sol';
 
-contract ${name} is EntryBasic, Ownable {
+contract ${name} is EntryInterface, Ownable {
 
 
     struct ${name}Entry {

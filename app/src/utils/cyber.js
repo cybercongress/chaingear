@@ -17,7 +17,7 @@ export const loadCompiler = (cb) => {
 }
 
 
-const EntryBasic = require('../EntryBasic.sol');
+const EntryInterface = require('../EntryInterface.sol');
 
 
 
@@ -25,8 +25,8 @@ export const compileRegistry = (code, contractName, compiler) => {
   return new Promise((resolve, reject) => {
     const input = {
       // 'Chaingeareable.sol': ChaingeareableSource,
-      'EntryBasic.sol': EntryBasic,
-      [contractName]: 'pragma solidity ^0.4.23; ' + code,
+      'EntryInterface.sol': EntryInterface,
+      [contractName]: 'pragma solidity 0.4.24; ' + code,
     };
 
     setTimeout(() => {
@@ -185,6 +185,7 @@ export const getContract = () => {
       // const contract = require('truffle-contract');
       // const registryContract = contract(ChaingearBuild);
       const web3 = results.web3;
+      debugger
       const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks['42'].address);
       // registryContract.setProvider(results.web3.currentProvider);
       results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
@@ -230,11 +231,14 @@ export const getRegistry = () => {
     return getItems2(contract, 'registriesAmount', 'registryInfo', (items) => {
       return ({
         name: items[0],
-        address: items[1],
-        creator: items[2],
-        registrationTimestamp: items[4],
-        ipfsHash: items[5],
-        symbol: 'R1??', //TODO: add symbol to registryInfo method
+        symbol: items[1],
+        address: items[2],
+        creator: items[3],
+        contractVersion: items[4],
+        registrationTimestamp: items[5],
+        ipfsHash: "",
+        // symbol: 'R1??', //TODO: add symbol to registryInfo method
+        admin: items[6]
       })
 
     }).then(items => {
@@ -613,4 +617,3 @@ export const updateItem = (address, ipfsHash, newEntryId, values) => {
         })
     });
 }
-

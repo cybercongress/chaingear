@@ -1,8 +1,57 @@
 pragma solidity 0.4.24;
 
-import "../common/EntryInterface.sol";
-import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
+// File: contracts/common/EntryInterface.sol
 
+contract EntryInterface {
+
+    function entriesAmount() external view returns (uint256);
+    function createEntry() external returns (uint256);
+    function deleteEntry(uint256) external;
+}
+
+// File: openzeppelin-solidity/contracts/ownership/Ownable.sol
+
+/**
+ * @title Ownable
+ * @dev The Ownable contract has an owner address, and provides basic authorization control
+ * functions, this simplifies the implementation of "user permissions".
+ */
+contract Ownable {
+  address public owner;
+
+
+  event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+
+
+  /**
+   * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+   * account.
+   */
+  function Ownable() public {
+    owner = msg.sender;
+  }
+
+  /**
+   * @dev Throws if called by any account other than the owner.
+   */
+  modifier onlyOwner() {
+    require(msg.sender == owner);
+    _;
+  }
+
+  /**
+   * @dev Allows the current owner to transfer control of the contract to a newOwner.
+   * @param newOwner The address to transfer ownership to.
+   */
+  function transferOwnership(address newOwner) public onlyOwner {
+    require(newOwner != address(0));
+    emit OwnershipTransferred(owner, newOwner);
+    owner = newOwner;
+  }
+
+}
+
+// File: contracts/registry/EntryCore.sol
 
 //This is Example of EntryCore
 contract EntryCore is EntryInterface, Ownable {

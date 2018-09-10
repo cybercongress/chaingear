@@ -1,14 +1,16 @@
 pragma solidity 0.4.24;
-import "../common/RegistryBasic.sol";
+import "../common/RegistryInterface.sol";
 
 
 /**
-* @title Contracts which holds logic and struct of data witch describes registry metainformation which
+* @title RegistryBase contract
+* @author cyber•Congress, Valery Litvin (@litvintech)
+* @dev Contracts which holds logic and struct of data witch describes registry metainformation which
 * associated with token, provides views function for registry metainformation.
-* @author cyber•Congress
 * @notice not recommend to use before release!
 */
-//todo rename: we have RegistryBase and RegistryBasic
+
+//todo rename: we have RegistryBase and RegistryInterface
 contract RegistryBase {
     
     /*
@@ -16,30 +18,18 @@ contract RegistryBase {
     */
 
     // @dev Sctruct which describes registry metainformation with balance state and status
-    /*
-    * @param Registry name string
-    * @param Registry contract address
-    * @param Registry creator address
-    * @param Registry version string
-    * @param Registry ABI link string
-    * @param Registry creation timestamp uint
-    * @param Registry admin address
-     */
     struct RegistryMeta {
-        /* string name;
-        string symbol; */
         address contractAddress;
         address creator;
         string version;
         string linkABI;
         uint registrationTimestamp;
-        /* address admin; */
         uint256 currentRegistryBalanceETH;
         uint256 accumulatedRegistryETH;
     }
     
 
-    // @dev Array of registries
+    // @dev Array of registries data
     RegistryMeta[] internal registries;
 
 	/*
@@ -54,15 +44,15 @@ contract RegistryBase {
         uint registryID
     );
 
-    // @dev Events witch signals that Registry' adminship transferred
+    // @dev Events witch signals that Registry adminship transferred
     // @notice that also means associated token transferred too
-    event RegistryTransferred(
+    event RegistryChangedOwner(
          address caller,
          uint256 registyID,
          address newOwner
     );
     
-    // @dev Events witch signals that Registry' unregistered from Chaingear
+    // @dev Events witch signals that Registry unregistered from Chaingear
     // @notice adminship of Registry transfers from Chaingear to Admin
     event RegistryUnregistered(
         address admin,
@@ -70,24 +60,24 @@ contract RegistryBase {
     );
 
 	/*
-	*  View Functions
+	*  External Functions
 	*/
 
     /**
-    * @dev Registy' metainfo getter
-    * @param _registryID uint256 Registry ID
-    * @return string Registy' name
-    * @return address Registy' address
-    * @return address Registy' creator address
-    * @return string Registy' version 
-    * @return uint Registy' creation timestamp
-    * @return string Registy' IPFS hash link to JSON with ABI
-    * @return address Registy' admin address
+    * @dev Registy metainfo getter
+    * @param _registryID uint256 Registry ID, associated ERC721 token ID
+    * @return string Registy name
+    * @return string Registy symbol
+    * @return address Registy address
+    * @return address Registy creator address
+    * @return string Registy version
+    * @return uint Registy creation timestamp
+    * @return address Registy admin address
     */
     function registryInfo(
         uint256 _registryID
     )
-        public
+        external
         view
         returns (
             string,
@@ -97,33 +87,31 @@ contract RegistryBase {
             string,
             uint,
             address
-            /* string */
         )
     {
         address contractAddress = registries[_registryID].contractAddress;
         
         return (
-            RegistryBasic(contractAddress).name(),
-            RegistryBasic(contractAddress).symbol(),
+            RegistryInterface(contractAddress).name(),
+            RegistryInterface(contractAddress).symbol(),
             contractAddress,
             registries[_registryID].creator,
             registries[_registryID].version,
             registries[_registryID].registrationTimestamp,
-            RegistryBasic(contractAddress).getAdmin()
-            /* registries[_registryID].linkABI */
+            RegistryInterface(contractAddress).getAdmin()
         );
     }
     
     /**
-    * @dev Registy' safe stats getter
+    * @dev Registy funding stats getter
     * @param _registryID uint256 Registry ID
-    * @return uint Registy' balance in safe in wei
-    * @return uint Registy' total accumulated balance in safe in wei
+    * @return uint Registy current balance in wei, which stored in Safe
+    * @return uint Registy total accumulated balance in wei
     */
     function registryBalanceInfo(
         uint256 _registryID
     )
-        public
+        external
         view
         returns (
             uint256,
@@ -141,11 +129,9 @@ contract RegistryBase {
     * @return uint256 amounts of Registries
     */
     function registriesAmount()
-        public
+        external
         view
-        returns (
-            uint256
-        )
+        returns (uint256)
     {
         return registries.length;
     }

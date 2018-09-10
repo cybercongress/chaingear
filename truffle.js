@@ -40,7 +40,7 @@ module.exports = {
 
           network_id: 42,
           gasPrice: toWei(10, 'gwei').toNumber(),
-          gas: toWei(7.3, 'mwei').toNumber(),
+          gas: toWei(7.9, 'mwei').toNumber(),
         },
 
         // live: {
@@ -55,7 +55,7 @@ module.exports = {
           host: "127.0.0.1",
           port: 7545,
           network_id: "*",
-          gas: 8000000,
+          gas: 79000000,
           gasPrice: 100000000
         }
     }

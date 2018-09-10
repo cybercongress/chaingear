@@ -7,27 +7,31 @@ import "./RegistryBase.sol";
 
 /**
 * @title Chaingear core contract
-* @author cyber•Congress
-* @dev Storage of core params with setters, getters
+* @author cyber•Congress, Valery Litvin (@litvintech)
+* @dev Storage of core data and setters/getters
 * @notice not recommend to use before release!
 */
+
 contract ChaingearCore is RegistryBase, Destructible, Pausable {
 
 	/*
 	*  Storage
 	*/
     
+    // @dev Mapping which allow control of name uniqueness in metaregistry
     mapping(string => bool) internal registryNamesIndex;
     
+    // @dev Mapping which allow control of symbol uniqueness in metaregistry
     mapping(string => bool) internal registrySymbolsIndex;
 
-    // @dev Short Chaingear description, less than 128 symbols
+    // @dev Short Chaingear's description, less than 128 symbols
     string internal chaingearDescription;
     
-    // @dev Amount that Creator should pay for registry creation
+    // @dev Amount that registrys creator should pay for registry creation/registring
     uint internal registryRegistrationFee;
     
-    address internal registrySafe;
+    // @dev Address of contract where their funds allocates
+    address internal chaingearSafe;
     
     // @dev mapping with address of registry creators with different code base of registries
     mapping (string => address) internal registryAddresses;
@@ -35,48 +39,52 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     // @dev mapping with ipfs links to json with ABI of different registries
     mapping (string => string) internal registryABIsLinks;
     
-    // @dev mapping description of different registries
+    // @dev mapping description of different registries types/versions
     mapping (string => string) internal registryDescriptions;
 
     /*
     *  Events
     */
 
+    // @dev Signals that given Registry funded
     event RegistryFunded(
-        uint ID,
-        address sender
+        uint registryID,
+        address sender,
+        uint amount
     );
     
+    // @dev Signals that given Registry funds claimed by their admin
     event RegistryFundsClaimed(
-        uint ID,
+        uint registryID,
         address claimer,
         uint amout
     );
     
     /*
-    *  Public Functions
+    *  External Functions
     */
 
     /**
-    * @dev Provides funcitonality for adding bytecode different kind of registries
-    * @param _nameOfVersions string which represents name of registry type
-    * @param _addressRegistryCreator address of registry creator for this version
+    * @dev Provides funcitonality for adding fabrics of different kind of registries
+    * @param _nameOfVersion string which represents name of registry type/version
+    * @param _addressRegistryCreator address of registry creator/fabric
     * @param _link string which represents IPFS hash to JSON with ABI of registry 
-    * @param _description string which resprent info about this registry
+    * @param _description string which resprent info about registry fabric type
+    * @notice Only owner of metaregistry/chaingear allowed to add fabrics
     */
     function addRegistryCreatorVersion(
-        string _nameOfVersions, 
+        string _nameOfVersion, 
         address _addressRegistryCreator,
         string _link,
         string _description
     )
-        public
+        external
         onlyOwner
     {
-        // TODO check for uniqueness
-        registryAddresses[_nameOfVersions] = _addressRegistryCreator;
-        registryABIsLinks[_nameOfVersions] = _link;
-        registryDescriptions[_nameOfVersions] = _description;
+        require(registryAddresses[_nameOfVersion] == 0x0);
+        registryAddresses[_nameOfVersion] = _addressRegistryCreator;
+        registryABIsLinks[_nameOfVersion] = _link;
+        registryDescriptions[_nameOfVersion] = _description;
     }
 
 	/*
@@ -84,8 +92,9 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
 	*/
 
     /**
-    * @dev Chaingear' registry fee setter
-    * @param _newFee uint new amount of fee
+    * @dev Chaingear' registry creation/registration fee setter
+    * @param _newFee uint new fee amount
+    * @notice Only owner of metaregistry/chaingear allowed to set fee
     */
     function updateRegistrationFee(
         uint _newFee
@@ -98,8 +107,9 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
 
     /**
     * @dev Chaingear' description setter
-    * @param _description string new description
+    * @param _description string with new description
     * @notice description should be less than 128 symbols
+    * @notice Only owner of metaregistry/chaingear allowed to change description
     */
     function updateDescription(
         string _description
@@ -108,7 +118,7 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         onlyOwner
     {
         uint len = bytes(_description).length;
-        require(len <= 128);
+        require(len <= 256);
 
         chaingearDescription = _description;
     }
@@ -118,16 +128,16 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
 	*/
     
     /**
-    * @dev Provides funcitonality for adding bytecode different kind of registries
-    * @param _version address which represents name of registry type
-    * @return _addressRegistryCreator address of registry creator for this version
+    * @dev Allows get information about given version of registry fabric
+    * @param _nameOfVersion address which represents name of registry type
+    * @return _addressRegistryCreator address of registry fabric for this version
     * @return _link string which represents IPFS hash to JSON with ABI of registry 
-    * @return _description string which resprent info about this registry
+    * @return _description string which resprent info about this registry 
     */
     function getRegistryCreatorInfo(
-        string _version
+        string _nameOfVersion
     ) 
-        public
+        external
         view
         returns (
             address _addressRegistryCreator,
@@ -136,18 +146,18 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         )
     {
         return(
-            registryAddresses[_version],
-            registryABIsLinks[_version],
-            registryDescriptions[_version]
+            registryAddresses[_nameOfVersion],
+            registryABIsLinks[_nameOfVersion],
+            registryDescriptions[_nameOfVersion]
         );
     }
 
     /**
-    * @dev Chaingear' description getter
+    * @dev Chaingear description getter
     * @return string description of Chaingear
     */
     function getDescription()
-        public
+        external
         view
         returns (string)
     {
@@ -155,30 +165,38 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     }
 
     /**
-    * @dev Chaingear' registration fee getter
+    * @dev Chaingear registration fee getter
     * @return uint amount of fee in wei
     */
     function getRegistrationFee()
-        public
+        external
         view
         returns (uint)
     {
         return registryRegistrationFee;
     }
     
+    /**
+    * @dev Safe balence getter
+    * @return uint amount of fee in wei
+    */
     function getSafeBalance()
-        public
+        external
         view
-        returns (uint balance)
+        returns (uint)
     {
-        return address(registrySafe).balance;
+        return address(chaingearSafe).balance;
     }
     
+    /**
+    * @dev Safe contract address getter
+    * @return uint amount of fee in wei
+    */
     function getSafe()
-        public
+        external
         view
         returns (address)
     {
-        return registrySafe;
+        return chaingearSafe;
     }
 }

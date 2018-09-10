@@ -5,9 +5,10 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 /**
-* @title Registry Creator engine
+* @title Registry Creator engine/fabric
 * @author cyber•Congress
-* @dev Allows setted Chaingear contract create new Registries via this proxy contract
+* @dev Allows to Chaingear contract as builder create new Registries
+* @dev with codebase which imported and deployed with this fabric
 * @notice not recommend to use before release!
 */
 contract RegistryCreator is Ownable {
@@ -25,32 +26,31 @@ contract RegistryCreator is Ownable {
 
     /**
     * @dev Contructor of RegistryCreators
-    * @notice setting 0x0, than whet creating Chaingear pass RegistryCreator address
-    * @notice after that need to set up builder, Chaingear address
+    * @notice setting 0x0, then allows to owner to set builder/Chaingear
+    * @notice after deploying needs to set up builder/Chaingear address
     */
     constructor()
         public
     {
         builder = 0x0;
     }
+    
+    /**
+    * @dev Disallows direct send by settings a default function without the `payable` flag.
+    */
+    function() external {}
 
 	/*
 	* @dev External Functions
 	*/
     
     /**
-    * @dev Disallows direct send by settings a default function without the `payable` flag.
-    */
-    function() external {
-    }
-
-    /**
     * @dev Allows chaingear (builder) create new registry
     * @param _benefitiaries address[] array of beneficiaries addresses
     * @param _shares uint256[] array of shares amont ot each beneficiary
     * @param _name string name of Registry and token
     * @param _symbol string symbol of Registry and token
-    * @return address of new registry
+    * @return address Address of new initialized Registry
     */
     function create(
         address[] _benefitiaries,
@@ -59,61 +59,34 @@ contract RegistryCreator is Ownable {
         string _symbol
     )
         external
-        returns (address newRegistryContract)
+        returns (address)
     {
         require(msg.sender == builder);
 
-        newRegistryContract = createRegistry(
+        address registryContract = new Registry(
             _benefitiaries,
             _shares,
             _name,
             _symbol
         );
+        //Fabric as owner transfers ownership to Chaingear contract after creation
+        Registry(registryContract).transferOwnership(builder);
 
-        return newRegistryContract;
+        return registryContract;
     }
 
     /**
-    * @dev Registry builder setter
+    * @dev Registry builder setter, owners sets Chaingear address
     * @param _builder address
     */
-    function setBuilder(address _builder)
+    function setBuilder(
+        address _builder
+    )
         external
         onlyOwner
     {
+        require(_builder != 0x0);
         builder = _builder;
-    }
-
-	/*
-	*  Private Functions
-	*/
-
-    /**
-    * @dev Private funtcion for new Registry creation
-    * @param _benefitiaries address[] array of beneficiaries addresses
-    * @param _shares uint256[] array of shares amont ot each beneficiary
-    * @param _name string name of Registry and token
-    * @param _symbol string symbol of Registry and token
-    * @return address of new registry 
-    */
-    function createRegistry(
-        address[] _benefitiaries,
-        uint256[] _shares,
-        string _name,
-        string _symbol
-    )
-        private
-        returns (address registryContract)
-    {
-        registryContract = new Registry(
-            _benefitiaries,
-            _shares,
-            _name,
-            _symbol
-        );
-        Registry(registryContract).transferOwnership(msg.sender);
-
-        return registryContract;
     }
 
 	/*
@@ -125,11 +98,9 @@ contract RegistryCreator is Ownable {
     * @return address of setted Registry builder (Chaingear contract)
     */
     function getRegistryBuilder()
-        public
+        external
         view
-        returns (
-            address
-        )
+        returns (address)
     {
         return builder;
     }

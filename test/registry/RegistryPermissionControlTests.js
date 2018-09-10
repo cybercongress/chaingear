@@ -15,7 +15,7 @@ contract("RegistryPermissionControlTestContract", (accounts) => {
 
     before(async () => {
         contract = await RegistryPermissionControlTestContract.new({from: OWNER_ACCOUNT})
-        contract.changeAdmin(ADMIN_ACCOUNT, {from: OWNER_ACCOUNT})
+        contract.transferAdminRights(ADMIN_ACCOUNT, {from: OWNER_ACCOUNT})
     });
 
     it("#1/1 should allow registry admin to set entry creation permission group", async () => {

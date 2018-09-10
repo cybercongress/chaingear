@@ -61,9 +61,9 @@ contract Ownable {
   }
 }
 
-// File: contracts/common/EntryBasic.sol
+// File: contracts/common/EntryInterface.sol
 
-contract EntryBasic {
+contract EntryInterface {
 
     function entriesAmount() public view returns (uint256);
     function createEntry() public returns (uint256);

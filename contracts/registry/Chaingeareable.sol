@@ -4,9 +4,10 @@ import "./RegistryPermissionControl.sol";
 
 
 /**
-* @title Entries processor for Chaingear
-* @author Cyber•Congress
-* @dev not recommend to use before release!
+* @title Chaingeareable
+* @author cyber•Congress, Valery Litvin (@litvintech)
+* @dev Storage of core data and setters/getters
+* @notice not recommend to use before release!
 */
 contract Chaingeareable is RegistryPermissionControl {
     
@@ -14,25 +15,32 @@ contract Chaingeareable is RegistryPermissionControl {
     *  Storage
     */
     
-    // @dev initiate entry creation fee uint
+    // @dev entry creation fee 
     uint internal entryCreationFee;
-    // @dev initiate Registry description string
+    
+    // @dev registry description string
     string internal registryDescription;
-    // @dev initiate Registry tags bytes32[]
+    
+    // @dev registry tags
     bytes32[] internal registryTags;
-    // @dev initiate address of entry base
+    
+    // @dev address of EntryCore contract, which specifies data schema and operations
     address internal entriesStorage;
-    // @dev initiate link to ABI of entries contract
+    
+    // @dev link to IPFS hash to ABI of EntryCore contract
     string internal linkToABIOfEntriesContract;
-    // @dev initiate address of Registry safe
+    
+    // @dev address of Registry safe where funds store
     address internal registrySafe;
 
+    // @dev state of was registry initialized with EntryCore or not
     bool internal registryInitStatus;
 
     /*
     *  Modifiers
     */
 
+    // @dev don't allow to call registry entry functions before initialization
     modifier registryInitialized {
         require(registryInitStatus == true);
         _;
@@ -42,26 +50,32 @@ contract Chaingeareable is RegistryPermissionControl {
     *  Events
     */
 
+    // @dev Signals that new entry-token added to Registry
     event EntryCreated(
-        address creator,
-        uint entryID
+        uint entryID,
+        address creator
     );
 
+    // @dev Signals that entry-token changed owner
     event EntryChangedOwner(
         uint entryID,
         address newOwner
     );
 
+    // @dev Signals that entry-token deleted 
     event EntryDeleted(
-        address owner,
-        uint entryID
+        uint entryID,
+        address owner
     );
 
+    // @dev Signals that entry-token funded with given amount
     event EntryFunded(
         uint entryID,
-        address funder
+        address funder,
+        uint amount
     );
 
+    // @dev Signals that entry-token funds claimed by owner with given amount
     event EntryFundsClaimed(
         uint entryID,
         address owner,
@@ -73,8 +87,8 @@ contract Chaingeareable is RegistryPermissionControl {
     */
 
     /**
-    * @dev entry creation fee setter
-    * @param _fee uint
+    * @dev Allows admin set new registration fee, which entry creators should pay
+    * @param _fee uint In wei which should be payed for creation/registration
     */
     function updateEntryCreationFee(
         uint _fee
@@ -86,8 +100,9 @@ contract Chaingeareable is RegistryPermissionControl {
     }
 
     /**
-    * @dev Registry description setter
-    * @param _registryDescription string
+    * @dev Allows admin update registry description
+    * @param _registryDescription string Which represents description
+    * @notice Length of description should be less than 256 bytes
     */
     function updateRegistryDescription(
         string _registryDescription
@@ -102,8 +117,9 @@ contract Chaingeareable is RegistryPermissionControl {
     }
 
     /**
-    * @dev add tags for Registry
-    * @param _tag bytes32
+    * @dev Allows admin to add tag to registry
+    * @param _tag bytes32 Tag
+    * @notice Tags amount should be less than 16
     */
     function addRegistryTag(
         bytes32 _tag
@@ -112,41 +128,37 @@ contract Chaingeareable is RegistryPermissionControl {
         onlyAdmin
     {
         require(_tag.length <= 16);
-
         registryTags.push(_tag);
     }
 
     /**
-    * @dev Registry tag setter
-    * @param _index uint256
-    * @param _tag bytes32
+    * @dev Allows admin to update update specified tag
+    * @param _index uint16 Index of tag to update
+    * @param _tag bytes32 New tag value
     */
     function updateRegistryTag(
-        uint256 _index,
+        uint16 _index,
         bytes32 _tag
     )
         external
         onlyAdmin
     {
         require(_tag.length <= 16);
+        require(_index <= registryTags.length-1);
 
         registryTags[_index] = _tag;
     }
 
     /**
-    * @dev remove tag from Registry
-    * @param _index uint256
-    * @param _tag bytes32
+    * @dev Remove registry tag
+    * @param _index uint16 Index of tag to delete
     */
     function removeRegistryTag(
-        uint256 _index,
-        bytes32 _tag
+        uint16 _index
     )
         external
         onlyAdmin
     {
-        require(_tag.length <= 16);
-
         uint256 lastTagIndex = registryTags.length - 1;
         bytes32 lastTag = registryTags[lastTagIndex];
 
@@ -160,109 +172,109 @@ contract Chaingeareable is RegistryPermissionControl {
     */
 
     /**
-    * @dev entry base address getter
-    * @return address of entry base
+    * @dev Allows to get EntryCore contract which specified entry schema and operations
+    * @return address of that contract
     */
     function getEntriesStorage()
-        public
+        external
         view
-        returns (
-            address
-        )
+        returns (address)
     {
         return entriesStorage;
     }
 
     /**
-    * @dev link to ABI of entries contract getter
-    * @return string link to ABI of entries contract
+    * @dev Allows to get link interface of EntryCore contract
+    * @return string with IPFS hash to JSON with ABI
     */
     function getInterfaceEntriesContract()
-        public
+        external
         view
-        returns (
-            string
-        )
+        returns (string)
     {
         return linkToABIOfEntriesContract;
     }
 
     /**
-    * @dev Registry balance getter
-    * @return uint balance uint
+    * @dev Allows to get registry balance which represents accumulated fees for entry creations
+    * @return uint Amount in wei accumulated in Registry Contract
     */
     function getRegistryBalance()
-        public
+        external
         view
-        returns (
-            uint
-        )
+        returns (uint)
     {
         return address(this).balance;
     }
 
     /**
-    * @dev entry creation fee getter
-    * @return uint creation fee uint
+    * @dev Allows to check which amount fee needed for entry creation/registration
+    * @return uint Current amount in wei needed for registration
     */
     function getEntryCreationFee()
-        public
+        external
         view
-        returns (
-            uint
-        )
+        returns (uint)
     {
         return entryCreationFee;
     }
 
     /**
-    * @dev Registry description getter
-    * @return string description 
+    * @dev Allows to get description of Registry
+    * @return string which represents description 
     */
     function getRegistryDescription()
-        public
+        external
         view
-        returns (
-            string
-        )
+        returns (string)
     {
         return registryDescription;
     }
 
     /**
-    * @dev Registry tags getter
-    * @return bytes32[]
+    * @dev Allows to get Registry Tags
+    * @return bytes32[] array of tags
     */
     function getRegistryTags()
-        public
+        external
         view
-        returns (
-            bytes32[]
-        )
+        returns (bytes32[])
     {
         return registryTags;
     }
 
     /**
-    * @dev safe Registry
-    * @return address of Registry safe
+    * @dev Allows to get address of Safe which Registry control (owns)
+    * @return address of Safe contract
     */
     function getRegistrySafe()
-        public
+        external
         view
-        returns (
-            address
-        )
+        returns (address)
     {
         return registrySafe;
     }
     
-    function getRegistryInitStatus()
-        public
+    /**
+    * @dev Allows to get amount of funds aggregated in Safe
+    * @return uint Amount of funds in wei
+    */
+    function getSafeBalance()
+        external
         view
-        returns (
-            bool
-        )
+        returns (uint balance)
+    {
+        return address(registrySafe).balance;
+    }
+    
+    /**
+    * @dev Allows to check state of Registry init with EntryCore
+    * @return bool Yes/No
+    */
+    function getRegistryInitStatus()
+        external
+        view
+        returns (bool)
     {
         return registryInitStatus;
     }
