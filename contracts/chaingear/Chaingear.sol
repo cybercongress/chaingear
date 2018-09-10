@@ -100,31 +100,27 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
             _symbol
         );
     }
-
-    /**
-    * @dev Allows transfer adminship of Registry to new admin
-    * @dev Transfer associated token and set admin of registry to new admin
-    * @param _registryID uint256 Registry-token ID which rights will be transferred
-    * @param _newOwner address Address of new admin
-    */
-    function updateRegistryOwnership(
-        uint256 _registryID,
-        address _newOwner
-    )
-        external
-        onlyOwnerOf(_registryID)
-        whenNotPaused
+    
+    function transferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId
+    ) 
+        public 
+        canTransfer(_tokenId)
     {
-        require(_newOwner != 0x0);
+        require(_from != address(0));
+        require(_to != address(0));
+
+        clearApproval(_from, _tokenId);
+        removeTokenFrom(_from, _tokenId);
+        addTokenTo(_to, _tokenId);
         
-        removeTokenFrom(msg.sender, _registryID);
-        addTokenTo(_newOwner, _registryID);
-        
-        emit RegistryChangedOwner(msg.sender, _registryID, _newOwner);
-        
-        address registryAddress = registries[_registryID].contractAddress;
-        RegistryInterface(registryAddress).transferAdminRights(_newOwner);
-    }
+        address registryAddress = registries[_tokenId].contractAddress;
+        RegistryInterface(registryAddress).transferAdminRights(_to);
+
+        emit Transfer(_from, _to, _tokenId);
+    }  
 
     /**
     * @dev Allows to unregister Registry from Chaingear

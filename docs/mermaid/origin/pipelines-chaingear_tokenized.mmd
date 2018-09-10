@@ -11,7 +11,7 @@ sequenceDiagram
     CC-->>-U1: returns Registry address, Registry Token ID ID=0
     Note over 721, CC: Initializing ERC721 Registry token for User 1 in Chaingear, <br/> creates new Registry and sets User 1 as Registry administrator
     
-    U1->>+CC: updateRegistryOwnership to=User2
+    U1->>+CC: transferFrom to=User2
     CC-->>R: transferAdminRights to=User2
     CC-->721: removeTokenFrom User1
     CC-->-721: addTokenTo User2

@@ -359,14 +359,14 @@ class Register extends Component {
     transferRegistry = (newOwner) => {        
         var registryID = this.getRegistryID();
         cyber.getContract().then(({ contract, web3 }) => {
-            contract.updateRegistryOwnership(registryID, newOwner, (e, data) => {
+            contract.transferFrom(userAccount, newOwner, registryID, (e, data) => {
                 this.componentDidMount();
             })
         })
     }
 
     transferItem = (entryID, newOwner) => {
-        this.state.registryContract.transferEntryOwnership(entryID, newOwner, (e, data) => {
+        this.state.registryContract.transferFrom(userAccount, newOwner, entryID, (e, data) => {
             this.componentDidMount();
         })
     }
@@ -542,4 +542,3 @@ class Register extends Component {
 
 
 export default Register;
-
