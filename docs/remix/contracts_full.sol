@@ -1240,7 +1240,6 @@ contract RegistryInterface {
     function getAdmin() external view returns (address);
     function createEntry() external payable returns (uint256);
     function deleteEntry(uint256 _entryId) external;
-    function transferEntryOwnership(uint256 _entryId, address _newOwner) external;
     function fundEntry(uint256 _entryId) external payable;
     function claimEntryFunds(uint256 _entryId, uint _amount) external;
     function transferAdminRights(address _newOnwer) public;
@@ -1319,7 +1318,6 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
 
     // @dev Metadata of entry, holds ownership data and funding info
     struct EntryMeta {
-        address owner;
         address creator;
         uint createdAt;
         uint lastUpdateTime;
@@ -1389,7 +1387,6 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         {
             lastUpdateTime: block.timestamp,
             createdAt: block.timestamp,
-            owner: msg.sender,
             creator: msg.sender,
             currentEntryBalanceETH: 0,
             accumulatedOverallEntryETH: 0
@@ -1439,29 +1436,24 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         EntryInterface(entriesStorage).deleteEntry(entryIndex);
     }
 
-    /**
-    * @dev Delegate entry tokenized ownership to new owner
-    * @param _entryID uint256 Entry-token ID
-    * @param _newOwner address of new owner
-    */
-    function transferEntryOwnership(
-        uint _entryID, 
-        address _newOwner
-    )
-        external
+    function transferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId
+    ) 
+        public 
+        canTransfer(_tokenId)
         registryInitialized
-        onlyOwnerOf(_entryID)
-        whenNotPaused
     {
-        require(_newOwner != 0x0);
-        
-        entriesMeta[_entryID].owner = _newOwner;
+        require(_from != address(0));
+        require(_to != address(0));
 
-        removeTokenFrom(msg.sender, _entryID);
-        addTokenTo(_newOwner, _entryID);
+        clearApproval(_from, _tokenId);
+        removeTokenFrom(_from, _tokenId);
+        addTokenTo(_to, _tokenId);
 
-        emit EntryChangedOwner(_entryID, _newOwner);
-    }
+        emit Transfer(_from, _to, _tokenId);
+    }  
 
     /**
     * @dev Allows anyone fund specified entry
@@ -1539,7 +1531,7 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         )
     {
         return(
-            entriesMeta[_entryID].owner,
+            ownerOf(_entryID),
             entriesMeta[_entryID].creator,
             entriesMeta[_entryID].createdAt,
             entriesMeta[_entryID].lastUpdateTime,
@@ -2168,31 +2160,27 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
             _symbol
         );
     }
-
-    /**
-    * @dev Allows transfer adminship of Registry to new admin
-    * @dev Transfer associated token and set admin of registry to new admin
-    * @param _registryID uint256 Registry-token ID which rights will be transferred
-    * @param _newOwner address Address of new admin
-    */
-    function updateRegistryOwnership(
-        uint256 _registryID,
-        address _newOwner
-    )
-        external
-        onlyOwnerOf(_registryID)
-        whenNotPaused
+    
+    function transferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId
+    ) 
+        public 
+        canTransfer(_tokenId)
     {
-        require(_newOwner != 0x0);
+        require(_from != address(0));
+        require(_to != address(0));
+
+        clearApproval(_from, _tokenId);
+        removeTokenFrom(_from, _tokenId);
+        addTokenTo(_to, _tokenId);
         
-        removeTokenFrom(msg.sender, _registryID);
-        addTokenTo(_newOwner, _registryID);
-        
-        emit RegistryChangedOwner(msg.sender, _registryID, _newOwner);
-        
-        address registryAddress = registries[_registryID].contractAddress;
-        RegistryInterface(registryAddress).transferAdminRights(_newOwner);
-    }
+        address registryAddress = registries[_tokenId].contractAddress;
+        RegistryInterface(registryAddress).transferAdminRights(_to);
+
+        emit Transfer(_from, _to, _tokenId);
+    }  
 
     /**
     * @dev Allows to unregister Registry from Chaingear
@@ -2381,6 +2369,11 @@ contract EntryCore is EntryInterface, Ownable {
         
         // for uniq check example
         require(entryExpensiveStringIndex[_newString] == false);
+        // for uniq check example
+        entryExpensiveStringIndex[_newString] = true;
+        string storage lastIndexValue = entries[_entryID].expensiveString;
+        entryExpensiveStringIndex[lastIndexValue] = false;
+        
             
         Entry memory m = (Entry({
             expensiveAddress: _newAddress,
@@ -2389,9 +2382,6 @@ contract EntryCore is EntryInterface, Ownable {
             expensiveString: _newString
         }));
         entries[_entryID] = m;
-        
-        // for uniq check example
-        entryExpensiveStringIndex[_newString] = true;
         
         require(owner.call(bytes4(keccak256("updateEntryTimestamp(uint256)")), _entryID));
     }

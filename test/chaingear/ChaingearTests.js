@@ -187,9 +187,10 @@ contract("Chaingear", (accounts) => {
         
         const registry = Registry.at(registryAddress)
         
-        await chaingear.updateRegistryOwnership(
-            ID.toNumber(),
+        await chaingear.transferFrom(
+            RANDOM_CREATOR_1,
             RANDOM_CREATOR_2,
+            ID.toNumber(),
             {
                 from: RANDOM_CREATOR_1
             }
@@ -212,9 +213,10 @@ contract("Chaingear", (accounts) => {
         
         const registry = Registry.at(registryAddress)
         
-        await chaingear.updateRegistryOwnership(
-            ID.toNumber(),
+        await chaingear.transferFrom(
+            RANDOM_CREATOR_2,
             UNKNOWN,
+            ID.toNumber(),
             {
                 from: UNKNOWN
             }

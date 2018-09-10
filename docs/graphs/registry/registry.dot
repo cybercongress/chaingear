@@ -8,10 +8,11 @@ strict digraph {
   deleteEntry
   _burn
   EntryDeleted
-  transferEntryOwnership
+  transferFrom
+  clearApproval
   removeTokenFrom
   addTokenTo
-  EntryChangedOwner
+  Transfer
   fundEntry [color=purple]
   EntryFunded
   transfer
@@ -29,9 +30,10 @@ strict digraph {
   deleteEntry -> _burn
   deleteEntry -> EntryDeleted
   deleteEntry -> deleteEntry
-  transferEntryOwnership -> removeTokenFrom
-  transferEntryOwnership -> addTokenTo
-  transferEntryOwnership -> EntryChangedOwner
+  transferFrom -> clearApproval
+  transferFrom -> removeTokenFrom
+  transferFrom -> addTokenTo
+  transferFrom -> Transfer
   fundEntry -> EntryFunded
   fundEntry -> transfer
   claimEntryFunds -> EntryFundsClaimed

@@ -2,11 +2,12 @@ strict digraph {
   constructor
   fallback [color=brown]
   registerRegistry [color=brown]
-  updateRegistryOwnership
+  transferFrom
+  clearApproval
   removeTokenFrom
   addTokenTo
-  RegistryChangedOwner
   transferAdminRights
+  Transfer
   unregisterRegistry
   _burn
   RegistryUnregistered
@@ -20,10 +21,11 @@ strict digraph {
   createRegistry
   _mint
   RegistryRegistered
-  updateRegistryOwnership -> removeTokenFrom
-  updateRegistryOwnership -> addTokenTo
-  updateRegistryOwnership -> RegistryChangedOwner
-  updateRegistryOwnership -> transferAdminRights
+  transferFrom -> clearApproval
+  transferFrom -> removeTokenFrom
+  transferFrom -> addTokenTo
+  transferFrom -> transferAdminRights
+  transferFrom -> Transfer
   unregisterRegistry -> _burn
   unregisterRegistry -> RegistryUnregistered
   unregisterRegistry -> transferOwnership

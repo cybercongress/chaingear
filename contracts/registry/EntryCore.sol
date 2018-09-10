@@ -51,6 +51,11 @@ contract EntryCore is EntryInterface, Ownable {
         
         // for uniq check example
         require(entryExpensiveStringIndex[_newString] == false);
+        // for uniq check example
+        entryExpensiveStringIndex[_newString] = true;
+        string storage lastIndexValue = entries[_entryID].expensiveString;
+        entryExpensiveStringIndex[lastIndexValue] = false;
+        
             
         Entry memory m = (Entry({
             expensiveAddress: _newAddress,
@@ -59,9 +64,6 @@ contract EntryCore is EntryInterface, Ownable {
             expensiveString: _newString
         }));
         entries[_entryID] = m;
-        
-        // for uniq check example
-        entryExpensiveStringIndex[_newString] = true;
         
         require(owner.call(bytes4(keccak256("updateEntryTimestamp(uint256)")), _entryID));
     }

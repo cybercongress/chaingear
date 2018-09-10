@@ -28,11 +28,10 @@ sequenceDiagram
     U1->>+EC: entryInfo ID=0
     EC-->>-U1: returns entry information
     
-    U1->>+R: transferEntryOwnership ID=0
+    U1->>+R: transferFrom ID=0
     R-->721: removeTokenFrom ID=0
-    R-->721: addTokenTo ID=0
-    R-->>-EC: updateEntryOwnership
-    Note over U1, R: Transfer token to new owner and sets new onwer in Entry <br/> meta at EntryCore
+    R-->-721: addTokenTo ID=0
+    Note over U1, R: Transfer token to new owner
     
     U2->>EC: updateEntry ID=0
     Note over U2, EC: User 1 as token owner sets fields of Entry object <br/> with provided EntryID

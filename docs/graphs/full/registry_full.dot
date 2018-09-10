@@ -68,12 +68,10 @@ strict digraph {
   entriesAmount [color=yellow]
   createEntry [color=brown]
   deleteEntry
-  transferEntryOwnership
   fundEntry [color=purple]
   claimEntryFunds
   EntryCreated
   EntryDeleted
-  EntryChangedOwner
   EntryFunded
   EntryFundsClaimed
   updateEntryTimestamp
@@ -113,9 +111,6 @@ strict digraph {
   deleteEntry -> _burn
   deleteEntry -> EntryDeleted
   deleteEntry -> deleteEntry
-  transferEntryOwnership -> removeTokenFrom
-  transferEntryOwnership -> addTokenTo
-  transferEntryOwnership -> EntryChangedOwner
   fundEntry -> EntryFunded
   fundEntry -> transfer
   claimEntryFunds -> EntryFundsClaimed

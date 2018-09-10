@@ -47,7 +47,6 @@ strict digraph {
   getAdmin [color=yellow]
   createEntry [color=brown]
   deleteEntry
-  transferEntryOwnership
   fundEntry [color=purple]
   claimEntryFunds
   transferAdminRights
@@ -87,7 +86,6 @@ strict digraph {
   entriesAmount [color=yellow]
   EntryCreated
   EntryDeleted
-  EntryChangedOwner
   EntryFunded
   EntryFundsClaimed
   updateEntryTimestamp
@@ -99,8 +97,6 @@ strict digraph {
   setBuilder
   getRegistryBuilder [color=yellow]
   registerRegistry [color=brown]
-  updateRegistryOwnership
-  RegistryChangedOwner
   unregisterRegistry
   RegistryUnregistered
   fundRegistry [color=purple]
@@ -142,18 +138,12 @@ strict digraph {
   deleteEntry -> _burn
   deleteEntry -> EntryDeleted
   deleteEntry -> deleteEntry
-  transferEntryOwnership -> removeTokenFrom
-  transferEntryOwnership -> addTokenTo
-  transferEntryOwnership -> EntryChangedOwner
   fundEntry -> EntryFunded
   fundEntry -> transfer
   claimEntryFunds -> EntryFundsClaimed
   claimEntryFunds -> claim
   create -> transferOwnership
-  updateRegistryOwnership -> removeTokenFrom
-  updateRegistryOwnership -> addTokenTo
-  updateRegistryOwnership -> RegistryChangedOwner
-  updateRegistryOwnership -> transferAdminRights
+  transferFrom -> transferAdminRights
   unregisterRegistry -> _burn
   unregisterRegistry -> RegistryUnregistered
   unregisterRegistry -> transferOwnership
