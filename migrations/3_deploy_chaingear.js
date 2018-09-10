@@ -7,7 +7,7 @@ module.exports = function(deployer, network, accounts) {
     var creator
     
     
-    if (network == 'live') {
+    if (network == 'live' || 'kovan') {
         // TODO: adjust parameters
         BUILDING_FEE = 0
         BENEFICIARIES = []
