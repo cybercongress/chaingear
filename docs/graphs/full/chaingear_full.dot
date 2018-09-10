@@ -34,23 +34,23 @@ strict digraph {
   push
   SplitPayment [color=brown]
   addPayee [color=gray]
-  fallback
+  fallback [color=brown]
   claim [color=purple]
   transfer
   Ownable
   transferOwnership
   OwnershipTransferred
-  constructor [color=brown]
+  constructor
   changePayeeAddress
   PayeeAddressChanged
+  getSafeBalance [color=yellow]
+  getAdmin [color=yellow]
   createEntry [color=brown]
-  transferAdminRights
   deleteEntry
   transferEntryOwnership
   fundEntry [color=purple]
   claimEntryFunds
-  getSafeBalance [color=yellow]
-  getAdmin [color=yellow]
+  transferAdminRights
   Destructible [color=brown]
   destroy
   selfdestruct
@@ -69,8 +69,8 @@ strict digraph {
   getDescription [color=yellow]
   getRegistrationFee [color=yellow]
   getSafe [color=yellow]
-  updateCreateEntryPermissionGroup
   getRegistryPermissions [color=yellow]
+  updateCreateEntryPermissionGroup
   updateEntryCreationFee
   updateRegistryDescription
   addRegistryTag
@@ -85,7 +85,6 @@ strict digraph {
   getRegistrySafe [color=yellow]
   getRegistryInitStatus [color=yellow]
   entriesAmount [color=yellow]
-  initializeRegistry
   EntryCreated
   EntryDeleted
   EntryChangedOwner
@@ -95,18 +94,19 @@ strict digraph {
   getEntryMeta [color=yellow]
   checkAuth [color=yellow]
   updateName
+  initializeRegistry
   create
   setBuilder
-  createRegistry
   getRegistryBuilder [color=yellow]
   registerRegistry [color=brown]
   updateRegistryOwnership
-  RegistryTransferred
+  RegistryChangedOwner
   unregisterRegistry
   RegistryUnregistered
   fundRegistry [color=purple]
   RegistryFunded
   RegistryFundsClaimed
+  createRegistry
   RegistryRegistered
   setApprovalForAll -> ApprovalForAll
   transferFrom -> clearApproval
@@ -136,32 +136,32 @@ strict digraph {
   pause -> Pause
   unpause -> Unpause
   addRegistryTag -> push
-  createEntry -> _mint
   createEntry -> push
+  createEntry -> _mint
   createEntry -> EntryCreated
-  deleteEntry -> deleteEntry
   deleteEntry -> _burn
   deleteEntry -> EntryDeleted
+  deleteEntry -> deleteEntry
   transferEntryOwnership -> removeTokenFrom
   transferEntryOwnership -> addTokenTo
   transferEntryOwnership -> EntryChangedOwner
-  fundEntry -> transfer
   fundEntry -> EntryFunded
-  claimEntryFunds -> claim
+  fundEntry -> transfer
   claimEntryFunds -> EntryFundsClaimed
-  createRegistry -> transferOwnership
-  updateRegistryOwnership -> transferAdminRights
+  claimEntryFunds -> claim
+  create -> transferOwnership
   updateRegistryOwnership -> removeTokenFrom
   updateRegistryOwnership -> addTokenTo
-  updateRegistryOwnership -> RegistryTransferred
-  unregisterRegistry -> transferOwnership
+  updateRegistryOwnership -> RegistryChangedOwner
+  updateRegistryOwnership -> transferAdminRights
   unregisterRegistry -> _burn
   unregisterRegistry -> RegistryUnregistered
-  fundRegistry -> transfer
+  unregisterRegistry -> transferOwnership
   fundRegistry -> RegistryFunded
+  fundRegistry -> transfer
   claimEntryFunds -> RegistryFundsClaimed
-  createRegistry -> transferAdminRights
   createRegistry -> _mint
   createRegistry -> RegistryRegistered
+  createRegistry -> transferAdminRights
 }
 

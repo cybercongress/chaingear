@@ -4,12 +4,21 @@ import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "../common/SplitPaymentChangeable.sol";
 import "./Chaingeareable.sol";
-import "../common/EntryBasic.sol";
-import "../common/RegistryBasic.sol";
+import "../common/EntryInterface.sol";
+import "../common/RegistryInterface.sol";
 import "../common/Safe.sol";
 
 
-contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentChangeable {
+/**
+* @title Registry First Type Contract
+* @author cyber•Congress, Valery litvin (@litvintech)
+* @dev This contract in current flow used for Registry creation throught fabric in Chaingear
+* @dev Registry creates ERC721 for each entry, entry may be funded/funds claimed
+* @dev Admin sets contracts (EntrCore) which defines entry schema
+* @dev Entry creation/deletion/update permission are tokenized
+* @notice not recommend to use before release!
+*/
+contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, ERC721Token {
 
     using SafeMath for uint256;
     
@@ -17,6 +26,7 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
     *  Storage
     */
 
+    // @dev Metadata of entry, holds ownership data and funding info
     struct EntryMeta {
         address owner;
         address creator;
@@ -26,12 +36,23 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         uint256 accumulatedOverallEntryETH;
     }
     
+    // @dev Array of associated to entry/token metadata
     EntryMeta[] internal entriesMeta;
 
     /*
     *  Constructor
     */
 
+    /** 
+    * @dev Constructor of Registry, creates from fabric which triggers by chaingear
+    * @param _benefitiaries address[] addresses of Registry benefitiaries
+	* @param _shares uint256[] array with amount of shares by benefitiary
+	* @param _name string Registry name, use for Registry ERC721
+	* @param _symbol string Registry NFT symbol, use for Registry ERC721
+    * @notice sets default entry creation policy to onlyAdmin
+    * @notice sets default creation fee to zero
+    * @notice Registry are inactive till he is not initialized with schema (EntryCore)
+    */
     constructor(
         address[] _benefitiaries,
         uint256[] _shares,
@@ -49,55 +70,29 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         registryInitStatus = false;
     }
     
+    function() public payable {}
+    
     /*
-    *  Public functions
+    *  External functions
     */
-
-    function initializeRegistry(
-        string _linkToABIOfEntriesContract,
-        bytes _entryCore
-    )
-        public
-        onlyAdmin
-        returns (
-            address
-        )
-    {
-        address deployedAddress;
-        assembly {
-            let s := mload(_entryCore)
-            let p := add(_entryCore, 0x20)
-            deployedAddress := create(0, p, s)
-        }
-
-        assert(deployedAddress != 0x0);
-        entriesStorage = deployedAddress;
-        registryInitStatus = true;
-        linkToABIOfEntriesContract = _linkToABIOfEntriesContract;
-        
-        return entriesStorage;
-    }
-
+    
     /**
-    * @dev entry creation
-    * @return uint256
+    * @dev Creates ERC721 and init asscociated epmty entry in EntryCore
+    * @return uint256 ID of ERC721 token
+    * @notice Entry owner should to after token creation and entry init set
+    * @notice entry data throught EntryCore updateEntry() 
+    * @notice This (and deletion) would work if EntryCore correctly written
+    * @notice otherwise nothing should happen with Registry
     */
     function createEntry()
-        public
+        external
         registryInitialized
         onlyPermissionedToCreateEntries
         whenNotPaused
         payable
-        returns (
-            uint256
-        )
+        returns (uint256)
     {
         require(msg.value == entryCreationFee);
-        
-        // TODO check for uniqueness for fields (+protected by uniq field gen)
-        
-        uint256 newEntryId = EntryBasic(entriesStorage).createEntry();
-        _mint(msg.sender, newEntryId);
         
         EntryMeta memory meta = (EntryMeta(
         {
@@ -110,42 +105,35 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         }));
         
         entriesMeta.push(meta);
+        
+        //newEntryID equals current entriesAmount number, because token IDs starts from 0
+        uint256 newEntryID = EntryInterface(entriesStorage).entriesAmount();
+        require(newEntryID == totalSupply());
+        
+        _mint(msg.sender, newEntryID);
+        emit EntryCreated(newEntryID, msg.sender);
+        
+        uint256 createdEntryID = EntryInterface(entriesStorage).createEntry();
+        require(newEntryID == createdEntryID);
 
-        emit EntryCreated(msg.sender, newEntryId);
-
-        return newEntryId;
+        return newEntryID;
     }
 
     /**
-    * @dev delegate tokenized ownership to new admin
-    * @param _newOwner address 
-    */
-    function transferAdminRights(
-        address _newOwner
-    )
-        public
-        onlyOwner
-        whenNotPaused
-    {
-        admin = _newOwner;
-    }
-
-    /**
-    * @dev remove entry from the Regisrty
-    * @param _entryID uint256
+    * @dev Allow entry owner delete Entry-token and also Entry-data in EntryCore
+    * @param _entryID uint256 Entry-token ID
     */
     function deleteEntry(
         uint256 _entryID
     )
-        public
+        external
+        registryInitialized
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
         require(entriesMeta[_entryID].currentEntryBalanceETH == 0);
         
         uint256 entryIndex = allTokensIndex[_entryID];
-        EntryBasic(entriesStorage).deleteEntry(entryIndex);
-        _burn(msg.sender, _entryID);
         
         uint256 lastEntryIndex = entriesMeta.length - 1;
         EntryMeta storage lastEntry = entriesMeta[lastEntryIndex];
@@ -153,105 +141,102 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         entriesMeta[_entryID] = lastEntry;
         delete entriesMeta[lastEntryIndex];
         entriesMeta.length--;
-
-        emit EntryDeleted(msg.sender, _entryID);
+        
+        _burn(msg.sender, _entryID);
+        emit EntryDeleted(_entryID, msg.sender);
+        
+        EntryInterface(entriesStorage).deleteEntry(entryIndex);
     }
 
     /**
-    * @dev delegate entry tokenized ownership to new owner
-    * @param _entryID uint256
-    * @param _newOwner address
+    * @dev Delegate entry tokenized ownership to new owner
+    * @param _entryID uint256 Entry-token ID
+    * @param _newOwner address of new owner
     */
     function transferEntryOwnership(
         uint _entryID, 
         address _newOwner
     )
-        public
+        external
         registryInitialized
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
+        require(_newOwner != 0x0);
+        
         entriesMeta[_entryID].owner = _newOwner;
 
-        super.removeTokenFrom(msg.sender, _entryID);
-        super.addTokenTo(_newOwner, _entryID);
+        removeTokenFrom(msg.sender, _entryID);
+        addTokenTo(_newOwner, _entryID);
 
         emit EntryChangedOwner(_entryID, _newOwner);
     }
 
     /**
-    * @dev entry fund setter
-    * @param _entryID uint256
+    * @dev Allows anyone fund specified entry
+    * @param _entryID uint256 Entry-token ID
+    * @notice Funds tracks in EntryMeta, stores in Registry Safe
     */
     function fundEntry(
         uint256 _entryID
     )
-        public
+        external
         registryInitialized
         whenNotPaused
         payable
     {
         entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.add(msg.value);
         entriesMeta[_entryID].accumulatedOverallEntryETH = entriesMeta[_entryID].accumulatedOverallEntryETH.add(msg.value);
+        emit EntryFunded(_entryID, msg.sender, msg.value);
+        
         registrySafe.transfer(msg.value);
-
-        emit EntryFunded(_entryID, msg.sender);
     }
 
     /**
-    * @dev entry fund claimer
-    * @param _entryID uint256
-    * @param _amount uint
+    * @dev Allows entry token owner claim entry funds
+    * @param _entryID uint256 Entry-token ID
+    * @param _amount uint Amount in wei which token owner claims
+    * @notice Funds tracks in EntryMeta, transfers from Safe to claimer (owner)
     */
     function claimEntryFunds(
         uint256 _entryID, 
         uint _amount
     )
-        public
+        external
         registryInitialized
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
         require(_amount <= entriesMeta[_entryID].currentEntryBalanceETH);
         entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.sub(_amount);
-        Safe(registrySafe).claim(msg.sender, _amount);
-
+        
         emit EntryFundsClaimed(_entryID, msg.sender, _amount);
+        
+        Safe(registrySafe).claim(msg.sender, _amount);
     }
     
-    /*
-    *  External functions
+    /**
+    * @dev Allow to set last entry data update for entry-token meta
+    * @param _entryID uint256 Entry-token ID
+    * @notice Can be (should be) called only by EntryCore (updateEntry)
     */
-    
     function updateEntryTimestamp(
         uint256 _entryID
     ) 
         external
     {
-        require(entriesStorage == msg.sender);
         entriesMeta[_entryID].lastUpdateTime = block.timestamp;
+        require(entriesStorage == msg.sender);
     }
     
     /*
     *  View functions
     */
-
-    /**
-    * @dev safe balance getter
-    * @return uint
-    */
-    function getSafeBalance()
-        public
-        view
-        returns (
-            uint balance
-        )
-    {
-        return address(registrySafe).balance;
-    }
     
-    function getEntryMeta(uint256 _entryID)
-        public
+    function getEntryMeta(
+        uint256 _entryID
+    )
+        external
         view
         returns (
             address,
@@ -272,25 +257,68 @@ contract Registry is RegistryBasic, Chaingeareable, ERC721Token, SplitPaymentCha
         );
     }
     
-    function checkAuth(uint256 _entryID, address _caller)
-        public
+    /**
+    * @dev Verification function which auth user to update specified entry data in EntryCore
+    * @param _entryID uint256 Entry-token ID
+    * @param _caller address of caller which trying to update entry throught EntryCore
+    * @return  
+    */
+    function checkAuth(
+        uint256 _entryID,
+        address _caller
+    )
+        external
         view
-        returns (
-            bool
-        )
+        returns (bool)
     {
         require(ownerOf(_entryID) == _caller);
-        return true;
     }
     
+    /**
+    * @dev Allows update ERC721 token name (Registry Name)
+    * @param _name string which represents name
+    */
     function updateName(
         string _name
     )
-        public
+        external
         onlyAdmin
     {
         name_ = _name;
     }
+    
+    /*
+    *  Public functions
+    */
+
+    /**
+    * @dev Registry admin sets generated by them EntryCore contrats with thier schema and 
+    * @dev needed supported entry-token logic
+    * @param _linkToABIOfEntriesContract string link to IPFS hash which holds EntryCore's ABI
+    * @param _entryCore bytes of contract which holds schema and accociated CRUD functions
+    * @return address of deployed EntryCore
+    */
+    function initializeRegistry(
+        string _linkToABIOfEntriesContract,
+        bytes _entryCore
+    )
+        public
+        onlyAdmin
+        returns (address)
+    {
+        address deployedAddress;
+        assembly {
+            let s := mload(_entryCore)
+            let p := add(_entryCore, 0x20)
+            deployedAddress := create(0, p, s)
+        }
+
+        assert(deployedAddress != 0x0);
+        entriesStorage = deployedAddress;
+        registryInitStatus = true;
+        linkToABIOfEntriesContract = _linkToABIOfEntriesContract;
         
+        return entriesStorage;
+    }
     
 }

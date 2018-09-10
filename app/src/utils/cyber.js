@@ -17,7 +17,7 @@ export const loadCompiler = (cb) => {
 }
 
 
-const EntryBasic = require('../EntryBasic.sol');
+const EntryInterface = require('../EntryInterface.sol');
 
 
 
@@ -25,8 +25,8 @@ export const compileRegistry = (code, contractName, compiler) => {
   return new Promise((resolve, reject) => {
     const input = {
       // 'Chaingeareable.sol': ChaingeareableSource,
-      'EntryBasic.sol': EntryBasic,
-      [contractName]: 'pragma solidity ^0.4.23; ' + code,
+      'EntryInterface.sol': EntryInterface,
+      [contractName]: 'pragma solidity 0.4.24; ' + code,
     };
 
     setTimeout(() => {
@@ -613,4 +613,3 @@ export const updateItem = (address, ipfsHash, newEntryId, values) => {
         })
     });
 }
-

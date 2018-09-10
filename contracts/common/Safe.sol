@@ -3,25 +3,15 @@ pragma solidity 0.4.24;
 
 /**
 * @title Safe contract
-* @author cyber•Congress
-* @dev Allows store etheirs and claim them by owner
+* @author cyber•Congress, Valery Litvin (@litvintech)
+* @dev Allows store etheirs which funded to Registry 
+* @dev and claim them by Registry/associated token via Chaingear
 * @notice not recommend to use before release!
 */
 contract Safe {
     
-    /*
-    *  Storage
-    */
-
     address public owner;
 
-    /*
-    *  Constructor
-    */
-
-    /**
-    * @dev Constructor of contract, payable
-    */
     constructor()
         public
         payable
@@ -29,32 +19,30 @@ contract Safe {
         owner = msg.sender;
     }
 
-    /*
-    *  Public Functions
-    */
-
     /**
     * @dev Allows direct send only by owner.
     */
     function()
-        public
+        external
         payable
     {
         require(msg.sender == owner);
     }
 
     /**
-    * @dev Allows owner (chaingear) claim funds and transfer them to token-entry owner
-    * @param _entryOwner address transfer to, token-entry owner
-    * @param _amount uint claimed amount by token-entry owner
+    * @dev Allows owner (chaingear) claim funds and transfer them to Registry admin
+    * @param _entryOwner address transfer to, Registry-token admin
+    * @param _amount uint claimed amount by Registry-token admin
     */
     function claim(
         address _entryOwner,
         uint256 _amount
     )
-        public
+        external
     {
         require(msg.sender == owner);
+        require(_amount <= address(this).balance);
+        require(_entryOwner != 0x0);
         _entryOwner.transfer(_amount);
     }
 

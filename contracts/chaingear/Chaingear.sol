@@ -3,21 +3,21 @@ pragma solidity 0.4.24;
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "../common/SplitPaymentChangeable.sol";
-import "../common/RegistryBasic.sol";
+import "../common/RegistryInterface.sol";
 import "../common/Safe.sol";
 import "./ChaingearCore.sol";
-
-// TODO: move out
 import "./RegistryCreator.sol";
 
 
 /**
-* @title Chaingear - the most expensive Regisrty
-* @author cyber•Congress
+* @title Chaingear - the most expensive database
+* @author cyber•Congress, Valery litvin (@litvintech)
 * @dev Main metaregistry contract 
+* @notice Proof-of-Concept. Chaingear it's a metaregistry/fabric for Creator Curated Registries
+* @notice where each registry are ERC721.
 * @notice not recommend to use before release!
 */
-contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
+contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
 
     using SafeMath for uint256;
 
@@ -26,13 +26,13 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     */
 
 	/**
-	* @dev Chaingear constructor, pre-deployment of Chaingear
+	* @dev Chaingear constructor
 	* @param _benefitiaries address[] addresses of Chaingear benefitiaries
-	* @param _shares uint256[] array with amount of shares
+	* @param _shares uint256[] array with amount of shares by benefitiary
 	* @param _description string description of Chaingear
-	* @param _registrationFee uint Registration fee for registry creation
-	* @param _chaingearName string Chaingear name
-	* @param _chaingearSymbol string Chaingear symbol
+	* @param _registrationFee uint Fee for registry creation, wei
+	* @param _chaingearName string Chaingear's name, use for chaingear's ERC721
+	* @param _chaingearSymbol string Chaingear's NFT symbol, use for chaingear's ERC721
 	*/
     constructor(
         address[] _benefitiaries,
@@ -45,29 +45,30 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         SplitPaymentChangeable(_benefitiaries, _shares)
         ERC721Token(_chaingearName, _chaingearSymbol)
         public
-        payable
     {
         registryRegistrationFee = _registrationFee;
         chaingearDescription = _description;
-    
-        registrySafe = new Safe();
+        // Only chaingear as owner can transfer either to and out from Safe
+        chaingearSafe = new Safe();
     }
     
+    function() public payable {}
+    
     /*
-    *  Public functions
+    *  External functions
     */
 
     /**
-    * @dev Add and tokenize registry with specified parameters to Chaingear.
+    * @dev Add and tokenize registry with specified parameters.
 	* @dev Registration fee is required to send with tx.
-	* @dev Tx sender become Creator of Registry, chaingear become Owner of Registry
-    * @param _version version of registry code which added to chaingear
+	* @dev Tx sender become Creator/Admin of Registry, Chaingear become Owner of Registry
+    * @param _version version of registry from which Registry will be boostrapped
     * @param _benefitiaries address[] addresses of Chaingear benefitiaries
-    * @param _shares uint256[] array with amount of shares
-    * @param _name string, Registry name
-    * @param _symbol string, Registry symbol
+    * @param _shares uint256[] array with amount of shares by benefitiary
+    * @param _name string, Registry name, use for registry ERC721
+    * @param _symbol string, Registry NFT symbol, use for registry ERC721
     * @return address new Registry contract address
-    * @return uint256 new Registry ID in Chaingear contract, same token ID
+    * @return uint256 new Registry ID in Chaingear contract, ERC721 NFT ID
     */
     function registerRegistry(
         string _version,
@@ -76,7 +77,7 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         string _name,
         string _symbol
     )
-        public
+        external
         payable
         whenNotPaused
         returns (
@@ -86,6 +87,8 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     {
         require(registryAddresses[_version] != 0x0);
         require(registryRegistrationFee == msg.value);
+        
+        //checking uniqueness of name AND symbol of NFT in metaregistry
         require(registryNamesIndex[_name] == false);
         require(registrySymbolsIndex[_symbol] == false);
 
@@ -101,40 +104,43 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     /**
     * @dev Allows transfer adminship of Registry to new admin
     * @dev Transfer associated token and set admin of registry to new admin
-    * @param _registryID uint256 Registry-token ID
+    * @param _registryID uint256 Registry-token ID which rights will be transferred
     * @param _newOwner address Address of new admin
     */
     function updateRegistryOwnership(
         uint256 _registryID,
         address _newOwner
     )
-        public
-        whenNotPaused
+        external
         onlyOwnerOf(_registryID)
+        whenNotPaused
     {
-        //TODO optimizing? delete inf
-        RegistryBasic(registries[_registryID].contractAddress).transferAdminRights(_newOwner);
-        /* registries[_registryID].admin = _newOwner; */
-
+        require(_newOwner != 0x0);
+        
         removeTokenFrom(msg.sender, _registryID);
         addTokenTo(_newOwner, _registryID);
-
-        emit RegistryTransferred(msg.sender, _registryID, _newOwner);
+        
+        emit RegistryChangedOwner(msg.sender, _registryID, _newOwner);
+        
+        address registryAddress = registries[_registryID].contractAddress;
+        RegistryInterface(registryAddress).transferAdminRights(_newOwner);
     }
 
     /**
-    * @dev Allows to unregister created Registry from Chaingear
+    * @dev Allows to unregister Registry from Chaingear
     * @dev Only possible when safe of Registry is empty
-    * @dev Burns associated registry token and transfer Registry adminship to creator
+    * @dev Burns associated registry token and transfer Registry adminship to current token owner
     * @param _registryID uint256 Registry-token ID
     */
-    function unregisterRegistry(uint256 _registryID)
-        public
-        whenNotPaused
+    function unregisterRegistry(
+        uint256 _registryID
+    )
+        external
         onlyOwnerOf(_registryID)
+        whenNotPaused
     {        
         address registryAddress = registries[_registryID].contractAddress;
-        require(RegistryBasic(registryAddress).getSafeBalance() == 0);
+        require(RegistryInterface(registryAddress).getSafeBalance() == 0);
 
         uint256 registryIndex = allTokensIndex[_registryID];
         uint256 lastRegistryIndex = registries.length.sub(1);
@@ -143,42 +149,54 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         registries[registryIndex] = lastRegistry;
         delete registries[lastRegistryIndex];
         registries.length--;
-        
-        address currentAdmin = RegistryBasic(registryAddress).getAdmin();
-        RegistryBasic(registryAddress).transferOwnership(currentAdmin);
 
         _burn(msg.sender, _registryID);
 
-        string memory registryName = RegistryBasic(registryAddress).name();
+        string memory registryName = RegistryInterface(registryAddress).name();
         emit RegistryUnregistered(msg.sender, registryName);
+        
+        //Sets current admin as owner of registry, transfers full control
+        RegistryInterface(registryAddress).transferOwnership(msg.sender);
     }
     
-    function fundRegistry(uint256 _registryID)
-        public
+    /**
+    * @dev Gets funding and allocate funds of Registry to Chaingear's Safe
+    * @param _registryID uint256 Registry-token ID
+    */
+    function fundRegistry(
+        uint256 _registryID
+    )
+        external
         whenNotPaused
         payable
     {
-        uint256 weiAmount = msg.value;
-        registries[_registryID].currentRegistryBalanceETH = registries[_registryID].currentRegistryBalanceETH.add(weiAmount);
-        registries[_registryID].accumulatedRegistryETH = registries[_registryID].accumulatedRegistryETH.add(weiAmount);
-        registrySafe.transfer(msg.value);
+        registries[_registryID].currentRegistryBalanceETH = registries[_registryID].currentRegistryBalanceETH.add(msg.value);
+        registries[_registryID].accumulatedRegistryETH = registries[_registryID].accumulatedRegistryETH.add(msg.value);
 
-        emit RegistryFunded(_registryID, msg.sender);
+        emit RegistryFunded(_registryID, msg.sender, msg.value);
+        
+        chaingearSafe.transfer(msg.value);
     }
 
+    /**
+    * @dev Gets funding and allocate funds of Registry to Safe
+    * @param _registryID uint256 Registry-token ID
+    * @param _amount uint256 Amount which admin of registry claims
+    */
     function claimEntryFunds(
         uint256 _registryID,
         uint256 _amount
     )
-        public
-        whenNotPaused
+        external
         onlyOwnerOf(_registryID)
+        whenNotPaused
     {
         require(_amount <= registries[_registryID].currentRegistryBalanceETH);
         registries[_registryID].currentRegistryBalanceETH = registries[_registryID].currentRegistryBalanceETH.sub(_amount);
-        Safe(registrySafe).claim(msg.sender, _amount);
 
         emit RegistryFundsClaimed(_registryID, msg.sender, _amount);
+        
+        Safe(chaingearSafe).claim(msg.sender, _amount);
     }
 
     /*
@@ -189,12 +207,12 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
     * @dev Private function for registry creation
     * @dev Pass Registry params and bytecode to RegistryCreator to current builder
     * @param _version version of registry code which added to chaingear
-    * @param _benefitiaries address[] addresses of Chaingear benefitiaries
-    * @param _shares uint256[] array with amount of shares
-    * @param _name string, Registry name
-    * @param _symbol string, Registry symbol
+    * @param _benefitiaries address[] addresses of Registry benefitiaries
+    * @param _shares uint256[] array with amount of shares to benefitiaries
+    * @param _name string, Registry name, use for registry ERC721
+    * @param _symbol string, Registry NFT symbol, use for registry ERC721
     * @return address new Registry contract address
-    * @return uint256 new Registry ID in Chaingear contract, same token ID
+    * @return uint256 new Registry ID in Chaingear contract, ERC721 NFT ID
     */
     function createRegistry(
         string _version,
@@ -216,18 +234,13 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
             _symbol
         );
         
-        RegistryBasic(registryContract).transferAdminRights(msg.sender);
-        
         RegistryMeta memory registry = (RegistryMeta(
         {
-            /* name: _name,
-            symbol: _symbol, */
             contractAddress: registryContract,
             creator: msg.sender,
             version: _version,
             linkABI: registryABIsLinks[_version],
             registrationTimestamp: block.timestamp,
-            /* admin: msg.sender, */
             currentRegistryBalanceETH: 0,
             accumulatedRegistryETH: 0
         }));
@@ -239,6 +252,9 @@ contract Chaingear is ERC721Token, SplitPaymentChangeable, ChaingearCore {
         registrySymbolsIndex[_symbol] = true;
         
         emit RegistryRegistered(_name, registryContract, msg.sender, registryID);
+        
+        //Metaregistry as owner sets creator as admin of Registry
+        RegistryInterface(registryContract).transferAdminRights(msg.sender);
 
         return (
             registryContract,

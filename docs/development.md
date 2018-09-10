@@ -33,13 +33,13 @@ var buildingFee = 100000
 var gas = 10000000
 
 chaingear.registerRegistry("V1", beneficiaries, shares, "BlockchainRegistry", "BLR", {value: 100000, gas: 10000000})
-var registryAddr1 = chaingear.contractAddressOf.call(0)
+var registryAddress = chaingear.registryInfo.call(0)
 var registry = Registry.at('insert_registry_address_here')
 registry.initializeRegistry("IPFS_HASH", EntryCore.bytecode)
 registry.createEntry()
-var registryBaseAddr = registry.entryBase()
+var entryCoreAddress = registry.getEntriesStorage()
 var entryCore = EntryCore.at('insert_entry_core_address_here')
-entryCore.updateEntry(0, 'any_address', 256, -127,"helloworld")
+entryCore.updateEntry(0, '0xa2f0dde51cb715f9cc7c12763fef90270bd50f70', 256, -127,"helloworld")
 entryCore.entryInfo(0)
 // --->>>
 [ '0xa2f0dde51cb715f9cc7c12763fef90270bd50f70',
@@ -59,7 +59,7 @@ solium -d contracts
 ##### Testing:
 
 ```bash
-./tests.sh
+truffle test
 ```
 PS: script will run separate tests flow for each file, also produce gas report. Temp solution, for while we don't fix problem with tests falls when running for all files at one time what in truffle by default.
 
@@ -75,5 +75,5 @@ PS: approve transaction in parity ui (http://127.0.0.1:8180/)
 #####(Optional) Build contract in file:
 
 ```bash
-truffle-flattener contracts/common/Chaingeareable.sol >> app/src/Chaingeareable.sol
+truffle-flattener contracts/registry/Registry.sol > Registry_full.sol
 ```

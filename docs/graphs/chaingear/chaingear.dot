@@ -1,37 +1,38 @@
 strict digraph {
-  constructor [color=brown]
+  constructor
+  fallback [color=brown]
   registerRegistry [color=brown]
   updateRegistryOwnership
-  transferAdminRights
   removeTokenFrom
   addTokenTo
-  RegistryTransferred
+  RegistryChangedOwner
+  transferAdminRights
   unregisterRegistry
-  transferOwnership
   _burn
   RegistryUnregistered
+  transferOwnership
   fundRegistry [color=purple]
-  transfer
   RegistryFunded
+  transfer
   claimEntryFunds
-  claim
   RegistryFundsClaimed
+  claim
   createRegistry
   _mint
   RegistryRegistered
-  updateRegistryOwnership -> transferAdminRights
   updateRegistryOwnership -> removeTokenFrom
   updateRegistryOwnership -> addTokenTo
-  updateRegistryOwnership -> RegistryTransferred
-  unregisterRegistry -> transferOwnership
+  updateRegistryOwnership -> RegistryChangedOwner
+  updateRegistryOwnership -> transferAdminRights
   unregisterRegistry -> _burn
   unregisterRegistry -> RegistryUnregistered
-  fundRegistry -> transfer
+  unregisterRegistry -> transferOwnership
   fundRegistry -> RegistryFunded
-  claimEntryFunds -> claim
+  fundRegistry -> transfer
   claimEntryFunds -> RegistryFundsClaimed
-  createRegistry -> transferAdminRights
+  claimEntryFunds -> claim
   createRegistry -> _mint
   createRegistry -> RegistryRegistered
+  createRegistry -> transferAdminRights
 }
 

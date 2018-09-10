@@ -47,10 +47,10 @@ strict digraph {
   Pause
   unpause
   Unpause
-  transferAdminRights
-  updateCreateEntryPermissionGroup
   getAdmin [color=yellow]
   getRegistryPermissions [color=yellow]
+  transferAdminRights
+  updateCreateEntryPermissionGroup
   updateEntryCreationFee
   updateRegistryDescription
   addRegistryTag
@@ -63,6 +63,7 @@ strict digraph {
   getRegistryDescription [color=yellow]
   getRegistryTags [color=yellow]
   getRegistrySafe [color=yellow]
+  getSafeBalance [color=yellow]
   getRegistryInitStatus [color=yellow]
   entriesAmount [color=yellow]
   createEntry [color=brown]
@@ -70,8 +71,6 @@ strict digraph {
   transferEntryOwnership
   fundEntry [color=purple]
   claimEntryFunds
-  getSafeBalance [color=yellow]
-  initializeRegistry
   EntryCreated
   EntryDeleted
   EntryChangedOwner
@@ -81,6 +80,7 @@ strict digraph {
   getEntryMeta [color=yellow]
   checkAuth [color=yellow]
   updateName
+  initializeRegistry
   setApprovalForAll -> ApprovalForAll
   transferFrom -> clearApproval
   transferFrom -> removeTokenFrom
@@ -107,18 +107,18 @@ strict digraph {
   pause -> Pause
   unpause -> Unpause
   addRegistryTag -> push
-  createEntry -> _mint
   createEntry -> push
+  createEntry -> _mint
   createEntry -> EntryCreated
-  deleteEntry -> deleteEntry
   deleteEntry -> _burn
   deleteEntry -> EntryDeleted
+  deleteEntry -> deleteEntry
   transferEntryOwnership -> removeTokenFrom
   transferEntryOwnership -> addTokenTo
   transferEntryOwnership -> EntryChangedOwner
-  fundEntry -> transfer
   fundEntry -> EntryFunded
-  claimEntryFunds -> claim
+  fundEntry -> transfer
   claimEntryFunds -> EntryFundsClaimed
+  claimEntryFunds -> claim
 }
 

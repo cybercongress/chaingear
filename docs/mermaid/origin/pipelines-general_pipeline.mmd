@@ -33,7 +33,7 @@ sequenceDiagram
     U1->>+R: initializeRegistry
     R-->>EC: constructor
     R-->>-U1: returns EntryCore address
-    Note over U1, EC: User sets smart-contract with their custom data structure for registry, should implements </br> RegistryBasic
+    Note over U1, EC: User sets smart-contract with their custom data structure for registry, should implements </br> RegistryInterface
     
     U1->>+R: createEntry
     R-->>EC: createEntry

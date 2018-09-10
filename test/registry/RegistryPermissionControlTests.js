@@ -15,28 +15,31 @@ contract("RegistryPermissionControlTestContract", (accounts) => {
 
     before(async () => {
         contract = await RegistryPermissionControlTestContract.new({from: OWNER_ACCOUNT})
-        contract.changeAdmin(ADMIN_ACCOUNT, {from: OWNER_ACCOUNT})
+        contract.transferAdminRights(ADMIN_ACCOUNT, {from: OWNER_ACCOUNT})
     });
 
     it("#1/1 should allow registry admin to set entry creation permission group", async () => {
         const currentPermissionGroup = await contract.getRegistryPermissions()
         const newPermissionGroup = anotherCreateEntryPermissionGroup(currentPermissionGroup)
         await contract.updateCreateEntryPermissionGroup(newPermissionGroup, {from: ADMIN_ACCOUNT}).should.be.fulfilled
-        await contract.getRegistryPermissions().should.eventually.bignumber.equal(newPermissionGroup)
+        const result = await contract.getRegistryPermissions()
+        result.should.bignumber.equal(newPermissionGroup)
     })
 
     it("#1/2 should not allow registry owner to set entry creation permission group", async () => {
         const currentPermissionGroup = await contract.getRegistryPermissions()
         const newPermissionGroup = anotherCreateEntryPermissionGroup(currentPermissionGroup)
         await contract.updateCreateEntryPermissionGroup(newPermissionGroup, {from: OWNER_ACCOUNT}).should.be.rejected
-        await contract.getRegistryPermissions().should.eventually.bignumber.equal(currentPermissionGroup)
+        const result = await contract.getRegistryPermissions()
+        result.should.bignumber.equal(currentPermissionGroup)
     })
     
     it("#1/3 should not allow unknown account to set entry creation permission group", async () => {
         const currentPermissionGroup = await contract.getRegistryPermissions()
         const newPermissionGroup = anotherCreateEntryPermissionGroup(currentPermissionGroup)
         await contract.updateCreateEntryPermissionGroup(newPermissionGroup, {from: UNKNOWN_ACCOUNT}).should.be.rejected
-        await contract.getRegistryPermissions().should.eventually.bignumber.equal(currentPermissionGroup)
+        const result = await contract.getRegistryPermissions()
+        result.should.bignumber.equal(currentPermissionGroup)
     })
     
     it("#2/1 should allow only admin to invoke methods with modifier 'onlyPermissionedToCreateEntries'", async () => {
@@ -47,11 +50,16 @@ contract("RegistryPermissionControlTestContract", (accounts) => {
         const value = await contract.uintValue_()
     
         await contract.testOnlyPermissionedToCreateEntries(value + 1, {from: ADMIN_ACCOUNT}).should.be.fulfilled
-        await contract.uintValue_().should.eventually.bignumber.equal(value + 1)
+        const result1 = await contract.uintValue_()
+        result1.should.bignumber.equal(value + 1)
+
         await contract.testOnlyPermissionedToCreateEntries(value + 2, {from: UNKNOWN_ACCOUNT}).should.be.rejected
-        await contract.uintValue_().should.eventually.bignumber.not.equal(value + 2)
+        const result2 = await contract.uintValue_()
+        result2.should.bignumber.not.equal(value + 2)
+
         await contract.testOnlyPermissionedToCreateEntries(value + 3, {from: OWNER_ACCOUNT}).should.be.rejected
-        await contract.uintValue_().should.eventually.bignumber.not.equal(value + 3)
+        const result3 = await contract.uintValue_()
+        result3.should.bignumber.not.equal(value + 3)
     })
     
     it("#2/2 should allow all to invoke methods with modifier 'onlyPermissionedToCreateEntries'", async () => {
@@ -62,11 +70,20 @@ contract("RegistryPermissionControlTestContract", (accounts) => {
         const value = await contract.uintValue_()
     
         await contract.testOnlyPermissionedToCreateEntries(value + 1, {from: ADMIN_ACCOUNT}).should.be.fulfilled
-        await contract.uintValue_().should.eventually.bignumber.equal(value + 1)
+        const result1 = await contract.uintValue_()
+        result1.should.bignumber.equal(value + 1)
+
         await contract.testOnlyPermissionedToCreateEntries(value + 2, {from: UNKNOWN_ACCOUNT}).should.be.fulfilled
-        await contract.uintValue_().should.eventually.bignumber.equal(value + 2)
+        const result2 = await contract.uintValue_()
+        result2.should.bignumber.equal(value + 2)
+
         await contract.testOnlyPermissionedToCreateEntries(value + 3, {from: OWNER_ACCOUNT}).should.be.fulfilled
-        await contract.uintValue_().should.eventually.bignumber.equal(value + 3)
+        const result3 = await contract.uintValue_()
+        result3.should.bignumber.equal(value + 3)
+    })
+
+    after(async() =>{
+        contract = null;
     })
 })
 

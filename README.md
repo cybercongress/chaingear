@@ -3,7 +3,7 @@
   alt="chaingear" width="970"></a>
 </h1>
 
-<h3 align="center">Most expensive Registry</h3>
+<h3 align="center">The most expensive Registry</h3>
 <div align="center">
   Chaingear is an Ethereum ERC721-based registries framework.
 </div>
@@ -69,12 +69,17 @@ Your creating your registry in Chaingear - metaregistry, which are one point of 
 
 ## [Configuring and deploying](https://cybersearch.io/Chaingear/development/)
 
-## General Chaingear/Registry ipeline
+## General Chaingear/Registry pipeline
 ![general_pipeline](docs/mermaid/pipelines-general_pipeline.svg)
 
 ## Join Us On Telegram
 
 If you're interested in using or developing Chaingear, come [join us on Telegram](https://t.me/fuckgoogle)
+
+## Gitcoin Tasks
+<a href="https://gitcoin.co/explorer?q=congress">
+    <img src="https://gitcoin.co/funding/embed?repo=https://github.com/cybercongress/chaingear">
+</a>
 
 ## Built With
 

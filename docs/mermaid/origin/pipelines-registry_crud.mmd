@@ -11,7 +11,7 @@ sequenceDiagram
     A->>+R: initializeRegistry
     R-->>EC: constructor
     R-->>-A: returns EntryCore address
-    Note over A, EC: User sets smart-contract with their custom data structure for registry, should <br/> implements RegistryBasic
+    Note over A, EC: User sets smart-contract with their custom data structure for registry, should <br/> implements RegistryInterface
     
     A->>R: updateCreateEntryPermissionGroup
     Note over A, R: Available OnlyAdmin, Whitelist*, AllUsers groups
