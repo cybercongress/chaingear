@@ -1058,11 +1058,169 @@ address registryAddress = registries[_tokenId].contractAddress;
 
 ```
 
-
-
 ## Timestamp dependance
 
+The timestamp of the block can be slightly manipulated by the miner. One should not use timestamp's exact value for critical components of the contract.
+Block numbers and average block time can be used to estimate time, but this is not future proof as block times may change (such as the changes expected during Casper).
+
+### Examples from Chaingear contracts
+
+**Registry_full.sol | Line: 1386-1393 | Severity: 2**
+
+```solidity
+
+ EntryMeta memory meta = (EntryMeta(
+        {
+            lastUpdateTime: block.timestamp,
+            createdAt: block.timestamp,
+            creator: msg.sender,
+            currentEntryBalanceETH: 0,
+            accumulatedOverallEntryETH: 0
+        }));
+
+```    
+
+**contracts_full.sol | Line: 2293-2302 | Severity: 2**
+
+```solidity
+
+ RegistryMeta memory registry = (RegistryMeta(
+        {
+            contractAddress: registryContract,
+            creator: msg.sender,
+            version: _version,
+            linkABI: registryABIsLinks[_version],
+            registrationTimestamp: block.timestamp,
+            currentRegistryBalanceETH: 0,
+            accumulatedRegistryETH: 0
+        }));
+
+``` 
+
+**contracts_full.sol | Line: 1386-1393 | Severity: 2**
+
+```solidity
+
+  EntryMeta memory meta = (EntryMeta(
+        {
+            lastUpdateTime: block.timestamp,
+            createdAt: block.timestamp,
+            creator: msg.sender,
+            currentEntryBalanceETH: 0,
+            accumulatedOverallEntryETH: 0
+        }));
+
+``` 
+
+**contracts_full.sol | Line: 1511 | Severity: 2**
+
+```solidity
+
+entriesMeta[_entryID].lastUpdateTime = block.timestamp;
+
+```
+
+**chaingear_full.sol | Line: 2293-2302 | Severity: 2**
+
+```solidity
+
+RegistryMeta memory registry = (RegistryMeta(
+        {
+            contractAddress: registryContract,
+            creator: msg.sender,
+            version: _version,
+            linkABI: registryABIsLinks[_version],
+            registrationTimestamp: block.timestamp,
+            currentRegistryBalanceETH: 0,
+            accumulatedRegistryETH: 0
+        }));
+
+```
+
+**chaingear_full.sol | Line: 1743-1750 | Severity: 2**
+
+```solidity
+
+ EntryMeta memory meta = (EntryMeta(
+        {
+            lastUpdateTime: block.timestamp,
+            createdAt: block.timestamp,
+            creator: msg.sender,
+            currentEntryBalanceETH: 0,
+            accumulatedOverallEntryETH: 0
+        }));
+
+```
+
+**chaingear_full.sol | Line: 1868 | Severity: 2**
+
+```solidity
+
+ entriesMeta[_entryID].lastUpdateTime = block.timestamp;
+
+```
+
 ## Unchecked math
+
+Solidity is prone to integer over- and underflow. Overflow leads to unexpected effects and can lead to loss of funds if exploited by a malicious account.
+
+### Examples from Chaingear contracts
+
+**Registry.sol | Line: 141 | Severity: 1**
+
+```solidity
+
+entriesMeta.length--;
+
+```
+
+**Registry.sol | Line: 136 | Severity: 1**
+
+```solidity
+
+uint256 lastEntryIndex = entriesMeta.length - 1;
+
+```
+
+**EntryCore.sol | Line: 36 | Severity: 1**
+
+```solidity
+
+uint256 newEntryID = entries.push(m) - 1;
+
+```
+
+**EntryCore.sol | Line: 82 | Severity: 1**
+
+```solidity
+
+entries.length--;
+
+```
+
+**Chaingeareable.sol | Line: 162 | Severity: 1**
+
+```solidity
+
+uint256 lastTagIndex = registryTags.length - 1;
+
+```
+
+**Chaingeareable.sol | Line: 147 | Severity: 1**
+
+```solidity
+
+require(_index <= registryTags.length-1);
+
+```
+
+**Chaingeareable.sol | Line: 147 | Severity: 1**
+
+```solidity
+
+registryTags.length--;
+
+```
 
 ## Using assembly
 
