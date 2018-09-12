@@ -19,9 +19,30 @@ The scope of this audit was to analyze and document CHAINGEAR’s smart contract
 
 # Issues found 
 
-## Hardcoded Address
-
 ## DoS by external function call in require
+
+The contract that calls functions of other contracts should not rely on results of these functions. Be careful when verifying the result of external calls with <code>require</code> as called contract can always return false and prevent correct execution. Especially if the contract relies on state changes made by this function.
+This type of pattern is experimental and can report false issues. This pattern might be also triggered when 
+- accessing structs field
+- using enums element
+
+To avoid this vulnerability you can use the Checks-Effects-Interactions pattern.
+
+Examples: 
+
+** Registry_full.sol **
+```solidity
+
+require(entriesMeta[_entryID].currentEntryBalanceETH == 0);
+
+```
+** Registry_full.sol **
+```solidity
+
+require(uint8(CreateEntryPermissionGroup.AllUsers) >=_createEntryPermissionGroup);
+
+```
+
 
 ## Using the approve function of the ERC-20 standard
 
