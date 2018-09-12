@@ -21,8 +21,7 @@ The scope of this audit was to analyze and document CHAINGEAR’s smart contract
 
 ## DoS by external function call in require
 
-The contract that calls functions of other contracts should not rely on results of these functions. Be careful when verifying the result of external calls with  
-<code>require</code> as called contract can always return false and prevent correct execution. Especially if the contract relies on state changes made by this function.
+The contract that calls functions of other contracts should not rely on results of these functions. Be careful when verifying the result of external calls with <code>require</code> as called contract can always return false and prevent correct execution. Especially if the contract relies on state changes made by this function.
 Calls to untrusted contracts can introduce several unexpected risks or errors. External calls may execute malicious code in that contract or any other contract that it depends upon. As such, every external call should be treated as a potential security risk. 
 
 This type of pattern is experimental and can report false issues. This pattern might be also triggered when: 
@@ -31,7 +30,7 @@ This type of pattern is experimental and can report false issues. This pattern m
 
 To avoid this vulnerability you can use the Checks-Effects-Interactions pattern.
 
-Examples: 
+**Examples from Chaingear contracts**
 
 **Registry_full.sol | Line: 1422 | Severity: 1**
 
@@ -129,6 +128,100 @@ require(_amount <= registries[_registryID].currentRegistryBalanceETH);
 ```
 
 ## Using the approve function of the ERC-20 standard
+
+The <code>approve</code> function of ERC-20 might lead to vulnerabilities.
+Only use the <code> approve </code> function of the ERC-20 standard to change allowed amount to 0 or from 0 (wait till transaction is mined and approved).
+The EIP-20 token's <code>approve</code> function creates the potential for an approved spender to spend more than the intended amount. A front running attack can be used, enabling an approved spender to call transferFrom() both before and after the call to approve() is processed.
+
+#####Real life example of an approve attack
+<a href="https://docs.google.com/document/d/1YLPtQxZu1UAvO9cZ1O2RPXBbT0mooh4DYKjA_jp-RLM/edit">ERC20 API: An Attack Vector on Approve/TransferFrom Methods</a>
+
+#####Examples from Chaingear contracts
+
+**Registry_full.sol | Lines: 255-264 | Severity: 2**
+
+```solidity
+
+  function approve(address _to, uint256 _tokenId) public {
+    address owner = ownerOf(_tokenId);
+    require(_to != owner);
+    require(msg.sender == owner || isApprovedForAll(owner, msg.sender));
+
+    if (getApproved(_tokenId) != address(0) || _to != address(0)) {
+      tokenApprovals[_tokenId] = _to;
+      emit Approval(owner, _to, _tokenId);
+    }
+  }
+
+```
+**contracts_full.sol | Lines: 255-264 | Severity: 2**
+
+```solidity
+
+function approve(address _to, uint256 _tokenId) public {
+    address owner = ownerOf(_tokenId);
+    require(_to != owner);
+    require(msg.sender == owner || isApprovedForAll(owner, msg.sender));
+
+    if (getApproved(_tokenId) != address(0) || _to != address(0)) {
+      tokenApprovals[_tokenId] = _to;
+      emit Approval(owner, _to, _tokenId);
+    }
+  }
+
+```
+
+**chaingear_full.sol | Lines: 255-264 | Severity: 2**
+
+```solidity
+
+function approve(address _to, uint256 _tokenId) public {
+    address owner = ownerOf(_tokenId);
+    require(_to != owner);
+    require(msg.sender == owner || isApprovedForAll(owner, msg.sender));
+
+    if (getApproved(_tokenId) != address(0) || _to != address(0)) {
+      tokenApprovals[_tokenId] = _to;
+      emit Approval(owner, _to, _tokenId);
+    }
+  }
+
+```
+
+**registry_full.sol | Lines: 255-264 | Severity: 2**
+
+```solidity
+
+function approve(address _to, uint256 _tokenId) public {
+    address owner = ownerOf(_tokenId);
+    require(_to != owner);
+    require(msg.sender == owner || isApprovedForAll(owner, msg.sender));
+
+    if (getApproved(_tokenId) != address(0) || _to != address(0)) {
+      tokenApprovals[_tokenId] = _to;
+      emit Approval(owner, _to, _tokenId);
+    }
+  }
+
+```
+
+**Chaingear_full.sol | Lines: 255-264 | Severity: 2**
+
+```solidity
+
+function approve(address _to, uint256 _tokenId) public {
+    address owner = ownerOf(_tokenId);
+    require(_to != owner);
+    require(msg.sender == owner || isApprovedForAll(owner, msg.sender));
+
+    if (getApproved(_tokenId) != address(0) || _to != address(0)) {
+      tokenApprovals[_tokenId] = _to;
+      emit Approval(owner, _to, _tokenId);
+    }
+  }
+
+```
+  
 
 ## No return statement for function that returns value 
 
