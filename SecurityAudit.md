@@ -21,7 +21,9 @@ The scope of this audit was to analyze and document CHAINGEAR’s smart contract
 
 ## DoS by external function call in require
 
-The contract that calls functions of other contracts should not rely on results of these functions. Be careful when verifying the result of external calls with <code>require</code> as called contract can always return false and prevent correct execution. Especially if the contract relies on state changes made by this function.
+The contract that calls functions of other contracts should not rely on results of these functions. Be careful when verifying the result of external calls with ```solidity 
+require
+``` as called contract can always return false and prevent correct execution. Especially if the contract relies on state changes made by this function.
 Calls to untrusted contracts can introduce several unexpected risks or errors. External calls may execute malicious code in that contract or any other contract that it depends upon. As such, every external call should be treated as a potential security risk. 
 
 This type of pattern is experimental and can report false issues. This pattern might be also triggered when: 
