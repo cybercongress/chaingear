@@ -395,7 +395,7 @@ Implement a withdraw function or reject payments (contracts without a fallback f
 
 The recommended method of sending funds after an effect is using the withdrawal pattern. Although the most intuitive method of sending Ether, as a result of an effect, is a direct send call, this is not recommended as it introduces a potential security risk.
 
-#### Examples
+### Examples from Chaingear contracts
 
 **Registry_full.sol | Lines: 1238-1249 | Severity: 2**
 
@@ -561,6 +561,409 @@ contract RegistryInterface {
 
 
 ## No payable fallback function
+
+The contract does not have <code> payable </code> fallback. All attempts to <code> transfer </code> or <code> send </code> ether to this contract will be reverted.
+
+A contract without a payable fallback function can receive Ether as a recipient of a coinbase transaction (aka miner block reward) or as a destination of a <code> selfdestruct </code>.
+
+A contract cannot react to such Ether transfers and thus also cannot reject them. This is a design choice of the EVM and Solidity cannot work around it.
+
+It also means that <code> address(this).balance </code> can be higher than the sum of some manual accounting implemented in a contract (i.e. having a counter updated in the fallback function).
+
+### Examples from Chaingear contracts
+
+**Registry_full.sol | Lines: 1229-1234 | Severity: 1**
+
+```solidity
+
+contract EntryInterface {
+
+    function entriesAmount() external view returns (uint256);
+    function createEntry() external returns (uint256);
+    function deleteEntry(uint256) external;
+}
+
+```
+
+**Registry_full.sol | Lines: 956-1225 | Severity: 1**
+
+```solidity
+
+contract Chaingeareable is RegistryPermissionControl {
+    
+    /*
+    *  Storage
+    */
+    
+    // @dev entry creation fee 
+    uint internal entryCreationFee;
+    
+    // @dev registry description string
+    string internal registryDescription;
+    
+    // @dev registry tags
+    bytes32[] internal registryTags;
+    
+    // @dev address of EntryCore contract, which specifies data schema and operations
+    address internal entriesStorage;
+    
+    // @dev link to IPFS hash to ABI of EntryCore contract
+    string internal linkToABIOfEntriesContract;
+    
+    // @dev address of Registry safe where funds store
+    address internal registrySafe;
+
+    // @dev state of was registry initialized with EntryCore or not
+    bool internal registryInitStatus;
+
+    /*
+    *  Modifiers
+    */
+
+    // @dev don't allow to call registry entry functions before initialization
+    modifier registryInitialized {
+        require(registryInitStatus == true);
+        _;
+    }
+    
+    /**
+    *  Events
+    */
+
+    // @dev Signals that new entry-token added to Registry
+    event EntryCreated(
+        uint entryID,
+        address creator
+    );
+
+    // @dev Signals that entry-token changed owner
+    event EntryChangedOwner(
+        uint entryID,
+        address newOwner
+    );
+
+    // @dev Signals that entry-token deleted 
+    event EntryDeleted(
+        uint entryID,
+        address owner
+    );
+
+    // @dev Signals that entry-token funded with given amount
+    event EntryFunded(
+        uint entryID,
+        address funder,
+        uint amount
+    );
+
+    // @dev Signals that entry-token funds claimed by owner with given amount
+    event EntryFundsClaimed(
+        uint entryID,
+        address owner,
+        uint amount
+    );
+
+    /**
+    *  External Functions
+    */
+
+    /**
+    * @dev Allows admin set new registration fee, which entry creators should pay
+    * @param _fee uint In wei which should be payed for creation/registration
+    */
+    function updateEntryCreationFee(
+        uint _fee
+    )
+        external
+        onlyAdmin
+    {
+        entryCreationFee = _fee;
+    }
+
+    /**
+    * @dev Allows admin update registry description
+    * @param _registryDescription string Which represents description
+    * @notice Length of description should be less than 256 bytes
+    */
+    function updateRegistryDescription(
+        string _registryDescription
+    )
+        external
+        onlyAdmin
+    {
+        uint len = bytes(_registryDescription).length;
+        require(len <= 256);
+
+        registryDescription = _registryDescription;
+    }
+
+    /**
+    * @dev Allows admin to add tag to registry
+    * @param _tag bytes32 Tag
+    * @notice Tags amount should be less than 16
+    */
+    function addRegistryTag(
+        bytes32 _tag
+    )
+        external
+        onlyAdmin
+    {
+        require(_tag.length <= 16);
+        registryTags.push(_tag);
+    }
+
+    /**
+    * @dev Allows admin to update update specified tag
+    * @param _index uint16 Index of tag to update
+    * @param _tag bytes32 New tag value
+    */
+    function updateRegistryTag(
+        uint16 _index,
+        bytes32 _tag
+    )
+        external
+        onlyAdmin
+    {
+        require(_tag.length <= 16);
+        require(_index <= registryTags.length-1);
+
+        registryTags[_index] = _tag;
+    }
+
+    /**
+    * @dev Remove registry tag
+    * @param _index uint16 Index of tag to delete
+    */
+    function removeRegistryTag(
+        uint16 _index
+    )
+        external
+        onlyAdmin
+    {
+        uint256 lastTagIndex = registryTags.length - 1;
+        bytes32 lastTag = registryTags[lastTagIndex];
+
+        registryTags[_index] = lastTag;
+        registryTags[lastTagIndex] = "";
+        registryTags.length--;
+    }
+    
+    /**
+    *  View functions
+    */
+
+    /**
+    * @dev Allows to get EntryCore contract which specified entry schema and operations
+    * @return address of that contract
+    */
+    function getEntriesStorage()
+        external
+        view
+        returns (address)
+    {
+        return entriesStorage;
+    }
+
+    /**
+    * @dev Allows to get link interface of EntryCore contract
+    * @return string with IPFS hash to JSON with ABI
+    */
+    function getInterfaceEntriesContract()
+        external
+        view
+        returns (string)
+    {
+        return linkToABIOfEntriesContract;
+    }
+
+    /**
+    * @dev Allows to get registry balance which represents accumulated fees for entry creations
+    * @return uint Amount in wei accumulated in Registry Contract
+    */
+    function getRegistryBalance()
+        external
+        view
+        returns (uint)
+    {
+        return address(this).balance;
+    }
+
+    /**
+    * @dev Allows to check which amount fee needed for entry creation/registration
+    * @return uint Current amount in wei needed for registration
+    */
+    function getEntryCreationFee()
+        external
+        view
+        returns (uint)
+    {
+        return entryCreationFee;
+    }
+
+    /**
+    * @dev Allows to get description of Registry
+    * @return string which represents description 
+    */
+    function getRegistryDescription()
+        external
+        view
+        returns (string)
+    {
+        return registryDescription;
+    }
+
+    /**
+    * @dev Allows to get Registry Tags
+    * @return bytes32[] array of tags
+    */
+    function getRegistryTags()
+        external
+        view
+        returns (bytes32[])
+    {
+        return registryTags;
+    }
+
+    /**
+    * @dev Allows to get address of Safe which Registry control (owns)
+    * @return address of Safe contract
+    */
+    function getRegistrySafe()
+        external
+        view
+        returns (address)
+    {
+        return registrySafe;
+    }
+    
+    /**
+    * @dev Allows to get amount of funds aggregated in Safe
+    * @return uint Amount of funds in wei
+    */
+    function getSafeBalance()
+        external
+        view
+        returns (uint balance)
+    {
+        return address(registrySafe).balance;
+    }
+    
+    /**
+    * @dev Allows to check state of Registry init with EntryCore
+    * @return bool Yes/No
+    */
+    function getRegistryInitStatus()
+        external
+        view
+        returns (bool)
+    {
+        return registryInitStatus;
+    }
+}
+
+```
+
+**Registry_full.sol | Lines:1238-1249 | Severity: 1**
+
+```solidity
+
+contract RegistryInterface {
+    function getSafeBalance() external view returns (uint256);
+    function getAdmin() external view returns (address);
+    function createEntry() external payable returns (uint256);
+    function deleteEntry(uint256 _entryId) external;
+    function fundEntry(uint256 _entryId) external payable;
+    function claimEntryFunds(uint256 _entryId, uint _amount) external;
+    function transferAdminRights(address _newOnwer) public;
+    function transferOwnership(address _newOwner) public;
+    function name() public view returns (string);
+    function symbol() public view returns (string);
+}
+
+```
+
+**Registry_full.sol | Lines:757-792 | Severity: 1**
+
+```solidity
+
+contract SplitPaymentChangeable is SplitPayment, Ownable {
+
+    event PayeeAddressChanged(
+        uint payeeIndex, 
+        address oldAddress, 
+        address newAddress
+    );
+
+    constructor(
+        address[] _payees,
+        uint256[] _shares
+    )
+        public
+        payable
+        SplitPayment(_payees, _shares)
+    { }
+
+    function changePayeeAddress(
+        uint _payeeIndex,
+        address _newAddress
+    )
+        external
+        onlyOwner
+    {
+        address oldAddress = payees[_payeeIndex];
+
+        shares[_newAddress] = shares[oldAddress];
+        released[_newAddress] = released[oldAddress];
+        payees[_payeeIndex] = _newAddress;
+
+        delete shares[oldAddress];
+        delete released[oldAddress];
+
+        emit PayeeAddressChanged(_payeeIndex, oldAddress, _newAddress);
+    }
+}
+
+```
+
+**Registry_full.sol | Lines: 73-94 | Severity: 1**
+
+```solidity
+
+contract ERC721Receiver {
+  /**
+   * @dev Magic value to be returned upon successful reception of an NFT
+   *  Equals to `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`,
+   *  which can be also obtained as `ERC721Receiver(0).onERC721Received.selector`
+   */
+  bytes4 constant ERC721_RECEIVED = 0xf0b9e5ba;
+
+  /**
+   * @notice Handle the receipt of an NFT
+   * @dev The ERC721 smart contract calls this function on the recipient
+   *  after a `safetransfer`. This function MAY throw to revert and reject the
+   *  transfer. This function MUST use 50,000 gas or less. Return of other
+   *  than the magic value MUST result in the transaction being reverted.
+   *  Note: the contract address is always the message sender.
+   * @param _from The sending address
+   * @param _tokenId The NFT identifier which is being transfered
+   * @param _data Additional data with no specified format
+   * @return `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`
+   */
+  function onERC721Received(address _from, uint256 _tokenId, bytes _data) public returns(bytes4);
+}
+
+```
+
+**Registry_full.sol | Lines:  51-56 | Severity: 1**
+
+```solidity
+
+contract ERC721Metadata is ERC721Basic {
+  function name() public view returns (string _name);
+  function symbol() public view returns (string _symbol);
+  function tokenURI(uint256 _tokenId) public view returns (string);
+}
+
+```
 
 ## Reentrancy 
 
