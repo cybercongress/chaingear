@@ -321,10 +321,15 @@ function checkAuth(
 ## Costly loop
 
 Ethereum is a very resource-constrained environment. Prices per computational step are orders of magnitude higher than with centralized providers. Moreover, Ethereum miners impose a limit on the total number of gas consumed in a block. If <code> array.length </code> is large enough, the function exceeds the block gas limit, and transactions calling it will never be confirmed:
-<code>for (uint256 i = 0; i < array.length ; i++) { 
+
+```solidity
+
+for (uint256 i = 0; i < array.length ; i++) { 
 		cosltyFunc();
 	}
-</code>    
+
+```
+
 This becomes a security issue, if an external actor influences array.length. E.g., if array enumerates all registered addresses, an adversary can register many addresses, causing the problem described above.
 
 Loops that do not have a fixed number of iterations, for example, loops that depend on storage values, have to be used carefully: Due to the block gas limit, transactions can only consume a certain amount of gas. Either explicitly or just due to normal operation, the number of iterations in a loop can grow beyond the block gas limit which can cause the complete contract to be stalled at a certain point. This may not apply to view functions that are only executed to read data from the blockchain. Still, such functions may be called by other contracts as part of on-chain operations and stall those. Please be explicit about such cases in the documentation of your contracts.
@@ -383,6 +388,177 @@ for (uint256 i = 0; i < _payees.length; i++) {
 
 
 ## Locked money
+
+Contracts programmed to receive ether should implement a way to withdraw it, i.e., call <code>transfer</code> (recommended), <code>send</code>, or <code>call.value</code> at least once.
+
+Implement a withdraw function or reject payments (contracts without a fallback function do it automatically).
+
+The recommended method of sending funds after an effect is using the withdrawal pattern. Although the most intuitive method of sending Ether, as a result of an effect, is a direct send call, this is not recommended as it introduces a potential security risk.
+
+#### Examples
+
+**Registry_full.sol | Lines: 1238-1249 | Severity: 2**
+
+```solidity
+
+contract RegistryInterface {
+    function getSafeBalance() external view returns (uint256);
+    function getAdmin() external view returns (address);
+    function createEntry() external payable returns (uint256);
+    function deleteEntry(uint256 _entryId) external;
+    function fundEntry(uint256 _entryId) external payable;
+    function claimEntryFunds(uint256 _entryId, uint _amount) external;
+    function transferAdminRights(address _newOnwer) public;
+    function transferOwnership(address _newOwner) public;
+    function name() public view returns (string);
+    function symbol() public view returns (string);
+}
+
+```
+
+**Registry_full.sol | Lines:757-792 | Severity: 2**
+
+```solidity
+
+contract SplitPaymentChangeable is SplitPayment, Ownable {
+
+    event PayeeAddressChanged(
+        uint payeeIndex, 
+        address oldAddress, 
+        address newAddress
+    );
+
+    constructor(
+        address[] _payees,
+        uint256[] _shares
+    )
+        public
+        payable
+        SplitPayment(_payees, _shares)
+    { }
+
+    function changePayeeAddress(
+        uint _payeeIndex,
+        address _newAddress
+    )
+        external
+        onlyOwner
+    {
+        address oldAddress = payees[_payeeIndex];
+
+        shares[_newAddress] = shares[oldAddress];
+        released[_newAddress] = released[oldAddress];
+        payees[_payeeIndex] = _newAddress;
+
+        delete shares[oldAddress];
+        delete released[oldAddress];
+
+        emit PayeeAddressChanged(_payeeIndex, oldAddress, _newAddress);
+    }
+}
+
+```
+
+**contracts_full.sol | Lines: 1238-1249 | Severity: 2**
+
+```solidity
+
+contract RegistryInterface {
+    function getSafeBalance() external view returns (uint256);
+    function getAdmin() external view returns (address);
+    function createEntry() external payable returns (uint256);
+    function deleteEntry(uint256 _entryId) external;
+    function fundEntry(uint256 _entryId) external payable;
+    function claimEntryFunds(uint256 _entryId, uint _amount) external;
+    function transferAdminRights(address _newOnwer) public;
+    function transferOwnership(address _newOwner) public;
+    function name() public view returns (string);
+    function symbol() public view returns (string);
+}
+
+```
+
+**chaingear_full.sol | Lines: 757-792 | Severity: 2**
+
+```solidity
+
+contract SplitPaymentChangeable is SplitPayment, Ownable {
+
+    event PayeeAddressChanged(
+        uint payeeIndex, 
+        address oldAddress, 
+        address newAddress
+    );
+
+    constructor(
+        address[] _payees,
+        uint256[] _shares
+    )
+        public
+        payable
+        SplitPayment(_payees, _shares)
+    { }
+
+    function changePayeeAddress(
+        uint _payeeIndex,
+        address _newAddress
+    )
+        external
+        onlyOwner
+    {
+        address oldAddress = payees[_payeeIndex];
+
+        shares[_newAddress] = shares[oldAddress];
+        released[_newAddress] = released[oldAddress];
+        payees[_payeeIndex] = _newAddress;
+
+        delete shares[oldAddress];
+        delete released[oldAddress];
+
+        emit PayeeAddressChanged(_payeeIndex, oldAddress, _newAddress);
+    }
+}
+
+```
+
+**chaingear_full.sol | Lines: 796-807 | Severity: 2**
+
+``solidity
+
+contract RegistryInterface {
+    function getSafeBalance() external view returns (uint256);
+    function getAdmin() external view returns (address);
+    function createEntry() external payable returns (uint256);
+    function deleteEntry(uint256 _entryId) external;
+    function fundEntry(uint256 _entryId) external payable;
+    function claimEntryFunds(uint256 _entryId, uint _amount) external;
+    function transferAdminRights(address _newOnwer) public;
+    function transferOwnership(address _newOwner) public;
+    function name() public view returns (string);
+    function symbol() public view returns (string);
+}
+
+``
+
+**RegistryInterface.sol | Lines: 4-15 | Severity: 2**
+
+```solidity
+
+contract RegistryInterface {
+    function getSafeBalance() external view returns (uint256);
+    function getAdmin() external view returns (address);
+    function createEntry() external payable returns (uint256);
+    function deleteEntry(uint256 _entryId) external;
+    function fundEntry(uint256 _entryId) external payable;
+    function claimEntryFunds(uint256 _entryId, uint _amount) external;
+    function transferAdminRights(address _newOnwer) public;
+    function transferOwnership(address _newOwner) public;
+    function name() public view returns (string);
+    function symbol() public view returns (string);
+}
+
+```
+
 
 ## No payable fallback function
 
