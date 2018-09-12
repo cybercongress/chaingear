@@ -30,7 +30,7 @@ This type of pattern is experimental and can report false issues. This pattern m
 
 To avoid this vulnerability you can use the Checks-Effects-Interactions pattern.
 
-#### Examples from Chaingear contracts
+### Examples from Chaingear contracts
 
 **Registry_full.sol | Line: 1422 | Severity: 1**
 
@@ -133,10 +133,10 @@ The <code>approve</code> function of ERC-20 might lead to vulnerabilities.
 Only use the <code> approve </code> function of the ERC-20 standard to change allowed amount to 0 or from 0 (wait till transaction is mined and approved).
 The EIP-20 token's <code>approve</code> function creates the potential for an approved spender to spend more than the intended amount. A front running attack can be used, enabling an approved spender to call transferFrom() both before and after the call to approve() is processed.
 
-#### Real life example of an approve attack
+### Real life example of an approve attack
 <a href="https://docs.google.com/document/d/1YLPtQxZu1UAvO9cZ1O2RPXBbT0mooh4DYKjA_jp-RLM/edit">ERC20 API: An Attack Vector on Approve/TransferFrom Methods</a>
 
-#### Examples from Chaingear contracts
+### Examples from Chaingear contracts
 
 **Registry_full.sol | Lines: 255-264 | Severity: 2**
 
@@ -229,7 +229,7 @@ There is no return value for a function whose signature only denotes the type of
 
 If you don't need the return value of the function, do not specify <code>returns</code> in function signature.
 
-#### Examples from Chaingear contracts
+### Examples from Chaingear contracts
 
 **contracts_full.sol | Lines: 1549-1558 | Severity: 1**
 
@@ -319,6 +319,68 @@ function checkAuth(
 
 
 ## Costly loop
+
+Ethereum is a very resource-constrained environment. Prices per computational step are orders of magnitude higher than with centralized providers. Moreover, Ethereum miners impose a limit on the total number of gas consumed in a block. If <code> array.length </code> is large enough, the function exceeds the block gas limit, and transactions calling it will never be confirmed:
+<code>for (uint256 i = 0; i < array.length ; i++) { 
+		cosltyFunc();
+	}
+</code>    
+This becomes a security issue, if an external actor influences array.length. E.g., if array enumerates all registered addresses, an adversary can register many addresses, causing the problem described above.
+
+Loops that do not have a fixed number of iterations, for example, loops that depend on storage values, have to be used carefully: Due to the block gas limit, transactions can only consume a certain amount of gas. Either explicitly or just due to normal operation, the number of iterations in a loop can grow beyond the block gas limit which can cause the complete contract to be stalled at a certain point. This may not apply to view functions that are only executed to read data from the blockchain. Still, such functions may be called by other contracts as part of on-chain operations and stall those. Please be explicit about such cases in the documentation of your contracts.
+
+### Examples from Chaingear contracts
+
+**Registry_full.sol | Lines: 667-669 | Severity: 2**
+
+```solidity
+
+for (uint256 i = 0; i < _payees.length; i++) {
+      addPayee(_payees[i], _shares[i]);
+    }
+
+```
+
+**contracts_full.sol | Lines: 667-669 | Severity: 2**
+
+```solidity
+
+for (uint256 i = 0; i < _payees.length; i++) {
+      addPayee(_payees[i], _shares[i]);
+    }
+
+```    
+
+**chaingear_full.sol | Lines: 667-669 | Severity: 2**
+
+```solidity
+
+for (uint256 i = 0; i < _payees.length; i++) {
+      addPayee(_payees[i], _shares[i]);
+    }
+
+```
+
+**registry_full.sol | Lines: 667-669 | Severity: 2**
+
+```solidity
+
+ for (uint256 i = 0; i < _payees.length; i++) {
+      addPayee(_payees[i], _shares[i]);
+    }
+
+```
+
+**Chaingear_full.sol | Lines:667-669 | Severity: 2**
+
+```solidity
+
+for (uint256 i = 0; i < _payees.length; i++) {
+      addPayee(_payees[i], _shares[i]);
+    }
+
+```
+
 
 ## Locked money
 
