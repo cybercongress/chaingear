@@ -967,6 +967,99 @@ contract ERC721Metadata is ERC721Basic {
 
 ## Reentrancy 
 
+Any interaction from a contract (A) with another contract (B) and any transfer of Ether hands over control to that contract (B). This makes it possible for B to call back into A before this interaction is completed.
+
+This pattern is experimental and can report false issues. This pattern might also be triggered when:
+
+- accessing struct's field
+- using enum's element
+
+Note that re-entrancy is not only an effect of Ether transfer but of any function call on another contract. Furthermore, you also have to take multi-contract situations into account. A called contract could modify the state of another contract you depend on.
+
+### Examples from Chaingear contracts
+
+**Registry.sol| Line: 105 | Severity: 3**
+
+```solidity
+
+entriesMeta.push(meta);
+
+```
+
+**Registry.sol | Line: 181 | Severity: 3**
+
+```solidity
+
+entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.add(msg.value);
+
+```
+
+**Registry.sol | Line: 203 | Severity:3**
+
+```solidity
+
+require(_amount <= entriesMeta[_entryID].currentEntryBalanceETH);
+
+```
+
+**Registry.sol | Line: 221 | Severity: 3**
+
+```solidity
+
+entriesMeta[_entryID].lastUpdateTime = block.timestamp;
+
+```
+
+**Registry.sol | Line: 108 | Severity: 3**
+
+```solidity
+
+uint256 newEntryID = EntryInterface(entriesStorage).entriesAmount();
+
+```
+
+**Registry.sol | Line: 132 | Severity: 3**
+
+```solidity
+
+require(entriesMeta[_entryID].currentEntryBalanceETH == 0);
+
+```
+
+**Registry.sol | Line: 66 | Severity: 3**
+
+```solidity
+
+createEntryPermissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
+
+```
+
+**Registry.sol | Line: 204 | Severity: 3**
+
+```solidity
+
+entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.sub(_amount);
+
+```
+
+**Chaingear.sol | Line: 151 | Severity: 3**
+
+```solidity
+
+ string memory registryName = RegistryInterface(registryAddress).name();
+
+```
+
+**Chaingear.sol | Line: 119 | Severity: 3**
+
+``` solidity
+
+address registryAddress = registries[_tokenId].contractAddress;
+
+```
+
+
+
 ## Timestamp dependance
 
 ## Unchecked math
