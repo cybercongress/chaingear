@@ -1224,6 +1224,72 @@ registryTags.length--;
 
 ## Using assembly
 
+Inline assembly is a way to access the Ethereum Virtual Machine at a low level. This discards several important safety features of Solidity.
+
+### Examples from Chaingear contracts
+
+**Registry_full.sol | Line: 1593-1597 | Severity: 1**
+
+```solidity
+
+assembly {
+            let s := mload(_entryCore)
+            let p := add(_entryCore, 0x20)
+            deployedAddress := create(0, p, s)
+        }
+
+```
+**contracts_full.sol | Line: 1593-1597 | Severity: 1**
+
+```solidity
+
+assembly {
+            let s := mload(_entryCore)
+            let p := add(_entryCore, 0x20)
+            deployedAddress := create(0, p, s)
+        }
+
+```
+
+**chaingear_full.sol | Line: 1950-1954 | Severity: 1**
+
+```solidity
+
+assembly {
+            let s := mload(_entryCore)
+            let p := add(_entryCore, 0x20)
+            deployedAddress := create(0, p, s)
+        }
+
+```
+
+**Registry.sol | Line: 303-307 | Severity: 1**
+
+```solidity
+
+assembly {
+            let s := mload(_entryCore)
+            let p := add(_entryCore, 0x20)
+            deployedAddress := create(0, p, s)
+        }
+
+
+```
+
+**Chaingear_full.sol | Line: 1950-1954 | Severity: 1**
+
+```solidity
+
+assembly {
+            let s := mload(_entryCore)
+            let p := add(_entryCore, 0x20)
+            deployedAddress := create(0, p, s)
+        }
+
+
+```
+
+
 ## The incompletness of the compiler: view-function 
 
 ## Implicit visibility level
