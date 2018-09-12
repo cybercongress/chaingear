@@ -22,7 +22,9 @@ The scope of this audit was to analyze and document CHAINGEAR’s smart contract
 ## DoS by external function call in require
 
 The contract that calls functions of other contracts should not rely on results of these functions. Be careful when verifying the result of external calls with <code>require</code> as called contract can always return false and prevent correct execution. Especially if the contract relies on state changes made by this function.
-This type of pattern is experimental and can report false issues. This pattern might be also triggered when 
+Calls to untrusted contracts can introduce several unexpected risks or errors. External calls may execute malicious code in that contract or any other contract that it depends upon. As such, every external call should be treated as a potential security risk. 
+
+This type of pattern is experimental and can report false issues. This pattern might be also triggered when: 
 - accessing structs field
 - using enums element
 
@@ -30,18 +32,36 @@ To avoid this vulnerability you can use the Checks-Effects-Interactions pattern.
 
 Examples: 
 
-** Registry_full.sol **
+** Registry_full.sol | Line: 1422 | Severity: 1 **
+
 ```solidity
 
 require(entriesMeta[_entryID].currentEntryBalanceETH == 0);
 
 ```
-** Registry_full.sol **
+** Registry_full.sol | Line:942 |  Severity: 1 **
+
 ```solidity
 
 require(uint8(CreateEntryPermissionGroup.AllUsers) >=_createEntryPermissionGroup);
 
 ```
+
+** EntryCore_full.sol | Line: 117 | Severity: 1 **
+
+```solidity
+
+require(owner.call(bytes4(keccak256("updateEntryTimestamp(uint256)")), _entryID));
+
+```
+** EntryCore_full.sol | Line: 99 | Severity: 1 **
+
+```solidity
+
+require(owner.call(bytes4(keccak256("checkAuth(uint256, address)")), _entryID, msg.sender));
+
+```
+
 
 
 ## Using the approve function of the ERC-20 standard
