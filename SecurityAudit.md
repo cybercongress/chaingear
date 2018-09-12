@@ -1289,7 +1289,101 @@ assembly {
 
 ```
 
-
 ## The incompletness of the compiler: view-function 
 
-## Implicit visibility level
+In Solidity, functions that do not read from the state or modify it can be declared as <code> view </code>.
+
+Currently, the compiler does not verify this. In order to avoid problems related to the compiler's improvement, you should correctly indicate whether the function is <code> view </code> or not.
+
+### Examples from Chaingear contracts
+
+**Registry_full.sol | Line: 158-168 | Severity: 0**
+
+```solidity
+
+function isContract(address addr) internal view returns (bool) {
+    uint256 size;
+    // XXX Currently there is no better way to check if there is a contract in an address
+    // than to check the size of the code at that address.
+    // See https://ethereum.stackexchange.com/a/14016/36603
+    // for more details about how this works.
+    // TODO Check this again before the Serenity release, because all addresses will be
+    // contracts then.
+    assembly { size := extcodesize(addr) }  // solium-disable-line security/no-inline-assembly
+    return size > 0;
+  }
+
+```
+
+**contracts_full.sol | Line: 158-168 | Severity: 0**
+
+```solidity
+
+function isContract(address addr) internal view returns (bool) {
+    uint256 size;
+    // XXX Currently there is no better way to check if there is a contract in an address
+    // than to check the size of the code at that address.
+    // See https://ethereum.stackexchange.com/a/14016/36603
+    // for more details about how this works.
+    // TODO Check this again before the Serenity release, because all addresses will be
+    // contracts then.
+    assembly { size := extcodesize(addr) }  // solium-disable-line security/no-inline-assembly
+    return size > 0;
+  }
+
+```
+
+**chaingear_full.sol | Line: 158-168 | Severity: 0**
+
+```solidity  
+
+function isContract(address addr) internal view returns (bool) {
+    uint256 size;
+    // XXX Currently there is no better way to check if there is a contract in an address
+    // than to check the size of the code at that address.
+    // See https://ethereum.stackexchange.com/a/14016/36603
+    // for more details about how this works.
+    // TODO Check this again before the Serenity release, because all addresses will be
+    // contracts then.
+    assembly { size := extcodesize(addr) }  // solium-disable-line security/no-inline-assembly
+    return size > 0;
+  }
+
+```
+
+**registry_full.sol | Line: 158-168 | Severity: 0**
+
+```solidity  
+
+function isContract(address addr) internal view returns (bool) {
+    uint256 size;
+    // XXX Currently there is no better way to check if there is a contract in an address
+    // than to check the size of the code at that address.
+    // See https://ethereum.stackexchange.com/a/14016/36603
+    // for more details about how this works.
+    // TODO Check this again before the Serenity release, because all addresses will be
+    // contracts then.
+    assembly { size := extcodesize(addr) }  // solium-disable-line security/no-inline-assembly
+    return size > 0;
+  }
+
+```
+
+**Chaingear_full.sol | Line: 158-168 | Severity: 0**
+
+```solidity  
+
+function isContract(address addr) internal view returns (bool) {
+    uint256 size;
+    // XXX Currently there is no better way to check if there is a contract in an address
+    // than to check the size of the code at that address.
+    // See https://ethereum.stackexchange.com/a/14016/36603
+    // for more details about how this works.
+    // TODO Check this again before the Serenity release, because all addresses will be
+    // contracts then.
+    assembly { size := extcodesize(addr) }  // solium-disable-line security/no-inline-assembly
+    return size > 0;
+  }
+
+```
+
