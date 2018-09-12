@@ -30,7 +30,7 @@ This type of pattern is experimental and can report false issues. This pattern m
 
 To avoid this vulnerability you can use the Checks-Effects-Interactions pattern.
 
-###### Examples from Chaingear contracts
+#### Examples from Chaingear contracts
 
 **Registry_full.sol | Line: 1422 | Severity: 1**
 
@@ -133,10 +133,10 @@ The <code>approve</code> function of ERC-20 might lead to vulnerabilities.
 Only use the <code> approve </code> function of the ERC-20 standard to change allowed amount to 0 or from 0 (wait till transaction is mined and approved).
 The EIP-20 token's <code>approve</code> function creates the potential for an approved spender to spend more than the intended amount. A front running attack can be used, enabling an approved spender to call transferFrom() both before and after the call to approve() is processed.
 
-###### Real life example of an approve attack
+#### Real life example of an approve attack
 <a href="https://docs.google.com/document/d/1YLPtQxZu1UAvO9cZ1O2RPXBbT0mooh4DYKjA_jp-RLM/edit">ERC20 API: An Attack Vector on Approve/TransferFrom Methods</a>
 
-###### Examples from Chaingear contracts
+#### Examples from Chaingear contracts
 
 **Registry_full.sol | Lines: 255-264 | Severity: 2**
 
@@ -229,7 +229,7 @@ There is no return value for a function whose signature only denotes the type of
 
 If you don't need the return value of the function, do not specify <code>returns</code> in function signature.
 
-###### Examples from Chaingear contracts
+#### Examples from Chaingear contracts
 
 **contracts_full.sol | Lines: 1549-1558 | Severity: 1**
 
