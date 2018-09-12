@@ -54,6 +54,7 @@ require(uint8(CreateEntryPermissionGroup.AllUsers) >=_createEntryPermissionGroup
 require(owner.call(bytes4(keccak256("updateEntryTimestamp(uint256)")), _entryID));
 
 ```
+
 ** EntryCore_full.sol | Line: 99 | Severity: 1 **
 
 ```solidity
@@ -62,7 +63,69 @@ require(owner.call(bytes4(keccak256("checkAuth(uint256, address)")), _entryID, m
 
 ```
 
+** contracts_full.sol | Line: 2199 | Severity: 1 **
 
+``` solidity
+
+require(RegistryInterface(registryAddress).getSafeBalance() == 0);
+
+```
+
+** contracts_full.sol | Line: 942 | Severity: 1 **
+
+```solidity
+
+ require(uint8(CreateEntryPermissionGroup.AllUsers) >= _createEntryPermissionGroup);
+
+```
+
+** contracts_full.sol | Line: 2386 | Severity: 1 **
+
+```solidity
+
+require(owner.call(bytes4(keccak256("updateEntryTimestamp(uint256)")), _entryID));
+
+```
+
+** contracts_full.sol | Line: 1493 | Severity: 1 **
+
+```solidity
+
+require(_amount <= entriesMeta[_entryID].currentEntryBalanceETH);
+
+```
+
+** contracts_full.sol | Line: 1422 | Severity: 1 **
+
+```solidity
+
+require(entriesMeta[_entryID].currentEntryBalanceETH == 0);
+
+```
+
+** contracts_full.sol | Line: 2250 | Severity: 1 **
+
+```solidity
+
+require(_amount <= registries[_registryID].currentRegistryBalanceETH);
+
+```
+
+** contracts_full.sol | Line: 2368 | Severity: 1 **
+
+```solidity
+
+require(owner.call(bytes4(keccak256("checkAuth(uint256, address)")), _entryID, msg.sender));
+
+```
+
+** chaingear_full.sol | Line: 2250 | Severity: 1 **
+
+```solidity
+
+require(_amount <= registries[_registryID].currentRegistryBalanceETH);
+
+```
 
 ## Using the approve function of the ERC-20 standard
 
