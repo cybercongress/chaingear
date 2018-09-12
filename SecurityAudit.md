@@ -30,7 +30,7 @@ This type of pattern is experimental and can report false issues. This pattern m
 
 To avoid this vulnerability you can use the Checks-Effects-Interactions pattern.
 
-**Examples from Chaingear contracts**
+#####Examples from Chaingear contracts
 
 **Registry_full.sol | Line: 1422 | Severity: 1**
 
@@ -221,9 +221,102 @@ function approve(address _to, uint256 _tokenId) public {
   }
 
 ```
-  
+
 
 ## No return statement for function that returns value 
+
+There is no return value for a function whose signature only denotes the type of the return value.
+
+If you don't need the return value of the function, do not specify <code>returns</code> in function signature.
+
+#####Examples from Chaingear contracts
+
+**contracts_full.sol | Lines: 1549-1558 | Severity: 1**
+
+```solidity
+
+function checkAuth(
+        uint256 _entryID,
+        address _caller
+    )
+        external
+        view
+        returns (bool)
+    {
+        require(ownerOf(_entryID) == _caller);
+    }
+
+```
+
+**registry_full.sol | Lines: 1549-1558 | Severity: 1**
+
+```solidity
+
+function checkAuth(
+        uint256 _entryID,
+        address _caller
+    )
+        external
+        view
+        returns (bool)
+    {
+        require(ownerOf(_entryID) == _caller);
+    }
+
+```
+
+**chaingear_full.sol | Lines: 1906-1915 | Severity: 1**
+
+```solidity
+
+function checkAuth(
+        uint256 _entryID,
+        address _caller
+    )
+        external
+        view
+        returns (bool)
+    {
+        require(ownerOf(_entryID) == _caller);
+    }
+
+```
+
+**Registry.sol | Lines: 259-268 | Severity: 1**
+
+```solidity
+
+function checkAuth(
+        uint256 _entryID,
+        address _caller
+    )
+        external
+        view
+        returns (bool)
+    {
+        require(ownerOf(_entryID) == _caller);
+    }
+
+```
+
+**Chaingear_full.sol | Lines: 1906-1915 | Severity: 1**
+
+```solidity
+
+function checkAuth(
+        uint256 _entryID,
+        address _caller
+    )
+        external
+        view
+        returns (bool)
+    {
+        require(ownerOf(_entryID) == _caller);
+    }
+
+```
+
+
 
 ## Costly loop
 
