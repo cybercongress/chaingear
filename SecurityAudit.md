@@ -523,7 +523,7 @@ contract SplitPaymentChangeable is SplitPayment, Ownable {
 
 **chaingear_full.sol | Lines: 796-807 | Severity: 2**
 
-``solidity
+```solidity
 
 contract RegistryInterface {
     function getSafeBalance() external view returns (uint256);
@@ -538,7 +538,7 @@ contract RegistryInterface {
     function symbol() public view returns (string);
 }
 
-``
+```
 
 **RegistryInterface.sol | Lines: 4-15 | Severity: 2**
 
