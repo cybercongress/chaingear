@@ -19,50 +19,66 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
- <body>
-   <!--lg, md, sm visible header-->
-    <div class="container path-3 hidden-xs">
+    <body>
 
-      <!--Wave background-->
-      <div class="row row-fix">
-        <div class="col-lg-12 wave-bg text-center hidden-xs">
-          <img src="img/bg.png" class="wave-bg-img">
+      <!--LG visible header-->
+      <div class="container-fluid path-3 visible-lg">
+        <div class="row">
+          <div class="col-xs-12 wave-bg text-center hidden-xs"><!--Wave background-->
+            <img src="img/bg.png" class="wave-bg-img">
+          </div>
+          <div class="col-xs-1 fork">
+            <iframe src="https://ghbtns.com/github-btn.html?user=cybercongress&repo=chaingear&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="124px" height="31px"></iframe><!--fork button-->
+          </div>
+          <div class="col-sm-12 txt-h1-div text-center"><!--Message title h1-->
+            <h1 class="text-uppercase txt-h1">The most expensive database</h1>
+          </div>
+          <div class="col-xs-12 logoC text-center"><!--logo-->
+            <img src="img/logo.svg" class="logoImg">
+          </div>
+          <div class="col-xs-12 text-center app">
+            <a class="app-b btn btn-default text-uppercase" href="http://cyb.ai/:chainger#/new" role="button">App <span class="glyphicon glyphicon-download-alt"></span></a>
+            <a class="app-b btn btn-default text-uppercase" href="https://cybersearch.io/%D1%81haingear/overview/" role="button">Docs</a>
+          </div>
         </div>
       </div>
 
-      <!--Message title h1-->
-      <div class="row">
-        <div class="col-sm-12 col-xs-12 txt-h1 text-center">
-          <h1 class="text-uppercase">The most expensive database</h1>
+      <!--MD, SM visible header-->
+      <div class="container-fluid path-3 hidden-lg hidden-xs">
+       <div class="row">
+          <div class="col-sm-12 wave-bg text-center"><!--Wave background-->
+            <img src="img/bg.png" class="wave-bg-img-md-sm">
+          </div>
+          <div class="col-sm-1 fork">
+             <iframe src="https://ghbtns.com/github-btn.html?user=cybercongress&repo=chaingear&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="124px" height="31px"></iframe><!--fork button-->
+          </div>
+          <div class="col-sm-12 txt-h1-div text-center"><!--Message title h1-->
+              <h1 class="text-uppercase txt-h1-md-sm">The most expensive database</h1>
+          </div>
+          <div class="col-sm-12 logoC text-center"><!--logo-->
+             <img src="img/logo.svg" class="logoImg">
+          </div>
+          <div class="col-sm-12 text-center app-md-sm">
+              <a class="app-b btn btn-default text-uppercase" href="http://cyb.ai/:chainger#/new" role="button">App <span class="glyphicon glyphicon-download-alt"></span></a>
+              <a class="app-b btn btn-default text-uppercase" href="https://cybersearch.io/%D1%81haingear/overview/" role="button">Docs</a>
+          </div>
         </div>
       </div>
 
-      <!--Logo-->
-      <div class="row">
-        <div class="col-sm-12 col-xs-12 logoC text-center">
-          <img src="img/logo.png" class="logoImg">
-        </div>
-      </div>
-
-      <!--Button-->
-        <div class="col-xs-12 text-center">
-          <a class="text-uppercase button butt" href="http://cybersearch.live" role="button"><span class="btn-span">Get started</span></a>
-        </div>
-
-
-      <!--LG-screen for large features row-->
-      <div class="row hidden-md hidden-sm hidden-xs">
-        <div class="col-lg-10 col-sm-offset-2 rectangle text-center">
-          <div class="row">
-            <div class="col-lg-4 features text-center">
-              <img src="img/flexible.png" class="feat-img">
-            </div>
-            <div class="col-lg-4 img-responsive features text-center">
-              <img src="img/economics.png" class="feat-img">
-            </div>
-            <div class="col-lg-4 img-responsive features">
-              <img src="img/ownership.png" class="feat-img">
-            </div>
+      <!--LG-screen for large features-->
+      <div class="container-fluid">
+        <div class="row visible-lg">
+          <div class="col-lg-10 col-sm-offset-2 rectangle text-center">
+            <div class="row">
+              <div class="col-lg-4 features text-center">
+                <img src="img/flexible.svg" class="feat-img">
+              </div>
+              <div class="col-lg-4 img-responsive features text-center">
+                <img src="img/economics.svg" class="feat-img">
+              </div>
+              <div class="col-lg-4 img-responsive features">
+                <img src="img/ownership.svg" class="feat-img">
+              </div>
           </div>
           <div class="row text-center feat-text text-uppercase">
             <div class="col-lg-4">
@@ -81,157 +97,148 @@
             </div>
             <div class="col-lg-4">
                     set rules of adding entries
-            </div>
-            <div class="col-lg-4">
+              </div>
+              <div class="col-lg-4">
                     transfer and trade records and registries
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- MD-SM-screen features-->
-      <div class="row hidden-lg hidden-xs">
-        <div class="col-sm-12 col-md-12 rectangle-md-sm">
+      <div class="container-fluid">
+        <div class="row hidden-lg hidden-xs">
+          <div class="col-sm-12 col-md-12 rectangle-md-sm">
+            <div class="row">
+              <div class="col-sm-4 features-md-sm">
+                <img src="img/flexible.svg" class="feat-img-md-sm">
+              </div>
+              <div class="col-sm-4 features-md-sm">
+                <img src="img/economics.svg" class="feat-img-md-sm">
+              </div>
+              <div class="col-sm-4 features-md-sm">
+                <img src="img/ownership.svg" class="feat-img-md-sm">
+              </div>
+            </div>
+            <div class="row text-center feat-text text-uppercase">
+              <div class="col-sm-4">
+                    Flexible
+              </div>
+              <div class="col-sm-4">
+                    Economics
+              </div>
+              <div class="col-sm-4">
+                    Ownership
+              </div>
+            </div>
+            <div class="row text-center text-descr-md-sm">
+              <div class="col-sm-4">
+                    define that you want
+              </div>
+              <div class="col-sm-4">
+                    set rules of adding entries
+              </div>
+              <div class="col-sm-4">
+                    transfer and trade records and registries
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--XS visible header-->
+      <div class="container path-3-xs visible-xs">
+
+        <!--Forks-->
+        <div class="col-sm-1 fork">
+           <iframe src="https://ghbtns.com/github-btn.html?user=cybercongress&repo=chaingear&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="124px" height="31px"></iframe><!--fork button-->
+        </div>
+
+        <!--Message title h1-->
+        <div class="row">
+          <div class="col-xs-12 text-center txt-h1-xs">
+            <h1 class="text-uppercase h1-fix">The most expensive database</h1>
+          </div>
+        </div>
+
+        <!--Logo-->
+        <div class="row">
+          <div class="col-xs-12 logoC-xs text-center">
+            <img src="img/logo.svg" class="logoImg-xs">
+          </div>
+        </div>
+
+        <!--Bottons-->
+        <div class="col-xs-12 text-center app-md-sm">
+            <a class="app-b btn btn-default text-uppercase" href="http://cyb.ai/:chainger#/new" role="button">App <span class="glyphicon glyphicon-download-alt"></span></a>
+            <a class="app-b btn btn-default text-uppercase" href="https://cybersearch.io/%D1%81haingear/overview/" role="button">Docs</a>
+        </div>
+      </div>
+
+      <!--XS features-->
+      <div class="row visible-xs row-fix">
+          <div class="row rectangle-xs text-center row-fix">
+            <div class="col-xs-12">
+              <img src="img/flexible.svg" class="feat-img-xs">
+              <p class="text-h-xs text-uppercase">Flexible</p>
+              <p class="text-descr-xs">define that you want</p>
+            </div>
+            <div class="col-xs-12">
+              <img src="img/economics.svg" class="feat-img-xs">
+              <p class="text-h-xs text-uppercase">Economics</p>
+              <p class="text-descr-xs">set rules of adding entries</p>
+            </div>
+            <div class="col-xs-12">
+              <img src="img/ownership.svg" class="feat-img-xs">
+              <p class="text-h-xs text-uppercase">Ownership</p>
+              <p class="text-descr-xs">transfer and trade records and registries</p>
+            </div>
+          </div>
+        </div>
+
+      <!--LG visible overview-->
+      <div class="container-fluid overview visible-lg">
           <div class="row">
-            <div class="col-sm-4 features text-center">
-              <img src="img/flexible.png" class="feat-img">
+            <div class="col-sm-2 col-sm-offset-2">
+              <img src="img/overview.svg" class="img-responsive overview-img text-center">
             </div>
-            <div class="col-sm-4 img-responsive features">
-              <img src="img/economics.png" class="feat-img">
-            </div>
-            <div class="col-sm-4 img-responsive features">
-              <img src="img/ownership.png" class="feat-img">
-            </div>
-          </div>
-          <div class="row text-center feat-text text-uppercase">
-            <div class="col-sm-4">
-                  Flexible
-            </div>
-            <div class="col-sm-4">
-                  Economics
-            </div>
-            <div class="col-sm-4">
-                  Ownership
-            </div>
-          </div>
-          <div class="row text-center text-descr">
-            <div class="col-sm-4">
-                  define that you want
-            </div>
-            <div class="col-sm-4">
-                  set rules of adding entries
-            </div>
-            <div class="col-sm-4">
-                  transfer and trade records and registries
-            </div>
+            <div class="col-sm-6 hidden-xs">
+              <p class="overview-section text-uppercase">Overview</p>
+              <p class="overview-descr">This project allows you to create your own Registry of general purpose entries on Ethereum blockchain. Entry type is defined during creation, so you can put into entry any custom logic you want (validation, entry-level permission control). Entries are tokenized as NFT.</p>
+              <p class="overview-descr">Your creating your registry in Chaingear - metaregistry, which are one point of access to all registries. Registries on chaingear level are tokenized as NFT. Chaingear is most expensive registry, so you should pay for your registry creation.</p>
+              <div class="text-uppercase shadow visible-lg">Overview</div>
           </div>
         </div>
       </div>
 
-    </div>
-
-    <!--XS-->
-    <div class="container path-3-xs hidden-lg hidden-md hidden-sm">
-
-      <!--Message title h1-->
-      <div class="row">
-        <div class="col-xs-12 text-center txt-h1-xs">
-          <h1 class="text-uppercase h1-fix">The most expensive database</h1>
-        </div>
-      </div>
-
-      <!--Logo-->
-      <div class="row">
-        <div class="col-sm-12 col-xs-12 logoC-xs text-center">
-          <img src="img/logo.png" class="logoImg-xs">
-        </div>
-      </div>
-    </div>
-
-    <!--XS features-->
-    <div class="row hidden-lg hidden-md hidden-sm row-fix">
-        <div class="row rectangle-xs text-center row-fix">
-          <div class="col-xs-12">
-            <img src="img/flexible.png" class="feat-img-xs">
-            <p class="text-h-xs text-uppercase">Flexible</p>
-            <p class="text-descr-xs">define that you want</p>
-          </div>
-          <div class="col-xs-12">
-            <img src="img/economics.png" class="feat-img-xs">
-            <p class="text-h-xs text-uppercase">Economics</p>
-            <p class="text-descr-xs">set rules of adding entries</p>
-          </div>
-          <div class="col-xs-12">
-            <img src="img/ownership.png" class="feat-img-xs">
-            <p class="text-h-xs text-uppercase">Ownership</p>
-            <p class="text-descr-xs">transfer and trade records and registries</p>
+      <!--MD, SM visible overview-->
+      <div class="container-fluid overview hidden-lg hidden-xs">
+          <div class="row">
+            <div class="col-sm-4">
+              <img src="img/overview.svg" class="overview-img-md-sm">
+            </div>
+            <div class="col-sm-8">
+              <p class="overview-section-md-sm text-uppercase">Overview</p>
+              <p class="overview-descr-md-sm">This project allows you to create your own Registry of general purpose entries on Ethereum blockchain. Entry type is defined during creation, so you can put into entry any custom logic you want (validation, entry-level permission control). Entries are tokenized as NFT.</p>
+              <p class="overview-descr-md-sm">Your creating your registry in Chaingear - metaregistry, which are one point of access to all registries. Registries on chaingear level are tokenized as NFT. Chaingear is most expensive registry, so you should pay for your registry creation.</p>
+              <div class="text-uppercase shadow visible-lg">Overview</div>
           </div>
         </div>
       </div>
 
-    <!-- full adapting overview-->
-    <div class="container overview">
-      <div class="row">
-        <div class="col-lg-4 col-lg-offset-2 hidden-xs hidden-sm hidden-md">
-          <img src="img/overview.png" class="img-responsive overview-img">
-        </div>
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-          <p class="overview-section text-uppercase">Overview</p>
-          <p class="overview-descr">This project allows you to create your own Registry of general purpose entries on Ethereum blockchain. Entry type is defined during creation, so you can put into entry any custom logic you want (validation, entry-level permission control). Entries are tokenized as NFT.</p>
-          <p class="overview-descr">Your creating your registry in Chaingear - metaregistry, which are one point of access to all registries. Registries on chaingear level are tokenized as NFT. Chaingear is most expensive registry, so you should pay for your registry creation.</p>
-          <div class="text-uppercase shadow hidden-xs hidden-sm hidden-md">Overview</div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 text-center footer">
+            <p class="license">Do What The Fuck You Want To Public License (WTFPL)</p>
+          </div>
         </div>
       </div>
-    </div>
-
-    <!--lg, md, sm visible footer-->
-    <div class="container foot text-center hidden-xs">
-      <div class="row">
-        <ul class="list-inline">
-          <li class="overview-descr">Follow us</li>
-          <li><a class="cust" href=""><img src="img/medium.svg" class=""></a></li>
-          <li><a class="cust" href=""><img src="img/github.svg" class=""></a></li>
-          <li><a class="cust" href=""><img src="img/telegram.svg" class=""></a></li>
-          <li><a class="cust" href=""><img src="img/twitter.svg" class=""></a></li>
-          <li><a class="cust" href=""><img src="img/reddit.svg" class=""></a></li>
-          <li><a class="cust" href=""><img src="img/knowledge.svg" class=""></a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- xs visible footer-->
-    <div class="container foot text-center hidden-lg hidden-md hidden-sm">
-      <div class="col-xs-12 text-center">
-        <p>Follow us</p>
-      </div>
-      <div class="row">
-        <div class="col-xs-2 col-xs-offset-3">
-          <a class="" href=""><img src="img/medium.svg"></a>
-        </div>
-        <div class="col-xs-2">
-          <a href=""><img src="img/github.svg"></a>
-        </div>
-        <div class="col-xs-2">
-          <a href=""><img src="img/telegram.svg"></a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-2 col-xs-offset-3">
-          <a href=""><img src="img/twitter.svg"></a>
-        </div>
-        <div class="col-xs-2">
-          <a href=""><img src="img/reddit.svg"></a>
-        </div>
-        <div class="col-xs-2">
-          <a href=""><img src="img/knowledge.svg"></a>
-        </div>
-      </div>
-    </div>
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <!-- Include all compiled plugins (below), or include individual files as needed -->
+      <script src="js/bootstrap.min.js"></script>
+
+    </body>
 </html>

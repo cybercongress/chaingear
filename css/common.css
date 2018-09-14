@@ -1,15 +1,13 @@
-butt.row-fix {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
-.h1-fix {
-  font-size: 32spx;
-}
-
 .path-3 {
     width: 100%;
-    height: 992px;
+    height: auto;
+    background-image: linear-gradient(124deg, #0909b4, #5d1c88);
+    position: relative;
+  }
+
+.path-3-md-sm {
+    width: 100%;
+    height: auto;
     background-image: linear-gradient(124deg, #0909b4, #5d1c88);
     position: relative;
 }
@@ -21,13 +19,20 @@ butt.row-fix {
     position: relative;
 }
 
+.txt-h1-div {
+  position: absolute;
+  top: 10%;
+}
+
 .txt-h1 {
   font-family: 'Play', sans-serif;
-  position: relative;
-  top: 120px;
   color: #FFFFFF;
   font-size: 46px;
-  position: absolute;
+}
+
+.txt-h1-md-sm {
+  font-family: 'Play', sans-serif;
+  color: #FFFFFF;
 }
 
 .txt-h1-xs {
@@ -40,30 +45,48 @@ butt.row-fix {
 }
 
 .wave-bg {
-  position: relative;
-  top: 46px;
+position: relative;
 }
 
 .wave-bg-img {
-  width: 1438px;
-  height: 796px;
+  display: inline-block;
+  height: auto;
+  max-width: 80%;
+  padding-top: 3%;
+  padding-bottom: 10%;
+
+}
+
+.wave-bg-img-md-sm {
+  display: inline-block;
+  height: auto;
+  max-width: 80%;
+  padding-top: 3%;
+  padding-bottom: 1%;
+
 }
 
 .logoC {
   position: absolute;
-  top: 240px;
-  margin-top: 15px;
+  top: 28%;
+  margin-top: 1%;
+  display: block;
+  height: auto;
 }
 
 .logoC-xs {
   position: absolute;
   top: 244px;
   margin-top: 15px;
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
 }
 
 .logoImg {
-  width: 209px;
-  height: 277px;
+  width: 13%;
+  height: auto;
+
 }
 
 .logoImg-xs {
@@ -71,36 +94,12 @@ butt.row-fix {
   height: 185px;
 }
 
-.button {
-  position: relative;
-  bottom: 146px;
-  background-image: url(butt.svg);
-  background-repeat : no-repeat;
-  width: 191px;
-  height: 76px;
-  object-fit: contain;
-  font-family: 'Play', sans-serif;
-  font-size: 17px;
-  line-height: 1.5;
-  letter-spacing: normal;
-  color: #2e2d2d;
-  vertical-align: middle;
-  background-color: inherit;
-  border-color: inherit;
-  border: none;
-}
-
-.btn-span {
-  position: relative;
-  top: 19px;
-  left: 0px;
-}
-
 .rectangle {
   width: 66.666666666%;
   background-color: #ffffff;
   box-shadow: -12px 1px 77px 0 rgba(0, 0, 0, 0.29);
   position: relative;
+  bottom: 110px;
 }
 
 .rectangle-md-sm {
@@ -114,12 +113,53 @@ butt.row-fix {
 .rectangle-xs {
   width: 100%;
   background-color: #ffffff;
-  box-shadow: -12px 1px 77px 0 rgba(0, 0, 0, 0.29);
   position: relative;
+}
+
+.fork {
+  position: absolute;
+  bottom: 87%;
+  left: 79%;
+}
+
+.app {
+  width: 100%;
+  position: absolute;
+  bottom: 26%;
+}
+
+.app-md-sm {
+  width: 100%;
+  position: absolute;
+  bottom: 12%;
+}
+
+.app-b {
+  width: 163px;
+  height: 54px;
+  box-shadow: 1px 6px 11px 0 rgba(0, 0, 0, 0.15);
+  border: solid 1.2px #f2f2f2;
+  padding: 0.7%;
+  margin: 1%;
+  border-radius: 0;
+  background-color: inherit;
+  color: #ffffff;
+  font-size: 17px;
+  line-height: 1.5;
+  font-family: 'Play', sans-serif;
 }
 
 .features {
   margin-top: 60px;
+  margin-bottom: 15px;
+  height: auto;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.features-md-sm {
+  margin-top: 2%;
   margin-bottom: 15px;
   height: auto;
   display: table-cell;
@@ -142,14 +182,31 @@ butt.row-fix {
   width: 70%;
 }
 
+.feat-img-md-sm {
+  width: 50%;
+}
+
 .feat-img-xs {
-  width: 70%;
+  width: 30%;
   margin-top: 40px;
 }
 
 .text-descr {
   margin-top: 18px;
   margin-bottom: 66px;
+  font-family: 'Play', sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #434343;
+}
+
+.text-descr-md-sm {
+  margin-top: 18px;
+  margin-bottom: 2%;
   font-family: 'Play', sans-serif;
   font-size: 16px;
   font-weight: normal;
@@ -187,7 +244,6 @@ font-size: 30px;
 
 .overview {
   position: relative;
-  top: 100px;
 }
 
 .overview-section {
@@ -198,8 +254,17 @@ font-size: 30px;
   color: #70a8f7;
 }
 
+.overview-section-md-sm {
+  padding-top: 5%;
+  font-family: 'Play', sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: normal;
+  color: #70a8f7;
+}
+
 .overview-descr {
-  margin-top: 46px;
+  margin-top: 20px;
   font-family: 'Play', sans-serif;
   font-size: 16px;
   font-weight: normal;
@@ -210,14 +275,39 @@ font-size: 30px;
   color: #6e6e6e;
 }
 
+.overview-descr-md-sm {
+  margin-top: 20px;
+  font-family: 'Play', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2;
+  letter-spacing: normal;
+  color: #6e6e6e;
+}
+
 .overview-img{
-    width: 100%;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+}
+
+.overview-img-md-sm{
+  padding-top: 5%;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  display: inline-block;
+  float: none;
+  vertical-align: middle;
 }
 
 .shadow {
   width: auto;
   position: absolute;
-  bottom: 323px;
+  bottom: 64%;
+  left: 5%;
   opacity: 0.23;
   font-family: 'Play', sans-serif;
   font-size: 100px;
@@ -230,10 +320,17 @@ font-size: 30px;
   color: #bfbfbf;
 }
 
-.foot{
+.footer {
   position: relative;
-  top: 114px;
-  margin-bottom: 46px
+  width: 100%;
+  height: 150px;
+  background-image: linear-gradient(98deg, #0909b4, #581b8b 55%, #5d1c88 77%, #5d1c88);
+}
+
+.license {
+  font-family: 'Play', sans-serif;
+  color: #ffffff;
+  padding-top: 69px;
 }
 
 a.butt {display: inline-block; position: relative; }
@@ -249,31 +346,3 @@ a.butt:after {
   opacity: 0;
   text-decoration: none;
  }
-
-a.butt:before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url(icon-path); opacity: 0; }
-
-a.butt:hover:before,
-a.butt:hover:after { opacity: 0; text-decoration: none; }
-a.butt:hover {
-  text-decoration: none;
- }
-
-
-a.cust { display: block; position: relative; }
-
-a.cust:after {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 5px;
-  right: 5px;
-  bottom: 5px;
-  background: rgba(0,0,0,.3);
-  opacity: 0;
-  border-radius: 35px;
- }
-
-a.cust:before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url(icon-path); opacity: 0; }
-
-a.cust:hover:before,
-a.cust:hover:after { opacity: 1; }
