@@ -38,17 +38,17 @@ contract SplitPaymentChangeable is SplitPayment, Ownable {
         address _newAddress
     )
         external
-	//// [review] BUG: even if you change the ADMIN -> he will not be able to change the payee address
+        //// [review] BUG: even if you change the ADMIN -> he will not be able to change the payee address
         onlyOwner
     {
-	//// [review] BUG: not checking the _payeeIndex!!!
+        //// [review] BUG: not checking the _payeeIndex!!!
         address oldAddress = payees[_payeeIndex];
 
         shares[_newAddress] = shares[oldAddress];
         released[_newAddress] = released[oldAddress];
         payees[_payeeIndex] = _newAddress;
 
-	//// [review] BUG: not checking if the oldAddress==newAddress
+        //// [review] BUG: not checking if the oldAddress==newAddress
         delete shares[oldAddress];
         delete released[oldAddress];
 

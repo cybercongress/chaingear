@@ -69,7 +69,7 @@ contract RegistryPermissionControl is Pausable {
     function getRegistryPermissions()
         external
         view
-	//// [review] Use enum type instead!
+        //// [review] Use enum type instead!
         returns (uint8)
     {
         return uint8(createEntryPermissionGroup);
@@ -89,7 +89,7 @@ contract RegistryPermissionControl is Pausable {
         address _newAdmin
     )
         public
-	//// [review] So admin can not transfer his own rights? Only the owner can? As was intended?
+        //// [review] So admin can not transfer his own rights? Only the owner can? As was intended?
         onlyOwner
         whenNotPaused
     {
@@ -102,14 +102,14 @@ contract RegistryPermissionControl is Pausable {
     * @param _createEntryPermissionGroup uint8 index of needed group
     */
     function updateCreateEntryPermissionGroup(
-	    //// [review] Use enum type instead!
+        //// [review] Use enum type instead!
         uint8 _createEntryPermissionGroup
     )
         public
         onlyAdmin
         whenNotPaused
     {
-	    //// [review] Use enum type instead!
+        //// [review] Use enum type instead!
         require(uint8(CreateEntryPermissionGroup.AllUsers) >= _createEntryPermissionGroup);
         createEntryPermissionGroup = CreateEntryPermissionGroup(_createEntryPermissionGroup);
     }

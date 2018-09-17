@@ -33,10 +33,10 @@ contract EntryCore is EntryInterface, Ownable {
             expensiveString: ""
         }));
 
-	//// [review] not sure if not using .length is OK!
+        //// [review] not sure if not using .length is OK!
         uint256 newEntryID = entries.push(m) - 1;
 
-	//// [review] Use "return (entries.length - 1);" instead
+        //// [review] Use "return (entries.length - 1);" instead
         return newEntryID;
     }
 
@@ -76,12 +76,12 @@ contract EntryCore is EntryInterface, Ownable {
         external
         onlyOwner
     {
-	//// [review] BUG: not checking if current len is 0!!!
-	//// [review] BUG: not using SafeMath. Can overflow
+        //// [review] BUG: not checking if current len is 0!!!
+        //// [review] BUG: not using SafeMath. Can overflow
         uint256 lastEntryIndex = entries.length - 1;
         Entry storage lastEntry = entries[lastEntryIndex];
 
-	//// [review] BUG: not checking the _index
+        //// [review] BUG: not checking the _index
         entries[_entryIndex] = lastEntry;
         delete entries[lastEntryIndex];
         entries.length--;

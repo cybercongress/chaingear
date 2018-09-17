@@ -118,7 +118,7 @@ contract Chaingeareable is RegistryPermissionControl {
         external
         onlyAdmin
     {
-	//// [review] You can use bytes32 instead of the string if it's fits OK
+        //// [review] You can use bytes32 instead of the string if it's fits OK
         uint len = bytes(_registryDescription).length;
         require(len <= 256);
 
@@ -168,12 +168,12 @@ contract Chaingeareable is RegistryPermissionControl {
         external
         onlyAdmin
     {
-	//// [review] BUG: not checking if current len is 0!!!
-	//// [review] BUG: not using SafeMath. Can overflow
+        //// [review] BUG: not checking if current len is 0!!!
+        //// [review] BUG: not using SafeMath. Can overflow
         uint256 lastTagIndex = registryTags.length - 1;
         bytes32 lastTag = registryTags[lastTagIndex];
 
-	//// [review] BUG: not checking the _index
+        //// [review] BUG: not checking the _index
         registryTags[_index] = lastTag;
         registryTags[lastTagIndex] = "";
         registryTags.length--;
