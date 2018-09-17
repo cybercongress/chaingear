@@ -13,10 +13,10 @@ import { Container, Text, Link as ActionLink } from '../../components/CallToActi
 
 const dateFormat = 'DD/MM/YYYY mm:hh';
 
-import { 
+import {
     Section,
     SectionContent,
-    
+
 } from '../../components/chaingear/'
 
 import {
@@ -48,10 +48,10 @@ class Home extends Component {
     const rows = registries.map((register, index) => (
                 <tr key={register.name}>
                     <td>
-                        <Link 
-                          to={`/registers/${register.address}`} 
+                        <Link
+                          to={`/registers/${register.address}`}
                         >{register.name}</Link>
-                    </td>                        
+                    </td>
                     <td>
                         {register.symbol}
                     </td>
@@ -67,8 +67,8 @@ class Home extends Component {
     const myRows = registries.filter(x => x.creator === account).map((register, index) => (
                 <tr key={register.name}>
                     <td>
-                        <Link 
-                          to={`/registers/${register.address}`} 
+                        <Link
+                          to={`/registers/${register.address}`}
                         >{register.name}</Link>
                     </td>
                     <td>
@@ -118,7 +118,7 @@ class Home extends Component {
                   </SectionContent>
                 </Section>
             </div>
-        )        
+        )
     }
 
     return (

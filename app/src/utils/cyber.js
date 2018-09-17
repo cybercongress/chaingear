@@ -56,17 +56,20 @@ export const compileRegistry = (code, contractName, compiler) => {
 let getWeb3 = new Promise(function(resolve, reject) {
   // Wait for loading completion to avoid race conditions with web3 injection timing.
   window.addEventListener('load', function() {
-    var results
-    //var web3 = window.web3
+    var results;
+    var web3 = window.web3;
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-      var web3;
+
+
     if (typeof web3 !== 'undefined') {
       // Use Mist/MetaMask's provider.
-      // web3 = new Web3(web3.currentProvider)
 
-      var provider = new Web3.providers.HttpProvider()
-      web3 = new Web3(provider);
-
+        if (web3.currentProvider && web3.currentProvider.isMetaMask) {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            var provider = new Web3.providers.HttpProvider();
+            web3 = new Web3(provider);
+        }
 
       results = {
         web3: web3
