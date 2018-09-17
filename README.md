@@ -35,24 +35,24 @@
 # Overview
 
 This project allows you to create your own Registry of general purpose entries on Ethereum blockchain.
-Entry type is defined during creation, so you can put into entry any custom logic you want (validation, entry-level permission control). Entries are tokenized as NFT.
+Entry type can be defined during creation, so you can put any custom logic you want (e.g.: validation, entry-level permission control) into the Entry. Entries are tokenized as NFTs.
 
-Your creating your registry in Chaingear - metaregistry, which are one point of access to all registries. Registries on chaingear level are tokenized as NFT. Chaingear is most expensive registry, so you should pay for your registry creation.
+You can create your own registry in the Chaingear's Metaregistry, which is a single point of contol of all other registries. Registries on chaingear level are tokenized as NFTs. Chaingear is most expensive registry (???), so you should pay for the registry creation.
 
 ## Features
 
 #### Chaingear
 
-1. Metaregistry with Registries entries, where each entry are ERC721 token
+1. Metaregistry of **Registries** entries; each entry is a ERC721 token
 2. Fee-based Registry creation
 3. Creating Registries with different functionality
 4. Token-based ownership/administration for Registry
-5. Funding in ETH for Registries
+5. Registries are funded with ETH
 
 #### Custom registry
 
 1. Custom data structure for Registry (EntryCore)
-2. Each Entry is ERC721 token
+2. Each Entry is a ERC721 token
 3. Fee-based Entry creation
 4. Token-based ownership Entry management
 5. Entry creation policies (Administrator, Whitelist, AllUsers)

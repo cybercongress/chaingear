@@ -31,7 +31,10 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         address creator;
         uint createdAt;
         uint lastUpdateTime;
+
+	//// [review] Better rename it to currentEntryBalanceWei
         uint256 currentEntryBalanceETH;
+	//// [review] Better rename it to accumulatedOverallEntryWei
         uint256 accumulatedOverallEntryETH;
     }
     
@@ -63,9 +66,19 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         public
         payable
     {
+        //// [review] Move that to the SplitPaymentChangeable constructor!
         createEntryPermissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
+
+	//// [review] Should be moved to the Chaingeareable contract constructor!
+	//// [review] Direct modification is not a good idea
         entryCreationFee = 0;
+
+	//// [review] Should be moved to the Chaingeareable contract constructor!
+	//// [review] Direct modification is not a good idea
         registrySafe = new Safe();
+		
+	//// [review] Should be moved to the Chaingeareable contract constructor!
+	//// [review] Direct modification is not a good idea
         registryInitStatus = false;
     }
     
@@ -105,12 +118,14 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         entriesMeta.push(meta);
         
         //newEntryID equals current entriesAmount number, because token IDs starts from 0
+	//// [review] If entriesStorage does not support the EntryInterface -> can lead to VERY BAD THINGS
         uint256 newEntryID = EntryInterface(entriesStorage).entriesAmount();
         require(newEntryID == totalSupply());
         
-        _mint(msg.sender, newEntryID);
-        emit EntryCreated(newEntryID, msg.sender);
-        
+	_mint(msg.sender, newEntryID);
+	emit EntryCreated(newEntryID, msg.sender);
+
+	//// [review] If entriesStorage does not support the EntryInterface -> can lead to VERY BAD THINGS
         uint256 createdEntryID = EntryInterface(entriesStorage).createEntry();
         require(newEntryID == createdEntryID);
 
@@ -133,6 +148,8 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         
         uint256 entryIndex = allTokensIndex[_entryID];
         
+	//// [review] BUG: not checking the length
+	//// [review] BUG: not using SafeMath. Can overflow
         uint256 lastEntryIndex = entriesMeta.length - 1;
         EntryMeta storage lastEntry = entriesMeta[lastEntryIndex];
 
@@ -143,6 +160,7 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         _burn(msg.sender, _entryID);
         emit EntryDeleted(_entryID, msg.sender);
         
+	//// [review] If entriesStorage does not support the EntryInterface -> can lead to VERY BAD THINGS
         EntryInterface(entriesStorage).deleteEntry(entryIndex);
     }
 
@@ -205,6 +223,7 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         
         emit EntryFundsClaimed(_entryID, msg.sender, _amount);
         
+	//// [review] If registrySafe does not support the Safe interface -> can lead to VERY BAD THINGS
         Safe(registrySafe).claim(msg.sender, _amount);
     }
     
@@ -219,6 +238,7 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         external
     {
         entriesMeta[_entryID].lastUpdateTime = block.timestamp;
+	//// [review] Use an onlyOwnerOf(_entryID) modifier instead
         require(entriesStorage == msg.sender);
     }
     
@@ -277,6 +297,7 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         external
         onlyAdmin
     {
+	//// [review] Haven't found the 'name_' definition))))
         name_ = _name;
     }
     
@@ -299,10 +320,15 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         onlyAdmin
         returns (address)
     {
+        //// [review] Is it ok if ADMIN calls this method again? ))
+        //// [review] Maybe better to move this method to the constructor??
         address deployedAddress;
+
+	//// [review] It is better not to use assembly/arbitrary bytecode as it is very unsafe!
         assembly {
             let s := mload(_entryCore)
             let p := add(_entryCore, 0x20)
+	    //// [review] I am the EntryCore 'owner'
             deployedAddress := create(0, p, s)
         }
 

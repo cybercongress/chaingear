@@ -10,6 +10,7 @@ import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 * @notice Now support only OnlyAdmin/AllUsers permissions
 * @notice not recommend to use before release!
 */
+//// [review] Warning: hidden inheritance, Pausable is Ownable
 contract RegistryPermissionControl is Pausable {
     
     /*
@@ -17,13 +18,15 @@ contract RegistryPermissionControl is Pausable {
     */
     
     // @dev 
+    //// [review] Warning: not set in the constructor! So the owner SHOULD call the 'transferAdminRights' method...
     address internal admin;
     
     // @dev Holds supported permission to create entry rights
     enum CreateEntryPermissionGroup {OnlyAdmin, AllUsers}
     
     // @dev Holds current permission group, onlyAdmin by default
-    CreateEntryPermissionGroup internal createEntryPermissionGroup;
+    //// [review] Added explicit initial. value 
+    CreateEntryPermissionGroup internal createEntryPermissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
     
     /*
     *  Modifiers
@@ -66,6 +69,7 @@ contract RegistryPermissionControl is Pausable {
     function getRegistryPermissions()
         external
         view
+	//// [review] Use enum type instead!
         returns (uint8)
     {
         return uint8(createEntryPermissionGroup);
@@ -79,12 +83,13 @@ contract RegistryPermissionControl is Pausable {
     * @dev Allows owner (in main workflow - chaingear) transfer admin right
     * @dev if previous admin transfer associated ERC721 token.
     * @param _newAdmin address of new token holder/registry admin
-    * @notice triggers by chaingear in main workflow (when registry non-registered from CH) 
+    * @notice triggered by chaingear in main workflow (when registry non-registered from CH) 
     */
     function transferAdminRights(
         address _newAdmin
     )
         public
+	//// [review] So admin can not transfer his own rights? Only the owner can? As was intended?
         onlyOwner
         whenNotPaused
     {
@@ -97,12 +102,14 @@ contract RegistryPermissionControl is Pausable {
     * @param _createEntryPermissionGroup uint8 index of needed group
     */
     function updateCreateEntryPermissionGroup(
+	    //// [review] Use enum type instead!
         uint8 _createEntryPermissionGroup
     )
         public
         onlyAdmin
         whenNotPaused
     {
+	    //// [review] Use enum type instead!
         require(uint8(CreateEntryPermissionGroup.AllUsers) >= _createEntryPermissionGroup);
         createEntryPermissionGroup = CreateEntryPermissionGroup(_createEntryPermissionGroup);
     }

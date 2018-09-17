@@ -1,6 +1,7 @@
 pragma solidity 0.4.24;
 
 
+//// [review] Warning: use 'interface' instead of 'contract' 
 contract RegistryInterface {
     function getSafeBalance() external view returns (uint256);
     function getAdmin() external view returns (address);
