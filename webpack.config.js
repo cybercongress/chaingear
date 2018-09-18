@@ -38,7 +38,7 @@ module.exports = function (options = {}) {
       ]
     },
     output: {
-      path: path.resolve(__dirname, "dist"),
+      path: path.resolve(__dirname, "distribution"),
       filename: "[name].js?[hash]",
       publicPath: ""
     },
@@ -154,7 +154,7 @@ function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_A
       // Copy directory contents to {output}/
       { from: 'config.js' },
       { from: 'app/browser-solc.min.js' }
-    ]) 
+    ])
   ];
 
   plugins.push(
@@ -165,7 +165,7 @@ function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_A
     );
 
   if (NODE_ENV === "production") {
-    
+
 
     plugins.push(
       new UglifyJsPlugin({
