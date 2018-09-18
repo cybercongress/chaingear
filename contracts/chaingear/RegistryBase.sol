@@ -19,17 +19,22 @@ contract RegistryBase {
 
     // @dev Sctruct which describes registry metainformation with balance state and status
     struct RegistryMeta {
+        //// [review] Use RegistryInterface type instead!
         address contractAddress;
         address creator;
         string version;
         string linkABI;
         uint registrationTimestamp;
+
+        //// [review] Better rename it to currentRegistryBalanceWei 
         uint256 currentRegistryBalanceETH;
+        //// [review] Better rename it to accumulatedRegistryWei 
         uint256 accumulatedRegistryETH;
     }
     
 
     // @dev Array of registries data
+    //// [review] This is used directly in Chaingear.sol
     RegistryMeta[] internal registries;
 
 	/*
@@ -92,12 +97,15 @@ contract RegistryBase {
         address contractAddress = registries[_registryID].contractAddress;
         
         return (
+            //// [review] If contractAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
             RegistryInterface(contractAddress).name(),
+            //// [review] If contractAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
             RegistryInterface(contractAddress).symbol(),
             contractAddress,
             registries[_registryID].creator,
             registries[_registryID].version,
             registries[_registryID].registrationTimestamp,
+            //// [review] If contractAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
             RegistryInterface(contractAddress).getAdmin()
         );
     }

@@ -196,6 +196,10 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         whenNotPaused
         payable
     {
+        //// [review] anyone can fund the entry even if not owner?
+
+        //// [review] BUG: not checking if _entryID exists! 
+        //// Can lead to the lost funds!
         entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.add(msg.value);
         entriesMeta[_entryID].accumulatedOverallEntryETH = entriesMeta[_entryID].accumulatedOverallEntryETH.add(msg.value);
         emit EntryFunded(_entryID, msg.sender, msg.value);
@@ -297,7 +301,6 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         external
         onlyAdmin
     {
-        //// [review] Haven't found the 'name_' definition))))
         name_ = _name;
     }
     

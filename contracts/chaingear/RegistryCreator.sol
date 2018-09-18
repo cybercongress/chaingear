@@ -11,6 +11,7 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 * @dev with codebase which imported and deployed with this fabric
 * @notice not recommend to use before release!
 */
+//// [review] Rename this contract to RegistryBuilder because of 'builder' variable name (see below)
 contract RegistryCreator is Ownable {
 
 	/*
@@ -32,6 +33,7 @@ contract RegistryCreator is Ownable {
     constructor()
         public
     {
+        //// [review] Recommendation -> initialize the var. in the declaration (above)
         builder = 0x0;
     }
     
@@ -97,6 +99,7 @@ contract RegistryCreator is Ownable {
     * @dev RegistryCreator's builder getter
     * @return address of setted Registry builder (Chaingear contract)
     */
+    //// [review] Recommendation -> use 'public' modifier for the 'builded' var instead of getRegistryBuilder access method 
     function getRegistryBuilder()
         external
         view

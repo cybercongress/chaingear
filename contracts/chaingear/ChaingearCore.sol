@@ -18,6 +18,9 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
 	*  Storage
 	*/
     
+    //// [review] Recommendation: instead of using multiple mapping (registryNamesIndex, registrySymbolsIndex, registryAddresses, etc)
+    //// [review] use a single mapping to struct. I.e, some kind of 'mapping (string => RegistryData) registries;'
+    
     // @dev Mapping which allow control of name uniqueness in metaregistry
     mapping(string => bool) internal registryNamesIndex;
     
@@ -31,9 +34,12 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     uint internal registryRegistrationFee;
     
     // @dev Address of contract where their funds allocates
+    //// [review] Use Safe type instead!
     address internal chaingearSafe;
     
     // @dev mapping with address of registry creators with different code base of registries
+    //// [review] Use RegistryCreator type instead of address!
+    //// [review] Rename to registryCreators for clarity!
     mapping (string => address) internal registryAddresses;
     
     // @dev mapping with ipfs links to json with ABI of different registries

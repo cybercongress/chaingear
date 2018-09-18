@@ -86,6 +86,7 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
         )
     {
         require(registryAddresses[_version] != 0x0);
+        //// [review] Withdraw funds by calling 'SplitPayment.claim'
         require(registryRegistrationFee == msg.value);
         
         //checking uniqueness of name AND symbol of NFT in metaregistry
@@ -117,6 +118,7 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
         addTokenTo(_to, _tokenId);
         
         address registryAddress = registries[_tokenId].contractAddress;
+        //// [review] If registryAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
         RegistryInterface(registryAddress).transferAdminRights(_to);
 
         emit Transfer(_from, _to, _tokenId);
@@ -136,6 +138,7 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
         whenNotPaused
     {        
         address registryAddress = registries[_registryID].contractAddress;
+        //// [review] If registryAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
         require(RegistryInterface(registryAddress).getSafeBalance() == 0);
 
         uint256 registryIndex = allTokensIndex[_registryID];
@@ -171,6 +174,7 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
 
         emit RegistryFunded(_registryID, msg.sender, msg.value);
         
+        //// [review] Call claimEntryFunds to get funds back
         chaingearSafe.transfer(msg.value);
     }
 
