@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="/logo_chaigear_970.png"
+  <img src="/design/logo/logo_chaigear_970.png"
   alt="chaingear" width="970"></a>
 </h1>
 
