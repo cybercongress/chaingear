@@ -56,12 +56,12 @@ contract("Chaingear", (accounts) => {
         creator = await RegistryCreator.new({ from: CHAINGEAR_OWNER })
         
         chaingear = await Chaingear.new(
+            CHAINGEAR_NAME,
+            CHAINGEAR_SYMBOL,
             CHAINGEAR_BENEFICIARIES,
             CHAINGEAR_BENEFICIARIES_SHARES,
             CHAINGEAR_DESCRIPTION,
             BUILDING_FEE,
-            CHAINGEAR_NAME,
-            CHAINGEAR_SYMBOL,
             { 
                 from: CHAINGEAR_OWNER,
                 gas: CREATION_GAS

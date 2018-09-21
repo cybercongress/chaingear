@@ -61,18 +61,18 @@ contract RegistryCreator is Ownable {
         string _symbol
     )
         external
-        returns (address)
+        returns (RegistryInterface)
     {
         require(msg.sender == builder);
 
-        address registryContract = new Registry(
+        RegistryInterface registryContract = new Registry(
             _benefitiaries,
             _shares,
             _name,
             _symbol
         );
         //Fabric as owner transfers ownership to Chaingear contract after creation
-        Registry(registryContract).transferOwnership(builder);
+        registryContract.transferOwnership(builder);
 
         return registryContract;
     }

@@ -2,7 +2,9 @@ pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/lifecycle/Destructible.sol";
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
-import "./RegistryBase.sol";
+import "./RegistryCreator.sol";
+import "../common/RegistryInterface.sol";
+import "../common/Safe.sol";
 
 
 /**
@@ -12,14 +14,26 @@ import "./RegistryBase.sol";
 * @notice not recommend to use before release!
 */
 
-contract ChaingearCore is RegistryBase, Destructible, Pausable {
+contract ChaingearCore is Destructible, Pausable {
 
 	/*
 	*  Storage
 	*/
     
-    //// [review] Recommendation: instead of using multiple mapping (registryNamesIndex, registrySymbolsIndex, registryAddresses, etc)
-    //// [review] use a single mapping to struct. I.e, some kind of 'mapping (string => RegistryData) registries;'
+    // @dev Sctruct which describes registry metainformation with balance state and status
+    struct RegistryMeta {
+        RegistryInterface contractAddress;
+        address creator;
+        string version;
+        string linkABI;
+        uint registrationTimestamp;
+        uint256 currentRegistryBalanceWei;
+        uint256 accumulatedRegistryWei;
+    }
+    
+
+    // @dev Array of registries data
+    RegistryMeta[] internal registries;
     
     // @dev Mapping which allow control of name uniqueness in metaregistry
     mapping(string => bool) internal registryNamesIndex;
@@ -35,12 +49,11 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     
     // @dev Address of contract where their funds allocates
     //// [review] Use Safe type instead!
-    address internal chaingearSafe;
+    Safe internal chaingearSafe;
     
     // @dev mapping with address of registry creators with different code base of registries
     //// [review] Use RegistryCreator type instead of address!
-    //// [review] Rename to registryCreators for clarity!
-    mapping (string => address) internal registryAddresses;
+    mapping (string => RegistryCreator) internal registryCreators;
     
     // @dev mapping with ipfs links to json with ABI of different registries
     mapping (string => string) internal registryABIsLinks;
@@ -51,6 +64,29 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     /*
     *  Events
     */
+
+    // @dev Events witch signals that new Registry registered
+    event RegistryRegistered(
+        string name,
+        address registryAddress,
+        address creator,
+        uint registryID
+    );
+
+    // @dev Events witch signals that Registry adminship transferred
+    // @notice that also means associated token transferred too
+    event RegistryChangedOwner(
+         address caller,
+         uint256 registyID,
+         address newOwner
+    );
+    
+    // @dev Events witch signals that Registry unregistered from Chaingear
+    // @notice adminship of Registry transfers from Chaingear to Admin
+    event RegistryUnregistered(
+        address admin,
+        string name
+    );
 
     // @dev Signals that given Registry funded
     event RegistryFunded(
@@ -71,6 +107,82 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     */
 
     /**
+    * @dev Registy metainfo getter
+    * @param _registryID uint256 Registry ID, associated ERC721 token ID
+    * @return string Registy name
+    * @return string Registy symbol
+    * @return address Registy address
+    * @return address Registy creator address
+    * @return string Registy version
+    * @return uint Registy creation timestamp
+    * @return address Registy admin address
+    */
+    function registryInfo(
+        uint256 _registryID
+    )
+        external
+        view
+        returns (
+            string,
+            string,
+            address,
+            address,
+            string,
+            uint,
+            address
+        )
+    {
+        RegistryInterface contractAddress = registries[_registryID].contractAddress;
+        
+        return (
+            //// [review] If contractAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
+            contractAddress.name(),
+            //// [review] If contractAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
+            contractAddress.symbol(),
+            contractAddress,
+            registries[_registryID].creator,
+            registries[_registryID].version,
+            registries[_registryID].registrationTimestamp,
+            //// [review] If contractAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
+            contractAddress.getAdmin()
+        );
+    }
+
+    /**
+    * @dev Registy funding stats getter
+    * @param _registryID uint256 Registry ID
+    * @return uint Registy current balance in wei, which stored in Safe
+    * @return uint Registy total accumulated balance in wei
+    */
+    function registryBalanceInfo(
+        uint256 _registryID
+    )
+        external
+        view
+        returns (
+            uint256,
+            uint256 
+        )
+    {
+        return (
+            registries[_registryID].currentRegistryBalanceWei,
+            registries[_registryID].accumulatedRegistryWei
+        );
+    }
+
+    /**
+    * @dev Registies amount getter
+    * @return uint256 amounts of Registries
+    */
+    function registriesAmount()
+        external
+        view
+        returns (uint256)
+    {
+        return registries.length;
+    }
+
+    /**
     * @dev Provides funcitonality for adding fabrics of different kind of registries
     * @param _nameOfVersion string which represents name of registry type/version
     * @param _addressRegistryCreator address of registry creator/fabric
@@ -80,15 +192,15 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     */
     function addRegistryCreatorVersion(
         string _nameOfVersion, 
-        address _addressRegistryCreator,
+        RegistryCreator _addressRegistryCreator,
         string _link,
         string _description
     )
         external
         onlyOwner
     {
-        require(registryAddresses[_nameOfVersion] == 0x0);
-        registryAddresses[_nameOfVersion] = _addressRegistryCreator;
+        require(registryCreators[_nameOfVersion] == address(0));
+        registryCreators[_nameOfVersion] = _addressRegistryCreator;
         registryABIsLinks[_nameOfVersion] = _link;
         registryDescriptions[_nameOfVersion] = _description;
     }
@@ -152,7 +264,7 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         )
     {
         return(
-            registryAddresses[_nameOfVersion],
+            registryCreators[_nameOfVersion],
             registryABIsLinks[_nameOfVersion],
             registryDescriptions[_nameOfVersion]
         );

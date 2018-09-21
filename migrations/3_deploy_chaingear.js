@@ -20,12 +20,12 @@ module.exports = function(deployer, network, accounts) {
     
     deployer.deploy(
         Chaingear,
+        "CHAINGEAR",
+        "CHG",
         BENEFICIARIES,
         SHARES,
         "Most Expensive Registry",
-        BUILDING_FEE,
-        "CHAINGEAR",
-        "CHG"
+        BUILDING_FEE
     ).then(() => RegistryCreator.deployed())
     .then(_creator => {
         creator = _creator,
