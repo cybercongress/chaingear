@@ -1,8 +1,8 @@
-pragma solidity 0.4.24;
+pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "../common/SplitPaymentChangeable.sol";
 import "./Chaingeareable.sol";
 import "../common/EntryInterface.sol";
 import "../common/RegistryInterface.sol";
@@ -18,7 +18,7 @@ import "../common/Safe.sol";
 * @dev Entry creation/deletion/update permission are tokenized
 * @notice not recommend to use before release!
 */
-contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, ERC721Token {
+contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
     
@@ -40,6 +40,11 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
     
     // @dev Array of associated to entry/token metadata
     EntryMeta[] internal entriesMeta;
+    
+    modifier onlyOwnerOf(uint256 _entryID){
+        require(ownerOf(_entryID) == msg.sender);
+        _;
+    }
 
     /*
     *  Constructor
@@ -61,7 +66,7 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         string _name,
         string _symbol
     )
-        SplitPaymentChangeable(_benefitiaries, _shares)
+        SplitPayment(_benefitiaries, _shares)
         ERC721Token(_name, _symbol)
         public
         payable
@@ -82,7 +87,7 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         registryInitStatus = false;
     }
     
-    function() public payable {}
+    function() external payable {}
     
     /*
     *  External functions
@@ -170,18 +175,37 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         uint256 _tokenId
     ) 
         public 
-        canTransfer(_tokenId)
         registryInitialized
+        whenNotPaused
     {
-        require(_from != address(0));
-        require(_to != address(0));
-
-        clearApproval(_from, _tokenId);
-        removeTokenFrom(_from, _tokenId);
-        addTokenTo(_to, _tokenId);
-
-        emit Transfer(_from, _to, _tokenId);
+        super.transferFrom(_from, _to, _tokenId);
     }  
+    
+    function safeTransferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId
+    )
+        public
+        registryInitialized
+        whenNotPaused
+    {
+        super.safeTransferFrom(_from, _to, _tokenId, "");
+    }
+
+    function safeTransferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId,
+        bytes _data
+    )
+        public
+        registryInitialized
+        whenNotPaused
+    {
+        transferFrom(_from, _to, _tokenId);
+        require(checkAndCallSafeTransfer(_from, _to, _tokenId, _data));
+    }
 
     /**
     * @dev Allows anyone fund specified entry

@@ -1,4 +1,4 @@
-pragma solidity 0.4.24;
+pragma solidity ^0.4.24;
 
 
 //// [review] Warning: use 'interface' instead of 'contract' 
@@ -9,8 +9,8 @@ contract RegistryInterface {
     function deleteEntry(uint256 _entryId) external;
     function fundEntry(uint256 _entryId) external payable;
     function claimEntryFunds(uint256 _entryId, uint _amount) external;
+    function name() external view returns (string);
+    function symbol() external view returns (string);
     function transferAdminRights(address _newOnwer) public;
     function transferOwnership(address _newOwner) public;
-    function name() public view returns (string);
-    function symbol() public view returns (string);
 }

@@ -1,8 +1,8 @@
-pragma solidity 0.4.24;
+pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
+import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "../common/SplitPaymentChangeable.sol";
 import "../common/RegistryInterface.sol";
 import "../common/Safe.sol";
 import "./ChaingearCore.sol";
@@ -17,7 +17,7 @@ import "./RegistryCreator.sol";
 * @notice where each registry are ERC721.
 * @notice not recommend to use before release!
 */
-contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
+contract Chaingear is ChaingearCore, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
 
@@ -42,7 +42,7 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
         string _chaingearName,
         string _chaingearSymbol
     )
-        SplitPaymentChangeable(_benefitiaries, _shares)
+        SplitPayment(_benefitiaries, _shares)
         ERC721Token(_chaingearName, _chaingearSymbol)
         public
     {
@@ -52,7 +52,12 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
         chaingearSafe = new Safe();
     }
     
-    function() public payable {}
+    function() external payable {}
+    
+    modifier onlyOwnerOf(uint256 _registryID){
+        require(ownerOf(_registryID) == msg.sender);
+        _;
+    }
     
     /*
     *  External functions
@@ -108,21 +113,36 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
         uint256 _tokenId
     ) 
         public 
-        canTransfer(_tokenId)
+        whenNotPaused
     {
-        require(_from != address(0));
-        require(_to != address(0));
-
-        clearApproval(_from, _tokenId);
-        removeTokenFrom(_from, _tokenId);
-        addTokenTo(_to, _tokenId);
-        
+        super.transferFrom(_from, _to, _tokenId);
         address registryAddress = registries[_tokenId].contractAddress;
-        //// [review] If registryAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
         RegistryInterface(registryAddress).transferAdminRights(_to);
-
-        emit Transfer(_from, _to, _tokenId);
     }  
+    
+    function safeTransferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId
+    )
+        public
+        whenNotPaused
+    {
+        super.safeTransferFrom(_from, _to, _tokenId, "");
+    }
+
+    function safeTransferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId,
+        bytes _data
+    )
+        public
+        whenNotPaused
+    {
+        transferFrom(_from, _to, _tokenId);
+        require(checkAndCallSafeTransfer(_from, _to, _tokenId, _data));
+    }
 
     /**
     * @dev Allows to unregister Registry from Chaingear
