@@ -88,7 +88,7 @@ contract RegistryPermissionControl is Pausable {
     function transferAdminRights(
         address _newAdmin
     )
-        public
+        external
         //// [review] So admin can not transfer his own rights? Only the owner can? As was intended?
         onlyOwner
         whenNotPaused
