@@ -35,7 +35,7 @@ jobs:
                 docker tag build/chaingear cybernode/chaingear:$CIRCLE_TAG
                 docker push cybernode/chaingear:$CIRCLE_TAG
              fi
-             
+
   update_docs:
     working_directory: ~/build
     docker:
@@ -52,14 +52,14 @@ jobs:
           working_directory: ~/workdir/congress
           command: |
             # We need to remove current files in folder to avoid duplicating renamed files
-            rm -rf ./knowledge/docs/chaingear/*
-            cp -r ~/build/docs/. ./knowledge/docs/chaingear/
-            git add -N knowledge/docs/chaingear
-            diff=$(git diff knowledge/docs/chaingear/)
+            rm -rf ./wiki/docs/chaingear/*
+            cp -r ~/build/docs/. ./wiki/docs/chaingear/
+            git add -N wiki/docs/chaingear
+            diff=$(git diff wiki/docs/chaingear/)
             if [[  -n  "$diff" ]]; then
               git config user.email "cybercongress42@gmail.com"
               git config user.name "Cyber Admin"
-              git add knowledge/docs/chaingear/
+              git add wiki/docs/chaingear/
               git commit -m "Circle CI: Update Docs"
               # Push quietly to prevent showing the token in log
               git push -q https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/congress.git master
@@ -86,7 +86,7 @@ workflows:
       - deploy_stagin_image:
           <<: *staging_filter
           requires:
-            - build_and_push_staging_image         
+            - build_and_push_staging_image
       - update_docs:
           <<: *staging_filter
           requires:
