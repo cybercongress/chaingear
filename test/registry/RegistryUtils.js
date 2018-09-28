@@ -1,4 +1,4 @@
-const EntryCoreArtifacts = require("../../build/contracts/EntryCore.json")
+const EntryCoreArtifacts = require("../../build/contracts/TeamSchema.json")
 const Registry = artifacts.require("Registry")
 const BigNumber = require("bignumber.js")
 

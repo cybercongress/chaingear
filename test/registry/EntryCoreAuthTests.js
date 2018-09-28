@@ -8,7 +8,7 @@ chai.use(require("chai-as-promised"))
 chai.should()
 
 const RegistryUtils = require('./RegistryUtils')
-const EntryCore = artifacts.require("EntryCore")
+const EntryCore = artifacts.require("TeamSchema")
 
 contract("Only Registry can CruD with EntryCore", (accounts) => {
 

@@ -1,4 +1,76 @@
-pragma solidity 0.4.24;
+pragma solidity ^0.4.24;
+
+// File: openzeppelin-solidity/contracts/introspection/ERC165.sol
+
+/**
+ * @title ERC165
+ * @dev https://github.com/ethereum/EIPs/blob/master/EIPS/eip-165.md
+ */
+interface ERC165 {
+
+  /**
+   * @notice Query if a contract implements an interface
+   * @param _interfaceId The interface identifier, as specified in ERC-165
+   * @dev Interface identification is specified in ERC-165. This function
+   * uses less than 30,000 gas.
+   */
+  function supportsInterface(bytes4 _interfaceId)
+    external
+    view
+    returns (bool);
+}
+
+// File: openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol
+
+/**
+ * @title SupportsInterfaceWithLookup
+ * @author Matt Condon (@shrugs)
+ * @dev Implements ERC165 using a lookup table.
+ */
+contract SupportsInterfaceWithLookup is ERC165 {
+
+  bytes4 public constant InterfaceId_ERC165 = 0x01ffc9a7;
+  /**
+   * 0x01ffc9a7 ===
+   *   bytes4(keccak256('supportsInterface(bytes4)'))
+   */
+
+  /**
+   * @dev a mapping of interface id to whether or not it's supported
+   */
+  mapping(bytes4 => bool) internal supportedInterfaces;
+
+  /**
+   * @dev A contract implementing SupportsInterfaceWithLookup
+   * implement ERC165 itself
+   */
+  constructor()
+    public
+  {
+    _registerInterface(InterfaceId_ERC165);
+  }
+
+  /**
+   * @dev implement supportsInterface(bytes4) using a lookup table
+   */
+  function supportsInterface(bytes4 _interfaceId)
+    external
+    view
+    returns (bool)
+  {
+    return supportedInterfaces[_interfaceId];
+  }
+
+  /**
+   * @dev private method for registering an interface
+   */
+  function _registerInterface(bytes4 _interfaceId)
+    internal
+  {
+    require(_interfaceId != 0xffffffff);
+    supportedInterfaces[_interfaceId] = true;
+  }
+}
 
 // File: openzeppelin-solidity/contracts/token/ERC721/ERC721Basic.sol
 
@@ -6,23 +78,76 @@ pragma solidity 0.4.24;
  * @title ERC721 Non-Fungible Token Standard basic interface
  * @dev see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
  */
-contract ERC721Basic {
-  event Transfer(address indexed _from, address indexed _to, uint256 _tokenId);
-  event Approval(address indexed _owner, address indexed _approved, uint256 _tokenId);
-  event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved);
+contract ERC721Basic is ERC165 {
+
+  bytes4 internal constant InterfaceId_ERC721 = 0x80ac58cd;
+  /*
+   * 0x80ac58cd ===
+   *   bytes4(keccak256('balanceOf(address)')) ^
+   *   bytes4(keccak256('ownerOf(uint256)')) ^
+   *   bytes4(keccak256('approve(address,uint256)')) ^
+   *   bytes4(keccak256('getApproved(uint256)')) ^
+   *   bytes4(keccak256('setApprovalForAll(address,bool)')) ^
+   *   bytes4(keccak256('isApprovedForAll(address,address)')) ^
+   *   bytes4(keccak256('transferFrom(address,address,uint256)')) ^
+   *   bytes4(keccak256('safeTransferFrom(address,address,uint256)')) ^
+   *   bytes4(keccak256('safeTransferFrom(address,address,uint256,bytes)'))
+   */
+
+  bytes4 internal constant InterfaceId_ERC721Exists = 0x4f558e79;
+  /*
+   * 0x4f558e79 ===
+   *   bytes4(keccak256('exists(uint256)'))
+   */
+
+  bytes4 internal constant InterfaceId_ERC721Enumerable = 0x780e9d63;
+  /**
+   * 0x780e9d63 ===
+   *   bytes4(keccak256('totalSupply()')) ^
+   *   bytes4(keccak256('tokenOfOwnerByIndex(address,uint256)')) ^
+   *   bytes4(keccak256('tokenByIndex(uint256)'))
+   */
+
+  bytes4 internal constant InterfaceId_ERC721Metadata = 0x5b5e139f;
+  /**
+   * 0x5b5e139f ===
+   *   bytes4(keccak256('name()')) ^
+   *   bytes4(keccak256('symbol()')) ^
+   *   bytes4(keccak256('tokenURI(uint256)'))
+   */
+
+  event Transfer(
+    address indexed _from,
+    address indexed _to,
+    uint256 indexed _tokenId
+  );
+  event Approval(
+    address indexed _owner,
+    address indexed _approved,
+    uint256 indexed _tokenId
+  );
+  event ApprovalForAll(
+    address indexed _owner,
+    address indexed _operator,
+    bool _approved
+  );
 
   function balanceOf(address _owner) public view returns (uint256 _balance);
   function ownerOf(uint256 _tokenId) public view returns (address _owner);
   function exists(uint256 _tokenId) public view returns (bool _exists);
 
   function approve(address _to, uint256 _tokenId) public;
-  function getApproved(uint256 _tokenId) public view returns (address _operator);
+  function getApproved(uint256 _tokenId)
+    public view returns (address _operator);
 
   function setApprovalForAll(address _operator, bool _approved) public;
-  function isApprovedForAll(address _owner, address _operator) public view returns (bool);
+  function isApprovedForAll(address _owner, address _operator)
+    public view returns (bool);
 
   function transferFrom(address _from, address _to, uint256 _tokenId) public;
-  function safeTransferFrom(address _from, address _to, uint256 _tokenId) public;
+  function safeTransferFrom(address _from, address _to, uint256 _tokenId)
+    public;
+
   function safeTransferFrom(
     address _from,
     address _to,
@@ -40,7 +165,14 @@ contract ERC721Basic {
  */
 contract ERC721Enumerable is ERC721Basic {
   function totalSupply() public view returns (uint256);
-  function tokenOfOwnerByIndex(address _owner, uint256 _index) public view returns (uint256 _tokenId);
+  function tokenOfOwnerByIndex(
+    address _owner,
+    uint256 _index
+  )
+    public
+    view
+    returns (uint256 _tokenId);
+
   function tokenByIndex(uint256 _index) public view returns (uint256);
 }
 
@@ -50,8 +182,8 @@ contract ERC721Enumerable is ERC721Basic {
  * @dev See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
  */
 contract ERC721Metadata is ERC721Basic {
-  function name() public view returns (string _name);
-  function symbol() public view returns (string _symbol);
+  function name() external view returns (string _name);
+  function symbol() external view returns (string _symbol);
   function tokenURI(uint256 _tokenId) public view returns (string);
 }
 
@@ -68,29 +200,37 @@ contract ERC721 is ERC721Basic, ERC721Enumerable, ERC721Metadata {
 /**
  * @title ERC721 token receiver interface
  * @dev Interface for any contract that wants to support safeTransfers
- *  from ERC721 asset contracts.
+ * from ERC721 asset contracts.
  */
 contract ERC721Receiver {
   /**
    * @dev Magic value to be returned upon successful reception of an NFT
-   *  Equals to `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`,
+   *  Equals to `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`,
    *  which can be also obtained as `ERC721Receiver(0).onERC721Received.selector`
    */
-  bytes4 constant ERC721_RECEIVED = 0xf0b9e5ba;
+  bytes4 internal constant ERC721_RECEIVED = 0x150b7a02;
 
   /**
    * @notice Handle the receipt of an NFT
    * @dev The ERC721 smart contract calls this function on the recipient
-   *  after a `safetransfer`. This function MAY throw to revert and reject the
-   *  transfer. This function MUST use 50,000 gas or less. Return of other
-   *  than the magic value MUST result in the transaction being reverted.
-   *  Note: the contract address is always the message sender.
-   * @param _from The sending address
-   * @param _tokenId The NFT identifier which is being transfered
+   * after a `safetransfer`. This function MAY throw to revert and reject the
+   * transfer. Return of other than the magic value MUST result in the
+   * transaction being reverted.
+   * Note: the contract address is always the message sender.
+   * @param _operator The address which called `safeTransferFrom` function
+   * @param _from The address which previously owned the token
+   * @param _tokenId The NFT identifier which is being transferred
    * @param _data Additional data with no specified format
-   * @return `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`
+   * @return `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`
    */
-  function onERC721Received(address _from, uint256 _tokenId, bytes _data) public returns(bytes4);
+  function onERC721Received(
+    address _operator,
+    address _from,
+    uint256 _tokenId,
+    bytes _data
+  )
+    public
+    returns(bytes4);
 }
 
 // File: openzeppelin-solidity/contracts/math/SafeMath.sol
@@ -104,39 +244,43 @@ library SafeMath {
   /**
   * @dev Multiplies two numbers, throws on overflow.
   */
-  function mul(uint256 a, uint256 b) internal pure returns (uint256 c) {
-    if (a == 0) {
+  function mul(uint256 _a, uint256 _b) internal pure returns (uint256 c) {
+    // Gas optimization: this is cheaper than asserting 'a' not being zero, but the
+    // benefit is lost if 'b' is also tested.
+    // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522
+    if (_a == 0) {
       return 0;
     }
-    c = a * b;
-    assert(c / a == b);
+
+    c = _a * _b;
+    assert(c / _a == _b);
     return c;
   }
 
   /**
   * @dev Integer division of two numbers, truncating the quotient.
   */
-  function div(uint256 a, uint256 b) internal pure returns (uint256) {
-    // assert(b > 0); // Solidity automatically throws when dividing by 0
-    // uint256 c = a / b;
-    // assert(a == b * c + a % b); // There is no case in which this doesn't hold
-    return a / b;
+  function div(uint256 _a, uint256 _b) internal pure returns (uint256) {
+    // assert(_b > 0); // Solidity automatically throws when dividing by 0
+    // uint256 c = _a / _b;
+    // assert(_a == _b * c + _a % _b); // There is no case in which this doesn't hold
+    return _a / _b;
   }
 
   /**
   * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
   */
-  function sub(uint256 a, uint256 b) internal pure returns (uint256) {
-    assert(b <= a);
-    return a - b;
+  function sub(uint256 _a, uint256 _b) internal pure returns (uint256) {
+    assert(_b <= _a);
+    return _a - _b;
   }
 
   /**
   * @dev Adds two numbers, throws on overflow.
   */
-  function add(uint256 a, uint256 b) internal pure returns (uint256 c) {
-    c = a + b;
-    assert(c >= a);
+  function add(uint256 _a, uint256 _b) internal pure returns (uint256 c) {
+    c = _a + _b;
+    assert(c >= _a);
     return c;
   }
 }
@@ -151,11 +295,11 @@ library AddressUtils {
   /**
    * Returns whether the target address is a contract
    * @dev This function will return false if invoked during the constructor of a contract,
-   *  as the code is not actually created until after the constructor finishes.
-   * @param addr address to check
+   * as the code is not actually created until after the constructor finishes.
+   * @param _addr address to check
    * @return whether the target address is a contract
    */
-  function isContract(address addr) internal view returns (bool) {
+  function isContract(address _addr) internal view returns (bool) {
     uint256 size;
     // XXX Currently there is no better way to check if there is a contract in an address
     // than to check the size of the code at that address.
@@ -163,7 +307,8 @@ library AddressUtils {
     // for more details about how this works.
     // TODO Check this again before the Serenity release, because all addresses will be
     // contracts then.
-    assembly { size := extcodesize(addr) }  // solium-disable-line security/no-inline-assembly
+    // solium-disable-next-line security/no-inline-assembly
+    assembly { size := extcodesize(_addr) }
     return size > 0;
   }
 
@@ -175,13 +320,14 @@ library AddressUtils {
  * @title ERC721 Non-Fungible Token Standard basic implementation
  * @dev see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
  */
-contract ERC721BasicToken is ERC721Basic {
+contract ERC721BasicToken is SupportsInterfaceWithLookup, ERC721Basic {
+
   using SafeMath for uint256;
   using AddressUtils for address;
 
-  // Equals to `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`
+  // Equals to `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`
   // which can be also obtained as `ERC721Receiver(0).onERC721Received.selector`
-  bytes4 constant ERC721_RECEIVED = 0xf0b9e5ba;
+  bytes4 private constant ERC721_RECEIVED = 0x150b7a02;
 
   // Mapping from token ID to owner
   mapping (uint256 => address) internal tokenOwner;
@@ -195,22 +341,12 @@ contract ERC721BasicToken is ERC721Basic {
   // Mapping from owner to operator approvals
   mapping (address => mapping (address => bool)) internal operatorApprovals;
 
-  /**
-   * @dev Guarantees msg.sender is owner of the given token
-   * @param _tokenId uint256 ID of the token to validate its ownership belongs to msg.sender
-   */
-  modifier onlyOwnerOf(uint256 _tokenId) {
-    require(ownerOf(_tokenId) == msg.sender);
-    _;
-  }
-
-  /**
-   * @dev Checks msg.sender can transfer a token, by being owner, approved, or operator
-   * @param _tokenId uint256 ID of the token to validate
-   */
-  modifier canTransfer(uint256 _tokenId) {
-    require(isApprovedOrOwner(msg.sender, _tokenId));
-    _;
+  constructor()
+    public
+  {
+    // register the supported interfaces to conform to ERC721 via ERC165
+    _registerInterface(InterfaceId_ERC721);
+    _registerInterface(InterfaceId_ERC721Exists);
   }
 
   /**
@@ -236,7 +372,7 @@ contract ERC721BasicToken is ERC721Basic {
 
   /**
    * @dev Returns whether the specified token exists
-   * @param _tokenId uint256 ID of the token to query the existance of
+   * @param _tokenId uint256 ID of the token to query the existence of
    * @return whether the token exists
    */
   function exists(uint256 _tokenId) public view returns (bool) {
@@ -246,9 +382,9 @@ contract ERC721BasicToken is ERC721Basic {
 
   /**
    * @dev Approves another address to transfer the given token ID
-   * @dev The zero address indicates there is no approved address.
-   * @dev There can only be one approved address per token at a given time.
-   * @dev Can only be called by the token owner or an approved operator.
+   * The zero address indicates there is no approved address.
+   * There can only be one approved address per token at a given time.
+   * Can only be called by the token owner or an approved operator.
    * @param _to address to be approved for the given token ID
    * @param _tokenId uint256 ID of the token to be approved
    */
@@ -257,16 +393,14 @@ contract ERC721BasicToken is ERC721Basic {
     require(_to != owner);
     require(msg.sender == owner || isApprovedForAll(owner, msg.sender));
 
-    if (getApproved(_tokenId) != address(0) || _to != address(0)) {
-      tokenApprovals[_tokenId] = _to;
-      emit Approval(owner, _to, _tokenId);
-    }
+    tokenApprovals[_tokenId] = _to;
+    emit Approval(owner, _to, _tokenId);
   }
 
   /**
    * @dev Gets the approved address for a token ID, or zero if no address set
    * @param _tokenId uint256 ID of the token to query the approval of
-   * @return address currently approved for a the given token ID
+   * @return address currently approved for the given token ID
    */
   function getApproved(uint256 _tokenId) public view returns (address) {
     return tokenApprovals[_tokenId];
@@ -274,7 +408,7 @@ contract ERC721BasicToken is ERC721Basic {
 
   /**
    * @dev Sets or unsets the approval of a given operator
-   * @dev An operator is allowed to transfer all tokens of the sender on their behalf
+   * An operator is allowed to transfer all tokens of the sender on their behalf
    * @param _to operator address to set the approval
    * @param _approved representing the status of the approval to be set
    */
@@ -290,19 +424,33 @@ contract ERC721BasicToken is ERC721Basic {
    * @param _operator operator address which you want to query the approval of
    * @return bool whether the given operator is approved by the given owner
    */
-  function isApprovedForAll(address _owner, address _operator) public view returns (bool) {
+  function isApprovedForAll(
+    address _owner,
+    address _operator
+  )
+    public
+    view
+    returns (bool)
+  {
     return operatorApprovals[_owner][_operator];
   }
 
   /**
    * @dev Transfers the ownership of a given token ID to another address
-   * @dev Usage of this method is discouraged, use `safeTransferFrom` whenever possible
-   * @dev Requires the msg sender to be the owner, approved, or operator
+   * Usage of this method is discouraged, use `safeTransferFrom` whenever possible
+   * Requires the msg sender to be the owner, approved, or operator
    * @param _from current owner of the token
    * @param _to address to receive the ownership of the given token ID
    * @param _tokenId uint256 ID of the token to be transferred
   */
-  function transferFrom(address _from, address _to, uint256 _tokenId) public canTransfer(_tokenId) {
+  function transferFrom(
+    address _from,
+    address _to,
+    uint256 _tokenId
+  )
+    public
+  {
+    require(isApprovedOrOwner(msg.sender, _tokenId));
     require(_from != address(0));
     require(_to != address(0));
 
@@ -315,11 +463,12 @@ contract ERC721BasicToken is ERC721Basic {
 
   /**
    * @dev Safely transfers the ownership of a given token ID to another address
-   * @dev If the target address is a contract, it must implement `onERC721Received`,
-   *  which is called upon a safe transfer, and return the magic value
-   *  `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`; otherwise,
-   *  the transfer is reverted.
-   * @dev Requires the msg sender to be the owner, approved, or operator
+   * If the target address is a contract, it must implement `onERC721Received`,
+   * which is called upon a safe transfer, and return the magic value
+   * `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`; otherwise,
+   * the transfer is reverted.
+   *
+   * Requires the msg sender to be the owner, approved, or operator
    * @param _from current owner of the token
    * @param _to address to receive the ownership of the given token ID
    * @param _tokenId uint256 ID of the token to be transferred
@@ -330,7 +479,6 @@ contract ERC721BasicToken is ERC721Basic {
     uint256 _tokenId
   )
     public
-    canTransfer(_tokenId)
   {
     // solium-disable-next-line arg-overflow
     safeTransferFrom(_from, _to, _tokenId, "");
@@ -338,11 +486,11 @@ contract ERC721BasicToken is ERC721Basic {
 
   /**
    * @dev Safely transfers the ownership of a given token ID to another address
-   * @dev If the target address is a contract, it must implement `onERC721Received`,
-   *  which is called upon a safe transfer, and return the magic value
-   *  `bytes4(keccak256("onERC721Received(address,uint256,bytes)"))`; otherwise,
-   *  the transfer is reverted.
-   * @dev Requires the msg sender to be the owner, approved, or operator
+   * If the target address is a contract, it must implement `onERC721Received`,
+   * which is called upon a safe transfer, and return the magic value
+   * `bytes4(keccak256("onERC721Received(address,address,uint256,bytes)"))`; otherwise,
+   * the transfer is reverted.
+   * Requires the msg sender to be the owner, approved, or operator
    * @param _from current owner of the token
    * @param _to address to receive the ownership of the given token ID
    * @param _tokenId uint256 ID of the token to be transferred
@@ -355,7 +503,6 @@ contract ERC721BasicToken is ERC721Basic {
     bytes _data
   )
     public
-    canTransfer(_tokenId)
   {
     transferFrom(_from, _to, _tokenId);
     // solium-disable-next-line arg-overflow
@@ -369,14 +516,28 @@ contract ERC721BasicToken is ERC721Basic {
    * @return bool whether the msg.sender is approved for the given token ID,
    *  is an operator of the owner, or is the owner of the token
    */
-  function isApprovedOrOwner(address _spender, uint256 _tokenId) internal view returns (bool) {
+  function isApprovedOrOwner(
+    address _spender,
+    uint256 _tokenId
+  )
+    internal
+    view
+    returns (bool)
+  {
     address owner = ownerOf(_tokenId);
-    return _spender == owner || getApproved(_tokenId) == _spender || isApprovedForAll(owner, _spender);
+    // Disable solium check because of
+    // https://github.com/duaraghav8/Solium/issues/175
+    // solium-disable-next-line operator-whitespace
+    return (
+      _spender == owner ||
+      getApproved(_tokenId) == _spender ||
+      isApprovedForAll(owner, _spender)
+    );
   }
 
   /**
    * @dev Internal function to mint a new token
-   * @dev Reverts if the given token ID already exists
+   * Reverts if the given token ID already exists
    * @param _to The address that will own the minted token
    * @param _tokenId uint256 ID of the token to be minted by the msg.sender
    */
@@ -388,7 +549,7 @@ contract ERC721BasicToken is ERC721Basic {
 
   /**
    * @dev Internal function to burn a specific token
-   * @dev Reverts if the token does not exist
+   * Reverts if the token does not exist
    * @param _tokenId uint256 ID of the token being burned by the msg.sender
    */
   function _burn(address _owner, uint256 _tokenId) internal {
@@ -399,7 +560,7 @@ contract ERC721BasicToken is ERC721Basic {
 
   /**
    * @dev Internal function to clear current approval of a given token ID
-   * @dev Reverts if the given address is not indeed the owner of the token
+   * Reverts if the given address is not indeed the owner of the token
    * @param _owner owner of the token
    * @param _tokenId uint256 ID of the token to be transferred
    */
@@ -407,7 +568,6 @@ contract ERC721BasicToken is ERC721Basic {
     require(ownerOf(_tokenId) == _owner);
     if (tokenApprovals[_tokenId] != address(0)) {
       tokenApprovals[_tokenId] = address(0);
-      emit Approval(_owner, address(0), _tokenId);
     }
   }
 
@@ -435,7 +595,7 @@ contract ERC721BasicToken is ERC721Basic {
 
   /**
    * @dev Internal function to invoke `onERC721Received` on a target address
-   * @dev The call is not executed if the target address is not a contract
+   * The call is not executed if the target address is not a contract
    * @param _from address representing the previous owner of the given token ID
    * @param _to target address that will receive the tokens
    * @param _tokenId uint256 ID of the token to be transferred
@@ -454,7 +614,8 @@ contract ERC721BasicToken is ERC721Basic {
     if (!_to.isContract()) {
       return true;
     }
-    bytes4 retval = ERC721Receiver(_to).onERC721Received(_from, _tokenId, _data);
+    bytes4 retval = ERC721Receiver(_to).onERC721Received(
+      msg.sender, _from, _tokenId, _data);
     return (retval == ERC721_RECEIVED);
   }
 }
@@ -467,7 +628,8 @@ contract ERC721BasicToken is ERC721Basic {
  * Moreover, it includes approve all functionality using operator terminology
  * @dev see https://github.com/ethereum/EIPs/blob/master/EIPS/eip-721.md
  */
-contract ERC721Token is ERC721, ERC721BasicToken {
+contract ERC721Token is SupportsInterfaceWithLookup, ERC721BasicToken, ERC721 {
+
   // Token name
   string internal name_;
 
@@ -475,7 +637,7 @@ contract ERC721Token is ERC721, ERC721BasicToken {
   string internal symbol_;
 
   // Mapping from owner to list of owned token IDs
-  mapping (address => uint256[]) internal ownedTokens;
+  mapping(address => uint256[]) internal ownedTokens;
 
   // Mapping from token ID to index of the owner tokens list
   mapping(uint256 => uint256) internal ownedTokensIndex;
@@ -492,16 +654,20 @@ contract ERC721Token is ERC721, ERC721BasicToken {
   /**
    * @dev Constructor function
    */
-  function ERC721Token(string _name, string _symbol) public {
+  constructor(string _name, string _symbol) public {
     name_ = _name;
     symbol_ = _symbol;
+
+    // register the supported interfaces to conform to ERC721 via ERC165
+    _registerInterface(InterfaceId_ERC721Enumerable);
+    _registerInterface(InterfaceId_ERC721Metadata);
   }
 
   /**
    * @dev Gets the token name
    * @return string representing the token name
    */
-  function name() public view returns (string) {
+  function name() external view returns (string) {
     return name_;
   }
 
@@ -509,13 +675,13 @@ contract ERC721Token is ERC721, ERC721BasicToken {
    * @dev Gets the token symbol
    * @return string representing the token symbol
    */
-  function symbol() public view returns (string) {
+  function symbol() external view returns (string) {
     return symbol_;
   }
 
   /**
    * @dev Returns an URI for a given token ID
-   * @dev Throws if the token ID does not exist. May return an empty string.
+   * Throws if the token ID does not exist. May return an empty string.
    * @param _tokenId uint256 ID of the token to query
    */
   function tokenURI(uint256 _tokenId) public view returns (string) {
@@ -529,7 +695,14 @@ contract ERC721Token is ERC721, ERC721BasicToken {
    * @param _index uint256 representing the index to be accessed of the requested tokens list
    * @return uint256 token ID at the given index of the tokens list owned by the requested address
    */
-  function tokenOfOwnerByIndex(address _owner, uint256 _index) public view returns (uint256) {
+  function tokenOfOwnerByIndex(
+    address _owner,
+    uint256 _index
+  )
+    public
+    view
+    returns (uint256)
+  {
     require(_index < balanceOf(_owner));
     return ownedTokens[_owner][_index];
   }
@@ -544,7 +717,7 @@ contract ERC721Token is ERC721, ERC721BasicToken {
 
   /**
    * @dev Gets the token ID at a given index of all the tokens in this contract
-   * @dev Reverts if the index is greater or equal to the total number of tokens
+   * Reverts if the index is greater or equal to the total number of tokens
    * @param _index uint256 representing the index to be accessed of the tokens list
    * @return uint256 token ID at the given index of the tokens list
    */
@@ -555,7 +728,7 @@ contract ERC721Token is ERC721, ERC721BasicToken {
 
   /**
    * @dev Internal function to set the token URI for a given token
-   * @dev Reverts if the token ID does not exist
+   * Reverts if the token ID does not exist
    * @param _tokenId uint256 ID of the token to set its URI
    * @param _uri string URI to assign
    */
@@ -584,24 +757,27 @@ contract ERC721Token is ERC721, ERC721BasicToken {
   function removeTokenFrom(address _from, uint256 _tokenId) internal {
     super.removeTokenFrom(_from, _tokenId);
 
+    // To prevent a gap in the array, we store the last token in the index of the token to delete, and
+    // then delete the last slot.
     uint256 tokenIndex = ownedTokensIndex[_tokenId];
     uint256 lastTokenIndex = ownedTokens[_from].length.sub(1);
     uint256 lastToken = ownedTokens[_from][lastTokenIndex];
 
     ownedTokens[_from][tokenIndex] = lastToken;
-    ownedTokens[_from][lastTokenIndex] = 0;
+    // This also deletes the contents at the last position of the array
+    ownedTokens[_from].length--;
+
     // Note that this will handle single-element arrays. In that case, both tokenIndex and lastTokenIndex are going to
     // be zero. Then we can make sure that we will remove _tokenId from the ownedTokens list since we are first swapping
     // the lastToken to the first position, and then dropping the element placed in the last position of the list
 
-    ownedTokens[_from].length--;
     ownedTokensIndex[_tokenId] = 0;
     ownedTokensIndex[lastToken] = tokenIndex;
   }
 
   /**
    * @dev Internal function to mint a new token
-   * @dev Reverts if the given token ID already exists
+   * Reverts if the given token ID already exists
    * @param _to address the beneficiary that will own the minted token
    * @param _tokenId uint256 ID of the token to be minted by the msg.sender
    */
@@ -614,7 +790,7 @@ contract ERC721Token is ERC721, ERC721BasicToken {
 
   /**
    * @dev Internal function to burn a specific token
-   * @dev Reverts if the token does not exist
+   * Reverts if the token does not exist
    * @param _owner owner of the token to burn
    * @param _tokenId uint256 ID of the token being burned by the msg.sender
    */
@@ -661,7 +837,7 @@ contract SplitPayment {
   /**
    * @dev Constructor
    */
-  function SplitPayment(address[] _payees, uint256[] _shares) public payable {
+  constructor(address[] _payees, uint256[] _shares) public payable {
     require(_payees.length == _shares.length);
 
     for (uint256 i = 0; i < _payees.length; i++) {
@@ -672,7 +848,7 @@ contract SplitPayment {
   /**
    * @dev payable fallback
    */
-  function () public payable {}
+  function () external payable {}
 
   /**
    * @dev Claim your share of the balance.
@@ -683,7 +859,11 @@ contract SplitPayment {
     require(shares[payee] > 0);
 
     uint256 totalReceived = address(this).balance.add(totalReleased);
-    uint256 payment = totalReceived.mul(shares[payee]).div(totalShares).sub(released[payee]);
+    uint256 payment = totalReceived.mul(
+      shares[payee]).div(
+        totalShares).sub(
+          released[payee]
+    );
 
     require(payment != 0);
     require(address(this).balance >= payment);
@@ -721,14 +901,18 @@ contract Ownable {
   address public owner;
 
 
-  event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+  event OwnershipRenounced(address indexed previousOwner);
+  event OwnershipTransferred(
+    address indexed previousOwner,
+    address indexed newOwner
+  );
 
 
   /**
    * @dev The Ownable constructor sets the original `owner` of the contract to the sender
    * account.
    */
-  function Ownable() public {
+  constructor() public {
     owner = msg.sender;
   }
 
@@ -741,54 +925,33 @@ contract Ownable {
   }
 
   /**
-   * @dev Allows the current owner to transfer control of the contract to a newOwner.
-   * @param newOwner The address to transfer ownership to.
+   * @dev Allows the current owner to relinquish control of the contract.
+   * @notice Renouncing to ownership will leave the contract without an owner.
+   * It will not be possible to call the functions with the `onlyOwner`
+   * modifier anymore.
    */
-  function transferOwnership(address newOwner) public onlyOwner {
-    require(newOwner != address(0));
-    emit OwnershipTransferred(owner, newOwner);
-    owner = newOwner;
+  function renounceOwnership() public onlyOwner {
+    emit OwnershipRenounced(owner);
+    owner = address(0);
   }
 
-}
+  /**
+   * @dev Allows the current owner to transfer control of the contract to a newOwner.
+   * @param _newOwner The address to transfer ownership to.
+   */
+  function transferOwnership(address _newOwner) public onlyOwner {
+    _transferOwnership(_newOwner);
+  }
 
-// File: contracts/common/SplitPaymentChangeable.sol
-
-contract SplitPaymentChangeable is SplitPayment, Ownable {
-
-    event PayeeAddressChanged(
-        uint payeeIndex, 
-        address oldAddress, 
-        address newAddress
-    );
-
-    constructor(
-        address[] _payees,
-        uint256[] _shares
-    )
-        public
-        payable
-        SplitPayment(_payees, _shares)
-    { }
-
-    function changePayeeAddress(
-        uint _payeeIndex,
-        address _newAddress
-    )
-        external
-        onlyOwner
-    {
-        address oldAddress = payees[_payeeIndex];
-
-        shares[_newAddress] = shares[oldAddress];
-        released[_newAddress] = released[oldAddress];
-        payees[_payeeIndex] = _newAddress;
-
-        delete shares[oldAddress];
-        delete released[oldAddress];
-
-        emit PayeeAddressChanged(_payeeIndex, oldAddress, _newAddress);
-    }
+  /**
+   * @dev Transfers control of the contract to a newOwner.
+   * @param _newOwner The address to transfer ownership to.
+   */
+  function _transferOwnership(address _newOwner) internal {
+    require(_newOwner != address(0));
+    emit OwnershipTransferred(owner, _newOwner);
+    owner = _newOwner;
+  }
 }
 
 // File: openzeppelin-solidity/contracts/lifecycle/Pausable.sol
@@ -823,7 +986,7 @@ contract Pausable is Ownable {
   /**
    * @dev called by the owner to pause, triggers stopped state
    */
-  function pause() onlyOwner whenNotPaused public {
+  function pause() public onlyOwner whenNotPaused {
     paused = true;
     emit Pause();
   }
@@ -831,7 +994,7 @@ contract Pausable is Ownable {
   /**
    * @dev called by the owner to unpause, returns to normal state
    */
-  function unpause() onlyOwner whenPaused public {
+  function unpause() public onlyOwner whenPaused {
     paused = false;
     emit Unpause();
   }
@@ -859,7 +1022,14 @@ contract RegistryPermissionControl is Pausable {
     enum CreateEntryPermissionGroup {OnlyAdmin, AllUsers}
     
     // @dev Holds current permission group, onlyAdmin by default
-    CreateEntryPermissionGroup internal createEntryPermissionGroup;
+    CreateEntryPermissionGroup internal permissionGroup;
+    
+    constructor()
+        public
+    {
+        permissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
+        admin = owner;
+    }
     
     /*
     *  Modifiers
@@ -873,7 +1043,7 @@ contract RegistryPermissionControl is Pausable {
 
     // @dev Controls access to entry creation granted by setted permission group
     modifier onlyPermissionedToCreateEntries() {
-        if (createEntryPermissionGroup == CreateEntryPermissionGroup.OnlyAdmin) {
+        if (permissionGroup == CreateEntryPermissionGroup.OnlyAdmin) {
             require(msg.sender == admin);
         }
         _;
@@ -890,7 +1060,9 @@ contract RegistryPermissionControl is Pausable {
     function getAdmin()
         external
         view
-        returns (address)
+        returns (
+            address
+        )
     {
         return admin;
     }
@@ -902,9 +1074,11 @@ contract RegistryPermissionControl is Pausable {
     function getRegistryPermissions()
         external
         view
-        returns (uint8)
+        returns (
+            CreateEntryPermissionGroup
+        )
     {
-        return uint8(createEntryPermissionGroup);
+        return permissionGroup;
     }
     
     /*
@@ -915,12 +1089,14 @@ contract RegistryPermissionControl is Pausable {
     * @dev Allows owner (in main workflow - chaingear) transfer admin right
     * @dev if previous admin transfer associated ERC721 token.
     * @param _newAdmin address of new token holder/registry admin
-    * @notice triggers by chaingear in main workflow (when registry non-registered from CH) 
+    * @notice triggered by chaingear in main workflow (when registry non-registered from CH) 
+    * @notice admin cannot transfer their own right cause right are tokenized and associated with
+    * @notice ERC721 token, which logic controls chaingear contract
     */
     function transferAdminRights(
         address _newAdmin
     )
-        public
+        external
         onlyOwner
         whenNotPaused
     {
@@ -930,19 +1106,77 @@ contract RegistryPermissionControl is Pausable {
 
     /**
     * @dev Allows admin to set new permission group granted to create entries
-    * @param _createEntryPermissionGroup uint8 index of needed group
+    * @param _permissionGroup Index of needed group
     */
     function updateCreateEntryPermissionGroup(
-        uint8 _createEntryPermissionGroup
+        CreateEntryPermissionGroup _permissionGroup
     )
         public
         onlyAdmin
         whenNotPaused
     {
-        require(uint8(CreateEntryPermissionGroup.AllUsers) >= _createEntryPermissionGroup);
-        createEntryPermissionGroup = CreateEntryPermissionGroup(_createEntryPermissionGroup);
+        require(CreateEntryPermissionGroup.AllUsers >= _permissionGroup);
+        permissionGroup = _permissionGroup;
     }
     
+}
+
+// File: contracts/common/EntryInterface.sol
+
+interface EntryInterface {
+
+    function createEntry(uint256) external;
+    function deleteEntry(uint256) external;
+    function entriesAmount() external view returns (uint256);
+}
+
+// File: contracts/common/Safe.sol
+
+/**
+* @title Safe contract
+* @author cyber•Congress, Valery Litvin (@litvintech)
+* @dev Allows store etheirs which funded to Registry 
+* @dev and claim them by Registry/associated token via Chaingear
+* @notice not recommend to use before release!
+*/
+contract Safe {
+    
+    address public owner;
+
+    constructor()
+        public
+        payable
+    {
+        owner = msg.sender;
+    }
+
+    /**
+    * @dev Allows direct send only by owner.
+    */
+    function()
+        external
+        payable
+    {
+        require(msg.sender == owner);
+    }
+
+    /**
+    * @dev Allows owner (chaingear) claim funds and transfer them to Registry admin
+    * @param _entryOwner address transfer to, Registry-token admin
+    * @param _amount uint claimed amount by Registry-token admin
+    */
+    function claim(
+        address _entryOwner,
+        uint256 _amount
+    )
+        external
+    {
+        require(msg.sender == owner);
+        require(_amount <= address(this).balance);
+        require(_entryOwner != 0x0);
+        _entryOwner.transfer(_amount);
+    }
+
 }
 
 // File: contracts/registry/Chaingeareable.sol
@@ -954,6 +1188,8 @@ contract RegistryPermissionControl is Pausable {
 * @notice not recommend to use before release!
 */
 contract Chaingeareable is RegistryPermissionControl {
+    
+    using SafeMath for uint256;
     
     /*
     *  Storage
@@ -969,16 +1205,26 @@ contract Chaingeareable is RegistryPermissionControl {
     bytes32[] internal registryTags;
     
     // @dev address of EntryCore contract, which specifies data schema and operations
-    address internal entriesStorage;
+    EntryInterface internal entriesStorage;
     
     // @dev link to IPFS hash to ABI of EntryCore contract
     string internal linkToABIOfEntriesContract;
     
     // @dev address of Registry safe where funds store
-    address internal registrySafe;
+    // @notice deployed on creation contract which hold funds
+    Safe internal registrySafe;
 
     // @dev state of was registry initialized with EntryCore or not
     bool internal registryInitStatus;
+
+
+    constructor() 
+        public
+    {
+        entryCreationFee = 0;
+        registrySafe = new Safe();
+        registryInitStatus = false;
+    }
 
     /*
     *  Modifiers
@@ -1088,7 +1334,7 @@ contract Chaingeareable is RegistryPermissionControl {
         onlyAdmin
     {
         require(_tag.length <= 16);
-        require(_index <= registryTags.length-1);
+        require(_index < registryTags.length);
 
         registryTags[_index] = _tag;
     }
@@ -1103,7 +1349,10 @@ contract Chaingeareable is RegistryPermissionControl {
         external
         onlyAdmin
     {
-        uint256 lastTagIndex = registryTags.length - 1;
+        require(registryTags.length > 0);
+        require(_index < registryTags.length);
+
+        uint256 lastTagIndex = registryTags.length.sub(1);
         bytes32 lastTag = registryTags[lastTagIndex];
 
         registryTags[_index] = lastTag;
@@ -1224,77 +1473,25 @@ contract Chaingeareable is RegistryPermissionControl {
     }
 }
 
-// File: contracts/common/EntryInterface.sol
-
-contract EntryInterface {
-
-    function entriesAmount() external view returns (uint256);
-    function createEntry() external returns (uint256);
-    function deleteEntry(uint256) external;
-}
-
 // File: contracts/common/RegistryInterface.sol
 
-contract RegistryInterface {
-    function getSafeBalance() external view returns (uint256);
-    function getAdmin() external view returns (address);
-    function createEntry() external payable returns (uint256);
-    function deleteEntry(uint256 _entryId) external;
-    function fundEntry(uint256 _entryId) external payable;
-    function claimEntryFunds(uint256 _entryId, uint _amount) external;
-    function transferAdminRights(address _newOnwer) public;
-    function transferOwnership(address _newOwner) public;
-    function name() public view returns (string);
-    function symbol() public view returns (string);
-}
-
-// File: contracts/common/Safe.sol
-
-/**
-* @title Safe contract
-* @author cyber•Congress, Valery Litvin (@litvintech)
-* @dev Allows store etheirs which funded to Registry 
-* @dev and claim them by Registry/associated token via Chaingear
-* @notice not recommend to use before release!
-*/
-contract Safe {
+interface RegistryInterface {
     
-    address public owner;
-
-    constructor()
-        public
-        payable
-    {
-        owner = msg.sender;
-    }
-
-    /**
-    * @dev Allows direct send only by owner.
-    */
-    function()
-        external
-        payable
-    {
-        require(msg.sender == owner);
-    }
-
-    /**
-    * @dev Allows owner (chaingear) claim funds and transfer them to Registry admin
-    * @param _entryOwner address transfer to, Registry-token admin
-    * @param _amount uint claimed amount by Registry-token admin
-    */
-    function claim(
-        address _entryOwner,
-        uint256 _amount
-    )
-        external
-    {
-        require(msg.sender == owner);
-        require(_amount <= address(this).balance);
-        require(_entryOwner != 0x0);
-        _entryOwner.transfer(_amount);
-    }
-
+    function createEntry() external payable returns (uint256);
+    function deleteEntry(uint256) external;
+    
+    function fundEntry(uint256) external payable;
+    function claimEntryFunds(uint256, uint256) external;
+    
+    function transferAdminRights(address) external;
+    function transferOwnership(address) external;
+    
+    function getAdmin() external view returns (address);
+    function getSafeBalance() external view returns (uint256);
+    
+    function name() external view returns (string);
+    function symbol() external view returns (string);
+    function supportsInterface(bytes4) external view returns (bool);
 }
 
 // File: contracts/registry/Registry.sol
@@ -1308,25 +1505,48 @@ contract Safe {
 * @dev Entry creation/deletion/update permission are tokenized
 * @notice not recommend to use before release!
 */
-contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, ERC721Token {
+contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingeareable, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
     
     /*
     *  Storage
     */
+    bytes4 internal constant InterfaceId_EntryCore = 0xcf3c2b48;
+    
+    bytes4 internal constant InterfaceId_Registry = 0x52dddfe4;
+    /*
+     * 0x52dddfe4 ===
+     *   bytes4(keccak256('createEntry()')) ^
+     *   bytes4(keccak256('deleteEntry(uint256)')) ^
+     *   bytes4(keccak256('fundEntry(uint256)')) ^
+     *   bytes4(keccak256('claimEntryFunds(uint256, uint256)')) ^
+     *   bytes4(keccak256('transferAdminRights(address)')) ^
+     *   bytes4(keccak256('transferOwnership(address)')) ^
+     *   bytes4(keccak256('getAdmin()')) ^
+     *   bytes4(keccak256('getSafeBalance()'))
+     */
+    
 
     // @dev Metadata of entry, holds ownership data and funding info
     struct EntryMeta {
         address creator;
         uint createdAt;
         uint lastUpdateTime;
-        uint256 currentEntryBalanceETH;
-        uint256 accumulatedOverallEntryETH;
+        uint256 currentEntryBalanceWei;
+        uint256 accumulatedOverallEntryWei;
     }
+    
+    // @dev Using for token creation, continuous enumeration
+    uint256 private headTokenID;
     
     // @dev Array of associated to entry/token metadata
     EntryMeta[] internal entriesMeta;
+    
+    modifier onlyOwnerOf(uint256 _entryID){
+        require(ownerOf(_entryID) == msg.sender);
+        _;
+    }
 
     /*
     *  Constructor
@@ -1348,18 +1568,16 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         string _name,
         string _symbol
     )
-        SplitPaymentChangeable(_benefitiaries, _shares)
+        SplitPayment(_benefitiaries, _shares)
         ERC721Token(_name, _symbol)
         public
         payable
     {
-        createEntryPermissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
-        entryCreationFee = 0;
-        registrySafe = new Safe();
-        registryInitStatus = false;
+        _registerInterface(InterfaceId_Registry);
+        headTokenID = 0;
     }
     
-    function() public payable {}
+    function() external payable {}
     
     /*
     *  External functions
@@ -1379,32 +1597,35 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         onlyPermissionedToCreateEntries
         whenNotPaused
         payable
-        returns (uint256)
+        returns (
+            uint256
+        )
     {
         require(msg.value == entryCreationFee);
         
         EntryMeta memory meta = (EntryMeta(
-        {
+        {   
+            /* solium-disable-next-line security/no-block-members */
             lastUpdateTime: block.timestamp,
+            /* solium-disable-next-line security/no-block-members */
             createdAt: block.timestamp,
             creator: msg.sender,
-            currentEntryBalanceETH: 0,
-            accumulatedOverallEntryETH: 0
+            currentEntryBalanceWei: 0,
+            accumulatedOverallEntryWei: 0
         }));
         
+        uint256 newTokenID = headTokenID;
         entriesMeta.push(meta);
+        _mint(msg.sender, newTokenID);
         
-        //newEntryID equals current entriesAmount number, because token IDs starts from 0
-        uint256 newEntryID = EntryInterface(entriesStorage).entriesAmount();
-        require(newEntryID == totalSupply());
+        emit EntryCreated(
+            newTokenID,
+            msg.sender
+        );
         
-        _mint(msg.sender, newEntryID);
-        emit EntryCreated(newEntryID, msg.sender);
-        
-        uint256 createdEntryID = EntryInterface(entriesStorage).createEntry();
-        require(newEntryID == createdEntryID);
-
-        return newEntryID;
+        entriesStorage.createEntry(newTokenID);
+        headTokenID = headTokenID.add(1);
+        return newTokenID;
     }
 
     /**
@@ -1419,21 +1640,21 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
-        require(entriesMeta[_entryID].currentEntryBalanceETH == 0);
+        require(entriesMeta[_entryID].currentEntryBalanceWei == 0);
         
         uint256 entryIndex = allTokensIndex[_entryID];
         
-        uint256 lastEntryIndex = entriesMeta.length - 1;
-        EntryMeta storage lastEntry = entriesMeta[lastEntryIndex];
+        uint256 lastEntryIndex = entriesMeta.length.sub(1);
+        EntryMeta memory lastEntry = entriesMeta[lastEntryIndex];
 
-        entriesMeta[_entryID] = lastEntry;
+        entriesMeta[entryIndex] = lastEntry;
         delete entriesMeta[lastEntryIndex];
         entriesMeta.length--;
         
-        _burn(msg.sender, _entryID);
+        super._burn(msg.sender, _entryID);
         emit EntryDeleted(_entryID, msg.sender);
         
-        EntryInterface(entriesStorage).deleteEntry(entryIndex);
+        entriesStorage.deleteEntry(_entryID);
     }
 
     function transferFrom(
@@ -1442,23 +1663,58 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         uint256 _tokenId
     ) 
         public 
-        canTransfer(_tokenId)
         registryInitialized
+        whenNotPaused
     {
-        require(_from != address(0));
-        require(_to != address(0));
-
-        clearApproval(_from, _tokenId);
-        removeTokenFrom(_from, _tokenId);
-        addTokenTo(_to, _tokenId);
-
-        emit Transfer(_from, _to, _tokenId);
+        super.transferFrom(
+            _from,
+            _to,
+            _tokenId
+        );
     }  
+    
+    function safeTransferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId
+    )
+        public
+        registryInitialized
+        whenNotPaused
+    {
+        super.safeTransferFrom(
+            _from,
+            _to,
+            _tokenId,
+            ""
+        );
+    }
+
+    function safeTransferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId,
+        bytes _data
+    )
+        public
+        registryInitialized
+        whenNotPaused
+    {
+        transferFrom(_from, _to, _tokenId);
+        /* solium-disable-next-line indentation */
+        require(checkAndCallSafeTransfer(
+            _from,
+            _to,
+            _tokenId,
+            _data
+        ));
+    }
 
     /**
     * @dev Allows anyone fund specified entry
     * @param _entryID uint256 Entry-token ID
     * @notice Funds tracks in EntryMeta, stores in Registry Safe
+    * @notice Anyone may fund any existing entry
     */
     function fundEntry(
         uint256 _entryID
@@ -1468,11 +1724,21 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         whenNotPaused
         payable
     {
-        entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.add(msg.value);
-        entriesMeta[_entryID].accumulatedOverallEntryETH = entriesMeta[_entryID].accumulatedOverallEntryETH.add(msg.value);
-        emit EntryFunded(_entryID, msg.sender, msg.value);
+        require(exists(_entryID) == true);
         
-        registrySafe.transfer(msg.value);
+        uint256 currentWei = entriesMeta[_entryID].currentEntryBalanceWei.add(msg.value);
+        entriesMeta[_entryID].currentEntryBalanceWei = currentWei;
+        
+        uint256 accumulatedWei = entriesMeta[_entryID].accumulatedOverallEntryWei.add(msg.value);
+        entriesMeta[_entryID].accumulatedOverallEntryWei = accumulatedWei;
+        
+        emit EntryFunded(
+            _entryID,
+            msg.sender,
+            msg.value
+        );
+        
+        address(registrySafe).transfer(msg.value);
     }
 
     /**
@@ -1490,12 +1756,17 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
-        require(_amount <= entriesMeta[_entryID].currentEntryBalanceETH);
-        entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.sub(_amount);
+        uint256 currentWei = entriesMeta[_entryID].currentEntryBalanceWei;
+        require(_amount <= currentWei);
+        entriesMeta[_entryID].currentEntryBalanceWei = currentWei.sub(_amount);
         
-        emit EntryFundsClaimed(_entryID, msg.sender, _amount);
+        emit EntryFundsClaimed(
+            _entryID,
+            msg.sender,
+            _amount
+        );
         
-        Safe(registrySafe).claim(msg.sender, _amount);
+        registrySafe.claim(msg.sender, _amount);
     }
     
     /**
@@ -1508,15 +1779,16 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
     ) 
         external
     {
-        entriesMeta[_entryID].lastUpdateTime = block.timestamp;
         require(entriesStorage == msg.sender);
+        /* solium-disable-next-line security/no-block-members */
+        entriesMeta[_entryID].lastUpdateTime = block.timestamp;
     }
     
     /*
     *  View functions
     */
     
-    function getEntryMeta(
+    function readEntryMeta(
         uint256 _entryID
     )
         external
@@ -1535,24 +1807,22 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
             entriesMeta[_entryID].creator,
             entriesMeta[_entryID].createdAt,
             entriesMeta[_entryID].lastUpdateTime,
-            entriesMeta[_entryID].currentEntryBalanceETH,
-            entriesMeta[_entryID].accumulatedOverallEntryETH
+            entriesMeta[_entryID].currentEntryBalanceWei,
+            entriesMeta[_entryID].accumulatedOverallEntryWei
         );
     }
     
     /**
-    * @dev Verification function which auth user to update specified entry data in EntryCore
+    * @dev Verification function which auth user to update specified entry in EntryCore
     * @param _entryID uint256 Entry-token ID
-    * @param _caller address of caller which trying to update entry throught EntryCore
-    * @return  
+    * @param _caller address of caller which trying to update entry throught EntryCore 
     */
-    function checkAuth(
+    function checkEntryOwnership(
         uint256 _entryID,
         address _caller
     )
         external
         view
-        returns (bool)
     {
         require(ownerOf(_entryID) == _caller);
     }
@@ -1587,16 +1857,22 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
     )
         public
         onlyAdmin
-        returns (address)
+        returns (EntryInterface)
     {
-        address deployedAddress;
+        require(registryInitStatus == false);
+        EntryInterface deployedAddress;
+
+        //// [review] It is better not to use assembly/arbitrary bytecode as it is very unsafe!
         assembly {
             let s := mload(_entryCore)
             let p := add(_entryCore, 0x20)
+            //// [review] I am the EntryCore 'owner'
             deployedAddress := create(0, p, s)
         }
 
-        assert(deployedAddress != 0x0);
+        require(address(deployedAddress) != address(0));
+        // require(deployedAddress.supportsInterface(InterfaceId_EntryCore));
+        
         entriesStorage = deployedAddress;
         registryInitStatus = true;
         linkToABIOfEntriesContract = _linkToABIOfEntriesContract;
@@ -1613,56 +1889,88 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPaymentChangeable, 
  * @dev Base contract that can be destroyed by owner. All funds in contract will be sent to the owner.
  */
 contract Destructible is Ownable {
-
-  function Destructible() public payable { }
-
   /**
    * @dev Transfers the current balance to the owner and terminates the contract.
    */
-  function destroy() onlyOwner public {
+  function destroy() public onlyOwner {
     selfdestruct(owner);
   }
 
-  function destroyAndSend(address _recipient) onlyOwner public {
+  function destroyAndSend(address _recipient) public onlyOwner {
     selfdestruct(_recipient);
   }
 }
 
-// File: contracts/chaingear/RegistryBase.sol
+// File: contracts/RegistryCreator/RegistryCreatorInterface.sol
+
+interface RegistryCreatorInterface {
+    
+    function create(
+        address[],
+        uint256[],
+        string,
+        string
+    ) external returns (RegistryInterface);
+}
+
+// File: contracts/chaingear/ChaingearCore.sol
 
 /**
-* @title RegistryBase contract
+* @title Chaingear core contract
 * @author cyber•Congress, Valery Litvin (@litvintech)
-* @dev Contracts which holds logic and struct of data witch describes registry metainformation which
-* associated with token, provides views function for registry metainformation.
+* @dev Storage of core data and setters/getters
 * @notice not recommend to use before release!
 */
 
-//todo rename: we have RegistryBase and RegistryInterface
-contract RegistryBase {
-    
-    /*
-    *  Storage
-    */
+contract ChaingearCore is Destructible, Pausable {
 
+	/*
+	*  Storage
+	*/
+    
     // @dev Sctruct which describes registry metainformation with balance state and status
     struct RegistryMeta {
-        address contractAddress;
+        RegistryInterface contractAddress;
         address creator;
         string version;
         string linkABI;
         uint registrationTimestamp;
-        uint256 currentRegistryBalanceETH;
-        uint256 accumulatedRegistryETH;
+        uint256 currentRegistryBalanceWei;
+        uint256 accumulatedRegistryWei;
     }
     
 
     // @dev Array of registries data
     RegistryMeta[] internal registries;
+    
+    // @dev Mapping which allow control of name uniqueness in metaregistry
+    mapping(string => bool) internal registryNamesIndex;
+    
+    // @dev Mapping which allow control of symbol uniqueness in metaregistry
+    mapping(string => bool) internal registrySymbolsIndex;
 
-	/*
-	*  Events
-	*/
+    // @dev Short Chaingear's description, less than 128 symbols
+    string internal chaingearDescription;
+    
+    // @dev Amount that registrys creator should pay for registry creation/registring
+    uint internal registryRegistrationFee;
+    
+    // @dev Address of contract where their funds allocates
+    Safe internal chaingearSafe;
+    
+    // @dev mapping with address of registry creators with different code base of registries
+
+    mapping (string => RegistryCreatorInterface) internal registryCreators;
+    
+    // @dev mapping with ipfs links to json with ABI of different registries
+    mapping (string => string) internal registryABIsLinks;
+    
+    // @dev mapping description of different registries types/versions
+    mapping (string => string) internal registryDescriptions;
+
+    /*
+    *  Events
+    */
 
     // @dev Events witch signals that new Registry registered
     event RegistryRegistered(
@@ -1687,9 +1995,23 @@ contract RegistryBase {
         string name
     );
 
-	/*
-	*  External Functions
-	*/
+    // @dev Signals that given Registry funded
+    event RegistryFunded(
+        uint registryID,
+        address sender,
+        uint amount
+    );
+    
+    // @dev Signals that given Registry funds claimed by their admin
+    event RegistryFundsClaimed(
+        uint registryID,
+        address claimer,
+        uint amout
+    );
+    
+    /*
+    *  External Functions
+    */
 
     /**
     * @dev Registy metainfo getter
@@ -1717,19 +2039,19 @@ contract RegistryBase {
             address
         )
     {
-        address contractAddress = registries[_registryID].contractAddress;
+        RegistryInterface contractAddress = registries[_registryID].contractAddress;
         
         return (
-            RegistryInterface(contractAddress).name(),
-            RegistryInterface(contractAddress).symbol(),
+            contractAddress.name(),
+            contractAddress.symbol(),
             contractAddress,
             registries[_registryID].creator,
             registries[_registryID].version,
             registries[_registryID].registrationTimestamp,
-            RegistryInterface(contractAddress).getAdmin()
+            contractAddress.getAdmin()
         );
     }
-    
+
     /**
     * @dev Registy funding stats getter
     * @param _registryID uint256 Registry ID
@@ -1747,8 +2069,8 @@ contract RegistryBase {
         )
     {
         return (
-            registries[_registryID].currentRegistryBalanceETH,
-            registries[_registryID].accumulatedRegistryETH
+            registries[_registryID].currentRegistryBalanceWei,
+            registries[_registryID].accumulatedRegistryWei
         );
     }
 
@@ -1759,72 +2081,12 @@ contract RegistryBase {
     function registriesAmount()
         external
         view
-        returns (uint256)
+        returns (
+            uint256
+        )
     {
         return registries.length;
     }
-}
-
-// File: contracts/chaingear/ChaingearCore.sol
-
-/**
-* @title Chaingear core contract
-* @author cyber•Congress, Valery Litvin (@litvintech)
-* @dev Storage of core data and setters/getters
-* @notice not recommend to use before release!
-*/
-
-contract ChaingearCore is RegistryBase, Destructible, Pausable {
-
-	/*
-	*  Storage
-	*/
-    
-    // @dev Mapping which allow control of name uniqueness in metaregistry
-    mapping(string => bool) internal registryNamesIndex;
-    
-    // @dev Mapping which allow control of symbol uniqueness in metaregistry
-    mapping(string => bool) internal registrySymbolsIndex;
-
-    // @dev Short Chaingear's description, less than 128 symbols
-    string internal chaingearDescription;
-    
-    // @dev Amount that registrys creator should pay for registry creation/registring
-    uint internal registryRegistrationFee;
-    
-    // @dev Address of contract where their funds allocates
-    address internal chaingearSafe;
-    
-    // @dev mapping with address of registry creators with different code base of registries
-    mapping (string => address) internal registryAddresses;
-    
-    // @dev mapping with ipfs links to json with ABI of different registries
-    mapping (string => string) internal registryABIsLinks;
-    
-    // @dev mapping description of different registries types/versions
-    mapping (string => string) internal registryDescriptions;
-
-    /*
-    *  Events
-    */
-
-    // @dev Signals that given Registry funded
-    event RegistryFunded(
-        uint registryID,
-        address sender,
-        uint amount
-    );
-    
-    // @dev Signals that given Registry funds claimed by their admin
-    event RegistryFundsClaimed(
-        uint registryID,
-        address claimer,
-        uint amout
-    );
-    
-    /*
-    *  External Functions
-    */
 
     /**
     * @dev Provides funcitonality for adding fabrics of different kind of registries
@@ -1836,15 +2098,15 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     */
     function addRegistryCreatorVersion(
         string _nameOfVersion, 
-        address _addressRegistryCreator,
+        RegistryCreatorInterface _addressRegistryCreator,
         string _link,
         string _description
     )
         external
         onlyOwner
     {
-        require(registryAddresses[_nameOfVersion] == 0x0);
-        registryAddresses[_nameOfVersion] = _addressRegistryCreator;
+        require(registryCreators[_nameOfVersion] == address(0));
+        registryCreators[_nameOfVersion] = _addressRegistryCreator;
         registryABIsLinks[_nameOfVersion] = _link;
         registryDescriptions[_nameOfVersion] = _description;
     }
@@ -1908,7 +2170,7 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
         )
     {
         return(
-            registryAddresses[_nameOfVersion],
+            registryCreators[_nameOfVersion],
             registryABIsLinks[_nameOfVersion],
             registryDescriptions[_nameOfVersion]
         );
@@ -1921,7 +2183,9 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     function getDescription()
         external
         view
-        returns (string)
+        returns (
+            string
+        )
     {
         return chaingearDescription;
     }
@@ -1933,7 +2197,9 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     function getRegistrationFee()
         external
         view
-        returns (uint)
+        returns (
+            uint
+        )
     {
         return registryRegistrationFee;
     }
@@ -1945,7 +2211,9 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     function getSafeBalance()
         external
         view
-        returns (uint)
+        returns (
+            uint
+        )
     {
         return address(chaingearSafe).balance;
     }
@@ -1957,113 +2225,11 @@ contract ChaingearCore is RegistryBase, Destructible, Pausable {
     function getSafe()
         external
         view
-        returns (address)
+        returns (
+            address
+        )
     {
         return chaingearSafe;
-    }
-}
-
-// File: contracts/chaingear/RegistryCreator.sol
-
-/**
-* @title Registry Creator engine/fabric
-* @author cyber•Congress
-* @dev Allows to Chaingear contract as builder create new Registries
-* @dev with codebase which imported and deployed with this fabric
-* @notice not recommend to use before release!
-*/
-contract RegistryCreator is Ownable {
-
-	/*
-	* @dev Storage
-	*/
-
-    // @dev Holds address of contract which can call creation, means Chaingear
-    address internal builder;
-
-	/*
-	* @dev Constructor
-	*/
-
-    /**
-    * @dev Contructor of RegistryCreators
-    * @notice setting 0x0, then allows to owner to set builder/Chaingear
-    * @notice after deploying needs to set up builder/Chaingear address
-    */
-    constructor()
-        public
-    {
-        builder = 0x0;
-    }
-    
-    /**
-    * @dev Disallows direct send by settings a default function without the `payable` flag.
-    */
-    function() external {}
-
-	/*
-	* @dev External Functions
-	*/
-    
-    /**
-    * @dev Allows chaingear (builder) create new registry
-    * @param _benefitiaries address[] array of beneficiaries addresses
-    * @param _shares uint256[] array of shares amont ot each beneficiary
-    * @param _name string name of Registry and token
-    * @param _symbol string symbol of Registry and token
-    * @return address Address of new initialized Registry
-    */
-    function create(
-        address[] _benefitiaries,
-        uint256[] _shares,
-        string _name,
-        string _symbol
-    )
-        external
-        returns (address)
-    {
-        require(msg.sender == builder);
-
-        address registryContract = new Registry(
-            _benefitiaries,
-            _shares,
-            _name,
-            _symbol
-        );
-        //Fabric as owner transfers ownership to Chaingear contract after creation
-        Registry(registryContract).transferOwnership(builder);
-
-        return registryContract;
-    }
-
-    /**
-    * @dev Registry builder setter, owners sets Chaingear address
-    * @param _builder address
-    */
-    function setBuilder(
-        address _builder
-    )
-        external
-        onlyOwner
-    {
-        require(_builder != 0x0);
-        builder = _builder;
-    }
-
-	/*
-	*  View Functions
-	*/
-
-    /**
-    * @dev RegistryCreator's builder getter
-    * @return address of setted Registry builder (Chaingear contract)
-    */
-    function getRegistryBuilder()
-        external
-        view
-        returns (address)
-    {
-        return builder;
     }
 }
 
@@ -2077,9 +2243,14 @@ contract RegistryCreator is Ownable {
 * @notice where each registry are ERC721.
 * @notice not recommend to use before release!
 */
-contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
+contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
+    
+    uint256 headTokenID;
+    
+    bytes4 internal constant InterfaceId_Registry = 0x52dddfe4;
+    bytes4 internal constant InterfaceId_ERC721Metadata = 0x5b5e139f;
 
     /*
     *  Constructor
@@ -2095,16 +2266,16 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
 	* @param _chaingearSymbol string Chaingear's NFT symbol, use for chaingear's ERC721
 	*/
     constructor(
+        string _chaingearName,
+        string _chaingearSymbol,
         address[] _benefitiaries,
         uint256[] _shares,
         string _description,
-        uint _registrationFee,
-        string _chaingearName,
-        string _chaingearSymbol
+        uint _registrationFee
     )
-        SplitPaymentChangeable(_benefitiaries, _shares)
-        ERC721Token(_chaingearName, _chaingearSymbol)
         public
+        ERC721Token(_chaingearName, _chaingearSymbol)
+        SplitPayment(_benefitiaries, _shares)
     {
         registryRegistrationFee = _registrationFee;
         chaingearDescription = _description;
@@ -2112,7 +2283,12 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
         chaingearSafe = new Safe();
     }
     
-    function() public payable {}
+    function() external payable {}
+    
+    modifier onlyOwnerOf(uint256 _registryID){
+        require(ownerOf(_registryID) == msg.sender);
+        _;
+    }
     
     /*
     *  External functions
@@ -2145,11 +2321,10 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
             uint256
         )
     {
-        require(registryAddresses[_version] != 0x0);
+        require(registryCreators[_version] != address(0));
         require(registryRegistrationFee == msg.value);
         
-        //checking uniqueness of name AND symbol of NFT in metaregistry
-        require(registryNamesIndex[_name] == false);
+        //checking uniqueness of symbol of NFT in metaregistry
         require(registrySymbolsIndex[_symbol] == false);
 
         return createRegistry(
@@ -2167,20 +2342,56 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
         uint256 _tokenId
     ) 
         public 
-        canTransfer(_tokenId)
+        whenNotPaused
     {
-        require(_from != address(0));
-        require(_to != address(0));
-
-        clearApproval(_from, _tokenId);
-        removeTokenFrom(_from, _tokenId);
-        addTokenTo(_to, _tokenId);
+        super.transferFrom(
+            _from,
+            _to,
+            _tokenId
+        );
         
-        address registryAddress = registries[_tokenId].contractAddress;
-        RegistryInterface(registryAddress).transferAdminRights(_to);
-
-        emit Transfer(_from, _to, _tokenId);
+        RegistryInterface registryAddress = registries[_tokenId].contractAddress;
+        registryAddress.transferAdminRights(_to);
     }  
+    
+    function safeTransferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId
+    )
+        public
+        whenNotPaused
+    {
+        super.safeTransferFrom(
+            _from,
+            _to,
+            _tokenId,
+            ""
+        );
+    }
+
+    function safeTransferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId,
+        bytes _data
+    )
+        public
+        whenNotPaused
+    {
+        transferFrom(
+            _from,
+            _to,
+            _tokenId
+        );
+        /* solium-disable-next-line indentation*/
+        require(checkAndCallSafeTransfer(
+            _from,
+            _to,
+            _tokenId,
+            _data
+        ));
+    }
 
     /**
     * @dev Allows to unregister Registry from Chaingear
@@ -2195,12 +2406,15 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
         onlyOwnerOf(_registryID)
         whenNotPaused
     {        
-        address registryAddress = registries[_registryID].contractAddress;
-        require(RegistryInterface(registryAddress).getSafeBalance() == 0);
+        RegistryInterface registryAddress = registries[_registryID].contractAddress;
+        string memory symbol = registryAddress.symbol();
+        registrySymbolsIndex[symbol] = false;
+        
+        require(registryAddress.getSafeBalance() == 0);
 
         uint256 registryIndex = allTokensIndex[_registryID];
         uint256 lastRegistryIndex = registries.length.sub(1);
-        RegistryMeta storage lastRegistry = registries[lastRegistryIndex];
+        RegistryMeta memory lastRegistry = registries[lastRegistryIndex];
 
         registries[registryIndex] = lastRegistry;
         delete registries[lastRegistryIndex];
@@ -2208,11 +2422,15 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
 
         _burn(msg.sender, _registryID);
 
-        string memory registryName = RegistryInterface(registryAddress).name();
-        emit RegistryUnregistered(msg.sender, registryName);
+        string memory registryName = registryAddress.name();
+        
+        emit RegistryUnregistered(
+            msg.sender,
+            registryName
+        );
         
         //Sets current admin as owner of registry, transfers full control
-        RegistryInterface(registryAddress).transferOwnership(msg.sender);
+        registryAddress.transferOwnership(msg.sender);
     }
     
     /**
@@ -2226,12 +2444,19 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
         whenNotPaused
         payable
     {
-        registries[_registryID].currentRegistryBalanceETH = registries[_registryID].currentRegistryBalanceETH.add(msg.value);
-        registries[_registryID].accumulatedRegistryETH = registries[_registryID].accumulatedRegistryETH.add(msg.value);
-
-        emit RegistryFunded(_registryID, msg.sender, msg.value);
+        uint256 currentWei = registries[_registryID].currentRegistryBalanceWei.add(msg.value);
+        registries[_registryID].currentRegistryBalanceWei = currentWei;
         
-        chaingearSafe.transfer(msg.value);
+        uint256 accumulatedWei = registries[_registryID].accumulatedRegistryWei.add(msg.value);
+        registries[_registryID].accumulatedRegistryWei = accumulatedWei;
+
+        emit RegistryFunded(
+            _registryID,
+            msg.sender,
+            msg.value
+        );
+        
+        address(chaingearSafe).transfer(msg.value);
     }
 
     /**
@@ -2247,12 +2472,21 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
         onlyOwnerOf(_registryID)
         whenNotPaused
     {
-        require(_amount <= registries[_registryID].currentRegistryBalanceETH);
-        registries[_registryID].currentRegistryBalanceETH = registries[_registryID].currentRegistryBalanceETH.sub(_amount);
-
-        emit RegistryFundsClaimed(_registryID, msg.sender, _amount);
+        uint256 currentWei = registries[_registryID].currentRegistryBalanceWei;
+        require(_amount <= currentWei);
         
-        Safe(chaingearSafe).claim(msg.sender, _amount);
+        registries[_registryID].currentRegistryBalanceWei = currentWei.sub(_amount);
+
+        emit RegistryFundsClaimed(
+            _registryID,
+            msg.sender,
+            _amount
+        );
+        
+        chaingearSafe.claim(
+            msg.sender,
+            _amount
+        );
     }
 
     /*
@@ -2261,7 +2495,7 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
 
     /**
     * @dev Private function for registry creation
-    * @dev Pass Registry params and bytecode to RegistryCreator to current builder
+    * @dev Pass Registry params to RegistryCreator with specified Registry Version
     * @param _version version of registry code which added to chaingear
     * @param _benefitiaries address[] addresses of Registry benefitiaries
     * @param _shares uint256[] array with amount of shares to benefitiaries
@@ -2279,16 +2513,19 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
     )
         private
         returns (
-            address,
+            RegistryInterface,
             uint256
         )
     {
-        address registryContract = RegistryCreator(registryAddresses[_version]).create(
+        RegistryInterface registryContract = registryCreators[_version].create(
             _benefitiaries,
             _shares,
             _name,
             _symbol
         );
+        
+        require(registryContract.supportsInterface(InterfaceId_Registry));
+        require(registryContract.supportsInterface(InterfaceId_ERC721Metadata));
         
         RegistryMeta memory registry = (RegistryMeta(
         {
@@ -2296,136 +2533,221 @@ contract Chaingear is SplitPaymentChangeable, ChaingearCore, ERC721Token {
             creator: msg.sender,
             version: _version,
             linkABI: registryABIsLinks[_version],
+            /* solium-disable-next-line security/no-block-members */
             registrationTimestamp: block.timestamp,
-            currentRegistryBalanceETH: 0,
-            accumulatedRegistryETH: 0
+            currentRegistryBalanceWei: 0,
+            accumulatedRegistryWei: 0
         }));
 
-        uint256 registryID = registries.push(registry) - 1;
-        _mint(msg.sender, registryID);
+        registries.push(registry);
         
-        registryNamesIndex[_name] = true;
+        super._mint(
+            msg.sender,
+            headTokenID
+        );
+        
         registrySymbolsIndex[_symbol] = true;
         
-        emit RegistryRegistered(_name, registryContract, msg.sender, registryID);
+        emit RegistryRegistered(
+            _name,
+            registryContract,
+            msg.sender,
+            headTokenID
+        );
         
         //Metaregistry as owner sets creator as admin of Registry
-        RegistryInterface(registryContract).transferAdminRights(msg.sender);
+        registryContract.transferAdminRights(msg.sender);
 
         return (
             registryContract,
-            registryID
+            headTokenID++
         );
     }
     
 }
 
-// File: contracts/registry/EntryCore.sol
+// File: contracts/example/TeamSchema.sol
 
-//This is Example of EntryCore
-contract EntryCore is EntryInterface, Ownable {
+//This is Example of EntryCore (Team's data scheme)
+contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
+    
+    using SafeMath for uint256;
+    
+    bytes4 internal constant InterfaceId_EntryCore = 0xcf3c2b48;
+    /**
+     * 0xcf3c2b48 ===
+     *   bytes4(keccak256('createEntry(uint256)')) ^
+     *   bytes4(keccak256('deleteEntry(uint256)')) ^
+     *   bytes4(keccak256('entriesAmount()'))
+     */
 
     struct Entry {
-        address expensiveAddress;
-        uint256 expensiveUint;
-        int128 expensiveInt;
-        string expensiveString;
+        string name;
+        address gitcoin;
+        address payouts;
+        string github;
+        string telegram;
+        string keybase;
     }
     
-    mapping(string => bool) internal entryExpensiveStringIndex;
+    mapping(string => bool) internal nameUniqIndex;
+    
+    uint256[] internal allTokens;
+    mapping(uint256 => uint256) internal allEntriesIndex;
     
     Entry[] internal entries;
     
-    function() external {}
+    modifier entryExists(uint256 _entryID){
+        if (_entryID != 0) {
+            require(allEntriesIndex[_entryID] != 0);
+        } else {
+            require(allTokens[0] == 0);
+        }
+        _;
+    }
     
-    function createEntry()
+    constructor()
+        public
+    {
+        _registerInterface(InterfaceId_EntryCore);
+    }
+    
+    function() external {} 
+    
+    function createEntry(
+        uint256 _entryID
+    )
         external
         onlyOwner
-        returns (uint256)
     {
         Entry memory m = (Entry(
         {
-            expensiveAddress: address(0),
-            expensiveUint: uint256(0),
-            expensiveInt: int128(0),
-            expensiveString: ""
+            name: "",
+            gitcoin: address(0),
+            payouts: address(0),
+            github: "",
+            telegram: "",
+            keybase: ""
         }));
 
-        uint256 newEntryID = entries.push(m) - 1;
-
-        return newEntryID;
+        entries.push(m);
+        allEntriesIndex[_entryID] = allTokens.length;
+        allTokens.push(_entryID);
+    }
+    
+    function readEntry(
+        uint256 _entryID
+    )
+        external
+        view
+        entryExists(_entryID)
+        returns (
+            string,
+            address,
+            address,
+            string,
+            string,
+            string
+        )
+    {
+        uint256 entryIndex = allEntriesIndex[_entryID];
+        
+        return (
+            entries[entryIndex].name,
+            entries[entryIndex].gitcoin,
+            entries[entryIndex].payouts,
+            entries[entryIndex].github,
+            entries[entryIndex].telegram,
+            entries[entryIndex].keybase
+        );
     }
 
+    // Example: you can write methods for earch parameter and update them separetly
     function updateEntry(
-        uint256 _entryID, 
-        address _newAddress, 
-        uint256 _newUint, 
-        int128 _newInt, 
-        string _newString
+        uint256 _entryID,
+        string _name,
+        address _gitcoin,
+        address _payouts,
+        string _github,
+        string _telegram,
+        string _keybase
     )
         external
     {
-        require(owner.call(bytes4(keccak256("checkAuth(uint256, address)")), _entryID, msg.sender));
+        // checkEntryOwnership will return
+        // if [token exist && msg.sender == tokenOwner] true
+        // else [checkEntryOwnership will fail] false
+        require(owner.call(bytes4(keccak256(
+            "checkEntryOwnership(uint256, address)")),
+            _entryID,
+            msg.sender
+        ));
         
-        // for uniq check example
-        require(entryExpensiveStringIndex[_newString] == false);
-        // for uniq check example
-        entryExpensiveStringIndex[_newString] = true;
-        string storage lastIndexValue = entries[_entryID].expensiveString;
-        entryExpensiveStringIndex[lastIndexValue] = false;
+        //before we check that value already exist, then set than name used and unset previous value
+        require(nameUniqIndex[_name] == false);
+        nameUniqIndex[_name] = true;
         
+        uint256 entryIndex = allEntriesIndex[_entryID];
+        
+        string storage lastName = entries[entryIndex].name;
+        nameUniqIndex[lastName] = false;
             
-        Entry memory m = (Entry({
-            expensiveAddress: _newAddress,
-            expensiveUint: _newUint,
-            expensiveInt: _newInt,
-            expensiveString: _newString
+        Entry memory m = (Entry(
+        {
+            name: _name,
+            gitcoin: _gitcoin,
+            payouts: _payouts,
+            github: _github,
+            telegram: _telegram,
+            keybase: _keybase
         }));
-        entries[_entryID] = m;
+        entries[entryIndex] = m;
         
-        require(owner.call(bytes4(keccak256("updateEntryTimestamp(uint256)")), _entryID));
+        // here we just calling registry with entry ID and set entry updating timestamp
+        require(owner.call(bytes4(keccak256(
+            "updateEntryTimestamp(uint256)")),
+            _entryID
+        ));
     }
 
     function deleteEntry(
-        uint256 _entryIndex
+        uint256 _entryID
     )
         external
         onlyOwner
     {
-        uint256 lastEntryIndex = entries.length - 1;
-        Entry storage lastEntry = entries[lastEntryIndex];
-
-        entries[_entryIndex] = lastEntry;
-        delete entries[lastEntryIndex];
+        require(entries.length > 0);
+        uint256 entryIndex = allEntriesIndex[_entryID];
+        
+        string storage nameToClear = entries[entryIndex].name;
+        nameUniqIndex[nameToClear] = false;
+        
+        uint256 lastTokenIndex = allTokens.length.sub(1);
+        
+        uint256 lastToken = allTokens[lastTokenIndex];
+        Entry memory lastEntry = entries[lastTokenIndex];
+        
+        allTokens[entryIndex] = lastToken;
+        entries[entryIndex] = lastEntry;
+        
+        allTokens[lastTokenIndex] = 0;
+        delete entries[lastTokenIndex];
+        
+        allTokens.length--;
         entries.length--;
+        
+        allEntriesIndex[_entryID] = 0;
+        allEntriesIndex[lastTokenIndex] = entryIndex;
     }
 
     function entriesAmount()
         external
         view
-        returns (uint256 entryID)
-    {
-        return entries.length;
-    }
-
-    function entryInfo(
-        uint256 _entryID
-    )
-        external
-        view
         returns (
-            address, 
-            uint256, 
-            int128, 
-            string
+            uint256 entryID
         )
     {
-        return (
-            entries[_entryID].expensiveAddress,
-            entries[_entryID].expensiveUint,
-            entries[_entryID].expensiveInt,
-            entries[_entryID].expensiveString
-        );
+        return entries.length;
     }
 
 }

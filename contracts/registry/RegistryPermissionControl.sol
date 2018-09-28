@@ -1,6 +1,7 @@
 pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 /**
@@ -10,7 +11,6 @@ import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 * @notice Now support only OnlyAdmin/AllUsers permissions
 * @notice not recommend to use before release!
 */
-//// [review] Warning: hidden inheritance, Pausable is Ownable
 contract RegistryPermissionControl is Pausable {
     
     /*
@@ -18,15 +18,20 @@ contract RegistryPermissionControl is Pausable {
     */
     
     // @dev 
-    //// [review] Warning: not set in the constructor! So the owner SHOULD call the 'transferAdminRights' method...
     address internal admin;
     
     // @dev Holds supported permission to create entry rights
     enum CreateEntryPermissionGroup {OnlyAdmin, AllUsers}
     
     // @dev Holds current permission group, onlyAdmin by default
-    //// [review] Added explicit initial. value 
-    CreateEntryPermissionGroup internal createEntryPermissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
+    CreateEntryPermissionGroup internal permissionGroup;
+    
+    constructor()
+        public
+    {
+        permissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
+        admin = owner;
+    }
     
     /*
     *  Modifiers
@@ -40,7 +45,7 @@ contract RegistryPermissionControl is Pausable {
 
     // @dev Controls access to entry creation granted by setted permission group
     modifier onlyPermissionedToCreateEntries() {
-        if (createEntryPermissionGroup == CreateEntryPermissionGroup.OnlyAdmin) {
+        if (permissionGroup == CreateEntryPermissionGroup.OnlyAdmin) {
             require(msg.sender == admin);
         }
         _;
@@ -57,7 +62,9 @@ contract RegistryPermissionControl is Pausable {
     function getAdmin()
         external
         view
-        returns (address)
+        returns (
+            address
+        )
     {
         return admin;
     }
@@ -69,10 +76,11 @@ contract RegistryPermissionControl is Pausable {
     function getRegistryPermissions()
         external
         view
-        //// [review] Use enum type instead!
-        returns (uint8)
+        returns (
+            CreateEntryPermissionGroup
+        )
     {
-        return uint8(createEntryPermissionGroup);
+        return permissionGroup;
     }
     
     /*
@@ -84,12 +92,13 @@ contract RegistryPermissionControl is Pausable {
     * @dev if previous admin transfer associated ERC721 token.
     * @param _newAdmin address of new token holder/registry admin
     * @notice triggered by chaingear in main workflow (when registry non-registered from CH) 
+    * @notice admin cannot transfer their own right cause right are tokenized and associated with
+    * @notice ERC721 token, which logic controls chaingear contract
     */
     function transferAdminRights(
         address _newAdmin
     )
         external
-        //// [review] So admin can not transfer his own rights? Only the owner can? As was intended?
         onlyOwner
         whenNotPaused
     {
@@ -99,19 +108,17 @@ contract RegistryPermissionControl is Pausable {
 
     /**
     * @dev Allows admin to set new permission group granted to create entries
-    * @param _createEntryPermissionGroup uint8 index of needed group
+    * @param _permissionGroup Index of needed group
     */
     function updateCreateEntryPermissionGroup(
-        //// [review] Use enum type instead!
-        uint8 _createEntryPermissionGroup
+        CreateEntryPermissionGroup _permissionGroup
     )
         public
         onlyAdmin
         whenNotPaused
     {
-        //// [review] Use enum type instead!
-        require(uint8(CreateEntryPermissionGroup.AllUsers) >= _createEntryPermissionGroup);
-        createEntryPermissionGroup = CreateEntryPermissionGroup(_createEntryPermissionGroup);
+        require(CreateEntryPermissionGroup.AllUsers >= _permissionGroup);
+        permissionGroup = _permissionGroup;
     }
     
 }

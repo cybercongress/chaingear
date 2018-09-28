@@ -1,6 +1,9 @@
 pragma solidity ^0.4.24;
 
+import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./RegistryPermissionControl.sol";
+import "../common/EntryInterface.sol";
+import "../common/Safe.sol";
 
 
 /**
@@ -9,15 +12,15 @@ import "./RegistryPermissionControl.sol";
 * @dev Storage of core data and setters/getters
 * @notice not recommend to use before release!
 */
-//// [review] Add constructor please!
 contract Chaingeareable is RegistryPermissionControl {
+    
+    using SafeMath for uint256;
     
     /*
     *  Storage
     */
     
     // @dev entry creation fee 
-    //// [review] Modified directly by the 'Registry' 
     uint internal entryCreationFee;
     
     // @dev registry description string
@@ -27,22 +30,26 @@ contract Chaingeareable is RegistryPermissionControl {
     bytes32[] internal registryTags;
     
     // @dev address of EntryCore contract, which specifies data schema and operations
-    //// [review] Please use EntryCore (or EntryInterface) type here instead of an address!, 
-    //// [review] This one is set in the 'initializeRegistry' method
-    address internal entriesStorage;
+    EntryInterface internal entriesStorage;
     
     // @dev link to IPFS hash to ABI of EntryCore contract
     string internal linkToABIOfEntriesContract;
     
     // @dev address of Registry safe where funds store
-    //// [review] Modified directly by the 'Registry' 
-    //// [review] Warning, registrySafe can not be changed after the creation!
-    //// [review] Please use Safe type here instead of an address!, 
-    address internal registrySafe;
+    // @notice deployed on creation contract which hold funds
+    Safe internal registrySafe;
 
     // @dev state of was registry initialized with EntryCore or not
-    //// [review] Modified directly by the 'Registry' 
     bool internal registryInitStatus;
+
+
+    constructor() 
+        public
+    {
+        entryCreationFee = 0;
+        registrySafe = new Safe();
+        registryInitStatus = false;
+    }
 
     /*
     *  Modifiers
@@ -118,7 +125,6 @@ contract Chaingeareable is RegistryPermissionControl {
         external
         onlyAdmin
     {
-        //// [review] You can use bytes32 instead of the string if it's fits OK
         uint len = bytes(_registryDescription).length;
         require(len <= 256);
 
@@ -168,12 +174,12 @@ contract Chaingeareable is RegistryPermissionControl {
         external
         onlyAdmin
     {
-        //// [review] BUG: not checking if current len is 0!!!
-        //// [review] BUG: not using SafeMath. Can overflow
-        uint256 lastTagIndex = registryTags.length - 1;
+        require(registryTags.length > 0);
+        require(_index < registryTags.length);
+
+        uint256 lastTagIndex = registryTags.length.sub(1);
         bytes32 lastTag = registryTags[lastTagIndex];
 
-        //// [review] BUG: not checking the _index
         registryTags[_index] = lastTag;
         registryTags[lastTagIndex] = "";
         registryTags.length--;

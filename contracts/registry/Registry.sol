@@ -1,5 +1,6 @@
 pragma solidity ^0.4.24;
 
+import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
@@ -18,25 +19,40 @@ import "../common/Safe.sol";
 * @dev Entry creation/deletion/update permission are tokenized
 * @notice not recommend to use before release!
 */
-contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Token {
+contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingeareable, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
     
     /*
     *  Storage
     */
+    bytes4 internal constant InterfaceId_EntryCore = 0xcf3c2b48;
+    
+    bytes4 internal constant InterfaceId_Registry = 0x52dddfe4;
+    /*
+     * 0x52dddfe4 ===
+     *   bytes4(keccak256('createEntry()')) ^
+     *   bytes4(keccak256('deleteEntry(uint256)')) ^
+     *   bytes4(keccak256('fundEntry(uint256)')) ^
+     *   bytes4(keccak256('claimEntryFunds(uint256, uint256)')) ^
+     *   bytes4(keccak256('transferAdminRights(address)')) ^
+     *   bytes4(keccak256('transferOwnership(address)')) ^
+     *   bytes4(keccak256('getAdmin()')) ^
+     *   bytes4(keccak256('getSafeBalance()'))
+     */
+    
 
     // @dev Metadata of entry, holds ownership data and funding info
     struct EntryMeta {
         address creator;
         uint createdAt;
         uint lastUpdateTime;
-
-        //// [review] Better rename it to currentEntryBalanceWei
-        uint256 currentEntryBalanceETH;
-        //// [review] Better rename it to accumulatedOverallEntryWei
-        uint256 accumulatedOverallEntryETH;
+        uint256 currentEntryBalanceWei;
+        uint256 accumulatedOverallEntryWei;
     }
+    
+    // @dev Using for token creation, continuous enumeration
+    uint256 private headTokenID;
     
     // @dev Array of associated to entry/token metadata
     EntryMeta[] internal entriesMeta;
@@ -71,20 +87,8 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Toke
         public
         payable
     {
-        //// [review] Move that to the SplitPaymentChangeable constructor!
-        createEntryPermissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
-
-        //// [review] Should be moved to the Chaingeareable contract constructor!
-        //// [review] Direct modification is not a good idea
-        entryCreationFee = 0;
-
-        //// [review] Should be moved to the Chaingeareable contract constructor!
-        //// [review] Direct modification is not a good idea
-        registrySafe = new Safe();
-
-        //// [review] Should be moved to the Chaingeareable contract constructor!
-        //// [review] Direct modification is not a good idea
-        registryInitStatus = false;
+        _registerInterface(InterfaceId_Registry);
+        headTokenID = 0;
     }
     
     function() external payable {}
@@ -107,34 +111,35 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Toke
         onlyPermissionedToCreateEntries
         whenNotPaused
         payable
-        returns (uint256)
+        returns (
+            uint256
+        )
     {
         require(msg.value == entryCreationFee);
         
         EntryMeta memory meta = (EntryMeta(
-        {
+        {   
+            /* solium-disable-next-line security/no-block-members */
             lastUpdateTime: block.timestamp,
+            /* solium-disable-next-line security/no-block-members */
             createdAt: block.timestamp,
             creator: msg.sender,
-            currentEntryBalanceETH: 0,
-            accumulatedOverallEntryETH: 0
+            currentEntryBalanceWei: 0,
+            accumulatedOverallEntryWei: 0
         }));
-        
         entriesMeta.push(meta);
         
-        //newEntryID equals current entriesAmount number, because token IDs starts from 0
-        //// [review] If entriesStorage does not support the EntryInterface -> can lead to VERY BAD THINGS
-        uint256 newEntryID = EntryInterface(entriesStorage).entriesAmount();
-        require(newEntryID == totalSupply());
+        uint256 newTokenID = headTokenID;
+        super._mint(msg.sender, newTokenID);
         
-        _mint(msg.sender, newEntryID);
-        emit EntryCreated(newEntryID, msg.sender);
-
-        //// [review] If entriesStorage does not support the EntryInterface -> can lead to VERY BAD THINGS
-        uint256 createdEntryID = EntryInterface(entriesStorage).createEntry();
-        require(newEntryID == createdEntryID);
-
-        return newEntryID;
+        emit EntryCreated(
+            newTokenID,
+            msg.sender
+        );
+        
+        entriesStorage.createEntry(newTokenID);
+        headTokenID = headTokenID.add(1);
+        return newTokenID;
     }
 
     /**
@@ -149,24 +154,20 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Toke
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
-        require(entriesMeta[_entryID].currentEntryBalanceETH == 0);
-        
         uint256 entryIndex = allTokensIndex[_entryID];
+        require(entriesMeta[entryIndex].currentEntryBalanceWei == 0);
         
-        //// [review] BUG: not checking the length
-        //// [review] BUG: not using SafeMath. Can overflow
-        uint256 lastEntryIndex = entriesMeta.length - 1;
-        EntryMeta storage lastEntry = entriesMeta[lastEntryIndex];
-
-        entriesMeta[_entryID] = lastEntry;
+        uint256 lastEntryIndex = entriesMeta.length.sub(1);
+        EntryMeta memory lastEntry = entriesMeta[lastEntryIndex];
+        
+        entriesMeta[entryIndex] = lastEntry;
         delete entriesMeta[lastEntryIndex];
         entriesMeta.length--;
         
-        _burn(msg.sender, _entryID);
+        super._burn(msg.sender, _entryID);
         emit EntryDeleted(_entryID, msg.sender);
         
-        //// [review] If entriesStorage does not support the EntryInterface -> can lead to VERY BAD THINGS
-        EntryInterface(entriesStorage).deleteEntry(entryIndex);
+        entriesStorage.deleteEntry(_entryID);
     }
 
     function transferFrom(
@@ -178,7 +179,11 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Toke
         registryInitialized
         whenNotPaused
     {
-        super.transferFrom(_from, _to, _tokenId);
+        super.transferFrom(
+            _from,
+            _to,
+            _tokenId
+        );
     }  
     
     function safeTransferFrom(
@@ -190,7 +195,12 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Toke
         registryInitialized
         whenNotPaused
     {
-        super.safeTransferFrom(_from, _to, _tokenId, "");
+        super.safeTransferFrom(
+            _from,
+            _to,
+            _tokenId,
+            ""
+        );
     }
 
     function safeTransferFrom(
@@ -204,13 +214,20 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Toke
         whenNotPaused
     {
         transferFrom(_from, _to, _tokenId);
-        require(checkAndCallSafeTransfer(_from, _to, _tokenId, _data));
+        /* solium-disable-next-line indentation */
+        require(checkAndCallSafeTransfer(
+            _from,
+            _to,
+            _tokenId,
+            _data
+        ));
     }
 
     /**
     * @dev Allows anyone fund specified entry
     * @param _entryID uint256 Entry-token ID
     * @notice Funds tracks in EntryMeta, stores in Registry Safe
+    * @notice Anyone may fund any existing entry
     */
     function fundEntry(
         uint256 _entryID
@@ -220,15 +237,22 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Toke
         whenNotPaused
         payable
     {
-        //// [review] anyone can fund the entry even if not owner?
-
-        //// [review] BUG: not checking if _entryID exists! 
-        //// Can lead to the lost funds!
-        entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.add(msg.value);
-        entriesMeta[_entryID].accumulatedOverallEntryETH = entriesMeta[_entryID].accumulatedOverallEntryETH.add(msg.value);
-        emit EntryFunded(_entryID, msg.sender, msg.value);
+        require(exists(_entryID) == true);
         
-        registrySafe.transfer(msg.value);
+        uint256 entryIndex = allTokensIndex[_entryID];
+        uint256 currentWei = entriesMeta[entryIndex].currentEntryBalanceWei.add(msg.value);
+        entriesMeta[entryIndex].currentEntryBalanceWei = currentWei;
+        
+        uint256 accumulatedWei = entriesMeta[entryIndex].accumulatedOverallEntryWei.add(msg.value);
+        entriesMeta[entryIndex].accumulatedOverallEntryWei = accumulatedWei;
+        
+        emit EntryFunded(
+            _entryID,
+            msg.sender,
+            msg.value
+        );
+        
+        address(registrySafe).transfer(msg.value);
     }
 
     /**
@@ -246,13 +270,19 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Toke
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
-        require(_amount <= entriesMeta[_entryID].currentEntryBalanceETH);
-        entriesMeta[_entryID].currentEntryBalanceETH = entriesMeta[_entryID].currentEntryBalanceETH.sub(_amount);
+        uint256 entryIndex = allTokensIndex[_entryID];
         
-        emit EntryFundsClaimed(_entryID, msg.sender, _amount);
+        uint256 currentWei = entriesMeta[entryIndex].currentEntryBalanceWei;
+        require(_amount <= currentWei);
+        entriesMeta[entryIndex].currentEntryBalanceWei = currentWei.sub(_amount);
         
-        //// [review] If registrySafe does not support the Safe interface -> can lead to VERY BAD THINGS
-        Safe(registrySafe).claim(msg.sender, _amount);
+        emit EntryFundsClaimed(
+            _entryID,
+            msg.sender,
+            _amount
+        );
+        
+        registrySafe.claim(msg.sender, _amount);
     }
     
     /**
@@ -265,16 +295,16 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Toke
     ) 
         external
     {
-        entriesMeta[_entryID].lastUpdateTime = block.timestamp;
-        //// [review] Use an onlyOwnerOf(_entryID) modifier instead
         require(entriesStorage == msg.sender);
+        /* solium-disable-next-line security/no-block-members */
+        entriesMeta[_entryID].lastUpdateTime = block.timestamp;
     }
     
     /*
     *  View functions
     */
     
-    function getEntryMeta(
+    function readEntryMeta(
         uint256 _entryID
     )
         external
@@ -293,24 +323,22 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Toke
             entriesMeta[_entryID].creator,
             entriesMeta[_entryID].createdAt,
             entriesMeta[_entryID].lastUpdateTime,
-            entriesMeta[_entryID].currentEntryBalanceETH,
-            entriesMeta[_entryID].accumulatedOverallEntryETH
+            entriesMeta[_entryID].currentEntryBalanceWei,
+            entriesMeta[_entryID].accumulatedOverallEntryWei
         );
     }
     
     /**
-    * @dev Verification function which auth user to update specified entry data in EntryCore
+    * @dev Verification function which auth user to update specified entry in EntryCore
     * @param _entryID uint256 Entry-token ID
-    * @param _caller address of caller which trying to update entry throught EntryCore
-    * @return  
+    * @param _caller address of caller which trying to update entry throught EntryCore 
     */
-    function checkAuth(
+    function checkEntryOwnership(
         uint256 _entryID,
         address _caller
     )
         external
         view
-        returns (bool)
     {
         require(ownerOf(_entryID) == _caller);
     }
@@ -347,9 +375,8 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Toke
         onlyAdmin
         returns (address)
     {
-        //// [review] Is it ok if ADMIN calls this method again? ))
-        //// [review] Maybe better to move this method to the constructor??
-        address deployedAddress;
+        require(registryInitStatus == false);
+        EntryInterface deployedAddress;
 
         //// [review] It is better not to use assembly/arbitrary bytecode as it is very unsafe!
         assembly {
@@ -359,12 +386,14 @@ contract Registry is RegistryInterface, Chaingeareable, SplitPayment, ERC721Toke
             deployedAddress := create(0, p, s)
         }
 
-        assert(deployedAddress != 0x0);
+        require(address(deployedAddress) != address(0));
+        // require(deployedAddress.supportsInterface(InterfaceId_EntryCore));
+        
         entriesStorage = deployedAddress;
         registryInitStatus = true;
         linkToABIOfEntriesContract = _linkToABIOfEntriesContract;
         
-        return entriesStorage;
+        return address(entriesStorage);
     }
     
 }

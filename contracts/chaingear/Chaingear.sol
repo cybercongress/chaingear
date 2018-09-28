@@ -1,5 +1,6 @@
 pragma solidity ^0.4.24;
 
+import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
@@ -15,9 +16,14 @@ import "./ChaingearCore.sol";
 * @notice where each registry are ERC721.
 * @notice not recommend to use before release!
 */
-contract Chaingear is ChaingearCore, SplitPayment, ERC721Token {
+contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
+    
+    uint256 headTokenID;
+    
+    bytes4 internal constant InterfaceId_Registry = 0x52dddfe4;
+    bytes4 internal constant InterfaceId_ERC721Metadata = 0x5b5e139f;
 
     /*
     *  Constructor
@@ -40,9 +46,9 @@ contract Chaingear is ChaingearCore, SplitPayment, ERC721Token {
         string _description,
         uint _registrationFee
     )
+        public
         ERC721Token(_chaingearName, _chaingearSymbol)
         SplitPayment(_benefitiaries, _shares)
-        public
     {
         registryRegistrationFee = _registrationFee;
         chaingearDescription = _description;
@@ -89,11 +95,9 @@ contract Chaingear is ChaingearCore, SplitPayment, ERC721Token {
         )
     {
         require(registryCreators[_version] != address(0));
-        //// [review] Withdraw funds by calling 'SplitPayment.claim'
         require(registryRegistrationFee == msg.value);
         
-        //checking uniqueness of name AND symbol of NFT in metaregistry
-        require(registryNamesIndex[_name] == false);
+        //checking uniqueness of symbol of NFT in metaregistry
         require(registrySymbolsIndex[_symbol] == false);
 
         return createRegistry(
@@ -113,7 +117,12 @@ contract Chaingear is ChaingearCore, SplitPayment, ERC721Token {
         public 
         whenNotPaused
     {
-        super.transferFrom(_from, _to, _tokenId);
+        super.transferFrom(
+            _from,
+            _to,
+            _tokenId
+        );
+        
         RegistryInterface registryAddress = registries[_tokenId].contractAddress;
         registryAddress.transferAdminRights(_to);
     }  
@@ -126,7 +135,12 @@ contract Chaingear is ChaingearCore, SplitPayment, ERC721Token {
         public
         whenNotPaused
     {
-        super.safeTransferFrom(_from, _to, _tokenId, "");
+        super.safeTransferFrom(
+            _from,
+            _to,
+            _tokenId,
+            ""
+        );
     }
 
     function safeTransferFrom(
@@ -138,8 +152,18 @@ contract Chaingear is ChaingearCore, SplitPayment, ERC721Token {
         public
         whenNotPaused
     {
-        transferFrom(_from, _to, _tokenId);
-        require(checkAndCallSafeTransfer(_from, _to, _tokenId, _data));
+        transferFrom(
+            _from,
+            _to,
+            _tokenId
+        );
+        /* solium-disable-next-line indentation*/
+        require(checkAndCallSafeTransfer(
+            _from,
+            _to,
+            _tokenId,
+            _data
+        ));
     }
 
     /**
@@ -156,12 +180,14 @@ contract Chaingear is ChaingearCore, SplitPayment, ERC721Token {
         whenNotPaused
     {        
         RegistryInterface registryAddress = registries[_registryID].contractAddress;
-        //// [review] If registryAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
+        string memory symbol = registryAddress.symbol();
+        registrySymbolsIndex[symbol] = false;
+        
         require(registryAddress.getSafeBalance() == 0);
 
         uint256 registryIndex = allTokensIndex[_registryID];
         uint256 lastRegistryIndex = registries.length.sub(1);
-        RegistryMeta storage lastRegistry = registries[lastRegistryIndex];
+        RegistryMeta memory lastRegistry = registries[lastRegistryIndex];
 
         registries[registryIndex] = lastRegistry;
         delete registries[lastRegistryIndex];
@@ -170,7 +196,11 @@ contract Chaingear is ChaingearCore, SplitPayment, ERC721Token {
         _burn(msg.sender, _registryID);
 
         string memory registryName = registryAddress.name();
-        emit RegistryUnregistered(msg.sender, registryName);
+        
+        emit RegistryUnregistered(
+            msg.sender,
+            registryName
+        );
         
         //Sets current admin as owner of registry, transfers full control
         registryAddress.transferOwnership(msg.sender);
@@ -187,12 +217,18 @@ contract Chaingear is ChaingearCore, SplitPayment, ERC721Token {
         whenNotPaused
         payable
     {
-        registries[_registryID].currentRegistryBalanceWei = registries[_registryID].currentRegistryBalanceWei.add(msg.value);
-        registries[_registryID].accumulatedRegistryWei = registries[_registryID].accumulatedRegistryWei.add(msg.value);
-
-        emit RegistryFunded(_registryID, msg.sender, msg.value);
+        uint256 currentWei = registries[_registryID].currentRegistryBalanceWei.add(msg.value);
+        registries[_registryID].currentRegistryBalanceWei = currentWei;
         
-        //// [review] Call claimEntryFunds to get funds back
+        uint256 accumulatedWei = registries[_registryID].accumulatedRegistryWei.add(msg.value);
+        registries[_registryID].accumulatedRegistryWei = accumulatedWei;
+
+        emit RegistryFunded(
+            _registryID,
+            msg.sender,
+            msg.value
+        );
+        
         address(chaingearSafe).transfer(msg.value);
     }
 
@@ -209,12 +245,21 @@ contract Chaingear is ChaingearCore, SplitPayment, ERC721Token {
         onlyOwnerOf(_registryID)
         whenNotPaused
     {
-        require(_amount <= registries[_registryID].currentRegistryBalanceWei);
-        registries[_registryID].currentRegistryBalanceWei = registries[_registryID].currentRegistryBalanceWei.sub(_amount);
-
-        emit RegistryFundsClaimed(_registryID, msg.sender, _amount);
+        uint256 currentWei = registries[_registryID].currentRegistryBalanceWei;
+        require(_amount <= currentWei);
         
-        chaingearSafe.claim(msg.sender, _amount);
+        registries[_registryID].currentRegistryBalanceWei = currentWei.sub(_amount);
+
+        emit RegistryFundsClaimed(
+            _registryID,
+            msg.sender,
+            _amount
+        );
+        
+        chaingearSafe.claim(
+            msg.sender,
+            _amount
+        );
     }
 
     /*
@@ -252,31 +297,43 @@ contract Chaingear is ChaingearCore, SplitPayment, ERC721Token {
             _symbol
         );
         
+        require(registryContract.supportsInterface(InterfaceId_Registry));
+        require(registryContract.supportsInterface(InterfaceId_ERC721Metadata));
+        
         RegistryMeta memory registry = (RegistryMeta(
         {
             contractAddress: registryContract,
             creator: msg.sender,
             version: _version,
             linkABI: registryABIsLinks[_version],
+            /* solium-disable-next-line security/no-block-members */
             registrationTimestamp: block.timestamp,
             currentRegistryBalanceWei: 0,
             accumulatedRegistryWei: 0
         }));
 
-        uint256 registryID = registries.push(registry) - 1;
-        _mint(msg.sender, registryID);
+        registries.push(registry);
         
-        registryNamesIndex[_name] = true;
+        super._mint(
+            msg.sender,
+            headTokenID
+        );
+        
         registrySymbolsIndex[_symbol] = true;
         
-        emit RegistryRegistered(_name, registryContract, msg.sender, registryID);
+        emit RegistryRegistered(
+            _name,
+            registryContract,
+            msg.sender,
+            headTokenID
+        );
         
         //Metaregistry as owner sets creator as admin of Registry
         registryContract.transferAdminRights(msg.sender);
 
         return (
             registryContract,
-            registryID
+            headTokenID++
         );
     }
     

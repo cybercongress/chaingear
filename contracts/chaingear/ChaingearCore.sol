@@ -2,7 +2,7 @@ pragma solidity ^0.4.24;
 
 import "openzeppelin-solidity/contracts/lifecycle/Destructible.sol";
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
-import "./RegistryCreator.sol";
+import "../RegistryCreator/RegistryCreatorInterface.sol";
 import "../common/RegistryInterface.sol";
 import "../common/Safe.sol";
 
@@ -48,12 +48,11 @@ contract ChaingearCore is Destructible, Pausable {
     uint internal registryRegistrationFee;
     
     // @dev Address of contract where their funds allocates
-    //// [review] Use Safe type instead!
     Safe internal chaingearSafe;
     
     // @dev mapping with address of registry creators with different code base of registries
-    //// [review] Use RegistryCreator type instead of address!
-    mapping (string => RegistryCreator) internal registryCreators;
+
+    mapping (string => RegistryCreatorInterface) internal registryCreators;
     
     // @dev mapping with ipfs links to json with ABI of different registries
     mapping (string => string) internal registryABIsLinks;
@@ -135,15 +134,12 @@ contract ChaingearCore is Destructible, Pausable {
         RegistryInterface contractAddress = registries[_registryID].contractAddress;
         
         return (
-            //// [review] If contractAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
             contractAddress.name(),
-            //// [review] If contractAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
             contractAddress.symbol(),
             contractAddress,
             registries[_registryID].creator,
             registries[_registryID].version,
             registries[_registryID].registrationTimestamp,
-            //// [review] If contractAddress does not support the RegistryInterface -> can lead to VERY BAD THINGS
             contractAddress.getAdmin()
         );
     }
@@ -177,7 +173,9 @@ contract ChaingearCore is Destructible, Pausable {
     function registriesAmount()
         external
         view
-        returns (uint256)
+        returns (
+            uint256
+        )
     {
         return registries.length;
     }
@@ -192,7 +190,7 @@ contract ChaingearCore is Destructible, Pausable {
     */
     function addRegistryCreatorVersion(
         string _nameOfVersion, 
-        RegistryCreator _addressRegistryCreator,
+        RegistryCreatorInterface _addressRegistryCreator,
         string _link,
         string _description
     )
@@ -277,7 +275,9 @@ contract ChaingearCore is Destructible, Pausable {
     function getDescription()
         external
         view
-        returns (string)
+        returns (
+            string
+        )
     {
         return chaingearDescription;
     }
@@ -289,7 +289,9 @@ contract ChaingearCore is Destructible, Pausable {
     function getRegistrationFee()
         external
         view
-        returns (uint)
+        returns (
+            uint
+        )
     {
         return registryRegistrationFee;
     }
@@ -301,7 +303,9 @@ contract ChaingearCore is Destructible, Pausable {
     function getSafeBalance()
         external
         view
-        returns (uint)
+        returns (
+            uint
+        )
     {
         return address(chaingearSafe).balance;
     }
@@ -313,7 +317,9 @@ contract ChaingearCore is Destructible, Pausable {
     function getSafe()
         external
         view
-        returns (address)
+        returns (
+            address
+        )
     {
         return chaingearSafe;
     }

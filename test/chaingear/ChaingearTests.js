@@ -7,7 +7,7 @@ chai.should()
 const Registry = artifacts.require("Registry")
 const Chaingear = artifacts.require("Chaingear")
 const RegistryCreator = artifacts.require("RegistryCreator")
-const EntryCore = artifacts.require("EntryCore")
+const EntryCore = artifacts.require("TeamSchema")
 
 contract("Chaingear", (accounts) => {
 

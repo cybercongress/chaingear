@@ -3,7 +3,7 @@ chai.use(require("chai-as-promised"))
 chai.should()
 
 const RegistryUtils = require('./RegistryUtils')
-const EntryCore = artifacts.require("EntryCore")
+const EntryCore = artifacts.require("TeamSchema")
 
 contract("All Users Registry Entry Crud Tests", (accounts) => {
 
@@ -21,14 +21,14 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
     })
 
     /*  -------------------------------- Create Entry -----------------------  */
-    //todo discuss: value can be only equal defined fee
+    todo discuss: value can be only equal defined fee
     it("#1/1 should allow registry admin to add new entry with enough fee", async () => {
         const newEntryId = await registry.createEntry(REGISTRY_ADMIN_ACCOUNT, registry.fee)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
-
+    
         await registry.createEntryPromise(REGISTRY_ADMIN_ACCOUNT, registry.fee + registry.fee).should.be.rejected
     })
-
+    
     it("#1/2 should allow registry owner to add new entry with enough fee", async () => {
         const newEntryId = await registry.createEntry(REGISTRY_OWNER_ACCOUNT, registry.fee)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
@@ -49,21 +49,23 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
     
         const entriesStorageAddress = await registry.getEntriesStorage()
         const entryCore = EntryCore.at(entriesStorageAddress)
-        
+    
         await entryCore.updateEntry(
             newEntryId,
-            UNKNOWN_ACCOUNT,
-            42,
-            -42,
-            "42",
+            "VALERY LITVIN",
+            "0xf103D2db8024F4B885433ADAF72032Ac58304e03",
+            "0x00cFF8CF7Bff03A9A2a81c01920ffD8cFa7AE9D0",
+            "litvintech",
+            "litvintech",
+            "litvintech",
             {
                 from: UNKNOWN_ACCOUNT
             }
         ).should.be.fulfilled
-        
-        const entryInfo = await entryCore.entryInfo(newEntryId.toNumber())
-        const expensiveUint = entryInfo.toString().split(',')[1]
-        expensiveUint.should.be.equal("42")
+    
+        const entryInfo = await entryCore.readEntry(newEntryId.toNumber())
+        const name = entryInfo.toString().split(',')[0]
+        name.should.be.equal("VALERY LITVIN")
     })
     
     it("#1/5 should not allow very unknown to update not his entry", async () => {
@@ -72,7 +74,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
     
         const entriesStorageAddress = await registry.getEntriesStorage()
         const entryCore = EntryCore.at(entriesStorageAddress)
-        
+    
         await entryCore.updateEntry(
             newEntryId,
             UNKNOWN_ACCOUNT,
@@ -91,7 +93,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
     
         const entriesStorageAddress = await registry.getEntriesStorage()
         const entryCore = EntryCore.at(entriesStorageAddress)
-        
+    
         await entryCore.updateEntry(
             newEntryId,
             UNKNOWN_ACCOUNT,
@@ -114,6 +116,14 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
     })
     
     /*  -------------------------------- Delete Entry -----------------------  */
+    it("#3/1 should allow registry admin to delete his entry", async () => {
+        const newEntryId = await registry.createEntry(REGISTRY_ADMIN_ACCOUNT)
+        await registry.containsEntry(newEntryId).should.eventually.equal(true)
+    
+        await registry.deleteEntry(REGISTRY_ADMIN_ACCOUNT, newEntryId).should.be.fulfilled
+        await registry.containsEntry(newEntryId).should.eventually.equal(false)
+    })
+    
     it("#3/1 should allow registry admin to delete his entry", async () => {
         const newEntryId = await registry.createEntry(REGISTRY_ADMIN_ACCOUNT)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
@@ -165,11 +175,11 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
     it("#3/7 should not allow unknown to delete entry his entry if there is funds", async () => {
         const newEntryId = await registry.createEntry(UNKNOWN_ACCOUNT)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
-        
+    
         const entrySafeBalanceBefore = await registry.contract.getSafeBalance()
-        
+    
         const entryFunding = 100000
-        
+    
         await registry.contract.fundEntry( 
                 newEntryId,
                 {
@@ -177,7 +187,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
                     value: entryFunding
                 }
         )
-        
+    
         const entrySafeBalanceAfter = await registry.contract.getSafeBalance()
         const diff = entrySafeBalanceAfter.toNumber() - entrySafeBalanceBefore.toNumber()
         diff.should.be.equal(100000)
@@ -189,11 +199,11 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
     it("#3/8 should allow unknown to delete entry his entry if there is no funds", async () => {
         const newEntryId = await registry.createEntry(UNKNOWN_ACCOUNT)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
-        
+    
         const entrySafeBalanceBefore = await registry.contract.getSafeBalance()
-        
+    
         const entryFunding = 100000
-        
+    
         await registry.contract.fundEntry( 
                 newEntryId,
                 {
@@ -201,14 +211,14 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
                     value: entryFunding
                 }
         )
-        
+    
         const entrySafeBalanceAfter = await registry.contract.getSafeBalance()
         const diff = entrySafeBalanceAfter.toNumber() - entrySafeBalanceBefore.toNumber()
         diff.should.be.equal(entryFunding)
     
         await registry.deleteEntry(UNKNOWN_ACCOUNT, newEntryId).should.be.rejected
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
-        
+    
         await registry.contract.claimEntryFunds(
             newEntryId,
             entryFunding,
@@ -216,11 +226,11 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
                 from: UNKNOWN_ACCOUNT
             }
         )
-        
+    
         await registry.deleteEntry(UNKNOWN_ACCOUNT, newEntryId).should.be.fulfilled
         await registry.containsEntry(newEntryId).should.eventually.equal(false)
     })
-
+    
 
     after(async() =>{
         registry = null
