@@ -10,6 +10,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/common.css" rel="stylesheet">
+    <link href="css/fork-btn.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -27,8 +28,8 @@
           <div class="col-xs-12 wave-bg text-center hidden-xs"><!--Wave background-->
             <img src="img/bg.png" class="wave-bg-img">
           </div>
-          <div class="col-xs-1 fork">
-            <iframe src="https://ghbtns.com/github-btn.html?user=cybercongress&repo=chaingear&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="124px" height="31px"></iframe><!--fork button-->
+          <div class="col-sm-12 text-right github-fork-ribbon">
+            <iframe src="https://ghbtns.com/github-btn.html?user=cybercongress&repo=chaingear&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="158px" height="30px"></iframe>
           </div>
           <div class="col-sm-12 txt-h1-div text-center"><!--Message title h1-->
             <h1 class="text-uppercase txt-h1">The most expensive database</h1>
@@ -37,8 +38,8 @@
             <img src="img/logo.svg" class="logoImg">
           </div>
           <div class="col-xs-12 text-center app">
-            <a class="app-b btn btn-default text-uppercase" href="http://cyb.ai/:chainger#/new" role="button">App <span class="glyphicon glyphicon-download-alt"></span></a>
-            <a class="app-b btn btn-default text-uppercase" href="https://cybersearch.io/%D1%81haingear/overview/" role="button">Docs</a>
+            <a class="app-b btn btn-default text-uppercase" href="https://github.com/cybercongress/chaingear" role="button">App <span class="glyphicon glyphicon-download-alt"></span></a>
+            <a class="app-b btn btn-default text-uppercase" href="https://wiki.cybercongress.ai/%D1%81haingear/overview/" role="button">Docs</a>
           </div>
         </div>
       </div>
@@ -59,8 +60,8 @@
              <img src="img/logo.svg" class="logoImg">
           </div>
           <div class="col-sm-12 text-center app-md-sm">
-              <a class="app-b btn btn-default text-uppercase" href="http://cyb.ai/:chainger#/new" role="button">App <span class="glyphicon glyphicon-download-alt"></span></a>
-              <a class="app-b btn btn-default text-uppercase" href="https://cybersearch.io/%D1%81haingear/overview/" role="button">Docs</a>
+              <a class="app-b btn btn-default text-uppercase" href="https://github.com/cybercongress/chaingear" role="button">App <span class="glyphicon glyphicon-download-alt"></span></a>
+              <a class="app-b btn btn-default text-uppercase" href="https://wiki.cybercongress.ai/%D1%81haingear/overview/" role="button">Docs</a>
           </div>
         </div>
       </div>
@@ -150,11 +151,6 @@
       <!--XS visible header-->
       <div class="container path-3-xs visible-xs">
 
-        <!--Forks-->
-        <div class="col-sm-1 fork">
-           <iframe src="https://ghbtns.com/github-btn.html?user=cybercongress&repo=chaingear&type=fork&count=true&size=large" frameborder="0" scrolling="0" width="124px" height="31px"></iframe><!--fork button-->
-        </div>
-
         <!--Message title h1-->
         <div class="row">
           <div class="col-xs-12 text-center txt-h1-xs">
@@ -170,32 +166,36 @@
         </div>
 
         <!--Bottons-->
-        <div class="col-xs-12 text-center app-md-sm">
-            <a class="app-b btn btn-default text-uppercase" href="http://cyb.ai/:chainger#/new" role="button">App <span class="glyphicon glyphicon-download-alt"></span></a>
-            <a class="app-b btn btn-default text-uppercase" href="https://cybersearch.io/%D1%81haingear/overview/" role="button">Docs</a>
+        <div class="row">
+          <div class="col-xs-12 text-center app-md-sm">
+              <a class="app-b-xs btn btn-default text-uppercase" href="https://github.com/cybercongress/chaingear" role="button">App <span class="glyphicon glyphicon-download-alt"></span></a>
+              <a class="app-b-xs btn btn-default text-uppercase" href="https://wiki.cybercongress.ai/%D1%81haingear/overview/" role="button">Docs</a>
+          </div>
         </div>
       </div>
 
       <!--XS features-->
-      <div class="row visible-xs row-fix">
-          <div class="row rectangle-xs text-center row-fix">
-            <div class="col-xs-12">
-              <img src="img/flexible.svg" class="feat-img-xs">
-              <p class="text-h-xs text-uppercase">Flexible</p>
-              <p class="text-descr-xs">define that you want</p>
-            </div>
-            <div class="col-xs-12">
-              <img src="img/economics.svg" class="feat-img-xs">
-              <p class="text-h-xs text-uppercase">Economics</p>
-              <p class="text-descr-xs">set rules of adding entries</p>
-            </div>
-            <div class="col-xs-12">
-              <img src="img/ownership.svg" class="feat-img-xs">
-              <p class="text-h-xs text-uppercase">Ownership</p>
-              <p class="text-descr-xs">transfer and trade records and registries</p>
+      <div class="container-fluid">
+        <div class="row visible-xs">
+            <div class="rectangle-xs text-center">
+              <div class="col-xs-12">
+                <img src="img/flexible.svg" class="feat-img-xs">
+                <p class="text-h-xs text-uppercase">Flexible</p>
+                <p class="text-descr-xs">define that you want</p>
+              </div>
+              <div class="col-xs-12">
+                <img src="img/economics.svg" class="feat-img-xs">
+                <p class="text-h-xs text-uppercase">Economics</p>
+                <p class="text-descr-xs">set rules of adding entries</p>
+              </div>
+              <div class="col-xs-12">
+                <img src="img/ownership.svg" class="feat-img-xs">
+                <p class="text-h-xs text-uppercase">Ownership</p>
+                <p class="text-descr-xs">transfer and trade records and registries</p>
+              </div>
             </div>
           </div>
-        </div>
+      </div>
 
       <!--LG visible overview-->
       <div class="container-fluid overview visible-lg">
@@ -216,21 +216,41 @@
       <div class="container-fluid overview hidden-lg hidden-xs">
           <div class="row">
             <div class="col-sm-4">
-              <img src="img/overview.svg" class="overview-img-md-sm">
+              <img src="img/overview.svg" class="overview-img-md-sm img-responsive">
             </div>
             <div class="col-sm-8">
               <p class="overview-section-md-sm text-uppercase">Overview</p>
               <p class="overview-descr-md-sm">This project allows you to create your own Registry of general purpose entries on Ethereum blockchain. Entry type is defined during creation, so you can put into entry any custom logic you want (validation, entry-level permission control). Entries are tokenized as NFT.</p>
               <p class="overview-descr-md-sm">Your creating your registry in Chaingear - metaregistry, which are one point of access to all registries. Registries on chaingear level are tokenized as NFT. Chaingear is most expensive registry, so you should pay for your registry creation.</p>
-              <div class="text-uppercase shadow visible-lg">Overview</div>
+            </div>
+          </div>
+      </div>
+
+      <!--XS visible overview-->
+      <div class="container-fluid visible-xs">
+        <div class="row">
+          <div class="col-xs-12">
+            <p class="overview-section-xs text-uppercase">Overview</p>
+            <p class="overview-descr-xs">This project allows you to create your own Registry of general purpose entries on Ethereum blockchain. Entry type is defined during creation, so you can put into entry any custom logic you want (validation, entry-level permission control). Entries are tokenized as NFT.</p>
+            <p class="overview-descr-xs">Your creating your registry in Chaingear - metaregistry, which are one point of access to all registries. Registries on chaingear level are tokenized as NFT. Chaingear is most expensive registry, so you should pay for your registry creation.</p>
           </div>
         </div>
       </div>
 
-      <div class="container-fluid">
+      <!--LG, MD, SM visible footer-->
+      <div class="container-fluid hidden-xs">
         <div class="row">
           <div class="col-sm-12 text-center footer">
             <p class="license">Do What The Fuck You Want To Public License (WTFPL)</p>
+          </div>
+        </div>
+      </div>
+
+      <!--XS visible footer-->
+      <div class="container-fluid visible-xs">
+        <div class="row">
+          <div class="col-xs-12 text-center footer-xs">
+            <p class="license-xs">Do What The Fuck You Want To Public License (WTFPL)</p>
           </div>
         </div>
       </div>

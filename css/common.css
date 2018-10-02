@@ -122,6 +122,11 @@ position: relative;
   left: 79%;
 }
 
+.fork-xs {
+  position: absolute;
+  bottom: 30%;
+}
+
 .app {
   width: 100%;
   position: absolute;
@@ -140,6 +145,21 @@ position: relative;
   box-shadow: 1px 6px 11px 0 rgba(0, 0, 0, 0.15);
   border: solid 1.2px #f2f2f2;
   padding: 0.7%;
+  margin: 1%;
+  border-radius: 0;
+  background-color: inherit;
+  color: #ffffff;
+  font-size: 17px;
+  line-height: 1.5;
+  font-family: 'Play', sans-serif;
+}
+
+.app-b-xs {
+  width: 163px;
+  height: 54px;
+  box-shadow: 1px 6px 11px 0 rgba(0, 0, 0, 0.15);
+  border: solid 1.2px #f2f2f2;
+  padding: 4.7%;
   margin: 1%;
   border-radius: 0;
   background-color: inherit;
@@ -263,6 +283,15 @@ font-size: 30px;
   color: #70a8f7;
 }
 
+.overview-section-xs {
+  padding-top: 5%;
+  font-family: 'Play', sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: normal;
+  color: #70a8f7;
+}
+
 .overview-descr {
   margin-top: 20px;
   font-family: 'Play', sans-serif;
@@ -287,6 +316,18 @@ font-size: 30px;
   color: #6e6e6e;
 }
 
+.overview-descr-xs {
+  margin-top: 20px;
+  font-family: 'Play', sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2;
+  letter-spacing: normal;
+  color: #6e6e6e;
+}
+
 .overview-img{
   position: absolute;
   width: 100%;
@@ -294,7 +335,8 @@ font-size: 30px;
 }
 
 .overview-img-md-sm{
-  padding-top: 5%;
+  padding-left: 17%;
+  padding-top: 17%;
   position: absolute;
   width: 100%;
   z-index: 2;
@@ -327,10 +369,23 @@ font-size: 30px;
   background-image: linear-gradient(98deg, #0909b4, #581b8b 55%, #5d1c88 77%, #5d1c88);
 }
 
+.footer-xs {
+  position: relative;
+  width: 100%;
+  height: 80px;
+  background-image: linear-gradient(98deg, #0909b4, #581b8b 55%, #5d1c88 77%, #5d1c88);
+}
+
 .license {
   font-family: 'Play', sans-serif;
   color: #ffffff;
   padding-top: 69px;
+}
+
+.license-xs {
+  font-family: 'Play', sans-serif;
+  color: #ffffff;
+  padding-top: 22px;
 }
 
 a.butt {display: inline-block; position: relative; }
