@@ -10,11 +10,10 @@ pragma solidity ^0.4.24;
 */
 contract Safe {
     
-    address public owner;
+    address private owner;
 
     constructor()
         public
-        payable
     {
         owner = msg.sender;
     }
@@ -42,8 +41,18 @@ contract Safe {
     {
         require(msg.sender == owner);
         require(_amount <= address(this).balance);
-        require(_entryOwner != 0x0);
+        require(_entryOwner != address(0));
+        
         _entryOwner.transfer(_amount);
     }
 
+    function getOwner()
+        external
+        view
+        returns(
+            address
+        )
+    {
+        return owner;
+    }
 }

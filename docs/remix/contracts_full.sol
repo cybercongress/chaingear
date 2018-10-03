@@ -1015,14 +1015,16 @@ contract RegistryPermissionControl is Pausable {
     *  Storage
     */
     
-    // @dev 
     address internal admin;
     
-    // @dev Holds supported permission to create entry rights
+    // @dev Holds supported permission to create entries
     enum CreateEntryPermissionGroup {OnlyAdmin, AllUsers}
     
-    // @dev Holds current permission group, onlyAdmin by default
     CreateEntryPermissionGroup internal permissionGroup;
+    
+    /*
+    *  Constructor
+    */
     
     constructor()
         public
@@ -1035,13 +1037,11 @@ contract RegistryPermissionControl is Pausable {
     *  Modifiers
     */
     
-    // @dev Controls access granted only to admin
     modifier onlyAdmin() {
         require(msg.sender == admin);
         _;
     }
 
-    // @dev Controls access to entry creation granted by setted permission group
     modifier onlyPermissionedToCreateEntries() {
         if (permissionGroup == CreateEntryPermissionGroup.OnlyAdmin) {
             require(msg.sender == admin);
@@ -1050,39 +1050,7 @@ contract RegistryPermissionControl is Pausable {
     }
     
     /*
-    *  View functions
-    */
-    
-    /**
-    * @dev Allows to get current admin address account
-    * @return address of admin
-    */
-    function getAdmin()
-        external
-        view
-        returns (
-            address
-        )
-    {
-        return admin;
-    }
-    
-    /**
-    * @dev Allows to get current permission group
-    * @return uint8 index of current group
-    */
-    function getRegistryPermissions()
-        external
-        view
-        returns (
-            CreateEntryPermissionGroup
-        )
-    {
-        return permissionGroup;
-    }
-    
-    /*
-    *  Public functions
+    *  External functions
     */
     
     /**
@@ -1100,18 +1068,14 @@ contract RegistryPermissionControl is Pausable {
         onlyOwner
         whenNotPaused
     {
-        require(_newAdmin != 0x0);
+        require(_newAdmin != address(0));
         admin = _newAdmin;
     }
 
-    /**
-    * @dev Allows admin to set new permission group granted to create entries
-    * @param _permissionGroup Index of needed group
-    */
     function updateCreateEntryPermissionGroup(
         CreateEntryPermissionGroup _permissionGroup
     )
-        public
+        external
         onlyAdmin
         whenNotPaused
     {
@@ -1119,6 +1083,26 @@ contract RegistryPermissionControl is Pausable {
         permissionGroup = _permissionGroup;
     }
     
+    function getAdmin()
+        external
+        view
+        returns (
+            address
+        )
+    {
+        return admin;
+    }
+    
+    function getRegistryPermissions()
+        external
+        view
+        returns (
+            CreateEntryPermissionGroup
+        )
+    {
+        return permissionGroup;
+    }
+        
 }
 
 // File: contracts/common/EntryInterface.sol
@@ -1127,7 +1111,8 @@ interface EntryInterface {
 
     function createEntry(uint256) external;
     function deleteEntry(uint256) external;
-    function entriesAmount() external view returns (uint256);
+    function getEntriesAmount() external view returns (uint256);
+    function getEntriesIDs() external view returns (uint256[]);
 }
 
 // File: contracts/common/Safe.sol
@@ -1141,11 +1126,10 @@ interface EntryInterface {
 */
 contract Safe {
     
-    address public owner;
+    address private owner;
 
     constructor()
         public
-        payable
     {
         owner = msg.sender;
     }
@@ -1173,10 +1157,20 @@ contract Safe {
     {
         require(msg.sender == owner);
         require(_amount <= address(this).balance);
-        require(_entryOwner != 0x0);
+        require(_entryOwner != address(0));
+        
         _entryOwner.transfer(_amount);
     }
 
+    function getOwner()
+        external
+        view
+        returns(
+            address
+        )
+    {
+        return owner;
+    }
 }
 
 // File: contracts/registry/Chaingeareable.sol
@@ -1285,6 +1279,7 @@ contract Chaingeareable is RegistryPermissionControl {
     )
         external
         onlyAdmin
+        whenPaused
     {
         entryCreationFee = _fee;
     }
@@ -1373,7 +1368,7 @@ contract Chaingeareable is RegistryPermissionControl {
         view
         returns (address)
     {
-        return entriesStorage;
+        return address(entriesStorage);
     }
 
     /**
@@ -1480,6 +1475,9 @@ interface RegistryInterface {
     function createEntry() external payable returns (uint256);
     function deleteEntry(uint256) external;
     
+    function getEntriesStorage() external view returns (address);
+    function getEntriesIDs() external view returns (uint256[]);
+    
     function fundEntry(uint256) external payable;
     function claimEntryFunds(uint256, uint256) external;
     
@@ -1492,6 +1490,7 @@ interface RegistryInterface {
     function name() external view returns (string);
     function symbol() external view returns (string);
     function supportsInterface(bytes4) external view returns (bool);
+    
 }
 
 // File: contracts/registry/Registry.sol
@@ -1538,11 +1537,12 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
     }
     
     // @dev Using for token creation, continuous enumeration
-    uint256 private headTokenID;
+    uint256 internal headTokenID;
     
     // @dev Array of associated to entry/token metadata
     EntryMeta[] internal entriesMeta;
     
+    // @dev also works as exist(_entryID)
     modifier onlyOwnerOf(uint256 _entryID){
         require(ownerOf(_entryID) == msg.sender);
         _;
@@ -1613,10 +1613,10 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
             currentEntryBalanceWei: 0,
             accumulatedOverallEntryWei: 0
         }));
+        entriesMeta.push(meta);
         
         uint256 newTokenID = headTokenID;
-        entriesMeta.push(meta);
-        _mint(msg.sender, newTokenID);
+        super._mint(msg.sender, newTokenID);
         
         emit EntryCreated(
             newTokenID,
@@ -1640,13 +1640,12 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
-        require(entriesMeta[_entryID].currentEntryBalanceWei == 0);
-        
         uint256 entryIndex = allTokensIndex[_entryID];
+        require(entriesMeta[entryIndex].currentEntryBalanceWei == 0);
         
         uint256 lastEntryIndex = entriesMeta.length.sub(1);
         EntryMeta memory lastEntry = entriesMeta[lastEntryIndex];
-
+        
         entriesMeta[entryIndex] = lastEntry;
         delete entriesMeta[lastEntryIndex];
         entriesMeta.length--;
@@ -1726,11 +1725,12 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
     {
         require(exists(_entryID) == true);
         
-        uint256 currentWei = entriesMeta[_entryID].currentEntryBalanceWei.add(msg.value);
-        entriesMeta[_entryID].currentEntryBalanceWei = currentWei;
+        uint256 entryIndex = allTokensIndex[_entryID];
+        uint256 currentWei = entriesMeta[entryIndex].currentEntryBalanceWei.add(msg.value);
+        entriesMeta[entryIndex].currentEntryBalanceWei = currentWei;
         
-        uint256 accumulatedWei = entriesMeta[_entryID].accumulatedOverallEntryWei.add(msg.value);
-        entriesMeta[_entryID].accumulatedOverallEntryWei = accumulatedWei;
+        uint256 accumulatedWei = entriesMeta[entryIndex].accumulatedOverallEntryWei.add(msg.value);
+        entriesMeta[entryIndex].accumulatedOverallEntryWei = accumulatedWei;
         
         emit EntryFunded(
             _entryID,
@@ -1756,9 +1756,11 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
-        uint256 currentWei = entriesMeta[_entryID].currentEntryBalanceWei;
+        uint256 entryIndex = allTokensIndex[_entryID];
+        
+        uint256 currentWei = entriesMeta[entryIndex].currentEntryBalanceWei;
         require(_amount <= currentWei);
-        entriesMeta[_entryID].currentEntryBalanceWei = currentWei.sub(_amount);
+        entriesMeta[entryIndex].currentEntryBalanceWei = currentWei.sub(_amount);
         
         emit EntryFundsClaimed(
             _entryID,
@@ -1812,6 +1814,16 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
         );
     }
     
+    function getEntriesIDs()
+        external
+        view
+        returns (
+            uint256[]
+        )
+    {
+        return allTokens;
+    }
+    
     /**
     * @dev Verification function which auth user to update specified entry in EntryCore
     * @param _entryID uint256 Entry-token ID
@@ -1857,10 +1869,10 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
     )
         public
         onlyAdmin
-        returns (EntryInterface)
+        returns (address)
     {
         require(registryInitStatus == false);
-        EntryInterface deployedAddress;
+        address deployedAddress;
 
         //// [review] It is better not to use assembly/arbitrary bytecode as it is very unsafe!
         assembly {
@@ -1870,14 +1882,14 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
             deployedAddress := create(0, p, s)
         }
 
-        require(address(deployedAddress) != address(0));
+        require(deployedAddress != address(0));
         // require(deployedAddress.supportsInterface(InterfaceId_EntryCore));
         
-        entriesStorage = deployedAddress;
+        entriesStorage = EntryInterface(deployedAddress);
         registryInitStatus = true;
         linkToABIOfEntriesContract = _linkToABIOfEntriesContract;
         
-        return entriesStorage;
+        return deployedAddress;
     }
     
 }
@@ -1901,11 +1913,11 @@ contract Destructible is Ownable {
   }
 }
 
-// File: contracts/RegistryCreator/RegistryCreatorInterface.sol
+// File: contracts/RegistryCreator/RegistryBuilderInterface.sol
 
-interface RegistryCreatorInterface {
+interface RegistryBuilderInterface {
     
-    function create(
+    function createRegistry(
         address[],
         uint256[],
         string,
@@ -1918,228 +1930,79 @@ interface RegistryCreatorInterface {
 /**
 * @title Chaingear core contract
 * @author cyber•Congress, Valery Litvin (@litvintech)
-* @dev Storage of core data and setters/getters
+* @dev Holds registry builders data/logic and basic chaingear params
 * @notice not recommend to use before release!
 */
 
-contract ChaingearCore is Destructible, Pausable {
+contract ChaingearCore is Pausable, Destructible {
 
 	/*
 	*  Storage
 	*/
-    
-    // @dev Sctruct which describes registry metainformation with balance state and status
-    struct RegistryMeta {
-        RegistryInterface contractAddress;
-        address creator;
-        string version;
-        string linkABI;
-        uint registrationTimestamp;
-        uint256 currentRegistryBalanceWei;
-        uint256 accumulatedRegistryWei;
+
+    // @dev Sctruct which describes RegistryBuilder, includes IPFS links to registry ABI
+    struct RegistryBuilder {
+        RegistryBuilderInterface builderAddress;
+        string linkToABI;
+        string description;
     }
     
+    mapping (string => RegistryBuilder) internal buildersVersion;
 
-    // @dev Array of registries data
-    RegistryMeta[] internal registries;
-    
-    // @dev Mapping which allow control of name uniqueness in metaregistry
-    mapping(string => bool) internal registryNamesIndex;
-    
-    // @dev Mapping which allow control of symbol uniqueness in metaregistry
-    mapping(string => bool) internal registrySymbolsIndex;
+    Safe internal chaingearSafe;
 
-    // @dev Short Chaingear's description, less than 128 symbols
     string internal chaingearDescription;
     
-    // @dev Amount that registrys creator should pay for registry creation/registring
-    uint internal registryRegistrationFee;
-    
-    // @dev Address of contract where their funds allocates
-    Safe internal chaingearSafe;
-    
-    // @dev mapping with address of registry creators with different code base of registries
-
-    mapping (string => RegistryCreatorInterface) internal registryCreators;
-    
-    // @dev mapping with ipfs links to json with ABI of different registries
-    mapping (string => string) internal registryABIsLinks;
-    
-    // @dev mapping description of different registries types/versions
-    mapping (string => string) internal registryDescriptions;
-
-    /*
-    *  Events
-    */
-
-    // @dev Events witch signals that new Registry registered
-    event RegistryRegistered(
-        string name,
-        address registryAddress,
-        address creator,
-        uint registryID
-    );
-
-    // @dev Events witch signals that Registry adminship transferred
-    // @notice that also means associated token transferred too
-    event RegistryChangedOwner(
-         address caller,
-         uint256 registyID,
-         address newOwner
-    );
-    
-    // @dev Events witch signals that Registry unregistered from Chaingear
-    // @notice adminship of Registry transfers from Chaingear to Admin
-    event RegistryUnregistered(
-        address admin,
-        string name
-    );
-
-    // @dev Signals that given Registry funded
-    event RegistryFunded(
-        uint registryID,
-        address sender,
-        uint amount
-    );
-    
-    // @dev Signals that given Registry funds claimed by their admin
-    event RegistryFundsClaimed(
-        uint registryID,
-        address claimer,
-        uint amout
-    );
+    uint256 internal registryRegistrationFee;
     
     /*
     *  External Functions
     */
 
     /**
-    * @dev Registy metainfo getter
-    * @param _registryID uint256 Registry ID, associated ERC721 token ID
-    * @return string Registy name
-    * @return string Registy symbol
-    * @return address Registy address
-    * @return address Registy creator address
-    * @return string Registy version
-    * @return uint Registy creation timestamp
-    * @return address Registy admin address
-    */
-    function registryInfo(
-        uint256 _registryID
-    )
-        external
-        view
-        returns (
-            string,
-            string,
-            address,
-            address,
-            string,
-            uint,
-            address
-        )
-    {
-        RegistryInterface contractAddress = registries[_registryID].contractAddress;
-        
-        return (
-            contractAddress.name(),
-            contractAddress.symbol(),
-            contractAddress,
-            registries[_registryID].creator,
-            registries[_registryID].version,
-            registries[_registryID].registrationTimestamp,
-            contractAddress.getAdmin()
-        );
-    }
-
-    /**
-    * @dev Registy funding stats getter
-    * @param _registryID uint256 Registry ID
-    * @return uint Registy current balance in wei, which stored in Safe
-    * @return uint Registy total accumulated balance in wei
-    */
-    function registryBalanceInfo(
-        uint256 _registryID
-    )
-        external
-        view
-        returns (
-            uint256,
-            uint256 
-        )
-    {
-        return (
-            registries[_registryID].currentRegistryBalanceWei,
-            registries[_registryID].accumulatedRegistryWei
-        );
-    }
-
-    /**
-    * @dev Registies amount getter
-    * @return uint256 amounts of Registries
-    */
-    function registriesAmount()
-        external
-        view
-        returns (
-            uint256
-        )
-    {
-        return registries.length;
-    }
-
-    /**
-    * @dev Provides funcitonality for adding fabrics of different kind of registries
-    * @param _nameOfVersion string which represents name of registry type/version
-    * @param _addressRegistryCreator address of registry creator/fabric
-    * @param _link string which represents IPFS hash to JSON with ABI of registry 
+    * @dev Provides funcitonality for adding builders of different kind of registries
+    * @param _version string which represents name of registry type/version
+    * @param _builderAddress RegistryBuilderInterface address of registry builder/fabric
+    * @param _linkToABI string which represents IPFS hash to JSON with ABI of registry 
     * @param _description string which resprent info about registry fabric type
-    * @notice Only owner of metaregistry/chaingear allowed to add fabrics
+    * @notice Only owner of metaregistry/chaingear allowed to add builders
     */
-    function addRegistryCreatorVersion(
-        string _nameOfVersion, 
-        RegistryCreatorInterface _addressRegistryCreator,
-        string _link,
+    function addRegistryBuilderVersion(
+        string _version, 
+        RegistryBuilderInterface _builderAddress,
+        string _linkToABI,
         string _description
     )
         external
         onlyOwner
+        whenNotPaused
     {
-        require(registryCreators[_nameOfVersion] == address(0));
-        registryCreators[_nameOfVersion] = _addressRegistryCreator;
-        registryABIsLinks[_nameOfVersion] = _link;
-        registryDescriptions[_nameOfVersion] = _description;
+        require(buildersVersion[_version].builderAddress == address(0));
+        
+        buildersVersion[_version] = (RegistryBuilder(
+        {
+            builderAddress: _builderAddress,
+            linkToABI: _linkToABI,
+            description: _description
+        }));
     }
 
-	/*
-	*  External Functions
-	*/
-
-    /**
-    * @dev Chaingear' registry creation/registration fee setter
-    * @param _newFee uint new fee amount
-    * @notice Only owner of metaregistry/chaingear allowed to set fee
-    */
     function updateRegistrationFee(
-        uint _newFee
+        uint256 _newFee
     )
         external
         onlyOwner
+        whenPaused
     {
         registryRegistrationFee = _newFee;
     }
 
-    /**
-    * @dev Chaingear' description setter
-    * @param _description string with new description
-    * @notice description should be less than 128 symbols
-    * @notice Only owner of metaregistry/chaingear allowed to change description
-    */
     function updateDescription(
         string _description
     )
         external
         onlyOwner
+        whenNotPaused
     {
         uint len = bytes(_description).length;
         require(len <= 256);
@@ -2152,34 +2015,30 @@ contract ChaingearCore is Destructible, Pausable {
 	*/
     
     /**
-    * @dev Allows get information about given version of registry fabric
-    * @param _nameOfVersion address which represents name of registry type
-    * @return _addressRegistryCreator address of registry fabric for this version
-    * @return _link string which represents IPFS hash to JSON with ABI of registry 
-    * @return _description string which resprent info about this registry 
+    * @dev Allows get information about given version of registry builder and registry
+    * @param _version String which represents name of given registry type
+    * @return address of registry fabric for this version
+    * @return string which represents IPFS hash to JSON with ABI of registry 
+    * @return string which represents info about this registry 
     */
-    function getRegistryCreatorInfo(
-        string _nameOfVersion
+    function getRegistryBuilder(
+        string _version
     ) 
         external
         view
         returns (
-            address _addressRegistryCreator,
-            string _link,
-            string _description
+            address,
+            string,
+            string
         )
     {
         return(
-            registryCreators[_nameOfVersion],
-            registryABIsLinks[_nameOfVersion],
-            registryDescriptions[_nameOfVersion]
+            buildersVersion[_version].builderAddress,
+            buildersVersion[_version].linkToABI,
+            buildersVersion[_version].description
         );
     }
 
-    /**
-    * @dev Chaingear description getter
-    * @return string description of Chaingear
-    */
     function getDescription()
         external
         view
@@ -2190,38 +2049,26 @@ contract ChaingearCore is Destructible, Pausable {
         return chaingearDescription;
     }
 
-    /**
-    * @dev Chaingear registration fee getter
-    * @return uint amount of fee in wei
-    */
     function getRegistrationFee()
         external
         view
         returns (
-            uint
+            uint256
         )
     {
         return registryRegistrationFee;
     }
     
-    /**
-    * @dev Safe balence getter
-    * @return uint amount of fee in wei
-    */
     function getSafeBalance()
         external
         view
         returns (
-            uint
+            uint256
         )
     {
         return address(chaingearSafe).balance;
     }
     
-    /**
-    * @dev Safe contract address getter
-    * @return uint amount of fee in wei
-    */
     function getSafe()
         external
         view
@@ -2247,10 +2094,60 @@ contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, 
 
     using SafeMath for uint256;
     
-    uint256 headTokenID;
+    /*
+    *  Storage
+    */
     
+    // @dev Sctruct which describes registry metainformation and balance state and status
+    struct RegistryMeta {
+        RegistryInterface contractAddress;
+        address creator;
+        string version;
+        string linkABI;
+        uint registrationTimestamp;
+        uint256 currentRegistryBalanceWei;
+        uint256 accumulatedRegistryWei;
+    }
+    
+    RegistryMeta[] internal registries;
+    // @dev ID can only increase, globally, deletion don't trigger this pointer decreasing
+    uint256 internal headTokenID;
+    // @dev Mapping which allow control of registries symbols uniqueness in metaregistry
+    mapping(string => bool) internal registrySymbolsIndex;
+    
+    // @dev Interfaces which newly created Registry should support
     bytes4 internal constant InterfaceId_Registry = 0x52dddfe4;
+    bytes4 internal constant InterfaceId_ERC721 = 0x80ac58cd;
     bytes4 internal constant InterfaceId_ERC721Metadata = 0x5b5e139f;
+    bytes4 internal constant InterfaceId_ERC721Enumerable = 0x780e9d63;
+    
+    /*
+    *  Events
+    */
+
+    event RegistryRegistered(
+        string name,
+        address registryAddress,
+        address creator,
+        uint256 registryID
+    );
+
+    event RegistryUnregistered(
+        address admin,
+        string symbol
+    );
+
+    event RegistryFunded(
+        uint registryID,
+        address sender,
+        uint amount
+    );
+    
+    event RegistryFundsClaimed(
+        uint registryID,
+        address claimer,
+        uint amout
+    );
 
     /*
     *  Constructor
@@ -2258,12 +2155,13 @@ contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, 
 
 	/**
 	* @dev Chaingear constructor
+    * @param _chaingearName string chaingear's name, uses for chaingear's ERC721
+    * @param _chaingearSymbol string chaingear's NFT symbol, uses for chaingear's ERC721
 	* @param _benefitiaries address[] addresses of Chaingear benefitiaries
 	* @param _shares uint256[] array with amount of shares by benefitiary
 	* @param _description string description of Chaingear
-	* @param _registrationFee uint Fee for registry creation, wei
-	* @param _chaingearName string Chaingear's name, use for chaingear's ERC721
-	* @param _chaingearSymbol string Chaingear's NFT symbol, use for chaingear's ERC721
+	* @param _registrationFee uint fee for registry creation, in wei
+    * @notice Only chaingear contract as owner can trigger eithers transfer to/out from Safe
 	*/
     constructor(
         string _chaingearName,
@@ -2279,8 +2177,8 @@ contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, 
     {
         registryRegistrationFee = _registrationFee;
         chaingearDescription = _description;
-        // Only chaingear as owner can transfer either to and out from Safe
         chaingearSafe = new Safe();
+        headTokenID = 0;
     }
     
     function() external payable {}
@@ -2321,10 +2219,8 @@ contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, 
             uint256
         )
     {
-        require(registryCreators[_version] != address(0));
+        require(buildersVersion[_version].builderAddress != address(0));
         require(registryRegistrationFee == msg.value);
-        
-        //checking uniqueness of symbol of NFT in metaregistry
         require(registrySymbolsIndex[_symbol] == false);
 
         return createRegistry(
@@ -2335,6 +2231,181 @@ contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, 
             _symbol
         );
     }
+    
+    /**
+    * @dev Allows to unregister Registry from Chaingear
+    * @dev Only possible when safe of Registry is empty
+    * @dev Burns associated registry token and transfer Registry adminship to current token owner
+    * @param _registryID uint256 Registry-token ID
+    */
+    function unregisterRegistry(
+        uint256 _registryID
+    )
+        external
+        onlyOwnerOf(_registryID)
+        whenNotPaused
+    {        
+        uint256 registryIndex = allTokensIndex[_registryID];
+        RegistryInterface registryAddress = registries[registryIndex].contractAddress;
+        
+        string memory registrySymbol = registryAddress.symbol();
+        registrySymbolsIndex[registrySymbol] = false;
+        
+        require(registryAddress.getSafeBalance() == 0);
+
+        uint256 lastRegistryIndex = registries.length.sub(1);
+        RegistryMeta memory lastRegistry = registries[lastRegistryIndex];
+        registries[registryIndex] = lastRegistry;
+        delete registries[lastRegistryIndex];
+        registries.length--;
+
+        super._burn(msg.sender, _registryID);
+        emit RegistryUnregistered(
+            msg.sender,
+            registrySymbol
+        );    
+        //Sets current admin as owner of registry, transfers full control
+        registryAddress.transferOwnership(msg.sender);
+    }
+    
+    /**
+    * @dev Gets funding and allocate funds of Registry to Chaingear's Safe
+    * @param _registryID uint256 Registry-token ID
+    */
+    function fundRegistry(
+        uint256 _registryID
+    )
+        external
+        whenNotPaused
+        payable
+    {
+        require(exists(_registryID) == true);
+        uint256 registryIndex = allTokensIndex[_registryID];
+        
+        uint256 currentWei = registries[registryIndex].currentRegistryBalanceWei.add(msg.value);
+        registries[registryIndex].currentRegistryBalanceWei = currentWei;
+        
+        uint256 accumulatedWei = registries[registryIndex].accumulatedRegistryWei.add(msg.value);
+        registries[registryIndex].accumulatedRegistryWei = accumulatedWei;
+
+        emit RegistryFunded(
+            _registryID,
+            msg.sender,
+            msg.value
+        );
+        
+        address(chaingearSafe).transfer(msg.value);
+    }
+
+    /**
+    * @dev Gets funding and allocate funds of Registry to Safe
+    * @param _registryID uint256 Registry-token ID
+    * @param _amount uint256 Amount which admin of registry claims
+    */
+    function claimEntryFunds(
+        uint256 _registryID,
+        uint256 _amount
+    )
+        external
+        onlyOwnerOf(_registryID)
+        whenNotPaused
+    {
+        uint256 registryIndex = allTokensIndex[_registryID];
+        
+        uint256 currentWei = registries[registryIndex].currentRegistryBalanceWei;
+        require(_amount <= currentWei);
+        
+        registries[registryIndex].currentRegistryBalanceWei = currentWei.sub(_amount);
+
+        emit RegistryFundsClaimed(
+            _registryID,
+            msg.sender,
+            _amount
+        );
+        
+        chaingearSafe.claim(
+            msg.sender,
+            _amount
+        );
+    }
+    
+    /**
+    * @dev Registy metainfo getter
+    * @param _registryID uint256 Registry ID, associated ERC721 token ID
+    * @return string Registy name
+    * @return string Registy symbol
+    * @return address Registy address
+    * @return address Registy creator address
+    * @return string Registy version
+    * @return uint Registy creation timestamp
+    * @return address Registy admin address
+    */
+    function readRegistry(
+        uint256 _registryID
+    )
+        external
+        view
+        returns (
+            string,
+            string,
+            address,
+            address,
+            string,
+            uint,
+            address
+        )
+    {
+        uint256 registryIndex = allTokensIndex[_registryID];
+        RegistryInterface contractAddress = registries[registryIndex].contractAddress;
+        
+        return (
+            contractAddress.name(),
+            contractAddress.symbol(),
+            contractAddress,
+            registries[registryIndex].creator,
+            registries[registryIndex].version,
+            registries[registryIndex].registrationTimestamp,
+            contractAddress.getAdmin()
+        );
+    }
+
+    /**
+    * @dev Registy funding stats getter
+    * @param _registryID uint256 Registry ID
+    * @return uint Registy current balance in wei, which stored in Safe
+    * @return uint Registy total accumulated balance in wei
+    */
+    function readRegistryBalance(
+        uint256 _registryID
+    )
+        external
+        view
+        returns (
+            uint256,
+            uint256 
+        )
+    {
+        uint256 registryIndex = allTokensIndex[_registryID];
+        
+        return (
+            registries[registryIndex].currentRegistryBalanceWei,
+            registries[registryIndex].accumulatedRegistryWei
+        );
+    }
+    
+    function getRegistriesIDs()
+        external
+        view
+        returns (
+            uint256[]
+        )
+    {
+        return allTokens;
+    }
+    
+    /*
+    *  Public functions
+    */
     
     function transferFrom(
         address _from,
@@ -2350,7 +2421,9 @@ contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, 
             _tokenId
         );
         
-        RegistryInterface registryAddress = registries[_tokenId].contractAddress;
+        uint256 registryIndex = allTokensIndex[_tokenId];
+        
+        RegistryInterface registryAddress = registries[registryIndex].contractAddress;
         registryAddress.transferAdminRights(_to);
     }  
     
@@ -2384,6 +2457,7 @@ contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, 
             _to,
             _tokenId
         );
+        
         /* solium-disable-next-line indentation*/
         require(checkAndCallSafeTransfer(
             _from,
@@ -2391,102 +2465,6 @@ contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, 
             _tokenId,
             _data
         ));
-    }
-
-    /**
-    * @dev Allows to unregister Registry from Chaingear
-    * @dev Only possible when safe of Registry is empty
-    * @dev Burns associated registry token and transfer Registry adminship to current token owner
-    * @param _registryID uint256 Registry-token ID
-    */
-    function unregisterRegistry(
-        uint256 _registryID
-    )
-        external
-        onlyOwnerOf(_registryID)
-        whenNotPaused
-    {        
-        RegistryInterface registryAddress = registries[_registryID].contractAddress;
-        string memory symbol = registryAddress.symbol();
-        registrySymbolsIndex[symbol] = false;
-        
-        require(registryAddress.getSafeBalance() == 0);
-
-        uint256 registryIndex = allTokensIndex[_registryID];
-        uint256 lastRegistryIndex = registries.length.sub(1);
-        RegistryMeta memory lastRegistry = registries[lastRegistryIndex];
-
-        registries[registryIndex] = lastRegistry;
-        delete registries[lastRegistryIndex];
-        registries.length--;
-
-        _burn(msg.sender, _registryID);
-
-        string memory registryName = registryAddress.name();
-        
-        emit RegistryUnregistered(
-            msg.sender,
-            registryName
-        );
-        
-        //Sets current admin as owner of registry, transfers full control
-        registryAddress.transferOwnership(msg.sender);
-    }
-    
-    /**
-    * @dev Gets funding and allocate funds of Registry to Chaingear's Safe
-    * @param _registryID uint256 Registry-token ID
-    */
-    function fundRegistry(
-        uint256 _registryID
-    )
-        external
-        whenNotPaused
-        payable
-    {
-        uint256 currentWei = registries[_registryID].currentRegistryBalanceWei.add(msg.value);
-        registries[_registryID].currentRegistryBalanceWei = currentWei;
-        
-        uint256 accumulatedWei = registries[_registryID].accumulatedRegistryWei.add(msg.value);
-        registries[_registryID].accumulatedRegistryWei = accumulatedWei;
-
-        emit RegistryFunded(
-            _registryID,
-            msg.sender,
-            msg.value
-        );
-        
-        address(chaingearSafe).transfer(msg.value);
-    }
-
-    /**
-    * @dev Gets funding and allocate funds of Registry to Safe
-    * @param _registryID uint256 Registry-token ID
-    * @param _amount uint256 Amount which admin of registry claims
-    */
-    function claimEntryFunds(
-        uint256 _registryID,
-        uint256 _amount
-    )
-        external
-        onlyOwnerOf(_registryID)
-        whenNotPaused
-    {
-        uint256 currentWei = registries[_registryID].currentRegistryBalanceWei;
-        require(_amount <= currentWei);
-        
-        registries[_registryID].currentRegistryBalanceWei = currentWei.sub(_amount);
-
-        emit RegistryFundsClaimed(
-            _registryID,
-            msg.sender,
-            _amount
-        );
-        
-        chaingearSafe.claim(
-            msg.sender,
-            _amount
-        );
     }
 
     /*
@@ -2503,6 +2481,7 @@ contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, 
     * @param _symbol string, Registry NFT symbol, use for registry ERC721
     * @return address new Registry contract address
     * @return uint256 new Registry ID in Chaingear contract, ERC721 NFT ID
+    * @notice Chaingear sets themself as owner of Registry, creators sets to admin
     */
     function createRegistry(
         string _version,
@@ -2516,8 +2495,9 @@ contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, 
             RegistryInterface,
             uint256
         )
-    {
-        RegistryInterface registryContract = registryCreators[_version].create(
+    {   
+        RegistryBuilderInterface builder = buildersVersion[_version].builderAddress;
+        RegistryInterface registryContract = builder.createRegistry(
             _benefitiaries,
             _shares,
             _name,
@@ -2525,14 +2505,16 @@ contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, 
         );
         
         require(registryContract.supportsInterface(InterfaceId_Registry));
+        require(registryContract.supportsInterface(InterfaceId_ERC721));
         require(registryContract.supportsInterface(InterfaceId_ERC721Metadata));
+        require(registryContract.supportsInterface(InterfaceId_ERC721Enumerable));
         
         RegistryMeta memory registry = (RegistryMeta(
         {
             contractAddress: registryContract,
             creator: msg.sender,
             version: _version,
-            linkABI: registryABIsLinks[_version],
+            linkABI: buildersVersion[_version].linkToABI,
             /* solium-disable-next-line security/no-block-members */
             registrationTimestamp: block.timestamp,
             currentRegistryBalanceWei: 0,
@@ -2540,27 +2522,28 @@ contract Chaingear is ChaingearCore, SupportsInterfaceWithLookup, SplitPayment, 
         }));
 
         registries.push(registry);
+        registrySymbolsIndex[_symbol] = true;
+        
+        uint256 newTokenID = headTokenID;
+        headTokenID = headTokenID.add(1);
         
         super._mint(
             msg.sender,
-            headTokenID
+            newTokenID
         );
-        
-        registrySymbolsIndex[_symbol] = true;
         
         emit RegistryRegistered(
             _name,
             registryContract,
             msg.sender,
-            headTokenID
-        );
+            newTokenID
+        );    
         
-        //Metaregistry as owner sets creator as admin of Registry
         registryContract.transferAdminRights(msg.sender);
 
         return (
             registryContract,
-            headTokenID++
+            newTokenID
         );
     }
     
@@ -2573,7 +2556,7 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     
     using SafeMath for uint256;
     
-    bytes4 internal constant InterfaceId_EntryCore = 0xcf3c2b48;
+    bytes4 private constant InterfaceId_EntryCore = 0xcf3c2b48;
     /**
      * 0xcf3c2b48 ===
      *   bytes4(keccak256('createEntry(uint256)')) ^
@@ -2590,12 +2573,13 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
         string keybase;
     }
     
-    mapping(string => bool) internal nameUniqIndex;
+    mapping(string => bool) private nameUniqIndex;
     
-    uint256[] internal allTokens;
-    mapping(uint256 => uint256) internal allEntriesIndex;
+    uint256[] private allTokens;
     
-    Entry[] internal entries;
+    mapping(uint256 => uint256) private allEntriesIndex;
+    
+    Entry[] private entries;
     
     modifier entryExists(uint256 _entryID){
         if (_entryID != 0) {
@@ -2740,14 +2724,24 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
         allEntriesIndex[lastTokenIndex] = entryIndex;
     }
 
-    function entriesAmount()
+    function getEntriesAmount()
         external
         view
         returns (
-            uint256 entryID
+            uint256
         )
     {
         return entries.length;
     }
-
+    
+    function getEntriesIDs()
+        external
+        view
+        returns (
+            uint256[]
+        )
+    {
+        return allTokens;
+    }
+    
 }

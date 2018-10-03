@@ -17,14 +17,16 @@ contract RegistryPermissionControl is Pausable {
     *  Storage
     */
     
-    // @dev 
     address internal admin;
     
-    // @dev Holds supported permission to create entry rights
+    // @dev Holds supported permission to create entries
     enum CreateEntryPermissionGroup {OnlyAdmin, AllUsers}
     
-    // @dev Holds current permission group, onlyAdmin by default
     CreateEntryPermissionGroup internal permissionGroup;
+    
+    /*
+    *  Constructor
+    */
     
     constructor()
         public
@@ -37,13 +39,11 @@ contract RegistryPermissionControl is Pausable {
     *  Modifiers
     */
     
-    // @dev Controls access granted only to admin
     modifier onlyAdmin() {
         require(msg.sender == admin);
         _;
     }
 
-    // @dev Controls access to entry creation granted by setted permission group
     modifier onlyPermissionedToCreateEntries() {
         if (permissionGroup == CreateEntryPermissionGroup.OnlyAdmin) {
             require(msg.sender == admin);
@@ -52,39 +52,7 @@ contract RegistryPermissionControl is Pausable {
     }
     
     /*
-    *  View functions
-    */
-    
-    /**
-    * @dev Allows to get current admin address account
-    * @return address of admin
-    */
-    function getAdmin()
-        external
-        view
-        returns (
-            address
-        )
-    {
-        return admin;
-    }
-    
-    /**
-    * @dev Allows to get current permission group
-    * @return uint8 index of current group
-    */
-    function getRegistryPermissions()
-        external
-        view
-        returns (
-            CreateEntryPermissionGroup
-        )
-    {
-        return permissionGroup;
-    }
-    
-    /*
-    *  Public functions
+    *  External functions
     */
     
     /**
@@ -102,18 +70,14 @@ contract RegistryPermissionControl is Pausable {
         onlyOwner
         whenNotPaused
     {
-        require(_newAdmin != 0x0);
+        require(_newAdmin != address(0));
         admin = _newAdmin;
     }
 
-    /**
-    * @dev Allows admin to set new permission group granted to create entries
-    * @param _permissionGroup Index of needed group
-    */
     function updateCreateEntryPermissionGroup(
         CreateEntryPermissionGroup _permissionGroup
     )
-        public
+        external
         onlyAdmin
         whenNotPaused
     {
@@ -121,4 +85,24 @@ contract RegistryPermissionControl is Pausable {
         permissionGroup = _permissionGroup;
     }
     
+    function getAdmin()
+        external
+        view
+        returns (
+            address
+        )
+    {
+        return admin;
+    }
+    
+    function getRegistryPermissions()
+        external
+        view
+        returns (
+            CreateEntryPermissionGroup
+        )
+    {
+        return permissionGroup;
+    }
+        
 }

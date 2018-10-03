@@ -1,5 +1,5 @@
-var RegistryCreator = artifacts.require("./chaingear/RegistryCreator.sol");
+var RegistryBuilder = artifacts.require("./chaingear/RegistryBuilder.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(RegistryCreator);
+  deployer.deploy(RegistryBuilder);
 };

@@ -1,10 +1,10 @@
 var Chaingear = artifacts.require("./chaingear/Chaingear.sol");
-var RegistryCreator = artifacts.require("./chaingear/RegistryCreator.sol");
+var RegistryBuilder = artifacts.require("./chaingear/RegistryBuilder.sol");
 
 module.exports = function(deployer, network, accounts) {
     
     let BUILDING_FEE, BENEFICIARIES, SHARES
-    var creator
+    var builder
     
     
     if (network == 'live' || 'kovan') {
@@ -26,15 +26,15 @@ module.exports = function(deployer, network, accounts) {
         SHARES,
         "Most Expensive Registry",
         BUILDING_FEE
-    ).then(() => RegistryCreator.deployed())
-    .then(_creator => {
-        creator = _creator,
-        creator.setBuilder(Chaingear.address)
+    ).then(() => RegistryBuilder.deployed())
+    .then(_builder => {
+        builder = _builder,
+        builder.setChaingearAddress(Chaingear.address)
     })
     .then(() => Chaingear.deployed())
-    .then(chaingear => chaingear.addRegistryCreatorVersion(
+    .then(chaingear => chaingear.addRegistryBuilderVersion(
         "V1",
-        creator.address,
+        builder.address,
         "IPFS_HASH_1",
         "Test version of Registry"
     ))

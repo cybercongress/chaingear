@@ -3,9 +3,9 @@ pragma solidity ^0.4.24;
 import "../common/RegistryInterface.sol";
 
 
-interface RegistryCreatorInterface {
+interface RegistryBuilderInterface {
     
-    function create(
+    function createRegistry(
         address[],
         uint256[],
         string,

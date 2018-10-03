@@ -21,7 +21,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
     })
 
     /*  -------------------------------- Create Entry -----------------------  */
-    todo discuss: value can be only equal defined fee
+    //todo discuss: value can be only equal defined fee
     it("#1/1 should allow registry admin to add new entry with enough fee", async () => {
         const newEntryId = await registry.createEntry(REGISTRY_ADMIN_ACCOUNT, registry.fee)
         await registry.containsEntry(newEntryId).should.eventually.equal(true)

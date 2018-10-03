@@ -88,7 +88,7 @@ class Home extends Component {
         <Section title={<span>My registries<Badge>{myRows.length}</Badge></span>}>
             <SectionContent>
           <Container>
-              <Text>You haven`t created registers yet!</Text>
+              <Text>You haven't created registers yet!</Text>
               <ActionLink to='/new'>create</ActionLink>
           </Container>
         </SectionContent>

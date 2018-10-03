@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 
 import "../registry/Registry.sol";
-import "./RegistryCreatorInterface.sol";
+import "./RegistryBuilderInterface.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
@@ -12,14 +12,14 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 * @dev with codebase which imported and deployed with this fabric
 * @notice not recommend to use before release!
 */
-contract RegistryCreator is RegistryCreatorInterface, Ownable {
+contract RegistryBuilder is RegistryBuilderInterface, Ownable {
 
 	/*
 	* @dev Storage
 	*/
 
     // @dev Holds address of contract which can call creation, means Chaingear
-    address public builder;
+    address private chaingear;
 
 	/*
 	* @dev Constructor
@@ -30,9 +30,9 @@ contract RegistryCreator is RegistryCreatorInterface, Ownable {
     * @notice setting 0x0, then allows to owner to set builder/Chaingear
     * @notice after deploying needs to set up builder/Chaingear address
     */
-    constructor()
-        public
-    { }
+    constructor() public {
+        chaingear = address(0);
+    }
     
     /**
     * @dev Disallows direct send by settings a default function without the `payable` flag.
@@ -51,7 +51,7 @@ contract RegistryCreator is RegistryCreatorInterface, Ownable {
     * @param _symbol string symbol of Registry and token
     * @return address Address of new initialized Registry
     */
-    function create(
+    function createRegistry(
         address[] _benefitiaries,
         uint256[] _shares,
         string _name,
@@ -60,7 +60,7 @@ contract RegistryCreator is RegistryCreatorInterface, Ownable {
         external
         returns (RegistryInterface)
     {
-        require(msg.sender == builder);
+        require(msg.sender == chaingear);
 
         RegistryInterface registryContract = new Registry(
             _benefitiaries,
@@ -69,22 +69,28 @@ contract RegistryCreator is RegistryCreatorInterface, Ownable {
             _symbol
         );
         //Fabric as owner transfers ownership to Chaingear contract after creation
-        registryContract.transferOwnership(builder);
+        registryContract.transferOwnership(chaingear);
 
         return registryContract;
     }
 
-    /**
-    * @dev Registry builder setter, owners sets Chaingear address
-    * @param _builder address
-    */
-    function setBuilder(
-        address _builder
+    function setChaingearAddress(
+        address _chaingear
     )
         external
         onlyOwner
     {
-        require(_builder != 0x0);
-        builder = _builder;
+        require(_chaingear != address(0));
+        chaingear = _chaingear;
+    }
+    
+    function getChaingearAddress()
+        external
+        view
+        returns(
+            address
+        )
+    {
+        return chaingear;
     }
 }

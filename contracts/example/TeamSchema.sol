@@ -11,7 +11,7 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     
     using SafeMath for uint256;
     
-    bytes4 internal constant InterfaceId_EntryCore = 0xcf3c2b48;
+    bytes4 private constant InterfaceId_EntryCore = 0xcf3c2b48;
     /**
      * 0xcf3c2b48 ===
      *   bytes4(keccak256('createEntry(uint256)')) ^
@@ -28,12 +28,13 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
         string keybase;
     }
     
-    mapping(string => bool) internal nameUniqIndex;
+    mapping(string => bool) private nameUniqIndex;
     
-    uint256[] internal allTokens;
-    mapping(uint256 => uint256) internal allEntriesIndex;
+    uint256[] private allTokens;
     
-    Entry[] internal entries;
+    mapping(uint256 => uint256) private allEntriesIndex;
+    
+    Entry[] private entries;
     
     modifier entryExists(uint256 _entryID){
         if (_entryID != 0) {
@@ -178,14 +179,24 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
         allEntriesIndex[lastTokenIndex] = entryIndex;
     }
 
-    function entriesAmount()
+    function getEntriesAmount()
         external
         view
         returns (
-            uint256 entryID
+            uint256
         )
     {
         return entries.length;
     }
-
+    
+    function getEntriesIDs()
+        external
+        view
+        returns (
+            uint256[]
+        )
+    {
+        return allTokens;
+    }
+    
 }

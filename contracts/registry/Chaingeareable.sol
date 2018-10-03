@@ -110,6 +110,7 @@ contract Chaingeareable is RegistryPermissionControl {
     )
         external
         onlyAdmin
+        whenPaused
     {
         entryCreationFee = _fee;
     }
@@ -198,7 +199,7 @@ contract Chaingeareable is RegistryPermissionControl {
         view
         returns (address)
     {
-        return entriesStorage;
+        return address(entriesStorage);
     }
 
     /**

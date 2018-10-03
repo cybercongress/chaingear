@@ -6,6 +6,9 @@ interface RegistryInterface {
     function createEntry() external payable returns (uint256);
     function deleteEntry(uint256) external;
     
+    function getEntriesStorage() external view returns (address);
+    function getEntriesIDs() external view returns (uint256[]);
+    
     function fundEntry(uint256) external payable;
     function claimEntryFunds(uint256, uint256) external;
     
@@ -18,4 +21,5 @@ interface RegistryInterface {
     function name() external view returns (string);
     function symbol() external view returns (string);
     function supportsInterface(bytes4) external view returns (bool);
+    
 }

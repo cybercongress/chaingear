@@ -41,9 +41,10 @@ class AddField extends Component {
           <td>
             <select ref='type'>
               <option value='string'>string</option>
+              <option value='address'>address</option>
               <option value='bool'>bool</option>
-              <option value='int256'>int</option>
-              <option value='uint256'>uint</option>
+              <option value='uint256'>uint256</option>
+              <option value='int256'>int256</option>
             </select>
           </td>
           <td>

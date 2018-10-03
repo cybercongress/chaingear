@@ -9,28 +9,26 @@ const generateContractCode = (name, fields) => {
   const generateGetor = (name, type) => {
     return `
 
-    function ${name}Of(uint256 _entryId)
-        public
+    function ${name}FieldOf(uint256 _entryID)
+        external
         view
+        entryExists(_entryID)
         returns (${type})
     {
-        return entries[_entryId].${name};
+        uint256 entryIndex = allEntriesIndex[_entryID];
+        
+        return entries[entryIndex].${name};
     }
     
     `;
   }
 
   const empty = (type) => {
+    if (type === 'string') return '""';
     if (type === 'address') return 'address(0)';
+    if (type === 'bool') return 'false';
     if (type === 'uint256') return 'uint256(0)';
     if (type === 'int256') return 'int256(0)';
-    if (type === 'bool') return 'true';
-
-    if (type === 'uint') return 'uint(0)';
-    if (type === 'int') return 'int(0)';
-    if (type === 'string') return '""';
-
-
 
     return '""';
   }
@@ -39,10 +37,20 @@ const generateContractCode = (name, fields) => {
 
   return `
 
-import 'EntryInterface.sol';
+import './Dependencies.sol';
 
-contract ${name} is EntryInterface, Ownable {
 
+contract ${name} is EntryInterface, Ownable, SupportsInterfaceWithLookup {
+
+    using SafeMath for uint256;
+    
+    bytes4 internal constant InterfaceId_EntryCore = 0xcf3c2b48;
+    /**
+     * 0xcf3c2b48 ===
+     *   bytes4(keccak256('createEntry(uint256)')) ^
+     *   bytes4(keccak256('deleteEntry(uint256)')) ^
+     *   bytes4(keccak256('entriesAmount()'))
+     */
 
     struct ${name}Entry {
         ${structBodyStr}
@@ -50,24 +58,57 @@ contract ${name} is EntryInterface, Ownable {
     }
 
     ${name}Entry[] public entries;
-
-
-    function createEntry()
+    
+    uint256[] internal allTokens;
+    
+    mapping(uint256 => uint256) internal allEntriesIndex;
+    
+    modifier entryExists(uint256 _entryID){
+        if (_entryID != 0) {
+            require(allEntriesIndex[_entryID] != 0);
+        } else {
+            require(allTokens[0] == 0);
+        }
+        _;
+    }
+    
+    constructor()
         public
-        onlyOwner
-        returns (
-            uint256
-        )
     {
-        ${name}Entry memory entry = (${name}Entry(
-        {
+        _registerInterface(InterfaceId_EntryCore);
+    }
+    
+    function() external {}
 
-            ${fields.map(({ name, type }) => `${name}: ${empty(type)} `).join(',')} 
+    function createEntry(
+        uint256 _entryID
+    )
+        external
+        onlyOwner
+    {
+        ${name}Entry memory m = (${name}Entry(
+        {
+            ${fields.map(({ name, type }) => `${name}: ${empty(type)}`).join(',\n')} 
         }));
 
-        uint256 newEntryID = entries.push(entry) - 1;
-
-        return newEntryID;
+        entries.push(m);
+        allEntriesIndex[_entryID] = allTokens.length;
+        allTokens.push(_entryID);
+    }
+    
+    
+    function readEntry(
+        uint256 _entryID
+    )
+        external
+        view
+        entryExists(_entryID)
+        returns (${fields.map(({ name, type }) => type).join(', ')})
+    {
+        uint256 entryIndex = allEntriesIndex[_entryID];
+        return (
+            ${fields.map(({ name, type }) => `entries[entryIndex].${name}`).join(',\n')}
+        );
     }
 
 
@@ -75,125 +116,81 @@ contract ${name} is EntryInterface, Ownable {
         uint256 _entryID, 
         ${createArgsStr}
     )
-        public
+        external
     {
-        bool status = owner.call(bytes4(keccak256("checkAuth(uint256, address)")), _entryID, msg.sender);
-        require(status == true);
+        require(owner.call(bytes4(keccak256(
+            "checkEntryOwnership(uint256, address)")),
+            _entryID,
+            msg.sender
+        ));
         
-        ${fields.map(f => `entries[_entryID].${f.name}= _${f.name};`).join('\n')}
+        uint256 entryIndex = allEntriesIndex[_entryID];
         
-        require(owner.call(bytes4(keccak256("updateEntryTimestamp(uint256)")), _entryID));
+        ${name}Entry memory m = (${name}Entry(
+        {
+            ${fields.map(f => `${f.name}: _${f.name}`).join(',\n')}
+        }));
+        
+        entries[entryIndex] = m;
+        
+        require(owner.call(bytes4(keccak256(
+            "updateEntryTimestamp(uint256)")),
+            _entryID
+        ));
     }
 
 
     function deleteEntry(
-        uint256 _entryIndex
+        uint256 _entryID
     )
-        public
+        external
         onlyOwner
     {
-        uint256 lastEntryIndex = entries.length - 1;
-        ${name}Entry storage lastEntry = entries[lastEntryIndex];
-
-        entries[_entryIndex] = lastEntry;
-        delete entries[lastEntryIndex];
+        require(entries.length > 0);
+        uint256 entryIndex = allEntriesIndex[_entryID];
+        
+        uint256 lastTokenIndex = allTokens.length.sub(1);
+        
+        uint256 lastToken = allTokens[lastTokenIndex];
+        ${name}Entry memory lastEntry = entries[lastTokenIndex];
+        
+        allTokens[entryIndex] = lastToken;
+        entries[entryIndex] = lastEntry;
+        
+        allTokens[lastTokenIndex] = 0;
+        delete entries[lastTokenIndex];
+        
+        allTokens.length--;
         entries.length--;
+        
+        allEntriesIndex[_entryID] = 0;
+        allEntriesIndex[lastTokenIndex] = entryIndex;
     }
 
 
-    function entriesAmount()
-        public
+    function getEntriesAmount()
+        external
         view
         returns (
-            uint256 entryID
+            uint256
         )
     {
         return entries.length;
     }
-
-    ${fields.map(({ name, type }) => generateGetor(name, type)).join(' \n ')}
-
-
-    function entryInfo(uint256 _entryId)
-        public
+    
+    function getEntriesIDs()
+        external
         view
-        returns (${fields.map(({ name, type }) => type).join(', ')})
+        returns (
+            uint256[]
+        )
     {
-        return (
-            ${fields.map(({ name, type }) => `${name}Of(_entryId)`).join(',\n')}
-        );
+        return allTokens;
     }
 
 }
 
 `;
-
-//   return `
-
-// import 'Chaingeareable.sol';
-
-// contract ${name} is Chaingeareable {
-//   struct ${name}Item {
-//     ${structBodyStr}
-
-//     address owner;
-//     uint lastUpdateTime;
-//   }
-
-//   ${name}Item[] public entries;
-//   event EntryCreated(address owner, uint entryId);
-//   event EntryDeleted(uint entryId);
-
-//   struct Tokens {
-//     address a;
-//     uint count;
-//   }
-
-
-//   function ${name}(
-//       address[] _benefitiaries,
-//       uint256[] _shares,
-//       Tokens[] tokens,
-//       PermissionType _permissionType,
-//       uint _entryCreationFee,
-//       string _name,
-//       string _description,
-//       string _tags
-//   ) Chaingeareable(_benefitiaries, _shares, _permissionType, _entryCreationFee, _name, _description, _tags) public {
-
-//   }
-
-//   function createEntry(${createArgsStr}) external payable {
-//         require(msg.sender == owner || msg.value == entryCreationFee);
-//         require(msg.sender == owner || permissionType == PermissionType.AllUsers);
-        
-//         entries.push(${name}Item(
-//         {
-//             owner: msg.sender,
-//             lastUpdateTime: now ${fields.length > 0 ? ',' : ''}
-//             ${createItemStr}
-//         }));
-    
-//         EntryCreated(msg.sender, entries.length - 1);
-//   }
-
-//   function deleteEntry(uint index) external {
-//         for (uint i = index; i<entries.length-1; i++){
-//             entries[i] = entries[i+1];
-//         }
-//         delete entries[entries.length-1];
-//         entries.length--;
-
-//         EntryDeleted(index);
-//     }
-  
-
-//     function entriesCount() constant public returns (uint) {
-//         return entries.length;
-//     }
-
-// }
-//   `
 } 
 
 module.exports = generateContractCode;

@@ -52,11 +52,12 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
     }
     
     // @dev Using for token creation, continuous enumeration
-    uint256 private headTokenID;
+    uint256 internal headTokenID;
     
     // @dev Array of associated to entry/token metadata
     EntryMeta[] internal entriesMeta;
     
+    // @dev also works as exist(_entryID)
     modifier onlyOwnerOf(uint256 _entryID){
         require(ownerOf(_entryID) == msg.sender);
         _;
@@ -328,6 +329,16 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
         );
     }
     
+    function getEntriesIDs()
+        external
+        view
+        returns (
+            uint256[]
+        )
+    {
+        return allTokens;
+    }
+    
     /**
     * @dev Verification function which auth user to update specified entry in EntryCore
     * @param _entryID uint256 Entry-token ID
@@ -376,7 +387,7 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
         returns (address)
     {
         require(registryInitStatus == false);
-        EntryInterface deployedAddress;
+        address deployedAddress;
 
         //// [review] It is better not to use assembly/arbitrary bytecode as it is very unsafe!
         assembly {
@@ -386,14 +397,14 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
             deployedAddress := create(0, p, s)
         }
 
-        require(address(deployedAddress) != address(0));
+        require(deployedAddress != address(0));
         // require(deployedAddress.supportsInterface(InterfaceId_EntryCore));
         
-        entriesStorage = deployedAddress;
+        entriesStorage = EntryInterface(deployedAddress);
         registryInitStatus = true;
         linkToABIOfEntriesContract = _linkToABIOfEntriesContract;
         
-        return address(entriesStorage);
+        return deployedAddress;
     }
     
 }

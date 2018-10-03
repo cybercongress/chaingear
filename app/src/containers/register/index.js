@@ -88,7 +88,7 @@ class Register extends Component {
                         // })
                         console.log('items ', items);
                         console.log('registryID ', registryID);
-                        contract.registryBalanceInfo(registryID, (e, data) => {
+                        contract.readRegistryBalance(registryID, (e, data) => {
                             var funded = web3.fromWei(web3.toDecimal(data[0].toNumber()));
             //                this.componentDidMount();
                             this.setState({
@@ -154,14 +154,14 @@ class Register extends Component {
                         r.getEntryCreationFee((e, data) => {
                             var fee = web3.fromWei(data, 'ether').toNumber();
 
-
+                            console.log(ipfsHash)
                             this.setState({
                                 entryCreationFee: fee,
                                 registryContract: r
                             })
                             cyber.getFieldByHash(ipfsHash)
                                 .then(({ abi, fields }) => {
-
+                                    
                                     cyber.getRegistryData(address, fields, abi)
                                     .then(({ fee, items, fields }) => {
                                         Promise.all(

@@ -6,7 +6,7 @@ chai.should()
 
 const Registry = artifacts.require("Registry")
 const Chaingear = artifacts.require("Chaingear")
-const RegistryCreator = artifacts.require("RegistryCreator")
+const RegistryBuilder = artifacts.require("RegistryBuilder")
 const EntryCore = artifacts.require("TeamSchema")
 
 contract("Chaingear", (accounts) => {
@@ -16,7 +16,7 @@ contract("Chaingear", (accounts) => {
         AllUsers: 1
     }
 
-    let chaingear, creator
+    let chaingear, builder
 
     const CHAINGEAR_OWNER = accounts[0]
     const CHAINGEAR_BENEFICIARY_1 = accounts[0]
@@ -32,7 +32,7 @@ contract("Chaingear", (accounts) => {
     const CHAINGEAR_BENEFICIARIES = [CHAINGEAR_BENEFICIARY_1, CHAINGEAR_BENEFICIARY_2]
     const CHAINGEAR_BENEFICIARIES_SHARES = [CHAINGEAR_BENEFICIARY_1_SHARES, CHAINGEAR_BENEFICIARY_2_SHARES]
     
-    const CHAINGEAR_DESCRIPTION = "MOST EXPENSIVE REGISTRY"
+    const CHAINGEAR_DESCRIPTION = "THE MOST EXPENSIVE METAREGISTRY"
     const CHAINGEAR_NAME = "CHAINGEAR"
     const CHAINGEAR_SYMBOL = "CHG"
     
@@ -53,7 +53,7 @@ contract("Chaingear", (accounts) => {
 
     before(async () => {
         
-        creator = await RegistryCreator.new({ from: CHAINGEAR_OWNER })
+        builder = await RegistryBuilder.new({ from: CHAINGEAR_OWNER })
         
         chaingear = await Chaingear.new(
             CHAINGEAR_NAME,
@@ -63,20 +63,19 @@ contract("Chaingear", (accounts) => {
             CHAINGEAR_DESCRIPTION,
             BUILDING_FEE,
             { 
-                from: CHAINGEAR_OWNER,
-                gas: CREATION_GAS
+                from: CHAINGEAR_OWNER
             }
         )
 
-        await creator.setBuilder(
+        await builder.setChaingearAddress(
             chaingear.address, 
             {
                 from: CHAINGEAR_OWNER 
             })
             
-        await chaingear.addRegistryCreatorVersion(
+        await chaingear.addRegistryBuilderVersion(
             REGISTRY_CREATOR_1_VERSION,
-            creator.address,
+            builder.address,
             REGISTRY_CREATOR_1_ABI_LINK,
             REGISTRY_CREATOR_1_DESCRIPTION,
             {
@@ -100,9 +99,9 @@ contract("Chaingear", (accounts) => {
             }
         )
     
-        const entriesAmount = await chaingear.registriesAmount()
+        const entriesAmount = await chaingear.totalSupply()
     
-        const registryInfo = await chaingear.registryInfo(entriesAmount-1)
+        const registryInfo = await chaingear.readRegistry(entriesAmount-1)
         const createdAddress = registryInfo.toString().split(',')[2]
         
         const registry = Registry.at(createdAddress)
@@ -155,7 +154,7 @@ contract("Chaingear", (accounts) => {
     
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
         
-        const registryInfo = await chaingear.registryInfo(ID.toNumber())
+        const registryInfo = await chaingear.readRegistry(ID.toNumber())
         const registryAddress = registryInfo.toString().split(',')[2]
 
         const registry = Registry.at(registryAddress)
@@ -182,7 +181,7 @@ contract("Chaingear", (accounts) => {
         
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
         
-        const registryInfo = await chaingear.registryInfo(ID.toNumber())
+        const registryInfo = await chaingear.readRegistry(ID.toNumber())
         const registryAddress = registryInfo.toString().split(',')[2]
         
         const registry = Registry.at(registryAddress)
@@ -208,7 +207,7 @@ contract("Chaingear", (accounts) => {
     
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
         
-        const registryInfo = await chaingear.registryInfo(ID.toNumber())
+        const registryInfo = await chaingear.readRegistry(ID.toNumber())
         const registryAddress = registryInfo.toString().split(',')[2]
         
         const registry = Registry.at(registryAddress)
@@ -226,7 +225,7 @@ contract("Chaingear", (accounts) => {
     
     it("#4/1 should allow chaingear owner to add registry version to chaingear", async () => {
         
-        await chaingear.addRegistryCreatorVersion(
+        await chaingear.addRegistryBuilderVersion(
             "V_TEST",
             "0x2",
             "Q_HASH",
@@ -235,14 +234,14 @@ contract("Chaingear", (accounts) => {
                 from: CHAINGEAR_OWNER 
             })
             
-        const newRegistryCreationVersionHash = await chaingear.getRegistryCreatorInfo("V_TEST")
+        const newRegistryCreationVersionHash = await chaingear.getRegistryBuilder("V_TEST")
         newRegistryCreationVersionHash[1].should.be.equal("Q_HASH")
     
     })
     
     it("#4/2 should not allow unknown to add registry version to chaingear", async () => {
         
-        await chaingear.addRegistryCreatorVersion(
+        await chaingear.addRegistryBuilderVersion(
             "V_TEST",
             "0x2",
             "Q_HASH",
@@ -254,13 +253,20 @@ contract("Chaingear", (accounts) => {
     })
     
     it("#5/1 should allow chaingear owner to change registration fee", async () => {
+        await chaingear.pause({
+            from: CHAINGEAR_OWNER
+        })
         
         await chaingear.updateRegistrationFee(
             7777777,
             {
                 from: CHAINGEAR_OWNER 
             })
-            
+
+        await chaingear.unpause({
+            from: CHAINGEAR_OWNER
+        })
+        
         const newRegistrationFee = await chaingear.getRegistrationFee()
         newRegistrationFee.toNumber().should.be.equal(7777777)
     })
