@@ -116,20 +116,20 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
         // checkEntryOwnership will return
         // if [token exist && msg.sender == tokenOwner] true
         // else [checkEntryOwnership will fail] false
-        require(owner.call(bytes4(keccak256(
-            "checkEntryOwnership(uint256, address)")),
-            _entryID,
-            msg.sender
-        ));
+        // require(owner.call(bytes4(keccak256(
+        //     "checkEntryOwnership(uint256, address)")),
+        //     _entryID,
+        //     msg.sender
+        // ));
         
         //before we check that value already exist, then set than name used and unset previous value
-        require(nameUniqIndex[_name] == false);
-        nameUniqIndex[_name] = true;
+        // require(nameUniqIndex[_name] == false);
+        // nameUniqIndex[_name] = true;
         
         uint256 entryIndex = allEntriesIndex[_entryID];
         
-        string storage lastName = entries[entryIndex].name;
-        nameUniqIndex[lastName] = false;
+        // string storage lastName = entries[entryIndex].name;
+        // nameUniqIndex[lastName] = false;
             
         Entry memory m = (Entry(
         {
@@ -143,10 +143,10 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
         entries[entryIndex] = m;
         
         // here we just calling registry with entry ID and set entry updating timestamp
-        require(owner.call(bytes4(keccak256(
-            "updateEntryTimestamp(uint256)")),
-            _entryID
-        ));
+        // require(owner.call(bytes4(keccak256(
+        //     "updateEntryTimestamp(uint256)")),
+        //     _entryID
+        // ));
     }
 
     function deleteEntry(

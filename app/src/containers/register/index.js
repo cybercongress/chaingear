@@ -165,7 +165,7 @@ class Register extends Component {
                                     cyber.getRegistryData(address, fields, abi)
                                     .then(({ fee, items, fields }) => {
                                         Promise.all(
-                                            items.map((i, index) => new Promise((resolve, reject) => r.getEntryMeta(index, (e, data) => resolve(data))))
+                                            items.map((i, index) => new Promise((resolve, reject) => r.readEntryMeta(index, (e, data) => resolve(data))))
                                         ).then(data => {
                                             var _items = items.map((item, index) => {                                        
                                                 var currentEntryBalanceETH = web3.fromWei(data[index][4]).toNumber();
@@ -356,7 +356,7 @@ class Register extends Component {
         })
     }
 
-    transferRegistry = (newOwner) => {        
+    transferRegistry = (userAccount, newOwner) => {        
         var registryID = this.getRegistryID();
         cyber.getContract().then(({ contract, web3 }) => {
             contract.transferFrom(userAccount, newOwner, registryID, (e, data) => {
@@ -365,7 +365,7 @@ class Register extends Component {
         })
     }
 
-    transferItem = (entryID, newOwner) => {
+    transferItem = (userAccount, newOwner, entryID) => {
         this.state.registryContract.transferFrom(userAccount, newOwner, entryID, (e, data) => {
             this.componentDidMount();
         })
@@ -384,7 +384,7 @@ class Register extends Component {
               fundEntryClick={this.fundEntryClick}
               userAccount={userAccount}
               onUpdate={(values) => this.onUpdate(values, index)}
-              onTransfer={(newOwner) => this.transferItem(index, newOwner)}
+              onTransfer={(newOwner) => this.transferItem(userAccount, newOwner, index)}
               fields={fields}
               item={item}
               index={index}
@@ -483,7 +483,7 @@ class Register extends Component {
                       height={140}
                       address={owner} 
                       isOwner={isOwner}
-                      onTransfer={this.transferRegistry}
+                      onTransfer={(newOwner) => this.transferRegistry(userAccount, newOwner)}
                     />
                 </div>
                 <ValueInput 

@@ -7,4 +7,5 @@ interface EntryInterface {
     function deleteEntry(uint256) external;
     function getEntriesAmount() external view returns (uint256);
     function getEntriesIDs() external view returns (uint256[]);
+    function supportsInterface(bytes4) external view returns (bool);
 }

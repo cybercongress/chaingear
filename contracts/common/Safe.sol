@@ -33,10 +33,7 @@ contract Safe {
     * @param _entryOwner address transfer to, Registry-token admin
     * @param _amount uint claimed amount by Registry-token admin
     */
-    function claim(
-        address _entryOwner,
-        uint256 _amount
-    )
+    function claim(address _entryOwner, uint256 _amount)
         external
     {
         require(msg.sender == owner);
@@ -49,9 +46,7 @@ contract Safe {
     function getOwner()
         external
         view
-        returns(
-            address
-        )
+        returns(address)
     {
         return owner;
     }

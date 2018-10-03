@@ -5,7 +5,8 @@ const BigNumber = require("bignumber.js")
 
 const CreateEntryPermissionGroup = {
     OnlyAdmin: 0,
-    AllUsers: 1
+    Whitelist: 1,
+    AllUsers: 2
 }
 
 function isEntryCreatedEvent(log) {

@@ -1,8 +1,8 @@
 pragma solidity ^0.4.24;
 
 import "../registry/Registry.sol";
+import "../common/RegistryInterface.sol";
 import "./RegistryBuilderInterface.sol";
-import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 /**
@@ -12,26 +12,29 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 * @dev with codebase which imported and deployed with this fabric
 * @notice not recommend to use before release!
 */
-contract RegistryBuilder is RegistryBuilderInterface, Ownable {
+contract RegistryBuilder is RegistryBuilderInterface {
 
 	/*
 	* @dev Storage
 	*/
 
     // @dev Holds address of contract which can call creation, means Chaingear
-    address private chaingear;
+    address internal chaingear;
+    
+    address internal owner;
 
 	/*
 	* @dev Constructor
 	*/
 
     /**
-    * @dev Contructor of RegistryCreators
+    * @dev Contructor of RegistryBuilder
     * @notice setting 0x0, then allows to owner to set builder/Chaingear
     * @notice after deploying needs to set up builder/Chaingear address
     */
     constructor() public {
         chaingear = address(0);
+        owner = msg.sender;
     }
     
     /**
@@ -51,7 +54,7 @@ contract RegistryBuilder is RegistryBuilderInterface, Ownable {
     * @param _symbol string symbol of Registry and token
     * @return address Address of new initialized Registry
     */
-    function createRegistry(
+    function deployRegistry(
         address[] _benefitiaries,
         uint256[] _shares,
         string _name,
@@ -74,12 +77,10 @@ contract RegistryBuilder is RegistryBuilderInterface, Ownable {
         return registryContract;
     }
 
-    function setChaingearAddress(
-        address _chaingear
-    )
+    function setChaingearAddress(address _chaingear)
         external
-        onlyOwner
     {
+        require(msg.sender == owner);
         require(_chaingear != address(0));
         chaingear = _chaingear;
     }
@@ -87,10 +88,16 @@ contract RegistryBuilder is RegistryBuilderInterface, Ownable {
     function getChaingearAddress()
         external
         view
-        returns(
-            address
-        )
+        returns (address)
     {
         return chaingear;
+    }
+    
+    function getOwner()
+        external
+        view
+        returns (address)
+    {
+        return owner;
     }
 }

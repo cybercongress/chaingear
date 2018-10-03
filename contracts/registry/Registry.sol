@@ -4,10 +4,11 @@ import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLooku
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "./Chaingeareable.sol";
+
 import "../common/EntryInterface.sol";
 import "../common/RegistryInterface.sol";
 import "../common/Safe.sol";
+import "./RegistryPermissionControl.sol";
 
 
 /**
@@ -19,7 +20,7 @@ import "../common/Safe.sol";
 * @dev Entry creation/deletion/update permission are tokenized
 * @notice not recommend to use before release!
 */
-contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingeareable, SplitPayment, ERC721Token {
+contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
     
@@ -28,7 +29,7 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
     */
     bytes4 internal constant InterfaceId_EntryCore = 0xcf3c2b48;
     
-    bytes4 internal constant InterfaceId_Registry = 0x52dddfe4;
+    bytes4 internal constant InterfaceId_Registry =  0x52dddfe4;
     /*
      * 0x52dddfe4 ===
      *   bytes4(keccak256('createEntry()')) ^
@@ -44,11 +45,11 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
 
     // @dev Metadata of entry, holds ownership data and funding info
     struct EntryMeta {
-        address creator;
-        uint createdAt;
-        uint lastUpdateTime;
-        uint256 currentEntryBalanceWei;
-        uint256 accumulatedOverallEntryWei;
+        address     creator;
+        uint256     createdAt;
+        uint256     lastUpdateTime;
+        uint256     currentWei;
+        uint256     accumulatedWei;
     }
     
     // @dev Using for token creation, continuous enumeration
@@ -57,11 +58,69 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
     // @dev Array of associated to entry/token metadata
     EntryMeta[] internal entriesMeta;
     
+    // @dev entry creation fee 
+    uint256 internal entryCreationFee;
+    
+    // @dev registry description string
+    string internal registryDescription;
+    
+    // @dev registry tags
+    bytes32[] internal registryTags;
+    
+    // @dev address of EntryCore contract, which specifies data schema and CRUD operations
+    EntryInterface internal entriesStorage;
+    
+    // @dev link to IPFS hash to ABI of EntryCore contract
+    string internal linkToABIEntryCore;
+    
+    // @dev address of Registry safe where funds store
+    Safe internal registrySafe;
+
+    // @dev state of was registry initialized with EntryCore or not
+    bool internal registryInitStatus;
+    
     // @dev also works as exist(_entryID)
     modifier onlyOwnerOf(uint256 _entryID){
         require(ownerOf(_entryID) == msg.sender);
         _;
     }
+    
+    // @dev don't allow to call registry entry functions before initialization
+    modifier registryInitialized {
+        require(registryInitStatus == true);
+        _;
+    }
+    
+    /**
+    *  Events
+    */
+
+    event EntryCreated(
+        uint256 entryID,
+        address creator
+    );
+
+    event EntryChangedOwner(
+        uint256 entryID,
+        address newOwner
+    );
+
+    event EntryDeleted(
+        uint256 entryID,
+        address owner
+    );
+
+    event EntryFunded(
+        uint256 entryID,
+        address funder,
+        uint256 amount
+    );
+
+    event EntryFundsClaimed(
+        uint256 entryID,
+        address owner,
+        uint256 amount
+    );
 
     /*
     *  Constructor
@@ -83,13 +142,16 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
         string _name,
         string _symbol
     )
-        SplitPayment(_benefitiaries, _shares)
-        ERC721Token(_name, _symbol)
+        SplitPayment    (_benefitiaries, _shares)
+        ERC721Token     (_name, _symbol)
         public
         payable
     {
         _registerInterface(InterfaceId_Registry);
         headTokenID = 0;
+        entryCreationFee = 0;
+        registrySafe = new Safe();
+        registryInitStatus = false;
     }
     
     function() external payable {}
@@ -112,31 +174,26 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
         onlyPermissionedToCreateEntries
         whenNotPaused
         payable
-        returns (
-            uint256
-        )
+        returns (uint256)
     {
         require(msg.value == entryCreationFee);
         
         EntryMeta memory meta = (EntryMeta(
         {   
             /* solium-disable-next-line security/no-block-members */
-            lastUpdateTime: block.timestamp,
+            lastUpdateTime:     block.timestamp,
             /* solium-disable-next-line security/no-block-members */
-            createdAt: block.timestamp,
-            creator: msg.sender,
-            currentEntryBalanceWei: 0,
-            accumulatedOverallEntryWei: 0
+            createdAt:          block.timestamp,
+            creator:            msg.sender,
+            currentWei:         0,
+            accumulatedWei:     0
         }));
         entriesMeta.push(meta);
         
         uint256 newTokenID = headTokenID;
         super._mint(msg.sender, newTokenID);
         
-        emit EntryCreated(
-            newTokenID,
-            msg.sender
-        );
+        emit EntryCreated(newTokenID, msg.sender);
         
         entriesStorage.createEntry(newTokenID);
         headTokenID = headTokenID.add(1);
@@ -147,16 +204,14 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
     * @dev Allow entry owner delete Entry-token and also Entry-data in EntryCore
     * @param _entryID uint256 Entry-token ID
     */
-    function deleteEntry(
-        uint256 _entryID
-    )
+    function deleteEntry(uint256 _entryID)
         external
         registryInitialized
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
         uint256 entryIndex = allTokensIndex[_entryID];
-        require(entriesMeta[entryIndex].currentEntryBalanceWei == 0);
+        require(entriesMeta[entryIndex].currentWei == 0);
         
         uint256 lastEntryIndex = entriesMeta.length.sub(1);
         EntryMeta memory lastEntry = entriesMeta[lastEntryIndex];
@@ -171,6 +226,337 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
         entriesStorage.deleteEntry(_entryID);
     }
 
+    /**
+    * @dev Allows anyone fund specified entry
+    * @param _entryID uint256 Entry-token ID
+    * @notice Funds tracks in EntryMeta, stores in Registry Safe
+    * @notice Anyone may fund any existing entry
+    */
+    function fundEntry(uint256 _entryID)
+        external
+        registryInitialized
+        whenNotPaused
+        payable
+    {
+        require(exists(_entryID) == true);
+        
+        uint256 entryIndex = allTokensIndex[_entryID];
+        uint256 currentWei = entriesMeta[entryIndex].currentWei.add(msg.value);
+        entriesMeta[entryIndex].currentWei = currentWei;
+        
+        uint256 accumulatedWei = entriesMeta[entryIndex].accumulatedWei.add(msg.value);
+        entriesMeta[entryIndex].accumulatedWei = accumulatedWei;
+        
+        emit EntryFunded(_entryID, msg.sender, msg.value);
+        address(registrySafe).transfer(msg.value);
+    }
+
+    /**
+    * @dev Allows entry token owner claim entry funds
+    * @param _entryID uint256 Entry-token ID
+    * @param _amount uint256 Amount in wei which token owner claims
+    * @notice Funds tracks in EntryMeta, transfers from Safe to claimer (owner)
+    */
+    function claimEntryFunds(uint256 _entryID, uint256 _amount)
+        external
+        registryInitialized
+        onlyOwnerOf(_entryID)
+        whenNotPaused
+    {
+        uint256 entryIndex = allTokensIndex[_entryID];
+    
+        uint256 currentWei = entriesMeta[entryIndex].currentWei;
+        require(_amount <= currentWei);
+        entriesMeta[entryIndex].currentWei = currentWei.sub(_amount);
+    
+        emit EntryFundsClaimed(_entryID, msg.sender, _amount);
+        registrySafe.claim(msg.sender, _amount);
+    }
+    
+    /**
+    * @dev Allow to set last entry data update for entry-token meta
+    * @param _entryID uint256 Entry-token ID
+    * @notice Can be (should be) called only by EntryCore (updateEntry)
+    */
+    function updateEntryTimestamp(uint256 _entryID) 
+        external
+    {
+        require(entriesStorage == msg.sender);
+        /* solium-disable-next-line security/no-block-members */
+        entriesMeta[_entryID].lastUpdateTime = block.timestamp;
+    }
+    
+    
+    /**
+    * @dev Allows admin set new registration fee, which entry creators should pay
+    * @param _fee uint256 In wei which should be payed for creation/registration
+    */
+    function updateEntryCreationFee(uint256 _fee)
+        external
+        onlyAdmin
+        // whenPaused
+        whenNotPaused
+    {
+        entryCreationFee = _fee;
+    }
+    
+    /**
+    * @dev Allows update ERC721 token name (Registry Name)
+    * @param _name string which represents name
+    */
+    function updateName(string _name)
+        external
+        onlyAdmin
+    {
+        name_ = _name;
+    }
+    
+    /**
+    * @dev Allows admin update registry description
+    * @param _newDescription string Which represents description
+    * @notice Length of description should be less than 256 bytes
+    */
+    function updateRegistryDescription(string _newDescription)
+        external
+        onlyAdmin
+    {
+        uint256 len = bytes(_newDescription).length;
+        require(len <= 256);
+    
+        registryDescription = _newDescription;
+    }
+    
+    /**
+    * @dev Allows admin to add tag to registry
+    * @param _tag bytes32 Tag
+    * @notice Tags amount should be less or equal 16
+    */
+    function addRegistryTag(bytes32 _tag)
+        external
+        onlyAdmin
+    {
+        require(registryTags.length < 16);
+        registryTags.push(_tag);
+    }
+    
+    /**
+    * @dev Allows admin to update update specified tag
+    * @param _index uint8 Index of tag to update
+    * @param _tag bytes32 New tag value
+    */
+    function updateRegistryTag(uint8 _index, bytes32 _tag)
+        external
+        onlyAdmin
+    {
+        require(_index < registryTags.length);
+    
+        registryTags[_index] = _tag;
+    }
+
+    /**
+    * @dev Remove registry tag
+    * @param _index uint8 Index of tag to delete
+    */
+    function removeRegistryTag(uint8 _index)
+        external
+        onlyAdmin
+    {
+        require(registryTags.length > 0);
+        require(_index < registryTags.length);
+    
+        uint256 lastTagIndex = registryTags.length.sub(1);
+        bytes32 lastTag = registryTags[lastTagIndex];
+    
+        registryTags[_index] = lastTag;
+        registryTags[lastTagIndex] = "";
+        registryTags.length--;
+    }
+    
+    /*
+    *  View functions
+    */
+    
+    function readEntryMeta(uint256 _entryID)
+        external
+        view
+        returns (
+            address,
+            address,
+            uint256,
+            uint256,
+            uint256,
+            uint256
+        )
+    {
+        return(
+            ownerOf(_entryID),
+            entriesMeta[_entryID].creator,
+            entriesMeta[_entryID].createdAt,
+            entriesMeta[_entryID].lastUpdateTime,
+            entriesMeta[_entryID].currentWei,
+            entriesMeta[_entryID].accumulatedWei
+        );
+    }
+    
+    function getEntriesIDs()
+        external
+        view
+        returns (uint256[])
+    {
+        return allTokens;
+    }
+    
+    /**
+    * @dev Allows to check which amount fee needed for entry creation/registration
+    * @return uint256 Current amount in wei needed for registration
+    */
+    function getEntryCreationFee()
+        external
+        view
+        returns (uint256)
+    {
+        return entryCreationFee;
+    }
+
+    /**
+    * @dev Verification function which auth user to update specified entry in EntryCore
+    * @param _entryID uint256 Entry-token ID
+    * @param _caller address of caller which trying to update entry throught EntryCore 
+    */
+    function checkEntryOwnership(uint256 _entryID, address _caller)
+        external
+        view
+    {
+        require(ownerOf(_entryID) == _caller);
+    }
+    
+    /**
+    * @dev Allows to get EntryCore contract which specified entry schema and operations
+    * @return address of that contract
+    */
+    function getEntriesStorage()
+        external
+        view
+        returns (address)
+    {
+        return address(entriesStorage);
+    }
+    
+    /**
+    * @dev Allows to get link interface of EntryCore contract
+    * @return string with IPFS hash to JSON with ABI
+    */
+    function getInterfaceEntriesContract()
+        external
+        view
+        returns (string)
+    {
+        return linkToABIEntryCore;
+    }
+    
+    /**
+    * @dev Allows to get registry balance which represents accumulated fees for entry creations
+    * @return uint256 Amount in wei accumulated in Registry Contract
+    */
+    function getRegistryBalance()
+        external
+        view
+        returns (uint256)
+    {
+        return address(this).balance;
+    }
+    
+    /**
+    * @dev Allows to get description of Registry
+    * @return string which represents description 
+    */
+    function getRegistryDescription()
+        external
+        view
+        returns (string)
+    {
+        return registryDescription;
+    }
+    
+    /**
+    * @dev Allows to get Registry Tags
+    * @return bytes32[] array of tags
+    */
+    function getRegistryTags()
+        external
+        view
+        returns (bytes32[])
+    {
+        return registryTags;
+    }
+    
+    /**
+    * @dev Allows to get address of Safe which Registry control (owns)
+    * @return address of Safe contract
+    */
+    function getRegistrySafe()
+        external
+        view
+        returns (address)
+    {
+        return registrySafe;
+    }
+    
+    /**
+    * @dev Allows to get amount of funds aggregated in Safe
+    * @return uint256 Amount of funds in wei
+    */
+    function getSafeBalance()
+        external
+        view
+        returns (uint256)
+    {
+        return address(registrySafe).balance;
+    }
+    
+    function getRegistryInitStatus()
+        external
+        view
+        returns (bool)
+    {
+        return registryInitStatus;
+    }
+    
+    /**
+    *  Public functions
+    */
+    
+    /**
+    * @dev Registry admin sets generated by them EntryCore contrats with thier schema and 
+    * @dev needed supported entry-token logic
+    * @param _linkToABI string link to IPFS hash which holds EntryCore's ABI
+    * @param _entryCore bytes of contract which holds schema and accociated CRUD functions
+    * @return address of deployed EntryCore
+    */
+    function initializeRegistry(string _linkToABI, bytes _entryCore)
+        public
+        onlyAdmin
+        returns (address)
+    {
+        require(registryInitStatus == false);
+        address deployedAddress;
+    
+        assembly {
+            let s := mload(_entryCore)
+            let p := add(_entryCore, 0x20)
+            deployedAddress := create(0, p, s)
+        }
+    
+        require(deployedAddress != address(0));
+        entriesStorage = EntryInterface(deployedAddress);
+        // require(entriesStorage.supportsInterface(InterfaceId_EntryCore));
+    
+        linkToABIEntryCore = _linkToABI;
+        registryInitStatus = true;
+    
+        return deployedAddress;
+    }
+    
     function transferFrom(
         address _from,
         address _to,
@@ -180,11 +566,7 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
         registryInitialized
         whenNotPaused
     {
-        super.transferFrom(
-            _from,
-            _to,
-            _tokenId
-        );
+        super.transferFrom(_from, _to, _tokenId);
     }  
     
     function safeTransferFrom(
@@ -196,14 +578,9 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
         registryInitialized
         whenNotPaused
     {
-        super.safeTransferFrom(
-            _from,
-            _to,
-            _tokenId,
-            ""
-        );
+        super.safeTransferFrom(_from, _to, _tokenId, "");
     }
-
+    
     function safeTransferFrom(
         address _from,
         address _to,
@@ -216,195 +593,6 @@ contract Registry is RegistryInterface, SupportsInterfaceWithLookup, Chaingearea
     {
         transferFrom(_from, _to, _tokenId);
         /* solium-disable-next-line indentation */
-        require(checkAndCallSafeTransfer(
-            _from,
-            _to,
-            _tokenId,
-            _data
-        ));
+        require(checkAndCallSafeTransfer(_from, _to, _tokenId, _data));
     }
-
-    /**
-    * @dev Allows anyone fund specified entry
-    * @param _entryID uint256 Entry-token ID
-    * @notice Funds tracks in EntryMeta, stores in Registry Safe
-    * @notice Anyone may fund any existing entry
-    */
-    function fundEntry(
-        uint256 _entryID
-    )
-        external
-        registryInitialized
-        whenNotPaused
-        payable
-    {
-        require(exists(_entryID) == true);
-        
-        uint256 entryIndex = allTokensIndex[_entryID];
-        uint256 currentWei = entriesMeta[entryIndex].currentEntryBalanceWei.add(msg.value);
-        entriesMeta[entryIndex].currentEntryBalanceWei = currentWei;
-        
-        uint256 accumulatedWei = entriesMeta[entryIndex].accumulatedOverallEntryWei.add(msg.value);
-        entriesMeta[entryIndex].accumulatedOverallEntryWei = accumulatedWei;
-        
-        emit EntryFunded(
-            _entryID,
-            msg.sender,
-            msg.value
-        );
-        
-        address(registrySafe).transfer(msg.value);
-    }
-
-    /**
-    * @dev Allows entry token owner claim entry funds
-    * @param _entryID uint256 Entry-token ID
-    * @param _amount uint Amount in wei which token owner claims
-    * @notice Funds tracks in EntryMeta, transfers from Safe to claimer (owner)
-    */
-    function claimEntryFunds(
-        uint256 _entryID, 
-        uint _amount
-    )
-        external
-        registryInitialized
-        onlyOwnerOf(_entryID)
-        whenNotPaused
-    {
-        uint256 entryIndex = allTokensIndex[_entryID];
-        
-        uint256 currentWei = entriesMeta[entryIndex].currentEntryBalanceWei;
-        require(_amount <= currentWei);
-        entriesMeta[entryIndex].currentEntryBalanceWei = currentWei.sub(_amount);
-        
-        emit EntryFundsClaimed(
-            _entryID,
-            msg.sender,
-            _amount
-        );
-        
-        registrySafe.claim(msg.sender, _amount);
-    }
-    
-    /**
-    * @dev Allow to set last entry data update for entry-token meta
-    * @param _entryID uint256 Entry-token ID
-    * @notice Can be (should be) called only by EntryCore (updateEntry)
-    */
-    function updateEntryTimestamp(
-        uint256 _entryID
-    ) 
-        external
-    {
-        require(entriesStorage == msg.sender);
-        /* solium-disable-next-line security/no-block-members */
-        entriesMeta[_entryID].lastUpdateTime = block.timestamp;
-    }
-    
-    /*
-    *  View functions
-    */
-    
-    function readEntryMeta(
-        uint256 _entryID
-    )
-        external
-        view
-        returns (
-            address,
-            address,
-            uint,
-            uint,
-            uint256,
-            uint256
-        )
-    {
-        return(
-            ownerOf(_entryID),
-            entriesMeta[_entryID].creator,
-            entriesMeta[_entryID].createdAt,
-            entriesMeta[_entryID].lastUpdateTime,
-            entriesMeta[_entryID].currentEntryBalanceWei,
-            entriesMeta[_entryID].accumulatedOverallEntryWei
-        );
-    }
-    
-    function getEntriesIDs()
-        external
-        view
-        returns (
-            uint256[]
-        )
-    {
-        return allTokens;
-    }
-    
-    /**
-    * @dev Verification function which auth user to update specified entry in EntryCore
-    * @param _entryID uint256 Entry-token ID
-    * @param _caller address of caller which trying to update entry throught EntryCore 
-    */
-    function checkEntryOwnership(
-        uint256 _entryID,
-        address _caller
-    )
-        external
-        view
-    {
-        require(ownerOf(_entryID) == _caller);
-    }
-    
-    /**
-    * @dev Allows update ERC721 token name (Registry Name)
-    * @param _name string which represents name
-    */
-    function updateName(
-        string _name
-    )
-        external
-        onlyAdmin
-    {
-        name_ = _name;
-    }
-    
-    /*
-    *  Public functions
-    */
-
-    /**
-    * @dev Registry admin sets generated by them EntryCore contrats with thier schema and 
-    * @dev needed supported entry-token logic
-    * @param _linkToABIOfEntriesContract string link to IPFS hash which holds EntryCore's ABI
-    * @param _entryCore bytes of contract which holds schema and accociated CRUD functions
-    * @return address of deployed EntryCore
-    */
-    function initializeRegistry(
-        string _linkToABIOfEntriesContract,
-        bytes _entryCore
-    )
-        public
-        onlyAdmin
-        returns (address)
-    {
-        require(registryInitStatus == false);
-        address deployedAddress;
-
-        //// [review] It is better not to use assembly/arbitrary bytecode as it is very unsafe!
-        assembly {
-            let s := mload(_entryCore)
-            let p := add(_entryCore, 0x20)
-            //// [review] I am the EntryCore 'owner'
-            deployedAddress := create(0, p, s)
-        }
-
-        require(deployedAddress != address(0));
-        // require(deployedAddress.supportsInterface(InterfaceId_EntryCore));
-        
-        entriesStorage = EntryInterface(deployedAddress);
-        registryInitStatus = true;
-        linkToABIOfEntriesContract = _linkToABIOfEntriesContract;
-        
-        return deployedAddress;
-    }
-    
 }

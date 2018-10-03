@@ -5,7 +5,7 @@ import "../common/RegistryInterface.sol";
 
 interface RegistryBuilderInterface {
     
-    function createRegistry(
+    function deployRegistry(
         address[],
         uint256[],
         string,

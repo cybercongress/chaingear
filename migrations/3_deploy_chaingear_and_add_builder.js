@@ -1,5 +1,5 @@
 var Chaingear = artifacts.require("./chaingear/Chaingear.sol");
-var RegistryBuilder = artifacts.require("./chaingear/RegistryBuilder.sol");
+var RegistryBuilder = artifacts.require("./builder/RegistryBuilder.sol");
 
 module.exports = function(deployer, network, accounts) {
     
@@ -7,8 +7,7 @@ module.exports = function(deployer, network, accounts) {
     var builder
     
     
-    if (network == 'live' || 'kovan') {
-        // TODO: adjust parameters
+    if (network == 'kovan') {
         BUILDING_FEE = 0
         BENEFICIARIES = []
         SHARES = []

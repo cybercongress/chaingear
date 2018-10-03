@@ -8,19 +8,19 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 * @title RegistryPermissionControl contract
 * @author cyber•Congress, Valery litvin (@litvintech)
 * @dev Controls registry adminship logic and permission to entry management
-* @notice Now support only OnlyAdmin/AllUsers permissions
 * @notice not recommend to use before release!
 */
-contract RegistryPermissionControl is Pausable {
+contract RegistryPermissionControl is Ownable, Pausable {
     
     /*
     *  Storage
     */
     
-    address internal admin;
+    enum CreateEntryPermissionGroup {OnlyAdmin, Whitelist, AllUsers}
     
-    // @dev Holds supported permission to create entries
-    enum CreateEntryPermissionGroup {OnlyAdmin, AllUsers}
+    address internal admin;
+
+    mapping(address => bool) whitelist;
     
     CreateEntryPermissionGroup internal permissionGroup;
     
@@ -32,7 +32,7 @@ contract RegistryPermissionControl is Pausable {
         public
     {
         permissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
-        admin = owner;
+        admin = address(0);
     }
     
     /*
@@ -47,6 +47,8 @@ contract RegistryPermissionControl is Pausable {
     modifier onlyPermissionedToCreateEntries() {
         if (permissionGroup == CreateEntryPermissionGroup.OnlyAdmin) {
             require(msg.sender == admin);
+        } else if (permissionGroup == CreateEntryPermissionGroup.Whitelist) {
+            require(whitelist[msg.sender] == true || msg.sender == admin);
         }
         _;
     }
@@ -63,9 +65,7 @@ contract RegistryPermissionControl is Pausable {
     * @notice admin cannot transfer their own right cause right are tokenized and associated with
     * @notice ERC721 token, which logic controls chaingear contract
     */
-    function transferAdminRights(
-        address _newAdmin
-    )
+    function transferAdminRights(address _newAdmin)
         external
         onlyOwner
         whenNotPaused
@@ -75,22 +75,36 @@ contract RegistryPermissionControl is Pausable {
     }
 
     function updateCreateEntryPermissionGroup(
-        CreateEntryPermissionGroup _permissionGroup
+        CreateEntryPermissionGroup _newPermissionGroup
     )
         external
         onlyAdmin
         whenNotPaused
     {
-        require(CreateEntryPermissionGroup.AllUsers >= _permissionGroup);
-        permissionGroup = _permissionGroup;
+        require(CreateEntryPermissionGroup.AllUsers >= _newPermissionGroup);
+        permissionGroup = _newPermissionGroup;
+    }
+    
+    function addToWhitelist(address _address)
+        external
+        onlyAdmin
+        whenNotPaused
+    {
+        whitelist[_address] = true;
+    }
+
+    function removeFromWhitelist(address _address)
+        external
+        onlyAdmin
+        whenNotPaused
+    {
+        whitelist[_address] = false;
     }
     
     function getAdmin()
         external
         view
-        returns (
-            address
-        )
+        returns (address)
     {
         return admin;
     }
@@ -98,11 +112,17 @@ contract RegistryPermissionControl is Pausable {
     function getRegistryPermissions()
         external
         view
-        returns (
-            CreateEntryPermissionGroup
-        )
+        returns (CreateEntryPermissionGroup)
     {
         return permissionGroup;
+    }
+    
+    function checkWhitelisting(address _address)
+        external
+        view
+        returns (bool)
+    {
+        return whitelist[_address];
     }
         
 }
