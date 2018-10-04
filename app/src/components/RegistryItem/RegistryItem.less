@@ -14,7 +14,7 @@
 }
 
 .buttonContainer {
-    margin-left: 15px;
+    // margin-left: 15px;
     margin-bottom: 10px;
 }
 
@@ -39,27 +39,38 @@
     box-sizing: border-box;
     font-size: 14px;
     width: 143px;
+    border-radius: 2px;
 }
 
+// TODO refactor button common
 
 .editButton {
-    text-indent: -99999px;
-    width: 16px;
-    height: 16px;
+    padding: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 2px;
     border: none;
-    background: none;
-    background: url(../RegistryItem/edit.svg) no-repeat center center;
+    color: #fff;
+    box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.14);
+    display: inline-block;
+    cursor: pointer;
+    background-color: #03cba0;
+    border: 1px solid #03cba0;
 }
 
 .deleteButton {
-    text-indent: -99999px;
     margin-left: 15px;
-    width: 16px;
-    height: 16px;
+    padding: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 2px;
     border: none;
-    background: none;
+    color: #fff;
+    box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.14);
+    display: inline-block;
     cursor: pointer;
-    background: url(../RegistryItem/delete.svg) no-repeat center center;
+    background-color: #ff5858;
+    border: 1px solid #ff5858;
 }
 
 .deleteButton[disabled] {
@@ -68,22 +79,32 @@
 }
 
 .updateButton {
-    text-indent: -99999px;
-    width: 16px;
-    height: 16px;
+    padding: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 2px;
     border: none;
-    background: none;
-    background: url(../RegistryItem/save.svg) no-repeat center center;
+    color: #fff;
+    box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.14);
+    display: inline-block;
+    cursor: pointer;
+    background-color: #03cba0;
+    border: 1px solid #03cba0;
 }
 
 .cancelButton {
-    text-indent: -99999px;
     margin-left: 15px;
-    width: 16px;
-    height: 16px;
+    padding: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-radius: 2px;
     border: none;
-    background: none;
-    background: url(../RegistryItem/cancel.svg) no-repeat center center;
+    color: #fff;
+    box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.14);
+    display: inline-block;
+    cursor: pointer;
+    background-color: #ff5858;
+    border: 1px solid #ff5858;
 }
 
 .idcontainer {

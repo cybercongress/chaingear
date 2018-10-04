@@ -100,8 +100,8 @@ class Home extends Component {
         <Section title={<span>My registries<Badge>{myRows.length}</Badge></span>}>
             <SectionContent>
           <Container>
-              <Text>You haven't created registers yet!</Text>
-              <ActionLink to='/new'>create</ActionLink>
+              <Text>You haven't created registries yet!</Text>
+              <ActionLink to='/new'>create and deploy right now</ActionLink>
           </Container>
         </SectionContent>
         </Section>
@@ -116,19 +116,19 @@ class Home extends Component {
                 <Table>
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Symbol</th>
-                            <th>Entries</th>
-                            <th>Version</th>
-                            <th>Admin</th>
-                            <th>Created</th>
+                            <th>NAME</th>
+                            <th>SYMBOL</th>
+                            <th>ENTRIES</th>
+                            <th>VERSION</th>
+                            <th>ADMIN</th>
+                            <th>CREATED</th>
                         </tr>
                     </thead>
                     <tbody>
                         {myRows}
                     </tbody>
                 </Table>
-                  <FooterButton to='/new'>create new register</FooterButton>
+                  <FooterButton to='/new'>create new registry</FooterButton>
                   </SectionContent>
                 </Section>
             </div>
@@ -141,17 +141,17 @@ class Home extends Component {
             {content}
         </div>
 
-        <Section title={<span>All registries<Badge>{rows.length}</Badge></span>}>
+        <Section title={<span>chaingear registries<Badge>{rows.length}</Badge></span>}>
         <SectionContent>
         <Table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Symbol</th>
-                    <th>Entries</th>
-                    <th>Version</th>
-                    <th>Admin</th>
-                    <th>Created</th>
+                    <th>NAME</th>
+                    <th>SYMBOL</th>
+                    <th>ENTRIES</th>
+                    <th>VERSION</th>
+                    <th>ADMIN</th>
+                    <th>CREATED</th>
                 </tr>
             </thead>
             <tbody>

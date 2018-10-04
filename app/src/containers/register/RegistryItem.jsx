@@ -141,7 +141,7 @@ class RegistryItem extends Component {
               }
               return (
                 <div key={field.name}>
-                  <FieldLabel>{field.name}</FieldLabel>
+                  <FieldLabel>{field.name.toUpperCase()}</FieldLabel>
                   {control}
                 </div>
               )
@@ -170,7 +170,6 @@ class RegistryItem extends Component {
                         {row}
                         </div>
                     </SectionContent>
-
                     <SectionContent grow={0} style={{ width: '25%'}}>   
                         <Centred>                     
                             <div>

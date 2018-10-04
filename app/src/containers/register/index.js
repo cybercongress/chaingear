@@ -180,6 +180,7 @@ class Register extends Component {
                                         ).then(data => {
                                             var _items = items.map((item, index) => {                                        
                                                 var currentEntryBalanceETH = web3.fromWei(data[index][4]).toNumber();
+                                                // debugger
                                                 var owner = data[index][0];
                                                 return {
                                                     ...item, 
