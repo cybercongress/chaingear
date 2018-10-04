@@ -23,7 +23,8 @@ import {
     EditButton,
     DeleteButton,
     UpdateButton,
-    CancelButton
+    CancelButton,
+    IdContainer
 } from '../../components/RegistryItem/';
 
 class RegistryItem extends Component {
@@ -110,7 +111,7 @@ class RegistryItem extends Component {
         let row = fields.map(field => {
             return (
                 <div key={field.name}>
-                    <FieldLabel>{field.name}</FieldLabel>
+                    <FieldLabel>{field.name.toUpperCase()}</FieldLabel>
                     <FieldValue>{item[field.name].toString()}</FieldValue>
                 </div>
             );
@@ -163,7 +164,9 @@ class RegistryItem extends Component {
                 </ButtonContainer>}
                 <Section>
                     <SectionContent grow={2}>
+                        
                         <div style={{ margintTop: 20 }}>
+                            <IdContainer>TOKEN_ID : {item.id}</IdContainer>
                         {row}
                         </div>
                     </SectionContent>
@@ -218,4 +221,3 @@ const RegistryList = ({ children }) => (
 );
 
 export { RegistryItem, RegistryList };
-

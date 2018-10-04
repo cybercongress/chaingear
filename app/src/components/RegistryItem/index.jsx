@@ -44,3 +44,7 @@ export const UpdateButton = (props) => (
 export const CancelButton = (props) => (
     <button {...props} className={styles.cancelButton} />
 );
+
+export const IdContainer = (props) => (
+    <div {...props} className={styles.idcontainer}/>
+);

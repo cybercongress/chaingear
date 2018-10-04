@@ -333,10 +333,11 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
             string,
             string,
             address,
-            address,
+            // address,
             string,
-            uint,
-            address
+            uint256,
+            address,
+            uint256
         )
     {
         uint256 registryIndex = allTokensIndex[_registryID];
@@ -346,10 +347,11 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
             contractAddress.name(),
             contractAddress.symbol(),
             contractAddress,
-            registries[registryIndex].creator,
+            // registries[registryIndex].creator,
             registries[registryIndex].version,
             registries[registryIndex].registrationTimestamp,
-            contractAddress.getAdmin()
+            contractAddress.getAdmin(),
+            contractAddress.totalSupply()
         );
     }
 

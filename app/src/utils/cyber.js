@@ -233,12 +233,13 @@ export const getRegistry = () => {
         name: items[0],
         symbol: items[1],
         address: items[2],
-        creator: items[3],
-        contractVersion: items[4],
-        registrationTimestamp: items[5],
+        // creator: items[3],
+        contractVersion: items[3],
+        registrationTimestamp: items[4],
         //TODO return IPFS hash link to Registry ABI
         ipfsHash: "",
-        admin: items[6]
+        admin: items[5],
+        supply: items[6]
       })
 
     }).then(items => {
@@ -298,12 +299,12 @@ export const getItems2 = (contract, ids, array, mapFn) => {
         const promises = arr.map(id => new Promise((itemResolve, itemReject) => {
             contract[array](id, (e, data) => {
                 if (e) itemReject(e);
-                else itemResolve(data, id);
+                else itemResolve({ data, id });
             });
         }));
         
         Promise.all(promises).then(data => {
-            const results = data.map(mapFn);
+            const results = data.map(item => mapFn(item.data, item.id));
             topResolve(results);
         })
         // debugger
@@ -498,12 +499,12 @@ export const getRegistryData = (address, fields, abi) => {
                 // debugger
             })
             
-            const mapFn = (item, index2) => {
+            const mapFn = (item, id) => {
               const aItem = Array.isArray(item) ? item : [item];
               return fields.reduce((o, field, index) => {
                 o[field.name] = aItem[index]; 
                 return o;
-              },{ __index: index2 })
+            },{ __index: id })
             }
             
             getItems2(entryCore, 'getEntriesIDs', 'readEntry', mapFn)
@@ -531,7 +532,8 @@ export const getRegistryData = (address, fields, abi) => {
                         resolve({
                             fee,
                             items: items,
-                            fields
+                            fields,
+                            entryAddress
                         })
                     })
                 });

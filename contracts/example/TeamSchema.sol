@@ -21,12 +21,12 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
      */
 
     struct Entry {
-        string name;
+        string  name;
         address gitcoin;
         address payouts;
-        string github;
-        string telegram;
-        string keybase;
+        string  github;
+        string  telegram;
+        string  keybase;
     }
     
     mapping(string => bool) internal nameUniqIndex;
@@ -37,11 +37,11 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     
     Entry[] internal entries;
     
-    modifier entryExists(uint256 _entryID){
-        if (_entryID != 0) {
-            require(allEntriesIndex[_entryID] != 0);
+    modifier entryExists(uint256 _entryID) {
+        if (allEntriesIndex[_entryID] == 0) {
+            require(allTokens[0] == _entryID);
         } else {
-            require(allTokens[0] == 0);
+            require(allEntriesIndex[_entryID] != 0);
         }
         _;
     }
@@ -54,20 +54,18 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     
     function() external {} 
     
-    function createEntry(
-        uint256 _entryID
-    )
+    function createEntry(uint256 _entryID)
         external
         onlyOwner
     {
         Entry memory m = (Entry(
         {
-            name: "",
-            gitcoin: address(0),
-            payouts: address(0),
-            github: "",
-            telegram: "",
-            keybase: ""
+            name:       "",
+            gitcoin:    address(0),
+            payouts:    address(0),
+            github:     "",
+            telegram:   "",
+            keybase:    ""
         }));
 
         entries.push(m);
@@ -75,9 +73,7 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
         allTokens.push(_entryID);
     }
     
-    function readEntry(
-        uint256 _entryID
-    )
+    function readEntry(uint256 _entryID)
         external
         view
         entryExists(_entryID)
@@ -105,12 +101,12 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     // Example: you can write methods for earch parameter and update them separetly
     function updateEntry(
         uint256 _entryID,
-        string _name,
+        string  _name,
         address _gitcoin,
         address _payouts,
-        string _github,
-        string _telegram,
-        string _keybase
+        string  _github,
+        string  _telegram,
+        string  _keybase
     )
         external
     {
@@ -134,12 +130,12 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
             
         Entry memory m = (Entry(
         {
-            name: _name,
-            gitcoin: _gitcoin,
-            payouts: _payouts,
-            github: _github,
-            telegram: _telegram,
-            keybase: _keybase
+            name:       _name,
+            gitcoin:    _gitcoin,
+            payouts:    _payouts,
+            github:     _github,
+            telegram:   _telegram,
+            keybase:    _keybase
         }));
         entries[entryIndex] = m;
         
@@ -150,9 +146,7 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
         ));
     }
 
-    function deleteEntry(
-        uint256 _entryID
-    )
+    function deleteEntry(uint256 _entryID)
         external
         onlyOwner
     {

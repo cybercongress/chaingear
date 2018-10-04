@@ -6,6 +6,7 @@ import * as cyber from '../../utils/cyber'
 import { browserHistory } from 'react-router'
 var moment = require('moment');
 
+import {Link as ActionLink } from '../../components/CallToAction/';
 
 import { 
     Container,
@@ -56,9 +57,13 @@ class Register extends Component {
        registrationTimestamp: null,
        entryCreationFee: 0,
        entriesAmount: 0,
-      creator: '',
-      userAccount: null
-
+      admin: '',
+      userAccount: null,
+      
+      contractVersion: null,
+      registryAddress: null,
+      entryCoreAddress: null,
+      ipfsHash: null
     }
   
   componentDidMount() {
@@ -106,11 +111,13 @@ class Register extends Component {
                     this.setState({
                         name: registry.name,
                         registrationTimestamp: registry.registrationTimestamp,
-                        creator: registry.creator,
+                        admin: registry.admin,
+                        contractVersion: registry.contractVersion,
                         // isOwner: userAccount === registry.owner,
                         // owner: registry.owner,
                         tag: '',
-                        web3: web3
+                        web3: web3,
+                        registryAddress: address
                     })
                     const r = cyber.getRegistryByAddress(registry.address);
 
@@ -154,7 +161,7 @@ class Register extends Component {
                         r.getEntryCreationFee((e, data) => {
                             var fee = web3.fromWei(data, 'ether').toNumber();
 
-                            console.log(ipfsHash)
+                            // console.log(ipfsHash)
                             this.setState({
                                 entryCreationFee: fee,
                                 registryContract: r
@@ -163,22 +170,28 @@ class Register extends Component {
                                 .then(({ abi, fields }) => {
                                     
                                     cyber.getRegistryData(address, fields, abi)
-                                    .then(({ fee, items, fields }) => {
+                                    .then(({ fee, items, fields, entryAddress }) => {
                                         Promise.all(
-                                            items.map((i, index) => new Promise((resolve, reject) => r.readEntryMeta(index, (e, data) => resolve(data))))
+                                            items.map((item) => new Promise((resolve, reject) => {
+                                                // console.log(index)
+                                                r.readEntryMeta(item.__index, (e, data) => resolve(data))
+                                            }
+                                            ))
                                         ).then(data => {
-                                            // debugger
                                             var _items = items.map((item, index) => {                                        
                                                 var currentEntryBalanceETH = web3.fromWei(data[index][4]).toNumber();
                                                 var owner = data[index][0];
                                                 return {
                                                     ...item, 
                                                     currentEntryBalanceETH,
-                                                    owner
+                                                    owner,
+                                                    id: item.__index
                                                 }
                                             });
 
                                             this.setState({ 
+                                                ipfsHash,
+                                                entryCoreAddress: entryAddress,
                                                 items: _items, 
                                                 fields, 
                                                 registries,
@@ -318,6 +331,7 @@ class Register extends Component {
             this.componentDidMount();
         })
     }
+    
     getRegistryID = (registries) => {
         const address = this.props.params.adress;
 
@@ -400,12 +414,16 @@ class Register extends Component {
         description,
         registrationTimestamp,
         entryCreationFee,
-        creator,
+        admin,
         total_fee,
         funded,
         tag,
         symbol,
-        owner
+        owner,
+        contractVersion,
+        registryAddress,
+        entryCoreAddress,
+        ipfsHash
     } = this.state;
 
     return (
@@ -415,13 +433,18 @@ class Register extends Component {
           message='loading...'
         />
         <Container>
+        <Section>
+            <div style={{ marginLeft: '15px' }}>
+                <ActionLink to='/'>BACK TO CHAINGEAR</ActionLink>
+            </div>
+        </Section>
         <Section title='General'>
             <SectionContent style={{ width: '25%' }}>
                 <Centred>
                 <BoxTitle>
                     Created:
                 </BoxTitle>
-                <div style={{ height: 100, color: '#7c7c7c' }}>
+                <div style={{ height: 100, color: '#000000' }}>
                     {registrationTimestamp ? moment(new Date(registrationTimestamp.toNumber() * 1000)).format('DD/MM/YYYY mm:hh:ss') : ''}
                 </div>
                 </Centred>
@@ -429,9 +452,9 @@ class Register extends Component {
 
             <SectionContent style={{ width: '25%' }}>
                 <Centred>
-                    <BoxTitle>creator:</BoxTitle>
+                    <BoxTitle>Admin:</BoxTitle>
                     <div style={{ height: 100 }}>
-                        <LinkHash  value={creator} />
+                        <LinkHash  value={admin} />
                     </div>
                 </Centred>
             </SectionContent>
@@ -505,6 +528,11 @@ class Register extends Component {
                   value={symbol}
                 />
                 <FormField
+                  label='fee'
+                  value={entryCreationFee}
+                  onUpdate={isOwner && this.changeEntryCreationFee}
+                />
+                <FormField
                   label='Description'
                   value={description}
                   onUpdate={isOwner && this.changeDescription}
@@ -516,12 +544,23 @@ class Register extends Component {
                 <FormField
                   label='Entries'
                   value={rows.length}
+                />   
+                <FormField
+                  label='Registry Type'
+                  value={contractVersion}
                 />
                 <FormField
-                  label='fee'
-                  value={entryCreationFee}
-                  onUpdate={isOwner && this.changeEntryCreationFee}
-                />                
+                  label='Registry address'
+                  value={registryAddress}
+                />
+                <FormField
+                  label='Entry Core address'
+                  value={entryCoreAddress}
+                />
+                <FormField
+                  label='LINK TO ABI'
+                  value={<a href={`http://localhost:8080/ipfs/${ipfsHash}`} target="_blank">{ipfsHash}</a>}
+                />           
             </SectionContent>        
         </Section>
 

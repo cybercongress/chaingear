@@ -64,11 +64,11 @@ contract ${name} is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     
     mapping(uint256 => uint256) internal allEntriesIndex;
     
-    modifier entryExists(uint256 _entryID){
-        if (_entryID != 0) {
-            require(allEntriesIndex[_entryID] != 0);
+    modifier entryExists(uint256 _entryID) {
+        if (allEntriesIndex[_entryID] == 0) {
+            require(allTokens[0] == _entryID);
         } else {
-            require(allTokens[0] == 0);
+            require(allEntriesIndex[_entryID] != 0);
         }
         _;
     }

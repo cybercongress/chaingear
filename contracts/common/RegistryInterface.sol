@@ -20,6 +20,7 @@ interface RegistryInterface {
     
     function name() external view returns (string);
     function symbol() external view returns (string);
-    function supportsInterface(bytes4) external view returns (bool);
     
+    function supportsInterface(bytes4) external view returns (bool);
+    function totalSupply() public view returns (uint256);
 }

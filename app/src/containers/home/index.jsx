@@ -56,7 +56,13 @@ class Home extends Component {
                         {register.symbol}
                     </td>
                     <td>
-                        <LinkHash value={register.creator} />
+                        {register.supply.toNumber()}
+                    </td>
+                    <td>
+                        {register.contractVersion}
+                    </td>
+                    <td>
+                        <LinkHash value={register.admin} />
                     </td>
                     <td>
                         {moment(new Date(register.registrationTimestamp.toNumber() * 1000)).format(dateFormat)}
@@ -64,7 +70,7 @@ class Home extends Component {
                 </tr>
           ));
 
-    const myRows = registries.filter(x => x.creator === account).map((register, index) => (
+    const myRows = registries.filter(x => x.admin === account).map((register, index) => (
                 <tr key={register.name}>
                     <td>
                         <Link 
@@ -75,7 +81,13 @@ class Home extends Component {
                         {register.symbol}
                     </td>
                     <td>
-                        <LinkHash value={register.creator} />
+                        {register.supply.toNumber()}
+                    </td>
+                    <td>
+                        {register.contractVersion}
+                    </td>
+                    <td>
+                        <LinkHash value={register.admin} />
                     </td>
                     <td>
                         {moment(new Date(register.registrationTimestamp.toNumber() * 1000)).format(dateFormat)}
@@ -106,7 +118,9 @@ class Home extends Component {
                         <tr>
                             <th>Name</th>
                             <th>Symbol</th>
-                            <th>Creator</th>
+                            <th>Entries</th>
+                            <th>Version</th>
+                            <th>Admin</th>
                             <th>Created</th>
                         </tr>
                     </thead>
@@ -134,7 +148,9 @@ class Home extends Component {
                 <tr>
                     <th>Name</th>
                     <th>Symbol</th>
-                    <th>Creator</th>
+                    <th>Entries</th>
+                    <th>Version</th>
+                    <th>Admin</th>
                     <th>Created</th>
                 </tr>
             </thead>

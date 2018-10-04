@@ -37,7 +37,7 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
      *   bytes4(keccak256('getEntriesIDs()'))
      */
     
-    bytes4 public constant InterfaceId_ChaingearRegistry =  0x52dddfe4;
+    bytes4 internal constant InterfaceId_ChaingearRegistry =  0x52dddfe4;
     /*
      * 0x52dddfe4 ===
      *   bytes4(keccak256('createEntry()')) ^
@@ -200,11 +200,12 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
         
         uint256 newTokenID = headTokenID;
         super._mint(msg.sender, newTokenID);
+        headTokenID = headTokenID.add(1);
         
         emit EntryCreated(newTokenID, msg.sender);
-        
+
         entriesStorage.createEntry(newTokenID);
-        headTokenID = headTokenID.add(1);
+        
         return newTokenID;
     }
 
@@ -384,6 +385,7 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
     *  View functions
     */
     
+    // TODO find why out of gas on migration if return all values
     function readEntryMeta(uint256 _entryID)
         external
         view
@@ -396,6 +398,7 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
             uint256
         )
     {
+        require(exists(_entryID) == true);
         uint256 entryIndex = allTokensIndex[_entryID];
         
         return(
@@ -404,7 +407,8 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
             entriesMeta[entryIndex].createdAt,
             entriesMeta[entryIndex].lastUpdateTime,
             entriesMeta[entryIndex].currentWei,
-            entriesMeta[entryIndex].accumulatedWei
+            // entriesMeta[entryIndex].accumulatedWei
+            uint256(0)
         );
     }
     
