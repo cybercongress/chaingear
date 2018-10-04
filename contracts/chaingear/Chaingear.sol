@@ -60,10 +60,7 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
     uint256 internal registryRegistrationFeeWei;
     
     // @dev Interfaces which newly created Registry should support
-    bytes4 internal constant InterfaceId_Registry =         0x52dddfe4; //TODO update registry interface
-    bytes4 internal constant InterfaceId_ERC721 =           0x80ac58cd;
-    bytes4 internal constant InterfaceId_ERC721Metadata =   0x5b5e139f;
-    bytes4 internal constant InterfaceId_ERC721Enumerable = 0x780e9d63;
+    bytes4 internal constant InterfaceId_ChaingearRegistry = 0x52dddfe4; //TODO update registry interface
     
     /*
     *  Events
@@ -212,8 +209,8 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
         onlyOwnerOf(_registryID)
         whenNotPaused
     {        
-        uint256 index = allTokensIndex[_registryID];
-        RegistryInterface registry = registries[index].contractAddress;
+        uint256 registryIndex = allTokensIndex[_registryID];
+        RegistryInterface registry = registries[registryIndex].contractAddress;
         
         string memory registrySymbol = registry.symbol();
         registrySymbolsIndex[registrySymbol] = false;
@@ -222,7 +219,7 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
 
         uint256 lastRegistryIndex = registries.length.sub(1);
         RegistryMeta memory lastRegistry = registries[lastRegistryIndex];
-        registries[index] = lastRegistry;
+        registries[registryIndex] = lastRegistry;
         delete registries[lastRegistryIndex];
         registries.length--;
 
@@ -242,13 +239,13 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
         payable
     {
         require(exists(_registryID) == true);
-        uint256 index = allTokensIndex[_registryID];
+        uint256 registryIndex = allTokensIndex[_registryID];
         
-        uint256 currentWei = registries[index].currentWei.add(msg.value);
-        registries[index].currentWei = currentWei;
+        uint256 currentWei = registries[registryIndex].currentWei.add(msg.value);
+        registries[registryIndex].currentWei = currentWei;
         
-        uint256 accumulatedWei = registries[index].accumulatedWei.add(msg.value);
-        registries[index].accumulatedWei = accumulatedWei;
+        uint256 accumulatedWei = registries[registryIndex].accumulatedWei.add(msg.value);
+        registries[registryIndex].accumulatedWei = accumulatedWei;
 
         emit RegistryFunded(_registryID, msg.sender, msg.value);
         address(chaingearSafe).transfer(msg.value);
@@ -264,17 +261,18 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
         onlyOwnerOf(_registryID)
         whenNotPaused
     {
-        uint256 index = allTokensIndex[_registryID];
+        uint256 registryIndex = allTokensIndex[_registryID];
         
-        uint256 currentWei = registries[index].currentWei;
+        uint256 currentWei = registries[registryIndex].currentWei;
         require(_amount <= currentWei);
         
-        registries[index].currentWei = currentWei.sub(_amount);
+        registries[registryIndex].currentWei = currentWei.sub(_amount);
 
         emit RegistryFundsClaimed(_registryID, msg.sender, _amount);
         chaingearSafe.claim(msg.sender, _amount);
     }
     
+    // @notice whenPaused against front-running
     function updateRegistrationFee(uint256 _newFee)
         external
         onlyOwner
@@ -341,16 +339,16 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
             address
         )
     {
-        uint256 index = allTokensIndex[_registryID];
-        RegistryInterface contractAddress = registries[index].contractAddress;
+        uint256 registryIndex = allTokensIndex[_registryID];
+        RegistryInterface contractAddress = registries[registryIndex].contractAddress;
         
         return (
             contractAddress.name(),
             contractAddress.symbol(),
             contractAddress,
-            registries[index].creator,
-            registries[index].version,
-            registries[index].registrationTimestamp,
+            registries[registryIndex].creator,
+            registries[registryIndex].version,
+            registries[registryIndex].registrationTimestamp,
             contractAddress.getAdmin()
         );
     }
@@ -367,11 +365,11 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
         returns (uint256, uint256)
     {
         require(exists(_registryID) == true);
-        uint256 index = allTokensIndex[_registryID];
+        uint256 registryIndex = allTokensIndex[_registryID];
         
         return (
-            registries[index].currentWei,
-            registries[index].accumulatedWei
+            registries[registryIndex].currentWei,
+            registries[registryIndex].accumulatedWei
         );
     }
     
@@ -429,8 +427,8 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
     {
         super.transferFrom(_from, _to, _tokenId);
         
-        uint256 index = allTokensIndex[_tokenId];
-        RegistryInterface registryAddress = registries[index].contractAddress;
+        uint256 registryIndex = allTokensIndex[_tokenId];
+        RegistryInterface registryAddress = registries[registryIndex].contractAddress;
         registryAddress.transferAdminRights(_to);
     }  
     
@@ -493,7 +491,7 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
             _symbol
         );
         
-        require(registryContract.supportsInterface(InterfaceId_Registry));
+        require(registryContract.supportsInterface(InterfaceId_ChaingearRegistry));
         require(registryContract.supportsInterface(InterfaceId_ERC721));
         require(registryContract.supportsInterface(InterfaceId_ERC721Metadata));
         require(registryContract.supportsInterface(InterfaceId_ERC721Enumerable));

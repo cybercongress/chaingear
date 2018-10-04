@@ -33,7 +33,7 @@ const generateContractCode = (name, fields) => {
     return '""';
   }
 
-// is EntryInterface, Ownable
+//TODO Entry[] public entries move to internal, change source in ABI for extracting fields;
 
   return `
 
@@ -44,12 +44,13 @@ contract ${name} is EntryInterface, Ownable, SupportsInterfaceWithLookup {
 
     using SafeMath for uint256;
     
-    bytes4 internal constant InterfaceId_EntryCore = 0xcf3c2b48;
+    bytes4 internal constant InterfaceId_EntryCore = 0xd4b1117d;
     /**
-     * 0xcf3c2b48 ===
+     * 0xd4b1117d ===
      *   bytes4(keccak256('createEntry(uint256)')) ^
      *   bytes4(keccak256('deleteEntry(uint256)')) ^
-     *   bytes4(keccak256('entriesAmount()'))
+     *   bytes4(keccak256('getEntriesAmount()')) ^
+     *   bytes4(keccak256('getEntriesIDs()'))
      */
 
     struct ${name}Entry {
@@ -80,9 +81,7 @@ contract ${name} is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     
     function() external {}
 
-    function createEntry(
-        uint256 _entryID
-    )
+    function createEntry(uint256 _entryID)
         external
         onlyOwner
     {
@@ -97,9 +96,7 @@ contract ${name} is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     }
     
     
-    function readEntry(
-        uint256 _entryID
-    )
+    function readEntry(uint256 _entryID)
         external
         view
         entryExists(_entryID)
@@ -140,9 +137,7 @@ contract ${name} is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     }
 
 
-    function deleteEntry(
-        uint256 _entryID
-    )
+    function deleteEntry(uint256 _entryID)
         external
         onlyOwner
     {
@@ -171,9 +166,7 @@ contract ${name} is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     function getEntriesAmount()
         external
         view
-        returns (
-            uint256
-        )
+        returns (uint256)
     {
         return entries.length;
     }
@@ -181,9 +174,7 @@ contract ${name} is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     function getEntriesIDs()
         external
         view
-        returns (
-            uint256[]
-        )
+        returns (uint256[])
     {
         return allTokens;
     }

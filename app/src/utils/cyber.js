@@ -292,7 +292,7 @@ export const getItems2 = (contract, ids, array, mapFn) => {
   return new Promise(topResolve => {
     contract[ids]((e, idsNumbers) => {
         // console.log(idsNumbers);
-        debugger
+        // debugger
         const arr = idsNumbers.map(id => id.toNumber());
         console.log(arr, ids, array);
         const promises = arr.map(id => new Promise((itemResolve, itemReject) => {
@@ -386,7 +386,7 @@ export const createRegistry = (name, symbol, fields) => {
             compileRegistry(code, name, compiler)
                 .then(({ abi, bytecode }) => {
                     _bytecode = bytecode
-                    debugger
+                    // debugger
                     return saveInIPFS(abi)
                 })
                 .then(ipfsHash => {
@@ -495,7 +495,7 @@ export const getRegistryData = (address, fields, abi) => {
             const entryCore = _web3.eth.contract(abi).at(entryAddress);
             
             entryCore.getEntriesIDs((e, data) => {
-                debugger
+                // debugger
             })
             
             const mapFn = (item, index2) => {
@@ -555,7 +555,7 @@ export const removeItem = (address, id) => {
             resolve(results.args);
         }) 
         registryContract.deleteEntry(id, (e, d) => {
-            debugger
+            // debugger
         });       
     })
 }

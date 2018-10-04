@@ -27,9 +27,17 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
     /*
     *  Storage
     */
-    bytes4 internal constant InterfaceId_EntryCore = 0xcf3c2b48;
     
-    bytes4 internal constant InterfaceId_Registry =  0x52dddfe4;
+    bytes4 internal constant InterfaceId_EntryCore = 0xd4b1117d;
+    /**
+     * 0xd4b1117d ===
+     *   bytes4(keccak256('createEntry(uint256)')) ^
+     *   bytes4(keccak256('deleteEntry(uint256)')) ^
+     *   bytes4(keccak256('getEntriesAmount()')) ^
+     *   bytes4(keccak256('getEntriesIDs()'))
+     */
+    
+    bytes4 public constant InterfaceId_ChaingearRegistry =  0x52dddfe4;
     /*
      * 0x52dddfe4 ===
      *   bytes4(keccak256('createEntry()')) ^
@@ -147,7 +155,7 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
         public
         payable
     {
-        _registerInterface(InterfaceId_Registry);
+        _registerInterface(InterfaceId_ChaingearRegistry);
         headTokenID = 0;
         entryCreationFee = 0;
         registrySafe = new Safe();
@@ -290,11 +298,11 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
     /**
     * @dev Allows admin set new registration fee, which entry creators should pay
     * @param _fee uint256 In wei which should be payed for creation/registration
+    * @notice whenPaused against front-running, whenNotPaused for now
     */
     function updateEntryCreationFee(uint256 _fee)
         external
         onlyAdmin
-        // whenPaused
         whenNotPaused
     {
         entryCreationFee = _fee;
@@ -388,13 +396,15 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
             uint256
         )
     {
+        uint256 entryIndex = allTokensIndex[_entryID];
+        
         return(
             ownerOf(_entryID),
-            entriesMeta[_entryID].creator,
-            entriesMeta[_entryID].createdAt,
-            entriesMeta[_entryID].lastUpdateTime,
-            entriesMeta[_entryID].currentWei,
-            entriesMeta[_entryID].accumulatedWei
+            entriesMeta[entryIndex].creator,
+            entriesMeta[entryIndex].createdAt,
+            entriesMeta[entryIndex].lastUpdateTime,
+            entriesMeta[entryIndex].currentWei,
+            entriesMeta[entryIndex].accumulatedWei
         );
     }
     

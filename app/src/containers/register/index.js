@@ -167,6 +167,7 @@ class Register extends Component {
                                         Promise.all(
                                             items.map((i, index) => new Promise((resolve, reject) => r.readEntryMeta(index, (e, data) => resolve(data))))
                                         ).then(data => {
+                                            // debugger
                                             var _items = items.map((item, index) => {                                        
                                                 var currentEntryBalanceETH = web3.fromWei(data[index][4]).toNumber();
                                                 var owner = data[index][0];

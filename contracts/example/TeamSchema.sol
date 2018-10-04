@@ -11,12 +11,13 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     
     using SafeMath for uint256;
     
-    bytes4 private constant InterfaceId_EntryCore = 0xcf3c2b48;
+    bytes4 public constant InterfaceId_EntryCore = 0xd4b1117d;
     /**
-     * 0xcf3c2b48 ===
+     * 0xd4b1117d ===
      *   bytes4(keccak256('createEntry(uint256)')) ^
      *   bytes4(keccak256('deleteEntry(uint256)')) ^
-     *   bytes4(keccak256('entriesAmount()'))
+     *   bytes4(keccak256('getEntriesAmount()')) ^
+     *   bytes4(keccak256('getEntriesIDs()'))
      */
 
     struct Entry {
@@ -28,13 +29,13 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
         string keybase;
     }
     
-    mapping(string => bool) private nameUniqIndex;
+    mapping(string => bool) internal nameUniqIndex;
     
-    uint256[] private allTokens;
+    uint256[] internal allTokens;
     
-    mapping(uint256 => uint256) private allEntriesIndex;
+    mapping(uint256 => uint256) internal allEntriesIndex;
     
-    Entry[] private entries;
+    Entry[] internal entries;
     
     modifier entryExists(uint256 _entryID){
         if (_entryID != 0) {
@@ -116,20 +117,20 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
         // checkEntryOwnership will return
         // if [token exist && msg.sender == tokenOwner] true
         // else [checkEntryOwnership will fail] false
-        // require(owner.call(bytes4(keccak256(
-        //     "checkEntryOwnership(uint256, address)")),
-        //     _entryID,
-        //     msg.sender
-        // ));
+        require(owner.call(bytes4(keccak256(
+            "checkEntryOwnership(uint256, address)")),
+            _entryID,
+            msg.sender
+        ));
         
         //before we check that value already exist, then set than name used and unset previous value
-        // require(nameUniqIndex[_name] == false);
-        // nameUniqIndex[_name] = true;
+        require(nameUniqIndex[_name] == false);
+        nameUniqIndex[_name] = true;
         
         uint256 entryIndex = allEntriesIndex[_entryID];
         
-        // string storage lastName = entries[entryIndex].name;
-        // nameUniqIndex[lastName] = false;
+        string storage lastName = entries[entryIndex].name;
+        nameUniqIndex[lastName] = false;
             
         Entry memory m = (Entry(
         {
@@ -143,10 +144,10 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
         entries[entryIndex] = m;
         
         // here we just calling registry with entry ID and set entry updating timestamp
-        // require(owner.call(bytes4(keccak256(
-        //     "updateEntryTimestamp(uint256)")),
-        //     _entryID
-        // ));
+        require(owner.call(bytes4(keccak256(
+            "updateEntryTimestamp(uint256)")),
+            _entryID
+        ));
     }
 
     function deleteEntry(
