@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 import ValueInput from '../../components/ValueInput';
 
-import { 
+import {
     Section,
     SectionContent,
-    Centred 
+    Centred
 } from '../../components/chaingear/'
 
 import QRCode from '../../components/QRCode/';
@@ -36,6 +36,13 @@ class RegistryItem extends Component {
     constructor(props) {
         super(props);
         this._refs = {};
+        const data = {};
+
+        props.fields.forEach(field => {
+            data[field.name] = props.item[field.name].toString()
+        })
+
+        this.state.data = data;
     }
 
     change = (e, name, type) => {
@@ -82,7 +89,7 @@ class RegistryItem extends Component {
             } else {
               args.push(this.state.data[key]);
             }
-            newItem[key] = +this._refs[key].value          
+            newItem[key] = +this._refs[key].value
           }
         }
 
@@ -95,7 +102,7 @@ class RegistryItem extends Component {
     }
 
     render() {
-        const { 
+        const {
             fields, item, index,
             clameRecord,
             removeItemClick,
@@ -120,7 +127,7 @@ class RegistryItem extends Component {
         let button = (
             <div>
                 <EditButton onClick={this.startEdit}>edit</EditButton>
-                <DeleteButton 
+                <DeleteButton
                   disabled={item['currentEntryBalanceETH'] > 0}
                   onClick={() => removeItemClick(index)}
                 >remove</DeleteButton>
@@ -130,7 +137,7 @@ class RegistryItem extends Component {
         if (edit) {
             row = fields.map(field => {
               let control = (
-                <FieldInput 
+                <FieldInput
                   inputRef={el => this._refs[field.name] = el}
                   onChange={e => this.change(e, field.name, field.type)}
                   defaultValue={item[field.name].toString()}
@@ -160,7 +167,7 @@ class RegistryItem extends Component {
         return (
             <div>
                 {isOwner && <ButtonContainer>
-                    {button}                    
+                    {button}
                 </ButtonContainer>}
                 <Section>
                     <SectionContent grow={2}>
@@ -174,15 +181,15 @@ class RegistryItem extends Component {
                         <Centred>                     
                             <div>
                                {/* <QRCode hash='0xb6ee5dcb7b5e63704a9af45bdd9e0e493ff26c81' size={100} />*/}
-                               <TransferForm 
+                               <TransferForm
                                   height={100}
-                                  address={item.owner} 
+                                  address={item.owner}
                                   isOwner={isOwner}
                                   onTransfer={onTransfer}
                                 />
                             </div>
                             <div>
-                                <ValueInput 
+                                <ValueInput
                                   onInter={(value) => fundEntryClick(index, value)}
                                   buttonLable='fund entry'
                                 />
@@ -198,7 +205,7 @@ class RegistryItem extends Component {
                         <Amount>
                             {item['currentEntryBalanceETH']} ETH
                         </Amount>
-                        {isOwner && <ValueInput 
+                        {isOwner && <ValueInput
                             onInter={(value) => clameRecord(index, value)}
                             buttonLable='claim funds'
                             color='second'

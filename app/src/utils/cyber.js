@@ -57,12 +57,20 @@ export const compileRegistry = (code, contractName, compiler) => {
 let getWeb3 = new Promise(function(resolve, reject) {
   // Wait for loading completion to avoid race conditions with web3 injection timing.
   window.addEventListener('load', function() {
-    var results
-    var web3 = window.web3
+    var results;
+    var web3 = window.web3;
     // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+
+
     if (typeof web3 !== 'undefined') {
       // Use Mist/MetaMask's provider.
-      web3 = new Web3(web3.currentProvider)
+
+        if (web3.currentProvider && web3.currentProvider.isMetaMask) {
+            web3 = new Web3(web3.currentProvider);
+        } else {
+            var provider = new Web3.providers.HttpProvider();
+            web3 = new Web3(provider);
+        }
 
       results = {
         web3: web3
@@ -99,8 +107,8 @@ export const estimateNewRegistryGas = (bytecode) => {
           resolve({ web3, gasEstimate })
         }
       })
-    })  
-  })  
+    })
+  })
 }
 
 
@@ -154,7 +162,7 @@ export const deployRegistry = (bytecode, abi, web3, opt) => {
             //     browserHistory.push(`/`);
             //   });
             // })
-          }          
+          }
         }
        });
 
@@ -189,7 +197,7 @@ export const getContract = () => {
       const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks['42'].address);
       // registryContract.setProvider(results.web3.currentProvider);
       results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
-      
+
       return new Promise(resolve => {
         results.web3.eth.getAccounts((e, accounts)=> {
             
@@ -199,10 +207,10 @@ export const getContract = () => {
                     web3: results.web3,
                     accounts
                 })
-            // });    
+            // });
         })
       })
-      
+
         // .then(accounts => {
         //     return registryContract.deployed().then(contract => ({
         //         contract,
@@ -210,13 +218,13 @@ export const getContract = () => {
         //         accounts
         //     }));
         // })
-      
+
     })
 }
 
 export const register = (name, adress, hash) => {
   return new Promise(resolve => {
-    getContract().then(( { contract, web3 }) => {   
+    getContract().then(( { contract, web3 }) => {
       contract.register(name, adress, hash, { from: web3.eth.accounts[0] }).then(x => {
         resolve();
       })
@@ -226,7 +234,7 @@ export const register = (name, adress, hash) => {
 
 export const getRegistry = () => {
     let accounts = null;
-  return getContract().then(( { contract, web3, accounts }) => {  
+  return getContract().then(( { contract, web3, accounts }) => {
     _accounts = accounts;
     return getItems2(contract, 'getRegistriesIDs', 'readRegistry', (items) => {
       return ({
@@ -253,10 +261,10 @@ export const getRegistry = () => {
 
 
 export const removeRegistry = (address, cb) => {
-  return getContract().then(( { contract, web3 }) => {  
+  return getContract().then(( { contract, web3 }) => {
     return contract.deleteRegistry(address, { from: web3.eth.accounts[0] });
   })
-} 
+}
 
 
 export const getFieldByHash = (ipfsHash) => {
@@ -266,7 +274,7 @@ export const getFieldByHash = (ipfsHash) => {
             var abi = JSON.parse(JSON.parse(buf.toString()));
             console.log(abi);
             var fields = abi.filter(x => x.name === 'entries')[0].outputs;
-            fields = fields.filter(x => x.name !== 'metainformation' && x.name !== 'owner' && x.name !== 'lastUpdateTime');        
+            fields = fields.filter(x => x.name !== 'metainformation' && x.name !== 'owner' && x.name !== 'lastUpdateTime');
             resolve({
                 abi,
                 fields
@@ -344,7 +352,7 @@ export const addRegistryItem = (contract, data) => {
           resolve(r);
         }
       });
-      contract.createEntry.apply(contract, args);   
+      contract.createEntry.apply(contract, args);
     });
   })
 }
@@ -393,7 +401,7 @@ export const createRegistry = (name, symbol, fields) => {
                 .then(ipfsHash => {
                     _ipfsHash = ipfsHash;
                     return getContract()
-                    
+
                 })
                 .then(({ contract, web3, accounts }) => {
                     contract.getRegistrationFee(function(e, data) {
@@ -402,20 +410,22 @@ export const createRegistry = (name, symbol, fields) => {
 
 
                         // _ipfsHash,
-                        // _bytecode, 
+                        // _bytecode,
+
                     contract.registerRegistry.sendTransaction(
-                        "V1", [], [], name, symbol, 
-                        { 
+                        "V1",
+                        [accounts[0]], [100], name, symbol,
+                        {
                             value: buildingFee,
-                            //_web3.toWei(0.001, 'ether'), 
-                            // gas: 10000000, 
+                            //_web3.toWei(0.001, 'ether'),
+                            // gas: 10000000,
                             // gasPrice: 15
                             // from: _accounts[0],
                             // Function: function(e, data) {
                             //     debugger
                             // }
                         },
-                        function(e, data, a, b){  
+                        function(e, data, a, b){
                             // debugger
                             if (e) {
                                 reject(e)
@@ -440,13 +450,13 @@ export const createRegistry = (name, symbol, fields) => {
                                             resolve(results.args)
                                         })
                                     }
-                                })                                
+                                })
                             }
                         }
                     )
                     })
                 }).catch(reject)
-        })        
+        })
     })
 }
 
@@ -463,7 +473,7 @@ export const init = () => {
             resolve({
                 contract: _contract,
                 web3: _web3,
-                accounts: _accounts                
+                accounts: _accounts
             })
         } else {
             getContract()
@@ -477,7 +487,7 @@ export const init = () => {
                         web3,
                         accounts
                     })
-                })           
+                })
         }
      })
 }
@@ -491,7 +501,7 @@ export const getRegistryData = (address, fields, abi) => {
         const registry = _web3.eth.contract(Registry.abi).at(address);
 
         registry.getEntriesStorage((e, entryAddress) => {
-            
+
 
             const entryCore = _web3.eth.contract(abi).at(entryAddress);
             
@@ -502,7 +512,7 @@ export const getRegistryData = (address, fields, abi) => {
             const mapFn = (item, id) => {
               const aItem = Array.isArray(item) ? item : [item];
               return fields.reduce((o, field, index) => {
-                o[field.name] = aItem[index]; 
+                o[field.name] = aItem[index];
                 return o;
             },{ __index: id })
             }
@@ -514,8 +524,8 @@ export const getRegistryData = (address, fields, abi) => {
                         var fee = data.toNumber();
 
                         // //return owner for each item by index
-                        // const pp = items.map((d, index) => new Promise((resolve) => 
-                        //         registry.getEntryMeta(index, (e, metaData) => 
+                        // const pp = items.map((d, index) => new Promise((resolve) =>
+                        //         registry.getEntryMeta(index, (e, metaData) =>
                         //             resolve({ ...d, owner: metaData[0]})
                         //         )
                         //     )
@@ -526,9 +536,9 @@ export const getRegistryData = (address, fields, abi) => {
                         //         fee,
                         //         items: newItems,
                         //         fields
-                        //     }) 
+                        //     })
                         // })
-                        
+
                         resolve({
                             fee,
                             items: items,
@@ -555,7 +565,7 @@ export const removeItem = (address, id) => {
         event.watch((e, results) => {
             event.stopWatching();
             resolve(results.args);
-        }) 
+        })
         registryContract.deleteEntry(id, (e, d) => {
             // debugger
         });       
@@ -570,10 +580,10 @@ export const fundEntry = (address, id, value) => {
         event.watch((e, results) => {
             event.stopWatching();
             resolve(results.args);
-        }) 
+        })
         registryContract.fundEntry(id, { value: _web3.toWei(value, 'ether') }, (e, d) => {
 
-        });       
+        });
 
     });
 }
@@ -598,7 +608,7 @@ export const addItem = (address) => {
             })
         })
     });
-        
+
 }
 
 export const getSafeBalance = (address) => {

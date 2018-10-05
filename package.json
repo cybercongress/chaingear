@@ -1,6 +1,6 @@
 {
   "name": "@cybercongress/chaingear",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "app/src/main.jsx",
   "repository": {
     "type": "git",
@@ -72,6 +72,7 @@
     "postcss-loader": "2.0.6",
     "raw-loader": "0.5.1",
     "sass-loader": "6.0.6",
+    "serve": "10.0.1",
     "style-loader": "0.18.2",
     "truffle-contract": "1.1.8",
     "truffle-solidity-loader": "0.0.8",
@@ -83,14 +84,24 @@
   "scripts": {
     "prestart": "yarn install",
     "start": "webpack-dev-server",
-    "build": "webpack --env.NODE_ENV production --env.SOURCE_MAP source-map"
+    "build": "webpack --env.NODE_ENV production --env.SOURCE_MAP source-map",
+    "serve": "serve -s distribution"
   },
   "description": "New Frontier of chaingear, registries grow here!",
   "bugs": {
     "url": "https://github.com/cybercongress/chaingear/issues"
   },
   "homepage": "https://github.com/cybercongress/chaingear",
-  "keywords": [],
+  "keywords": [
+    "chaingear",
+    "web3",
+    "cyb",
+    "browser",
+    "ethereum",
+    "dapp",
+    "ERC721",
+    "registry"
+  ],
   "license": "MIT",
   "directories": {
     "test": "test"

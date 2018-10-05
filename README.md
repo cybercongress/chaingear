@@ -1,11 +1,12 @@
 <h1 align="center">
-  <img src="/logo_chaigear_970.png"
+  <img src="/design/logo/logo_chaigear_970.png"
   alt="chaingear" width="970"></a>
 </h1>
 
 <h3 align="center">The most expensive Registry</h3>
+<h3 align="center">..Metaregistry</h3>
 <div align="center">
-  Chaingear is an Ethereum ERC721-based registries framework.
+  Chaingear is an Ethereum ERC721's registries Dapp.
 </div>
 
 <br />

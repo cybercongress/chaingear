@@ -153,8 +153,10 @@ function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_A
     new CopyWebpackPlugin([
       // Copy directory contents to {output}/
       { from: 'config.js' },
-      { from: 'app/browser-solc.min.js' }
-    ]) 
+      { from: 'app/browser-solc.min.js' },
+      { from: 'icon.png' },
+      { from: 'manifest.json' }
+    ])
   ];
 
   plugins.push(
@@ -165,7 +167,7 @@ function createListOfPlugins({NODE_ENV, APP_VERSION, API_ROOT, CYBER_CHAINGEAR_A
     );
 
   if (NODE_ENV === "production") {
-    
+
 
     plugins.push(
       new UglifyJsPlugin({
