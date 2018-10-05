@@ -35,7 +35,7 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     
     mapping(uint256 => uint256) internal allEntriesIndex;
     
-    Entry[] internal entries;
+    Entry[] public entries;
     
     modifier entryExists(uint256 _entryID) {
         if (allEntriesIndex[_entryID] == 0) {
@@ -177,9 +177,7 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     function getEntriesAmount()
         external
         view
-        returns (
-            uint256
-        )
+        returns (uint256)
     {
         return entries.length;
     }
@@ -187,9 +185,7 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     function getEntriesIDs()
         external
         view
-        returns (
-            uint256[]
-        )
+        returns (uint256[])
     {
         return allTokens;
     }

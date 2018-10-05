@@ -186,7 +186,7 @@ export const getContract = () => {
       // const contract = require('truffle-contract');
       // const registryContract = contract(ChaingearBuild);
       const web3 = results.web3;
-      const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks['5777'].address);
+      const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks['42'].address);
       // registryContract.setProvider(results.web3.currentProvider);
       results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
       

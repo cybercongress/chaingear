@@ -38,7 +38,7 @@ module.exports = function (options = {}) {
       ]
     },
     output: {
-      path: path.resolve(__dirname, "dist"),
+      path: path.resolve(__dirname, "distribution"),
       filename: "[name].js?[hash]",
       publicPath: ""
     },

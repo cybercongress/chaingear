@@ -130,12 +130,12 @@ class NewRegister extends Component {
           <SideBar>
             <Label>Input</Label>
             <Panel title='General Parameters'>
-              <Control title='Name:'><input
+              <Control title='Registry Name:'><input
                 placeholder='name'
                 value={contractName}
                 onChange={this.changeContractName}
               /></Control>
-                <Control title='symbol:'><input
+              <Control title='Token Symbol:'><input
                 ref='symbol'
                 defaultValue=''
                 placeholder='symbol'
@@ -143,11 +143,11 @@ class NewRegister extends Component {
 
             </Panel>
 
-            <Panel title='Record Structure' noPadding={true}>
+            <Panel title='EntryCore Structure' noPadding={true}>
             <FieldsTable>
               <thead>
                 <tr>
-                  <th>Name</th>
+                  <th>Field</th>
                   <th>Type</th>
                   <th></th>
                 </tr>
@@ -185,6 +185,24 @@ class NewRegister extends Component {
           </Content>
 
         </ContainerRegister>
+        <Label>
+            <div>Notes for Registry logic, creation, and deployment:</div>
+            <div>0. With the form below you may code generate your EntryCore contract</div>
+            <div>1. EntryCore consist from your data schema and CRUD operations</div>
+            <div>2. With FIRST transaction you deploy Registry contract from Chaingear, your Registry is ERC721 CHG token</div>
+            <div>3. With SECOND transaction you initialize Registry with EntryCore, each entry is the ERC721 token</div>
+            <div>4. You EntryCore ABI saves in IPFS</div>
+            <div>5. You are Registry/Entry owner == you are Chaingear/Registry token owner</div>
+            <div>6. You may CREATE in Registry => mints token in Registry, initializes empty entry in EntryCore</div>
+            <div>7. You may READ from EntryCore => pass tokenID and get entry</div>
+            <div>8. You may UPDATE (if token owner) in EntryCore => pass tokenID and data to update</div>
+            <div>9. You may DELETE (if token owner) in Registry => pass tokenID, burns token and clears entry in EntryCore</div>
+            <div>10. You may TRANSFER/SELL (if token owner) in Registry => pass tokenID/new owner and asscociated entry goes to new owner</div>
+            <div>11. You as admin may place fee entry-token creation</div>
+            <div>12. You as admin may choose the policy for entry-token creation: [Admin, Whitelist, AllUsers]</div>
+            <div>...</div>
+            <div>42. You may TRANSFER/SELL (if token owner) Registry ownership => transfer/trade your CHG NFT token to the new owner!</div>
+        </Label>
       </div>
     );
   }
