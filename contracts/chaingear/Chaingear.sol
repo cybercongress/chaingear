@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.4.25;
 
 import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
@@ -183,7 +183,7 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
         external
         payable
         whenNotPaused
-        returns (RegistryInterface, uint256)
+        returns (address)
     {
         require(buildersVersion[_version].builderAddress != address(0));
         require(registryRegistrationFeeWei == msg.value);
@@ -212,7 +212,7 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
         uint256 registryIndex = allTokensIndex[_registryID];
         RegistryInterface registry = registries[registryIndex].contractAddress;
         
-        string memory registrySymbol = registry.symbol();
+        string memory registrySymbol = ERC721(registry).symbol();
         registrySymbolsIndex[registrySymbol] = false;
         
         require(registry.getSafeBalance() == 0);
@@ -344,14 +344,14 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
         RegistryInterface contractAddress = registries[registryIndex].contractAddress;
         
         return (
-            contractAddress.name(),
-            contractAddress.symbol(),
+            ERC721(contractAddress).name(),
+            ERC721(contractAddress).symbol(),
             contractAddress,
             // registries[registryIndex].creator,
             registries[registryIndex].version,
             registries[registryIndex].registrationTimestamp,
             contractAddress.getAdmin(),
-            contractAddress.totalSupply()
+            ERC721(contractAddress).totalSupply()
         );
     }
 
@@ -483,7 +483,7 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
         string      _symbol
     )
         private
-        returns (RegistryInterface, uint256)
+        returns (address)
     {   
         RegistryBuilderInterface builder = buildersVersion[_version].builderAddress;
         RegistryInterface registryContract = builder.deployRegistry(
@@ -527,7 +527,7 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
         
         registryContract.transferAdminRights(msg.sender);
 
-        return (registryContract, newTokenID);
+        return (address(registryContract));
     }
     
 }

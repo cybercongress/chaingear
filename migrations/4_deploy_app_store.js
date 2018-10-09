@@ -1,6 +1,6 @@
 var Chaingear = artifacts.require("Chaingear");
 var Registry = artifacts.require("Registry");
-var TeamSchema = artifacts.require("AppsSchema");
+var AppsSchema = artifacts.require("AppsSchema");
 var IPFS = require('ipfs-api');
 
 
@@ -23,8 +23,8 @@ module.exports = async function(deployer, network, accounts) {
         "V1",
         BENEFICIARIES,
         SHARES,
-        "cyber•Search Team",
-        "CST",
+        "CYB Application Store",
+        "APP",
         { value: BUILDING_FEE }
     )
     console.log(">>>>>", registryAddress);
@@ -32,12 +32,12 @@ module.exports = async function(deployer, network, accounts) {
         "V1",
         BENEFICIARIES,
         SHARES,
-        "cyber•Search Team",
-        "CST",
+        "CYB Application Store",
+        "APP",
         { value: BUILDING_FEE }
     )
-    const hash = await ipfs.files.add(Buffer.from(JSON.stringify(TeamSchema.abi)));
+    const hash = await ipfs.files.add(Buffer.from(JSON.stringify(AppsSchema.abi)));
     const registry = await Registry.at(registryAddress);
-    await registry.initializeRegistry(hash[0].path, TeamSchema.bytecode);
+    await registry.initializeRegistry(hash[0].path, AppsSchema.bytecode);
     
 };

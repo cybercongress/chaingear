@@ -1,11 +1,14 @@
 var Chaingear = artifacts.require("./chaingear/Chaingear.sol");
 var RegistryBuilder = artifacts.require("./builder/RegistryBuilder.sol");
+var Registry = artifacts.require("./registry/Registry.sol");
+var IPFS = require('ipfs-api');
 
-module.exports = function(deployer, network, accounts) {
+
+module.exports = async function(deployer, network, accounts) {
+    
+    const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
     
     let BUILDING_FEE, BENEFICIARIES, SHARES
-    var builder
-    
     
     if (network == 'kovan') {
         BUILDING_FEE = 0
@@ -17,24 +20,22 @@ module.exports = function(deployer, network, accounts) {
         SHARES = [50, 50]
     }
     
-    deployer.deploy(
+    const builder = await RegistryBuilder.deployed();
+    const chaingear = await deployer.deploy(
         Chaingear,
         "CHAINGEAR",
         "CHG",
         BENEFICIARIES,
         SHARES,
-        "Most Expensive Registry",
+        "The Most Expensive Registry",
         BUILDING_FEE
-    ).then(() => RegistryBuilder.deployed())
-    .then(_builder => {
-        builder = _builder,
-        builder.setChaingearAddress(Chaingear.address)
-    })
-    .then(() => Chaingear.deployed())
-    .then(chaingear => chaingear.addRegistryBuilderVersion(
+    );
+    await builder.setChaingearAddress(chaingear.address);
+    const hash = await ipfs.files.add(Buffer.from(JSON.stringify(Registry.abi)));
+    await chaingear.addRegistryBuilderVersion(
         "V1",
         builder.address,
-        "IPFS_HASH_1",
-        "Test version of Registry"
-    ))
+        hash[0].path,
+        "Basic version of registry"
+    );
 };

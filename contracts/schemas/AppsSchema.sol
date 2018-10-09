@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.4.25;
 
 import "../common/EntryInterface.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
@@ -7,7 +7,7 @@ import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLooku
 
 
 //This is Example of EntryCore (Team's data scheme)
-contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
+contract AppsSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
     
     using SafeMath for uint256;
     

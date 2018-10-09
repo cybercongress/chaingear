@@ -194,7 +194,7 @@ export const getContract = () => {
       // const contract = require('truffle-contract');
       // const registryContract = contract(ChaingearBuild);
       const web3 = results.web3;
-      const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks['42'].address);
+      const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks['5777'].address);
       // registryContract.setProvider(results.web3.currentProvider);
       results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
 
@@ -271,7 +271,7 @@ export const getFieldByHash = (ipfsHash) => {
     return new Promise(resolve => {
         ipfs.get(ipfsHash, (err, files) => {
             const buf = files[0].content;
-            var abi = JSON.parse(JSON.parse(buf.toString()));
+            var abi = JSON.parse(buf.toString());
             console.log(abi);
             var fields = abi.filter(x => x.name === 'entries')[0].outputs;
             fields = fields.filter(x => x.name !== 'metainformation' && x.name !== 'owner' && x.name !== 'lastUpdateTime');

@@ -1,4 +1,4 @@
-pragma solidity 0.4.24;
+pragma solidity 0.4.25;
 
 // File: openzeppelin-solidity/contracts/token/ERC721/ERC721Basic.sol
 

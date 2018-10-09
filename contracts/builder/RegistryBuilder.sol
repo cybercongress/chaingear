@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.4.25;
 
 import "../registry/Registry.sol";
 import "../common/RegistryInterface.sol";

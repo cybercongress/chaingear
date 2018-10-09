@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.4.25;
 
 
 interface RegistryInterface {
@@ -18,9 +18,9 @@ interface RegistryInterface {
     function getAdmin() external view returns (address);
     function getSafeBalance() external view returns (uint256);
     
-    function name() external view returns (string);
-    function symbol() external view returns (string);
+    // function name() external view returns (string);
+    // function symbol() external view returns (string);
     
     function supportsInterface(bytes4) external view returns (bool);
-    function totalSupply() public view returns (uint256);
+    // function totalSupply() public view returns (uint256);
 }

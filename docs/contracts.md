@@ -55,7 +55,7 @@ contract EntryInterface {
 
 #### Example EntryCore (with example custom structure and required functions)
 ```js
-pragma solidity 0.4.24;
+pragma solidity 0.4.25;
 
 import "../common/EntryInterface.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
