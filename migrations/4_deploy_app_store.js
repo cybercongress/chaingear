@@ -19,7 +19,7 @@ module.exports = async function(deployer, network, accounts) {
     }    
     
     const chaingear = await Chaingear.deployed();
-    const registryAddress = await chaingear.registerRegistry.call(
+    const results = await chaingear.registerRegistry.call(
         "V1",
         BENEFICIARIES,
         SHARES,
@@ -27,7 +27,7 @@ module.exports = async function(deployer, network, accounts) {
         "APP",
         { value: BUILDING_FEE }
     )
-    console.log(">>>>>", registryAddress);
+    const registryAddress = results[0]
     await chaingear.registerRegistry(
         "V1",
         BENEFICIARIES,

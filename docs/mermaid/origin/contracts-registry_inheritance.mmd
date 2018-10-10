@@ -1,10 +1,16 @@
 graph TD;
     RegistryInterface-->Registry;
-    Chaingeareable-->Registry;
-    ERC721Token/OZ-->Registry;
-    SplitPaymentChangeable-->Registry;
-    SplitPayment/OZ-->SplitPaymentChangeable;
-    RegistryPermissionControl-->Chaingeareable;
-
-    Pausable/OZ-->RegistryPermissionControl;
-    Ownable/OZ-->SplitPaymentChangeable;
+    OpenZeppelin.ERC721Token-->Registry;
+    OpenZeppelin.SplitPayment-->Registry;
+    RegistryPermissionControl-->Registry;
+    OpenZeppelin.SupportsInterfaceWithLookup-->Registry;
+    OpenZeppelin.ERC165-->OpenZeppelin.SupportsInterfaceWithLookup;
+    OpenZeppelin.Pausable-->RegistryPermissionControl;
+    OpenZeppelin.Ownable-->RegistryPermissionControl;
+    OpenZeppelin.Ownable-->OpenZeppelin.SplitPayment;
+    OpenZeppelin.ERC721-->OpenZeppelin.ERC721Token;
+    OpenZeppelin.ERC721BasicToken-->OpenZeppelin.ERC721Token;
+    OpenZeppelin.ERC721Basic-->OpenZeppelin.ERC721BasicToken;
+    OpenZeppelin.ERC721Basic-->OpenZeppelin.ERC721;
+    OpenZeppelin.ERC721Enumerable-->OpenZeppelin.ERC721;
+    OpenZeppelin.ERC721Metadata-->OpenZeppelin.ERC721;

@@ -11,13 +11,13 @@ sequenceDiagram
     A->>+R: initializeRegistry
     R-->>EC: constructor
     R-->>-A: returns EntryCore address
-    Note over A, EC: User sets smart-contract with their custom data structure for registry, should <br/> implements RegistryInterface
+    Note over A, EC: User sets smart-contract with their custom data structure for registry, should <br/> implements EntryInterface
     
     A->>R: updateCreateEntryPermissionGroup
-    Note over A, R: Available OnlyAdmin, Whitelist*, AllUsers groups
+    Note over A, R: Available OnlyAdmin, Whitelist, AllUsers groups
     
     U1->>+R: createEntry
-    R-->>EC: createEntry
+    R-->>EC: createEntry ID=0
     R-->721: mint ID=0
     R-->>-U1: returns entryID ID=0
     Note over U1, R: Creates new entry object and entry meta and initializes <br/> associated token
@@ -28,29 +28,27 @@ sequenceDiagram
     U1->>+EC: entryInfo ID=0
     EC-->>-U1: returns entry information
     
-    U1->>+R: transferFrom ID=0
-    R-->721: removeTokenFrom ID=0
-    R-->-721: addTokenTo ID=0
+    U1->>+R: transferFrom FROM=U1 TO=U2 ID=0 
+    R-->721: removeTokenFrom ID=0 FROM=U1
+    R-->-721: addTokenTo ID=0 TO=U2
     Note over U1, R: Transfer token to new owner
     
     U2->>EC: updateEntry ID=0
-    Note over U2, EC: User 1 as token owner sets fields of Entry object <br/> with provided EntryID
+    Note over U2, EC: User 2 as token owner sets fields of Entry object <br/> with provided EntryID
     
     U3->>+EC: entryInfo ID=0
     EC-->>-U3: returns entry information
     
     U3->>+R: fundEntry ID=0 funds=1ETH
-    R-->>EC: updateEntryFund +1ETH
     R-->>-S: transfer =1ETH
-    Note over S, U2: Funded ETHs goes to Registry Safe contract, ETHs adds to balance and amount for accounting stores in Registry.
+    Note over S, U2: Funded ETHs goes to Registry Safe contract, ETHs adds to balance and amount for accounting stores in Registry in EntryMeta.
     
     U2->>+R: claimEntryFund claim=1ETH
-    R-->>EC: claimEntryFund -1ETH
     R-->>S: claim =1ETH
     S-->>-U2: transfer =1ETH
-    Note over S, U2: Owner of Entry claim funds and registry checks balance for existing claim amount, subtract them,  calls Registry Safe <br/> to send funds to User.
+    Note over S, U2: Owner of Entry claim funds and registry checks balance for existing claim amount, subtract them in Entry meta, calls Registry Safe <br/> to send funds to User.
     
-    U2->>+R: deleteEntry
+    U2->>+R: deleteEntry ID=0
     R-->721: burn ID=0
-    R-->>-EC: deleteEntry
+    R-->>-EC: deleteEntry ID=0
     Note over R, U2: Registry burns associated to Entry NFT token and deletes entry object in EntryCore.

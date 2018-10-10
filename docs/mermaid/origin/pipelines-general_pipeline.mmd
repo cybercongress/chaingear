@@ -2,7 +2,7 @@ sequenceDiagram
     participant C721 as Chaingear's ERC721
     participant O as Chaingear Owner
     participant CC as Chaingear Contract
-    participant RC as Registry Creator
+    participant RC as Registry Builder
     participant U1 as User 1
     participant R as Registry
     participant S as Registry Safe
@@ -19,7 +19,7 @@ sequenceDiagram
     Note over O, RC: Set chaingear's contract address as builder
     
     O->>CC: addRegistryCreatorVersion
-    Note over O, CC: Add RegistryCreator address to inner </br> library of creators
+    Note over O, CC: Add RegistryBuilder address to list/ </br> registry of builders
     
     U1->>+CC: registerRegistry
     CC-->>RC: create
@@ -33,7 +33,7 @@ sequenceDiagram
     U1->>+R: initializeRegistry
     R-->>EC: constructor
     R-->>-U1: returns EntryCore address
-    Note over U1, EC: User sets smart-contract with their custom data structure for registry, should implements </br> RegistryInterface
+    Note over U1, EC: User sets smart-contract with their custom data structure for registry, should implements </br> EntryInterface
     
     U1->>+R: createEntry
     R-->>EC: createEntry
