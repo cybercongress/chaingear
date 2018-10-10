@@ -5,8 +5,8 @@ import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
-import "../common/EntryInterface.sol";
-import "../common/RegistryInterface.sol";
+import "../common/IEntry.sol";
+import "../common/IRegistry.sol";
 import "../common/Safe.sol";
 import "./RegistryPermissionControl.sol";
 
@@ -20,7 +20,7 @@ import "./RegistryPermissionControl.sol";
 * @dev Entry creation/deletion/update permission are tokenized
 * @notice not recommend to use before release!
 */
-contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
+contract Registry is IRegistry, RegistryPermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
     
@@ -76,7 +76,7 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
     bytes32[] internal registryTags;
     
     // @dev address of EntryCore contract, which specifies data schema and CRUD operations
-    EntryInterface internal entriesStorage;
+    IEntry internal entriesStorage;
     
     // @dev link to IPFS hash to ABI of EntryCore contract
     string internal linkToABIEntryCore;
@@ -420,6 +420,15 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
         return allTokens;
     }
     
+    function getIndexByID(uint256 _entryID)
+        external
+        view
+        returns (uint256)
+    {
+        require(exists(_entryID) == true);
+        return allTokensIndex[_entryID];
+    }
+    
     /**
     * @dev Allows to check which amount fee needed for entry creation/registration
     * @return uint256 Current amount in wei needed for registration
@@ -562,8 +571,10 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
         }
     
         require(deployedAddress != address(0));
-        entriesStorage = EntryInterface(deployedAddress);
-        // require(entriesStorage.supportsInterface(InterfaceId_EntryCore));
+        // TODO fix this, failes on migrations...
+        // SupportsInterfaceWithLookup support = SupportsInterfaceWithLookup(deployedAddress);
+        // require(support.supportsInterface(InterfaceId_EntryCore));
+        entriesStorage = IEntry(deployedAddress);
     
         linkToABIEntryCore = _linkToABI;
         registryInitStatus = true;

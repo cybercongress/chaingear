@@ -5,45 +5,29 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 
+interface IRegistrySchema {
+    function getIndexByID(uint256) external view returns (uint256);
+    function getEntriesIDs() external view returns (uint256[]);
+}
 
 //This is Example of EntryCore (Team's data scheme)
-contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
+contract NodesSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     
     using SafeMath for uint256;
     
-    bytes4 public constant InterfaceId_EntryCore = 0xd4b1117d;
-    /**
-     * 0xd4b1117d ===
-     *   bytes4(keccak256('createEntry(uint256)')) ^
-     *   bytes4(keccak256('deleteEntry(uint256)')) ^
-     *   bytes4(keccak256('getEntriesAmount()')) ^
-     *   bytes4(keccak256('getEntriesIDs()'))
-     */
+    bytes4 internal constant InterfaceId_EntryCore = 0xd4b1117d;
 
     struct Entry {
-        string name;
-        string manifest;
-        string extension;
-        string content;
-        string logo;
+        string  name;
+        string  addressNode;
+        string  services;
+        string  description;
+        string  operating;
     }
     
     mapping(string => bool) internal nameUniqIndex;
     
-    uint256[] internal allTokens;
-    
-    mapping(uint256 => uint256) internal allEntriesIndex;
-    
     Entry[] public entries;
-    
-    modifier entryExists(uint256 _entryID) {
-        if (allEntriesIndex[_entryID] == 0) {
-            require(allTokens[0] == _entryID);
-        } else {
-            require(allEntriesIndex[_entryID] != 0);
-        }
-        _;
-    }
     
     constructor()
         public
@@ -59,22 +43,22 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     {
         Entry memory m = (Entry(
         {
-            name:       "",
-            manifest:   "",
-            extension:  "",
-            content:    "",
-            logo:       ""
+            name:           "",
+            addressNode:    "",
+            services:       "",
+            description:    "",
+            operating:      ""
+    
         }));
 
         entries.push(m);
-        allEntriesIndex[_entryID] = allTokens.length;
-        allTokens.push(_entryID);
+        // allEntriesIndex[_entryID] = allTokens.length;
+        // allTokens.push(_entryID);
     }
     
     function readEntry(uint256 _entryID)
         external
         view
-        entryExists(_entryID)
         returns (
             string,
             string,
@@ -83,14 +67,13 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
             string
         )
     {
-        uint256 entryIndex = allEntriesIndex[_entryID];
-        
+        uint256 entryIndex = IRegistrySchema(owner).getIndexByID(_entryID);
         return (
             entries[entryIndex].name,
-            entries[entryIndex].manifest,
-            entries[entryIndex].extension,
-            entries[entryIndex].content,
-            entries[entryIndex].logo
+            entries[entryIndex].addressNode,
+            entries[entryIndex].services,
+            entries[entryIndex].description,
+            entries[entryIndex].operating
         );
     }
 
@@ -98,10 +81,10 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     function updateEntry(
         uint256 _entryID,
         string  _name,
-        string  _manifest,
-        string  _extension,
-        string  _content,
-        string  _logo
+        string _addressNode,
+        string _services,
+        string _description,
+        string _operating
     )
         external
     {
@@ -118,18 +101,18 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
         require(nameUniqIndex[_name] == false);
         nameUniqIndex[_name] = true;
         
-        uint256 entryIndex = allEntriesIndex[_entryID];
+        uint256 entryIndex = IRegistrySchema(owner).getIndexByID(_entryID);
         
         string storage lastName = entries[entryIndex].name;
         nameUniqIndex[lastName] = false;
             
         Entry memory m = (Entry(
         {
-            name:       _name,
-            manifest:   _manifest,
-            extension:  _extension,
-            content:    _content,
-            logo:       _logo
+            name:           _name,
+            addressNode:    _addressNode,
+            services:       _services,
+            description:    _description,
+            operating:      _operating
         }));
         entries[entryIndex] = m;
         
@@ -144,28 +127,18 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
         external
         onlyOwner
     {
-        require(entries.length > 0);
-        uint256 entryIndex = allEntriesIndex[_entryID];
+        require(entries.length > uint256(0));
+        uint256 entryIndex = IRegistrySchema(owner).getIndexByID(_entryID);
         
         string storage nameToClear = entries[entryIndex].name;
         nameUniqIndex[nameToClear] = false;
         
-        uint256 lastTokenIndex = allTokens.length.sub(1);
+        uint256 lastEntryIndex = entries.length.sub(1);
+        Entry memory lastEntry = entries[lastEntryIndex];
         
-        uint256 lastToken = allTokens[lastTokenIndex];
-        Entry memory lastEntry = entries[lastTokenIndex];
-        
-        allTokens[entryIndex] = lastToken;
         entries[entryIndex] = lastEntry;
-        
-        allTokens[lastTokenIndex] = 0;
-        delete entries[lastTokenIndex];
-        
-        allTokens.length--;
+        delete entries[lastEntryIndex];
         entries.length--;
-        
-        allEntriesIndex[_entryID] = 0;
-        allEntriesIndex[lastTokenIndex] = entryIndex;
     }
 
     function getEntriesAmount()
@@ -181,7 +154,7 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
         view
         returns (uint256[])
     {
-        return allTokens;
+        return IRegistrySchema(owner).getEntriesIDs();
     }
     
 }

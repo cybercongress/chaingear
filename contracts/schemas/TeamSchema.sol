@@ -1,13 +1,13 @@
 pragma solidity 0.4.25;
 
-import "../common/EntryInterface.sol";
+import "../common/IEntry.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 
 
 //This is Example of EntryCore (Team's data scheme)
-contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
+contract TeamSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     
     using SafeMath for uint256;
     

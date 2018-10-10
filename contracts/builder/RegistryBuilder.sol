@@ -1,8 +1,8 @@
 pragma solidity 0.4.25;
 
 import "../registry/Registry.sol";
-import "../common/RegistryInterface.sol";
-import "./RegistryBuilderInterface.sol";
+import "../common/IRegistry.sol";
+import "../common/IRegistryBuilder.sol";
 
 
 /**
@@ -12,7 +12,7 @@ import "./RegistryBuilderInterface.sol";
 * @dev with codebase which imported and deployed with this fabric
 * @notice not recommend to use before release!
 */
-contract RegistryBuilder is RegistryBuilderInterface {
+contract RegistryBuilder is IRegistryBuilder {
 
 	/*
 	* @dev Storage
@@ -61,11 +61,11 @@ contract RegistryBuilder is RegistryBuilderInterface {
         string _symbol
     )
         external
-        returns (RegistryInterface)
+        returns (IRegistry)
     {
         require(msg.sender == chaingear);
 
-        RegistryInterface registryContract = new Registry(
+        IRegistry registryContract = new Registry(
             _benefitiaries,
             _shares,
             _name,
