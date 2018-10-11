@@ -13,7 +13,8 @@ contract("Chaingear", (accounts) => {
 
     const PermissionTypeEntries = {
         OnlyAdmin: 0,
-        AllUsers: 1
+        Whitelist: 1,
+        AllUsers: 2
     }
 
     let chaingear, builder

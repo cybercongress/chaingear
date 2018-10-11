@@ -32,6 +32,7 @@ module.exports = async function(deployer, network, accounts) {
     );
     await builder.setChaingearAddress(chaingear.address);
     const hash = await ipfs.files.add(Buffer.from(JSON.stringify(Registry.abi)));
+    console.log("CID to ABI in IPFS >>>> ", hash[0].path);
     await chaingear.addRegistryBuilderVersion(
         "V1",
         builder.address,

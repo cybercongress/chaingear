@@ -28,6 +28,7 @@ module.exports = async function(deployer, network, accounts) {
         { value: BUILDING_FEE }
     )
     const registryAddress = results[0]
+    console.log("Registry Address >>>> ", registryAddress);
     await chaingear.registerRegistry(
         "V1",
         BENEFICIARIES,
@@ -37,6 +38,7 @@ module.exports = async function(deployer, network, accounts) {
         { value: BUILDING_FEE }
     )
     const hash = await ipfs.files.add(Buffer.from(JSON.stringify(NodesSchema.abi)));
+    console.log("CID to ABI in IPFS >>>> ", hash[0].path);
     const registry = await Registry.at(registryAddress);
     await registry.initializeRegistry(hash[0].path, NodesSchema.bytecode);
     

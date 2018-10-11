@@ -1,6 +1,6 @@
 var Chaingear = artifacts.require("Chaingear");
 var Registry = artifacts.require("Registry");
-var AppsSchema = artifacts.require("AppsSchema");
+var PortsSchema = artifacts.require("PortsSchema");
 var IPFS = require('ipfs-api');
 
 
@@ -23,8 +23,8 @@ module.exports = async function(deployer, network, accounts) {
         "V1",
         BENEFICIARIES,
         SHARES,
-        "CYB Application Store",
-        "APP",
+        "Ports Registry",
+        "PORT",
         { value: BUILDING_FEE }
     )
     const registryAddress = results[0]
@@ -33,13 +33,13 @@ module.exports = async function(deployer, network, accounts) {
         "V1",
         BENEFICIARIES,
         SHARES,
-        "CYB Application Store",
-        "APP",
+        "Ports Registry",
+        "PORT",
         { value: BUILDING_FEE }
     )
-    const hash = await ipfs.files.add(Buffer.from(JSON.stringify(AppsSchema.abi)));
+    const hash = await ipfs.files.add(Buffer.from(JSON.stringify(PortsSchema.abi)));
     console.log("CID to ABI in IPFS >>>> ", hash[0].path);
     const registry = await Registry.at(registryAddress);
-    await registry.initializeRegistry(hash[0].path, AppsSchema.bytecode);
+    await registry.initializeRegistry(hash[0].path, PortsSchema.bytecode);
     
 };

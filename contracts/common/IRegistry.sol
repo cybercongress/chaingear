@@ -30,5 +30,5 @@ interface IRegistry {
     function getAdmin() external view returns (address);
     function getSafeBalance() external view returns (uint256);
     
-    function getIndexByID(uint256) external view returns (uint256);
+    // function getIndexByID(uint256) external view returns (uint256);
 }

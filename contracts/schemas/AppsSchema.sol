@@ -6,7 +6,6 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 
 
-//This is Example of EntryCore (Team's data scheme)
 contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     
     using SafeMath for uint256;
