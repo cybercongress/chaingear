@@ -1,0 +1,32 @@
+The highest cost is associated with creation of a registry
+
+This is mainly caused by amount of code in all inherited classes. 
+One can significantly lower gas consumption by implementing Library Pattern
+Very good example can be found here 
+
+https://medium.com/aragondec/library-driven-development-in-solidity-2bebcaf88736
+
+Refactoring will not bi trivial due to very monolitic implementation of Registry
+It is higly recommended to split this contract into several independent contracts. 
+
+Also not all tests work correctly, causing problems with tests of part of functionality
+
+  1) Contract: Only Registry can CruD with EntryCore
+       "before all" hook: prepare suite:
+     Uncaught Error: Attempting to run transaction which calls a contract functi
+on, but recipient address 0x39b2f893894edcc3e694ed4c09384a8d505d2160 is not a co
+ntract address
+
+  2) Contract: Only Registry can CruD with EntryCore
+       "before all" hook:
+     TypeError: Cannot read property 'call' of undefined
+     
+  3) Contract: Registry Update Settings Tests
+       "before all" hook: prepare suite:
+     Uncaught Error: Attempting to run transaction which calls a contract function, 
+     but recipient address 0x39b2f893894edcc3e694ed4c09384a8d505d2160 is not a contract address
+     
+    4) Contract: Registry Update Settings Tests
+       "after all" hook:
+     Uncaught TypeError: Cannot read property 'currentRetry' of undefined
+
