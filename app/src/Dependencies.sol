@@ -2,13 +2,13 @@ pragma solidity 0.4.25;
 
 // File: contracts/common/EntryInterface.sol
 
-contract EntryInterface {
+contract IEntry {
 
     function createEntry(uint256) external;
     function deleteEntry(uint256) external;
     function getEntriesAmount() external view returns (uint256);
     function getEntriesIDs() external view returns (uint256[]);
-    // function supportsInterface(bytes4) external view returns (bool);
+    function supportsInterface(bytes4) external view returns (bool);
 }
 
 // File: openzeppelin-solidity/contracts/math/SafeMath.sol

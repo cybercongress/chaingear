@@ -12,7 +12,7 @@ import Web3 from 'web3'
 
 export const loadCompiler = (cb) => {
   setTimeout(() => {
-      window.BrowserSolc.loadVersion("soljson-v0.4.24+commit.e67f0147.js", cb);
+      window.BrowserSolc.loadVersion("soljson-v0.4.25+commit.59dbf8f1.js", cb);
   }, 20);
 }
 

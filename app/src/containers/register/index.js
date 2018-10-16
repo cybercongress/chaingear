@@ -347,7 +347,7 @@ class Register extends Component {
     }
     fundRegistry = (amount) => {
         var registryID = this.getRegistryID();
-        alert(registryID);
+        // alert(registryID);
         cyber.getContract().then(({ contract, web3 }) => {
             contract.fundRegistry(registryID, { value: web3.toWei(amount, 'ether') }, (e, data) => {
                 this.componentDidMount();
@@ -529,8 +529,8 @@ class Register extends Component {
                   value={symbol}
                 />
                 <FormField
-                  label='fee'
-                  value={entryCreationFee}
+                  label='Fee'
+                  value={entryCreationFee.toString() + " ETH"}
                   onUpdate={isOwner && this.changeEntryCreationFee}
                 />
                 <FormField
@@ -539,7 +539,7 @@ class Register extends Component {
                   onUpdate={isOwner && this.changeDescription}
                 />
                 <FormField
-                  label='Tag'
+                  label='Tags'
                   value={tag}
                 />
                 <FormField

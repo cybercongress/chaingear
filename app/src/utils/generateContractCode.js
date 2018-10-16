@@ -40,7 +40,7 @@ const generateContractCode = (name, fields) => {
 import './Dependencies.sol';
 
 
-contract ${name} is EntryInterface, Ownable, SupportsInterfaceWithLookup {
+contract ${name} is IEntry, Ownable, SupportsInterfaceWithLookup {
 
     using SafeMath for uint256;
     

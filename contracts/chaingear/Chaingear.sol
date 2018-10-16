@@ -256,7 +256,7 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
     * @param _registryID uint256 Registry-token ID
     * @param _amount uint256 Amount which admin of registry claims
     */
-    function claimEntryFunds(uint256 _registryID, uint256 _amount)
+    function claimRegistryFunds(uint256 _registryID, uint256 _amount)
         external
         onlyOwnerOf(_registryID)
         whenNotPaused
