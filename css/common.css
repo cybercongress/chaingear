@@ -1,6 +1,6 @@
 .path-3 {
     width: 100%;
-    height: auto;
+    height: 59vw;
     background-image: linear-gradient(124deg, #0909b4, #5d1c88);
     position: relative;
   }
@@ -264,6 +264,7 @@ font-size: 30px;
 
 .overview {
   position: relative;
+  margin-top: 5vw;
 }
 
 .overview-section {
@@ -365,7 +366,7 @@ font-size: 30px;
 
 .footer {
   width: 100%;
-  height: 10vw;
+  height: 100%;
   background-image: linear-gradient(98deg, #0909b4, #581b8b 55%, #5d1c88 77%, #5d1c88);
 }
 
@@ -377,9 +378,11 @@ font-size: 30px;
 }
 
 .license {
+  position: relative;
   font-family: 'Play', sans-serif;
   color: #ffffff;
-  padding-top: 69px;
+  padding-bottom: 3vw;
+  font-size: 0.7vw;
 }
 
 .license-xs {
@@ -394,7 +397,7 @@ font-size: 30px;
   top: 47.5vw;
 	width: 0;
 	height: 0;
-	border-bottom: 9vw solid white;
+	border-bottom: 12vw solid white;
 	border-left: 18vw solid transparent;
 }
 
@@ -404,30 +407,27 @@ font-size: 30px;
   top: 47.5vw;
 	width: 0;
 	height: 0;
-	border-bottom: 9vw solid white;
+	border-bottom: 12vw solid white;
 	border-right: 18vw solid transparent;
 }
 
 #triangle-topleft {
-  position: absolute;
-  left: 0vw;
-  bottom: -60vw;
+  margin-top: -0.1vw;
 	width: 0;
 	height: 0;
-	border-top: 11vw solid red;
-	border-right: 26vw solid transparent;
-  z-index: 1;
+	border-top: 4vw solid white;
+	border-right: 25vw solid transparent;
+  z-index: 0;
 }
 
 #triangle-topright {
-  position: absolute;
-  right: 0vw;
-  bottom: -62vw;
+  margin-top: -4.1vw;
+  margin-left: 22vw;
 	width: 0;
 	height: 0;
-	border-top: 13vw solid red;
+	border-top: 8vw solid white;
 	border-left: 78vw solid transparent;
-  z-index: 1;
+  z-index: 0;
 
 }
 
