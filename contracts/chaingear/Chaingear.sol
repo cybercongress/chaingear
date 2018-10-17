@@ -142,10 +142,10 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
     * @notice Only owner of metaregistry/chaingear allowed to add builders
     */
     function addRegistryBuilderVersion(
-        string                   _version, 
-        IRegistryBuilder _builderAddress,
-        string                   _linkToABI,
-        string                   _description
+        string              _version, 
+        IRegistryBuilder    _builderAddress,
+        string              _linkToABI,
+        string              _description
     )
         external
         onlyOwner

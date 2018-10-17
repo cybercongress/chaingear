@@ -48,7 +48,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     
         const entriesStorageAddress = await registry.getEntriesStorage()
-        const entryCore = EntryCore.at(entriesStorageAddress)
+        const entryCore = await EntryCore.at(entriesStorageAddress)
     
         await entryCore.updateEntry(
             newEntryId,
@@ -64,7 +64,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
         ).should.be.fulfilled
     
         const entryInfo = await entryCore.readEntry(newEntryId.toNumber())
-        const name = entryInfo.toString().split(',')[0]
+        const name = entryInfo[0]
         name.should.be.equal("VALERY LITVIN")
     })
     
@@ -73,7 +73,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     
         const entriesStorageAddress = await registry.getEntriesStorage()
-        const entryCore = EntryCore.at(entriesStorageAddress)
+        const entryCore = await EntryCore.at(entriesStorageAddress)
     
         await entryCore.updateEntry(
             newEntryId,
@@ -92,7 +92,7 @@ contract("All Users Registry Entry Crud Tests", (accounts) => {
         await registry.containsEntry(newEntryId).should.eventually.equal(true)
     
         const entriesStorageAddress = await registry.getEntriesStorage()
-        const entryCore = EntryCore.at(entriesStorageAddress)
+        const entryCore = await EntryCore.at(entriesStorageAddress)
     
         await entryCore.updateEntry(
             newEntryId,

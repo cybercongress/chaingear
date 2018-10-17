@@ -1,6 +1,6 @@
 const BigNumber = require("bignumber.js")
 const chai = require("chai")
-chai.use(require("chai-bignumber")())
+// chai.use(require("chai-bignumber")())
 chai.use(require("chai-as-promised"))
 chai.should()
 
@@ -44,10 +44,10 @@ contract("Chaingear", (accounts) => {
     
     const REGISTRY_FUNDING = 10000000
     
-    const REGISTRY_CREATOR_1_VERSION = "V1.0"
+    const REGISTRY_CREATOR_1_VERSION = "V1"
     const NOT_EXISTED_REGISTRY_CREATOR_VERSION = "HELLO_WORLD"
     const REGISTRY_CREATOR_1_ABI_LINK = "Q_IPFS_HASH_1"
-    const REGISTRY_CREATOR_1_DESCRIPTION = "TEST_REGISTRY_VERSION_1"
+    const REGISTRY_CREATOR_1_DESCRIPTION = "Basic version of registry"
     
     const REGISTRY_NAME_1 = "EXPENSIVE_REGISTRY_1"
     const REGISTRY_SYMBOL_1 = "EXP_1"
@@ -87,6 +87,21 @@ contract("Chaingear", (accounts) => {
 
     it("#1/1 should allow anyone to build new registry with right fee and existed registry version", async () => {
         
+        const entriesAmountBefore = await chaingear.totalSupply()
+        
+        const result = await chaingear.registerRegistry.call(
+            REGISTRY_CREATOR_1_VERSION,
+            [RANDOM_CREATOR_1],
+            [100],
+            REGISTRY_NAME_1,
+            REGISTRY_SYMBOL_1,
+            { 
+                from: RANDOM_CREATOR_1,
+                value: CREATION_FEE_EQUAL,
+                gas: CREATION_GAS 
+            }
+        );
+        
         await chaingear.registerRegistry(
             REGISTRY_CREATOR_1_VERSION,
             [RANDOM_CREATOR_1],
@@ -98,21 +113,20 @@ contract("Chaingear", (accounts) => {
                 value: CREATION_FEE_EQUAL,
                 gas: CREATION_GAS 
             }
-        )
+        );
     
-        const entriesAmount = await chaingear.totalSupply()
-    
-        const registryInfo = await chaingear.readRegistry(entriesAmount-1)
-        const createdAddress = registryInfo.toString().split(',')[2]
+        const entriesAmountAfter = await chaingear.totalSupply()
+        entriesAmountAfter.toNumber().should.equal(entriesAmountBefore.toNumber()+1);
         
-        const registry = Registry.at(createdAddress)
+        const registry = await Registry.at(result[0])
+        
         const name = await registry.name()
         name.should.equal(REGISTRY_NAME_1)
         
         const registryAdmin = await registry.getAdmin()
-        const registryOwner = await registry.owner()
-        
         registryAdmin.should.equal(RANDOM_CREATOR_1)
+        
+        const registryOwner = await registry.owner()
         registryOwner.should.equal(chaingear.address)
         
     })
@@ -156,9 +170,9 @@ contract("Chaingear", (accounts) => {
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
         
         const registryInfo = await chaingear.readRegistry(ID.toNumber())
-        const registryAddress = registryInfo.toString().split(',')[2]
+        const registryAddress = registryInfo[2]
 
-        const registry = Registry.at(registryAddress)
+        const registry = await Registry.at(registryAddress)
         
         const registryInitializedBefore = await registry.getRegistryInitStatus();
         const registryEntryBaseBefore = await registry.getEntriesStorage()
@@ -180,12 +194,12 @@ contract("Chaingear", (accounts) => {
     
     it("#3/3 should allow registry_admin/token_owner to transfer tokenized ownership", async () => {
         
-        var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
+        const ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_1, 0)
         
         const registryInfo = await chaingear.readRegistry(ID.toNumber())
-        const registryAddress = registryInfo.toString().split(',')[2]
+        const registryAddress = await registryInfo[2]
         
-        const registry = Registry.at(registryAddress)
+        const registry = await Registry.at(registryAddress)
         
         await chaingear.transferFrom(
             RANDOM_CREATOR_1,
@@ -209,9 +223,9 @@ contract("Chaingear", (accounts) => {
         var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
         
         const registryInfo = await chaingear.readRegistry(ID.toNumber())
-        const registryAddress = registryInfo.toString().split(',')[2]
+        const registryAddress = registryInfo[2]
         
-        const registry = Registry.at(registryAddress)
+        const registry = await Registry.at(registryAddress)
         
         await chaingear.transferFrom(
             RANDOM_CREATOR_2,
@@ -226,9 +240,11 @@ contract("Chaingear", (accounts) => {
     
     it("#4/1 should allow chaingear owner to add registry version to chaingear", async () => {
         
+        const builder = await RegistryBuilder.new({ from: CHAINGEAR_OWNER })
+        
         await chaingear.addRegistryBuilderVersion(
             "V_TEST",
-            "0x2",
+            builder.address,
             "Q_HASH",
             "THIS_IS_IT",
             {
@@ -247,26 +263,17 @@ contract("Chaingear", (accounts) => {
             "0x2",
             "Q_HASH",
             "THIS_IS_IT",
-            {
-                from: UNKNOWN 
-            }).should.be.rejected
+            {from: UNKNOWN}
+        ).should.be.rejected
     
     })
     
     it("#5/1 should allow chaingear owner to change registration fee", async () => {
-        await chaingear.pause({
-            from: CHAINGEAR_OWNER
-        })
+        await chaingear.pause({from: CHAINGEAR_OWNER})
         
-        await chaingear.updateRegistrationFee(
-            7777777,
-            {
-                from: CHAINGEAR_OWNER 
-            })
+        await chaingear.updateRegistrationFee(7777777, {from: CHAINGEAR_OWNER})
 
-        await chaingear.unpause({
-            from: CHAINGEAR_OWNER
-        })
+        await chaingear.unpause({from: CHAINGEAR_OWNER})
         
         const newRegistrationFee = await chaingear.getRegistrationFee()
         newRegistrationFee.toNumber().should.be.equal(7777777)
@@ -274,11 +281,8 @@ contract("Chaingear", (accounts) => {
     
     it("#5/2 should not allow unknown to change registration fee", async () => {
         
-        await chaingear.updateRegistrationFee(
-            88888888,
-            {
-                from: UNKNOWN 
-            }).should.be.rejected
+        await chaingear.updateRegistrationFee(88888888, {from: UNKNOWN}
+        ).should.be.rejected
     
     })
     
@@ -286,9 +290,8 @@ contract("Chaingear", (accounts) => {
         
         await chaingear.updateDescription(
             "MOST AWESOME REGISTRY",
-            {
-                from: CHAINGEAR_OWNER 
-            })
+            {from: CHAINGEAR_OWNER}
+        )
         
         const newChaingearDescription = await chaingear.getDescription()
         newChaingearDescription.should.be.equal("MOST AWESOME REGISTRY")
@@ -298,9 +301,8 @@ contract("Chaingear", (accounts) => {
         
         await chaingear.updateDescription(
             "MOST USELESSNESS REGISTRY",
-            {
-                from: UNKNOWN 
-            }).should.be.rejected
+            {from: UNKNOWN}
+        ).should.be.rejected
     
     })
     
@@ -328,12 +330,9 @@ contract("Chaingear", (accounts) => {
     
         const registrySafeBalanceBefore = await chaingear.getSafeBalance()
     
-        var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
-        
-        // var balance = await chaingear.registryBalanceInfo(ID.toNumber())
-        // console.log(balance.toString().split(',')[0])
+        const ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
     
-        await chaingear.claimEntryFunds(
+        await chaingear.claimRegistryFunds(
             ID.toNumber(),
             REGISTRY_FUNDING,
             {
@@ -348,9 +347,9 @@ contract("Chaingear", (accounts) => {
     
     it("#7/3 non-holder of registry token should not can claim tokens from registry balance", async () => {
     
-        var ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
+        const ID = await chaingear.tokenOfOwnerByIndex(RANDOM_CREATOR_2, 0)
         
-        await chaingear.claimEntryFunds(
+        await chaingear.claimRegistryFunds(
             ID.toNumber(),
             REGISTRY_FUNDING,
             {

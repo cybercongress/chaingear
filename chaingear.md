@@ -30,6 +30,7 @@ In this paper, we are describing Chaingear and their PoC - novel Ethereum's open
 4. Registry admin may set policy for entry creation: {OnlyAdmin, Whitelist, AllUsers}.
 5. Registry admin may set a fee for the entry-token creation and claim fees.
 6. Registry admin may set description and tags (up to 16) for a registry. 
+7. Registry supports multiple beneficiaries which may claim collected fees proportional to their shares.
 
 #### Tokenization
 0. Token **Create** operation initialize empty entry.
@@ -59,6 +60,7 @@ In this paper, we are describing Chaingear and their PoC - novel Ethereum's open
 3. Registries may have their unique code base as an extension to the basic registry.
 4. Registry-token may be transferred, sold/traded alongside with their right adminship.
 5. Chaingear have fees for registry creation.
+6. Chaingear have benefitiaries which may claim collected fees proportional to their shares.
 
 ### Registry Builder
 0. Registry Builder is a smart contract which acts as fabrics and deploys registries.
@@ -114,16 +116,16 @@ In this paper, we are describing Chaingear and their PoC - novel Ethereum's open
 
 ### Gas
 #### Chaingear
-| Operation          | Gas | Cost (10gwei) |
+| Operation          | Gas | ~Cost, $ |
 |--------------------|-----|---------------|
-| registerRegistry   |     |               |
-| transferFrom       |     |               |
-| fundRegistry       |     |               |
-| claimRegistryFunds |     |               |
+| registerRegistry   |3.3kk|7              |
+| transferFrom       |105k |0.2            |
+| fundRegistry       |75k  |0.15           |
+| claimRegistryFunds |27k  |0.05           |
 | unregisterRegistry |     |               |
 
 #### Registry
-| Operation          | Gas | Cost (10gwei) |
+| Operation          | Gas | ~Cost, $ |
 |--------------------|-----|---------------|
 | initializeRegistry |     |               |
 | createEntry (C)    |     |               |
@@ -133,12 +135,12 @@ In this paper, we are describing Chaingear and their PoC - novel Ethereum's open
 | unregisterRegistry |     |               |
 
 #### Schema
-| Operation          | Gas | Cost (10gwei) |
+| Operation          | Gas | ~Cost, $ |
 |--------------------|-----|---------------|
 | readEntry (R)      |     |               |
 | updateEntry (U)    |     |               |
 
-##### Note: 1 ETH ~ 220$, gas estimation for basic schema
+##### Note: 1 ETH ~ 220$, Gas Cost = 10 Gwei, gas estimation for basic schema
 
 ### Proof of Concept
 #### Notes on release 0.2.5
@@ -159,6 +161,7 @@ In this paper, we are describing Chaingear and their PoC - novel Ethereum's open
 3. cyber•Search team's members
 4. Robots registry
 5. Features registry of your project 
+6. Exchange Traded Funds..
 ...
 
 #### Limitations

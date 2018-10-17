@@ -1,6 +1,6 @@
 const chai = require("chai")
 chai.should()
-chai.use(require("chai-bignumber")())
+// chai.use(require("chai-bignumber")())
 chai.use(require("chai-as-promised"))
 
 const {createTestRegistry, CreateEntryPermissionGroup} = require('./RegistryUtils')
@@ -28,7 +28,7 @@ contract("Registry Update Settings Tests", (accounts) => {
         const newFee = registry.fee * 2
         await registry.updateEntryCreationFee(REGISTRY_ADMIN_ACCOUNT, newFee).should.be.fulfilled
         const result = await registry.contract.getEntryCreationFee()
-        result.should.bignumber.equal(newFee)
+        result.toNumber().should.equal(newFee)
     })
 
     it("#1/2 should not allow registry owner to set entry creation fee", async () => {
@@ -36,7 +36,7 @@ contract("Registry Update Settings Tests", (accounts) => {
         const newFee = registry.fee * 2
         await registry.updateEntryCreationFee(REGISTRY_OWNER_ACCOUNT, newFee).should.be.rejected
         const result = await registry.contract.getEntryCreationFee()
-        result.should.bignumber.equal(registry.fee)
+        result.toNumber().should.equal(registry.fee)
     })
     
     it("#1/3 should not allow unknown account to set entry creation fee", async () => {
@@ -44,7 +44,7 @@ contract("Registry Update Settings Tests", (accounts) => {
         const newFee = registry.fee * 2
         await registry.updateEntryCreationFee(UNKNOWN_ACCOUNT, newFee).should.be.rejected
         const result = await registry.contract.getEntryCreationFee()
-        result.should.bignumber.equal(registry.fee)
+        result.toNumber().should.equal(registry.fee)
     })
     
     /*  -------------------------------- Registry Description ----------------------  */

@@ -360,7 +360,7 @@ class Register extends Component {
     clameRegistry = (amount) => {
         var registryID = this.getRegistryID();
         cyber.getContract().then(({ contract, web3 }) => {
-            contract.claimEntryFunds(registryID, web3.toWei(amount, 'ether'), (e, data) => {
+            contract.claimRegistryFunds(registryID, web3.toWei(amount, 'ether'), (e, data) => {
                 this.componentDidMount();
             })
         })
