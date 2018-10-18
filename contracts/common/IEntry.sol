@@ -11,8 +11,6 @@ interface IEntry {
      *   bytes4(keccak256('getEntriesIDs()'))
      */
 
-    function createEntry(uint256) external;
+    function createEntry() external;
     function deleteEntry(uint256) external;
-    function getEntriesAmount() external view returns (uint256);
-    function getEntriesIDs() external view returns (uint256[]);
 }

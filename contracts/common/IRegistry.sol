@@ -18,17 +18,9 @@ interface IRegistry {
     function createEntry() external payable returns (uint256);
     function deleteEntry(uint256) external;
     
-    // function getEntriesStorage() external view returns (address);
-    // function getEntriesIDs() external view returns (uint256[]);
-    
-    function fundEntry(uint256) external payable;
-    function claimEntryFunds(uint256, uint256) external;
-    
     function transferAdminRights(address) external;
     function transferOwnership(address) external;
     
     function getAdmin() external view returns (address);
     function getSafeBalance() external view returns (uint256);
-    
-    // function getIndexByID(uint256) external view returns (uint256);
 }

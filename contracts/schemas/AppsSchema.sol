@@ -1,6 +1,7 @@
 pragma solidity 0.4.25;
 
 import "../common/IEntry.sol";
+import "../common/IConnector.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
@@ -29,30 +30,20 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     
     mapping(string => bool) internal nameUniqIndex;
     
-    uint256[] internal allTokens;
-    
-    mapping(uint256 => uint256) internal allEntriesIndex;
-    
     Entry[] public entries;
     
-    modifier entryExists(uint256 _entryID) {
-        if (allEntriesIndex[_entryID] == 0) {
-            require(allTokens[0] == _entryID);
-        } else {
-            require(allEntriesIndex[_entryID] != 0);
-        }
-        _;
-    }
+    IConnector internal registry;
     
     constructor()
         public
     {
         _registerInterface(InterfaceId_EntryCore);
+        registry = IConnector(owner);
     }
     
     function() external {} 
     
-    function createEntry(uint256 _entryID)
+    function createEntry(uint256)
         external
         onlyOwner
     {
@@ -66,14 +57,11 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
         }));
 
         entries.push(m);
-        allEntriesIndex[_entryID] = allTokens.length;
-        allTokens.push(_entryID);
     }
     
     function readEntry(uint256 _entryID)
         external
         view
-        entryExists(_entryID)
         returns (
             string,
             string,
@@ -82,8 +70,7 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
             string
         )
     {
-        uint256 entryIndex = allEntriesIndex[_entryID];
-        
+        uint256 entryIndex = registry.getIndexByID(_entryID);
         return (
             entries[entryIndex].name,
             entries[entryIndex].manifest,
@@ -104,23 +91,16 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     )
         external
     {
-        // checkEntryOwnership will return
-        // if [token exist && msg.sender == tokenOwner] true
-        // else [checkEntryOwnership will fail] false
-        require(owner.call(bytes4(keccak256(
-            "checkEntryOwnership(uint256, address)")),
-            _entryID,
-            msg.sender
-        ));
+        registry.auth(_entryID, msg.sender);
         
-        //before we check that value already exist, then set than name used and unset previous value
-        require(nameUniqIndex[_name] == false);
-        nameUniqIndex[_name] = true;
+        uint256 entryIndex = registry.getIndexByID(_entryID);
         
-        uint256 entryIndex = allEntriesIndex[_entryID];
-        
-        string storage lastName = entries[entryIndex].name;
-        nameUniqIndex[lastName] = false;
+        string storage last = entries[entryIndex].name;
+        if (last != _name) {
+            require(nameUniqIndex[_name] == false);
+            nameUniqIndex[_name] = true;
+            nameUniqIndex[last] = false;
+        }
             
         Entry memory m = (Entry(
         {
@@ -131,56 +111,33 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
             logo:       _logo
         }));
         entries[entryIndex] = m;
-        
-        // here we just calling registry with entry ID and set entry updating timestamp
-        require(owner.call(bytes4(keccak256(
-            "updateEntryTimestamp(uint256)")),
-            _entryID
-        ));
     }
 
-    function deleteEntry(uint256 _entryID)
+    function deleteEntry(uint256 _entryIndex)
         external
         onlyOwner
     {
-        require(entries.length > 0);
-        uint256 entryIndex = allEntriesIndex[_entryID];
+        require(entries.length > uint256(0));
         
-        string storage nameToClear = entries[entryIndex].name;
+        string storage nameToClear = entries[_entryIndex].name;
         nameUniqIndex[nameToClear] = false;
         
-        uint256 lastTokenIndex = allTokens.length.sub(1);
+        uint256 lastEntryIndex = entries.length.sub(1);
+        Entry memory lastEntry = entries[lastEntryIndex];
         
-        uint256 lastToken = allTokens[lastTokenIndex];
-        Entry memory lastEntry = entries[lastTokenIndex];
-        
-        allTokens[entryIndex] = lastToken;
-        entries[entryIndex] = lastEntry;
-        
-        allTokens[lastTokenIndex] = 0;
-        delete entries[lastTokenIndex];
-        
-        allTokens.length--;
+        entries[_entryIndex] = lastEntry;
+        delete entries[lastEntryIndex];
         entries.length--;
-        
-        allEntriesIndex[_entryID] = 0;
-        allEntriesIndex[lastTokenIndex] = entryIndex;
     }
 
-    function getEntriesAmount()
-        external
-        view
-        returns (uint256)
-    {
-        return entries.length;
-    }
     
+    // will be removed, now for frontend support
     function getEntriesIDs()
         external
         view
         returns (uint256[])
     {
-        return allTokens;
+        return registry.getEntriesIDs();
     }
     
 }

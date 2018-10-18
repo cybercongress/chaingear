@@ -1,16 +1,11 @@
 pragma solidity 0.4.25;
 
 import "../common/IEntry.sol";
+import "../common/IConnector.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 
-interface IRegistrySchema {
-    function getIndexByID(uint256) external view returns (uint256);
-    function getEntriesIDs() external view returns (uint256[]);
-    function updateEntryTimestamp(uint256) external;
-    function checkEntryOwnership(uint256, address) external;
-}
 
 contract NodesSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     
@@ -30,15 +25,18 @@ contract NodesSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     
     Entry[] public entries;
     
+    IConnector internal registry;
+    
     constructor()
         public
     {
         _registerInterface(InterfaceId_EntryCore);
+        registry = IConnector(owner);
     }
     
     function() external {} 
     
-    function createEntry(uint256 _entryID)
+    function createEntry()
         external
         onlyOwner
     {
@@ -53,8 +51,6 @@ contract NodesSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
         }));
 
         entries.push(m);
-        // allEntriesIndex[_entryID] = allTokens.length;
-        // allTokens.push(_entryID);
     }
     
     function readEntry(uint256 _entryID)
@@ -68,7 +64,7 @@ contract NodesSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
             string
         )
     {
-        uint256 entryIndex = IRegistrySchema(owner).getIndexByID(_entryID);
+        uint256 entryIndex = registry.getIndexByID(_entryID);
         return (
             entries[entryIndex].name,
             entries[entryIndex].addressNode,
@@ -89,16 +85,16 @@ contract NodesSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     )
         external
     {
-        IRegistrySchema(owner).checkEntryOwnership(_entryID, msg.sender);
+        registry.auth(_entryID, msg.sender);
         
-        //before we check that value already exist, then set than name used and unset previous value
-        require(nameUniqIndex[_name] == false);
-        nameUniqIndex[_name] = true;
+        uint256 entryIndex = registry.getIndexByID(_entryID);
         
-        uint256 entryIndex = IRegistrySchema(owner).getIndexByID(_entryID);
-        
-        string storage lastName = entries[entryIndex].name;
-        nameUniqIndex[lastName] = false;
+        string storage last = entries[entryIndex].name;
+        if (last != _name) {
+            require(nameUniqIndex[_name] == false);
+            nameUniqIndex[_name] = true;
+            nameUniqIndex[last] = false;
+        }
             
         Entry memory m = (Entry(
         {
@@ -109,42 +105,32 @@ contract NodesSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
             operating:      _operating
         }));
         entries[entryIndex] = m;
-        
-        IRegistrySchema(owner).updateEntryTimestamp(_entryID);
     }
 
-    function deleteEntry(uint256 _entryID)
+    function deleteEntry(uint256 _entryIndex)
         external
         onlyOwner
     {
         require(entries.length > uint256(0));
-        uint256 entryIndex = IRegistrySchema(owner).getIndexByID(_entryID);
         
-        string storage nameToClear = entries[entryIndex].name;
+        string storage nameToClear = entries[_entryIndex].name;
         nameUniqIndex[nameToClear] = false;
         
         uint256 lastEntryIndex = entries.length.sub(1);
         Entry memory lastEntry = entries[lastEntryIndex];
         
-        entries[entryIndex] = lastEntry;
+        entries[_entryIndex] = lastEntry;
         delete entries[lastEntryIndex];
         entries.length--;
     }
-
-    function getEntriesAmount()
-        external
-        view
-        returns (uint256)
-    {
-        return entries.length;
-    }
     
+    // will be removed, now for frontend support
     function getEntriesIDs()
         external
         view
         returns (uint256[])
     {
-        return IRegistrySchema(owner).getEntriesIDs();
+        return registry.getEntriesIDs();
     }
     
 }

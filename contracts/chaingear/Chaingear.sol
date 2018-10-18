@@ -272,7 +272,7 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
         chaingearSafe.claim(msg.sender, _amount);
     }
     
-    // @notice whenPaused against front-running
+    // whenPaused against front-running
     function updateRegistrationFee(uint256 _newFee)
         external
         onlyOwner

@@ -7,6 +7,7 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 import "../common/IEntry.sol";
 import "../common/IRegistry.sol";
+import "../common/IConnector.sol";
 import "../common/Safe.sol";
 import "./RegistryPermissionControl.sol";
 
@@ -20,7 +21,7 @@ import "./RegistryPermissionControl.sol";
 * @dev Entry creation/deletion/update permission are tokenized
 * @notice not recommend to use before release!
 */
-contract Registry is IRegistry, RegistryPermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
+contract Registry is IRegistry, IConnector, RegistryPermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
     
@@ -29,27 +30,8 @@ contract Registry is IRegistry, RegistryPermissionControl, SupportsInterfaceWith
     */
     
     bytes4 internal constant InterfaceId_EntryCore = 0xd4b1117d;
-    /**
-     * 0xd4b1117d ===
-     *   bytes4(keccak256('createEntry(uint256)')) ^
-     *   bytes4(keccak256('deleteEntry(uint256)')) ^
-     *   bytes4(keccak256('getEntriesAmount()')) ^
-     *   bytes4(keccak256('getEntriesIDs()'))
-     */
     
-    bytes4 internal constant InterfaceId_ChaingearRegistry =  0x52dddfe4;
-    /*
-     * 0x52dddfe4 ===
-     *   bytes4(keccak256('createEntry()')) ^
-     *   bytes4(keccak256('deleteEntry(uint256)')) ^
-     *   bytes4(keccak256('fundEntry(uint256)')) ^
-     *   bytes4(keccak256('claimEntryFunds(uint256, uint256)')) ^
-     *   bytes4(keccak256('transferAdminRights(address)')) ^
-     *   bytes4(keccak256('transferOwnership(address)')) ^
-     *   bytes4(keccak256('getAdmin()')) ^
-     *   bytes4(keccak256('getSafeBalance()'))
-     */
-    
+    bytes4 internal constant InterfaceId_ChaingearRegistry =  0x52dddfe4;    
 
     // @dev Metadata of entry, holds ownership data and funding info
     struct EntryMeta {
@@ -204,7 +186,7 @@ contract Registry is IRegistry, RegistryPermissionControl, SupportsInterfaceWith
         
         emit EntryCreated(newTokenID, msg.sender);
 
-        entriesStorage.createEntry(newTokenID);
+        entriesStorage.createEntry();
         
         return newTokenID;
     }
@@ -232,7 +214,7 @@ contract Registry is IRegistry, RegistryPermissionControl, SupportsInterfaceWith
         super._burn(msg.sender, _entryID);
         emit EntryDeleted(_entryID, msg.sender);
         
-        entriesStorage.deleteEntry(_entryID);
+        entriesStorage.deleteEntry(entryIndex);
     }
 
     /**
@@ -287,13 +269,14 @@ contract Registry is IRegistry, RegistryPermissionControl, SupportsInterfaceWith
     * @param _entryID uint256 Entry-token ID
     * @notice Can be (should be) called only by EntryCore (updateEntry)
     */
-    function updateEntryTimestamp(uint256 _entryID) 
-        external
-    {
-        require(entriesStorage == msg.sender);
-        /* solium-disable-next-line security/no-block-members */
-        entriesMeta[_entryID].lastUpdateTime = block.timestamp;
-    }
+    // function updateEntryTimestamp(uint256 _entryID) 
+    //     external
+    // {
+    //     require(entriesStorage == msg.sender);
+    //     uint256 entryIndex = allTokensIndex[_entryID];
+    //     /* solium-disable-next-line security/no-block-members */
+    //     entriesMeta[_entryID].lastUpdateTime = block.timestamp;
+    // }
     
     
     /**
@@ -446,11 +429,20 @@ contract Registry is IRegistry, RegistryPermissionControl, SupportsInterfaceWith
     * @param _entryID uint256 Entry-token ID
     * @param _caller address of caller which trying to update entry throught EntryCore 
     */
-    function checkEntryOwnership(uint256 _entryID, address _caller)
+    // function checkEntryOwnership(uint256 _entryID, address _caller)
+    //     external
+    //     view
+    // {
+    //     require(ownerOf(_entryID) == _caller);
+    // }
+    
+    function auth(uint256 _entryID, address _caller)
         external
-        view
     {
+        require(msg.sender == address(entriesStorage));
         require(ownerOf(_entryID) == _caller);
+        uint256 entryIndex = allTokensIndex[_entryID];
+        entriesMeta[entryIndex].lastUpdateTime = block.timestamp;
     }
     
     /**
