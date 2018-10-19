@@ -1,6 +1,7 @@
-body {
+html, body {
   font-family: Play;
   width: 100vw;
+  overflow-x: hidden;
 }
 
 .path-3 {
@@ -54,6 +55,14 @@ body {
 
 .wave-bg {
 position: relative;
+}
+
+.wave-bg-xs {
+  position: absolute;
+  top: 7vh;
+  width: 300vw;
+  margin-left: -100vw;
+  overflow-x: hidden;
 }
 
 .wave-bg-img {
@@ -280,8 +289,8 @@ margin-top: 70vh;
 }
 
 .feat-img-xs {
-  width: 70vw;
-  margin-top: 3vh;;
+  width: 65vw;
+  margin-top: 12vh;;
 }
 
 .text-descr {
@@ -309,19 +318,18 @@ margin-top: 70vh;
 }
 
 .text-h-xs {
-  margin-top: -2vw;
-  font-weight: bold;
+  margin-top: 6vw;
   font-style: normal;
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
   color: #69a4f6;
-  font-size: 10vw;
+  font-size: 6vw;
   }
 
 .text-descr-xs {
   margin-bottom: 4vh;
-  font-size: 5vw;
+  font-size: 3vw;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -351,8 +359,8 @@ margin-top: 70vh;
 }
 
 .overview-section-xs {
-  padding-top: 12vh;
-  font-size: 15vw;
+  padding-top: 2vh;
+  font-size: 8vw;
   font-weight: bold;
   line-height: normal;
   color: #70a8f7;
@@ -381,8 +389,8 @@ margin-top: 70vh;
 }
 
 .overview-descr-xs {
-  margin-top: 4vh;
-  font-size: 5vw;
+  margin-top: 2vh;
+  font-size: 3vw;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;
@@ -404,6 +412,11 @@ margin-top: 70vh;
   position: absolute;
   width: 100%;
   z-index: 2;
+}
+
+.overview-img-xs{
+  margin-top: 10vh;
+  width: 62%;
 }
 
 .shadow {
@@ -446,7 +459,7 @@ margin-top: 70vh;
   color: #ffffff;
   padding-top: 3vw;
   padding-bottom: 3vw;
-  font-size: 3vw;
+  font-size: 2vw;
 }
 
 #triangle-bottomright {
