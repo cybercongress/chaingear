@@ -64,7 +64,7 @@ let getWeb3 = new Promise(function(resolve, reject) {
     if (typeof web3 !== 'undefined') {
       // Use Mist/MetaMask's provider.
 
-        if (web3.currentProvider && web3.currentProvider.isMetaMask) {
+        if (web3.currentProvider) {
             web3 = new Web3(web3.currentProvider);
         } else {
             var provider = new Web3.providers.HttpProvider();
@@ -75,7 +75,7 @@ let getWeb3 = new Promise(function(resolve, reject) {
         web3: web3
       }
 
-      console.log('Injected web3 detected.');
+      console.log('Injected web3 detected.', web3);
 
       resolve(results)
     } else {
@@ -195,10 +195,12 @@ export const getContract = () => {
       const web3 = results.web3;
       const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks['42'].address);
       // registryContract.setProvider(results.web3.currentProvider);
-      results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
+      // results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
 
       return new Promise(resolve => {
         results.web3.eth.getAccounts((e, accounts)=> {
+            results.web3.eth.defaultAccount = accounts[0];
+
             // debugger
             // registryContract.deployed().then(contract => {
                 resolve({
@@ -369,7 +371,6 @@ let _bytecode;
 let _ipfsHash;
 export const createRegistry = (name, symbol, fields) => {
     const code = generateContractCode(name, fields);
-
     return new Promise((resolve, reject) => {
         loadCompiler((compiler) => {
             compileRegistry(code, name, compiler)
