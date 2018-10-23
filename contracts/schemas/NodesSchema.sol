@@ -89,12 +89,12 @@ contract NodesSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
         
         uint256 entryIndex = registry.getIndexByID(_entryID);
         
-        string storage last = entries[entryIndex].name;
-        if (last != _name) {
-            require(nameUniqIndex[_name] == false);
-            nameUniqIndex[_name] = true;
-            nameUniqIndex[last] = false;
-        }
+        // string storage last = entries[entryIndex].name;
+        // if (last != _name) {
+        //     require(nameUniqIndex[_name] == false);
+        //     nameUniqIndex[_name] = true;
+        //     nameUniqIndex[last] = false;
+        // }
             
         Entry memory m = (Entry(
         {

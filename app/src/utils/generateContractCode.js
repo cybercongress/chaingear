@@ -60,28 +60,18 @@ contract ${name} is IEntry, Ownable, SupportsInterfaceWithLookup {
 
     ${name}Entry[] public entries;
     
-    uint256[] internal allTokens;
-    
-    mapping(uint256 => uint256) internal allEntriesIndex;
-    
-    modifier entryExists(uint256 _entryID) {
-        if (allEntriesIndex[_entryID] == 0) {
-            require(allTokens[0] == _entryID);
-        } else {
-            require(allEntriesIndex[_entryID] != 0);
-        }
-        _;
-    }
+    IConnector internal registry;
     
     constructor()
         public
     {
         _registerInterface(InterfaceId_EntryCore);
+        registry = IConnector(owner);
     }
     
     function() external {}
 
-    function createEntry(uint256 _entryID)
+    function createEntry()
         external
         onlyOwner
     {
@@ -89,20 +79,16 @@ contract ${name} is IEntry, Ownable, SupportsInterfaceWithLookup {
         {
             ${fields.map(({ name, type }) => `${name}: ${empty(type)}`).join(',\n')} 
         }));
-
         entries.push(m);
-        allEntriesIndex[_entryID] = allTokens.length;
-        allTokens.push(_entryID);
     }
     
     
     function readEntry(uint256 _entryID)
         external
         view
-        entryExists(_entryID)
         returns (${fields.map(({ name, type }) => type).join(', ')})
     {
-        uint256 entryIndex = allEntriesIndex[_entryID];
+        uint256 entryIndex = registry.getIndexByID(_entryID);
         return (
             ${fields.map(({ name, type }) => `entries[entryIndex].${name}`).join(',\n')}
         );
@@ -115,68 +101,40 @@ contract ${name} is IEntry, Ownable, SupportsInterfaceWithLookup {
     )
         external
     {
-        require(owner.call(bytes4(keccak256(
-            "checkEntryOwnership(uint256, address)")),
-            _entryID,
-            msg.sender
-        ));
+        registry.auth(_entryID, msg.sender);
         
-        uint256 entryIndex = allEntriesIndex[_entryID];
+        uint256 entryIndex = registry.getIndexByID(_entryID);
         
         ${name}Entry memory m = (${name}Entry(
         {
             ${fields.map(f => `${f.name}: _${f.name}`).join(',\n')}
-        }));
-        
+        }));    
         entries[entryIndex] = m;
-        
-        require(owner.call(bytes4(keccak256(
-            "updateEntryTimestamp(uint256)")),
-            _entryID
-        ));
     }
 
 
-    function deleteEntry(uint256 _entryID)
+    function deleteEntry(uint256 _entryIndex)
         external
         onlyOwner
     {
-        require(entries.length > 0);
-        uint256 entryIndex = allEntriesIndex[_entryID];
+        require(entries.length > uint256(0));
         
-        uint256 lastTokenIndex = allTokens.length.sub(1);
+        uint256 lastEntryIndex = entries.length.sub(1);
+        ${name}Entry memory lastEntry = entries[lastEntryIndex];
         
-        uint256 lastToken = allTokens[lastTokenIndex];
-        ${name}Entry memory lastEntry = entries[lastTokenIndex];
-        
-        allTokens[entryIndex] = lastToken;
-        entries[entryIndex] = lastEntry;
-        
-        allTokens[lastTokenIndex] = 0;
-        delete entries[lastTokenIndex];
-        
-        allTokens.length--;
+        entries[_entryIndex] = lastEntry;
+        delete entries[lastEntryIndex];
         entries.length--;
-        
-        allEntriesIndex[_entryID] = 0;
-        allEntriesIndex[lastTokenIndex] = entryIndex;
     }
 
 
-    function getEntriesAmount()
-        external
-        view
-        returns (uint256)
-    {
-        return entries.length;
-    }
-    
+    // will be removed, now for frontend support
     function getEntriesIDs()
         external
         view
         returns (uint256[])
     {
-        return allTokens;
+        return registry.getEntriesIDs();
     }
 
 }

@@ -6,12 +6,6 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 
-interface IRegistrySchema {
-    function getIndexByID(uint256) external view returns (uint256);
-    function getEntriesIDs() external view returns (uint256[]); // will be removed
-    function auth(uint256, address) external;
-}
-
 contract Ports is IEntry, Ownable, SupportsInterfaceWithLookup {
     
     using SafeMath for uint256;
@@ -83,12 +77,12 @@ contract Ports is IEntry, Ownable, SupportsInterfaceWithLookup {
         
         uint256 entryIndex = registry.getIndexByID(_entryID);
         
-        if (keccak256(entries[entryIndex].portName) != keccak256(_portName)) {
-            // string storage last = entries[entryIndex].portName;
-            require(portNameUniqIndex[_portName] == false);
-            portNameUniqIndex[_portName] = true;
-            portNameUniqIndex[entries[entryIndex].portName] = false;
-        }
+        // if (keccak256(entries[entryIndex].portName) != keccak256(_portName)) {
+        //     // string storage last = entries[entryIndex].portName;
+        //     require(portNameUniqIndex[_portName] == false);
+        //     portNameUniqIndex[_portName] = true;
+        //     portNameUniqIndex[entries[entryIndex].portName] = false;
+        // }
             
         Entry memory m = (Entry(
         {

@@ -1,14 +1,16 @@
 pragma solidity 0.4.25;
 
-// File: contracts/common/EntryInterface.sol
 
-contract IEntry {
+interface IEntry {
 
-    function createEntry(uint256) external;
+    function createEntry() external;
     function deleteEntry(uint256) external;
-    function getEntriesAmount() external view returns (uint256);
+}
+
+interface IConnector {
+    function getIndexByID(uint256) external view returns (uint256);
     function getEntriesIDs() external view returns (uint256[]);
-    function supportsInterface(bytes4) external view returns (bool);
+    function auth(uint256, address) external;
 }
 
 // File: openzeppelin-solidity/contracts/math/SafeMath.sol
