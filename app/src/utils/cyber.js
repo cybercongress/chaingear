@@ -9,7 +9,7 @@ import Web3 from 'web3'
 export const loadCompiler = (cb) => {
     setTimeout(() => {
         window.BrowserSolc.loadVersion("soljson-v0.4.25+commit.59dbf8f1.js", cb);
-    }, 20);
+    }, 30);
 }
 
 const Dependencies = require('../Dependencies.sol');
@@ -254,8 +254,11 @@ export const getFieldByHash = (ipfsHash) => {
     return new Promise(resolve => {
         ipfs.get(ipfsHash, (err, files) => {
             const buf = files[0].content;
-            var abi = JSON.parse(buf.toString());
-            console.log(abi);
+            // workds for code generated registries
+            var abi = JSON.parse(JSON.parse(buf.toString()));
+            // works for registires deployed on migrations
+            // var abi = JSON.parse(buf.toString());
+            // console.log(abi);
             // TODO move extraction from entries to other ABIs object, 
             // entries should be internal, now public for supporting frontend
             var fields = abi.filter(x => x.name === 'entries')[0].outputs;
@@ -334,9 +337,9 @@ export {
 const IPFS = require('ipfs-api');
 
 export const ipfs = new IPFS({
-    host: 'ipfs.infura.io',
+    host: 'localhost',
     port: 5001,
-    protocol: 'https'
+    protocol: 'http'
 });
 
 export const saveInIPFS = (jsonStr) => {
@@ -567,7 +570,7 @@ export const updateEntryCreationFee = (address, newfee) => {
 export const updateItem = (address, ipfsHash, newEntryId, values) => {
     return new Promise(resolve => {
         const registryContract = _web3.eth.contract(Registry.abi).at(address);
-
+        debugger
         getFieldByHash(ipfsHash)
             .then(({
                 abi
