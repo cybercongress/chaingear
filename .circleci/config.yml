@@ -43,13 +43,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Clone congress repo
+          name: Clone library repo
           working_directory: ~/workdir
           command: |
-            git clone -q --depth 1 https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/congress.git
+            git clone -q --depth 1 https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/library.git
       - deploy:
           name: Update docs from chaingear repo
-          working_directory: ~/workdir/congress
+          working_directory: ~/workdir/library
           command: |
             # We need to remove current files in folder to avoid duplicating renamed files
             rm -rf ./wiki/docs/chaingear/*
@@ -62,7 +62,7 @@ jobs:
               git add wiki/docs/chaingear/
               git commit -m "Circle CI: Update Docs"
               # Push quietly to prevent showing the token in log
-              git push -q https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/congress.git master
+              git push -q https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/library.git master
             fi
 
   deploy_stagin_image:
