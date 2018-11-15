@@ -1,4 +1,7 @@
 const { toWei } = require('ethjs-unit');
+const HDWalletProvider = require('truffle-hdwallet-provider');
+
+const infuraConfig = require('./infura_deploy.json');
 
 module.exports = {
 
@@ -19,10 +22,21 @@ module.exports = {
 
     networks: {
 
+        infura: {
+            provider() {
+              return new HDWalletProvider(infuraConfig.privateKey, infuraConfig.infuraUrl);
+            },
+            from: infuraConfig.fromAddress,
+
+            network_id: 42,
+            gasPrice: toWei(10, 'gwei').toNumber(),
+            gas: toWei(7.9, 'mwei').toNumber(),
+        },
+
         kovan: {
-            host: "localhost",
+            host: "127.0.0.1",
             port: 8545,
-            from: '0xf2492533F7d89DBfEd69757156c4B746839E59E8',
+            from: '0x379A23083a58B2b89F4dD307aD55F732BB5A20Ef',
             network_id: 42,
             gasPrice: toWei(10, 'gwei').toNumber(),
             gas: toWei(7.2, 'mwei').toNumber(),

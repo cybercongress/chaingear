@@ -179,7 +179,7 @@ export const getContract = () => {
     return getWeb3
         .then(results => {
             const web3 = results.web3;
-            const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks['5777'].address);
+            const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks['42'].address);
             // registryContract.setProvider(results.web3.currentProvider);
             results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
 
@@ -255,7 +255,7 @@ export const getFieldByHash = (ipfsHash) => {
         ipfs.get(ipfsHash, (err, files) => {
             const buf = files[0].content;
             var abi = JSON.parse(buf.toString());
-            // TODO move extraction from entries to other ABIs object, 
+            // TODO move extraction from entries to other ABIs object,
             // entries should be internal, now public for supporting frontend
             var fields = abi.filter(x => x.name === 'entries')[0].outputs;
             fields = fields.filter(x => x.name !== 'metainformation' && x.name !== 'owner' && x.name !== 'lastUpdateTime');

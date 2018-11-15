@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router';
 
+import { Title } from "@cybercongress/ui";
+
 var moment = require('moment');
 
 
 import * as cyber from '../../utils/cyber';
 
-import { Badge, FooterButton } from '../../components/chaingear/'
+import {Badge, FooterButton} from '../../components/chaingear/'
 import { Table } from '../../components/Table/';
 import { Container, Text, Link as ActionLink } from '../../components/CallToAction/';
 
@@ -97,6 +99,7 @@ class Home extends Component {
 
     let content = (
         <div>
+            <Title>My registries</Title>
         <Section title={<span>My registries<Badge>{myRows.length}</Badge></span>}>
             <SectionContent>
           <Container>

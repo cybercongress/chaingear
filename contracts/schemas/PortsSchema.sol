@@ -6,10 +6,10 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 
-contract Ports is IEntry, Ownable, SupportsInterfaceWithLookup {
-    
+contract PortsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
+
     using SafeMath for uint256;
-    
+
     bytes4 internal constant InterfaceId_EntryCore = 0xd4b1117d;
 
     struct Entry {
@@ -17,22 +17,22 @@ contract Ports is IEntry, Ownable, SupportsInterfaceWithLookup {
         uint16  portNumber;
         string  service;
     }
-    
+
     mapping(string => bool) internal portNameUniqIndex;
-    
+
     Entry[] public entries;
-    
+
     IConnector internal registry;
-    
+
     constructor()
         public
     {
         _registerInterface(InterfaceId_EntryCore);
         registry = IConnector(owner);
     }
-    
-    function() external {} 
-    
+
+    function() external {}
+
     function createEntry()
         external
         onlyOwner
@@ -46,7 +46,7 @@ contract Ports is IEntry, Ownable, SupportsInterfaceWithLookup {
 
         entries.push(m);
     }
-    
+
     function readEntry(uint256 _entryID)
         external
         view
@@ -74,16 +74,16 @@ contract Ports is IEntry, Ownable, SupportsInterfaceWithLookup {
         external
     {
         registry.auth(_entryID, msg.sender);
-        
+
         uint256 entryIndex = registry.getIndexByID(_entryID);
-        
+
         // if (keccak256(entries[entryIndex].portName) != keccak256(_portName)) {
         //     // string storage last = entries[entryIndex].portName;
         //     require(portNameUniqIndex[_portName] == false);
         //     portNameUniqIndex[_portName] = true;
         //     portNameUniqIndex[entries[entryIndex].portName] = false;
         // }
-            
+
         Entry memory m = (Entry(
         {
             portName:   _portName,
@@ -98,18 +98,18 @@ contract Ports is IEntry, Ownable, SupportsInterfaceWithLookup {
         onlyOwner
     {
         require(entries.length > uint256(0));
-        
+
         string storage nameToClear = entries[_entryIndex].portName;
         portNameUniqIndex[nameToClear] = false;
-        
+
         uint256 lastEntryIndex = entries.length.sub(1);
         Entry memory lastEntry = entries[lastEntryIndex];
-        
+
         entries[_entryIndex] = lastEntry;
         delete entries[lastEntryIndex];
         entries.length--;
     }
-    
+
     // will be removed, now for frontend support
     function getEntriesIDs()
         external
@@ -118,5 +118,5 @@ contract Ports is IEntry, Ownable, SupportsInterfaceWithLookup {
     {
         return registry.getEntriesIDs();
     }
-    
+
 }

@@ -5,12 +5,12 @@ var IPFS = require('ipfs-api');
 
 
 module.exports = async function(deployer, network, accounts) {
-    
+
     const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
-    
-    let BUILDING_FEE, BENEFICIARIES, SHARES
-    
-    if (network == 'kovan') {
+
+    let BUILDING_FEE, BENEFICIARIES, SHARES;
+
+    if (network === 'kovan' || network === 'infura') {
         BUILDING_FEE = 0
         BENEFICIARIES = []
         SHARES = []
@@ -19,7 +19,7 @@ module.exports = async function(deployer, network, accounts) {
         BENEFICIARIES = [accounts[0], accounts[1]]
         SHARES = [50, 50]
     }
-    
+
     const builder = await RegistryBuilder.deployed();
     const chaingear = await deployer.deploy(
         Chaingear,

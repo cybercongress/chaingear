@@ -5,10 +5,10 @@ var IPFS = require('ipfs-api');
 
 
 module.exports = async function(deployer, network, accounts) {
-    
+
     const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
-    
-    if (network == 'kovan') {
+
+    if (network === 'kovan' || network === 'infura') {
         BUILDING_FEE = 0
         BENEFICIARIES = []
         SHARES = []
@@ -16,8 +16,8 @@ module.exports = async function(deployer, network, accounts) {
         BUILDING_FEE = 100000
         BENEFICIARIES = [accounts[0], accounts[1]]
         SHARES = [50, 50]
-    }    
-    
+    }
+
     const chaingear = await Chaingear.deployed();
     const results = await chaingear.registerRegistry.call(
         "V1",
@@ -41,5 +41,5 @@ module.exports = async function(deployer, network, accounts) {
     console.log("CID to ABI in IPFS >>>> ", hash[0].path);
     const registry = await Registry.at(registryAddress);
     await registry.initializeRegistry(hash[0].path, AppsSchema.bytecode);
-    
+
 };
