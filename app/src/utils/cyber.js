@@ -18,7 +18,7 @@ export const compileRegistry = (code, contractName, compiler) => {
     return new Promise((resolve, reject) => {
         const input = {
             'Dependencies.sol': Dependencies,
-            [contractName]: 'pragma solidity ^0.4.24; ' + code,
+            [contractName]: 'pragma solidity ^0.4.25; ' + code,
         };
 
         setTimeout(() => {
@@ -254,11 +254,7 @@ export const getFieldByHash = (ipfsHash) => {
     return new Promise(resolve => {
         ipfs.get(ipfsHash, (err, files) => {
             const buf = files[0].content;
-            // workds for code generated registries
-            var abi = JSON.parse(JSON.parse(buf.toString()));
-            // works for registires deployed on migrations
-            // var abi = JSON.parse(buf.toString());
-            // console.log(abi);
+            var abi = JSON.parse(buf.toString());
             // TODO move extraction from entries to other ABIs object, 
             // entries should be internal, now public for supporting frontend
             var fields = abi.filter(x => x.name === 'entries')[0].outputs;
@@ -344,7 +340,7 @@ export const ipfs = new IPFS({
 
 export const saveInIPFS = (jsonStr) => {
     return new Promise((resolve, reject) => {
-        const buffer = Buffer.from(JSON.stringify(jsonStr));
+        const buffer = Buffer.from(jsonStr);
         ipfs.add(buffer, (err, ipfsHash) => {
             if (err) {
                 reject(err);
