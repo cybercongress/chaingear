@@ -4,7 +4,7 @@ const generateContractCode = (name, fields) => {
   const structBodyStr = fields.map(f => `${f.type} ${f.name};`).join('\n');
 
   const createArgsStr = fields.map(f => `${f.type} _${f.name}`).join(', ');
-  // const createItemStr = fields.map(f => `${f.name}: _${f.name}`).join(',\n');
+    // const createItemStr = fields.map(f => `${f.name}: _${f.name}`).join(',\n');
 
   const generateGetor = (name, type) => {
     return `
@@ -62,6 +62,11 @@ contract ${name} is IEntry, Ownable, SupportsInterfaceWithLookup {
     
     IConnector internal registry;
     
+    event EntryUpdated(
+        uint256 _entryID,
+        ${createArgsStr}
+    );
+    
     constructor()
         public
     {
@@ -110,6 +115,8 @@ contract ${name} is IEntry, Ownable, SupportsInterfaceWithLookup {
             ${fields.map(f => `${f.name}: _${f.name}`).join(',\n')}
         }));    
         entries[entryIndex] = m;
+        
+        emit EntryUpdated(_entryID, ${fields.map(field => `_${field.name}`).join(', ')});
     }
 
 
@@ -140,6 +147,6 @@ contract ${name} is IEntry, Ownable, SupportsInterfaceWithLookup {
 }
 
 `;
-} 
+}
 
 module.exports = generateContractCode;

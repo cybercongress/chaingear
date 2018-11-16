@@ -58,7 +58,7 @@ let getWeb3 = new Promise(function(resolve, reject) {
         if (typeof web3 !== 'undefined') {
             // Use Mist/MetaMask's provider.
 
-            if (web3.currentProvider && web3.currentProvider.isMetaMask) {
+            if (web3.currentProvider) {
                 web3 = new Web3(web3.currentProvider);
             } else {
                 var provider = new Web3.providers.HttpProvider();
@@ -181,10 +181,12 @@ export const getContract = () => {
             const web3 = results.web3;
             const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks['42'].address);
             // registryContract.setProvider(results.web3.currentProvider);
-            results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
+            //results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
 
             return new Promise(resolve => {
                 results.web3.eth.getAccounts((e, accounts) => {
+                    results.web3.eth.defaultAccount = accounts[0];
+
                     resolve({
                         contract,
                         web3: results.web3,
@@ -382,18 +384,23 @@ export const createRegistry = (name, symbol, fields) => {
                 }) => {
                     contract.getRegistrationFee(function(e, data) {
                         var buildingFee = data.toNumber();
+
+                        //todo: generated values
+                        let gasLimit = 4876183;
+                        const gasPrice = 1;
+
                         contract.registerRegistry.sendTransaction(
                             "V1", [accounts[0]], [100], name, symbol, {
-                                value: buildingFee
+                                value: buildingFee,
+                                gas: gasLimit,
+                                gasPrice: gasPrice
                             },
                             function(e, data, a, b) {
                                 if (e) {
                                     reject(e)
                                 } else {
-                                    var event = contract.RegistryRegistered();
-
-                                    event.watch((ee, results) => {
-                                        event.stopWatching();
+                                    var event = contract.RegistryRegistered((ee, results) => {
+                                        event.stopWatching(() => {});
                                         if (ee) {
                                             reject(ee)
                                         } else {
@@ -402,7 +409,8 @@ export const createRegistry = (name, symbol, fields) => {
                                                 resolve(results.args)
                                             })
                                         }
-                                    })
+                                    });
+
                                 }
                             }
                         )
@@ -529,7 +537,7 @@ export const addItem = (address) => {
         var event = registryContract.EntryCreated();
 
         event.watch((e, results) => {
-            event.stopWatching();
+            event.stopWatching(() => {});
             resolve(results.args.entryID.toNumber());
         })
 
@@ -566,7 +574,7 @@ export const updateEntryCreationFee = (address, newfee) => {
 export const updateItem = (address, ipfsHash, newEntryId, values) => {
     return new Promise(resolve => {
         const registryContract = _web3.eth.contract(Registry.abi).at(address);
-        debugger
+
         getFieldByHash(ipfsHash)
             .then(({
                 abi
@@ -575,11 +583,18 @@ export const updateItem = (address, ipfsHash, newEntryId, values) => {
                 registryContract.getEntriesStorage((e, entryAddress) => {
                     const entryCore = _web3.eth.contract(abi).at(entryAddress);
 
+                    var event = entryCore.EntryUpdated();
+                    event.watch((e, results) => {
+                        event.stopWatching(() => {});
+                        resolve(results.args);
+                    })
+
                     var args = [newEntryId, ...values, function(e, dat) {
-                        resolve(dat);
+
                     }]
 
                     entryCore.updateEntry.apply(entryCore, args)
+
                 })
             })
     });
