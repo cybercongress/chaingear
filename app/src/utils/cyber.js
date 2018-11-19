@@ -385,15 +385,9 @@ export const createRegistry = (name, symbol, fields) => {
                     contract.getRegistrationFee(function(e, data) {
                         var buildingFee = data.toNumber();
 
-                        //todo: generated values
-                        let gasLimit = 4876183;
-                        const gasPrice = 1;
-
                         contract.registerRegistry.sendTransaction(
                             "V1", [accounts[0]], [100], name, symbol, {
                                 value: buildingFee,
-                                gas: gasLimit,
-                                gasPrice: gasPrice
                             },
                             function(e, data, a, b) {
                                 if (e) {
