@@ -6,7 +6,7 @@ import {
     Section,
     SectionContent,
     Centred
-} from '../../components/chaingear/'
+} from '@cybercongress/ui'
 
 import QRCode from '../../components/QRCode/';
 
@@ -171,14 +171,14 @@ class RegistryItem extends Component {
                 </ButtonContainer>}
                 <Section>
                     <SectionContent grow={2}>
-                        
+
                         <div style={{ margintTop: 20 }}>
                             <IdContainer>TOKEN_ID : {item.id}</IdContainer>
                         {row}
                         </div>
                     </SectionContent>
-                    <SectionContent grow={0} style={{ width: '25%'}}>   
-                        <Centred>                     
+                    <SectionContent grow={0} style={{ width: '25%'}}>
+                        <Centred>
                             <div>
                                {/* <QRCode hash='0xb6ee5dcb7b5e63704a9af45bdd9e0e493ff26c81' size={100} />*/}
                                <TransferForm
