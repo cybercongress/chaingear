@@ -18,8 +18,6 @@ contract PortsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
         string  service;
     }
 
-    mapping(string => bool) internal portNameUniqIndex;
-
     Entry[] public entries;
 
     IConnector internal registry;
@@ -77,13 +75,6 @@ contract PortsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
 
         uint256 entryIndex = registry.getIndexByID(_entryID);
 
-        // if (keccak256(entries[entryIndex].portName) != keccak256(_portName)) {
-        //     // string storage last = entries[entryIndex].portName;
-        //     require(portNameUniqIndex[_portName] == false);
-        //     portNameUniqIndex[_portName] = true;
-        //     portNameUniqIndex[entries[entryIndex].portName] = false;
-        // }
-
         Entry memory m = (Entry(
         {
             portName:   _portName,
@@ -99,24 +90,12 @@ contract PortsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     {
         require(entries.length > uint256(0));
 
-        string storage nameToClear = entries[_entryIndex].portName;
-        portNameUniqIndex[nameToClear] = false;
-
         uint256 lastEntryIndex = entries.length.sub(1);
         Entry memory lastEntry = entries[lastEntryIndex];
 
         entries[_entryIndex] = lastEntry;
         delete entries[lastEntryIndex];
         entries.length--;
-    }
-
-    // will be removed, now for frontend support
-    function getEntriesIDs()
-        external
-        view
-        returns (uint256[])
-    {
-        return registry.getEntriesIDs();
     }
 
 }

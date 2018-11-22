@@ -29,8 +29,6 @@ contract TeamSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
         string  keybase;
     }
     
-    mapping(string => bool) internal nameUniqIndex;
-    
     Entry[] public entries;
     
     IConnector internal registry;
@@ -99,13 +97,6 @@ contract TeamSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
         registry.auth(_entryID, msg.sender);
         
         uint256 entryIndex = registry.getIndexByID(_entryID);
-        
-        string storage last = entries[entryIndex].name;
-        // if (last != _name) {
-        //     require(nameUniqIndex[_name] == false);
-        //     nameUniqIndex[_name] = true;
-        //     nameUniqIndex[last] = false;
-        // }
             
         Entry memory m = (Entry(
         {
@@ -125,9 +116,6 @@ contract TeamSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     {
         require(entries.length > uint256(0));
         
-        string storage nameToClear = entries[_entryIndex].name;
-        nameUniqIndex[nameToClear] = false;
-        
         uint256 lastEntryIndex = entries.length.sub(1);
         Entry memory lastEntry = entries[lastEntryIndex];
         
@@ -136,13 +124,4 @@ contract TeamSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
         entries.length--;
     }
 
-    // will be removed, now for frontend support
-    function getEntriesIDs()
-        external
-        view
-        returns (uint256[])
-    {
-        return registry.getEntriesIDs();
-    }
-    
 }

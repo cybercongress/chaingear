@@ -5,6 +5,7 @@ import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
+import "../common/IChaingear.sol";
 import "../common/IEntry.sol";
 import "../common/IRegistry.sol";
 import "../common/IConnector.sol";
@@ -293,17 +294,6 @@ contract Registry is IRegistry, IConnector, RegistryPermissionControl, SupportsI
     }
     
     /**
-    * @dev Allows update ERC721 token name (Registry Name)
-    * @param _name string which represents name
-    */
-    function updateName(string _name)
-        external
-        onlyAdmin
-    {
-        name_ = _name;
-    }
-    
-    /**
     * @dev Allows admin update registry description
     * @param _newDescription string Which represents description
     * @notice Length of description should be less than 256 bytes
@@ -393,6 +383,16 @@ contract Registry is IRegistry, IConnector, RegistryPermissionControl, SupportsI
             // entriesMeta[entryIndex].accumulatedWei
             uint256(0)
         );
+    }
+    
+    function getRegistryCHGId()
+        external
+        view
+        returns(uint256)
+    {
+        // require(owner.supportsInterface(InterfaceId_ERC721));
+        // require(onwer() != admin);
+        return IChaingear(owner).getRegistryIdByAddress(address(this));
     }
     
     function getEntriesIDs()

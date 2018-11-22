@@ -51,6 +51,8 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
     // @dev Mapping which allow control of registries symbols uniqueness in metaregistry
     mapping(string => bool) internal registrySymbolsIndex;
     
+    mapping(address => uint256) internal registryIdsByAddresses;
+    
     mapping (string => RegistryBuilder) internal buildersVersion;
     
     Safe internal chaingearSafe;
@@ -383,6 +385,16 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
         return allTokens;
     }
     
+    function getRegistryIdByAddress(address _registryAddress)
+        external
+        view
+        returns(uint256)
+    { 
+        uint256 id = registryIdsByAddresses[_registryAddress];
+        require(exists(id) == true);
+        return id;
+    }
+    
     function getDescription()
         external
         view
@@ -518,6 +530,8 @@ contract Chaingear is SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC72
         
         uint256 newTokenID = headTokenID;
         headTokenID = headTokenID.add(1);
+        
+        registryIdsByAddresses[registryAddress] = newTokenID;
         
         super._mint(msg.sender, newTokenID);
         

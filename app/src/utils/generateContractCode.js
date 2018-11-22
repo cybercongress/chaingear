@@ -6,23 +6,6 @@ const generateContractCode = (name, fields) => {
   const createArgsStr = fields.map(f => `${f.type} _${f.name}`).join(', ');
     // const createItemStr = fields.map(f => `${f.name}: _${f.name}`).join(',\n');
 
-  const generateGetor = (name, type) => {
-    return `
-
-    function ${name}FieldOf(uint256 _entryID)
-        external
-        view
-        entryExists(_entryID)
-        returns (${type})
-    {
-        uint256 entryIndex = allEntriesIndex[_entryID];
-        
-        return entries[entryIndex].${name};
-    }
-    
-    `;
-  }
-
   const empty = (type) => {
     if (type === 'string') return '""';
     if (type === 'address') return 'address(0)';
@@ -40,7 +23,7 @@ const generateContractCode = (name, fields) => {
 import './Dependencies.sol';
 
 
-contract ${name} is IEntry, Ownable, SupportsInterfaceWithLookup {
+contract Schema is IEntry, Ownable, SupportsInterfaceWithLookup {
 
     using SafeMath for uint256;
     
@@ -53,12 +36,12 @@ contract ${name} is IEntry, Ownable, SupportsInterfaceWithLookup {
      *   bytes4(keccak256('getEntriesIDs()'))
      */
 
-    struct ${name}Entry {
+    struct Entry {
         ${structBodyStr}
 
     }
 
-    ${name}Entry[] public entries;
+    Entry[] public entries;
     
     IConnector internal registry;
     
@@ -80,7 +63,7 @@ contract ${name} is IEntry, Ownable, SupportsInterfaceWithLookup {
         external
         onlyOwner
     {
-        ${name}Entry memory m = (${name}Entry(
+        Entry memory m = (Entry(
         {
             ${fields.map(({ name, type }) => `${name}: ${empty(type)}`).join(',\n')} 
         }));
@@ -110,7 +93,7 @@ contract ${name} is IEntry, Ownable, SupportsInterfaceWithLookup {
         
         uint256 entryIndex = registry.getIndexByID(_entryID);
         
-        ${name}Entry memory m = (${name}Entry(
+        Entry memory m = (Entry(
         {
             ${fields.map(f => `${f.name}: _${f.name}`).join(',\n')}
         }));    
@@ -127,21 +110,11 @@ contract ${name} is IEntry, Ownable, SupportsInterfaceWithLookup {
         require(entries.length > uint256(0));
         
         uint256 lastEntryIndex = entries.length.sub(1);
-        ${name}Entry memory lastEntry = entries[lastEntryIndex];
+        Entry memory lastEntry = entries[lastEntryIndex];
         
         entries[_entryIndex] = lastEntry;
         delete entries[lastEntryIndex];
         entries.length--;
-    }
-
-
-    // will be removed, now for frontend support
-    function getEntriesIDs()
-        external
-        view
-        returns (uint256[])
-    {
-        return registry.getEntriesIDs();
     }
 
 }
