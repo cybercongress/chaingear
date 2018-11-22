@@ -31,9 +31,11 @@ class Home extends Component {
             registries,
         }));
 
-        getDefaultAccount().then(account => this.setState({
-            account,
-        }));
+        getDefaultAccount().then(account => {
+            this.setState({
+                account: account.toLowerCase(),
+            });
+        });
     }
 
     render() {

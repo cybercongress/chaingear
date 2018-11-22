@@ -415,9 +415,6 @@ class Register extends Component {
     }
 
     render() {
-
-        console.log('TRYE RENDER');
-
         const {
             fields, items, loading, isOwner, userAccount,
         } = this.state;

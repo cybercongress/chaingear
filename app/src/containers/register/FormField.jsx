@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import {
     FormFieldContainer,
-    ForamLable,
-    ForamValue,
+    FormLabel,
+    FormValue,
     ButtonContainer,
 } from '../../components/FormField';
 
@@ -42,10 +42,10 @@ class FormField extends Component {
 
         return (
             <FormFieldContainer>
-                <ForamLable>
+                <FormLabel>
                     {`${label}:`}
-                </ForamLable>
-                <ForamValue>
+                </FormLabel>
+                <FormValue>
                     {!edit ? (
                         <span>
                             <span>{value}</span>
@@ -54,7 +54,7 @@ class FormField extends Component {
                     ) : (
                         <input ref='input' defaultValue={ value } />
                     )}
-                </ForamValue>
+                </FormValue>
                 {onUpdate && (
                     <ButtonContainer>
                         {!edit ? (
