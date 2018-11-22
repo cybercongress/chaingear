@@ -281,7 +281,7 @@ export const removeRegistry = (address, cb) => getChaingearContract().then(({
     from: web3.eth.accounts[0],
 }));
 
-export const getFieldByHash = ipfsHash => new Promise((resolve) => {
+export const getRegistryFieldsByHash = ipfsHash => new Promise((resolve) => {
     ipfs.get(ipfsHash, (err, files) => {
         const buf = files[0].content;
         const abi = JSON.parse(buf.toString());
@@ -431,15 +431,10 @@ export const getRegistryData = (address, fields, abi) => new Promise((resolve) =
 
         getItems(entryCore, 'getEntriesIDs', 'readEntry', mapFn)
             .then((items) => {
-                registry.getEntryCreationFee((e, data) => {
-                    const fee = data.toNumber();
-
-                    resolve({
-                        fee,
-                        items,
-                        fields,
-                        entryAddress,
-                    });
+                resolve({
+                    items,
+                    fields,
+                    entryAddress,
                 });
             });
     });
@@ -515,7 +510,7 @@ export const updateEntryCreationFee = (address, newfee) => new Promise((resolve,
 export const updateItem = (address, ipfsHash, newEntryId, values) => new Promise((resolve) => {
     const registryContract = _web3.eth.contract(Registry.abi).at(address);
 
-    getFieldByHash(ipfsHash)
+    getRegistryFieldsByHash(ipfsHash)
         .then(({
             abi,
         }) => {

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-
 import { browserHistory } from 'react-router';
 
 import {
@@ -18,17 +16,16 @@ import {
 
     FundContainer,
     BoxTitle,
-    StatusBar
+    StatusBar,
 } from '@cybercongress/ui';
+
 import * as cyber from '../../utils/cyber';
-
-
 import TransferForm from './TransferForm';
-
 import { RegistryItem, RegistryList } from './RegistryItem';
 import ValueInput from '../../components/ValueInput';
 import FormField from './FormField';
 
+import Registry from '../../../../build/contracts/Registry.json';
 
 const moment = require('moment');
 
@@ -41,7 +38,7 @@ class Register extends Component {
         loading: false,
         balance: null,
         isOwner: false,
-        total_fee: 0,
+        totalFee: 0,
         funded: '???',
 
         registryContract: null,
@@ -67,223 +64,246 @@ class Register extends Component {
             loading: true,
         });
 
+        const registryAddress = this.props.params.adress;
 
-        const address = this.props.params.adress;
+        let _registries = null;
+        let _userAccount = null;
+        let _web3 = null;
+        let _registryContract = null;
+        let _registry = null;
+        let _registryId = null;
+        let _chaingearContract = null;
+        let _abi = null;
+        let _fields = null;
+        let _ipfsHash = null;
 
-
-        // const address = this.props.params.adress;
+        let _newState = {};
         cyber.init()
-            .then(({ web3, accounts }) => {
-                const userAccount = accounts[0];
-
-                this.setState({
-                    userAccount,
+            .then(({ contract, web3, accounts }) => {
+                // todo: _userAccount = web3.eth.getDefaultAccount
+                _userAccount = accounts[0];
+                _web3 = web3;
+                _chaingearContract = contract;
+            })
+            .then(() => cyber.getRegistries())
+            .then((items) => {
+                _registries = items;
+                return items.find(x => x.address === registryAddress);
+            })
+            .then((registry) => {
+                if (!registry) {
+                    return Promise.reject({ message: 'Vsemy pizda' });
+                }
+                _registry = registry;
+                _registryId = this.getRegistryID(_registries);
+                _registryContract = _web3.eth.contract(Registry.abi).at(registryAddress);
+            })
+            .then(() => {
+                const fundedPromise = new Promise((resolve) => {
+                    _chaingearContract.readRegistryBalance(_registryId, (e, data) => {
+                        resolve(_web3.fromWei(_web3.toDecimal(data[0].toNumber())));
+                    });
                 });
-                cyber.getRegistry().then(({ items }) => {
-                    const registryID = this.getRegistryID(items);
-                    // alert(registryID)
 
-                    cyber.getChaingearContract().then(({ contract, web3 }) => {
-                        // contract.paused((e, data) => {
-                        //     debugger
-                        // })
-                        console.log('items ', items);
-                        console.log('registryID ', registryID);
-                        contract.readRegistryBalance(registryID, (e, data) => {
-                            const funded = web3.fromWei(web3.toDecimal(data[0].toNumber()));
-                            //                this.componentDidMount();
+                const totalFeePromise = new Promise((resolve) => {
+                    _web3.eth.getBalance(_registry.address, (e, balance) => {
+                        resolve(_web3.fromWei(_web3.toDecimal(balance), 'ether'));
+                    });
+                });
 
-                            this.setState({
-                                funded,
+                const ownerPromise = new Promise((resolve) => {
+                    _registryContract.getAdmin((e, owner) => {
+                        resolve(owner);
+                    });
+                });
+
+                const descriptionPromise = new Promise((resolve) => {
+                    _registryContract.getRegistryDescription((e, description) => {
+                        resolve(description);
+                    });
+                });
+
+                const symbolPromise = new Promise((resolve) => {
+                    _registryContract.symbol((e, symbol) => {
+                        resolve(symbol);
+                    });
+                });
+
+                const entryCreationFeePromise = new Promise((resolve) => {
+                    _registryContract.getEntryCreationFee((e, creationFee) => {
+                        resolve(_web3.fromWei(creationFee, 'ether').toNumber());
+                    });
+                });
+
+                const registryDataPromise = new Promise((resolve) => {
+                    _registryContract.getInterfaceEntriesContract((error, ipfsHash) => {
+                        cyber.getRegistryFieldsByHash(ipfsHash).then(({ abi, fields }) => {
+                            resolve({
+                                ipfsHash,
+                                abi,
+                                fields,
                             });
                         });
                     });
+                });
 
+                return Promise
+                    .all([fundedPromise, totalFeePromise, ownerPromise,
+                        descriptionPromise, symbolPromise, entryCreationFeePromise,
+                        registryDataPromise]);
+            })
+            .then(([funded, totalFee, owner,
+                description, symbol, entryCreationFee, registryData]) => {
+                _ipfsHash = registryData.ipfsHash;
+                _fields = registryData.fields;
+                _abi = registryData.abi;
 
-                    const registries = items;
-                    const registry = registries.find(x => x.address === address);
-
-                    if (!registry) { return; }
-
-
-                    this.setState({
-                        name: registry.name,
-                        registrationTimestamp: registry.registrationTimestamp,
-                        admin: registry.admin,
-                        contractVersion: registry.contractVersion,
-                        // isOwner: userAccount === registry.owner,
-                        // owner: registry.owner,
+                _newState = {
+                    ..._newState,
+                    ...{
+                        name: _registry.name,
+                        registrationTimestamp: _registry.registrationTimestamp,
+                        admin: _registry.admin,
+                        contractVersion: _registry.contractVersion,
                         tag: '',
-                        web3,
-                        registryAddress: address,
-                    });
-                    const r = cyber.getRegistryByAddress(registry.address);
+                        web3: _web3,
+                        registries: _registries,
+                        registryAddress,
+                        registryContract: _registryContract,
+                        funded,
+                        totalFee,
+                        userAccount: _userAccount,
+                        isOwner: _userAccount === owner,
+                        owner,
+                        description,
+                        symbol,
+                        entryCreationFee,
+                        ipfsHash: _ipfsHash,
+                        fields: _fields,
+                    },
+                };
+            })
+            .then(() => {
+                return cyber.getRegistryData(registryAddress, _fields, _abi)
+            })
+            .then(({ items, fields, entryAddress }) => {
+                return Promise.all([
+                    entryAddress,
+                    items,
+                    ...items.map(item => new Promise((resolve) => {
+                        _registryContract.readEntryMeta(item.__index, (e, data) => resolve(data));
+                    })),
+                ]);
+            })
+            .then(([entryAddress, items, ...data]) => {
+                const _items = items.map((item, index) => {
+                    const currentEntryBalanceETH = _web3.fromWei(data[index][4]).toNumber();
+                    const owner = data[index][0];
 
-                    // debugger
-                    // contract.getEntryMeta(registryID, (e, data) => {
-                    //     debugger
-                    // });
-                    r.getAdmin((e, owner) => {
-                        this.setState({
-
-                            isOwner: userAccount === owner,
-                            owner,
-
-                        });
-                    });
-
-                    web3.eth.getBalance(registry.address, (e, balance) => {
-                        balance = web3.fromWei(web3.toDecimal(balance), 'ether');
-                        this.setState({
-                            total_fee: balance,
-                        });
-                    });
-
-                    r.getRegistryDescription((e, description) => {
-                        this.setState({
-                            description,
-                        });
-                    });
-
-                    r.symbol((e, data) => {
-                        this.setState({
-                            symbol: data,
-                        });
-                    });
-
-                    // r.getRegistryTags((e, data) => {
-                    //     debugger
-                    // })
-
-                    r.getInterfaceEntriesContract((e, ipfsHash) => {
-                        r.getEntryCreationFee((e, data) => {
-                            const fee = web3.fromWei(data, 'ether').toNumber();
-
-                            // console.log(ipfsHash)
-                            this.setState({
-                                entryCreationFee: fee,
-                                registryContract: r,
-                            });
-                            cyber.getFieldByHash(ipfsHash)
-                                .then(({ abi, fields }) => {
-                                    cyber.getRegistryData(address, fields, abi)
-                                        .then(({
-                                            fee, items, fields, entryAddress,
-                                        }) => {
-                                            Promise.all(
-                                                items.map(item => new Promise((resolve, reject) => {
-                                                // console.log(index)
-                                                    r.readEntryMeta(item.__index, (e, data) => resolve(data));
-                                                })),
-                                            ).then((data) => {
-                                                const _items = items.map((item, index) => {
-                                                    const currentEntryBalanceETH = web3.fromWei(data[index][4]).toNumber();
-                                                    // debugger
-                                                    const owner = data[index][0];
-
-                                                    return {
-                                                        ...item,
-                                                        currentEntryBalanceETH,
-                                                        owner,
-                                                        id: item.__index,
-                                                    };
-                                                });
-
-                                                this.setState({
-                                                    ipfsHash,
-                                                    entryCoreAddress: entryAddress,
-                                                    items: _items,
-                                                    fields,
-                                                    registries,
-                                                    entriesAmount: items.length,
-                                                    loading: false,
-                                                });
-                                            });
-                                        });
-                                });
-                        });
-                    });
+                    return {
+                        ...item,
+                        currentEntryBalanceETH,
+                        owner,
+                        id: item.__index,
+                    };
                 });
+
+                _newState = {
+                    ..._newState,
+                    ...{
+                        entryCoreAddress: entryAddress,
+                        items: _items,
+                        entriesAmount: items.length,
+                        loading: false,
+                    },
+                };
+            })
+            .then(() => {
+                this.setState(_newState);
             });
     }
 
-  deleted = (e, result) => {
-      const index = result.args.entryId.toNumber();
+    deleted = (e, result) => {
+        const index = result.args.entryId.toNumber();
 
-      this.setState({
-          items: this.state.items.filter((x, i) => i !== index),
-          loading: false,
-      });
-  }
-
-
-  add = (values) => {
-      // cyber.addRegistryItem(this.contract, args);
-      const { registries } = this.state;
-      const address = this.props.params.adress;
-      const registry = registries.find(x => x.address === address);
-
-      if (!registry) { return; }
-      const r = cyber.getRegistryByAddress(registry.address);
-
-      r.getInterfaceEntriesContract((e, ipfsHash) => {
-          // const ipfsHash = registry.ipfsHash;
-          cyber.addItem(address)
-              .then((entryId) => {
-                  this.componentDidMount();
-                  // return cyber.updateItem(address, ipfsHash, entryId, values)
-              });
-      });
-  }
-
-  onUpdate = (values, entryId) => {
-      const { registries } = this.state;
-      const address = this.props.params.adress;
-      const registry = registries.find(x => x.address === address);
-
-      if (!registry) { return; }
-      const r = cyber.getRegistryByAddress(registry.address);
-
-      r.getInterfaceEntriesContract((e, ipfsHash) => {
-          // const ipfsHash = registry.ipfsHash;
-          cyber.updateItem(address, ipfsHash, entryId, values)
-              .then((entryId) => {
-                  this.componentDidMount();
-                  // return cyber.updateItem(address, ipfsHash, entryId, values)
-              });
-      });
-  }
-
-  removeItemClick = (id) => {
-      this.setState({ loading: true });
-      const address = this.props.params.adress;
-
-      cyber.removeItem(address, id)
-          .then(() => {
-              const newItems = this.state.items.filter((item, index) => index !== id);
-
-              this.setState({ items: newItems, loading: false });
-          });
-      // alert(id)
-      // this.contract.deleteEntry(id, function(e, r){
-
-      // });
-      // this.setState({
-      //   loading: true
-      // })
-  }
+        this.setState({
+            items: this.state.items.filter((x, i) => i !== index),
+            loading: false,
+        });
+    }
 
 
-  validate = (e) => {
-      e.preventDefault();
-      console.log(e.target.value);
-  }
+    add = (values) => {
+        // cyber.addRegistryItem(this.contract, args);
+        const { registries } = this.state;
+        const address = this.props.params.adress;
+        const registry = registries.find(x => x.address === address);
 
-  claim = () => {
-      this.contract.claim((e, d) => {
-          this.setState({ balance: 0 });
-      });
-  }
+        if (!registry) {
+            return;
+        }
+        const r = cyber.getRegistryByAddress(registry.address);
+
+        r.getInterfaceEntriesContract((e, ipfsHash) => {
+            // const ipfsHash = registry.ipfsHash;
+            cyber.addItem(address)
+                .then((entryId) => {
+                    this.componentDidMount();
+                    // return cyber.updateItem(address, ipfsHash, entryId, values)
+                });
+        });
+    }
+
+    onUpdate = (values, entryId) => {
+        const { registries } = this.state;
+        const address = this.props.params.adress;
+        const registry = registries.find(x => x.address === address);
+
+        if (!registry) {
+            return;
+        }
+        const r = cyber.getRegistryByAddress(registry.address);
+
+        r.getInterfaceEntriesContract((e, ipfsHash) => {
+            // const ipfsHash = registry.ipfsHash;
+            cyber.updateItem(address, ipfsHash, entryId, values)
+                .then((entryId) => {
+                    this.componentDidMount();
+                    // return cyber.updateItem(address, ipfsHash, entryId, values)
+                });
+        });
+    }
+
+    removeItemClick = (id) => {
+        this.setState({ loading: true });
+        const address = this.props.params.adress;
+
+        cyber.removeItem(address, id)
+            .then(() => {
+                const newItems = this.state.items.filter((item, index) => index !== id);
+
+                this.setState({ items: newItems, loading: false });
+            });
+        // alert(id)
+        // this.contract.deleteEntry(id, function(e, r){
+
+        // });
+        // this.setState({
+        //   loading: true
+        // })
+    }
+
+
+    validate = (e) => {
+        e.preventDefault();
+        console.log(e.target.value);
+    }
+
+    claim = () => {
+        this.contract.claim((e, d) => {
+            this.setState({ balance: 0 });
+        });
+    }
 
     removeContract = () => {
         const address = this.props.params.adress;
@@ -395,6 +415,9 @@ class Register extends Component {
     }
 
     render() {
+
+        console.log('TRYE RENDER');
+
         const {
             fields, items, loading, isOwner, userAccount,
         } = this.state;
@@ -422,7 +445,7 @@ class Register extends Component {
             registrationTimestamp,
             entryCreationFee,
             admin,
-            total_fee,
+            totalFee,
             funded,
             tag,
             symbol,
@@ -437,7 +460,7 @@ class Register extends Component {
             <div>
                 <StatusBar
                     open={ loading }
-                  message='loading...'
+                    message='loading...'
                 />
                 <MainContainer>
                     <Section>
@@ -449,7 +472,7 @@ class Register extends Component {
                         <SectionContent style={ { width: '25%' } }>
                             <Centred>
                                 <BoxTitle>
-                    Created:
+                                    Created:
                                 </BoxTitle>
                                 <div style={ { height: 100, color: '#000000' } }>
                                     {registrationTimestamp ? moment(new Date(registrationTimestamp.toNumber() * 1000)).format('DD/MM/YYYY mm:hh:ss') : ''}
@@ -469,21 +492,23 @@ class Register extends Component {
                         <SectionContent style={ { width: '25%' } }>
                             <Centred>
                                 <BoxTitle>
-                    FUNDED:
+                                    FUNDED:
                                 </BoxTitle>
 
-                                <FundContainer style={ { height: 100, justifyContent: isOwner ? 'space-around' : 'start' } }>
+                                <FundContainer
+                                    style={ { height: 100, justifyContent: isOwner ? 'space-around' : 'start' } }
+                                >
                                     <span>
                                         {funded}
                                         {' '}
-ETH
+                                        ETH
                                     </span>
 
                                     {isOwner && (
                                         <ValueInput
                                             onInter={ this.clameRegistry }
                                             buttonLable='claim funds'
-                                          color='second'
+                                            color='second'
                                         />
                                     )}
 
@@ -494,14 +519,16 @@ ETH
                         <SectionContent style={ { width: '25%' } }>
                             <Centred>
                                 <BoxTitle>
-                    FEES:
+                                    FEES:
                                 </BoxTitle>
 
-                                <FundContainer style={ { height: 100, justifyContent: isOwner ? 'space-around' : 'start' } }>
+                                <FundContainer
+                                    style={ { height: 100, justifyContent: isOwner ? 'space-around' : 'start' } }
+                                >
                                     <span>
-                                        {total_fee}
+                                        {totalFee}
                                         {' '}
-ETH
+                                        ETH
                                     </span>
                                     {isOwner && <Button style={ { width: 119 } } onClick={ this.clameFee }>clame fee</Button>}
                                 </FundContainer>
@@ -519,12 +546,12 @@ ETH
                                     <TransferForm
                                         height={ 140 }
                                         address={ owner }
-                                      isOwner={ isOwner }
-                                      onTransfer={ newOwner => this.transferRegistry(userAccount, newOwner) }
+                                        isOwner={ isOwner }
+                                        onTransfer={ newOwner => this.transferRegistry(userAccount, newOwner) }
                                     />
                                 </div>
                                 <ValueInput
-                                  onInter={ this.fundRegistry }
+                                    onInter={ this.fundRegistry }
                                     buttonLable='fund registry'
                                     width='100%'
                                 />
@@ -533,46 +560,53 @@ ETH
 
                         <SectionContent grow={ 3 }>
                             <FormField
-                              label='Name'
-                              value={ name }
+                                label='Name'
+                                value={ name }
                             />
                             <FormField
-                              label='Symbol'
-                              value={ symbol }
+                                label='Symbol'
+                                value={ symbol }
                             />
                             <FormField
-                              label='Fee'
-                              value={ `${entryCreationFee.toString()} ETH` }
-                              onUpdate={ isOwner && this.changeEntryCreationFee }
+                                label='Fee'
+                                value={ entryCreationFee.toString() }
+                                valueType='ETH'
+                                onUpdate={ isOwner && this.changeEntryCreationFee }
                             />
                             <FormField
-                              label='Description'
-                              value={ description }
-                              onUpdate={ isOwner && this.changeDescription }
+                                label='Description'
+                                value={ description }
+                                onUpdate={ isOwner && this.changeDescription }
                             />
                             <FormField
-                              label='Tags'
-                              value={ tag }
+                                label='Tags'
+                                value={ tag }
                             />
                             <FormField
-                              label='Entries'
-                              value={ rows.length }
+                                label='Entries'
+                                value={ rows.length }
                             />
                             <FormField
-                              label='Registry Type'
-                              value={ contractVersion }
+                                label='Registry Type'
+                                value={ contractVersion }
                             />
                             <FormField
-                              label='Registry address'
-                              value={ registryAddress }
+                                label='Registry address'
+                                value={ registryAddress }
                             />
                             <FormField
-                              label='Entry Core address'
-                              value={ entryCoreAddress }
+                                label='Entry Core address'
+                                value={ entryCoreAddress }
                             />
                             <FormField
-                              label='LINK TO ABI'
-                              value={ <a href={ `http://localhost:8080/ipfs/${ipfsHash}` } target='_blank'>{ipfsHash}</a> }
+                                label='LINK TO ABI'
+                                value={ (
+                                  <a
+                                      href={ `http://localhost:8080/ipfs/${ipfsHash}` }
+                                      target='_blank'
+                                    >{ipfsHash}
+                                    </a>
+                                ) }
                             />
                         </SectionContent>
                     </Section>
@@ -583,15 +617,17 @@ ETH
                     </RegistryList>
 
                 </MainContainer>
-                <AddItemButton onClick={ this.add }>
-                    <AddItemButtonText>Add Record</AddItemButtonText>
-                    <span>
-Fee:
-                        {entryCreationFee}
-                        {' '}
-ETH
-                    </span>
-                </AddItemButton>
+                {isOwner && (
+                    <AddItemButton onClick={ this.add }>
+                        <AddItemButtonText>Add Record</AddItemButtonText>
+                        <span>
+                            Fee:
+                            {entryCreationFee}
+                            {' '}
+                            ETH
+                        </span>
+                    </AddItemButton>
+                )}
             </div>
         );
     }
