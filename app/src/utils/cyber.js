@@ -9,7 +9,7 @@ const moment = require('moment');
 
 // TODO: move in npm package
 
-const NETWORK_ID = '5777';
+const NETWORK_ID = '42';
 
 export const loadCompiler = (cb) => {
     setTimeout(() => {
@@ -450,7 +450,7 @@ export const removeItem = (address, id) => new Promise((resolve) => {
     const event = registryContract.EntryDeleted();
 
     event.watch((e, results) => {
-        event.stopWatching();
+        event.stopWatching(() => {});
         resolve(results.args);
     });
     registryContract.deleteEntry(id, (e, d) => {});
@@ -462,7 +462,7 @@ export const fundEntry = (address, id, value) => new Promise((resolve) => {
     const event = registryContract.EntryFunded();
 
     event.watch((e, results) => {
-        event.stopWatching();
+        event.stopWatching(() => {});
         resolve(results.args);
     });
     registryContract.fundEntry(id, {
