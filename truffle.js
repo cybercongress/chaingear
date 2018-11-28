@@ -29,7 +29,9 @@ module.exports = {
             from: infuraConfig.fromAddress,
             network_id: 42,
             gasPrice: toWei(10, 'gwei').toNumber(),
-            gas: toWei(7.9, 'mwei').toNumber()
+            gas: toWei(7.9, 'mwei').toNumber(),
+            confirmations: 2,
+            skipDryRun: true
         },
         
         development: {

@@ -1,5 +1,5 @@
-var RegistryBuilder = artifacts.require("./builder/RegistryBuilder.sol");
+var DatabaseBuilderV1 = artifacts.require("./builders/DatabaseBuilderV1.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(RegistryBuilder);
+  deployer.deploy(DatabaseBuilderV1);
 };

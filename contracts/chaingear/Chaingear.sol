@@ -52,7 +52,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     mapping(string => DatabaseBuilder) private buildersVersion;
     
     Safe private chaingearSafe;
-    uint256 private databaseCreationFeeWei = 1 ether;
+    uint256 private databaseCreationFeeWei = 1 finney;
 
     string constant private CHAINGEAR_DESCRIPTION = "The novel Ethereum database framework";
     // bytes4 constant private INTERFACE_CHAINGEAR_ID = 0x52dddfe4; 

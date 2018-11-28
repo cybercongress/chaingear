@@ -399,7 +399,7 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
     *  Public functions
     */
     
-    function initializeRegistry(string _linkToABI, bytes _schemaBytecode)
+    function initializeDatabase(string _linkToABI, bytes _schemaBytecode)
         public
         onlyAdmin
         returns (address)
@@ -460,7 +460,6 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
         whenNotPaused
     {
         transferFrom(_from, _to, _tokenId);
-        /* solium-disable-next-line indentation */
         require(checkAndCallSafeTransfer(_from, _to, _tokenId, _data));
     }
 }
