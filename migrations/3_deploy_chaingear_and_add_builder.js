@@ -10,15 +10,15 @@ module.exports = async function(deployer, network, accounts) {
 
     let BUILDING_FEE, BENEFICIARIES, SHARES;
 
-    if (network === 'kovan' || network === 'infura') {
+    // if (network === 'kovan' || network === 'infura') {
         BUILDING_FEE = 0
         BENEFICIARIES = []
         SHARES = []
-    } else {
-        BUILDING_FEE = 100000
-        BENEFICIARIES = [accounts[0], accounts[1]]
-        SHARES = [50, 50]
-    }
+    // } else {
+    //     BUILDING_FEE = 100000
+    //     BENEFICIARIES = [accounts[0]]
+    //     SHARES = [50]
+    // }
 
     const builder = await RegistryBuilder.deployed();
     const chaingear = await deployer.deploy(

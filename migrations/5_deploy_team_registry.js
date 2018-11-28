@@ -8,15 +8,15 @@ module.exports = async function(deployer, network, accounts) {
     
     const ipfs = new IPFS({ host: 'ipfs.infura.io', port: 5001, protocol: 'https' });
     
-    if (network == 'kovan') {
+    // if (network == 'kovan') {
         BUILDING_FEE = 0
         BENEFICIARIES = []
         SHARES = []
-    } else {
-        BUILDING_FEE = 100000
-        BENEFICIARIES = [accounts[0], accounts[1]]
-        SHARES = [50, 50]
-    }    
+    // } else {
+    //     BUILDING_FEE = 100000
+    //     BENEFICIARIES = [accounts[0], accounts[1]]
+    //     SHARES = [50, 50]
+    // }    
     
     const chaingear = await Chaingear.deployed();
     const results = await chaingear.registerRegistry.call(

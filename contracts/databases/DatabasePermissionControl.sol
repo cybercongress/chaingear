@@ -5,12 +5,11 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 /**
-* @title RegistryPermissionControl contract
+* @title Chaingear - the novel Ethereum database framework
 * @author cyber•Congress, Valery litvin (@litvintech)
-* @dev Controls registry adminship logic and permission to entry management
-* @notice not recommend to use before release!
+* @notice not audited, not recommend to use in mainnet
 */
-contract RegistryPermissionControl is Ownable, Pausable {
+contract DatabasePermissionControl is Ownable, Pausable {
     
     /*
     *  Storage
@@ -18,11 +17,11 @@ contract RegistryPermissionControl is Ownable, Pausable {
     
     enum CreateEntryPermissionGroup {OnlyAdmin, Whitelist, AllUsers}
     
-    address internal admin;
+    address private admin;
 
-    mapping(address => bool) whitelist;
+    mapping(address => bool) private whitelist;
     
-    CreateEntryPermissionGroup internal permissionGroup;
+    CreateEntryPermissionGroup private permissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
     
     /*
     *  Constructor
@@ -30,10 +29,7 @@ contract RegistryPermissionControl is Ownable, Pausable {
     
     constructor()
         public
-    {
-        permissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
-        admin = address(0);
-    }
+    { }
     
     /*
     *  Modifiers
@@ -57,14 +53,6 @@ contract RegistryPermissionControl is Ownable, Pausable {
     *  External functions
     */
     
-    /**
-    * @dev Allows owner (in main workflow - chaingear) transfer admin right
-    * @dev if previous admin transfer associated ERC721 token.
-    * @param _newAdmin address of new token holder/registry admin
-    * @notice triggered by chaingear in main workflow (when registry non-registered from CH) 
-    * @notice admin cannot transfer their own right cause right are tokenized and associated with
-    * @notice ERC721 token, which logic controls chaingear contract
-    */
     function transferAdminRights(address _newAdmin)
         external
         onlyOwner

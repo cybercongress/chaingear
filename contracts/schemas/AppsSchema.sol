@@ -1,24 +1,14 @@
 pragma solidity 0.4.25;
 
-import "../common/IEntry.sol";
-import "../common/IConnector.sol";
-import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "../common/ISchema.sol";
+import "../common/ISchemaConnector.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 
 
-contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
+contract AppsSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     
-    using SafeMath for uint256;
-    
-    bytes4 public constant InterfaceId_EntryCore = 0xd4b1117d;
-    /**
-     * 0xd4b1117d ===
-     *   bytes4(keccak256('createEntry(uint256)')) ^
-     *   bytes4(keccak256('deleteEntry(uint256)')) ^
-     *   bytes4(keccak256('getEntriesAmount()')) ^
-     *   bytes4(keccak256('getEntriesIDs()'))
-     */
+    // bytes4 public constant InterfaceId_EntryCore = 0xd4b1117d;
 
     struct Entry {
         string name;
@@ -30,13 +20,13 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     
     Entry[] public entries;
     
-    IConnector internal registry;
+    ISchemaConnector internal database;
     
     constructor()
         public
     {
-        _registerInterface(InterfaceId_EntryCore);
-        registry = IConnector(owner);
+        // _registerInterface(InterfaceId_EntryCore);
+        database = ISchemaConnector(owner);
     }
     
     function() external {} 
@@ -68,7 +58,7 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
             string
         )
     {
-        uint256 entryIndex = registry.getIndexByID(_entryID);
+        uint256 entryIndex = database.getIndexByID(_entryID);
         return (
             entries[entryIndex].name,
             entries[entryIndex].manifest,
@@ -78,7 +68,6 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
         );
     }
 
-    // Example: you can write methods for earch parameter and update them separetly
     function updateEntry(
         uint256 _entryID,
         string  _name,
@@ -89,9 +78,9 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     )
         external
     {
-        registry.auth(_entryID, msg.sender);
+        database.auth(_entryID, msg.sender);
         
-        uint256 entryIndex = registry.getIndexByID(_entryID);
+        uint256 entryIndex = database.getIndexByID(_entryID);
             
         Entry memory m = (Entry(
         {
@@ -107,10 +96,8 @@ contract AppsSchema is IEntry, Ownable, SupportsInterfaceWithLookup {
     function deleteEntry(uint256 _entryIndex)
         external
         onlyOwner
-    {
-        require(entries.length > uint256(0));
-        
-        uint256 lastEntryIndex = entries.length.sub(1);
+    {        
+        uint256 lastEntryIndex = entries.length - 1;
         Entry memory lastEntry = entries[lastEntryIndex];
         
         entries[_entryIndex] = lastEntry;

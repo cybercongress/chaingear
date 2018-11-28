@@ -2,37 +2,24 @@ pragma solidity 0.4.25;
 
 
 /**
-* @title Safe contract
-* @author cyber•Congress, Valery Litvin (@litvintech)
-* @dev Allows store etheirs which funded to Registry 
-* @dev and claim them by Registry/associated token via Chaingear
-* @notice not recommend to use before release!
+* @title Chaingear - the novel Ethereum database framework
+* @author cyber•Congress, Valery litvin (@litvintech)
+* @notice not audited, not recommend to use in mainnet
 */
 contract Safe {
     
     address private owner;
 
-    constructor()
-        public
+    constructor() public
     {
         owner = msg.sender;
     }
 
-    /**
-    * @dev Allows direct send only by owner.
-    */
-    function()
-        external
-        payable
+    function() external payable
     {
         require(msg.sender == owner);
     }
 
-    /**
-    * @dev Allows owner (chaingear) claim funds and transfer them to Registry admin
-    * @param _entryOwner address transfer to, Registry-token admin
-    * @param _amount uint claimed amount by Registry-token admin
-    */
     function claim(address _entryOwner, uint256 _amount)
         external
     {
