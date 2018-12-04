@@ -5,11 +5,47 @@ import generateContractCode from './generateContractCode';
 
 import Registry from '../../../build/contracts/Registry.json';
 
+let _networkId;
+
+const networks = {
+    '42': 'Kovan',
+    '1': 'Main',
+    '5777': 'TestNet',
+    '4': 'Rinkeby',
+};
+
+export function checkNetwork() {
+    return new Promise(resolve => {
+
+        const networks = Object.keys(ChaingearBuild.networks);
+
+        getWeb3.then(({ web3 }) => {
+            web3.version.getNetwork((err, netId) => {
+                _networkId = netId;
+
+                resolve({
+                    isCorrectNetwork: networks.indexOf(netId) !== -1,
+                    networkId: netId,
+                    contractNetworks: networks,
+                });
+            })
+        });
+    });
+
+}
+
+export const getNetworkStr = (networkId) => {
+
+    if (networks[networkId]) {
+        return networks[networkId];
+    }
+
+    return 'Unknown network';
+};
+
 const moment = require('moment');
 
 // TODO: move in npm package
-
-const NETWORK_ID = '42';
 
 export const loadCompiler = (cb) => {
     setTimeout(() => {
@@ -197,7 +233,7 @@ export const deployRegistry = (bytecode, abi, web3, opt) => {
 export const getChaingearContract = () => getWeb3
     .then((results) => {
         const web3 = results.web3;
-        const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks[NETWORK_ID].address);
+        const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks[_networkId].address);
         // registryContract.setProvider(results.web3.currentProvider);
         // results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
 
