@@ -79,81 +79,53 @@ class Register extends Component {
 
         let _newState = {};
         cyber.init()
-            .then(({ contract, web3, accounts }) => {
-                // todo: _userAccount = web3.eth.getDefaultAccount
-                _userAccount = accounts[0];
+            .then(({ contract, web3 }) => {
                 _web3 = web3;
                 _chaingearContract = contract;
             })
-            .then(() => cyber.getRegistries())
-            .then((items) => {
-                _registries = items;
-                return items.find(x => x.address === registryAddress);
+            .then(() => {
+                cyber.getDefaultAccount();
             })
-            .then((registry) => {
-                if (!registry) {
-                    return Promise.reject({ message: 'Vsemy pizda' });
-                }
-                _registry = registry;
-                _registryId = this.getRegistryID(_registries);
-                _registryContract = _web3.eth.contract(Registry.abi).at(registryAddress);
+            .then((defaultAccount) => {
+                _userAccount = defaultAccount;
+            })
+            .then(() => cyber.callContractMethod(_chaingearContract, 'getRegistryIdByAddress', registryAddress))
+            .then((registryId) => {
+                _registryId = registryId;
             })
             .then(() => {
-                const fundedPromise = new Promise((resolve) => {
-                    _chaingearContract.readRegistryBalance(_registryId, (e, data) => {
-                        resolve(_web3.fromWei(_web3.toDecimal(data[0].toNumber())));
-                    });
-                });
+                _registryContract = _web3.eth.contract(Registry.abi).at(registryAddress);
+            })
+            .then(() => cyber.callContractMethod(_chaingearContract, 'readRegistry', _registryId))
+            .then((registry) => {
+                _registry = this.mapRegistry(registry);
+            })
+            .then(() => {
+                const fundedPromise = cyber.callContractMethod(_chaingearContract, 'readRegistryBalance', _registryId);
+                const totalFeePromise = cyber.callWeb3EthMethod(_web3, 'getBalance', registryAddress);
+                const ownerPromise = cyber.callContractMethod(_registryContract, 'getAdmin');
+                const descriptionPromise = cyber.callContractMethod(_registryContract, 'getRegistryDescription');
+                const symbolPromise = cyber.callContractMethod(_registryContract, 'symbol');
+                const entryCreationFeePromise = cyber.callContractMethod(_registryContract, 'getEntryCreationFee');
 
-                const totalFeePromise = new Promise((resolve) => {
-                    _web3.eth.getBalance(_registry.address, (e, balance) => {
-                        resolve(_web3.fromWei(_web3.toDecimal(balance), 'ether'));
-                    });
-                });
-
-                const ownerPromise = new Promise((resolve) => {
-                    _registryContract.getAdmin((e, owner) => {
-                        resolve(owner);
-                    });
-                });
-
-                const descriptionPromise = new Promise((resolve) => {
-                    _registryContract.getRegistryDescription((e, description) => {
-                        resolve(description);
-                    });
-                });
-
-                const symbolPromise = new Promise((resolve) => {
-                    _registryContract.symbol((e, symbol) => {
-                        resolve(symbol);
-                    });
-                });
-
-                const entryCreationFeePromise = new Promise((resolve) => {
-                    _registryContract.getEntryCreationFee((e, creationFee) => {
-                        resolve(_web3.fromWei(creationFee, 'ether').toNumber());
-                    });
-                });
-
-                const registryDataPromise = new Promise((resolve) => {
-                    _registryContract.getInterfaceEntriesContract((error, ipfsHash) => {
-                        cyber.getRegistryFieldsByHash(ipfsHash).then(({ abi, fields }) => {
-                            resolve({
-                                ipfsHash,
-                                abi,
-                                fields,
-                            });
-                        });
-                    });
-                });
+                const registryDataPromise = cyber.callContractMethod(_registryContract, 'getInterfaceEntriesContract')
+                    .then((ipfsHash) => {
+                        return cyber.getRegistryFieldsByHash(ipfsHash);
+                    }).then(({ ipfsHash, abi, fields }) => ({
+                        ipfsHash,
+                        abi,
+                        fields,
+                    }));
 
                 return Promise
-                    .all([fundedPromise, totalFeePromise, ownerPromise,
-                        descriptionPromise, symbolPromise, entryCreationFeePromise,
-                        registryDataPromise]);
+                    .all([fundedPromise, totalFeePromise, ownerPromise, descriptionPromise, symbolPromise, entryCreationFeePromise, registryDataPromise]);
             })
-            .then(([funded, totalFee, owner,
-                description, symbol, entryCreationFee, registryData]) => {
+            .then(([funded, totalFee, owner, description, symbol, entryCreationFee, registryData]) => {
+
+                const _funded = _web3.fromWei(_web3.toDecimal(funded[0].toNumber()));
+                const _entryCreationFee = _web3.fromWei(entryCreationFee, 'ether').toNumber();
+                const _totalFee = _web3.fromWei(_web3.toDecimal(totalFee), 'ether');
+
                 _ipfsHash = registryData.ipfsHash;
                 _fields = registryData.fields;
                 _abi = registryData.abi;
@@ -170,22 +142,20 @@ class Register extends Component {
                         registries: _registries,
                         registryAddress,
                         registryContract: _registryContract,
-                        funded,
-                        totalFee,
+                        funded: _funded,
+                        totalFee: _totalFee,
                         userAccount: _userAccount,
                         isOwner: _userAccount === owner,
                         owner,
                         description,
                         symbol,
-                        entryCreationFee,
+                        entryCreationFee: _entryCreationFee,
                         ipfsHash: _ipfsHash,
                         fields: _fields,
                     },
                 };
             })
-            .then(() => {
-                return cyber.getRegistryData(registryAddress, _fields, _abi)
-            })
+            .then(() => cyber.getRegistryData(_registryContract, _fields, _abi))
             .then(({ items, fields, entryAddress }) => {
                 return Promise.all([
                     entryAddress,
@@ -223,6 +193,17 @@ class Register extends Component {
             });
     }
 
+    mapRegistry = rawRegistry => ({
+        name: rawRegistry[0],
+        symbol: rawRegistry[1],
+        address: rawRegistry[2],
+        contractVersion: rawRegistry[3],
+        registrationTimestamp: rawRegistry[4],
+        ipfsHash: '',
+        admin: rawRegistry[5],
+        supply: rawRegistry[6],
+    });
+
     deleted = (e, result) => {
         const index = result.args.entryId.toNumber();
 
@@ -242,7 +223,7 @@ class Register extends Component {
         if (!registry) {
             return;
         }
-        const r = cyber.getRegistryByAddress(registry.address);
+        const r = cyber.getRegistryContract(registry.address);
 
         r.getInterfaceEntriesContract((e, ipfsHash) => {
             // const ipfsHash = registry.ipfsHash;
@@ -262,7 +243,7 @@ class Register extends Component {
         if (!registry) {
             return;
         }
-        const r = cyber.getRegistryByAddress(registry.address);
+        const r = cyber.getRegistryContract(registry.address);
 
         r.getInterfaceEntriesContract((e, ipfsHash) => {
             // const ipfsHash = registry.ipfsHash;

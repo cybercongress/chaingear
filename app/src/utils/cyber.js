@@ -72,12 +72,15 @@ export const formatDate = (solidityDate) => {
     return moment(jsDate).format(dateFormat);
 };
 
-export const getItems = (contract, ids, array, mapFn) => new Promise((topResolve) => {
-    contract[ids]((e, idsNumbers) => {
-        const arr = idsNumbers.map(id => id.toNumber());
-        const promises = arr.map(id => new Promise((itemResolve, itemReject) => {
-            contract[array](id, (e, data) => {
-                if (e) { itemReject(e); } else {
+export const getItems = (contract, getIdsMethod, getEntryByIdMethod, mapFn) => new Promise((topResolve) => {
+    contract[getIdsMethod]((e, ids) => {
+        const idsArray = ids.map(id => id.toNumber());
+
+        const promises = idsArray.map(id => new Promise((itemResolve, itemReject) => {
+            contract[getEntryByIdMethod](id, (error, data) => {
+                if (error) {
+                    itemReject(error);
+                } else {
                     itemResolve({
                         data,
                         id,
@@ -86,11 +89,33 @@ export const getItems = (contract, ids, array, mapFn) => new Promise((topResolve
             });
         }));
 
-        Promise.all(promises).then((data) => {
-            const results = data.map(item => mapFn(item.data, item.id));
+        Promise.all(promises).then((items) => {
+            const results = items.map(item => mapFn(item.data, item.id));
 
             topResolve(results);
         });
+    });
+});
+
+export const getItemsByIds = (contract, idsArray, getEntryByIdMethod, mapFn) => new Promise((topResolve) => {
+
+    const promises = idsArray.map(id => new Promise((itemResolve, itemReject) => {
+        contract[getEntryByIdMethod](id, (error, data) => {
+            if (error) {
+                itemReject(error);
+            } else {
+                itemResolve({
+                    data,
+                    id,
+                });
+            }
+        });
+    }));
+
+    Promise.all(promises).then((items) => {
+        const results = items.map(item => mapFn(item.data, item.id));
+
+        topResolve(results);
     });
 });
 
@@ -269,23 +294,49 @@ export const getDefaultAccount = () => new Promise(resolve => getWeb3
         resolve(accounts[0]);
     })));
 
+export const getRegistries = () => {
+    const mapFunc = items => ({
+        name: items[0],
+        symbol: items[1],
+        address: items[2],
+        contractVersion: items[3],
+        registrationTimestamp: items[4],
+        ipfsHash: '',
+        admin: items[5],
+        supply: items[6],
+    });
 
-const mapFunc = items => ({
-    name: items[0],
-    symbol: items[1],
-    address: items[2],
-    contractVersion: items[3],
-    registrationTimestamp: items[4],
-    ipfsHash: '',
-    admin: items[5],
-    supply: items[6],
-});
+    return getChaingearContract()
+        .then(({ contract }) => getItems(contract, 'getRegistriesIDs', 'readRegistry', mapFunc));
+};
 
-export const getRegistries = () => getChaingearContract()
-    .then(({ contract }) => getItems(contract, 'getRegistriesIDs', 'readRegistry', mapFunc));
+export const callContractMethod = (contract, method, ...args) => {
+    return new Promise((resolve, reject) => {
+        contract[method].apply(contract, [...args, (e, data) => {
+            if (e) {
+                console.log('Rejected contract call. Method: ', method, ' args: ', args);
+                reject(e);
+            } else {
+                resolve(data);
+            }
+        }]);
+    });
+};
 
+export const callWeb3EthMethod = (web3, method, ...args) => {
+    return new Promise((resolve, reject) => {
+        web3.eth[method].apply(web3, [...args, (e, data) => {
+            if (e) {
+                console.log('Rejected web3.eth call. Method: ', method, ' args: ', args);
+                reject(e);
+            } else {
+                resolve(data);
+            }
+        }]);
+    });
+};
 
-export const getRegistry = () => {
+/*export const getRegistry = () => {
     const accounts = null;
 
     return getChaingearContract().then(({
@@ -308,7 +359,7 @@ export const getRegistry = () => {
             items,
         }));
     });
-};
+};*/
 
 export const removeRegistry = (address, cb) => getChaingearContract().then(({
     contract,
@@ -327,6 +378,7 @@ export const getRegistryFieldsByHash = ipfsHash => new Promise((resolve) => {
 
         fields = fields.filter(x => x.name !== 'metainformation' && x.name !== 'owner' && x.name !== 'lastUpdateTime');
         resolve({
+            ipfsHash,
             abi,
             fields,
         });
@@ -444,36 +496,41 @@ export const init = () => new Promise((resolve) => {
     }
 });
 
-export const getRegistryByAddress = address => _web3.eth.contract(Registry.abi).at(address);
+export const getRegistryContract = address => _web3.eth.contract(Registry.abi).at(address);
 
-export const getRegistryData = (address, fields, abi) => new Promise((resolve) => {
-    const registry = _web3.eth.contract(Registry.abi).at(address);
+export const getRegistryData = (registryContract, fields, abi) => new Promise((resolve) => {
+    let _entryCoreAddress;
+    let _entryCore;
 
-    registry.getEntriesStorage((e, entryAddress) => {
-        const entryCore = _web3.eth.contract(abi).at(entryAddress);
+    const mapFn = (item, id) => {
+        const aItem = Array.isArray(item) ? item : [item];
 
-        const mapFn = (item, id) => {
-            const aItem = Array.isArray(item) ? item : [item];
+        return fields.reduce((o, field, index) => {
+            o[field.name] = aItem[index];
+            return o;
+        }, {
+            __index: id,
+        });
+    };
 
-            return fields.reduce((o, field, index) => {
-                o[field.name] = aItem[index];
-                return o;
-            }, {
-                __index: id,
-            });
-        };
-        // TODO here getEntriesIDs should be called from registry, then entry reads from Schema by ids
-        // in schema contract now there is redirect method to registry for supporting frontend
+    callContractMethod(registryContract, 'getEntriesStorage')
+        .then((entryAddress) => {
+            _entryCoreAddress = entryAddress;
+            _entryCore = _web3.eth.contract(abi).at(entryAddress);
+        })
+        .then(() => callContractMethod(registryContract, 'getEntriesIDs'))
+        .then((entriesIDs) => {
+            const idsArray = entriesIDs.map(id => id.toNumber());
 
-        getItems(entryCore, 'getEntriesIDs', 'readEntry', mapFn)
-            .then((items) => {
-                resolve({
-                    items,
-                    fields,
-                    entryAddress,
+            getItemsByIds(_entryCore, idsArray, 'readEntry', mapFn)
+                .then((items) => {
+                    resolve({
+                        items,
+                        fields,
+                        entryAddress: _entryCoreAddress,
+                    });
                 });
-            });
-    });
+        });
 });
 
 export const getEntryMeta = () => {
