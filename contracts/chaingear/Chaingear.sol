@@ -5,6 +5,7 @@ import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "openzeppelin-solidity/contracts/AddressUtils.sol";
 
 import "../common/IDatabaseBuilder.sol";
 import "../common/IDatabase.sol";
@@ -20,6 +21,7 @@ import "../common/IChaingear.sol";
 contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
+    using AddressUtils for address;
     
     /*
     *  Storage
@@ -42,13 +44,14 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     }
     
     DatabaseMeta[] private databases;
-
-    uint256 private headTokenID = 0;
-
     mapping(string => bool) private databasesNamesIndex;
     mapping(string => bool) private databasesSymbolsIndex;
-    
+
+    uint256 private headTokenID = 0;
     mapping(address => uint256) private databasesIDsByAddressesIndex;
+    
+    uint256 private amountOfBuilders = 0;
+    mapping(uint256 => string) private buildersVersionIndex;
     mapping(string => DatabaseBuilder) private buildersVersion;
     
     Safe private chaingearSafe;
@@ -115,16 +118,17 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     */
     
     function addDatabaseBuilderVersion(
-        string              _version, 
-        IDatabaseBuilder    _builderAddress,
-        string              _linkToABI,
-        string              _description
+        string           _version, 
+        IDatabaseBuilder _builderAddress,
+        string           _linkToABI,
+        string           _description
     )
         external
         onlyOwner
         whenNotPaused
     {
         require(buildersVersion[_version].builderAddress == address(0));
+        require(address(_builderAddress).isContract() == true);
         
         buildersVersion[_version] = (DatabaseBuilder(
         {
@@ -132,14 +136,28 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
             linkToABI:      _linkToABI,
             description:    _description
         }));
+        buildersVersionIndex[amountOfBuilders] = _version;
+        amountOfBuilders = amountOfBuilders.add(1);
+    }
+    
+    function updateDatabaseBuilderDescription(
+        string _version,
+        string _description
+    )
+        external
+        onlyOwner
+        whenNotPaused
+    {
+        require(buildersVersion[_version].builderAddress != address(0));
+        buildersVersion[_version].description = _description;
     }
 
     function createDatabase(
-        string      _version,
-        address[]   _benefitiaries,
-        uint256[]   _shares,
-        string      _name,
-        string      _symbol
+        string    _version,
+        address[] _benefitiaries,
+        uint256[] _shares,
+        string    _name,
+        string    _symbol
     )
         external
         payable
@@ -218,7 +236,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         chaingearSafe.claim(msg.sender, _amount);
     }
     
-    function updateRegistrationFee(uint256 _newFee)
+    function updateCreationFee(uint256 _newFee)
         external
         onlyOwner
         whenPaused
@@ -229,6 +247,22 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     /*
     *  Views
     */
+    
+    function getAmountOfBuilders()
+        external
+        view
+        returns(uint256)
+    {
+        return amountOfBuilders;
+    }
+    
+    function getBuilderById(uint256 _id)
+        external
+        view
+        returns(string)
+    {
+        return buildersVersionIndex[_id];
+    }
     
     function getDatabaseBuilder(string _version) 
         external
@@ -244,6 +278,24 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
             buildersVersion[_version].linkToABI,
             buildersVersion[_version].description
         );
+    }
+    
+    function getDatabasesIDs()
+        external
+        view
+        returns (uint256[])
+    {
+        return allTokens;
+    }
+    
+    function getDatabaseIDByAddress(address _databaseAddress)
+        external
+        view
+        returns(uint256)
+    { 
+        uint256 id = databasesIDsByAddressesIndex[_databaseAddress];
+        require(exists(id) == true);
+        return id;
     }
     
     function getDatabase(uint256 _databaseID)
@@ -278,31 +330,12 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         view
         returns (uint256, uint256)
     {
-        require(exists(_databaseID) == true);
         uint256 databaseIndex = allTokensIndex[_databaseID];
         
         return (
             databases[databaseIndex].currentWei,
             databases[databaseIndex].accumulatedWei
         );
-    }
-    
-    function getDatabasesIDs()
-        external
-        view
-        returns (uint256[])
-    {
-        return allTokens;
-    }
-    
-    function getDatabaseIDByAddress(address _databaseAddress)
-        external
-        view
-        returns(uint256)
-    { 
-        uint256 id = databasesIDsByAddressesIndex[_databaseAddress];
-        require(exists(id) == true);
-        return id;
     }
     
     function getChaingearDescription()
@@ -313,7 +346,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         return CHAINGEAR_DESCRIPTION;
     }
 
-    function getRegistrationFeeWei()
+    function getCreationFeeWei()
         external
         view
         returns (uint256)
@@ -335,6 +368,22 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         returns (address)
     {
         return chaingearSafe;
+    }
+    
+    function getNameExist(string _name)
+        external
+        view
+        returns (bool)
+    {
+        return databasesNamesIndex[_name];
+    }
+    
+    function getSymbolExist(string _symbol)
+        external
+        view
+        returns (bool)
+    {
+        return databasesSymbolsIndex[_symbol];
     }
     
     /*
@@ -418,14 +467,14 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
             versionOfDatabase: _version,
             linkABI:           buildersVersion[_version].linkToABI, // delete this
             createdTimestamp:  block.timestamp,
-            currentWei:        uint256(0),
-            accumulatedWei:    uint256(0)
+            currentWei:        0,
+            accumulatedWei:    0
         }));
 
         databases.push(database);
         
         databasesNamesIndex[_name] = true;
-        databasesSymbolsIndex[_name] = true;
+        databasesSymbolsIndex[_symbol] = true;
         
         uint256 newTokenID = headTokenID;
         databasesIDsByAddressesIndex[databaseAddress] = newTokenID;    

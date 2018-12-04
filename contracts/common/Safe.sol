@@ -24,7 +24,7 @@ contract Safe {
         external
     {
         require(msg.sender == owner);
-        require(_amount <= address(this).balance);
+        // require(_amount <= address(this).balance);
         require(_entryOwner != address(0));
         
         _entryOwner.transfer(_amount);
