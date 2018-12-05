@@ -58,8 +58,9 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     uint256 private databaseCreationFeeWei = 1 finney;
 
     string constant private CHAINGEAR_DESCRIPTION = "The novel Ethereum database framework";
-    // bytes4 constant private INTERFACE_CHAINGEAR_ID = 0x52dddfe4; 
-    
+    bytes4 constant public INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
+    bytes4 constant public INTERFACE_DATABASE_ID = 0xfdb63525;
+    bytes4 constant public INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
     /*
     *  Events
     */
@@ -96,6 +97,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         SplitPayment (_beneficiaries, _shares)
     {
         chaingearSafe = new Safe();
+        _registerInterface(INTERFACE_CHAINGEAR_ID);
     }
     
     /*
@@ -454,11 +456,11 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         
         address databaseAddress = address(databaseContract);
         
-        // SupportsInterfaceWithLookup support = SupportsInterfaceWithLookup(registryAddress);
-        // require(support.supportsInterface(InterfaceId_ChaingearRegistry));
-        // require(support.supportsInterface(InterfaceId_ERC721));
-        // require(support.supportsInterface(InterfaceId_ERC721Metadata));
-        // require(support.supportsInterface(InterfaceId_ERC721Enumerable));
+        SupportsInterfaceWithLookup support = SupportsInterfaceWithLookup(databaseAddress);
+        require(support.supportsInterface(INTERFACE_DATABASE_ID));
+        require(support.supportsInterface(InterfaceId_ERC721));
+        require(support.supportsInterface(InterfaceId_ERC721Metadata));
+        require(support.supportsInterface(InterfaceId_ERC721Enumerable));
         
         DatabaseMeta memory database = (DatabaseMeta(
         {
@@ -477,7 +479,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         databasesSymbolsIndex[_symbol] = true;
         
         uint256 newTokenID = headTokenID;
-        databasesIDsByAddressesIndex[databaseAddress] = newTokenID;    
+        databasesIDsByAddressesIndex[databaseAddress] = newTokenID;
         super._mint(msg.sender, newTokenID);
         headTokenID = headTokenID.add(1);
         

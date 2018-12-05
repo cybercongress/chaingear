@@ -1,15 +1,14 @@
 pragma solidity 0.4.25;
 
 import "../common/ISchema.sol";
-import "../common/ISchemaConnector.sol";
-import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "../common/IDatabase.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 
 
 contract TeamSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     
-    // bytes4 public constant InterfaceId_EntryCore = 0xd4b1117d;
+    bytes4 constant internal INTERFACE_SCHEMA_ID = 0x153366ed;
 
     struct Entry {
         string  name;
@@ -22,13 +21,13 @@ contract TeamSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     
     Entry[] public entries;
     
-    ISchemaConnector internal database;
+    IDatabase internal database;
     
     constructor()
         public
     {
-        // _registerInterface(InterfaceId_EntryCore);
-        database = ISchemaConnector(owner);
+        _registerInterface(INTERFACE_SCHEMA_ID);
+        database = IDatabase(owner);
     }
     
     function() external {} 

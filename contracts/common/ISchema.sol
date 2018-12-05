@@ -5,5 +5,4 @@ interface ISchema {
 
     function createEntry() external;
     function deleteEntry(uint256) external;
-    
 }

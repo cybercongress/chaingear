@@ -8,7 +8,6 @@ import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "../common/IChaingear.sol";
 import "../common/ISchema.sol";
 import "../common/IDatabase.sol";
-import "../common/ISchemaConnector.sol";
 import "../common/Safe.sol";
 import "./DatabasePermissionControl.sol";
 
@@ -18,7 +17,7 @@ import "./DatabasePermissionControl.sol";
 * @author cyber•Congress, Valery litvin (@litvintech)
 * @notice not audited, not recommend to use in mainnet
 */
-contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
+contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
     
@@ -26,8 +25,8 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
     *  Storage
     */
     
-    bytes4 public constant InterfaceId_Schema = 0xd4b1117d;
-    // bytes4 constant private InterfaceId_ChaingearRegistry =  0x52dddfe4;
+    bytes4 constant internal INTERFACE_SCHEMA_ID = 0x153366ed;
+    bytes4 constant internal INTERFACE_DATABASE_ID = 0xfdb63525;
 
     // @dev Metadata of entry, holds ownership data and funding info
     struct EntryMeta {
@@ -114,7 +113,7 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
         public
         payable
     {
-        // _registerInterface(InterfaceId_ChaingearRegistry);
+        _registerInterface(INTERFACE_DATABASE_ID);
         databaseSafe = new Safe();
     }
     
@@ -423,7 +422,7 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
         }
     
         require(deployedAddress != address(0));
-        require(SupportsInterfaceWithLookup(deployedAddress).supportsInterface(InterfaceId_Schema));
+        require(SupportsInterfaceWithLookup(deployedAddress).supportsInterface(INTERFACE_SCHEMA_ID));
         entriesStorage = ISchema(deployedAddress);
     
         linkToSchemaABI = _linkToABI;
