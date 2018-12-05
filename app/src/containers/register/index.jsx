@@ -57,14 +57,15 @@ class Register extends Component {
         registryAddress: null,
         entryCoreAddress: null,
         ipfsHash: null,
-    }
+        isSchemaExist: false,
+    };
 
     componentDidMount() {
         this.setState({
             loading: true,
         });
 
-        const registryAddress = this.props.params.adress;
+        const registryAddress = this.props.params.address;
 
         let _registries = null;
         let _userAccount = null;
@@ -76,6 +77,7 @@ class Register extends Component {
         let _abi = null;
         let _fields = null;
         let _ipfsHash = null;
+        let _isSchemaExist = false;
 
         let _newState = {};
         cyber.init()
@@ -83,9 +85,7 @@ class Register extends Component {
                 _web3 = web3;
                 _chaingearContract = contract;
             })
-            .then(() => {
-                cyber.getDefaultAccount();
-            })
+            .then(() => cyber.getDefaultAccount())
             .then((defaultAccount) => {
                 _userAccount = defaultAccount;
             })
@@ -108,27 +108,18 @@ class Register extends Component {
                 const symbolPromise = cyber.callContractMethod(_registryContract, 'symbol');
                 const entryCreationFeePromise = cyber.callContractMethod(_registryContract, 'getEntryCreationFee');
 
-                const registryDataPromise = cyber.callContractMethod(_registryContract, 'getInterfaceEntriesContract')
-                    .then((ipfsHash) => {
-                        return cyber.getRegistryFieldsByHash(ipfsHash);
-                    }).then(({ ipfsHash, abi, fields }) => ({
-                        ipfsHash,
-                        abi,
-                        fields,
-                    }));
-
                 return Promise
-                    .all([fundedPromise, totalFeePromise, ownerPromise, descriptionPromise, symbolPromise, entryCreationFeePromise, registryDataPromise]);
+                    .all([fundedPromise, totalFeePromise, ownerPromise, descriptionPromise, symbolPromise, entryCreationFeePromise]);
             })
-            .then(([funded, totalFee, owner, description, symbol, entryCreationFee, registryData]) => {
+            .then(([funded, totalFee, owner, description, symbol, entryCreationFee]) => {
 
                 const _funded = _web3.fromWei(_web3.toDecimal(funded[0].toNumber()));
                 const _entryCreationFee = _web3.fromWei(entryCreationFee, 'ether').toNumber();
                 const _totalFee = _web3.fromWei(_web3.toDecimal(totalFee), 'ether');
 
-                _ipfsHash = registryData.ipfsHash;
-                _fields = registryData.fields;
-                _abi = registryData.abi;
+                // _ipfsHash = registryData.ipfsHash;
+                // _fields = registryData.fields;
+                // _abi = registryData.abi;
 
                 _newState = {
                     ..._newState,
@@ -150,8 +141,38 @@ class Register extends Component {
                         description,
                         symbol,
                         entryCreationFee: _entryCreationFee,
-                        ipfsHash: _ipfsHash,
-                        fields: _fields,
+                        // ipfsHash: _ipfsHash,
+                        // fields: _fields,
+                    },
+                };
+            })
+            .then(() => cyber.callContractMethod(_registryContract, 'getRegistryInitStatus'))
+            .then((isSchemaExist) => {
+                if (!isSchemaExist) {
+                    this.setState({
+                        ..._newState,
+                        isSchemaExist,
+                        loading: false,
+                    });
+                    throw new Error('Schema is not exist');
+                }
+            })
+            .then(() => cyber.callContractMethod(_registryContract, 'getInterfaceEntriesContract'))
+            //
+            //
+            // with schema
+            //
+            //
+            .then(ipfsHash => cyber.getRegistryFieldsByHash(ipfsHash))
+            .then(({ ipfsHash, abi, fields }) => {
+                _abi = abi;
+                _fields = fields;
+
+                _newState = {
+                    ..._newState,
+                    ...{
+                        ipfsHash,
+                        fields,
                     },
                 };
             })
@@ -190,6 +211,9 @@ class Register extends Component {
             })
             .then(() => {
                 this.setState(_newState);
+            })
+            .catch((error) => {
+                console.log(`Cannot load registry data. Error: ${error}`);
             });
     }
 
@@ -397,7 +421,7 @@ class Register extends Component {
 
     render() {
         const {
-            fields, items, loading, isOwner, userAccount,
+            fields, items, loading, isOwner, userAccount, isSchemaExist
         } = this.state;
 
 
@@ -595,7 +619,7 @@ class Register extends Component {
                     </RegistryList>
 
                 </MainContainer>
-                {isOwner && (
+                {isOwner && isSchemaExist && (
                     <AddItemButton onClick={ this.add }>
                         <AddItemButtonText>Add Record</AddItemButtonText>
                         <span>

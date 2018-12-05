@@ -323,6 +323,19 @@ export const callContractMethod = (contract, method, ...args) => {
     });
 };
 
+export const sendTransactionMethod = (contractMethod, ...args) => {
+    return new Promise((resolve, reject) => {
+        contractMethod.sendTransaction.apply(contractMethod, [...args, (e, data) => {
+            if (e) {
+                console.log('Rejected send transaction method. Args: ', args);
+                reject(e);
+            } else {
+                resolve(data);
+            }
+        }]);
+    });
+};
+
 export const callWeb3EthMethod = (web3, method, ...args) => {
     return new Promise((resolve, reject) => {
         web3.eth[method].apply(web3, [...args, (e, data) => {
@@ -408,11 +421,11 @@ export const saveInIPFS = jsonStr => new Promise((resolve, reject) => {
 
 // Public API
 
-let _bytecode;
-let _ipfsHash;
-
 export const createRegistry = (name, symbol, fields) => {
     const code = generateContractCode(name, fields);
+
+    let _bytecode;
+    let _ipfsHash;
 
     return new Promise((resolve, reject) => {
         loadCompiler((compiler) => {
@@ -463,6 +476,66 @@ export const createRegistry = (name, symbol, fields) => {
                 })
                 .catch(reject);
         });
+    });
+};
+
+export const deploySchema = (name, fields, registryAddress) => {
+    const code = generateContractCode(name, fields);
+
+    let _bytecode;
+    let _ipfsHash;
+
+    return new Promise((resolve, reject) => {
+        loadCompiler((compiler) => {
+            compileRegistry(code, name, compiler)
+                .then(({ abi, bytecode }) => {
+                    _bytecode = bytecode;
+                    return saveInIPFS(abi);
+                })
+                .then((ipfsHash) => {
+                    _ipfsHash = ipfsHash;
+                    return getWeb3;
+                })
+                .then((web3) => {
+                    const registryContract = web3.eth.contract(Registry.abi).at(registryAddress);
+
+                    return callContractMethod(registryContract, 'initializeRegistry', _ipfsHash, _bytecode);
+                })
+                .then((data) => {
+                    console.log(`Schema created for ${name}. Data: ${data}`);
+                    resolve(data);
+                })
+                .catch((error) => {
+                    console.log(`Cannot create shema for ${name}. Error: ${error}`);
+                    reject(error);
+                });
+        });
+    });
+};
+
+export const registerRegistry = (name, symbol, version, beneficiaries, shares) => {
+    let _chaingearContract;
+
+    return new Promise((resolve, reject) => {
+        getChaingearContract()
+            .then(({ contract }) => {
+                _chaingearContract = contract;
+                return callContractMethod(contract, 'getRegistrationFee');
+            })
+            .then((fee) => {
+                const registrationFee = fee.toNumber();
+
+                return sendTransactionMethod(_chaingearContract.registerRegistry,
+                    version, beneficiaries, shares, name, symbol, { value: registrationFee });
+            })
+            .then((txHash) => {
+                console.log(`Register registry ${name} tx: ${txHash}`);
+                resolve(txHash);
+            })
+            .catch((error) => {
+                console.log(`Cannot register registry ${name}. Error: ${error}`);
+                reject(error);
+            });
     });
 };
 

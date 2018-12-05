@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 import {
     Content, ContainerRegister, SideBar,
     FieldsTable,
@@ -11,17 +10,20 @@ import {
     PageTitle,
     RemoveButton,
     ErrorMessage,
-    AddField,
     StatusBar,
+    LinkHash,
+    ActionLink,
 } from '@cybercongress/ui';
-import { createRegistry, generateContractCode, getRegistries } from '../../utils/cyber';
 
+import {
+    getDefaultAccount,
+    getRegistries,
+    registerRegistry,
+    getChaingearContract,
+} from '../../utils/cyber';
 
+import RegistrySource from '../../resources/Registry.sol';
 import Code from '../../components/SolidityHighlight';
-
-
-const MAX_FIELD_COUNT = 10;
-
 
 class NewRegister extends Component {
     constructor(props) {
@@ -32,6 +34,7 @@ class NewRegister extends Component {
             fields: [],
             contractName: '',
             contracts: [],
+            beneficiaries: [],
             gasEstimate: null,
             registryAddress: null,
             error: null,
@@ -42,10 +45,17 @@ class NewRegister extends Component {
         };
     }
 
-
-    componentDidMount() {
+    componentWillMount() {
         getRegistries()
-            .then(contracts => this.setState({ contracts }));
+            .then(contracts => this.setState({ contracts }))
+            .then(() => getDefaultAccount())
+            .then(defaultAccount => this.setState({
+                beneficiaries: [{
+                    address: defaultAccount,
+                    stake: 1,
+                    share: 100,
+                }],
+            }));
     }
 
   add = (name, type) => {
@@ -57,28 +67,43 @@ class NewRegister extends Component {
       this.setState({
           fields: this.state.fields.concat(newItem),
       });
-  }
+  };
 
   remove = (name) => {
       this.setState({
           fields: this.state.fields.filter(x => x.name !== name),
       });
-  }
-
+  };
 
   create = () => {
-      const { contractName, fields } = this.state;
+      const { contractName } = this.state;
       const symbol = this.refs.symbol.value;
+      const version = this.refs.registryVersion.value;
 
       this.setState({ message: 'processing...', inProgress: true, type: 'processing' });
-      createRegistry(contractName, symbol, fields)
-          .then(({ registryAddress }) => {
-              this.setState({ message: 'build successful', type: 'success', registryAddress });
+      getDefaultAccount().then((defaultAccount) => {
+          return registerRegistry(contractName, symbol, version, [defaultAccount], [100]);
+      })
+          .then(({ txHash }) => {
+              return getChaingearContract();
           })
-          .catch((e) => {
-              this.setState({ message: 'Build failed. Please, make sure your entered names don’t start with a digit and they aren’t reserved words.', type: 'error' });
+          .then(({contract}) => {
+              const event = contract.RegistryRegistered((ee, results) => {
+                  event.stopWatching(() => {});
+                  if (ee) {
+                      throw new Error('Create registry event error');
+                  } else {
+                      this.setState({
+                          inProgress: false,
+                          registryAddress: results.args.registryAddress,
+                      });
+                  }
+              });
+          })
+          .catch((error) => {
+              console.log(`Cannot create registry ${contractName}. Error: ${error}`);
           });
-  }
+  };
 
   closeMessage = () => {
       const { type, registryAddress } = this.state;
@@ -93,7 +118,7 @@ class NewRegister extends Component {
               this.props.router.push('/');
           }
       }
-  }
+  };
 
   changeContractName = (e) => {
       this.setState({
@@ -101,16 +126,16 @@ class NewRegister extends Component {
       });
 
       this.refs.symbol.value = e.target.value;
-  }
+  };
 
   render() {
       const {
-          contractName, fields, message, inProgress, contracts, type,
+          contractName, message, inProgress, contracts, type, beneficiaries, registryAddress,
       } = this.state;
-      const code = generateContractCode(contractName, fields);
+
       const exist = !!contracts.find(x => x.name === contractName);
-      const fieldsCount = fields.length;
-      const canDeploy = contractName.length > 0 && fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !exist;
+      const benCount = beneficiaries.length;
+      const canCreate = contractName.length > 0 && benCount > 0 && !exist;
 
       return (
           <div>
@@ -140,54 +165,66 @@ class NewRegister extends Component {
                                 placeholder='symbol'
                               />
                           </Control>
-
+                          <Control title='Version:'>
+                              <select ref='registryVersion'>
+                                  <option value='V1'>V1 (Basic Registry)</option>
+                              </select>
+                          </Control>
                       </Panel>
 
-                      <Panel title='EntryCore Structure' noPadding>
+                      <Panel title='Beneficiaries (Optional)' noPadding>
                           <FieldsTable>
+
                               <thead>
                                   <tr>
-                                      <th>Field</th>
-                                      <th>Type</th>
+                                      <th>Address</th>
+                                      <th>Stake</th>
+                                      <th>Share</th>
                                       <th />
                                   </tr>
                               </thead>
+
                               <tbody>
-                                  {fields.map(field => (
-                                      <tr key={ field.name }>
-                                          <td>{field.name}</td>
-                                          <td>{field.type}</td>
-                                          <td>
-                                              <RemoveButton
-                                                onClick={ () => this.remove(field.name) }
-                                              >
-remove
-                                              </RemoveButton>
-                                          </td>
-                                      </tr>
-                                  ))}
-                                  <AddField
-                                    onAdd={ this.add }
-                                    fields={ fields }
-                                  />
+                                  {
+                                      beneficiaries.map(ben => (
+                                          <tr key={ ben.address }>
+                                              <td style={{overflow: 'hidden'}}><LinkHash value={ ben.address } /></td>
+                                              <td>{ ben.stake }</td>
+                                              <td>{ ben.share }</td>
+                                              <td>
+                                                  <RemoveButton
+                                                    onClick={ () => this.remove(ben.address) }
+                                                  >
+                                                      {'X'}
+                                                  </RemoveButton>
+                                              </td>
+                                          </tr>
+                                      ))
+                                  }
                               </tbody>
                           </FieldsTable>
-                          <CreateButton disabled={ !canDeploy } onClick={ this.create }>
-              create registry
+                          <CreateButton disabled={ !canCreate } onClick={ this.create }>
+                                create
                           </CreateButton>
                       </Panel>
                   </SideBar>
 
                   <Content>
-                      <Label color='#3fb990'>Output</Label>
+                      <Label color='#3fb990'>Registry source code</Label>
                       <Code>
-                          {code}
+                          {RegistrySource}
                       </Code>
                       {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
+                      {registryAddress
+                        && <span>
+                            <ActionLink to={`/registers/${registryAddress}`}>Go to registry</ActionLink>
+                            <ActionLink to={`/schema/${registryAddress}`}>Go to schema definition</ActionLink>
+                        </span>
+                      }
                   </Content>
 
               </ContainerRegister>
-              <Label>
+{/*              <Label>
                   <div>Notes for Registry logic, creation, and deployment:</div>
                   <div>0. With the form below you may code generate your EntryCore contract</div>
                   <div>1. EntryCore consist from your data schema and CRUD operations</div>
@@ -204,7 +241,7 @@ remove
                   <div>12. You as admin may choose the policy for entry-token creation: [Admin, Whitelist, AllUsers]</div>
                   <div>...</div>
                   <div>42. You may TRANSFER/SELL (if token owner) Registry ownership => transfer/trade your CHG NFT token to the new owner!</div>
-              </Label>
+              </Label>*/}
           </div>
       );
   }
