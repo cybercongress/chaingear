@@ -26,7 +26,7 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
     *  Storage
     */
     
-    // bytes4 constant private InterfaceId_EntryCore = 0xd4b1117d;
+    bytes4 public constant InterfaceId_Schema = 0xd4b1117d;
     // bytes4 constant private InterfaceId_ChaingearRegistry =  0x52dddfe4;
 
     // @dev Metadata of entry, holds ownership data and funding info
@@ -43,14 +43,15 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
     uint256 private headTokenID = 0;
     uint256 private entryCreationFeeWei = 0;
     
-    string private databaseDescription;
     bytes32[] private databaseTags;
+    string private databaseDescription;
     
-    ISchema private entriesStorage;
-    string private linkToSchemaABI;
+    string private linkToSchemaABI; // will be depricated
+    string private schemaDefinition; // and changed for this
     
     Safe private databaseSafe;
     
+    ISchema private entriesStorage;
     bool private databaseInitStatus = false;
     
     /*
@@ -103,13 +104,13 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
     */
 
     constructor(
-        address[] _benefitiaries,
+        address[] _beneficiaries,
         uint256[] _shares,
         string _name,
         string _symbol
     )
         ERC721Token (_name, _symbol)
-        SplitPayment (_benefitiaries, _shares)
+        SplitPayment (_beneficiaries, _shares)
         public
         payable
     {
@@ -152,6 +153,16 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
         entriesStorage.createEntry();
         
         return newTokenID;
+    }
+    
+    function auth(uint256 _entryID, address _caller)
+        external
+        whenNotPaused
+    {
+        require(msg.sender == address(entriesStorage));
+        require(ownerOf(_entryID) == _caller);
+        uint256 entryIndex = allTokensIndex[_entryID];
+        entriesMeta[entryIndex].lastUpdateTime = block.timestamp;
     }
 
     function deleteEntry(uint256 _entryID)
@@ -211,10 +222,10 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
         databaseSafe.claim(msg.sender, _amount);
     }
     
-    function updateentryCreationFeeWei(uint256 _newFee)
+    function updateEntryCreationFee(uint256 _newFee)
         external
         onlyAdmin
-        whenNotPaused
+        whenPaused
     {
         entryCreationFeeWei = _newFee;
     }
@@ -262,7 +273,6 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
     *  View functions
     */
     
-    // TODO find why out of gas on migration if return all values
     function readEntryMeta(uint256 _entryID)
         external
         view
@@ -322,15 +332,6 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
         return entryCreationFeeWei;
     }
     
-    function auth(uint256 _entryID, address _caller)
-        external
-    {
-        require(msg.sender == address(entriesStorage));
-        require(ownerOf(_entryID) == _caller);
-        uint256 entryIndex = allTokensIndex[_entryID];
-        entriesMeta[entryIndex].lastUpdateTime = block.timestamp;
-    }
-    
     function getEntriesStorage()
         external
         view
@@ -339,12 +340,20 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
         return address(entriesStorage);
     }
     
-    function getInterfaceEntriesContract()
+    function getInterfaceEntriesContract() // will be depricated 
         external
         view
         returns (string)
     {
         return linkToSchemaABI;
+    }
+    
+    function getSchemaDefinition() // and migrated to this with determinated ABI
+        external
+        view
+        returns (string)
+    {
+        return schemaDefinition;
     }
     
     function getDatabaseBalance()
@@ -414,9 +423,7 @@ contract DatabaseV1 is IDatabase, ISchemaConnector, DatabasePermissionControl, S
         }
     
         require(deployedAddress != address(0));
-        // TODO fix this, failes on migrations...
-        // SupportsInterfaceWithLookup support = SupportsInterfaceWithLookup(deployedAddress);
-        // require(support.supportsInterface(InterfaceId_EntryCore));
+        require(SupportsInterfaceWithLookup(deployedAddress).supportsInterface(InterfaceId_Schema));
         entriesStorage = ISchema(deployedAddress);
     
         linkToSchemaABI = _linkToABI;

@@ -1,18 +1,16 @@
 const chai = require("chai");
-const BN = require("bn.js");
 const bnChai = require("bn-chai");
 const expect = chai.expect;
 
-chai.use(bnChai(BN));
+chai.use(bnChai(web3.utils.BN));
 chai.use(require('chai-as-promised'));
 chai.should();
 
-const {toWei, toBN, fromWei} = web3.utils;
+const {toWei, toBN, fromWei, BN} = web3.utils;
 
 const Chaingear = artifacts.require("Chaingear");
 const DatabaseBuilderV1 = artifacts.require("DatabaseBuilderV1");
 const DatabaseV1 = artifacts.require("DatabaseV1");
-const Schema = artifacts.require("TeamSchema");
 
 contract("Chaingear", (accounts) => {
 
@@ -30,15 +28,15 @@ contract("Chaingear", (accounts) => {
     const CHAINGEAR_BENEFICIARY_2 = accounts[1]
     const CHAINGEAR_BENEFICIARIES = [CHAINGEAR_BENEFICIARY_1, CHAINGEAR_BENEFICIARY_2]
     
-    const CHAINGEAR_BENEFICIARY_1_SHARES = new BN('50');
-    const CHAINGEAR_BENEFICIARY_2_SHARES = new BN('100');
+    const CHAINGEAR_BENEFICIARY_1_SHARES = toBN('50');
+    const CHAINGEAR_BENEFICIARY_2_SHARES = toBN('100');
     const CHAINGEAR_BENEFICIARIES_SHARES = [CHAINGEAR_BENEFICIARY_1_SHARES, CHAINGEAR_BENEFICIARY_2_SHARES]
     
     const CHAINGEAR_DESCRIPTION = "The novel Ethereum database framework"
     const CHAINGEAR_NAME = "CHAINGEAR"
     const CHAINGEAR_SYMBOL = "CHG"
     
-    const BUILDING_FEE = web3.utils.toWei(new BN(1), 'finney');
+    const BUILDING_FEE = toWei(toBN(1), 'finney');
     
     const DATABASE_BUILDER_1_VERSION = "V1"
     const DATABASE_BUILDER_1_ABI_LINK = "QmS2F1UgmYHAekcvezFLCrBibEBjJezSDqwq8fuwF5Qqvi"
@@ -49,24 +47,21 @@ contract("Chaingear", (accounts) => {
 
     before(async () => {
         
-        builder = await DatabaseBuilderV1.new({ from: CHAINGEAR_OWNER })
+        builder = await DatabaseBuilderV1.new({ from: CHAINGEAR_OWNER });
         
         chaingear = await Chaingear.new(
-            CHAINGEAR_BENEFICIARIES,
-            CHAINGEAR_BENEFICIARIES_SHARES,
-            { from: CHAINGEAR_OWNER }
+            CHAINGEAR_BENEFICIARIES, CHAINGEAR_BENEFICIARIES_SHARES, { from: CHAINGEAR_OWNER }
         );
 
         await builder.setChaingearAddress(
-            chaingear.address, 
-            { from: CHAINGEAR_OWNER }
+            chaingear.address, { from: CHAINGEAR_OWNER }
         );    
     })
     
     describe("when deployed", () => {
         it("should accept payments", async () => {
-            let payment = web3.utils.toWei('1', 'ether');
-            await chaingear.sendTransaction({ value: payment, from: CHAINGEAR_OWNER });
+            let payment = toWei('1', 'ether');
+            await chaingear.sendTransaction({ value: payment, from: UNKNOWN });
             expect(await web3.eth.getBalance(chaingear.address)).to.eq.BN(payment)
         });
         
@@ -91,7 +86,7 @@ contract("Chaingear", (accounts) => {
         });
         
         it("safe should have zero balance", async () => {
-            expect(await web3.eth.getBalance(await chaingear.getSafeAddress())).to.eq.BN(new BN('0'));
+            expect(await web3.eth.getBalance(await chaingear.getSafeAddress())).to.eq.BN(toBN('0'));
         });
         
         it("should have payees", async () => {
@@ -107,7 +102,7 @@ contract("Chaingear", (accounts) => {
         });
         
         it("should have zero token supply", async () => {
-            expect(await chaingear.totalSupply()).to.eq.BN(new BN('0'));
+            expect(await chaingear.totalSupply()).to.eq.BN(toBN('0'));
         });
         
         it("shoud be not paused", async () => {
@@ -116,8 +111,8 @@ contract("Chaingear", (accounts) => {
         
         it("should allow owner to update registration fee when paused", async () => {
             await chaingear.pause({ from: CHAINGEAR_OWNER });
-            await chaingear.updateCreationFee(BUILDING_FEE.mul(new BN('2')), { from: CHAINGEAR_OWNER });
-            expect(await chaingear.getCreationFeeWei()).to.eq.BN(BUILDING_FEE.mul(new BN('2')));
+            await chaingear.updateCreationFee(BUILDING_FEE.mul(toBN('2')), { from: CHAINGEAR_OWNER });
+            expect(await chaingear.getCreationFeeWei()).to.eq.BN(BUILDING_FEE.mul(toBN('2')));
             await chaingear.unpause({ from: CHAINGEAR_OWNER });
             
             await chaingear.pause({ from: CHAINGEAR_OWNER });
@@ -137,7 +132,7 @@ contract("Chaingear", (accounts) => {
                 { from: CHAINGEAR_OWNER }
             ).should.be.fulfilled;
             
-            expect(await chaingear.getAmountOfBuilders()).to.eq.BN(new BN('1'));
+            expect(await chaingear.getAmountOfBuilders()).to.eq.BN(toBN('1'));
             (await chaingear.getBuilderById(0)).should.be.equal(DATABASE_BUILDER_1_VERSION);
             
             let databaseBuilder = await chaingear.getDatabaseBuilder(DATABASE_BUILDER_1_VERSION);
@@ -200,19 +195,19 @@ contract("Chaingear", (accounts) => {
                 { 
                     from: RANDOM_CREATOR_1,
                     value: BUILDING_FEE,
-                    gas: new BN('5000000')
+                    gas: toBN('5000000')
                 }
             ).should.be.fulfilled;
-            expect(await chaingear.totalSupply()).to.eq.BN(new BN('1'));
+            expect(await chaingear.totalSupply()).to.eq.BN(toBN('1'));
             
             let databaseMeta = await chaingear.getDatabase(0);
             (databaseMeta[0]).should.be.equal(DATABASE_NAME_0);
             (databaseMeta[1]).should.be.equal(DATABASE_SYMBOL_0);
             (databaseMeta[3]).should.be.equal(DATABASE_BUILDER_1_VERSION);
             (databaseMeta[5]).should.be.equal(RANDOM_CREATOR_1);
-            expect(databaseMeta[6]).to.eq.BN(new BN('0'));
-            expect(await chaingear.getDatabaseIDByAddress(databaseMeta[2])).to.eq.BN(new BN('0'));
-            expect((await chaingear.getDatabasesIDs())[0]).to.eq.BN(new BN('0'));
+            expect(databaseMeta[6]).to.eq.BN(toBN('0'));
+            expect(await chaingear.getDatabaseIDByAddress(databaseMeta[2])).to.eq.BN(toBN('0'));
+            expect((await chaingear.getDatabasesIDs())[0]).to.eq.BN(toBN('0'));
             (await chaingear.getNameExist(DATABASE_NAME_0)).should.be.equal(true);
             (await chaingear.getSymbolExist(DATABASE_SYMBOL_0)).should.be.equal(true);
             
@@ -234,7 +229,7 @@ contract("Chaingear", (accounts) => {
                 { 
                     from: RANDOM_CREATOR_1,
                     value: BUILDING_FEE,
-                    gas: new BN('5000000')
+                    gas: toBN('5000000')
                 }
             ).should.be.rejected;
         });
@@ -248,8 +243,8 @@ contract("Chaingear", (accounts) => {
                 DATABASE_SYMBOL_0,
                 { 
                     from: RANDOM_CREATOR_1,
-                    value: new BN('0'),
-                    gas: new BN('5000000')
+                    value: toBN('0'),
+                    gas: toBN('5000000')
                 }
             ).should.be.rejected;
         });
@@ -264,7 +259,7 @@ contract("Chaingear", (accounts) => {
                 { 
                     from: RANDOM_CREATOR_1,
                     value: BUILDING_FEE,
-                    gas: new BN('5000000')
+                    gas: toBN('5000000')
                 }
             ).should.be.rejected;
         });
@@ -272,7 +267,7 @@ contract("Chaingear", (accounts) => {
     
     describe("when funding database", () => {
         it("should allow to fund database when not paused", async () => {
-            let fund = web3.utils.toWei(new BN(1), 'ether');
+            let fund = toWei(toBN(1), 'ether');
             await chaingear.fundDatabase(0, 
                 {
                     value: fund,
@@ -287,7 +282,7 @@ contract("Chaingear", (accounts) => {
     
         it("should not allow to fund database when not paused", async () => {            
             await chaingear.pause({ from: CHAINGEAR_OWNER });
-            let fund = web3.utils.toWei(new BN(1), 'ether');
+            let fund = toWei(toBN(1), 'ether');
             await chaingear.fundDatabase(0, 
                 {
                     value: fund,
@@ -298,7 +293,7 @@ contract("Chaingear", (accounts) => {
         });
         
         it("should not allow to fund non-existed database", async () => {
-            let fund = web3.utils.toWei(new BN(1), 'ether');
+            let fund = toWei(toBN(1), 'ether');
             await chaingear.fundDatabase(42, 
                 {
                     value: fund,
@@ -310,8 +305,8 @@ contract("Chaingear", (accounts) => {
     
     describe("when claiming database's funds", () => {
         it("should not allow database admin claim more funds then funded", async () => {
-            let claim = web3.utils.toWei(new BN(1), 'ether');
-            await chaingear.claimDatabaseFunds(0, claim.mul(new BN('2')),
+            let claim = toWei(toBN(1), 'ether');
+            await chaingear.claimDatabaseFunds(0, claim.mul(toBN('2')),
                 {
                     from: RANDOM_CREATOR_1
                 }
@@ -320,7 +315,7 @@ contract("Chaingear", (accounts) => {
         
         it("should not allow database admin claim their funds when paused", async () => {
             await chaingear.pause({ from: CHAINGEAR_OWNER });
-            let claim = web3.utils.toWei(new BN(1), 'ether');
+            let claim = toWei(toBN(1), 'ether');
             await chaingear.claimDatabaseFunds(0, claim,
                 {
                     from: RANDOM_CREATOR_1
@@ -330,7 +325,7 @@ contract("Chaingear", (accounts) => {
         });
     
         it("should not allow database's non-admin claim funds", async () => {
-            let claim = web3.utils.toWei(new BN(1), 'ether');
+            let claim = toWei(toBN(1), 'ether');
             await chaingear.claimDatabaseFunds(0, claim,
                 {
                     from: UNKNOWN
@@ -339,7 +334,7 @@ contract("Chaingear", (accounts) => {
         });
         
         it("should allow database admin claim their funds when not paused", async () => {
-            let claim = web3.utils.toWei(new BN(1), 'ether');
+            let claim = toWei(toBN(1), 'ether');
             let databaseBalance = await chaingear.getDatabaseBalance(0);
             expect(databaseBalance[0]).to.eq.BN(claim);
             expect(databaseBalance[1]).to.eq.BN(claim);
@@ -349,9 +344,9 @@ contract("Chaingear", (accounts) => {
                 }
             ).should.be.fulfilled;
             databaseBalance = await chaingear.getDatabaseBalance(0);
-            expect(databaseBalance[0]).to.eq.BN(new BN('0'));
+            expect(databaseBalance[0]).to.eq.BN(toBN('0'));
             expect(databaseBalance[1]).to.eq.BN(claim);
-            expect(await chaingear.getSafeBalance()).to.eq.BN(new BN('0'));
+            expect(await chaingear.getSafeBalance()).to.eq.BN(toBN('0'));
         });
     })
     
@@ -400,7 +395,7 @@ contract("Chaingear", (accounts) => {
             ).should.be.fulfilled;
             (await chaingear.getNameExist(DATABASE_NAME_0)).should.be.equal(false);
             (await chaingear.getSymbolExist(DATABASE_SYMBOL_0)).should.be.equal(false);
-            expect(await chaingear.totalSupply()).to.eq.BN(new BN('0'));
+            expect(await chaingear.totalSupply()).to.eq.BN(toBN('0'));
             (await database.owner()).should.be.equal(RANDOM_CREATOR_2);
         });
     })

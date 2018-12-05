@@ -1,6 +1,6 @@
 pragma solidity 0.4.25;
 
-import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
+// import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
@@ -9,7 +9,7 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 * @author cyber•Congress, Valery litvin (@litvintech)
 * @notice not audited, not recommend to use in mainnet
 */
-contract DatabasePermissionControl is Ownable, Pausable {
+contract DatabasePermissionControl is Ownable {
     
     /*
     *  Storage
@@ -18,10 +18,32 @@ contract DatabasePermissionControl is Ownable, Pausable {
     enum CreateEntryPermissionGroup {OnlyAdmin, Whitelist, AllUsers}
     
     address private admin;
+    bool public paused = false;
 
     mapping(address => bool) private whitelist;
     
     CreateEntryPermissionGroup private permissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
+    
+    /*
+    *  Modifiers
+    */
+    
+    modifier whenNotPaused() {
+      require(!paused);
+      _;
+    }
+
+    modifier whenPaused() {
+      require(paused);
+      _;
+    }
+    
+    /*
+    *  Events
+    */
+
+    event Pause();
+    event Unpause();
     
     /*
     *  Constructor
@@ -52,6 +74,24 @@ contract DatabasePermissionControl is Ownable, Pausable {
     /*
     *  External functions
     */
+    
+    function pause() 
+        external
+        onlyAdmin
+        whenNotPaused
+    {
+        paused = true;
+        emit Pause();
+    }
+
+    function unpause() 
+        external
+        onlyAdmin
+        whenPaused
+    {
+        paused = false;
+        emit Unpause();
+    }
     
     function transferAdminRights(address _newAdmin)
         external
@@ -112,5 +152,4 @@ contract DatabasePermissionControl is Ownable, Pausable {
     {
         return whitelist[_address];
     }
-        
 }

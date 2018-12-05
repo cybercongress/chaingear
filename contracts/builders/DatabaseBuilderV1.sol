@@ -3,6 +3,7 @@ pragma solidity 0.4.25;
 import "../databases/DatabaseV1.sol";
 import "../common/IDatabase.sol";
 import "../common/IDatabaseBuilder.sol";
+import "openzeppelin-solidity/contracts/AddressUtils.sol";
 
 
 /**
@@ -11,16 +12,18 @@ import "../common/IDatabaseBuilder.sol";
 * @notice not audited, not recommend to use in mainnet
 */
 contract DatabaseBuilderV1 is IDatabaseBuilder {
+    
+    using AddressUtils for address;
 
 	/*
-	* @dev Storage
+	*  Storage
 	*/
 
     address private chaingear;    
     address private owner;
 
 	/*
-	* @dev Constructor
+	*  Constructor
 	*/
 
     constructor() public {
@@ -29,13 +32,13 @@ contract DatabaseBuilderV1 is IDatabaseBuilder {
     }
     
     /*
-    * @dev Fallback
+    *  Fallback
     */
     
     function() external {}
 
 	/*
-	* @dev External Functions
+	*  External Functions
 	*/
     
     function deployDatabase(
@@ -60,12 +63,16 @@ contract DatabaseBuilderV1 is IDatabaseBuilder {
 
         return databaseContract;
     }
+    
+    /*
+    *  Views
+    */
 
     function setChaingearAddress(address _chaingear)
         external
     {
         require(msg.sender == owner);
-        require(_chaingear != address(0));
+        require(_chaingear.isContract() == true);
         chaingear = _chaingear;
     }
     

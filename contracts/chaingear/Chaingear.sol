@@ -88,12 +88,12 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     */
 
     constructor(
-        address[] _benefitiaries,
+        address[] _beneficiaries,
         uint256[] _shares
     )
         public
         ERC721Token ("CHAINGEAR", "CHG")
-        SplitPayment (_benefitiaries, _shares)
+        SplitPayment (_beneficiaries, _shares)
     {
         chaingearSafe = new Safe();
     }
@@ -154,7 +154,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
 
     function createDatabase(
         string    _version,
-        address[] _benefitiaries,
+        address[] _beneficiaries,
         uint256[] _shares,
         string    _name,
         string    _symbol
@@ -171,7 +171,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
 
         return deployDatabase(
             _version,
-            _benefitiaries,
+            _beneficiaries,
             _shares,
             _name,
             _symbol
@@ -436,7 +436,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
 
     function deployDatabase(
         string    _version,
-        address[] _benefitiaries,
+        address[] _beneficiaries,
         uint256[] _shares,
         string    _name,
         string    _symbol
@@ -446,7 +446,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {   
         IDatabaseBuilder builder = buildersVersion[_version].builderAddress;
         IDatabase databaseContract = builder.deployDatabase(
-            _benefitiaries,
+            _beneficiaries,
             _shares,
             _name,
             _symbol
