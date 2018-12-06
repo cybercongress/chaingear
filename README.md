@@ -1,6 +1,6 @@
 <h1 align="center">
-  <img src="/design/logo/logo_chaigear_970.png"
-  alt="chaingear" width="970"></a>
+  <img src="/docs/logo_chaigear_970.png"
+  alt="chaingear" width="470"></a>
 </h1>
 
 <h3 align="center">The novel Ethereum database framework</h3>
@@ -69,7 +69,7 @@ You can create your own database in the Chaingear's Metadatabase, which is a sin
 
 ## [Configuring and deploying](https://cybersearch.io/Chaingear/development/)
 
-## General Chaingear/Registry pipeline
+## General Chaingear/Database pipeline
 ![general_pipeline](docs/mermaid/pipelines-general_pipeline.svg)
 
 ## Join Us On Telegram
