@@ -72,6 +72,18 @@ export const formatDate = (solidityDate) => {
     return moment(jsDate).format(dateFormat);
 };
 
+export const mapRegistry = (rawRegistry, id) => ({
+    id,
+    name: rawRegistry[0],
+    symbol: rawRegistry[1],
+    address: rawRegistry[2],
+    contractVersion: rawRegistry[3],
+    registrationTimestamp: rawRegistry[4],
+    ipfsHash: '',
+    admin: rawRegistry[5],
+    supply: rawRegistry[6],
+});
+
 export const getItems = (contract, getIdsMethod, getEntryByIdMethod, mapFn) => new Promise((topResolve) => {
     contract[getIdsMethod]((e, ids) => {
         const idsArray = ids.map(id => id.toNumber());
@@ -295,15 +307,16 @@ export const getDefaultAccount = () => new Promise(resolve => getWeb3
     })));
 
 export const getRegistries = () => {
-    const mapFunc = items => ({
-        name: items[0],
-        symbol: items[1],
-        address: items[2],
-        contractVersion: items[3],
-        registrationTimestamp: items[4],
+    const mapFunc = (item, id) => ({
+        name: item[0],
+        symbol: item[1],
+        address: item[2],
+        contractVersion: item[3],
+        registrationTimestamp: item[4],
         ipfsHash: '',
-        admin: items[5],
-        supply: items[6],
+        admin: item[5],
+        supply: item[6],
+        id,
     });
 
     return getChaingearContract()

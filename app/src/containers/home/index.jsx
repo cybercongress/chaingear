@@ -41,11 +41,10 @@ class Home extends Component {
     render() {
         const { registries, account } = this.state;
 
-
         const rows = registries.map(register => (
             <tr key={ register.name }>
                 <td>
-                    <Link to={ `/registers/${register.address}` }>
+                    <Link to={ `/registers/${register.id}` }>
                         {register.name}
                     </Link>
                 </td>
@@ -70,7 +69,7 @@ class Home extends Component {
         const myRows = registries.filter(x => x.admin === account).map(register => (
             <tr key={ register.name }>
                 <td>
-                    <Link to={ `/registers/${register.address}` }>
+                    <Link to={ `/registers/${register.id}` }>
                         {register.name}
                     </Link>
                 </td>

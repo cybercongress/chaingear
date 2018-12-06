@@ -52,6 +52,7 @@ class Register extends Component {
 
         contractVersion: null,
         registryAddress: null,
+        registryId: null,
         entryCoreAddress: null,
         entryCoreContract: null,
         ipfsHash: null,
@@ -63,14 +64,15 @@ class Register extends Component {
             loading: true,
         });
 
-        const registryAddress = this.props.params.address;
+        const registryId = this.props.params.id;
 
+        let _registryAddress = null;
         let _registries = null;
         let _userAccount = null;
         let _web3 = null;
         let _registryContract = null;
         let _registry = null;
-        let _registryId = null;
+        let _registryId = registryId;
         let _chaingearContract = null;
         let _abi = null;
         let _fields = null;
@@ -87,18 +89,15 @@ class Register extends Component {
             .then((defaultAccount) => {
                 _userAccount = defaultAccount;
             })
-            .then(() => cyber.callContractMethod(_chaingearContract, 'getRegistryIdByAddress', registryAddress))
-            .then((registryId) => {
-                _registryId = registryId;
-                _registryContract = _web3.eth.contract(Registry.abi).at(registryAddress);
-            })
             .then(() => cyber.callContractMethod(_chaingearContract, 'readRegistry', _registryId))
             .then((registry) => {
-                _registry = this.mapRegistry(registry);
+                _registry = cyber.mapRegistry(registry);
+                _registryAddress = _registry.address;
+                _registryContract = _web3.eth.contract(Registry.abi).at(_registryAddress);
             })
             .then(() => {
                 const fundedPromise = cyber.callContractMethod(_chaingearContract, 'readRegistryBalance', _registryId);
-                const totalFeePromise = cyber.callWeb3EthMethod(_web3, 'getBalance', registryAddress);
+                const totalFeePromise = cyber.callWeb3EthMethod(_web3, 'getBalance', _registryAddress);
                 const ownerPromise = cyber.callContractMethod(_registryContract, 'getAdmin');
                 const descriptionPromise = cyber.callContractMethod(_registryContract, 'getRegistryDescription');
                 const symbolPromise = cyber.callContractMethod(_registryContract, 'symbol');
@@ -123,7 +122,7 @@ class Register extends Component {
                         tag: '',
                         web3: _web3,
                         registries: _registries,
-                        registryAddress,
+                        registryAddress: _registryAddress,
                         registryContract: _registryContract,
                         funded: _funded,
                         totalFee: _totalFee,
@@ -142,6 +141,7 @@ class Register extends Component {
                     this.setState({
                         ..._newState,
                         isSchemaExist,
+                        registryId: _registryId,
                         loading: false,
                     });
                     throw new Error('Schema is not exist');
@@ -149,6 +149,7 @@ class Register extends Component {
                     _newState = {
                         ..._newState,
                         isSchemaExist,
+                        registryId: _registryId,
                     };
                 }
             })
@@ -203,17 +204,6 @@ class Register extends Component {
                 console.log(`Cannot load registry data. Error: ${error}`);
             });
     }
-
-    mapRegistry = rawRegistry => ({
-        name: rawRegistry[0],
-        symbol: rawRegistry[1],
-        address: rawRegistry[2],
-        contractVersion: rawRegistry[3],
-        registrationTimestamp: rawRegistry[4],
-        ipfsHash: '',
-        admin: rawRegistry[5],
-        supply: rawRegistry[6],
-    });
 
     getRegistryItems = () => {
         const { registryContract: contract, fields, abi, web3 } = this.state;
@@ -433,7 +423,7 @@ class Register extends Component {
 
     render() {
         const {
-            fields, items, loading, isOwner, userAccount, isSchemaExist,
+            fields, items, loading, isOwner, userAccount, isSchemaExist, registryId,
         } = this.state;
 
 
@@ -451,7 +441,6 @@ class Register extends Component {
                 key={ index }
             />
         ));
-        const address = this.props.params.adress;
 
         const {
             name,
@@ -481,7 +470,7 @@ class Register extends Component {
                         <div style={ { marginLeft: '15px' } }>
                             <ActionLink to='/'>BACK TO CHAINGEAR</ActionLink>
                             {!isSchemaExist &&
-                                <ActionLink to={`/schema/${registryAddress}`}>Define schema</ActionLink>
+                                <ActionLink to={`/schema/${registryId}`}>Define schema</ActionLink>
                             }
                         </div>
                     </Section>

@@ -17,9 +17,8 @@ import {
 
 import {
     generateContractCode,
-    getRegistries,
     deploySchema,
-    getRegistryContract,
+    getRegistryContract, getChaingearContract, callContractMethod, mapRegistry,
 } from '../../utils/cyber';
 
 
@@ -32,13 +31,10 @@ class SchemaDefinition extends Component {
         super(props);
 
         this.state = {
-            name: '',
             fields: [],
             contractName: '',
-            contracts: [],
-            gasEstimate: null,
             registryAddress: null,
-            error: null,
+            registryId: null,
 
             inProgress: false,
             message: '',
@@ -49,17 +45,16 @@ class SchemaDefinition extends Component {
     }
 
     componentDidMount() {
-        getRegistries()
-            .then((contracts) => {
-                const registryAddress = this.props.params.address;
-                const { name } = contracts.find(contract => contract.address === registryAddress);
+        const registryId = this.props.params.id;
 
-                this.setState({
-                    contracts,
-                    registryAddress,
-                    contractName: name,
-                });
-            });
+        getChaingearContract()
+            .then(({ contract }) => callContractMethod(contract, 'readRegistry', registryId))
+            .then(registry => mapRegistry(registry, registryId))
+            .then(registry => this.setState({
+                registryAddress: registry.address,
+                contractName: registry.name,
+                registryId,
+            }));
     }
 
     add = (name, type) => {
@@ -85,12 +80,13 @@ class SchemaDefinition extends Component {
         this.setState({ message: 'processing...', inProgress: true, type: 'processing' });
 
         let _registryContract;
+
         getRegistryContract(registryAddress)
             .then((registryContract) => {
                 _registryContract = registryContract;
                 return deploySchema(contractName, fields, registryContract);
             })
-            //.then(() => cyber.eventPromise(_registryContract.registryInitialized()))
+            // .then(() => cyber.eventPromise(_registryContract.registryInitialized()))
             .then(() => {
                 this.setState({
                     inProgress: false,
@@ -124,11 +120,11 @@ class SchemaDefinition extends Component {
 
     render() {
         const {
-            contractName, fields, message, inProgress, type, isSchemaCreated, registryAddress,
+            contractName, fields, message, inProgress, type, isSchemaCreated, registryId,
         } = this.state;
         const code = generateContractCode(contractName, fields);
         const fieldsCount = fields.length;
-        const canDeploy = fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT;
+        const canDeploy = fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !isSchemaCreated;
 
         return (
             <div>
@@ -147,30 +143,30 @@ class SchemaDefinition extends Component {
                         <Panel title='EntryCore Structure' noPadding>
                             <FieldsTable>
                                 <thead>
-                                <tr>
-                                    <th>Field</th>
-                                    <th>Type</th>
-                                    <th />
-                                </tr>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Type</th>
+                                        <th />
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                {fields.map(field => (
-                                    <tr key={ field.name }>
-                                        <td>{field.name}</td>
-                                        <td>{field.type}</td>
-                                        <td>
-                                            <RemoveButton
-                                                onClick={ () => this.remove(field.name) }
-                                            >
+                                    {fields.map(field => (
+                                        <tr key={ field.name }>
+                                            <td>{field.name}</td>
+                                            <td>{field.type}</td>
+                                            <td>
+                                                <RemoveButton
+                                                  onClick={ () => this.remove(field.name) }
+                                                >
                                                 remove
-                                            </RemoveButton>
-                                        </td>
-                                    </tr>
-                                ))}
-                                <AddField
-                                    onAdd={ this.add }
-                                    fields={ fields }
-                                />
+                                                </RemoveButton>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    <AddField
+                                      onAdd={ this.add }
+                                      fields={ fields }
+                                    />
                                 </tbody>
                             </FieldsTable>
                             <CreateButton disabled={ !canDeploy } onClick={ this.create }>
@@ -185,8 +181,8 @@ class SchemaDefinition extends Component {
                             {code}
                         </Code>
                         {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
-                        {isSchemaCreated &&
-                            <ActionLink to={`/registers/${registryAddress}`}>Go to registry</ActionLink>
+                        {isSchemaCreated
+                            && <ActionLink to={ `/registers/${registryId}` }>Go to registry</ActionLink>
                         }
                     </Content>
 

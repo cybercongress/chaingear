@@ -17,9 +17,9 @@ export function Root() {
                 <Route component={ MainContainer }>
                     <Route path='/' component={ HomePage } />
                     <Route path='/new' component={ NewRegister } />
-                    <Route path='/schema/:address' component={ SchemaDefinition } />
+                    <Route path='/schema/:id' component={ SchemaDefinition } />
                 </Route>
-                <Route path='/registers/:address' component={ RegisterPage } />
+                <Route path='/registers/:id' component={ RegisterPage } />
             </Route>
         </Router>
     );
