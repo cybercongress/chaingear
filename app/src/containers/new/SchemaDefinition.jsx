@@ -12,15 +12,14 @@ import {
     ErrorMessage,
     AddField,
     StatusBar,
+    ActionLink,
 } from '@cybercongress/ui';
 
 import {
-    createRegistry,
     generateContractCode,
-    getDefaultAccount,
     getRegistries,
-    registerRegistry,
     deploySchema,
+    getRegistryContract,
 } from '../../utils/cyber';
 
 
@@ -44,6 +43,8 @@ class SchemaDefinition extends Component {
             inProgress: false,
             message: '',
             type: 'processing',
+
+            isSchemaCreated: false,
         };
     }
 
@@ -83,28 +84,20 @@ class SchemaDefinition extends Component {
 
         this.setState({ message: 'processing...', inProgress: true, type: 'processing' });
 
-        deploySchema(contractName, fields, registryAddress)
+        let _registryContract;
+        getRegistryContract(registryAddress)
+            .then((registryContract) => {
+                _registryContract = registryContract;
+                return deploySchema(contractName, fields, registryContract);
+            })
+            //.then(() => cyber.eventPromise(_registryContract.registryInitialized()))
             .then(() => {
                 this.setState({
                     inProgress: false,
+                    isSchemaCreated: true,
                 });
             });
-
-/*        getDefaultAccount().then((defaultAccount) => {
-            return registerRegistry(contractName, symbol, 'V1', [defaultAccount], [100]);
-        })
-            .then(({ registryAddress }) => {
-                this.setState({ message: 'build successful', type: 'success', registryAddress });
-            });*/
-
-        /*      createRegistry(contractName, symbol, fields)
-                  .then(({ registryAddress }) => {
-                      this.setState({ message: 'build successful', type: 'success', registryAddress });
-                  })
-                  .catch((e) => {
-                      this.setState({ message: 'Build failed. Please, make sure your entered names don’t start with a digit and they aren’t reserved words.', type: 'error' });
-                  });*/
-    }
+    };
 
     closeMessage = () => {
         const { type, registryAddress } = this.state;
@@ -131,7 +124,7 @@ class SchemaDefinition extends Component {
 
     render() {
         const {
-            contractName, fields, message, inProgress, type,
+            contractName, fields, message, inProgress, type, isSchemaCreated, registryAddress,
         } = this.state;
         const code = generateContractCode(contractName, fields);
         const fieldsCount = fields.length;
@@ -192,6 +185,9 @@ class SchemaDefinition extends Component {
                             {code}
                         </Code>
                         {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
+                        {isSchemaCreated &&
+                            <ActionLink to={`/registers/${registryAddress}`}>Go to registry</ActionLink>
+                        }
                     </Content>
 
                 </ContainerRegister>

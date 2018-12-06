@@ -479,7 +479,7 @@ export const createRegistry = (name, symbol, fields) => {
     });
 };
 
-export const deploySchema = (name, fields, registryAddress) => {
+export const deploySchema = (name, fields, registryContract) => {
     const code = generateContractCode(name, fields);
 
     let _bytecode;
@@ -497,8 +497,6 @@ export const deploySchema = (name, fields, registryAddress) => {
                     return getWeb3;
                 })
                 .then(({ web3 }) => {
-                    const registryContract = web3.eth.contract(Registry.abi).at(registryAddress);
-
                     return callContractMethod(registryContract, 'initializeRegistry', _ipfsHash, _bytecode);
                 })
                 .then((data) => {
@@ -569,7 +567,14 @@ export const init = () => new Promise((resolve) => {
     }
 });
 
-export const getRegistryContract = address => _web3.eth.contract(Registry.abi).at(address);
+export const getRegistryContract = (address) => {
+    if (_web3) {
+        return Promise.resolve(_web3.eth.contract(Registry.abi).at(address));
+    }
+
+    return getWeb3
+        .then(({web3}) => web3.eth.contract(Registry.abi).at(address));
+};
 
 export const getRegistryData = (registryContract, fields, abi) => new Promise((resolve) => {
     let _entryCoreAddress;
@@ -611,7 +616,7 @@ export const getEntryMeta = () => {
 };
 
 export const removeItem = (address, id) => new Promise((resolve) => {
-    const registryContract = _web3.eth.contract(Registry.abi).at(address);
+    const registryContract = getRegistryContract(address);
 
     const event = registryContract.EntryDeleted();
 

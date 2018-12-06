@@ -33,11 +33,10 @@ class Register extends Component {
     state = {
         items: [],
         fields: [],
-        registries: [],
         loading: false,
         isOwner: false,
         totalFee: 0,
-        funded: '???',
+        funded: '',
 
         registryContract: null,
         web3: null,
@@ -49,10 +48,12 @@ class Register extends Component {
         entryCreationFee: 0,
         admin: '',
         userAccount: null,
+        abi: [],
 
         contractVersion: null,
         registryAddress: null,
         entryCoreAddress: null,
+        entryCoreContract: null,
         ipfsHash: null,
         isSchemaExist: false,
     };
@@ -74,6 +75,7 @@ class Register extends Component {
         let _abi = null;
         let _fields = null;
         let _entryCoreAddress = null;
+        let _entryCoreContract = null;
 
         let _newState = {};
         cyber.init()
@@ -88,8 +90,6 @@ class Register extends Component {
             .then(() => cyber.callContractMethod(_chaingearContract, 'getRegistryIdByAddress', registryAddress))
             .then((registryId) => {
                 _registryId = registryId;
-            })
-            .then(() => {
                 _registryContract = _web3.eth.contract(Registry.abi).at(registryAddress);
             })
             .then(() => cyber.callContractMethod(_chaingearContract, 'readRegistry', _registryId))
@@ -166,16 +166,26 @@ class Register extends Component {
             .then(({ ipfsHash, abi, fields }) => {
                 _abi = abi;
                 _fields = fields;
+                _entryCoreContract = _web3.eth.contract(abi).at(_entryCoreAddress);
+
 
                 _newState = {
                     ..._newState,
                     ...{
                         ipfsHash,
                         fields,
+                        abi,
                     },
                 };
             })
-            .then(() => this.getRegistryItems(_registryContract, _fields, _abi, _web3))
+            .then(() => this.setState({
+                registryContract: _registryContract,
+                entryCoreContract: _entryCoreContract,
+                fields: _fields,
+                abi: _abi,
+                web3: _web3,
+            }))
+            .then(() => this.getRegistryItems())
             .then((items) => {
                 _newState = {
                     ..._newState,
@@ -205,9 +215,10 @@ class Register extends Component {
         supply: rawRegistry[6],
     });
 
-    getRegistryItems = (contract, fields, abi, web3) => {
+    getRegistryItems = () => {
+        const { registryContract: contract, fields, abi, web3 } = this.state;
 
-        return new Promise((resolve, reject) => {
+        return new Promise((topResolve, reject) => {
 
             cyber.getRegistryData(contract, fields, abi)
                 .then(({ items, fields, entryAddress }) => {
@@ -233,21 +244,11 @@ class Register extends Component {
                         };
                     });
 
-                    resolve(_items);
+                    topResolve(_items);
                 });
         });
 
     };
-
-    deleted = (e, result) => {
-        const index = result.args.entryId.toNumber();
-
-        this.setState({
-            items: this.state.items.filter((x, i) => i !== index),
-            loading: false,
-        });
-    }
-
 
     add = (values) => {
         const { registryContract } = this.state;
@@ -277,43 +278,31 @@ class Register extends Component {
     };
 
     onUpdate = (values, entryId) => {
-        const { registries } = this.state;
-        const address = this.props.params.adress;
-        const registry = registries.find(x => x.address === address);
+        const { entryCoreContract } = this.state;
 
-        if (!registry) {
-            return;
-        }
-        const r = cyber.getRegistryContract(registry.address);
+        this.setLoading(true);
 
-        r.getInterfaceEntriesContract((e, ipfsHash) => {
-            // const ipfsHash = registry.ipfsHash;
-            cyber.updateItem(address, ipfsHash, entryId, values)
-                .then((entryId) => {
-                    this.componentDidMount();
-                    // return cyber.updateItem(address, ipfsHash, entryId, values)
-                });
-        });
-    }
+        cyber.callContractMethod(entryCoreContract, 'updateEntry', entryId, ...values)
+            .then(() => cyber.eventPromise(entryCoreContract.EntryUpdated()))
+            .then(() => this.getRegistryItems())
+            .then(items => this.setState({
+                items,
+                loading: false,
+            }));
+    };
 
     removeItemClick = (id) => {
-        this.setState({ loading: true });
-        const address = this.props.params.adress;
+        const { registryContract } = this.state;
 
-        cyber.removeItem(address, id)
-            .then(() => {
-                const newItems = this.state.items.filter((item, index) => index !== id);
-
-                this.setState({ items: newItems, loading: false });
-            });
-        // alert(id)
-        // this.contract.deleteEntry(id, function(e, r){
-
-        // });
-        // this.setState({
-        //   loading: true
-        // })
-    }
+        this.setLoading(true);
+        cyber.callContractMethod(registryContract, 'deleteEntry', id)
+            .then(() => cyber.eventPromise(registryContract.EntryDeleted()))
+            .then(() => this.getRegistryItems())
+            .then(items => this.setState({
+                items,
+                loading: false,
+            }));
+    };
 
 
     validate = (e) => {
@@ -367,11 +356,18 @@ class Register extends Component {
         });
     }
 
-    changeEntryCreationFee = (entryCreationFee) => {
-        const address = this.props.params.adress;
+    changeEntryCreationFee = (newFee) => {
+        const { registryContract, web3 } = this.state;
+        const fee = web3.toWei(newFee, 'ether');
 
-        cyber.updateEntryCreationFee(address, entryCreationFee);
-    }
+        this.setLoading(true);
+        cyber.callContractMethod(registryContract, 'updateEntryCreationFee', fee)
+            //.then(() => cyber.eventPromise(registryContract.feeUpdated()))
+            .then(() => this.setState({
+                entryCreationFee: newFee,
+                loading: false,
+            }));
+    };
 
     clameRecord = (entryID, amount) => {
         this.state.registryContract.claimEntryFunds(entryID, this.state.web3.toWei(amount, 'ether'), (e, data) => {
@@ -379,30 +375,29 @@ class Register extends Component {
         });
     }
 
-    getRegistryID = (registries) => {
-        const address = this.props.params.adress;
-
-        let index = null;
-
-        (registries || this.state.registries).forEach((reg, _index) => {
-            if (reg.address === address) {
-                index = _index;
-            }
+    setLoading = (value) => {
+        this.setState({
+            loading: value,
         });
-
-        return index;
-    }
+    };
 
     fundRegistry = (amount) => {
-        const registryID = this.getRegistryID();
-        // alert(registryID);
+        const { registryAddress, web3 } = this.state;
+        let _chaingerContract;
 
-        cyber.getChaingearContract().then(({ contract, web3 }) => {
-            contract.fundRegistry(registryID, { value: web3.toWei(amount, 'ether') }, (e, data) => {
-                this.componentDidMount();
-            });
-        });
-    }
+        this.setLoading(true);
+
+        cyber.getChaingearContract()
+            .then(({ contract }) => {
+                _chaingerContract = contract;
+            })
+            .then(() => cyber.callContractMethod(_chaingerContract, 'getRegistryIdByAddress', registryAddress))
+            .then(registryID => cyber.callContractMethod(_chaingerContract, 'fundRegistry', registryID, {
+                value: web3.toWei(amount, 'ether'),
+            }))
+            .then(() => cyber.eventPromise(_chaingerContract.RegistryFunded()))
+            .then(() => this.componentDidMount());
+    };
 
     clameRegistry = (amount) => {
         const registryID = this.getRegistryID();
