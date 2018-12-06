@@ -15,8 +15,7 @@ contract Safe {
         owner = msg.sender;
     }
 
-    function() external payable
-    {
+    function() external payable {
         require(msg.sender == owner);
     }
 

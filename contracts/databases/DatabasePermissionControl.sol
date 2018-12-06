@@ -29,13 +29,13 @@ contract DatabasePermissionControl is Ownable {
     */
     
     modifier whenNotPaused() {
-      require(!paused);
-      _;
+        require(!paused);
+        _;
     }
 
     modifier whenPaused() {
-      require(paused);
-      _;
+        require(paused);
+        _;
     }
     
     /*

@@ -26,6 +26,7 @@ contract PortsSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
         _registerInterface(INTERFACE_SCHEMA_ID);
         database = IDatabase(owner);
     }
+
     function() external {}
 
     function createEntry()

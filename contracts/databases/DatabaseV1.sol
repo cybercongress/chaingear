@@ -452,7 +452,12 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
         databaseInitialized
         whenNotPaused
     {
-        super.safeTransferFrom(_from, _to, _tokenId, "");
+        super.safeTransferFrom(
+            _from,
+            _to,
+            _tokenId,
+            ""
+        );
     }
     
     function safeTransferFrom(
@@ -466,6 +471,12 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
         whenNotPaused
     {
         transferFrom(_from, _to, _tokenId);
-        require(checkAndCallSafeTransfer(_from, _to, _tokenId, _data));
+        require(
+            checkAndCallSafeTransfer(
+                _from,
+                _to,
+                _tokenId,
+                _data
+        ));
     }
 }

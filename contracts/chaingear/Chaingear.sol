@@ -5,7 +5,6 @@ import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "openzeppelin-solidity/contracts/AddressUtils.sol";
 
 import "../common/IDatabaseBuilder.sol";
 import "../common/IDatabase.sol";
@@ -21,7 +20,6 @@ import "../common/IChaingear.sol";
 contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
-    using AddressUtils for address;
     
     /*
     *  Storage
@@ -58,9 +56,9 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     uint256 private databaseCreationFeeWei = 1 finney;
 
     string constant private CHAINGEAR_DESCRIPTION = "The novel Ethereum database framework";
-    bytes4 constant public INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
-    bytes4 constant public INTERFACE_DATABASE_ID = 0xfdb63525;
-    bytes4 constant public INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
+    bytes4 constant internal INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
+    bytes4 constant internal INTERFACE_DATABASE_ID = 0xfdb63525;
+    bytes4 constant internal INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
     /*
     *  Events
     */
@@ -130,7 +128,9 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         whenNotPaused
     {
         require(buildersVersion[_version].builderAddress == address(0));
-        require(address(_builderAddress).isContract() == true);
+        
+        SupportsInterfaceWithLookup support = SupportsInterfaceWithLookup(_builderAddress);
+        require(support.supportsInterface(INTERFACE_DATABASE_BUILDER_ID));
         
         buildersVersion[_version] = (DatabaseBuilder(
         {
@@ -415,7 +415,12 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         public
         whenNotPaused
     {
-        super.safeTransferFrom(_from, _to, _tokenId, "");
+        super.safeTransferFrom(
+            _from,
+            _to,
+            _tokenId, 
+            ""
+        );
     }
 
     function safeTransferFrom(
@@ -429,7 +434,13 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {
         transferFrom(_from, _to, _tokenId);
         
-        require(checkAndCallSafeTransfer(_from, _to, _tokenId, _data));
+        require(
+            checkAndCallSafeTransfer(
+                _from,
+                _to,
+                _tokenId,
+                _data
+        ));
     }
 
     /*
@@ -483,7 +494,12 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         super._mint(msg.sender, newTokenID);
         headTokenID = headTokenID.add(1);
         
-        emit DatabaseCreated(_name, databaseAddress, msg.sender, newTokenID);
+        emit DatabaseCreated(
+            _name,
+            databaseAddress,
+            msg.sender,
+            newTokenID
+        );
         
         databaseContract.transferAdminRights(msg.sender);
 

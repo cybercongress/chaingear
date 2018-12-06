@@ -5,9 +5,20 @@ import "../common/IDatabaseBuilder.sol";
 
 interface IChaingear {
     
-    function addDatabaseBuilderVersion(string, IDatabaseBuilder, string, string) external;
+    function addDatabaseBuilderVersion(
+        string,
+        IDatabaseBuilder,
+        string,
+        string
+    ) external;
     function updateDatabaseBuilderDescription(string, string) external;
-    function createDatabase(string, address[], uint256[], string, string) external payable returns (address, uint256);
+    function createDatabase(
+        string,
+        address[],
+        uint256[],
+        string,
+        string
+    ) external payable returns (address, uint256);
     function deleteDatabase(uint256) external;
     function fundDatabase(uint256) external payable;
     function claimDatabaseFunds(uint256, uint256) external;
@@ -17,7 +28,15 @@ interface IChaingear {
     function getDatabaseBuilder(string) external view returns(address, string, string);
     function getDatabasesIDs() external view returns (uint256[]);
     function getDatabaseIDByAddress(address) external view returns (uint256);
-    function getDatabase(uint256) external view returns (string, string, address, string, uint256, address, uint256);
+    function getDatabase(uint256) external view returns (
+        string,
+        string,
+        address,
+        string,
+        uint256,
+        address,
+        uint256
+    );
     function getDatabaseBalance(uint256) external view returns (uint256, uint256);
     function getChaingearDescription() external pure returns (string);
     function getSafeBalance() external view returns (uint256);

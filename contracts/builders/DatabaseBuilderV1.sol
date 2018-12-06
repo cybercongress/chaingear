@@ -3,7 +3,7 @@ pragma solidity 0.4.25;
 import "../databases/DatabaseV1.sol";
 import "../common/IDatabase.sol";
 import "../common/IDatabaseBuilder.sol";
-import "openzeppelin-solidity/contracts/AddressUtils.sol";
+import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 
 
 /**
@@ -11,9 +11,7 @@ import "openzeppelin-solidity/contracts/AddressUtils.sol";
 * @author cyber•Congress, Valery litvin (@litvintech)
 * @notice not audited, not recommend to use in mainnet
 */
-contract DatabaseBuilderV1 is IDatabaseBuilder {
-    
-    using AddressUtils for address;
+contract DatabaseBuilderV1 is IDatabaseBuilder, SupportsInterfaceWithLookup {
 
 	/*
 	*  Storage
@@ -21,6 +19,9 @@ contract DatabaseBuilderV1 is IDatabaseBuilder {
 
     address private chaingear;    
     address private owner;
+    
+    bytes4 constant internal INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
+    bytes4 constant internal INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
 
 	/*
 	*  Constructor
@@ -29,6 +30,8 @@ contract DatabaseBuilderV1 is IDatabaseBuilder {
     constructor() public {
         chaingear = address(0);
         owner = msg.sender;
+        
+        _registerInterface(INTERFACE_DATABASE_BUILDER_ID);
     }
     
     /*
@@ -72,7 +75,8 @@ contract DatabaseBuilderV1 is IDatabaseBuilder {
         external
     {
         require(msg.sender == owner);
-        require(_chaingear.isContract() == true);
+        SupportsInterfaceWithLookup support = SupportsInterfaceWithLookup(_chaingear);
+        require(support.supportsInterface(INTERFACE_CHAINGEAR_ID));
         chaingear = _chaingear;
     }
     
