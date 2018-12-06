@@ -34,9 +34,7 @@ class Register extends Component {
         items: [],
         fields: [],
         registries: [],
-        newItem: {},
         loading: false,
-        balance: null,
         isOwner: false,
         totalFee: 0,
         funded: '???',
@@ -49,7 +47,6 @@ class Register extends Component {
         tag: '',
         registrationTimestamp: null,
         entryCreationFee: 0,
-        entriesAmount: 0,
         admin: '',
         userAccount: null,
 
@@ -76,8 +73,7 @@ class Register extends Component {
         let _chaingearContract = null;
         let _abi = null;
         let _fields = null;
-        let _ipfsHash = null;
-        let _isSchemaExist = false;
+        let _entryCoreAddress = null;
 
         let _newState = {};
         cyber.init()
@@ -117,10 +113,6 @@ class Register extends Component {
                 const _entryCreationFee = _web3.fromWei(entryCreationFee, 'ether').toNumber();
                 const _totalFee = _web3.fromWei(_web3.toDecimal(totalFee), 'ether');
 
-                // _ipfsHash = registryData.ipfsHash;
-                // _fields = registryData.fields;
-                // _abi = registryData.abi;
-
                 _newState = {
                     ..._newState,
                     ...{
@@ -141,8 +133,6 @@ class Register extends Component {
                         description,
                         symbol,
                         entryCreationFee: _entryCreationFee,
-                        // ipfsHash: _ipfsHash,
-                        // fields: _fields,
                     },
                 };
             })
@@ -155,14 +145,23 @@ class Register extends Component {
                         loading: false,
                     });
                     throw new Error('Schema is not exist');
+                } else {
+                    _newState = {
+                        ..._newState,
+                        isSchemaExist,
+                    };
                 }
             })
-            .then(() => cyber.callContractMethod(_registryContract, 'getInterfaceEntriesContract'))
             //
             //
             // with schema
             //
             //
+            .then(() => cyber.callContractMethod(_registryContract, 'getEntriesStorage'))
+            .then((entryAddress) => {
+                _entryCoreAddress = entryAddress;
+            })
+            .then(() => cyber.callContractMethod(_registryContract, 'getInterfaceEntriesContract'))
             .then(ipfsHash => cyber.getRegistryFieldsByHash(ipfsHash))
             .then(({ ipfsHash, abi, fields }) => {
                 _abi = abi;
@@ -176,34 +175,12 @@ class Register extends Component {
                     },
                 };
             })
-            .then(() => cyber.getRegistryData(_registryContract, _fields, _abi))
-            .then(({ items, fields, entryAddress }) => {
-                return Promise.all([
-                    entryAddress,
-                    items,
-                    ...items.map(item => new Promise((resolve) => {
-                        _registryContract.readEntryMeta(item.__index, (e, data) => resolve(data));
-                    })),
-                ]);
-            })
-            .then(([entryAddress, items, ...data]) => {
-                const _items = items.map((item, index) => {
-                    const currentEntryBalanceETH = _web3.fromWei(data[index][4]).toNumber();
-                    const owner = data[index][0];
-
-                    return {
-                        ...item,
-                        currentEntryBalanceETH,
-                        owner,
-                        id: item.__index,
-                    };
-                });
-
+            .then(() => this.getRegistryItems(_registryContract, _fields, _abi, _web3))
+            .then((items) => {
                 _newState = {
                     ..._newState,
                     ...{
-                        entryCoreAddress: entryAddress,
-                        items: _items,
+                        items,
                         entriesAmount: items.length,
                         loading: false,
                     },
@@ -228,6 +205,40 @@ class Register extends Component {
         supply: rawRegistry[6],
     });
 
+    getRegistryItems = (contract, fields, abi, web3) => {
+
+        return new Promise((resolve, reject) => {
+
+            cyber.getRegistryData(contract, fields, abi)
+                .then(({ items, fields, entryAddress }) => {
+                    return Promise.all([
+                        entryAddress,
+                        items,
+                        ...items.map(item => new Promise((resolve) => {
+                            cyber.callContractMethod(contract, 'readEntryMeta', item.__index)
+                                .then(data => resolve(data));
+                        })),
+                    ]);
+                })
+                .then(([entryAddress, items, ...data]) => {
+                    const _items = items.map((item, index) => {
+                        const currentEntryBalanceETH = web3.fromWei(data[index][4]).toNumber();
+                        const owner = data[index][0];
+
+                        return {
+                            ...item,
+                            currentEntryBalanceETH,
+                            owner,
+                            id: item.__index,
+                        };
+                    });
+
+                    resolve(_items);
+                });
+        });
+
+    };
+
     deleted = (e, result) => {
         const index = result.args.entryId.toNumber();
 
@@ -239,25 +250,31 @@ class Register extends Component {
 
 
     add = (values) => {
-        // cyber.addRegistryItem(this.contract, args);
-        const { registries } = this.state;
-        const address = this.props.params.adress;
-        const registry = registries.find(x => x.address === address);
+        const { registryContract } = this.state;
 
-        if (!registry) {
+        if (!registryContract) {
             return;
         }
-        const r = cyber.getRegistryContract(registry.address);
 
-        r.getInterfaceEntriesContract((e, ipfsHash) => {
-            // const ipfsHash = registry.ipfsHash;
-            cyber.addItem(address)
-                .then((entryId) => {
-                    this.componentDidMount();
-                    // return cyber.updateItem(address, ipfsHash, entryId, values)
+        cyber.callContractMethod(registryContract, 'getEntryCreationFee')
+            .then((fee) => {
+                return fee.toNumber();
+            })
+            .then((fee) => {
+                return cyber.callContractMethod(registryContract, 'createEntry', { value: fee });
+            })
+            .then((entryId) => {
+                console.log(`New Entry created: ${entryId}`);
+                this.setState({
+                    loading: true,
                 });
-        });
-    }
+                return cyber.eventPromise(registryContract.EntryCreated());
+            })
+            .then(() => this.componentDidMount())
+            .catch(() => {
+                console.log(`Cannot add entry to ${registryContract.name}`);
+            });
+    };
 
     onUpdate = (values, entryId) => {
         const { registries } = this.state;
@@ -421,7 +438,7 @@ class Register extends Component {
 
     render() {
         const {
-            fields, items, loading, isOwner, userAccount, isSchemaExist
+            fields, items, loading, isOwner, userAccount, isSchemaExist,
         } = this.state;
 
 
@@ -468,6 +485,9 @@ class Register extends Component {
                     <Section>
                         <div style={ { marginLeft: '15px' } }>
                             <ActionLink to='/'>BACK TO CHAINGEAR</ActionLink>
+                            {!isSchemaExist &&
+                                <ActionLink to={`/schema/${registryAddress}`}>Define schema</ActionLink>
+                            }
                         </div>
                     </Section>
                     <Section title='General'>

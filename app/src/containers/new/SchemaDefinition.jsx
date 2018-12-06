@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 import {
     Content, ContainerRegister, SideBar,
     FieldsTable,
@@ -14,20 +13,20 @@ import {
     AddField,
     StatusBar,
 } from '@cybercongress/ui';
+
 import {
     createRegistry,
     generateContractCode,
     getDefaultAccount,
     getRegistries,
-    registerRegistry
+    registerRegistry,
+    deploySchema,
 } from '../../utils/cyber';
 
 
 import Code from '../../components/SolidityHighlight';
 
-
 const MAX_FIELD_COUNT = 10;
-
 
 class SchemaDefinition extends Component {
     constructor(props) {
@@ -48,10 +47,18 @@ class SchemaDefinition extends Component {
         };
     }
 
-
     componentDidMount() {
         getRegistries()
-            .then(contracts => this.setState({ contracts }));
+            .then((contracts) => {
+                const registryAddress = this.props.params.address;
+                const { name } = contracts.find(contract => contract.address === registryAddress);
+
+                this.setState({
+                    contracts,
+                    registryAddress,
+                    contractName: name,
+                });
+            });
     }
 
     add = (name, type) => {
@@ -63,26 +70,33 @@ class SchemaDefinition extends Component {
         this.setState({
             fields: this.state.fields.concat(newItem),
         });
-    }
+    };
 
     remove = (name) => {
         this.setState({
             fields: this.state.fields.filter(x => x.name !== name),
         });
-    }
-
+    };
 
     create = () => {
-        const { contractName, fields } = this.state;
-        const symbol = this.refs.symbol.value;
+        const { contractName, fields, registryAddress } = this.state;
 
         this.setState({ message: 'processing...', inProgress: true, type: 'processing' });
-        getDefaultAccount().then((defaultAccount) => {
+
+        deploySchema(contractName, fields, registryAddress)
+            .then(() => {
+                this.setState({
+                    inProgress: false,
+                });
+            });
+
+/*        getDefaultAccount().then((defaultAccount) => {
             return registerRegistry(contractName, symbol, 'V1', [defaultAccount], [100]);
         })
             .then(({ registryAddress }) => {
                 this.setState({ message: 'build successful', type: 'success', registryAddress });
-            });
+            });*/
+
         /*      createRegistry(contractName, symbol, fields)
                   .then(({ registryAddress }) => {
                       this.setState({ message: 'build successful', type: 'success', registryAddress });
@@ -117,12 +131,11 @@ class SchemaDefinition extends Component {
 
     render() {
         const {
-            contractName, fields, message, inProgress, contracts, type,
+            contractName, fields, message, inProgress, type,
         } = this.state;
         const code = generateContractCode(contractName, fields);
-        const exist = !!contracts.find(x => x.name === contractName);
         const fieldsCount = fields.length;
-        const canDeploy = contractName.length > 0 && fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !exist;
+        const canDeploy = fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT;
 
         return (
             <div>
@@ -137,23 +150,6 @@ class SchemaDefinition extends Component {
                 <ContainerRegister>
                     <SideBar>
                         <Label>Input</Label>
-                        <Panel title='General Parameters'>
-                            <Control title='Registry Name:'>
-                                <input
-                                    placeholder='name'
-                                    value={ contractName }
-                                    onChange={ this.changeContractName }
-                                />
-                            </Control>
-                            <Control title='Token Symbol:'>
-                                <input
-                                    ref='symbol'
-                                    defaultValue=''
-                                    placeholder='symbol'
-                                />
-                            </Control>
-
-                        </Panel>
 
                         <Panel title='EntryCore Structure' noPadding>
                             <FieldsTable>
@@ -191,7 +187,7 @@ class SchemaDefinition extends Component {
                     </SideBar>
 
                     <Content>
-                        <Label color='#3fb990'>Output</Label>
+                        <Label color='#3fb990'>Registry code</Label>
                         <Code>
                             {code}
                         </Code>
@@ -199,24 +195,7 @@ class SchemaDefinition extends Component {
                     </Content>
 
                 </ContainerRegister>
-                <Label>
-                    <div>Notes for Registry logic, creation, and deployment:</div>
-                    <div>0. With the form below you may code generate your EntryCore contract</div>
-                    <div>1. EntryCore consist from your data schema and CRUD operations</div>
-                    <div>2. With FIRST transaction you deploy Registry contract from Chaingear, your Registry is ERC721 CHG token</div>
-                    <div>3. With SECOND transaction you initialize Registry with EntryCore, each entry is the ERC721 token</div>
-                    <div>4. You EntryCore ABI saves in IPFS</div>
-                    <div>5. You are Registry/Entry owner == you are Chaingear/Registry token owner</div>
-                    <div>6. You may CREATE in Registry => mints token in Registry, initializes empty entry in EntryCore</div>
-                    <div>7. You may READ from EntryCore => pass tokenID and get entry</div>
-                    <div>8. You may UPDATE (if token owner) in EntryCore => pass tokenID and data to update</div>
-                    <div>9. You may DELETE (if token owner) in Registry => pass tokenID, burns token and clears entry in EntryCore</div>
-                    <div>10. You may TRANSFER/SELL (if token owner) in Registry => pass tokenID/new owner and asscociated entry goes to new owner</div>
-                    <div>11. You as admin may place fee entry-token creation</div>
-                    <div>12. You as admin may choose the policy for entry-token creation: [Admin, Whitelist, AllUsers]</div>
-                    <div>...</div>
-                    <div>42. You may TRANSFER/SELL (if token owner) Registry ownership => transfer/trade your CHG NFT token to the new owner!</div>
-                </Label>
+
             </div>
         );
     }

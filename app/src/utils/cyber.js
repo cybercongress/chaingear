@@ -137,8 +137,8 @@ export const compileRegistry = (code, contractName, compiler) => new Promise((re
         }
 
         try {
-            const abi = compiledContract.contracts[`${contractName}:${contractName}`].interface;
-            const bytecode = `0x${compiledContract.contracts[`${contractName}:${contractName}`].bytecode}`;
+            const abi = compiledContract.contracts[`${contractName}:Schema`].interface;
+            const bytecode = `0x${compiledContract.contracts[`${contractName}:Schema`].bytecode}`;
 
             resolve({
                 abi,
@@ -496,7 +496,7 @@ export const deploySchema = (name, fields, registryAddress) => {
                     _ipfsHash = ipfsHash;
                     return getWeb3;
                 })
-                .then((web3) => {
+                .then(({ web3 }) => {
                     const registryContract = web3.eth.contract(Registry.abi).at(registryAddress);
 
                     return callContractMethod(registryContract, 'initializeRegistry', _ipfsHash, _bytecode);
@@ -637,6 +637,19 @@ export const fundEntry = (address, id, value) => new Promise((resolve) => {
 
     });
 });
+
+export const eventPromise = (event) => {
+    return new Promise((resolve, reject) => {
+        event.watch((error, results) => {
+            event.stopWatching(() => {});
+            if (error) {
+                reject(error);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+};
 
 export const addItem = address => new Promise((resolve) => {
     const registryContract = _web3.eth.contract(Registry.abi).at(address);
