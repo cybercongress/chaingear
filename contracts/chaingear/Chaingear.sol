@@ -4,7 +4,9 @@ import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLooku
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+
 
 import "../common/IDatabaseBuilder.sol";
 import "../common/IDatabase.sol";
@@ -17,7 +19,7 @@ import "../common/IChaingear.sol";
 * @author cyber•Congress, Valery litvin (@litvintech)
 * @notice not audited, not recommend to use in mainnet
 */
-contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC721Token {
+contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
     

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-truffle-flattener ../../contracts/registry/Registry.sol ../../contracts/chaingear/Chaingear.sol ../../contracts/example/TeamSchema.sol ../../contracts/builder/RegistryBuilder.sol > contracts_full.sol
+truffle-flattener ../../contracts/databases/DatabaseV1.sol ../../contracts/chaingear/Chaingear.sol ../../contracts/schemas/TeamSchema.sol ../../contracts/builders/DatabaseBuilderV1.sol > contracts_full.sol

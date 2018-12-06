@@ -1,4 +1,5 @@
 graph TD;
+    IChaingear-->Chaingear;
     OpenZeppelin.ERC721Token-->Chaingear;
     OpenZeppelin.SplitPayment-->Chaingear;
     OpenZeppelin.Pausable-->Chaingear;
@@ -6,6 +7,7 @@ graph TD;
     OpenZeppelin.ERC165-->OpenZeppelin.SupportsInterfaceWithLookup;
     OpenZeppelin.Ownable-->OpenZeppelin.SplitPayment;
     OpenZeppelin.Ownable-->OpenZeppelin.Pausable;
+    OpenZeppelin.Ownable-->Chaingear;
     OpenZeppelin.ERC721-->OpenZeppelin.ERC721Token;
     OpenZeppelin.ERC721BasicToken-->OpenZeppelin.ERC721Token;
     OpenZeppelin.ERC721Basic-->OpenZeppelin.ERC721BasicToken;

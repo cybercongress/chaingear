@@ -890,76 +890,126 @@ contract SplitPayment {
   }
 }
 
-// File: contracts/common/EntryInterface.sol
+// File: contracts/common/IDatabase.sol
 
-interface EntryInterface {
-
-    function createEntry(uint256) external;
-    function deleteEntry(uint256) external;
-    function getEntriesAmount() external view returns (uint256);
-    function getEntriesIDs() external view returns (uint256[]);
-    function supportsInterface(bytes4 _interfaceId) external view returns (bool);
-}
-
-// File: contracts/common/RegistryInterface.sol
-
-interface RegistryInterface {
+interface IDatabase {
     
     function createEntry() external payable returns (uint256);
+    function auth(uint256, address) external;
     function deleteEntry(uint256) external;
-    
-    function getEntriesStorage() external view returns (address);
-    function getEntriesIDs() external view returns (uint256[]);
-    
     function fundEntry(uint256) external payable;
     function claimEntryFunds(uint256, uint256) external;
-    
+    function updateEntryCreationFee(uint256) external;
+    function updateDatabaseDescription(string) external;
+    function addDatabaseTag(bytes32) external;
+    function updateDatabaseTag(uint8, bytes32) external;
+    function removeDatabaseTag(uint8) external;
+    function readEntryMeta(uint256) external view returns (address, address, uint256, uint256, uint256, uint256);
+    function getChaingearID() external view returns (uint256);
+    function getEntriesIDs() external view returns (uint256[]);
+    function getIndexByID(uint256) external view returns (uint256);
+    function getEntryCreationFee() external view returns (uint256);
+    function getEntriesStorage() external view returns (address);
+    function getInterfaceEntriesContract() external view returns (string);
+    function getSchemaDefinition() external view returns (string);
+    function getDatabaseBalance() external view returns (uint256);
+    function getDatabaseDescription() external view returns (string);
+    function getDatabaseTags() external view returns (bytes32[]);
+    function getDatabaseSafe() external view returns (address);
+    function getSafeBalance() external view returns (uint256);
+    function getDatabaseInitStatus() external view returns (bool);
     function transferAdminRights(address) external;
     function transferOwnership(address) external;
-    
     function getAdmin() external view returns (address);
+}
+
+// File: contracts/common/IDatabaseBuilder.sol
+
+interface IDatabaseBuilder {
+    
+    function deployDatabase(
+        address[],
+        uint256[],
+        string,
+        string
+    ) external returns (IDatabase);
+    function setChaingearAddress(address) external;
+    function getChaingearAddress() external view returns (address);
+    function getOwner() external view returns (address);
+}
+
+// File: contracts/common/IChaingear.sol
+
+interface IChaingear {
+    
+    function addDatabaseBuilderVersion(
+        string,
+        IDatabaseBuilder,
+        string,
+        string
+    ) external;
+    function updateDatabaseBuilderDescription(string, string) external;
+    function createDatabase(
+        string,
+        address[],
+        uint256[],
+        string,
+        string
+    ) external payable returns (address, uint256);
+    function deleteDatabase(uint256) external;
+    function fundDatabase(uint256) external payable;
+    function claimDatabaseFunds(uint256, uint256) external;
+    function updateCreationFee(uint256) external;
+    function getAmountOfBuilders() external view returns (uint256);
+    function getBuilderById(uint256) external view returns(string);
+    function getDatabaseBuilder(string) external view returns(address, string, string);
+    function getDatabasesIDs() external view returns (uint256[]);
+    function getDatabaseIDByAddress(address) external view returns (uint256);
+    function getDatabase(uint256) external view returns (
+        string,
+        string,
+        address,
+        string,
+        uint256,
+        address,
+        uint256
+    );
+    function getDatabaseBalance(uint256) external view returns (uint256, uint256);
+    function getChaingearDescription() external pure returns (string);
     function getSafeBalance() external view returns (uint256);
-    
-    function name() external view returns (string);
-    function symbol() external view returns (string);
-    function supportsInterface(bytes4) external view returns (bool);
-    
+    function getSafeAddress() external view returns (address);
+    function getNameExist(string) external view returns (bool);
+    function getSymbolExist(string) external view returns (bool);
+}
+
+// File: contracts/common/ISchema.sol
+
+interface ISchema {
+
+    function createEntry() external;
+    function deleteEntry(uint256) external;
 }
 
 // File: contracts/common/Safe.sol
 
 /**
-* @title Safe contract
-* @author cyber•Congress, Valery Litvin (@litvintech)
-* @dev Allows store etheirs which funded to Registry 
-* @dev and claim them by Registry/associated token via Chaingear
-* @notice not recommend to use before release!
+* @title Chaingear - the novel Ethereum database framework
+* @author cyber•Congress, Valery litvin (@litvintech)
+* @notice not audited, not recommend to use in mainnet
 */
 contract Safe {
     
     address private owner;
 
-    constructor()
-        public
+    constructor() public
     {
         owner = msg.sender;
     }
 
-    /**
-    * @dev Allows direct send only by owner.
-    */
-    function()
-        external
-        payable
-    {
+    function() external payable {
         require(msg.sender == owner);
     }
 
-    /**
-    * @dev Allows owner (chaingear) claim funds and transfer them to Registry admin
-    * @param _entryOwner address transfer to, Registry-token admin
-    * @param _amount uint claimed amount by Registry-token admin
-    */
     function claim(address _entryOwner, uint256 _amount)
         external
     {
@@ -1043,61 +1093,18 @@ contract Ownable {
   }
 }
 
-// File: openzeppelin-solidity/contracts/lifecycle/Pausable.sol
+// File: contracts/databases/DatabasePermissionControl.sol
+
+// import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
+
+
 
 /**
- * @title Pausable
- * @dev Base contract which allows children to implement an emergency stop mechanism.
- */
-contract Pausable is Ownable {
-  event Pause();
-  event Unpause();
-
-  bool public paused = false;
-
-
-  /**
-   * @dev Modifier to make a function callable only when the contract is not paused.
-   */
-  modifier whenNotPaused() {
-    require(!paused);
-    _;
-  }
-
-  /**
-   * @dev Modifier to make a function callable only when the contract is paused.
-   */
-  modifier whenPaused() {
-    require(paused);
-    _;
-  }
-
-  /**
-   * @dev called by the owner to pause, triggers stopped state
-   */
-  function pause() public onlyOwner whenNotPaused {
-    paused = true;
-    emit Pause();
-  }
-
-  /**
-   * @dev called by the owner to unpause, returns to normal state
-   */
-  function unpause() public onlyOwner whenPaused {
-    paused = false;
-    emit Unpause();
-  }
-}
-
-// File: contracts/registry/RegistryPermissionControl.sol
-
-/**
-* @title RegistryPermissionControl contract
+* @title Chaingear - the novel Ethereum database framework
 * @author cyber•Congress, Valery litvin (@litvintech)
-* @dev Controls registry adminship logic and permission to entry management
-* @notice not recommend to use before release!
+* @notice not audited, not recommend to use in mainnet
 */
-contract RegistryPermissionControl is Ownable, Pausable {
+contract DatabasePermissionControl is Ownable {
     
     /*
     *  Storage
@@ -1105,11 +1112,33 @@ contract RegistryPermissionControl is Ownable, Pausable {
     
     enum CreateEntryPermissionGroup {OnlyAdmin, Whitelist, AllUsers}
     
-    address internal admin;
+    address private admin;
+    bool public paused = false;
 
-    mapping(address => bool) whitelist;
+    mapping(address => bool) private whitelist;
     
-    CreateEntryPermissionGroup internal permissionGroup;
+    CreateEntryPermissionGroup private permissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
+    
+    /*
+    *  Modifiers
+    */
+    
+    modifier whenNotPaused() {
+        require(!paused);
+        _;
+    }
+
+    modifier whenPaused() {
+        require(paused);
+        _;
+    }
+    
+    /*
+    *  Events
+    */
+
+    event Pause();
+    event Unpause();
     
     /*
     *  Constructor
@@ -1117,10 +1146,7 @@ contract RegistryPermissionControl is Ownable, Pausable {
     
     constructor()
         public
-    {
-        permissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
-        admin = address(0);
-    }
+    { }
     
     /*
     *  Modifiers
@@ -1144,14 +1170,24 @@ contract RegistryPermissionControl is Ownable, Pausable {
     *  External functions
     */
     
-    /**
-    * @dev Allows owner (in main workflow - chaingear) transfer admin right
-    * @dev if previous admin transfer associated ERC721 token.
-    * @param _newAdmin address of new token holder/registry admin
-    * @notice triggered by chaingear in main workflow (when registry non-registered from CH) 
-    * @notice admin cannot transfer their own right cause right are tokenized and associated with
-    * @notice ERC721 token, which logic controls chaingear contract
-    */
+    function pause() 
+        external
+        onlyAdmin
+        whenNotPaused
+    {
+        paused = true;
+        emit Pause();
+    }
+
+    function unpause() 
+        external
+        onlyAdmin
+        whenPaused
+    {
+        paused = false;
+        emit Unpause();
+    }
+    
     function transferAdminRights(address _newAdmin)
         external
         onlyOwner
@@ -1211,42 +1247,25 @@ contract RegistryPermissionControl is Ownable, Pausable {
     {
         return whitelist[_address];
     }
-        
 }
 
-// File: contracts/registry/Registry.sol
+// File: contracts/databases/DatabaseV1.sol
 
 /**
-* @title Registry First Type Contract
+* @title Chaingear - the novel Ethereum database framework
 * @author cyber•Congress, Valery litvin (@litvintech)
-* @dev This contract in current flow used for Registry creation throught fabric in Chaingear
-* @dev Registry creates ERC721 for each entry, entry may be funded/funds claimed
-* @dev Admin sets contracts (EntrCore) which defines entry schema
-* @dev Entry creation/deletion/update permission are tokenized
-* @notice not recommend to use before release!
+* @notice not audited, not recommend to use in mainnet
 */
-contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
+contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
     
     /*
     *  Storage
     */
-    bytes4 internal constant InterfaceId_EntryCore = 0xcf3c2b48;
     
-    bytes4 internal constant InterfaceId_Registry =  0x52dddfe4;
-    /*
-     * 0x52dddfe4 ===
-     *   bytes4(keccak256('createEntry()')) ^
-     *   bytes4(keccak256('deleteEntry(uint256)')) ^
-     *   bytes4(keccak256('fundEntry(uint256)')) ^
-     *   bytes4(keccak256('claimEntryFunds(uint256, uint256)')) ^
-     *   bytes4(keccak256('transferAdminRights(address)')) ^
-     *   bytes4(keccak256('transferOwnership(address)')) ^
-     *   bytes4(keccak256('getAdmin()')) ^
-     *   bytes4(keccak256('getSafeBalance()'))
-     */
-    
+    bytes4 constant internal INTERFACE_SCHEMA_ID = 0x153366ed;
+    bytes4 constant internal INTERFACE_DATABASE_ID = 0xfdb63525;
 
     // @dev Metadata of entry, holds ownership data and funding info
     struct EntryMeta {
@@ -1257,42 +1276,33 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
         uint256     accumulatedWei;
     }
     
-    // @dev Using for token creation, continuous enumeration
-    uint256 internal headTokenID;
+    EntryMeta[] private entriesMeta;
     
-    // @dev Array of associated to entry/token metadata
-    EntryMeta[] internal entriesMeta;
+    uint256 private headTokenID = 0;
+    uint256 private entryCreationFeeWei = 0;
     
-    // @dev entry creation fee 
-    uint256 internal entryCreationFee;
+    bytes32[] private databaseTags;
+    string private databaseDescription;
     
-    // @dev registry description string
-    string internal registryDescription;
+    string private linkToSchemaABI; // will be depricated
+    string private schemaDefinition; // and changed for this
     
-    // @dev registry tags
-    bytes32[] internal registryTags;
+    Safe private databaseSafe;
     
-    // @dev address of EntryCore contract, which specifies data schema and CRUD operations
-    EntryInterface internal entriesStorage;
+    ISchema private entriesStorage;
+    bool private databaseInitStatus = false;
     
-    // @dev link to IPFS hash to ABI of EntryCore contract
-    string internal linkToABIEntryCore;
+    /*
+    *  Modifiers
+    */
     
-    // @dev address of Registry safe where funds store
-    Safe internal registrySafe;
-
-    // @dev state of was registry initialized with EntryCore or not
-    bool internal registryInitStatus;
-    
-    // @dev also works as exist(_entryID)
     modifier onlyOwnerOf(uint256 _entryID){
         require(ownerOf(_entryID) == msg.sender);
         _;
     }
     
-    // @dev don't allow to call registry entry functions before initialization
-    modifier registryInitialized {
-        require(registryInitStatus == true);
+    modifier databaseInitialized {
+        require(databaseInitStatus == true);
         _;
     }
     
@@ -1323,7 +1333,7 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
 
     event EntryFundsClaimed(
         uint256 entryID,
-        address owner,
+        address claimer,
         uint256 amount
     );
 
@@ -1331,32 +1341,19 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
     *  Constructor
     */
 
-    /** 
-    * @dev Constructor of Registry, creates from fabric which triggers by chaingear
-    * @param _benefitiaries address[] addresses of Registry benefitiaries
-	* @param _shares uint256[] array with amount of shares by benefitiary
-	* @param _name string Registry name, use for Registry ERC721
-	* @param _symbol string Registry NFT symbol, use for Registry ERC721
-    * @notice sets default entry creation policy to onlyAdmin
-    * @notice sets default creation fee to zero
-    * @notice Registry are inactive till he is not initialized with schema (EntryCore)
-    */
     constructor(
-        address[] _benefitiaries,
+        address[] _beneficiaries,
         uint256[] _shares,
         string _name,
         string _symbol
     )
-        SplitPayment    (_benefitiaries, _shares)
-        ERC721Token     (_name, _symbol)
+        ERC721Token (_name, _symbol)
+        SplitPayment (_beneficiaries, _shares)
         public
         payable
     {
-        _registerInterface(InterfaceId_Registry);
-        headTokenID = 0;
-        entryCreationFee = 0;
-        registrySafe = new Safe();
-        registryInitStatus = false;
+        _registerInterface(INTERFACE_DATABASE_ID);
+        databaseSafe = new Safe();
     }
     
     function() external payable {}
@@ -1365,53 +1362,50 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
     *  External functions
     */
     
-    /**
-    * @dev Creates ERC721 and init asscociated epmty entry in EntryCore
-    * @return uint256 ID of ERC721 token
-    * @notice Entry owner should to after token creation and entry init set
-    * @notice entry data throught EntryCore updateEntry() 
-    * @notice This (and deletion) would work if EntryCore correctly written
-    * @notice otherwise nothing should happen with Registry
-    */
     function createEntry()
         external
-        registryInitialized
+        databaseInitialized
         onlyPermissionedToCreateEntries
         whenNotPaused
         payable
         returns (uint256)
     {
-        require(msg.value == entryCreationFee);
+        require(msg.value == entryCreationFeeWei);
         
         EntryMeta memory meta = (EntryMeta(
         {   
-            /* solium-disable-next-line security/no-block-members */
-            lastUpdateTime:     block.timestamp,
-            /* solium-disable-next-line security/no-block-members */
-            createdAt:          block.timestamp,
-            creator:            msg.sender,
-            currentWei:         0,
-            accumulatedWei:     0
+            lastUpdateTime: block.timestamp,
+            createdAt:      block.timestamp,
+            creator:        msg.sender,
+            currentWei:     0,
+            accumulatedWei: 0
         }));
         entriesMeta.push(meta);
         
         uint256 newTokenID = headTokenID;
         super._mint(msg.sender, newTokenID);
+        headTokenID = headTokenID.add(1);
         
         emit EntryCreated(newTokenID, msg.sender);
+
+        entriesStorage.createEntry();
         
-        entriesStorage.createEntry(newTokenID);
-        headTokenID = headTokenID.add(1);
         return newTokenID;
     }
+    
+    function auth(uint256 _entryID, address _caller)
+        external
+        whenNotPaused
+    {
+        require(msg.sender == address(entriesStorage));
+        require(ownerOf(_entryID) == _caller);
+        uint256 entryIndex = allTokensIndex[_entryID];
+        entriesMeta[entryIndex].lastUpdateTime = block.timestamp;
+    }
 
-    /**
-    * @dev Allow entry owner delete Entry-token and also Entry-data in EntryCore
-    * @param _entryID uint256 Entry-token ID
-    */
     function deleteEntry(uint256 _entryID)
         external
-        registryInitialized
+        databaseInitialized
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
@@ -1428,18 +1422,12 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
         super._burn(msg.sender, _entryID);
         emit EntryDeleted(_entryID, msg.sender);
         
-        entriesStorage.deleteEntry(_entryID);
+        entriesStorage.deleteEntry(entryIndex);
     }
 
-    /**
-    * @dev Allows anyone fund specified entry
-    * @param _entryID uint256 Entry-token ID
-    * @notice Funds tracks in EntryMeta, stores in Registry Safe
-    * @notice Anyone may fund any existing entry
-    */
     function fundEntry(uint256 _entryID)
         external
-        registryInitialized
+        databaseInitialized
         whenNotPaused
         payable
     {
@@ -1453,127 +1441,70 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
         entriesMeta[entryIndex].accumulatedWei = accumulatedWei;
         
         emit EntryFunded(_entryID, msg.sender, msg.value);
-        address(registrySafe).transfer(msg.value);
+        address(databaseSafe).transfer(msg.value);
     }
 
-    /**
-    * @dev Allows entry token owner claim entry funds
-    * @param _entryID uint256 Entry-token ID
-    * @param _amount uint256 Amount in wei which token owner claims
-    * @notice Funds tracks in EntryMeta, transfers from Safe to claimer (owner)
-    */
     function claimEntryFunds(uint256 _entryID, uint256 _amount)
         external
-        registryInitialized
+        databaseInitialized
         onlyOwnerOf(_entryID)
         whenNotPaused
     {
         uint256 entryIndex = allTokensIndex[_entryID];
-        
+    
         uint256 currentWei = entriesMeta[entryIndex].currentWei;
         require(_amount <= currentWei);
         entriesMeta[entryIndex].currentWei = currentWei.sub(_amount);
-        
+    
         emit EntryFundsClaimed(_entryID, msg.sender, _amount);
-        registrySafe.claim(msg.sender, _amount);
+        databaseSafe.claim(msg.sender, _amount);
     }
     
-    /**
-    * @dev Allow to set last entry data update for entry-token meta
-    * @param _entryID uint256 Entry-token ID
-    * @notice Can be (should be) called only by EntryCore (updateEntry)
-    */
-    function updateEntryTimestamp(uint256 _entryID) 
-        external
-    {
-        require(entriesStorage == msg.sender);
-        /* solium-disable-next-line security/no-block-members */
-        entriesMeta[_entryID].lastUpdateTime = block.timestamp;
-    }
-    
-    
-    /**
-    * @dev Allows admin set new registration fee, which entry creators should pay
-    * @param _fee uint256 In wei which should be payed for creation/registration
-    */
-    function updateEntryCreationFee(uint256 _fee)
+    function updateEntryCreationFee(uint256 _newFee)
         external
         onlyAdmin
         whenPaused
     {
-        entryCreationFee = _fee;
+        entryCreationFeeWei = _newFee;
     }
     
-    /**
-    * @dev Allows update ERC721 token name (Registry Name)
-    * @param _name string which represents name
-    */
-    function updateName(string _name)
+    function updateDatabaseDescription(string _newDescription)
         external
         onlyAdmin
-    {
-        name_ = _name;
+    {    
+        databaseDescription = _newDescription;
     }
     
-    /**
-    * @dev Allows admin update registry description
-    * @param _newDescription string Which represents description
-    * @notice Length of description should be less than 256 bytes
-    */
-    function updateRegistryDescription(string _newDescription)
+    function addDatabaseTag(bytes32 _tag)
         external
         onlyAdmin
     {
-        uint256 len = bytes(_newDescription).length;
-        require(len <= 256);
-
-        registryDescription = _newDescription;
+        require(databaseTags.length < 16);
+        databaseTags.push(_tag);
+    }
+    
+    function updateDatabaseTag(uint8 _index, bytes32 _tag)
+        external
+        onlyAdmin
+    {
+        require(_index < databaseTags.length);
+    
+        databaseTags[_index] = _tag;
     }
 
-    /**
-    * @dev Allows admin to add tag to registry
-    * @param _tag bytes32 Tag
-    * @notice Tags amount should be less or equal 16
-    */
-    function addRegistryTag(bytes32 _tag)
+    function removeDatabaseTag(uint8 _index)
         external
         onlyAdmin
     {
-        require(registryTags.length < 16);
-        registryTags.push(_tag);
-    }
-
-    /**
-    * @dev Allows admin to update update specified tag
-    * @param _index uint8 Index of tag to update
-    * @param _tag bytes32 New tag value
-    */
-    function updateRegistryTag(uint8 _index, bytes32 _tag)
-        external
-        onlyAdmin
-    {
-        require(_index < registryTags.length);
-
-        registryTags[_index] = _tag;
-    }
-
-    /**
-    * @dev Remove registry tag
-    * @param _index uint8 Index of tag to delete
-    */
-    function removeRegistryTag(uint8 _index)
-        external
-        onlyAdmin
-    {
-        require(registryTags.length > 0);
-        require(_index < registryTags.length);
-
-        uint256 lastTagIndex = registryTags.length.sub(1);
-        bytes32 lastTag = registryTags[lastTagIndex];
-
-        registryTags[_index] = lastTag;
-        registryTags[lastTagIndex] = "";
-        registryTags.length--;
+        require(databaseTags.length > 0);
+        require(_index < databaseTags.length);
+    
+        uint256 lastTagIndex = databaseTags.length.sub(1);
+        bytes32 lastTag = databaseTags[lastTagIndex];
+    
+        databaseTags[_index] = lastTag;
+        databaseTags[lastTagIndex] = "";
+        databaseTags.length--;
     }
     
     /*
@@ -1592,14 +1523,26 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
             uint256
         )
     {
+        require(exists(_entryID) == true);
+        uint256 entryIndex = allTokensIndex[_entryID];
+        
+        EntryMeta memory m = entriesMeta[entryIndex];
         return(
             ownerOf(_entryID),
-            entriesMeta[_entryID].creator,
-            entriesMeta[_entryID].createdAt,
-            entriesMeta[_entryID].lastUpdateTime,
-            entriesMeta[_entryID].currentWei,
-            entriesMeta[_entryID].accumulatedWei
+            m.creator,
+            m.createdAt,
+            m.lastUpdateTime,
+            m.currentWei,
+            m.accumulatedWei
         );
+    }
+    
+    function getChaingearID()
+        external
+        view
+        returns(uint256)
+    {
+        return IChaingear(owner).getDatabaseIDByAddress(address(this));
     }
     
     function getEntriesIDs()
@@ -1610,34 +1553,23 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
         return allTokens;
     }
     
-    /**
-    * @dev Allows to check which amount fee needed for entry creation/registration
-    * @return uint256 Current amount in wei needed for registration
-    */
+    function getIndexByID(uint256 _entryID)
+        external
+        view
+        returns (uint256)
+    {
+        require(exists(_entryID) == true);
+        return allTokensIndex[_entryID];
+    }
+    
     function getEntryCreationFee()
         external
         view
         returns (uint256)
     {
-        return entryCreationFee;
+        return entryCreationFeeWei;
     }
     
-    /**
-    * @dev Verification function which auth user to update specified entry in EntryCore
-    * @param _entryID uint256 Entry-token ID
-    * @param _caller address of caller which trying to update entry throught EntryCore 
-    */
-    function checkEntryOwnership(uint256 _entryID, address _caller)
-        external
-        view
-    {
-        require(ownerOf(_entryID) == _caller);
-    }
-    
-    /**
-    * @dev Allows to get EntryCore contract which specified entry schema and operations
-    * @return address of that contract
-    */
     function getEntriesStorage()
         external
         view
@@ -1645,123 +1577,96 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
     {
         return address(entriesStorage);
     }
-
-    /**
-    * @dev Allows to get link interface of EntryCore contract
-    * @return string with IPFS hash to JSON with ABI
-    */
-    function getInterfaceEntriesContract()
+    
+    function getInterfaceEntriesContract() // will be depricated 
         external
         view
         returns (string)
     {
-        return linkToABIEntryCore;
+        return linkToSchemaABI;
     }
-
-    /**
-    * @dev Allows to get registry balance which represents accumulated fees for entry creations
-    * @return uint256 Amount in wei accumulated in Registry Contract
-    */
-    function getRegistryBalance()
+    
+    function getSchemaDefinition() // and migrated to this with determinated ABI
+        external
+        view
+        returns (string)
+    {
+        return schemaDefinition;
+    }
+    
+    function getDatabaseBalance()
         external
         view
         returns (uint256)
     {
         return address(this).balance;
     }
-
-    /**
-    * @dev Allows to get description of Registry
-    * @return string which represents description 
-    */
-    function getRegistryDescription()
+    
+    function getDatabaseDescription()
         external
         view
         returns (string)
     {
-        return registryDescription;
+        return databaseDescription;
     }
-
-    /**
-    * @dev Allows to get Registry Tags
-    * @return bytes32[] array of tags
-    */
-    function getRegistryTags()
+    
+    function getDatabaseTags()
         external
         view
         returns (bytes32[])
     {
-        return registryTags;
+        return databaseTags;
     }
-
-    /**
-    * @dev Allows to get address of Safe which Registry control (owns)
-    * @return address of Safe contract
-    */
-    function getRegistrySafe()
+    
+    function getDatabaseSafe()
         external
         view
         returns (address)
     {
-        return registrySafe;
+        return databaseSafe;
     }
     
-    /**
-    * @dev Allows to get amount of funds aggregated in Safe
-    * @return uint256 Amount of funds in wei
-    */
     function getSafeBalance()
         external
         view
         returns (uint256)
     {
-        return address(registrySafe).balance;
+        return address(databaseSafe).balance;
     }
     
-    /**
-    * @dev Allows to check state of Registry init with EntryCore
-    * @return bool Yes/No
-    */
-    function getRegistryInitStatus()
+    function getDatabaseInitStatus()
         external
         view
         returns (bool)
     {
-        return registryInitStatus;
+        return databaseInitStatus;
     }
     
     /**
     *  Public functions
     */
     
-    /**
-    * @dev Registry admin sets generated by them EntryCore contrats with thier schema and 
-    * @dev needed supported entry-token logic
-    * @param _linkToABI string link to IPFS hash which holds EntryCore's ABI
-    * @param _entryCore bytes of contract which holds schema and accociated CRUD functions
-    * @return address of deployed EntryCore
-    */
-    function initializeRegistry(string _linkToABI, bytes _entryCore)
+    function initializeDatabase(string _linkToABI, bytes _schemaBytecode)
         public
         onlyAdmin
         returns (address)
     {
-        require(registryInitStatus == false);
+        require(databaseInitStatus == false);
         address deployedAddress;
-
+    
         assembly {
-            let s := mload(_entryCore)
-            let p := add(_entryCore, 0x20)
+            let s := mload(_schemaBytecode)
+            let p := add(_schemaBytecode, 0x20)
             deployedAddress := create(0, p, s)
         }
-
-        require(deployedAddress != address(0));
-        entriesStorage = EntryInterface(deployedAddress);
-        require(entriesStorage.supportsInterface(InterfaceId_EntryCore));
     
-        linkToABIEntryCore = _linkToABI;
-        registryInitStatus = true;
-        
+        require(deployedAddress != address(0));
+        require(SupportsInterfaceWithLookup(deployedAddress).supportsInterface(INTERFACE_SCHEMA_ID));
+        entriesStorage = ISchema(deployedAddress);
+    
+        linkToSchemaABI = _linkToABI;
+        databaseInitStatus = true;
+    
         return deployedAddress;
     }
     
@@ -1771,7 +1676,7 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
         uint256 _tokenId
     ) 
         public 
-        registryInitialized
+        databaseInitialized
         whenNotPaused
     {
         super.transferFrom(_from, _to, _tokenId);
@@ -1783,12 +1688,17 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
         uint256 _tokenId
     )
         public
-        registryInitialized
+        databaseInitialized
         whenNotPaused
     {
-        super.safeTransferFrom(_from, _to, _tokenId, "");
+        super.safeTransferFrom(
+            _from,
+            _to,
+            _tokenId,
+            ""
+        );
     }
-
+    
     function safeTransferFrom(
         address _from,
         address _to,
@@ -1796,103 +1706,93 @@ contract Registry is RegistryInterface, RegistryPermissionControl, SupportsInter
         bytes _data
     )
         public
-        registryInitialized
+        databaseInitialized
         whenNotPaused
     {
         transferFrom(_from, _to, _tokenId);
-        /* solium-disable-next-line indentation */
-        require(checkAndCallSafeTransfer(_from, _to, _tokenId, _data));
+        require(
+            checkAndCallSafeTransfer(
+                _from,
+                _to,
+                _tokenId,
+                _data
+        ));
     }
 }
 
-// File: contracts/builder/RegistryBuilderInterface.sol
-
-interface RegistryBuilderInterface {
-    
-    function deployRegistry(
-        address[],
-        uint256[],
-        string,
-        string
-    ) external returns (RegistryInterface);
-}
-
-// File: contracts/builder/RegistryBuilder.sol
+// File: contracts/builders/DatabaseBuilderV1.sol
 
 /**
-* @title Registry Creator engine/fabric
-* @author cyber•Congress
-* @dev Allows to Chaingear contract as builder create new Registries
-* @dev with codebase which imported and deployed with this fabric
-* @notice not recommend to use before release!
+* @title Chaingear - the novel Ethereum database framework
+* @author cyber•Congress, Valery litvin (@litvintech)
+* @notice not audited, not recommend to use in mainnet
 */
-contract RegistryBuilder is RegistryBuilderInterface, Ownable {
+contract DatabaseBuilderV1 is IDatabaseBuilder, SupportsInterfaceWithLookup {
 
 	/*
-	* @dev Storage
+	*  Storage
 	*/
 
-    // @dev Holds address of contract which can call creation, means Chaingear
-    address internal chaingear;
+    address private chaingear;    
+    address private owner;
+    
+    bytes4 constant internal INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
+    bytes4 constant internal INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
 
 	/*
-	* @dev Constructor
+	*  Constructor
 	*/
 
-    /**
-    * @dev Contructor of RegistryBuilder
-    * @notice setting 0x0, then allows to owner to set builder/Chaingear
-    * @notice after deploying needs to set up builder/Chaingear address
-    */
     constructor() public {
         chaingear = address(0);
+        owner = msg.sender;
+        
+        _registerInterface(INTERFACE_DATABASE_BUILDER_ID);
     }
     
-    /**
-    * @dev Disallows direct send by settings a default function without the `payable` flag.
+    /*
+    *  Fallback
     */
+    
     function() external {}
 
 	/*
-	* @dev External Functions
+	*  External Functions
 	*/
     
-    /**
-    * @dev Allows chaingear (builder) create new registry
-    * @param _benefitiaries address[] array of beneficiaries addresses
-    * @param _shares uint256[] array of shares amont ot each beneficiary
-    * @param _name string name of Registry and token
-    * @param _symbol string symbol of Registry and token
-    * @return address Address of new initialized Registry
-    */
-    function deployRegistry(
+    function deployDatabase(
         address[] _benefitiaries,
         uint256[] _shares,
         string _name,
         string _symbol
     )
         external
-        returns (RegistryInterface)
+        returns (IDatabase)
     {
         require(msg.sender == chaingear);
 
-        RegistryInterface registryContract = new Registry(
+        IDatabase databaseContract = new DatabaseV1(
             _benefitiaries,
             _shares,
             _name,
             _symbol
         );
-        //Fabric as owner transfers ownership to Chaingear contract after creation
-        registryContract.transferOwnership(chaingear);
+        
+        databaseContract.transferOwnership(chaingear);
 
-        return registryContract;
+        return databaseContract;
     }
+    
+    /*
+    *  Views
+    */
 
     function setChaingearAddress(address _chaingear)
         external
-        onlyOwner
     {
-        require(_chaingear != address(0));
+        require(msg.sender == owner);
+        SupportsInterfaceWithLookup support = SupportsInterfaceWithLookup(_chaingear);
+        require(support.supportsInterface(INTERFACE_CHAINGEAR_ID));
         chaingear = _chaingear;
     }
     
@@ -1902,5 +1802,13 @@ contract RegistryBuilder is RegistryBuilderInterface, Ownable {
         returns (address)
     {
         return chaingear;
+    }
+    
+    function getOwner()
+        external
+        view
+        returns (address)
+    {
+        return owner;
     }
 }

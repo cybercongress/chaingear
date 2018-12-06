@@ -3,10 +3,9 @@
   alt="chaingear" width="970"></a>
 </h1>
 
-<h3 align="center">The most expensive Registry</h3>
-<h3 align="center">..Metaregistry</h3>
+<h3 align="center">The novel Ethereum database framework</h3>
 <div align="center">
-  Chaingear is an Ethereum ERC721's registries Dapp.
+  Chaingear is an Ethereum ERC721's database Dapp.
 </div>
 
 <br />
@@ -35,24 +34,24 @@
 
 # Overview
 
-This project allows you to create your own Registry of general purpose entries on Ethereum blockchain.
+This project allows you to create your own Database of defined by you entries schema on Ethereum blockchain.
 Entry type can be defined during creation, so you can put any custom logic you want (e.g.: validation, entry-level permission control) into the Entry. Entries are tokenized as NFTs.
 
-You can create your own registry in the Chaingear's Metaregistry, which is a single point of contol of all other registries. Registries on chaingear level are tokenized as NFTs. Chaingear is most expensive registry (???), so you should pay for the registry creation.
+You can create your own database in the Chaingear's Metadatabase, which is a single point of contol of all other databases. Databases on chaingear level are tokenized as NFTs. Chaingear is most expensive database on Ethereum, so you should pay for the database and entry creation.
 
 ## Features
 
 #### Chaingear
 
-1. Metaregistry of **Registries** entries; each entry is a ERC721 token
-2. Fee-based Registry creation
-3. Creating Registries with different functionality
-4. Token-based ownership/administration for Registry
-5. Registries are funded with ETH
+1. Metadatabase of **Databases**; each one associated with ERC721 token
+2. Fee-based Database creation
+3. Creating Databases with different functionality
+4. Token-based ownership/administration for Databases
+5. Databases are funded with ETH
 
-#### Custom registry
+#### Custom database
 
-1. Custom data structure for Registry (EntryCore)
+1. Custom data structure for Database (EntryCore)
 2. Each Entry is a ERC721 token
 3. Fee-based Entry creation
 4. Token-based ownership Entry management
@@ -62,9 +61,9 @@ You can create your own registry in the Chaingear's Metaregistry, which is a sin
 
 1. Web3/Metamask/Truffle/IPFS based
 2. Full Chaingear control interface
-3. Full custom Registry control interface
-4. Simple smart-contract EntryCore code generation in client
-5. Registries ABI and metainformation savings in IPFS
+3. Full custom Database control interface
+4. Schema smart-contract code generation on client
+5. Database ABI saves in IPFS
 
 ## [Contracts Overview](https://cybersearch.io/Chaingear/contracts/)
 

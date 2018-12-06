@@ -1,66 +1,44 @@
-pragma solidity ^0.4.24;
+pragma solidity 0.4.25;
 
-// File: contracts/common/EntryInterface.sol
+// File: contracts/common/ISchema.sol
 
-interface EntryInterface {
+interface ISchema {
 
-    function createEntry(uint256) external;
+    function createEntry() external;
     function deleteEntry(uint256) external;
-    function getEntriesAmount() external view returns (uint256);
-    function getEntriesIDs() external view returns (uint256[]);
-    function supportsInterface(bytes4 _interfaceId) external view returns (bool);
 }
 
-// File: openzeppelin-solidity/contracts/math/SafeMath.sol
+// File: contracts/common/IDatabase.sol
 
-/**
- * @title SafeMath
- * @dev Math operations with safety checks that throw on error
- */
-library SafeMath {
-
-  /**
-  * @dev Multiplies two numbers, throws on overflow.
-  */
-  function mul(uint256 _a, uint256 _b) internal pure returns (uint256 c) {
-    // Gas optimization: this is cheaper than asserting 'a' not being zero, but the
-    // benefit is lost if 'b' is also tested.
-    // See: https://github.com/OpenZeppelin/openzeppelin-solidity/pull/522
-    if (_a == 0) {
-      return 0;
-    }
-
-    c = _a * _b;
-    assert(c / _a == _b);
-    return c;
-  }
-
-  /**
-  * @dev Integer division of two numbers, truncating the quotient.
-  */
-  function div(uint256 _a, uint256 _b) internal pure returns (uint256) {
-    // assert(_b > 0); // Solidity automatically throws when dividing by 0
-    // uint256 c = _a / _b;
-    // assert(_a == _b * c + _a % _b); // There is no case in which this doesn't hold
-    return _a / _b;
-  }
-
-  /**
-  * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).
-  */
-  function sub(uint256 _a, uint256 _b) internal pure returns (uint256) {
-    assert(_b <= _a);
-    return _a - _b;
-  }
-
-  /**
-  * @dev Adds two numbers, throws on overflow.
-  */
-  function add(uint256 _a, uint256 _b) internal pure returns (uint256 c) {
-    c = _a + _b;
-    assert(c >= _a);
-    return c;
-  }
+interface IDatabase {
+    
+    function createEntry() external payable returns (uint256);
+    function auth(uint256, address) external;
+    function deleteEntry(uint256) external;
+    function fundEntry(uint256) external payable;
+    function claimEntryFunds(uint256, uint256) external;
+    function updateEntryCreationFee(uint256) external;
+    function updateDatabaseDescription(string) external;
+    function addDatabaseTag(bytes32) external;
+    function updateDatabaseTag(uint8, bytes32) external;
+    function removeDatabaseTag(uint8) external;
+    function readEntryMeta(uint256) external view returns (address, address, uint256, uint256, uint256, uint256);
+    function getChaingearID() external view returns (uint256);
+    function getEntriesIDs() external view returns (uint256[]);
+    function getIndexByID(uint256) external view returns (uint256);
+    function getEntryCreationFee() external view returns (uint256);
+    function getEntriesStorage() external view returns (address);
+    function getInterfaceEntriesContract() external view returns (string);
+    function getSchemaDefinition() external view returns (string);
+    function getDatabaseBalance() external view returns (uint256);
+    function getDatabaseDescription() external view returns (string);
+    function getDatabaseTags() external view returns (bytes32[]);
+    function getDatabaseSafe() external view returns (address);
+    function getSafeBalance() external view returns (uint256);
+    function getDatabaseInitStatus() external view returns (bool);
+    function transferAdminRights(address) external;
+    function transferOwnership(address) external;
+    function getAdmin() external view returns (address);
 }
 
 // File: openzeppelin-solidity/contracts/ownership/Ownable.sol
@@ -199,82 +177,54 @@ contract SupportsInterfaceWithLookup is ERC165 {
   }
 }
 
-// File: contracts/example/TeamSchema.sol
+// File: contracts/schemas/TeamSchema.sol
 
-//This is Example of EntryCore (Team's data scheme)
-contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
+contract TeamSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     
-    using SafeMath for uint256;
-    
-    bytes4 private constant InterfaceId_EntryCore = 0xcf3c2b48;
-    /**
-     * 0xcf3c2b48 ===
-     *   bytes4(keccak256('createEntry(uint256)')) ^
-     *   bytes4(keccak256('deleteEntry(uint256)')) ^
-     *   bytes4(keccak256('entriesAmount()'))
-     */
+    bytes4 constant internal INTERFACE_SCHEMA_ID = 0x153366ed;
 
     struct Entry {
-        string name;
+        string  name;
         address gitcoin;
         address payouts;
-        string github;
-        string telegram;
-        string keybase;
+        string  github;
+        string  telegram;
+        string  keybase;
     }
     
-    mapping(string => bool) private nameUniqIndex;
+    Entry[] public entries;
     
-    uint256[] private allTokens;
-    
-    mapping(uint256 => uint256) private allEntriesIndex;
-    
-    Entry[] private entries;
-    
-    modifier entryExists(uint256 _entryID){
-        if (_entryID != 0) {
-            require(allEntriesIndex[_entryID] != 0);
-        } else {
-            require(allTokens[0] == 0);
-        }
-        _;
-    }
+    IDatabase internal database;
     
     constructor()
         public
     {
-        _registerInterface(InterfaceId_EntryCore);
+        _registerInterface(INTERFACE_SCHEMA_ID);
+        database = IDatabase(owner);
     }
     
     function() external {} 
     
-    function createEntry(
-        uint256 _entryID
-    )
+    function createEntry()
         external
         onlyOwner
     {
         Entry memory m = (Entry(
         {
-            name: "",
-            gitcoin: address(0),
-            payouts: address(0),
-            github: "",
-            telegram: "",
-            keybase: ""
+            name:       "",
+            gitcoin:    address(0),
+            payouts:    address(0),
+            github:     "",
+            telegram:   "",
+            keybase:    ""
         }));
 
         entries.push(m);
-        allEntriesIndex[_entryID] = allTokens.length;
-        allTokens.push(_entryID);
     }
     
-    function readEntry(
-        uint256 _entryID
-    )
+    function readEntry(uint256 _entryID)
         external
         view
-        entryExists(_entryID)
         returns (
             string,
             address,
@@ -284,8 +234,7 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
             string
         )
     {
-        uint256 entryIndex = allEntriesIndex[_entryID];
-        
+        uint256 entryIndex = database.getIndexByID(_entryID);
         return (
             entries[entryIndex].name,
             entries[entryIndex].gitcoin,
@@ -296,102 +245,43 @@ contract TeamSchema is EntryInterface, Ownable, SupportsInterfaceWithLookup {
         );
     }
 
-    // Example: you can write methods for earch parameter and update them separetly
     function updateEntry(
         uint256 _entryID,
-        string _name,
+        string  _name,
         address _gitcoin,
         address _payouts,
-        string _github,
-        string _telegram,
-        string _keybase
+        string  _github,
+        string  _telegram,
+        string  _keybase
     )
         external
     {
-        // checkEntryOwnership will return
-        // if [token exist && msg.sender == tokenOwner] true
-        // else [checkEntryOwnership will fail] false
-        // require(owner.call(bytes4(keccak256(
-        //     "checkEntryOwnership(uint256, address)")),
-        //     _entryID,
-        //     msg.sender
-        // ));
+        database.auth(_entryID, msg.sender);
         
-        //before we check that value already exist, then set than name used and unset previous value
-        // require(nameUniqIndex[_name] == false);
-        // nameUniqIndex[_name] = true;
-        
-        uint256 entryIndex = allEntriesIndex[_entryID];
-        
-        // string storage lastName = entries[entryIndex].name;
-        // nameUniqIndex[lastName] = false;
+        uint256 entryIndex = database.getIndexByID(_entryID);
             
         Entry memory m = (Entry(
         {
-            name: _name,
-            gitcoin: _gitcoin,
-            payouts: _payouts,
-            github: _github,
-            telegram: _telegram,
-            keybase: _keybase
+            name:       _name,
+            gitcoin:    _gitcoin,
+            payouts:    _payouts,
+            github:     _github,
+            telegram:   _telegram,
+            keybase:    _keybase
         }));
         entries[entryIndex] = m;
-        
-        // here we just calling registry with entry ID and set entry updating timestamp
-        // require(owner.call(bytes4(keccak256(
-        //     "updateEntryTimestamp(uint256)")),
-        //     _entryID
-        // ));
     }
 
-    function deleteEntry(
-        uint256 _entryID
-    )
+    function deleteEntry(uint256 _entryIndex)
         external
         onlyOwner
     {
-        require(entries.length > 0);
-        uint256 entryIndex = allEntriesIndex[_entryID];
+        uint256 lastEntryIndex = entries.length - 1;
+        Entry memory lastEntry = entries[lastEntryIndex];
         
-        string storage nameToClear = entries[entryIndex].name;
-        nameUniqIndex[nameToClear] = false;
-        
-        uint256 lastTokenIndex = allTokens.length.sub(1);
-        
-        uint256 lastToken = allTokens[lastTokenIndex];
-        Entry memory lastEntry = entries[lastTokenIndex];
-        
-        allTokens[entryIndex] = lastToken;
-        entries[entryIndex] = lastEntry;
-        
-        allTokens[lastTokenIndex] = 0;
-        delete entries[lastTokenIndex];
-        
-        allTokens.length--;
+        entries[_entryIndex] = lastEntry;
+        delete entries[lastEntryIndex];
         entries.length--;
-        
-        allEntriesIndex[_entryID] = 0;
-        allEntriesIndex[lastTokenIndex] = entryIndex;
     }
 
-    function getEntriesAmount()
-        external
-        view
-        returns (
-            uint256
-        )
-    {
-        return entries.length;
-    }
-    
-    function getEntriesIDs()
-        external
-        view
-        returns (
-            uint256[]
-        )
-    {
-        return allTokens;
-    }
-    
 }

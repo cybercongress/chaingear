@@ -3,6 +3,7 @@ pragma solidity 0.4.25;
 import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
 import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
+import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 import "../common/IChaingear.sol";
@@ -17,7 +18,7 @@ import "./DatabasePermissionControl.sol";
 * @author cyber•Congress, Valery litvin (@litvintech)
 * @notice not audited, not recommend to use in mainnet
 */
-contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
+contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
     
