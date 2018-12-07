@@ -6,7 +6,6 @@ import {
     Panel,
     Label,
     CreateButton,
-    Control,
     PageTitle,
     RemoveButton,
     ErrorMessage,
@@ -18,15 +17,18 @@ import {
 import {
     generateContractCode,
     deploySchema,
-    getRegistryContract, getChaingearContract, callContractMethod, mapRegistry,
+    getRegistryContract,
+    getChaingearContract,
+    callContractMethod,
+    mapRegistry,
 } from '../../utils/cyber';
-
 
 import Code from '../../components/SolidityHighlight';
 
 const MAX_FIELD_COUNT = 10;
 
 class SchemaDefinition extends Component {
+
     constructor(props) {
         super(props);
 
@@ -74,7 +76,7 @@ class SchemaDefinition extends Component {
         });
     };
 
-    create = () => {
+    createSchema = () => {
         const { contractName, fields, registryAddress } = this.state;
 
         this.setState({ message: 'processing...', inProgress: true, type: 'processing' });
@@ -95,36 +97,13 @@ class SchemaDefinition extends Component {
             });
     };
 
-    closeMessage = () => {
-        const { type, registryAddress } = this.state;
-
-        this.setState({
-            inProgress: false,
-        });
-        if (type === 'success') {
-            if (registryAddress) {
-                this.props.router.push(`/registers/${registryAddress}`);
-            } else {
-                this.props.router.push('/');
-            }
-        }
-    }
-
-    changeContractName = (e) => {
-        this.setState({
-            contractName: e.target.value,
-        });
-
-        this.refs.symbol.value = e.target.value;
-    }
-
     render() {
         const {
             contractName, fields, message, inProgress, type, isSchemaCreated, registryId,
         } = this.state;
         const code = generateContractCode(contractName, fields);
         const fieldsCount = fields.length;
-        const canDeploy = fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !isSchemaCreated;
+        const canCreateSchema = fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !isSchemaCreated;
 
         return (
             <div>
@@ -132,10 +111,9 @@ class SchemaDefinition extends Component {
                     open={ inProgress }
                     message={ message }
                     type={ type }
-                    onClose={ this.closeMessage }
                 />
 
-                <PageTitle>New registry creation</PageTitle>
+                <PageTitle>Registry schema definition</PageTitle>
                 <ContainerRegister>
                     <SideBar>
                         <Label>Input</Label>
@@ -169,9 +147,6 @@ class SchemaDefinition extends Component {
                                     />
                                 </tbody>
                             </FieldsTable>
-                            <CreateButton disabled={ !canDeploy } onClick={ this.create }>
-                                create registry
-                            </CreateButton>
                         </Panel>
                     </SideBar>
 
@@ -181,9 +156,13 @@ class SchemaDefinition extends Component {
                             {code}
                         </Code>
                         {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
-                        {isSchemaCreated
-                            && <ActionLink to={ `/registers/${registryId}` }>Go to registry</ActionLink>
-                        }
+                        {isSchemaCreated ? (
+                            <ActionLink to={ `/registers/${registryId}` }>Go to registry</ActionLink>
+                        ) : (
+                            <CreateButton disabled={ !canCreateSchema } onClick={ this.createSchema }>
+                                create
+                            </CreateButton>
+                        )}
                     </Content>
 
                 </ContainerRegister>
@@ -192,6 +171,5 @@ class SchemaDefinition extends Component {
         );
     }
 }
-
 
 export default SchemaDefinition;

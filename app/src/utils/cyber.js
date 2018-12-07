@@ -61,7 +61,6 @@ export const ipfs = new IPFS({
     protocol: 'http',
 });
 
-
 const Dependencies = require('../Dependencies.sol');
 
 const dateFormat = 'DD/MM/YYYY mm:hh';
@@ -204,75 +203,10 @@ const getWeb3 = new Promise(((resolve, reject) => {
     });
 }));
 
-export const estimateNewRegistryGas = bytecode => new Promise((resolve, reject) => {
-    getWeb3.then(({
-        web3,
-    }) => {
-        web3.eth.estimateGas({
-            data: bytecode,
-        }, (e, gasEstimate) => {
-            if (e) {
-                reject(e);
-            } else {
-                resolve({
-                    web3,
-                    gasEstimate,
-                });
-            }
-        });
-    });
-});
-
-export const deployRegistry = (bytecode, abi, web3, opt) => {
-    const {
-        gasEstimate,
-        contractName,
-        permissionType,
-        entryCreationFee,
-        description,
-        tags,
-    } = opt;
-
-    return new Promise((resolve, reject) => {
-        const Contract = web3.eth.contract(JSON.parse(abi));
-        const currentAccount = web3.eth.accounts[0];
-        // TODO need frontend for _benefitiaries and _shares
-        const _benefitiaries = [currentAccount]; // ???
-        const _shares = [100]; // ???
-        const _entryCreationFee = web3.toWei(entryCreationFee, 'ether'); // ???
-
-        Contract.new(
-            _benefitiaries,
-            _shares, [{
-                a: '0xa3564D084fabf13e69eca6F2949D3328BF6468Ef',
-                count: 5,
-            }],
-            permissionType,
-            _entryCreationFee,
-            contractName,
-            description,
-            tags, {
-                from: currentAccount,
-                data: bytecode,
-                gas: gasEstimate,
-            }, (err, myContract) => {
-                if (err) {
-                    reject(err);
-                } else if (myContract.address) {
-                    resolve(myContract.address);
-                }
-            },
-        );
-    });
-};
-
-
 export const getChaingearContract = () => getWeb3
     .then((results) => {
         const web3 = results.web3;
         const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks[_networkId].address);
-        // registryContract.setProvider(results.web3.currentProvider);
-        // results.web3.eth.defaultAccount = results.web3.eth.accounts[0];
 
         return new Promise((resolve) => {
             results.web3.eth.getAccounts((e, accounts) => {
@@ -362,31 +296,6 @@ export const callWeb3EthMethod = (web3, method, ...args) => {
     });
 };
 
-/*export const getRegistry = () => {
-    const accounts = null;
-
-    return getChaingearContract().then(({
-        contract,
-        web3,
-        accounts,
-    }) => {
-        _accounts = accounts;
-        return getItems(contract, 'getRegistriesIDs', 'readRegistry', items => ({
-            name: items[0],
-            symbol: items[1],
-            address: items[2],
-            contractVersion: items[3],
-            registrationTimestamp: items[4],
-            ipfsHash: '',
-            admin: items[5],
-            supply: items[6],
-        })).then(items => ({
-            accounts: _accounts,
-            items,
-        }));
-    });
-};*/
-
 export const removeRegistry = (address, cb) => getChaingearContract().then(({
     contract,
     web3,
@@ -411,12 +320,10 @@ export const getRegistryFieldsByHash = ipfsHash => new Promise((resolve) => {
     });
 });
 
-
 export {
     getWeb3,
     generateContractCode,
 };
-
 
 export const saveInIPFS = jsonStr => new Promise((resolve, reject) => {
     const buffer = Buffer.from(jsonStr);
@@ -433,64 +340,6 @@ export const saveInIPFS = jsonStr => new Promise((resolve, reject) => {
 });
 
 // Public API
-
-export const createRegistry = (name, symbol, fields) => {
-    const code = generateContractCode(name, fields);
-
-    let _bytecode;
-    let _ipfsHash;
-
-    return new Promise((resolve, reject) => {
-        loadCompiler((compiler) => {
-            compileRegistry(code, name, compiler)
-                .then(({
-                    abi,
-                    bytecode,
-                }) => {
-                    _bytecode = bytecode;
-                    return saveInIPFS(abi);
-                })
-                .then((ipfsHash) => {
-                    _ipfsHash = ipfsHash;
-                    return getChaingearContract();
-                })
-                .then(({
-                    contract,
-                    web3,
-                    accounts,
-                }) => {
-                    contract.getRegistrationFee((e, data) => {
-                        const buildingFee = data.toNumber();
-
-                        contract.registerRegistry.sendTransaction(
-                            'V1', [accounts[0]], [100], name, symbol, {
-                                value: buildingFee,
-                            },
-                            (e, data, a, b) => {
-                                if (e) {
-                                    reject(e);
-                                } else {
-                                    var event = contract.RegistryRegistered((ee, results) => {
-                                        event.stopWatching(() => {});
-                                        if (ee) {
-                                            reject(ee);
-                                        } else {
-                                            const registry = web3.eth.contract(Registry.abi).at(results.args.registryAddress);
-
-                                            registry.initializeRegistry(_ipfsHash, _bytecode, (e, data) => {
-                                                resolve(results.args);
-                                            });
-                                        }
-                                    });
-                                }
-                            },
-                        );
-                    });
-                })
-                .catch(reject);
-        });
-    });
-};
 
 export const deploySchema = (name, fields, registryContract) => {
     const code = generateContractCode(name, fields);
@@ -624,22 +473,6 @@ export const getRegistryData = (registryContract, fields, abi) => new Promise((r
         });
 });
 
-export const getEntryMeta = () => {
-
-};
-
-export const removeItem = (address, id) => new Promise((resolve) => {
-    const registryContract = getRegistryContract(address);
-
-    const event = registryContract.EntryDeleted();
-
-    event.watch((e, results) => {
-        event.stopWatching(() => {});
-        resolve(results.args);
-    });
-    registryContract.deleteEntry(id, (e, d) => {});
-});
-
 export const fundEntry = (address, id, value) => new Promise((resolve) => {
     const registryContract = _web3.eth.contract(Registry.abi).at(address);
 
@@ -669,25 +502,6 @@ export const eventPromise = (event) => {
     });
 };
 
-export const addItem = address => new Promise((resolve) => {
-    const registryContract = _web3.eth.contract(Registry.abi).at(address);
-
-    const event = registryContract.EntryCreated();
-
-    event.watch((e, results) => {
-        event.stopWatching(() => {});
-        resolve(results.args.entryID.toNumber());
-    });
-
-    registryContract.getEntryCreationFee((e, data) => {
-        const fee = data.toNumber();
-
-        registryContract.createEntry({
-            value: fee,
-        }, (e, d) => {});
-    });
-});
-
 export const getSafeBalance = address => new Promise((resolve) => {
     const registryContract = _web3.eth.contract(Registry.abi).at(address);
 
@@ -702,30 +516,4 @@ export const updateEntryCreationFee = (address, newfee) => new Promise((resolve,
     registry.updateEntryCreationFee(_web3.toWei(newfee, 'ether'), (e, data) => {
         if (e) { reject(e); } else { resolve(data); }
     });
-});
-
-export const updateItem = (address, ipfsHash, newEntryId, values) => new Promise((resolve) => {
-    const registryContract = _web3.eth.contract(Registry.abi).at(address);
-
-    getRegistryFieldsByHash(ipfsHash)
-        .then(({
-            abi,
-        }) => {
-            registryContract.getEntriesStorage((e, entryAddress) => {
-                const entryCore = _web3.eth.contract(abi).at(entryAddress);
-
-                const event = entryCore.EntryUpdated();
-
-                event.watch((e, results) => {
-                    event.stopWatching(() => {});
-                    resolve(results.args);
-                });
-
-                const args = [newEntryId, ...values, function (e, dat) {
-
-                }];
-
-                entryCore.updateEntry(...args);
-            });
-        });
 });
