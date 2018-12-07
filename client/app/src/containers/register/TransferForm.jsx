@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Robohash from '../../components/Robohash/';
+import Robohash from '../../components/Robohash';
 
 import ValueInput from '../../components/ValueInput';
 

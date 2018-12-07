@@ -8,15 +8,9 @@
     },
     "author": "",
     "dependencies": {
-        "@cybercongress/ui": "0.0.4",
-        "argparse": "1.0.10",
+        "@cybercongress/ui": ">=0.0.4",
         "axios": "0.16.2",
         "babel-polyfill": "6.26.0",
-        "bignumber.js": "^5.0.0",
-        "boom": "7.2.0",
-        "chai": "^4.2.0",
-        "chai-as-promised": "^7.1.1",
-        "chai-bignumber": "^2.0.2",
         "classnames": "2.2.5",
         "copy-webpack-plugin": "4.2.3",
         "eslint": "5.8.0",
@@ -25,34 +19,16 @@
         "eslint-plugin-import": "2.14.0",
         "eslint-plugin-jsx-a11y": "6.1.2",
         "eslint-plugin-react": "7.11.1",
-        "eth-gas-reporter": "^0.1.12",
-        "ethereumjs-abi": "^0.6.5",
-        "ethjs-unit": "0.1.6",
         "highlight.js": "9.12.0",
         "history": "3.0.0",
         "ipfs-api": "18.2.1",
         "json-loader": "0.5.7",
         "jsx-loader": "0.13.2",
-        "lodash": "4.17.11",
-        "mocha": "5.2.0",
         "moment": "2.21.0",
-        "numeral": "2.0.6",
-        "openzeppelin-solidity": "1.12.0",
-        "qrcode.react": "0.8.0",
         "react": "15.6.1",
         "react-click-outside": "github:tj/react-click-outside",
         "react-dom": "15.6.1",
         "react-router": "3.0.5",
-        "redux": "3.7.2",
-        "semver": "5.5.0",
-        "solc": "^0.4.25",
-        "solidify": "3.0.0",
-        "solidity-coverage": "0.5.11",
-        "solidity-docgen": "0.1.0",
-        "solidity-parser": "0.4.0",
-        "solium": "1.1.8",
-        "truffle": "^5.0.0-beta.1",
-        "truffle-hdwallet-provider": "^1.0.0-web3one.1",
         "web3": "0.20.3",
         "web3-utils": "^1.0.0-beta.34"
     },
@@ -77,10 +53,7 @@
         "postcss-loader": "2.0.6",
         "raw-loader": "0.5.1",
         "sass-loader": "6.0.6",
-        "serve": "10.0.1",
         "style-loader": "0.18.2",
-        "truffle-contract": "1.1.8",
-        "truffle-solidity-loader": "0.1.0",
         "uglifyjs-webpack-plugin": "1.2.2",
         "url-loader": "0.5.9",
         "webpack": "3.6.0",
@@ -88,8 +61,7 @@
     },
     "scripts": {
         "start": "webpack-dev-server",
-        "build": "webpack --env.NODE_ENV production --env.SOURCE_MAP source-map",
-        "serve": "serve -s distribution"
+        "build": "webpack --env.NODE_ENV production --env.SOURCE_MAP source-map"
     },
     "description": "New Frontier of chaingear, registries grow here!",
     "bugs": {
@@ -108,6 +80,6 @@
     ],
     "license": "MIT",
     "directories": {
-        "test": "test"
+        "../test": "test"
     }
 }

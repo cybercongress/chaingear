@@ -1,9 +1,9 @@
 import Web3 from 'web3';
-import ChaingearBuild from '../../../build/contracts/Chaingear.json';
+import ChaingearBuild from '../../../../build/contracts/Chaingear.json';
 
 import generateContractCode from './generateContractCode';
 
-import Registry from '../../../build/contracts/Registry.json';
+import Registry from '../../../../build/contracts/Registry.json';
 
 let _networkId;
 
@@ -61,7 +61,7 @@ export const ipfs = new IPFS({
     protocol: 'http',
 });
 
-const Dependencies = require('../Dependencies.sol');
+const Dependencies = require('../resources/Dependencies.sol');
 
 const dateFormat = 'DD/MM/YYYY mm:hh';
 

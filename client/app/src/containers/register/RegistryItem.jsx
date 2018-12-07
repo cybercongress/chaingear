@@ -5,10 +5,8 @@ import ValueInput from '../../components/ValueInput';
 import {
     Section,
     SectionContent,
-    Centred
-} from '@cybercongress/ui'
-
-import QRCode from '../../components/QRCode/';
+    Centred,
+} from '@cybercongress/ui';
 
 import TransferForm from './TransferForm';
 
@@ -24,8 +22,8 @@ import {
     DeleteButton,
     UpdateButton,
     CancelButton,
-    IdContainer
-} from '../../components/RegistryItem/';
+    IdContainer,
+} from '../../components/RegistryItem';
 
 class RegistryItem extends Component {
     state = {

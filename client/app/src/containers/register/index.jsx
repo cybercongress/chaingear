@@ -25,7 +25,7 @@ import { RegistryItem, RegistryList } from './RegistryItem';
 import ValueInput from '../../components/ValueInput';
 import FormField from './FormField';
 
-import Registry from '../../../../build/contracts/Registry.json';
+import Registry from '../../../../../build/contracts/Registry.json';
 
 const moment = require('moment');
 
@@ -240,20 +240,16 @@ class Register extends Component {
 
     };
 
-    add = (values) => {
-        const { registryContract } = this.state;
+    add = () => {
+        const { registryContract, name } = this.state;
 
         if (!registryContract) {
             return;
         }
 
         cyber.callContractMethod(registryContract, 'getEntryCreationFee')
-            .then((fee) => {
-                return fee.toNumber();
-            })
-            .then((fee) => {
-                return cyber.callContractMethod(registryContract, 'createEntry', { value: fee });
-            })
+            .then(fee => fee.toNumber())
+            .then(fee => cyber.callContractMethod(registryContract, 'createEntry', { value: fee }))
             .then((entryId) => {
                 console.log(`New Entry created: ${entryId}`);
                 this.setState({
@@ -263,7 +259,7 @@ class Register extends Component {
             })
             .then(() => this.componentDidMount())
             .catch(() => {
-                console.log(`Cannot add entry to ${registryContract.name}`);
+                console.log(`Cannot add entry to ${name}`);
             });
     };
 
