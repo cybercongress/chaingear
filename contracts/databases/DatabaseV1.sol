@@ -75,12 +75,7 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     event EntryCreated(
         uint256 entryID,
         address creator
-    );
-
-    event EntryChangedOwner(
-        uint256 entryID,
-        address newOwner
-    );
+    )
 
     event EntryDeleted(
         uint256 entryID,
@@ -98,6 +93,16 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         address claimer,
         uint256 amount
     );
+    
+    event EntryCreationFeeUpdated(
+        uint256 newFees
+    )
+    
+    event DescriptionUpdated(
+        string newDescription
+    )
+    
+    event DatabaseInitialized()
 
     /*
     *  Constructor
@@ -228,6 +233,7 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         whenPaused
     {
         entryCreationFeeWei = _newFee;
+        emit EntryCreationFeeUpdated(_newFee);
     }
     
     function updateDatabaseDescription(string _newDescription)
@@ -235,6 +241,7 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         onlyAdmin
     {    
         databaseDescription = _newDescription;
+        emit DescriptionUpdated(_newDescription);
     }
     
     function addDatabaseTag(bytes32 _tag)
@@ -428,7 +435,8 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     
         linkToSchemaABI = _linkToABI;
         databaseInitStatus = true;
-    
+        
+        emit DatabaseInitialized();
         return deployedAddress;
     }
     

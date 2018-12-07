@@ -49,6 +49,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
 
     uint256 private headTokenID = 0;
     mapping(address => uint256) private databasesIDsByAddressesIndex;
+    mapping(uint256 => string) private databasesSymbolsByIDIndex;
     
     uint256 private amountOfBuilders = 0;
     mapping(uint256 => string) private buildersVersionIndex;
@@ -195,6 +196,8 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         string memory databaseSymbol = ERC721(database).symbol();
         databasesNamesIndex[databaseName] = false;
         databasesSymbolsIndex[databaseSymbol] = false;
+        
+        databasesSymbolsByIDIndex[_databaseID] = "";
 
         uint256 lastDatabaseIndex = databases.length.sub(1);
         DatabaseMeta memory lastDatabase = databases[lastDatabaseIndex];
@@ -296,10 +299,19 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         external
         view
         returns(uint256)
-    { 
-        uint256 id = databasesIDsByAddressesIndex[_databaseAddress];
-        require(exists(id) == true);
-        return id;
+    {
+        uint256 databaseID = databasesIDsByAddressesIndex[_databaseAddress];
+        require(exists(databaseID) == true);
+        return databaseID;
+    }
+    
+    function getDatabaseSymbolByID(uint256 _databaseID)
+        external
+        view
+        returns(string)
+    {
+        require(exists(_databaseID) == true);
+        return databasesSymbolsByIDIndex[_databaseID];
     }
     
     function getDatabase(uint256 _databaseID)
@@ -494,6 +506,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         uint256 newTokenID = headTokenID;
         databasesIDsByAddressesIndex[databaseAddress] = newTokenID;
         super._mint(msg.sender, newTokenID);
+        databasesSymbolsByIDIndex[newTokenID] = _symbol;
         headTokenID = headTokenID.add(1);
         
         emit DatabaseCreated(
