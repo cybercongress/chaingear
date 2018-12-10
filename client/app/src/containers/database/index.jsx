@@ -176,6 +176,7 @@ class Database extends Component {
                         ipfsHash,
                         fields,
                         abi,
+                        entryCoreAddress: _entryCoreAddress,
                     },
                 };
             })

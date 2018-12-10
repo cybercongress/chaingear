@@ -6,13 +6,18 @@ import {
     Panel,
     Label,
     CreateButton,
-    Control,
     PageTitle,
     RemoveButton,
     ErrorMessage,
     StatusBar,
     LinkHash,
     ActionLink,
+    RightContainer,
+    ParamRow,
+    WideInput,
+    Description,
+    WideSelect,
+    AddButton,
 } from '@cybercongress/ui';
 
 import {
@@ -56,9 +61,10 @@ class NewDatabase extends Component {
     }
 
     createDatabase = () => {
-        const { contractName, beneficiaries } = this.state;
-        const symbol = this.refs.symbol.value;
-        const version = this.refs.databaseVersion.value;
+        const { beneficiaries } = this.state;
+        const contractName = this.dbName.value;
+        const symbol = this.symbol.value;
+        const version = this.databaseVersion.value;
         const bens = beneficiaries.map(ben => ben.address);
         const shares = beneficiaries.map(ben => ben.share);
 
@@ -164,66 +170,74 @@ class NewDatabase extends Component {
 
                         <Label>Input</Label>
                         <Panel title='General Parameters'>
-                            <Control title='Database Name:'>
-                                <input
-                                    placeholder='name'
+                            <ParamRow>
+                                <WideInput
+                                    placeholder='Name'
                                     value={ contractName }
+                                    inputRef={ node => this.dbName = node}
+/*
                                     onChange={ this.onContractNameChange }
+*/
                                 />
-                            </Control>
-                            <Control title='Token Symbol:'>
-                                <input
-                                    ref='symbol'
+                            </ParamRow>
+                            <ParamRow>
+                                <WideInput
+                                    inputRef={node => this.symbol = node}
                                     defaultValue=''
-                                    placeholder='symbol'
+                                    placeholder='Symbol'
                                 />
-                            </Control>
-                            <Control title='Version:'>
-                                <select ref='databaseVersion'>
+                            </ParamRow>
+                            <ParamRow>
+                                <WideSelect inputRef={ node => this.databaseVersion = node}>
+                                    <option value=''>Version</option>
                                     <option value='V1'>V1 (Basic Database)</option>
-                                </select>
-                            </Control>
+                                </WideSelect>
+                            </ParamRow>
+                            <ParamRow>
+                                <Description>
+                                    Bla-bla
+                                </Description>
+                            </ParamRow>
                         </Panel>
 
                         <Panel title='Beneficiaries (Optional)' noPadding>
                             <FieldsTable>
-                                <thead>
-                                    <tr>
-                                        <th>Address</th>
-                                        <th>Stake</th>
-                                        <th>Share</th>
-                                        <th />
-                                    </tr>
-                                </thead>
                                 <tbody>
                                     {
                                         beneficiaries.map(ben => (
                                             <tr key={ ben.address }>
-                                                <td style={ { overflow: 'hidden' } }><LinkHash value={ ben.address } /></td>
-                                                <td>{ben.stake}</td>
+                                                <td style={{
+                                                    overflow: 'hidden',
+                                                    width: 120,
+                                                }}
+                                                >
+                                                    <LinkHash value={ ben.address } />
+                                                </td>
+                                                <td style={{
+                                                    textAlign: 'end',
+                                                    width: 70,
+                                                }}>{ben.stake}</td>
                                                 <td>{ben.share}</td>
                                                 <td>
                                                     <RemoveButton
                                                       onClick={ () => this.removeBeneficiary(ben.address) }
-                                                    >
-                                                        {'X'}
-                                                    </RemoveButton>
+                                                    />
                                                 </td>
                                             </tr>
                                         ))
                                     }
                                     <tr>
                                         <td>
-                                            <input ref='benAddress' />
+                                            <WideInput inputRef={ node => this.benAddress = node } placeholder='Address' />
                                         </td>
                                         <td>
-                                            <input ref='benStake' onChange={this.onStakeChange} />
+                                            <WideInput inputRef={ node => this.benStake = node } onChange={this.onStakeChange} placeholder='Stake' />
                                         </td>
                                         <td>
-                                            <span ref='benShare'>0</span> <span>%</span>
+                                            <span ref='benShare' placeholder='Share'>0</span> <span>%</span>
                                         </td>
                                         <td>
-                                            <div onClick={ this.addBeneficiary }>ADD</div>
+                                            <AddButton onClick={ this.addBeneficiary }/>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -233,23 +247,26 @@ class NewDatabase extends Component {
 
                     <Content>
                         <Label color='#3fb990'>Database code</Label>
-                        <Code>
-                            {DatabaseSource}
-                        </Code>
+                        <div>
+                            <Code>
+                                {DatabaseSource}
+                            </Code>
+                        </div>
                         {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
-                        {databaseId ? (
-                            <span>
-                                <ActionLink to={ `/databases/${databaseId}` }>Go to database</ActionLink>
-                                <ActionLink to={ `/schema/${databaseId}` }>Go to schema definition</ActionLink>
-                            </span>
-                        ) : (
-                            <CreateButton disabled={ !canCreate } onClick={ this.createDatabase }>
-                                Create
-                            </CreateButton>
-                        )}
                     </Content>
-
                 </ContainerRegister>
+                <RightContainer>
+                    {databaseId ? (
+                        <span>
+                            <ActionLink to={ `/databases/${databaseId}` }>Go to database</ActionLink>
+                            <ActionLink to={ `/schema/${databaseId}` }>Go to schema definition</ActionLink>
+                        </span>
+                    ) : (
+                        <CreateButton disabled={ !canCreate } onClick={ this.createDatabase }>
+                            Next
+                        </CreateButton>
+                    )}
+                </RightContainer>
             </div>
         );
     }
