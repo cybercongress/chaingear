@@ -25,7 +25,7 @@ import { DatabaseItem, DatabaseList } from './DatabaseItem';
 import ValueInput from '../../components/ValueInput';
 import FormField from './FormField';
 
-import Database from '../../../../../build/contracts/DatabaseV1.json';
+import DatabaseV1 from '../../../../../build/contracts/DatabaseV1.json';
 
 const moment = require('moment');
 
@@ -89,14 +89,14 @@ class Database extends Component {
             .then((defaultAccount) => {
                 _userAccount = defaultAccount;
             })
-            .then(() => cyber.callContractMethod(_chaingearContract, 'readDatabase', _databaseId))
+            .then(() => cyber.callContractMethod(_chaingearContract, 'getDatabase', _databaseId))
             .then((database) => {
                 _database = cyber.mapDatabase(database);
                 _databaseAddress = _database.address;
-                _databaseContract = _web3.eth.contract(Database.abi).at(_databaseAddress);
+                _databaseContract = _web3.eth.contract(DatabaseV1.abi).at(_databaseAddress);
             })
             .then(() => {
-                const fundedPromise = cyber.callContractMethod(_chaingearContract, 'readDatabaseBalance', _databaseId);
+                const fundedPromise = cyber.callContractMethod(_chaingearContract, 'getDatabaseBalance', _databaseId);
                 const totalFeePromise = cyber.callWeb3EthMethod(_web3, 'getBalance', _databaseAddress);
                 const ownerPromise = cyber.callContractMethod(_databaseContract, 'getAdmin');
                 const descriptionPromise = cyber.callContractMethod(_databaseContract, 'getDatabaseDescription');
@@ -303,7 +303,7 @@ class Database extends Component {
     }
 
     removeContract = () => {
-        const address = this.props.params.adress;
+        const address = this.props.params.address;
 
         cyber.removeDatabase(address).then(() => {
             this.contract.destroy((e, d) => {
@@ -314,7 +314,7 @@ class Database extends Component {
 
     fundEntryClick = (index, value) => {
         this.setState({ loading: true });
-        const address = this.props.params.adress;
+        const address = this.props.params.address;
 
         cyber.fundEntry(address, index, value)
             .then(() => {
@@ -322,9 +322,9 @@ class Database extends Component {
             });
     }
 
-    changeName = (name) => {
-        alert('TODO');
-    }
+    // changeName = (name) => {
+    //     alert('TODO');
+    // }
 
     changeDescription = (description) => {
         this.state.databaseContract.updateDatabaseDescription(description, (e, data) => {
@@ -377,7 +377,7 @@ class Database extends Component {
             .then(({ contract }) => {
                 _chaingerContract = contract;
             })
-            .then(() => cyber.callContractMethod(_chaingerContract, 'getDatabaseIdByAddress', databaseAddress))
+            .then(() => cyber.callContractMethod(_chaingerContract, 'getDatabaseIDByAddress', databaseAddress))
             .then(databaseID => cyber.callContractMethod(_chaingerContract, 'fundDatabase', databaseID, {
                 value: web3.toWei(amount, 'ether'),
             }))
@@ -386,10 +386,11 @@ class Database extends Component {
     };
 
     clameDatabase = (amount) => {
-        const databaseID = this.getDatabaseID();
+        // const databaseID = this.getDatabaseId();
+        const { databaseId } = this.state;
 
         cyber.getChaingearContract().then(({ contract, web3 }) => {
-            contract.claimDatabaseFunds(databaseID, web3.toWei(amount, 'ether'), (e, data) => {
+            contract.claimDatabaseFunds(databaseId, web3.toWei(amount, 'ether'), (e, data) => {
                 this.componentDidMount();
             });
         });
@@ -402,10 +403,11 @@ class Database extends Component {
     }
 
     transferDatabase = (userAccount, newOwner) => {
-        const databaseID = this.getDatabaseID();
+        // const databaseID = this.getDatabaseId();
+        const { databaseId } = this.state;
 
         cyber.getChaingearContract().then(({ contract, web3 }) => {
-            contract.transferFrom(userAccount, newOwner, databaseID, (e, data) => {
+            contract.transferFrom(userAccount, newOwner, databaseId, (e, data) => {
                 this.componentDidMount();
             });
         });

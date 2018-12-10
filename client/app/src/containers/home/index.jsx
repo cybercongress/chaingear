@@ -61,7 +61,7 @@ class Home extends Component {
                     <LinkHash value={ database.admin } />
                 </td>
                 <td>
-                    {formatDate(database.registrationTimestamp)}
+                    {formatDate(database.createdTimestamp)}
                 </td>
             </tr>
         ));
@@ -86,7 +86,7 @@ class Home extends Component {
                     <LinkHash value={ database.admin } />
                 </td>
                 <td>
-                    {formatDate(database.registrationTimestamp)}
+                    {formatDate(database.createdTimestamp)}
                 </td>
             </tr>
         ));

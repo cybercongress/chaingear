@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-    Content, ContainerDatabase, SideBar,
+    Content, ContainerRegister, SideBar,
     FieldsTable,
     Panel,
     Label,
@@ -114,7 +114,7 @@ class SchemaDefinition extends Component {
                 />
 
             <PageTitle>Database schema definition</PageTitle>
-                <ContainerDatabase>
+                <ContainerRegister>
                     <SideBar>
                         <Label>Input</Label>
 
@@ -165,7 +165,7 @@ class SchemaDefinition extends Component {
                         )}
                     </Content>
 
-                </ContainerDatabase>
+                </ContainerRegister>
 
             </div>
         );

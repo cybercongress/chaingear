@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import {
-    Content, ContainerDatabase, SideBar,
+    Content, ContainerRegister, SideBar,
     FieldsTable,
     Panel,
     Label,
@@ -18,7 +18,7 @@ import {
 import {
     getDefaultAccount,
     getDatabases,
-    createDatabase,
+    deployDatabase,
     getChaingearContract,
     eventPromise,
 } from '../../utils/cyber';
@@ -63,7 +63,7 @@ class NewDatabase extends Component {
         const shares = beneficiaries.map(ben => ben.share);
 
         this.setState({ message: 'processing...', inProgress: true, type: 'processing' });
-        createDatabase(contractName, symbol, version, bens, shares)
+        deployDatabase(contractName, symbol, version, bens, shares)
             .then(({ txHash }) => getChaingearContract())
             .then(({ contract }) => eventPromise(contract.DatabaseCreated()))
             .then((results) => {
@@ -159,7 +159,7 @@ class NewDatabase extends Component {
                 />
 
                 <PageTitle>New database creation</PageTitle>
-                <ContainerDatabase>
+                <ContainerRegister>
                     <SideBar>
 
                         <Label>Input</Label>
@@ -249,7 +249,7 @@ class NewDatabase extends Component {
                         )}
                     </Content>
 
-                </ContainerDatabase>
+                </ContainerRegister>
             </div>
         );
     }

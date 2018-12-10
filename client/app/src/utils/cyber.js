@@ -3,7 +3,7 @@ import ChaingearBuild from '../../../../build/contracts/Chaingear.json';
 
 import generateContractCode from './generateContractCode';
 
-import Database from '../../../../build/contracts/DatabaseV1.json';
+import DatabaseV1 from '../../../../build/contracts/DatabaseV1.json';
 
 let _networkId;
 
@@ -221,18 +221,18 @@ export const getChaingearContract = () => getWeb3
         });
     });
 
-export const register = (name, adress, hash) => new Promise((resolve) => {
-    getChaingearContract().then(({
-        contract,
-        web3,
-    }) => {
-        contract.register(name, adress, hash, {
-            from: web3.eth.accounts[0],
-        }).then((x) => {
-            resolve();
-        });
-    });
-});
+// export const register = (name, adress, hash) => new Promise((resolve) => {
+//     getChaingearContract().then(({
+//         contract,
+//         web3,
+//     }) => {
+//         contract.register(name, adress, hash, {
+//             from: web3.eth.accounts[0],
+//         }).then((x) => {
+//             resolve();
+//         });
+//     });
+// });
 
 export const getDefaultAccount = () => new Promise(resolve => getWeb3
     .then(({ web3 }) => web3.eth.getAccounts((error, accounts) => {
@@ -373,14 +373,14 @@ export const deploySchema = (name, fields, databaseContract) => {
     });
 };
 
-export const createDatabase = (name, symbol, version, beneficiaries, shares) => {
+export const deployDatabase = (name, symbol, version, beneficiaries, shares) => {
     let _chaingearContract;
 
     return new Promise((resolve, reject) => {
         getChaingearContract()
             .then(({ contract }) => {
                 _chaingearContract = contract;
-                return callContractMethod(contract, 'getEntryCreationFee');
+                return callContractMethod(contract, 'getCreationFeeWei');
             })
             .then((fee) => {
                 const creationFee = fee.toNumber();
@@ -431,11 +431,11 @@ export const init = () => new Promise((resolve) => {
 
 export const getDatabaseContract = (address) => {
     if (_web3) {
-        return Promise.resolve(_web3.eth.contract(Database.abi).at(address));
+        return Promise.resolve(_web3.eth.contract(DatabaseV1.abi).at(address));
     }
 
     return getWeb3
-        .then(({web3}) => web3.eth.contract(Database.abi).at(address));
+        .then(({web3}) => web3.eth.contract(DatabaseV1.abi).at(address));
 };
 
 export const getDatabaseData = (databaseContract, fields, abi) => new Promise((resolve) => {
@@ -474,7 +474,7 @@ export const getDatabaseData = (databaseContract, fields, abi) => new Promise((r
 });
 
 export const fundEntry = (address, id, value) => new Promise((resolve) => {
-    const databaseContract = _web3.eth.contract(Database.abi).at(address);
+    const databaseContract = _web3.eth.contract(DatabaseV1.abi).at(address);
 
     const event = databaseContract.EntryFunded();
 
@@ -503,7 +503,7 @@ export const eventPromise = (event) => {
 };
 
 export const getSafeBalance = address => new Promise((resolve) => {
-    const databaseContract = _web3.eth.contract(Database.abi).at(address);
+    const databaseContract = _web3.eth.contract(DatabaseV1.abi).at(address);
 
     databaseContract.safeBalance((e, data) => {
         resolve(data);
@@ -511,7 +511,7 @@ export const getSafeBalance = address => new Promise((resolve) => {
 });
 
 export const updateEntryCreationFee = (address, newfee) => new Promise((resolve, reject) => {
-    const database = _web3.eth.contract(Database.abi).at(address);
+    const database = _web3.eth.contract(DatabaseV1.abi).at(address);
 
     database.updateEntryCreationFee(_web3.toWei(newfee, 'ether'), (e, data) => {
         if (e) { reject(e); } else { resolve(data); }

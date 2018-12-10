@@ -75,7 +75,7 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     event EntryCreated(
         uint256 entryID,
         address creator
-    )
+    );
 
     event EntryDeleted(
         uint256 entryID,
@@ -96,13 +96,13 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     
     event EntryCreationFeeUpdated(
         uint256 newFees
-    )
+    );
     
     event DescriptionUpdated(
         string newDescription
-    )
+    );
     
-    event DatabaseInitialized()
+    event DatabaseInitialized();
 
     /*
     *  Constructor
