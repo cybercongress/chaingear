@@ -145,8 +145,9 @@ remove
                     control = (
                         <input
                           ref={ el => this._refs[field.name] = el }
-                            type='checkbox'
+                          type='checkbox'
                           onChange={ e => this.change(e, field.name, field.type) }
+                          checked={item[field.name]}
                         />
                     );
                 }

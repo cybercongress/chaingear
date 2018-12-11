@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
 
 import {
-    ActionLink, LinkHash,
+    ActionLink,
+    LinkHash,
     MainContainer,
     AddItemButton,
     AddItemButtonText,
-
     Section,
     SectionContent,
-
     Centred,
-
     Button,
-
     FundContainer,
     BoxTitle,
     StatusBar,
@@ -49,6 +45,7 @@ class Database extends Component {
         admin: '',
         userAccount: null,
         abi: [],
+        isDbPaused: null,
 
         contractVersion: null,
         databaseAddress: null,
@@ -303,37 +300,41 @@ class Database extends Component {
         });
     }
 
-    removeContract = () => {
-        const address = this.props.params.address;
-
-        cyber.removeDatabase(address).then(() => {
-            this.contract.destroy((e, d) => {
-                browserHistory.push('/');
-            });
-        });
-    }
-
-    fundEntryClick = (index, value) => {
+    fundEntryClick = (id, value) => {
         this.setState({ loading: true });
-        const address = this.props.params.address;
 
-        cyber.fundEntry(address, index, value)
-            .then(() => {
-                this.setState({ loading: false });
-            });
-    }
+        const { databaseContract, web3 } = this.state;
 
-    // changeName = (name) => {
-    //     alert('TODO');
-    // }
+        cyber.callContractMethod(databaseContract, 'fundEntry', id, {
+            value: web3.toWei(value, 'ether'),
+        })
+            .then((data) => {
+                console.log(`Entry ${id} funded. ETH: ${value}. Data: ${data}`);
+            })
+            .then(() => cyber.eventPromise(databaseContract.EntryFunded()))
+            .then(results => console.log(`Entry ${id} funded. Results: ${results}`))
+            .then(() => this.getDatabaseItems())
+            .then((items) => {
+                this.setState({
+                    items,
+                    loading: false,
+                });
+            })
+            .catch(() => this.setLoading(false));
+    };
 
     changeDescription = (description) => {
-        this.state.databaseContract.updateDatabaseDescription(description, (e, data) => {
-            this.setState({
-                description,
-            });
-        });
-    }
+        const { databaseContract } = this.state;
+
+        this.setLoading(true);
+
+        cyber.callContractMethod(databaseContract, 'updateDatabaseDescription', description)
+            .then(data => console.log(`Description change. Tx:${data}`))
+            .then(() => cyber.eventPromise(databaseContract.DescriptionUpdated()))
+            .then(results => console.log(`Description changed. Results: ${results}`))
+            .then(() => this.componentDidMount())
+            .catch(() => this.setLoading(false));
+    };
 
     changeTag = (tag) => {
         this.state.databaseContract.addDatabaseTag(tag, () => {
@@ -349,11 +350,14 @@ class Database extends Component {
 
         this.setLoading(true);
         cyber.callContractMethod(databaseContract, 'updateEntryCreationFee', fee)
-            //.then(() => cyber.eventPromise(databaseContract.feeUpdated()))
+            .then(data => console.log(`Update entry creation fee. Data: ${data}`))
+            .then(() => cyber.eventPromise(databaseContract.EntryCreationFeeUpdated()))
+            .then(results => console.log(`Update entry creation fee. Results: ${results}`))
             .then(() => this.setState({
                 entryCreationFee: newFee,
                 loading: false,
-            }));
+            }))
+            .catch(() => this.setLoading(false));
     };
 
     clameRecord = (entryID, amount) => {
@@ -369,7 +373,7 @@ class Database extends Component {
     };
 
     fundDatabase = (amount) => {
-        const { databaseAddress, web3 } = this.state;
+        const { databaseId, web3 } = this.state;
         let _chaingerContract;
 
         this.setLoading(true);
@@ -378,8 +382,7 @@ class Database extends Component {
             .then(({ contract }) => {
                 _chaingerContract = contract;
             })
-            .then(() => cyber.callContractMethod(_chaingerContract, 'getDatabaseIDByAddress', databaseAddress))
-            .then(databaseID => cyber.callContractMethod(_chaingerContract, 'fundDatabase', databaseID, {
+            .then(() => cyber.callContractMethod(_chaingerContract, 'fundDatabase', databaseId, {
                 value: web3.toWei(amount, 'ether'),
             }))
             .then(() => cyber.eventPromise(_chaingerContract.DatabaseFunded()))
@@ -387,7 +390,6 @@ class Database extends Component {
     };
 
     clameDatabase = (amount) => {
-        // const databaseID = this.getDatabaseId();
         const { databaseId } = this.state;
 
         cyber.getChaingearContract().then(({ contract, web3 }) => {
@@ -404,7 +406,6 @@ class Database extends Component {
     }
 
     transferDatabase = (userAccount, newOwner) => {
-        // const databaseID = this.getDatabaseId();
         const { databaseId } = this.state;
 
         cyber.getChaingearContract().then(({ contract, web3 }) => {
@@ -420,6 +421,36 @@ class Database extends Component {
         });
     }
 
+    pauseDb = () => {
+        const { databaseContract } = this.state;
+
+        this.setLoading(true);
+        cyber.callContractMethod(databaseContract, 'pause')
+            .then(data => console.log(`Pause DB. Data: ${data}`))
+            .then(() => cyber.eventPromise(databaseContract.Pause()))
+            .then(results => console.log(`Db paused. Results: ${results}`))
+            .then(() => this.componentDidMount())
+            .catch((error) => {
+                console.log(`Cant pause db. Error: ${error}`);
+                this.setLoading(false);
+            });
+    };
+
+    resumeDb = () => {
+        const { databaseContract } = this.state;
+
+        this.setLoading(true);
+        cyber.callContractMethod(databaseContract, 'unpause')
+            .then(data => console.log(`Unpause DB. Data: ${data}`))
+            .then(() => cyber.eventPromise(databaseContract.Unpause()))
+            .then(results => console.log(`Db unpaused. Results: ${results}`))
+            .then(() => this.componentDidMount())
+            .catch((error) => {
+                console.log(`Cant unpause db. Error: ${error}`);
+                this.setLoading(false);
+            });
+    };
+
     render() {
         const {
             fields, items, loading, isOwner, userAccount, isSchemaExist, databaseId,
@@ -432,12 +463,12 @@ class Database extends Component {
                 removeItemClick={ this.removeItemClick }
                 fundEntryClick={ this.fundEntryClick }
                 userAccount={ userAccount }
-                onUpdate={ values => this.onUpdate(values, index) }
-                onTransfer={ newOwner => this.transferItem(userAccount, newOwner, index) }
+                onUpdate={ values => this.onUpdate(values, item.id) }
+                onTransfer={ newOwner => this.transferItem(userAccount, newOwner, item.id) }
                 fields={ fields }
                 item={ item }
-                index={ index }
-                key={ index }
+                index={ item.id }
+                key={ item.id }
             />
         ));
 

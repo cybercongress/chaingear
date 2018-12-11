@@ -373,7 +373,7 @@ export const deploySchema = (name, fields, databaseContract) => {
     });
 };
 
-export const deployDatabase = (name, symbol, version, beneficiaries, shares) => {
+export const deployDatabase = (name, symbol, version, beneficiaries, stakes) => {
     let _chaingearContract;
 
     return new Promise((resolve, reject) => {
@@ -386,7 +386,7 @@ export const deployDatabase = (name, symbol, version, beneficiaries, shares) => 
                 const creationFee = fee.toNumber();
 
                 return sendTransactionMethod(_chaingearContract.createDatabase,
-                    version, beneficiaries, shares, name, symbol, { value: creationFee });
+                    version, beneficiaries, stakes, name, symbol, { value: creationFee });
             })
             .then((txHash) => {
                 console.log(`Database creation ${name} tx: ${txHash}`);

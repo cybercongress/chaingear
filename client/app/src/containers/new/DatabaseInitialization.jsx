@@ -22,35 +22,41 @@ import {
 
 import {
     getDefaultAccount,
-    getDatabases,
     deployDatabase,
     getChaingearContract,
-    eventPromise,
+    eventPromise, callContractMethod,
 } from '../../utils/cyber';
 
 import DatabaseSource from '../../resources/DatabaseV1.sol';
 import Code from '../../components/SolidityHighlight';
+import { debounce } from '../../utils/utils';
 
 class NewDatabase extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            contractName: '',
-            contracts: [],
             beneficiaries: [],
             databaseId: null,
+
+            dbName: '',
+            dbSymbol: '',
+            dbVersion: '',
+
+            isNameExist: true,
+            isSymbolExist: true,
 
             inProgress: false,
             message: '',
             type: 'processing',
         };
+
+        this.checkDbName = debounce(this.checkDbName, 1000);
+        this.checkDbSymbol = debounce(this.checkDbSymbol, 1000);
     }
 
     componentWillMount() {
-        getDatabases()
-            .then(contracts => this.setState({ contracts }))
-            .then(() => getDefaultAccount())
+        getDefaultAccount()
             .then(defaultAccount => this.setState({
                 beneficiaries: [{
                     address: defaultAccount,
@@ -61,34 +67,69 @@ class NewDatabase extends Component {
     }
 
     createDatabase = () => {
-        const { beneficiaries } = this.state;
-        const contractName = this.dbName.value;
-        const symbol = this.symbol.value;
-        const version = this.databaseVersion.value;
+        const { beneficiaries, dbName, dbSymbol, dbVersion } = this.state;
         const bens = beneficiaries.map(ben => ben.address);
-        const shares = beneficiaries.map(ben => ben.share);
+        const stakes = beneficiaries.map(ben => ben.stake);
 
         this.setState({ message: 'processing...', inProgress: true, type: 'processing' });
-        deployDatabase(contractName, symbol, version, bens, shares)
+        deployDatabase(dbName, dbSymbol, dbVersion, bens, stakes)
             .then(({ txHash }) => getChaingearContract())
             .then(({ contract }) => eventPromise(contract.DatabaseCreated()))
             .then((results) => {
                 this.setState({
                     inProgress: false,
-                    databaseId: results.args.databaseId.toNumber(),
+                    databaseId: results.args.databaseChaingearID.toNumber(),
                 });
             })
             .catch((error) => {
-                console.log(`Cannot create database ${contractName}. Error: ${error}`);
+                console.log(`Cannot create database ${dbName}. Error: ${error}`);
             });
     };
 
-    onContractNameChange = (e) => {
-        this.setState({
-            contractName: e.target.value,
-        });
+    checkDbName = (dbName) => {
+        if (!dbName) {
+            return;
+        }
 
-        this.refs.symbol.value = e.target.value;
+        getChaingearContract()
+            .then(({ contract }) => callContractMethod(contract, 'getNameExist', dbName))
+            .then(isNameExist => this.setState({
+                dbName,
+                isNameExist,
+            }));
+    };
+
+    checkDbSymbol = (dbSymbol) => {
+        if (!dbSymbol) {
+            return;
+        }
+
+        getChaingearContract()
+            .then(({ contract }) => callContractMethod(contract, 'getSymbolExist', dbSymbol))
+            .then(isSymbolExist => this.setState({
+                dbSymbol,
+                isSymbolExist,
+            }));
+    };
+
+    onDbNameChange = (event) => {
+        event.persist();
+
+        this.dbSymbol.value = event.target.value;
+        this.checkDbName(event.target.value);
+        this.checkDbSymbol(this.dbSymbol.value);
+    };
+
+    onDbSymbolChange = (event) => {
+        event.persist();
+
+        this.checkDbSymbol(event.target.value);
+    };
+
+    onDbVersionChange = (event) => {
+        this.setState({
+            dbVersion: event.target.value,
+        });
     };
 
     onStakeChange = (e) => {
@@ -113,8 +154,8 @@ class NewDatabase extends Component {
     };
 
     addBeneficiary = () => {
-        const address = this.refs.benAddress.value;
-        const stake = this.refs.benStake.value;
+        const address = this.benAddress.value;
+        const stake = this.benStake.value;
         let { beneficiaries } = this.state;
 
         if (!address || !stake) {
@@ -129,8 +170,8 @@ class NewDatabase extends Component {
 
         beneficiaries = this.calculateShare(beneficiaries);
 
-        this.refs.benAddress.value = '';
-        this.refs.benStake.value = '';
+        this.benAddress.value = '';
+        this.benStake.value = '';
 
         this.setState({
             beneficiaries,
@@ -149,12 +190,16 @@ class NewDatabase extends Component {
 
     render() {
         const {
-            contractName, message, inProgress, contracts, type, beneficiaries, databaseId,
+            dbName, dbSymbol, dbVersion,
+            isNameExist, isSymbolExist,
+            beneficiaries, databaseId,
+            message, inProgress, type,
         } = this.state;
 
-        const exist = !!contracts.find(x => x.name === contractName);
         const benCount = beneficiaries.length;
-        const canCreate = contractName.length > 0 && benCount > 0 && !exist;
+        const canCreate = dbName.length > 0 && dbSymbol.length > 0 && dbVersion.length > 0
+            && !isNameExist && !isSymbolExist
+            && benCount > 0;
 
         return (
             <div>
@@ -173,22 +218,18 @@ class NewDatabase extends Component {
                             <ParamRow>
                                 <WideInput
                                     placeholder='Name'
-                                    value={ contractName }
-                                    inputRef={ node => this.dbName = node}
-/*
-                                    onChange={ this.onContractNameChange }
-*/
+                                    onChange={ this.onDbNameChange }
                                 />
                             </ParamRow>
                             <ParamRow>
                                 <WideInput
-                                    inputRef={node => this.symbol = node}
-                                    defaultValue=''
                                     placeholder='Symbol'
+                                    onChange={ this.onDbSymbolChange }
+                                    inputRef={ node => this.dbSymbol = node }
                                 />
                             </ParamRow>
                             <ParamRow>
-                                <WideSelect inputRef={ node => this.databaseVersion = node}>
+                                <WideSelect onChange={this.onDbVersionChange}>
                                     <option value=''>Version</option>
                                     <option value='V1'>V1 (Basic Database)</option>
                                 </WideSelect>
@@ -207,6 +248,7 @@ class NewDatabase extends Component {
                                         beneficiaries.map(ben => (
                                             <tr key={ ben.address }>
                                                 <td style={{
+                                                    textAlign: 'center',
                                                     overflow: 'hidden',
                                                     width: 120,
                                                 }}
@@ -217,7 +259,10 @@ class NewDatabase extends Component {
                                                     textAlign: 'end',
                                                     width: 70,
                                                 }}>{ben.stake}</td>
-                                                <td>{ben.share}</td>
+                                                <td style={{
+                                                    textAlign: 'end',
+                                                    width: 40
+                                                }}>{ben.share}{' %'}</td>
                                                 <td>
                                                     <RemoveButton
                                                       onClick={ () => this.removeBeneficiary(ben.address) }
@@ -233,7 +278,7 @@ class NewDatabase extends Component {
                                         <td>
                                             <WideInput inputRef={ node => this.benStake = node } onChange={this.onStakeChange} placeholder='Stake' />
                                         </td>
-                                        <td>
+                                        <td style={{textAlign: 'end'}}>
                                             <span ref='benShare' placeholder='Share'>0</span> <span>%</span>
                                         </td>
                                         <td>

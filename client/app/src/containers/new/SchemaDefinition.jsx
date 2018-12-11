@@ -12,6 +12,8 @@ import {
     AddField,
     StatusBar,
     ActionLink,
+    RightContainer,
+    WideSelect,
 } from '@cybercongress/ui';
 
 import {
@@ -21,6 +23,7 @@ import {
     getChaingearContract,
     callContractMethod,
     mapDatabase,
+    eventPromise,
 } from '../../utils/cyber';
 
 import Code from '../../components/SolidityHighlight';
@@ -88,7 +91,7 @@ class SchemaDefinition extends Component {
                 _databaseContract = databaseContract;
                 return deploySchema(contractName, fields, databaseContract);
             })
-            // .then(() => cyber.eventPromise(_registryContract.registryInitialized()))
+            .then(() => eventPromise(_databaseContract.DatabaseInitialized()))
             .then(() => {
                 this.setState({
                     inProgress: false,
@@ -113,7 +116,7 @@ class SchemaDefinition extends Component {
                     type={ type }
                 />
 
-            <PageTitle>Database schema definition</PageTitle>
+                <PageTitle>Database schema definition</PageTitle>
                 <ContainerRegister>
                     <SideBar>
                         <Label>Input</Label>
@@ -122,7 +125,7 @@ class SchemaDefinition extends Component {
                             <FieldsTable>
                                 <thead>
                                     <tr>
-                                        <th>Field</th>
+                                        <th>Name</th>
                                         <th>Type</th>
                                         <th />
                                     </tr>
@@ -134,10 +137,8 @@ class SchemaDefinition extends Component {
                                             <td>{field.type}</td>
                                             <td>
                                                 <RemoveButton
-                                                  onClick={ () => this.remove(field.name) }
-                                                >
-                                                remove
-                                                </RemoveButton>
+                                                    onClick={ () => this.remove(field.name) }
+                                                />
                                             </td>
                                         </tr>
                                     ))}
@@ -156,17 +157,19 @@ class SchemaDefinition extends Component {
                             {code}
                         </Code>
                         {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
-                        {isSchemaCreated ? (
-                            <ActionLink to={ `/databases/${databaseId}` }>Go to database</ActionLink>
-                        ) : (
-                            <CreateButton disabled={ !canCreateSchema } onClick={ this.createSchema }>
-                                create
-                            </CreateButton>
-                        )}
                     </Content>
 
                 </ContainerRegister>
 
+                <RightContainer>
+                    {isSchemaCreated ? (
+                        <ActionLink to={ `/databases/${databaseId}` }>Go to database</ActionLink>
+                    ) : (
+                        <CreateButton disabled={ !canCreateSchema } onClick={ this.createSchema }>
+                            create
+                        </CreateButton>
+                    )}
+                </RightContainer>
             </div>
         );
     }
