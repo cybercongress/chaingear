@@ -36,6 +36,9 @@ class NewDatabase extends Component {
         super(props);
 
         this.state = {
+            dbBuilders: [],
+            dbDescription: '',
+
             beneficiaries: [],
             databaseId: null,
 
@@ -63,7 +66,8 @@ class NewDatabase extends Component {
                     stake: 1,
                     share: 100,
                 }],
-            }));
+            }))
+            .then(() => this.getDatabaseVersions());
     }
 
     createDatabase = () => {
@@ -87,6 +91,39 @@ class NewDatabase extends Component {
                     inProgress: false,
                 });
             });
+    };
+
+    getDatabaseVersions = () => {
+        let _chaingerContract;
+
+        return getChaingearContract()
+            .then(({contract}) => {
+                _chaingerContract = contract;
+                return callContractMethod(contract, 'getAmountOfBuilders');
+            })
+            .then((buildersCount) => {
+                const buildersCountNumber = buildersCount.toNumber();
+                let buildersPromises = [];
+
+                for (let index = 0; index < buildersCountNumber; index = index + 1) {
+                    const builderPromise = callContractMethod(_chaingerContract, 'getBuilderById', index)
+                        .then(builderVersion => Promise.all([
+                            callContractMethod(_chaingerContract, 'getDatabaseBuilder', builderVersion),
+                            builderVersion,
+                        ]))
+                        .then(([builderMeta, builderVersion]) => (
+                            {
+                                version: builderVersion,
+                                description: builderMeta[2],
+                            }
+                        ));
+
+                    buildersPromises.push(builderPromise);
+                }
+
+                return Promise.all(buildersPromises);
+            })
+            .then(dbBuilders => this.setState({ dbBuilders }));
     };
 
     checkDbName = (dbName) => {
@@ -130,8 +167,14 @@ class NewDatabase extends Component {
     };
 
     onDbVersionChange = (event) => {
+        const { dbBuilders } = this.state;
+        const builderVersion = event.target.value;
+        const dbBuilder = dbBuilders.find(builder => builder.version === builderVersion);
+        const description = dbBuilder ? dbBuilder.description : null;
+
         this.setState({
             dbVersion: event.target.value,
+            dbDescription: description,
         });
     };
 
@@ -193,7 +236,7 @@ class NewDatabase extends Component {
 
     render() {
         const {
-            dbName, dbSymbol, dbVersion,
+            dbName, dbSymbol, dbVersion, dbBuilders, dbDescription,
             isNameExist, isSymbolExist,
             beneficiaries, databaseId,
             message, inProgress, type,
@@ -234,14 +277,21 @@ class NewDatabase extends Component {
                             <ParamRow>
                                 <WideSelect onChange={this.onDbVersionChange}>
                                     <option value=''>Version</option>
-                                    <option value='V1'>V1 (Basic Database)</option>
+                                    {
+                                        dbBuilders.map(builder => (
+                                            <option value={builder.version}>{builder.version}</option>
+                                        ))
+                                    }
                                 </WideSelect>
                             </ParamRow>
-                            <ParamRow>
-                                <Description>
-                                    Bla-bla
-                                </Description>
-                            </ParamRow>
+
+                            {dbDescription &&
+                                <ParamRow>
+                                    <Description>
+                                        <b>Description:</b> {dbDescription}
+                                    </Description>
+                                </ParamRow>
+                            }
                         </Panel>
 
                         <Panel title='Beneficiaries (Optional)' noPadding>
