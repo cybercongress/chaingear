@@ -50,6 +50,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
     uint256 private headTokenID = 0;
     mapping(address => uint256) private databasesIDsByAddressesIndex;
     mapping(uint256 => string) private databasesSymbolsByIDIndex;
+    mapping(string => uint256) private databasesIDsBySymbolIndex;
     
     uint256 private amountOfBuilders = 0;
     mapping(uint256 => string) private buildersVersionIndex;
@@ -314,6 +315,14 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         return databasesSymbolsByIDIndex[_databaseID];
     }
     
+    function getDatabaseIDBySymbol(string _symbol)
+        external
+        view
+        returns(uint256)
+    {
+        return databasesIDsBySymbolIndex[_symbol];
+    }
+    
     function getDatabase(uint256 _databaseID)
         external
         view
@@ -507,6 +516,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         databasesIDsByAddressesIndex[databaseAddress] = newTokenID;
         super._mint(msg.sender, newTokenID);
         databasesSymbolsByIDIndex[newTokenID] = _symbol;
+        databasesIDsBySymbolIndex[_symbol] = newTokenID;
         headTokenID = headTokenID.add(1);
         
         emit DatabaseCreated(
