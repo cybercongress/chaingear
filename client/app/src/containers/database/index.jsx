@@ -285,7 +285,8 @@ class Database extends Component {
             .then(items => this.setState({
                 items,
                 loading: false,
-            }));
+            }))
+            .catch(() => this.setLoading(false));
     };
 
 

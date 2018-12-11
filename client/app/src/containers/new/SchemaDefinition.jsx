@@ -62,10 +62,11 @@ class SchemaDefinition extends Component {
             }));
     }
 
-    add = (name, type) => {
+    add = (name, type, unique) => {
         const newItem = {
             name,
             type,
+            unique,
         };
 
         this.setState({
@@ -130,6 +131,7 @@ class SchemaDefinition extends Component {
                                     <tr>
                                         <th>Name</th>
                                         <th>Type</th>
+                                        <th>Validation</th>
                                         <th />
                                     </tr>
                                 </thead>
@@ -138,7 +140,10 @@ class SchemaDefinition extends Component {
                                         <tr key={ field.name }>
                                             <td>{field.name}</td>
                                             <td>{field.type}</td>
-                                            <td>
+                                            <td style={{textAlign: 'center'}}>
+                                                <input type='checkbox' disabled checked={field.unique}/>
+                                            </td>
+                                            <td style={{textAlign: 'end'}}>
                                                 <RemoveButton
                                                     onClick={ () => this.remove(field.name) }
                                                 />
