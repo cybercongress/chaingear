@@ -97,7 +97,10 @@ class SchemaDefinition extends Component {
                     inProgress: false,
                     isSchemaCreated: true,
                 });
-            });
+            })
+            .catch(() => this.setState({
+                inProgress: false,
+            }));
     };
 
     render() {

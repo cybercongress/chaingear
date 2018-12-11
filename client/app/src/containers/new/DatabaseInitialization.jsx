@@ -83,6 +83,9 @@ class NewDatabase extends Component {
             })
             .catch((error) => {
                 console.log(`Cannot create database ${dbName}. Error: ${error}`);
+                this.setState({
+                    inProgress: false,
+                });
             });
     };
 
