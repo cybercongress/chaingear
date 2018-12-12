@@ -48,10 +48,15 @@ class DatabaseItem extends Component {
 
         if (type === 'uint256' && (isNaN(e.target.value) || +e.target.value < 0)) { return; }
 
+        let value = e.target.value;
+
+        if (type === 'bool') {
+            value = e.target.checked;
+        }
         this.setState({
             data: {
                 ...this.state.data,
-                [name]: e.target.value,
+                [name]: value,
             },
         });
     }
@@ -114,6 +119,7 @@ class DatabaseItem extends Component {
 
         const {
             edit,
+            data,
         } = this.state;
 
         let row = fields.map(field => (
@@ -151,7 +157,7 @@ remove
                           ref={ el => this._refs[field.name] = el }
                           type='checkbox'
                           onChange={ e => this.change(e, field.name, field.type) }
-                          checked={item[field.name]}
+                          checked={data[field.name]}
                         />
                     );
                 }
