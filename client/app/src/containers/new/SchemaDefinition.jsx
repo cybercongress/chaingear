@@ -37,9 +37,9 @@ class SchemaDefinition extends Component {
 
         this.state = {
             fields: [],
-            contractName: '',
+            databaseName: '',
             databaseAddress: null,
-            databaseId: null,
+            databaseSymbol: null,
 
             inProgress: false,
             message: '',
@@ -50,15 +50,26 @@ class SchemaDefinition extends Component {
     }
 
     componentDidMount() {
-        const databaseId = this.props.params.id;
+        const dbsymbol = this.props.params.dbsymbol;
+        let _chaingearContract;
+        let _databaseId;
 
         getChaingearContract()
-            .then(({ contract }) => callContractMethod(contract, 'getDatabase', databaseId))
-            .then(database => mapDatabase(database, databaseId))
+            .then(({ contract }) => {
+                _chaingearContract = contract;
+
+                return callContractMethod(contract, 'getDatabaseIDBySymbol', dbsymbol);
+            })
+            .then((databaseId) => {
+                _databaseId = databaseId;
+
+                return callContractMethod(_chaingearContract, 'getDatabase', databaseId);
+            })
+            .then(database => mapDatabase(database, _databaseId))
             .then(database => this.setState({
                 databaseAddress: database.address,
-                contractName: database.name,
-                databaseId,
+                databaseName: database.name,
+                databaseSymbol: dbsymbol,
             }));
     }
 
@@ -81,7 +92,7 @@ class SchemaDefinition extends Component {
     };
 
     createSchema = () => {
-        const { contractName, fields, databaseAddress } = this.state;
+        const { databaseName, fields, databaseAddress } = this.state;
 
         this.setState({ message: 'processing...', inProgress: true, type: 'processing' });
 
@@ -90,7 +101,7 @@ class SchemaDefinition extends Component {
         getDatabaseContract(databaseAddress)
             .then((databaseContract) => {
                 _databaseContract = databaseContract;
-                return deploySchema(contractName, fields, databaseContract);
+                return deploySchema(databaseName, fields, databaseContract);
             })
             .then(() => eventPromise(_databaseContract.DatabaseInitialized()))
             .then(() => {
@@ -106,9 +117,9 @@ class SchemaDefinition extends Component {
 
     render() {
         const {
-            contractName, fields, message, inProgress, type, isSchemaCreated, databaseId,
+            databaseName, fields, message, inProgress, type, isSchemaCreated, databaseSymbol,
         } = this.state;
-        const code = generateContractCode(contractName, fields);
+        const code = generateContractCode(databaseName, fields);
         const fieldsCount = fields.length;
         const canCreateSchema = fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !isSchemaCreated;
 
@@ -171,7 +182,7 @@ class SchemaDefinition extends Component {
 
                 <RightContainer>
                     {isSchemaCreated ? (
-                        <ActionLink to={ `/databases/${databaseId}` }>Go to database</ActionLink>
+                        <ActionLink to={ `/databases/${databaseSymbol}` }>Go to database</ActionLink>
                     ) : (
                         <CreateButton disabled={ !canCreateSchema } onClick={ this.createSchema }>
                             create

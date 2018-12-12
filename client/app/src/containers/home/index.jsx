@@ -11,10 +11,7 @@ import {
     LinkHash,
 } from '@cybercongress/ui';
 
-
-
 import { getDatabases, getDefaultAccount, formatDate } from '../../utils/cyber';
-
 
 class Home extends Component {
     constructor(props) {
@@ -44,7 +41,7 @@ class Home extends Component {
         const rows = databases.map(database => (
             <tr key={ database.name }>
                 <td>
-                    <Link to={ `/databases/${database.id}` }>
+                    <Link to={ `/databases/${database.symbol}` }>
                         {database.name}
                     </Link>
                 </td>
@@ -69,7 +66,7 @@ class Home extends Component {
         const myRows = databases.filter(x => x.admin === account).map(database => (
             <tr key={ database.name }>
                 <td>
-                    <Link to={ `/databases/${database.id}` }>
+                    <Link to={ `/databases/${database.symbol}` }>
                         {database.name}
                     </Link>
                 </td>

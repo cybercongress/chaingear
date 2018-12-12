@@ -49,6 +49,7 @@ class Database extends Component {
 
         contractVersion: null,
         databaseAddress: null,
+        databaseSymbol: null,
         databaseId: null,
         entryCoreAddress: null,
         entryCoreContract: null,
@@ -61,7 +62,7 @@ class Database extends Component {
             loading: true,
         });
 
-        const databaseId = this.props.params.id;
+        const databaseSymbol = this.props.params.dbsymbol;
 
         let _databaseAddress = null;
         let _databases = null;
@@ -69,7 +70,7 @@ class Database extends Component {
         let _web3 = null;
         let _databaseContract = null;
         let _database = null;
-        let _databaseId = databaseId;
+        let _databaseId = null;
         let _chaingearContract = null;
         let _abi = null;
         let _fields = null;
@@ -85,6 +86,10 @@ class Database extends Component {
             .then(() => cyber.getDefaultAccount())
             .then((defaultAccount) => {
                 _userAccount = defaultAccount;
+            })
+            .then(() => cyber.callContractMethod(_chaingearContract, 'getDatabaseIDBySymbol', databaseSymbol))
+            .then((databaseId) => {
+                _databaseId = databaseId;
             })
             .then(() => cyber.callContractMethod(_chaingearContract, 'getDatabase', _databaseId))
             .then((database) => {
@@ -128,6 +133,7 @@ class Database extends Component {
                         owner,
                         description,
                         symbol,
+                        databaseSymbol,
                         entryCreationFee: _entryCreationFee,
                     },
                 };
@@ -454,7 +460,7 @@ class Database extends Component {
 
     render() {
         const {
-            fields, items, loading, isOwner, userAccount, isSchemaExist, databaseId,
+            fields, items, loading, isOwner, userAccount, isSchemaExist, databaseSymbol,
         } = this.state;
 
 
@@ -501,7 +507,7 @@ class Database extends Component {
                         <div style={ { marginLeft: '15px' } }>
                             <ActionLink to='/'>BACK TO CHAINGEAR</ActionLink>
                             {!isSchemaExist &&
-                                <ActionLink to={`/schema/${databaseId}`}>Define schema</ActionLink>
+                                <ActionLink style={{marginLeft: 15}} to={`/schema/${databaseSymbol}`}>Define schema</ActionLink>
                             }
                         </div>
                     </Section>

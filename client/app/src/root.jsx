@@ -17,9 +17,9 @@ export function Root() {
                 <Route component={ MainContainer }>
                     <Route path='/' component={ HomePage } />
                     <Route path='/new' component={ NewDatabase } />
-                    <Route path='/schema/:id' component={ SchemaDefinition } />
+                    <Route path='/schema/:dbsymbol' component={ SchemaDefinition } />
                 </Route>
-                <Route path='/databases/:id' component={ DatabasePage } />
+                <Route path='/databases/:dbsymbol' component={ DatabasePage } />
             </Route>
         </Router>
     );

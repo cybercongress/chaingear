@@ -276,10 +276,10 @@ class NewDatabase extends Component {
                             </ParamRow>
                             <ParamRow>
                                 <WideSelect onChange={this.onDbVersionChange}>
-                                    <option value=''>Version</option>
+                                    <option key='default' value=''>Version</option>
                                     {
                                         dbBuilders.map(builder => (
-                                            <option value={builder.version}>{builder.version}</option>
+                                            <option key={builder.version} value={builder.version}>{builder.version}</option>
                                         ))
                                     }
                                 </WideSelect>
@@ -356,8 +356,8 @@ class NewDatabase extends Component {
                 <RightContainer>
                     {databaseId ? (
                         <span>
-                            <ActionLink to={ `/databases/${databaseId}` }>Go to database</ActionLink>
-                            <ActionLink to={ `/schema/${databaseId}` }>Go to schema definition</ActionLink>
+                            <ActionLink to={ `/databases/${dbSymbol}` }>Go to database</ActionLink>
+                            <ActionLink style={{marginLeft: 15}} to={ `/schema/${dbSymbol}` }>Go to schema definition</ActionLink>
                         </span>
                     ) : (
                         <CreateButton disabled={ !canCreate } onClick={ this.createDatabase }>
