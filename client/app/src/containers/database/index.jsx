@@ -46,6 +46,8 @@ class Database extends Component {
         userAccount: null,
         abi: [],
         isDbPaused: null,
+        duplicateFieldFound: false,
+        duplicateFieldId: null,
 
         contractVersion: null,
         databaseAddress: null,
@@ -177,11 +179,17 @@ class Database extends Component {
                     ..._newState,
                     ...{
                         ipfsHash,
-                        fields,
                         abi,
                         entryCoreAddress: _entryCoreAddress,
                     },
                 };
+            })
+            .then(() => this.getUniqValidationStatuses(_fields, _entryCoreContract))
+            .then((uniqueStatuses) => {
+                _fields = _fields.map((field, index) => ({
+                    ...field,
+                    unique: uniqueStatuses[index],
+                }));
             })
             .then(() => this.setState({
                 databaseContract: _databaseContract,
@@ -208,6 +216,12 @@ class Database extends Component {
                 console.log(`Cannot load database data. Error: ${error}`);
             });
     }
+
+    getUniqValidationStatuses = (fields, entryCoreContract) => {
+        return Promise.all(
+            fields.map((field, index) => cyber.callContractMethod(entryCoreContract, 'getUniqStatus', index)),
+        );
+    };
 
     getDatabaseItems = () => {
         const { databaseContract: contract, fields, abi, web3 } = this.state;
@@ -267,8 +281,47 @@ class Database extends Component {
             });
     };
 
+    checkUnique = (values, entryId) => {
+        const { items, fields } = this.state;
+
+        const uniqueFieldsIndexes = fields
+            .map((field, index) => ({
+                ...field,
+                index,
+            }))
+            .filter(field => field.unique)
+            .map(field => field.index);
+
+        if (uniqueFieldsIndexes.length === 0) {
+            return true;
+        }
+
+        let duplicateFound = false;
+        items.forEach((item) => {
+
+            if (!duplicateFound) {
+                uniqueFieldsIndexes.forEach((index) => {
+
+                    if (item[fields[index].name] === values[index] && item.id !== entryId) {
+                        duplicateFound = true;
+                    }
+                });
+            }
+        });
+
+        return !duplicateFound;
+    };
+
     onUpdate = (values, entryId) => {
         const { entryCoreContract } = this.state;
+
+        if (!this.checkUnique(values, entryId)) {
+            this.setState({
+                duplicateFieldFound: true,
+                duplicateFieldId: entryId,
+            });
+            return;
+        }
 
         this.setLoading(true);
 
@@ -278,7 +331,8 @@ class Database extends Component {
             .then(items => this.setState({
                 items,
                 loading: false,
-            }));
+            }))
+            .catch(() => this.setLoading(false));
     };
 
     removeItemClick = (id) => {
@@ -458,9 +512,16 @@ class Database extends Component {
             });
     };
 
+    hideEntryError = () => {
+        this.setState({
+            duplicateFieldFound: false,
+            duplicateFieldId: null,
+        });
+    };
+
     render() {
         const {
-            fields, items, loading, isOwner, userAccount, isSchemaExist, databaseSymbol,
+            fields, items, loading, isOwner, userAccount, isSchemaExist, databaseSymbol, duplicateFieldFound, duplicateFieldId,
         } = this.state;
 
 
@@ -476,6 +537,8 @@ class Database extends Component {
                 item={ item }
                 index={ item.id }
                 key={ item.id }
+                errorMessage={ duplicateFieldFound && duplicateFieldId === item.id}
+                hideEntryError={ this.hideEntryError }
             />
         ));
 

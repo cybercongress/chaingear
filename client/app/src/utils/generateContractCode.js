@@ -13,7 +13,7 @@ const generateContractCode = (name, fields) => {
         if (type === 'int256') return 'int256(0)';
 
         return '""';
-    }
+    };
 
     const uniqueFields = fields.filter(field => field.unique);
 
@@ -49,6 +49,7 @@ import './Dependencies.sol';
 contract Schema is ISchema, Ownable, SupportsInterfaceWithLookup {
     
     bytes4 constant internal INTERFACE_SCHEMA_ID = 0x153366ed;
+    bool[${fields.length}] private uniqValidationStatus = [${fields.map(field => field.unique)}];
 
     struct Entry {
         ${structBodyStr}
@@ -135,10 +136,16 @@ contract Schema is ISchema, Ownable, SupportsInterfaceWithLookup {
         delete entries[lastEntryIndex];
         entries.length--;
     }
+    
+    function getUniqStatus(uint256 _id)
+        external
+        view
+        returns (bool)
+    {
+        return uniqValidationStatus[_id];
+    }
 
-}
-
-`;
-}
+}`;
+};
 
 module.exports = generateContractCode;

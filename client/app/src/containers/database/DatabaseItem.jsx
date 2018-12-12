@@ -4,6 +4,7 @@ import {
     Section,
     SectionContent,
     Centred,
+    Message,
 } from '@cybercongress/ui';
 
 import ValueInput from '../../components/ValueInput';
@@ -56,6 +57,8 @@ class DatabaseItem extends Component {
     }
 
     startEdit = () => {
+        this.props.hideEntryError();
+
         this.setState({
             edit: true,
         });
@@ -106,6 +109,7 @@ class DatabaseItem extends Component {
             fundEntryClick,
             userAccount,
             onTransfer,
+            errorMessage
         } = this.props;
 
         const {
@@ -155,6 +159,9 @@ remove
                     <div key={ field.name }>
                         <FieldLabel>{field.name.toUpperCase()}</FieldLabel>
                         {control}
+                        {field.unique &&
+                            <span style={{marginLeft: 20}}>unique</span>
+                        }
                     </div>
                 );
             });
@@ -181,8 +188,10 @@ remove
 
                         <div style={ { margintTop: 20 } }>
                             <IdContainer>
-TOKEN_ID :
-                                {item.id}
+                                <span>TOKEN_ID :</span>{item.id}
+                                { errorMessage &&
+                                    <Message type='warning'>Check unique fields</Message>
+                                }
                             </IdContainer>
                             {row}
                         </div>
