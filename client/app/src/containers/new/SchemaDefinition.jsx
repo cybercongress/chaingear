@@ -137,22 +137,20 @@ class SchemaDefinition extends Component {
                         <Label>Input</Label>
 
                         <Panel title='Schema Structure' noPadding>
-                            <FieldsTable>
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Type</th>
-                                        <th>Validation</th>
-                                        <th />
-                                    </tr>
-                                </thead>
+                            <FieldsTable style={{
+                                width: 'auto',
+                                padding: 20,
+                                paddingTop: 10,
+                            }}>
                                 <tbody>
                                     {fields.map(field => (
                                         <tr key={ field.name }>
                                             <td>{field.name}</td>
                                             <td>{field.type}</td>
                                             <td style={{textAlign: 'center'}}>
-                                                <input type='checkbox' disabled checked={field.unique}/>
+                                                <input type='checkbox' disabled checked={field.unique} style={{
+                                                    width: 'auto',
+                                                }}/> unique
                                             </td>
                                             <td style={{textAlign: 'end'}}>
                                                 <RemoveButton
