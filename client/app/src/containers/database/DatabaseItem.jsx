@@ -91,10 +91,11 @@ class DatabaseItem extends Component {
 
                 if (field.type === 'bool') {
                     args.push(this._refs[key].checked);
+                    newItem[key] = this._refs[key].checked;
                 } else {
                     args.push(this.state.data[key]);
+                    newItem[key] = +this._refs[key].value;
                 }
-                newItem[key] = +this._refs[key].value;
             }
         }
 
@@ -114,7 +115,8 @@ class DatabaseItem extends Component {
             fundEntryClick,
             userAccount,
             onTransfer,
-            errorMessage
+            errorMessage,
+            isDbPaused,
         } = this.props;
 
         const {
@@ -125,7 +127,7 @@ class DatabaseItem extends Component {
         let row = fields.map(field => (
             <div key={ field.name }>
                 <FieldLabel>{field.name.toUpperCase()}</FieldLabel>
-                <FieldValue>{item[field.name].toString()}</FieldValue>
+                <FieldValue>{data[field.name].toString()}</FieldValue>
             </div>
         ));
 
@@ -147,7 +149,7 @@ remove
                     <FieldInput
                         inputRef={ el => this._refs[field.name] = el }
                         onChange={ e => this.change(e, field.name, field.type) }
-                        defaultValue={ item[field.name].toString() }
+                        defaultValue={ data[field.name].toString() }
                     />
                 );
 
@@ -157,7 +159,7 @@ remove
                           ref={ el => this._refs[field.name] = el }
                           type='checkbox'
                           onChange={ e => this.change(e, field.name, field.type) }
-                          checked={data[field.name]}
+                          checked={ data[field.name] }
                         />
                     );
                 }
@@ -180,7 +182,7 @@ remove
             );
         }
 
-        const isOwner = userAccount === item.owner;
+        const isOwner = isDbPaused ? false : userAccount === item.owner;
 
         return (
             <div>
@@ -192,7 +194,7 @@ remove
                 <Section>
                     <SectionContent grow={ 2 }>
 
-                        <div style={ { margintTop: 20 } }>
+                        <div style={ { marginBottom: 20 } }>
                             <IdContainer>
                                 <span>TOKEN_ID :</span>{item.id}
                                 { errorMessage &&
@@ -213,17 +215,19 @@ remove
                                     onTransfer={ onTransfer }
                                 />
                             </div>
-                            <div>
-                                <ValueInput
-                                    onInter={ value => fundEntryClick(index, value) }
-                                    buttonLable='fund entry'
-                                />
-                            </div>
+                            {!isDbPaused &&
+                                <div>
+                                    <ValueInput
+                                        onInter={value => fundEntryClick(index, value)}
+                                        buttonLable='fund entry'
+                                    />
+                                </div>
+                            }
                         </Centred>
                     </SectionContent>
 
                     <SectionContent grow={ 0 } style={ { width: '25%' } }>
-                        <Centred style={ { justifyContent: isOwner ? 'space-between' : 'start' } }>
+                        <Centred style={ { justifyContent: isOwner ? 'space-between' : 'center' } }>
                             <Label style={ { marginBottom: isOwner ? 0 : 40 } }>
                                 Funded:
                             </Label>

@@ -78,6 +78,7 @@ class Database extends Component {
         let _fields = null;
         let _entryCoreAddress = null;
         let _entryCoreContract = null;
+        let _isDbPaused = null;
 
         let _newState = {};
         cyber.init()
@@ -98,6 +99,10 @@ class Database extends Component {
                 _database = cyber.mapDatabase(database);
                 _databaseAddress = _database.address;
                 _databaseContract = _web3.eth.contract(DatabaseV1.abi).at(_databaseAddress);
+            })
+            .then(() => cyber.callContractMethod(_databaseContract, 'paused'))
+            .then((isDbPaused) => {
+                _isDbPaused = isDbPaused;
             })
             .then(() => {
                 const fundedPromise = cyber.callContractMethod(_chaingearContract, 'getDatabaseBalance', _databaseId);
@@ -137,6 +142,7 @@ class Database extends Component {
                         symbol,
                         databaseSymbol,
                         entryCreationFee: _entryCreationFee,
+                        isDbPaused: _isDbPaused,
                     },
                 };
             })
@@ -450,7 +456,7 @@ class Database extends Component {
             .then(() => this.componentDidMount());
     };
 
-    clameDatabase = (amount) => {
+    claimDatabase = (amount) => {
         const { databaseId } = this.state;
 
         cyber.getChaingearContract().then(({ contract, web3 }) => {
@@ -460,7 +466,7 @@ class Database extends Component {
         });
     }
 
-    clameFee = (amount) => {
+    claimFee = (amount) => {
         this.state.databaseContract.claim((e, data) => {
 
         });
@@ -497,7 +503,7 @@ class Database extends Component {
             });
     };
 
-    resumeDb = () => {
+    unpauseDb = () => {
         const { databaseContract } = this.state;
 
         this.setLoading(true);
@@ -521,7 +527,8 @@ class Database extends Component {
 
     render() {
         const {
-            fields, items, loading, isOwner, userAccount, isSchemaExist, databaseSymbol, duplicateFieldFound, duplicateFieldId,
+            fields, items, loading, isOwner, userAccount, isSchemaExist, databaseSymbol,
+            duplicateFieldFound, duplicateFieldId, isDbPaused,
         } = this.state;
 
 
@@ -539,6 +546,7 @@ class Database extends Component {
                 key={ item.id }
                 errorMessage={ duplicateFieldFound && duplicateFieldId === item.id}
                 hideEntryError={ this.hideEntryError }
+                isDbPaused={ isDbPaused }
             />
         ));
 
@@ -602,7 +610,7 @@ class Database extends Component {
                                 </BoxTitle>
 
                                 <FundContainer
-                                    style={ { height: 100, justifyContent: isOwner ? 'space-around' : 'start' } }
+                                    style={ { height: 100, justifyContent: (isOwner && !isDbPaused) ? 'space-around' : 'start' } }
                                 >
                                     <span>
                                         {funded}
@@ -610,9 +618,9 @@ class Database extends Component {
                                         ETH
                                     </span>
 
-                                    {isOwner && (
+                                    {isOwner &&!isDbPaused && (
                                         <ValueInput
-                                            onInter={ this.clameDatabase }
+                                            onInter={ this.claimDatabase }
                                             buttonLable='claim funds'
                                             color='second'
                                         />
@@ -629,14 +637,14 @@ class Database extends Component {
                                 </BoxTitle>
 
                                 <FundContainer
-                                    style={ { height: 100, justifyContent: isOwner ? 'space-around' : 'start' } }
+                                    style={ { height: 100, justifyContent: (isOwner && !isDbPaused) ? 'space-around' : 'start' } }
                                 >
                                     <span>
                                         {totalFee}
                                         {' '}
                                         ETH
                                     </span>
-                                    {isOwner && <Button style={ { width: 119 } } onClick={ this.clameFee }>clame fee</Button>}
+                                    {isOwner && !isDbPaused && <Button style={ { width: 119 } } onClick={ this.claimFee }>clame fee</Button>}
                                 </FundContainer>
 
                             </Centred>
@@ -648,19 +656,30 @@ class Database extends Component {
                         <SectionContent grow={ 0 } style={ { width: '25%' } }>
                             <Centred>
                                 <div>
-                                    {/* <QRCode hash={address} size={160} /> */}
                                     <TransferForm
-                                        height={ 140 }
+                                        height={ (isOwner && !isDbPaused) ? 'auto' : 140 }
                                         address={ owner }
-                                        isOwner={ isOwner }
+                                        isOwner={ isOwner && !isDbPaused }
                                         onTransfer={ newOwner => this.transferDatabase(userAccount, newOwner) }
                                     />
                                 </div>
-                                <ValueInput
-                                    onInter={ this.fundDatabase }
-                                    buttonLable='fund database'
-                                    width='100%'
-                                />
+                                <div style={{marginBottom: 20}}>
+                                    {!isDbPaused &&
+                                        <ValueInput
+                                            onInter={this.fundDatabase}
+                                            buttonLable='fund database'
+                                            width='100%'
+                                        />
+                                    }
+                                </div>
+                                <div>
+                                    {!isDbPaused && isOwner &&
+                                        <Button onClick={this.pauseDb}>Pause database</Button>
+                                    }
+                                    {isDbPaused && isOwner &&
+                                        <Button onClick={this.unpauseDb}>Unpause database</Button>
+                                    }
+                                </div>
                             </Centred>
                         </SectionContent>
 
@@ -677,12 +696,12 @@ class Database extends Component {
                                 label='Fee'
                                 value={ entryCreationFee.toString() }
                                 valueType='ETH'
-                                onUpdate={ isOwner && this.changeEntryCreationFee }
+                                onUpdate={ isOwner && isDbPaused && this.changeEntryCreationFee }
                             />
                             <FormField
                                 label='Description'
                                 value={ description }
-                                onUpdate={ isOwner && this.changeDescription }
+                                onUpdate={ isOwner && !isDbPaused && this.changeDescription }
                             />
                             <FormField
                                 label='Tags'
@@ -723,7 +742,7 @@ class Database extends Component {
                     </DatabaseList>
 
                 </MainContainer>
-                {isOwner && isSchemaExist && (
+                {isOwner && !isDbPaused && isSchemaExist && (
                     <AddItemButton onClick={ this.add }>
                         <AddItemButtonText>Add Record</AddItemButtonText>
                         <span>
