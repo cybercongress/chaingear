@@ -36,6 +36,7 @@ class Database extends Component {
 
         databaseContract: null,
         web3: null,
+        ipfsGateway: null,
 
         name: '',
         description: '',
@@ -79,12 +80,17 @@ class Database extends Component {
         let _entryCoreAddress = null;
         let _entryCoreContract = null;
         let _isDbPaused = null;
+        let _ipfsGateway = null;
 
         let _newState = {};
         cyber.init()
             .then(({ contract, web3 }) => {
                 _web3 = web3;
                 _chaingearContract = contract;
+            })
+            .then(() => cyber.getIpfsGateway())
+            .then((ipfsGateway) => {
+                _ipfsGateway = ipfsGateway;
             })
             .then(() => cyber.getDefaultAccount())
             .then((defaultAccount) => {
@@ -143,6 +149,7 @@ class Database extends Component {
                         databaseSymbol,
                         entryCreationFee: _entryCreationFee,
                         isDbPaused: _isDbPaused,
+                        ipfsGateway: _ipfsGateway,
                     },
                 };
             })
@@ -308,7 +315,9 @@ class Database extends Component {
             if (!duplicateFound) {
                 uniqueFieldsIndexes.forEach((index) => {
 
-                    if (item[fields[index].name] === values[index] && item.id !== entryId) {
+                    //console.log(item[fields[index].name], ' === ',values[index], ' ', item.id, ' === ', entryId);
+
+                    if (item[fields[index].name].toString() === values[index].toString() && item.id !== entryId) {
                         duplicateFound = true;
                     }
                 });
@@ -528,7 +537,7 @@ class Database extends Component {
     render() {
         const {
             fields, items, loading, isOwner, userAccount, isSchemaExist, databaseSymbol,
-            duplicateFieldFound, duplicateFieldId, isDbPaused,
+            duplicateFieldFound, duplicateFieldId, isDbPaused, ipfsGateway,
         } = this.state;
 
 
@@ -727,7 +736,7 @@ class Database extends Component {
                                 label='LINK TO ABI'
                                 value={ (
                                   <a
-                                      href={ `http://localhost:8080/ipfs/${ipfsHash}` }
+                                      href={ `${ipfsGateway}/ipfs/${ipfsHash}` }
                                       target='_blank'
                                     >{ipfsHash}
                                     </a>

@@ -115,6 +115,10 @@ class SchemaDefinition extends Component {
             }));
     };
 
+    onFieldTypeChange = () => {
+
+    };
+
     render() {
         const {
             databaseName, fields, message, inProgress, type, isSchemaCreated, databaseSymbol,
@@ -160,8 +164,8 @@ class SchemaDefinition extends Component {
                                         </tr>
                                     ))}
                                     <AddField
-                                      onAdd={ this.add }
-                                      fields={ fields }
+                                        onAdd={ this.add }
+                                        fields={ fields }
                                     />
                                 </tbody>
                             </FieldsTable>

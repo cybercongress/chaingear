@@ -37,7 +37,11 @@ class DatabaseItem extends Component {
         const data = {};
 
         props.fields.forEach((field) => {
-            data[field.name] = props.item[field.name].toString();
+            if (field.type === 'bool') {
+                data[field.name] = props.item[field.name];
+            } else {
+                data[field.name] = props.item[field.name].toString();
+            }
         });
 
         this.state.data = data;

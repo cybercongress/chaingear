@@ -8,15 +8,35 @@ import DatabaseV1 from '../../../../build/contracts/DatabaseV1.json';
 let _networkId;
 
 const networks = {
-    '42': 'Kovan',
-    '1': 'Main',
-    '5777': 'TestNet',
-    '4': 'Rinkeby',
+    42: 'Kovan',
+    1: 'Main',
+    5777: 'TestNet',
+    4: 'Rinkeby',
 };
 
-export function checkNetwork() {
-    return new Promise(resolve => {
 
+const IPFS = require('ipfs-api');
+
+
+
+const getIpfsConfig = () => {
+    if (window.getIpfsConfig) return window.getIpfsConfig();
+
+    return Promise.resolve({
+        host: 'localhost',
+        port: 5001,
+        protocol: 'http',
+    });
+}
+
+export const getIpfsGateway = () => {
+    if (window.getIpfsGateway) return window.getIpfsGateway();
+
+    return Promise.resolve('http://localhost:8080');
+}
+
+export function checkNetwork() {
+    return new Promise((resolve) => {
         const networks = Object.keys(ChaingearBuild.networks);
 
         getWeb3.then(({ web3 }) => {
@@ -28,14 +48,12 @@ export function checkNetwork() {
                     networkId: netId,
                     contractNetworks: networks,
                 });
-            })
+            });
         });
     });
-
 }
 
 export const getNetworkStr = (networkId) => {
-
     if (networks[networkId]) {
         return networks[networkId];
     }
@@ -52,14 +70,6 @@ export const loadCompiler = (cb) => {
         window.BrowserSolc.loadVersion('soljson-v0.4.25+commit.59dbf8f1.js', cb);
     }, 30);
 };
-
-const IPFS = require('ipfs-api');
-
-export const ipfs = new IPFS({
-    host: 'localhost',
-    port: 5001,
-    protocol: 'http',
-});
 
 const Dependencies = require('../resources/Dependencies.sol');
 
@@ -109,7 +119,6 @@ export const getItems = (contract, getIdsMethod, getEntryByIdMethod, mapFn) => n
 });
 
 export const getItemsByIds = (contract, idsArray, getEntryByIdMethod, mapFn) => new Promise((topResolve) => {
-
     const promises = idsArray.map(id => new Promise((itemResolve, itemReject) => {
         contract[getEntryByIdMethod](id, (error, data) => {
             if (error) {
@@ -257,44 +266,38 @@ export const getDatabases = () => {
         .then(({ contract }) => getItems(contract, 'getDatabasesIDs', 'getDatabase', mapFunc));
 };
 
-export const callContractMethod = (contract, method, ...args) => {
-    return new Promise((resolve, reject) => {
-        contract[method].apply(contract, [...args, (e, data) => {
-            if (e) {
-                console.log('Rejected contract call. Method: ', method, ' args: ', args);
-                reject(e);
-            } else {
-                resolve(data);
-            }
-        }]);
-    });
-};
+export const callContractMethod = (contract, method, ...args) => new Promise((resolve, reject) => {
+    contract[method].apply(contract, [...args, (e, data) => {
+        if (e) {
+            console.log('Rejected contract call. Method: ', method, ' args: ', args);
+            reject(e);
+        } else {
+            resolve(data);
+        }
+    }]);
+});
 
-export const sendTransactionMethod = (contractMethod, ...args) => {
-    return new Promise((resolve, reject) => {
-        contractMethod.sendTransaction.apply(contractMethod, [...args, (e, data) => {
-            if (e) {
-                console.log('Rejected send transaction method. Args: ', args);
-                reject(e);
-            } else {
-                resolve(data);
-            }
-        }]);
-    });
-};
+export const sendTransactionMethod = (contractMethod, ...args) => new Promise((resolve, reject) => {
+    contractMethod.sendTransaction.apply(contractMethod, [...args, (e, data) => {
+        if (e) {
+            console.log('Rejected send transaction method. Args: ', args);
+            reject(e);
+        } else {
+            resolve(data);
+        }
+    }]);
+});
 
-export const callWeb3EthMethod = (web3, method, ...args) => {
-    return new Promise((resolve, reject) => {
-        web3.eth[method].apply(web3, [...args, (e, data) => {
-            if (e) {
-                console.log('Rejected web3.eth call. Method: ', method, ' args: ', args);
-                reject(e);
-            } else {
-                resolve(data);
-            }
-        }]);
-    });
-};
+export const callWeb3EthMethod = (web3, method, ...args) => new Promise((resolve, reject) => {
+    web3.eth[method].apply(web3, [...args, (e, data) => {
+        if (e) {
+            console.log('Rejected web3.eth call. Method: ', method, ' args: ', args);
+            reject(e);
+        } else {
+            resolve(data);
+        }
+    }]);
+});
 
 export const removeDatabase = (address, cb) => getChaingearContract().then(({
     contract,
@@ -304,18 +307,21 @@ export const removeDatabase = (address, cb) => getChaingearContract().then(({
 }));
 
 export const getDatabaseFieldsByHash = ipfsHash => new Promise((resolve) => {
-    ipfs.get(ipfsHash, (err, files) => {
-        const buf = files[0].content;
-        const abi = JSON.parse(buf.toString());
-        // TODO move extraction from entries to other ABIs object,
-        // entries should be internal, now public for supporting frontend
-        let fields = abi.filter(x => x.name === 'entries')[0].outputs;
+    getIpfsConfig().then(config => {
+        const ipfs = new IPFS(config);
+        ipfs.get(ipfsHash, (err, files) => {
+            const buf = files[0].content;
+            const abi = JSON.parse(buf.toString());
+            // TODO move extraction from entries to other ABIs object,
+            // entries should be internal, now public for supporting frontend
+            let fields = abi.filter(x => x.name === 'entries')[0].outputs;
 
-        fields = fields.filter(x => x.name !== 'metainformation' && x.name !== 'owner' && x.name !== 'lastUpdateTime');
-        resolve({
-            ipfsHash,
-            abi,
-            fields,
+            fields = fields.filter(x => x.name !== 'metainformation' && x.name !== 'owner' && x.name !== 'lastUpdateTime');
+            resolve({
+                ipfsHash,
+                abi,
+                fields,
+            });
         });
     });
 });
@@ -326,16 +332,19 @@ export {
 };
 
 export const saveInIPFS = jsonStr => new Promise((resolve, reject) => {
-    const buffer = Buffer.from(jsonStr);
+    getIpfsConfig().then(config => {
+        const ipfs = new IPFS(config);
+        const buffer = Buffer.from(jsonStr);
 
-    ipfs.add(buffer, (err, ipfsHash) => {
-        if (err) {
-            reject(err);
-        } else {
-            const hash = ipfsHash[0].path;
+        ipfs.add(buffer, (err, ipfsHash) => {
+            if (err) {
+                reject(err);
+            } else {
+                const hash = ipfsHash[0].path;
 
-            resolve(hash);
-        }
+                resolve(hash);
+            }
+        });
     });
 });
 
@@ -358,9 +367,7 @@ export const deploySchema = (name, fields, databaseContract) => {
                     _ipfsHash = ipfsHash;
                     return getWeb3;
                 })
-                .then(({ web3 }) => {
-                    return callContractMethod(databaseContract, 'initializeDatabase', _ipfsHash, _bytecode);
-                })
+                .then(({ web3 }) => callContractMethod(databaseContract, 'initializeDatabase', _ipfsHash, _bytecode))
                 .then((data) => {
                     console.log(`Schema created for ${name}. Data: ${data}`);
                     resolve(data);
@@ -435,7 +442,7 @@ export const getDatabaseContract = (address) => {
     }
 
     return getWeb3
-        .then(({web3}) => web3.eth.contract(DatabaseV1.abi).at(address));
+        .then(({ web3 }) => web3.eth.contract(DatabaseV1.abi).at(address));
 };
 
 export const getDatabaseData = (databaseContract, fields, abi) => new Promise((resolve) => {
@@ -489,18 +496,16 @@ export const fundEntry = (address, id, value) => new Promise((resolve) => {
     });
 });
 
-export const eventPromise = (event) => {
-    return new Promise((resolve, reject) => {
-        event.watch((error, results) => {
-            event.stopWatching(() => {});
-            if (error) {
-                reject(error);
-            } else {
-                resolve(results);
-            }
-        });
+export const eventPromise = event => new Promise((resolve, reject) => {
+    event.watch((error, results) => {
+        event.stopWatching(() => {});
+        if (error) {
+            reject(error);
+        } else {
+            resolve(results);
+        }
     });
-};
+});
 
 export const getSafeBalance = address => new Promise((resolve) => {
     const databaseContract = _web3.eth.contract(DatabaseV1.abi).at(address);
