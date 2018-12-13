@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import { checkNetwork, getNetworkStr } from '../../utils/cyber';
+import {checkNetwork, getNetworkStr} from '../../utils/cyber';
+
+import './App.scss';
 
 class App extends Component {
     constructor(props) {
@@ -14,7 +16,7 @@ class App extends Component {
     }
 
     componentDidMount() {
-        checkNetwork().then(({ isCorrectNetwork, networkId, contractNetworks }) => {
+        checkNetwork().then(({isCorrectNetwork, networkId, contractNetworks}) => {
             this.setState({
                 isCorrectNetwork,
                 networkId,
@@ -24,24 +26,19 @@ class App extends Component {
     }
 
     render() {
-        const { isCorrectNetwork, networkId, contractNetworks } = this.state;
+        const {isCorrectNetwork, networkId, contractNetworks} = this.state;
 
         if (!isCorrectNetwork) {
             return (
-                <div>
-                    <div>Change network.</div>
-                    <div>
-                        <span>Current networkId:</span>
-                        {getNetworkStr(networkId)}
-                    </div>
-                    <div>
-                        <span>Contract networks:</span>
+                <div className='incorrectNetwork'>
+                    <img src={require('./error.svg')}/>
+                    <h2>Please change network.</h2>
+                    <p>Current networkId: <span>{getNetworkStr(networkId)}</span></p>
+                    <p>Contract networks:
                         <span>
-                            {' '}
                             {contractNetworks.map(netId => getNetworkStr(netId)).join(', ')}
-                            {' '}
                         </span>
-                    </div>
+                    </p>
                 </div>
             );
         }
