@@ -2,12 +2,6 @@ import * as React from 'react';
 
 const styles = require("./newDatabase.less");
 
-export const FieldsTable = ({ children }) => (
-  <table className={styles.fieldsTable}>
-    {children}
-  </table>
-);
-
 export const Panel = ({ children, title, noPadding }) => (
   <div className={styles.panel}>
     {title && <h3 className={styles.panelTitle}>{title}</h3>}

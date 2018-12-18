@@ -202,46 +202,40 @@ class NewDatabase extends Component {
     addBeneficiary = () => {
         const address = this.benAddress.value;
         const stake = this.benStake.value;
-        let { beneficiaries } = this.state;
+        const { beneficiaries } = this.state;
 
         if (!address || !stake) {
             return;
         }
 
-        beneficiaries.push({
-            address,
-            stake,
-            share: 0,
-        });
-
-        beneficiaries = this.calculateShare(beneficiaries);
-
         this.benAddress.value = '';
         this.benStake.value = '';
 
         this.setState({
-            beneficiaries,
+            beneficiaries: beneficiaries.concat([{
+                address,
+                stake,
+                share: 0,
+            }]),
         });
     };
 
     removeBeneficiary = (address) => {
-        let { beneficiaries } = this.state;
-
-        beneficiaries = beneficiaries.filter(ben => ben.address !== address);
+        const { beneficiaries } = this.state;
 
         this.setState({
-            beneficiaries: this.calculateShare(beneficiaries),
+            beneficiaries: beneficiaries.filter(ben => ben.address !== address),
         });
     };
 
     render() {
         const {
             dbName, dbSymbol, dbVersion, dbBuilders, dbDescription,
-            isNameExist, isSymbolExist,
-            beneficiaries, databaseId,
+            isNameExist, isSymbolExist, databaseId, beneficiaries,
             message, inProgress, type,
         } = this.state;
 
+        const bens = this.calculateShare(beneficiaries);
         const benCount = beneficiaries.length;
         const canCreate = dbName.length > 0 && dbSymbol.length > 0 && dbVersion.length > 0
             && !isNameExist && !isSymbolExist
@@ -298,7 +292,7 @@ class NewDatabase extends Component {
                             <FieldsTable>
                                 <tbody>
                                     {
-                                        beneficiaries.map(ben => (
+                                        bens.map(ben => (
                                             <tr key={ ben.address }>
                                                 <td style={{
                                                     textAlign: 'center',
