@@ -13,6 +13,10 @@ import {
     FundContainer,
     BoxTitle,
     StatusBar,
+    DbHeader, DbHeaderLeft, DbHeaderRight, DbHeaderLine, DbHeaderName,
+    DbMenu,
+    MenuPopup, MenuPopupItem, MenuSeparator, MenuPopupDeleteIcon, MenuPopupEditIcon,
+    Popup, PopupContent, PopupFooter, PopupTitle,
 } from '@cybercongress/ui';
 
 import * as cyber from '../../utils/cyber';
@@ -58,6 +62,8 @@ class Database extends Component {
         entryCoreContract: null,
         ipfsHash: null,
         isSchemaExist: false,
+
+        claimFundOpen: false,
     };
 
     componentDidMount() {
@@ -115,13 +121,12 @@ class Database extends Component {
                 const totalFeePromise = cyber.callWeb3EthMethod(_web3, 'getBalance', _databaseAddress);
                 const ownerPromise = cyber.callContractMethod(_databaseContract, 'getAdmin');
                 const descriptionPromise = cyber.callContractMethod(_databaseContract, 'getDatabaseDescription');
-                const symbolPromise = cyber.callContractMethod(_databaseContract, 'symbol');
                 const entryCreationFeePromise = cyber.callContractMethod(_databaseContract, 'getEntryCreationFee');
 
                 return Promise
-                    .all([fundedPromise, totalFeePromise, ownerPromise, descriptionPromise, symbolPromise, entryCreationFeePromise]);
+                    .all([fundedPromise, totalFeePromise, ownerPromise, descriptionPromise, entryCreationFeePromise]);
             })
-            .then(([funded, totalFee, owner, description, symbol, entryCreationFee]) => {
+            .then(([funded, totalFee, owner, description, entryCreationFee]) => {
 
                 const _funded = _web3.fromWei(_web3.toDecimal(funded[0].toNumber()));
                 const _entryCreationFee = _web3.fromWei(entryCreationFee, 'ether').toNumber();
@@ -145,7 +150,6 @@ class Database extends Component {
                         isOwner: _userAccount === owner,
                         owner,
                         description,
-                        symbol,
                         databaseSymbol,
                         entryCreationFee: _entryCreationFee,
                         isDbPaused: _isDbPaused,
@@ -470,6 +474,7 @@ class Database extends Component {
 
         cyber.getChaingearContract().then(({ contract, web3 }) => {
             contract.claimDatabaseFunds(databaseId, web3.toWei(amount, 'ether'), (e, data) => {
+                this.closePopups();
                 this.componentDidMount();
             });
         });
@@ -534,6 +539,36 @@ class Database extends Component {
         });
     };
 
+    onTransferOwnership = () => {
+        console.log('TRANSFER DB');
+    };
+
+    onFundRegistry = () => {
+        console.log('onFundRegistry');
+    };
+
+    onClaimFunds = () => {
+        this.setState({
+            claimFundOpen: true,
+        });
+
+        console.log('onClaimFunds');
+    };
+
+    onClaimFee = () => {
+        console.log('onClaimFee');
+    };
+
+    onDeleteDb = () => {
+        console.log('onDeleteDb');
+    };
+
+    closePopups = () => {
+        this.setState({
+            claimFundOpen: false,
+        })
+    };
+
     render() {
         const {
             fields, items, loading, isOwner, userAccount, isSchemaExist, databaseSymbol,
@@ -568,12 +603,12 @@ class Database extends Component {
             totalFee,
             funded,
             tag,
-            symbol,
             owner,
             contractVersion,
             databaseAddress,
             entryCoreAddress,
             ipfsHash,
+            claimFundOpen,
         } = this.state;
 
         return (
@@ -582,6 +617,19 @@ class Database extends Component {
                     open={ loading }
                     message='loading...'
                 />
+
+                <Popup open={claimFundOpen}>
+                    <PopupTitle>Im title</PopupTitle>
+                    <PopupContent>
+                        Available to claim: {funded}
+                        <input ref={node => this.claimDbInput = node} />
+                    </PopupContent>
+                    <PopupFooter>
+                        <Button onClick={this.closePopups}>Cancel</Button>
+                        <Button onClick={() => this.claimDatabase(this.claimDbInput.value)}>Confirm</Button>
+                    </PopupFooter>
+                </Popup>
+
                 <MainContainer>
                     <Section>
                         <div style={ { marginLeft: '15px' } }>
@@ -590,6 +638,63 @@ class Database extends Component {
                                 <ActionLink style={{marginLeft: 15}} to={`/schema/${databaseSymbol}`}>Define schema</ActionLink>
                             }
                         </div>
+                    </Section>
+                    <Section>
+                        <DbHeader>
+                            <DbHeaderLine>
+                                <DbHeaderLeft>
+                                    <DbHeaderName>{name}</DbHeaderName>
+                                </DbHeaderLeft>
+                                <DbHeaderRight>
+                                    <DbMenu>
+                                        <MenuPopup>
+                                            <MenuPopupItem
+                                              icon={<MenuPopupEditIcon />}
+                                              onClick={this.onTransferOwnership}
+                                            >
+                                                Transfer ownership
+                                            </MenuPopupItem>
+                                            <MenuSeparator />
+                                            <MenuPopupItem
+                                                icon={<MenuPopupEditIcon />}
+                                                onClick={this.onFundRegistry}
+                                            >
+                                                Fund registry
+                                            </MenuPopupItem>
+                                            <MenuPopupItem
+                                                icon={<MenuPopupEditIcon />}
+                                                onClick={this.onClaimFunds}
+                                            >
+                                                Claim Funds
+                                            </MenuPopupItem>
+                                            <MenuPopupItem
+                                               icon={<MenuPopupEditIcon />}
+                                               onClick={this.onClaimFee}
+                                            >
+                                                Claim Fees
+                                            </MenuPopupItem>
+                                            <MenuSeparator />
+                                            <MenuPopupItem
+                                               icon={<MenuPopupDeleteIcon />}
+                                               onClick={this.onDeleteDb}
+                                            >
+                                                Delete registry
+                                            </MenuPopupItem>
+                                        </MenuPopup>
+                                    </DbMenu>
+                                </DbHeaderRight>
+                            </DbHeaderLine>
+
+                            <DbHeaderLine>
+                                <DbHeaderLeft>
+                                    symbol: { databaseSymbol }
+                                </DbHeaderLeft>
+
+                                <DbHeaderRight>
+                                    status: { isDbPaused ? 'paused' : 'operational' }
+                                </DbHeaderRight>
+                            </DbHeaderLine>
+                        </DbHeader>
                     </Section>
                     <Section title='General'>
                         <SectionContent style={ { width: '25%' } }>
@@ -661,8 +766,56 @@ class Database extends Component {
 
                     </Section>
 
-                    <Section title='Overview'>
-                        <SectionContent grow={ 0 } style={ { width: '25%' } }>
+                    <Section>
+
+                        <SectionContent title='Overview' grow={ 3 }>
+                            <FormField
+                                label='Description'
+                                value={ description }
+                                onUpdate={ isOwner && !isDbPaused && this.changeDescription }
+                            />
+                            <FormField
+                                label='Tags'
+                                value={ tag }
+                            />
+                            <FormField
+                                label='Record Fee'
+                                value={ entryCreationFee.toString() }
+                                valueType='ETH'
+                                onUpdate={ isOwner && isDbPaused && this.changeEntryCreationFee }
+                            />
+                            <FormField
+                                label='Permissions'
+                                value={ 'todo: perms' }
+                            />
+                            <FormField
+                                label='Entries'
+                                value={ rows.length }
+                            />
+                            <FormField
+                                label='Version'
+                                value={ contractVersion }
+                            />
+                            <FormField
+                                label='Database address'
+                                value={ databaseAddress }
+                            />
+                            <FormField
+                                label='Schema address'
+                                value={ entryCoreAddress }
+                            />
+                            <FormField
+                                label='Abi link'
+                                value={ (
+                                    <a href={ `${ipfsGateway}/ipfs/${ipfsHash}` } target='_blank'>
+                                        {ipfsHash}
+                                    </a>
+                                ) }
+                            />
+                        </SectionContent>
+
+                        <SectionContent title='Beneficiaries' grow={ 0 } style={ { width: '25%' } }>
+                            Bens
                             <Centred>
                                 <div>
                                     <TransferForm
@@ -674,75 +827,24 @@ class Database extends Component {
                                 </div>
                                 <div style={{marginBottom: 20}}>
                                     {!isDbPaused &&
-                                        <ValueInput
-                                            onInter={this.fundDatabase}
-                                            buttonLable='fund database'
-                                            width='100%'
-                                        />
+                                    <ValueInput
+                                        onInter={this.fundDatabase}
+                                        buttonLable='fund database'
+                                        width='100%'
+                                    />
                                     }
                                 </div>
                                 <div>
                                     {!isDbPaused && isOwner &&
-                                        <Button onClick={this.pauseDb}>Pause database</Button>
+                                    <Button onClick={this.pauseDb}>Pause database</Button>
                                     }
                                     {isDbPaused && isOwner &&
-                                        <Button onClick={this.unpauseDb}>Unpause database</Button>
+                                    <Button onClick={this.unpauseDb}>Unpause database</Button>
                                     }
                                 </div>
                             </Centred>
                         </SectionContent>
 
-                        <SectionContent grow={ 3 }>
-                            <FormField
-                                label='Name'
-                                value={ name }
-                            />
-                            <FormField
-                                label='Symbol'
-                                value={ symbol }
-                            />
-                            <FormField
-                                label='Fee'
-                                value={ entryCreationFee.toString() }
-                                valueType='ETH'
-                                onUpdate={ isOwner && isDbPaused && this.changeEntryCreationFee }
-                            />
-                            <FormField
-                                label='Description'
-                                value={ description }
-                                onUpdate={ isOwner && !isDbPaused && this.changeDescription }
-                            />
-                            <FormField
-                                label='Tags'
-                                value={ tag }
-                            />
-                            <FormField
-                                label='Entries'
-                                value={ rows.length }
-                            />
-                            <FormField
-                                label='Database Type'
-                                value={ contractVersion }
-                            />
-                            <FormField
-                                label='Database address'
-                                value={ databaseAddress }
-                            />
-                            <FormField
-                                label='Entry Core address'
-                                value={ entryCoreAddress }
-                            />
-                            <FormField
-                                label='LINK TO ABI'
-                                value={ (
-                                  <a
-                                      href={ `${ipfsGateway}/ipfs/${ipfsHash}` }
-                                      target='_blank'
-                                    >{ipfsHash}
-                                    </a>
-                                ) }
-                            />
-                        </SectionContent>
                     </Section>
 
 
