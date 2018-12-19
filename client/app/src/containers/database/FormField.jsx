@@ -24,10 +24,15 @@ class FormField extends Component {
     }
 
     save = () => {
-        const { onUpdate } = this.props;
+        const { onUpdate, children } = this.props;
 
         this.setState({ edit: false });
-        onUpdate(this.refs.input.value);
+
+        if (children) {
+            onUpdate();
+        } else {
+            onUpdate(this.refs.input.value);
+        }
     }
 
     cancel = () => {
@@ -36,7 +41,7 @@ class FormField extends Component {
 
     render() {
         const {
-            label, value, valueType, onUpdate,
+            label, value, valueType, onUpdate, children,
         } = this.props;
         const { edit } = this.state;
 
@@ -52,7 +57,15 @@ class FormField extends Component {
                             <span style={ { marginLeft: 5 } }>{valueType}</span>
                         </span>
                     ) : (
-                        <input ref='input' defaultValue={ value } />
+                        <span>
+                        {children ? (
+                            <span>
+                                {children}
+                            </span>
+                        ) : (
+                            <input ref='input' defaultValue={ value } />
+                        )}
+                        </span>
                     )}
                 </FormValue>
                 {onUpdate && (

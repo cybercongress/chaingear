@@ -4,8 +4,8 @@ import {
     ActionLink,
     LinkHash,
     MainContainer,
-    AddItemButton,
-    AddItemButtonText,
+    // AddItemButton,
+    // AddItemButtonText,
     Section,
     SectionContent,
     Centred,
@@ -28,6 +28,29 @@ import FormField from './FormField';
 import DatabaseV1 from '../../../../../build/contracts/DatabaseV1.json';
 
 const moment = require('moment');
+
+const Permission = {
+    OnlyAdmin: 0,
+    Whitelist: 1,
+    AllUsers: 2,
+};
+
+const CreateEntryPermissionGroup = {
+    [Permission.OnlyAdmin]: {
+        key: 'OnlyAdmin',
+        label: 'ONLY OWNER',
+    },
+    // 1: {
+    //     key: 'Whitelist',
+    //     label: 'Whitelist',
+    // },
+    [Permission.AllUsers]: {
+        key: 'AllUsers',
+        label: 'All Users',
+    },
+};
+
+let _databaseContract = null;
 
 class Database extends Component {
     state = {
@@ -64,6 +87,8 @@ class Database extends Component {
         isSchemaExist: false,
 
         claimFundOpen: false,
+
+        permissionGroup: 0,
     };
 
     componentDidMount() {
@@ -77,7 +102,6 @@ class Database extends Component {
         let _databases = null;
         let _userAccount = null;
         let _web3 = null;
-        let _databaseContract = null;
         let _database = null;
         let _databaseId = null;
         let _chaingearContract = null;
@@ -87,6 +111,7 @@ class Database extends Component {
         let _entryCoreContract = null;
         let _isDbPaused = null;
         let _ipfsGateway = null;
+        let _permissionGroup = 0;
 
         let _newState = {};
         cyber.init()
@@ -115,6 +140,10 @@ class Database extends Component {
             .then(() => cyber.callContractMethod(_databaseContract, 'paused'))
             .then((isDbPaused) => {
                 _isDbPaused = isDbPaused;
+            })
+            .then(() => cyber.callContractMethod(_databaseContract, 'getRegistryPermissions'))
+            .then((permissionGroup) => {
+                _permissionGroup = permissionGroup.toNumber();
             })
             .then(() => {
                 const fundedPromise = cyber.callContractMethod(_chaingearContract, 'getDatabaseBalance', _databaseId);
@@ -154,6 +183,7 @@ class Database extends Component {
                         entryCreationFee: _entryCreationFee,
                         isDbPaused: _isDbPaused,
                         ipfsGateway: _ipfsGateway,
+                        permissionGroup: _permissionGroup,
                     },
                 };
             })
@@ -569,10 +599,23 @@ class Database extends Component {
         })
     };
 
+
+    onUpdatePermissionGroup = () => {
+        const newPermissionGroup = this.permissionGroup.value;
+
+        cyber.sendTransactionMethod(_databaseContract.updateCreateEntryPermissionGroup, newPermissionGroup)
+            .then((hash) => {
+                // TDOO: add event
+                this.setState({
+                    permissionGroup: +newPermissionGroup,
+                });
+            });
+    }
+
     render() {
         const {
             fields, items, loading, isOwner, userAccount, isSchemaExist, databaseSymbol,
-            duplicateFieldFound, duplicateFieldId, isDbPaused, ipfsGateway,
+            duplicateFieldFound, duplicateFieldId, isDbPaused, ipfsGateway, permissionGroup,
         } = this.state;
 
 
@@ -610,6 +653,10 @@ class Database extends Component {
             ipfsHash,
             claimFundOpen,
         } = this.state;
+
+        const permissionGroupStr = CreateEntryPermissionGroup[permissionGroup].label;
+
+        const showAddButton = (isOwner || permissionGroup === Permission.AllUsers ) && !isDbPaused && isSchemaExist;
 
         return (
             <div>
@@ -785,9 +832,23 @@ class Database extends Component {
                                 onUpdate={ isOwner && isDbPaused && this.changeEntryCreationFee }
                             />
                             <FormField
-                                label='Permissions'
-                                value={ 'todo: perms' }
-                            />
+                              label='Permissions'
+                              value={ permissionGroupStr }
+                              onUpdate={ isOwner && this.onUpdatePermissionGroup }
+                            >
+                                <select
+                                  ref={ (node) => { this.permissionGroup = node; } }
+                                  defaultValue={ permissionGroup }
+                                >
+                                    {Object.keys(CreateEntryPermissionGroup).map((n) => {
+                                        const { label } = CreateEntryPermissionGroup[n];
+
+                                        return (
+                                            <option value={ n } key={ n }>{label}</option>
+                                        );
+                                    })}
+                                </select>
+                            </FormField>
                             <FormField
                                 label='Entries'
                                 value={ rows.length }
@@ -847,13 +908,23 @@ class Database extends Component {
 
                     </Section>
 
+                    <DbHeader>
+                        <DbHeaderLine>
+                            <DbHeaderLeft>
+                                RECORDS
+                            </DbHeaderLeft>
 
+                            <DbHeaderRight>
+                                { showAddButton && <Button onClick={this.add}>Add new record</Button>}
+                            </DbHeaderRight>
+                        </DbHeaderLine>
+                    </DbHeader>
                     <DatabaseList>
                         {rows}
                     </DatabaseList>
 
                 </MainContainer>
-                {isOwner && !isDbPaused && isSchemaExist && (
+                {/*isOwner && !isDbPaused && isSchemaExist && (
                     <AddItemButton onClick={ this.add }>
                         <AddItemButtonText>Add Record</AddItemButtonText>
                         <span>
@@ -863,7 +934,7 @@ class Database extends Component {
                             ETH
                         </span>
                     </AddItemButton>
-                )}
+                )*/}
             </div>
         );
     }
