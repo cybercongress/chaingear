@@ -10,24 +10,24 @@ import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 * @notice not audited, not recommend to use in mainnet
 */
 contract DatabasePermissionControl is Ownable {
-    
+
     /*
     *  Storage
     */
-    
+
     enum CreateEntryPermissionGroup {OnlyAdmin, Whitelist, AllUsers}
-    
+
     address private admin;
     bool public paused = false;
 
     mapping(address => bool) private whitelist;
-    
+
     CreateEntryPermissionGroup private permissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
-    
+
     /*
     *  Modifiers
     */
-    
+
     modifier whenNotPaused() {
         require(!paused);
         _;
@@ -37,26 +37,27 @@ contract DatabasePermissionControl is Ownable {
         require(paused);
         _;
     }
-    
+
     /*
     *  Events
     */
 
     event Pause();
     event Unpause();
-    
+    event PermissionGroupChanged(CreateEntryPermissionGroup id);
+
     /*
     *  Constructor
     */
-    
+
     constructor()
         public
     { }
-    
+
     /*
     *  Modifiers
     */
-    
+
     modifier onlyAdmin() {
         require(msg.sender == admin);
         _;
@@ -70,12 +71,12 @@ contract DatabasePermissionControl is Ownable {
         }
         _;
     }
-    
+
     /*
     *  External functions
     */
-    
-    function pause() 
+
+    function pause()
         external
         onlyAdmin
         whenNotPaused
@@ -84,7 +85,7 @@ contract DatabasePermissionControl is Ownable {
         emit Pause();
     }
 
-    function unpause() 
+    function unpause()
         external
         onlyAdmin
         whenPaused
@@ -92,7 +93,7 @@ contract DatabasePermissionControl is Ownable {
         paused = false;
         emit Unpause();
     }
-    
+
     function transferAdminRights(address _newAdmin)
         external
         onlyOwner
@@ -107,16 +108,17 @@ contract DatabasePermissionControl is Ownable {
     )
         external
         onlyAdmin
-        whenNotPaused
+        whenPaused
     {
         require(CreateEntryPermissionGroup.AllUsers >= _newPermissionGroup);
         permissionGroup = _newPermissionGroup;
+        emit PermissionGroupChanged(_newPermissionGroup);
     }
-    
+
     function addToWhitelist(address _address)
         external
         onlyAdmin
-        whenNotPaused
+        whenPaused
     {
         whitelist[_address] = true;
     }
@@ -124,11 +126,11 @@ contract DatabasePermissionControl is Ownable {
     function removeFromWhitelist(address _address)
         external
         onlyAdmin
-        whenNotPaused
+        whenPaused
     {
         whitelist[_address] = false;
     }
-    
+
     function getAdmin()
         external
         view
@@ -136,7 +138,7 @@ contract DatabasePermissionControl is Ownable {
     {
         return admin;
     }
-    
+
     function getRegistryPermissions()
         external
         view
@@ -144,7 +146,7 @@ contract DatabasePermissionControl is Ownable {
     {
         return permissionGroup;
     }
-    
+
     function checkWhitelisting(address _address)
         external
         view

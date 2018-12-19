@@ -522,3 +522,32 @@ export const updateEntryCreationFee = (address, newfee) => new Promise((resolve,
         if (e) { reject(e); } else { resolve(data); }
     });
 });
+
+export const getBeneficiaries = dbContract => {
+
+    return callContractMethod(dbContract, 'getPayeesCount')
+        .then(bensCount => [...Array(bensCount.toNumber()).keys()])
+        .then(benIndexArray => benIndexArray.map((benIndex) => {
+
+            const ben = {};
+
+            return callContractMethod(dbContract, 'payees', benIndex)
+                .then((benAddress) => {
+                    ben.address = benAddress;
+                })
+                .then(() => callContractMethod(dbContract, 'shares', ben.address))
+                .then((benShare) => {
+                    ben.share = benShare.toNumber();
+                })
+                .then(() => callContractMethod(dbContract, 'released', ben.address))
+                .then((benReleased) => {
+                    ben.released = benReleased.toNumber();
+                })
+                .then(() => ben)
+                .catch((error) => {
+                    console.log(`Cannot get beneficiary for DB. Error: ${error}`);
+                });
+
+        }))
+        .then(benPromisses => Promise.all(benPromisses));
+};

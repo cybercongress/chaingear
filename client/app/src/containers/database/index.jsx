@@ -17,6 +17,7 @@ import {
     DbMenu,
     MenuPopup, MenuPopupItem, MenuSeparator, MenuPopupDeleteIcon, MenuPopupEditIcon,
     Popup, PopupContent, PopupFooter, PopupTitle,
+    BenContainer, BenPieChart, BenList, Ben,
 } from '@cybercongress/ui';
 
 import * as cyber from '../../utils/cyber';
@@ -38,6 +39,7 @@ class Database extends Component {
         totalFee: 0,
         funded: '',
 
+        beneficiaries: [],
         databaseContract: null,
         web3: null,
         ipfsGateway: null,
@@ -87,6 +89,7 @@ class Database extends Component {
         let _entryCoreContract = null;
         let _isDbPaused = null;
         let _ipfsGateway = null;
+        let _beneficiaries = null;
 
         let _newState = {};
         cyber.init()
@@ -111,6 +114,10 @@ class Database extends Component {
                 _database = cyber.mapDatabase(database);
                 _databaseAddress = _database.address;
                 _databaseContract = _web3.eth.contract(DatabaseV1.abi).at(_databaseAddress);
+            })
+            .then(() => cyber.getBeneficiaries(_databaseContract))
+            .then((beneficiaries) => {
+                _beneficiaries = beneficiaries;
             })
             .then(() => cyber.callContractMethod(_databaseContract, 'paused'))
             .then((isDbPaused) => {
@@ -154,6 +161,7 @@ class Database extends Component {
                         entryCreationFee: _entryCreationFee,
                         isDbPaused: _isDbPaused,
                         ipfsGateway: _ipfsGateway,
+                        beneficiaries: _beneficiaries,
                     },
                 };
             })
@@ -572,7 +580,7 @@ class Database extends Component {
     render() {
         const {
             fields, items, loading, isOwner, userAccount, isSchemaExist, databaseSymbol,
-            duplicateFieldFound, duplicateFieldId, isDbPaused, ipfsGateway,
+            duplicateFieldFound, duplicateFieldId, isDbPaused, ipfsGateway, beneficiaries,
         } = this.state;
 
 
@@ -815,8 +823,14 @@ class Database extends Component {
                         </SectionContent>
 
                         <SectionContent title='Beneficiaries' grow={ 0 } style={ { width: '25%' } }>
-                            Bens
+
                             <Centred>
+                                <BenContainer>
+                                    <BenPieChart bens={beneficiaries} />
+                                </BenContainer>
+                            </Centred>
+
+{/*                            <Centred>
                                 <div>
                                     <TransferForm
                                         height={ (isOwner && !isDbPaused) ? 'auto' : 140 }
@@ -842,7 +856,7 @@ class Database extends Component {
                                     <Button onClick={this.unpauseDb}>Unpause database</Button>
                                     }
                                 </div>
-                            </Centred>
+                            </Centred>*/}
                         </SectionContent>
 
                     </Section>
