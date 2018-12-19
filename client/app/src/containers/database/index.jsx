@@ -604,8 +604,8 @@ class Database extends Component {
         const newPermissionGroup = this.permissionGroup.value;
 
         cyber.sendTransactionMethod(_databaseContract.updateCreateEntryPermissionGroup, newPermissionGroup)
-            .then((hash) => {
-                // TDOO: add event
+            .then(hash => cyber.eventPromise(_databaseContract.PermissionGroupChanged()))
+            .then(() => {
                 this.setState({
                     permissionGroup: +newPermissionGroup,
                 });
@@ -834,7 +834,7 @@ class Database extends Component {
                             <FormField
                               label='Permissions'
                               value={ permissionGroupStr }
-                              onUpdate={ isOwner && this.onUpdatePermissionGroup }
+                              onUpdate={ (isOwner && isDbPaused) && this.onUpdatePermissionGroup }
                             >
                                 <select
                                   ref={ (node) => { this.permissionGroup = node; } }
