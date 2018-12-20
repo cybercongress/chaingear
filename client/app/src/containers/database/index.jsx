@@ -27,6 +27,7 @@ import ValueInput from '../../components/ValueInput';
 import FormField from './FormField';
 
 import DatabaseV1 from '../../../../../build/contracts/DatabaseV1.json';
+import {calculateBensShares} from '../../utils/utils';
 
 const moment = require('moment');
 
@@ -887,7 +888,10 @@ class Database extends Component {
 
                             <Centred>
                                 <BenContainer>
-                                    <BenPieChart bens={beneficiaries} />
+                                    <BenPieChart
+                                        bens={beneficiaries}
+                                        calculateBensShares={calculateBensShares}
+                                    />
                                 </BenContainer>
                             </Centred>
 

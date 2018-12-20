@@ -1,27 +1,3 @@
-/*
-export const debounce = (func, wait, immediate) => {
-    let timeout;
-
-    return () => {
-        const context = this;
-        const args = arguments;
-        const later = () => {
-            timeout = null;
-            if (!immediate) {
-                func.apply(context, args);
-            }
-        };
-        const callNow = immediate && !timeout;
-
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) {
-            func.apply(context, args);
-        }
-    };
-};
-*/
-
 function debounce(func, wait, immediate) {
     var timeout;
     return function() {
@@ -37,4 +13,17 @@ function debounce(func, wait, immediate) {
     };
 };
 
-export { debounce };
+const calculateBensShares = (beneficiaries, fixed = 0) => {
+    let allStake = 0;
+
+    beneficiaries.forEach((ben) => {
+        allStake += +ben.stake;
+    });
+
+    return beneficiaries.map(ben => ({
+        ...ben,
+        share: (ben.stake / allStake * 100).toFixed(fixed),
+    }));
+};
+
+export { debounce, calculateBensShares };

@@ -29,7 +29,7 @@ import {
 
 import DatabaseSource from '../../resources/DatabaseV1.sol';
 import Code from '../../components/SolidityHighlight';
-import { debounce } from '../../utils/utils';
+import { calculateBensShares, debounce } from '../../utils/utils';
 
 class NewDatabase extends Component {
     constructor(props) {
@@ -186,19 +186,6 @@ class NewDatabase extends Component {
         }
     };
 
-    calculateShare = (beneficiaries) => {
-        let allStake = 0;
-
-        beneficiaries.forEach((ben) => {
-            allStake += +ben.stake;
-        });
-
-        return beneficiaries.map(ben => ({
-            ...ben,
-            share: (ben.stake / allStake * 100).toFixed(0),
-        }));
-    };
-
     addBeneficiary = () => {
         const address = this.benAddress.value;
         const stake = this.benStake.value;
@@ -235,7 +222,7 @@ class NewDatabase extends Component {
             message, inProgress, type,
         } = this.state;
 
-        const bens = this.calculateShare(beneficiaries);
+        const bens = calculateBensShares(beneficiaries);
         const benCount = beneficiaries.length;
         const canCreate = dbName.length > 0 && dbSymbol.length > 0 && dbVersion.length > 0
             && !isNameExist && !isSymbolExist

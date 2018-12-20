@@ -536,8 +536,8 @@ export const getBeneficiaries = dbContract => {
                     ben.address = benAddress;
                 })
                 .then(() => callContractMethod(dbContract, 'shares', ben.address))
-                .then((benShare) => {
-                    ben.share = benShare.toNumber();
+                .then((benStake) => {
+                    ben.stake = benStake.toNumber();
                 })
                 .then(() => callContractMethod(dbContract, 'released', ben.address))
                 .then((benReleased) => {
