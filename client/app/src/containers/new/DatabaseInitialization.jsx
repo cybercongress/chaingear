@@ -376,11 +376,20 @@ class NewDatabase extends Component {
                                         </TableItem>
                                     </TableRow>
                                 ))}
-                                <TableAddRow>
-                                    <input/>
-                                    <input/>
-                                    <AddButton/>
-                                </TableAddRow>
+                                <TableRow>
+                                    <TableItem>
+                                        <WideInput inputRef={ node => this.benAddress = node } placeholder='Address' />
+                                    </TableItem>
+                                    <TableItem>
+                                        <WideInput inputRef={ node => this.benStake = node } onChange={this.onStakeChange} placeholder='Stake' />
+                                    </TableItem>
+                                    <TableItem>
+                                        <span ref='benShare' placeholder='Share'>0</span> <span>%</span>
+                                    </TableItem>
+                                    <TableItem>
+                                        <AddButton onClick={ this.addBeneficiary }/>
+                                    </TableItem>
+                                </TableRow>
                             </Table>
                            {/* <FieldsTable>
                                 <tbody>
