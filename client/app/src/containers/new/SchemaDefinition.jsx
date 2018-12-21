@@ -14,7 +14,8 @@ import {
     ActionLink,
     RightContainer,
     WideSelect,
-    Code,
+    Code, DarkPanel,
+    CircleLable, ProgressBar,
 } from '@cybercongress/ui';
 
 import {
@@ -135,6 +136,13 @@ class SchemaDefinition extends Component {
                 />
 
                 <PageTitle>Database schema definition</PageTitle>
+
+                <ProgressBar>
+                    <CircleLable type='complete' number='1' text='Database initialization' />
+                    <CircleLable type='edit' number='2' text='Schema definition' />
+                    <CircleLable number='3' text='Contract code saving' />
+                </ProgressBar>
+
                 <ContainerRegister>
                     <SideBar>
                         <Label>Input</Label>
@@ -173,9 +181,11 @@ class SchemaDefinition extends Component {
 
                     <Content>
                         <Label color='#3fb990'>Database code</Label>
-                        <Code>
-                            {code}
-                        </Code>
+                        <DarkPanel>
+                            <Code>
+                                {code}
+                            </Code>
+                        </DarkPanel>
                         {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
                     </Content>
 

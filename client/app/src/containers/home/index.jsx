@@ -7,7 +7,7 @@ import {
     SectionContent,
     Badge, FooterButton,
     Container, Text, ActionLink,
-    Table,
+    HomeTable,
     LinkHash,
 } from '@cybercongress/ui';
 
@@ -118,7 +118,7 @@ My databases
                     ) }
                     >
                         <SectionContent>
-                            <Table>
+                            <HomeTable>
                                 <thead>
                                     <tr>
                                         <th>NAME</th>
@@ -132,7 +132,7 @@ My databases
                                 <tbody>
                                     {myRows}
                                 </tbody>
-                            </Table>
+                            </HomeTable>
                             <FooterButton to='/new'>create new database</FooterButton>
                         </SectionContent>
                     </Section>
@@ -154,7 +154,7 @@ My databases
                 ) }
                 >
                     <SectionContent>
-                        <Table>
+                        <HomeTable>
                             <thead>
                                 <tr>
                                     <th>NAME</th>
@@ -168,7 +168,7 @@ My databases
                             <tbody>
                                 {rows}
                             </tbody>
-                        </Table>
+                        </HomeTable>
                     </SectionContent>
                 </Section>
             </div>
