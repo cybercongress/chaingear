@@ -14,6 +14,7 @@ import {
     ActionLink,
     RightContainer,
     WideSelect,
+    Code,
 } from '@cybercongress/ui';
 
 import {
@@ -25,8 +26,6 @@ import {
     mapDatabase,
     eventPromise,
 } from '../../utils/cyber';
-
-import Code from '../../components/SolidityHighlight';
 
 const MAX_FIELD_COUNT = 10;
 

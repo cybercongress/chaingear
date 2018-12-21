@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import {
     Content, ContainerRegister, SideBar,
-    FieldsTable,
     Panel,
     Label,
     CreateButton,
@@ -18,6 +17,11 @@ import {
     Description,
     WideSelect,
     AddButton,
+    DarkPanel,
+    Code,
+    ProgressBar,
+    CircleLable,
+    Table, TableRow, TableItem, TableAddRow,
 } from '@cybercongress/ui';
 
 import {
@@ -28,7 +32,6 @@ import {
 } from '../../utils/cyber';
 
 import DatabaseSource from '../../resources/DatabaseV1.sol';
-import Code from '../../components/SolidityHighlight';
 import { calculateBensShares, debounce } from '../../utils/utils';
 
 class NewDatabase extends Component {
@@ -46,8 +49,10 @@ class NewDatabase extends Component {
             dbSymbol: '',
             dbVersion: '',
 
-            isNameExist: true,
-            isSymbolExist: true,
+            isNameValid: true,
+            isSymbolValid: true,
+            nameErrorMessage: '',
+            symbolErrorMessage: '',
 
             inProgress: false,
             message: '',
@@ -128,28 +133,98 @@ class NewDatabase extends Component {
 
     checkDbName = (dbName) => {
         if (!dbName) {
+            this.setState({
+                dbName,
+                isNameValid: true,
+            });
+
             return;
         }
 
-        getChaingearContract()
+        let _isNameValid = true;
+        let _errorMessage = '';
+
+        this.checkRegexp(dbName)
+            .then((isValid) => {
+                if (!isValid) {
+                    _isNameValid = false;
+                    _errorMessage = 'letters, digits and dash only';
+
+                    throw new Error('invalid string');
+                }
+            })
+            .then(() => getChaingearContract())
             .then(({ contract }) => callContractMethod(contract, 'getNameExist', dbName))
-            .then(isNameExist => this.setState({
-                dbName,
-                isNameExist,
-            }));
+            .then((isNameExist) => {
+                if (isNameExist) {
+                    _isNameValid = false;
+                    _errorMessage = 'Database name already exist';
+                }
+            })
+            .then(() => {
+                this.setState({
+                    dbName,
+                    isNameValid: _isNameValid,
+                    nameErrorMessage: _errorMessage,
+                });
+            })
+            .catch(() => {
+                this.setState({
+                    dbName,
+                    isNameValid: _isNameValid,
+                    nameErrorMessage: _errorMessage,
+                });
+            });
     };
 
     checkDbSymbol = (dbSymbol) => {
         if (!dbSymbol) {
+            this.setState({
+                dbSymbol,
+                isSymbolValid: true,
+            });
+
             return;
         }
 
-        getChaingearContract()
+        let _isSymbolValid = true;
+        let _errorMessage = '';
+
+        this.checkRegexp(dbSymbol)
+            .then((isValid) => {
+                if (!isValid) {
+                    _isSymbolValid = false;
+                    _errorMessage = 'letters, digits and dash only';
+
+                    throw new Error('invalid string');
+                }
+            })
+            .then(() => getChaingearContract())
             .then(({ contract }) => callContractMethod(contract, 'getSymbolExist', dbSymbol))
-            .then(isSymbolExist => this.setState({
-                dbSymbol,
-                isSymbolExist,
-            }));
+            .then((isSymbolExist) => {
+                if (isSymbolExist) {
+                    _isSymbolValid = false;
+                    _errorMessage = 'Symbol already exist';
+                }
+            })
+            .then(() => {
+                this.setState({
+                    dbSymbol,
+                    isSymbolValid: _isSymbolValid,
+                    symbolErrorMessage: _errorMessage,
+                });
+            })
+            .catch(() => {
+                this.setState({
+                    dbSymbol,
+                    isSymbolValid: _isSymbolValid,
+                    symbolErrorMessage: _errorMessage,
+                });
+            });
+    };
+
+    checkRegexp = (string) => {
+        return new Promise(resolve => resolve(/\b[a-zA-Z][a-zA-Z0-9_]*$/.test(string)));
     };
 
     onDbNameChange = (event) => {
@@ -218,14 +293,15 @@ class NewDatabase extends Component {
     render() {
         const {
             dbName, dbSymbol, dbVersion, dbBuilders, dbDescription,
-            isNameExist, isSymbolExist, databaseId, beneficiaries,
+            isNameValid, isSymbolValid, databaseId, beneficiaries,
             message, inProgress, type,
+            nameErrorMessage, symbolErrorMessage,
         } = this.state;
 
         const bens = calculateBensShares(beneficiaries);
         const benCount = beneficiaries.length;
         const canCreate = dbName.length > 0 && dbSymbol.length > 0 && dbVersion.length > 0
-            && !isNameExist && !isSymbolExist
+            && isNameValid && isSymbolValid
             && benCount > 0;
 
         return (
@@ -237,6 +313,13 @@ class NewDatabase extends Component {
                 />
 
                 <PageTitle>New database creation</PageTitle>
+
+                <ProgressBar>
+                    <CircleLable type='edit' number='1' text='Database initialization' />
+                    <CircleLable number='2' text='Schema definition' />
+                    <CircleLable number='3' text='Contract code saving' />
+                </ProgressBar>
+
                 <ContainerRegister>
                     <SideBar>
 
@@ -246,6 +329,8 @@ class NewDatabase extends Component {
                                 <WideInput
                                     placeholder='Name'
                                     onChange={ this.onDbNameChange }
+                                    valid={ isNameValid }
+                                    errorMessage={ nameErrorMessage }
                                 />
                             </ParamRow>
                             <ParamRow>
@@ -253,6 +338,8 @@ class NewDatabase extends Component {
                                     placeholder='Symbol'
                                     onChange={ this.onDbSymbolChange }
                                     inputRef={ node => this.dbSymbol = node }
+                                    valid={ isSymbolValid }
+                                    errorMessage={ symbolErrorMessage }
                                 />
                             </ParamRow>
                             <ParamRow>
@@ -276,7 +363,26 @@ class NewDatabase extends Component {
                         </Panel>
 
                         <Panel title='Beneficiaries (Optional)' noPadding>
-                            <FieldsTable>
+                            <Table>
+                                {bens.map(ben => (
+                                    <TableRow key={ben.address}>
+                                        <TableItem>
+                                            <LinkHash noCopy noPadding value={ben.address} />
+                                        </TableItem>
+                                        <TableItem>{ben.stake}</TableItem>
+                                        <TableItem>{ben.share} %</TableItem>
+                                        <TableItem>
+                                            <RemoveButton onClick={ () => this.removeBeneficiary(ben.address) } />
+                                        </TableItem>
+                                    </TableRow>
+                                ))}
+                                <TableAddRow>
+                                    <input/>
+                                    <input/>
+                                    <AddButton/>
+                                </TableAddRow>
+                            </Table>
+                           {/* <FieldsTable>
                                 <tbody>
                                     {
                                         bens.map(ben => (
@@ -299,7 +405,7 @@ class NewDatabase extends Component {
                                                 }}>{ben.share}{' %'}</td>
                                                 <td>
                                                     <RemoveButton
-                                                      onClick={ () => this.removeBeneficiary(ben.address) }
+                                                       }
                                                     />
                                                 </td>
                                             </tr>
@@ -320,17 +426,17 @@ class NewDatabase extends Component {
                                         </td>
                                     </tr>
                                 </tbody>
-                            </FieldsTable>
+                            </FieldsTable>*/}
                         </Panel>
                     </SideBar>
 
                     <Content>
                         <Label color='#3fb990'>Database code</Label>
-                        <div>
+                        <DarkPanel>
                             <Code>
                                 {DatabaseSource}
                             </Code>
-                        </div>
+                        </DarkPanel>
                         {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
                     </Content>
                 </ContainerRegister>

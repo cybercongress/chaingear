@@ -114,7 +114,7 @@ class DatabaseItem extends Component {
     render() {
         const {
             fields, item, index,
-            clameRecord,
+            claimRecord,
             removeItemClick,
             fundEntryClick,
             userAccount,
@@ -242,7 +242,7 @@ ETH
                             </Amount>
                             {isOwner && (
                                 <ValueInput
-                                    onInter={ value => clameRecord(index, value) }
+                                    onInter={ value => claimRecord(index, value) }
                                     buttonLable='claim funds'
                                     color='second'
                                 />

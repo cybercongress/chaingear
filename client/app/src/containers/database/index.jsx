@@ -4,8 +4,6 @@ import {
     ActionLink,
     LinkHash,
     MainContainer,
-    // AddItemButton,
-    // AddItemButtonText,
     Section,
     SectionContent,
     Centred,
@@ -15,9 +13,9 @@ import {
     StatusBar,
     DbHeader, DbHeaderLeft, DbHeaderRight, DbHeaderLine, DbHeaderName,
     DbMenu,
-    MenuPopup, MenuPopupItem, MenuSeparator, MenuPopupDeleteIcon, MenuPopupEditIcon,
+    MenuPopup, MenuPopupItem, MenuSeparator, MenuPopupDeleteIcon, MenuPopupEditIcon, MenuPopupTransferIcon,
     Popup, PopupContent, PopupFooter, PopupTitle,
-    BenContainer, BenPieChart, BenList, Ben,
+    BenContainer, BenPieChart, MenuPopupResumeIcon, MenuPopupPauseIcon,
 } from '@cybercongress/ui';
 
 import * as cyber from '../../utils/cyber';
@@ -90,6 +88,13 @@ class Database extends Component {
         isSchemaExist: false,
 
         claimFundOpen: false,
+        claimFeeOpen: false,
+        transferOwnershipOpen: false,
+        fundDatabaseOpen: false,
+        pauseDatabaseOpen: false,
+        resumeDatabaseOpen: false,
+        deleteDatabaseOpen: false,
+        editRecordOpen: false,
 
         permissionGroup: 0,
     };
@@ -407,7 +412,6 @@ class Database extends Component {
             .catch(() => this.setLoading(false));
     };
 
-
     validate = (e) => {
         e.preventDefault();
         console.log(e.target.value);
@@ -417,7 +421,7 @@ class Database extends Component {
         this.contract.claim((e, d) => {
             this.setState({ balance: 0 });
         });
-    }
+    };
 
     fundEntryClick = (id, value) => {
         this.setState({ loading: true });
@@ -461,7 +465,7 @@ class Database extends Component {
                 tag,
             });
         });
-    }
+    };
 
     changeEntryCreationFee = (newFee) => {
         const { databaseContract, web3 } = this.state;
@@ -479,11 +483,11 @@ class Database extends Component {
             .catch(() => this.setLoading(false));
     };
 
-    clameRecord = (entryID, amount) => {
+    claimRecord = (entryID, amount) => {
         this.state.databaseContract.claimEntryFunds(entryID, this.state.web3.toWei(amount, 'ether'), (e, data) => {
             this.componentDidMount();
         });
-    }
+    };
 
     setLoading = (value) => {
         this.setState({
@@ -496,6 +500,7 @@ class Database extends Component {
         let _chaingerContract;
 
         this.setLoading(true);
+        this.closePopups();
 
         cyber.getChaingearContract()
             .then(({ contract }) => {
@@ -505,44 +510,51 @@ class Database extends Component {
                 value: web3.toWei(amount, 'ether'),
             }))
             .then(() => cyber.eventPromise(_chaingerContract.DatabaseFunded()))
-            .then(() => this.componentDidMount());
+            .then(() => {
+                this.componentDidMount();
+            });
     };
 
     claimDatabase = (amount) => {
         const { databaseId } = this.state;
 
+        this.closePopups();
+
         cyber.getChaingearContract().then(({ contract, web3 }) => {
             contract.claimDatabaseFunds(databaseId, web3.toWei(amount, 'ether'), (e, data) => {
-                this.closePopups();
                 this.componentDidMount();
             });
         });
-    }
+    };
 
     claimFee = (amount) => {
         this.state.databaseContract.claim((e, data) => {
 
         });
-    }
+    };
 
-    transferDatabase = (userAccount, newOwner) => {
+    transferDatabaseOwnership = (userAccount, newOwner) => {
         const { databaseId } = this.state;
+
+        this.closePopups();
 
         cyber.getChaingearContract().then(({ contract, web3 }) => {
             contract.transferFrom(userAccount, newOwner, databaseId, (e, data) => {
                 this.componentDidMount();
             });
         });
-    }
+    };
 
     transferItem = (userAccount, newOwner, entryID) => {
         this.state.databaseContract.transferFrom(userAccount, newOwner, entryID, (e, data) => {
             this.componentDidMount();
         });
-    }
+    };
 
     pauseDb = () => {
         const { databaseContract } = this.state;
+
+        this.closePopups();
 
         this.setLoading(true);
         cyber.callContractMethod(databaseContract, 'pause')
@@ -559,6 +571,8 @@ class Database extends Component {
     unpauseDb = () => {
         const { databaseContract } = this.state;
 
+        this.closePopups();
+
         this.setLoading(true);
         cyber.callContractMethod(databaseContract, 'unpause')
             .then(data => console.log(`Unpause DB. Data: ${data}`))
@@ -571,6 +585,16 @@ class Database extends Component {
             });
     };
 
+    deleteDb = () => {
+        const { databaseId } = this.state;
+
+        this.closePopups();
+
+        cyber.getChaingearContract()
+            .then(({contract}) => cyber.callContractMethod(contract, 'deleteDatabase', databaseId))
+            .then(data => console.log(`DeleteDB: ${databaseId}. Tx: ${data}`))
+    };
+
     hideEntryError = () => {
         this.setState({
             duplicateFieldFound: false,
@@ -579,35 +603,65 @@ class Database extends Component {
     };
 
     onTransferOwnership = () => {
-        console.log('TRANSFER DB');
+        this.setState({
+            transferOwnershipOpen: true,
+        });
     };
 
-    onFundRegistry = () => {
-        console.log('onFundRegistry');
+    onFundDb = () => {
+        this.setState({
+            fundDatabaseOpen: true,
+        });
     };
 
     onClaimFunds = () => {
         this.setState({
             claimFundOpen: true,
         });
-
-        console.log('onClaimFunds');
     };
 
     onClaimFee = () => {
-        console.log('onClaimFee');
+        this.setState({
+            claimFeeOpen: true,
+        });
     };
 
     onDeleteDb = () => {
-        console.log('onDeleteDb');
+        this.setState({
+            deleteDatabaseOpen: true,
+        });
+    };
+
+    onPauseDb = () => {
+        this.setState({
+            pauseDatabaseOpen: true,
+        });
+    };
+
+    onResumeDb = () => {
+        this.setState({
+            resumeDatabaseOpen: true,
+        });
+    };
+
+    onRecordEdit = () => {
+        this.setState({
+            editRecordOpen: true,
+        });
     };
 
     closePopups = () => {
         this.setState({
             claimFundOpen: false,
-        })
+            claimFeeOpen: false,
+            transferOwnershipOpen: false,
+            fundDatabaseOpen: false,
+            pauseDatabaseOpen: false,
+            resumeDatabaseOpen: false,
+            deleteDatabaseOpen: false,
+            editRecordOpen: false,
+        });
     };
-
 
     onUpdatePermissionGroup = () => {
         const newPermissionGroup = this.permissionGroup.value;
@@ -619,18 +673,121 @@ class Database extends Component {
                     permissionGroup: +newPermissionGroup,
                 });
             });
-    }
+    };
 
     render() {
         const {
             fields, items, loading, isOwner, userAccount, isSchemaExist, databaseSymbol,
             duplicateFieldFound, duplicateFieldId, isDbPaused, ipfsGateway, beneficiaries, permissionGroup,
+            name,
+            description,
+            createdTimestamp,
+            entryCreationFee,
+            admin,
+            totalFee,
+            funded,
+            tag,
+            owner,
+            contractVersion,
+            databaseAddress,
+            entryCoreAddress,
+            ipfsHash,
+            claimFundOpen,
+            claimFeeOpen,
+            transferOwnershipOpen,
+            fundDatabaseOpen,
+            pauseDatabaseOpen,
+            resumeDatabaseOpen,
+            deleteDatabaseOpen,
+            editRecordOpen,
         } = this.state;
 
+        const popups = (
+            <span>
+                <Popup open={claimFundOpen}>
+                    <PopupTitle>Claim database funds</PopupTitle>
+                    <PopupContent>
+                        <div>Available to claim: {funded}</div>
+                        <div>Claim amount: <input ref={node => this.claimDbInput = node} /></div>
+                    </PopupContent>
+                    <PopupFooter>
+                        <Button onClick={this.closePopups}>Cancel</Button>
+                        <Button onClick={() => this.claimDatabase(this.claimDbInput.value)}>Confirm</Button>
+                    </PopupFooter>
+                </Popup>
+
+                <Popup open={transferOwnershipOpen}>
+                    <PopupTitle>Transfer database ownership</PopupTitle>
+                    <PopupContent>
+                        <div>Current owner: <LinkHash value={admin} /></div>
+                        <div>New owner: <input ref={node => this.newDbOwnerInput = node} /></div>
+                    </PopupContent>
+                    <PopupFooter>
+                        <Button onClick={this.closePopups}>Cancel</Button>
+                        <Button onClick={() => this.transferDatabaseOwnership(userAccount, this.newDbOwnerInput.value)}>Confirm</Button>
+                    </PopupFooter>
+                </Popup>
+
+                <Popup open={fundDatabaseOpen}>
+                    <PopupTitle>Fund database</PopupTitle>
+                    <PopupContent>
+                        <div>Amount: <input ref={node => this.fundDbInput = node} /></div>
+                    </PopupContent>
+                    <PopupFooter>
+                        <Button onClick={this.closePopups}>Cancel</Button>
+                        <Button onClick={() => this.fundDatabase(this.fundDbInput.value)}>Confirm</Button>
+                    </PopupFooter>
+                </Popup>
+
+                <Popup open={deleteDatabaseOpen}>
+                    <PopupTitle>Delete database</PopupTitle>
+                    <PopupContent>
+                        <div>Your registry will be unlinked from Chaingear, but you still well be able to operate it</div>
+                    </PopupContent>
+                    <PopupFooter>
+                        <Button onClick={this.closePopups}>Cancel</Button>
+                        <Button onClick={this.deleteDb}>Confirm</Button>
+                    </PopupFooter>
+                </Popup>
+
+                <Popup open={pauseDatabaseOpen}>
+                    <PopupTitle>Pause database</PopupTitle>
+                    <PopupContent>
+                        <div>When registry is on pause there will be no ability to operate with records</div>
+                    </PopupContent>
+                    <PopupFooter>
+                        <Button onClick={this.closePopups}>Cancel</Button>
+                        <Button onClick={this.pauseDb}>Confirm</Button>
+                    </PopupFooter>
+                </Popup>
+
+                <Popup open={resumeDatabaseOpen}>
+                    <PopupTitle>Delete database</PopupTitle>
+                    <PopupContent>
+                        <div>Resume registry to operate with records</div>
+                    </PopupContent>
+                    <PopupFooter>
+                        <Button onClick={this.closePopups}>Cancel</Button>
+                        <Button onClick={this.unpauseDb}>Confirm</Button>
+                    </PopupFooter>
+                </Popup>
+
+                <Popup open={editRecordOpen}>
+                    <PopupTitle>Edit record</PopupTitle>
+                    <PopupContent>
+                        <div>Record</div>
+                    </PopupContent>
+                    <PopupFooter>
+                        <Button onClick={this.closePopups}>Cancel</Button>
+                        <Button>Confirm</Button>
+                    </PopupFooter>
+                </Popup>
+            </span>
+        );
 
         const rows = items.map((item, index) => (
             <DatabaseItem
-                clameRecord={ this.clameRecord }
+                clameRecord={ this.claimRecord }
                 removeItemClick={ this.removeItemClick }
                 fundEntryClick={ this.fundEntryClick }
                 userAccount={ userAccount }
@@ -646,45 +803,19 @@ class Database extends Component {
             />
         ));
 
-        const {
-            name,
-            description,
-            createdTimestamp,
-            entryCreationFee,
-            admin,
-            totalFee,
-            funded,
-            tag,
-            owner,
-            contractVersion,
-            databaseAddress,
-            entryCoreAddress,
-            ipfsHash,
-            claimFundOpen,
-        } = this.state;
-
         const permissionGroupStr = CreateEntryPermissionGroup[permissionGroup].label;
 
-        const showAddButton = (isOwner || permissionGroup === Permission.AllUsers ) && !isDbPaused && isSchemaExist;
+        const showAddButton = (isOwner || permissionGroup === Permission.AllUsers) && !isDbPaused && isSchemaExist;
 
         return (
             <div>
+
+                {popups}
+
                 <StatusBar
                     open={ loading }
                     message='loading...'
                 />
-
-                <Popup open={claimFundOpen}>
-                    <PopupTitle>Im title</PopupTitle>
-                    <PopupContent>
-                        Available to claim: {funded}
-                        <input ref={node => this.claimDbInput = node} />
-                    </PopupContent>
-                    <PopupFooter>
-                        <Button onClick={this.closePopups}>Cancel</Button>
-                        <Button onClick={() => this.claimDatabase(this.claimDbInput.value)}>Confirm</Button>
-                    </PopupFooter>
-                </Popup>
 
                 <MainContainer>
                     <Section>
@@ -695,63 +826,85 @@ class Database extends Component {
                             }
                         </div>
                     </Section>
-                    <Section>
-                        <DbHeader>
-                            <DbHeaderLine>
-                                <DbHeaderLeft>
-                                    <DbHeaderName>{name}</DbHeaderName>
-                                </DbHeaderLeft>
-                                <DbHeaderRight>
-                                    <DbMenu>
-                                        <MenuPopup>
+                    <DbHeader>
+                        <DbHeaderLine>
+                            <DbHeaderLeft>
+                                <DbHeaderName>{name}</DbHeaderName>
+                            </DbHeaderLeft>
+                            <DbHeaderRight>
+                                <DbMenu>
+                                    <MenuPopup>
+                                        {isOwner && !isDbPaused &&
+                                            <span>
+                                                <MenuPopupItem
+                                                    icon={<MenuPopupTransferIcon/>}
+                                                    onClick={this.onTransferOwnership}
+                                                >
+                                                    Transfer ownership
+                                                </MenuPopupItem>
+                                                <MenuSeparator />
+                                            </span>
+                                        }
+                                        {!isDbPaused &&
                                             <MenuPopupItem
-                                              icon={<MenuPopupEditIcon />}
-                                              onClick={this.onTransferOwnership}
-                                            >
-                                                Transfer ownership
-                                            </MenuPopupItem>
-                                            <MenuSeparator />
-                                            <MenuPopupItem
-                                                icon={<MenuPopupEditIcon />}
-                                                onClick={this.onFundRegistry}
+                                                icon={<MenuPopupEditIcon/>}
+                                                onClick={this.onFundDb}
                                             >
                                                 Fund registry
                                             </MenuPopupItem>
-                                            <MenuPopupItem
-                                                icon={<MenuPopupEditIcon />}
-                                                onClick={this.onClaimFunds}
-                                            >
-                                                Claim Funds
-                                            </MenuPopupItem>
-                                            <MenuPopupItem
-                                               icon={<MenuPopupEditIcon />}
-                                               onClick={this.onClaimFee}
-                                            >
-                                                Claim Fees
-                                            </MenuPopupItem>
-                                            <MenuSeparator />
-                                            <MenuPopupItem
-                                               icon={<MenuPopupDeleteIcon />}
-                                               onClick={this.onDeleteDb}
-                                            >
-                                                Delete registry
-                                            </MenuPopupItem>
-                                        </MenuPopup>
-                                    </DbMenu>
-                                </DbHeaderRight>
-                            </DbHeaderLine>
+                                        }
+                                        {!isDbPaused && isOwner &&
+                                            <span>
+                                                <MenuPopupItem
+                                                    icon={<MenuPopupEditIcon/>}
+                                                    onClick={this.onClaimFunds}
+                                                >
+                                                    Claim Funds
+                                                </MenuPopupItem>
+                                                <MenuSeparator/>
+                                                <MenuPopupItem
+                                                    icon={<MenuPopupPauseIcon/>}
+                                                    onClick={this.onPauseDb}
+                                                >
+                                                    Pause database
+                                                </MenuPopupItem>
+                                            </span>
+                                        }
+                                        {isDbPaused && isOwner &&
+                                                <MenuPopupItem
+                                                    icon={<MenuPopupResumeIcon />}
+                                                    onClick={this.onResumeDb}
+                                                >
+                                                    Resume database
+                                                </MenuPopupItem>
 
-                            <DbHeaderLine>
-                                <DbHeaderLeft>
-                                    symbol: { databaseSymbol }
-                                </DbHeaderLeft>
+                                        }
+                                        {!isDbPaused && isOwner &&
+                                            <span>
+                                                <MenuSeparator />
+                                                <MenuPopupItem
+                                                   icon={<MenuPopupDeleteIcon />}
+                                                   onClick={this.onDeleteDb}
+                                                >
+                                                    Delete registry
+                                                </MenuPopupItem>
+                                            </span>
+                                        }
+                                    </MenuPopup>
+                                </DbMenu>
+                            </DbHeaderRight>
+                        </DbHeaderLine>
 
-                                <DbHeaderRight>
-                                    status: { isDbPaused ? 'paused' : 'operational' }
-                                </DbHeaderRight>
-                            </DbHeaderLine>
-                        </DbHeader>
-                    </Section>
+                        <DbHeaderLine>
+                            <DbHeaderLeft>
+                                symbol: { databaseSymbol }
+                            </DbHeaderLeft>
+
+                            <DbHeaderRight>
+                                status: { isDbPaused ? 'paused' : 'operational' }
+                            </DbHeaderRight>
+                        </DbHeaderLine>
+                    </DbHeader>
                     <Section title='General'>
                         <SectionContent style={ { width: '25%' } }>
                             <Centred>
@@ -885,7 +1038,6 @@ class Database extends Component {
                         </SectionContent>
 
                         <SectionContent title='Beneficiaries' grow={ 0 } style={ { width: '25%' } }>
-
                             <Centred>
                                 <BenContainer>
                                     <BenPieChart
@@ -894,34 +1046,6 @@ class Database extends Component {
                                     />
                                 </BenContainer>
                             </Centred>
-
-{/*                            <Centred>
-                                <div>
-                                    <TransferForm
-                                        height={ (isOwner && !isDbPaused) ? 'auto' : 140 }
-                                        address={ owner }
-                                        isOwner={ isOwner && !isDbPaused }
-                                        onTransfer={ newOwner => this.transferDatabase(userAccount, newOwner) }
-                                    />
-                                </div>
-                                <div style={{marginBottom: 20}}>
-                                    {!isDbPaused &&
-                                    <ValueInput
-                                        onInter={this.fundDatabase}
-                                        buttonLable='fund database'
-                                        width='100%'
-                                    />
-                                    }
-                                </div>
-                                <div>
-                                    {!isDbPaused && isOwner &&
-                                    <Button onClick={this.pauseDb}>Pause database</Button>
-                                    }
-                                    {isDbPaused && isOwner &&
-                                    <Button onClick={this.unpauseDb}>Unpause database</Button>
-                                    }
-                                </div>
-                            </Centred>*/}
                         </SectionContent>
 
                     </Section>
@@ -942,21 +1066,9 @@ class Database extends Component {
                     </DatabaseList>
 
                 </MainContainer>
-                {/*isOwner && !isDbPaused && isSchemaExist && (
-                    <AddItemButton onClick={ this.add }>
-                        <AddItemButtonText>Add Record</AddItemButtonText>
-                        <span>
-                            Fee:
-                            {entryCreationFee}
-                            {' '}
-                            ETH
-                        </span>
-                    </AddItemButton>
-                )*/}
             </div>
         );
     }
 }
-
 
 export default Database;
