@@ -16,6 +16,7 @@ import {
     MenuPopup, MenuPopupItem, MenuSeparator, MenuPopupDeleteIcon, MenuPopupEditIcon, MenuPopupTransferIcon,
     Popup, PopupContent, PopupFooter, PopupTitle,
     BenContainer, BenPieChart, MenuPopupResumeIcon, MenuPopupPauseIcon,
+    LineTitle, LineControl, ContentInput, PopupButton, ContentLineFund, LineText, ContentLine, ContentLineTextInput,
 } from '@cybercongress/ui';
 
 import * as cyber from '../../utils/cyber';
@@ -707,75 +708,111 @@ class Database extends Component {
                 <Popup open={claimFundOpen}>
                     <PopupTitle>Claim database funds</PopupTitle>
                     <PopupContent>
-                        <div>Available to claim: {funded}</div>
-                        <div>Claim amount: <input ref={node => this.claimDbInput = node} /></div>
+                        <ContentLineTextInput>
+                            <LineTitle>Available to claim:</LineTitle>
+                            <LineControl>
+                                <LineText>{funded}</LineText>
+                            </LineControl>
+                        </ContentLineTextInput>
+                        <ContentLineTextInput>
+                            <LineTitle>Claim amount:</LineTitle>
+                            <LineControl>
+                                <ContentInput inputRef={node => this.claimDbInput = node} placeholder='0.00 ETH' />
+                            </LineControl>
+                        </ContentLineTextInput>
                     </PopupContent>
                     <PopupFooter>
-                        <Button onClick={this.closePopups}>Cancel</Button>
-                        <Button onClick={() => this.claimDatabase(this.claimDbInput.value)}>Confirm</Button>
+                        <PopupButton onClick={this.closePopups} type='cancel'>cancel</PopupButton>
+                        <PopupButton onClick={() => this.claimDatabase(this.claimDbInput.value)} type='confirm'>Confirm</PopupButton>
                     </PopupFooter>
                 </Popup>
 
                 <Popup open={transferOwnershipOpen}>
                     <PopupTitle>Transfer database ownership</PopupTitle>
                     <PopupContent>
-                        <div>Current owner: <LinkHash value={admin} /></div>
-                        <div>New owner: <input ref={node => this.newDbOwnerInput = node} /></div>
+                        <ContentLineTextInput>
+                            <LineTitle>Current owner:</LineTitle>
+                            <LineControl>
+                                <LinkHash noPadding noCopy value={admin} />
+                            </LineControl>
+                        </ContentLineTextInput>
+                        <ContentLineTextInput>
+                            <LineTitle>New owner:</LineTitle>
+                            <LineControl>
+                                <ContentInput inputRef={node => this.newDbOwnerInput = node} />
+                            </LineControl>
+                        </ContentLineTextInput>
                     </PopupContent>
                     <PopupFooter>
-                        <Button onClick={this.closePopups}>Cancel</Button>
-                        <Button onClick={() => this.transferDatabaseOwnership(userAccount, this.newDbOwnerInput.value)}>Confirm</Button>
+                        <PopupButton onClick={this.closePopups} type='cancel'>cancel</PopupButton>
+                        <PopupButton onClick={() => this.transferDatabaseOwnership(userAccount, this.newDbOwnerInput.value)} type='confirm'>Confirm</PopupButton>
                     </PopupFooter>
                 </Popup>
 
                 <Popup open={fundDatabaseOpen}>
                     <PopupTitle>Fund database</PopupTitle>
                     <PopupContent>
-                        <div>Amount: <input ref={node => this.fundDbInput = node} /></div>
+                        <ContentLineFund>
+                            <LineTitle>Amount:</LineTitle>
+                            <LineControl>
+                                <ContentInput inputRef={node => this.fundDbInput = node} />
+                            </LineControl>
+                        </ContentLineFund>
                     </PopupContent>
                     <PopupFooter>
-                        <Button onClick={this.closePopups}>Cancel</Button>
-                        <Button onClick={() => this.fundDatabase(this.fundDbInput.value)}>Confirm</Button>
+                        <PopupButton onClick={this.closePopups} type='cancel'>Cancel</PopupButton>
+                        <PopupButton onClick={() => this.fundDatabase(this.fundDbInput.value)} type='confirm'>Confirm</PopupButton>
                     </PopupFooter>
                 </Popup>
 
                 <Popup open={deleteDatabaseOpen}>
-                    <PopupTitle>Delete database</PopupTitle>
+                    <PopupTitle>Delete registry</PopupTitle>
                     <PopupContent>
-                        <div>Your registry will be unlinked from Chaingear, but you still well be able to operate it</div>
+                        <ContentLine>
+                          <LineText>
+                            Your registry will be unlinked from Chaingear, but you still will be able to operate with it
+                          </LineText>
+                        </ContentLine>
                     </PopupContent>
                     <PopupFooter>
-                        <Button onClick={this.closePopups}>Cancel</Button>
-                        <Button onClick={this.deleteDb}>Confirm</Button>
+                        <PopupButton onClick={this.closePopups} type="cancel">cancel</PopupButton>
+                        <PopupButton onClick={this.deleteDb} type="confirm">Confirm</PopupButton>
                     </PopupFooter>
                 </Popup>
 
                 <Popup open={pauseDatabaseOpen}>
                     <PopupTitle>Pause database</PopupTitle>
                     <PopupContent>
-                        <div>When registry is on pause there will be no ability to operate with records</div>
+                        <ContentLine>
+                          <LineText>
+                            When registry is on pause there will be no ability to operate with records
+                          </LineText>
+                        </ContentLine>
                     </PopupContent>
                     <PopupFooter>
-                        <Button onClick={this.closePopups}>Cancel</Button>
-                        <Button onClick={this.pauseDb}>Confirm</Button>
+                        <PopupButton onClick={this.closePopups} type='cancel'>Cancel</PopupButton>
+                        <PopupButton onClick={this.pauseDb} type="confirm">Confirm</PopupButton>
                     </PopupFooter>
                 </Popup>
 
                 <Popup open={resumeDatabaseOpen}>
-                    <PopupTitle>Delete database</PopupTitle>
+                    <PopupTitle>Resume database</PopupTitle>
                     <PopupContent>
-                        <div>Resume registry to operate with records</div>
+                        <ContentLine>
+                          <LineText>
+                            Resume registry to operate with records
+                          </LineText>
+                        </ContentLine>
                     </PopupContent>
                     <PopupFooter>
-                        <Button onClick={this.closePopups}>Cancel</Button>
-                        <Button onClick={this.unpauseDb}>Confirm</Button>
+                        <PopupButton onClick={this.closePopups} type='cancel'>Cancel</PopupButton>
+                        <PopupButton onClick={this.unpauseDb} type="confirm">Confirm</PopupButton>
                     </PopupFooter>
                 </Popup>
 
                 <Popup open={editRecordOpen}>
                     <PopupTitle>Edit record</PopupTitle>
                     <PopupContent>
-                        <div>Record</div>
                     </PopupContent>
                     <PopupFooter>
                         <Button onClick={this.closePopups}>Cancel</Button>
@@ -834,61 +871,56 @@ class Database extends Component {
                             <DbHeaderRight>
                                 <DbMenu>
                                     <MenuPopup>
-                                        {isOwner && !isDbPaused &&
-                                            <span>
+                                        {isOwner && !isDbPaused
+                                            && [
                                                 <MenuPopupItem
-                                                    icon={<MenuPopupTransferIcon/>}
-                                                    onClick={this.onTransferOwnership}
+                                                  icon={<MenuPopupTransferIcon />}
+                                                  onClick={this.onTransferOwnership}
                                                 >
                                                     Transfer ownership
-                                                </MenuPopupItem>
-                                                <MenuSeparator />
-                                            </span>
+                                                </MenuPopupItem>,
+                                                <MenuSeparator />,
+                                            ]
                                         }
-                                        {!isDbPaused &&
-                                            <MenuPopupItem
-                                                icon={<MenuPopupEditIcon/>}
-                                                onClick={this.onFundDb}
-                                            >
-                                                Fund registry
+                                        {!isDbPaused
+                                            && <MenuPopupItem
+                                              icon={<MenuPopupEditIcon />}
+                                              onClick={this.onFundDb}>
+                                              Fund registry
                                             </MenuPopupItem>
                                         }
-                                        {!isDbPaused && isOwner &&
-                                            <span>
+                                        {isOwner && !isDbPaused
+                                            && [
                                                 <MenuPopupItem
-                                                    icon={<MenuPopupEditIcon/>}
-                                                    onClick={this.onClaimFunds}
+                                                  icon={<MenuPopupEditIcon />}
+                                                  onClick={this.onClaimFunds}
                                                 >
                                                     Claim Funds
-                                                </MenuPopupItem>
-                                                <MenuSeparator/>
+                                                </MenuPopupItem>,
+                                                <MenuSeparator />,
                                                 <MenuPopupItem
-                                                    icon={<MenuPopupPauseIcon/>}
-                                                    onClick={this.onPauseDb}
-                                                >
-                                                    Pause database
-                                                </MenuPopupItem>
-                                            </span>
+                                                  icon={<MenuPopupPauseIcon />}
+                                                  onClick={this.onPauseDb}>
+                                                  Pause database
+                                                </MenuPopupItem>,
+                                            ]
                                         }
-                                        {isDbPaused && isOwner &&
-                                                <MenuPopupItem
-                                                    icon={<MenuPopupResumeIcon />}
-                                                    onClick={this.onResumeDb}
-                                                >
-                                                    Resume database
-                                                </MenuPopupItem>
-
+                                        {isDbPaused && isOwner
+                                            && <MenuPopupItem
+                                              icon={<MenuPopupResumeIcon />}
+                                              onClick={this.onResumeDb}>
+                                              Resume database
+                                            </MenuPopupItem>
                                         }
-                                        {!isDbPaused && isOwner &&
-                                            <span>
-                                                <MenuSeparator />
+                                        {!isDbPaused && isOwner
+                                            && [
+                                                <MenuSeparator />,
                                                 <MenuPopupItem
-                                                   icon={<MenuPopupDeleteIcon />}
-                                                   onClick={this.onDeleteDb}
-                                                >
-                                                    Delete registry
-                                                </MenuPopupItem>
-                                            </span>
+                                                  icon={<MenuPopupDeleteIcon />}
+                                                  onClick={this.onDeleteDb}>
+                                                  Delete registry
+                                                </MenuPopupItem>,
+                                            ]
                                         }
                                     </MenuPopup>
                                 </DbMenu>
