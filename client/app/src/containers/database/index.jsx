@@ -775,8 +775,8 @@ class Database extends Component {
                         </ContentLine>
                     </PopupContent>
                     <PopupFooter>
-                        <PopupButton onClick={this.closePopups} type="cancel">cancel</PopupButton>
-                        <PopupButton onClick={this.deleteDb} type="confirm">Confirm</PopupButton>
+                        <PopupButton onClick={this.closePopups} type='cancel'>cancel</PopupButton>
+                        <PopupButton onClick={this.deleteDb} type='confirm'>Confirm</PopupButton>
                     </PopupFooter>
                 </Popup>
 
@@ -791,7 +791,7 @@ class Database extends Component {
                     </PopupContent>
                     <PopupFooter>
                         <PopupButton onClick={this.closePopups} type='cancel'>Cancel</PopupButton>
-                        <PopupButton onClick={this.pauseDb} type="confirm">Confirm</PopupButton>
+                        <PopupButton onClick={this.pauseDb} type='confirm'>Confirm</PopupButton>
                     </PopupFooter>
                 </Popup>
 
@@ -806,7 +806,7 @@ class Database extends Component {
                     </PopupContent>
                     <PopupFooter>
                         <PopupButton onClick={this.closePopups} type='cancel'>Cancel</PopupButton>
-                        <PopupButton onClick={this.unpauseDb} type="confirm">Confirm</PopupButton>
+                        <PopupButton onClick={this.unpauseDb} type='confirm'>Confirm</PopupButton>
                     </PopupFooter>
                 </Popup>
 
@@ -874,16 +874,18 @@ class Database extends Component {
                                         {isOwner && !isDbPaused
                                             && [
                                                 <MenuPopupItem
+                                                  key='transferOwnership'
                                                   icon={<MenuPopupTransferIcon />}
                                                   onClick={this.onTransferOwnership}
                                                 >
                                                     Transfer ownership
                                                 </MenuPopupItem>,
-                                                <MenuSeparator />,
+                                                <MenuSeparator key='separator0'/>,
                                             ]
                                         }
                                         {!isDbPaused
                                             && <MenuPopupItem
+                                              key='fundRegistry'
                                               icon={<MenuPopupEditIcon />}
                                               onClick={this.onFundDb}>
                                               Fund registry
@@ -892,13 +894,15 @@ class Database extends Component {
                                         {isOwner && !isDbPaused
                                             && [
                                                 <MenuPopupItem
+                                                  key='claimFunds'
                                                   icon={<MenuPopupEditIcon />}
                                                   onClick={this.onClaimFunds}
                                                 >
                                                     Claim Funds
                                                 </MenuPopupItem>,
-                                                <MenuSeparator />,
+                                                <MenuSeparator key='separator1' />,
                                                 <MenuPopupItem
+                                                  key='pauseDB'
                                                   icon={<MenuPopupPauseIcon />}
                                                   onClick={this.onPauseDb}>
                                                   Pause database
@@ -907,6 +911,7 @@ class Database extends Component {
                                         }
                                         {isDbPaused && isOwner
                                             && <MenuPopupItem
+                                              key='unpauseDB'
                                               icon={<MenuPopupResumeIcon />}
                                               onClick={this.onResumeDb}>
                                               Resume database
@@ -914,8 +919,9 @@ class Database extends Component {
                                         }
                                         {!isDbPaused && isOwner
                                             && [
-                                                <MenuSeparator />,
+                                                <MenuSeparator key='separator2' />,
                                                 <MenuPopupItem
+                                                  key='deleteDB'
                                                   icon={<MenuPopupDeleteIcon />}
                                                   onClick={this.onDeleteDb}>
                                                   Delete registry
