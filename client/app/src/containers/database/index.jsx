@@ -1,29 +1,19 @@
 import React, { Component } from 'react';
 
 import {
-    ActionLink,
-    LinkHash,
-    MainContainer,
-    Section,
-    SectionContent,
-    Centred,
-    Button,
-    FundContainer,
-    BoxTitle,
-    StatusBar,
-    DbHeader, DbHeaderLeft, DbHeaderRight, DbHeaderLine, DbHeaderName,
-    DbMenu,
-    MenuPopup, MenuPopupItem, MenuSeparator, MenuPopupDeleteIcon, MenuPopupEditIcon, MenuPopupTransferIcon,
+    ActionLink, LinkHash, MainContainer, Section, SectionContent,
+    Centred, Button, FundContainer, BoxTitle, StatusBar, DbHeader,
+    DbHeaderLeft, DbHeaderRight, DbHeaderLine,
+    DbMenu, MenuPopup, MenuPopupItem, MenuSeparator, MenuPopupDeleteIcon,
+    MenuPopupEditIcon, MenuPopupTransferIcon,
     Popup, PopupContent, PopupFooter, PopupTitle,
     BenContainer, BenPieChart, MenuPopupResumeIcon, MenuPopupPauseIcon,
-    LineTitle, LineControl, ContentInput, PopupButton, ContentLineFund, LineText, ContentLine, ContentLineTextInput,
+    LineTitle, LineControl, ContentInput, PopupButton, ContentLineFund,
+    LineText, ContentLine, ContentLineTextInput,
+    CentredPanel, PageTitle, ProgressBar, CircleLable, FormField, ItemEdit,
 } from '@cybercongress/ui';
 
 import * as cyber from '../../utils/cyber';
-import TransferForm from './TransferForm';
-import { DatabaseItem, DatabaseList } from './DatabaseItem';
-import ValueInput from '../../components/ValueInput';
-import FormField from './FormField';
 
 import DatabaseV1 from '../../../../../build/contracts/DatabaseV1.json';
 import {calculateBensShares} from '../../utils/utils';
@@ -98,6 +88,7 @@ class Database extends Component {
         editRecordOpen: false,
 
         permissionGroup: 0,
+        itemForEdit: null,
     };
 
     componentDidMount() {
@@ -645,9 +636,10 @@ class Database extends Component {
         });
     };
 
-    onRecordEdit = () => {
+    onRecordEdit = (item) => {
         this.setState({
             editRecordOpen: true,
+            itemForEdit: item,
         });
     };
 
@@ -679,7 +671,8 @@ class Database extends Component {
     render() {
         const {
             fields, items, loading, isOwner, userAccount, isSchemaExist, databaseSymbol,
-            duplicateFieldFound, duplicateFieldId, isDbPaused, ipfsGateway, beneficiaries, permissionGroup,
+            duplicateFieldFound, duplicateFieldId, isDbPaused, ipfsGateway, beneficiaries,
+            permissionGroup,
             name,
             description,
             createdTimestamp,
@@ -693,6 +686,8 @@ class Database extends Component {
             databaseAddress,
             entryCoreAddress,
             ipfsHash,
+            itemForEdit,
+
             claimFundOpen,
             claimFeeOpen,
             transferOwnershipOpen,
@@ -703,6 +698,7 @@ class Database extends Component {
             editRecordOpen,
         } = this.state;
 
+        debugger;
         const popups = (
             <span>
                 <Popup open={claimFundOpen}>
@@ -813,6 +809,9 @@ class Database extends Component {
                 <Popup open={editRecordOpen}>
                     <PopupTitle>Edit record</PopupTitle>
                     <PopupContent>
+{/*
+                        <ItemEdit item={itemForEdit} fields={fields} />
+*/}
                     </PopupContent>
                     <PopupFooter>
                         <Button onClick={this.closePopups}>Cancel</Button>
@@ -822,14 +821,14 @@ class Database extends Component {
             </span>
         );
 
-        const rows = items.map((item, index) => (
+/*        const rows = items.map((item, index) => (
             <DatabaseItem
                 clameRecord={ this.claimRecord }
                 removeItemClick={ this.removeItemClick }
                 fundEntryClick={ this.fundEntryClick }
-                userAccount={ userAccount }
                 onUpdate={ values => this.onUpdate(values, item.id) }
                 onTransfer={ newOwner => this.transferItem(userAccount, newOwner, item.id) }
+                userAccount={ userAccount }
                 fields={ fields }
                 item={ item }
                 index={ item.id }
@@ -838,11 +837,12 @@ class Database extends Component {
                 hideEntryError={ this.hideEntryError }
                 isDbPaused={ isDbPaused }
             />
-        ));
+        ));*/
 
         const permissionGroupStr = CreateEntryPermissionGroup[permissionGroup].label;
 
         const showAddButton = (isOwner || permissionGroup === Permission.AllUsers) && !isDbPaused && isSchemaExist;
+        const rows = [];
 
         return (
             <div>
@@ -863,12 +863,23 @@ class Database extends Component {
                             }
                         </div>
                     </Section>
+
                     <DbHeader>
+                        <PageTitle>{name}</PageTitle>
+
+                        {!isSchemaExist &&
+                            <ProgressBar>
+                                <CircleLable type='complete' number='1' text='Registry initialization' />
+                                <CircleLable number='2' text='Schema definition' />
+                                <CircleLable number='3' text='Contract code saving' />
+                            </ProgressBar>
+                        }
                         <DbHeaderLine>
-                            <DbHeaderLeft>
-                                <DbHeaderName>{name}</DbHeaderName>
-                            </DbHeaderLeft>
+                            <DbHeaderLeft>symbol: {databaseSymbol}</DbHeaderLeft>
+
                             <DbHeaderRight>
+                                status: { isDbPaused ? 'paused' : 'operational' }
+
                                 <DbMenu>
                                     <MenuPopup>
                                         {isOwner && !isDbPaused
@@ -880,7 +891,7 @@ class Database extends Component {
                                                 >
                                                     Transfer ownership
                                                 </MenuPopupItem>,
-                                                <MenuSeparator key='separator0'/>,
+                                                <MenuSeparator key='separator0' />,
                                             ]
                                         }
                                         {!isDbPaused
@@ -932,90 +943,48 @@ class Database extends Component {
                                 </DbMenu>
                             </DbHeaderRight>
                         </DbHeaderLine>
-
-                        <DbHeaderLine>
-                            <DbHeaderLeft>
-                                symbol: { databaseSymbol }
-                            </DbHeaderLeft>
-
-                            <DbHeaderRight>
-                                status: { isDbPaused ? 'paused' : 'operational' }
-                            </DbHeaderRight>
-                        </DbHeaderLine>
                     </DbHeader>
+
                     <Section title='General'>
                         <SectionContent style={ { width: '25%' } }>
-                            <Centred>
-                                <BoxTitle>
-                                    Created:
-                                </BoxTitle>
-                                <div style={ { height: 100, color: '#000000' } }>
+                            <CentredPanel>
+                                <BoxTitle>Created:</BoxTitle>
+                                <div>
                                     {createdTimestamp ? moment(new Date(createdTimestamp.toNumber() * 1000)).format('DD/MM/YYYY mm:hh:ss') : ''}
                                 </div>
-                            </Centred>
+                            </CentredPanel>
                         </SectionContent>
 
                         <SectionContent style={ { width: '25%' } }>
-                            <Centred>
+                            <CentredPanel>
                                 <BoxTitle>Admin:</BoxTitle>
-                                <div style={ { height: 100 } }>
+                                <div>
                                     <LinkHash value={ admin } />
                                 </div>
-                            </Centred>
+                            </CentredPanel>
                         </SectionContent>
 
                         <SectionContent style={ { width: '25%' } }>
-                            <Centred>
-                                <BoxTitle>
-                                    FUNDED:
-                                </BoxTitle>
-
-                                <FundContainer
-                                    style={ { height: 100, justifyContent: (isOwner && !isDbPaused) ? 'space-around' : 'start' } }
-                                >
-                                    <span>
-                                        {funded}
-                                        {' '}
-                                        ETH
-                                    </span>
-
-                                    {isOwner &&!isDbPaused && (
-                                        <ValueInput
-                                            onInter={ this.claimDatabase }
-                                            buttonLable='claim funds'
-                                            color='second'
-                                        />
-                                    )}
-
+                            <CentredPanel>
+                                <BoxTitle>FUNDED:</BoxTitle>
+                                <FundContainer>
+                                    <span>{funded} ETH</span>
                                 </FundContainer>
-                            </Centred>
+                            </CentredPanel>
                         </SectionContent>
 
                         <SectionContent style={ { width: '25%' } }>
-                            <Centred>
-                                <BoxTitle>
-                                    FEES:
-                                </BoxTitle>
-
-                                <FundContainer
-                                    style={ { height: 100, justifyContent: (isOwner && !isDbPaused) ? 'space-around' : 'start' } }
-                                >
-                                    <span>
-                                        {totalFee}
-                                        {' '}
-                                        ETH
-                                    </span>
-                                    {isOwner && !isDbPaused && <Button style={ { width: 119 } } onClick={ this.claimFee }>clame fee</Button>}
+                            <CentredPanel>
+                                <BoxTitle>FEES:</BoxTitle>
+                                <FundContainer>
+                                    <span>{totalFee} ETH</span>
                                 </FundContainer>
-
-                            </Centred>
+                            </CentredPanel>
                         </SectionContent>
-
                     </Section>
 
                     <Section>
-
-                        <SectionContent title='Overview' grow={ 3 }>
+                        <SectionContent title='Overview' grow={ 3 } style={ { width: '70%' } }>
                             <FormField
                                 label='Description'
                                 value={ description }
@@ -1063,7 +1032,7 @@ class Database extends Component {
                             />
                             <FormField
                                 label='Schema address'
-                                value={ entryCoreAddress }
+                                value={ isSchemaExist ? entryCoreAddress : 'To operate with records, please, define schema' }
                             />
                             <FormField
                                 label='Abi link'
@@ -1085,7 +1054,6 @@ class Database extends Component {
                                 </BenContainer>
                             </Centred>
                         </SectionContent>
-
                     </Section>
 
                     <DbHeader>
@@ -1099,9 +1067,89 @@ class Database extends Component {
                             </DbHeaderRight>
                         </DbHeaderLine>
                     </DbHeader>
-                    <DatabaseList>
+
+{/*                    <DatabaseList>
                         {rows}
-                    </DatabaseList>
+                    </DatabaseList>*/}
+
+
+                    <div>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Id</th>
+                                <th>Funded</th>
+                                <th>Owner</th>
+
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Developer</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <DbMenu>
+                                        <MenuPopup>
+                                            <MenuPopupItem
+                                                key='transferOwnership0'
+                                                icon={<MenuPopupTransferIcon />}
+                                            >
+                                                Transfer ownership
+                                            </MenuPopupItem>
+                                            <MenuSeparator key='separator0'/>
+                                            <MenuPopupItem
+                                                key='transferOwnership1'
+                                                icon={<MenuPopupTransferIcon />}
+                                            >
+                                                Second one
+                                            </MenuPopupItem>
+                                        </MenuPopup>
+                                    </DbMenu>
+                                    </td>
+                                    <td>1</td>
+                                    <td>3 ETH</td>
+                                    <td>YOU</td>
+                                    <td>dragons</td>
+                                    <td>
+                                        <LinkHash value='0x727b557aeec8203A8e0f3f43FD30885d94399010' />
+                                    </td>
+                                    <td>congress</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <DbMenu>
+                                        <MenuPopup>
+                                            <MenuPopupItem
+                                                key='transferOwnership2'
+                                                icon={<MenuPopupTransferIcon />}
+                                            >
+                                                Transfer ownership
+                                            </MenuPopupItem>
+                                            <MenuSeparator key='separator0'/>
+                                            <MenuPopupItem
+                                                key='transferOwnership3'
+                                                icon={<MenuPopupTransferIcon />}
+                                            >
+                                                Second one
+                                            </MenuPopupItem>
+                                        </MenuPopup>
+                                    </DbMenu>
+                                    </td>
+                                    <td>1</td>
+                                    <td>3 ETH</td>
+                                    <td>YOU</td>
+                                    <td>dragons</td>
+                                    <td>
+                                        <LinkHash value='0x727b557aeec8203A8e0f3f43FD30885d94399010' />
+                                    </td>
+                                    <td>congress</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
 
                 </MainContainer>
             </div>
