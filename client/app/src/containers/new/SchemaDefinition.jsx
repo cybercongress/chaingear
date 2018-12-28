@@ -15,7 +15,7 @@ import {
     RightContainer,
     WideSelect,
     Code, DarkPanel,
-    CircleLable, ProgressBar,
+    CircleLable, ProgressBar, Checkbox, TableRegistry, WideInput, AddButton,
 } from '@cybercongress/ui';
 
 import {
@@ -46,6 +46,8 @@ class SchemaDefinition extends Component {
             type: 'processing',
 
             isSchemaCreated: false,
+
+            disableUniqueCheckbox: false,
         };
     }
 
@@ -73,7 +75,11 @@ class SchemaDefinition extends Component {
             }));
     }
 
-    add = (name, type, unique) => {
+    add = () => {
+        const name = this.fieldName.value;
+        const type = this.fieldType.value;
+        const unique = type === 'bool' ? false : this.fieldUnique.checked;
+
         const newItem = {
             name,
             type,
@@ -115,13 +121,22 @@ class SchemaDefinition extends Component {
             }));
     };
 
-    onFieldTypeChange = () => {
-
+    onFieldTypeChange = (event) => {
+        if (event.target.value === 'bool') {
+            this.setState({
+                disableUniqueCheckbox: true,
+            });
+        } else {
+            this.setState({
+                disableUniqueCheckbox: false,
+            });
+        }
     };
 
     render() {
         const {
-            databaseName, fields, message, inProgress, type, isSchemaCreated, databaseSymbol,
+            databaseName, fields, message, inProgress, type,
+            isSchemaCreated, databaseSymbol, disableUniqueCheckbox,
         } = this.state;
         const code = generateContractCode(databaseName, fields);
         const fieldsCount = fields.length;
@@ -147,34 +162,54 @@ class SchemaDefinition extends Component {
                     <SideBar>
                         <Label>Input</Label>
 
-                        <Panel title='Schema Structure' noPadding>
-                            <FieldsTable style={{
-                                width: 'auto',
-                                padding: 20,
-                                paddingTop: 10,
-                            }}>
-                                <tbody>
-                                    {fields.map(field => (
-                                        <tr key={ field.name }>
-                                            <td>{field.name}</td>
-                                            <td>{field.type}</td>
-                                            <td style={{textAlign: 'center'}}>
-                                                <input type='checkbox' disabled checked={field.unique} style={{
-                                                    width: 'auto',
-                                                }}/> unique
+                        <Panel title='Record Structure' noPadding>
+                            <FieldsTable>
+                                <TableRegistry>
+                                    <tbody>
+                                        {fields.map(field => (
+                                            <tr key={ field.name }>
+                                                <td>{field.name}</td>
+                                                <td>{field.type}</td>
+                                                <td>
+                                                    <Checkbox disabled checked={field.unique}>unique</Checkbox>
+                                                </td>
+                                                <td>
+                                                    <RemoveButton
+                                                        onClick={ () => this.remove(field.name) }
+                                                    />
+                                                </td>
+                                            </tr>
+                                        ))}
+                                        <tr>
+                                            <td>
+                                                <WideInput
+                                                    inputRef={node => this.fieldName = node}
+                                                    placeholder='Name'
+                                                />
                                             </td>
-                                            <td style={{textAlign: 'end'}}>
-                                                <RemoveButton
-                                                    onClick={ () => this.remove(field.name) }
+                                            <td>
+                                                <WideSelect
+                                                    inputRef={node => this.fieldType = node}
+                                                    onChange={this.onFieldTypeChange}
+                                                >
+                                                    <option value='string'>string</option>
+                                                    <option value='address'>address</option>
+                                                    <option value='bool'>bool</option>
+                                                    <option value='uint256'>uint256</option>
+                                                    <option value='int256'>int256</option>
+                                                </WideSelect>
+                                            </td>
+                                            <td hidden={disableUniqueCheckbox}>
+                                                <Checkbox inputRef={node => this.fieldUnique = node}>unique</Checkbox>
+                                            </td>
+                                            <td>
+                                                <AddButton
+                                                    onClick={this.add}
                                                 />
                                             </td>
                                         </tr>
-                                    ))}
-                                    <AddField
-                                        onAdd={ this.add }
-                                        fields={ fields }
-                                    />
-                                </tbody>
+                                    </tbody>
+                                </TableRegistry>
                             </FieldsTable>
                         </Panel>
                     </SideBar>

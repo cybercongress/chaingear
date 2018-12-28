@@ -10,13 +10,14 @@ import {
     BenContainer, BenPieChart, MenuPopupResumeIcon, MenuPopupPauseIcon,
     LineTitle, LineControl, ContentInput, PopupButton, ContentLineFund,
     LineText, ContentLine, ContentLineTextInput,
-    CentredPanel, PageTitle, ProgressBar, CircleLable, FormField, ItemEdit,
+    CentredPanel, PageTitle, ProgressBar, CircleLable, FormField, WideSelect,
 } from '@cybercongress/ui';
 
 import * as cyber from '../../utils/cyber';
 
 import DatabaseV1 from '../../../../../build/contracts/DatabaseV1.json';
 import {calculateBensShares} from '../../utils/utils';
+import ItemEditPopup from './ItemEditPopup';
 
 const moment = require('moment');
 
@@ -636,7 +637,7 @@ class Database extends Component {
         });
     };
 
-    onRecordEdit = (item) => {
+    onItemEdit = (item) => {
         this.setState({
             editRecordOpen: true,
             itemForEdit: item,
@@ -698,7 +699,22 @@ class Database extends Component {
             editRecordOpen,
         } = this.state;
 
-        debugger;
+        const item1 = {
+            __index: 0,
+            nameField: "1111",
+            addressField: "0x48feb69c8f6c5ae3a5a4af0a5f92c80a225229d6",
+            intField: 666,
+            currentEntryBalanceETH: 0,
+            owner: "0x48feb69c8f6c5ae3a5a4af0a5f92c80a225229d6",
+            id: 0,
+        };
+
+        const fields1 = [
+            { name: "nameField", type: "string", unique: true },
+            { name: "addressField", type: "address", unique: true },
+            { name: "intField", type: "int256", unique: false },
+        ];
+
         const popups = (
             <span>
                 <Popup open={claimFundOpen}>
@@ -806,18 +822,13 @@ class Database extends Component {
                     </PopupFooter>
                 </Popup>
 
-                <Popup open={editRecordOpen}>
-                    <PopupTitle>Edit record</PopupTitle>
-                    <PopupContent>
-{/*
-                        <ItemEdit item={itemForEdit} fields={fields} />
-*/}
-                    </PopupContent>
-                    <PopupFooter>
-                        <Button onClick={this.closePopups}>Cancel</Button>
-                        <Button>Confirm</Button>
-                    </PopupFooter>
-                </Popup>
+                <ItemEditPopup
+                  open={editRecordOpen}
+                  item={item1}
+                  fields={fields1}
+                  onCancelClick={this.closePopups}
+                  onConfirmClick={this.onUpdate}
+                />
             </span>
         );
 
@@ -839,10 +850,11 @@ class Database extends Component {
             />
         ));*/
 
+        const rows = [];
+
         const permissionGroupStr = CreateEntryPermissionGroup[permissionGroup].label;
 
         const showAddButton = (isOwner || permissionGroup === Permission.AllUsers) && !isDbPaused && isSchemaExist;
-        const rows = [];
 
         return (
             <div>
@@ -861,6 +873,7 @@ class Database extends Component {
                             {!isSchemaExist &&
                                 <ActionLink style={{marginLeft: 15}} to={`/schema/${databaseSymbol}`}>Define schema</ActionLink>
                             }
+                            <button onClick={() => this.onItemEdit(item1)}>EDIT</button>
                         </div>
                     </Section>
 
@@ -1005,8 +1018,8 @@ class Database extends Component {
                               value={ permissionGroupStr }
                               onUpdate={ (isOwner && isDbPaused) && this.onUpdatePermissionGroup }
                             >
-                                <select
-                                  ref={ (node) => { this.permissionGroup = node; } }
+                                <WideSelect
+                                  inputRef={ (node) => { this.permissionGroup = node; } }
                                   defaultValue={ permissionGroup }
                                 >
                                     {Object.keys(CreateEntryPermissionGroup).map((n) => {
@@ -1016,7 +1029,7 @@ class Database extends Component {
                                             <option value={ n } key={ n }>{label}</option>
                                         );
                                     })}
-                                </select>
+                                </WideSelect>
                             </FormField>
                             <FormField
                                 label='Entries'
@@ -1071,7 +1084,6 @@ class Database extends Component {
 {/*                    <DatabaseList>
                         {rows}
                     </DatabaseList>*/}
-
 
                     <div>
                         <table>

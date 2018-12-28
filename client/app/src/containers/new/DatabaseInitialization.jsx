@@ -21,7 +21,7 @@ import {
     Code,
     ProgressBar,
     CircleLable,
-    Table, TableRow, TableItem, TableAddRow,
+    Table, TableRow, TableItem, TableAddRow, TableItemBen, TableRegistry,
 } from '@cybercongress/ui';
 
 import {
@@ -363,63 +363,24 @@ class NewDatabase extends Component {
                         </Panel>
 
                         <Panel title='Beneficiaries (Optional)' noPadding>
-                            <Table>
-                                {bens.map(ben => (
-                                    <TableRow key={ben.address}>
-                                        <TableItem>
-                                            <LinkHash noCopy noPadding value={ben.address} />
-                                        </TableItem>
-                                        <TableItem>{ben.stake}</TableItem>
-                                        <TableItem>{ben.share} %</TableItem>
-                                        <TableItem>
-                                            <RemoveButton onClick={ () => this.removeBeneficiary(ben.address) } />
-                                        </TableItem>
-                                    </TableRow>
-                                ))}
-                                <TableRow>
-                                    <TableItem>
-                                        <WideInput inputRef={ node => this.benAddress = node } placeholder='Address' />
-                                    </TableItem>
-                                    <TableItem>
-                                        <WideInput inputRef={ node => this.benStake = node } onChange={this.onStakeChange} placeholder='Stake' />
-                                    </TableItem>
-                                    <TableItem>
-                                        <span ref='benShare' placeholder='Share'>0</span> <span>%</span>
-                                    </TableItem>
-                                    <TableItem>
-                                        <AddButton onClick={ this.addBeneficiary }/>
-                                    </TableItem>
-                                </TableRow>
-                            </Table>
-                           {/* <FieldsTable>
+                            <TableItemBen>
                                 <tbody>
-                                    {
-                                        bens.map(ben => (
-                                            <tr key={ ben.address }>
-                                                <td style={{
-                                                    textAlign: 'center',
-                                                    overflow: 'hidden',
-                                                    width: 120,
-                                                }}
-                                                >
-                                                    <LinkHash value={ ben.address } />
-                                                </td>
-                                                <td style={{
-                                                    textAlign: 'end',
-                                                    width: 70,
-                                                }}>{ben.stake}</td>
-                                                <td style={{
-                                                    textAlign: 'end',
-                                                    width: 40
-                                                }}>{ben.share}{' %'}</td>
-                                                <td>
-                                                    <RemoveButton
-                                                       }
-                                                    />
-                                                </td>
-                                            </tr>
-                                        ))
-                                    }
+                                    {bens.map(ben => (
+                                        <tr key={ben.address}>
+                                            <td>
+                                                <LinkHash noCopy noPadding value={ben.address} />
+                                            </td>
+                                            <td>{ben.stake}</td>
+                                            <td>{ben.share} %</td>
+                                            <td>
+                                                <RemoveButton onClick={ () => this.removeBeneficiary(ben.address) } />
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </TableItemBen>
+                            <TableRegistry>
+                                <tbody>
                                     <tr>
                                         <td>
                                             <WideInput inputRef={ node => this.benAddress = node } placeholder='Address' />
@@ -427,7 +388,7 @@ class NewDatabase extends Component {
                                         <td>
                                             <WideInput inputRef={ node => this.benStake = node } onChange={this.onStakeChange} placeholder='Stake' />
                                         </td>
-                                        <td style={{textAlign: 'end'}}>
+                                        <td>
                                             <span ref='benShare' placeholder='Share'>0</span> <span>%</span>
                                         </td>
                                         <td>
@@ -435,8 +396,9 @@ class NewDatabase extends Component {
                                         </td>
                                     </tr>
                                 </tbody>
-                            </FieldsTable>*/}
+                            </TableRegistry>
                         </Panel>
+
                     </SideBar>
 
                     <Content>

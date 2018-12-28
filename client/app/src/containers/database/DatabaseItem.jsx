@@ -5,9 +5,9 @@ import {
     SectionContent,
     Centred,
     Message,
+    ValueInput
 } from '@cybercongress/ui';
 
-import ValueInput from '../../components/ValueInput';
 import TransferForm from './TransferForm';
 
 import {
