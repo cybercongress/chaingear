@@ -30,11 +30,11 @@ export const FieldInput = ({ inputRef, ...props }) => (
 
 
 export const EditButton = (props) => (
-    <button {...props} className={styles.editButton} />
+    <button {...props} className={styles.itemEditButton} />
 );
 
 export const DeleteButton = (props) => (
-    <button {...props} className={styles.deleteButton} />
+    <button {...props} className={styles.itemDeleteButton} />
 );
 
 export const UpdateButton = (props) => (

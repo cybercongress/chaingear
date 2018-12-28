@@ -5,7 +5,6 @@ import {
     SectionContent,
     Centred,
     Message,
-    ValueInput
 } from '@cybercongress/ui';
 
 import TransferForm from './TransferForm';
@@ -24,6 +23,7 @@ import {
     CancelButton,
     IdContainer,
 } from '../../components/DatabaseItem';
+import ValueInput from "../../components/ValueInput";
 
 class DatabaseItem extends Component {
     state = {
@@ -66,11 +66,13 @@ class DatabaseItem extends Component {
     }
 
     startEdit = () => {
-        this.props.hideEntryError();
+/*        this.props.hideEntryError();
 
         this.setState({
             edit: true,
-        });
+        });*/
+
+        this.props.onItemEdit();
     }
 
     cancel = () => {
@@ -131,7 +133,7 @@ class DatabaseItem extends Component {
         let row = fields.map(field => (
             <div key={ field.name }>
                 <FieldLabel>{field.name.toUpperCase()}</FieldLabel>
-                <FieldValue>{data[field.name].toString()}</FieldValue>
+                <FieldValue>{item[field.name].toString()}</FieldValue>
             </div>
         ));
 
@@ -147,6 +149,7 @@ remove
             </div>
         );
 
+/*
         if (edit) {
             row = fields.map((field) => {
                 let control = (
@@ -185,6 +188,7 @@ remove
                 </div>
             );
         }
+*/
 
         const isOwner = isDbPaused ? false : userAccount === item.owner;
 

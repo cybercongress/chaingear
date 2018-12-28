@@ -86,6 +86,9 @@ class SchemaDefinition extends Component {
             unique,
         };
 
+        this.fieldName.value = '';
+        this.fieldUnique.checked = false;
+
         this.setState({
             fields: this.state.fields.concat(newItem),
         });
@@ -154,7 +157,11 @@ class SchemaDefinition extends Component {
 
                 <ProgressBar>
                     <CircleLable type='complete' number='1' text='Database initialization' />
-                    <CircleLable type='edit' number='2' text='Schema definition' />
+                    {isSchemaCreated ? (
+                        <CircleLable type='complete' number='2' text='Schema definition' />
+                    ) : (
+                        <CircleLable type='edit' number='2' text='Schema definition' />
+                    ) }
                     <CircleLable number='3' text='Contract code saving' />
                 </ProgressBar>
 
@@ -180,34 +187,36 @@ class SchemaDefinition extends Component {
                                                 </td>
                                             </tr>
                                         ))}
-                                        <tr>
-                                            <td>
-                                                <WideInput
-                                                    inputRef={node => this.fieldName = node}
-                                                    placeholder='Name'
-                                                />
-                                            </td>
-                                            <td>
-                                                <WideSelect
-                                                    inputRef={node => this.fieldType = node}
-                                                    onChange={this.onFieldTypeChange}
-                                                >
-                                                    <option value='string'>string</option>
-                                                    <option value='address'>address</option>
-                                                    <option value='bool'>bool</option>
-                                                    <option value='uint256'>uint256</option>
-                                                    <option value='int256'>int256</option>
-                                                </WideSelect>
-                                            </td>
-                                            <td hidden={disableUniqueCheckbox}>
-                                                <Checkbox inputRef={node => this.fieldUnique = node}>unique</Checkbox>
-                                            </td>
-                                            <td>
-                                                <AddButton
-                                                    onClick={this.add}
-                                                />
-                                            </td>
-                                        </tr>
+                                        {!isSchemaCreated &&
+                                            <tr>
+                                                <td>
+                                                    <WideInput
+                                                        inputRef={node => this.fieldName = node}
+                                                        placeholder='Name'
+                                                    />
+                                                </td>
+                                                <td>
+                                                    <WideSelect
+                                                        inputRef={node => this.fieldType = node}
+                                                        onChange={this.onFieldTypeChange}
+                                                    >
+                                                        <option value='string'>string</option>
+                                                        <option value='address'>address</option>
+                                                        <option value='bool'>bool</option>
+                                                        <option value='uint256'>uint256</option>
+                                                        <option value='int256'>int256</option>
+                                                    </WideSelect>
+                                                </td>
+                                                <td hidden={disableUniqueCheckbox}>
+                                                    <Checkbox inputRef={node => this.fieldUnique = node}>unique</Checkbox>
+                                                </td>
+                                                <td>
+                                                    <AddButton
+                                                        onClick={this.add}
+                                                    />
+                                                </td>
+                                            </tr>
+                                        }
                                     </tbody>
                                 </TableRegistry>
                             </FieldsTable>

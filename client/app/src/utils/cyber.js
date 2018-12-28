@@ -73,7 +73,7 @@ export const loadCompiler = (cb) => {
 
 const Dependencies = require('../resources/Dependencies.sol');
 
-const dateFormat = 'DD/MM/YYYY mm:hh';
+const dateFormat = 'DD/MM/YYYY hh:mm';
 
 export const formatDate = (solidityDate) => {
     const jsDate = new Date(solidityDate * 1000);

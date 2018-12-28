@@ -8,7 +8,7 @@ import {
     MenuPopupEditIcon, MenuPopupTransferIcon,
     Popup, PopupContent, PopupFooter, PopupTitle,
     BenContainer, BenPieChart, MenuPopupResumeIcon, MenuPopupPauseIcon,
-    LineTitle, LineControl, ContentInput, PopupButton, ContentLineFund,
+    LineTitle, LineControl, WideInput, PopupButton, ContentLineFund,
     LineText, ContentLine, ContentLineTextInput,
     CentredPanel, PageTitle, ProgressBar, CircleLable, FormField, WideSelect,
 } from '@cybercongress/ui';
@@ -18,6 +18,7 @@ import * as cyber from '../../utils/cyber';
 import DatabaseV1 from '../../../../../build/contracts/DatabaseV1.json';
 import {calculateBensShares} from '../../utils/utils';
 import ItemEditPopup from './ItemEditPopup';
+import {DatabaseItem, DatabaseList} from './DatabaseItem';
 
 const moment = require('moment');
 
@@ -699,22 +700,6 @@ class Database extends Component {
             editRecordOpen,
         } = this.state;
 
-        const item1 = {
-            __index: 0,
-            nameField: "1111",
-            addressField: "0x48feb69c8f6c5ae3a5a4af0a5f92c80a225229d6",
-            intField: 666,
-            currentEntryBalanceETH: 0,
-            owner: "0x48feb69c8f6c5ae3a5a4af0a5f92c80a225229d6",
-            id: 0,
-        };
-
-        const fields1 = [
-            { name: "nameField", type: "string", unique: true },
-            { name: "addressField", type: "address", unique: true },
-            { name: "intField", type: "int256", unique: false },
-        ];
-
         const popups = (
             <span>
                 <Popup open={claimFundOpen}>
@@ -729,7 +714,7 @@ class Database extends Component {
                         <ContentLineTextInput>
                             <LineTitle>Claim amount:</LineTitle>
                             <LineControl>
-                                <ContentInput inputRef={node => this.claimDbInput = node} placeholder='0.00 ETH' />
+                                <WideInput inputRef={node => this.claimDbInput = node} placeholder='0.00 ETH' />
                             </LineControl>
                         </ContentLineTextInput>
                     </PopupContent>
@@ -751,7 +736,7 @@ class Database extends Component {
                         <ContentLineTextInput>
                             <LineTitle>New owner:</LineTitle>
                             <LineControl>
-                                <ContentInput inputRef={node => this.newDbOwnerInput = node} />
+                                <WideInput inputRef={node => this.newDbOwnerInput = node} />
                             </LineControl>
                         </ContentLineTextInput>
                     </PopupContent>
@@ -767,7 +752,7 @@ class Database extends Component {
                         <ContentLineFund>
                             <LineTitle>Amount:</LineTitle>
                             <LineControl>
-                                <ContentInput inputRef={node => this.fundDbInput = node} />
+                                <WideInput inputRef={node => this.fundDbInput = node} />
                             </LineControl>
                         </ContentLineFund>
                     </PopupContent>
@@ -824,15 +809,15 @@ class Database extends Component {
 
                 <ItemEditPopup
                   open={editRecordOpen}
-                  item={item1}
-                  fields={fields1}
+                  item={itemForEdit}
+                  fields={fields}
                   onCancelClick={this.closePopups}
                   onConfirmClick={this.onUpdate}
                 />
             </span>
         );
 
-/*        const rows = items.map((item, index) => (
+        const rows = items.map((item, index) => (
             <DatabaseItem
                 clameRecord={ this.claimRecord }
                 removeItemClick={ this.removeItemClick }
@@ -847,10 +832,9 @@ class Database extends Component {
                 errorMessage={ duplicateFieldFound && duplicateFieldId === item.id}
                 hideEntryError={ this.hideEntryError }
                 isDbPaused={ isDbPaused }
+                onItemEdit={() => this.onItemEdit(item)}
             />
-        ));*/
-
-        const rows = [];
+        ));
 
         const permissionGroupStr = CreateEntryPermissionGroup[permissionGroup].label;
 
@@ -873,7 +857,6 @@ class Database extends Component {
                             {!isSchemaExist &&
                                 <ActionLink style={{marginLeft: 15}} to={`/schema/${databaseSymbol}`}>Define schema</ActionLink>
                             }
-                            <button onClick={() => this.onItemEdit(item1)}>EDIT</button>
                         </div>
                     </Section>
 
@@ -963,7 +946,7 @@ class Database extends Component {
                             <CentredPanel>
                                 <BoxTitle>Created:</BoxTitle>
                                 <div>
-                                    {createdTimestamp ? moment(new Date(createdTimestamp.toNumber() * 1000)).format('DD/MM/YYYY mm:hh:ss') : ''}
+                                    {createdTimestamp ? moment(new Date(createdTimestamp.toNumber() * 1000)).format('DD/MM/YYYY hh:mm:ss') : ''}
                                 </div>
                             </CentredPanel>
                         </SectionContent>
@@ -1069,100 +1052,22 @@ class Database extends Component {
                         </SectionContent>
                     </Section>
 
-                    <DbHeader>
-                        <DbHeaderLine>
-                            <DbHeaderLeft>
-                                RECORDS
-                            </DbHeaderLeft>
+                    {isSchemaExist &&
+                        <DbHeader>
+                            <DbHeaderLine>
+                                <DbHeaderLeft>
+                                    RECORDS
+                                </DbHeaderLeft>
 
-                            <DbHeaderRight>
-                                { showAddButton && <Button onClick={this.add}>Add new record</Button>}
-                            </DbHeaderRight>
-                        </DbHeaderLine>
-                    </DbHeader>
-
-{/*                    <DatabaseList>
+                                <DbHeaderRight>
+                                    {showAddButton && <Button onClick={this.add}>Add new record</Button>}
+                                </DbHeaderRight>
+                            </DbHeaderLine>
+                        </DbHeader>
+                    }
+                    <DatabaseList>
                         {rows}
-                    </DatabaseList>*/}
-
-                    <div>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th>Action</th>
-                                <th>Id</th>
-                                <th>Funded</th>
-                                <th>Owner</th>
-
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Developer</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <DbMenu>
-                                        <MenuPopup>
-                                            <MenuPopupItem
-                                                key='transferOwnership0'
-                                                icon={<MenuPopupTransferIcon />}
-                                            >
-                                                Transfer ownership
-                                            </MenuPopupItem>
-                                            <MenuSeparator key='separator0'/>
-                                            <MenuPopupItem
-                                                key='transferOwnership1'
-                                                icon={<MenuPopupTransferIcon />}
-                                            >
-                                                Second one
-                                            </MenuPopupItem>
-                                        </MenuPopup>
-                                    </DbMenu>
-                                    </td>
-                                    <td>1</td>
-                                    <td>3 ETH</td>
-                                    <td>YOU</td>
-                                    <td>dragons</td>
-                                    <td>
-                                        <LinkHash value='0x727b557aeec8203A8e0f3f43FD30885d94399010' />
-                                    </td>
-                                    <td>congress</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <DbMenu>
-                                        <MenuPopup>
-                                            <MenuPopupItem
-                                                key='transferOwnership2'
-                                                icon={<MenuPopupTransferIcon />}
-                                            >
-                                                Transfer ownership
-                                            </MenuPopupItem>
-                                            <MenuSeparator key='separator0'/>
-                                            <MenuPopupItem
-                                                key='transferOwnership3'
-                                                icon={<MenuPopupTransferIcon />}
-                                            >
-                                                Second one
-                                            </MenuPopupItem>
-                                        </MenuPopup>
-                                    </DbMenu>
-                                    </td>
-                                    <td>1</td>
-                                    <td>3 ETH</td>
-                                    <td>YOU</td>
-                                    <td>dragons</td>
-                                    <td>
-                                        <LinkHash value='0x727b557aeec8203A8e0f3f43FD30885d94399010' />
-                                    </td>
-                                    <td>congress</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-
+                    </DatabaseList>
                 </MainContainer>
             </div>
         );

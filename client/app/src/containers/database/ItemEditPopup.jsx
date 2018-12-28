@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-    ContentInput, ContentLineTextInput, LineControl, LineTitle,
+    ContentLineTextInput, LineControl, LineTitle, WideInput,
     Popup, PopupTitle, PopupContent, PopupFooter, PopupButton,
 } from '@cybercongress/ui';
 
@@ -16,6 +16,15 @@ export default class ItemEditPopup extends React.Component {
             fields: props.fields,
         };
     };
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.item !== this.props.item) {
+            this.setState({
+                item: nextProps.item,
+                fields: nextProps.fields,
+            });
+        }
+    }
 
     onChange = (event, fieldName, fieldType) => {
         if (fieldType === 'int256' && isNaN(event.target.value)) { return; }
@@ -37,7 +46,6 @@ export default class ItemEditPopup extends React.Component {
     };
 
     onCancelClick = () => {
-        debugger;
         this.setState({
             item: this.props.item,
         });
@@ -49,6 +57,7 @@ export default class ItemEditPopup extends React.Component {
         const { item, fields } = this.state;
         const values = fields.map(field => item[field.name]);
 
+        this.props.onCancelClick();
         this.props.onConfirmClick(values, item.id);
     };
 
@@ -69,7 +78,7 @@ export default class ItemEditPopup extends React.Component {
                               checked={item[field.name]}
                             />
                         ) : (
-                            <ContentInput
+                            <WideInput
                               inputRef={node => this.inputRefs[field.name] = node}
                               onChange={event => this.onChange(event, field.name, field.type)}
                               defaultValue={item[field.name].toString()}
