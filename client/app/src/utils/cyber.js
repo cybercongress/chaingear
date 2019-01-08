@@ -475,10 +475,9 @@ export const getDatabaseData = (databaseContract, fields, abi) => new Promise((r
     const mapFn = (item, id) => {
         const aItem = Array.isArray(item) ? item : [item];
 
-        return fields.reduce((o, field, index) => {
-            o[field.name] = aItem[index];
-            return o;
-        }, {
+        return fields.reduce((o, field, index) => ({
+            ...o, [field.name]: aItem[index],
+        }), {
             __index: id,
         });
     };
