@@ -497,7 +497,7 @@ class Database extends Component {
         this.closePopups();
 
         cyber.getChaingearContract()
-            .then(({ contract }) => {
+            .then((contract) => {
                 _chaingerContract = contract;
             })
             .then(() => cyber.callContractMethod(_chaingerContract, 'fundDatabase', databaseId, {
@@ -510,15 +510,16 @@ class Database extends Component {
     };
 
     claimDatabase = (amount) => {
-        const { databaseId } = this.state;
+        const { databaseId, web3 } = this.state;
 
         this.closePopups();
 
-        cyber.getChaingearContract().then(({ contract, web3 }) => {
-            contract.claimDatabaseFunds(databaseId, web3.toWei(amount, 'ether'), (e, data) => {
-                this.componentDidMount();
-            });
-        });
+        cyber.getChaingearContract()
+            .then(chaingerContract => cyber
+                .callContractMethod(chaingerContract,
+                    'claimDatabaseFunds',
+                    databaseId, web3.toWei(amount, 'ether')))
+            .then(() => this.componentDidMount());
     };
 
     claimFee = (amount) => {
@@ -532,11 +533,9 @@ class Database extends Component {
 
         this.closePopups();
 
-        cyber.getChaingearContract().then(({ contract, web3 }) => {
-            contract.transferFrom(userAccount, newOwner, databaseId, (e, data) => {
-                this.componentDidMount();
-            });
-        });
+        cyber.getChaingearContract()
+            .then(contract => cyber.callContractMethod(contract, 'transferFrom', userAccount, newOwner, databaseId))
+            .then(() => this.componentDidMount());
     };
 
     transferItem = (userAccount, newOwner, entryID) => {
@@ -585,8 +584,8 @@ class Database extends Component {
         this.closePopups();
 
         cyber.getChaingearContract()
-            .then(({contract}) => cyber.callContractMethod(contract, 'deleteDatabase', databaseId))
-            .then(data => console.log(`DeleteDB: ${databaseId}. Tx: ${data}`))
+            .then(contract => cyber.callContractMethod(contract, 'deleteDatabase', databaseId))
+            .then(data => console.log(`DeleteDB: ${databaseId}. Tx: ${data}`));
     };
 
     hideEntryError = () => {

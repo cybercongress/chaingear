@@ -1,77 +1,193 @@
 import Web3 from 'web3';
 import ChaingearBuild from '../../../../build/contracts/Chaingear.json';
-
 import generateContractCode from './generateContractCode';
-
 import DatabaseV1 from '../../../../build/contracts/DatabaseV1.json';
 
-let _networkId;
+/*
+*  WEB3
+*/
 
-const networks = {
-    42: 'Kovan',
-    1: 'Main',
-    5777: 'TestNet',
-    4: 'Rinkeby',
-};
+let currentWeb3;
 
+const loadWeb3 = new Promise(((resolve, reject) => {
+    // Wait for loading completion to avoid race conditions with web3 injection timing.
+    window.addEventListener('load', () => {
+        let results;
+        let web3 = window.web3;
+        // Checking if Web3 has been injected by the browser (Mist/MetaMask)
+
+
+        if (typeof web3 !== 'undefined') {
+            // Use Mist/MetaMask's provider.
+
+            if (web3.currentProvider) {
+                web3 = new Web3(web3.currentProvider);
+            } else {
+                const provider = new Web3.providers.HttpProvider();
+
+                web3 = new Web3(provider);
+            }
+
+            results = {
+                web3,
+            };
+
+            console.log('Injected web3 detected.');
+
+            resolve(results);
+        } else {
+            // Fallback to localhost if no web3 injection. We've configured this to
+            // use the development console's port by default.
+            web3 = new Web3(new Web3.providers.HttpProvider());
+
+            results = {
+                web3,
+            };
+
+            console.log('No web3 instance injected, using Local web3.');
+
+            resolve(results);
+        }
+    });
+}));
+
+export const getWeb3 = new Promise((resolve) => {
+    if (currentWeb3) {
+        resolve({ web3: currentWeb3 });
+    } else {
+        loadWeb3.then(({ web3 }) => {
+            currentWeb3 = web3;
+            resolve({ web3 });
+        });
+    }
+});
+
+export const getDefaultAccount = () => new Promise(resolve => getWeb3
+    .then(({ web3 }) => web3.eth.getAccounts((error, accounts) => {
+        // TODO: research how to return default account in cytb provider
+        resolve(accounts[0]);
+    })));
+
+export const setDefaultAccount = address => new Promise(resolve => getWeb3
+    .then(({ web3 }) => { web3.eth.defaultAccount = address; })
+    .then(() => resolve()));
+
+/*
+*  IPFS
+*/
 
 const IPFS = require('ipfs-api');
 
-
-
 const getIpfsConfig = () => {
-    if (window.getIpfsConfig) return window.getIpfsConfig();
+    if (window.getIpfsConfig) {
+        return window.getIpfsConfig();
+    }
 
     return Promise.resolve({
         host: 'localhost',
         port: 5001,
         protocol: 'http',
     });
-}
+};
 
 export const getIpfsGateway = () => {
-    if (window.getIpfsGateway) return window.getIpfsGateway();
+    if (window.getIpfsGateway) {
+        return window.getIpfsGateway();
+    }
 
     return Promise.resolve('http://localhost:8080');
-}
+};
 
-export function checkNetwork() {
-    return new Promise((resolve) => {
-        const networks = Object.keys(ChaingearBuild.networks);
+/*
+*  Networks
+*/
 
-        getWeb3.then(({ web3 }) => {
-            web3.version.getNetwork((err, netId) => {
-                _networkId = netId;
+let currentNetworkId;
 
-                resolve({
-                    isCorrectNetwork: networks.indexOf(netId) !== -1,
-                    networkId: netId,
-                    contractNetworks: networks,
-                });
+const networksIds = {
+    42: 'Kovan',
+    1: 'Main',
+    5777: 'TestNet',
+    4: 'Rinkeby',
+};
+
+export const checkNetwork = () => new Promise((resolve) => {
+    const networks = Object.keys(ChaingearBuild.networks);
+
+    getWeb3.then(({ web3 }) => {
+        web3.version.getNetwork((err, netId) => {
+            currentNetworkId = netId;
+
+            resolve({
+                isCorrectNetwork: networks.indexOf(netId) !== -1,
+                networkId: netId,
+                contractNetworks: networks,
             });
         });
     });
-}
+});
 
 export const getNetworkStr = (networkId) => {
-    if (networks[networkId]) {
-        return networks[networkId];
+    if (networksIds[networkId]) {
+        return networksIds[networkId];
     }
 
     return 'Unknown network';
 };
 
+/*
+*  Wrappers
+*/
+
+export const callContractMethod = (contract, method, ...args) => new Promise((resolve, reject) => {
+    contract[method].apply(contract, [...args, (e, data) => {
+        if (e) {
+            console.log('Rejected contract call. Method: ', method, ' args: ', args);
+            reject(e);
+        } else {
+            resolve(data);
+        }
+    }]);
+});
+
+export const sendTransactionMethod = (contractMethod, ...args) => new Promise((resolve, reject) => {
+    contractMethod.sendTransaction.apply(contractMethod, [...args, (e, data) => {
+        if (e) {
+            console.log('Rejected send transaction method. Args: ', args);
+            reject(e);
+        } else {
+            resolve(data);
+        }
+    }]);
+});
+
+export const callWeb3EthMethod = (web3, method, ...args) => new Promise((resolve, reject) => {
+    web3.eth[method].apply(web3, [...args, (e, data) => {
+        if (e) {
+            console.log('Rejected web3.eth call. Method: ', method, ' args: ', args);
+            reject(e);
+        } else {
+            resolve(data);
+        }
+    }]);
+});
+
+export const eventPromise = event => new Promise((resolve, reject) => {
+    event.watch((error, results) => {
+        event.stopWatching(() => {});
+        if (error) {
+            reject(error);
+        } else {
+            resolve(results);
+        }
+    });
+});
+
+/*
+*  Date
+*/
+
 const moment = require('moment');
-
-// TODO: move in npm package
-
-export const loadCompiler = (cb) => {
-    setTimeout(() => {
-        window.BrowserSolc.loadVersion('soljson-v0.4.25+commit.59dbf8f1.js', cb);
-    }, 30);
-};
-
-const Dependencies = require('../resources/Dependencies.sol');
 
 const dateFormat = 'DD/MM/YYYY hh:mm';
 
@@ -79,6 +195,65 @@ export const formatDate = (solidityDate) => {
     const jsDate = new Date(solidityDate * 1000);
 
     return moment(jsDate).format(dateFormat);
+};
+
+
+let chaingearContract;
+
+export const getChaingearContract = () => new Promise(resolve => {
+    getWeb3
+        .then(({ web3 }) => {
+            if (!chaingearContract) {
+                chaingearContract = web3.eth
+                    .contract(ChaingearBuild.abi)
+                    .at(ChaingearBuild.networks[currentNetworkId].address);
+            }
+
+            resolve(chaingearContract);
+        });
+});
+
+
+let ethAccounts;
+
+export const getEthAccounts = () => new Promise(resolve => {
+    if (ethAccounts) {
+        resolve(ethAccounts);
+    } else {
+        getWeb3
+            .then(({ web3 }) => callWeb3EthMethod(web3, 'getAccounts'))
+            .then((accounts) => {
+                ethAccounts = accounts;
+                resolve(accounts);
+            });
+    }
+});
+
+export const init = () => new Promise((resolve) => {
+    if (chaingearContract && currentWeb3 && ethAccounts) {
+        resolve({
+            contract: chaingearContract,
+            web3: currentWeb3,
+            accounts: ethAccounts,
+        });
+    } else {
+        getWeb3
+            .then(() => getEthAccounts())
+            .then(() => getChaingearContract())
+            .then(() => setDefaultAccount(ethAccounts[0])) // todo: set correct account
+            .then(() => resolve({
+                contract: chaingearContract,
+                web3: currentWeb3,
+                accounts: ethAccounts,
+            }));
+    }
+});
+
+// TODO: move in npm package
+export const loadCompiler = (cb) => {
+    setTimeout(() => {
+        window.BrowserSolc.loadVersion('soljson-v0.4.25+commit.59dbf8f1.js', cb);
+    }, 30);
 };
 
 export const mapDatabase = (rawDatabase, id) => ({
@@ -139,6 +314,9 @@ export const getItemsByIds = (contract, idsArray, getEntryByIdMethod, mapFn) => 
     });
 });
 
+
+const Dependencies = require('../resources/Dependencies.sol');
+
 export const compileDatabase = (code, contractName, compiler) => new Promise((resolve, reject) => {
     const input = {
         'Dependencies.sol': Dependencies,
@@ -170,85 +348,6 @@ export const compileDatabase = (code, contractName, compiler) => new Promise((re
     }, 20);
 });
 
-const getWeb3 = new Promise(((resolve, reject) => {
-    // Wait for loading completion to avoid race conditions with web3 injection timing.
-    window.addEventListener('load', () => {
-        let results;
-        let web3 = window.web3;
-        // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-
-
-        if (typeof web3 !== 'undefined') {
-            // Use Mist/MetaMask's provider.
-
-            if (web3.currentProvider) {
-                web3 = new Web3(web3.currentProvider);
-            } else {
-                const provider = new Web3.providers.HttpProvider();
-
-                web3 = new Web3(provider);
-            }
-
-            results = {
-                web3,
-            };
-
-            console.log('Injected web3 detected.');
-
-            resolve(results);
-        } else {
-            // Fallback to localhost if no web3 injection. We've configured this to
-            // use the development console's port by default.
-            web3 = new Web3(new Web3.providers.HttpProvider());
-
-            results = {
-                web3,
-            };
-
-            console.log('No web3 instance injected, using Local web3.');
-
-            resolve(results);
-        }
-    });
-}));
-
-export const getChaingearContract = () => getWeb3
-    .then((results) => {
-        const web3 = results.web3;
-        const contract = web3.eth.contract(ChaingearBuild.abi).at(ChaingearBuild.networks[_networkId].address);
-
-        return new Promise((resolve) => {
-            results.web3.eth.getAccounts((e, accounts) => {
-                results.web3.eth.defaultAccount = accounts[0];
-
-                resolve({
-                    contract,
-                    web3: results.web3,
-                    accounts,
-                });
-            });
-        });
-    });
-
-// export const register = (name, adress, hash) => new Promise((resolve) => {
-//     getChaingearContract().then(({
-//         contract,
-//         web3,
-//     }) => {
-//         contract.register(name, adress, hash, {
-//             from: web3.eth.accounts[0],
-//         }).then((x) => {
-//             resolve();
-//         });
-//     });
-// });
-
-export const getDefaultAccount = () => new Promise(resolve => getWeb3
-    .then(({ web3 }) => web3.eth.getAccounts((error, accounts) => {
-        // TODO: research how to return default account in cytb provider
-        resolve(accounts[0]);
-    })));
-
 export const getDatabases = () => {
     const mapFunc = (item, id) => ({
         name: item[0],
@@ -263,48 +362,11 @@ export const getDatabases = () => {
     });
 
     return getChaingearContract()
-        .then(({ contract }) => getItems(contract, 'getDatabasesIDs', 'getDatabase', mapFunc));
+        .then(contract => getItems(contract, 'getDatabasesIDs', 'getDatabase', mapFunc));
 };
 
-export const callContractMethod = (contract, method, ...args) => new Promise((resolve, reject) => {
-    contract[method].apply(contract, [...args, (e, data) => {
-        if (e) {
-            console.log('Rejected contract call. Method: ', method, ' args: ', args);
-            reject(e);
-        } else {
-            resolve(data);
-        }
-    }]);
-});
-
-export const sendTransactionMethod = (contractMethod, ...args) => new Promise((resolve, reject) => {
-    contractMethod.sendTransaction.apply(contractMethod, [...args, (e, data) => {
-        if (e) {
-            console.log('Rejected send transaction method. Args: ', args);
-            reject(e);
-        } else {
-            resolve(data);
-        }
-    }]);
-});
-
-export const callWeb3EthMethod = (web3, method, ...args) => new Promise((resolve, reject) => {
-    web3.eth[method].apply(web3, [...args, (e, data) => {
-        if (e) {
-            console.log('Rejected web3.eth call. Method: ', method, ' args: ', args);
-            reject(e);
-        } else {
-            resolve(data);
-        }
-    }]);
-});
-
-export const removeDatabase = (address, cb) => getChaingearContract().then(({
-    contract,
-    web3,
-}) => contract.deleteDatabase(address, {
-    from: web3.eth.accounts[0],
-}));
+export const removeDatabase = (address, cb) => getChaingearContract()
+    .then(contract => contract.deleteDatabase(address));
 
 export const getDatabaseFieldsByHash = ipfsHash => new Promise((resolve) => {
     getIpfsConfig().then(config => {
@@ -326,11 +388,6 @@ export const getDatabaseFieldsByHash = ipfsHash => new Promise((resolve) => {
     });
 });
 
-export {
-    getWeb3,
-    generateContractCode,
-};
-
 export const saveInIPFS = jsonStr => new Promise((resolve, reject) => {
     getIpfsConfig().then(config => {
         const ipfs = new IPFS(config);
@@ -347,8 +404,6 @@ export const saveInIPFS = jsonStr => new Promise((resolve, reject) => {
         });
     });
 });
-
-// Public API
 
 export const deploySchema = (name, fields, databaseContract) => {
     const code = generateContractCode(name, fields);
@@ -385,7 +440,7 @@ export const deployDatabase = (name, symbol, version, beneficiaries, stakes) => 
 
     return new Promise((resolve, reject) => {
         getChaingearContract()
-            .then(({ contract }) => {
+            .then((contract) => {
                 _chaingearContract = contract;
                 return callContractMethod(contract, 'getCreationFeeWei');
             })
@@ -406,44 +461,8 @@ export const deployDatabase = (name, symbol, version, beneficiaries, stakes) => 
     });
 };
 
-let _contract;
-let _web3;
-let _accounts;
-
-export const init = () => new Promise((resolve) => {
-    if (_web3) {
-        resolve({
-            contract: _contract,
-            web3: _web3,
-            accounts: _accounts,
-        });
-    } else {
-        getChaingearContract()
-            .then(({
-                contract,
-                web3,
-                accounts,
-            }) => {
-                _contract = contract;
-                _web3 = web3;
-                _accounts = accounts;
-                resolve({
-                    contract,
-                    web3,
-                    accounts,
-                });
-            });
-    }
-});
-
-export const getDatabaseContract = (address) => {
-    if (_web3) {
-        return Promise.resolve(_web3.eth.contract(DatabaseV1.abi).at(address));
-    }
-
-    return getWeb3
-        .then(({ web3 }) => web3.eth.contract(DatabaseV1.abi).at(address));
-};
+export const getDatabaseContract = address => getWeb3
+    .then(({ web3 }) => web3.eth.contract(DatabaseV1.abi).at(address));
 
 export const getDatabaseData = (databaseContract, fields, abi) => new Promise((resolve) => {
     let _entryCoreAddress;
@@ -463,7 +482,7 @@ export const getDatabaseData = (databaseContract, fields, abi) => new Promise((r
     callContractMethod(databaseContract, 'getEntriesStorage')
         .then((entryAddress) => {
             _entryCoreAddress = entryAddress;
-            _entryCore = _web3.eth.contract(abi).at(entryAddress);
+            _entryCore = currentWeb3.eth.contract(abi).at(entryAddress);
         })
         .then(() => callContractMethod(databaseContract, 'getEntriesIDs'))
         .then((entriesIDs) => {
@@ -481,7 +500,7 @@ export const getDatabaseData = (databaseContract, fields, abi) => new Promise((r
 });
 
 export const fundEntry = (address, id, value) => new Promise((resolve) => {
-    const databaseContract = _web3.eth.contract(DatabaseV1.abi).at(address);
+    const databaseContract = currentWeb3.eth.contract(DatabaseV1.abi).at(address);
 
     const event = databaseContract.EntryFunded();
 
@@ -490,25 +509,14 @@ export const fundEntry = (address, id, value) => new Promise((resolve) => {
         resolve(results.args);
     });
     databaseContract.fundEntry(id, {
-        value: _web3.toWei(value, 'ether'),
+        value: currentWeb3.toWei(value, 'ether'),
     }, (e, d) => {
 
     });
 });
 
-export const eventPromise = event => new Promise((resolve, reject) => {
-    event.watch((error, results) => {
-        event.stopWatching(() => {});
-        if (error) {
-            reject(error);
-        } else {
-            resolve(results);
-        }
-    });
-});
-
 export const getSafeBalance = address => new Promise((resolve) => {
-    const databaseContract = _web3.eth.contract(DatabaseV1.abi).at(address);
+    const databaseContract = currentWeb3.eth.contract(DatabaseV1.abi).at(address);
 
     databaseContract.safeBalance((e, data) => {
         resolve(data);
@@ -516,38 +524,39 @@ export const getSafeBalance = address => new Promise((resolve) => {
 });
 
 export const updateEntryCreationFee = (address, newfee) => new Promise((resolve, reject) => {
-    const database = _web3.eth.contract(DatabaseV1.abi).at(address);
+    const database = currentWeb3.eth.contract(DatabaseV1.abi).at(address);
 
-    database.updateEntryCreationFee(_web3.toWei(newfee, 'ether'), (e, data) => {
+    database.updateEntryCreationFee(currentWeb3.toWei(newfee, 'ether'), (e, data) => {
         if (e) { reject(e); } else { resolve(data); }
     });
 });
 
-export const getBeneficiaries = dbContract => {
+export const getBeneficiaries = dbContract => callContractMethod(dbContract, 'getPayeesCount')
+    .then(bensCount => [...Array(bensCount.toNumber()).keys()])
+    .then(benIndexArray => benIndexArray.map((benIndex) => {
 
-    return callContractMethod(dbContract, 'getPayeesCount')
-        .then(bensCount => [...Array(bensCount.toNumber()).keys()])
-        .then(benIndexArray => benIndexArray.map((benIndex) => {
+        const ben = {};
 
-            const ben = {};
+        return callContractMethod(dbContract, 'payees', benIndex)
+            .then((benAddress) => {
+                ben.address = benAddress;
+            })
+            .then(() => callContractMethod(dbContract, 'shares', ben.address))
+            .then((benStake) => {
+                ben.stake = benStake.toNumber();
+            })
+            .then(() => callContractMethod(dbContract, 'released', ben.address))
+            .then((benReleased) => {
+                ben.released = benReleased.toNumber();
+            })
+            .then(() => ben)
+            .catch((error) => {
+                console.log(`Cannot get beneficiary for DB. Error: ${error}`);
+            });
 
-            return callContractMethod(dbContract, 'payees', benIndex)
-                .then((benAddress) => {
-                    ben.address = benAddress;
-                })
-                .then(() => callContractMethod(dbContract, 'shares', ben.address))
-                .then((benStake) => {
-                    ben.stake = benStake.toNumber();
-                })
-                .then(() => callContractMethod(dbContract, 'released', ben.address))
-                .then((benReleased) => {
-                    ben.released = benReleased.toNumber();
-                })
-                .then(() => ben)
-                .catch((error) => {
-                    console.log(`Cannot get beneficiary for DB. Error: ${error}`);
-                });
+    }))
+    .then(benPromisses => Promise.all(benPromisses));
 
-        }))
-        .then(benPromisses => Promise.all(benPromisses));
+export {
+    generateContractCode,
 };

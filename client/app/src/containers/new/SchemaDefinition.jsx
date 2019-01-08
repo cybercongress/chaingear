@@ -57,7 +57,7 @@ class SchemaDefinition extends Component {
         let _databaseId;
 
         getChaingearContract()
-            .then(({ contract }) => {
+            .then((contract) => {
                 _chaingearContract = contract;
 
                 return callContractMethod(contract, 'getDatabaseIDBySymbol', dbsymbol);

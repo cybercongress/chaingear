@@ -83,7 +83,7 @@ class NewDatabase extends Component {
         this.setState({ message: 'processing...', inProgress: true, type: 'processing' });
         deployDatabase(dbName, dbSymbol, dbVersion, bens, stakes)
             .then(({ txHash }) => getChaingearContract())
-            .then(({ contract }) => eventPromise(contract.DatabaseCreated()))
+            .then(contract => eventPromise(contract.DatabaseCreated()))
             .then((results) => {
                 this.setState({
                     inProgress: false,
@@ -102,7 +102,7 @@ class NewDatabase extends Component {
         let _chaingerContract;
 
         return getChaingearContract()
-            .then(({contract}) => {
+            .then((contract) => {
                 _chaingerContract = contract;
                 return callContractMethod(contract, 'getAmountOfBuilders');
             })
@@ -154,7 +154,7 @@ class NewDatabase extends Component {
                 }
             })
             .then(() => getChaingearContract())
-            .then(({ contract }) => callContractMethod(contract, 'getNameExist', dbName))
+            .then(contract => callContractMethod(contract, 'getNameExist', dbName))
             .then((isNameExist) => {
                 if (isNameExist) {
                     _isNameValid = false;
@@ -200,7 +200,7 @@ class NewDatabase extends Component {
                 }
             })
             .then(() => getChaingearContract())
-            .then(({ contract }) => callContractMethod(contract, 'getSymbolExist', dbSymbol))
+            .then(contract => callContractMethod(contract, 'getSymbolExist', dbSymbol))
             .then((isSymbolExist) => {
                 if (isSymbolExist) {
                     _isSymbolValid = false;
