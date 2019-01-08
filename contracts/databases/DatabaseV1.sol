@@ -25,9 +25,9 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     /*
     *  Storage
     */
-
-    bytes4 constant internal INTERFACE_SCHEMA_ID = 0x153366ed;
-    bytes4 constant internal INTERFACE_DATABASE_ID = 0xfdb63525;
+    
+    bytes4 constant private INTERFACE_SCHEMA_ID = 0x153366ed;
+    bytes4 constant private INTERFACE_DATABASE_ID = 0xfdb63525;
 
     // @dev Metadata of entry, holds ownership data and funding info
     struct EntryMeta {
@@ -45,10 +45,9 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
 
     bytes32[] private databaseTags;
     string private databaseDescription;
-
-    string private linkToSchemaABI; // will be depricated
-    string private schemaDefinition; // and changed for this
-
+    
+    string private schemaDefinition;
+    
     Safe private databaseSafe;
 
     ISchema private entriesStorage;
@@ -346,16 +345,8 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     {
         return address(entriesStorage);
     }
-
-    function getInterfaceEntriesContract() // will be depricated
-        external
-        view
-        returns (string)
-    {
-        return linkToSchemaABI;
-    }
-
-    function getSchemaDefinition() // and migrated to this with determinated ABI
+    
+    function getSchemaDefinition()
         external
         view
         returns (string)
@@ -422,8 +413,8 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     /**
     *  Public functions
     */
-
-    function initializeDatabase(string _linkToABI, bytes _schemaBytecode)
+    
+    function initializeDatabase(string _schemaDefinition, bytes _schemaBytecode)
         public
         onlyAdmin
         returns (address)
@@ -440,8 +431,8 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         require(deployedAddress != address(0));
         require(SupportsInterfaceWithLookup(deployedAddress).supportsInterface(INTERFACE_SCHEMA_ID));
         entriesStorage = ISchema(deployedAddress);
-
-        linkToSchemaABI = _linkToABI;
+    
+        schemaDefinition = _schemaDefinition;
         databaseInitStatus = true;
 
         emit DatabaseInitialized();

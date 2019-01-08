@@ -20,8 +20,8 @@ contract DatabaseBuilderV1 is IDatabaseBuilder, SupportsInterfaceWithLookup {
     address private chaingear;    
     address private owner;
     
-    bytes4 constant internal INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
-    bytes4 constant internal INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
+    bytes4 constant private INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
+    bytes4 constant private INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
 
 	/*
 	*  Constructor

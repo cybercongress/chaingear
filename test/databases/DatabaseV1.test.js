@@ -136,7 +136,7 @@ contract("DatabaseV1", (accounts) => {
         });
 
         it("shoud be not paused", async () => {
-            (await database.paused()).should.be.equal(false);
+            (await database.getPaused()).should.be.equal(false);
         });
 
         it("should allow admin to update creation fee when paused", async () => {

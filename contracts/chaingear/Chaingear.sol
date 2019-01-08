@@ -60,9 +60,9 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
     uint256 private databaseCreationFeeWei = 1 finney;
 
     string constant private CHAINGEAR_DESCRIPTION = "The novel Ethereum database framework";
-    bytes4 constant internal INTERFACE_CHAINGEAR_ID = 0x2163c5ed;
-    bytes4 constant internal INTERFACE_DATABASE_ID = 0xfdb63525;
-    bytes4 constant internal INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
+    bytes4 constant private INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
+    bytes4 constant private INTERFACE_DATABASE_ID = 0xfdb63525;
+    bytes4 constant private INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
     /*
     *  Events
     */
@@ -192,7 +192,8 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         uint256 databaseIndex = allTokensIndex[_databaseID];
         IDatabase database = databases[databaseIndex].databaseContract;
         require(database.getSafeBalance() == uint256(0));
-
+        require(database.getPaused() == true);
+        
         string memory databaseName = ERC721(database).name();
         string memory databaseSymbol = ERC721(database).symbol();
         databasesNamesIndex[databaseName] = false;

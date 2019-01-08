@@ -18,7 +18,7 @@ contract DatabasePermissionControl is Ownable {
     enum CreateEntryPermissionGroup {OnlyAdmin, Whitelist, AllUsers}
 
     address private admin;
-    bool public paused = false;
+    bool private paused = false;
 
     mapping(address => bool) private whitelist;
 
@@ -153,5 +153,13 @@ contract DatabasePermissionControl is Ownable {
         returns (bool)
     {
         return whitelist[_address];
+    }
+    
+    function getPaused()
+        external
+        view
+        returns (bool)
+    {
+        return paused;
     }
 }

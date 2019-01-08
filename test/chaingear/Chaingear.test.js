@@ -388,6 +388,7 @@ contract("Chaingear", (accounts) => {
         it("should allow owner delete his database", async () => {
             let databaseMeta = await chaingear.getDatabase(0);
             let database = await DatabaseV1.at(databaseMeta[2]);
+            await database.pause({ from: RANDOM_CREATOR_2 }).should.be.fulfilled;
             await chaingear.deleteDatabase(0,
                 {
                     from: RANDOM_CREATOR_2

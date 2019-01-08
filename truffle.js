@@ -4,11 +4,16 @@ const HDWalletProvider = require('truffle-hdwallet-provider');
 const infuraConfig = require('./infura_deploy.json');
 
 module.exports = {
-
-    solc: {
-        optimizer: {
-            enabled: true,
-            runs: 500
+    
+    compilers: {    
+        solc: {
+            version: "0.4.25",
+            settings: {
+                optimizer: {
+                    enabled: true,
+                    runs: 500
+                }
+            }
         }
     },
 

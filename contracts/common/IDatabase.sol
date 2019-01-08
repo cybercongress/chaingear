@@ -19,7 +19,6 @@ interface IDatabase {
     function getIndexByID(uint256) external view returns (uint256);
     function getEntryCreationFee() external view returns (uint256);
     function getEntriesStorage() external view returns (address);
-    function getInterfaceEntriesContract() external view returns (string);
     function getSchemaDefinition() external view returns (string);
     function getDatabaseBalance() external view returns (uint256);
     function getDatabaseDescription() external view returns (string);
@@ -30,4 +29,5 @@ interface IDatabase {
     function transferAdminRights(address) external;
     function transferOwnership(address) external;
     function getAdmin() external view returns (address);
+    function getPaused() external view returns (bool);
 }
