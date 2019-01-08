@@ -13,10 +13,9 @@ const loadWeb3 = new Promise(((resolve, reject) => {
     // Wait for loading completion to avoid race conditions with web3 injection timing.
     window.addEventListener('load', () => {
         let results;
-        let web3 = window.web3;
+        let { web3 } = window;
+
         // Checking if Web3 has been injected by the browser (Mist/MetaMask)
-
-
         if (typeof web3 !== 'undefined') {
             // Use Mist/MetaMask's provider.
 
@@ -69,7 +68,7 @@ export const getDefaultAccount = () => new Promise(resolve => getWeb3
     })));
 
 export const setDefaultAccount = address => new Promise(resolve => getWeb3
-    .then(({ web3 }) => { web3.eth.defaultAccount = address; })
+    .then(() => { currentWeb3.eth.defaultAccount = address; })
     .then(() => resolve()));
 
 /*
@@ -200,7 +199,7 @@ export const formatDate = (solidityDate) => {
 
 let chaingearContract;
 
-export const getChaingearContract = () => new Promise(resolve => {
+export const getChaingearContract = () => new Promise((resolve) => {
     getWeb3
         .then(({ web3 }) => {
             if (!chaingearContract) {
@@ -216,7 +215,7 @@ export const getChaingearContract = () => new Promise(resolve => {
 
 let ethAccounts;
 
-export const getEthAccounts = () => new Promise(resolve => {
+export const getEthAccounts = () => new Promise((resolve) => {
     if (ethAccounts) {
         resolve(ethAccounts);
     } else {
@@ -268,7 +267,9 @@ export const mapDatabase = (rawDatabase, id) => ({
     supply: rawDatabase[6],
 });
 
-export const getItems = (contract, getIdsMethod, getEntryByIdMethod, mapFn) => new Promise((topResolve) => {
+export const getItems = (contract, getIdsMethod,
+    getEntryByIdMethod, mapFn) => new Promise((topResolve) => {
+
     contract[getIdsMethod]((e, ids) => {
         const idsArray = ids.map(id => id.toNumber());
 
@@ -293,7 +294,9 @@ export const getItems = (contract, getIdsMethod, getEntryByIdMethod, mapFn) => n
     });
 });
 
-export const getItemsByIds = (contract, idsArray, getEntryByIdMethod, mapFn) => new Promise((topResolve) => {
+export const getItemsByIds = (contract, idsArray,
+    getEntryByIdMethod, mapFn) => new Promise((topResolve) => {
+
     const promises = idsArray.map(id => new Promise((itemResolve, itemReject) => {
         contract[getEntryByIdMethod](id, (error, data) => {
             if (error) {
@@ -369,8 +372,9 @@ export const removeDatabase = (address, cb) => getChaingearContract()
     .then(contract => contract.deleteDatabase(address));
 
 export const getDatabaseFieldsByHash = ipfsHash => new Promise((resolve) => {
-    getIpfsConfig().then(config => {
+    getIpfsConfig().then((config) => {
         const ipfs = new IPFS(config);
+
         ipfs.get(ipfsHash, (err, files) => {
             const buf = files[0].content;
             const abi = JSON.parse(buf.toString());
@@ -389,7 +393,7 @@ export const getDatabaseFieldsByHash = ipfsHash => new Promise((resolve) => {
 });
 
 export const saveInIPFS = jsonStr => new Promise((resolve, reject) => {
-    getIpfsConfig().then(config => {
+    getIpfsConfig().then((config) => {
         const ipfs = new IPFS(config);
         const buffer = Buffer.from(jsonStr);
 
@@ -408,21 +412,21 @@ export const saveInIPFS = jsonStr => new Promise((resolve, reject) => {
 export const deploySchema = (name, fields, databaseContract) => {
     const code = generateContractCode(name, fields);
 
-    let _bytecode;
-    let _ipfsHash;
+    let tempByteCode;
+    let tempIpfsHash;
 
     return new Promise((resolve, reject) => {
         loadCompiler((compiler) => {
             compileDatabase(code, name, compiler)
                 .then(({ abi, bytecode }) => {
-                    _bytecode = bytecode;
+                    tempByteCode = bytecode;
                     return saveInIPFS(abi);
                 })
                 .then((ipfsHash) => {
-                    _ipfsHash = ipfsHash;
+                    tempIpfsHash = ipfsHash;
                     return getWeb3;
                 })
-                .then(({ web3 }) => callContractMethod(databaseContract, 'initializeDatabase', _ipfsHash, _bytecode))
+                .then(({ web3 }) => callContractMethod(databaseContract, 'initializeDatabase', tempIpfsHash, tempByteCode))
                 .then((data) => {
                     console.log(`Schema created for ${name}. Data: ${data}`);
                     resolve(data);
@@ -436,18 +440,18 @@ export const deploySchema = (name, fields, databaseContract) => {
 };
 
 export const deployDatabase = (name, symbol, version, beneficiaries, stakes) => {
-    let _chaingearContract;
+    let tChaingearContract;
 
     return new Promise((resolve, reject) => {
         getChaingearContract()
             .then((contract) => {
-                _chaingearContract = contract;
+                tChaingearContract = contract;
                 return callContractMethod(contract, 'getCreationFeeWei');
             })
             .then((fee) => {
                 const creationFee = fee.toNumber();
 
-                return sendTransactionMethod(_chaingearContract.createDatabase,
+                return sendTransactionMethod(tChaingearContract.createDatabase,
                     version, beneficiaries, stakes, name, symbol, { value: creationFee });
             })
             .then((txHash) => {
@@ -465,8 +469,8 @@ export const getDatabaseContract = address => getWeb3
     .then(({ web3 }) => web3.eth.contract(DatabaseV1.abi).at(address));
 
 export const getDatabaseData = (databaseContract, fields, abi) => new Promise((resolve) => {
-    let _entryCoreAddress;
-    let _entryCore;
+    let tEntryCoreAddress;
+    let tEntryCore;
 
     const mapFn = (item, id) => {
         const aItem = Array.isArray(item) ? item : [item];
@@ -481,19 +485,19 @@ export const getDatabaseData = (databaseContract, fields, abi) => new Promise((r
 
     callContractMethod(databaseContract, 'getEntriesStorage')
         .then((entryAddress) => {
-            _entryCoreAddress = entryAddress;
-            _entryCore = currentWeb3.eth.contract(abi).at(entryAddress);
+            tEntryCoreAddress = entryAddress;
+            tEntryCore = currentWeb3.eth.contract(abi).at(entryAddress);
         })
         .then(() => callContractMethod(databaseContract, 'getEntriesIDs'))
         .then((entriesIDs) => {
             const idsArray = entriesIDs.map(id => id.toNumber());
 
-            getItemsByIds(_entryCore, idsArray, 'readEntry', mapFn)
+            getItemsByIds(tEntryCore, idsArray, 'readEntry', mapFn)
                 .then((items) => {
                     resolve({
                         items,
                         fields,
-                        entryAddress: _entryCoreAddress,
+                        entryAddress: tEntryCoreAddress,
                     });
                 });
         });
@@ -534,7 +538,6 @@ export const updateEntryCreationFee = (address, newfee) => new Promise((resolve,
 export const getBeneficiaries = dbContract => callContractMethod(dbContract, 'getPayeesCount')
     .then(bensCount => [...Array(bensCount.toNumber()).keys()])
     .then(benIndexArray => benIndexArray.map((benIndex) => {
-
         const ben = {};
 
         return callContractMethod(dbContract, 'payees', benIndex)
@@ -553,7 +556,6 @@ export const getBeneficiaries = dbContract => callContractMethod(dbContract, 'ge
             .catch((error) => {
                 console.log(`Cannot get beneficiary for DB. Error: ${error}`);
             });
-
     }))
     .then(benPromisses => Promise.all(benPromisses));
 
