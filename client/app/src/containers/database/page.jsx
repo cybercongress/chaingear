@@ -1,5 +1,3 @@
-
-
 import { Container } from 'unstated';
 import * as cyber from '../../utils/cyber';
 import DatabaseV1 from '../../../../../build/contracts/DatabaseV1.json';
@@ -51,7 +49,7 @@ class ViewRegistry extends Container {
         editRecordOpen: false,
 
         permissionGroup: 0,
-        itemForEdit: null,    	
+        itemForEdit: null,
     };
 
 
@@ -104,7 +102,7 @@ class ViewRegistry extends Container {
             .then((beneficiaries) => {
                 _beneficiaries = beneficiaries;
             })
-            .then(() => cyber.callContractMethod(_databaseContract, 'paused'))
+            .then(() => cyber.callContractMethod(_databaseContract, 'getPaused'))
             .then((isDbPaused) => {
                 _isDbPaused = isDbPaused;
             })

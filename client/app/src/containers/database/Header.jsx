@@ -124,7 +124,7 @@ const Header = () => (
                                               Resume database
                                             </MenuPopupItem>
                                         }
-                                        {!isDbPaused && isOwner
+                                        {isDbPaused && isOwner
                                             && [
                                                 <MenuSeparator key='separator2' />,
                                                 <MenuPopupItem

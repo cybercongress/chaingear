@@ -63,7 +63,7 @@ export const getWeb3 = new Promise((resolve) => {
 
 export const getDefaultAccount = () => new Promise(resolve => getWeb3
     .then(({ web3 }) => web3.eth.getAccounts((error, accounts) => {
-        // TODO: research how to return default account in cytb provider
+        // TODO: research how to return default account in cyb provider
         resolve(accounts[0]);
     })));
 
@@ -441,9 +441,14 @@ export const deploySchema = (name, fields, databaseContract) => {
 
 export const deployDatabase = (name, symbol, version, beneficiaries, stakes) => {
     let tChaingearContract;
+    let tdefaultAccount;
 
     return new Promise((resolve, reject) => {
-        getChaingearContract()
+        getDefaultAccount()
+            .then((defaultAccount) => {
+                tdefaultAccount = defaultAccount;
+                return getChaingearContract();
+            })
             .then((contract) => {
                 tChaingearContract = contract;
                 return callContractMethod(contract, 'getCreationFeeWei');
@@ -452,7 +457,10 @@ export const deployDatabase = (name, symbol, version, beneficiaries, stakes) => 
                 const creationFee = fee.toNumber();
 
                 return sendTransactionMethod(tChaingearContract.createDatabase,
-                    version, beneficiaries, stakes, name, symbol, { value: creationFee });
+                    version, beneficiaries, stakes, name, symbol, {
+                        from: tdefaultAccount,
+                        value: creationFee,
+                    });
             })
             .then((txHash) => {
                 console.log(`Database creation ${name} tx: ${txHash}`);

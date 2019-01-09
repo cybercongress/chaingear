@@ -11,7 +11,9 @@ import {
     LinkHash,
 } from '@cybercongress/ui';
 
-import { getDatabases, getDefaultAccount, formatDate } from '../../utils/cyber';
+import {
+    getDatabases, getDefaultAccount, formatDate, init,
+} from '../../utils/cyber';
 
 class Home extends Component {
     constructor(props) {
@@ -24,15 +26,15 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        getDatabases().then(databases => this.setState({
-            databases,
-        }));
-
-        getDefaultAccount().then(account => {
-            this.setState({
+        init()
+            .then(() => getDefaultAccount())
+            .then(account => this.setState({
                 account: account.toLowerCase(),
-            });
-        });
+            }))
+            .then(() => getDatabases())
+            .then(databases => this.setState({
+                databases,
+            }));
     }
 
     render() {
