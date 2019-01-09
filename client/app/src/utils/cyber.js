@@ -413,20 +413,35 @@ export const deploySchema = (name, fields, databaseContract) => {
     const code = generateContractCode(name, fields);
 
     let tempByteCode;
-    let tempIpfsHash;
 
+    //todo: fix default account
+    let account;
+
+    debugger;
     return new Promise((resolve, reject) => {
         loadCompiler((compiler) => {
-            compileDatabase(code, name, compiler)
+            getDefaultAccount()
+                .then((defaultAccount) => {
+                    account = defaultAccount;
+                })
+                .then(() => compileDatabase(code, name, compiler))
                 .then(({ abi, bytecode }) => {
                     tempByteCode = bytecode;
                     return saveInIPFS(abi);
                 })
-                .then((ipfsHash) => {
-                    tempIpfsHash = ipfsHash;
-                    return getWeb3;
-                })
-                .then(({ web3 }) => callContractMethod(databaseContract, 'initializeDatabase', tempIpfsHash, tempByteCode))
+                .then(ipfsHash => JSON.stringify({
+                    build: {
+                        compiler: '0.4.25+commit.59dbf8f1.Emscripten.clang',
+                        optimizer: true,
+                        runs: 500,
+                        ABI: ipfsHash,
+                    },
+                    fields: fields.map(field => ({
+                        ...field,
+                        unique: field.unique ? 1 : 0,
+                    })),
+                }))
+                .then(schemaDefinition => callContractMethod(databaseContract, 'initializeDatabase', schemaDefinition, tempByteCode, {from: account}))
                 .then((data) => {
                     console.log(`Schema created for ${name}. Data: ${data}`);
                     resolve(data);
@@ -565,6 +580,24 @@ export const getBeneficiaries = dbContract => callContractMethod(dbContract, 'ge
             });
     }))
     .then(benPromisses => Promise.all(benPromisses));
+
+export const getAbiByFields = (contractName, fields) => {
+    const code = generateContractCode(contractName, fields);
+
+    return new Promise((resolve, reject) => {
+
+        loadCompiler((compiler) => {
+            compileDatabase(code, contractName, compiler)
+                .then(({ abi }) => {
+                    resolve(JSON.parse(abi));
+                })
+                .catch((error) => {
+                    console.log(`Cannot get abi for contract ${contractName}`);
+                    reject(error);
+                });
+        });
+    });
+};
 
 export {
     generateContractCode,

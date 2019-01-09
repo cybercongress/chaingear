@@ -180,8 +180,21 @@ class ViewRegistry extends Container {
             .then((entryAddress) => {
                 _entryCoreAddress = entryAddress;
             })
-            .then(() => cyber.callContractMethod(_databaseContract, 'getInterfaceEntriesContract'))
-            .then(ipfsHash => cyber.getDatabaseFieldsByHash(ipfsHash))
+            .then(() => cyber.callContractMethod(_databaseContract, 'getSchemaDefinition'))
+            .then((schemaDefinitionJson) => {
+                const schemaDefinition = JSON.parse(schemaDefinitionJson)
+
+                _fields = schemaDefinition.fields.map(field => ({
+                    ...field,
+                    unique: field.unique === 1,
+                }));
+            })
+            .then(() => cyber.getAbiByFields(_newState.name, _fields))
+            .then((abi) => {
+                _abi = abi;
+                _entryCoreContract = _web3.eth.contract(_abi).at(_entryCoreAddress);
+            })
+/*            .then(ipfsHash => cyber.getDatabaseFieldsByHash(ipfsHash))
             .then(({ ipfsHash, abi, fields }) => {
                 _abi = abi;
                 _fields = fields;
@@ -196,7 +209,7 @@ class ViewRegistry extends Container {
                         entryCoreAddress: _entryCoreAddress,
                     },
                 };
-            })
+            })*/
             .then(() => this.getUniqValidationStatuses(_fields, _entryCoreContract))
             .then((uniqueStatuses) => {
                 _fields = _fields.map((field, index) => ({
@@ -206,6 +219,7 @@ class ViewRegistry extends Container {
             })
             .then(() => this.setState({
                 databaseContract: _databaseContract,
+                entryCoreAddress: _entryCoreAddress,
                 entryCoreContract: _entryCoreContract,
                 fields: _fields,
                 abi: _abi,
@@ -225,9 +239,9 @@ class ViewRegistry extends Container {
             .then(() => {
                 this.setState(_newState);
             })
-            .catch((error) => {
+/*            .catch((error) => {
                 console.log(`Cannot load database data. Error: ${error}`);
-            });
+            });*/
     }
 
     getUniqValidationStatuses = (fields, entryCoreContract) => {
