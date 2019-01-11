@@ -58,19 +58,9 @@ const Overview = () => (
 	            contractVersion,
 	            databaseAddress,
 	            entryCoreAddress,
-	            ipfsHash,
-	            itemForEdit,
-
-	            claimFundOpen,
-	            claimFeeOpen,
-	            transferOwnershipOpen,
-	            fundDatabaseOpen,
-	            pauseDatabaseOpen,
-	            resumeDatabaseOpen,
-	            deleteDatabaseOpen,
-	            editRecordOpen,
+                abiIpfsHash,
 	        } = page.state;
-  
+
           const permissionGroupStr = CreateEntryPermissionGroup[permissionGroup].label;
 
         	return (
@@ -127,8 +117,8 @@ const Overview = () => (
                             <FormField
                                 label='Abi link'
                                 value={ (
-                                    <a href={ `${ipfsGateway}/ipfs/${ipfsHash}` } target='_blank'>
-                                        {ipfsHash}
+                                    <a href={ `${ipfsGateway}/ipfs/${abiIpfsHash}` } target='_blank'>
+                                        {abiIpfsHash}
                                     </a>
                                 ) }
                             />

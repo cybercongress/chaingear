@@ -157,12 +157,7 @@ class SchemaDefinition extends Component {
 
                 <ProgressBar>
                     <CircleLable type='complete' number='1' text='Database initialization' />
-                    {isSchemaCreated ? (
-                        <CircleLable type='complete' number='2' text='Schema definition' />
-                    ) : (
-                        <CircleLable type='edit' number='2' text='Schema definition' />
-                    ) }
-                    <CircleLable number='3' text='Contract code saving' />
+                    <CircleLable type={isSchemaCreated ? 'complete' : 'edit'} number='2' text='Schema definition' />
                 </ProgressBar>
 
                 <ContainerRegister>

@@ -54,7 +54,7 @@ const Header = () => (
                     <Section>
                         <div style={ { marginLeft: '15px' } }>
                             <ActionLink to='/'>BACK TO CHAINGEAR</ActionLink>
-                            {!isSchemaExist &&
+                            {!isSchemaExist && isOwner &&
                                 <ActionLink style={{marginLeft: 15}} to={`/schema/${databaseSymbol}`}>Define schema</ActionLink>
                             }
                         </div>
@@ -67,7 +67,6 @@ const Header = () => (
                             <ProgressBar>
                                 <CircleLable type='complete' number='1' text='Registry initialization' />
                                 <CircleLable number='2' text='Schema definition' />
-                                <CircleLable number='3' text='Contract code saving' />
                             </ProgressBar>
                         }
                         <DbHeaderLine>

@@ -62,10 +62,16 @@ export const getWeb3 = new Promise((resolve) => {
 });
 
 export const getDefaultAccount = () => new Promise(resolve => getWeb3
-    .then(({ web3 }) => web3.eth.getAccounts((error, accounts) => {
-        // TODO: research how to return default account in cyb provider
-        resolve(accounts[0]);
-    })));
+    .then(({ web3 }) => {
+        const { defaultAccount } = web3.eth;
+
+        if (defaultAccount) {
+            resolve(defaultAccount);
+        } else {
+            console.log('ETH default account is null');
+            resolve(null);
+        }
+    }));
 
 export const setDefaultAccount = address => new Promise(resolve => getWeb3
     .then(() => { currentWeb3.eth.defaultAccount = address; })
@@ -228,7 +234,14 @@ export const getEthAccounts = () => new Promise((resolve) => {
     }
 });
 
+
+let abis = {};
+
 export const init = () => new Promise((resolve) => {
+    const abisCache = localStorage.getItem('abis') || '{}';
+
+    abis = JSON.parse(abisCache);
+
     if (chaingearContract && currentWeb3 && ethAccounts) {
         resolve({
             contract: chaingearContract,
@@ -320,15 +333,26 @@ export const getItemsByIds = (contract, idsArray,
 
 const Dependencies = require('../resources/Dependencies.sol');
 
-export const compileDatabase = (code, contractName, compiler) => new Promise((resolve, reject) => {
-    const input = {
+export const compileDatabase = (code, contractName, compiler, compilerOpts = {
+    isOptimizerEnabled: true,
+    runs: 200,
+}) => new Promise((resolve, reject) => {
+
+    const sources = {
         'Dependencies.sol': Dependencies,
         [contractName]: `pragma solidity ^0.4.25; ${code}`,
     };
 
+    const settings = {
+        optimizer: {
+            enabled: compilerOpts.isOptimizerEnabled,
+        },
+        runs: compilerOpts.runs,
+    };
+
     setTimeout(() => {
         const compiledContract = compiler.compile({
-            sources: input,
+            sources, settings,
         }, 1);
 
         console.log(compiledContract);
@@ -417,7 +441,6 @@ export const deploySchema = (name, fields, databaseContract) => {
     //todo: fix default account
     let account;
 
-    debugger;
     return new Promise((resolve, reject) => {
         loadCompiler((compiler) => {
             getDefaultAccount()
@@ -581,23 +604,34 @@ export const getBeneficiaries = dbContract => callContractMethod(dbContract, 'ge
     }))
     .then(benPromisses => Promise.all(benPromisses));
 
-export const getAbiByFields = (contractName, fields) => {
+export const getAbiByFields = (contractName, fields, buildOpts) => new Promise((resolve, reject) => {
+
+    if (abis[contractName]) {
+        resolve(abis[contractName]);
+        return;
+    }
+
     const code = generateContractCode(contractName, fields);
+    const compilerOpts = {
+        isOptimizerEnabled: buildOpts.optimizer,
+        runs: buildOpts.runs,
+    };
 
-    return new Promise((resolve, reject) => {
+    loadCompiler((compiler) => {
+        compileDatabase(code, contractName, compiler, compilerOpts)
+            .then(({ abi }) => {
+                const abiObj = JSON.parse(abi);
 
-        loadCompiler((compiler) => {
-            compileDatabase(code, contractName, compiler)
-                .then(({ abi }) => {
-                    resolve(JSON.parse(abi));
-                })
-                .catch((error) => {
-                    console.log(`Cannot get abi for contract ${contractName}`);
-                    reject(error);
-                });
-        });
+                abis[contractName] = abiObj;
+                localStorage.setItem('abis', JSON.stringify(abis));
+                resolve(abiObj);
+            })
+            .catch((error) => {
+                console.log(`Cannot get abi for contract ${contractName}`);
+                reject(error);
+            });
     });
-};
+});
 
 export {
     generateContractCode,

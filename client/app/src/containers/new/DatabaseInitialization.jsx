@@ -21,14 +21,14 @@ import {
     Code,
     ProgressBar,
     CircleLable,
-    Table, TableRow, TableItem, TableAddRow, TableItemBen, TableRegistry,
+    TableItemBen, TableRegistry,
 } from '@cybercongress/ui';
 
 import {
     getDefaultAccount,
     deployDatabase,
     getChaingearContract,
-    eventPromise, callContractMethod,
+    eventPromise, callContractMethod, init,
 } from '../../utils/cyber';
 
 import DatabaseSource from '../../resources/DatabaseV1.sol';
@@ -64,7 +64,8 @@ class NewDatabase extends Component {
     }
 
     componentWillMount() {
-        getDefaultAccount()
+        init()
+            .then(() => getDefaultAccount())
             .then(defaultAccount => this.setState({
                 beneficiaries: [{
                     address: defaultAccount,
@@ -315,9 +316,8 @@ class NewDatabase extends Component {
                 <PageTitle>New database creation</PageTitle>
 
                 <ProgressBar>
-                    <CircleLable type='edit' number='1' text='Database initialization' />
+                    <CircleLable type={databaseId ? 'complete' : 'edit' } number='1' text='Database initialization' />
                     <CircleLable number='2' text='Schema definition' />
-                    <CircleLable number='3' text='Contract code saving' />
                 </ProgressBar>
 
                 <ContainerRegister>

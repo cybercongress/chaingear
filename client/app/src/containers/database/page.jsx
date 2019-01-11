@@ -3,60 +3,59 @@ import * as cyber from '../../utils/cyber';
 import DatabaseV1 from '../../../../../build/contracts/DatabaseV1.json';
 
 let _databaseContract = null;
+const initialState = {
+    items: [],
+    fields: [],
+    loading: true,
+    isOwner: false,
+    totalFee: 0,
+    funded: '',
+
+    beneficiaries: [],
+    databaseContract: null,
+    web3: null,
+    ipfsGateway: null,
+
+    name: '',
+    description: '',
+    tag: '',
+    createdTimestamp: null,
+    entryCreationFee: 0,
+    admin: '',
+    userAccount: null,
+    abi: [],
+    isDbPaused: null,
+    duplicateFieldFound: false,
+    duplicateFieldId: null,
+
+    contractVersion: null,
+    databaseAddress: null,
+    databaseSymbol: null,
+    databaseId: null,
+    entryCoreAddress: null,
+    entryCoreContract: null,
+    abiIpfsHash: null,
+    isSchemaExist: false,
+
+    claimFundOpen: false,
+    claimFeeOpen: false,
+    transferOwnershipOpen: false,
+    fundDatabaseOpen: false,
+    pauseDatabaseOpen: false,
+    resumeDatabaseOpen: false,
+    deleteDatabaseOpen: false,
+    editRecordOpen: false,
+
+    permissionGroup: 0,
+    itemForEdit: null,
+};
 
 class ViewRegistry extends Container {
-    state = {
-        items: [],
-        fields: [],
-        loading: false,
-        isOwner: false,
-        totalFee: 0,
-        funded: '',
-
-        beneficiaries: [],
-        databaseContract: null,
-        web3: null,
-        ipfsGateway: null,
-
-        name: '',
-        description: '',
-        tag: '',
-        createdTimestamp: null,
-        entryCreationFee: 0,
-        admin: '',
-        userAccount: null,
-        abi: [],
-        isDbPaused: null,
-        duplicateFieldFound: false,
-        duplicateFieldId: null,
-
-        contractVersion: null,
-        databaseAddress: null,
-        databaseSymbol: null,
-        databaseId: null,
-        entryCoreAddress: null,
-        entryCoreContract: null,
-        ipfsHash: null,
-        isSchemaExist: false,
-
-        claimFundOpen: false,
-        claimFeeOpen: false,
-        transferOwnershipOpen: false,
-        fundDatabaseOpen: false,
-        pauseDatabaseOpen: false,
-        resumeDatabaseOpen: false,
-        deleteDatabaseOpen: false,
-        editRecordOpen: false,
-
-        permissionGroup: 0,
-        itemForEdit: null,
-    };
+    state = initialState;
 
 
     init = (databaseSymbol) => {
-    	this.setState({
-            loading: true,
-        });
+        this.setState(initialState);
 
         let _databaseAddress = null;
         let _databases = null;
@@ -73,6 +72,7 @@ class ViewRegistry extends Container {
         let _ipfsGateway = null;
         let _beneficiaries = null;
         let _permissionGroup = 0;
+        let _abiIpfsHash = null;
 
         let _newState = {};
         cyber.init()
@@ -182,14 +182,18 @@ class ViewRegistry extends Container {
             })
             .then(() => cyber.callContractMethod(_databaseContract, 'getSchemaDefinition'))
             .then((schemaDefinitionJson) => {
-                const schemaDefinition = JSON.parse(schemaDefinitionJson)
+                const schemaDefinition = JSON.parse(schemaDefinitionJson);
 
                 _fields = schemaDefinition.fields.map(field => ({
                     ...field,
                     unique: field.unique === 1,
                 }));
+
+                _abiIpfsHash = schemaDefinition.build.ABI;
+
+                return schemaDefinition.build;
             })
-            .then(() => cyber.getAbiByFields(_newState.name, _fields))
+            .then(buildOpts => cyber.getAbiByFields(_newState.name, _fields, buildOpts))
             .then((abi) => {
                 _abi = abi;
                 _entryCoreContract = _web3.eth.contract(_abi).at(_entryCoreAddress);
@@ -224,6 +228,7 @@ class ViewRegistry extends Container {
                 fields: _fields,
                 abi: _abi,
                 web3: _web3,
+                abiIpfsHash: _abiIpfsHash,
             }))
             .then(() => this.getDatabaseItems())
             .then((items) => {
@@ -286,7 +291,7 @@ class ViewRegistry extends Container {
     }
 
     add = () => {
-        const { databaseContract, name } = this.state;
+        const { databaseContract, name, databaseSymbol } = this.state;
 
         if (!databaseContract) {
             return;
@@ -302,7 +307,7 @@ class ViewRegistry extends Container {
                 });
                 return cyber.eventPromise(databaseContract.EntryCreated());
             })
-            .then(() => this.componentDidMount())
+            .then(() => this.init(databaseSymbol))
             .catch(() => {
                 console.log(`Cannot add entry to ${name}`);
             });
@@ -413,7 +418,7 @@ class ViewRegistry extends Container {
     };
 
     changeDescription = (description) => {
-        const { databaseContract } = this.state;
+        const { databaseContract, databaseSymbol } = this.state;
 
         this.setLoading(true);
 
@@ -421,7 +426,7 @@ class ViewRegistry extends Container {
             .then(data => console.log(`Description change. Tx:${data}`))
             .then(() => cyber.eventPromise(databaseContract.DescriptionUpdated()))
             .then(results => console.log(`Description changed. Results: ${results}`))
-            .then(() => this.componentDidMount())
+            .then(() => this.init(databaseSymbol))
             .catch(() => this.setLoading(false));
     };
 
@@ -450,8 +455,10 @@ class ViewRegistry extends Container {
     };
 
     claimRecord = (entryID, amount) => {
+        const { databaseSymbol } = this.state;
+
         this.state.databaseContract.claimEntryFunds(entryID, this.state.web3.toWei(amount, 'ether'), (e, data) => {
-            this.componentDidMount();
+            this.init(databaseSymbol);
         });
     };
 
@@ -462,7 +469,7 @@ class ViewRegistry extends Container {
     };
 
     fundDatabase = (amount) => {
-        const { databaseId, web3 } = this.state;
+        const { databaseId, web3, databaseSymbol } = this.state;
         let _chaingerContract;
 
         this.setLoading(true);
@@ -477,12 +484,12 @@ class ViewRegistry extends Container {
             }))
             .then(() => cyber.eventPromise(_chaingerContract.DatabaseFunded()))
             .then(() => {
-                this.componentDidMount();
+                this.init(databaseSymbol);
             });
     };
 
     claimDatabase = (amount) => {
-        const { databaseId, web3 } = this.state;
+        const { databaseId, web3, databaseSymbol } = this.state;
 
         this.closePopups();
 
@@ -491,7 +498,7 @@ class ViewRegistry extends Container {
                 .callContractMethod(chaingerContract,
                     'claimDatabaseFunds',
                     databaseId, web3.toWei(amount, 'ether')))
-            .then(() => this.componentDidMount());
+            .then(() => this.init(databaseSymbol));
     };
 
     claimFee = (amount) => {
@@ -501,23 +508,25 @@ class ViewRegistry extends Container {
     };
 
     transferDatabaseOwnership = (userAccount, newOwner) => {
-        const { databaseId } = this.state;
+        const { databaseId, databaseSymbol } = this.state;
 
         this.closePopups();
 
         cyber.getChaingearContract()
             .then(contract => cyber.callContractMethod(contract, 'transferFrom', userAccount, newOwner, databaseId))
-            .then(() => this.componentDidMount());
+            .then(() => this.init(databaseSymbol));
     };
 
     transferItem = (userAccount, newOwner, entryID) => {
+        const { databaseSymbol } = this.state;
+
         this.state.databaseContract.transferFrom(userAccount, newOwner, entryID, (e, data) => {
-            this.componentDidMount();
+            this.init(databaseSymbol);
         });
     };
 
     pauseDb = () => {
-        const { databaseContract } = this.state;
+        const { databaseContract, databaseSymbol } = this.state;
 
         this.closePopups();
 
@@ -526,7 +535,7 @@ class ViewRegistry extends Container {
             .then(data => console.log(`Pause DB. Data: ${data}`))
             .then(() => cyber.eventPromise(databaseContract.Pause()))
             .then(results => console.log(`Db paused. Results: ${results}`))
-            .then(() => this.componentDidMount())
+            .then(() => this.init(databaseSymbol))
             .catch((error) => {
                 console.log(`Cant pause db. Error: ${error}`);
                 this.setLoading(false);
@@ -534,7 +543,7 @@ class ViewRegistry extends Container {
     };
 
     unpauseDb = () => {
-        const { databaseContract } = this.state;
+        const { databaseContract, databaseSymbol } = this.state;
 
         this.closePopups();
 
@@ -543,7 +552,7 @@ class ViewRegistry extends Container {
             .then(data => console.log(`Unpause DB. Data: ${data}`))
             .then(() => cyber.eventPromise(databaseContract.Unpause()))
             .then(results => console.log(`Db unpaused. Results: ${results}`))
-            .then(() => this.componentDidMount())
+            .then(() => this.init(databaseSymbol))
             .catch((error) => {
                 console.log(`Cant unpause db. Error: ${error}`);
                 this.setLoading(false);

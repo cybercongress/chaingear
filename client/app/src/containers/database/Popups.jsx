@@ -156,13 +156,15 @@ const Popups = () => (
 	                    </PopupFooter>
 	                </Popup>
 
-	                <ItemEditPopup
-	                  open={editRecordOpen}
-	                  item={itemForEdit}
-	                  fields={fields}
-	                  onCancelClick={page.closePopups}
-	                  onConfirmClick={page.onUpdate}
-	                />
+                    {isSchemaExist && itemForEdit &&
+                        <ItemEditPopup
+                          open={editRecordOpen}
+                          item={itemForEdit}
+                          fields={fields}
+                          onCancelClick={page.closePopups}
+                          onConfirmClick={page.onUpdate}
+                        />
+                    }
 	            </span>
 	        );
         }}
