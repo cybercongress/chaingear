@@ -75,6 +75,7 @@ class ViewRegistry extends Container {
         let _abiIpfsHash = null;
 
         let _newState = {};
+
         cyber.init()
             .then(({ contract, web3 }) => {
                 _web3 = web3;

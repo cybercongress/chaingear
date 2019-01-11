@@ -5,7 +5,6 @@ import {
 } from '@cybercongress/ui';
 
 export default class ItemEditPopup extends React.Component {
-
     constructor(props) {
         super(props);
 
@@ -15,10 +14,12 @@ export default class ItemEditPopup extends React.Component {
             item: props.item,
             fields: props.fields,
         };
-    };
+    }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        if (nextProps.item !== this.props.item) {
+        const { item } = this.props;
+
+        if (nextProps.item !== item) {
             this.setState({
                 item: nextProps.item,
                 fields: nextProps.fields,
@@ -31,58 +32,65 @@ export default class ItemEditPopup extends React.Component {
 
         if (fieldType === 'uint256' && (isNaN(event.target.value) || +event.target.value < 0)) { return; }
 
-        let value = event.target.value;
+        let { value } = event.target;
 
         if (fieldType === 'bool') {
             value = event.target.checked;
         }
 
+        const { item } = this.state;
+
         this.setState({
             item: {
-                ...this.state.item,
+                ...item,
                 [fieldName]: value,
             },
         });
     };
 
     onCancelClick = () => {
+        const { item, onCancelClick } = this.props;
+
         this.setState({
-            item: this.props.item,
+            item,
         });
 
-        this.props.onCancelClick();
+        onCancelClick();
     };
 
     onConfirmClick = () => {
         const { item, fields } = this.state;
+        const { onCancelClick, onConfirmClick } = this.props;
         const values = fields.map(field => item[field.name]);
 
-        this.props.onCancelClick();
-        this.props.onConfirmClick(values, item.id);
+        onCancelClick();
+        onConfirmClick(values, item.id);
     };
 
     render() {
         const { item, fields } = this.state;
         const { open } = this.props;
 
-        const rows = fields.map((field, index) => (
-            <ContentLineTextInput key={index}>
-                <LineTitle>{field.name} {field.unique && '(unique)'}</LineTitle>
+        const rows = fields.map(field => (
+            <ContentLineTextInput key={ `${field.name}${field.type}` }>
+                <LineTitle>
+                    {`${field.name} ${field.unique && '(unique)'}`}
+                </LineTitle>
                 <LineControl>
-                    {field.type === 'bool' ?
-                        (
+                    {field.type === 'bool'
+                        ? (
                             <input
                               type='checkbox'
-                              ref={node => this.inputRefs[field.name] = node}
-                              onChange={event => this.onChange(event, field.name, field.type)}
-                              checked={item[field.name]}
+                              ref={ (node) => { this.inputRefs[field.name] = node; } }
+                              onChange={ event => this.onChange(event, field.name, field.type) }
+                              checked={ item[field.name] }
                             />
                         ) : (
                             <WideInput
-                              inputRef={node => this.inputRefs[field.name] = node}
-                              onChange={event => this.onChange(event, field.name, field.type)}
-                              defaultValue={item[field.name].toString()}
-                              placeholder={field.type}
+                              inputRef={ (node) => { this.inputRefs[field.name] = node; } }
+                              onChange={ event => this.onChange(event, field.name, field.type) }
+                              defaultValue={ item[field.name].toString() }
+                              placeholder={ field.type }
                             />
                         )
                     }
@@ -91,17 +99,16 @@ export default class ItemEditPopup extends React.Component {
         ));
 
         return (
-            <Popup open={open}>
+            <Popup open={ open }>
                 <PopupTitle>Edit record</PopupTitle>
                 <PopupContent>
                     {rows}
                 </PopupContent>
                 <PopupFooter>
-                    <PopupButton type='cancel' onClick={this.onCancelClick}>Cancel</PopupButton>
-                    <PopupButton type='confirm' onClick={this.onConfirmClick}>Confirm</PopupButton>
+                    <PopupButton type='cancel' onClick={ this.onCancelClick }>Cancel</PopupButton>
+                    <PopupButton type='confirm' onClick={ this.onConfirmClick }>Confirm</PopupButton>
                 </PopupFooter>
             </Popup>
         );
     }
-
 }

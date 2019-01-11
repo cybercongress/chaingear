@@ -1,16 +1,14 @@
 import React from 'react';
-
 import { Subscribe } from 'unstated';
 import { StatusBar } from '@cybercongress/ui';
-
 import page from './page';
 
 const PageLoading = () => (
     <Subscribe to={ [page] }>
-        {(page) => {
+        {(dbPage) => {
             const {
                 loading,
-            } = page.state;
+            } = dbPage.state;
 
             return (
                 <StatusBar

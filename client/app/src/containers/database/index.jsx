@@ -11,9 +11,10 @@ import PageLoading from './PageLoading';
 import page from './page';
 
 class Database extends Component {
-
     componentDidMount() {
-        page.init(this.props.params.dbsymbol);
+        const { dbsymbol } = this.props.params;
+
+        page.init(dbsymbol);
     }
 
     render() {
