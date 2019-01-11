@@ -119,7 +119,8 @@ class ViewRegistry extends Container {
                 const entryCreationFeePromise = cyber.callContractMethod(_databaseContract, 'getEntryCreationFee');
 
                 return Promise
-                    .all([fundedPromise, totalFeePromise, ownerPromise, descriptionPromise, entryCreationFeePromise]);
+                    .all([fundedPromise, totalFeePromise,
+                        ownerPromise, descriptionPromise, entryCreationFeePromise]);
             })
             .then(([funded, totalFee, owner, description, entryCreationFee]) => {
 
@@ -199,22 +200,6 @@ class ViewRegistry extends Container {
                 _abi = abi;
                 _entryCoreContract = _web3.eth.contract(_abi).at(_entryCoreAddress);
             })
-/*            .then(ipfsHash => cyber.getDatabaseFieldsByHash(ipfsHash))
-            .then(({ ipfsHash, abi, fields }) => {
-                _abi = abi;
-                _fields = fields;
-                _entryCoreContract = _web3.eth.contract(abi).at(_entryCoreAddress);
-
-
-                _newState = {
-                    ..._newState,
-                    ...{
-                        ipfsHash,
-                        abi,
-                        entryCoreAddress: _entryCoreAddress,
-                    },
-                };
-            })*/
             .then(() => this.getUniqValidationStatuses(_fields, _entryCoreContract))
             .then((uniqueStatuses) => {
                 _fields = _fields.map((field, index) => ({
@@ -245,9 +230,9 @@ class ViewRegistry extends Container {
             .then(() => {
                 this.setState(_newState);
             })
-/*            .catch((error) => {
+            .catch((error) => {
                 console.log(`Cannot load database data. Error: ${error}`);
-            });*/
+            });
     }
 
     getUniqValidationStatuses = (fields, entryCoreContract) => {

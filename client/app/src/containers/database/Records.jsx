@@ -1,12 +1,9 @@
 import React from 'react';
-
-import { Container, Subscribe, Provider } from 'unstated';
-import {DatabaseItem, DatabaseList} from './DatabaseItem';
-
+import { Subscribe } from 'unstated';
 import {
-	DbHeader, DbHeaderLine, DbHeaderLeft, DbHeaderRight, Button
+    FlexContainer, FlexContainerLeft, FlexContainerRight, AddNewRecordButton,
 } from '@cybercongress/ui';
-
+import { DatabaseItem, DatabaseList } from './DatabaseItem';
 import page from './page';
 
 const Permission = {
@@ -32,52 +29,29 @@ const CreateEntryPermissionGroup = {
 
 const Records = () => (
     <Subscribe to={ [page] }>
-        {page => {
+        {(dbPage) => {
 	        const {
-	            fields, items, loading, isOwner, userAccount, isSchemaExist, databaseSymbol,
-	            duplicateFieldFound, duplicateFieldId, isDbPaused, ipfsGateway, beneficiaries,
+	            fields, items, isOwner, userAccount, isSchemaExist,
+	            duplicateFieldFound, duplicateFieldId, isDbPaused,
 	            permissionGroup,
-	            name,
-	            description,
-	            createdTimestamp,
-	            entryCreationFee,
-	            admin,
-	            totalFee,
-	            funded,
-	            tag,
-	            owner,
-	            contractVersion,
-	            databaseAddress,
-	            entryCoreAddress,
-	            ipfsHash,
-	            itemForEdit,
-
-	            claimFundOpen,
-	            claimFeeOpen,
-	            transferOwnershipOpen,
-	            fundDatabaseOpen,
-	            pauseDatabaseOpen,
-	            resumeDatabaseOpen,
-	            deleteDatabaseOpen,
-	            editRecordOpen,
-	        } = page.state;
+	        } = dbPage.state;
 
 			const rows = items.map((item, index) => (
 		        <DatabaseItem
-		            clameRecord={ page.claimRecord }
-		            removeItemClick={ page.removeItemClick }
-		            fundEntryClick={ page.fundEntryClick }
-		            onUpdate={ values => page.onUpdate(values, item.id) }
-		            onTransfer={ newOwner => page.transferItem(userAccount, newOwner, item.id) }
+		            clameRecord={ dbPage.claimRecord }
+		            removeItemClick={ dbPage.removeItemClick }
+		            fundEntryClick={ dbPage.fundEntryClick }
+		            onUpdate={ values => dbPage.onUpdate(values, item.id) }
+		            onTransfer={ newOwner => dbPage.transferItem(userAccount, newOwner, item.id) }
 		            userAccount={ userAccount }
 		            fields={ fields }
 		            item={ item }
 		            index={ item.id }
 		            key={ item.id }
 		            errorMessage={ duplicateFieldFound && duplicateFieldId === item.id}
-		            hideEntryError={ page.hideEntryError }
+		            hideEntryError={ dbPage.hideEntryError }
 		            isDbPaused={ isDbPaused }
-		            onItemEdit={() => page.onItemEdit(item)}
+		            onItemEdit={() => dbPage.onItemEdit(item)}
 		        />
 		    ));
 
@@ -86,17 +60,15 @@ const Records = () => (
         	return (
         		<div>
 	        		{isSchemaExist &&
-	                    <DbHeader>
-	                        <DbHeaderLine>
-	                            <DbHeaderLeft>
+	                    <FlexContainer line>
+	                            <FlexContainerLeft>
 	                                RECORDS
-	                            </DbHeaderLeft>
+	                            </FlexContainerLeft>
 
-	                            <DbHeaderRight>
-	                                {showAddButton && <Button onClick={page.add}>Add new record</Button>}
-	                            </DbHeaderRight>
-	                        </DbHeaderLine>
-	                    </DbHeader>
+	                            <FlexContainerRight>
+	                                {showAddButton && <AddNewRecordButton onClick={dbPage.add}>Add new record</AddNewRecordButton>}
+	                            </FlexContainerRight>
+	                    </FlexContainer>
 	                }
 
 		            <DatabaseList>

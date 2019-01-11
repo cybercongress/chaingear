@@ -15,7 +15,7 @@ const Beneficiaries = () => (
             } = dbPage.state;
 
             return (
-                <SectionContent title='Beneficiaries' grow={ 0 } style={ { width: '25%' } }>
+                <SectionContent title='Beneficiaries' grow={ 0 } style={ { width: '30%' } }>
                     <Centred>
                         <BenContainer>
                             <BenPieChart
