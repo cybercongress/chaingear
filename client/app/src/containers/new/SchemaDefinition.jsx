@@ -3,19 +3,16 @@ import React, { Component } from 'react';
 import {
     Content, ContainerRegister, SideBar,
     FieldsTable,
-    Panel,
-    Label,
     CreateButton,
     PageTitle,
     RemoveButton,
     ErrorMessage,
-    AddField,
     StatusBar,
     ActionLink,
-    RightContainer,
     WideSelect,
-    Code, DarkPanel,
+    Code,
     CircleLable, ProgressBar, Checkbox, TableRegistry, WideInput, AddButton,
+    MainContainer, PanelRecord, FlexContainer, FlexContainerLeft, FlexContainerRight,
 } from '@cybercongress/ui';
 
 import {
@@ -31,7 +28,6 @@ import {
 const MAX_FIELD_COUNT = 10;
 
 class SchemaDefinition extends Component {
-
     constructor(props) {
         super(props);
 
@@ -143,28 +139,27 @@ class SchemaDefinition extends Component {
         } = this.state;
         const code = generateContractCode(databaseName, fields);
         const fieldsCount = fields.length;
-        const canCreateSchema = fieldsCount > 0 && fieldsCount <= MAX_FIELD_COUNT && !isSchemaCreated;
+        const canCreateSchema = fieldsCount > 0
+            && fieldsCount <= MAX_FIELD_COUNT && !isSchemaCreated;
 
         return (
-            <div>
+            <MainContainer>
                 <StatusBar
-                    open={ inProgress }
-                    message={ message }
-                    type={ type }
+                  open={ inProgress }
+                  message={ message }
+                  type={ type }
                 />
 
                 <PageTitle>Database schema definition</PageTitle>
 
                 <ProgressBar>
                     <CircleLable type='complete' number='1' text='Database initialization' />
-                    <CircleLable type={isSchemaCreated ? 'complete' : 'edit'} number='2' text='Schema definition' />
+                    <CircleLable type={ isSchemaCreated ? 'complete' : 'edit' } number='2' text='Schema definition' />
                 </ProgressBar>
 
                 <ContainerRegister>
-                    <SideBar>
-                        <Label>Input</Label>
-
-                        <Panel title='Record Structure' noPadding>
+                    <SideBar title='Input'>
+                        <PanelRecord title='Record Structure' noPadding>
                             <FieldsTable>
                                 <TableRegistry>
                                     <tbody>
@@ -173,27 +168,38 @@ class SchemaDefinition extends Component {
                                                 <td>{field.name}</td>
                                                 <td>{field.type}</td>
                                                 <td>
-                                                    <Checkbox disabled checked={field.unique}>unique</Checkbox>
+                                                    <Checkbox
+                                                      disabled
+                                                      checked={ field.unique }
+                                                    >
+                                                        unique
+                                                    </Checkbox>
                                                 </td>
                                                 <td>
                                                     <RemoveButton
-                                                        onClick={ () => this.remove(field.name) }
+                                                      onClick={ () => this.remove(field.name) }
                                                     />
                                                 </td>
                                             </tr>
                                         ))}
-                                        {!isSchemaCreated &&
+                                    </tbody>
+                                </TableRegistry>
+
+                                {!isSchemaCreated
+                                    && (
+                                    <TableRegistry>
+                                        <tbody>
                                             <tr>
                                                 <td>
                                                     <WideInput
-                                                        inputRef={node => this.fieldName = node}
-                                                        placeholder='Name'
+                                                      inputRef={ node => this.fieldName = node }
+                                                      placeholder='Name'
                                                     />
                                                 </td>
                                                 <td>
                                                     <WideSelect
-                                                        inputRef={node => this.fieldType = node}
-                                                        onChange={this.onFieldTypeChange}
+                                                      inputRef={ node => this.fieldType = node }
+                                                      onChange={ this.onFieldTypeChange }
                                                     >
                                                         <option value='string'>string</option>
                                                         <option value='address'>address</option>
@@ -202,44 +208,54 @@ class SchemaDefinition extends Component {
                                                         <option value='int256'>int256</option>
                                                     </WideSelect>
                                                 </td>
-                                                <td hidden={disableUniqueCheckbox}>
-                                                    <Checkbox inputRef={node => this.fieldUnique = node}>unique</Checkbox>
+                                                <td hidden={ disableUniqueCheckbox }>
+                                                    <Checkbox
+                                                      inputRef={ (node) => {
+                                                            this.fieldUnique = node;
+                                                      } }
+                                                    >
+                                                        unique
+                                                    </Checkbox>
                                                 </td>
                                                 <td>
                                                     <AddButton
-                                                        onClick={this.add}
+                                                      onClick={ this.add }
                                                     />
                                                 </td>
                                             </tr>
-                                        }
-                                    </tbody>
-                                </TableRegistry>
+                                        </tbody>
+                                    </TableRegistry>
+                                    )
+                                }
                             </FieldsTable>
-                        </Panel>
+                        </PanelRecord>
                     </SideBar>
 
-                    <Content>
-                        <Label color='#3fb990'>Database code</Label>
-                        <DarkPanel>
-                            <Code>
-                                {code}
-                            </Code>
-                        </DarkPanel>
-                        {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
+                    <Content title='Database code'>
+                        <Code>
+                            {code}
+                        </Code>
                     </Content>
-
                 </ContainerRegister>
 
-                <RightContainer>
-                    {isSchemaCreated ? (
-                        <ActionLink to={ `/databases/${databaseSymbol}` }>Go to database</ActionLink>
-                    ) : (
-                        <CreateButton disabled={ !canCreateSchema } onClick={ this.createSchema }>
-                            create
-                        </CreateButton>
-                    )}
-                </RightContainer>
-            </div>
+                <FlexContainer>
+                    <FlexContainerLeft>
+                        {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
+                    </FlexContainerLeft>
+                    <FlexContainerRight>
+                        {isSchemaCreated ? (
+                            <ActionLink to={ `/databases/${databaseSymbol}` }>Go to database</ActionLink>
+                        ) : (
+                            <CreateButton
+                              disabled={ !canCreateSchema }
+                              onClick={ this.createSchema }
+                            >
+                                create
+                            </CreateButton>
+                        )}
+                    </FlexContainerRight>
+                </FlexContainer>
+            </MainContainer>
         );
     }
 }

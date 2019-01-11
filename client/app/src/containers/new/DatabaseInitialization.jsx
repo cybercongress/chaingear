@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import {
     Content, ContainerRegister, SideBar,
     Panel,
-    Label,
     CreateButton,
     PageTitle,
     RemoveButton,
@@ -11,17 +10,20 @@ import {
     StatusBar,
     LinkHash,
     ActionLink,
-    RightContainer,
     ParamRow,
     WideInput,
     Description,
     WideSelect,
     AddButton,
-    DarkPanel,
     Code,
+    MainContainer,
     ProgressBar,
     CircleLable,
-    TableItemBen, TableRegistry,
+    TableItemBen,
+    TableRegistry,
+    FlexContainer,
+    FlexContainerLeft,
+    FlexContainerRight,
 } from '@cybercongress/ui';
 
 import {
@@ -306,59 +308,65 @@ class NewDatabase extends Component {
             && benCount > 0;
 
         return (
-            <div>
+            <MainContainer>
                 <StatusBar
-                    open={ inProgress }
-                    message={ message }
-                    type={ type }
+                  open={ inProgress }
+                  message={ message }
+                  type={ type }
                 />
 
                 <PageTitle>New database creation</PageTitle>
 
                 <ProgressBar>
-                    <CircleLable type={databaseId ? 'complete' : 'edit' } number='1' text='Database initialization' />
+                    <CircleLable type={ databaseId ? 'complete' : 'edit' } number='1' text='Database initialization' />
                     <CircleLable number='2' text='Schema definition' />
                 </ProgressBar>
 
                 <ContainerRegister>
-                    <SideBar>
-
-                        <Label>Input</Label>
+                    <SideBar title='Input'>
                         <Panel title='General Parameters'>
                             <ParamRow>
                                 <WideInput
-                                    placeholder='Name'
-                                    onChange={ this.onDbNameChange }
-                                    valid={ isNameValid }
-                                    errorMessage={ nameErrorMessage }
+                                  placeholder='Name'
+                                  onChange={ this.onDbNameChange }
+                                  valid={ isNameValid }
+                                  errorMessage={ nameErrorMessage }
                                 />
                             </ParamRow>
                             <ParamRow>
                                 <WideInput
-                                    placeholder='Symbol'
-                                    onChange={ this.onDbSymbolChange }
-                                    inputRef={ node => this.dbSymbol = node }
-                                    valid={ isSymbolValid }
-                                    errorMessage={ symbolErrorMessage }
+                                  placeholder='Symbol'
+                                  onChange={ this.onDbSymbolChange }
+                                  inputRef={ (node) => { this.dbSymbol = node; } }
+                                  valid={ isSymbolValid }
+                                  errorMessage={ symbolErrorMessage }
                                 />
                             </ParamRow>
                             <ParamRow>
-                                <WideSelect onChange={this.onDbVersionChange}>
+                                <WideSelect onChange={ this.onDbVersionChange }>
                                     <option key='default' value=''>Version</option>
                                     {
                                         dbBuilders.map(builder => (
-                                            <option key={builder.version} value={builder.version}>{builder.version}</option>
+                                            <option
+                                              key={ builder.version }
+                                              value={ builder.version }
+                                            >
+                                                {builder.version}
+                                            </option>
                                         ))
                                     }
                                 </WideSelect>
                             </ParamRow>
 
-                            {dbDescription &&
-                                <ParamRow>
-                                    <Description>
-                                        <b>Description:</b> {dbDescription}
-                                    </Description>
-                                </ParamRow>
+                            {dbDescription
+                                && (
+                                    <ParamRow>
+                                        <Description>
+                                            <b>Description:</b>
+                                            {dbDescription}
+                                        </Description>
+                                    </ParamRow>
+                                )
                             }
                         </Panel>
 
@@ -366,14 +374,18 @@ class NewDatabase extends Component {
                             <TableItemBen>
                                 <tbody>
                                     {bens.map(ben => (
-                                        <tr key={ben.address}>
+                                        <tr key={ ben.address }>
                                             <td>
-                                                <LinkHash noCopy noPadding value={ben.address} />
+                                                <LinkHash noCopy noPadding value={ ben.address } />
                                             </td>
                                             <td>{ben.stake}</td>
-                                            <td>{ben.share} %</td>
+                                            <td>{`${ben.share} %`}</td>
                                             <td>
-                                                <RemoveButton onClick={ () => this.removeBeneficiary(ben.address) } />
+                                                <RemoveButton
+                                                  onClick={
+                                                      () => this.removeBeneficiary(ben.address)
+                                                  }
+                                                />
                                             </td>
                                         </tr>
                                     ))}
@@ -383,16 +395,24 @@ class NewDatabase extends Component {
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <WideInput inputRef={ node => this.benAddress = node } placeholder='Address' />
+                                            <WideInput
+                                              inputRef={ (node) => { this.benAddress = node; } }
+                                              placeholder='Address'
+                                            />
                                         </td>
                                         <td>
-                                            <WideInput inputRef={ node => this.benStake = node } onChange={this.onStakeChange} placeholder='Stake' />
+                                            <WideInput
+                                              inputRef={ (node) => { this.benStake = node; } }
+                                              onChange={ this.onStakeChange }
+                                              placeholder='Stake'
+                                            />
                                         </td>
                                         <td>
-                                            <span ref='benShare' placeholder='Share'>0</span> <span>%</span>
+                                            <span ref='benShare' placeholder='Share'>0</span>
+                                            <span>%</span>
                                         </td>
                                         <td>
-                                            <AddButton onClick={ this.addBeneficiary }/>
+                                            <AddButton onClick={ this.addBeneficiary } />
                                         </td>
                                     </tr>
                                 </tbody>
@@ -401,29 +421,30 @@ class NewDatabase extends Component {
 
                     </SideBar>
 
-                    <Content>
-                        <Label color='#3fb990'>Database code</Label>
-                        <DarkPanel>
-                            <Code>
-                                {DatabaseSource}
-                            </Code>
-                        </DarkPanel>
-                        {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
+                    <Content title='Database code'>
+                        <Code>
+                            {DatabaseSource}
+                        </Code>
                     </Content>
                 </ContainerRegister>
-                <RightContainer>
-                    {databaseId ? (
-                        <span>
-                            <ActionLink to={ `/databases/${dbSymbol}` }>Go to database</ActionLink>
-                            <ActionLink style={{marginLeft: 15}} to={ `/schema/${dbSymbol}` }>Go to schema definition</ActionLink>
-                        </span>
-                    ) : (
-                        <CreateButton disabled={ !canCreate } onClick={ this.createDatabase }>
-                            Next
-                        </CreateButton>
-                    )}
-                </RightContainer>
-            </div>
+                <FlexContainer>
+                    <FlexContainerLeft>
+                        {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
+                    </FlexContainerLeft>
+                    <FlexContainerRight>
+                        {databaseId ? (
+                            <span>
+                                <ActionLink to={ `/databases/${dbSymbol}` }>Go to database</ActionLink>
+                                <ActionLink style={ { marginLeft: 15 } } to={ `/schema/${dbSymbol}` }>Go to schema definition</ActionLink>
+                            </span>
+                        ) : (
+                            <CreateButton disabled={ !canCreate } onClick={ this.createDatabase }>
+                                Next
+                            </CreateButton>
+                        )}
+                    </FlexContainerRight>
+                </FlexContainer>
+            </MainContainer>
         );
     }
 }
