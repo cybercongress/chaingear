@@ -84,7 +84,7 @@ const Records = () => (
             const itemsTrs = fields.map((field) => {
                 const itemsFields = items.map(item => (
                     <td key={ `${item.id}${field.name}` }>
-                        {item[field.name]}
+                        {item[field.name].toString()}
                     </td>
                 ));
 

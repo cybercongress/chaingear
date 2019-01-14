@@ -3,6 +3,7 @@ import {
     ContentLineTextInput, LineControl, LineTitle, WideInput,
     Popup, PopupTitle, PopupContent, PopupFooter, PopupButton,
 } from '@cybercongress/ui';
+import { debounce } from '../../utils/utils';
 
 export default class ItemEditPopup extends React.Component {
     constructor(props) {
@@ -12,8 +13,11 @@ export default class ItemEditPopup extends React.Component {
 
         this.state = {
             item: props.item,
+            records: props.records,
             fields: props.fields,
         };
+
+        this.updateField = debounce(this.updateField, 1000);
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
@@ -22,30 +26,82 @@ export default class ItemEditPopup extends React.Component {
         if (nextProps.item !== item) {
             this.setState({
                 item: nextProps.item,
+                records: nextProps.records,
                 fields: nextProps.fields,
             });
         }
     }
 
-    onChange = (event, fieldName, fieldType) => {
-        if (fieldType === 'int256' && isNaN(event.target.value)) { return; }
+    isValidValue = (value, type) => {
+        switch (type) {
+        case 'int256':
+            break;
+        case 'uint256':
+            break;
+        case 'address':
+            break;
+        case 'string':
+            break;
+        default:
+            return true;
+        }
 
-        if (fieldType === 'uint256' && (isNaN(event.target.value) || +event.target.value < 0)) { return; }
+        return true;
+    };
 
+    isUniqueFiled = (field, value) => {
+        const {
+            item,
+            records,
+        } = this.state;
+
+        let duplicateFound = false;
+
+        for (let index = 0; index < records.length; index += 1) {
+            if (records[index].id !== item.id && records[index][field.name] === value) {
+                duplicateFound = true;
+                break;
+            }
+        }
+
+        return !duplicateFound;
+    };
+
+    updateField = (event, field, fieldIndex) => {
+        const { item, fields } = this.state;
         let { value } = event.target;
+        let errorMessage = null;
 
-        if (fieldType === 'bool') {
+        if (field.type === 'bool') {
             value = event.target.checked;
         }
 
-        const { item } = this.state;
+        if (!this.isValidValue(value, field.type)) {
+            errorMessage = `Check the type, ${field.type} was expected`;
+        }
+
+        if (field.unique && !errorMessage && !this.isUniqueFiled(field, value)) {
+            errorMessage = 'This field must be unique';
+        }
+
+        fields[fieldIndex] = {
+            ...field,
+            errorMessage,
+        };
 
         this.setState({
             item: {
                 ...item,
-                [fieldName]: value,
+                [field.name]: value,
             },
+            fields,
         });
+    };
+
+    onValueChange = (event, field, fieldIndex) => {
+        event.persist();
+
+        this.updateField(event, field, fieldIndex);
     };
 
     onCancelClick = () => {
@@ -71,10 +127,10 @@ export default class ItemEditPopup extends React.Component {
         const { item, fields } = this.state;
         const { open } = this.props;
 
-        const rows = fields.map(field => (
+        const rows = fields.map((field, index) => (
             <ContentLineTextInput key={ `${field.name}${field.type}` }>
                 <LineTitle>
-                    {`${field.name} ${field.unique && '(unique)'}`}
+                    {field.name}
                 </LineTitle>
                 <LineControl>
                     {field.type === 'bool'
@@ -82,15 +138,17 @@ export default class ItemEditPopup extends React.Component {
                             <input
                               type='checkbox'
                               ref={ (node) => { this.inputRefs[field.name] = node; } }
-                              onChange={ event => this.onChange(event, field.name, field.type) }
+                              onChange={ event => this.onValueChange(event, field, index) }
                               checked={ item[field.name] }
                             />
                         ) : (
                             <WideInput
                               inputRef={ (node) => { this.inputRefs[field.name] = node; } }
-                              onChange={ event => this.onChange(event, field.name, field.type) }
+                              onChange={ event => this.onValueChange(event, field, index) }
                               defaultValue={ item[field.name].toString() }
-                              placeholder={ field.type }
+                              placeholder={ `${field.type}${field.unique ? ' (unique)' : ''}` }
+                              valid={ !field.errorMessage }
+                              errorMessage={ field.errorMessage }
                             />
                         )
                     }

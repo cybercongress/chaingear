@@ -25,8 +25,6 @@ const initialState = {
     userAccount: null,
     abi: [],
     isDbPaused: null,
-    duplicateFieldFound: false,
-    duplicateFieldId: null,
 
     contractVersion: null,
     databaseAddress: null,
@@ -533,17 +531,10 @@ class ViewRegistry extends Container {
     updateRecord = (values, entryId) => {
         const { entryCoreContract } = this.state;
 
-        if (!this.checkUnique(values, entryId)) {
-            this.setState({
-                duplicateFieldFound: true,
-                duplicateFieldId: entryId,
-            });
-            return;
-        }
-
         this.setLoading(true);
 
         cyber.callContractMethod(entryCoreContract, 'updateEntry', entryId, ...values)
+            .then(data => console.log(`Update record. Data: ${data}`))
             .then(() => cyber.eventPromise(entryCoreContract.EntryUpdated()))
             .then(() => this.getDatabaseItems())
             .then(items => this.setState({
@@ -567,41 +558,6 @@ class ViewRegistry extends Container {
                 loading: false,
             }))
             .catch(() => this.setLoading(false));
-    };
-
-    checkUnique = (values, entryId) => {
-        const { items, fields } = this.state;
-
-        const uniqueFieldsIndexes = fields
-            .map((field, index) => ({
-                ...field,
-                index,
-            }))
-            .filter(field => field.unique)
-            .map(field => field.index);
-
-        if (uniqueFieldsIndexes.length === 0) {
-            return true;
-        }
-
-        let duplicateFound = false;
-
-        items.forEach((item) => {
-
-            if (!duplicateFound) {
-                uniqueFieldsIndexes.forEach((index) => {
-
-                    //console.log(item[fields[index].name], ' === ',values[index], ' ', item.id, ' === ', entryId);
-
-                    if (item[fields[index].name].toString() === values[index].toString()
-                        && item.id !== entryId) {
-                        duplicateFound = true;
-                    }
-                });
-            }
-        });
-
-        return !duplicateFound;
     };
 
     onRecordTransferOwnership = (record) => {
@@ -642,13 +598,6 @@ class ViewRegistry extends Container {
     /*
     *  Page Actions
     */
-
-    hideEntryError = () => {
-        this.setState({
-            duplicateFieldFound: false,
-            duplicateFieldId: null,
-        });
-    };
 
     setLoading = (value) => {
         this.setState({
