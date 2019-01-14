@@ -16,7 +16,6 @@ import {
     WideSelect,
     AddButton,
     Code,
-    MainContainer,
     ProgressBar,
     CircleLable,
     TableItemBen,
@@ -308,7 +307,7 @@ class NewDatabase extends Component {
             && benCount > 0;
 
         return (
-            <MainContainer>
+            <div>
                 <StatusBar
                   open={ inProgress }
                   message={ message }
@@ -444,7 +443,7 @@ class NewDatabase extends Component {
                         )}
                     </FlexContainerRight>
                 </FlexContainer>
-            </MainContainer>
+            </div>
         );
     }
 }

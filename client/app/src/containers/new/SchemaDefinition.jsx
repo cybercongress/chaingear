@@ -12,7 +12,7 @@ import {
     WideSelect,
     Code,
     CircleLable, ProgressBar, Checkbox, TableRegistry, WideInput, AddButton,
-    MainContainer, PanelRecord, FlexContainer, FlexContainerLeft, FlexContainerRight,
+    PanelRecord, FlexContainer, FlexContainerLeft, FlexContainerRight,
 } from '@cybercongress/ui';
 
 import {
@@ -143,7 +143,7 @@ class SchemaDefinition extends Component {
             && fieldsCount <= MAX_FIELD_COUNT && !isSchemaCreated;
 
         return (
-            <MainContainer>
+            <div>
                 <StatusBar
                   open={ inProgress }
                   message={ message }
@@ -255,7 +255,7 @@ class SchemaDefinition extends Component {
                         )}
                     </FlexContainerRight>
                 </FlexContainer>
-            </MainContainer>
+            </div>
         );
     }
 }
