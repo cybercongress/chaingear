@@ -456,7 +456,7 @@ export const deploySchema = (name, fields, databaseContract) => {
                     build: {
                         compiler: '0.4.25+commit.59dbf8f1.Emscripten.clang',
                         optimizer: true,
-                        runs: 500,
+                        runs: 200,
                         ABI: ipfsHash,
                     },
                     fields: fields.map(field => ({

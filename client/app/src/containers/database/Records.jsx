@@ -2,8 +2,10 @@ import React from 'react';
 import { Subscribe } from 'unstated';
 import {
     FlexContainer, FlexContainerLeft, FlexContainerRight, AddNewRecordButton,
+    DatabaseItemsContainer, TableRecords, DbMenuPoints, MenuPopup,
+    MenuPopupItem, MenuPopupTransferIcon, MenuPopupEditIcon, MenuPopupDeleteIcon,
+    MenuSeparator, MenuPopupDeletePencilIcon, LinkHash,
 } from '@cybercongress/ui';
-import { DatabaseItem, DatabaseList } from './DatabaseItem';
 import page from './page';
 
 const Permission = {
@@ -12,70 +14,146 @@ const Permission = {
     AllUsers: 2,
 };
 
-const CreateEntryPermissionGroup = {
-    [Permission.OnlyAdmin]: {
-        key: 'OnlyAdmin',
-        label: 'ONLY OWNER',
-    },
-    // 1: {
-    //     key: 'Whitelist',
-    //     label: 'Whitelist',
-    // },
-    [Permission.AllUsers]: {
-        key: 'AllUsers',
-        label: 'All Users',
-    },
-};
-
 const Records = () => (
     <Subscribe to={ [page] }>
         {(dbPage) => {
-	        const {
-	            fields, items, isOwner, userAccount, isSchemaExist,
-	            duplicateFieldFound, duplicateFieldId, isDbPaused,
-	            permissionGroup,
-	        } = dbPage.state;
+            const {
+                fields, items, isOwner, isSchemaExist,
+                isDbPaused, permissionGroup,
+            } = dbPage.state;
 
-			const rows = items.map((item, index) => (
-		        <DatabaseItem
-		            clameRecord={ dbPage.claimRecord }
-		            removeItemClick={ dbPage.removeItemClick }
-		            fundEntryClick={ dbPage.fundEntryClick }
-		            onUpdate={ values => dbPage.onUpdate(values, item.id) }
-		            onTransfer={ newOwner => dbPage.transferItem(userAccount, newOwner, item.id) }
-		            userAccount={ userAccount }
-		            fields={ fields }
-		            item={ item }
-		            index={ item.id }
-		            key={ item.id }
-		            errorMessage={ duplicateFieldFound && duplicateFieldId === item.id}
-		            hideEntryError={ dbPage.hideEntryError }
-		            isDbPaused={ isDbPaused }
-		            onItemEdit={() => dbPage.onItemEdit(item)}
-		        />
-		    ));
+            const actionsThs = items.map(item => (
+                <th key={ item.id }>
+                    <DbMenuPoints>
+                        <MenuPopup>
+                            <MenuPopupItem
+                              icon={ <MenuPopupTransferIcon /> }
+                              onClick={ () => dbPage.onRecordTransferOwnership(item) }
+                            >
+                                Transfer Ownership
+                            </MenuPopupItem>
+                            <MenuSeparator />
+                            <MenuPopupItem
+                              icon={ <MenuPopupEditIcon /> }
+                              onClick={ () => dbPage.onFundRecord(item) }
+                            >
+                                Fund
+                            </MenuPopupItem>
+                            <MenuPopupItem
+                              icon={ <MenuPopupEditIcon /> }
+                              onClick={ () => dbPage.onClaimRecordFunds(item) }
+                            >
+                                Claim Funds
+                            </MenuPopupItem>
+                            <MenuSeparator />
+                            <MenuPopupItem
+                              icon={ <MenuPopupDeletePencilIcon /> }
+                              onClick={ () => dbPage.onRecordEdit(item) }
+                            >
+                                Edit
+                            </MenuPopupItem>
+                            <MenuPopupItem
+                              icon={ <MenuPopupDeleteIcon /> }
+                              onClick={ () => dbPage.onDeleteRecord(item) }
+                            >
+                                Delete
+                            </MenuPopupItem>
+                        </MenuPopup>
+                    </DbMenuPoints>
+                </th>
+            ));
 
-	        const showAddButton = (isOwner || permissionGroup === Permission.AllUsers) && !isDbPaused && isSchemaExist;
+            const idsThs = items.map(item => (
+                <th key={ item.id }>
+                    {item.id}
+                </th>
+            ));
 
-        	return (
-        		<div>
-	        		{isSchemaExist &&
-	                    <FlexContainer line>
-	                            <FlexContainerLeft>
-	                                RECORDS
-	                            </FlexContainerLeft>
+            const fundedThs = items.map(item => (
+                <th key={ item.id }>
+                    {item.currentEntryBalanceETH}
+                </th>
+            ));
 
-	                            <FlexContainerRight>
-	                                {showAddButton && <AddNewRecordButton onClick={dbPage.add}>Add new record</AddNewRecordButton>}
-	                            </FlexContainerRight>
-	                    </FlexContainer>
-	                }
+            const ownersThs = items.map(item => (
+                <th key={ item.id }>
+                    <LinkHash value={ item.owner } noPadding noCopy />
+                </th>
+            ));
 
-		            <DatabaseList>
-	                    {rows}
-	                </DatabaseList>
+            const itemsTrs = fields.map((field) => {
+                const itemsFields = items.map(item => (
+                    <td key={ `${item.id}${field.name}` }>
+                        {item[field.name]}
+                    </td>
+                ));
+
+                return (
+                    <tr key={ field.name }>
+                        <td>{field.name}</td>
+                        {itemsFields}
+                    </tr>
+                );
+            });
+
+            const showAddButton = (isOwner || permissionGroup === Permission.AllUsers)
+                && !isDbPaused && isSchemaExist;
+
+            return (
+                <div>
+                    {isSchemaExist
+                        && (
+                            <div>
+                                <FlexContainer line>
+
+                                    <FlexContainerLeft>
+                                        RECORDS
+                                    </FlexContainerLeft>
+
+                                    <FlexContainerRight>
+                                        {showAddButton
+                                            && (
+                                                <AddNewRecordButton
+                                                  onClick={ dbPage.addRecord }
+                                                >
+                                                    Add new record
+                                                </AddNewRecordButton>
+                                            )
+                                        }
+                                    </FlexContainerRight>
+
+                                </FlexContainer>
+
+                                <DatabaseItemsContainer>
+                                    <TableRecords>
+                                        <thead>
+                                            <tr>
+                                                <th>Action</th>
+                                                {actionsThs}
+                                            </tr>
+                                            <tr>
+                                                <th>Id</th>
+                                                {idsThs}
+                                            </tr>
+                                            <tr>
+                                                <th>Funded</th>
+                                                {fundedThs}
+                                            </tr>
+                                            <tr>
+                                                <th>Owner</th>
+                                                {ownersThs}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {itemsTrs}
+                                        </tbody>
+                                    </TableRecords>
+                                </DatabaseItemsContainer>
+                            </div>
+                        )
+                    }
                 </div>
-	        );
+            );
         }}
     </Subscribe>
 );

@@ -44,10 +44,15 @@ const initialState = {
     pauseDatabaseOpen: false,
     resumeDatabaseOpen: false,
     deleteDatabaseOpen: false,
+
+    claimRecordFundOpen: false,
+    transferRecordOwnershipOpen: false,
+    fundRecordOpen: false,
+    deleteRecordOpen: false,
     editRecordOpen: false,
 
     permissionGroup: 0,
-    itemForEdit: null,
+    recordForAction: null,
 };
 
 class ViewRegistry extends Container {
@@ -200,13 +205,6 @@ class ViewRegistry extends Container {
                 _abi = abi;
                 _entryCoreContract = _web3.eth.contract(_abi).at(_entryCoreAddress);
             })
-            .then(() => this.getUniqValidationStatuses(_fields, _entryCoreContract))
-            .then((uniqueStatuses) => {
-                _fields = _fields.map((field, index) => ({
-                    ...field,
-                    unique: uniqueStatuses[index],
-                }));
-            })
             .then(() => this.setState({
                 databaseContract: _databaseContract,
                 entryCoreAddress: _entryCoreAddress,
@@ -233,16 +231,12 @@ class ViewRegistry extends Container {
             .catch((error) => {
                 console.log(`Cannot load database data. Error: ${error}`);
             });
-    }
-
-    getUniqValidationStatuses = (fields, entryCoreContract) => {
-        return Promise.all(
-            fields.map((field, index) => cyber.callContractMethod(entryCoreContract, 'getUniqStatus', index)),
-        );
-    }
+    };
 
     getDatabaseItems = () => {
-        const { databaseContract: contract, fields, abi, web3 } = this.state;
+        const {
+            databaseContract: contract, fields, abi, web3,
+        } = this.state;
 
         return new Promise((topResolve, reject) => {
 
@@ -273,134 +267,30 @@ class ViewRegistry extends Container {
                     topResolve(_items);
                 });
         });
-
-    }
-
-    add = () => {
-        const { databaseContract, name, databaseSymbol } = this.state;
-
-        if (!databaseContract) {
-            return;
-        }
-
-        cyber.callContractMethod(databaseContract, 'getEntryCreationFee')
-            .then(fee => fee.toNumber())
-            .then(fee => cyber.callContractMethod(databaseContract, 'createEntry', { value: fee }))
-            .then((entryId) => {
-                console.log(`New Entry created: ${entryId}`);
-                this.setState({
-                    loading: true,
-                });
-                return cyber.eventPromise(databaseContract.EntryCreated());
-            })
-            .then(() => this.init(databaseSymbol))
-            .catch(() => {
-                console.log(`Cannot add entry to ${name}`);
-            });
     };
 
-    checkUnique = (values, entryId) => {
-        const { items, fields } = this.state;
+    /*
+    *  Database Actions
+    */
 
-        const uniqueFieldsIndexes = fields
-            .map((field, index) => ({
-                ...field,
-                index,
-            }))
-            .filter(field => field.unique)
-            .map(field => field.index);
-
-        if (uniqueFieldsIndexes.length === 0) {
-            return true;
-        }
-
-        let duplicateFound = false;
-        items.forEach((item) => {
-
-            if (!duplicateFound) {
-                uniqueFieldsIndexes.forEach((index) => {
-
-                    //console.log(item[fields[index].name], ' === ',values[index], ' ', item.id, ' === ', entryId);
-
-                    if (item[fields[index].name].toString() === values[index].toString() && item.id !== entryId) {
-                        duplicateFound = true;
-                    }
-                });
-            }
-        });
-
-        return !duplicateFound;
-    };
-
-    onUpdate = (values, entryId) => {
-        const { entryCoreContract } = this.state;
-
-        if (!this.checkUnique(values, entryId)) {
-            this.setState({
-                duplicateFieldFound: true,
-                duplicateFieldId: entryId,
-            });
-            return;
-        }
-
-        this.setLoading(true);
-
-        cyber.callContractMethod(entryCoreContract, 'updateEntry', entryId, ...values)
-            .then(() => cyber.eventPromise(entryCoreContract.EntryUpdated()))
-            .then(() => this.getDatabaseItems())
-            .then(items => this.setState({
-                items,
-                loading: false,
-            }))
-            .catch(() => this.setLoading(false));
-    };
-
-    removeItemClick = (id) => {
-        const { databaseContract } = this.state;
-
-        this.setLoading(true);
-        cyber.callContractMethod(databaseContract, 'deleteEntry', id)
-            .then(() => cyber.eventPromise(databaseContract.EntryDeleted()))
-            .then(() => this.getDatabaseItems())
-            .then(items => this.setState({
-                items,
-                loading: false,
-            }))
-            .catch(() => this.setLoading(false));
-    };
-
-    validate = (e) => {
-        e.preventDefault();
-        console.log(e.target.value);
-    }
-
-    claim = () => {
-        this.contract.claim((e, d) => {
+    claimDbFee = () => {
+        this.contract.claimDbFee((e, d) => {
             this.setState({ balance: 0 });
         });
     };
 
-    fundEntryClick = (id, value) => {
-        this.setState({ loading: true });
+    onUpdatePermissionGroup = () => {
+        const newPermissionGroup = this.permissionGroup.value;
 
-        const { databaseContract, web3 } = this.state;
-
-        cyber.callContractMethod(databaseContract, 'fundEntry', id, {
-            value: web3.toWei(value, 'ether'),
-        })
-            .then((data) => {
-                console.log(`Entry ${id} funded. ETH: ${value}. Data: ${data}`);
-            })
-            .then(() => cyber.eventPromise(databaseContract.EntryFunded()))
-            .then(results => console.log(`Entry ${id} funded. Results: ${results}`))
-            .then(() => this.getDatabaseItems())
-            .then((items) => {
+        cyber.sendTransactionMethod(
+            _databaseContract.updateCreateEntryPermissionGroup, newPermissionGroup,
+        )
+            .then(hash => cyber.eventPromise(_databaseContract.PermissionGroupChanged()))
+            .then(() => {
                 this.setState({
-                    items,
-                    loading: false,
+                    permissionGroup: +newPermissionGroup,
                 });
-            })
-            .catch(() => this.setLoading(false));
+            });
     };
 
     changeDescription = (description) => {
@@ -440,20 +330,6 @@ class ViewRegistry extends Container {
             .catch(() => this.setLoading(false));
     };
 
-    claimRecord = (entryID, amount) => {
-        const { databaseSymbol } = this.state;
-
-        this.state.databaseContract.claimEntryFunds(entryID, this.state.web3.toWei(amount, 'ether'), (e, data) => {
-            this.init(databaseSymbol);
-        });
-    };
-
-    setLoading = (value) => {
-        this.setState({
-            loading: value,
-        });
-    };
-
     fundDatabase = (amount) => {
         const { databaseId, web3, databaseSymbol } = this.state;
         let _chaingerContract;
@@ -474,7 +350,7 @@ class ViewRegistry extends Container {
             });
     };
 
-    claimDatabase = (amount) => {
+    claimDatabaseFunds = (amount) => {
         const { databaseId, web3, databaseSymbol } = this.state;
 
         this.closePopups();
@@ -487,12 +363,6 @@ class ViewRegistry extends Container {
             .then(() => this.init(databaseSymbol));
     };
 
-    claimFee = (amount) => {
-        this.state.databaseContract.claim((e, data) => {
-
-        });
-    };
-
     transferDatabaseOwnership = (userAccount, newOwner) => {
         const { databaseId, databaseSymbol } = this.state;
 
@@ -501,14 +371,6 @@ class ViewRegistry extends Container {
         cyber.getChaingearContract()
             .then(contract => cyber.callContractMethod(contract, 'transferFrom', userAccount, newOwner, databaseId))
             .then(() => this.init(databaseSymbol));
-    };
-
-    transferItem = (userAccount, newOwner, entryID) => {
-        const { databaseSymbol } = this.state;
-
-        this.state.databaseContract.transferFrom(userAccount, newOwner, entryID, (e, data) => {
-            this.init(databaseSymbol);
-        });
     };
 
     pauseDb = () => {
@@ -555,13 +417,6 @@ class ViewRegistry extends Container {
             .then(data => console.log(`DeleteDB: ${databaseId}. Tx: ${data}`));
     };
 
-    hideEntryError = () => {
-        this.setState({
-            duplicateFieldFound: false,
-            duplicateFieldId: null,
-        });
-    };
-
     onTransferOwnership = () => {
         this.setState({
             transferOwnershipOpen: true,
@@ -604,10 +459,200 @@ class ViewRegistry extends Container {
         });
     };
 
-    onItemEdit = (item) => {
+    /*
+    *  Record Actions
+    */
+
+    addRecord = () => {
+        const { databaseContract, name, databaseSymbol } = this.state;
+
+        if (!databaseContract) {
+            return;
+        }
+
+        cyber.callContractMethod(databaseContract, 'getEntryCreationFee')
+            .then(fee => fee.toNumber())
+            .then(fee => cyber.callContractMethod(databaseContract, 'createEntry', { value: fee }))
+            .then((entryId) => {
+                console.log(`New Entry created: ${entryId}`);
+                this.setState({
+                    loading: true,
+                });
+                return cyber.eventPromise(databaseContract.EntryCreated());
+            })
+            .then(() => this.init(databaseSymbol))
+            .catch(() => {
+                console.log(`Cannot add entry to ${name}`);
+            });
+    };
+
+    transferRecordOwnership = (userAccount, newOwner, entryID) => {
+        const { databaseSymbol } = this.state;
+
+        this.closePopups();
+
+        this.state.databaseContract.transferFrom(userAccount, newOwner, entryID, (e, data) => {
+            this.init(databaseSymbol);
+        });
+    };
+
+    claimRecord = (entryID, amount) => {
+        const { databaseSymbol } = this.state;
+
+        this.closePopups();
+
+        this.state.databaseContract.claimEntryFunds(entryID, this.state.web3.toWei(amount, 'ether'), (e, data) => {
+            this.init(databaseSymbol);
+        });
+    };
+
+    fundRecord = (id, value) => {
+        this.setState({ loading: true });
+
+        this.closePopups();
+        const { databaseContract, web3 } = this.state;
+
+        cyber.callContractMethod(databaseContract, 'fundEntry', id, {
+            value: web3.toWei(value, 'ether'),
+        })
+            .then((data) => {
+                console.log(`Entry ${id} funded. ETH: ${value}. Data: ${data}`);
+            })
+            .then(() => cyber.eventPromise(databaseContract.EntryFunded()))
+            .then(results => console.log(`Entry ${id} funded. Results: ${results}`))
+            .then(() => this.getDatabaseItems())
+            .then((items) => {
+                this.setState({
+                    items,
+                    loading: false,
+                });
+            })
+            .catch(() => this.setLoading(false));
+    };
+
+    updateRecord = (values, entryId) => {
+        const { entryCoreContract } = this.state;
+
+        if (!this.checkUnique(values, entryId)) {
+            this.setState({
+                duplicateFieldFound: true,
+                duplicateFieldId: entryId,
+            });
+            return;
+        }
+
+        this.setLoading(true);
+
+        cyber.callContractMethod(entryCoreContract, 'updateEntry', entryId, ...values)
+            .then(() => cyber.eventPromise(entryCoreContract.EntryUpdated()))
+            .then(() => this.getDatabaseItems())
+            .then(items => this.setState({
+                items,
+                loading: false,
+            }))
+            .catch(() => this.setLoading(false));
+    };
+
+    deleteRecord = (id) => {
+        const { databaseContract } = this.state;
+
+        this.closePopups();
+        this.setLoading(true);
+
+        cyber.callContractMethod(databaseContract, 'deleteEntry', id)
+            .then(() => cyber.eventPromise(databaseContract.EntryDeleted()))
+            .then(() => this.getDatabaseItems())
+            .then(items => this.setState({
+                items,
+                loading: false,
+            }))
+            .catch(() => this.setLoading(false));
+    };
+
+    checkUnique = (values, entryId) => {
+        const { items, fields } = this.state;
+
+        const uniqueFieldsIndexes = fields
+            .map((field, index) => ({
+                ...field,
+                index,
+            }))
+            .filter(field => field.unique)
+            .map(field => field.index);
+
+        if (uniqueFieldsIndexes.length === 0) {
+            return true;
+        }
+
+        let duplicateFound = false;
+
+        items.forEach((item) => {
+
+            if (!duplicateFound) {
+                uniqueFieldsIndexes.forEach((index) => {
+
+                    //console.log(item[fields[index].name], ' === ',values[index], ' ', item.id, ' === ', entryId);
+
+                    if (item[fields[index].name].toString() === values[index].toString()
+                        && item.id !== entryId) {
+                        duplicateFound = true;
+                    }
+                });
+            }
+        });
+
+        return !duplicateFound;
+    };
+
+    onRecordTransferOwnership = (record) => {
+        this.setState({
+            transferRecordOwnershipOpen: true,
+            recordForAction: record,
+        });
+    };
+
+    onFundRecord = (record) => {
+        this.setState({
+            fundRecordOpen: true,
+            recordForAction: record,
+        });
+    };
+
+    onClaimRecordFunds = (record) => {
+        this.setState({
+            claimRecordFundOpen: true,
+            recordForAction: record,
+        });
+    };
+
+    onDeleteRecord = (record) => {
+        this.setState({
+            deleteRecordOpen: true,
+            recordForAction: record,
+        });
+    };
+
+    onRecordEdit = (record) => {
         this.setState({
             editRecordOpen: true,
-            itemForEdit: item,
+            recordForAction: record,
+        });
+    };
+
+    /*
+    *  Page Actions
+    */
+
+    hideEntryError = () => {
+        this.setState({
+            duplicateFieldFound: false,
+            duplicateFieldId: null,
+        });
+    };
+
+    setLoading = (value) => {
+        this.setState({
+            loading: value,
         });
     };
 
@@ -620,20 +665,13 @@ class ViewRegistry extends Container {
             pauseDatabaseOpen: false,
             resumeDatabaseOpen: false,
             deleteDatabaseOpen: false,
+
+            claimRecordFundOpen: false,
+            transferRecordOwnershipOpen: false,
+            fundRecordOpen: false,
+            deleteRecordOpen: false,
             editRecordOpen: false,
         });
-    };
-
-    onUpdatePermissionGroup = () => {
-        const newPermissionGroup = this.permissionGroup.value;
-
-        cyber.sendTransactionMethod(_databaseContract.updateCreateEntryPermissionGroup, newPermissionGroup)
-            .then(hash => cyber.eventPromise(_databaseContract.PermissionGroupChanged()))
-            .then(() => {
-                this.setState({
-                    permissionGroup: +newPermissionGroup,
-                });
-            });
     };
 }
 

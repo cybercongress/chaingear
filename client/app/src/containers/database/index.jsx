@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Provider } from 'unstated';
 import { MainContainer, Section } from '@cybercongress/ui';
 import Records from './Records';
-import Popups from './Popups';
+import DatabasePopups from './DatabasePopups';
+import RecordPopups from './RecordPopups';
 import Header from './Header';
 import General from './General';
 import Overview from './Overview';
@@ -22,7 +23,8 @@ class Database extends Component {
             <Provider>
 
                 <PageLoading />
-                <Popups />
+                <DatabasePopups />
+                <RecordPopups />
 
                 <MainContainer>
 

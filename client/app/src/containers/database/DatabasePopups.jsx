@@ -5,16 +5,15 @@ import {
     LineTitle, LineControl, WideInput, PopupButton, ContentLineFund,
     LineText, ContentLine, ContentLineTextInput,
 } from '@cybercongress/ui';
-import ItemEditPopup from './ItemEditPopup';
 import page from './page';
 
-const Popups = () => (
+const DatabasePopups = () => (
     <Subscribe to={ [page] }>
         {(dbPage) => {
             const {
-                fields, userAccount, isSchemaExist, admin, funded, itemForEdit,
-                claimFundOpen, claimFeeOpen, transferOwnershipOpen, fundDatabaseOpen,
-                pauseDatabaseOpen, resumeDatabaseOpen, deleteDatabaseOpen, editRecordOpen,
+                userAccount, admin, funded, claimFundOpen, claimFeeOpen,
+                transferOwnershipOpen, fundDatabaseOpen, pauseDatabaseOpen,
+                resumeDatabaseOpen, deleteDatabaseOpen,
             } = dbPage.state;
 
             return (
@@ -41,7 +40,7 @@ const Popups = () => (
                         <PopupFooter>
                             <PopupButton onClick={ dbPage.closePopups } type='cancel'>cancel</PopupButton>
                             <PopupButton
-                              onClick={ () => dbPage.claimDatabase(dbPage.claimDbInput.value) }
+                              onClick={ () => dbPage.claimDatabaseFunds(dbPage.claimDbInput.value) }
                               type='confirm'
                             >
                                 Confirm
@@ -72,7 +71,7 @@ const Popups = () => (
                             <PopupButton onClick={ dbPage.closePopups } type='cancel'>cancel</PopupButton>
                             <PopupButton
                               onClick={ () => {
-                                  const newDbOwner = this.newDbOwnerInput.value;
+                                  const newDbOwner = dbPage.newDbOwnerInput.value;
 
                                   dbPage.transferDatabaseOwnership(userAccount, newDbOwner);
                               } }
@@ -153,22 +152,10 @@ const Popups = () => (
                             <PopupButton onClick={ dbPage.unpauseDb } type='confirm'>Confirm</PopupButton>
                         </PopupFooter>
                     </Popup>
-
-                    {isSchemaExist && itemForEdit
-                        && (
-                            <ItemEditPopup
-                              open={ editRecordOpen }
-                              item={ itemForEdit }
-                              fields={ fields }
-                              onCancelClick={ dbPage.closePopups }
-                              onConfirmClick={ dbPage.onUpdate }
-                            />
-                        )
-                    }
                 </span>
             );
         }}
     </Subscribe>
 );
 
-export default Popups;
+export default DatabasePopups;
