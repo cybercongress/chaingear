@@ -3,14 +3,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 
 import {
-    Section,
-    SectionContent,
-    Badge, FooterButton,
-    Container, Text, ActionLink,
-    HomeTable,
-    LinkHash,
+    Section, SectionContent, Badge,
+    FooterButton, Container, Text,
+    HomeTable, LinkHash, Button,
 } from '@cybercongress/ui';
-
 import {
     getDatabases, getDefaultAccount, init,
 } from '../../utils/cyber';
@@ -102,8 +98,15 @@ class Home extends Component {
                 >
                     <SectionContent>
                         <Container>
-                            <Text>You haven&#39;t created databases yet!</Text>
-                            <ActionLink to='/new'>create and deploy right now</ActionLink>
+                            <Text
+                              size='xlg'
+                              color='blue'
+                              bold
+                              style={ { marginBottom: '20px' } }
+                            >
+                                You haven&#39;t created databases yet!
+                            </Text>
+                            <Button color='blue' to='/new'>create and deploy right now</Button>
                         </Container>
                     </SectionContent>
                 </Section>

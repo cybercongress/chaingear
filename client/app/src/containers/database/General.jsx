@@ -2,7 +2,7 @@ import React from 'react';
 import { Subscribe } from 'unstated';
 import {
     LinkHash, Section, SectionContent,
-    FundContainer, BoxTitle, CentredPanel,
+    Text, CentredPanel,
 } from '@cybercongress/ui';
 import page from './page';
 import { formatDate } from '../../utils/utils';
@@ -21,16 +21,16 @@ const General = () => (
                 <Section title='General'>
                     <SectionContent style={ { width: '25%' } }>
                         <CentredPanel>
-                            <BoxTitle>Created:</BoxTitle>
-                            <div>
+                            <Text uppercase color='black' style={{marginBottom: '20px'}}>Created:</Text>
+                            <Text uppercase color='black'>
                                 {createdTimestamp ? formatDate(createdTimestamp.toNumber()) : ''}
-                            </div>
+                            </Text>
                         </CentredPanel>
                     </SectionContent>
 
                     <SectionContent style={ { width: '25%' } }>
                         <CentredPanel>
-                            <BoxTitle>Admin:</BoxTitle>
+                            <Text uppercase color='black' style={{marginBottom: '20px'}}>Admin:</Text>
                             <div>
                                 <LinkHash value={ admin } />
                             </div>
@@ -39,19 +39,19 @@ const General = () => (
 
                     <SectionContent style={ { width: '25%' } }>
                         <CentredPanel>
-                            <BoxTitle>FUNDED:</BoxTitle>
-                            <FundContainer>
-                                <span>{`${funded} ETH`}</span>
-                            </FundContainer>
+                            <Text uppercase color='black' style={{marginBottom: '20px'}}>FUNDED:</Text>
+                            <Text uppercase color='black'>
+                                {`${funded} ETH`}
+                            </Text>
                         </CentredPanel>
                     </SectionContent>
 
                     <SectionContent style={ { width: '25%' } }>
                         <CentredPanel>
-                            <BoxTitle>FEES:</BoxTitle>
-                            <FundContainer>
-                                <span>{`${totalFee} ETH`}</span>
-                            </FundContainer>
+                            <Text uppercase color='black' style={{marginBottom: '20px'}}>FEES:</Text>
+                            <Text uppercase color='black'>
+                                {`${totalFee} ETH`}
+                            </Text>
                         </CentredPanel>
                     </SectionContent>
                 </Section>

@@ -2,27 +2,13 @@ import React, { Component } from 'react';
 
 import {
     Content, ContainerRegister, SideBar,
-    Panel,
-    CreateButton,
-    PageTitle,
-    RemoveButton,
-    ErrorMessage,
-    StatusBar,
-    LinkHash,
-    ActionLink,
-    ParamRow,
-    WideInput,
-    Description,
-    WideSelect,
-    AddButton,
-    Code,
-    ProgressBar,
-    CircleLable,
-    TableItemBen,
-    TableRegistry,
-    FlexContainer,
-    FlexContainerLeft,
-    FlexContainerRight,
+    Panel, PageTitle, RemoveButton,
+    Message, StatusBar, LinkHash,
+    ParamRow, WideInput, WideSelect,
+    AddButton, Code, ProgressBar,
+    CircleLable, TableItemBen, TableRegistry,
+    FlexContainer, FlexContainerLeft, FlexContainerRight,
+    Button, Text,
 } from '@cybercongress/ui';
 
 import {
@@ -50,10 +36,8 @@ class NewDatabase extends Component {
             dbSymbol: '',
             dbVersion: '',
 
-            isNameValid: true,
-            isSymbolValid: true,
-            nameErrorMessage: '',
-            symbolErrorMessage: '',
+            nameErrorMessage: null,
+            symbolErrorMessage: null,
 
             inProgress: false,
             message: '',
@@ -101,21 +85,21 @@ class NewDatabase extends Component {
     };
 
     getDatabaseVersions = () => {
-        let _chaingerContract;
+        let chaingerContract;
 
         return getChaingearContract()
             .then((contract) => {
-                _chaingerContract = contract;
+                chaingerContract = contract;
                 return callContractMethod(contract, 'getAmountOfBuilders');
             })
             .then((buildersCount) => {
                 const buildersCountNumber = buildersCount.toNumber();
-                let buildersPromises = [];
+                const buildersPromises = [];
 
-                for (let index = 0; index < buildersCountNumber; index = index + 1) {
-                    const builderPromise = callContractMethod(_chaingerContract, 'getBuilderById', index)
+                for (let index = 0; index < buildersCountNumber; index += 1) {
+                    const builderPromise = callContractMethod(chaingerContract, 'getBuilderById', index)
                         .then(builderVersion => Promise.all([
-                            callContractMethod(_chaingerContract, 'getDatabaseBuilder', builderVersion),
+                            callContractMethod(chaingerContract, 'getDatabaseBuilder', builderVersion),
                             builderVersion,
                         ]))
                         .then(([builderMeta, builderVersion]) => (
@@ -137,20 +121,17 @@ class NewDatabase extends Component {
         if (!dbName) {
             this.setState({
                 dbName,
-                isNameValid: true,
             });
 
             return;
         }
 
-        let _isNameValid = true;
-        let _errorMessage = '';
+        let errorMessage = null;
 
         this.checkRegexp(dbName)
             .then((isValid) => {
                 if (!isValid) {
-                    _isNameValid = false;
-                    _errorMessage = 'letters, digits and dash only';
+                    errorMessage = 'letters, digits and dash only';
 
                     throw new Error('invalid string');
                 }
@@ -159,22 +140,19 @@ class NewDatabase extends Component {
             .then(contract => callContractMethod(contract, 'getNameExist', dbName))
             .then((isNameExist) => {
                 if (isNameExist) {
-                    _isNameValid = false;
-                    _errorMessage = 'Database name already exist';
+                    errorMessage = 'Database name already exist';
                 }
             })
             .then(() => {
                 this.setState({
                     dbName,
-                    isNameValid: _isNameValid,
-                    nameErrorMessage: _errorMessage,
+                    nameErrorMessage: errorMessage,
                 });
             })
             .catch(() => {
                 this.setState({
                     dbName,
-                    isNameValid: _isNameValid,
-                    nameErrorMessage: _errorMessage,
+                    nameErrorMessage: errorMessage,
                 });
             });
     };
@@ -183,20 +161,17 @@ class NewDatabase extends Component {
         if (!dbSymbol) {
             this.setState({
                 dbSymbol,
-                isSymbolValid: true,
             });
 
             return;
         }
 
-        let _isSymbolValid = true;
-        let _errorMessage = '';
+        let errorMessage = '';
 
         this.checkRegexp(dbSymbol)
             .then((isValid) => {
                 if (!isValid) {
-                    _isSymbolValid = false;
-                    _errorMessage = 'letters, digits and dash only';
+                    errorMessage = 'letters, digits and dash only';
 
                     throw new Error('invalid string');
                 }
@@ -205,29 +180,24 @@ class NewDatabase extends Component {
             .then(contract => callContractMethod(contract, 'getSymbolExist', dbSymbol))
             .then((isSymbolExist) => {
                 if (isSymbolExist) {
-                    _isSymbolValid = false;
-                    _errorMessage = 'Symbol already exist';
+                    errorMessage = 'Symbol already exist';
                 }
             })
             .then(() => {
                 this.setState({
                     dbSymbol,
-                    isSymbolValid: _isSymbolValid,
-                    symbolErrorMessage: _errorMessage,
+                    symbolErrorMessage: errorMessage,
                 });
             })
             .catch(() => {
                 this.setState({
                     dbSymbol,
-                    isSymbolValid: _isSymbolValid,
-                    symbolErrorMessage: _errorMessage,
+                    symbolErrorMessage: errorMessage,
                 });
             });
     };
 
-    checkRegexp = (string) => {
-        return new Promise(resolve => resolve(/\b[a-zA-Z][a-zA-Z0-9_]*$/.test(string)));
-    };
+    checkRegexp = string => new Promise(resolve => resolve(/\b[a-zA-Z][a-zA-Z0-9_]*$/.test(string)));
 
     onDbNameChange = (event) => {
         event.persist();
@@ -295,7 +265,7 @@ class NewDatabase extends Component {
     render() {
         const {
             dbName, dbSymbol, dbVersion, dbBuilders, dbDescription,
-            isNameValid, isSymbolValid, databaseId, beneficiaries,
+            databaseId, beneficiaries,
             message, inProgress, type,
             nameErrorMessage, symbolErrorMessage,
         } = this.state;
@@ -303,7 +273,6 @@ class NewDatabase extends Component {
         const bens = calculateBensShares(beneficiaries);
         const benCount = beneficiaries.length;
         const canCreate = dbName.length > 0 && dbSymbol.length > 0 && dbVersion.length > 0
-            && isNameValid && isSymbolValid
             && benCount > 0;
 
         return (
@@ -328,8 +297,8 @@ class NewDatabase extends Component {
                                 <WideInput
                                   placeholder='Name'
                                   onChange={ this.onDbNameChange }
-                                  valid={ isNameValid }
                                   errorMessage={ nameErrorMessage }
+                                  disabled={ !!databaseId }
                                 />
                             </ParamRow>
                             <ParamRow>
@@ -337,12 +306,15 @@ class NewDatabase extends Component {
                                   placeholder='Symbol'
                                   onChange={ this.onDbSymbolChange }
                                   inputRef={ (node) => { this.dbSymbol = node; } }
-                                  valid={ isSymbolValid }
                                   errorMessage={ symbolErrorMessage }
+                                  disabled={ !!databaseId }
                                 />
                             </ParamRow>
                             <ParamRow>
-                                <WideSelect onChange={ this.onDbVersionChange }>
+                                <WideSelect
+                                  onChange={ this.onDbVersionChange }
+                                  disabled={ !!databaseId }
+                                >
                                     <option key='default' value=''>Version</option>
                                     {
                                         dbBuilders.map(builder => (
@@ -360,10 +332,10 @@ class NewDatabase extends Component {
                             {dbDescription
                                 && (
                                     <ParamRow>
-                                        <Description>
-                                            <b>Description:</b>
+                                        <Text size='sm' lineheight justify>
+                                            <b>Description: </b>
                                             {dbDescription}
-                                        </Description>
+                                        </Text>
                                     </ParamRow>
                                 )
                             }
@@ -379,43 +351,47 @@ class NewDatabase extends Component {
                                             </td>
                                             <td>{ben.stake}</td>
                                             <td>{`${ben.share} %`}</td>
-                                            <td>
-                                                <RemoveButton
-                                                  onClick={
-                                                      () => this.removeBeneficiary(ben.address)
-                                                  }
-                                                />
-                                            </td>
+                                            {!databaseId && (
+                                                <td>
+                                                    <RemoveButton
+                                                      onClick={
+                                                          () => this.removeBeneficiary(ben.address)
+                                                      }
+                                                    />
+                                                </td>
+                                            )}
                                         </tr>
                                     ))}
                                 </tbody>
                             </TableItemBen>
-                            <TableRegistry>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <WideInput
-                                              inputRef={ (node) => { this.benAddress = node; } }
-                                              placeholder='Address'
-                                            />
-                                        </td>
-                                        <td>
-                                            <WideInput
-                                              inputRef={ (node) => { this.benStake = node; } }
-                                              onChange={ this.onStakeChange }
-                                              placeholder='Stake'
-                                            />
-                                        </td>
-                                        <td>
-                                            <span ref='benShare' placeholder='Share'>0</span>
-                                            <span>%</span>
-                                        </td>
-                                        <td>
-                                            <AddButton onClick={ this.addBeneficiary } />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </TableRegistry>
+                            {!databaseId && (
+                                <TableRegistry>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <WideInput
+                                                  inputRef={ (node) => { this.benAddress = node; } }
+                                                  placeholder='Address'
+                                                />
+                                            </td>
+                                            <td>
+                                                <WideInput
+                                                  inputRef={ (node) => { this.benStake = node; } }
+                                                  onChange={ this.onStakeChange }
+                                                  placeholder='Stake'
+                                                />
+                                            </td>
+                                            <td>
+                                                <span ref='benShare' placeholder='Share'>0</span>
+                                                <span>%</span>
+                                            </td>
+                                            <td>
+                                                <AddButton onClick={ this.addBeneficiary } />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </TableRegistry>
+                            )}
                         </Panel>
 
                     </SideBar>
@@ -428,18 +404,18 @@ class NewDatabase extends Component {
                 </ContainerRegister>
                 <FlexContainer>
                     <FlexContainerLeft>
-                        {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
+                        {(type === 'error' && message) && <Message type='error'>{message}</Message>}
                     </FlexContainerLeft>
                     <FlexContainerRight>
                         {databaseId ? (
                             <span>
-                                <ActionLink to={ `/databases/${dbSymbol}` }>Go to database</ActionLink>
-                                <ActionLink style={ { marginLeft: 15 } } to={ `/schema/${dbSymbol}` }>Go to schema definition</ActionLink>
+                                <Button color='blue' style={ { marginRight: '10px' } } to={ `/databases/${dbSymbol}` }>Go to database</Button>
+                                <Button color='blue' to={ `/schema/${dbSymbol}` }>Go to schema definition</Button>
                             </span>
                         ) : (
-                            <CreateButton disabled={ !canCreate } onClick={ this.createDatabase }>
-                                Next
-                            </CreateButton>
+                            <Button type='button' color='blue' disabled={ !canCreate } onClick={ this.createDatabase }>
+                                Create
+                            </Button>
                         )}
                     </FlexContainerRight>
                 </FlexContainer>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
     ContentLineTextInput, LineControl, LineTitle, WideInput,
-    Popup, PopupTitle, PopupContent, PopupFooter, PopupButton,
+    Popup, PopupTitle, PopupContent, PopupFooter, Button,
 } from '@cybercongress/ui';
 import { Subscribe } from 'unstated';
 import { debounce } from '../../utils/utils';
@@ -172,14 +172,14 @@ export default class ItemEditPopup extends React.Component {
                                 {rows}
                             </PopupContent>
                             <PopupFooter>
-                                <PopupButton type='cancel' onClick={ dbPage.closePopups }>Cancel</PopupButton>
-                                <PopupButton
+                                <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>Cancel</Button>
+                                <Button
                                   disabled={ Object.keys(errors).length > 0 }
-                                  type='confirm'
+                                  color='green'
                                   onClick={ () => this.onConfirmClick(dbPage) }
                                 >
                                     Confirm
-                                </PopupButton>
+                                </Button>
                             </PopupFooter>
                         </Popup>
                     );

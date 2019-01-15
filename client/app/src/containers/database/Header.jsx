@@ -2,18 +2,15 @@ import React from 'react';
 import { hashHistory } from 'react-router';
 import { Subscribe } from 'unstated';
 import {
-    ActionLink, Section,
     DbMenu, MenuPopup, MenuPopupItem, MenuSeparator,
-    MenuPopupDeleteIcon, MenuPopupEditIcon, MenuPopupTransferIcon,
+    MenuPopupDeleteIcon, MenuPopupAccountIcon, MenuPopupTransferIcon,
     MenuPopupResumeIcon, MenuPopupPauseIcon,
-    PageTitle, ProgressBar, CircleLable,
-    PopupBar, LineText, PopupBarFooter, PopupBarButton,
-    FlexContainer, FlexContainerLeft, FlexContainerRight
+    PageTitle, ProgressBar, CircleLable, Section,
+    PopupBar, Text, PopupBarFooter, Button,
+    FlexContainer, FlexContainerLeft, FlexContainerRight,
 } from '@cybercongress/ui';
 
 import page from './page';
-
-
 
 const Header = () => (
     <Subscribe to={ [page] }>
@@ -30,7 +27,12 @@ const Header = () => (
                 <div>
                     <Section>
                         <div style={ { marginLeft: '15px' } }>
-                            <ActionLink to='/'>BACK TO CHAINGEAR</ActionLink>
+                            <Button
+                              color='blue'
+                              to='/'
+                            >
+                                BACK TO CHAINGEAR
+                            </Button>
                         </div>
                     </Section>
 
@@ -42,15 +44,17 @@ const Header = () => (
                                 <CircleLable type='complete' number='1' text='Registry initialization' />
                                 <CircleLable number='2' text='Schema definition'>
                                     <PopupBar>
-                                        <LineText>
+                                        <Text lineheight>
                                             To operate with records, please, define schema
-                                        </LineText>
+                                        </Text>
                                         <PopupBarFooter>
-                                            <PopupBarButton
+                                            <Button
+                                              transparent='true'
+                                              style={ { color: '#b00020' } }
                                               onClick={ () => onDefineSchemaClick(databaseSymbol) }
                                             >
                                                 complete step
-                                            </PopupBarButton>
+                                            </Button>
                                         </PopupBarFooter>
                                     </PopupBar>
                                 </CircleLable>
@@ -68,7 +72,7 @@ const Header = () => (
                                         && [
                                             <MenuPopupItem
                                               key='transferOwnership'
-                                              icon={ <MenuPopupTransferIcon /> }
+                                              icon={ <MenuPopupAccountIcon /> }
                                               onClick={ dbPage.onTransferOwnership }
                                             >
                                                 Transfer ownership
@@ -80,7 +84,7 @@ const Header = () => (
                                         && (
                                             <MenuPopupItem
                                               key='fundRegistry'
-                                              icon={ <MenuPopupEditIcon /> }
+                                              icon={ <MenuPopupTransferIcon /> }
                                               onClick={ dbPage.onFundDb }
                                             >
                                                 Fund registry
@@ -91,7 +95,7 @@ const Header = () => (
                                         && [
                                             <MenuPopupItem
                                               key='claimFunds'
-                                              icon={ <MenuPopupEditIcon /> }
+                                              icon={ <MenuPopupTransferIcon /> }
                                               onClick={ dbPage.onClaimFunds }
                                             >
                                                 Claim Funds

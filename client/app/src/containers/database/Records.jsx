@@ -4,7 +4,7 @@ import {
     FlexContainer, FlexContainerLeft, FlexContainerRight, AddNewRecordButton,
     DatabaseItemsContainer, TableRecords, DbMenuPoints, MenuPopup,
     MenuPopupItem, MenuPopupTransferIcon, MenuPopupEditIcon, MenuPopupDeleteIcon,
-    MenuSeparator, MenuPopupDeletePencilIcon, LinkHash,
+    MenuSeparator, MenuPopupAccountIcon, LinkHash,
 } from '@cybercongress/ui';
 import page from './page';
 
@@ -28,7 +28,7 @@ const Records = () => (
                         <MenuPopup>
                             { userAccount === item.owner && [
                                 <MenuPopupItem
-                                  icon={ <MenuPopupTransferIcon /> }
+                                  icon={ <MenuPopupAccountIcon /> }
                                   onClick={ () => dbPage.onRecordTransferOwnership(item) }
                                 >
                                     Transfer Ownership
@@ -36,21 +36,21 @@ const Records = () => (
                                 <MenuSeparator />,
                             ]}
                             <MenuPopupItem
-                              icon={ <MenuPopupEditIcon /> }
+                              icon={ <MenuPopupTransferIcon /> }
                               onClick={ () => dbPage.onFundRecord(item) }
                             >
                                 Fund
                             </MenuPopupItem>
                             { userAccount === item.owner && [
                                 <MenuPopupItem
-                                  icon={ <MenuPopupEditIcon /> }
+                                  icon={ <MenuPopupTransferIcon /> }
                                   onClick={ () => dbPage.onClaimRecordFunds(item) }
                                 >
                                     Claim Funds
                                 </MenuPopupItem>,
                                 <MenuSeparator />,
                                 <MenuPopupItem
-                                  icon={ <MenuPopupDeletePencilIcon /> }
+                                  icon={ <MenuPopupEditIcon /> }
                                   onClick={ () => dbPage.onRecordEdit(item) }
                                 >
                                     Edit
@@ -128,7 +128,7 @@ const Records = () => (
 
                                 </FlexContainer>
 
-                                <DatabaseItemsContainer>
+                                <DatabaseItemsContainer disabled={ isDbPaused }>
                                     <TableRecords>
                                         <thead>
                                             <tr>

@@ -2,8 +2,8 @@ import React from 'react';
 import { Subscribe } from 'unstated';
 import {
     LinkHash, Popup, PopupContent, PopupFooter, PopupTitle,
-    LineTitle, LineControl, WideInput, PopupButton, ContentLineFund,
-    LineText, ContentLineTextInput, ContentLine,
+    LineTitle, LineControl, WideInput, Button, ContentLineFund,
+    Text, ContentLineTextInput, ContentLine,
 } from '@cybercongress/ui';
 import ItemEditPopup from './ItemEditPopup';
 import page from './page';
@@ -35,7 +35,7 @@ const DatabasePopups = () => (
                             <ContentLineTextInput>
                                 <LineTitle>Available to claim:</LineTitle>
                                 <LineControl>
-                                    <LineText>{recordForAction.currentEntryBalanceETH}</LineText>
+                                    <Text>{recordForAction.currentEntryBalanceETH}</Text>
                                 </LineControl>
                             </ContentLineTextInput>
                             <ContentLineTextInput>
@@ -49,16 +49,16 @@ const DatabasePopups = () => (
                             </ContentLineTextInput>
                         </PopupContent>
                         <PopupFooter>
-                            <PopupButton onClick={ dbPage.closePopups } type='cancel'>cancel</PopupButton>
-                            <PopupButton
+                            <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>cancel</Button>
+                            <Button
                               onClick={ () => dbPage.claimRecord(
                                   recordForAction.id,
                                   dbPage.claimRecordInput.value,
                               ) }
-                              type='confirm'
+                              color='green'
                             >
                                 Confirm
-                            </PopupButton>
+                            </Button>
                         </PopupFooter>
                     </Popup>
 
@@ -82,8 +82,8 @@ const DatabasePopups = () => (
                             </ContentLineTextInput>
                         </PopupContent>
                         <PopupFooter>
-                            <PopupButton onClick={ dbPage.closePopups } type='cancel'>cancel</PopupButton>
-                            <PopupButton
+                            <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>cancel</Button>
+                            <Button
                               onClick={ () => {
                                   const newRecordOwner = dbPage.newRecordOwnerInput.value;
 
@@ -91,10 +91,10 @@ const DatabasePopups = () => (
                                       userAccount, newRecordOwner, recordForAction.id,
                                   );
                               } }
-                              type='confirm'
+                              color='green'
                             >
                                 Confirm
-                            </PopupButton>
+                            </Button>
                         </PopupFooter>
                     </Popup>
 
@@ -112,15 +112,15 @@ const DatabasePopups = () => (
                             </ContentLineFund>
                         </PopupContent>
                         <PopupFooter>
-                            <PopupButton onClick={ dbPage.closePopups } type='cancel'>Cancel</PopupButton>
-                            <PopupButton
+                            <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>Cancel</Button>
+                            <Button
                               onClick={ () => dbPage.fundRecord(
                                   recordForAction.id, dbPage.fundRecordInput.value,
                               ) }
-                              type='confirm'
+                              color='green'
                             >
                                 Confirm
-                            </PopupButton>
+                            </Button>
                         </PopupFooter>
                     </Popup>
 
@@ -128,28 +128,27 @@ const DatabasePopups = () => (
                         <PopupTitle>Delete record</PopupTitle>
                         <PopupContent>
                             <ContentLine>
-                                <LineText>
+                                <Text>
                                     Delete record #
                                     {recordForAction.id}
-                                </LineText>
+                                </Text>
                             </ContentLine>
                         </PopupContent>
                         <PopupFooter>
-                            <PopupButton onClick={ dbPage.closePopups } type='cancel'>cancel</PopupButton>
-                            <PopupButton
+                            <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>cancel</Button>
+                            <Button
                               onClick={ () => dbPage.deleteRecord(
                                 recordForAction.id,
                             ) }
-                              type='confirm'
+                              color='green'
                             >
                                 Confirm
-                            </PopupButton>
+                            </Button>
                         </PopupFooter>
                     </Popup>
                     {editRecordOpen && (
-                            <ItemEditPopup open={ editRecordOpen } />
-                        )
-                    }
+                        <ItemEditPopup open={ editRecordOpen } />
+                    )}
                 </span>
             );
         }}

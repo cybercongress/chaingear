@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 
 import {
     Content, ContainerRegister, SideBar,
-    FieldsTable,
-    CreateButton,
-    PageTitle,
-    RemoveButton,
-    ErrorMessage,
-    StatusBar,
-    ActionLink,
-    WideSelect,
-    Code,
-    CircleLable, ProgressBar, Checkbox, TableRegistry, WideInput, AddButton,
-    PanelRecord, FlexContainer, FlexContainerLeft, FlexContainerRight,
+    FieldsTable, PageTitle, RemoveButton,
+    Message, StatusBar, WideSelect,
+    Code, CircleLable, ProgressBar,
+    Checkbox, TableRegistry, WideInput,
+    AddButton, Panel, FlexContainer,
+    FlexContainerLeft, FlexContainerRight,
+    Button,
 } from '@cybercongress/ui';
 
 import {
@@ -48,22 +44,22 @@ class SchemaDefinition extends Component {
     }
 
     componentDidMount() {
-        const dbsymbol = this.props.params.dbsymbol;
-        let _chaingearContract;
-        let _databaseId;
+        const { dbsymbol } = this.props.params;
+        let chaingearContract;
+        let databaseId;
 
         getChaingearContract()
             .then((contract) => {
-                _chaingearContract = contract;
+                chaingearContract = contract;
 
                 return callContractMethod(contract, 'getDatabaseIDBySymbol', dbsymbol);
             })
-            .then((databaseId) => {
-                _databaseId = databaseId;
+            .then((dbId) => {
+                databaseId = dbId;
 
-                return callContractMethod(_chaingearContract, 'getDatabase', databaseId);
+                return callContractMethod(chaingearContract, 'getDatabase', databaseId);
             })
-            .then(database => mapDatabase(database, _databaseId))
+            .then(database => mapDatabase(database, databaseId))
             .then(database => this.setState({
                 databaseAddress: database.address,
                 databaseName: database.name,
@@ -72,6 +68,7 @@ class SchemaDefinition extends Component {
     }
 
     add = () => {
+        const { fields } = this.state;
         const name = this.fieldName.value;
         const type = this.fieldType.value;
         const unique = type === 'bool' ? false : this.fieldUnique.checked;
@@ -86,13 +83,15 @@ class SchemaDefinition extends Component {
         this.fieldUnique.checked = false;
 
         this.setState({
-            fields: this.state.fields.concat(newItem),
+            fields: fields.concat(newItem),
         });
     };
 
     remove = (name) => {
+        const { fields } = this.state;
+
         this.setState({
-            fields: this.state.fields.filter(x => x.name !== name),
+            fields: fields.filter(x => x.name !== name),
         });
     };
 
@@ -101,14 +100,14 @@ class SchemaDefinition extends Component {
 
         this.setState({ message: 'processing...', inProgress: true, type: 'processing' });
 
-        let _databaseContract;
+        let databaseContract;
 
         getDatabaseContract(databaseAddress)
-            .then((databaseContract) => {
-                _databaseContract = databaseContract;
+            .then((dbContract) => {
+                databaseContract = dbContract;
                 return deploySchema(databaseName, fields, databaseContract);
             })
-            .then(() => eventPromise(_databaseContract.DatabaseInitialized()))
+            .then(() => eventPromise(databaseContract.DatabaseInitialized()))
             .then(() => {
                 this.setState({
                     inProgress: false,
@@ -159,7 +158,7 @@ class SchemaDefinition extends Component {
 
                 <ContainerRegister>
                     <SideBar title='Input'>
-                        <PanelRecord title='Record Structure' noPadding>
+                        <Panel title='Record Structure' style={ { minHeight: '403px' } }>
                             <FieldsTable>
                                 <TableRegistry>
                                     <tbody>
@@ -175,11 +174,15 @@ class SchemaDefinition extends Component {
                                                         unique
                                                     </Checkbox>
                                                 </td>
-                                                <td>
-                                                    <RemoveButton
-                                                      onClick={ () => this.remove(field.name) }
-                                                    />
-                                                </td>
+                                                {!isSchemaCreated && (
+                                                    <td>
+                                                        <RemoveButton
+                                                          onClick={
+                                                              () => this.remove(field.name)
+                                                          }
+                                                        />
+                                                    </td>
+                                                )}
                                             </tr>
                                         ))}
                                     </tbody>
@@ -192,13 +195,17 @@ class SchemaDefinition extends Component {
                                             <tr>
                                                 <td>
                                                     <WideInput
-                                                      inputRef={ node => this.fieldName = node }
+                                                      inputRef={ (node) => {
+                                                          this.fieldName = node;
+                                                      } }
                                                       placeholder='Name'
                                                     />
                                                 </td>
                                                 <td>
                                                     <WideSelect
-                                                      inputRef={ node => this.fieldType = node }
+                                                      inputRef={ (node) => {
+                                                          this.fieldType = node;
+                                                      } }
                                                       onChange={ this.onFieldTypeChange }
                                                     >
                                                         <option value='string'>string</option>
@@ -228,7 +235,7 @@ class SchemaDefinition extends Component {
                                     )
                                 }
                             </FieldsTable>
-                        </PanelRecord>
+                        </Panel>
                     </SideBar>
 
                     <Content title='Database code'>
@@ -240,18 +247,24 @@ class SchemaDefinition extends Component {
 
                 <FlexContainer>
                     <FlexContainerLeft>
-                        {(type === 'error' && message) && <ErrorMessage>{message}</ErrorMessage>}
+                        {(type === 'error' && message) && <Message type='error'>{message}</Message>}
                     </FlexContainerLeft>
                     <FlexContainerRight>
                         {isSchemaCreated ? (
-                            <ActionLink to={ `/databases/${databaseSymbol}` }>Go to database</ActionLink>
+                            <Button
+                              color='blue'
+                              to={ `/databases/${databaseSymbol}` }
+                            >
+                                Go to database
+                            </Button>
                         ) : (
-                            <CreateButton
+                            <Button
+                              color='blue'
                               disabled={ !canCreateSchema }
                               onClick={ this.createSchema }
                             >
-                                create
-                            </CreateButton>
+                                Define schema
+                            </Button>
                         )}
                     </FlexContainerRight>
                 </FlexContainer>

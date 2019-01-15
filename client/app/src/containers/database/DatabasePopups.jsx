@@ -2,8 +2,8 @@ import React from 'react';
 import { Subscribe } from 'unstated';
 import {
     LinkHash, Popup, PopupContent, PopupFooter, PopupTitle,
-    LineTitle, LineControl, WideInput, PopupButton, ContentLineFund,
-    LineText, ContentLine, ContentLineTextInput,
+    LineTitle, LineControl, WideInput, Button, ContentLineFund,
+    Text, ContentLine, ContentLineTextInput,
 } from '@cybercongress/ui';
 import page from './page';
 
@@ -24,7 +24,7 @@ const DatabasePopups = () => (
                             <ContentLineTextInput>
                                 <LineTitle>Available to claim:</LineTitle>
                                 <LineControl>
-                                    <LineText>{funded}</LineText>
+                                    <Text>{funded}</Text>
                                 </LineControl>
                             </ContentLineTextInput>
                             <ContentLineTextInput>
@@ -38,13 +38,13 @@ const DatabasePopups = () => (
                             </ContentLineTextInput>
                         </PopupContent>
                         <PopupFooter>
-                            <PopupButton onClick={ dbPage.closePopups } type='cancel'>cancel</PopupButton>
-                            <PopupButton
+                            <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>cancel</Button>
+                            <Button
                               onClick={ () => dbPage.claimDatabaseFunds(dbPage.claimDbInput.value) }
-                              type='confirm'
+                              color='green'
                             >
                                 Confirm
-                            </PopupButton>
+                            </Button>
                         </PopupFooter>
                     </Popup>
 
@@ -68,17 +68,17 @@ const DatabasePopups = () => (
                             </ContentLineTextInput>
                         </PopupContent>
                         <PopupFooter>
-                            <PopupButton onClick={ dbPage.closePopups } type='cancel'>cancel</PopupButton>
-                            <PopupButton
+                            <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>cancel</Button>
+                            <Button
+                              color='green'
                               onClick={ () => {
                                   const newDbOwner = dbPage.newDbOwnerInput.value;
 
                                   dbPage.transferDatabaseOwnership(userAccount, newDbOwner);
                               } }
-                              type='confirm'
                             >
                                 Confirm
-                            </PopupButton>
+                            </Button>
                         </PopupFooter>
                     </Popup>
 
@@ -96,13 +96,13 @@ const DatabasePopups = () => (
                             </ContentLineFund>
                         </PopupContent>
                         <PopupFooter>
-                            <PopupButton onClick={ dbPage.closePopups } type='cancel'>Cancel</PopupButton>
-                            <PopupButton
+                            <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>Cancel</Button>
+                            <Button
                               onClick={ () => dbPage.fundDatabase(dbPage.fundDbInput.value) }
-                              type='confirm'
+                              color='green'
                             >
                                 Confirm
-                            </PopupButton>
+                            </Button>
                         </PopupFooter>
                     </Popup>
 
@@ -110,15 +110,15 @@ const DatabasePopups = () => (
                         <PopupTitle>Delete registry</PopupTitle>
                         <PopupContent>
                             <ContentLine>
-                                <LineText>
+                                <Text>
                                     Your registry will be unlinked from Chaingear,
                                     but you still will be able to operate with it
-                                </LineText>
+                                </Text>
                             </ContentLine>
                         </PopupContent>
                         <PopupFooter>
-                            <PopupButton onClick={ dbPage.closePopups } type='cancel'>cancel</PopupButton>
-                            <PopupButton onClick={ dbPage.deleteDb } type='confirm'>Confirm</PopupButton>
+                            <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>cancel</Button>
+                            <Button color='green' onClick={ dbPage.deleteDb }>Confirm</Button>
                         </PopupFooter>
                     </Popup>
 
@@ -126,15 +126,15 @@ const DatabasePopups = () => (
                         <PopupTitle>Pause database</PopupTitle>
                         <PopupContent>
                             <ContentLine>
-                                <LineText>
+                                <Text>
                                     When registry is on pause there will be no ability
                                     to operate with records
-                                </LineText>
+                                </Text>
                             </ContentLine>
                         </PopupContent>
                         <PopupFooter>
-                            <PopupButton onClick={ dbPage.closePopups } type='cancel'>Cancel</PopupButton>
-                            <PopupButton onClick={ dbPage.pauseDb } type='confirm'>Confirm</PopupButton>
+                            <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>Cancel</Button>
+                            <Button color='green' onClick={ dbPage.pauseDb }>Confirm</Button>
                         </PopupFooter>
                     </Popup>
 
@@ -142,14 +142,14 @@ const DatabasePopups = () => (
                         <PopupTitle>Resume database</PopupTitle>
                         <PopupContent>
                             <ContentLine>
-                                <LineText>
+                                <Text>
                                     Resume registry to operate with records
-                                </LineText>
+                                </Text>
                             </ContentLine>
                         </PopupContent>
                         <PopupFooter>
-                            <PopupButton onClick={ dbPage.closePopups } type='cancel'>Cancel</PopupButton>
-                            <PopupButton onClick={ dbPage.unpauseDb } type='confirm'>Confirm</PopupButton>
+                            <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>Cancel</Button>
+                            <Button color='green' onClick={ dbPage.unpauseDb }>Confirm</Button>
                         </PopupFooter>
                     </Popup>
                 </span>

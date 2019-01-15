@@ -1,7 +1,7 @@
 import React from 'react';
 import { Subscribe } from 'unstated';
 import {
-    SectionContent,
+    SectionContent, InfoButton,
     FormField, WideSelect,
 } from '@cybercongress/ui';
 import page from './page';
