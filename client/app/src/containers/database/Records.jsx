@@ -19,45 +19,49 @@ const Records = () => (
         {(dbPage) => {
             const {
                 fields, items, isOwner, isSchemaExist,
-                isDbPaused, permissionGroup,
+                isDbPaused, permissionGroup, userAccount,
             } = dbPage.state;
 
             const actionsThs = items.map(item => (
                 <th key={ item.id }>
                     <DbMenuPoints>
                         <MenuPopup>
-                            <MenuPopupItem
-                              icon={ <MenuPopupTransferIcon /> }
-                              onClick={ () => dbPage.onRecordTransferOwnership(item) }
-                            >
-                                Transfer Ownership
-                            </MenuPopupItem>
-                            <MenuSeparator />
+                            { userAccount === item.owner && [
+                                <MenuPopupItem
+                                  icon={ <MenuPopupTransferIcon /> }
+                                  onClick={ () => dbPage.onRecordTransferOwnership(item) }
+                                >
+                                    Transfer Ownership
+                                </MenuPopupItem>,
+                                <MenuSeparator />,
+                            ]}
                             <MenuPopupItem
                               icon={ <MenuPopupEditIcon /> }
                               onClick={ () => dbPage.onFundRecord(item) }
                             >
                                 Fund
                             </MenuPopupItem>
-                            <MenuPopupItem
-                              icon={ <MenuPopupEditIcon /> }
-                              onClick={ () => dbPage.onClaimRecordFunds(item) }
-                            >
-                                Claim Funds
-                            </MenuPopupItem>
-                            <MenuSeparator />
-                            <MenuPopupItem
-                              icon={ <MenuPopupDeletePencilIcon /> }
-                              onClick={ () => dbPage.onRecordEdit(item) }
-                            >
-                                Edit
-                            </MenuPopupItem>
-                            <MenuPopupItem
-                              icon={ <MenuPopupDeleteIcon /> }
-                              onClick={ () => dbPage.onDeleteRecord(item) }
-                            >
-                                Delete
-                            </MenuPopupItem>
+                            { userAccount === item.owner && [
+                                <MenuPopupItem
+                                  icon={ <MenuPopupEditIcon /> }
+                                  onClick={ () => dbPage.onClaimRecordFunds(item) }
+                                >
+                                    Claim Funds
+                                </MenuPopupItem>,
+                                <MenuSeparator />,
+                                <MenuPopupItem
+                                  icon={ <MenuPopupDeletePencilIcon /> }
+                                  onClick={ () => dbPage.onRecordEdit(item) }
+                                >
+                                    Edit
+                                </MenuPopupItem>,
+                                <MenuPopupItem
+                                  icon={ <MenuPopupDeleteIcon /> }
+                                  onClick={ () => dbPage.onDeleteRecord(item) }
+                                >
+                                    Delete
+                                </MenuPopupItem>,
+                            ]}
                         </MenuPopup>
                     </DbMenuPoints>
                 </th>
