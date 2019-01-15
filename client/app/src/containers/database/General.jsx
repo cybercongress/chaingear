@@ -5,8 +5,7 @@ import {
     FundContainer, BoxTitle, CentredPanel,
 } from '@cybercongress/ui';
 import page from './page';
-
-const moment = require('moment');
+import { formatDate } from '../../utils/utils';
 
 const General = () => (
     <Subscribe to={ [page] }>
@@ -24,7 +23,7 @@ const General = () => (
                         <CentredPanel>
                             <BoxTitle>Created:</BoxTitle>
                             <div>
-                                {createdTimestamp ? moment(new Date(createdTimestamp.toNumber() * 1000)).format('DD/MM/YYYY hh:mm:ss') : ''}
+                                {createdTimestamp ? formatDate(createdTimestamp.toNumber()) : ''}
                             </div>
                         </CentredPanel>
                     </SectionContent>

@@ -188,21 +188,6 @@ export const eventPromise = event => new Promise((resolve, reject) => {
     });
 });
 
-/*
-*  Date
-*/
-
-const moment = require('moment');
-
-const dateFormat = 'DD/MM/YYYY hh:mm';
-
-export const formatDate = (solidityDate) => {
-    const jsDate = new Date(solidityDate * 1000);
-
-    return moment(jsDate).format(dateFormat);
-};
-
-
 let chaingearContract;
 
 export const getChaingearContract = () => new Promise((resolve) => {

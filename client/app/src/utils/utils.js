@@ -26,4 +26,18 @@ const calculateBensShares = (beneficiaries, fixed = 0) => {
     }));
 };
 
-export { debounce, calculateBensShares };
+/*
+*  Date
+*/
+
+const moment = require('moment');
+
+const dateFormat = 'DD/MM/YYYY H:mm';
+
+const formatDate = (solidityDate) => {
+    const jsDate = new Date(solidityDate * 1000);
+
+    return moment(jsDate).format(dateFormat);
+};
+
+export { debounce, calculateBensShares, formatDate };

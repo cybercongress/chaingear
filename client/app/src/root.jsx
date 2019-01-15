@@ -6,7 +6,7 @@ import HomePage from './containers/home';
 import NewDatabase from './containers/new/DatabaseInitialization';
 import DatabasePage from './containers/database';
 import App from './containers/App/App';
-import SchemaDefinition from "./containers/new/SchemaDefinition";
+import SchemaDefinition from './containers/new/SchemaDefinition';
 
 export const history = createHashHistory({ });
 

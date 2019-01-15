@@ -1,4 +1,5 @@
 import React from 'react';
+import { hashHistory } from 'react-router';
 import { Subscribe } from 'unstated';
 import {
     ActionLink, Section,
@@ -22,6 +23,7 @@ const Header = () => (
             } = dbPage.state;
 
             const onDefineSchemaClick = () => {
+                hashHistory.push(`/schema/${databaseSymbol}`);
             };
 
             return (
@@ -29,16 +31,6 @@ const Header = () => (
                     <Section>
                         <div style={ { marginLeft: '15px' } }>
                             <ActionLink to='/'>BACK TO CHAINGEAR</ActionLink>
-                            {!isSchemaExist && isOwner
-                                && (
-                                    <ActionLink
-                                      style={ { marginLeft: 15 } }
-                                      to={ `/schema/${databaseSymbol}` }
-                                    >
-                                        Define schema
-                                    </ActionLink>
-                                )
-                            }
                         </div>
                     </Section>
 

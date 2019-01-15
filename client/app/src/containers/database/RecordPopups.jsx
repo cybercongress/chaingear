@@ -12,7 +12,7 @@ const DatabasePopups = () => (
     <Subscribe to={ [page] }>
         {(dbPage) => {
             const {
-                fields, items, userAccount, isSchemaExist,
+                userAccount, isSchemaExist,
                 recordForAction,
                 claimRecordFundOpen,
                 transferRecordOwnershipOpen,
@@ -146,15 +146,10 @@ const DatabasePopups = () => (
                             </PopupButton>
                         </PopupFooter>
                     </Popup>
-
-                    <ItemEditPopup
-                      open={ editRecordOpen }
-                      item={ recordForAction }
-                      fields={ fields }
-                      records={ items }
-                      onCancelClick={ dbPage.closePopups }
-                      onConfirmClick={ dbPage.updateRecord }
-                    />
+                    {editRecordOpen && (
+                            <ItemEditPopup open={ editRecordOpen } />
+                        )
+                    }
                 </span>
             );
         }}

@@ -12,8 +12,9 @@ import {
 } from '@cybercongress/ui';
 
 import {
-    getDatabases, getDefaultAccount, formatDate, init,
+    getDatabases, getDefaultAccount, init,
 } from '../../utils/cyber';
+import { formatDate } from '../../utils/utils';
 
 class Home extends Component {
     constructor(props) {
