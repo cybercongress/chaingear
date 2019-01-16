@@ -1,4 +1,5 @@
 import { Container } from 'unstated';
+import { hashHistory } from 'react-router';
 import * as cyber from '../../utils/cyber';
 import DatabaseV1 from '../../../../../build/contracts/DatabaseV1.json';
 
@@ -272,9 +273,7 @@ class ViewRegistry extends Container {
     */
 
     claimDbFee = () => {
-        this.contract.claimDbFee((e, d) => {
-            this.setState({ balance: 0 });
-        });
+        // not implemented
     };
 
     onUpdatePermissionGroup = () => {
@@ -304,12 +303,8 @@ class ViewRegistry extends Container {
             .catch(() => this.setLoading(false));
     };
 
-    changeTag = (tag) => {
-        this.state.databaseContract.addDatabaseTag(tag, () => {
-            this.setState({
-                tag,
-            });
-        });
+    changeDbTag = (tag) => {
+        // not implemented
     };
 
     changeEntryCreationFee = (newFee) => {
@@ -330,19 +325,19 @@ class ViewRegistry extends Container {
 
     fundDatabase = (amount) => {
         const { databaseId, web3, databaseSymbol } = this.state;
-        let _chaingerContract;
+        let chaingerContract;
 
-        this.setLoading(true);
         this.closePopups();
 
+        this.setLoading(true);
         cyber.getChaingearContract()
             .then((contract) => {
-                _chaingerContract = contract;
+                chaingerContract = contract;
             })
-            .then(() => cyber.callContractMethod(_chaingerContract, 'fundDatabase', databaseId, {
+            .then(() => cyber.callContractMethod(chaingerContract, 'fundDatabase', databaseId, {
                 value: web3.toWei(amount, 'ether'),
             }))
-            .then(() => cyber.eventPromise(_chaingerContract.DatabaseFunded()))
+            .then(() => cyber.eventPromise(chaingerContract.DatabaseFunded()))
             .then(() => {
                 this.init(databaseSymbol);
             });
@@ -350,25 +345,50 @@ class ViewRegistry extends Container {
 
     claimDatabaseFunds = (amount) => {
         const { databaseId, web3, databaseSymbol } = this.state;
+        let chaingerContract;
 
         this.closePopups();
 
+        this.setLoading(true);
         cyber.getChaingearContract()
-            .then(chaingerContract => cyber
-                .callContractMethod(chaingerContract,
-                    'claimDatabaseFunds',
-                    databaseId, web3.toWei(amount, 'ether')))
-            .then(() => this.init(databaseSymbol));
+            .then((contract) => {
+                chaingerContract = contract;
+            })
+            .then(() => cyber.callContractMethod(
+                chaingerContract, 'claimDatabaseFunds', databaseId, web3.toWei(amount, 'ether'),
+            ))
+            .then(data => console.log(`Claim database funds. Data: ${data}`))
+            .then(() => cyber.eventPromise(chaingerContract.DatabaseFundsClaimed()))
+            .then(() => this.init(databaseSymbol))
+            .catch((error) => {
+                console.log(`Cant claim database funds. Details: ${error}`);
+                this.setLoading(false);
+            });
     };
 
-    transferDatabaseOwnership = (userAccount, newOwner) => {
+    transferDatabaseOwnership = (currentOwner, newOwner) => {
         const { databaseId, databaseSymbol } = this.state;
+        let chaingerContract;
 
         this.closePopups();
 
+        this.setLoading(true);
         cyber.getChaingearContract()
-            .then(contract => cyber.callContractMethod(contract, 'transferFrom', userAccount, newOwner, databaseId))
-            .then(() => this.init(databaseSymbol));
+            .then((contract) => {
+                chaingerContract = contract;
+            })
+            .then(() => cyber.callContractMethod(
+                chaingerContract, 'transferFrom', currentOwner, newOwner, databaseId,
+            ))
+            .then(data => console.log(`Transfer db ownership. Data: ${data}`))
+            .then(() => cyber.eventPromise(
+                chaingerContract.Transfer(),
+            ))
+            .then(() => this.init(databaseSymbol))
+            .catch((error) => {
+                console.log(`Cant transfer db ownership. Error: ${error}`);
+                this.setLoading(false);
+            });
     };
 
     pauseDb = () => {
@@ -407,12 +427,23 @@ class ViewRegistry extends Container {
 
     deleteDb = () => {
         const { databaseId } = this.state;
+        let chaingerContract;
 
         this.closePopups();
 
+        this.setLoading(true);
         cyber.getChaingearContract()
-            .then(contract => cyber.callContractMethod(contract, 'deleteDatabase', databaseId))
-            .then(data => console.log(`DeleteDB: ${databaseId}. Tx: ${data}`));
+            .then((contract) => {
+                chaingerContract = contract;
+            })
+            .then(() => cyber.callContractMethod(chaingerContract, 'deleteDatabase', databaseId))
+            .then(data => console.log(`DeleteDB: ${databaseId}. Tx: ${data}`))
+            // .then(() => cyber.eventPromise(chaingerContract.databaseDeleted()))
+            .then(() => hashHistory.push('/'))
+            .catch((error) => {
+                console.log(`Cant delete database. Details: ${error}`);
+                this.closePopups();
+            });
     };
 
     onTransferOwnership = () => {
