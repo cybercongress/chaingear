@@ -21,8 +21,8 @@ import {
 import DatabaseSource from '../../resources/DatabaseV1.sol';
 import { calculateBensShares, debounce } from '../../utils/utils';
 
-const DB_NAME_REGEXP = /\b[a-z][a-z0-9_]*$/;
-const DB_SYMBOL_REGEXP = /\b[A-Z][A-Z0-9_]*$/;
+const DB_NAME_REGEXP = /\b[a-z0-9][a-z0-9-]*$/;
+const DB_SYMBOL_REGEXP = /\b[A-Z0-9][A-Z0-9]*$/;
 
 class NewDatabase extends Component {
     constructor(props) {
