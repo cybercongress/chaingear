@@ -1020,7 +1020,6 @@ interface IDatabase {
     function getIndexByID(uint256) external view returns (uint256);
     function getEntryCreationFee() external view returns (uint256);
     function getEntriesStorage() external view returns (address);
-    function getInterfaceEntriesContract() external view returns (string);
     function getSchemaDefinition() external view returns (string);
     function getDatabaseBalance() external view returns (uint256);
     function getDatabaseDescription() external view returns (string);
@@ -1031,6 +1030,7 @@ interface IDatabase {
     function transferAdminRights(address) external;
     function transferOwnership(address) external;
     function getAdmin() external view returns (address);
+    function getPaused() external view returns (bool);
 }
 
 // File: contracts/common/IDatabaseBuilder.sol
@@ -1138,14 +1138,14 @@ interface IChaingear {
 * @author cyber•Congress, Valery litvin (@litvintech)
 * @notice not audited, not recommend to use in mainnet
 */
-contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC721Token {
+contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
-    
+
     /*
     *  Storage
     */
-    
+
     struct DatabaseMeta {
         IDatabase databaseContract;
         address   creatorOfDatabase;
@@ -1155,31 +1155,33 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         uint256   currentWei;
         uint256   accumulatedWei;
     }
-    
+
     struct DatabaseBuilder {
         IDatabaseBuilder builderAddress;
         string           linkToABI;
         string           description;
     }
-    
+
     DatabaseMeta[] private databases;
     mapping(string => bool) private databasesNamesIndex;
     mapping(string => bool) private databasesSymbolsIndex;
 
     uint256 private headTokenID = 0;
     mapping(address => uint256) private databasesIDsByAddressesIndex;
-    
+    mapping(uint256 => string) private databasesSymbolsByIDIndex;
+    mapping(string => uint256) private databasesIDsBySymbolIndex;
+
     uint256 private amountOfBuilders = 0;
     mapping(uint256 => string) private buildersVersionIndex;
     mapping(string => DatabaseBuilder) private buildersVersion;
-    
+
     Safe private chaingearSafe;
     uint256 private databaseCreationFeeWei = 1 finney;
 
     string constant private CHAINGEAR_DESCRIPTION = "The novel Ethereum database framework";
-    bytes4 constant internal INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
-    bytes4 constant internal INTERFACE_DATABASE_ID = 0xfdb63525;
-    bytes4 constant internal INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
+    bytes4 constant private INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
+    bytes4 constant private INTERFACE_DATABASE_ID = 0xfdb63525;
+    bytes4 constant private INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
     /*
     *  Events
     */
@@ -1196,7 +1198,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         address sender,
         uint256 amount
     );
-    
+
     event DatabaseFundsClaimed(
         uint256 databaseID,
         address claimer,
@@ -1218,28 +1220,28 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         chaingearSafe = new Safe();
         _registerInterface(INTERFACE_CHAINGEAR_ID);
     }
-    
+
     /*
     *  Fallback
     */
-    
+
     function() external payable {}
 
     /*
     *  Modifiers
     */
-    
+
     modifier onlyOwnerOf(uint256 _databaseID){
         require(ownerOf(_databaseID) == msg.sender);
         _;
     }
-    
+
     /*
     *  External functions
     */
-    
+
     function addDatabaseBuilderVersion(
-        string           _version, 
+        string           _version,
         IDatabaseBuilder _builderAddress,
         string           _linkToABI,
         string           _description
@@ -1249,10 +1251,10 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         whenNotPaused
     {
         require(buildersVersion[_version].builderAddress == address(0));
-        
+
         SupportsInterfaceWithLookup support = SupportsInterfaceWithLookup(_builderAddress);
         require(support.supportsInterface(INTERFACE_DATABASE_BUILDER_ID));
-        
+
         buildersVersion[_version] = (DatabaseBuilder(
         {
             builderAddress: _builderAddress,
@@ -1262,7 +1264,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         buildersVersionIndex[amountOfBuilders] = _version;
         amountOfBuilders = amountOfBuilders.add(1);
     }
-    
+
     function updateDatabaseBuilderDescription(
         string _version,
         string _description
@@ -1300,31 +1302,34 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
             _symbol
         );
     }
-    
+
     function deleteDatabase(uint256 _databaseID)
         external
         onlyOwnerOf(_databaseID)
         whenNotPaused
-    {        
+    {
         uint256 databaseIndex = allTokensIndex[_databaseID];
         IDatabase database = databases[databaseIndex].databaseContract;
         require(database.getSafeBalance() == uint256(0));
+        require(database.getPaused() == true);
         
         string memory databaseName = ERC721(database).name();
         string memory databaseSymbol = ERC721(database).symbol();
         databasesNamesIndex[databaseName] = false;
         databasesSymbolsIndex[databaseSymbol] = false;
 
+        databasesSymbolsByIDIndex[_databaseID] = "";
+
         uint256 lastDatabaseIndex = databases.length.sub(1);
         DatabaseMeta memory lastDatabase = databases[lastDatabaseIndex];
         databases[databaseIndex] = lastDatabase;
         delete databases[lastDatabaseIndex];
         databases.length--;
-        
+
         super._burn(msg.sender, _databaseID);
         database.transferOwnership(msg.sender);
     }
-    
+
     function fundDatabase(uint256 _databaseID)
         external
         whenNotPaused
@@ -1332,10 +1337,10 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {
         require(exists(_databaseID) == true);
         uint256 databaseIndex = allTokensIndex[_databaseID];
-        
+
         uint256 currentWei = databases[databaseIndex].currentWei.add(msg.value);
         databases[databaseIndex].currentWei = currentWei;
-        
+
         uint256 accumulatedWei = databases[databaseIndex].accumulatedWei.add(msg.value);
         databases[databaseIndex].accumulatedWei = accumulatedWei;
 
@@ -1349,16 +1354,16 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         whenNotPaused
     {
         uint256 databaseIndex = allTokensIndex[_databaseID];
-        
+
         uint256 currentWei = databases[databaseIndex].currentWei;
         require(_amount <= currentWei);
-        
+
         databases[databaseIndex].currentWei = currentWei.sub(_amount);
 
         emit DatabaseFundsClaimed(_databaseID, msg.sender, _amount);
         chaingearSafe.claim(msg.sender, _amount);
     }
-    
+
     function updateCreationFee(uint256 _newFee)
         external
         onlyOwner
@@ -1366,11 +1371,11 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {
         databaseCreationFeeWei = _newFee;
     }
-    
+
     /*
     *  Views
     */
-    
+
     function getAmountOfBuilders()
         external
         view
@@ -1378,7 +1383,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {
         return amountOfBuilders;
     }
-    
+
     function getBuilderById(uint256 _id)
         external
         view
@@ -1386,8 +1391,8 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {
         return buildersVersionIndex[_id];
     }
-    
-    function getDatabaseBuilder(string _version) 
+
+    function getDatabaseBuilder(string _version)
         external
         view
         returns (
@@ -1402,7 +1407,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
             buildersVersion[_version].description
         );
     }
-    
+
     function getDatabasesIDs()
         external
         view
@@ -1410,17 +1415,34 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {
         return allTokens;
     }
-    
+
     function getDatabaseIDByAddress(address _databaseAddress)
         external
         view
         returns(uint256)
-    { 
-        uint256 id = databasesIDsByAddressesIndex[_databaseAddress];
-        require(exists(id) == true);
-        return id;
+    {
+        uint256 databaseID = databasesIDsByAddressesIndex[_databaseAddress];
+        require(exists(databaseID) == true);
+        return databaseID;
     }
-    
+
+    function getDatabaseSymbolByID(uint256 _databaseID)
+        external
+        view
+        returns(string)
+    {
+        require(exists(_databaseID) == true);
+        return databasesSymbolsByIDIndex[_databaseID];
+    }
+
+    function getDatabaseIDBySymbol(string _symbol)
+        external
+        view
+        returns(uint256)
+    {
+        return databasesIDsBySymbolIndex[_symbol];
+    }
+
     function getDatabase(uint256 _databaseID)
         external
         view
@@ -1436,7 +1458,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {
         uint256 databaseIndex = allTokensIndex[_databaseID];
         IDatabase databaseAddress = databases[databaseIndex].databaseContract;
-        
+
         return (
             ERC721(databaseAddress).name(),
             ERC721(databaseAddress).symbol(),
@@ -1454,13 +1476,13 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         returns (uint256, uint256)
     {
         uint256 databaseIndex = allTokensIndex[_databaseID];
-        
+
         return (
             databases[databaseIndex].currentWei,
             databases[databaseIndex].accumulatedWei
         );
     }
-    
+
     function getChaingearDescription()
         external
         pure
@@ -1476,7 +1498,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {
         return databaseCreationFeeWei;
     }
-    
+
     function getSafeBalance()
         external
         view
@@ -1484,7 +1506,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {
         return address(chaingearSafe).balance;
     }
-    
+
     function getSafeAddress()
         external
         view
@@ -1492,7 +1514,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {
         return chaingearSafe;
     }
-    
+
     function getNameExist(string _name)
         external
         view
@@ -1500,7 +1522,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {
         return databasesNamesIndex[_name];
     }
-    
+
     function getSymbolExist(string _symbol)
         external
         view
@@ -1508,26 +1530,34 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     {
         return databasesSymbolsIndex[_symbol];
     }
-    
+
+    function getPayeesCount()
+        external
+        view
+        returns (uint256)
+    {
+        return payees.length;
+    }
+
     /*
     *  Public functions
     */
-    
+
     function transferFrom(
         address _from,
         address _to,
         uint256 _tokenId
-    ) 
-        public 
+    )
+        public
         whenNotPaused
     {
         super.transferFrom(_from, _to, _tokenId);
-        
+
         uint256 databaseIndex = allTokensIndex[_tokenId];
         IDatabase databaseAddress = databases[databaseIndex].databaseContract;
         databaseAddress.transferAdminRights(_to);
-    }  
-    
+    }
+
     function safeTransferFrom(
         address _from,
         address _to,
@@ -1539,7 +1569,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         super.safeTransferFrom(
             _from,
             _to,
-            _tokenId, 
+            _tokenId,
             ""
         );
     }
@@ -1554,7 +1584,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         whenNotPaused
     {
         transferFrom(_from, _to, _tokenId);
-        
+
         require(
             checkAndCallSafeTransfer(
                 _from,
@@ -1577,7 +1607,7 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
     )
         private
         returns (address, uint256)
-    {   
+    {
         IDatabaseBuilder builder = buildersVersion[_version].builderAddress;
         IDatabase databaseContract = builder.deployDatabase(
             _beneficiaries,
@@ -1585,15 +1615,15 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
             _name,
             _symbol
         );
-        
+
         address databaseAddress = address(databaseContract);
-        
+
         SupportsInterfaceWithLookup support = SupportsInterfaceWithLookup(databaseAddress);
         require(support.supportsInterface(INTERFACE_DATABASE_ID));
         require(support.supportsInterface(InterfaceId_ERC721));
         require(support.supportsInterface(InterfaceId_ERC721Metadata));
         require(support.supportsInterface(InterfaceId_ERC721Enumerable));
-        
+
         DatabaseMeta memory database = (DatabaseMeta(
         {
             databaseContract:  databaseContract,
@@ -1606,25 +1636,27 @@ contract Chaingear is IChaingear, SupportsInterfaceWithLookup, Pausable, SplitPa
         }));
 
         databases.push(database);
-        
+
         databasesNamesIndex[_name] = true;
         databasesSymbolsIndex[_symbol] = true;
-        
+
         uint256 newTokenID = headTokenID;
         databasesIDsByAddressesIndex[databaseAddress] = newTokenID;
         super._mint(msg.sender, newTokenID);
+        databasesSymbolsByIDIndex[newTokenID] = _symbol;
+        databasesIDsBySymbolIndex[_symbol] = newTokenID;
         headTokenID = headTokenID.add(1);
-        
+
         emit DatabaseCreated(
             _name,
             databaseAddress,
             msg.sender,
             newTokenID
         );
-        
+
         databaseContract.transferAdminRights(msg.sender);
 
         return (databaseAddress, newTokenID);
     }
-    
+
 }

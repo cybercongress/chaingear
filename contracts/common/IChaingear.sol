@@ -12,6 +12,7 @@ interface IChaingear {
         string
     ) external;
     function updateDatabaseBuilderDescription(string, string) external;
+    function depricateDatabaseBuilder(string) external;
     function createDatabase(
         string,
         address[],
@@ -25,7 +26,7 @@ interface IChaingear {
     function updateCreationFee(uint256) external;
     function getAmountOfBuilders() external view returns (uint256);
     function getBuilderById(uint256) external view returns(string);
-    function getDatabaseBuilder(string) external view returns(address, string, string);
+    function getDatabaseBuilder(string) external view returns(address, string, string, bool);
     function getDatabasesIDs() external view returns (uint256[]);
     function getDatabaseIDByAddress(address) external view returns (uint256);
     function getDatabase(uint256) external view returns (

@@ -12,6 +12,7 @@ import "../common/IDatabaseBuilder.sol";
 import "../common/IDatabase.sol";
 import "../common/Safe.sol";
 import "../common/IChaingear.sol";
+import "../common/ERC721MetadataValidation.sol";
 
 
 /**
@@ -22,6 +23,7 @@ import "../common/IChaingear.sol";
 contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
+    using ERC721MetadataValidation for string;
 
     /*
     *  Storage
@@ -41,6 +43,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         IDatabaseBuilder builderAddress;
         string           linkToABI;
         string           description;
+        bool             operational;
     }
 
     DatabaseMeta[] private databases;
@@ -68,6 +71,13 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
     */
 
     event DatabaseCreated(
+        string  name,
+        address databaseAddress,
+        address creatorAddress,
+        uint256 databaseChaingearID
+    );
+    
+    event DatabaseDeleted(
         string  name,
         address databaseAddress,
         address creatorAddress,
@@ -140,7 +150,8 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         {
             builderAddress: _builderAddress,
             linkToABI:      _linkToABI,
-            description:    _description
+            description:    _description,
+            operational:    true
         }));
         buildersVersionIndex[amountOfBuilders] = _version;
         amountOfBuilders = amountOfBuilders.add(1);
@@ -157,6 +168,17 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         require(buildersVersion[_version].builderAddress != address(0));
         buildersVersion[_version].description = _description;
     }
+    
+    function depricateDatabaseBuilder(
+        string _version
+    )
+        external
+        onlyOwner
+        whenPaused
+    {
+        require(buildersVersion[_version].builderAddress != address(0));
+        buildersVersion[_version].operational = false;
+    }
 
     function createDatabase(
         string    _version,
@@ -170,7 +192,10 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         whenNotPaused
         returns (address, uint256)
     {
+        _name.validateName();
+        _symbol.validateSymbol();
         require(buildersVersion[_version].builderAddress != address(0));
+        require(buildersVersion[_version].operational == true);
         require(databaseCreationFeeWei == msg.value);
         require(databasesNamesIndex[_name] == false);
         require(databasesSymbolsIndex[_symbol] == false);
@@ -209,6 +234,8 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
 
         super._burn(msg.sender, _databaseID);
         database.transferOwnership(msg.sender);
+        
+        emit DatabaseDeleted(databaseName, database, msg.sender, _databaseID);
     }
 
     function fundDatabase(uint256 _databaseID)
@@ -279,13 +306,15 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         returns (
             address,
             string,
-            string
+            string,
+            bool
         )
     {
         return(
             buildersVersion[_version].builderAddress,
             buildersVersion[_version].linkToABI,
-            buildersVersion[_version].description
+            buildersVersion[_version].description,
+            buildersVersion[_version].operational
         );
     }
 

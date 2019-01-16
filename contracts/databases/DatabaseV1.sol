@@ -102,6 +102,9 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     );
 
     event DatabaseInitialized();
+    
+    event TagUpdated(uint8, bytes32);
+    event TagDeleted(uint8);
 
     /*
     *  Constructor
@@ -258,6 +261,8 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         require(_index < databaseTags.length);
 
         databaseTags[_index] = _tag;
+        
+        emit TagUpdated(_index, _tag);
     }
 
     function removeDatabaseTag(uint8 _index)
@@ -273,6 +278,8 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         databaseTags[_index] = lastTag;
         databaseTags[lastTagIndex] = "";
         databaseTags.length--;
+        
+        emit TagDeleted(_index);
     }
 
     /*

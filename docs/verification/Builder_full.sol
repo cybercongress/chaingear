@@ -890,6 +890,70 @@ contract SplitPayment {
   }
 }
 
+// File: openzeppelin-solidity/contracts/ownership/Ownable.sol
+
+/**
+ * @title Ownable
+ * @dev The Ownable contract has an owner address, and provides basic authorization control
+ * functions, this simplifies the implementation of "user permissions".
+ */
+contract Ownable {
+  address public owner;
+
+
+  event OwnershipRenounced(address indexed previousOwner);
+  event OwnershipTransferred(
+    address indexed previousOwner,
+    address indexed newOwner
+  );
+
+
+  /**
+   * @dev The Ownable constructor sets the original `owner` of the contract to the sender
+   * account.
+   */
+  constructor() public {
+    owner = msg.sender;
+  }
+
+  /**
+   * @dev Throws if called by any account other than the owner.
+   */
+  modifier onlyOwner() {
+    require(msg.sender == owner);
+    _;
+  }
+
+  /**
+   * @dev Allows the current owner to relinquish control of the contract.
+   * @notice Renouncing to ownership will leave the contract without an owner.
+   * It will not be possible to call the functions with the `onlyOwner`
+   * modifier anymore.
+   */
+  function renounceOwnership() public onlyOwner {
+    emit OwnershipRenounced(owner);
+    owner = address(0);
+  }
+
+  /**
+   * @dev Allows the current owner to transfer control of the contract to a newOwner.
+   * @param _newOwner The address to transfer ownership to.
+   */
+  function transferOwnership(address _newOwner) public onlyOwner {
+    _transferOwnership(_newOwner);
+  }
+
+  /**
+   * @dev Transfers control of the contract to a newOwner.
+   * @param _newOwner The address to transfer ownership to.
+   */
+  function _transferOwnership(address _newOwner) internal {
+    require(_newOwner != address(0));
+    emit OwnershipTransferred(owner, _newOwner);
+    owner = _newOwner;
+  }
+}
+
 // File: contracts/common/IDatabase.sol
 
 interface IDatabase {
@@ -910,7 +974,6 @@ interface IDatabase {
     function getIndexByID(uint256) external view returns (uint256);
     function getEntryCreationFee() external view returns (uint256);
     function getEntriesStorage() external view returns (address);
-    function getInterfaceEntriesContract() external view returns (string);
     function getSchemaDefinition() external view returns (string);
     function getDatabaseBalance() external view returns (uint256);
     function getDatabaseDescription() external view returns (string);
@@ -921,6 +984,7 @@ interface IDatabase {
     function transferAdminRights(address) external;
     function transferOwnership(address) external;
     function getAdmin() external view returns (address);
+    function getPaused() external view returns (bool);
 }
 
 // File: contracts/common/IDatabaseBuilder.sol
@@ -1029,70 +1093,6 @@ contract Safe {
     }
 }
 
-// File: openzeppelin-solidity/contracts/ownership/Ownable.sol
-
-/**
- * @title Ownable
- * @dev The Ownable contract has an owner address, and provides basic authorization control
- * functions, this simplifies the implementation of "user permissions".
- */
-contract Ownable {
-  address public owner;
-
-
-  event OwnershipRenounced(address indexed previousOwner);
-  event OwnershipTransferred(
-    address indexed previousOwner,
-    address indexed newOwner
-  );
-
-
-  /**
-   * @dev The Ownable constructor sets the original `owner` of the contract to the sender
-   * account.
-   */
-  constructor() public {
-    owner = msg.sender;
-  }
-
-  /**
-   * @dev Throws if called by any account other than the owner.
-   */
-  modifier onlyOwner() {
-    require(msg.sender == owner);
-    _;
-  }
-
-  /**
-   * @dev Allows the current owner to relinquish control of the contract.
-   * @notice Renouncing to ownership will leave the contract without an owner.
-   * It will not be possible to call the functions with the `onlyOwner`
-   * modifier anymore.
-   */
-  function renounceOwnership() public onlyOwner {
-    emit OwnershipRenounced(owner);
-    owner = address(0);
-  }
-
-  /**
-   * @dev Allows the current owner to transfer control of the contract to a newOwner.
-   * @param _newOwner The address to transfer ownership to.
-   */
-  function transferOwnership(address _newOwner) public onlyOwner {
-    _transferOwnership(_newOwner);
-  }
-
-  /**
-   * @dev Transfers control of the contract to a newOwner.
-   * @param _newOwner The address to transfer ownership to.
-   */
-  function _transferOwnership(address _newOwner) internal {
-    require(_newOwner != address(0));
-    emit OwnershipTransferred(owner, _newOwner);
-    owner = _newOwner;
-  }
-}
-
 // File: contracts/databases/DatabasePermissionControl.sol
 
 // import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
@@ -1105,24 +1105,24 @@ contract Ownable {
 * @notice not audited, not recommend to use in mainnet
 */
 contract DatabasePermissionControl is Ownable {
-    
+
     /*
     *  Storage
     */
-    
+
     enum CreateEntryPermissionGroup {OnlyAdmin, Whitelist, AllUsers}
-    
+
     address private admin;
-    bool public paused = false;
+    bool private paused = false;
 
     mapping(address => bool) private whitelist;
-    
+
     CreateEntryPermissionGroup private permissionGroup = CreateEntryPermissionGroup.OnlyAdmin;
-    
+
     /*
     *  Modifiers
     */
-    
+
     modifier whenNotPaused() {
         require(!paused);
         _;
@@ -1132,26 +1132,27 @@ contract DatabasePermissionControl is Ownable {
         require(paused);
         _;
     }
-    
+
     /*
     *  Events
     */
 
     event Pause();
     event Unpause();
-    
+    event PermissionGroupChanged(CreateEntryPermissionGroup id);
+
     /*
     *  Constructor
     */
-    
+
     constructor()
         public
     { }
-    
+
     /*
     *  Modifiers
     */
-    
+
     modifier onlyAdmin() {
         require(msg.sender == admin);
         _;
@@ -1165,12 +1166,12 @@ contract DatabasePermissionControl is Ownable {
         }
         _;
     }
-    
+
     /*
     *  External functions
     */
-    
-    function pause() 
+
+    function pause()
         external
         onlyAdmin
         whenNotPaused
@@ -1179,7 +1180,7 @@ contract DatabasePermissionControl is Ownable {
         emit Pause();
     }
 
-    function unpause() 
+    function unpause()
         external
         onlyAdmin
         whenPaused
@@ -1187,7 +1188,7 @@ contract DatabasePermissionControl is Ownable {
         paused = false;
         emit Unpause();
     }
-    
+
     function transferAdminRights(address _newAdmin)
         external
         onlyOwner
@@ -1202,16 +1203,17 @@ contract DatabasePermissionControl is Ownable {
     )
         external
         onlyAdmin
-        whenNotPaused
+        whenPaused
     {
         require(CreateEntryPermissionGroup.AllUsers >= _newPermissionGroup);
         permissionGroup = _newPermissionGroup;
+        emit PermissionGroupChanged(_newPermissionGroup);
     }
-    
+
     function addToWhitelist(address _address)
         external
         onlyAdmin
-        whenNotPaused
+        whenPaused
     {
         whitelist[_address] = true;
     }
@@ -1219,11 +1221,11 @@ contract DatabasePermissionControl is Ownable {
     function removeFromWhitelist(address _address)
         external
         onlyAdmin
-        whenNotPaused
+        whenPaused
     {
         whitelist[_address] = false;
     }
-    
+
     function getAdmin()
         external
         view
@@ -1231,7 +1233,7 @@ contract DatabasePermissionControl is Ownable {
     {
         return admin;
     }
-    
+
     function getRegistryPermissions()
         external
         view
@@ -1239,13 +1241,21 @@ contract DatabasePermissionControl is Ownable {
     {
         return permissionGroup;
     }
-    
+
     function checkWhitelisting(address _address)
         external
         view
         returns (bool)
     {
         return whitelist[_address];
+    }
+    
+    function getPaused()
+        external
+        view
+        returns (bool)
+    {
+        return paused;
     }
 }
 
@@ -1256,16 +1266,16 @@ contract DatabasePermissionControl is Ownable {
 * @author cyber•Congress, Valery litvin (@litvintech)
 * @notice not audited, not recommend to use in mainnet
 */
-contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
+contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
 
     using SafeMath for uint256;
-    
+
     /*
     *  Storage
     */
     
-    bytes4 constant internal INTERFACE_SCHEMA_ID = 0x153366ed;
-    bytes4 constant internal INTERFACE_DATABASE_ID = 0xfdb63525;
+    bytes4 constant private INTERFACE_SCHEMA_ID = 0x153366ed;
+    bytes4 constant private INTERFACE_DATABASE_ID = 0xfdb63525;
 
     // @dev Metadata of entry, holds ownership data and funding info
     struct EntryMeta {
@@ -1275,37 +1285,36 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
         uint256     currentWei;
         uint256     accumulatedWei;
     }
-    
+
     EntryMeta[] private entriesMeta;
-    
+
     uint256 private headTokenID = 0;
     uint256 private entryCreationFeeWei = 0;
-    
+
     bytes32[] private databaseTags;
     string private databaseDescription;
     
-    string private linkToSchemaABI; // will be depricated
-    string private schemaDefinition; // and changed for this
+    string private schemaDefinition;
     
     Safe private databaseSafe;
-    
+
     ISchema private entriesStorage;
     bool private databaseInitStatus = false;
-    
+
     /*
     *  Modifiers
     */
-    
+
     modifier onlyOwnerOf(uint256 _entryID){
         require(ownerOf(_entryID) == msg.sender);
         _;
     }
-    
+
     modifier databaseInitialized {
         require(databaseInitStatus == true);
         _;
     }
-    
+
     /**
     *  Events
     */
@@ -1313,11 +1322,6 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     event EntryCreated(
         uint256 entryID,
         address creator
-    );
-
-    event EntryChangedOwner(
-        uint256 entryID,
-        address newOwner
     );
 
     event EntryDeleted(
@@ -1337,6 +1341,16 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
         uint256 amount
     );
 
+    event EntryCreationFeeUpdated(
+        uint256 newFees
+    );
+
+    event DescriptionUpdated(
+        string newDescription
+    );
+
+    event DatabaseInitialized();
+
     /*
     *  Constructor
     */
@@ -1355,13 +1369,13 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
         _registerInterface(INTERFACE_DATABASE_ID);
         databaseSafe = new Safe();
     }
-    
+
     function() external payable {}
-    
+
     /*
     *  External functions
     */
-    
+
     function createEntry()
         external
         databaseInitialized
@@ -1371,9 +1385,9 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
         returns (uint256)
     {
         require(msg.value == entryCreationFeeWei);
-        
+
         EntryMeta memory meta = (EntryMeta(
-        {   
+        {
             lastUpdateTime: block.timestamp,
             createdAt:      block.timestamp,
             creator:        msg.sender,
@@ -1381,18 +1395,18 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
             accumulatedWei: 0
         }));
         entriesMeta.push(meta);
-        
+
         uint256 newTokenID = headTokenID;
         super._mint(msg.sender, newTokenID);
         headTokenID = headTokenID.add(1);
-        
+
         emit EntryCreated(newTokenID, msg.sender);
 
         entriesStorage.createEntry();
-        
+
         return newTokenID;
     }
-    
+
     function auth(uint256 _entryID, address _caller)
         external
         whenNotPaused
@@ -1411,17 +1425,17 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     {
         uint256 entryIndex = allTokensIndex[_entryID];
         require(entriesMeta[entryIndex].currentWei == 0);
-        
+
         uint256 lastEntryIndex = entriesMeta.length.sub(1);
         EntryMeta memory lastEntry = entriesMeta[lastEntryIndex];
-        
+
         entriesMeta[entryIndex] = lastEntry;
         delete entriesMeta[lastEntryIndex];
         entriesMeta.length--;
-        
+
         super._burn(msg.sender, _entryID);
         emit EntryDeleted(_entryID, msg.sender);
-        
+
         entriesStorage.deleteEntry(entryIndex);
     }
 
@@ -1432,14 +1446,14 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
         payable
     {
         require(exists(_entryID) == true);
-        
+
         uint256 entryIndex = allTokensIndex[_entryID];
         uint256 currentWei = entriesMeta[entryIndex].currentWei.add(msg.value);
         entriesMeta[entryIndex].currentWei = currentWei;
-        
+
         uint256 accumulatedWei = entriesMeta[entryIndex].accumulatedWei.add(msg.value);
         entriesMeta[entryIndex].accumulatedWei = accumulatedWei;
-        
+
         emit EntryFunded(_entryID, msg.sender, msg.value);
         address(databaseSafe).transfer(msg.value);
     }
@@ -1451,30 +1465,32 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
         whenNotPaused
     {
         uint256 entryIndex = allTokensIndex[_entryID];
-    
+
         uint256 currentWei = entriesMeta[entryIndex].currentWei;
         require(_amount <= currentWei);
         entriesMeta[entryIndex].currentWei = currentWei.sub(_amount);
-    
+
         emit EntryFundsClaimed(_entryID, msg.sender, _amount);
         databaseSafe.claim(msg.sender, _amount);
     }
-    
+
     function updateEntryCreationFee(uint256 _newFee)
         external
         onlyAdmin
         whenPaused
     {
         entryCreationFeeWei = _newFee;
+        emit EntryCreationFeeUpdated(_newFee);
     }
-    
+
     function updateDatabaseDescription(string _newDescription)
         external
         onlyAdmin
-    {    
+    {
         databaseDescription = _newDescription;
+        emit DescriptionUpdated(_newDescription);
     }
-    
+
     function addDatabaseTag(bytes32 _tag)
         external
         onlyAdmin
@@ -1482,13 +1498,13 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
         require(databaseTags.length < 16);
         databaseTags.push(_tag);
     }
-    
+
     function updateDatabaseTag(uint8 _index, bytes32 _tag)
         external
         onlyAdmin
     {
         require(_index < databaseTags.length);
-    
+
         databaseTags[_index] = _tag;
     }
 
@@ -1498,19 +1514,19 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     {
         require(databaseTags.length > 0);
         require(_index < databaseTags.length);
-    
+
         uint256 lastTagIndex = databaseTags.length.sub(1);
         bytes32 lastTag = databaseTags[lastTagIndex];
-    
+
         databaseTags[_index] = lastTag;
         databaseTags[lastTagIndex] = "";
         databaseTags.length--;
     }
-    
+
     /*
     *  View functions
     */
-    
+
     function readEntryMeta(uint256 _entryID)
         external
         view
@@ -1525,7 +1541,7 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     {
         require(exists(_entryID) == true);
         uint256 entryIndex = allTokensIndex[_entryID];
-        
+
         EntryMeta memory m = entriesMeta[entryIndex];
         return(
             ownerOf(_entryID),
@@ -1536,7 +1552,7 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
             m.accumulatedWei
         );
     }
-    
+
     function getChaingearID()
         external
         view
@@ -1544,7 +1560,7 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     {
         return IChaingear(owner).getDatabaseIDByAddress(address(this));
     }
-    
+
     function getEntriesIDs()
         external
         view
@@ -1552,7 +1568,7 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     {
         return allTokens;
     }
-    
+
     function getIndexByID(uint256 _entryID)
         external
         view
@@ -1561,7 +1577,7 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
         require(exists(_entryID) == true);
         return allTokensIndex[_entryID];
     }
-    
+
     function getEntryCreationFee()
         external
         view
@@ -1569,7 +1585,7 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     {
         return entryCreationFeeWei;
     }
-    
+
     function getEntriesStorage()
         external
         view
@@ -1578,22 +1594,14 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
         return address(entriesStorage);
     }
     
-    function getInterfaceEntriesContract() // will be depricated 
-        external
-        view
-        returns (string)
-    {
-        return linkToSchemaABI;
-    }
-    
-    function getSchemaDefinition() // and migrated to this with determinated ABI
+    function getSchemaDefinition()
         external
         view
         returns (string)
     {
         return schemaDefinition;
     }
-    
+
     function getDatabaseBalance()
         external
         view
@@ -1601,7 +1609,7 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     {
         return address(this).balance;
     }
-    
+
     function getDatabaseDescription()
         external
         view
@@ -1609,7 +1617,7 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     {
         return databaseDescription;
     }
-    
+
     function getDatabaseTags()
         external
         view
@@ -1617,7 +1625,7 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     {
         return databaseTags;
     }
-    
+
     function getDatabaseSafe()
         external
         view
@@ -1625,7 +1633,7 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     {
         return databaseSafe;
     }
-    
+
     function getSafeBalance()
         external
         view
@@ -1633,7 +1641,7 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     {
         return address(databaseSafe).balance;
     }
-    
+
     function getDatabaseInitStatus()
         external
         view
@@ -1641,47 +1649,56 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
     {
         return databaseInitStatus;
     }
-    
+
+    function getPayeesCount()
+        external
+        view
+        returns (uint256)
+    {
+        return payees.length;
+    }
+
     /**
     *  Public functions
     */
     
-    function initializeDatabase(string _linkToABI, bytes _schemaBytecode)
+    function initializeDatabase(string _schemaDefinition, bytes _schemaBytecode)
         public
         onlyAdmin
         returns (address)
     {
         require(databaseInitStatus == false);
         address deployedAddress;
-    
+
         assembly {
             let s := mload(_schemaBytecode)
             let p := add(_schemaBytecode, 0x20)
             deployedAddress := create(0, p, s)
         }
-    
+
         require(deployedAddress != address(0));
         require(SupportsInterfaceWithLookup(deployedAddress).supportsInterface(INTERFACE_SCHEMA_ID));
         entriesStorage = ISchema(deployedAddress);
     
-        linkToSchemaABI = _linkToABI;
+        schemaDefinition = _schemaDefinition;
         databaseInitStatus = true;
-    
+
+        emit DatabaseInitialized();
         return deployedAddress;
     }
-    
+
     function transferFrom(
         address _from,
         address _to,
         uint256 _tokenId
-    ) 
-        public 
+    )
+        public
         databaseInitialized
         whenNotPaused
     {
         super.transferFrom(_from, _to, _tokenId);
-    }  
-    
+    }
+
     function safeTransferFrom(
         address _from,
         address _to,
@@ -1698,7 +1715,7 @@ contract DatabaseV1 is IDatabase, DatabasePermissionControl, SupportsInterfaceWi
             ""
         );
     }
-    
+
     function safeTransferFrom(
         address _from,
         address _to,
@@ -1736,8 +1753,8 @@ contract DatabaseBuilderV1 is IDatabaseBuilder, SupportsInterfaceWithLookup {
     address private chaingear;    
     address private owner;
     
-    bytes4 constant internal INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
-    bytes4 constant internal INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
+    bytes4 constant private INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
+    bytes4 constant private INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
 
 	/*
 	*  Constructor
