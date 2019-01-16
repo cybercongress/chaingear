@@ -21,6 +21,9 @@ import {
 import DatabaseSource from '../../resources/DatabaseV1.sol';
 import { calculateBensShares, debounce } from '../../utils/utils';
 
+const DB_NAME_REGEXP = /\b[a-z][a-z0-9_]*$/;
+const DB_SYMBOL_REGEXP = /\b[A-Z][A-Z0-9_]*$/;
+
 class NewDatabase extends Component {
     constructor(props) {
         super(props);
@@ -128,10 +131,10 @@ class NewDatabase extends Component {
 
         let errorMessage = null;
 
-        this.checkRegexp(dbName)
+        this.checkRegexp(DB_NAME_REGEXP, dbName)
             .then((isValid) => {
                 if (!isValid) {
-                    errorMessage = 'letters, digits and dash only';
+                    errorMessage = 'Lowercase letters, digits and dash only';
 
                     throw new Error('invalid string');
                 }
@@ -168,10 +171,10 @@ class NewDatabase extends Component {
 
         let errorMessage = '';
 
-        this.checkRegexp(dbSymbol)
+        this.checkRegexp(DB_SYMBOL_REGEXP, dbSymbol)
             .then((isValid) => {
                 if (!isValid) {
-                    errorMessage = 'letters, digits and dash only';
+                    errorMessage = 'Uppercase letters, digits and dash only';
 
                     throw new Error('invalid string');
                 }
@@ -197,13 +200,15 @@ class NewDatabase extends Component {
             });
     };
 
-    checkRegexp = string => new Promise(resolve => resolve(/\b[a-zA-Z][a-zA-Z0-9_]*$/.test(string)));
+    checkRegexp = (regexp, value) => new Promise(resolve => resolve(regexp.test(value)));
 
     onDbNameChange = (event) => {
         event.persist();
 
-        this.dbSymbol.value = event.target.value;
-        this.checkDbName(event.target.value);
+        const { value } = event.target;
+
+        this.dbSymbol.value = value.toUpperCase();
+        this.checkDbName(value);
         this.checkDbSymbol(this.dbSymbol.value);
     };
 
