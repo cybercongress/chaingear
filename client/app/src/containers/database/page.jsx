@@ -279,6 +279,8 @@ class ViewRegistry extends Container {
     onUpdatePermissionGroup = () => {
         const newPermissionGroup = this.permissionGroup.value;
 
+        this.setLoading(true);
+
         cyber.sendTransactionMethod(
             _databaseContract.updateCreateEntryPermissionGroup, newPermissionGroup,
         )
@@ -286,6 +288,7 @@ class ViewRegistry extends Container {
             .then(() => {
                 this.setState({
                     permissionGroup: +newPermissionGroup,
+                    loading: false,
                 });
             });
     };
@@ -515,24 +518,32 @@ class ViewRegistry extends Container {
             });
     };
 
-    transferRecordOwnership = (userAccount, newOwner, entryID) => {
-        const { databaseSymbol } = this.state;
+    transferRecordOwnership = (currentOwner, newOwner, entryID) => {
+        const { databaseSymbol, databaseContract } = this.state;
 
         this.closePopups();
 
-        this.state.databaseContract.transferFrom(userAccount, newOwner, entryID, (e, data) => {
-            this.init(databaseSymbol);
-        });
+        this.setLoading(true);
+        cyber.callContractMethod(
+            databaseContract, 'transferFrom', currentOwner, newOwner, entryID,
+        )
+            .then(data => console.log(`Transfer entry #${entryID} ownership. Tx: ${data}`))
+            .then(() => cyber.eventPromise(databaseContract.Transfer()))
+            .then(() => this.init(databaseSymbol));
     };
 
     claimRecord = (entryID, amount) => {
-        const { databaseSymbol } = this.state;
+        const { databaseSymbol, databaseContract, web3 } = this.state;
 
         this.closePopups();
 
-        this.state.databaseContract.claimEntryFunds(entryID, this.state.web3.toWei(amount, 'ether'), (e, data) => {
-            this.init(databaseSymbol);
-        });
+        this.setLoading(true);
+        cyber.callContractMethod(
+            databaseContract, 'claimEntryFunds', entryID, web3.toWei(amount, 'ether'),
+        )
+            .then(data => console.log(`Claim entry #${entryID} funds(${amount} ETH). Tx: ${data}`))
+            .then(() => cyber.eventPromise(databaseContract.EntryFundsClaimed()))
+            .then(() => this.init(databaseSymbol));
     };
 
     fundRecord = (id, value) => {
