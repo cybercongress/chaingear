@@ -158,7 +158,7 @@ class SchemaDefinition extends Component {
 
                 <ContainerRegister>
                     <SideBar title='Input'>
-                        <Panel title='Record Structure' style={ { minHeight: '403px' } }>
+                        <Panel title='Record Structure' style={ { minHeight: '403px' } } noPadding>
                             <FieldsTable>
                                 <TableRegistry>
                                     <tbody>
