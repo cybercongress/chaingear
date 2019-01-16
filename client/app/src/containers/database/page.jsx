@@ -441,7 +441,7 @@ class ViewRegistry extends Container {
             })
             .then(() => cyber.callContractMethod(chaingerContract, 'deleteDatabase', databaseId))
             .then(data => console.log(`DeleteDB: ${databaseId}. Tx: ${data}`))
-            // .then(() => cyber.eventPromise(chaingerContract.databaseDeleted()))
+            .then(() => cyber.eventPromise(chaingerContract.DatabaseDeleted()))
             .then(() => hashHistory.push('/'))
             .catch((error) => {
                 console.log(`Cant delete database. Details: ${error}`);
