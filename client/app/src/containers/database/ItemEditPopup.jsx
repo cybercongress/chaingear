@@ -155,7 +155,6 @@ export default class ItemEditPopup extends React.Component {
                                           ) }
                                           defaultValue={ recordForAction[field.name].toString() }
                                           placeholder={ `${field.type}${field.unique ? ' (unique)' : ''}` }
-                                          valid={ !errors[field.name] }
                                           errorMessage={ errors[field.name] }
                                           maxLength={ 42 }
                                         />
