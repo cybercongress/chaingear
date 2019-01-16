@@ -42,7 +42,7 @@ contract("Chaingear", (accounts) => {
     const DATABASE_BUILDER_1_ABI_LINK = "QmS2F1UgmYHAekcvezFLCrBibEBjJezSDqwq8fuwF5Qqvi"
     const DATABASE_BUILDER_1_DESCRIPTION = "Basic version of registry"
     
-    const DATABASE_NAME_0 = "Test Registry";
+    const DATABASE_NAME_0 = "testregistry";
     const DATABASE_SYMBOL_0 = "TREG";
 
     before(async () => {
@@ -399,5 +399,93 @@ contract("Chaingear", (accounts) => {
             expect(await chaingear.totalSupply()).to.eq.BN(toBN('0'));
             (await database.owner()).should.be.equal(RANDOM_CREATOR_2);
         });
+    })
+    
+    describe("when creating database with different name and symbol case", () => {
+        it("should not allow to create database with name in uppercase", async () => {
+            await chaingear.createDatabase(
+                DATABASE_BUILDER_1_VERSION,
+                [RANDOM_CREATOR_1],
+                [100],
+                "Helloword",
+                "HWRD",
+                { 
+                    from: RANDOM_CREATOR_1,
+                    value: BUILDING_FEE,
+                    gas: toBN('5000000')
+                }
+            ).should.be.rejected;
+        });
+        
+        it("should not allow to create database with symbol in lowercase", async () => {
+            await chaingear.createDatabase(
+                DATABASE_BUILDER_1_VERSION,
+                [RANDOM_CREATOR_1],
+                [100],
+                "helloword",
+                "hwrd",
+                { 
+                    from: RANDOM_CREATOR_1,
+                    value: BUILDING_FEE,
+                    gas: toBN('5000000')
+                }
+            ).should.be.rejected;
+        });
+        
+        it("should not allow to create database with minus symbol", async () => {
+            await chaingear.createDatabase(
+                DATABASE_BUILDER_1_VERSION,
+                [RANDOM_CREATOR_1],
+                [100],
+                "helloword",
+                "hwrd-",
+                { 
+                    from: RANDOM_CREATOR_1,
+                    value: BUILDING_FEE,
+                    gas: toBN('5000000')
+                }
+            ).should.be.rejected;
+        });
+        
+        it("should allow to create database with right name and symbol ", async () => {
+            await chaingear.createDatabase(
+                DATABASE_BUILDER_1_VERSION,
+                [RANDOM_CREATOR_1],
+                [100],
+                "helloword-42",
+                "HWRD42",
+                { 
+                    from: RANDOM_CREATOR_1,
+                    value: BUILDING_FEE,
+                    gas: toBN('5000000')
+                }
+            ).should.be.fulfilled;
+        });
+    })
+    
+    describe("when deprecate database builder", () => {
+        it("should not allow to use builder when deprecated", async () => {
+            await chaingear.pause({ from: CHAINGEAR_OWNER });
+            await chaingear.depricateDatabaseBuilder("V1",
+                {
+                    from: CHAINGEAR_OWNER
+                }
+            ).should.be.fulfilled;
+            await chaingear.unpause({ from: CHAINGEAR_OWNER });
+            
+            await chaingear.createDatabase(
+                DATABASE_BUILDER_1_VERSION,
+                [RANDOM_CREATOR_1],
+                [100],
+                "helloword",
+                "HWRD",
+                { 
+                    from: RANDOM_CREATOR_1,
+                    value: BUILDING_FEE,
+                    gas: toBN('5000000')
+                }
+            ).should.be.rejected;
+        });
+        
     })
 })

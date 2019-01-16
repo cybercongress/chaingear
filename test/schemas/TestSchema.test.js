@@ -40,7 +40,7 @@ contract("TestSchema", (accounts) => {
     
     const DATABASE_BUILDER_VERSION = "V1"
     
-    const DATABASE_NAME = "Test Registry";
+    const DATABASE_NAME = "test-registry";
     const DATABASE_SYMBOL = "TREG";
 
     before(async () => {

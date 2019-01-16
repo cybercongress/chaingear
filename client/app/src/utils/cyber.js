@@ -325,7 +325,7 @@ export const compileDatabase = (code, contractName, compiler, compilerOpts = {
 
     const sources = {
         'Dependencies.sol': Dependencies,
-        [contractName]: `pragma solidity ^0.4.25; ${code}`,
+        [contractName]: `pragma solidity 0.4.25; ${code}`,
     };
 
     const settings = {

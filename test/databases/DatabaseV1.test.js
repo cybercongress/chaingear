@@ -48,7 +48,7 @@ contract("DatabaseV1", (accounts) => {
     
     const DATABASE_BUILDER_VERSION = "V1"
     
-    const DATABASE_NAME = "Test Registry";
+    const DATABASE_NAME = "test-registry";
     const DATABASE_SYMBOL = "TREG";
 
     before(async () => {
@@ -203,6 +203,7 @@ contract("DatabaseV1", (accounts) => {
         });
         
         it("should allow admin to whitelist new address", async () => {
+            await database.pause({ from: DATABASE_ADMIN });
             await database.updateCreateEntryPermissionGroup(CreateEntryPermissionGroup.Whitelist, 
                 {
                     from: DATABASE_ADMIN
@@ -212,6 +213,7 @@ contract("DatabaseV1", (accounts) => {
             (await database.checkWhitelisting(UNKNOWN)).should.be.equal(false);
             await database.addToWhitelist(UNKNOWN, { from: DATABASE_ADMIN }).should.be.fulfilled;
             (await database.checkWhitelisting(UNKNOWN)).should.be.equal(true);
+            await database.unpause({ from: DATABASE_ADMIN });
         });
         
         it("should allow whitelisted unknown to add entries", async () => {
@@ -227,11 +229,13 @@ contract("DatabaseV1", (accounts) => {
         });
         
         it("should allow admin to set global access to add entries", async () => {
+            await database.pause({ from: DATABASE_ADMIN });
             await database.updateCreateEntryPermissionGroup(CreateEntryPermissionGroup.AllUsers, 
                 {
                     from: DATABASE_ADMIN
                 }
             ).should.be.fulfilled;
+            await database.unpause({ from: DATABASE_ADMIN });
             (await database.getRegistryPermissions()).toNumber().should.be.equal(CreateEntryPermissionGroup.AllUsers);
         });
         
