@@ -41,7 +41,7 @@ const Header = () => (
                     {!isSchemaExist && isOwner
                         && (
                             <ProgressBar>
-                                <CircleLable type='complete' number='1' text='Registry initialization' />
+                                <CircleLable type='complete' number='1' text='Database initialization' />
                                 <CircleLable number='2' text='Schema definition'>
                                     <PopupBar>
                                         <Text lineheight>
@@ -83,11 +83,11 @@ const Header = () => (
                                     {!isDbPaused
                                         && (
                                             <MenuPopupItem
-                                              key='fundRegistry'
+                                              key='fundDatabase'
                                               icon={ <MenuPopupTransferIcon /> }
                                               onClick={ dbPage.onFundDb }
                                             >
-                                                Fund registry
+                                                Fund database
                                             </MenuPopupItem>
                                         )
                                     }
@@ -129,7 +129,7 @@ const Header = () => (
                                               icon={ <MenuPopupDeleteIcon /> }
                                               onClick={ dbPage.onDeleteDb }
                                             >
-                                              Delete registry
+                                              Delete database
                                             </MenuPopupItem>,
                                         ]
                                     }

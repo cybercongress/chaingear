@@ -107,11 +107,11 @@ const DatabasePopups = () => (
                     </Popup>
 
                     <Popup open={ deleteDatabaseOpen }>
-                        <PopupTitle>Delete registry</PopupTitle>
+                        <PopupTitle>Delete database</PopupTitle>
                         <PopupContent>
                             <ContentLine>
                                 <Text>
-                                    Your registry will be unlinked from Chaingear,
+                                    Your database will be unlinked from Chaingear,
                                     but you still will be able to operate with it
                                 </Text>
                             </ContentLine>
@@ -127,7 +127,7 @@ const DatabasePopups = () => (
                         <PopupContent>
                             <ContentLine>
                                 <Text>
-                                    When registry is on pause there will be no ability
+                                    When database is on pause there will be no ability
                                     to operate with records
                                 </Text>
                             </ContentLine>
@@ -143,7 +143,7 @@ const DatabasePopups = () => (
                         <PopupContent>
                             <ContentLine>
                                 <Text>
-                                    Resume registry to operate with records
+                                    Resume database to operate with records
                                 </Text>
                             </ContentLine>
                         </PopupContent>
