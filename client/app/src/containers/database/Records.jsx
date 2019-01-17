@@ -28,14 +28,18 @@ const Records = () => (
                         <MenuPopup>
                             { userAccount === item.owner && [
                                 <MenuPopupItem
+                                  key='recordTranser'
                                   icon={ <MenuPopupAccountIcon /> }
                                   onClick={ () => dbPage.onRecordTransferOwnership(item) }
                                 >
                                     Transfer Ownership
                                 </MenuPopupItem>,
-                                <MenuSeparator />,
+                                <MenuSeparator
+                                  key='recordSeparator0'
+                                />,
                             ]}
                             <MenuPopupItem
+                              key='recordFund'
                               icon={ <MenuPopupTransferIcon /> }
                               onClick={ () => dbPage.onFundRecord(item) }
                             >
@@ -43,19 +47,24 @@ const Records = () => (
                             </MenuPopupItem>
                             { userAccount === item.owner && [
                                 <MenuPopupItem
+                                  key='recordClaimFund'
                                   icon={ <MenuPopupTransferIcon /> }
                                   onClick={ () => dbPage.onClaimRecordFunds(item) }
                                 >
                                     Claim Funds
                                 </MenuPopupItem>,
-                                <MenuSeparator />,
+                                <MenuSeparator
+                                  key='recordSeparator1'
+                                />,
                                 <MenuPopupItem
+                                  key='recordEdit'
                                   icon={ <MenuPopupEditIcon /> }
                                   onClick={ () => dbPage.onRecordEdit(item) }
                                 >
                                     Edit
                                 </MenuPopupItem>,
                                 <MenuPopupItem
+                                  key='recordDelete'
                                   icon={ <MenuPopupDeleteIcon /> }
                                   onClick={ () => dbPage.onDeleteRecord(item) }
                                 >
