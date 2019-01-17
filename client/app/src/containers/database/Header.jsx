@@ -66,10 +66,10 @@ const Header = () => (
 
                         <FlexContainerRight>
                             { `status: ${isDbPaused ? 'paused' : 'operational'}` }
-                            <DbMenu>
-                                <MenuPopup>
-                                    {isOwner && !isDbPaused
-                                        && [
+                            {(!isDbPaused || isOwner) && (
+                                <DbMenu>
+                                    <MenuPopup>
+                                        {isOwner && !isDbPaused && [
                                             <MenuPopupItem
                                               key='transferOwnership'
                                               icon={ <MenuPopupAccountIcon /> }
@@ -78,10 +78,8 @@ const Header = () => (
                                                 Transfer ownership
                                             </MenuPopupItem>,
                                             <MenuSeparator key='separator0' />,
-                                        ]
-                                    }
-                                    {!isDbPaused
-                                        && (
+                                        ]}
+                                        {!isDbPaused && (
                                             <MenuPopupItem
                                               key='fundDatabase'
                                               icon={ <MenuPopupTransferIcon /> }
@@ -89,10 +87,8 @@ const Header = () => (
                                             >
                                                 Fund database
                                             </MenuPopupItem>
-                                        )
-                                    }
-                                    {isOwner && !isDbPaused
-                                        && [
+                                        )}
+                                        {isOwner && !isDbPaused && [
                                             <MenuPopupItem
                                               key='claimFunds'
                                               icon={ <MenuPopupTransferIcon /> }
@@ -106,12 +102,10 @@ const Header = () => (
                                               icon={ <MenuPopupPauseIcon /> }
                                               onClick={ dbPage.onPauseDb }
                                             >
-                                              Pause database
+                                                Pause database
                                             </MenuPopupItem>,
-                                        ]
-                                    }
-                                    {isDbPaused && isOwner
-                                        && (
+                                        ]}
+                                        {isDbPaused && isOwner && (
                                             <MenuPopupItem
                                               key='unpauseDB'
                                               icon={ <MenuPopupResumeIcon /> }
@@ -119,22 +113,20 @@ const Header = () => (
                                             >
                                                 Resume database
                                             </MenuPopupItem>
-                                        )
-                                    }
-                                    {isDbPaused && isOwner
-                                        && [
+                                        )}
+                                        {isDbPaused && isOwner && [
                                             <MenuSeparator key='separator2' />,
                                             <MenuPopupItem
                                               key='deleteDB'
                                               icon={ <MenuPopupDeleteIcon /> }
                                               onClick={ dbPage.onDeleteDb }
                                             >
-                                              Delete database
+                                                Delete database
                                             </MenuPopupItem>,
-                                        ]
-                                    }
-                                </MenuPopup>
-                            </DbMenu>
+                                        ]}
+                                    </MenuPopup>
+                                </DbMenu>
+                            )}
                         </FlexContainerRight>
                     </FlexContainer>
                 </div>
