@@ -111,7 +111,7 @@ class ViewRegistry extends Container {
             .then((isDbPaused) => {
                 _isDbPaused = isDbPaused;
             })
-            .then(() => cyber.callContractMethod(_databaseContract, 'getRegistryPermissions'))
+            .then(() => cyber.callContractMethod(_databaseContract, 'getDatabasePermissions'))
             .then((permissionGroup) => {
                 _permissionGroup = permissionGroup.toNumber();
             })

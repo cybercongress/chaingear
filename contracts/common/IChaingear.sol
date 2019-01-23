@@ -25,10 +25,12 @@ interface IChaingear {
     function claimDatabaseFunds(uint256, uint256) external;
     function updateCreationFee(uint256) external;
     function getAmountOfBuilders() external view returns (uint256);
-    function getBuilderById(uint256) external view returns(string);
+    function getBuilderByID(uint256) external view returns(string);
     function getDatabaseBuilder(string) external view returns(address, string, string, bool);
     function getDatabasesIDs() external view returns (uint256[]);
     function getDatabaseIDByAddress(address) external view returns (uint256);
+    function getDatabaseSymbolByID(uint256) external view returns (string);
+    function getDatabaseIDBySymbol(string) external view returns (uint256);
     function getDatabase(uint256) external view returns (
         string,
         string,
@@ -44,4 +46,5 @@ interface IChaingear {
     function getSafeAddress() external view returns (address);
     function getNameExist(string) external view returns (bool);
     function getSymbolExist(string) external view returns (bool);
+    function getPayeesCount() external view returns (uint256);
 }

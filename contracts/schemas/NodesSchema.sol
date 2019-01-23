@@ -8,7 +8,7 @@ import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLooku
 
 contract NodesSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     
-    bytes4 constant internal INTERFACE_SCHEMA_ID = 0x153366ed;
+    bytes4 private constant INTERFACE_SCHEMA_EULER_ID = 0x153366ed;
 
     struct Entry {
         string  name;
@@ -25,7 +25,7 @@ contract NodesSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     constructor()
         public
     {
-        _registerInterface(INTERFACE_SCHEMA_ID);
+        _registerInterface(INTERFACE_SCHEMA_EULER_ID);
         database = IDatabase(owner);
     }
     

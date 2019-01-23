@@ -20,8 +20,8 @@ contract DatabaseBuilderV1 is IDatabaseBuilder, SupportsInterfaceWithLookup {
     address private chaingear;    
     address private owner;
     
-    bytes4 constant private INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
-    bytes4 constant private INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
+    bytes4 private constant INTERFACE_CHAINGEAR_EULER_ID = 0x2163c5ed; 
+    bytes4 private constant INTERFACE_DATABASE_BUILDER_EULER_ID = 0xce8bbf93;
 
 	/*
 	*  Constructor
@@ -29,9 +29,8 @@ contract DatabaseBuilderV1 is IDatabaseBuilder, SupportsInterfaceWithLookup {
 
     constructor() public {
         chaingear = address(0);
-        owner = msg.sender;
-        
-        _registerInterface(INTERFACE_DATABASE_BUILDER_ID);
+        owner = msg.sender;    
+        _registerInterface(INTERFACE_DATABASE_BUILDER_EULER_ID);
     }
     
     /*
@@ -54,14 +53,13 @@ contract DatabaseBuilderV1 is IDatabaseBuilder, SupportsInterfaceWithLookup {
         returns (IDatabase)
     {
         require(msg.sender == chaingear);
-
+        
         IDatabase databaseContract = new DatabaseV1(
             _benefitiaries,
             _shares,
             _name,
             _symbol
-        );
-        
+        );        
         databaseContract.transferOwnership(chaingear);
 
         return databaseContract;
@@ -75,8 +73,9 @@ contract DatabaseBuilderV1 is IDatabaseBuilder, SupportsInterfaceWithLookup {
         external
     {
         require(msg.sender == owner);
+        
         SupportsInterfaceWithLookup support = SupportsInterfaceWithLookup(_chaingear);
-        require(support.supportsInterface(INTERFACE_CHAINGEAR_ID));
+        require(support.supportsInterface(INTERFACE_CHAINGEAR_EULER_ID));
         chaingear = _chaingear;
     }
     

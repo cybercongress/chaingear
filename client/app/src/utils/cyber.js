@@ -570,15 +570,15 @@ export const getBeneficiaries = dbContract => callContractMethod(dbContract, 'ge
     .then(benIndexArray => benIndexArray.map((benIndex) => {
         const ben = {};
 
-        return callContractMethod(dbContract, 'payees', benIndex)
+        return callContractMethod(dbContract, 'getPayee', benIndex)
             .then((benAddress) => {
                 ben.address = benAddress;
             })
-            .then(() => callContractMethod(dbContract, 'shares', ben.address))
+            .then(() => callContractMethod(dbContract, 'getShares', ben.address))
             .then((benStake) => {
                 ben.stake = benStake.toNumber();
             })
-            .then(() => callContractMethod(dbContract, 'released', ben.address))
+            .then(() => callContractMethod(dbContract, 'getReleased', ben.address))
             .then((benReleased) => {
                 ben.released = benReleased.toNumber();
             })

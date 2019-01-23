@@ -56,7 +56,7 @@ contract("DatabaseV1", (accounts) => {
         builder = await DatabaseBuilderV1.new({ from: CHAINGEAR_OWNER });
         
         chaingear = await Chaingear.new(
-            [], [], { from: CHAINGEAR_OWNER }
+            [accounts[8]], [100], { from: CHAINGEAR_OWNER }
         );
         
         await builder.setChaingearAddress(
@@ -89,10 +89,9 @@ contract("DatabaseV1", (accounts) => {
     })
     
     describe("when deployed", () => {
-        it("should accept payments", async () => {
+        it("should not accept payments", async () => {
             let payment = toWei('1', 'ether');
-            await database.sendTransaction({ value: payment, from: UNKNOWN });
-            expect(await web3.eth.getBalance(database.address)).to.eq.BN(payment)
+            await database.sendTransaction({ value: payment, from: UNKNOWN }).should.be.rejected;
         });
 
         it("name should equal", async() => {
@@ -121,13 +120,13 @@ contract("DatabaseV1", (accounts) => {
 
         it("should have payees", async () => {
             for (var i = 0; i < DATABASE_BENEFICIARIES.length; i++) {
-                (await database.payees(i)).should.be.equal(DATABASE_BENEFICIARIES[i]);
+                (await database.getPayee(i)).should.be.equal(DATABASE_BENEFICIARIES[i]);
             }
         });
 
         it("payess should have shares", async () => {
             for (var i = 0; i < DATABASE_BENEFICIARIES.length; i++) {
-                expect(await database.shares(DATABASE_BENEFICIARIES[i])).to.eq.BN(DATABASE_BENEFICIARIES_SHARES[i]);
+                expect(await database.getShares(DATABASE_BENEFICIARIES[i])).to.eq.BN(DATABASE_BENEFICIARIES_SHARES[i]);
             }
         });
 
@@ -135,15 +134,9 @@ contract("DatabaseV1", (accounts) => {
             expect(await database.totalSupply()).to.eq.BN(toBN('0'));
         });
 
-        it("shoud be not paused", async () => {
-            (await database.getPaused()).should.be.equal(false);
-        });
-
         it("should allow admin to update creation fee when paused", async () => {
-            await database.pause({ from: DATABASE_ADMIN });
             await database.updateEntryCreationFee(CREATION_FEE, { from: DATABASE_ADMIN });
             expect(await database.getEntryCreationFee()).to.eq.BN(CREATION_FEE);
-            await database.unpause({ from: DATABASE_ADMIN });
         });
     })
     
@@ -164,6 +157,7 @@ contract("DatabaseV1", (accounts) => {
             await database.initializeDatabase("", Schema.bytecode, { from: DATABASE_ADMIN }).should.be.rejected;
             (await database.getEntriesStorage()).should.be.not.equal(ZERO_ADDRESS);
             storage = await Schema.at(await database.getEntriesStorage());
+            await database.unpause({ from: DATABASE_ADMIN });
         });
     })
     
@@ -209,7 +203,7 @@ contract("DatabaseV1", (accounts) => {
                     from: DATABASE_ADMIN
                 }
             ).should.be.fulfilled;
-            (await database.getRegistryPermissions()).toNumber().should.be.equal(CreateEntryPermissionGroup.Whitelist);
+            (await database.getDatabasePermissions()).toNumber().should.be.equal(CreateEntryPermissionGroup.Whitelist);
             (await database.checkWhitelisting(UNKNOWN)).should.be.equal(false);
             await database.addToWhitelist(UNKNOWN, { from: DATABASE_ADMIN }).should.be.fulfilled;
             (await database.checkWhitelisting(UNKNOWN)).should.be.equal(true);
@@ -236,7 +230,7 @@ contract("DatabaseV1", (accounts) => {
                 }
             ).should.be.fulfilled;
             await database.unpause({ from: DATABASE_ADMIN });
-            (await database.getRegistryPermissions()).toNumber().should.be.equal(CreateEntryPermissionGroup.AllUsers);
+            (await database.getDatabasePermissions()).toNumber().should.be.equal(CreateEntryPermissionGroup.AllUsers);
         });
         
         it("should allow unknown to add entries", async () => {

@@ -19,16 +19,15 @@ module.exports = async function(deployer, network, accounts) {
     let databaseMeta;
     let hash; 
     let database;
-
-    let BENEFICIARIES = [];
-    let SHARES = [];
+    let BENEFICIARIES = ["0x0000000000000000000000000000000000000000"];
+    let SHARES = [100];
     let BUILDING_FEE = web3.utils.toWei('1', 'finney');  
 
     const builder = await DatabaseBuilderV1.deployed();
     const chaingear = await deployer.deploy(
         Chaingear,
-        BENEFICIARIES,
-        SHARES
+        ["0x8D1D026637D323f72c80D0E6e322Bd760fc14BeE"],
+        [100]
     );
     await builder.setChaingearAddress(chaingear.address);
     hash = await ipfs.files.add(Buffer.from(JSON.stringify(DatabaseV1.abi)));

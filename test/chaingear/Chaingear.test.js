@@ -91,13 +91,13 @@ contract("Chaingear", (accounts) => {
         
         it("should have payees", async () => {
             for (var i = 0; i < CHAINGEAR_BENEFICIARIES.length; i++) {
-                (await chaingear.payees(i)).should.be.equal(CHAINGEAR_BENEFICIARIES[i]);
+                (await chaingear.getPayee(i)).should.be.equal(CHAINGEAR_BENEFICIARIES[i]);
             }
         });
         
         it("payess should have shares", async () => {
             for (var i = 0; i < CHAINGEAR_BENEFICIARIES_SHARES.length; i++) {
-                expect(await chaingear.shares(CHAINGEAR_BENEFICIARIES[i])).to.eq.BN(CHAINGEAR_BENEFICIARIES_SHARES[i]);
+                expect(await chaingear.getShares(CHAINGEAR_BENEFICIARIES[i])).to.eq.BN(CHAINGEAR_BENEFICIARIES_SHARES[i]);
             }
         });
         
@@ -133,7 +133,7 @@ contract("Chaingear", (accounts) => {
             ).should.be.fulfilled;
             
             expect(await chaingear.getAmountOfBuilders()).to.eq.BN(toBN('1'));
-            (await chaingear.getBuilderById(0)).should.be.equal(DATABASE_BUILDER_1_VERSION);
+            (await chaingear.getBuilderByID(0)).should.be.equal(DATABASE_BUILDER_1_VERSION);
             
             let databaseBuilder = await chaingear.getDatabaseBuilder(DATABASE_BUILDER_1_VERSION);
             (databaseBuilder[0]).should.be.equal(builder.address);
@@ -361,17 +361,34 @@ contract("Chaingear", (accounts) => {
             await chaingear.transferFrom(UNKNOWN, RANDOM_CREATOR_2, 0).should.be.rejected;
         });
         
+        it("should not allow database's admin transfer adminship when there is balance on database", async () => {
+            let databaseMeta = await chaingear.getDatabase(0);
+            let database = await DatabaseV1.at(databaseMeta[2]);
+            await database.unpause({ from: RANDOM_CREATOR_1 });
+            await database.sendTransaction({ value: toWei('1', 'ether'), from: UNKNOWN });
+            await chaingear.transferFrom(RANDOM_CREATOR_1, RANDOM_CREATOR_2, 0, 
+                {
+                    from: RANDOM_CREATOR_1
+                }
+            ).should.be.rejected;
+        });
+        
         it("should allow database admin transfer adminship when not paused", async () => {
+            let databaseMeta = await chaingear.getDatabase(0);
+            let database = await DatabaseV1.at(databaseMeta[2]);
+            await database.release(RANDOM_CREATOR_1, { from: RANDOM_CREATOR_1 }).should.be.fulfilled;
+            expect(await web3.eth.getBalance(database.address)).to.eq.BN(0)
+            await database.pause({ from: RANDOM_CREATOR_1 });
+            
             await chaingear.transferFrom(RANDOM_CREATOR_1, RANDOM_CREATOR_2, 0, 
                 {
                     from: RANDOM_CREATOR_1
                 }
             ).should.be.fulfilled;
-            let databaseMeta = await chaingear.getDatabase(0);
-            (databaseMeta[5]).should.be.equal(RANDOM_CREATOR_2);
             
-            let database = await DatabaseV1.at(databaseMeta[2]);
-            (await database.getAdmin()).should.be.equal(RANDOM_CREATOR_2);
+            // databaseMeta = await chaingear.getDatabase(0);
+            // (databaseMeta[5]).should.be.equal(RANDOM_CREATOR_2);
+            // (await database.getAdmin()).should.be.equal(RANDOM_CREATOR_2);
         });
     })
 
@@ -388,7 +405,7 @@ contract("Chaingear", (accounts) => {
         it("should allow owner delete his database", async () => {
             let databaseMeta = await chaingear.getDatabase(0);
             let database = await DatabaseV1.at(databaseMeta[2]);
-            await database.pause({ from: RANDOM_CREATOR_2 }).should.be.fulfilled;
+            (await database.getPaused()).should.be.equal(true);
             await chaingear.deleteDatabase(0,
                 {
                     from: RANDOM_CREATOR_2

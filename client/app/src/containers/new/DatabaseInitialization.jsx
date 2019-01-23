@@ -100,7 +100,7 @@ class NewDatabase extends Component {
                 const buildersPromises = [];
 
                 for (let index = 0; index < buildersCountNumber; index += 1) {
-                    const builderPromise = callContractMethod(chaingerContract, 'getBuilderById', index)
+                    const builderPromise = callContractMethod(chaingerContract, 'getBuilderByID', index)
                         .then(builderVersion => Promise.all([
                             callContractMethod(chaingerContract, 'getDatabaseBuilder', builderVersion),
                             builderVersion,

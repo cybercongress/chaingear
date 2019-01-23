@@ -5,13 +5,13 @@
 		"mixedcase": ["error"],
 		"blank-lines": ["error"],
 		"quotes": ["error", "double"],
-		"no-empty-blocks": "off",
+		"no-empty-blocks": "error",
 		"indentation": ["error", 4],
 		"max-len": ["warning", 120],
 		"no-constant": ["error"],
 		"whitespace": ["off"],
 		"security/enforce-explicit-visibility": ["error"],
-		"security/no-block-members": ["off"],
-		"security/no-inline-assembly": ["off"]
+		"security/no-block-members": ["warning"],
+		"security/no-inline-assembly": ["warning"]
 	}
 }

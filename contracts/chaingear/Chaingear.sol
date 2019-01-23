@@ -2,7 +2,6 @@ pragma solidity 0.4.25;
 
 import "openzeppelin-solidity/contracts/introspection/SupportsInterfaceWithLookup.sol";
 import "openzeppelin-solidity/contracts/token/ERC721/ERC721Token.sol";
-import "openzeppelin-solidity/contracts/payment/SplitPayment.sol";
 import "openzeppelin-solidity/contracts/lifecycle/Pausable.sol";
 import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
@@ -12,6 +11,7 @@ import "../common/IDatabaseBuilder.sol";
 import "../common/IDatabase.sol";
 import "../common/Safe.sol";
 import "../common/IChaingear.sol";
+import "./FeeSplitterChaingear.sol";
 import "../common/ERC721MetadataValidation.sol";
 
 
@@ -20,7 +20,7 @@ import "../common/ERC721MetadataValidation.sol";
 * @author cyber•Congress, Valery litvin (@litvintech)
 * @notice not audited, not recommend to use in mainnet
 */
-contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable, SplitPayment, ERC721Token {
+contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable, FeeSplitterChaingear, ERC721Token {
 
     using SafeMath for uint256;
     using ERC721MetadataValidation for string;
@@ -62,61 +62,58 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
     Safe private chaingearSafe;
     uint256 private databaseCreationFeeWei = 1 finney;
 
-    string constant private CHAINGEAR_DESCRIPTION = "The novel Ethereum database framework";
-    bytes4 constant private INTERFACE_CHAINGEAR_ID = 0x2163c5ed; 
-    bytes4 constant private INTERFACE_DATABASE_ID = 0xfdb63525;
-    bytes4 constant private INTERFACE_DATABASE_BUILDER_ID = 0xce8bbf93;
+    string private constant CHAINGEAR_DESCRIPTION = "The novel Ethereum database framework";
+    bytes4 private constant INTERFACE_CHAINGEAR_EULER_ID = 0x2163c5ed; 
+    bytes4 private constant INTERFACE_DATABASE_V1_EULER_ID = 0xfdb63525;
+    bytes4 private constant INTERFACE_DATABASE_BUILDER_EULER_ID = 0xce8bbf93;
+    
     /*
     *  Events
     */
-
+    event DatabaseBuilderAdded(
+        string version,
+        IDatabaseBuilder builderAddress,
+        string linkToABI,
+        string description
+    );
+    event DatabaseDescriptionUpdated(string version, string description);
+    event DatabaseBuilderDepricated(string version);
     event DatabaseCreated(
-        string  name,
+        string name,
         address databaseAddress,
         address creatorAddress,
         uint256 databaseChaingearID
     );
-    
     event DatabaseDeleted(
-        string  name,
+        string name,
         address databaseAddress,
         address creatorAddress,
         uint256 databaseChaingearID
     );
-
     event DatabaseFunded(
         uint256 databaseID,
         address sender,
         uint256 amount
     );
-
     event DatabaseFundsClaimed(
         uint256 databaseID,
         address claimer,
         uint256 amount
-    );
+    );    
+    event CreationFeeUpdated(uint256 newFee);
 
     /*
     *  Constructor
     */
 
-    constructor(
-        address[] _beneficiaries,
-        uint256[] _shares
-    )
+    constructor(address[] _beneficiaries, uint256[] _shares)
         public
         ERC721Token ("CHAINGEAR", "CHG")
-        SplitPayment (_beneficiaries, _shares)
+        FeeSplitterChaingear (_beneficiaries, _shares)
     {
         chaingearSafe = new Safe();
-        _registerInterface(INTERFACE_CHAINGEAR_ID);
+        _registerInterface(INTERFACE_CHAINGEAR_EULER_ID);
     }
-
-    /*
-    *  Fallback
-    */
-
-    function() external payable {}
 
     /*
     *  Modifiers
@@ -144,7 +141,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         require(buildersVersion[_version].builderAddress == address(0));
 
         SupportsInterfaceWithLookup support = SupportsInterfaceWithLookup(_builderAddress);
-        require(support.supportsInterface(INTERFACE_DATABASE_BUILDER_ID));
+        require(support.supportsInterface(INTERFACE_DATABASE_BUILDER_EULER_ID));
 
         buildersVersion[_version] = (DatabaseBuilder(
         {
@@ -155,29 +152,33 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         }));
         buildersVersionIndex[amountOfBuilders] = _version;
         amountOfBuilders = amountOfBuilders.add(1);
+        
+        emit DatabaseBuilderAdded(
+            _version,
+            _builderAddress,
+            _linkToABI,
+            _description
+        );
     }
 
-    function updateDatabaseBuilderDescription(
-        string _version,
-        string _description
-    )
+    function updateDatabaseBuilderDescription(string _version, string _description)
         external
         onlyOwner
         whenNotPaused
     {
         require(buildersVersion[_version].builderAddress != address(0));
-        buildersVersion[_version].description = _description;
+        buildersVersion[_version].description = _description;    
+        emit DatabaseDescriptionUpdated(_version, _description);
     }
     
-    function depricateDatabaseBuilder(
-        string _version
-    )
+    function depricateDatabaseBuilder(string _version)
         external
         onlyOwner
         whenPaused
     {
         require(buildersVersion[_version].builderAddress != address(0));
         buildersVersion[_version].operational = false;
+        emit DatabaseBuilderDepricated(_version);
     }
 
     function createDatabase(
@@ -200,7 +201,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         require(databasesNamesIndex[_name] == false);
         require(databasesSymbolsIndex[_symbol] == false);
 
-        return deployDatabase(
+        return _deployDatabase(
             _version,
             _beneficiaries,
             _shares,
@@ -235,7 +236,12 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         super._burn(msg.sender, _databaseID);
         database.transferOwnership(msg.sender);
         
-        emit DatabaseDeleted(databaseName, database, msg.sender, _databaseID);
+        emit DatabaseDeleted(
+            databaseName,
+            database,
+            msg.sender,
+            _databaseID
+        );
     }
 
     function fundDatabase(uint256 _databaseID)
@@ -278,6 +284,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         whenPaused
     {
         databaseCreationFeeWei = _newFee;
+        emit CreationFeeUpdated(_newFee);
     }
 
     /*
@@ -292,7 +299,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         return amountOfBuilders;
     }
 
-    function getBuilderById(uint256 _id)
+    function getBuilderByID(uint256 _id)
         external
         view
         returns(string)
@@ -441,14 +448,6 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         return databasesSymbolsIndex[_symbol];
     }
 
-    function getPayeesCount()
-        external
-        view
-        returns (uint256)
-    {
-        return payees.length;
-    }
-
     /*
     *  Public functions
     */
@@ -461,10 +460,14 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         public
         whenNotPaused
     {
-        super.transferFrom(_from, _to, _tokenId);
-
         uint256 databaseIndex = allTokensIndex[_tokenId];
+        IDatabase database = databases[databaseIndex].databaseContract;
+        require(address(database).balance == 0);
+        require(database.getPaused() == true);
+        super.transferFrom(_from, _to, _tokenId);
+        
         IDatabase databaseAddress = databases[databaseIndex].databaseContract;
+        databaseAddress.deletePayees();
         databaseAddress.transferAdminRights(_to);
     }
 
@@ -476,7 +479,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         public
         whenNotPaused
     {
-        super.safeTransferFrom(
+        safeTransferFrom(
             _from,
             _to,
             _tokenId,
@@ -508,7 +511,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
     *  Private functions
     */
 
-    function deployDatabase(
+    function _deployDatabase(
         string    _version,
         address[] _beneficiaries,
         uint256[] _shares,
@@ -529,7 +532,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         address databaseAddress = address(databaseContract);
 
         SupportsInterfaceWithLookup support = SupportsInterfaceWithLookup(databaseAddress);
-        require(support.supportsInterface(INTERFACE_DATABASE_ID));
+        require(support.supportsInterface(INTERFACE_DATABASE_V1_EULER_ID));
         require(support.supportsInterface(InterfaceId_ERC721));
         require(support.supportsInterface(InterfaceId_ERC721Metadata));
         require(support.supportsInterface(InterfaceId_ERC721Enumerable));
@@ -565,7 +568,6 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         );
 
         databaseContract.transferAdminRights(msg.sender);
-
         return (databaseAddress, newTokenID);
     }
 

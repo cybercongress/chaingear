@@ -10,6 +10,7 @@ import "../common/IChaingear.sol";
 import "../common/ISchema.sol";
 import "../common/IDatabase.sol";
 import "../common/Safe.sol";
+import "./FeeSplitterDatabase.sol";
 import "./DatabasePermissionControl.sol";
 
 
@@ -18,7 +19,7 @@ import "./DatabasePermissionControl.sol";
 * @author cyber•Congress, Valery litvin (@litvintech)
 * @notice not audited, not recommend to use in mainnet
 */
-contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsInterfaceWithLookup, SplitPayment, ERC721Token {
+contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsInterfaceWithLookup, FeeSplitterDatabase, ERC721Token {
 
     using SafeMath for uint256;
 
@@ -26,19 +27,20 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     *  Storage
     */
     
-    bytes4 constant private INTERFACE_SCHEMA_ID = 0x153366ed;
-    bytes4 constant private INTERFACE_DATABASE_ID = 0xfdb63525;
+    bytes4 private constant INTERFACE_SCHEMA_EULER_ID = 0x153366ed;
+    bytes4 private constant INTERFACE_DATABASE_V1_EULER_ID = 0xfdb63525;
 
     // @dev Metadata of entry, holds ownership data and funding info
     struct EntryMeta {
-        address     creator;
-        uint256     createdAt;
-        uint256     lastUpdateTime;
-        uint256     currentWei;
-        uint256     accumulatedWei;
+        address creator;
+        uint256 createdAt;
+        uint256 lastUpdateTime;
+        uint256 currentWei;
+        uint256 accumulatedWei;
     }
 
     EntryMeta[] private entriesMeta;
+    Safe private databaseSafe;
 
     uint256 private headTokenID = 0;
     uint256 private entryCreationFeeWei = 0;
@@ -47,9 +49,6 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     string private databaseDescription;
     
     string private schemaDefinition;
-    
-    Safe private databaseSafe;
-
     ISchema private entriesStorage;
     bool private databaseInitStatus = false;
 
@@ -71,40 +70,24 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     *  Events
     */
 
-    event EntryCreated(
-        uint256 entryID,
-        address creator
-    );
-
-    event EntryDeleted(
-        uint256 entryID,
-        address owner
-    );
-
+    event EntryCreated(uint256 entryID, address creator);
+    event EntryDeleted(uint256 entryID, address owner);
     event EntryFunded(
         uint256 entryID,
         address funder,
         uint256 amount
     );
-
     event EntryFundsClaimed(
         uint256 entryID,
         address claimer,
         uint256 amount
     );
-
-    event EntryCreationFeeUpdated(
-        uint256 newFees
-    );
-
-    event DescriptionUpdated(
-        string newDescription
-    );
-
+    event EntryCreationFeeUpdated(uint256 newFees);
+    event DescriptionUpdated(string newDescription);
     event DatabaseInitialized();
-    
-    event TagUpdated(uint8, bytes32);
-    event TagDeleted(uint8);
+    event TagAdded(bytes32 tag);
+    event TagUpdated(uint8 index, bytes32 tag);
+    event TagDeleted(uint8 index);
 
     /*
     *  Constructor
@@ -117,15 +100,13 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         string _symbol
     )
         ERC721Token (_name, _symbol)
-        SplitPayment (_beneficiaries, _shares)
+        FeeSplitterDatabase (_beneficiaries, _shares)
         public
         payable
     {
-        _registerInterface(INTERFACE_DATABASE_ID);
+        _registerInterface(INTERFACE_DATABASE_V1_EULER_ID);
         databaseSafe = new Safe();
     }
-
-    function() external payable {}
 
     /*
     *  External functions
@@ -251,7 +232,8 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         onlyAdmin
     {
         require(databaseTags.length < 16);
-        databaseTags.push(_tag);
+        databaseTags.push(_tag);    
+        emit TagAdded(_tag);
     }
 
     function updateDatabaseTag(uint8 _index, bytes32 _tag)
@@ -259,9 +241,7 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         onlyAdmin
     {
         require(_index < databaseTags.length);
-
-        databaseTags[_index] = _tag;
-        
+        databaseTags[_index] = _tag;    
         emit TagUpdated(_index, _tag);
     }
 
@@ -409,14 +389,6 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         return databaseInitStatus;
     }
 
-    function getPayeesCount()
-        external
-        view
-        returns (uint256)
-    {
-        return payees.length;
-    }
-
     /**
     *  Public functions
     */
@@ -424,6 +396,7 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     function initializeDatabase(string _schemaDefinition, bytes _schemaBytecode)
         public
         onlyAdmin
+        whenPaused
         returns (address)
     {
         require(databaseInitStatus == false);
@@ -436,7 +409,7 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         }
 
         require(deployedAddress != address(0));
-        require(SupportsInterfaceWithLookup(deployedAddress).supportsInterface(INTERFACE_SCHEMA_ID));
+        require(SupportsInterfaceWithLookup(deployedAddress).supportsInterface(INTERFACE_SCHEMA_EULER_ID));
         entriesStorage = ISchema(deployedAddress);
     
         schemaDefinition = _schemaDefinition;
@@ -467,7 +440,7 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         databaseInitialized
         whenNotPaused
     {
-        super.safeTransferFrom(
+        safeTransferFrom(
             _from,
             _to,
             _tokenId,
