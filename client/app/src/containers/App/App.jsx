@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {checkNetwork, getNetworkStr} from '../../utils/cyber';
 
-import './App.scss';
+import './App.css';
 
 class App extends Component {
     constructor(props) {
