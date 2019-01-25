@@ -1,7 +1,5 @@
 pragma solidity 0.4.25;
 
-import "../databases/DatabasePermissionControl.sol";
-
 interface IDatabase {
     
     function createEntry() external payable returns (uint256);

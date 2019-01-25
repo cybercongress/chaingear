@@ -22,13 +22,19 @@ interface IDatabase {
     function addDatabaseTag(bytes32) external;
     function updateDatabaseTag(uint8, bytes32) external;
     function removeDatabaseTag(uint8) external;
-    function readEntryMeta(uint256) external view returns (address, address, uint256, uint256, uint256, uint256);
+    function readEntryMeta(uint256) external view returns (
+        address,
+        address,
+        uint256,
+        uint256,
+        uint256,
+        uint256
+    );
     function getChaingearID() external view returns (uint256);
     function getEntriesIDs() external view returns (uint256[]);
     function getIndexByID(uint256) external view returns (uint256);
     function getEntryCreationFee() external view returns (uint256);
     function getEntriesStorage() external view returns (address);
-    function getInterfaceEntriesContract() external view returns (string);
     function getSchemaDefinition() external view returns (string);
     function getDatabaseBalance() external view returns (uint256);
     function getDatabaseDescription() external view returns (string);
@@ -36,9 +42,13 @@ interface IDatabase {
     function getDatabaseSafe() external view returns (address);
     function getSafeBalance() external view returns (uint256);
     function getDatabaseInitStatus() external view returns (bool);
+    function pause() external;
+    function unpause() external;
     function transferAdminRights(address) external;
-    function transferOwnership(address) external;
     function getAdmin() external view returns (address);
+    function getPaused() external view returns (bool);
+    function transferOwnership(address) external;
+    function deletePayees() external;
 }
 
 // File: openzeppelin-solidity/contracts/ownership/Ownable.sol
