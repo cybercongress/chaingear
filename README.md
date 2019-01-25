@@ -3,9 +3,9 @@
   alt="chaingear" width="470"></a>
 </h1>
 
-<h3 align="center">The novel Ethereum database framework</h3>
+<h3 align="center">The consensus computer driven database framework</h3>
 <div align="center">
-  Chaingear is an Ethereum ERC721's database Dapp.
+  Current state: 0.1 Euler Chaingear's release for EVM with paper.
 </div>
 
 <br />
@@ -13,13 +13,9 @@
 <div align="center">
   <img src="https://img.shields.io/badge/platform-Ethereum-brightgreen.svg?style=flat-square" alt="Ethereum" />
   <img src="https://img.shields.io/badge/token-ERC721-ff69b4.svg?style=flat-square" alt="Token ERC721" />
-  <img src="https://img.shields.io/badge/contributions-welcome-orange.svg?style=flat-square" alt="Contributions Welcome" />
 </div>
 <div align="center">
-  <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="MIT License" />
-  <img href="https://circleci.com/gh/cybercongress/chaingear/tree/master" src="https://circleci.com/gh/cybercongress/chaingear/tree/master.svg?style=svg"
-  alt="CircleCI"
-  />
+  <img src="https://img.shields.io/badge/contributions-welcome-orange.svg?style=flat-square" alt="Contributions Welcome" />
   <a href="https://t.me/joinchat/Bze3dEPj5YrvZ3REnMrfPg"> <img src="https://img.shields.io/badge/Join%20Us%20On-Telegram-2599D2.svg?style=flat-square" alt="Join Us On Telegram" /></a>
   <img src="https://img.shields.io/badge/Shipping_faster_with-ZenHub-5e60ba.svg?style=flat-square" alt="Suprecharged By ZenHub" />
 </div>
@@ -32,32 +28,37 @@
   </a>
 </div>
 
-# Overview
+### Principles of Chaingear
 
-This project allows you to create your own Database of defined by you entries schema on Ethereum blockchain.
-Entry type can be defined during creation, so you can put any custom logic you want (e.g.: validation, entry-level permission control) into the Entry. Entries are tokenized as NFTs.
+Chaingear is a set of smart contracts which operating in consensus computer with following principles:
 
-You can create your own database in the Chaingear's Metadatabase, which is a single point of contol of all other databases. Databases on chaingear level are tokenized as NFTs. Chaingear is most expensive database on Ethereum, so you should pay for the database and entry creation.
+0. Databases creates by user createDatabase call for Chaingear witch mints database-linked NFT token for user and deploys database with support of CRUD+TF operations. Token controls adminship of database.
+1. Admin initializes database with given table/tables data schema.
+2. Database admin may set user permissions for entry creation and fee for adding.
+3. Each entry in database linked to NFT token (primary key) which grants a set of rights for token-entry operation as UPDATE/DELETE and TRANSFER/FUND. 
+4. Chaingear for given platform acts as Consensus Computer Driven Database as a Service
+5. Application specific business logic should be available to operate on top of database/databases.
 
-## Features
+### Chaingear on EVM, 0.1 Euler PoC
 
-#### Chaingear
+### Chaingear
+- Chaingear is database of database which allow deploy new databases from there and creates an associated token for adminship.
+- Chaingear allow deploys different types of databases with defined functionality with connects with databases builders.
+- Database Builder is a fabric of databases of given type.
+- Databases may have their unique code base as an extension to the basic database.
+- Database-token may be transferred, sold/traded alongside with their right adminship.
+- Chaingear have fees for database creation.
+- Chaingear have benefitiaries which may claim collected fees proportional to their shares.
 
-1. Metadatabase of **Databases**; each one associated with ERC721 token
-2. Fee-based Database creation
-3. Creating Databases with different functionality
-4. Token-based ownership/administration for Databases
-5. Databases are funded with ETH
+### Database
+- A database is a smart contract which defines NFT tokens linked to entries. User creates database with given name and token symbol for entries.
+- After deploy database admin initializes database with data schema table/tables and this allows them or/and other users to create a systematic collection of data, where rights to operations with entry defined by entry-token ownership. 
+- Entries data lives in Schema contract.
+- Each entry may be publicly funded, an entry-token owner may claim collected funds.
+- Database admin may set policy for entry creation: {OnlyAdmin, Whitelist, AllUsers} and fee for the entry-token creation and next claim fees.
+- Also admin may set multiple database's beneficiaries which may claim collected fees proportional to their shares.
 
-#### Custom database
-
-1. Custom data structure for Database (EntryCore)
-2. Each Entry is a ERC721 token
-3. Fee-based Entry creation
-4. Token-based ownership Entry management
-5. Entry creation policies (Administrator, Whitelist, AllUsers)
-
-#### Chaingear UI (browser/stand-alone web3 DApp)
+#### Chaingear UI (web3 DApp for EVM's Chaingear)
 
 1. Web3/Metamask/Truffle/IPFS based
 2. Full Chaingear control interface
@@ -100,4 +101,4 @@ Originally created by [cyber•Congress](https://twitter.com/cyber_devs)
 
 ## License
 
-[MIT](https://opensource.org/licenses/MIT)
+[Cyber License](./LICENCE)
