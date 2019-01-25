@@ -34,16 +34,10 @@ interface IDatabase {
     function getDatabaseSafe() external view returns (address);
     function getSafeBalance() external view returns (uint256);
     function getDatabaseInitStatus() external view returns (bool);
-    function getPayeesCount() external view returns (uint256);
     function pause() external;
     function unpause() external;
     function transferAdminRights(address) external;
-    // function updateCreateEntryPermissionGroup(CreateEntryPermissionGroup) external;
-    function addToWhitelist(address) external;
-    function removeFromWhitelist(address) external;
     function getAdmin() external view returns (address);
-    // function getDatabasePermissions() external view returns (CreateEntryPermissionGroup);
-    function checkWhitelisting(address) external view returns (bool);
     function getPaused() external view returns (bool);
     function transferOwnership(address) external;
     function deletePayees() external;

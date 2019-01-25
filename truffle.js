@@ -1,7 +1,9 @@
 const { toWei } = require('ethjs-unit');
 const HDWalletProvider = require('truffle-hdwallet-provider');
 
-const infuraConfig = require('./infura_deploy.json');
+const infuraConfigKovan = require('./infura_deploy_kovan.json');
+const infuraConfigRinkeby = require('./infura_deploy_rinkeby.json');
+const infuraConfigMainnet = require('./infura_deploy_mainnet.json');
 
 module.exports = {
     
@@ -29,12 +31,36 @@ module.exports = {
         
         kovan: {
             provider() {
-              return new HDWalletProvider(infuraConfig.privateKey, infuraConfig.infuraUrl);
+              return new HDWalletProvider(infuraConfigKovan.privateKey, infuraConfigKovan.infuraUrl);
             },
-            from: infuraConfig.fromAddress,
+            from: infuraConfigKovan.fromAddress,
             network_id: 42,
             gasPrice: toWei(10, 'gwei').toNumber(),
-            gas: toWei(7.9, 'mwei').toNumber(),
+            gas: toWei(7, 'mwei').toNumber(),
+            confirmations: 2,
+            skipDryRun: true
+        },
+        
+        rinkeby: {
+            provider() {
+              return new HDWalletProvider(infuraConfigRinkeby.privateKey, infuraConfigRinkeby.infuraUrl);
+            },
+            from: infuraConfigRinkeby.fromAddress,
+            network_id: 4,
+            gasPrice: toWei(10, 'gwei').toNumber(),
+            gas: toWei(7, 'mwei').toNumber(),
+            confirmations: 2,
+            skipDryRun: true
+        },
+        
+        mainnet: {
+            provider() {
+              return new HDWalletProvider(infuraConfigMainnet.privateKey, infuraConfigMainnet.infuraUrl);
+            },
+            from: infuraConfigMainnet.fromAddress,
+            network_id: 0,
+            gasPrice: toWei(10, 'gwei').toNumber(),
+            gas: toWei(7, 'mwei').toNumber(),
             confirmations: 2,
             skipDryRun: true
         },
@@ -44,6 +70,6 @@ module.exports = {
             port: 8545,
             network_id: "*",
             websockets: true
-        },
+        }
     }
 };

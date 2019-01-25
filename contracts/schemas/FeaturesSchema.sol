@@ -36,10 +36,10 @@ contract FeaturesSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     {
         Entry memory m = (Entry(
         {
-            name:           "",
-            description:    "",
-            github:         "",
-            maintainer:     ""
+            name: "",
+            description: "",
+            github: "",
+            maintainer: ""
         }));
 
         entries.push(m);
@@ -66,10 +66,10 @@ contract FeaturesSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
 
     function updateEntry(
         uint256 _entryID,
-        string  _name,
-        string  _description,
-        string  _github,
-        string  _maintainer
+        string _name,
+        string _description,
+        string _github,
+        string _maintainer
     )
         external
     {
@@ -79,10 +79,10 @@ contract FeaturesSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
             
         Entry memory m = (Entry(
         {
-            name:        _name,
+            name: _name,
             description: _description,
-            github:      _github,
-            maintainer:  _maintainer
+            github: _github,
+            maintainer: _maintainer
         }));
         entries[entryIndex] = m;
     }

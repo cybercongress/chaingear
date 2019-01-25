@@ -37,11 +37,11 @@ contract AppsSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     {
         Entry memory m = (Entry(
         {
-            name:       "",
-            manifest:   "",
-            extension:  "",
-            content:    "",
-            logo:       ""
+            name: "",
+            manifest: "",
+            extension: "",
+            content: "",
+            logo: ""
         }));
 
         entries.push(m);
@@ -70,11 +70,11 @@ contract AppsSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
 
     function updateEntry(
         uint256 _entryID,
-        string  _name,
-        string  _manifest,
-        string  _extension,
-        string  _content,
-        string  _logo
+        string _name,
+        string _manifest,
+        string _extension,
+        string _content,
+        string _logo
     )
         external
     {
@@ -84,11 +84,11 @@ contract AppsSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
             
         Entry memory m = (Entry(
         {
-            name:       _name,
-            manifest:   _manifest,
-            extension:  _extension,
-            content:    _content,
-            logo:       _logo
+            name: _name,
+            manifest: _manifest,
+            extension: _extension,
+            content: _content,
+            logo: _logo
         }));
         entries[entryIndex] = m;
     }

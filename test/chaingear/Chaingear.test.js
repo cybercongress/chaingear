@@ -52,7 +52,7 @@ contract("Chaingear", (accounts) => {
         chaingear = await Chaingear.new(
             CHAINGEAR_BENEFICIARIES, CHAINGEAR_BENEFICIARIES_SHARES, { from: CHAINGEAR_OWNER }
         );
-
+        
         await builder.setChaingearAddress(
             chaingear.address, { from: CHAINGEAR_OWNER }
         );    
@@ -210,6 +210,7 @@ contract("Chaingear", (accounts) => {
             expect((await chaingear.getDatabasesIDs())[0]).to.eq.BN(toBN('0'));
             (await chaingear.getNameExist(DATABASE_NAME_0)).should.be.equal(true);
             (await chaingear.getSymbolExist(DATABASE_SYMBOL_0)).should.be.equal(true);
+            (await chaingear.getDatabaseAddressByName(DATABASE_NAME_0)).should.be.equal(databaseMeta[2]);
             
             let database = await DatabaseV1.at(databaseMeta[2]);
             (await database.getAdmin()).should.be.equal(RANDOM_CREATOR_1);

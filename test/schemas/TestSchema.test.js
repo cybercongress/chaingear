@@ -48,7 +48,9 @@ contract("TestSchema", (accounts) => {
         builder = await DatabaseBuilderV1.new({ from: CHAINGEAR_OWNER });
         
         chaingear = await Chaingear.new(
-            [], [], { from: CHAINGEAR_OWNER }
+            [accounts[5], accounts[6]],
+            [100, 100],
+            { from: CHAINGEAR_OWNER }
         );
         
         await builder.setChaingearAddress(
@@ -65,8 +67,8 @@ contract("TestSchema", (accounts) => {
         
         await chaingear.createDatabase(
                 DATABASE_BUILDER_VERSION,
-                [],
-                [],
+                [accounts[5], accounts[6]],
+                [100, 100],
                 DATABASE_NAME,
                 DATABASE_SYMBOL,
                 { 
@@ -83,7 +85,7 @@ contract("TestSchema", (accounts) => {
             Schema.bytecode,
             { from: DATABASE_ADMIN }
         ).should.be.fulfilled;
-        
+        await database.unpause({ from: DATABASE_ADMIN }).should.be.fulfilled;
         storage = await Schema.at(await database.getEntriesStorage());
     })
     

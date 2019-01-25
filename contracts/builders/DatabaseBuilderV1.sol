@@ -20,8 +20,18 @@ contract DatabaseBuilderV1 is IDatabaseBuilder, SupportsInterfaceWithLookup {
     address private chaingear;    
     address private owner;
     
-    bytes4 private constant INTERFACE_CHAINGEAR_EULER_ID = 0x2163c5ed; 
+    bytes4 private constant INTERFACE_CHAINGEAR_EULER_ID = 0xea1db66f; 
     bytes4 private constant INTERFACE_DATABASE_BUILDER_EULER_ID = 0xce8bbf93;
+    
+    /*
+    *  Events
+    */
+    
+    event DatabaseDeployed(
+        string name,
+        string symbol,
+        IDatabase database
+    );
 
 	/*
 	*  Constructor
@@ -61,7 +71,8 @@ contract DatabaseBuilderV1 is IDatabaseBuilder, SupportsInterfaceWithLookup {
             _symbol
         );        
         databaseContract.transferOwnership(chaingear);
-
+        emit DatabaseDeployed(_name, _symbol, databaseContract);
+        
         return databaseContract;
     }
     

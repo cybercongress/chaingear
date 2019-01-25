@@ -28,7 +28,7 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
     */
     
     bytes4 private constant INTERFACE_SCHEMA_EULER_ID = 0x153366ed;
-    bytes4 private constant INTERFACE_DATABASE_V1_EULER_ID = 0xfdb63525;
+    bytes4 private constant INTERFACE_DATABASE_V1_EULER_ID = 0xf2c320c4;
 
     // @dev Metadata of entry, holds ownership data and funding info
     struct EntryMeta {
@@ -125,9 +125,9 @@ contract DatabaseV1 is IDatabase, Ownable, DatabasePermissionControl, SupportsIn
         EntryMeta memory meta = (EntryMeta(
         {
             lastUpdateTime: block.timestamp,
-            createdAt:      block.timestamp,
-            creator:        msg.sender,
-            currentWei:     0,
+            createdAt: block.timestamp,
+            creator: msg.sender,
+            currentWei: 0,
             accumulatedWei: 0
         }));
         entriesMeta.push(meta);

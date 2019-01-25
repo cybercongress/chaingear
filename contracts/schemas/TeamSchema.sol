@@ -11,12 +11,12 @@ contract TeamSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     bytes4 private constant INTERFACE_SCHEMA_EULER_ID = 0x153366ed;
 
     struct Entry {
-        string  name;
+        string name;
         address gitcoin;
         address payouts;
-        string  github;
-        string  telegram;
-        string  keybase;
+        string github;
+        string telegram;
+        string keybase;
     }
     
     Entry[] public entries;
@@ -38,12 +38,12 @@ contract TeamSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     {
         Entry memory m = (Entry(
         {
-            name:       "",
-            gitcoin:    address(0),
-            payouts:    address(0),
-            github:     "",
-            telegram:   "",
-            keybase:    ""
+            name: "",
+            gitcoin: address(0),
+            payouts: address(0),
+            github: "",
+            telegram: "",
+            keybase: ""
         }));
 
         entries.push(m);
@@ -74,12 +74,12 @@ contract TeamSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
 
     function updateEntry(
         uint256 _entryID,
-        string  _name,
+        string _name,
         address _gitcoin,
         address _payouts,
-        string  _github,
-        string  _telegram,
-        string  _keybase
+        string _github,
+        string _telegram,
+        string _keybase
     )
         external
     {
@@ -89,12 +89,12 @@ contract TeamSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
             
         Entry memory m = (Entry(
         {
-            name:       _name,
-            gitcoin:    _gitcoin,
-            payouts:    _payouts,
-            github:     _github,
-            telegram:   _telegram,
-            keybase:    _keybase
+            name: _name,
+            gitcoin: _gitcoin,
+            payouts: _payouts,
+            github: _github,
+            telegram: _telegram,
+            keybase: _keybase
         }));
         entries[entryIndex] = m;
     }

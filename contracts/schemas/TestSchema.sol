@@ -11,18 +11,18 @@ contract TestSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     bytes4 private constant INTERFACE_SCHEMA_EULER_ID = 0x153366ed;
 
     struct Entry {
-        string  stringField;
+        string stringField;
         address addressField;
         uint256 uint256Field;
-        int256  int256Field;
+        int256 int256Field;
     }
     
     Entry[] public entries;
     
-    mapping(string => bool) private  stringFieldUniqIndex;
+    mapping(string => bool) private stringFieldUniqIndex;
     mapping(address => bool) private addressFieldUniqIndex;
     mapping(uint256 => bool) private uint256FieldUniqIndex;
-    mapping(int256 => bool) private  int256FieldUniqIndex;
+    mapping(int256 => bool) private int256FieldUniqIndex;
     
     IDatabase internal database;
     
@@ -41,10 +41,10 @@ contract TestSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     {
         Entry memory m = (Entry(
         {
-            stringField:  "",
+            stringField: "",
             addressField: address(0),
-            uint256Field:  uint256(0),
-            int256Field:   int256(0)
+            uint256Field: uint256(0),
+            int256Field: int256(0)
         }));
 
         entries.push(m);
@@ -108,10 +108,10 @@ contract TestSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
             
         Entry memory m = (Entry(
         {
-            stringField:  _stringField,
+            stringField: _stringField,
             addressField: _addressField,
             uint256Field: _uint256Field,
-            int256Field:  _int256Field
+            int256Field: _int256Field
         }));
         entries[entryIndex] = m;
     }

@@ -11,9 +11,9 @@ contract PortsSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     bytes4 private constant INTERFACE_SCHEMA_EULER_ID = 0x153366ed;
 
     struct Entry {
-        string  portName;
-        uint16  portNumber;
-        string  service;
+        string portName;
+        uint16 portNumber;
+        string service;
     }
 
     Entry[] public entries;
@@ -35,9 +35,9 @@ contract PortsSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     {
         Entry memory m = (Entry(
         {
-            portName:   "",
+            portName: "",
             portNumber: uint16(0),
-            service:    ""
+            service: ""
         }));
 
         entries.push(m);
@@ -74,9 +74,9 @@ contract PortsSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
 
         Entry memory m = (Entry(
         {
-            portName:   _portName,
+            portName: _portName,
             portNumber: _portNumber,
-            service:    _service
+            service: _service
         }));
         entries[entryIndex] = m;
     }

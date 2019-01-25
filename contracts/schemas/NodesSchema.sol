@@ -11,11 +11,11 @@ contract NodesSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     bytes4 private constant INTERFACE_SCHEMA_EULER_ID = 0x153366ed;
 
     struct Entry {
-        string  name;
-        string  addressNode;
-        string  services;
-        string  description;
-        string  operating;
+        string name;
+        string addressNode;
+        string services;
+        string description;
+        string operating;
     }
     
     Entry[] public entries;
@@ -37,11 +37,11 @@ contract NodesSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
     {
         Entry memory m = (Entry(
         {
-            name:           "",
-            addressNode:    "",
-            services:       "",
-            description:    "",
-            operating:      ""
+            name: "",
+            addressNode: "",
+            services: "",
+            description: "",
+            operating: ""
     
         }));
 
@@ -85,11 +85,11 @@ contract NodesSchema is ISchema, Ownable, SupportsInterfaceWithLookup {
             
         Entry memory m = (Entry(
         {
-            name:           _name,
-            addressNode:    _addressNode,
-            services:       _services,
-            description:    _description,
-            operating:      _operating
+            name: _name,
+            addressNode: _addressNode,
+            services: _services,
+            description: _description,
+            operating: _operating
         }));
         entries[entryIndex] = m;
     }

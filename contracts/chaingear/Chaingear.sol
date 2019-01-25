@@ -31,19 +31,19 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
 
     struct DatabaseMeta {
         IDatabase databaseContract;
-        address   creatorOfDatabase;
-        string    versionOfDatabase;
-        string    linkABI;
-        uint256   createdTimestamp;
-        uint256   currentWei;
-        uint256   accumulatedWei;
+        address creatorOfDatabase;
+        string versionOfDatabase;
+        string linkABI;
+        uint256 createdTimestamp;
+        uint256 currentWei;
+        uint256 accumulatedWei;
     }
 
     struct DatabaseBuilder {
         IDatabaseBuilder builderAddress;
-        string           linkToABI;
-        string           description;
-        bool             operational;
+        string linkToABI;
+        string description;
+        bool operational;
     }
 
     DatabaseMeta[] private databases;
@@ -52,6 +52,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
 
     uint256 private headTokenID = 0;
     mapping(address => uint256) private databasesIDsByAddressesIndex;
+    mapping(string => address) private databasesAddressesByNameIndex;
     mapping(uint256 => string) private databasesSymbolsByIDIndex;
     mapping(string => uint256) private databasesIDsBySymbolIndex;
 
@@ -63,8 +64,8 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
     uint256 private databaseCreationFeeWei = 1 finney;
 
     string private constant CHAINGEAR_DESCRIPTION = "The novel Ethereum database framework";
-    bytes4 private constant INTERFACE_CHAINGEAR_EULER_ID = 0x2163c5ed; 
-    bytes4 private constant INTERFACE_DATABASE_V1_EULER_ID = 0xfdb63525;
+    bytes4 private constant INTERFACE_CHAINGEAR_EULER_ID = 0xea1db66f; 
+    bytes4 private constant INTERFACE_DATABASE_V1_EULER_ID = 0xf2c320c4;
     bytes4 private constant INTERFACE_DATABASE_BUILDER_EULER_ID = 0xce8bbf93;
     
     /*
@@ -129,10 +130,10 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
     */
 
     function addDatabaseBuilderVersion(
-        string           _version,
+        string _version,
         IDatabaseBuilder _builderAddress,
-        string           _linkToABI,
-        string           _description
+        string _linkToABI,
+        string _description
     )
         external
         onlyOwner
@@ -146,9 +147,9 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         buildersVersion[_version] = (DatabaseBuilder(
         {
             builderAddress: _builderAddress,
-            linkToABI:      _linkToABI,
-            description:    _description,
-            operational:    true
+            linkToABI: _linkToABI,
+            description: _description,
+            operational: true
         }));
         buildersVersionIndex[amountOfBuilders] = _version;
         amountOfBuilders = amountOfBuilders.add(1);
@@ -177,6 +178,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         whenPaused
     {
         require(buildersVersion[_version].builderAddress != address(0));
+        require(buildersVersion[_version].operational == true);
         buildersVersion[_version].operational = false;
         emit DatabaseBuilderDepricated(_version);
     }
@@ -222,10 +224,12 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         
         string memory databaseName = ERC721(database).name();
         string memory databaseSymbol = ERC721(database).symbol();
-        databasesNamesIndex[databaseName] = false;
-        databasesSymbolsIndex[databaseSymbol] = false;
-
-        databasesSymbolsByIDIndex[_databaseID] = "";
+        
+        delete databasesNamesIndex[databaseName];
+        delete databasesSymbolsIndex[databaseSymbol];
+        delete databasesIDsByAddressesIndex[database];  
+        delete databasesIDsBySymbolIndex[databaseSymbol];
+        delete databasesSymbolsByIDIndex[_databaseID];
 
         uint256 lastDatabaseIndex = databases.length.sub(1);
         DatabaseMeta memory lastDatabase = databases[lastDatabaseIndex];
@@ -328,7 +332,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
     function getDatabasesIDs()
         external
         view
-        returns (uint256[])
+        returns(uint256[])
     {
         return allTokens;
     }
@@ -339,8 +343,15 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         returns(uint256)
     {
         uint256 databaseID = databasesIDsByAddressesIndex[_databaseAddress];
-        require(exists(databaseID) == true);
         return databaseID;
+    }
+    
+    function getDatabaseAddressByName(string _name)
+        external
+        view
+        returns(address)
+    {
+        return databasesAddressesByNameIndex[_name];
     }
 
     function getDatabaseSymbolByID(uint256 _databaseID)
@@ -348,7 +359,6 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         view
         returns(string)
     {
-        require(exists(_databaseID) == true);
         return databasesSymbolsByIDIndex[_databaseID];
     }
 
@@ -539,13 +549,13 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
 
         DatabaseMeta memory database = (DatabaseMeta(
         {
-            databaseContract:  databaseContract,
+            databaseContract: databaseContract,
             creatorOfDatabase: msg.sender,
             versionOfDatabase: _version,
-            linkABI:           buildersVersion[_version].linkToABI, // delete this
-            createdTimestamp:  block.timestamp,
-            currentWei:        0,
-            accumulatedWei:    0
+            linkABI: buildersVersion[_version].linkToABI,
+            createdTimestamp: block.timestamp,
+            currentWei: 0,
+            accumulatedWei: 0
         }));
 
         databases.push(database);
@@ -558,6 +568,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
         super._mint(msg.sender, newTokenID);
         databasesSymbolsByIDIndex[newTokenID] = _symbol;
         databasesIDsBySymbolIndex[_symbol] = newTokenID;
+        databasesAddressesByNameIndex[_name] = databaseAddress;
         headTokenID = headTokenID.add(1);
 
         emit DatabaseCreated(
