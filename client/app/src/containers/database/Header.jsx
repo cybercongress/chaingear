@@ -16,12 +16,14 @@ const Header = () => (
     <Subscribe to={ [page] }>
         {(dbPage) => {
             const {
-                isOwner, isSchemaExist, databaseSymbol, isDbPaused, name,
+                isOwner, isSchemaExist, databaseSymbol, isDbPaused, name, totalFee,
             } = dbPage.state;
 
             const onDefineSchemaClick = () => {
                 hashHistory.push(`/schema/${databaseSymbol}`);
             };
+
+            const transferOwnershipDisabled = totalFee === 0;
 
             return (
                 <div>
@@ -69,9 +71,10 @@ const Header = () => (
                             {(!isDbPaused || isOwner) && (
                                 <DbMenu>
                                     <MenuPopup>
-                                        {isOwner && !isDbPaused && [
+                                        {isOwner && isDbPaused && [
                                             <MenuPopupItem
                                               key='transferOwnership'
+                                              disabled={ transferOwnershipDisabled }
                                               icon={ <MenuPopupAccountIcon /> }
                                               onClick={ dbPage.onTransferOwnership }
                                             >
