@@ -28,6 +28,20 @@
   </a>
 </div>
 
+### Try EVM's Chaingear rigth now!
+- [Mainnet](https://etherscan.io/address/0x02e0c94355562693B3608077732d7437bd7a78ca)
+- [Kovan](https://kovan.etherscan.io/address/0x02e0c94355562693B3608077732d7437bd7a78ca)
+- [Rinkeby](https://rinkeby.etherscan.io/address/0x02e0c94355562693B3608077732d7437bd7a78ca)
+
+Chaingear Dapp (Mainnet, Kovan, Rinkeby) accessible **directly from IPFS**:
+[QmQmQKkPFqLS4iNiicvAqx6aJtRpYookK8iEZjojcfEqib](https://cloudflare-ipfs.com/ipfs/QmQmQKkPFqLS4iNiicvAqx6aJtRpYookK8iEZjojcfEqib/#/)
+
+
+Note: Best option to use **[CYB web3 browser](https://github.com/cybercongress/cyb/releases)** with **.chaingear** dapp, all contracts code **verified** with Etherscan.
+
+### Whitepaper
+[Chaingear - The consensus computer driven database framework](./whitepaper.md)
+
 ### Principles of Chaingear
 
 Chaingear is a set of smart contracts which operating in consensus computer with following principles:
