@@ -87,6 +87,23 @@ Chaingear is a set of smart contracts which operating in consensus computer with
 ## General Chaingear/Database pipeline
 ![general_pipeline](docs/mermaid/pipelines-general_pipeline.svg)
 
+### web3 Application
+#### General
+| | |
+|-|-|
+|![chaingear-general](./docs/app/chaingear.png)|![database-token](./docs/app/database-token.png)|
+
+#### Database
+| | |
+|-|-|
+|![database-admin](./docs/app/database-admin.png)|![entry-token](./docs/app/entry-token.png)| 
+
+#### Database Deploy and Schema designer
+| | |
+|-|-|
+|![database](./docs/app/database-deploy.png)|
+![schema-gen](./docs/app/schema-gen.png)|
+
 ## Join Us On Telegram
 
 If you're interested in using or developing Chaingear, come [join us on Telegram](https://t.me/fuckgoogle)

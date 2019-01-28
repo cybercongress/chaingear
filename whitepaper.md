@@ -84,12 +84,15 @@ Our solution is save in database contract schema's definition which allow determ
 |![chaingear-general](./docs/app/chaingear.png)|![database-token](./docs/app/database-token.png)|
 
 #### Database
-| | | |
-|-|-|-|
-|![database](./docs/app/database.png)|![database-admin](./docs/app/database-admin.png)|![entry-token](./docs/app/entry-token.png)|
+| | |
+|-|-|
+|![database-admin](./docs/app/database-admin.png)|![entry-token](./docs/app/entry-token.png)| 
 
-#### Schema designer
-![schema-gen](./docs/app/schema-gen.png)
+#### Database Deploy and Schema designer
+| | |
+|-|-|
+|![database](./docs/app/database-deploy.png)|
+![schema-gen](./docs/app/schema-gen.png)|
 
 ### Future work and releases
 - Design and architecture, security
