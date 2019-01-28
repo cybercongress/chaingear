@@ -13,7 +13,6 @@ contract FeeSplitterDatabase is PaymentSplitter, DatabasePermissionControl {
         address newAddress
     );
     event PayeesDeleted();
-    event Log();
 
     constructor(address[] _payees, uint256[] _shares)
         public
@@ -66,7 +65,6 @@ contract FeeSplitterDatabase is PaymentSplitter, DatabasePermissionControl {
             address account = payees[i];
             delete shares[account];
             delete released[account];
-            emit Log();
         }
         payees.length = 0;
         totalShares = 0;

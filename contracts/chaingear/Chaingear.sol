@@ -61,7 +61,7 @@ contract Chaingear is IChaingear, Ownable, SupportsInterfaceWithLookup, Pausable
     mapping(string => DatabaseBuilder) private buildersVersion;
 
     Safe private chaingearSafe;
-    uint256 private databaseCreationFeeWei = 1 finney;
+    uint256 private databaseCreationFeeWei = 1 ether;
 
     string private constant CHAINGEAR_DESCRIPTION = "The novel Ethereum database framework";
     bytes4 private constant INTERFACE_CHAINGEAR_EULER_ID = 0xea1db66f; 

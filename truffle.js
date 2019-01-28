@@ -48,7 +48,7 @@ module.exports = {
             from: infuraConfigRinkeby.fromAddress,
             network_id: 4,
             gasPrice: toWei(10, 'gwei').toNumber(),
-            gas: toWei(7, 'mwei').toNumber(),
+            gas: toWei(6.8, 'mwei').toNumber(),
             confirmations: 2,
             skipDryRun: true
         },
@@ -58,7 +58,7 @@ module.exports = {
               return new HDWalletProvider(infuraConfigMainnet.privateKey, infuraConfigMainnet.infuraUrl);
             },
             from: infuraConfigMainnet.fromAddress,
-            network_id: 0,
+            network_id: 1,
             gasPrice: toWei(10, 'gwei').toNumber(),
             gas: toWei(7, 'mwei').toNumber(),
             confirmations: 2,
