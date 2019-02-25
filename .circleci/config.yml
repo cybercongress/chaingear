@@ -12,6 +12,8 @@ workflows:
 jobs:
   update_doc:
     working_directory: ~/build
+    docker:
+      - image: squidfunk/mkdocs-material
     steps:
       - checkout
       - run:
