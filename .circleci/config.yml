@@ -1,18 +1,19 @@
 version: 2
 
-aliases:
- # build and deploy for all tags AND commits in master
- - &staging_filter
-     filters:
-       tags:
-         only: /.*/
-       branches:
-         only: master
+workflows:
+  version: 2
+  default_workflow:
+    jobs:
+      - update_doc:
+          filters:
+            branches:
+              only: master
 
 jobs:
-
-  update_docs:
-    <<: *defaults
+  update_doc:
+    working_directory: ~/build
+    docker:
+      - image: squidfunk/mkdocs-material
     steps:
       - checkout
       - run:
@@ -43,10 +44,3 @@ jobs:
               # Push quietly to prevent showing the token in log
               git push -q https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/library.git master
             fi
-
-workflows:
-  version: 2
-  staging_cd:
-    jobs:
-      - update_docs:
-          <<: *staging_filter
