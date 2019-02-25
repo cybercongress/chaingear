@@ -12,8 +12,6 @@ workflows:
 jobs:
   update_doc:
     working_directory: ~/build
-    docker:
-      - image: squidfunk/mkdocs-material
     steps:
       - checkout
       - run:
@@ -26,20 +24,21 @@ jobs:
           working_directory: ~/workdir/library
           command: |
             # We need to remove current files in folder to avoid duplicating renamed files
-            rm -rf ./wiki/docs/cyberd/*
-            rm -rf ./wiki/docs/help/cyberd/*
-            cp -r ~/build/docs/. ./wiki/docs/cyberd/
-            cp -r ~/build/docs/help/. ./wiki/docs/help/cyberd/
-            cp ~/build/CHANGELOG.md ./wiki/docs/cyberd/Changelog.md
-            cp ~/build/CONTRIBUTING.md ./wiki/docs/cyberd/Contributing.md
-            git add -N wiki/docs/cyberd
-            git add -N wiki/docs/help/cyberd
-            diff=$(git diff wiki/docs/cyberd/)
-            diff2=$(git diff wiki/docs/help/cyberd/)
+            rm -rf ./wiki/docs/chaingear/*
+            rm -rf ./wiki/docs/help/chaingear/*
+            cp -r ~/build/docs/. ./wiki/docs/chaingear/
+            cp -r ~/build/docs/help/. ./wiki/docs/help/chaingear/
+            cp ~/build/CHANGELOG.md ./wiki/docs/chaingear/Changelog.md
+            cp ~/build/CONTRIBUTING.md ./wiki/docs/chaingear/Contributing.md
+            git add -N wiki/docs/chaingear
+            git add -N wiki/docs/help/chaingear
+            diff=$(git diff wiki/docs/chaingear/)
+            diff2=$(git diff wiki/docs/help/chaingear/)
             if [[  -n  "$diff" ]] || [[  -n  "$diff2" ]]; then
               git config user.email "cybercongress42@gmail.com"
               git config user.name "Cyber Admin"
-              git add wiki/docs/cyberd/
+              git add wiki/docs/chaingear/
+              git add wiki/docs/help/chaingear/
               git commit -m "Circle CI: Update Docs"
               # Push quietly to prevent showing the token in log
               git push -q https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/library.git master
