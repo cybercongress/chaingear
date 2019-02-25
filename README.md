@@ -1,11 +1,11 @@
 <h1 align="center">
-  <img src="/logo_chaigear_970.png"
-  alt="chaingear" width="970"></a>
+  <img src="/docs/logo_chaigear_970.png"
+  alt="chaingear" width="470"></a>
 </h1>
 
-<h3 align="center">The most expensive Registry</h3>
+<h3 align="center">The consensus computer driven database framework</h3>
 <div align="center">
-  Chaingear is an Ethereum ERC721-based registries framework.
+  Current state: 0.1 Euler Chaingear's release for EVM with paper.
 </div>
 
 <br />
@@ -13,13 +13,9 @@
 <div align="center">
   <img src="https://img.shields.io/badge/platform-Ethereum-brightgreen.svg?style=flat-square" alt="Ethereum" />
   <img src="https://img.shields.io/badge/token-ERC721-ff69b4.svg?style=flat-square" alt="Token ERC721" />
-  <img src="https://img.shields.io/badge/contributions-welcome-orange.svg?style=flat-square" alt="Contributions Welcome" />
 </div>
 <div align="center">
-  <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="MIT License" />
-  <img href="https://circleci.com/gh/cybercongress/chaingear/tree/master" src="https://circleci.com/gh/cybercongress/chaingear/tree/master.svg?style=svg"
-  alt="CircleCI"
-  />
+  <img src="https://img.shields.io/badge/contributions-welcome-orange.svg?style=flat-square" alt="Contributions Welcome" />
   <a href="https://t.me/joinchat/Bze3dEPj5YrvZ3REnMrfPg"> <img src="https://img.shields.io/badge/Join%20Us%20On-Telegram-2599D2.svg?style=flat-square" alt="Join Us On Telegram" /></a>
   <img src="https://img.shields.io/badge/Shipping_faster_with-ZenHub-5e60ba.svg?style=flat-square" alt="Suprecharged By ZenHub" />
 </div>
@@ -32,45 +28,81 @@
   </a>
 </div>
 
-# Overview
+### Try EVM's Chaingear rigth now!
+- [Mainnet](https://etherscan.io/address/0x02e0c94355562693B3608077732d7437bd7a78ca)
+- [Kovan](https://kovan.etherscan.io/address/0x02e0c94355562693B3608077732d7437bd7a78ca)
+- [Rinkeby](https://rinkeby.etherscan.io/address/0x02e0c94355562693B3608077732d7437bd7a78ca)
 
-This project allows you to create your own Registry of general purpose entries on Ethereum blockchain.
-Entry type is defined during creation, so you can put into entry any custom logic you want (validation, entry-level permission control). Entries are tokenized as NFT.
+Chaingear Dapp (Mainnet, Kovan, Rinkeby) accessible **directly from IPFS**:
+[QmQmQKkPFqLS4iNiicvAqx6aJtRpYookK8iEZjojcfEqib](https://cloudflare-ipfs.com/ipfs/QmQmQKkPFqLS4iNiicvAqx6aJtRpYookK8iEZjojcfEqib/#/)
 
-Your creating your registry in Chaingear - metaregistry, which are one point of access to all registries. Registries on chaingear level are tokenized as NFT. Chaingear is most expensive registry, so you should pay for your registry creation.
 
-## Features
+Note: Best option to use **[CYB web3 browser](https://github.com/cybercongress/cyb/releases)** with **.chaingear** dapp, all contracts code **verified** with Etherscan.
 
-#### Chaingear
+### Whitepaper
+[Chaingear - The consensus computer driven database framework](./whitepaper.md)
 
-1. Metaregistry with Registries entries, where each entry are ERC721 token
-2. Fee-based Registry creation
-3. Creating Registries with different functionality
-4. Token-based ownership/administration for Registry
-5. Funding in ETH for Registries
+### Principles of Chaingear
 
-#### Custom registry
+Chaingear is a set of smart contracts which operating in consensus computer with following principles:
 
-1. Custom data structure for Registry (EntryCore)
-2. Each Entry is ERC721 token
-3. Fee-based Entry creation
-4. Token-based ownership Entry management
-5. Entry creation policies (Administrator, Whitelist, AllUsers)
+0. Databases creates by user createDatabase call for Chaingear witch mints database-linked NFT token for user and deploys database with support of CRUD+TF operations. Token controls adminship of database.
+1. Admin initializes database with given table/tables data schema.
+2. Database admin may set user permissions for entry creation and fee for adding.
+3. Each entry in database linked to NFT token (primary key) which grants a set of rights for token-entry operation as UPDATE/DELETE and TRANSFER/FUND. 
+4. Chaingear for given platform acts as Consensus Computer Driven Database as a Service
+5. Application specific business logic should be available to operate on top of database/databases.
 
-#### Chaingear UI (browser/stand-alone web3 DApp)
+### Chaingear on EVM, 0.1 Euler PoC
+
+### Chaingear
+- Chaingear is database of database which allow deploy new databases from there and creates an associated token for adminship.
+- Chaingear allow deploys different types of databases with defined functionality with connects with databases builders.
+- Database Builder is a fabric of databases of given type.
+- Databases may have their unique code base as an extension to the basic database.
+- Database-token may be transferred, sold/traded alongside with their right adminship.
+- Chaingear have fees for database creation.
+- Chaingear have benefitiaries which may claim collected fees proportional to their shares.
+
+### Database
+- A database is a smart contract which defines NFT tokens linked to entries. User creates database with given name and token symbol for entries.
+- After deploy database admin initializes database with data schema table/tables and this allows them or/and other users to create a systematic collection of data, where rights to operations with entry defined by entry-token ownership. 
+- Entries data lives in Schema contract.
+- Each entry may be publicly funded, an entry-token owner may claim collected funds.
+- Database admin may set policy for entry creation: {OnlyAdmin, Whitelist, AllUsers} and fee for the entry-token creation and next claim fees.
+- Also admin may set multiple database's beneficiaries which may claim collected fees proportional to their shares.
+
+#### Chaingear UI (web3 DApp for EVM's Chaingear)
 
 1. Web3/Metamask/Truffle/IPFS based
 2. Full Chaingear control interface
-3. Full custom Registry control interface
-4. Simple smart-contract EntryCore code generation in client
-5. Registries ABI and metainformation savings in IPFS
+3. Full custom Database control interface
+4. Schema smart-contract code generation on client
+5. Database ABI saves in IPFS
 
 ## [Contracts Overview](https://cybersearch.io/Chaingear/contracts/)
 
 ## [Configuring and deploying](https://cybersearch.io/Chaingear/development/)
 
-## General Chaingear/Registry pipeline
+## General Chaingear/Database pipeline
 ![general_pipeline](docs/mermaid/pipelines-general_pipeline.svg)
+
+### web3 Application
+#### General
+| | |
+|-|-|
+|![chaingear-general](./docs/app/chaingear.png)|![database-token](./docs/app/database-token.png)|
+
+#### Database
+| | |
+|-|-|
+|![database-admin](./docs/app/database-admin.png)|![entry-token](./docs/app/entry-token.png)| 
+
+#### Database Deploy and Schema designer
+| | |
+|-|-|
+|![database](./docs/app/database-deploy.png)|
+![schema-gen](./docs/app/schema-gen.png)|
 
 ## Join Us On Telegram
 
@@ -100,4 +132,4 @@ Originally created by [cyber•Congress](https://twitter.com/cyber_devs)
 
 ## License
 
-[MIT](https://opensource.org/licenses/MIT)
+[Cyber License](./LICENCE)

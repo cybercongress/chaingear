@@ -1,62 +1,75 @@
 const { toWei } = require('ethjs-unit');
 const HDWalletProvider = require('truffle-hdwallet-provider');
 
-
-const MNEMONIC = 'hockey wrong chase parade similar borrow laugh task miss magic tumble crack';
+const infuraConfigKovan = require('./infura_deploy_kovan.json');
+const infuraConfigRinkeby = require('./infura_deploy_rinkeby.json');
+const infuraConfigMainnet = require('./infura_deploy_mainnet.json');
 
 module.exports = {
     
-    solc: {
-        optimizer: {
-          enabled: false,
-          runs: 200
+    compilers: {    
+        solc: {
+            version: "0.4.25",
+            settings: {
+                optimizer: {
+                    enabled: true,
+                    runs: 200
+                }
+            }
         }
     },
-    
+
     mocha: {
         reporter: 'eth-gas-reporter',
-            reporterOptions : {
+        reporterOptions: {
             currency: 'USD',
-            gasPrice: 21
+            gasPrice: 10
         }
     },
 
-    // See <http://truffleframework.com/docs/advanced/configuration>
-    // to customize your Truffle configuration!
     networks: {
-        // development: {
-        //   host: "localhost",
-        //   port: 8545,
-        //   network_id: "*" // Match any network id
-        // },
-
+        
         kovan: {
-          // provider() {
-          //   return new HDWalletProvider(MNEMONIC, 'https://kovan.infura.io/');
-          // },
-           host: "localhost",
-           port: 8545,
-           from: '0xf2492533F7d89DBfEd69757156c4B746839E59E8',
-
-          network_id: 42,
-          gasPrice: toWei(10, 'gwei').toNumber(),
-          gas: toWei(7.9, 'mwei').toNumber(),
+            provider() {
+              return new HDWalletProvider(infuraConfigKovan.privateKey, infuraConfigKovan.infuraUrl);
+            },
+            from: infuraConfigKovan.fromAddress,
+            network_id: 42,
+            gasPrice: toWei(10, 'gwei').toNumber(),
+            gas: toWei(7, 'mwei').toNumber(),
+            confirmations: 2,
+            skipDryRun: true
         },
-
-        // live: {
-        //   host: "localhost",
-        //   port: 8545,
-        //   network_id: 1,
-        //   gasPrice: 10000000000,
-        //   from: "0x00b2266565a2dF4dF0Dd473281b7bB88A86b27dd"
-        // },
-
+        
+        rinkeby: {
+            provider() {
+              return new HDWalletProvider(infuraConfigRinkeby.privateKey, infuraConfigRinkeby.infuraUrl);
+            },
+            from: infuraConfigRinkeby.fromAddress,
+            network_id: 4,
+            gasPrice: toWei(10, 'gwei').toNumber(),
+            gas: toWei(6.8, 'mwei').toNumber(),
+            confirmations: 2,
+            skipDryRun: true
+        },
+        
+        mainnet: {
+            provider() {
+              return new HDWalletProvider(infuraConfigMainnet.privateKey, infuraConfigMainnet.infuraUrl);
+            },
+            from: infuraConfigMainnet.fromAddress,
+            network_id: 1,
+            gasPrice: toWei(10, 'gwei').toNumber(),
+            gas: toWei(7, 'mwei').toNumber(),
+            confirmations: 2,
+            skipDryRun: true
+        },
+        
         development: {
-          host: "127.0.0.1",
-          port: 7545,
-          network_id: "*",
-          gas: 79000000,
-          gasPrice: 100000000
+            host: "127.0.0.1",
+            port: 8545,
+            network_id: "*",
+            websockets: true
         }
     }
 };

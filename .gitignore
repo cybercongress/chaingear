@@ -1,7 +1,9 @@
 /node_modules/
+/client/node_modules/
 contracts/.placeholder
 test/.placeholder
 build
+distribution
 
 
 # IntelliJ
@@ -17,7 +19,12 @@ yarn.lock
 yarn-error.log
 package-lock.json
 
-dist
-/contracts0
+infura_deploy_kovan.json
+infura_deploy_rinkeby.json
+infura_deploy_mainnet.json
 
-/build
+docs/graphs/*.sol
+docs/graphs/*.dot
+
+docs/remix/*.sol
+docs/verification/*.sol

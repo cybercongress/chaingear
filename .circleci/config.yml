@@ -11,83 +11,42 @@ aliases:
 
 jobs:
 
-  build_and_push_staging_image:
-     working_directory: ~/build
-     docker:
-       - image: docker:17.05.0-ce-git
-     steps:
-       - checkout
-       - setup_remote_docker
-       - run:
-           name: Build docker image
-           command: |
-             docker build -t build/chaingear -f ./Dockerfile ./
-             docker login -u $DOCKER_USER -p $DOCKER_PASS
-       - deploy:
-           name: Uploading images to DockerHub
-           command: |
-             echo Uploading :latest image
-             docker tag build/chaingear cybernode/chaingear:latest
-             docker push cybernode/chaingear:latest
-             if [[ "$CIRCLE_TAG" != "" ]]; then
-                # $CIRCLE_TAG is only set when building tags
-                echo Uploading :$CIRCLE_TAG image
-                docker tag build/chaingear cybernode/chaingear:$CIRCLE_TAG
-                docker push cybernode/chaingear:$CIRCLE_TAG
-             fi
-
   update_docs:
-    working_directory: ~/build
-    docker:
-      - image: docker:17.05.0-ce-git
+    <<: *defaults
     steps:
       - checkout
       - run:
-          name: Clone library repo
+          name: Update Docs
           working_directory: ~/workdir
           command: |
             git clone -q --depth 1 https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/library.git
       - deploy:
-          name: Update docs from chaingear repo
+          name: Update docs from cyberd repo
           working_directory: ~/workdir/library
           command: |
             # We need to remove current files in folder to avoid duplicating renamed files
-            rm -rf ./wiki/docs/chaingear/*
-            cp -r ~/build/docs/. ./wiki/docs/chaingear/
-            git add -N wiki/docs/chaingear
-            diff=$(git diff wiki/docs/chaingear/)
-            if [[  -n  "$diff" ]]; then
+            rm -rf ./wiki/docs/cyberd/*
+            rm -rf ./wiki/docs/help/cyberd/*
+            cp -r ~/build/docs/. ./wiki/docs/cyberd/
+            cp -r ~/build/docs/help/. ./wiki/docs/help/cyberd/
+            cp ~/build/CHANGELOG.md ./wiki/docs/cyberd/Changelog.md
+            cp ~/build/CONTRIBUTING.md ./wiki/docs/cyberd/Contributing.md
+            git add -N wiki/docs/cyberd
+            git add -N wiki/docs/help/cyberd
+            diff=$(git diff wiki/docs/cyberd/)
+            diff2=$(git diff wiki/docs/help/cyberd/)
+            if [[  -n  "$diff" ]] || [[  -n  "$diff2" ]]; then
               git config user.email "cybercongress42@gmail.com"
               git config user.name "Cyber Admin"
-              git add wiki/docs/chaingear/
+              git add wiki/docs/cyberd/
               git commit -m "Circle CI: Update Docs"
               # Push quietly to prevent showing the token in log
               git push -q https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/library.git master
             fi
 
-  deploy_stagin_image:
-    working_directory: ~/build
-    docker:
-      - image: docker:17.05.0-ce-git
-    steps:
-      - run:
-          name: Run new version of chaingear on staging
-          command: >-
-            ssh mars@staging.cyber.fund -p 33322 -o "StrictHostKeyChecking no"
-            'cd /cyberdata/cybernode && git pull && sh /cyberdata/cybernode/up.chaingear.sh'
-
-
 workflows:
   version: 2
   staging_cd:
     jobs:
-      - build_and_push_staging_image:
-          <<: *staging_filter
-      - deploy_stagin_image:
-          <<: *staging_filter
-          requires:
-            - build_and_push_staging_image
       - update_docs:
           <<: *staging_filter
-          requires:
-            - build_and_push_staging_image
