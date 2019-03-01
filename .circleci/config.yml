@@ -34,6 +34,7 @@ jobs:
             cp -r ~/build/docs/. ./wiki/docs/chaingear/
             cp ~/build/CHANGELOG.md ./wiki/docs/chaingear/Changelog.md
             cp ~/build/CONTRIBUTING.md ./wiki/docs/chaingear/Contributing.md
+            cp ~/build/whitepaper.md ./wiki/docs/chaingear/Whitepaper.md
             git add -N wiki/docs/chaingear
             diff=$(git diff wiki/docs/chaingear/)
             if [[  -n  "$diff" ]]; then
