@@ -22,6 +22,7 @@
 
 **Merged pull requests:**
 
+- edit docs org and config.yml in CI [\#1068](https://github.com/cybercongress/chaingear/pull/1068) ([SaveTheAles](https://github.com/SaveTheAles))
 - UPD CI job docs upd [\#1033](https://github.com/cybercongress/chaingear/pull/1033) ([SaveTheAles](https://github.com/SaveTheAles))
 
 ## [0.1.0](https://github.com/cybercongress/chaingear/tree/0.1.0) (2019-01-28)
