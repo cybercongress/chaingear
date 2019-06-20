@@ -24,26 +24,28 @@ jobs:
           name: Update Docs
           working_directory: ~/workdir
           command: |
-            git clone -q --depth 1 https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/library.git
+            cd ~/build
+            ./script.sh
+            cd ~/workdir
+            git clone -q --depth 1 https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/congress.git
       - deploy:
-          name: Update docs from cyberd repo
-          working_directory: ~/workdir/library
+          name: Update docs from chaingear repo
+          working_directory: ~/workdir/congress
           command: |
             # We need to remove current files in folder to avoid duplicating renamed files
-            rm -rf ./wiki/docs/chaingear/*
-            cp -r ~/build/docs/. ./wiki/docs/chaingear/
-            cp ~/build/CHANGELOG.md ./wiki/docs/chaingear/Changelog.md
-            cp ~/build/CONTRIBUTING.md ./wiki/docs/chaingear/Contributing.md
-            cp ~/build/whitepaper.md ./wiki/docs/chaingear/Whitepaper.md
-            git add -N wiki/docs/chaingear
-            diff=$(git diff wiki/docs/chaingear/)
+            rm -rf ./site/content/docs/cyberd/*
+            cp -r ~/build/docs/. ./site/content/docs/chaingear/
+            cp ~/build/CHANGELOG.md ./site/content/docs/chaingear/Changelog.md
+            cp ~/build/CONTRIBUTING.md ./site/content/docs/chaingear/Contributing.md
+            git add -N site/content/docs/chaingear
+            diff=$(git diff site/content/docs/chaingear/)
             if [[  -n  "$diff" ]]; then
               git config user.email "cybercongress42@gmail.com"
               git config user.name "Cyber Admin"
-              git add wiki/docs/chaingear/
+              git add site/content/docs/chaingear/
               git commit -m "Circle CI: Update Docs"
               # Push quietly to prevent showing the token in log
-              git push -q https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/library.git master
+              git push -q https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/congress.git master
             fi
 
   update_changelog:
