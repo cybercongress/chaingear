@@ -25,7 +25,7 @@ jobs:
           working_directory: ~/workdir
           command: |
             cd ~/build
-            chmod u+x script.sh
+            ls
             ./script.sh
             cd ~/workdir
             git clone -q --depth 1 https://${DOCS_GITHUB_TOKEN}@github.com/cybercongress/congress.git
