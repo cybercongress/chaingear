@@ -38,7 +38,7 @@ jobs:
             cp -r ~/build/docs/. ./site/content/docs/chaingear/
             cp ~/build/CHANGELOG.md ./site/content/docs/chaingear/Changelog.md
             cp ~/build/CONTRIBUTING.md ./site/content/docs/chaingear/Contributing.md
-            cp ~/build/img/. ./site/content/docs/chaingear/img/.
+            cp -r ~/build/img/. ./site/content/docs/chaingear/img/.
             git add -N site/content/docs/chaingear
             diff=$(git diff site/content/docs/chaingear/)
             if [[  -n  "$diff" ]]; then
