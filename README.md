@@ -49,7 +49,7 @@ Chaingear is a set of smart contracts which operating in consensus computer with
 0. Databases creates by user createDatabase call for Chaingear witch mints database-linked NFT token for user and deploys database with support of CRUD+TF operations. Token controls adminship of database.
 1. Admin initializes database with given table/tables data schema.
 2. Database admin may set user permissions for entry creation and fee for adding.
-3. Each entry in database linked to NFT token (primary key) which grants a set of rights for token-entry operation as UPDATE/DELETE and TRANSFER/FUND. 
+3. Each entry in database linked to NFT token (primary key) which grants a set of rights for token-entry operation as UPDATE/DELETE and TRANSFER/FUND.
 4. Chaingear for given platform acts as Consensus Computer Driven Database as a Service
 5. Application specific business logic should be available to operate on top of database/databases.
 
@@ -66,7 +66,7 @@ Chaingear is a set of smart contracts which operating in consensus computer with
 
 ### Database
 - A database is a smart contract which defines NFT tokens linked to entries. User creates database with given name and token symbol for entries.
-- After deploy database admin initializes database with data schema table/tables and this allows them or/and other users to create a systematic collection of data, where rights to operations with entry defined by entry-token ownership. 
+- After deploy database admin initializes database with data schema table/tables and this allows them or/and other users to create a systematic collection of data, where rights to operations with entry defined by entry-token ownership.
 - Entries data lives in Schema contract.
 - Each entry may be publicly funded, an entry-token owner may claim collected funds.
 - Database admin may set policy for entry creation: {OnlyAdmin, Whitelist, AllUsers} and fee for the entry-token creation and next claim fees.
@@ -96,7 +96,7 @@ Chaingear is a set of smart contracts which operating in consensus computer with
 #### Database
 | | |
 |-|-|
-|![database-admin](./docs/app/database-admin.png)|![entry-token](./docs/app/entry-token.png)| 
+|![database-admin](./docs/app/database-admin.png)|![entry-token](./docs/app/entry-token.png)|
 
 #### Database Deploy and Schema designer
 | | |
