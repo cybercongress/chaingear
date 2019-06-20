@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="/docs/logo_chaigear_970.png"
+  <img src="/docs/img/logo_chaigear_970.png"
   alt="chaingear" width="470"></a>
 </h1>
 
@@ -91,18 +91,17 @@ Chaingear is a set of smart contracts which operating in consensus computer with
 #### General
 | | |
 |-|-|
-|![chaingear-general](./docs/app/chaingear.png)|![database-token](./docs/app/database-token.png)|
+|![chaingear-general](./docs/img/chaingear.png)|![database-token](./docs/img/database-token.png)|
 
 #### Database
 | | |
 |-|-|
-|![database-admin](./docs/app/database-admin.png)|![entry-token](./docs/app/entry-token.png)|
+|![database-admin](./docs/img/database-admin.png)|![entry-token](./docs/img/entry-token.png)|
 
 #### Database Deploy and Schema designer
 | | |
 |-|-|
-|![database](./docs/app/database-deploy.png)|
-![schema-gen](./docs/app/schema-gen.png)|
+|![database](./docs/img/database-deploy.png)|![schema-gen](./docs/img/schema-gen.png)|
 
 ## Join Us On Telegram
 
