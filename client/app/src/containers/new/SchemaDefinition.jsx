@@ -78,7 +78,6 @@ class SchemaDefinition extends Component {
             type,
             unique,
         };
-
         this.fieldName.value = '';
         this.fieldUnique.checked = false;
 

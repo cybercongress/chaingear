@@ -14,11 +14,10 @@ const loadWeb3 = new Promise(((resolve, reject) => {
     window.addEventListener('load', () => {
         let results;
         let { web3 } = window;
-
         // Checking if Web3 has been injected by the browser (Mist/MetaMask)
         if (typeof web3 !== 'undefined') {
             // Use Mist/MetaMask's provider.
-
+            window.ethereum.enable();
             if (web3.currentProvider) {
                 web3 = new Web3(web3.currentProvider);
             } else {
@@ -30,7 +29,6 @@ const loadWeb3 = new Promise(((resolve, reject) => {
             results = {
                 web3,
             };
-
             console.log('Injected web3 detected.');
 
             resolve(results);
@@ -42,7 +40,6 @@ const loadWeb3 = new Promise(((resolve, reject) => {
             results = {
                 web3,
             };
-
             console.log('No web3 instance injected, using Local web3.');
 
             resolve(results);
@@ -63,8 +60,9 @@ export const getWeb3 = new Promise((resolve) => {
 
 export const getDefaultAccount = () => new Promise(resolve => getWeb3
     .then(({ web3 }) => {
-        const { defaultAccount } = web3.eth;
-
+        const defaultAccount = web3.eth.accounts[0];
+        
+        console.log(defaultAccount);
         if (defaultAccount) {
             resolve(defaultAccount);
         } else {
