@@ -18,6 +18,7 @@ const loadWeb3 = new Promise(((resolve, reject) => {
         // Checking if Web3 has been injected by the browser (Mist/MetaMask)
         if (typeof web3 !== 'undefined') {
             // Use Mist/MetaMask's provider.
+            window.ethereum.enable();
 
             if (web3.currentProvider) {
                 web3 = new Web3(web3.currentProvider);
@@ -64,7 +65,7 @@ export const getWeb3 = new Promise((resolve) => {
 export const getDefaultAccount = () => new Promise(resolve => getWeb3
     .then(({ web3 }) => {
         const { defaultAccount } = web3.eth;
-
+console.log(defaultAccount);
         if (defaultAccount) {
             resolve(defaultAccount);
         } else {
@@ -122,7 +123,6 @@ export const checkNetwork = () => new Promise((resolve) => {
     getWeb3.then(({ web3 }) => {
         web3.version.getNetwork((err, netId) => {
             currentNetworkId = netId;
-
             resolve({
                 isCorrectNetwork: networks.indexOf(netId) !== -1,
                 networkId: netId,

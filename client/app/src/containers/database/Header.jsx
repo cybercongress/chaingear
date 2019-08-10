@@ -2,12 +2,46 @@ import React from 'react';
 import { hashHistory } from 'react-router';
 import { Subscribe } from 'unstated';
 import {
-    DbMenu, MenuPopup, MenuPopupItem, MenuSeparator,
-    MenuPopupDeleteIcon, MenuPopupAccountIcon, MenuPopupTransferIcon,
-    MenuPopupResumeIcon, MenuPopupPauseIcon,
-    PageTitle, ProgressBar, CircleLable, Section,
-    PopupBar, Text, PopupBarFooter, Button,
-    FlexContainer, FlexContainerLeft, FlexContainerRight,
+    DbMenu,
+    MenuPopup,
+    MenuPopupItem,
+    MenuSeparator,
+    MenuPopupDeleteIcon,
+    MenuPopupAccountIcon,
+    MenuPopupTransferIcon,
+    MenuPopupResumeIcon,
+    MenuPopupPauseIcon,
+    PageTitle,
+    ProgressBar,
+    CircleLable,
+    Section,
+    PopupBar,
+    PopupBarFooter,
+    FlexContainer,
+    FlexContainerLeft,
+    FlexContainerRight,
+    LinkHash,
+    MainContainer,
+    StructureContainer,
+    Structure,
+    FormField,
+    calculateBensShares,
+    InfoButton,
+    DatabaseItemsContainer,
+    Select,
+    ScrollContainer,
+    CardHover,
+    Avatar,
+    Pane,
+    TextEv as Text,
+    Menu,
+    Popover,
+    Button,
+    IconButton,
+    Pill,
+    Table,
+    TextInput,
+    LinkItem,
 } from '@cybercongress/ui';
 
 import page from './page';
@@ -16,7 +50,12 @@ const Header = () => (
     <Subscribe to={ [page] }>
         {(dbPage) => {
             const {
-                isOwner, isSchemaExist, databaseSymbol, isDbPaused, name, totalFee,
+                isOwner,
+                isSchemaExist,
+                databaseSymbol,
+                isDbPaused,
+                name,
+                totalFee,
             } = dbPage.state;
 
             const onDefineSchemaClick = () => {
@@ -28,19 +67,34 @@ const Header = () => (
             return (
                 <div>
                     <Section>
-                        <div style={ { marginLeft: '15px' } }>
-                            <Button
-                              color='blue'
+                        <div style={ { marginLeft: '0' } }>
+                            <LinkItem
+                              className='btn'
+                              style={ {
+                                    height: '32px',
+                                    padding: '9px 20px',
+                                    textDecoration: 'none',
+                                    fontSize: '12px',
+                                    whiteSpace: 'nowrap',
+                                } }
                               to='/'
                             >
-                                BACK TO CHAINGEAR
+                                back to chaingear
+                            </LinkItem>
+                            <Button
+                                // transparent='true'
+                              marginLeft={ 10 }
+                              className='btn'
+                              onClick={ () => onDefineSchemaClick(databaseSymbol) }
+                            >
+                                complete step
                             </Button>
                         </div>
                     </Section>
 
-                    <PageTitle>{name}</PageTitle>
+                    {/* <PageTitle>{name}</PageTitle> */}
 
-                    {!isSchemaExist && isOwner
+                    {/* {!isSchemaExist && isOwner
                         && (
                             <ProgressBar>
                                 <CircleLable type='complete' number='1' text='Database initialization' />
@@ -50,20 +104,112 @@ const Header = () => (
                                             To operate with records, please, define schema
                                         </Text>
                                         <PopupBarFooter>
-                                            <Button
-                                              transparent='true'
-                                              style={ { color: '#b00020' } }
-                                              onClick={ () => onDefineSchemaClick(databaseSymbol) }
-                                            >
-                                                complete step
-                                            </Button>
+
                                         </PopupBarFooter>
                                     </PopupBar>
                                 </CircleLable>
                             </ProgressBar>
                         )
-                    }
-                    <FlexContainer line>
+                    } */}
+                    <Pane display='flex' alignItems='center' marginBottom={ 8 }>
+                        <Pane display='flex' alignItems='baseline' flexGrow={ 1 }>
+                            <Pill
+                              height={ 6 }
+                              width={ 6 }
+                              borderRadius='50%'
+                              backgroundColor={ isDbPaused ? '#f5a623' : '#3ab793' }
+                              paddingX={ 0 }
+                              isSolid
+                              marginRight={ 10 }
+                            />
+                            <Text color={ isDbPaused ? '#f5a623' : '#50e3c2' }>{databaseSymbol}</Text>
+                        </Pane>
+                        {(!isDbPaused || isOwner) && (
+                            <Popover
+                              position='BOTTOM_LEFT'
+                              content={ (
+                                  <Menu>
+                                      <Menu.Group>
+                                          {isOwner && isDbPaused && (
+                                          <span>
+                                              <Menu.Item
+                                                icon='people'
+                                                onClick={ dbPage.onTransferOwnership }
+                                                disabled={ transferOwnershipDisabled }
+                                              >
+                                                        Transfer Ownership
+                                              </Menu.Item>
+                                              <Menu.Divider />
+                                          </span>
+                                            )}
+                                          {!isDbPaused && (
+                                          <Menu.Item
+                                            icon='exchange'
+                                            onClick={ dbPage.onFundDb }
+                                          >
+                                                    Fund Registry
+                                          </Menu.Item>
+                                            )}
+                                          {isOwner && !isDbPaused && (
+                                          <span>
+                                                    )
+                                              <Menu.Item icon='exchange'>Claim Fee</Menu.Item>
+                                              <Menu.Item
+                                                icon='exchange'
+                                                onClick={ dbPage.onClaimFunds }
+                                              >
+                                                        Claim Funds
+                                              </Menu.Item>
+                                              <Menu.Divider />
+                                              <Menu.Item
+                                                icon='pause'
+                                                intent='#d32f2f'
+                                                onClick={ dbPage.onPauseDb }
+                                              >
+                                                        Pause Regisrty
+                                              </Menu.Item>
+                                          </span>
+                                            )}
+                                          {isDbPaused && isOwner && (
+                                          <Menu.Item
+                                            icon='play'
+                                            intent='#438cef'
+                                            onClick={ dbPage.onResumeDb }
+                                          >
+                                                    Resume Registry
+                                          </Menu.Item>
+                                            )}
+                                          {isDbPaused && isOwner && (
+                                          <span>
+                                              <Menu.Divider />
+                                              <Menu.Item
+                                                icon='trash'
+                                                onClick={ dbPage.onDeleteDb }
+                                              >
+                                                        Delete
+                                              </Menu.Item>
+                                          </span>
+                                            )}
+                                      </Menu.Group>
+                                  </Menu>
+) }
+                            >
+                                <IconButton
+                                  appearance='minimal'
+                                  className='icon-btn color-white-svg'
+                                  icon='settings'
+                                  iconSize={ 18 }
+                                />
+                            </Popover>
+                        )}
+                    </Pane>
+                    <Pane
+                      width='100%'
+                      height={ 2 }
+                      boxShadow='inset 0 0 1px #fff'
+                      marginBottom={ 40 }
+                    />
+                    {/* <FlexContainer line>
                         <FlexContainerLeft>{`symbol: ${databaseSymbol}`}</FlexContainerLeft>
 
                         <FlexContainerRight>
@@ -76,7 +222,7 @@ const Header = () => (
                                               key='transferOwnership'
                                               disabled={ transferOwnershipDisabled }
                                               icon={ <MenuPopupAccountIcon /> }
-                                              onClick={ dbPage.onTransferOwnership }
+                                      isDbPaused        onClick={ dbPage.onTransferOwnership }
                                             >
                                                 Transfer ownership
                                             </MenuPopupItem>,
@@ -131,7 +277,7 @@ const Header = () => (
                                 </DbMenu>
                             )}
                         </FlexContainerRight>
-                    </FlexContainer>
+                    </FlexContainer> */}
                 </div>
             );
         }}

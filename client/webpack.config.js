@@ -113,7 +113,7 @@ module.exports = (env = {}, argv = {}) => {
         },
         bail: false,
         devServer: {
-            port: 5600,
+            port: 5601,
             hot: true,
             before(app, server) {
                 app.head('/', (req, res) => {

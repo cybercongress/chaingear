@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Provider } from 'unstated';
-import { MainContainer, Section } from '@cybercongress/ui';
+import {
+    MainContainer, Section, ScrollContainer, Pane,
+} from '@cybercongress/ui';
 import Records from './Records';
 import DatabasePopups from './DatabasePopups';
 import RecordPopups from './RecordPopups';
@@ -21,25 +23,31 @@ class Database extends Component {
     render() {
         return (
             <Provider>
+                {/* <PageLoading /> */}
+                {/* <DatabasePopups />
+                <RecordPopups /> */}
+                <ScrollContainer>
+                    <MainContainer>
+                        <Header />
 
-                <PageLoading />
-                <DatabasePopups />
-                <RecordPopups />
+                        <General />
 
-                <MainContainer>
+                        <Section marginTop='-1em'>
+                            <Pane
+                              display='grid'
+                              gridTemplateColumns='3.2fr 1fr'
+                              width='100%'
+                              gridGap='15px'
+                            >
+                                <Overview />
 
-                    <Header />
+                                <Beneficiaries />
+                            </Pane>
+                        </Section>
 
-                    <General />
-
-                    <Section>
-                        <Overview />
-
-                        <Beneficiaries />
-                    </Section>
-
-                    <Records />
-                </MainContainer>
+                        <Records />
+                    </MainContainer>
+                </ScrollContainer>
             </Provider>
         );
     }

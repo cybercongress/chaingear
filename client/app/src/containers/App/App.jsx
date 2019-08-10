@@ -4,13 +4,14 @@ import {checkNetwork, getNetworkStr} from '../../utils/cyber';
 
 import './App.css';
 
+
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             isCorrectNetwork: false,
-            networkId: null,
+            networkId: 4,
             contractNetworks: [],
         };
     }
