@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 import {
     // Content, ContainerRegister, SideBar,
@@ -360,26 +361,18 @@ class NewDatabase extends Component {
                 >
                     {databaseId ? (
                         <span>
-                            <Button
-                              className='btn'
-                              marginX={ 10 }
-                              height={ 42 }
-                              minWidth={ 215 }
-                              justifyContent='center'
+                            <Link
+                              className='btn link-btn'
                               to={ `/databases/${dbSymbol}` }
                             >
                                 Go to database
-                            </Button>
-                            <Button
-                              marginX={ 10 }
-                              minWidth={ 215 }
-                              justifyContent='center'
-                              height={ 42 }
-                              className='btn'
+                            </Link>
+                            <Link
+                              className='btn link-btn'
                               to={ `/schema/${dbSymbol}` }
                             >
                                 Go to schema definition
-                            </Button>
+                            </Link>
                         </span>
                     ) : (
                         <Button
@@ -516,13 +509,12 @@ class NewDatabase extends Component {
                                                 //   disabled={ !!databaseId }
                                             />
                                             <Input
-                                            //   defaultValue=''
+                                                //   defaultValue=''
                                               placeholder='Symbol'
                                               marginBottom='1rem'
                                               className='input-green'
                                               onChange={ this.onDbSymbolChange }
                                               value={ dbSymbol }
-
                                                 //   inputRef={ (node) => {
                                                 //         this.dbSymbol = node;
                                                 //     } }
@@ -640,7 +632,7 @@ class NewDatabase extends Component {
                             </Pane>
                         )}
 
-                        {(tab === 'output') && (
+                        {tab === 'output' && (
                             <Pane
                               maxHeight={ 560 }
                               height='60vh'

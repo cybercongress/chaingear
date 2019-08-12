@@ -67,22 +67,19 @@ const Header = () => (
             return (
                 <div>
                     <Section>
-                        <div style={ { marginLeft: '0' } }>
+                        <div style={ { marginLeft: '0', display: 'flex' } }>
                             <LinkItem
-                              className='btn'
-                              style={ {
-                                    height: '32px',
-                                    padding: '9px 20px',
-                                    textDecoration: 'none',
-                                    fontSize: '12px',
-                                    whiteSpace: 'nowrap',
-                                } }
+                              className='btn link-btn'
                               to='/'
                             >
                                 back to chaingear
                             </LinkItem>
                             <Button
                                 // transparent='true'
+                              height='42px'
+                              fontSize='16px'
+                              minWidth='215px'
+                              display='inline-block'
                               marginLeft={ 10 }
                               className='btn'
                               onClick={ () => onDefineSchemaClick(databaseSymbol) }

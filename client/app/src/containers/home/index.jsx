@@ -18,6 +18,7 @@ import {
     Pane,
     CardHover,
     Pill,
+    Vitalick,
 } from '@cybercongress/ui';
 import { getDatabases, getDefaultAccount, init } from '../../utils/cyber';
 import { formatDate } from '../../utils/utils';
@@ -73,11 +74,7 @@ const FooterCyb = () => (
                     Add a new database for 10 ETH
                 </Text>
             </Pane>
-            <LinkItem
-              className='btn'
-              style={ { height: '42px', padding: '10px 20px', fontSize: '14px', textDecoration: 'none', whiteSpace: 'nowrap' } }
-              to='#/new'
-            >
+            <LinkItem className='btn link-btn' to='#/new'>
                 Add database
             </LinkItem>
         </Pane>
@@ -165,12 +162,43 @@ class Home extends Component {
                       </span>
 ) }
                 >
-                    <SectionContent>
-                        <Container>
-                            <Text>You haven&#39;t created databases yet!</Text>
-                            <LinkItem to='#/new'>create and deploy right now</LinkItem>
-                        </Container>
-                    </SectionContent>
+                    <Pane
+                      display='flex'
+                      width='100%'
+                      alignItems='center'
+                      justifyContent='space-around'
+                      marginY='70px'
+                    >
+                        <Pane
+                          width='250px'
+                          height='250px'
+                          boxShadow='0 0 10px 2px #03cba0'
+                          borderRadius='50%'
+                          display='flex'
+                          alignItems='center'
+                          justifyContent='space-around'
+                        >
+                            <Pane
+                              width='73px'
+                              height='37px'
+                              transform='rotate(25deg)'
+                              boxShadow='0 0 6px 2px #03cba0'
+                              borderRadius='50%'
+                              marginBottom='20px'
+                            />
+                            <Pane
+                              width='73px'
+                              height='37px'
+                              transform='rotate(-25deg)'
+                              boxShadow='0 0 6px 2px #03cba0'
+                              borderRadius='50%'
+                              marginBottom='20px'
+                            />
+                        </Pane>
+                        <Text fontSize='20px' color='#fff'>
+                            You haven&#39;t created databases yet!
+                        </Text>
+                    </Pane>
                 </Section>
             </div>
         );
@@ -213,8 +241,10 @@ class Home extends Component {
                         <Pane
                           width='100%'
                           display='grid'
-                          gridTemplateColumns='repeat(auto-fit, minmax(200px, 1fr))'
+                          gridTemplateColumns='repeat(auto-fit, minmax(200px, 0.5fr))'
                           gridGap='1.5rem'
+                          marginTop='20px'
+                          marginBottom='40px'
                         >
                             {myRows}
                         </Pane>
@@ -292,8 +322,10 @@ class Home extends Component {
                                 <Pane
                                   width='100%'
                                   display='grid'
-                                  gridTemplateColumns='repeat(auto-fit, minmax(200px, 1fr))'
+                                  gridTemplateColumns='repeat(auto-fit, minmax(200px, 0.5fr))'
                                   gridGap='1.5rem'
+                                  marginTop='20px'
+                                  marginBottom='40px'
                                 >
                                     {rows}
                                 </Pane>

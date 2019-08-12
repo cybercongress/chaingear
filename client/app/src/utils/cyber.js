@@ -65,7 +65,6 @@ export const getWeb3 = new Promise((resolve) => {
 export const getDefaultAccount = () => new Promise(resolve => getWeb3
     .then(({ web3 }) => {
         const { defaultAccount } = web3.eth;
-console.log(defaultAccount);
         if (defaultAccount) {
             resolve(defaultAccount);
         } else {
@@ -338,7 +337,7 @@ export const compileDatabase = (code, contractName, compiler, compilerOpts = {
     setTimeout(() => {
         const compiledContract = compiler.compile({
             sources, settings,
-        }, 1);
+        });
 
         console.log(compiledContract);
         if (compiledContract.errors && compiledContract.errors.length > 0) {

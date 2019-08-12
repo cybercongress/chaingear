@@ -25,6 +25,7 @@ import {
 } from '@cybercongress/ui';
 
 import {
+    getDefaultAccount,
     generateContractCode,
     deploySchema,
     getDatabaseContract,
@@ -32,42 +33,10 @@ import {
     callContractMethod,
     mapDatabase,
     eventPromise,
+    init,
 } from '../../utils/cyber';
 
 const MAX_FIELD_COUNT = 10;
-
-const itemsTable = [
-    {
-        name: 'Address1',
-        type: 'Address',
-        validation: 'None',
-    },
-    {
-        name: 'Address2',
-        type: 'Uint256',
-        validation: 'Unique',
-    },
-    {
-        name: 'Address3',
-        type: 'Uint256',
-        validation: 'None',
-    },
-    {
-        name: 'Address4',
-        type: 'Bool',
-        validation: 'Unique',
-    },
-    {
-        name: 'Address5',
-        type: 'Address',
-        validation: 'None',
-    },
-    {
-        name: 'Address6',
-        type: 'String',
-        validation: 'Unique',
-    },
-];
 
 class SchemaDefinition extends Component {
     constructor(props) {
@@ -76,6 +45,9 @@ class SchemaDefinition extends Component {
         this.state = {
             fields: [],
             databaseName: '',
+            dbVersion: 'string',
+            dbNameValue: '',
+            uniqueValue: false,
             databaseAddress: null,
             databaseSymbol: null,
 
@@ -97,6 +69,9 @@ class SchemaDefinition extends Component {
         let chaingearContract;
 
         let databaseId;
+        init()
+        .then(() => getDefaultAccount());
+
 
         getChaingearContract()
             .then((contract) => {
@@ -119,9 +94,9 @@ class SchemaDefinition extends Component {
 
     add = () => {
         const { fields } = this.state;
-        const name = this.fieldName.value;
-        const type = this.fieldType.value;
-        const unique = type === 'bool' ? false : this.fieldUnique.checked;
+        const name = this.state.dbNameValue;
+        const type = this.state.dbVersion;
+        const unique = type === 'bool' ? false : this.state.uniqueValue;
 
         const newItem = {
             name,
@@ -129,8 +104,8 @@ class SchemaDefinition extends Component {
             unique,
         };
 
-        this.fieldName.value = '';
-        this.fieldUnique.checked = false;
+        this.state.dbNameValue = '';
+        this.state.uniqueValue = false;
 
         this.setState({
             fields: fields.concat(newItem),
@@ -157,12 +132,14 @@ class SchemaDefinition extends Component {
                 databaseContract = dbContract;
                 return deploySchema(databaseName, fields, databaseContract);
             })
+           
             .then(() => eventPromise(databaseContract.DatabaseInitialized()))
             .then(() => {
                 this.setState({
                     inProgress: false,
                     isSchemaCreated: true,
                 });
+
             })
             .catch(() => this.setState({
                 inProgress: false,
@@ -170,6 +147,9 @@ class SchemaDefinition extends Component {
     };
 
     onFieldTypeChange = (event) => {
+        this.setState({
+            dbVersion: event.target.value,
+        });
         if (event.target.value === 'bool') {
             this.setState({
                 disableUniqueCheckbox: true,
@@ -180,6 +160,18 @@ class SchemaDefinition extends Component {
             });
         }
     };
+
+    uniqueValueChange = (event) => {
+        this.setState({
+            uniqueValue: event.target.value,
+        });
+    };
+
+    onDbNameChange = (event) => {
+        this.setState({
+            dbNameValue: event.target.value,
+        });
+    }
     
     select = (tab) => {
         this.setState({ tab });
@@ -196,6 +188,9 @@ class SchemaDefinition extends Component {
             databaseSymbol,
             disableUniqueCheckbox,
             tab,
+            dbVersion,
+            dbNameValue,
+            uniqueValue,
         } = this.state;
         const code = generateContractCode(databaseName, fields);
         const fieldsCount = fields.length;
@@ -241,7 +236,8 @@ class SchemaDefinition extends Component {
                             </Button>
                         </span>
                     ) : (
-                        <Button paddingX={ 50 } height={ 42 } marginX={ 15 } className='btn' disabled={ disabled }>
+                        <Button paddingX={ 50 } height={ 42 } marginX={ 15 } className='btn' disabled={ !canCreateSchema }
+                        onClick={ this.createSchema }>
                             Deploy schema
                         </Button>
                     )}
@@ -269,92 +265,7 @@ class SchemaDefinition extends Component {
                 </Table.TextCell>
             </Table.Row>
         ));
-        
 
-        const TabInput = () => (
-            <Section title='Schema structure'>
-                <Table width='100%'>
-                    <Table.Head
-                      style={ { backgroundColor: '#000', borderBottom: '1px solid #ffffff80' } }
-                      paddingLeft='1rem'
-                    >
-                        <Table.TextHeaderCell flexGrow={ 2 }>
-                            <span style={ { color: '#fff' } }>Name</span>
-                        </Table.TextHeaderCell>
-                        <Table.TextHeaderCell>
-                            <span style={ { color: '#fff' } }>Type</span>
-                        </Table.TextHeaderCell>
-                        <Table.TextHeaderCell>
-                            <span style={ { color: '#fff' } }>Validation</span>
-                        </Table.TextHeaderCell>
-                        <Table.TextHeaderCell flex='none' width={ 60 } />
-                    </Table.Head>
-                    <Table.Body style={ { backgroundColor: '#000', overflowY: 'hidden' } }>
-                        <Table.Row
-                          paddingLeft='1rem'
-                          style={ { border: 0 } }
-                            //   boxShadow='0px 0px 0.1px 0px #ddd'
-                        >
-                            <Table.TextCell flexGrow={ 2 }>
-                                <TextInput width='90%' className='input-green-no-focus' />
-                            </Table.TextCell>
-                            <Table.TextCell>
-                                <Select width='70%' className='select-green'
-                                  onChange={ this.onFieldTypeChange }
-                                >
-                                    <option value='string'>string</option>
-                                    <option value='address'>address</option>
-                                    <option value='bool'>bool</option>
-                                    <option value='uint256'>uint256</option>
-                                    <option value='int256'>int256</option>
-                                </Select>
-                            </Table.TextCell>
-                            <Table.TextCell>
-                                <Select width='50%' className='select-green'>
-                                    <option value='Unique'>Unique</option>
-                                    <option value='None'>None</option>
-                                </Select>
-                            </Table.TextCell>
-                            <Table.TextCell flex='none' width={ 60 }>
-                                <IconButton
-                                  icon='add'
-                                  appearance='minimal'
-                                  className='icon-btn color-white-svg'
-                                  onClick={ this.add }
-                                />
-                            </Table.TextCell>
-                        </Table.Row>
-
-                        <Pane>{tableRows}</Pane>
-                    </Table.Body>
-                </Table>
-            </Section>
-        );
-
-        const TabOutput = () => (
-            <Pane
-              maxHeight={ 560 }
-              height='60vh'
-              paddingLeft='2rem'
-              paddingRight='0.1rem'
-              paddingY='1.5rem'
-              borderRadius={ 4 }
-              boxShadow='0px 0px 10px #36d6ae'
-              marginBottom='2rem'
-            >
-                <Pane overflow='auto' height='100%'>
-                    <Code>{code}</Code>
-                </Pane>
-            </Pane>
-        );
-
-        if (tab === 'input') {
-            content = <TabInput />;
-        }
-
-        if (tab === 'output') {
-            content = <TabOutput />;
-        }
         return (
             <span>
                 <ScrollContainer style={{height: '100vh'}}>
@@ -404,7 +315,86 @@ class SchemaDefinition extends Component {
                             </Tablist>
                         </Pane>
 
-                        {content}
+                { (tab === 'input') && (
+                    <Section title='Schema structure'>
+                    <Table width='100%'>
+                        <Table.Head
+                        style={ { backgroundColor: '#000', borderBottom: '1px solid #ffffff80' } }
+                        paddingLeft='1rem'
+                        >
+                            <Table.TextHeaderCell flexGrow={ 2 }>
+                                <span style={ { color: '#fff' } }>Name</span>
+                            </Table.TextHeaderCell>
+                            <Table.TextHeaderCell>
+                                <span style={ { color: '#fff' } }>Type</span>
+                            </Table.TextHeaderCell>
+                            <Table.TextHeaderCell>
+                                <span style={ { color: '#fff' } }>Validation</span>
+                            </Table.TextHeaderCell>
+                            <Table.TextHeaderCell flex='none' width={ 60 } />
+                        </Table.Head>
+                        <Table.Body style={ { backgroundColor: '#000', overflowY: 'hidden' } }>
+                            <Table.Row
+                            paddingLeft='1rem'
+                            style={ { border: 0 } }
+                                //   boxShadow='0px 0px 0.1px 0px #ddd'
+                            >
+                                <Table.TextCell flexGrow={ 2 }>
+                                    <TextInput width='90%' className='input-green-no-focus' onChange={this.onDbNameChange} value={dbNameValue} placeholder='Name' />
+                                </Table.TextCell>
+                                <Table.TextCell>
+                                    <Select width='70%' className='select-green'
+                                    value={dbVersion}
+                                    onChange={ this.onFieldTypeChange }
+                                    >
+                                        <option value='string'>string</option>
+                                        <option value='address'>address</option>
+                                        <option value='bool'>bool</option>
+                                        <option value='uint256'>uint256</option>
+                                        <option value='int256'>int256</option>
+                                    </Select>
+                                </Table.TextCell>
+                                <Table.TextCell>
+                                    <Select width='50%' className='select-green' 
+                                      value={uniqueValue}
+                                      onChange={this.uniqueValueChange}
+                                    >
+                                        <option value='Unique'>Unique</option>
+                                        <option value='None'>None</option>
+                                    </Select>
+                                </Table.TextCell>
+                                <Table.TextCell flex='none' width={ 60 }>
+                                    <IconButton
+                                    icon='add'
+                                    appearance='minimal'
+                                    className='icon-btn color-white-svg'
+                                    onClick={ this.add }
+                                    />
+                                </Table.TextCell>
+                            </Table.Row>
+
+                            <Pane>{tableRows}</Pane>
+                        </Table.Body>
+                    </Table>
+                </Section>
+                )}
+
+                {(tab === 'output') && (
+                    <Pane
+                        maxHeight={ 560 }
+                        height='60vh'
+                        paddingLeft='2rem'
+                        paddingRight='0.1rem'
+                        paddingY='1.5rem'
+                        borderRadius={ 4 }
+                        boxShadow='0px 0px 10px #36d6ae'
+                        marginBottom='2rem'
+                    >
+                        <Pane overflow='auto' height='100%'>
+                            <Code>{code}</Code>
+                        </Pane>
+                    </Pane>
+                )}
 
                         {message && (
                             <Message
