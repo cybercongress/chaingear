@@ -10,6 +10,7 @@ import {
     // CircleLable, TableItemBen, TableRegistry,
     // FlexContainer, FlexContainerLeft, FlexContainerRight,
     // Button, Text,
+    StatusBar,
     Input,
     Pane,
     Button,
@@ -454,6 +455,11 @@ class NewDatabase extends Component {
 
         return (
             <span>
+                <StatusBar
+                  open={ inProgress }
+                  message={ message }
+                  type={ type }
+                />
                 <ScrollContainer style={ { height: '100vh' } }>
                     <MainContainer
                       style={ {

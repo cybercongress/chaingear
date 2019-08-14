@@ -23,7 +23,7 @@ class Database extends Component {
     render() {
         return (
             <Provider>
-                {/* <PageLoading /> */}
+                <PageLoading />
                 {/* <DatabasePopups />
                 <RecordPopups /> */}
                  <DatabasePopups />
