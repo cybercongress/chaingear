@@ -1,9 +1,22 @@
 import React from 'react';
 import { Subscribe } from 'unstated';
 import {
-    LinkHash, Popup, PopupContent, PopupFooter, PopupTitle,
-    LineTitle, LineControl, WideInput, Button, ContentLineFund,
-    Text, ContentLine, ContentLineTextInput,
+    LinkHash,
+    Popup,
+    PopupContent,
+    PopupFooter,
+    PopupTitle,
+    LineTitle,
+    LineControl,
+    WideInput,
+    Button,
+    ContentLineFund,
+    TextEv as Text,
+    ContentLine,
+    ContentLineTextInput,
+    Dialog,
+    Input,
+    Pane,
 } from '@cybercongress/ui';
 import page from './page';
 
@@ -11,14 +24,22 @@ const DatabasePopups = () => (
     <Subscribe to={ [page] }>
         {(dbPage) => {
             const {
-                userAccount, admin, funded, claimFundOpen, claimFeeOpen,
-                transferOwnershipOpen, fundDatabaseOpen, pauseDatabaseOpen,
-                resumeDatabaseOpen, deleteDatabaseOpen,
+                userAccount,
+                admin,
+                funded,
+                claimFundOpen,
+                claimFeeOpen,
+                transferOwnershipOpen,
+                fundDatabaseOpen,
+                pauseDatabaseOpen,
+                resumeDatabaseOpen,
+                deleteDatabaseOpen,
+                newDbOwnerInput,
             } = dbPage.state;
 
             return (
                 <span>
-                    <Popup open={ claimFundOpen }>
+                    {/* <Popup open={ claimFundOpen }>
                         <PopupTitle>Claim database funds</PopupTitle>
                         <PopupContent>
                             <ContentLineTextInput>
@@ -47,27 +68,43 @@ const DatabasePopups = () => (
                             </Button>
                         </PopupFooter>
                     </Popup>
+            */}
 
-                    <Popup open={ transferOwnershipOpen }>
-                        <PopupTitle>Transfer database ownership</PopupTitle>
-                        <PopupContent>
-                            <ContentLineTextInput>
-                                <LineTitle>Current owner:</LineTitle>
-                                <LineControl>
-                                    <LinkHash noPadding noCopy value={ admin } />
-                                </LineControl>
-                            </ContentLineTextInput>
-                            <ContentLineTextInput>
-                                <LineTitle>New owner:</LineTitle>
-                                <LineControl>
-                                    <WideInput inputRef={ (node) => {
+                    <Dialog
+                      isShown={ transferOwnershipOpen }
+                      title='Transfer database ownership'
+                      onCloseComplete={dbPage.closePopups}
+                      onConfirm={
+                        () => {
+                            const newDbOwner = newDbOwnerInput;
+                            dbPage.transferDatabaseOwnership(userAccount, newDbOwner);
+                        }
+                      }
+                    >
+                        <Pane display='grid' gridTemplateRows='1fr 1fr' marginX={ 20 } marginY={ 20 }>
+                            <Pane
+                              display='grid'
+                              gridTemplateColumns='1fr 2fr'
+                              marginBottom='20px'
+                              alignItems='center'
+                            >
+                                <Text>Current owner:</Text>
+                                <LinkHash noPadding noCopy value={ admin } />
+                            </Pane>
+                            <Pane
+                              display='grid'
+                              gridTemplateColumns='1fr 2fr'
+                              alignItems='center'
+                            >
+                                <Text>New owner:</Text>
+                                <Input width='60%' value={newDbOwnerInput} onChange={dbPage.newDbOwnerInputOnChange} />
+                            </Pane>
+                        </Pane>
+                        {/* <WideInput inputRef={ (node) => {
                                         dbPage.newDbOwnerInput = node;
                                     } }
-                                    />
-                                </LineControl>
-                            </ContentLineTextInput>
-                        </PopupContent>
-                        <PopupFooter>
+                                    /> */}
+                        {/* <PopupFooter>
                             <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>cancel</Button>
                             <Button
                               color='green'
@@ -79,9 +116,10 @@ const DatabasePopups = () => (
                             >
                                 Confirm
                             </Button>
-                        </PopupFooter>
-                    </Popup>
+                        </PopupFooter> */}
+                    </Dialog>
 
+                    {/*
                     <Popup open={ fundDatabaseOpen }>
                         <PopupTitle>Fund database</PopupTitle>
                         <PopupContent>
@@ -104,10 +142,20 @@ const DatabasePopups = () => (
                                 Confirm
                             </Button>
                         </PopupFooter>
-                    </Popup>
+                    </Popup> */}
 
-                    <Popup open={ deleteDatabaseOpen }>
-                        <PopupTitle>Delete database</PopupTitle>
+                    <Dialog
+                      isShown={ deleteDatabaseOpen }
+                      title='Delete registry'
+                      intent='danger'
+                      onCloseComplete={ dbPage.closePopups }
+                      onConfirm={ dbPage.deleteDb }
+                        //   onCloseComplete={() => setState({ isShown: false })}
+                      confirmLabel='Confirm'
+                    >
+                        Your registry will be unlinked from Chaingear, but you still will be able to
+                        operate with it
+                        {/* <PopupTitle>Delete database</PopupTitle>
                         <PopupContent>
                             <ContentLine>
                                 <Text>
@@ -119,10 +167,10 @@ const DatabasePopups = () => (
                         <PopupFooter>
                             <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>cancel</Button>
                             <Button color='green' onClick={ dbPage.deleteDb }>Confirm</Button>
-                        </PopupFooter>
-                    </Popup>
+                        </PopupFooter> */}
+                    </Dialog>
 
-                    <Popup open={ pauseDatabaseOpen }>
+                    {/* <Popup open={ pauseDatabaseOpen }>
                         <PopupTitle>Pause database</PopupTitle>
                         <PopupContent>
                             <ContentLine>
@@ -151,7 +199,7 @@ const DatabasePopups = () => (
                             <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>Cancel</Button>
                             <Button color='green' onClick={ dbPage.unpauseDb }>Confirm</Button>
                         </PopupFooter>
-                    </Popup>
+                    </Popup> */}
                 </span>
             );
         }}

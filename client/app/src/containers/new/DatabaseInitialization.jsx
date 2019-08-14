@@ -57,6 +57,8 @@ class NewDatabase extends Component {
             dbSymbol: '',
             dbVersion: '',
             dbNameValue: '',
+            benAddressValue: '',
+            benStakeValue: '',
 
             nameErrorMessage: null,
             symbolErrorMessage: null,
@@ -239,25 +241,28 @@ class NewDatabase extends Component {
         });
     }
 
-    onDbNameChange = (event) => {
+    onDbNameChange = async (event) => {
         event.persist();
-
-        this.setState({
+        await this.setState({
             dbNameValue: event.target.value,
             dbSymbol: event.target.value.toUpperCase(),
         });
-        const { value } = event.target;
 
         // this.dbSymbol.value = value.toUpperCase();
-        this.checkDbName(value);
+        this.checkDbName(event.target.value);
         this.checkDbSymbol(this.state.dbSymbol);
     };
 
-    onDbSymbolChange = (event) => {
+    onDbSymbolChange = async (event) => {
         event.persist();
 
-        this.checkDbSymbol(event.target.value);
+        await this.setState({
+            dbSymbol: event.target.value.toUpperCase(),
+        });
+
+        this.checkDbSymbol(this.state.dbSymbol);
     };
+    
 
     onDbVersionChange = (event) => {
         const { dbBuilders } = this.state;
@@ -271,8 +276,20 @@ class NewDatabase extends Component {
         });
     };
 
+    benAddressValueOnChange = (e) => {
+        const { value } = e.target;
+
+        this.setState({
+            benAddressValue: value,
+        });
+    }
+
     onStakeChange = (e) => {
         const { value } = e.target;
+
+        this.setState({
+            benStakeValue: value,
+        });
 
         if (isNaN(value)) {
             e.target.value = '';
@@ -280,16 +297,16 @@ class NewDatabase extends Component {
     };
 
     addBeneficiary = () => {
-        const address = this.benAddress.value;
-        const stake = this.benStake.value;
+        const address = this.state.benAddressValue;
+        const stake = this.state.benStakeValue;
         const { beneficiaries } = this.state;
 
         if (!address || !stake) {
             return;
         }
 
-        this.benAddress.value = '';
-        this.benStake.value = '';
+        this.state.benAddressValue = '';
+        this.state.benStakeValue = '';
 
         this.setState({
             beneficiaries: beneficiaries.concat([
@@ -330,6 +347,8 @@ class NewDatabase extends Component {
             nameErrorMessage,
             symbolErrorMessage,
             tab,
+            benAddressValue,
+            benStakeValue,
         } = this.state;
 
         let content;
@@ -503,10 +522,11 @@ class NewDatabase extends Component {
                                               marginBottom='1rem'
                                               className='input-green'
                                               name='Name'
-                                              onChange={ this.onDbNameChange }
                                               value={ dbNameValue }
-                                                //   errorMessage={ nameErrorMessage }
-                                                //   disabled={ !!databaseId }
+                                              onChange={ this.onDbNameChange }
+                                              message={ nameErrorMessage }
+                                            //   isInvalid={ !!databaseId }
+                                              disabled={ !!databaseId }
                                             />
                                             <Input
                                                 //   defaultValue=''
@@ -515,10 +535,11 @@ class NewDatabase extends Component {
                                               className='input-green'
                                               onChange={ this.onDbSymbolChange }
                                               value={ dbSymbol }
+                                            //   isInvalid={ !!databaseId }
                                                 //   inputRef={ (node) => {
                                                 //         this.dbSymbol = node;
                                                 //     } }
-                                              errorMessage={ symbolErrorMessage }
+                                              message={ symbolErrorMessage }
                                               disabled={ !!databaseId }
                                             />
                                             <Select
@@ -591,20 +612,23 @@ class NewDatabase extends Component {
                                                     //   boxShadow='0px 0px 0.1px 0px #ddd'
                                                 >
                                                     <Table.TextCell textAlign='start' flexGrow={ 2 }>
-                                                        <TextInput
+                                                        <Input
                                                           width='80%'
                                                           placeholder='Address'
                                                           className='input-green-no-focus'
+                                                          value={benAddressValue}
+                                                          onChange={this.benAddressValueOnChange}
                                                             // inputRef={ (node) => {
                                                             //     this.benAddress = node;
                                                             // } }
                                                         />
                                                     </Table.TextCell>
                                                     <Table.TextCell>
-                                                        <TextInput
+                                                        <Input
                                                           width='100%'
                                                           placeholder='Stake'
                                                           className='input-green-no-focus'
+                                                          value={benStakeValue}
                                                             // inputRef={ (node) => {
                                                             //     this.benStake = node;
                                                             // } }

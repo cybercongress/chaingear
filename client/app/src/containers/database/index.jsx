@@ -26,6 +26,7 @@ class Database extends Component {
                 {/* <PageLoading /> */}
                 {/* <DatabasePopups />
                 <RecordPopups /> */}
+                 <DatabasePopups />
                 <ScrollContainer>
                     <MainContainer>
                         <Header />

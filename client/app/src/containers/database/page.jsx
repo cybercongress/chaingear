@@ -52,6 +52,7 @@ const initialState = {
 
     permissionGroup: 0,
     recordForAction: null,
+    newDbOwnerInput: '',
 };
 
 class ViewRegistry extends Container {
@@ -448,6 +449,12 @@ class ViewRegistry extends Container {
                 this.closePopups();
             });
     };
+
+    newDbOwnerInputOnChange = (event) => {
+        this.setState({
+            newDbOwnerInput: event.target.value,
+        });
+    }
 
     onTransferOwnership = () => {
         this.setState({
