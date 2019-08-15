@@ -9,6 +9,7 @@ import {
     // AddButton, Panel, FlexContainer,
     // FlexContainerLeft, FlexContainerRight,
     // Button,
+    StatusBar,
     Pane,
     Button,
     TableEv as Table,
@@ -268,6 +269,12 @@ class SchemaDefinition extends Component {
 
         return (
             <span>
+                <StatusBar
+                  open={ inProgress }
+                  message={ message }
+                  type={ type }
+                />
+
                 <ScrollContainer style={{height: '100vh'}}>
                     <MainContainer
                       style={ {
@@ -396,14 +403,14 @@ class SchemaDefinition extends Component {
                     </Pane>
                 )}
 
-                        {message && (
+                        {/* {message && (
                             <Message
                               style={ { position: 'sticky', bottom: '10%', maxWidth: '100%' } }
                               type='error'
                             >
                                 {message}
                             </Message>
-                        )}
+                        )} */}
                     </MainContainer>
                 </ScrollContainer>
                 <FooterCyb />

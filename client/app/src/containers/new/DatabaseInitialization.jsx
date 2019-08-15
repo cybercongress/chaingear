@@ -68,6 +68,7 @@ class NewDatabase extends Component {
             message: '',
             type: 'processing',
             tab: 'input',
+            tempOnClose: null,
         };
 
         this.checkDbName = debounce(this.checkDbName, 1000);
@@ -90,6 +91,10 @@ class NewDatabase extends Component {
             .then(() => this.getDatabaseVersions());
     }
 
+    tryAgain = () => {
+        window.location.reload();
+    }
+
     createDatabase = () => {
         const {
             beneficiaries, dbName, dbSymbol, dbVersion,
@@ -110,7 +115,10 @@ class NewDatabase extends Component {
             .catch((error) => {
                 console.log(`Cannot create database ${dbName}. Error: ${error}`);
                 this.setState({
-                    inProgress: false,
+                    inProgress: true,
+                    type: 'error',
+                    message: `Cannot create database ${dbName}. Error: ${error}`,
+                    tempOnClose: this.tryAgain,
                 });
             });
     };
@@ -350,6 +358,7 @@ class NewDatabase extends Component {
             tab,
             benAddressValue,
             benStakeValue,
+            tempOnClose,
         } = this.state;
 
         let content;
@@ -459,6 +468,7 @@ class NewDatabase extends Component {
                   open={ inProgress }
                   message={ message }
                   type={ type }
+                  onClose={tempOnClose}
                 />
                 <ScrollContainer style={ { height: '100vh' } }>
                     <MainContainer
@@ -679,11 +689,11 @@ class NewDatabase extends Component {
                             </Pane>
                         )}
 
-                        {type === 'error' && message && (
+                        {/* {type === 'error' && message && (
                             <Message style={ { position: 'sticky', bottom: '12%' } } type='error'>
                                 {message}
                             </Message>
-                        )}
+                        )} */}
 
                         {/* <StatusBar
                   open={ inProgress }

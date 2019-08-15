@@ -185,9 +185,9 @@ const DatabasePopups = () => (
                             <Button color='green' onClick={ dbPage.pauseDb }>Confirm</Button>
                         </PopupFooter>
                     </Popup>
-
-                    <Popup open={ resumeDatabaseOpen }>
-                        <PopupTitle>Resume database</PopupTitle>
+*/}
+                    <Dialog isShown={ resumeDatabaseOpen } onCloseComplete={ dbPage.closePopups }>
+                        {/* <PopupTitle>Resume database</PopupTitle>
                         <PopupContent>
                             <ContentLine>
                                 <Text>
@@ -198,8 +198,8 @@ const DatabasePopups = () => (
                         <PopupFooter>
                             <Button style={ { marginRight: '20px' } } color='cancel' onClick={ dbPage.closePopups }>Cancel</Button>
                             <Button color='green' onClick={ dbPage.unpauseDb }>Confirm</Button>
-                        </PopupFooter>
-                    </Popup> */}
+                        </PopupFooter> */}
+                    </Dialog>
                 </span>
             );
         }}
